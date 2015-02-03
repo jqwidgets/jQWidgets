@@ -32,8 +32,8 @@ Do you want to use jQWidgets for a non-profit project? Then you can use jQWidget
 
 You are allowed to distribute jQWidgets with non-commercial packages given that you fulfill two conditions:
 
-*Emphasize to your users that jQWidgets is not free for commercial use. You can do this on your download page or when your users activate jQWidgets in your application.
-*Provide a link back to this web page in the same location.
+* Emphasize to your users that jQWidgets is not free for commercial use. You can do this on your download page or when your users activate jQWidgets in your application.
+* Provide a link back to this web page in the same location: http://www.jqwidgets.com/license/.
 
 *Commercial License*
 
