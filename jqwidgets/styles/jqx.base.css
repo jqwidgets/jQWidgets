@@ -545,6 +545,11 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
  .jqx-grid-cell-filter {
     background-color: #e6e6e6;
  }
+.jqx-grid-cell-add-new-row {
+    background: #fdfcf3 !important;
+    color: #000 !important;
+}
+
  /*applied to the grid cells area.*/
 .jqx-grid-content {
     border-style: solid;
@@ -654,10 +659,16 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 .jqx-right-align {
     text-align: right;
 }
+.jqx-top-align {
+    vertical-align:top;
+}
+.jqx-bottom-align {
+    vertical-align: bottom;
+}
 
 .jqx-grid-table .jqx-grid-cell {
     position: static !important;
-    zoom: 1;
+    zoom: 1 !important;
 }
 /*applied to the Grid's Table element.*/
 .jqx-grid-table {
@@ -669,7 +680,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     border-spacing: 0px;
     -webkit-overflow-scrolling: touch;
     outline: none;
-    zoom: 1;
+    zoom: 1 !important;
     empty-cells: show;
     border-right: 1px solid #aaa;
     line-height: 1.231;
@@ -727,6 +738,13 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
  .jqx-grid-table .jqx-grid-cell {
    border-width: 0px 0px 1px 1px;
  }
+.jqx-grid-table-one-cell {
+    border: none;
+    border-right-width: 1px;
+    border-right-style:solid;
+    border-right-color:#aaa;
+}
+
  .jqx-grid-table .jqx-grid-cell:first-child {
     border-left-width: 0px;
  }
@@ -3336,7 +3354,7 @@ of the horizontal scrollbar.*/
 }
 
 /*applied to all widgets*/
-.jqx-widget{-moz-box-sizing: content-box; box-sizing: content-box; -ms-touch-action: none; zoom: 1; color: #000000; -moz-background-clip: padding; background-clip: padding-box; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; -webkit-appearance: none; -webkit-background-clip: padding-box; direction: ltr !important; -webkit-tap-highlight-color: rgba(0,0,0,0); font-family: Verdana,Arial,sans-serif; font-style: normal; font-size: 13px;}
+.jqx-widget{-moz-box-sizing: content-box; box-sizing: content-box; -ms-touch-action: none; zoom: 1 !important; color: #000000; -moz-background-clip: padding; background-clip: padding-box; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; -webkit-appearance: none; -webkit-background-clip: padding-box; direction: ltr !important; -webkit-tap-highlight-color: rgba(0,0,0,0); font-family: Verdana,Arial,sans-serif; font-style: normal; font-size: 13px;}
 
 .jqx-item{-ms-touch-action: none; -moz-box-sizing: content-box; box-sizing: content-box;  color: inherit; -webkit-text-size-adjust: none;}
 
@@ -4166,9 +4184,11 @@ ol li .jqx-listmenu-item-label:before
   *background-color: #2a85a0  !important;
 }
 
+.jqx-fill-state-pressed.jqx-info,
 .jqx-info:active,
 .jqx-info.active {
-  background-color: #24748c \9  !important;
+   background-color: #24748c \9  !important;
+   background-image: linear-gradient(to bottom, #5bc0de, #24748c)  !important;
 }
 .jqx-notification-warning, .jqx-warning
 {
@@ -4194,9 +4214,11 @@ ol li .jqx-listmenu-item-label:before
   *background-color: #df8505  !important;
 }
 
+.jqx-fill-state-pressed.jqx-warning,
 .jqx-warning:active,
 .jqx-warning.active {
   background-color: #c67605 \9  !important;
+  background-image: linear-gradient(to bottom, #fbb450, #c67605)  !important;
 }
 .jqx-notification-success, .jqx-success
 {
@@ -4221,9 +4243,11 @@ ol li .jqx-listmenu-item-label:before
   background-color: #51a351  !important;
   *background-color: #499249  !important;
 }
+.jqx-fill-state-pressed.jqx-success,
 .jqx-success:active,
 .jqx-success.active {
-  background-color: #408140 \9  !important;
+  background-color: #408140  !important;
+  background-image: linear-gradient(to bottom, #62c462, #408140)  !important;
 }
 .jqx-notification-error, .jqx-danger
 {
@@ -4249,9 +4273,10 @@ ol li .jqx-listmenu-item-label:before
   *background-color: #a9302a  !important;
 }
 
-.jqx-danger:active,
+.jqx-fill-state-pressed.jqx-danger, .jqx-danger:active,
 .jqx-danger.active {
-  background-color: #942a25 \9  !important;
+  background-color: #942a25 !important;
+  background-image: linear-gradient(to bottom, #ee5f5b, #942a25)  !important;
 }
 .jqx-notification-mail, .jqx-primary
 {
@@ -4277,9 +4302,11 @@ ol li .jqx-listmenu-item-label:before
   *background-color: #003bb3  !important;
 }
 
+.jqx-fill-state-pressed.jqx-primary,
 .jqx-primary:active,
 .jqx-primary.active {
-  background-color: #003399 \9  !important;
+  background-color: #003399 !important;
+  background-image: linear-gradient(to bottom, #0088cc, #003399)  !important;
 }
 .jqx-notification-time, .jqx-inverse
 {
@@ -4305,9 +4332,11 @@ ol li .jqx-listmenu-item-label:before
   *background-color: #151515  !important;
 }
 
+.jqx-fill-state-pressed.jqx-inverse,
 .jqx-inverse:active,
 .jqx-inverse.active {
-  background-color: #080808 \9  !important;
+  background-color: #080808  !important;
+  background-image: linear-gradient(to bottom, #444444, #080808)  !important;
 }
 .jqx-link,
 .jqx-link:active,
@@ -5160,4 +5189,53 @@ ol li .jqx-listmenu-item-label:before
 {
     background-image: url('images/loader-small.gif');
     background-repeat: no-repeat;
+}
+.jqx-scheduler .jqx-cell {
+    padding: 0px !important;
+}
+.jqx-scheduler-month-cell {
+    background: #f2f2f2;
+    opacity: 0.8;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: inherit;
+    vertical-align: top;
+    text-align: left;
+}
+.jqx-scheduler-month-cell-popup {
+    border: 1px solid #333;
+    background: #f2f2f2;
+    box-shadow: 0 5px 0px rgba(0,0,0,.15)!important;
+}
+.jqx-scheduler-other-month-cell
+{
+    color: #555;
+}
+
+.jqx-scheduler-time-column {
+    background-image: none !important;
+    background: #e8e8e8 !important;
+    color: #333 !important;
+}
+.jqx-scheduler-appointment {
+    overflow: hidden;
+    border: 1px solid #555;
+    white-space:pre-line;
+    cursor:pointer;
+}
+.jqx-scheduler-feedback-appointment {
+    opacity: 0.8;
+    position:absolute;
+    z-index:99999;
+}
+.jqx-scheduler-selected-appointment {
+    overflow: hidden;
+    border: 1px solid #000;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+     -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    white-space:pre-line;
+}
+.jqx-scheduler-feedback-drag-appointment {
+    background: #aaa !important;
 }
