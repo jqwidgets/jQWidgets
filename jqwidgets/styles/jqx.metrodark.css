@@ -318,6 +318,9 @@
 .jqx-icon-calendar-metrodark, .jqx-icon-calendar-hover-metrodark, .jqx-icon-calendar-pressed-metrodark {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-icon-time-metrodark, .jqx-icon-time-hover-metrodark, .jqx-icon-time-pressed-metrodark {
+    background-image: url('images/icon-time-white.png');
+}
 .jqx-icon-delete-metrodark
 {
     background-image: url('images/icon-delete-white.png');

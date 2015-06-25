@@ -464,6 +464,9 @@ border-color:#008a00; color: #fff; background-color:#008a00;
 .jqx-icon-calendar-windowsphone, .jqx-icon-calendar-hover-windowsphone, .jqx-icon-calendar-pressed-windowsphone {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-icon-time-windowsphone, .jqx-icon-time-hover-windowsphone, .jqx-icon-time-pressed-windowsphone {
+    background-image: url('images/icon-time-white.png');
+}
 .jqx-calendar-cell-today-windowsphone {
     color: black;
 }

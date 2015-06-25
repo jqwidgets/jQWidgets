@@ -3353,6 +3353,174 @@ of the horizontal scrollbar.*/
     background: transparent !important;
 }
 
+.jqx-date-time-input-popup table td a
+{
+  border: 1px transparent solid;
+  width: 100%;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  color: #333;
+}
+.jqx-date-time-input-popup table td input {
+  width: 25px;
+  margin: 0;
+  text-align: center;
+  padding: 4px 6px;
+  height:20px;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.jqx-scheduler .jqx-cell {
+    padding: 0px !important;
+}
+.jqx-scheduler-month-cell {
+    background: #f2f2f2;
+    opacity: 0.8;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: inherit;
+    vertical-align: top;
+    text-align: left;
+}
+.jqx-scheduler-month-cell-popup {
+    border: 1px solid #333;
+    background: #f2f2f2;
+    box-shadow: 0 5px 0px rgba(0,0,0,.15)!important;
+}
+.jqx-scheduler-other-month-cell
+{
+    color: #555;
+}
+
+.jqx-scheduler-time-column {
+    background-image: none !important;
+    background: #e8e8e8 !important;
+    color: #333 !important;
+}
+.jqx-scheduler-appointment {
+    overflow: hidden;
+    border: 1px solid #555;
+    white-space:pre-line;
+    cursor:pointer;
+    vertical-align: middle;
+    text-overflow:ellipsis;
+}
+.jqx-scheduler-appointment span {
+    vertical-align: middle;
+    text-overflow:ellipsis;
+    position: relative;
+    top: -1px;
+}
+.jqx-scheduler-feedback-appointment {
+    opacity: 0.8;
+    position:absolute;
+    z-index:99999;
+}
+.jqx-scheduler-selected-appointment {
+    overflow: hidden;
+    border: 1px solid #000;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+     -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    white-space:pre-line;
+}
+.jqx-scheduler-feedback-drag-appointment {
+    background: #aaa !important;
+}
+.jqx-icon-recurrence, .jqx-icon-recurrence-exception,.jqx-icon-recurrence-white, .jqx-icon-recurrence-exception-white, .jqx-icon-time
+{
+    background-image: url('images/icon-recurrence.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin:2px;
+    margin-right:4px;
+}
+.jqx-icon-time
+{
+    background-image: url('images/icon-time.png');
+    margin:0px;
+    position: relative;
+    left: 1px;
+    margin-top:-8px;
+}
+.jqx-icon-time-white
+{
+    background-image: url('images/icon-time-white.png');
+}
+.jqx-icon-recurrence-exception
+{
+    background-image: url('images/icon-recurrence-exception.png');
+}
+.jqx-icon-recurrence-exception-white {
+    background-image: url('images/icon-recurrence-exception-white.png');
+}
+.jqx-icon-recurrence-white {
+   background-image: url('images/icon-recurrence-white.png');
+ }
+.jqx-scheduler-cell-hover {
+    background: #f0f0f0!important;
+}
+.jqx-scheduler-cell-selected {
+    border-color: #316293 !important;
+    background: #2f7eb6 !important;
+}
+.jqx-scheduler-edit-dialog-label {
+    clear: both;
+    float: left;
+    margin-left: 2%;
+    padding: 4px;
+    text-align: right;
+    width: 18%;
+    line-height: 25px;
+}
+.jqx-scheduler-edit-dialog-field {
+    clear: right;
+    float: right;
+    margin-right: 2%;
+    padding: 4px;
+    width: 72%;
+}
+.jqx-scheduler-legend-bar
+{
+    overflow:hidden;
+    border-color:inherit;
+    border: none;
+}
+.jqx-scheduler-legend-bar-bottom
+{
+    border-top-width: 1px;
+    border-top-style:solid;
+}
+.jqx-scheduler-legend-bar-top
+{
+    border-bottom-width: 1px;
+    border-bottom-style:solid;
+}
+.jqx-scheduler-legend {
+    width:14px;
+    height:14px;
+    float: left;
+    margin-right: 3px;
+    border-style:solid;
+    border-width:1px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-top:4px;
+}
+.jqx-scheduler-legend-label {
+    float: left;
+    margin-right: 12px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-top:4px;
+}
+
 /*applied to all widgets*/
 .jqx-widget{-moz-box-sizing: content-box; box-sizing: content-box; -ms-touch-action: none; zoom: 1 !important; color: #000000; -moz-background-clip: padding; background-clip: padding-box; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; -webkit-appearance: none; -webkit-background-clip: padding-box; direction: ltr !important; -webkit-tap-highlight-color: rgba(0,0,0,0); font-family: Verdana,Arial,sans-serif; font-style: normal; font-size: 13px;}
 
@@ -5190,52 +5358,47 @@ ol li .jqx-listmenu-item-label:before
     background-image: url('images/loader-small.gif');
     background-repeat: no-repeat;
 }
-.jqx-scheduler .jqx-cell {
-    padding: 0px !important;
-}
-.jqx-scheduler-month-cell {
-    background: #f2f2f2;
-    opacity: 0.8;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: inherit;
-    vertical-align: top;
-    text-align: left;
-}
-.jqx-scheduler-month-cell-popup {
-    border: 1px solid #333;
-    background: #f2f2f2;
-    box-shadow: 0 5px 0px rgba(0,0,0,.15)!important;
-}
-.jqx-scheduler-other-month-cell
-{
-    color: #555;
+
+.jqx-date-time-input-popup .jqx-icon {
+    margin-top:0px;
 }
 
-.jqx-scheduler-time-column {
-    background-image: none !important;
-    background: #e8e8e8 !important;
-    color: #333 !important;
-}
-.jqx-scheduler-appointment {
+
+.jqx-text-area-element
+{
+    height: 100%;
+    width: 100%;
     overflow: hidden;
-    border: 1px solid #555;
-    white-space:pre-line;
-    cursor:pointer;
+    border: none;
+    outline: none;
+    left: 0px;
+    top: 0px;
+    margin: 0px;
+    position: absolute;
+    resize: none;
 }
-.jqx-scheduler-feedback-appointment {
-    opacity: 0.8;
-    position:absolute;
-    z-index:99999;
+.jqx-text-area-element-rtl
+{
+    direction: rtl;
 }
-.jqx-scheduler-selected-appointment {
-    overflow: hidden;
-    border: 1px solid #000;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
-     -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
-          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
-    white-space:pre-line;
+.jqx-responsive-panel
+{
+    overflow: auto;
 }
-.jqx-scheduler-feedback-drag-appointment {
-    background: #aaa !important;
+.jqx-responsive-panel, .jqx-responsive-panel-button
+{
+    border-width: 1px;
+    border-style: solid;
+}
+.jqx-responsive-panel-button
+{
+    display: none;
+    cursor: pointer;
+}
+.jqx-responsive-panel-button-inner
+{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
 }

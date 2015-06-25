@@ -194,6 +194,10 @@ background: linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#
 .jqx-icon-calendar-black, .jqx-icon-calendar-hover-black, .jqx-icon-calendar-pressed-black {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-icon-time-black, .jqx-icon-time-hover-black, .jqx-icon-time-pressed-black {
+    background-image: url('images/icon-time-white.png');
+}
+
 .jqx-icon-delete-black
 {
     background-image: url('images/icon-delete-white.png');

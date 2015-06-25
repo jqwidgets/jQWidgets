@@ -165,6 +165,9 @@
 .jqx-icon-calendar-ui-darkness, .jqx-icon-calendar-hover-ui-darkness, .jqx-icon-calendar-pressed-ui-darkness {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-icon-time-ui-darkness, .jqx-icon-time-hover-ui-darkness, .jqx-icon-time-pressed-ui-darkness {
+    background-image: url('images/icon-time-white.png');
+}
 .jqx-menu-minimized-button-ui-darkness {
    background-image: url('images/icon-menu-minimized-white.png');
 }

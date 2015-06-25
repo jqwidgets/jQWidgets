@@ -53,6 +53,9 @@
 .jqx-icon-calendar-pressed-classic {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-icon-time-pressed-classic {
+    background-image: url('images/icon-time-white.png');
+}
 .jqx-grid-cell-classic.jqx-grid-cell-selected-classic>.jqx-grid-group-expand-classic {
     background-image: url('images/icon-down-white.png');
     background-repeat: no-repeat;

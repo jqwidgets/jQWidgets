@@ -78,6 +78,16 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+.jqx-date-time-input-popup-shinyblack .jqx-icon-arrow-down-shinyblack {
+    background-image: url('images/icon-down.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.jqx-date-time-input-popup-shinyblack .jqx-icon-arrow-up-shinyblack {
+    background-image: url('images/icon-up.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 .jqx-grid-cell-shinyblack.jqx-grid-cell-selected-shinyblack>.jqx-grid-group-expand-shinyblack,
 .jqx-grid-cell-shinyblack.jqx-grid-cell-hover-shinyblack>.jqx-grid-group-expand-shinyblack {
@@ -111,6 +121,9 @@
 }
 .jqx-icon-calendar-shinyblack, .jqx-icon-calendar-hover-shinyblack, .jqx-icon-calendar-pressed-shinyblack {
     background-image: url('images/icon-calendar-white.png');
+}
+.jqx-icon-time-shinyblack, .jqx-icon-time-hover-shinyblack, .jqx-icon-time-pressed-shinyblack {
+    background-image: url('images/icon-time-white.png');
 }
 .jqx-icon-delete-shinyblack
 {

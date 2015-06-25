@@ -194,6 +194,9 @@
 .jqx-icon-calendar-ui-start, .jqx-icon-calendar-hover-ui-start, .jqx-icon-calendar-pressed-ui-start {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-icon-time-ui-start, .jqx-icon-time-hover-ui-start, .jqx-icon-time-pressed-ui-start {
+    background-image: url('images/icon-time-white.png');
+}
 .jqx-editor-toolbar-icon-ui-start {
     background: url('images/html_editor_white.png') no-repeat;
 }

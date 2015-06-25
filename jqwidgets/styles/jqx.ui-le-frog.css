@@ -192,6 +192,9 @@
 .jqx-icon-calendar-ui-le-frog, .jqx-icon-calendar-hover-ui-le-frog, .jqx-icon-calendar-pressed-ui-le-frog {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-icon-time-ui-le-frog, .jqx-icon-time-hover-ui-le-frog, .jqx-icon-time-pressed-ui-le-frog {
+    background-image: url('images/icon-time-white.png');
+}
 .jqx-icon-delete-ui-le-frog
 {
     background-image: url('images/icon-delete-white.png');

@@ -63,6 +63,9 @@
 .jqx-icon-calendar-hover-highcontrast, .jqx-icon-calendar-pressed-highcontrast {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-icon-time-highcontrast, .jqx-icon-time-hover-highcontrast, .jqx-icon-time-pressed-highcontrast {
+    background-image: url('images/icon-time-white.png');
+}
 .jqx-grid-cell-highcontrast.jqx-grid-cell-selected-highcontrast>.jqx-grid-group-expand-highcontrast,
 .jqx-grid-cell-highcontrast.jqx-grid-cell-hover-highcontrast>.jqx-grid-group-expand-highcontrast {
     background-image: url('images/icon-down-white.png');

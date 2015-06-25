@@ -129,3 +129,6 @@ background: linear-gradient(left, #9cbbed 0%,#3a78dc 1%,#1543bb 100%);
 .jqx-icon-calendar-pressed-fresh {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-icon-time-pressed-fresh {
+    background-image: url('images/icon-time-white.png');
+}

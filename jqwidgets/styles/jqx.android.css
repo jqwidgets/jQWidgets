@@ -492,6 +492,9 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
 .jqx-icon-calendar-android, .jqx-icon-calendar-hover-android, .jqx-icon-calendar-pressed-android {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-icon-time-android, .jqx-icon-time-hover-android, .jqx-icon-time-pressed-android {
+    background-image: url('images/icon-time-white.png');
+}
 .jqx-calendar-cell-today-android {
     color: black;
 }

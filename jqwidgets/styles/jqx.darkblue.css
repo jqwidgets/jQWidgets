@@ -52,6 +52,9 @@
 .jqx-icon-calendar-darkblue, .jqx-icon-calendar-hover-darkblue, .jqx-icon-calendar-pressed-darkblue {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-icon-time-darkblue, .jqx-icon-time-hover-darkblue, .jqx-icon-time-pressed-darkblue {
+    background-image: url('images/icon-time-white.png');
+}
 .jqx-icon-delete-darkblue
 {
     background-image: url('images/icon-delete-white.png');

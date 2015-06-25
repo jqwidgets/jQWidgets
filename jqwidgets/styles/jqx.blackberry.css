@@ -630,7 +630,10 @@ input[type=text].jqx-input-blackberry, input[type=password].jqx-input-blackberry
  .jqx-icon-calendar-pressed-blackberry {
     background-image: url('images/icon-calendar-white.png');
 }
-.jqx-file-upload-blackberry .jqx-icon-arrow-up-blackberry {
+ .jqx-icon-time-pressed-blackberry {
+    background-image: url('images/icon-time-white.png');
+}
+ .jqx-file-upload-blackberry .jqx-icon-arrow-up-blackberry {
   background-image: url('images/icon-up-white.png');
 }
 .jqx-file-upload-file-name-blackberry{padding:3px;}
