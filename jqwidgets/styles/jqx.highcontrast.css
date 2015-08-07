@@ -119,3 +119,7 @@
 {
     background-image: url(images/plus_white.png);
 }
+.jqx-layout-highcontrast
+{
+    background-color: #000;
+}

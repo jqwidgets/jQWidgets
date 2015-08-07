@@ -132,3 +132,7 @@ background: linear-gradient(left, #9cbbed 0%,#3a78dc 1%,#1543bb 100%);
 .jqx-icon-time-pressed-fresh {
     background-image: url('images/icon-time-white.png');
 }
+.jqx-layout-fresh
+{
+    background-color: #8e8e97;
+}

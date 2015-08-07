@@ -351,3 +351,15 @@
 .jqx-editor-toolbar-icon-metrodark {
     background: url('images/html_editor_white.png') no-repeat;
 }
+.jqx-layout-metrodark
+{
+    background-color: #35353A;
+}
+.jqx-layout-pseudo-window-pin-icon-metrodark
+{
+    background-image: url("images/pin-white.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-metrodark
+{
+    background-image: url("images/pinned-white.png");
+}

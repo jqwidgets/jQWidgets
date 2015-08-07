@@ -317,3 +317,7 @@
 .jqx-icon-calendar-pressed-metro {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-layout-metro
+{
+    background-color: #e5e5e5;
+}

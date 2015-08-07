@@ -147,3 +147,16 @@
 .jqx-scrollbar-ui-sunny .jqx-icon-arrow-down-ui-sunny{width: 16px; height: 16px; margin-left: auto;}
 .jqx-scrollbar-ui-sunny .jqx-icon-arrow-left-ui-sunny{width: 16px; height: 16px; position: relative; top: 50%; margin-top: -8px;}
 .jqx-scrollbar-ui-sunny .jqx-icon-arrow-right-ui-sunny{width: 16px; height: 16px; position: relative; top: 50%; margin-top: -8px;}
+.jqx-layout-ui-sunny
+{
+    background-color: #494437;
+    background-image: none;
+}
+.jqx-layout-pseudo-window-pin-icon-ui-sunny
+{
+    background-image: url("images/pin-yellow.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-ui-sunny
+{
+    background-image: url("images/pinned-yellow.png");
+}

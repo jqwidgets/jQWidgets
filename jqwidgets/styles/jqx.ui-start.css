@@ -200,3 +200,16 @@
 .jqx-editor-toolbar-icon-ui-start {
     background: url('images/html_editor_white.png') no-repeat;
 }
+.jqx-layout-ui-start
+{
+    background-color: #4297d7;
+    background-image: none;
+}
+.jqx-layout-pseudo-window-pin-icon-ui-start
+{
+    background-image: url("images/pin-lightblue.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-ui-start
+{
+    background-image: url("images/pinned-lightblue.png");
+}

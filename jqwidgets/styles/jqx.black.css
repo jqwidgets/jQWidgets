@@ -228,3 +228,15 @@ background: linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#
 .jqx-editor-toolbar-icon-black {
     background: url('images/html_editor_white.png') no-repeat;
 }
+.jqx-layout-black
+{
+    background-color: #000;
+}
+.jqx-layout-pseudo-window-pin-icon-black
+{
+    background-image: url("images/pin-white.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-black
+{
+    background-image: url("images/pinned-white.png");
+}

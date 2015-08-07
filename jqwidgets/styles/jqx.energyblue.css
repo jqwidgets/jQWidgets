@@ -10,3 +10,7 @@
 .jqx-grid-cell-selected-energyblue{ background-color:#cfdde9 !important;  color:#2b465e !important;}
 .jqx-grid-cell-hover-energyblue{ background-color:#cfdde9 !important;}
 .jqx-menu-vertical-energyblue{background: #e0e9f5;}
+.jqx-layout-energyblue
+{
+    background-color: #a4bed4;
+}

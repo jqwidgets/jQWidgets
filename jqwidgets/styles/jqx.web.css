@@ -311,3 +311,7 @@
     -webkit-border-radius: 100%;
     border-radius: 100%; 
 }
+.jqx-layout-web
+{
+    background-color: #b2b2b2;
+}

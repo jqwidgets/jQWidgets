@@ -174,3 +174,15 @@
 .jqx-editor-toolbar-icon-ui-darkness {
     background: url('images/html_editor_white.png') no-repeat;
 }
+.jqx-layout-ui-darkness
+{
+    background-color: #333;
+}
+.jqx-layout-pseudo-window-pin-icon-ui-darkness
+{
+    background-image: url("images/pin-white.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-ui-darkness
+{
+    background-image: url("images/pinned-white.png");
+}

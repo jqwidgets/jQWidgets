@@ -164,3 +164,16 @@ font-weight: bold;
     background-repeat: no-repeat;
     background-position: center;
 }
+.jqx-layout-ui-redmond
+{
+    background-color: #4297d7;
+    background-image: none;
+}
+.jqx-layout-pseudo-window-pin-icon-ui-redmond
+{
+    background-image: url("images/pin-lightblue.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-ui-redmond
+{
+    background-image: url("images/pinned-lightblue.png");
+}

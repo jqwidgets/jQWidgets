@@ -76,3 +76,7 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+.jqx-layout-classic
+{
+    background-color: #aaa;
+}

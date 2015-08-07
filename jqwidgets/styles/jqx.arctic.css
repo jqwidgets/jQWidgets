@@ -525,3 +525,7 @@ input[type="text"].jqx-input-arctic:-ms-input-placeholder, input[type="text"].jq
 .jqx-window-collapse-button-collapsed-arctic {
     margin-top: 0px;
 }
+.jqx-layout-arctic
+{
+    background-color: #cccccc;
+}

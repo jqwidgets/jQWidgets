@@ -478,3 +478,15 @@ border-color:#008a00; color: #fff; background-color:#008a00;
 }
 .jqx-file-upload-file-name-windowsphone{padding:3px;}
 .jqx-file-upload-file-row-windowsphone{ height: 40px;}
+.jqx-layout-windowsphone
+{
+    background-color: #35353A;
+}
+.jqx-layout-pseudo-window-pin-icon-windowsphone
+{
+    background-image: url("images/pin-white.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-windowsphone
+{
+    background-image: url("images/pinned-white.png");
+}

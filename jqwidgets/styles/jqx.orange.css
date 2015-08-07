@@ -176,3 +176,15 @@ border-color:#FBB34E; }
 .jqx-editor-toolbar-icon-orange {
     background: url('images/html_editor_white.png') no-repeat;
 }
+.jqx-layout-orange
+{
+    background-color: #E48605;
+}
+.jqx-layout-pseudo-window-pin-icon-orange
+{
+    background-image: url("images/pin-white.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-orange
+{
+    background-image: url("images/pinned-white.png");
+}

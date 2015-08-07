@@ -921,3 +921,7 @@ input[type="password"].jqx-input-bootstrap:-ms-input-placeholder, input[type="pa
     background-repeat: no-repeat;
     background-position: center;
 }
+.jqx-layout-bootstrap
+{
+    background-color: #cccccc;
+}

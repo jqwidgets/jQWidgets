@@ -146,3 +146,15 @@
 .jqx-scrollbar-ui-smoothness .jqx-icon-arrow-down-ui-smoothness{width: 16px; height: 16px; margin-left: auto;}
 .jqx-scrollbar-ui-smoothness .jqx-icon-arrow-left-ui-smoothness{width: 16px; height: 16px; position: relative; top: 50%; margin-top: -8px;}
 .jqx-scrollbar-ui-smoothness .jqx-icon-arrow-right-ui-smoothness{width: 16px; height: 16px; position: relative; top: 50%; margin-top: -8px;}
+.jqx-layout-ui-smoothness
+{
+    background-color: #aaa;
+}
+.jqx-layout-pseudo-window-pin-icon-ui-smoothness
+{
+    background-image: url("images/pin-black.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-ui-smoothness
+{
+    background-image: url("images/pinned-black.png");
+}

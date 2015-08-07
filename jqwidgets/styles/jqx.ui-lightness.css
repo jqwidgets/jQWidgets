@@ -143,3 +143,15 @@
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
+.jqx-layout-ui-lightness
+{
+    background-color: #e78f08;
+}
+.jqx-layout-pseudo-window-pin-icon-ui-lightness
+{
+    background-image: url("images/pin-white.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-ui-lightness
+{
+    background-image: url("images/pinned-white.png");
+}

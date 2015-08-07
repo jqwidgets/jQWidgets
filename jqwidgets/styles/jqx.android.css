@@ -506,3 +506,15 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
 }
 .jqx-file-upload-file-name-android{padding:3px;}
 .jqx-file-upload-file-row-android{ height: 40px;}
+.jqx-layout-android
+{
+    background-color: #000;
+}
+.jqx-layout-pseudo-window-pin-icon-android
+{
+    background-image: url("images/pin-white.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-android
+{
+    background-image: url("images/pinned-white.png");
+}

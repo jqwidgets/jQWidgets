@@ -763,3 +763,15 @@ input[type=text].jqx-input-mobile, input[type=password].jqx-input-mobile, .jqx-i
 }
 .jqx-file-upload-file-name-mobile{padding:3px;}
 .jqx-file-upload-file-row-mobile{ height: 40px;}
+.jqx-layout-mobile
+{
+    background-color: #b2b2b2;
+}
+.jqx-layout-pseudo-window-pin-icon-mobile
+{
+    background-image: url("images/pin-blue.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-mobile
+{
+    background-image: url("images/pinned-blue.png");
+}

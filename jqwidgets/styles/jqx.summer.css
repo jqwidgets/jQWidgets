@@ -79,3 +79,7 @@
 .jqx-icon-calendar-hover-summer, .jqx-icon-calendar-pressed-summer {
     background-image: url('images/icon-calendar-white.png');
 }
+.jqx-layout-summer
+{
+    background-color: #cacaca;
+}

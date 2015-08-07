@@ -225,3 +225,15 @@
 .jqx-editor-toolbar-icon-ui-le-frog {
     background: url('images/html_editor_white.png') no-repeat;
 }
+.jqx-layout-ui-le-frog
+{
+    background-color: #3f7506;
+}
+.jqx-layout-pseudo-window-pin-icon-ui-le-frog
+{
+    background-image: url("images/pin-white.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-ui-le-frog
+{
+    background-image: url("images/pinned-white.png");
+}

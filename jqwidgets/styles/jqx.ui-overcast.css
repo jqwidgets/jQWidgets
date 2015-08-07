@@ -159,4 +159,15 @@
 .jqx-scrollbar-ui-overcast .jqx-icon-arrow-down-ui-overcast{width: 16px; height: 16px; margin-left: auto;}
 .jqx-scrollbar-ui-overcast .jqx-icon-arrow-left-ui-overcast{width: 16px; height: 16px; position: relative; top: 50%; margin-top: -8px;}
 .jqx-scrollbar-ui-overcast .jqx-icon-arrow-right-ui-overcast{width: 16px; height: 16px; position: relative; top: 50%; margin-top: -8px;}
-
+.jqx-layout-ui-overcast
+{
+    background-color: #bbbbbb;
+}
+.jqx-layout-pseudo-window-pin-icon-ui-overcast
+{
+    background-image: url("images/pin-black.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-ui-overcast
+{
+    background-image: url("images/pinned-black.png");
+}

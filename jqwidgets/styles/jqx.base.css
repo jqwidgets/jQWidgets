@@ -443,7 +443,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     cursor: pointer;
 }
 /*applied to the groups header area.*/
- .jqx-grid-groups-header, .jqx-grid-toolbar {
+ .jqx-grid-groups-header, .jqx-grid-toolbar, .jqx-scheduler-toolbar {
     border-style: solid;
     border-width: 0px 0px 1px 0px;
     border-color: #aaa;
@@ -2547,6 +2547,7 @@ of the horizontal scrollbar.*/
     padding: 0px;
     background: transparent;
     border: 1px solid transparent;
+    touch-action:none;
 }
 /*applied to the horizontal scrollbar thumb in hovered state.*/
 .jqx-scrollbar-thumb-state-hover-horizontal
@@ -2568,6 +2569,7 @@ of the horizontal scrollbar.*/
     margin: 0px;
     padding: 0px;
     border: 1px solid transparent;
+    touch-action:none;
 }
 /*applied to the vertical scrollbar thumb in default state.*/
 .jqx-scrollbar-thumb-state-hover
@@ -3120,7 +3122,7 @@ of the horizontal scrollbar.*/
     margin-top: -7.5px !important;
 }
 /*applied to Inputs*/
-.jqx-input{-webkit-user-modify:inherit; -moz-user-modify: inherit;  overflow: hidden; background-color: inherit; border-color: #c7c7c7;}
+.jqx-input{overflow: hidden; background-color: inherit; border-color: #c7c7c7;}
 .jqx-input-invalid {
     color: red !important;
 }
@@ -3375,7 +3377,27 @@ of the horizontal scrollbar.*/
 
 .jqx-scheduler .jqx-cell {
     padding: 0px !important;
+    cursor: default;
 }
+.jqx-scheduler .jqx-widget-header.jqx-grid-header
+{
+    border-bottom-color: transparent;
+    border-bottom-width: 0px;
+}
+.jqx-scheduler .jqx-grid-column-header, .jqx-scheduler.jqx-widget .jqx-grid-column-header
+{
+    border-bottom: 1px solid #c5c5c5;
+}
+
+.jqx-scheduler-all-day-cell
+{
+    text-align: left;
+}
+.jqx-scheduler-all-day-cell span
+{
+    margin-left:3px;
+}
+
 .jqx-scheduler-month-cell {
     background: #f2f2f2;
     opacity: 0.8;
@@ -3390,24 +3412,83 @@ of the horizontal scrollbar.*/
     background: #f2f2f2;
     box-shadow: 0 5px 0px rgba(0,0,0,.15)!important;
 }
+.jqx-widget .jqx-scheduler-middle-cell, .jqx-scheduler-middle-cell {
+    border-bottom-color: #ddd !important;
+}
+.jqx-scheduler-cell-selected.jqx-scheduler-middle-cell
+{
+    border-bottom-style:dotted;
+}
+.jqx-scheduler-work-time-cell
+{
+    background: #fff;
+}
+.jqx-scheduler-not-work-time-cell
+{
+    background: #eee;
+}
+
 .jqx-scheduler-other-month-cell
 {
     color: #555;
 }
 
-.jqx-scheduler-time-column {
+.jqx-scheduler-toolbar
+{
+    font-size: 14px;
+}
+.jqx-scheduler-time-column, .jqx-scheduler-toolbar {
     background-image: none !important;
-    background: #e8e8e8 !important;
+    background: #fff !important;
     color: #333 !important;
 }
+.jqx-scheduler-time-column-header-cell
+{
+    border-left-color:transparent !important;
+}
 .jqx-scheduler-appointment {
-    overflow: hidden;
+    overflow: visible;
     border: 1px solid #555;
     white-space:pre-line;
     cursor:pointer;
     vertical-align: middle;
     text-overflow:ellipsis;
 }
+.jqx-scheduler-appointment-content {
+    overflow: hidden;
+    text-overflow:ellipsis;
+    height:100%;
+    width:100%;
+}
+.jqx-scheduler-appointment-resize-indicator {
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    border: 1px solid black;
+    background: white;
+    display: none;
+}
+.jqx-scheduler-appointment-top-resize-indicator {
+    top: -3px;
+    left: 50%;
+    margin-left:-2px;
+}
+.jqx-scheduler-appointment-bottom-resize-indicator {
+    bottom: -3px;
+    left: 50%;
+    margin-left:-2px;
+}
+.jqx-scheduler-appointment-left-resize-indicator {
+    top: 50%;
+    left: -3px;
+    margin-top: -2px;
+}
+.jqx-scheduler-appointment-right-resize-indicator {
+    top: 50%;
+    margin-top: -2px;
+    right: -3px;
+}
+
 .jqx-scheduler-appointment span {
     vertical-align: middle;
     text-overflow:ellipsis;
@@ -3420,13 +3501,15 @@ of the horizontal scrollbar.*/
     z-index:99999;
 }
 .jqx-scheduler-selected-appointment {
-    overflow: hidden;
-    border: 1px solid #000;
+    border: 1px solid #316293 !important;
   -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
      -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
           box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
     white-space:pre-line;
 }
+.jqx-scheduler-appointment:hover {
+   border: 1px solid #3f7ebe !important;
+ }
 .jqx-scheduler-feedback-drag-appointment {
     background: #aaa !important;
 }
@@ -3464,7 +3547,8 @@ of the horizontal scrollbar.*/
    background-image: url('images/icon-recurrence-white.png');
  }
 .jqx-scheduler-cell-hover {
-    background: #f0f0f0!important;
+    border-color: #3f7ebe !important;
+    background: #a2c0df !important;
 }
 .jqx-scheduler-cell-selected {
     border-color: #316293 !important;
@@ -3520,7 +3604,12 @@ of the horizontal scrollbar.*/
     vertical-align: middle;
     margin-top:4px;
 }
-
+.jqx-scheduler-cell-focus
+{
+    border-style:dotted;
+    border-color: #59a0d5 !important;
+    background: #59a0d5 !important;
+}
 /*applied to all widgets*/
 .jqx-widget{-moz-box-sizing: content-box; box-sizing: content-box; -ms-touch-action: none; zoom: 1 !important; color: #000000; -moz-background-clip: padding; background-clip: padding-box; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; -webkit-appearance: none; -webkit-background-clip: padding-box; direction: ltr !important; -webkit-tap-highlight-color: rgba(0,0,0,0); font-family: Verdana,Arial,sans-serif; font-style: normal; font-size: 13px;}
 
@@ -5401,4 +5490,230 @@ ol li .jqx-listmenu-item-label:before
     width: 100%;
     height: 100%;
     background-position: center;
+}
+.jqx-loader
+{
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255,255,255,0.5);
+    z-index: 999;
+    border-style: solid;
+    border-width: 1px;
+}
+.jqx-loader-ie-transparency
+{
+    background: transparent;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fffffff, endColorstr=#7fffffff)"; /*For IE 8*/
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fffffff, endColorstr=#7fffffff); /*For IE 7*/
+}
+.jqx-loader-modal
+{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    cursor: default;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.6;
+}
+.jqx-loader-icon
+{
+    background-image: url("../../jqwidgets/styles/images/loader.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+}
+.jqx-loader-text
+{
+    z-index: 999;
+    position: relative;
+}
+.jqx-loader-text-left
+{
+    margin-left: 5px;
+    position: absolute;
+    top: 50%;
+}
+.jqx-loader-text-right
+{
+    margin-right: 5px;
+    position: absolute;
+    top: 50%;
+    right: 0px;
+}
+.jqx-loader-text-top
+{
+    text-align: center;
+    margin-top: 5px;
+}
+.jqx-loader-text-bottom
+{
+    bottom: 0px;
+    position: absolute;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.jqx-loader-rtl
+{
+    direction: rtl;
+}
+.jqx-layout, .jqx-layout-group-root, .jqx-layout-pseudo-window-header
+{
+    position: relative;
+}
+.jqx-layout
+{
+    background-color: #c5c5c5;
+}
+.jqx-layout-group-root, .jqx-layout-pseudo-window-pin-icon, .jqx-layout-pseudo-window-pinned-icon, .jqx-layout-pseudo-window-close-icon, .jqx-layout-overlay
+{
+    width: 100%;
+    height: 100%;
+}
+.jqx-layout-group-default-horizontal > div
+{
+    float: left;
+}
+.jqx-layout-group-tabbed
+{
+    position: static;
+    box-sizing: border-box;
+    min-height: 0 !important;
+}
+.jqx-layout-group-tabbed .jqx-window-content, .jqx-docking-layout-group-floating .jqx-window-content
+{
+    padding: 0;
+}
+.jqx-layout-group-tabbed .jqx-ribbon-content-section, .jqx-layout-window, .jqx-docking-layout-group-floating .jqx-ribbon-content-section
+{
+    border: none;
+}
+.jqx-layout-window
+{
+    position: static;
+}
+.jqx-layout-group-auto-hide-content-vertical
+{
+    width: 150px;
+}
+.jqx-layout-group-auto-hide-content-horizontal
+{
+    width: 100%;
+    height: 150px;
+}
+.jqx-layout-pseudo-window
+{
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+    box-shadow: none !important;
+}
+.jqx-layout-pseudo-window-header, .jqx-layout-pseudo-window-content
+{
+    width: 100%;
+    box-sizing: border-box;
+}
+.jqx-layout-pseudo-window-header
+{
+    height: 30px;
+}
+.jqx-layout-pseudo-window-pin-background, .jqx-layout-pseudo-window-close-background
+{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 5px;
+}
+.jqx-layout-pseudo-window-pin-background-ltr
+{
+    right: 15px;
+}
+.jqx-layout-pseudo-window-close-background-ltr
+{
+    right: 0;
+}
+.jqx-layout-pseudo-window-pin-background-rtl
+{
+    left: 15px;
+}
+.jqx-layout-pseudo-window-close-background-rtl
+{
+    left: 0;
+}
+.jqx-layout-pseudo-window-pin-icon, .jqx-layout-pseudo-window-pinned-icon, .jqx-layout-pseudo-window-close-icon
+{
+    cursor: pointer;
+}
+.jqx-layout-pseudo-window-title
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.jqx-layout-pseudo-window-pin-icon
+{
+    background-image: url("pin.png");
+}
+.jqx-layout-pseudo-window-pinned-icon
+{
+    background-image: url("pinned.png");
+}
+.jqx-layout-pseudo-window-title-ltr
+{
+    float: left;
+}
+.jqx-layout-pseudo-window-title-rtl
+{
+    float: right;
+}
+.jqx-layout-resize-feedback
+{
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+    opacity: 0.6;
+    display: none;
+}
+.jqx-layout-resize-feedback-horizontal
+{
+    width: 100%;
+    height: 4px;
+    cursor: row-resize;
+}
+.jqx-layout-resize-feedback-vertical
+{
+    width: 4px;
+    height: 100%;
+    cursor: col-resize;
+}
+.jqx-layout-resize-feedback-warning
+{
+    border-color: #800000 !important;
+    background-color: Red !important;
+}
+.jqx-layout-overlay
+{
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    display: none;
+    z-index: 999;
+    position: absolute;
 }

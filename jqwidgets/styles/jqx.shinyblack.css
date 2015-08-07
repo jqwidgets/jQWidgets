@@ -155,3 +155,15 @@
 .jqx-editor-toolbar-icon-shinyblack {
     background: url('images/html_editor_white.png') no-repeat;
 }
+.jqx-layout-shinyblack
+{
+    background-color: #000;
+}
+.jqx-layout-pseudo-window-pin-icon-shinyblack
+{
+    background-image: url("images/pin-white.png");
+}
+.jqx-layout-pseudo-window-pinned-icon-shinyblack
+{
+    background-image: url("images/pinned-white.png");
+}
