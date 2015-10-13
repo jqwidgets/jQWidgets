@@ -240,3 +240,11 @@ background: linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#
 {
     background-image: url("images/pinned-white.png");
 }
+.jqx-scheduler-month-cell-black, .jqx-scheduler-time-column-black, .jqx-scheduler-toolbar-black
+{
+    background: #35353A !important;
+    color: #fff  !important;
+}
+.jqx-widget-black .jqx-scheduler-middle-cell-black, .jqx-scheduler-middle-cell-black {
+    border-bottom-color: #35353A !important;
+}

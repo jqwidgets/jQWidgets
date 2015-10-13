@@ -188,3 +188,11 @@ border-color:#FBB34E; }
 {
     background-image: url("images/pinned-white.png");
 }
+.jqx-scheduler-month-cell-orange, .jqx-scheduler-time-column-orange, .jqx-scheduler-toolbar-orange
+{
+    background: #E48605 !important;
+    color: #fff  !important;
+}
+.jqx-widget-orange .jqx-scheduler-middle-cell-orange, .jqx-scheduler-middle-cell-orange {
+    border-bottom-color: #E48605 !important;
+}

@@ -213,3 +213,15 @@
 {
     background-image: url("images/pinned-lightblue.png");
 }
+.jqx-scheduler-month-cell-ui-start, .jqx-scheduler-time-column-ui-start, .jqx-scheduler-toolbar-ui-start
+{
+    background: #4297d7 !important;
+    color: #fff  !important;
+}
+.jqx-widget-ui-start .jqx-scheduler-middle-cell-ui-start, .jqx-scheduler-middle-cell-ui-start {
+    border-bottom-color: #4297d7 !important;
+}
+.jqx-docking-layout-group-floating-ui-start .jqx-window-header-ui-start
+{
+    background-image: none;
+}

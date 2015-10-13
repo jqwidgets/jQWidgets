@@ -177,3 +177,7 @@ font-weight: bold;
 {
     background-image: url("images/pinned-lightblue.png");
 }
+.jqx-docking-layout-group-floating .jqx-window-header-ui-redmond
+{
+    background-image: none;
+}

@@ -490,3 +490,7 @@ border-color:#008a00; color: #fff; background-color:#008a00;
 {
     background-image: url("images/pinned-white.png");
 }
+.jqx-scheduler-windowsphone, .jqx-scheduler-toolbar-windowsphone, .jqx-scheduler-time-column-windowsphone, .jqx-scheduler-toolbar-details-windowsphone {
+    color: white !important;
+    background: black !important;
+}

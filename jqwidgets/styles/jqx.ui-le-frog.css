@@ -237,3 +237,15 @@
 {
     background-image: url("images/pinned-white.png");
 }
+.jqx-scheduler-month-cell-ui-le-frog, .jqx-scheduler-time-column-ui-le-frog, .jqx-scheduler-toolbar-ui-le-frog
+{
+    background: #3f7506 !important;
+    color: #fff  !important;
+}
+.jqx-widget-ui-le-frog .jqx-scheduler-middle-cell-ui-le-frog, .jqx-scheduler-middle-cell-ui-le-frog {
+    border-bottom-color: #3f7506 !important;
+}
+.jqx-docking-layout-group-floating-ui-le-frog .jqx-window-header-ui-le-frog
+{
+    background-image: none;
+}

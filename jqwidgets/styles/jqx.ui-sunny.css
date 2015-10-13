@@ -160,3 +160,7 @@
 {
     background-image: url("images/pinned-yellow.png");
 }
+.jqx-docking-layout-group-floating .jqx-window-header-ui-sunny
+{
+    background-image: none;
+}

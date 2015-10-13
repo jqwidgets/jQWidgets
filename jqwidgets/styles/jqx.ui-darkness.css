@@ -186,3 +186,16 @@
 {
     background-image: url("images/pinned-white.png");
 }
+.jqx-scheduler-month-cell-ui-darkness, .jqx-scheduler-time-column-ui-darkness, .jqx-scheduler-toolbar-ui-darkness
+{
+    background: #333 !important;
+    color: #fff  !important;
+}
+.jqx-widget-ui-darkness .jqx-scheduler-middle-cell-ui-darkness, .jqx-scheduler-middle-cell-ui-darkness {
+    border-bottom-color: #333 !important;
+}
+.jqx-docking-layout-group-floating-ui-darkness .jqx-window-header-ui-darkness
+{
+    background-image: none;
+}
+

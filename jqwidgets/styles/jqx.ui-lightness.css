@@ -155,3 +155,7 @@
 {
     background-image: url("images/pinned-white.png");
 }
+.jqx-docking-layout-group-floating .jqx-window-header-ui-lightness
+{
+    background-image: none;
+}

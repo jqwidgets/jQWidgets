@@ -171,3 +171,7 @@
 {
     background-image: url("images/pinned-black.png");
 }
+.jqx-docking-layout-group-floating .jqx-window-header-ui-overcast
+{
+    background-image: none;
+}

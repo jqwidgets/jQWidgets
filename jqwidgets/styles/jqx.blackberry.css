@@ -329,7 +329,11 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-
+.jqx-tree-item-arrow-collapse-blackberry {
+    background-image: url('images/icon-right.png') !important;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .jqx-tree-item-arrow-collapse-rtl-blackberry, .jqx-tree-item-arrow-collapse-hover-rtl-blackberry {
     background-image: url(images/icon-left.png);
 }
