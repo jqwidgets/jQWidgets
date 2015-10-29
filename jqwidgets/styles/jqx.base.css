@@ -529,6 +529,29 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 .jqx-grid-cell-locked {
     color: #aaa !important;
 }
+.jqx-grid-cell-left-align {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 2px; 
+    text-align: left; 
+    margin-right: 2px; 
+    margin-left: 4px;
+}
+.jqx-grid-cell-middle-align {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-bottom: 2px; 
+    text-align: center;
+}
+.jqx-grid-cell-right-align {
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    padding-bottom: 2px; 
+    text-align: right; 
+    margin-right: 2px; 
+    margin-left: 4px;
+}
+
 /*applied to a grid cell that is part of a rows group.*/
  .jqx-grid-group-cell{ 
     overflow: hidden; 
@@ -3462,6 +3485,10 @@ of the horizontal scrollbar.*/
     background: #fff !important;
     color: #333 !important;
 }
+.jqx-scheduler-week-number-column {
+    background: #e8e8e8 !important;
+    color: #333;
+}
 .jqx-scheduler-time-column-header-cell
 {
     border-left-color:transparent !important;
@@ -3496,6 +3523,16 @@ of the horizontal scrollbar.*/
     width:100%;
     text-overflow: ellipsis;
     padding-bottom: 3px;
+}
+.jqx-scheduler-appointment-duration-status {
+    height: 0px;
+    border-bottom-width: 2px;
+    border-bottom-style: dotted;
+    border-color: #f05c2d;
+    background: #f05c2d;
+    position:absolute;
+    bottom: -1px; left: 0px;
+    border-radius: 5px;
 }
 .jqx-scheduler-appointment-status {
     width: 4px;
@@ -3634,6 +3671,24 @@ of the horizontal scrollbar.*/
     padding: 4px;
     width: 72%;
 }
+.jqx-scheduler-edit-dialog-label-rtl {
+    clear: both;
+    float: right;
+    margin-left: 0px;
+    margin-right: 2%;
+    padding: 4px;
+    text-align: left;
+    width: 18%;
+    line-height: 25px;
+}
+.jqx-scheduler-edit-dialog-field-rtl {
+    clear: left;
+    float: left;
+    margin-right: 0px;
+    margin-left: 2%;
+    padding: 4px;
+    width: 72%;
+}
 .jqx-scheduler-legend-bar
 {
     overflow:hidden;
@@ -3667,6 +3722,44 @@ of the horizontal scrollbar.*/
     cursor: pointer;
     vertical-align: middle;
     margin-top:4px;
+}
+.jqx-scheduler-cell-selected .jqx-scheduler-agenda-date {
+    color: #fff;
+}
+.jqx-scheduler-cell-selected .jqx-scheduler-agenda-time {
+    color: #fff;
+}
+.jqx-scheduler-cell-selected .jqx-scheduler-agenda-appointment, .jqx-scheduler-cell-selected .jqx-scheduler-agenda-appointment-rtl {
+    color: #fff;
+}
+
+.jqx-scheduler-agenda-date {
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.jqx-scheduler-agenda-time {
+    padding: 5px;
+}
+.jqx-scheduler-agenda-appointment, .jqx-scheduler-agenda-appointment-rtl {
+  cursor: default;
+}
+.jqx-scheduler-agenda-appointment-resource, .jqx-scheduler-agenda-appointment-resource-rtl {
+    margin: 5px; 
+}
+.jqx-scheduler-agenda-appointment-resource-rtl, .jqx-scheduler-agenda-appointment-rtl {
+    float: right;
+}
+.jqx-scheduler-agenda-day {
+    margin: 3px;
+    font-size: 33px;
+    font-weight: normal;
+}
+.jqx-scheduler-agenda-week {
+    font-style: normal;
+    font-size:13px;
+}
+.jqx-scheduler-agenda-date {
+    font-size: 10px;
 }
 .jqx-scheduler-cell-focus
 {
@@ -5590,7 +5683,7 @@ ol li .jqx-listmenu-item-label:before
 }
 .jqx-loader-icon
 {
-    background-image: url("../../jqwidgets/styles/images/loader.gif");
+    background-image: url("images/loader.gif");
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
@@ -6003,21 +6096,11 @@ ol li .jqx-listmenu-item-label:before
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1010;
-  display: none;
-  max-width: 276px;
-  padding: 1px;
-  text-align: left;
-  white-space: normal;
+  z-index: 9999;
   background-color: #ffffff;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
+  border: 1px solid #aaa;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 .jqx-popover-modal-background
 {
