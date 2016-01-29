@@ -371,3 +371,6 @@
 .jqx-widget-metrodark .jqx-scheduler-middle-cell-metrodark, .jqx-scheduler-middle-cell-metrodark {
     border-bottom-color: #35353A !important;
 }
+.jqx-kanban-item-metrodark {
+    box-shadow:none;
+}

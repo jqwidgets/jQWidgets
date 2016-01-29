@@ -175,3 +175,6 @@
 .jqx-widget-shinyblack .jqx-scheduler-middle-cell-shinyblack, .jqx-scheduler-middle-cell-shinyblack {
     border-bottom-color: #35353A !important;
 }
+.jqx-kanban-item-shinyblack {
+    box-shadow:none;
+}

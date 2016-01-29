@@ -151,3 +151,14 @@
 .jqx-widget-darkblue .jqx-scheduler-middle-cell-darkblue, .jqx-scheduler-middle-cell-darkblue {
     border-bottom-color: #449bca !important;
 }
+
+.jqx-date-time-input-popup-darkblue .jqx-icon-arrow-down-darkblue {
+    background-image: url('images/icon-down.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.jqx-date-time-input-popup-darkblue .jqx-icon-arrow-up-darkblue {
+    background-image: url('images/icon-up.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}

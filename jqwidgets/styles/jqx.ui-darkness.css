@@ -199,3 +199,6 @@
     background-image: none;
 }
 
+.jqx-kanban-item-ui-darkness {
+    box-shadow:none;
+}

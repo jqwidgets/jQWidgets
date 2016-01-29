@@ -248,3 +248,6 @@ background: linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#
 .jqx-widget-black .jqx-scheduler-middle-cell-black, .jqx-scheduler-middle-cell-black {
     border-bottom-color: #35353A !important;
 }
+.jqx-kanban-item-black {
+    box-shadow:none;
+}

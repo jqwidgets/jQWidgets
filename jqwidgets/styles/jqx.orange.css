@@ -196,3 +196,13 @@ border-color:#FBB34E; }
 .jqx-widget-orange .jqx-scheduler-middle-cell-orange, .jqx-scheduler-middle-cell-orange {
     border-bottom-color: #E48605 !important;
 }
+.jqx-date-time-input-popup-orange .jqx-icon-arrow-down-orange {
+    background-image: url('images/icon-down.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.jqx-date-time-input-popup-orange .jqx-icon-arrow-up-orange {
+    background-image: url('images/icon-up.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}

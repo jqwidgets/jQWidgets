@@ -187,7 +187,11 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     font-size: 11px;
     font-family: Verdana;
 }
+.jqx-knob {
+ text-align: center;
+}
 /*jqxChart Style*/
+.jqx-knob-label,
 .jqx-chart-axis-text,
 .jqx-chart-label-text, 
 .jqx-chart-tooltip-text, 
@@ -3097,6 +3101,9 @@ of the horizontal scrollbar.*/
     background-repeat: no-repeat;
     background-position: center;
 }
+.jqx-icon-close-white {
+   background-image: url(images/close_white.png);
+ }
 .jqx-icon-close-hover
 {
     cursor: pointer;
@@ -3123,6 +3130,18 @@ of the horizontal scrollbar.*/
     background-size: 16px;
     width: 16px;
     height: 16px;
+}
+.jqx-icon-plus-alt, .jqx-icon-plus-alt-white
+{
+    background-image: url(images/icon-plus.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+.jqx-icon-plus-alt-white {
+    background-image: url(images/icon-plus-white.png);
 }
 /* jqxScrollView */
 .jqx-scrollview-button
@@ -3843,6 +3862,8 @@ input[type=text].jqx-input, input[type=password].jqx-input {
     border-style: solid;
     font-size: 13px;
     padding: 0px;
+    padding-left:3px;
+    padding-right: 3px;
 }
 .jqx-input::-ms-reveal {
     display: none;
@@ -5625,7 +5646,7 @@ ol li .jqx-listmenu-item-label:before
 }
 .jqx-text-area-element-rtl
 {
-    direction: rtl;
+    direction: rtl !important;
 }
 .jqx-responsive-panel
 {
@@ -6236,4 +6257,283 @@ ol li .jqx-listmenu-item-label:before
   bottom: -10px;
   border-left-color: #ffffff;
   border-right-width: 0;
+}
+
+
+.jqx-kanban-full-frame {
+    width: 100vw;
+    height: 100vh;
+}
+
+.jqx-kanban-in-frame {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.jqx-kanban-rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.jqx-kanban-column {
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 1px 1px 1px 0px;
+    float: left;
+}
+
+.jqx-kanban-column-collapsed {
+    width: 50px;
+}
+
+.jqx-kanban-column-first {
+    border-width: 1px;
+}
+
+.jqx-kanban-column:first-of-type {
+    border-width: 1px 1px 1px 1px;
+}
+
+.jqx-kanban-column-selected {
+    /*  background-color: blue;*/
+}
+
+.jqx-kanban-column-header-collapsed { /*vertical column invisible*/
+    display: none;
+    box-sizing: border-box;
+    height: 0px;
+    width: 0px;
+    position: relative;
+    cursor: pointer;
+}
+
+.jqx-kanban-column-header-collapsed-show { /*vertical column visible*/
+    display: block !important;
+    height: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.jqx-kanban-column-vertical-container {
+    padding-top: 0px;
+    padding-left: 0px;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    white-space: nowrap;
+}
+
+.jqx-kanban-column-vertical-container-inverse {
+    padding-top: 0px;
+    padding-left: 20px;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    white-space: nowrap;
+}
+.jqx-kanban-column-vertical-container .jqx-kanban-column-header-title, .jqx-kanban-column-vertical-container .jqx-kanban-column-header-status{
+    position:relative;
+}
+
+.jqx-kanban-column-hide { /*colapsed*/
+    display: none !important;
+}
+
+.jqx-kanban-column-header {
+    border-width: 1px;
+    border-style: solid;
+    margin: 1px;
+    white-space: nowrap;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+    overflow:hidden;
+    position: relative;
+}
+.jqx-kanban-column-header-button {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    margin-top: -8px;
+    width:16px;
+    height:16px;
+}
+.jqx-kanban-column-header .jqx-window-collapse-button {
+    margin-top:1px !important;
+}
+.jqx-kanban-column-header-custom-button {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -8px;
+    width:16px;
+    height:16px;
+}
+.jqx-kanban-column-header-custom-button-rtl {
+    left: 20px;
+}
+.jqx-kanban-column-header-button-rtl {
+    left: 0px;
+}
+.jqx-kanban-column-header-collapsed .jqx-kanban-column-header-button {
+    top: 100%;
+    right: 50%;
+    margin-top: -21px;
+    left: 50%;
+    margin-left:-8px;
+}
+.jqx-kanban-column-header-collapsed .jqx-kanban-column-header-custom-button {
+    top: 100%;
+    right: 50%;
+    margin-top: -41px;
+    left: 50%;
+    margin-left:-8px;
+}
+
+.jqx-kanban-column-container {
+    margin: 1px;
+    overflow-y: auto;
+}
+
+.jqx-kanban-item-placeholder {
+    height: 100px;
+    border: gray dotted 1px;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.jqx-kanban-column-vertical-container-inverse-ie8-fix {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+
+.jqx-kanban-column-vertical-container-ie8-fix {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.jqx-kanban-item {
+    margin: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: inherit;
+    position: relative;
+    box-shadow: #ddd 2px 2px 3px;
+    cursor: pointer;
+  touch-action: none;
+    -ms-touch-action: none;
+}
+
+.jqx-kanban-item-selected {
+}
+
+.jqx-kanban-item-color-status {
+    background-color: #6bbd49;
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.jqx-kanban-item-color-status-rtl {
+    right:0px;
+    left:100%;
+}
+.jqx-kanban-item-text {
+    padding-left:6px;
+    padding-right:23px;
+    font-size: 14px;
+    padding-bottom:5px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+.jqx-kanban-rtl .jqx-kanban-item-text {
+    padding-right:6px;
+    padding-left:23px;
+}
+.jqx-kanban-column-header-title {
+}
+
+.jqx-kanban-column-header-status {
+}
+
+.jqx-kanban-item-content {
+   
+}
+
+.jqx-kanban-item-avatar {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    background: #eee;
+    text-align: center;
+    overflow: hidden;
+}
+.jqx-kanban-item-avatar-rtl {
+    left: 3px;
+}
+.jqx-kanban-item-avatar-image {
+    width: 20px;
+    height: 20px;
+}
+
+.jqx-kanban-item-avatar-image:hover {
+}
+
+.jqx-kanban-item-footer {
+    border-top: 1px solid transparent;
+    border-color: inherit;
+    overflow: hidden;
+    padding-top: 5px;
+    margin-top: 5px;
+    padding-bottom:1px;
+    padding-left:6px;
+    padding-right:6px;
+}
+
+
+.jqx-kanban-item-keyword {
+   float: left;
+    margin:2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid transparent;
+    border-color:inherit;
+    padding-left:2px;
+    padding-right: 2px;
+    cursor: pointer;
+}
+
+.jqx-kanban-item-keyword-rtl {
+    direction: rtl;
+    text-align: right;
+    float: right;
+}
+
+.jqx-kanban-item-keyword:hover {
+}
+
+.jqx-kanban-item-avatar {
+    height: 20px;
+}
+
+.jqx-kanban-handle {
+    cursor: move;
+}
+
+.jqx-kanban-clearing {
+    clear: both;
+}
+.jqx-sortable {
+    touch-action: none;
+    -ms-touch-action: none;
 }
