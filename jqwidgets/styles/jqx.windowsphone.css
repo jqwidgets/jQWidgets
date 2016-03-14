@@ -447,7 +447,7 @@ border-color:#008a00; color: #fff; background-color:#008a00;
     background-position: center;
 }
 .jqx-tree-grid-expand-button-windowsphone {
-    margin-top: 5px;
+    margin-top: 0px;
 }
 .jqx-tree-grid-checkbox-windowsphone, .jqx-tree-grid-collapse-button-windowsphone {
     margin-top: 3px;

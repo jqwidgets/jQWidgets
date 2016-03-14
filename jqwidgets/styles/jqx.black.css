@@ -108,7 +108,7 @@ background: -o-linear-gradient(top, #db4200 0%,#902e00 4%,#7d2a01 19%,#531c03 44
 background: -ms-linear-gradient(top, #db4200 0%,#902e00 4%,#7d2a01 19%,#531c03 44%,#531c03 48%,#0f0906 52%,#221105 63%,#2b1705 67%,#592903 89%,#642e02 96%,#902e00 100%);
 background: linear-gradient(top, #db4200 0%,#902e00 4%,#7d2a01 19%,#531c03 44%,#531c03 48%,#0f0906 52%,#221105 63%,#2b1705 67%,#592903 89%,#642e02 96%,#902e00 100%);
 border-color:#262626; color:#fff}
-.jqx-fill-state-disabled-black {cursor: default; color: #fff; opacity: .55; filter:Alpha(Opacity=45);}
+.jqx-fill-state-disabled-black {cursor: default;  opacity: .55; filter:Alpha(Opacity=45);}
 
 .jqx-checkbox-check-checked-black{background:transparent url(images/check_white.png) left top no-repeat}
 .jqx-checkbox-check-indeterminate-black{background:transparent url(images/check_indeterminate_white.png) left top no-repeat}

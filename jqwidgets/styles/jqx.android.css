@@ -470,7 +470,7 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
     background-repeat: no-repeat;
 }
 .jqx-tree-grid-expand-button-android {
-    margin-top: 4px;
+    margin-top: 0px;
 }
 .jqx-tree-grid-checkbox-android {
     margin-top: 2px;

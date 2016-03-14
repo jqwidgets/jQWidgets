@@ -267,9 +267,6 @@
   box-shadow: none;
 }
 .jqx-radiobutton-web {
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border-radius: 100%;
     background-repeat: no-repeat;
     background: none;
 }

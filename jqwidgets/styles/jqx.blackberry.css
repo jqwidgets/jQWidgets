@@ -602,7 +602,7 @@ input[type=text].jqx-input-blackberry, input[type=password].jqx-input-blackberry
     background-position: center;
 }
 .jqx-tree-grid-expand-button-blackberry, .jqx-tree-grid-collapse-button-blackberry {
-    margin-top: 3px;
+    margin-top: 0px;
 }
 .jqx-tree-grid-checkbox-blackberry {
     margin-top: 1px;

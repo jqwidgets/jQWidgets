@@ -284,9 +284,6 @@
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border-radius: 100%;
     background-repeat: no-repeat;
     background: none;
 }

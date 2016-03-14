@@ -38,6 +38,9 @@
     background: -ms-linear-gradient(top, #4d77c1 0%,#325da7 100%); /* IE10+ */
     background: linear-gradient(to bottom, #4d77c1 0%,#325da7 100%); /* W3C */
 }
+.jqx-fill-state-focus-orange {
+  border-color: #325da7;
+}
 /*checkbox images, grid cells*/
 .jqx-checkbox-check-checked-orange{background:transparent url(images/check_white.png) left top no-repeat}
 .jqx-checkbox-check-indeterminate-orange{background:transparent url(images/check_indeterminate_white.png) left top no-repeat}
