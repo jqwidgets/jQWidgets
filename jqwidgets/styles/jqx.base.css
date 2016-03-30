@@ -1439,6 +1439,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
+.jqx-tabs-close-button, .jqx-tabs-close-button-selected, .jqx-tabs-close-button-hover{background-repeat:no-repeat;  background-position:center;}
 /*applied to the tab's left scroll arrow.*/
 .jqx-tabs-arrow-left
 {
