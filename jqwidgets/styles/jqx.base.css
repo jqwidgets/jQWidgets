@@ -124,9 +124,7 @@
 .jqx-disableselect
 {
     -webkit-user-select: none;
-    -khtml-user-select: none;
     -moz-user-select: none;
-    -o-user-select: none;
     user-select: none;
     -ms-user-select:none;
     -webkit-touch-callout:none;
@@ -134,9 +132,7 @@
 }
 .jqx-enableselect {
     -webkit-user-select: text;
-    -khtml-user-select: text;
     -moz-user-select: text;
-    -o-user-select: auto;
     -ms-user-select:text;
     user-select:all;
 }
@@ -2778,6 +2774,7 @@ of the horizontal scrollbar.*/
 }
 .jqx-slider-button
 {
+    cursor: pointer;
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
     border-radius: 100%;  
@@ -2985,13 +2982,13 @@ of the horizontal scrollbar.*/
 .jqx-left-arrow
 {
     background: transparent;
-    background-image: url('icon-left.png');
+    background-image: url('images/icon-left.png');
     cursor: pointer;
 }
 .jqx-right-arrow
 {
     background: transparent;
-    background-image: url('icon-right.png');
+    background-image: url('images/icon-right.png');
     cursor: pointer;
 }
 .jqx-icon-delete
@@ -4107,7 +4104,6 @@ ol.jqx-listmenu, ul.jqx-listmenu
 {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    -o-border-radius: 10px;
     border-radius: 10px;
     padding: 6px 10px;
 }
@@ -4203,13 +4199,11 @@ ol li .jqx-listmenu-item-label:before
 .jqx-shadow{
     -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.15)!important;
     -moz-box-shadow   : 0 2px 3px rgba(0,0,0,.15)!important;
-    -o-box-shadow     : 0 2px 3px rgba(0,0,0,.15)!important;
     box-shadow        : 0 2px 3px rgba(0,0,0,.15)!important;
 }
 .jqx-noshadow {
     -webkit-box-shadow: none !important;
     -moz-box-shadow   : none !important;
-    -o-box-shadow     : none !important;
     box-shadow        : none !important;
 }
 .jqx-passwordinput-password-icon, .jqx-passwordinput-password-icon-rtl

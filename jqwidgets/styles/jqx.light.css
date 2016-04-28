@@ -576,25 +576,6 @@
     font-size: 14px;
 }
 
-.jqx-listitem-state-group-light
-{
-    padding: 4px 2px 4px 2px;
-}
-/*applied to a list item in default state.*/
-.jqx-listitem-state-normal-light
-{
-    padding: 4px 3px 4px 3px;
-}
-/*applied to a list item in hovered state.*/
-.jqx-listitem-state-hover-light
-{
-    padding: 4px 3px 4px 3px;
-}
-/*applied to a list item when the item is selected.*/
-.jqx-listitem-state-selected-light
-{
-    padding: 4px 3px 4px 3px;
-}
 
 .jqx-listitem-state-selected-light, .jqx-menu-item-selected-light, .jqx-tree-item-selected-light, .jqx-calendar-cell-selected-light, .jqx-grid-cell-selected-light,
 .jqx-menu-vertical-light .jqx-menu-item-top-selected-light, .jqx-grid-selectionarea-light, .jqx-input-button-header-light, .jqx-input-button-innerHeader-light {
