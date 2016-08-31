@@ -236,7 +236,7 @@
     color: #0088cc !important;
 }
 
-    .jqx-expander-header-bootstrap:hover {
+    .jqx-expander-header-bootstrap:hover:not(.jqx-fill-state-disabled-bootstrap) {
         color: #005580 !important;
         cursor: pointer;
     }

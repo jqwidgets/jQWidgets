@@ -27,7 +27,7 @@
 .jqx-radiobutton-ui-start .jqx-fill-state-pressed-ui-start{background:#fdfefe; border:1px solid #fdfefe}
 /*Calendar*/
 .jqx-calendar-cell-ui-start{font-size: 11px; color: #fff; border-color: #77d5f7; background: #0078ae url(images/start/ui-bg_glass_45_0078ae_1x400.png) 50% 50% repeat-x; padding:.2em; text-align:right; text-decoration:none; moz-border-radius:0px !important; webkit-border-radius:0px !important; border-radius:0px !important}
-.jqx-calendar-cell-today-ui-start{background:#ffe45c url(images/start/ui-bg_highlight-soft_75_ffe45c_1x100.png) 50% top repeat-x; border:1px solid #fed22f; color:#363636}
+.jqx-calendar-cell-today-ui-start{background:#ffe45c; border:1px solid #fed22f; color:#363636}
 .jqx-calendar-title-container-ui-start{border: 1px solid #77d5f7; border-bottom-width: 0px; border-radius:5px; moz-border-radius:5px; webkit-border-radius:5px; font-weight: bold;}
 .jqx-calendar-month-container-ui-start{border:none !important}
 .jqx-calendar-ui-start{padding:2px}
