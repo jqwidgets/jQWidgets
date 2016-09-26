@@ -63,3 +63,10 @@ You are allowed to distribute jQWidgets with non-commercial packages given that 
 The commercial license is suitable for commercial websites and projects or a corporate intranet. The license is perpetual and allows royalty free distribution with your websites and applications. Each license includes 1-year subscription for free product updates and platinum, premium or standard technical support plan. Subscription renewal is optional and costs 50% of the price of a new license. For subscription renewals, license upgrades, licenses with more than 1-year subscription or if you wish to license subsidiary or affiliate organizations, please contact us.
 
 For more information, please visit http://www.jqwidgets.com/license/.
+
+More
+-
+* jQWidgets Demos: http://www.jqwidgets.com/jquery-widgets-demo/.
+* Documentation: http://www.jqwidgets.com/jquery-widgets-documentation/.
+* Services: http://www.jqwidgets.com/services/.
+* Community Forums: http://www.jqwidgets.com/community/.
