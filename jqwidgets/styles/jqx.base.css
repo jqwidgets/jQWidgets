@@ -5231,7 +5231,7 @@ ol li .jqx-listmenu-item-label:before
     cursor: pointer;
     background-repeat: no-repeat !important;
     background-position: center !important;
-    z-index: 1000;
+    z-index: 0;
 }
 .jqx-ribbon-scrollbutton-top, .jqx-ribbon-scrollbutton-bottom
 {
@@ -5323,7 +5323,7 @@ ol li .jqx-listmenu-item-label:before
 .jqx-ribbon-selection-token
 {
     position: absolute;
-    z-index: 1000;
+    z-index: 0;
 }
 .jqx-ribbon-selection-token-top, .jqx-ribbon-selection-token-bottom
 {
