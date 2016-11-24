@@ -288,6 +288,7 @@ declare module jqwidgets {
         clear(): void;
         destroy(): void;
         focus(): void;
+        addSpecialDate(date: any, tooltip: any, text: any): void;
         getMinDate(): any;
         getMaxDate(): any;
         getDate(): any;
@@ -817,13 +818,6 @@ declare module jqwidgets {
         val(): string;
     }// jqxComplexInput
 
-    export interface DataAdapterGetAggregatedData {
-        // DataAdapterGetAggregatedData properties
-        name: string;
-        formatStrings?: Array<String>;
-        aggregates: Array<String>;
-    }// DataAdapterGetAggregatedData
-
     export interface DataAdapterDataFields {
         // DataAdapterDataFields properties
         name: string;
@@ -872,7 +866,7 @@ declare module jqwidgets {
         formatNumber?: (value: number, format:string, calendar:any ) => string;
         getRecordsHierarchy?: (id:number, parentField:number, name?:string, map?:any ) => any[];
         getGroupedRecords?: (groupingFields:Array<any>, items:any, name:string, map:any ) => any[];
-        getAggregatedData?: (data : Array<DataAdapterGetAggregatedData>) => any;
+        getAggregatedData?: (data : Array<any>) => any;
         records?: Array<any>;
     }// DataAdapterOptions
 
@@ -2214,7 +2208,7 @@ declare module jqwidgets {
         itemRenderer?: (element?: Array<any>, item?: any, resource?: any) => void;
         ready?: () => void;
         rtl?: boolean;
-        source?: Array<any> | KanbanSource;
+        source?: any;
         resources?: Array<any>;
         template?: string;
         templateContent?: any;
@@ -3136,12 +3130,7 @@ declare module jqwidgets {
         document?: ResponseDocument;
         destroyProperty?: () => void;
         resize?: any;
-        isHidden?: (id: any) => Boolean;
-        inViewPort?: (id: any) => Boolean;
         os?: ResponseOs;
-        pointerDown?: (id: any, callback: any) => Boolean;
-        pointerMove?: (id: any, callback: any) => Boolean;
-        pointerUp?: (id: any, callback: any) => Boolean;
     }// ResponseOptions
 
     export interface jqxResponse extends widget, ResponseOptions {
@@ -3149,6 +3138,11 @@ declare module jqwidgets {
         // jqxResponse functions
         refresh(): void;
         responsive(container: string, colWidths: Array<Number>, colOffsets: Array<Number>, colClass: string, deviceTypes: string, margin: ResponseOffset, padding: ResponseOffset, breakpoints: Array<ResponseBreakpoint>): void;
+        isHidden(element: any): boolean;
+        inViewPort(element: any): boolean;
+        pointerDown(element: any, callback: any): void;
+        pointerMove(element: any, callback: any): void;
+        pointerUp(element: any, callback: any): void;
         scroll(): Object;
         viewPort(): Object;
     }// jqxResponse
@@ -3262,10 +3256,6 @@ declare module jqwidgets {
 
     }// SchedulerExportSettings
 
-    export interface SchedulerRenderAppointment {
-
-    }// SchedulerRenderAppointment
-
     export interface SchedulerResources {
 
     }// SchedulerResources
@@ -3310,7 +3300,7 @@ declare module jqwidgets {
         min?: any;
         max?: any;
         ready?: () => void;
-        renderAppointment?: (data: SchedulerRenderAppointment) => SchedulerRenderAppointment;
+        renderAppointment?: (data: any) => any;
         rendering?: () => void;
         rendered?: () => void;
         rtl?: boolean;
@@ -3643,14 +3633,6 @@ declare module jqwidgets {
         record?: string;
     }// TagCloudSource
 
-    export interface TagCloudItem {
-        // TagCloudItem properties
-        name?: string;
-        rating?: number;
-        uid?: number;
-        index?: number;
-    }// TagCloudItem
-
     export interface TagCloudOptions {
         // TagCloudOptions properties
         alterTextCase?: string;
@@ -3670,7 +3652,7 @@ declare module jqwidgets {
         sortBy?: string;
         sortOrder?: string;
         source?: TagCloudSource;
-        tagRenderer?: (itemData: TagCloudItem, minValue: Number, valueRange: Number) => any;
+        tagRenderer?: (itemData: any, minValue: Number, valueRange: Number) => any;
         takeTopWeightedItems?: boolean;
         textColor?: string;
         urlBase?: string;
@@ -3948,16 +3930,6 @@ declare module jqwidgets {
         fileName?: string;
     }// TreeGridExportSettings
 
-    export interface VirtualModeRecordCreatingRow {
-        // VirtualModeRecordCreatingRow properties
-        checked?: boolean;
-        expanded?: boolean;
-        icon?: string;
-        leaf?: boolean;
-        level?: number;
-        selected?: boolean;
-    }// VirtualModeRecordCreatingRow
-
     export interface TreeGridGetRow {
         // TreeGridGetRow properties
         checked?: boolean;
@@ -4034,7 +4006,7 @@ declare module jqwidgets {
         toolbarHeight?: number;
         width?: String | Number;
         virtualModeCreateRecords?: (expandedRecord?: any, done?: any) => void;
-        virtualModeRecordCreating?: (record?: VirtualModeRecordCreatingRow) => any;
+        virtualModeRecordCreating?: (record?: any) => any;
     }// TreeGridOptions
 
     export interface jqxTreeGrid extends widget, TreeGridOptions {
@@ -4118,7 +4090,7 @@ declare module jqwidgets {
         headerHeight?: number;
         legendLabel?: string;
         legendPosition?: TreeMapLegendPosition;
-        legendScaleCallback?: (value: Number) => Number;
+        legendScaleCallback?: any;
         renderCallbacks?: any;
         selectionEnabled?: boolean;
         showLegend?: boolean;

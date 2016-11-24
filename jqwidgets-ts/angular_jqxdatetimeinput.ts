@@ -1,7 +1,8 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {noop} from '@angular/http';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+const noop = () => { };
 declare let $: any;
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -12,59 +13,143 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
     selector: 'angularDateTimeInput',
-    template: '<div><ng-content></ng-content></div>',
+    template: '<input [(ngModel)]="ngValue">',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
-export class jqxDateTimeInputComponent implements ControlValueAccessor {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChanges 
+{
+   @Input('animationType') attrAnimationType;
+   @Input('allowNullDate') attrAllowNullDate;
+   @Input('allowKeyboardDelete') attrAllowKeyboardDelete;
+   @Input('clearString') attrClearString;
+   @Input('culture') attrCulture;
+   @Input('closeDelay') attrCloseDelay;
+   @Input('closeCalendarAfterSelection') attrCloseCalendarAfterSelection;
+   @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment;
+   @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment;
+   @Input('disabled') attrDisabled;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection;
+   @Input('enableAbsoluteSelection') attrEnableAbsoluteSelection;
+   @Input('firstDayOfWeek') attrFirstDayOfWeek;
+   @Input('formatString') attrFormatString;
+   @Input('min') attrMin;
+   @Input('max') attrMax;
+   @Input('openDelay') attrOpenDelay;
+   @Input('placeHolder') attrPlaceHolder;
+   @Input('popupZIndex') attrPopupZIndex;
+   @Input('rtl') attrRtl;
+   @Input('readonly') attrReadonly;
+   @Input('showFooter') attrShowFooter;
+   @Input('selectionMode') attrSelectionMode;
+   @Input('showWeekNumbers') attrShowWeekNumbers;
+   @Input('showTimeButton') attrShowTimeButton;
+   @Input('showCalendarButton') attrShowCalendarButton;
+   @Input('theme') attrTheme;
+   @Input('template') attrTemplate;
+   @Input('textAlign') attrTextAlign;
+   @Input('todayString') attrTodayString;
+   @Input('value') attrValue;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
    host;
+   elementRef: ElementRef;
+   widgetObject:  jqwidgets.jqxDateTimeInput;
+
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
-   widgetObject:  jqwidgets.jqxDateTimeInput;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxDateTimeInput(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDateTimeInput', options);
-         this.__updateRect__();
+                  this.host.jqxDateTimeInput(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxDateTimeInput(this.properties[i])) {
+                  this.host.jqxDateTimeInput(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDateTimeInput', options);
+      this.host = this.widgetObject['host'];
+      this.__wireEvents__();
+      this.__updateRect__();
+      setTimeout(() => {
+         options.value !== undefined ? this.host.jqxDateTimeInput('val', options.value) : this.host.jqxDateTimeInput('val', new Date());
+      , 1);
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    get ngValue(): any {
        if (this.widgetObject)
-           return this.host.jqxDateTimeInput('val');
+           return this.host.val();
        return '';
    }
 
    set ngValue(value: any) {
        if (this.widgetObject) {
-           this.host.jqxDateTimeInput('val', value)
            this.onChangeCallback(value);
        }
    }
 
-   writengValue(value: any): void {
-       if(value !== this.ngValue && this.widgetObject) {
-            this.host.jqxDateTimeInput('val', value)
+   writeValue(value: any): void {
+       if(this.widgetObject) {
+           this.host.jqxDateTimeInput('val', value);
        }
    }
 
@@ -349,74 +434,61 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor {
    // jqxDateTimeInputComponent functions
    close(): void {
       this.host.jqxDateTimeInput('close');
-
    }
    destroy(): void {
       this.host.jqxDateTimeInput('destroy');
-
    }
    focus(): void {
       this.host.jqxDateTimeInput('focus');
-
    }
    getRange(date: any): any {
       return this.host.jqxDateTimeInput('getRange', date);
-
    }
    getText(): string {
       return this.host.jqxDateTimeInput('getText');
-
    }
    getDate(): any {
       return this.host.jqxDateTimeInput('getDate');
-
    }
    getMaxDate(): any {
       return this.host.jqxDateTimeInput('getMaxDate');
-
    }
    getMinDate(): any {
       return this.host.jqxDateTimeInput('getMinDate');
-
    }
    open(): void {
       this.host.jqxDateTimeInput('open');
-
    }
    setRange(date: any, date2: any): void {
       this.host.jqxDateTimeInput('setRange', date, date2);
-
    }
    setMinDate(date: any): void {
       this.host.jqxDateTimeInput('setMinDate', date);
-
    }
    setMaxDate(date: any): void {
       this.host.jqxDateTimeInput('setMaxDate', date);
-
    }
    setDate(date: any): void {
       this.host.jqxDateTimeInput('setDate', date);
-
    }
    val(date: any, date2: any): any {
       return this.host.jqxDateTimeInput('val', date, date2);
-
    }
 
    // jqxDateTimeInputComponent events
-   @Output() OnChange = new EventEmitter();
-   @Output() OnClose = new EventEmitter();
-   @Output() OnOpen = new EventEmitter();
-   @Output() OnTextchanged = new EventEmitter();
-   @Output() OnValueChanged = new EventEmitter();
+   @Output() onChange = new EventEmitter();
+   @Output() onClose = new EventEmitter();
+   @Output() onOpen = new EventEmitter();
+   @Output() onTextchanged = new EventEmitter();
+   @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.OnChange.emit(eventData); });
-      this.host.on('close', (eventData) => { this.OnClose.emit(eventData); });
-      this.host.on('open', (eventData) => { this.OnOpen.emit(eventData); });
-      this.host.on('textchanged', (eventData) => { this.OnTextchanged.emit(eventData); });
-      this.host.on('valueChanged', (eventData) => { this.OnValueChanged.emit(eventData); });
+      this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
+      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
+      this.host.on('textchanged', (eventData) => { this.onTextchanged.emit(eventData); });
+      this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); this.onChangeCallback(this.host.val()); });
+      this.host.on('keyup', () => { this.onChangeCallback(this.host.val()); });
    }
 
 } //jqxDateTimeInputComponent

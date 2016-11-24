@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,95 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxScrollBarComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxScrollBarComponent implements OnChanges
+{
+   @Input('disabled') attrDisabled;
+   @Input('largestep') attrLargestep;
+   @Input('min') attrMin;
+   @Input('max') attrMax;
+   @Input('rtl') attrRtl;
+   @Input('step') attrStep;
+   @Input('showButtons') attrShowButtons;
+   @Input('thumbMinSize') attrThumbMinSize;
+   @Input('theme') attrTheme;
+   @Input('vertical') attrVertical;
+   @Input('value') attrValue;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['disabled','height','largestep','min','max','rtl','step','showButtons','thumbMinSize','theme','vertical','value','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxScrollBar;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxScrollBar(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxScrollBar', options);
-         this.__updateRect__();
+                  this.host.jqxScrollBar(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxScrollBar(this.properties[i])) {
+                  this.host.jqxScrollBar(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxScrollBar', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -151,22 +211,19 @@ export class jqxScrollBarComponent {
    // jqxScrollBarComponent functions
    destroy(): void {
       this.host.jqxScrollBar('destroy');
-
    }
    isScrolling(): boolean {
       return this.host.jqxScrollBar('isScrolling');
-
    }
    setPosition(index: number): void {
       this.host.jqxScrollBar('setPosition', index);
-
    }
 
    // jqxScrollBarComponent events
-   @Output() OnValueChanged = new EventEmitter();
+   @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('valueChanged', (eventData) => { this.OnValueChanged.emit(eventData); });
+      this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); });
    }
 
 } //jqxScrollBarComponent

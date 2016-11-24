@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,107 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxKnobComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxKnobComponent implements OnChanges
+{
+   @Input('allowValueChangeOnClick') attrAllowValueChangeOnClick;
+   @Input('allowValueChangeOnDrag') attrAllowValueChangeOnDrag;
+   @Input('allowValueChangeOnMouseWheel') attrAllowValueChangeOnMouseWheel;
+   @Input('changing') attrChanging;
+   @Input('dragEndAngle') attrDragEndAngle;
+   @Input('dragStartAngle') attrDragStartAngle;
+   @Input('disabled') attrDisabled;
+   @Input('dial') attrDial;
+   @Input('endAngle') attrEndAngle;
+   @Input('labels') attrLabels;
+   @Input('marks') attrMarks;
+   @Input('min') attrMin;
+   @Input('max') attrMax;
+   @Input('progressBar') attrProgressBar;
+   @Input('pointer') attrPointer;
+   @Input('pointerGrabAction') attrPointerGrabAction;
+   @Input('rotation') attrRotation;
+   @Input('startAngle') attrStartAngle;
+   @Input('spinner') attrSpinner;
+   @Input('style') attrStyle;
+   @Input('step') attrStep;
+   @Input('snapToStep') attrSnapToStep;
+   @Input('value') attrValue;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['allowValueChangeOnClick','allowValueChangeOnDrag','allowValueChangeOnMouseWheel','changing','dragEndAngle','dragStartAngle','disabled','dial','endAngle','height','labels','marks','min','max','progressBar','pointer','pointerGrabAction','rotation','startAngle','spinner','style','step','snapToStep','value','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxKnob;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxKnob(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxKnob', options);
-         this.__updateRect__();
+                  this.host.jqxKnob(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxKnob(this.properties[i])) {
+                  this.host.jqxKnob(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxKnob', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -247,18 +319,16 @@ export class jqxKnobComponent {
    // jqxKnobComponent functions
    destroy(): void {
       this.host.jqxKnob('destroy');
-
    }
    val(value: String | Number): number {
       return this.host.jqxKnob('val', value);
-
    }
 
    // jqxKnobComponent events
-   @Output() OnChange = new EventEmitter();
+   @Output() onChange = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.OnChange.emit(eventData); });
+      this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
    }
 
 } //jqxKnobComponent

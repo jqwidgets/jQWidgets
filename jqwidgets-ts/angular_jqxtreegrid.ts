@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,138 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxTreeGridComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxTreeGridComponent implements OnChanges
+{
+   @Input('altRows') attrAltRows;
+   @Input('autoRowHeight') attrAutoRowHeight;
+   @Input('aggregatesHeight') attrAggregatesHeight;
+   @Input('autoShowLoadElement') attrAutoShowLoadElement;
+   @Input('checkboxes') attrCheckboxes;
+   @Input('columnsHeight') attrColumnsHeight;
+   @Input('columns') attrColumns;
+   @Input('columnGroups') attrColumnGroups;
+   @Input('columnsResize') attrColumnsResize;
+   @Input('columnsReorder') attrColumnsReorder;
+   @Input('disabled') attrDisabled;
+   @Input('editable') attrEditable;
+   @Input('editSettings') attrEditSettings;
+   @Input('exportSettings') attrExportSettings;
+   @Input('enableHover') attrEnableHover;
+   @Input('enableBrowserSelection') attrEnableBrowserSelection;
+   @Input('filterable') attrFilterable;
+   @Input('filterHeight') attrFilterHeight;
+   @Input('filterMode') attrFilterMode;
+   @Input('hierarchicalCheckboxes') attrHierarchicalCheckboxes;
+   @Input('icons') attrIcons;
+   @Input('incrementalSearch') attrIncrementalSearch;
+   @Input('localization') attrLocalization;
+   @Input('pagerHeight') attrPagerHeight;
+   @Input('pageSize') attrPageSize;
+   @Input('pageSizeOptions') attrPageSizeOptions;
+   @Input('pageable') attrPageable;
+   @Input('pagerPosition') attrPagerPosition;
+   @Input('pagerMode') attrPagerMode;
+   @Input('pageSizeMode') attrPageSizeMode;
+   @Input('pagerButtonsCount') attrPagerButtonsCount;
+   @Input('pagerRenderer') attrPagerRenderer;
+   @Input('ready') attrReady;
+   @Input('rowDetails') attrRowDetails;
+   @Input('rowDetailsRenderer') attrRowDetailsRenderer;
+   @Input('renderToolbar') attrRenderToolbar;
+   @Input('renderStatusbar') attrRenderStatusbar;
+   @Input('rendering') attrRendering;
+   @Input('rendered') attrRendered;
+   @Input('rtl') attrRtl;
+   @Input('source') attrSource;
+   @Input('sortable') attrSortable;
+   @Input('showAggregates') attrShowAggregates;
+   @Input('showSubAggregates') attrShowSubAggregates;
+   @Input('showToolbar') attrShowToolbar;
+   @Input('showStatusbar') attrShowStatusbar;
+   @Input('statusBarHeight') attrStatusBarHeight;
+   @Input('scrollBarSize') attrScrollBarSize;
+   @Input('selectionMode') attrSelectionMode;
+   @Input('showHeader') attrShowHeader;
+   @Input('theme') attrTheme;
+   @Input('toolbarHeight') attrToolbarHeight;
+   @Input('virtualModeCreateRecords') attrVirtualModeCreateRecords;
+   @Input('virtualModeRecordCreating') attrVirtualModeRecordCreating;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','checkboxes','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','height','hierarchicalCheckboxes','icons','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pageSizeMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','rowDetailsRenderer','renderToolbar','renderStatusbar','rendering','rendered','rtl','source','sortable','showAggregates','showSubAggregates','showToolbar','showStatusbar','statusBarHeight','scrollBarSize','selectionMode','showHeader','theme','toolbarHeight','width','virtualModeCreateRecords','virtualModeRecordCreating'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTreeGrid;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxTreeGrid(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTreeGrid', options);
-         this.__updateRect__();
+                  this.host.jqxTreeGrid(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxTreeGrid(this.properties[i])) {
+                  this.host.jqxTreeGrid(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTreeGrid', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -483,7 +586,7 @@ export class jqxTreeGridComponent {
       }
    }
 
-   virtualModeRecordCreating(arg?: (record?: VirtualModeRecordCreatingRow) => any) : any {
+   virtualModeRecordCreating(arg?: (record?: any) => any) : any {
       if (arg !== undefined) {
           this.host.jqxTreeGrid('virtualModeRecordCreating', arg);
       } else {
@@ -495,252 +598,201 @@ export class jqxTreeGridComponent {
    // jqxTreeGridComponent functions
    addRow(rowKey: string, rowData: any, rowPosition: string, parent: string): void {
       this.host.jqxTreeGrid('addRow', rowKey, rowData, rowPosition, parent);
-
    }
    addFilter(dataField: string, filerGroup: any): void {
       this.host.jqxTreeGrid('addFilter', dataField, filerGroup);
-
    }
    applyFilters(): void {
       this.host.jqxTreeGrid('applyFilters');
-
    }
    beginUpdate(): void {
       this.host.jqxTreeGrid('beginUpdate');
-
    }
    beginRowEdit(rowKey: string): void {
       this.host.jqxTreeGrid('beginRowEdit', rowKey);
-
    }
    beginCellEdit(rowKey: string, dataField: string): void {
       this.host.jqxTreeGrid('beginCellEdit', rowKey, dataField);
-
    }
    clearSelection(): void {
       this.host.jqxTreeGrid('clearSelection');
-
    }
    clearFilters(): void {
       this.host.jqxTreeGrid('clearFilters');
-
    }
    clear(): void {
       this.host.jqxTreeGrid('clear');
-
    }
    checkRow(rowKey: string): void {
       this.host.jqxTreeGrid('checkRow', rowKey);
-
    }
    collapseRow(rowKey: string): void {
       this.host.jqxTreeGrid('collapseRow', rowKey);
-
    }
    collapseAll(): void {
       this.host.jqxTreeGrid('collapseAll');
-
    }
    destroy(): void {
       this.host.jqxTreeGrid('destroy');
-
    }
    deleteRow(rowKey: string): void {
       this.host.jqxTreeGrid('deleteRow', rowKey);
-
    }
    expandRow(rowKey: String | Number): void {
       this.host.jqxTreeGrid('expandRow', rowKey);
-
    }
    expandAll(): void {
       this.host.jqxTreeGrid('expandAll');
-
    }
    endUpdate(): void {
       this.host.jqxTreeGrid('endUpdate');
-
    }
    ensureRowVisible(rowKey: string): void {
       this.host.jqxTreeGrid('ensureRowVisible', rowKey);
-
    }
    endRowEdit(rowKey: string, cancelChanges: boolean): void {
       this.host.jqxTreeGrid('endRowEdit', rowKey, cancelChanges);
-
    }
    endCellEdit(rowKey: string, dataField: string, cancelChanges: boolean): void {
       this.host.jqxTreeGrid('endCellEdit', rowKey, dataField, cancelChanges);
-
    }
    exportData(exportDataType: any): any {
       return this.host.jqxTreeGrid('exportData', exportDataType);
-
    }
    focus(): void {
       this.host.jqxTreeGrid('focus');
-
    }
    getColumnProperty(dataField: string, propertyName: string): any {
       return this.host.jqxTreeGrid('getColumnProperty', dataField, propertyName);
-
    }
    goToPage(pageIndex: number): void {
       this.host.jqxTreeGrid('goToPage', pageIndex);
-
    }
    goToPrevPage(): void {
       this.host.jqxTreeGrid('goToPrevPage');
-
    }
    goToNextPage(): void {
       this.host.jqxTreeGrid('goToNextPage');
-
    }
    getSelection(): Array<any> {
       return this.host.jqxTreeGrid('getSelection');
-
    }
    getKey(row: any): string {
       return this.host.jqxTreeGrid('getKey', row);
-
    }
    getRow(rowKey: string): jqwidgets.TreeGridGetRow {
       return this.host.jqxTreeGrid('getRow', rowKey);
-
    }
    getRows(): Array<jqwidgets.TreeGridGetRow> {
       return this.host.jqxTreeGrid('getRows');
-
    }
    getCheckedRows(): Array<jqwidgets.TreeGridGetRow> {
       return this.host.jqxTreeGrid('getCheckedRows');
-
    }
    getView(): Array<jqwidgets.TreeGridGetRow> {
       return this.host.jqxTreeGrid('getView');
-
    }
    getCellValue(rowKey: string, dataField: string): any {
       return this.host.jqxTreeGrid('getCellValue', rowKey, dataField);
-
    }
    hideColumn(dataField: string): void {
       this.host.jqxTreeGrid('hideColumn', dataField);
-
    }
    isBindingCompleted(): boolean {
       return this.host.jqxTreeGrid('isBindingCompleted');
-
    }
    lockRow(rowKey: string): void {
       this.host.jqxTreeGrid('lockRow', rowKey);
-
    }
    refresh(): void {
       this.host.jqxTreeGrid('refresh');
-
    }
    render(): void {
       this.host.jqxTreeGrid('render');
-
    }
    removeFilter(dataField: string): void {
       this.host.jqxTreeGrid('removeFilter', dataField);
-
    }
    scrollOffset(top: number, left: number): jqwidgets.TreeGridScrollOffset {
       return this.host.jqxTreeGrid('scrollOffset', top, left);
-
    }
    setColumnProperty(dataField: string, propertyName: string, propertyValue: any): void {
       this.host.jqxTreeGrid('setColumnProperty', dataField, propertyName, propertyValue);
-
    }
    showColumn(dataField: string): void {
       this.host.jqxTreeGrid('showColumn', dataField);
-
    }
    selectRow(rowId: string): void {
       this.host.jqxTreeGrid('selectRow', rowId);
-
    }
    setCellValue(rowId: string, dataField: string, cellValue: any): void {
       this.host.jqxTreeGrid('setCellValue', rowId, dataField, cellValue);
-
    }
    sortBy(dataField: string, sortOrder: string): void {
       this.host.jqxTreeGrid('sortBy', dataField, sortOrder);
-
    }
    updating(): boolean {
       return this.host.jqxTreeGrid('updating');
-
    }
    updateBoundData(): void {
       this.host.jqxTreeGrid('updateBoundData');
-
    }
    unselectRow(rowId: string): void {
       this.host.jqxTreeGrid('unselectRow', rowId);
-
    }
    uncheckRow(rowId: string): void {
       this.host.jqxTreeGrid('uncheckRow', rowId);
-
    }
    updateRow(rowId: string, data: any): void {
       this.host.jqxTreeGrid('updateRow', rowId, data);
-
    }
    unlockRow(rowId: string): void {
       this.host.jqxTreeGrid('unlockRow', rowId);
-
    }
 
    // jqxTreeGridComponent events
-   @Output() OnBindingComplete = new EventEmitter();
-   @Output() OnCellBeginEdit = new EventEmitter();
-   @Output() OnCellEndEdit = new EventEmitter();
-   @Output() OnCellValueChanged = new EventEmitter();
-   @Output() OnColumnResized = new EventEmitter();
-   @Output() OnColumnReordered = new EventEmitter();
-   @Output() OnFilter = new EventEmitter();
-   @Output() OnPageChanged = new EventEmitter();
-   @Output() OnPageSizeChanged = new EventEmitter();
-   @Output() OnRowClick = new EventEmitter();
-   @Output() OnRowDoubleClick = new EventEmitter();
-   @Output() OnRowSelect = new EventEmitter();
-   @Output() OnRowUnselect = new EventEmitter();
-   @Output() OnRowBeginEdit = new EventEmitter();
-   @Output() OnRowEndEdit = new EventEmitter();
-   @Output() OnRowExpand = new EventEmitter();
-   @Output() OnRowCollapse = new EventEmitter();
-   @Output() OnRowCheck = new EventEmitter();
-   @Output() OnRowUncheck = new EventEmitter();
-   @Output() OnSort = new EventEmitter();
+   @Output() onBindingComplete = new EventEmitter();
+   @Output() onCellBeginEdit = new EventEmitter();
+   @Output() onCellEndEdit = new EventEmitter();
+   @Output() onCellValueChanged = new EventEmitter();
+   @Output() onColumnResized = new EventEmitter();
+   @Output() onColumnReordered = new EventEmitter();
+   @Output() onFilter = new EventEmitter();
+   @Output() onPageChanged = new EventEmitter();
+   @Output() onPageSizeChanged = new EventEmitter();
+   @Output() onRowClick = new EventEmitter();
+   @Output() onRowDoubleClick = new EventEmitter();
+   @Output() onRowSelect = new EventEmitter();
+   @Output() onRowUnselect = new EventEmitter();
+   @Output() onRowBeginEdit = new EventEmitter();
+   @Output() onRowEndEdit = new EventEmitter();
+   @Output() onRowExpand = new EventEmitter();
+   @Output() onRowCollapse = new EventEmitter();
+   @Output() onRowCheck = new EventEmitter();
+   @Output() onRowUncheck = new EventEmitter();
+   @Output() onSort = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('bindingComplete', (eventData) => { this.OnBindingComplete.emit(eventData); });
-      this.host.on('cellBeginEdit', (eventData) => { this.OnCellBeginEdit.emit(eventData); });
-      this.host.on('cellEndEdit', (eventData) => { this.OnCellEndEdit.emit(eventData); });
-      this.host.on('cellValueChanged', (eventData) => { this.OnCellValueChanged.emit(eventData); });
-      this.host.on('columnResized', (eventData) => { this.OnColumnResized.emit(eventData); });
-      this.host.on('columnReordered', (eventData) => { this.OnColumnReordered.emit(eventData); });
-      this.host.on('filter', (eventData) => { this.OnFilter.emit(eventData); });
-      this.host.on('pageChanged', (eventData) => { this.OnPageChanged.emit(eventData); });
-      this.host.on('pageSizeChanged', (eventData) => { this.OnPageSizeChanged.emit(eventData); });
-      this.host.on('rowClick', (eventData) => { this.OnRowClick.emit(eventData); });
-      this.host.on('rowDoubleClick', (eventData) => { this.OnRowDoubleClick.emit(eventData); });
-      this.host.on('rowSelect', (eventData) => { this.OnRowSelect.emit(eventData); });
-      this.host.on('rowUnselect', (eventData) => { this.OnRowUnselect.emit(eventData); });
-      this.host.on('rowBeginEdit', (eventData) => { this.OnRowBeginEdit.emit(eventData); });
-      this.host.on('rowEndEdit', (eventData) => { this.OnRowEndEdit.emit(eventData); });
-      this.host.on('rowExpand', (eventData) => { this.OnRowExpand.emit(eventData); });
-      this.host.on('rowCollapse', (eventData) => { this.OnRowCollapse.emit(eventData); });
-      this.host.on('rowCheck', (eventData) => { this.OnRowCheck.emit(eventData); });
-      this.host.on('rowUncheck', (eventData) => { this.OnRowUncheck.emit(eventData); });
-      this.host.on('sort', (eventData) => { this.OnSort.emit(eventData); });
+      this.host.on('bindingComplete', (eventData) => { this.onBindingComplete.emit(eventData); });
+      this.host.on('cellBeginEdit', (eventData) => { this.onCellBeginEdit.emit(eventData); });
+      this.host.on('cellEndEdit', (eventData) => { this.onCellEndEdit.emit(eventData); });
+      this.host.on('cellValueChanged', (eventData) => { this.onCellValueChanged.emit(eventData); });
+      this.host.on('columnResized', (eventData) => { this.onColumnResized.emit(eventData); });
+      this.host.on('columnReordered', (eventData) => { this.onColumnReordered.emit(eventData); });
+      this.host.on('filter', (eventData) => { this.onFilter.emit(eventData); });
+      this.host.on('pageChanged', (eventData) => { this.onPageChanged.emit(eventData); });
+      this.host.on('pageSizeChanged', (eventData) => { this.onPageSizeChanged.emit(eventData); });
+      this.host.on('rowClick', (eventData) => { this.onRowClick.emit(eventData); });
+      this.host.on('rowDoubleClick', (eventData) => { this.onRowDoubleClick.emit(eventData); });
+      this.host.on('rowSelect', (eventData) => { this.onRowSelect.emit(eventData); });
+      this.host.on('rowUnselect', (eventData) => { this.onRowUnselect.emit(eventData); });
+      this.host.on('rowBeginEdit', (eventData) => { this.onRowBeginEdit.emit(eventData); });
+      this.host.on('rowEndEdit', (eventData) => { this.onRowEndEdit.emit(eventData); });
+      this.host.on('rowExpand', (eventData) => { this.onRowExpand.emit(eventData); });
+      this.host.on('rowCollapse', (eventData) => { this.onRowCollapse.emit(eventData); });
+      this.host.on('rowCheck', (eventData) => { this.onRowCheck.emit(eventData); });
+      this.host.on('rowUncheck', (eventData) => { this.onRowUncheck.emit(eventData); });
+      this.host.on('sort', (eventData) => { this.onSort.emit(eventData); });
    }
 
 } //jqxTreeGridComponent

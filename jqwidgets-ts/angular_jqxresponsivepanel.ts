@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,95 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxResponsivePanelComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxResponsivePanelComponent implements OnChanges
+{
+   @Input('animationDirection') attrAnimationDirection;
+   @Input('animationHideDelay') attrAnimationHideDelay;
+   @Input('animationShowDelay') attrAnimationShowDelay;
+   @Input('animationType') attrAnimationType;
+   @Input('autoClose') attrAutoClose;
+   @Input('collapseBreakpoint') attrCollapseBreakpoint;
+   @Input('collapseWidth') attrCollapseWidth;
+   @Input('initContent') attrInitContent;
+   @Input('theme') attrTheme;
+   @Input('toggleButton') attrToggleButton;
+   @Input('toggleButtonSize') attrToggleButtonSize;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['animationDirection','animationHideDelay','animationShowDelay','animationType','autoClose','collapseBreakpoint','collapseWidth','height','initContent','theme','toggleButton','toggleButtonSize','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxResponsivePanel;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxResponsivePanel(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxResponsivePanel', options);
-         this.__updateRect__();
+                  this.host.jqxResponsivePanel(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxResponsivePanel(this.properties[i])) {
+                  this.host.jqxResponsivePanel(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxResponsivePanel', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -151,44 +211,37 @@ export class jqxResponsivePanelComponent {
    // jqxResponsivePanelComponent functions
    close(): void {
       this.host.jqxResponsivePanel('close');
-
    }
    destroy(): void {
       this.host.jqxResponsivePanel('destroy');
-
    }
    isCollapsed(): boolean {
       return this.host.jqxResponsivePanel('isCollapsed');
-
    }
    isOpened(): boolean {
       return this.host.jqxResponsivePanel('isOpened');
-
    }
    open(): void {
       this.host.jqxResponsivePanel('open');
-
    }
    refresh(): void {
       this.host.jqxResponsivePanel('refresh');
-
    }
    render(): void {
       this.host.jqxResponsivePanel('render');
-
    }
 
    // jqxResponsivePanelComponent events
-   @Output() OnClose = new EventEmitter();
-   @Output() OnCollapse = new EventEmitter();
-   @Output() OnExpand = new EventEmitter();
-   @Output() OnOpen = new EventEmitter();
+   @Output() onClose = new EventEmitter();
+   @Output() onCollapse = new EventEmitter();
+   @Output() onExpand = new EventEmitter();
+   @Output() onOpen = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('close', (eventData) => { this.OnClose.emit(eventData); });
-      this.host.on('collapse', (eventData) => { this.OnCollapse.emit(eventData); });
-      this.host.on('expand', (eventData) => { this.OnExpand.emit(eventData); });
-      this.host.on('open', (eventData) => { this.OnOpen.emit(eventData); });
+      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+      this.host.on('collapse', (eventData) => { this.onCollapse.emit(eventData); });
+      this.host.on('expand', (eventData) => { this.onExpand.emit(eventData); });
+      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
    }
 
 } //jqxResponsivePanelComponent

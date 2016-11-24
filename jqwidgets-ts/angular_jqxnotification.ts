@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,103 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxNotificationComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxNotificationComponent implements OnChanges
+{
+   @Input('appendContainer') attrAppendContainer;
+   @Input('autoOpen') attrAutoOpen;
+   @Input('animationOpenDelay') attrAnimationOpenDelay;
+   @Input('animationCloseDelay') attrAnimationCloseDelay;
+   @Input('autoClose') attrAutoClose;
+   @Input('autoCloseDelay') attrAutoCloseDelay;
+   @Input('blink') attrBlink;
+   @Input('browserBoundsOffset') attrBrowserBoundsOffset;
+   @Input('closeOnClick') attrCloseOnClick;
+   @Input('disabled') attrDisabled;
+   @Input('hoverOpacity') attrHoverOpacity;
+   @Input('icon') attrIcon;
+   @Input('notificationOffset') attrNotificationOffset;
+   @Input('opacity') attrOpacity;
+   @Input('position') attrPosition;
+   @Input('rtl') attrRtl;
+   @Input('showCloseButton') attrShowCloseButton;
+   @Input('template') attrTemplate;
+   @Input('theme') attrTheme;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['appendContainer','autoOpen','animationOpenDelay','animationCloseDelay','autoClose','autoCloseDelay','blink','browserBoundsOffset','closeOnClick','disabled','height','hoverOpacity','icon','notificationOffset','opacity','position','rtl','showCloseButton','template','theme','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxNotification;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxNotification(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxNotification', options);
-         this.__updateRect__();
+                  this.host.jqxNotification(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxNotification(this.properties[i])) {
+                  this.host.jqxNotification(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxNotification', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -215,38 +283,32 @@ export class jqxNotificationComponent {
    // jqxNotificationComponent functions
    closeAll(): void {
       this.host.jqxNotification('closeAll');
-
    }
    closeLast(): void {
       this.host.jqxNotification('closeLast');
-
    }
    destroy(): void {
       this.host.jqxNotification('destroy');
-
    }
    open(): void {
       this.host.jqxNotification('open');
-
    }
    refresh(): void {
       this.host.jqxNotification('refresh');
-
    }
    render(): void {
       this.host.jqxNotification('render');
-
    }
 
    // jqxNotificationComponent events
-   @Output() OnClose = new EventEmitter();
-   @Output() OnClick = new EventEmitter();
-   @Output() OnOpen = new EventEmitter();
+   @Output() onClose = new EventEmitter();
+   @Output() onClick = new EventEmitter();
+   @Output() onOpen = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('close', (eventData) => { this.OnClose.emit(eventData); });
-      this.host.on('click', (eventData) => { this.OnClick.emit(eventData); });
-      this.host.on('open', (eventData) => { this.OnOpen.emit(eventData); });
+      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+      this.host.on('click', (eventData) => { this.onClick.emit(eventData); });
+      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
    }
 
 } //jqxNotificationComponent

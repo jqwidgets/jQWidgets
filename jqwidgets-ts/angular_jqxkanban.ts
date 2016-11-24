@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,97 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxKanbanComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxKanbanComponent implements OnChanges
+{
+   @Input('columnRenderer') attrColumnRenderer;
+   @Input('columns') attrColumns;
+   @Input('connectWith') attrConnectWith;
+   @Input('headerHeight') attrHeaderHeight;
+   @Input('headerWidth') attrHeaderWidth;
+   @Input('itemRenderer') attrItemRenderer;
+   @Input('ready') attrReady;
+   @Input('rtl') attrRtl;
+   @Input('source') attrSource;
+   @Input('resources') attrResources;
+   @Input('template') attrTemplate;
+   @Input('templateContent') attrTemplateContent;
+   @Input('theme') attrTheme;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['columnRenderer','columns','connectWith','headerHeight','headerWidth','height','itemRenderer','ready','rtl','source','resources','template','templateContent','theme','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxKanban;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxKanban(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxKanban', options);
-         this.__updateRect__();
+                  this.host.jqxKanban(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxKanban(this.properties[i])) {
+                  this.host.jqxKanban(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxKanban', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -115,7 +177,7 @@ export class jqxKanbanComponent {
       }
    }
 
-   source(arg?: Array<jqwidgets.any> | KanbanSource) : any {
+   source(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxKanban('source', arg);
       } else {
@@ -167,46 +229,39 @@ export class jqxKanbanComponent {
    // jqxKanbanComponent functions
    addItem(newItem: any): void {
       this.host.jqxKanban('addItem', newItem);
-
    }
    destroy(): void {
       this.host.jqxKanban('destroy');
-
    }
    getColumn(dataField: string): jqwidgets.KanbanColumns {
       return this.host.jqxKanban('getColumn', dataField);
-
    }
    getColumnItems(dataField: string): Array<jqwidgets.KanbanSource> {
       return this.host.jqxKanban('getColumnItems', dataField);
-
    }
    getItems(): jqwidgets.KanbanSource {
       return this.host.jqxKanban('getItems');
-
    }
    removeItem(itemId: string): void {
       this.host.jqxKanban('removeItem', itemId);
-
    }
    updateItem(itemId: string, newContent: jqwidgets.KanbanUpdateItem): void {
       this.host.jqxKanban('updateItem', itemId, newContent);
-
    }
 
    // jqxKanbanComponent events
-   @Output() OnColumnAttrClicked = new EventEmitter();
-   @Output() OnColumnCollapsed = new EventEmitter();
-   @Output() OnColumnExpanded = new EventEmitter();
-   @Output() OnItemAttrClicked = new EventEmitter();
-   @Output() OnItemMoved = new EventEmitter();
+   @Output() onColumnAttrClicked = new EventEmitter();
+   @Output() onColumnCollapsed = new EventEmitter();
+   @Output() onColumnExpanded = new EventEmitter();
+   @Output() onItemAttrClicked = new EventEmitter();
+   @Output() onItemMoved = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('columnAttrClicked', (eventData) => { this.OnColumnAttrClicked.emit(eventData); });
-      this.host.on('columnCollapsed', (eventData) => { this.OnColumnCollapsed.emit(eventData); });
-      this.host.on('columnExpanded', (eventData) => { this.OnColumnExpanded.emit(eventData); });
-      this.host.on('itemAttrClicked', (eventData) => { this.OnItemAttrClicked.emit(eventData); });
-      this.host.on('itemMoved', (eventData) => { this.OnItemMoved.emit(eventData); });
+      this.host.on('columnAttrClicked', (eventData) => { this.onColumnAttrClicked.emit(eventData); });
+      this.host.on('columnCollapsed', (eventData) => { this.onColumnCollapsed.emit(eventData); });
+      this.host.on('columnExpanded', (eventData) => { this.onColumnExpanded.emit(eventData); });
+      this.host.on('itemAttrClicked', (eventData) => { this.onItemAttrClicked.emit(eventData); });
+      this.host.on('itemMoved', (eventData) => { this.onItemMoved.emit(eventData); });
    }
 
 } //jqxKanbanComponent

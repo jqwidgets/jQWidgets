@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,95 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxDockingComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxDockingComponent implements OnChanges
+{
+   @Input('cookies') attrCookies;
+   @Input('cookieOptions') attrCookieOptions;
+   @Input('disabled') attrDisabled;
+   @Input('floatingWindowOpacity') attrFloatingWindowOpacity;
+   @Input('keyboardNavigation') attrKeyboardNavigation;
+   @Input('mode') attrMode;
+   @Input('orientation') attrOrientation;
+   @Input('rtl') attrRtl;
+   @Input('theme') attrTheme;
+   @Input('windowsMode') attrWindowsMode;
+   @Input('windowsOffset') attrWindowsOffset;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['cookies','cookieOptions','disabled','floatingWindowOpacity','height','keyboardNavigation','mode','orientation','rtl','theme','width','windowsMode','windowsOffset'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDocking;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxDocking(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDocking', options);
-         this.__updateRect__();
+                  this.host.jqxDocking(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxDocking(this.properties[i])) {
+                  this.host.jqxDocking(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDocking', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -151,112 +211,87 @@ export class jqxDockingComponent {
    // jqxDockingComponent functions
    addWindow(windowId: string, mode: any, panel: number, position: any): void {
       this.host.jqxDocking('addWindow', windowId, mode, panel, position);
-
    }
    closeWindow(windowId: string): void {
       this.host.jqxDocking('closeWindow', windowId);
-
    }
    collapseWindow(windowId: string): void {
       this.host.jqxDocking('collapseWindow', windowId);
-
    }
    destroy(): void {
       this.host.jqxDocking('destroy');
-
    }
    disableWindowResize(windowId: string): void {
       this.host.jqxDocking('disableWindowResize', windowId);
-
    }
    disable(): void {
       this.host.jqxDocking('disable');
-
    }
    exportLayout(): string {
       return this.host.jqxDocking('exportLayout');
-
    }
    enable(): void {
       this.host.jqxDocking('enable');
-
    }
    expandWindow(windowId: string): void {
       this.host.jqxDocking('expandWindow', windowId);
-
    }
    enableWindowResize(windowId: string): void {
       this.host.jqxDocking('enableWindowResize', windowId);
-
    }
    focus(): void {
       this.host.jqxDocking('focus');
-
    }
    hideAllCloseButtons(): void {
       this.host.jqxDocking('hideAllCloseButtons');
-
    }
    hideAllCollapseButtons(): void {
       this.host.jqxDocking('hideAllCollapseButtons');
-
    }
    hideCollapseButton(windowId: string): void {
       this.host.jqxDocking('hideCollapseButton', windowId);
-
    }
    hideCloseButton(windowId: string): void {
       this.host.jqxDocking('hideCloseButton', windowId);
-
    }
    importLayout(Json: string): void {
       this.host.jqxDocking('importLayout', Json);
-
    }
    move(windowId: string, panel: number, position: number): void {
       this.host.jqxDocking('move', windowId, panel, position);
-
    }
    pinWindow(windowId: string): void {
       this.host.jqxDocking('pinWindow', windowId);
-
    }
    setWindowMode(windowId: string, mode: any): void {
       this.host.jqxDocking('setWindowMode', windowId, mode);
-
    }
    showCloseButton(windowId: string): void {
       this.host.jqxDocking('showCloseButton', windowId);
-
    }
    showCollapseButton(windowId: string): void {
       this.host.jqxDocking('showCollapseButton', windowId);
-
    }
    setWindowPosition(windowId: string, top: any, left: number): void {
       this.host.jqxDocking('setWindowPosition', windowId, top, left);
-
    }
    showAllCloseButtons(): void {
       this.host.jqxDocking('showAllCloseButtons');
-
    }
    showAllCollapseButtons(): void {
       this.host.jqxDocking('showAllCollapseButtons');
-
    }
    unpinWindow(windowId: string): void {
       this.host.jqxDocking('unpinWindow', windowId);
-
    }
 
    // jqxDockingComponent events
-   @Output() OnDragStart = new EventEmitter();
-   @Output() OnDragEnd = new EventEmitter();
+   @Output() onDragStart = new EventEmitter();
+   @Output() onDragEnd = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('dragStart', (eventData) => { this.OnDragStart.emit(eventData); });
-      this.host.on('dragEnd', (eventData) => { this.OnDragEnd.emit(eventData); });
+      this.host.on('dragStart', (eventData) => { this.onDragStart.emit(eventData); });
+      this.host.on('dragEnd', (eventData) => { this.onDragEnd.emit(eventData); });
    }
 
 } //jqxDockingComponent

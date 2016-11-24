@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,108 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxLinearGaugeComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxLinearGaugeComponent implements OnChanges
+{
+   @Input('animationDuration') attrAnimationDuration;
+   @Input('background') attrBackground;
+   @Input('colorScheme') attrColorScheme;
+   @Input('disabled') attrDisabled;
+   @Input('easing') attrEasing;
+   @Input('int64') attrInt64;
+   @Input('labels') attrLabels;
+   @Input('min') attrMin;
+   @Input('max') attrMax;
+   @Input('orientation') attrOrientation;
+   @Input('pointer') attrPointer;
+   @Input('rangesOffset') attrRangesOffset;
+   @Input('rangeSize') attrRangeSize;
+   @Input('ranges') attrRanges;
+   @Input('showRanges') attrShowRanges;
+   @Input('scaleStyle') attrScaleStyle;
+   @Input('scaleLength') attrScaleLength;
+   @Input('ticksOffset') attrTicksOffset;
+   @Input('ticksPosition') attrTicksPosition;
+   @Input('ticksMinor') attrTicksMinor;
+   @Input('ticksMajor') attrTicksMajor;
+   @Input('value') attrValue;
+   @Input('disable') attrDisable;
+   @Input('enable') attrEnable;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width','disable','enable'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxLinearGauge;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxLinearGauge(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxLinearGauge', options);
-         this.__updateRect__();
+                  this.host.jqxLinearGauge(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxLinearGauge(this.properties[i])) {
+                  this.host.jqxLinearGauge(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxLinearGauge', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -255,16 +328,15 @@ export class jqxLinearGaugeComponent {
    // jqxLinearGaugeComponent functions
    val(value: String | Number): number {
       return this.host.jqxLinearGauge('val', value);
-
    }
 
    // jqxLinearGaugeComponent events
-   @Output() OnValueChanging = new EventEmitter();
-   @Output() OnValueChanged = new EventEmitter();
+   @Output() onValueChanging = new EventEmitter();
+   @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('valueChanging', (eventData) => { this.OnValueChanging.emit(eventData); });
-      this.host.on('valueChanged', (eventData) => { this.OnValueChanged.emit(eventData); });
+      this.host.on('valueChanging', (eventData) => { this.onValueChanging.emit(eventData); });
+      this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); });
    }
 
 } //jqxLinearGaugeComponent

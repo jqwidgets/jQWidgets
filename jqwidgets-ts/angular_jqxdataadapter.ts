@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,115 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxDataAdapterComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxDataAdapterComponent implements OnChanges
+{
+   @Input('columnDelimiter') attrColumnDelimiter;
+   @Input('datafields') attrDatafields;
+   @Input('data') attrData;
+   @Input('datatype') attrDatatype;
+   @Input('type') attrType;
+   @Input('id') attrId;
+   @Input('localdata') attrLocaldata;
+   @Input('mapChar') attrMapChar;
+   @Input('rowDelimiter') attrRowDelimiter;
+   @Input('root') attrRoot;
+   @Input('record') attrRecord;
+   @Input('url') attrUrl;
+   @Input('async') attrAsync;
+   @Input('autoBind') attrAutoBind;
+   @Input('beforeSend') attrBeforeSend;
+   @Input('beforeLoadComplete') attrBeforeLoadComplete;
+   @Input('contentType') attrContentType;
+   @Input('formatData') attrFormatData;
+   @Input('loadError') attrLoadError;
+   @Input('loadComplete') attrLoadComplete;
+   @Input('loadServerData') attrLoadServerData;
+   @Input('processData') attrProcessData;
+   @Input('beginUpdate') attrBeginUpdate;
+   @Input('dataBind') attrDataBind;
+   @Input('endUpdate') attrEndUpdate;
+   @Input('formatDate') attrFormatDate;
+   @Input('formatNumber') attrFormatNumber;
+   @Input('getRecordsHierarchy') attrGetRecordsHierarchy;
+   @Input('getGroupedRecords') attrGetGroupedRecords;
+   @Input('getAggregatedData') attrGetAggregatedData;
+   @Input('records') attrRecords;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['columnDelimiter','datafields','data','datatype','type','id','localdata','mapChar','rowDelimiter','root','record','url','async','autoBind','beforeSend','beforeLoadComplete','contentType','formatData','loadError','loadComplete','loadServerData','processData','beginUpdate','dataBind','endUpdate','formatDate','formatNumber','getRecordsHierarchy','getGroupedRecords','getAggregatedData','records'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDataAdapter;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxDataAdapter(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDataAdapter', options);
-         this.__updateRect__();
+                  this.host.jqxDataAdapter(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxDataAdapter(this.properties[i])) {
+                  this.host.jqxDataAdapter(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDataAdapter', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -275,7 +355,7 @@ export class jqxDataAdapterComponent {
       }
    }
 
-   getAggregatedData(arg?: (data : Array<DataAdapterGetAggregatedData>) => any) : any {
+   getAggregatedData(arg?: (data : Array<any>) => any) : any {
       if (arg !== undefined) {
           this.host.jqxDataAdapter('getAggregatedData', arg);
       } else {

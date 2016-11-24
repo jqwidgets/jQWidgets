@@ -1,7 +1,8 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {noop} from '@angular/http';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+const noop = () => { };
 declare let $: any;
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -16,55 +17,104 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
-export class jqxEditorComponent implements ControlValueAccessor {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxEditorComponent implements ControlValueAccessor, OnChanges 
+{
+   @Input('createCommand') attrCreateCommand;
+   @Input('disabled') attrDisabled;
+   @Input('editable') attrEditable;
+   @Input('lineBreak') attrLineBreak;
+   @Input('localization') attrLocalization;
+   @Input('pasteMode') attrPasteMode;
+   @Input('rtl') attrRtl;
+   @Input('stylesheets') attrStylesheets;
+   @Input('theme') attrTheme;
+   @Input('toolbarPosition') attrToolbarPosition;
+   @Input('tools') attrTools;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['createCommand','disabled','editable','height','lineBreak','localization','pasteMode','rtl','stylesheets','theme','toolbarPosition','tools','width'];
    host;
+   elementRef: ElementRef;
+   widgetObject:  jqwidgets.jqxEditor;
+
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
-   widgetObject:  jqwidgets.jqxEditor;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxEditor(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxEditor', options);
-         this.__updateRect__();
+                  this.host.jqxEditor(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxEditor(this.properties[i])) {
+                  this.host.jqxEditor(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxEditor', options);
+      this.host = this.widgetObject['host'];
+      this.__wireEvents__();
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
-   get ngValue(): any {
-       if (this.widgetObject)
-           return this.host.jqxEditor('val');
-       return '';
-   }
-
-   set ngValue(value: any) {
-       if (this.widgetObject) {
-           this.host.jqxEditor('val', value)
-           this.onChangeCallback(value);
-       }
-   }
-
-   writengValue(value: any): void {
-       if(value !== this.ngValue && this.widgetObject) {
-            this.host.jqxEditor('val', value)
+   writeValue(value: any): void {
+       if(this.widgetObject) {
+           this.onChangeCallback(this.host.val());
        }
    }
 
@@ -189,30 +239,25 @@ export class jqxEditorComponent implements ControlValueAccessor {
    // jqxEditorComponent functions
    destroy(): void {
       this.host.jqxEditor('destroy');
-
    }
    focus(): void {
       this.host.jqxEditor('focus');
-
    }
    print(): void {
       this.host.jqxEditor('print');
-
    }
    setMode(mode: boolean): void {
       this.host.jqxEditor('setMode', mode);
-
    }
    val(htmlValue: string): string {
       return this.host.jqxEditor('val', htmlValue);
-
    }
 
    // jqxEditorComponent events
-   @Output() OnChange = new EventEmitter();
+   @Output() onChange = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.OnChange.emit(eventData); });
+      this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
    }
 
 } //jqxEditorComponent

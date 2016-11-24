@@ -1,7 +1,8 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {noop} from '@angular/http';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+const noop = () => { };
 declare let $: any;
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -12,59 +13,122 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
     selector: 'angularNumberInput',
-    template: '<div><ng-content></ng-content></div>',
+    template: '<input>',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
-export class jqxNumberInputComponent implements ControlValueAccessor {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges 
+{
+   @Input('allowNull') attrAllowNull;
+   @Input('decimal') attrDecimal;
+   @Input('disabled') attrDisabled;
+   @Input('decimalDigits') attrDecimalDigits;
+   @Input('decimalSeparator') attrDecimalSeparator;
+   @Input('digits') attrDigits;
+   @Input('groupSeparator') attrGroupSeparator;
+   @Input('groupSize') attrGroupSize;
+   @Input('inputMode') attrInputMode;
+   @Input('min') attrMin;
+   @Input('max') attrMax;
+   @Input('negativeSymbol') attrNegativeSymbol;
+   @Input('placeHolder') attrPlaceHolder;
+   @Input('promptChar') attrPromptChar;
+   @Input('rtl') attrRtl;
+   @Input('readOnly') attrReadOnly;
+   @Input('spinMode') attrSpinMode;
+   @Input('spinButtons') attrSpinButtons;
+   @Input('spinButtonsWidth') attrSpinButtonsWidth;
+   @Input('spinButtonsStep') attrSpinButtonsStep;
+   @Input('symbol') attrSymbol;
+   @Input('symbolPosition') attrSymbolPosition;
+   @Input('textAlign') attrTextAlign;
+   @Input('template') attrTemplate;
+   @Input('theme') attrTheme;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['allowNull','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','width'];
    host;
+   elementRef: ElementRef;
+   widgetObject:  jqwidgets.jqxNumberInput;
+
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
-   widgetObject:  jqwidgets.jqxNumberInput;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxNumberInput(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxNumberInput', options);
-         this.__updateRect__();
+                  this.host.jqxNumberInput(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxNumberInput(this.properties[i])) {
+                  this.host.jqxNumberInput(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxNumberInput', options);
+      this.host = this.widgetObject['host'];
+      this.__wireEvents__();
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
-   get ngValue(): any {
-       if (this.widgetObject)
-           return this.host.jqxNumberInput('val');
-       return '';
-   }
-
-   set ngValue(value: any) {
-       if (this.widgetObject) {
-           this.host.jqxNumberInput('val', value)
-           this.onChangeCallback(value);
-       }
-   }
-
-   writengValue(value: any): void {
-       if(value !== this.ngValue && this.widgetObject) {
-            this.host.jqxNumberInput('val', value)
+   writeValue(value: any): void {
+       if(this.widgetObject) {
+           this.host.jqxNumberInput('val', value);
        }
    }
 
@@ -301,38 +365,32 @@ export class jqxNumberInputComponent implements ControlValueAccessor {
    // jqxNumberInputComponent functions
    clear(): void {
       this.host.jqxNumberInput('clear');
-
    }
    destroy(): void {
       this.host.jqxNumberInput('destroy');
-
    }
    focus(): void {
       this.host.jqxNumberInput('focus');
-
    }
    getDecimal(): number {
       return this.host.jqxNumberInput('getDecimal');
-
    }
    setDecimal(index: String | Number): void {
       this.host.jqxNumberInput('setDecimal', index);
-
    }
    val(value: String | Number): number {
       return this.host.jqxNumberInput('val', value);
-
    }
 
    // jqxNumberInputComponent events
-   @Output() OnChange = new EventEmitter();
-   @Output() OnTextchanged = new EventEmitter();
-   @Output() OnValueChanged = new EventEmitter();
+   @Output() onChange = new EventEmitter();
+   @Output() onTextchanged = new EventEmitter();
+   @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.OnChange.emit(eventData); });
-      this.host.on('textchanged', (eventData) => { this.OnTextchanged.emit(eventData); });
-      this.host.on('valueChanged', (eventData) => { this.OnValueChanged.emit(eventData); });
+      this.host.on('change', (eventData) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.text); });
+      this.host.on('textchanged', (eventData) => { this.onTextchanged.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.text); });
+      this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.text); });
    }
 
 } //jqxNumberInputComponent

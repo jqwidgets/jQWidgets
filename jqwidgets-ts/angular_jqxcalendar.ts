@@ -1,7 +1,8 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {noop} from '@angular/http';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+const noop = () => { };
 declare let $: any;
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -16,55 +17,126 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
-export class jqxCalendarComponent implements ControlValueAccessor {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxCalendarComponent implements ControlValueAccessor, OnChanges 
+{
+   @Input('backText') attrBackText;
+   @Input('columnHeaderHeight') attrColumnHeaderHeight;
+   @Input('clearString') attrClearString;
+   @Input('culture') attrCulture;
+   @Input('dayNameFormat') attrDayNameFormat;
+   @Input('disabled') attrDisabled;
+   @Input('enableWeekend') attrEnableWeekend;
+   @Input('enableViews') attrEnableViews;
+   @Input('enableOtherMonthDays') attrEnableOtherMonthDays;
+   @Input('enableFastNavigation') attrEnableFastNavigation;
+   @Input('enableHover') attrEnableHover;
+   @Input('enableAutoNavigation') attrEnableAutoNavigation;
+   @Input('enableTooltips') attrEnableTooltips;
+   @Input('forwardText') attrForwardText;
+   @Input('firstDayOfWeek') attrFirstDayOfWeek;
+   @Input('min') attrMin;
+   @Input('max') attrMax;
+   @Input('navigationDelay') attrNavigationDelay;
+   @Input('rowHeaderWidth') attrRowHeaderWidth;
+   @Input('readOnly') attrReadOnly;
+   @Input('restrictedDates') attrRestrictedDates;
+   @Input('rtl') attrRtl;
+   @Input('stepMonths') attrStepMonths;
+   @Input('showWeekNumbers') attrShowWeekNumbers;
+   @Input('showDayNames') attrShowDayNames;
+   @Input('showOtherMonthDays') attrShowOtherMonthDays;
+   @Input('showFooter') attrShowFooter;
+   @Input('selectionMode') attrSelectionMode;
+   @Input('specialDates') attrSpecialDates;
+   @Input('theme') attrTheme;
+   @Input('titleHeight') attrTitleHeight;
+   @Input('titleFormat') attrTitleFormat;
+   @Input('todayString') attrTodayString;
+   @Input('value') attrValue;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['backText','columnHeaderHeight','clearString','culture','dayNameFormat','disabled','enableWeekend','enableViews','enableOtherMonthDays','enableFastNavigation','enableHover','enableAutoNavigation','enableTooltips','forwardText','firstDayOfWeek','height','min','max','navigationDelay','rowHeaderWidth','readOnly','restrictedDates','rtl','stepMonths','showWeekNumbers','showDayNames','showOtherMonthDays','showFooter','selectionMode','specialDates','theme','titleHeight','titleFormat','todayString','value','width'];
    host;
+   elementRef: ElementRef;
+   widgetObject:  jqwidgets.jqxCalendar;
+
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
-   widgetObject:  jqwidgets.jqxCalendar;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxCalendar(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxCalendar', options);
-         this.__updateRect__();
+                  this.host.jqxCalendar(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxCalendar(this.properties[i])) {
+                  this.host.jqxCalendar(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxCalendar', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
-   get ngValue(): any {
-       if (this.widgetObject)
-           return this.host.jqxCalendar('val');
-       return '';
-   }
-
-   set ngValue(value: any) {
-       if (this.widgetObject) {
-           this.host.jqxCalendar('val', value)
-           this.onChangeCallback(value);
-       }
-   }
-
-   writengValue(value: any): void {
-       if(value !== this.ngValue && this.widgetObject) {
-            this.host.jqxCalendar('val', value)
+   writeValue(value: any): void {
+       if(this.widgetObject) {
+           this.onChangeCallback(this.host.val());
        }
    }
 
@@ -373,84 +445,70 @@ export class jqxCalendarComponent implements ControlValueAccessor {
    // jqxCalendarComponent functions
    clear(): void {
       this.host.jqxCalendar('clear');
-
    }
    destroy(): void {
       this.host.jqxCalendar('destroy');
-
    }
    focus(): void {
       this.host.jqxCalendar('focus');
-
+   }
+   addSpecialDate(date: any, tooltip: any, text: any): void {
+      this.host.jqxCalendar('addSpecialDate', date, tooltip, text);
    }
    getMinDate(): any {
       return this.host.jqxCalendar('getMinDate');
-
    }
    getMaxDate(): any {
       return this.host.jqxCalendar('getMaxDate');
-
    }
    getDate(): any {
       return this.host.jqxCalendar('getDate');
-
    }
    getRange(): any {
       return this.host.jqxCalendar('getRange');
-
    }
    navigateForward(months: number): void {
       this.host.jqxCalendar('navigateForward', months);
-
    }
    navigateBackward(months: number): void {
       this.host.jqxCalendar('navigateBackward', months);
-
    }
    render(): void {
       this.host.jqxCalendar('render');
-
    }
    refresh(): void {
       this.host.jqxCalendar('refresh');
-
    }
    setMinDate(date: any): void {
       this.host.jqxCalendar('setMinDate', date);
-
    }
    setMaxDate(date: any): void {
       this.host.jqxCalendar('setMaxDate', date);
-
    }
    setDate(date: any): void {
       this.host.jqxCalendar('setDate', date);
-
    }
    setRange(date: any, date2: any): void {
       this.host.jqxCalendar('setRange', date, date2);
-
    }
    today(): void {
       this.host.jqxCalendar('today');
-
    }
    val(date: any, date2: any): any {
       return this.host.jqxCalendar('val', date, date2);
-
    }
 
    // jqxCalendarComponent events
-   @Output() OnBackButtonClick = new EventEmitter();
-   @Output() OnChange = new EventEmitter();
-   @Output() OnNextButtonClick = new EventEmitter();
-   @Output() OnViewChange = new EventEmitter();
+   @Output() onBackButtonClick = new EventEmitter();
+   @Output() onChange = new EventEmitter();
+   @Output() onNextButtonClick = new EventEmitter();
+   @Output() onViewChange = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('backButtonClick', (eventData) => { this.OnBackButtonClick.emit(eventData); });
-      this.host.on('change', (eventData) => { this.OnChange.emit(eventData); });
-      this.host.on('nextButtonClick', (eventData) => { this.OnNextButtonClick.emit(eventData); });
-      this.host.on('viewChange', (eventData) => { this.OnViewChange.emit(eventData); });
+      this.host.on('backButtonClick', (eventData) => { this.onBackButtonClick.emit(eventData); });
+      this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
+      this.host.on('nextButtonClick', (eventData) => { this.onNextButtonClick.emit(eventData); });
+      this.host.on('viewChange', (eventData) => { this.onViewChange.emit(eventData); });
    }
 
 } //jqxCalendarComponent

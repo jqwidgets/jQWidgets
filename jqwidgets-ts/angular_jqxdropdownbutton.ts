@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,99 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxDropDownButtonComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxDropDownButtonComponent implements OnChanges
+{
+   @Input('animationType') attrAnimationType;
+   @Input('arrowSize') attrArrowSize;
+   @Input('autoOpen') attrAutoOpen;
+   @Input('closeDelay') attrCloseDelay;
+   @Input('disabled') attrDisabled;
+   @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment;
+   @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment;
+   @Input('dropDownWidth') attrDropDownWidth;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection;
+   @Input('initContent') attrInitContent;
+   @Input('openDelay') attrOpenDelay;
+   @Input('popupZIndex') attrPopupZIndex;
+   @Input('rtl') attrRtl;
+   @Input('template') attrTemplate;
+   @Input('theme') attrTheme;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['animationType','arrowSize','autoOpen','closeDelay','disabled','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownWidth','enableBrowserBoundsDetection','height','initContent','openDelay','popupZIndex','rtl','template','theme','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDropDownButton;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxDropDownButton(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDropDownButton', options);
-         this.__updateRect__();
+                  this.host.jqxDropDownButton(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxDropDownButton(this.properties[i])) {
+                  this.host.jqxDropDownButton(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDropDownButton', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -183,40 +247,33 @@ export class jqxDropDownButtonComponent {
    // jqxDropDownButtonComponent functions
    close(): void {
       this.host.jqxDropDownButton('close');
-
    }
    destroy(): void {
       this.host.jqxDropDownButton('destroy');
-
    }
    focus(): void {
       this.host.jqxDropDownButton('focus');
-
    }
    getContent(): any {
       return this.host.jqxDropDownButton('getContent');
-
    }
    isOpened(): boolean {
       return this.host.jqxDropDownButton('isOpened');
-
    }
    open(): void {
       this.host.jqxDropDownButton('open');
-
    }
    setContent(content: string): void {
       this.host.jqxDropDownButton('setContent', content);
-
    }
 
    // jqxDropDownButtonComponent events
-   @Output() OnClose = new EventEmitter();
-   @Output() OnOpen = new EventEmitter();
+   @Output() onClose = new EventEmitter();
+   @Output() onOpen = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('close', (eventData) => { this.OnClose.emit(eventData); });
-      this.host.on('open', (eventData) => { this.OnOpen.emit(eventData); });
+      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
    }
 
 } //jqxDropDownButtonComponent

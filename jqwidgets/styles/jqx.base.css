@@ -827,6 +827,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 /*jqxProgresBar Style*/
 .jqx-progressbar
 {
+	position: relative;
     overflow: hidden;
     outline: none;
     border: 1px solid transparent;

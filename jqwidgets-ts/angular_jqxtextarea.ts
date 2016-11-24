@@ -1,7 +1,8 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {noop} from '@angular/http';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+const noop = () => { };
 declare let $: any;
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -16,55 +17,109 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
-export class jqxTextAreaComponent implements ControlValueAccessor {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges 
+{
+   @Input('disabled') attrDisabled;
+   @Input('displayMember') attrDisplayMember;
+   @Input('dropDownWidth') attrDropDownWidth;
+   @Input('items') attrItems;
+   @Input('maxLength') attrMaxLength;
+   @Input('minLength') attrMinLength;
+   @Input('opened') attrOpened;
+   @Input('placeHolder') attrPlaceHolder;
+   @Input('popupZIndex') attrPopupZIndex;
+   @Input('query') attrQuery;
+   @Input('renderer') attrRenderer;
+   @Input('roundedCorners') attrRoundedCorners;
+   @Input('rtl') attrRtl;
+   @Input('scrollBarSize') attrScrollBarSize;
+   @Input('searchMode') attrSearchMode;
+   @Input('source') attrSource;
+   @Input('theme') attrTheme;
+   @Input('valueMember') attrValueMember;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['disabled','displayMember','dropDownWidth','height','items','maxLength','minLength','opened','placeHolder','popupZIndex','query','renderer','roundedCorners','rtl','scrollBarSize','searchMode','source','theme','valueMember','width'];
    host;
+   elementRef: ElementRef;
+   widgetObject:  jqwidgets.jqxTextArea;
+
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
-   widgetObject:  jqwidgets.jqxTextArea;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxTextArea(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTextArea', options);
-         this.__updateRect__();
+                  this.host.jqxTextArea(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxTextArea(this.properties[i])) {
+                  this.host.jqxTextArea(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTextArea', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
-   get ngValue(): any {
-       if (this.widgetObject)
-           return this.host.jqxTextArea('val');
-       return '';
-   }
-
-   set ngValue(value: any) {
-       if (this.widgetObject) {
-           this.host.jqxTextArea('val', value)
-           this.onChangeCallback(value);
-       }
-   }
-
-   writengValue(value: any): void {
-       if(value !== this.ngValue && this.widgetObject) {
-            this.host.jqxTextArea('val', value)
+   writeValue(value: any): void {
+       if(this.widgetObject) {
        }
    }
 
@@ -245,40 +300,35 @@ export class jqxTextAreaComponent implements ControlValueAccessor {
    // jqxTextAreaComponent functions
    destroy(): void {
       this.host.jqxTextArea('destroy');
-
    }
    focus(): void {
       this.host.jqxTextArea('focus');
-
    }
    refresh(): void {
       this.host.jqxTextArea('refresh');
-
    }
    render(): void {
       this.host.jqxTextArea('render');
-
    }
    selectAll(): void {
       this.host.jqxTextArea('selectAll');
-
    }
    val(value: string): string {
       return this.host.jqxTextArea('val', value);
-
    }
 
    // jqxTextAreaComponent events
-   @Output() OnChange = new EventEmitter();
-   @Output() OnClose = new EventEmitter();
-   @Output() OnOpen = new EventEmitter();
-   @Output() OnSelect = new EventEmitter();
+   @Output() onChange = new EventEmitter();
+   @Output() onClose = new EventEmitter();
+   @Output() onOpen = new EventEmitter();
+   @Output() onSelect = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.OnChange.emit(eventData); });
-      this.host.on('close', (eventData) => { this.OnClose.emit(eventData); });
-      this.host.on('open', (eventData) => { this.OnOpen.emit(eventData); });
-      this.host.on('select', (eventData) => { this.OnSelect.emit(eventData); });
+      this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
+      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
+      this.host.on('select', (eventData) => { this.onSelect.emit(eventData); });
+      this.host.on('keyup', () => { this.onChangeCallback(this.host.val()); });
    }
 
 } //jqxTextAreaComponent

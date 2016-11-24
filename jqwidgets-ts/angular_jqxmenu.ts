@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,105 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxMenuComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxMenuComponent implements OnChanges
+{
+   @Input('animationShowDuration') attrAnimationShowDuration;
+   @Input('animationHideDuration') attrAnimationHideDuration;
+   @Input('animationHideDelay') attrAnimationHideDelay;
+   @Input('animationShowDelay') attrAnimationShowDelay;
+   @Input('autoCloseInterval') attrAutoCloseInterval;
+   @Input('autoSizeMainItems') attrAutoSizeMainItems;
+   @Input('autoCloseOnClick') attrAutoCloseOnClick;
+   @Input('autoOpenPopup') attrAutoOpenPopup;
+   @Input('autoOpen') attrAutoOpen;
+   @Input('clickToOpen') attrClickToOpen;
+   @Input('disabled') attrDisabled;
+   @Input('enableHover') attrEnableHover;
+   @Input('easing') attrEasing;
+   @Input('keyboardNavigation') attrKeyboardNavigation;
+   @Input('minimizeWidth') attrMinimizeWidth;
+   @Input('mode') attrMode;
+   @Input('popupZIndex') attrPopupZIndex;
+   @Input('rtl') attrRtl;
+   @Input('showTopLevelArrows') attrShowTopLevelArrows;
+   @Input('source') attrSource;
+   @Input('theme') attrTheme;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['animationShowDuration','animationHideDuration','animationHideDelay','animationShowDelay','autoCloseInterval','autoSizeMainItems','autoCloseOnClick','autoOpenPopup','autoOpen','clickToOpen','disabled','enableHover','easing','height','keyboardNavigation','minimizeWidth','mode','popupZIndex','rtl','showTopLevelArrows','source','theme','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxMenu;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxMenu(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxMenu', options);
-         this.__updateRect__();
+                  this.host.jqxMenu(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxMenu(this.properties[i])) {
+                  this.host.jqxMenu(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxMenu', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -231,56 +301,46 @@ export class jqxMenuComponent {
    // jqxMenuComponent functions
    closeItem(itemID: String | Number): void {
       this.host.jqxMenu('closeItem', itemID);
-
    }
    close(): void {
       this.host.jqxMenu('close');
-
    }
    disable(itemID: String | Number, value: boolean): void {
       this.host.jqxMenu('disable', itemID, value);
-
    }
    destroy(): void {
       this.host.jqxMenu('destroy');
-
    }
    focus(): void {
       this.host.jqxMenu('focus');
-
    }
    minimize(): void {
       this.host.jqxMenu('minimize');
-
    }
    open(left: number, top: number): void {
       this.host.jqxMenu('open', left, top);
-
    }
    openItem(itemID: String | Number): void {
       this.host.jqxMenu('openItem', itemID);
-
    }
    restore(): void {
       this.host.jqxMenu('restore');
-
    }
    setItemOpenDirection(item: String | Number, horizontaldirection: string, verticaldirection: string): void {
       this.host.jqxMenu('setItemOpenDirection', item, horizontaldirection, verticaldirection);
-
    }
 
    // jqxMenuComponent events
-   @Output() OnClosed = new EventEmitter();
-   @Output() OnItemclick = new EventEmitter();
-   @Output() OnInitialized = new EventEmitter();
-   @Output() OnShown = new EventEmitter();
+   @Output() onClosed = new EventEmitter();
+   @Output() onItemclick = new EventEmitter();
+   @Output() onInitialized = new EventEmitter();
+   @Output() onShown = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('closed', (eventData) => { this.OnClosed.emit(eventData); });
-      this.host.on('itemclick', (eventData) => { this.OnItemclick.emit(eventData); });
-      this.host.on('initialized', (eventData) => { this.OnInitialized.emit(eventData); });
-      this.host.on('shown', (eventData) => { this.OnShown.emit(eventData); });
+      this.host.on('closed', (eventData) => { this.onClosed.emit(eventData); });
+      this.host.on('itemclick', (eventData) => { this.onItemclick.emit(eventData); });
+      this.host.on('initialized', (eventData) => { this.onInitialized.emit(eventData); });
+      this.host.on('shown', (eventData) => { this.onShown.emit(eventData); });
    }
 
 } //jqxMenuComponent

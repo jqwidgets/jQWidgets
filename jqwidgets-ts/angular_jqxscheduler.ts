@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,135 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxSchedulerComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxSchedulerComponent implements OnChanges
+{
+   @Input('appointmentOpacity') attrAppointmentOpacity;
+   @Input('appointmentsMinHeight') attrAppointmentsMinHeight;
+   @Input('appointmentDataFields') attrAppointmentDataFields;
+   @Input('appointmentTooltips') attrAppointmentTooltips;
+   @Input('columnsHeight') attrColumnsHeight;
+   @Input('contextMenu') attrContextMenu;
+   @Input('contextMenuOpen') attrContextMenuOpen;
+   @Input('contextMenuClose') attrContextMenuClose;
+   @Input('contextMenuItemClick') attrContextMenuItemClick;
+   @Input('contextMenuCreate') attrContextMenuCreate;
+   @Input('changedAppointments') attrChangedAppointments;
+   @Input('disabled') attrDisabled;
+   @Input('date') attrDate;
+   @Input('dayNameFormat') attrDayNameFormat;
+   @Input('enableHover') attrEnableHover;
+   @Input('editDialog') attrEditDialog;
+   @Input('editDialogDateTimeFormatString') attrEditDialogDateTimeFormatString;
+   @Input('editDialogDateFormatString') attrEditDialogDateFormatString;
+   @Input('editDialogOpen') attrEditDialogOpen;
+   @Input('editDialogCreate') attrEditDialogCreate;
+   @Input('editDialogKeyDown') attrEditDialogKeyDown;
+   @Input('editDialogClose') attrEditDialogClose;
+   @Input('exportSettings') attrExportSettings;
+   @Input('legendPosition') attrLegendPosition;
+   @Input('legendHeight') attrLegendHeight;
+   @Input('localization') attrLocalization;
+   @Input('min') attrMin;
+   @Input('max') attrMax;
+   @Input('ready') attrReady;
+   @Input('renderAppointment') attrRenderAppointment;
+   @Input('rendering') attrRendering;
+   @Input('rendered') attrRendered;
+   @Input('rtl') attrRtl;
+   @Input('resources') attrResources;
+   @Input('rowsHeight') attrRowsHeight;
+   @Input('showToolbar') attrShowToolbar;
+   @Input('showLegend') attrShowLegend;
+   @Input('scrollBarSize') attrScrollBarSize;
+   @Input('source') attrSource;
+   @Input('statuses') attrStatuses;
+   @Input('touchRowsHeight') attrTouchRowsHeight;
+   @Input('theme') attrTheme;
+   @Input('touchAppointmentsMinHeight') attrTouchAppointmentsMinHeight;
+   @Input('touchScrollBarSize') attrTouchScrollBarSize;
+   @Input('timeZone') attrTimeZone;
+   @Input('touchDayNameFormat') attrTouchDayNameFormat;
+   @Input('toolBarRangeFormat') attrToolBarRangeFormat;
+   @Input('toolBarRangeFormatAbbr') attrToolBarRangeFormatAbbr;
+   @Input('toolbarHeight') attrToolbarHeight;
+   @Input('views') attrViews;
+   @Input('view') attrView;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxScheduler;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxScheduler(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxScheduler', options);
-         this.__updateRect__();
+                  this.host.jqxScheduler(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxScheduler(this.properties[i])) {
+                  this.host.jqxScheduler(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxScheduler', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -283,7 +383,7 @@ export class jqxSchedulerComponent {
       }
    }
 
-   renderAppointment(arg?: (data: SchedulerRenderAppointment) => SchedulerRenderAppointment) : any {
+   renderAppointment(arg?: (data: any) => any) : any {
       if (arg !== undefined) {
           this.host.jqxScheduler('renderAppointment', arg);
       } else {
@@ -471,158 +571,130 @@ export class jqxSchedulerComponent {
    // jqxSchedulerComponent functions
    addAppointment(item: jqwidgets.SchedulerAppointmentDataFields): void {
       this.host.jqxScheduler('addAppointment', item);
-
    }
    beginAppointmentsUpdate(): void {
       this.host.jqxScheduler('beginAppointmentsUpdate');
-
    }
    clearAppointmentsSelection(): void {
       this.host.jqxScheduler('clearAppointmentsSelection');
-
    }
    clearSelection(): void {
       this.host.jqxScheduler('clearSelection');
-
    }
    closeMenu(): void {
       this.host.jqxScheduler('closeMenu');
-
    }
    closeDialog(): void {
       this.host.jqxScheduler('closeDialog');
-
    }
    deleteAppointment(appointmenId: string): void {
       this.host.jqxScheduler('deleteAppointment', appointmenId);
-
    }
    destroy(): void {
       this.host.jqxScheduler('destroy');
-
    }
    endAppointmentsUpdate(): void {
       this.host.jqxScheduler('endAppointmentsUpdate');
-
    }
    ensureAppointmentVisible(id: string): void {
       this.host.jqxScheduler('ensureAppointmentVisible', id);
-
    }
    ensureVisible(item: any, resourceId: string): void {
       this.host.jqxScheduler('ensureVisible', item, resourceId);
-
    }
    exportData(format: string): any {
       return this.host.jqxScheduler('exportData', format);
-
    }
    focus(): void {
       this.host.jqxScheduler('focus');
-
    }
    getAppointmentProperty(appointmentId: string, name: string): any {
       return this.host.jqxScheduler('getAppointmentProperty', appointmentId, name);
-
    }
    getSelection(): jqwidgets.SchedulerGetSelection {
       return this.host.jqxScheduler('getSelection');
-
    }
    getAppointments(): Array<jqwidgets.SchedulerAppointmentDataFields> {
       return this.host.jqxScheduler('getAppointments');
-
    }
    getDataAppointments(): Array<any> {
       return this.host.jqxScheduler('getDataAppointments');
-
    }
    hideAppointmentsByResource(resourcesId: string): void {
       this.host.jqxScheduler('hideAppointmentsByResource', resourcesId);
-
    }
    openMenu(left: number, top: number): void {
       this.host.jqxScheduler('openMenu', left, top);
-
    }
    openDialog(left: number, top: number): void {
       this.host.jqxScheduler('openDialog', left, top);
-
    }
    selectAppointment(appointmentId: string): void {
       this.host.jqxScheduler('selectAppointment', appointmentId);
-
    }
    setAppointmentProperty(appointmentId: string, name: string, value: any): void {
       this.host.jqxScheduler('setAppointmentProperty', appointmentId, name, value);
-
    }
    selectCell(date: any, allday: boolean, resourceId: string): void {
       this.host.jqxScheduler('selectCell', date, allday, resourceId);
-
    }
    showAppointmentsByResource(resourceId: string): void {
       this.host.jqxScheduler('showAppointmentsByResource', resourceId);
-
    }
    scrollWidth(): number {
       return this.host.jqxScheduler('scrollWidth');
-
    }
    scrollHeight(): number {
       return this.host.jqxScheduler('scrollHeight');
-
    }
    scrollLeft(left: number): void {
       this.host.jqxScheduler('scrollLeft', left);
-
    }
    scrollTop(top: number): void {
       this.host.jqxScheduler('scrollTop', top);
-
    }
 
    // jqxSchedulerComponent events
-   @Output() OnAppointmentChange = new EventEmitter();
-   @Output() OnAppointmentClick = new EventEmitter();
-   @Output() OnAppointmentDoubleClick = new EventEmitter();
-   @Output() OnAppointmentDelete = new EventEmitter();
-   @Output() OnAppointmentAdd = new EventEmitter();
-   @Output() OnBindingComplete = new EventEmitter();
-   @Output() OnCellClick = new EventEmitter();
-   @Output() OnCellDoubleClick = new EventEmitter();
-   @Output() OnContextMenuOpen = new EventEmitter();
-   @Output() OnContextMenuClose = new EventEmitter();
-   @Output() OnContextMenuItemClick = new EventEmitter();
-   @Output() OnContextMenuCreate = new EventEmitter();
-   @Output() OnDateChange = new EventEmitter();
-   @Output() OnEditRecurrenceDialogOpen = new EventEmitter();
-   @Output() OnEditRecurrenceDialogClose = new EventEmitter();
-   @Output() OnEditDialogCreate = new EventEmitter();
-   @Output() OnEditDialogOpen = new EventEmitter();
-   @Output() OnEditDialogClose = new EventEmitter();
-   @Output() OnViewChange = new EventEmitter();
+   @Output() onAppointmentChange = new EventEmitter();
+   @Output() onAppointmentClick = new EventEmitter();
+   @Output() onAppointmentDoubleClick = new EventEmitter();
+   @Output() onAppointmentDelete = new EventEmitter();
+   @Output() onAppointmentAdd = new EventEmitter();
+   @Output() onBindingComplete = new EventEmitter();
+   @Output() onCellClick = new EventEmitter();
+   @Output() onCellDoubleClick = new EventEmitter();
+   @Output() onContextMenuOpen = new EventEmitter();
+   @Output() onContextMenuClose = new EventEmitter();
+   @Output() onContextMenuItemClick = new EventEmitter();
+   @Output() onContextMenuCreate = new EventEmitter();
+   @Output() onDateChange = new EventEmitter();
+   @Output() onEditRecurrenceDialogOpen = new EventEmitter();
+   @Output() onEditRecurrenceDialogClose = new EventEmitter();
+   @Output() onEditDialogCreate = new EventEmitter();
+   @Output() onEditDialogOpen = new EventEmitter();
+   @Output() onEditDialogClose = new EventEmitter();
+   @Output() onViewChange = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('appointmentChange', (eventData) => { this.OnAppointmentChange.emit(eventData); });
-      this.host.on('appointmentClick', (eventData) => { this.OnAppointmentClick.emit(eventData); });
-      this.host.on('appointmentDoubleClick', (eventData) => { this.OnAppointmentDoubleClick.emit(eventData); });
-      this.host.on('appointmentDelete', (eventData) => { this.OnAppointmentDelete.emit(eventData); });
-      this.host.on('appointmentAdd', (eventData) => { this.OnAppointmentAdd.emit(eventData); });
-      this.host.on('bindingComplete', (eventData) => { this.OnBindingComplete.emit(eventData); });
-      this.host.on('cellClick', (eventData) => { this.OnCellClick.emit(eventData); });
-      this.host.on('cellDoubleClick', (eventData) => { this.OnCellDoubleClick.emit(eventData); });
-      this.host.on('contextMenuOpen', (eventData) => { this.OnContextMenuOpen.emit(eventData); });
-      this.host.on('contextMenuClose', (eventData) => { this.OnContextMenuClose.emit(eventData); });
-      this.host.on('contextMenuItemClick', (eventData) => { this.OnContextMenuItemClick.emit(eventData); });
-      this.host.on('contextMenuCreate', (eventData) => { this.OnContextMenuCreate.emit(eventData); });
-      this.host.on('dateChange', (eventData) => { this.OnDateChange.emit(eventData); });
-      this.host.on('editRecurrenceDialogOpen', (eventData) => { this.OnEditRecurrenceDialogOpen.emit(eventData); });
-      this.host.on('editRecurrenceDialogClose', (eventData) => { this.OnEditRecurrenceDialogClose.emit(eventData); });
-      this.host.on('editDialogCreate', (eventData) => { this.OnEditDialogCreate.emit(eventData); });
-      this.host.on('editDialogOpen', (eventData) => { this.OnEditDialogOpen.emit(eventData); });
-      this.host.on('editDialogClose', (eventData) => { this.OnEditDialogClose.emit(eventData); });
-      this.host.on('viewChange', (eventData) => { this.OnViewChange.emit(eventData); });
+      this.host.on('appointmentChange', (eventData) => { this.onAppointmentChange.emit(eventData); });
+      this.host.on('appointmentClick', (eventData) => { this.onAppointmentClick.emit(eventData); });
+      this.host.on('appointmentDoubleClick', (eventData) => { this.onAppointmentDoubleClick.emit(eventData); });
+      this.host.on('appointmentDelete', (eventData) => { this.onAppointmentDelete.emit(eventData); });
+      this.host.on('appointmentAdd', (eventData) => { this.onAppointmentAdd.emit(eventData); });
+      this.host.on('bindingComplete', (eventData) => { this.onBindingComplete.emit(eventData); });
+      this.host.on('cellClick', (eventData) => { this.onCellClick.emit(eventData); });
+      this.host.on('cellDoubleClick', (eventData) => { this.onCellDoubleClick.emit(eventData); });
+      this.host.on('contextMenuOpen', (eventData) => { this.onContextMenuOpen.emit(eventData); });
+      this.host.on('contextMenuClose', (eventData) => { this.onContextMenuClose.emit(eventData); });
+      this.host.on('contextMenuItemClick', (eventData) => { this.onContextMenuItemClick.emit(eventData); });
+      this.host.on('contextMenuCreate', (eventData) => { this.onContextMenuCreate.emit(eventData); });
+      this.host.on('dateChange', (eventData) => { this.onDateChange.emit(eventData); });
+      this.host.on('editRecurrenceDialogOpen', (eventData) => { this.onEditRecurrenceDialogOpen.emit(eventData); });
+      this.host.on('editRecurrenceDialogClose', (eventData) => { this.onEditRecurrenceDialogClose.emit(eventData); });
+      this.host.on('editDialogCreate', (eventData) => { this.onEditDialogCreate.emit(eventData); });
+      this.host.on('editDialogOpen', (eventData) => { this.onEditDialogOpen.emit(eventData); });
+      this.host.on('editDialogClose', (eventData) => { this.onEditDialogClose.emit(eventData); });
+      this.host.on('viewChange', (eventData) => { this.onViewChange.emit(eventData); });
    }
 
 } //jqxSchedulerComponent

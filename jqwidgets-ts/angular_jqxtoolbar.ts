@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,92 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxToolBarComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxToolBarComponent implements OnChanges
+{
+   @Input('disabled') attrDisabled;
+   @Input('initTools') attrInitTools;
+   @Input('minimizeWidth') attrMinimizeWidth;
+   @Input('minWidth') attrMinWidth;
+   @Input('maxWidth') attrMaxWidth;
+   @Input('rtl') attrRtl;
+   @Input('tools') attrTools;
+   @Input('theme') attrTheme;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['disabled','height','initTools','minimizeWidth','minWidth','maxWidth','rtl','tools','theme','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxToolBar;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxToolBar(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxToolBar', options);
-         this.__updateRect__();
+                  this.host.jqxToolBar(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxToolBar(this.properties[i])) {
+                  this.host.jqxToolBar(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxToolBar', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -127,40 +184,33 @@ export class jqxToolBarComponent {
    // jqxToolBarComponent functions
    addTool(type: string, position: string, separator: boolean, menuToolIninitialization: (type?: String, tool?: any, menuToolIninitialization?: Boolean) => void): void {
       this.host.jqxToolBar('addTool', type, position, separator, menuToolIninitialization);
-
    }
    disableTool(index: number, disable: boolean): void {
       this.host.jqxToolBar('disableTool', index, disable);
-
    }
    destroy(): void {
       this.host.jqxToolBar('destroy');
-
    }
    destroyTool(index: number): void {
       this.host.jqxToolBar('destroyTool', index);
-
    }
    getTools(): Array<jqwidgets.ToolBarToolItem> {
       return this.host.jqxToolBar('getTools');
-
    }
    render(): void {
       this.host.jqxToolBar('render');
-
    }
    refresh(): void {
       this.host.jqxToolBar('refresh');
-
    }
 
    // jqxToolBarComponent events
-   @Output() OnClose = new EventEmitter();
-   @Output() OnOpen = new EventEmitter();
+   @Output() onClose = new EventEmitter();
+   @Output() onOpen = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('close', (eventData) => { this.OnClose.emit(eventData); });
-      this.host.on('open', (eventData) => { this.OnOpen.emit(eventData); });
+      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
    }
 
 } //jqxToolBarComponent

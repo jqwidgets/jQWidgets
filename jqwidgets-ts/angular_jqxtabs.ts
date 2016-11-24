@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,106 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxTabsComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxTabsComponent implements OnChanges
+{
+   @Input('animationType') attrAnimationType;
+   @Input('autoHeight') attrAutoHeight;
+   @Input('closeButtonSize') attrCloseButtonSize;
+   @Input('collapsible') attrCollapsible;
+   @Input('contentTransitionDuration') attrContentTransitionDuration;
+   @Input('disabled') attrDisabled;
+   @Input('enabledHover') attrEnabledHover;
+   @Input('enableScrollAnimation') attrEnableScrollAnimation;
+   @Input('initTabContent') attrInitTabContent;
+   @Input('keyboardNavigation') attrKeyboardNavigation;
+   @Input('position') attrPosition;
+   @Input('reorder') attrReorder;
+   @Input('rtl') attrRtl;
+   @Input('scrollAnimationDuration') attrScrollAnimationDuration;
+   @Input('selectedItem') attrSelectedItem;
+   @Input('selectionTracker') attrSelectionTracker;
+   @Input('scrollable') attrScrollable;
+   @Input('scrollPosition') attrScrollPosition;
+   @Input('scrollStep') attrScrollStep;
+   @Input('showCloseButtons') attrShowCloseButtons;
+   @Input('toggleMode') attrToggleMode;
+   @Input('theme') attrTheme;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','height','initTabContent','keyboardNavigation','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTabs;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxTabs(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTabs', options);
-         this.__updateRect__();
+                  this.host.jqxTabs(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxTabs(this.properties[i])) {
+                  this.host.jqxTabs(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTabs', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -239,136 +310,110 @@ export class jqxTabsComponent {
    // jqxTabsComponent functions
    addAt(index: number, title: string, content: string): void {
       this.host.jqxTabs('addAt', index, title, content);
-
    }
    addFirst(htmlElement: any): void {
       this.host.jqxTabs('addFirst', htmlElement);
-
    }
    addLast(htmlElement: any): void {
       this.host.jqxTabs('addLast', htmlElement);
-
    }
    collapse(): void {
       this.host.jqxTabs('collapse');
-
    }
    disable(): void {
       this.host.jqxTabs('disable');
-
    }
    disableAt(index: number): void {
       this.host.jqxTabs('disableAt', index);
-
    }
    destroy(): void {
       this.host.jqxTabs('destroy');
-
    }
    ensureVisible(index: number): void {
       this.host.jqxTabs('ensureVisible', index);
-
    }
    enableAt(index: number): void {
       this.host.jqxTabs('enableAt', index);
-
    }
    expand(): void {
       this.host.jqxTabs('expand');
-
    }
    enable(): void {
       this.host.jqxTabs('enable');
-
    }
    focus(): void {
       this.host.jqxTabs('focus');
-
    }
    getTitleAt(index: number): string {
       return this.host.jqxTabs('getTitleAt', index);
-
    }
    getContentAt(index: number): any {
       return this.host.jqxTabs('getContentAt', index);
-
    }
    hideCloseButtonAt(index: number): void {
       this.host.jqxTabs('hideCloseButtonAt', index);
-
    }
    hideAllCloseButtons(): void {
       this.host.jqxTabs('hideAllCloseButtons');
-
    }
    length(): number {
       return this.host.jqxTabs('length');
-
    }
    removeAt(index: number): void {
       this.host.jqxTabs('removeAt', index);
-
    }
    removeFirst(): void {
       this.host.jqxTabs('removeFirst');
-
    }
    removeLast(): void {
       this.host.jqxTabs('removeLast');
-
    }
    select(index: number): void {
       this.host.jqxTabs('select', index);
-
    }
    setContentAt(index: number, htmlElement: string): void {
       this.host.jqxTabs('setContentAt', index, htmlElement);
-
    }
    setTitleAt(index: number, htmlElement: string): void {
       this.host.jqxTabs('setTitleAt', index, htmlElement);
-
    }
    showCloseButtonAt(index: number): void {
       this.host.jqxTabs('showCloseButtonAt', index);
-
    }
    showAllCloseButtons(): void {
       this.host.jqxTabs('showAllCloseButtons');
-
    }
    val(value: string): string {
       return this.host.jqxTabs('val', value);
-
    }
 
    // jqxTabsComponent events
-   @Output() OnAdd = new EventEmitter();
-   @Output() OnCreated = new EventEmitter();
-   @Output() OnCollapsed = new EventEmitter();
-   @Output() OnDragStart = new EventEmitter();
-   @Output() OnDragEnd = new EventEmitter();
-   @Output() OnExpanded = new EventEmitter();
-   @Output() OnRemoved = new EventEmitter();
-   @Output() OnSelecting = new EventEmitter();
-   @Output() OnSelected = new EventEmitter();
-   @Output() OnTabclick = new EventEmitter();
-   @Output() OnUnselecting = new EventEmitter();
-   @Output() OnUnselected = new EventEmitter();
+   @Output() onAdd = new EventEmitter();
+   @Output() onCreated = new EventEmitter();
+   @Output() onCollapsed = new EventEmitter();
+   @Output() onDragStart = new EventEmitter();
+   @Output() onDragEnd = new EventEmitter();
+   @Output() onExpanded = new EventEmitter();
+   @Output() onRemoved = new EventEmitter();
+   @Output() onSelecting = new EventEmitter();
+   @Output() onSelected = new EventEmitter();
+   @Output() onTabclick = new EventEmitter();
+   @Output() onUnselecting = new EventEmitter();
+   @Output() onUnselected = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('add', (eventData) => { this.OnAdd.emit(eventData); });
-      this.host.on('created', (eventData) => { this.OnCreated.emit(eventData); });
-      this.host.on('collapsed', (eventData) => { this.OnCollapsed.emit(eventData); });
-      this.host.on('dragStart', (eventData) => { this.OnDragStart.emit(eventData); });
-      this.host.on('dragEnd', (eventData) => { this.OnDragEnd.emit(eventData); });
-      this.host.on('expanded', (eventData) => { this.OnExpanded.emit(eventData); });
-      this.host.on('removed', (eventData) => { this.OnRemoved.emit(eventData); });
-      this.host.on('selecting', (eventData) => { this.OnSelecting.emit(eventData); });
-      this.host.on('selected', (eventData) => { this.OnSelected.emit(eventData); });
-      this.host.on('tabclick', (eventData) => { this.OnTabclick.emit(eventData); });
-      this.host.on('unselecting', (eventData) => { this.OnUnselecting.emit(eventData); });
-      this.host.on('unselected', (eventData) => { this.OnUnselected.emit(eventData); });
+      this.host.on('add', (eventData) => { this.onAdd.emit(eventData); });
+      this.host.on('created', (eventData) => { this.onCreated.emit(eventData); });
+      this.host.on('collapsed', (eventData) => { this.onCollapsed.emit(eventData); });
+      this.host.on('dragStart', (eventData) => { this.onDragStart.emit(eventData); });
+      this.host.on('dragEnd', (eventData) => { this.onDragEnd.emit(eventData); });
+      this.host.on('expanded', (eventData) => { this.onExpanded.emit(eventData); });
+      this.host.on('removed', (eventData) => { this.onRemoved.emit(eventData); });
+      this.host.on('selecting', (eventData) => { this.onSelecting.emit(eventData); });
+      this.host.on('selected', (eventData) => { this.onSelected.emit(eventData); });
+      this.host.on('tabclick', (eventData) => { this.onTabclick.emit(eventData); });
+      this.host.on('unselecting', (eventData) => { this.onUnselecting.emit(eventData); });
+      this.host.on('unselected', (eventData) => { this.onUnselected.emit(eventData); });
    }
 
 } //jqxTabsComponent

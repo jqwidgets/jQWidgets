@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,94 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxScrollViewComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxScrollViewComponent implements OnChanges
+{
+   @Input('animationDuration') attrAnimationDuration;
+   @Input('bounceEnabled') attrBounceEnabled;
+   @Input('buttonsOffset') attrButtonsOffset;
+   @Input('currentPage') attrCurrentPage;
+   @Input('disabled') attrDisabled;
+   @Input('moveThreshold') attrMoveThreshold;
+   @Input('showButtons') attrShowButtons;
+   @Input('slideShow') attrSlideShow;
+   @Input('slideDuration') attrSlideDuration;
+   @Input('theme') attrTheme;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['animationDuration','bounceEnabled','buttonsOffset','currentPage','disabled','height','moveThreshold','showButtons','slideShow','slideDuration','theme','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxScrollView;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxScrollView(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxScrollView', options);
-         this.__updateRect__();
+                  this.host.jqxScrollView(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxScrollView(this.properties[i])) {
+                  this.host.jqxScrollView(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxScrollView', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -143,26 +202,22 @@ export class jqxScrollViewComponent {
    // jqxScrollViewComponent functions
    back(): void {
       this.host.jqxScrollView('back');
-
    }
    changePage(index: number): void {
       this.host.jqxScrollView('changePage', index);
-
    }
    forward(): void {
       this.host.jqxScrollView('forward');
-
    }
    refresh(): void {
       this.host.jqxScrollView('refresh');
-
    }
 
    // jqxScrollViewComponent events
-   @Output() OnPageChanged = new EventEmitter();
+   @Output() onPageChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('pageChanged', (eventData) => { this.OnPageChanged.emit(eventData); });
+      this.host.on('pageChanged', (eventData) => { this.onPageChanged.emit(eventData); });
    }
 
 } //jqxScrollViewComponent

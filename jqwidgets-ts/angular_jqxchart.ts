@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,116 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxChartComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxChartComponent implements OnChanges
+{
+   @Input('title') attrTitle;
+   @Input('description') attrDescription;
+   @Input('source') attrSource;
+   @Input('showBorderLine') attrShowBorderLine;
+   @Input('borderLineColor') attrBorderLineColor;
+   @Input('borderLineWidth') attrBorderLineWidth;
+   @Input('backgroundColor') attrBackgroundColor;
+   @Input('backgroundImage') attrBackgroundImage;
+   @Input('showLegend') attrShowLegend;
+   @Input('legendLayout') attrLegendLayout;
+   @Input('padding') attrPadding;
+   @Input('titlePadding') attrTitlePadding;
+   @Input('colorScheme') attrColorScheme;
+   @Input('greyScale') attrGreyScale;
+   @Input('showToolTips') attrShowToolTips;
+   @Input('toolTipShowDelay') attrToolTipShowDelay;
+   @Input('toolTipHideDelay') attrToolTipHideDelay;
+   @Input('toolTipMoveDuration') attrToolTipMoveDuration;
+   @Input('rtl') attrRtl;
+   @Input('enableCrosshairs') attrEnableCrosshairs;
+   @Input('crosshairsColor') attrCrosshairsColor;
+   @Input('crosshairsDashStyle') attrCrosshairsDashStyle;
+   @Input('crosshairsLineWidth') attrCrosshairsLineWidth;
+   @Input('columnSeriesOverlap') attrColumnSeriesOverlap;
+   @Input('enabled') attrEnabled;
+   @Input('enableAnimations') attrEnableAnimations;
+   @Input('animationDuration') attrAnimationDuration;
+   @Input('enableAxisTextAnimation') attrEnableAxisTextAnimation;
+   @Input('renderEngine') attrRenderEngine;
+   @Input('xAxis') attrXAxis;
+   @Input('valueAxis') attrValueAxis;
+   @Input('seriesGroups') attrSeriesGroups;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxChart;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxChart(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxChart', options);
-         this.__updateRect__();
+                  this.host.jqxChart(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxChart(this.properties[i])) {
+                  this.host.jqxChart(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxChart', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
       this.refresh();
    }
 
@@ -304,104 +385,84 @@ export class jqxChartComponent {
    // jqxChartComponent functions
    refresh(): void {
       this.host.jqxChart('refresh');
-
    }
    update(): void {
       this.host.jqxChart('update');
-
    }
    destroy(): void {
       this.host.jqxChart('destroy');
-
    }
    addColorScheme(schemeName: string, colors: Array<string>): void {
       this.host.jqxChart('addColorScheme', schemeName, colors);
-
    }
    removeColorScheme(schemeName: string): void {
       this.host.jqxChart('removeColorScheme', schemeName);
-
    }
    getItemsCount(groupIndex: number, serieIndex: number): number {
       return this.host.jqxChart('getItemsCount', groupIndex, serieIndex);
-
    }
    getItemCoord(groupIndex: number, serieIndex: number, itemIndex: number): any {
       return this.host.jqxChart('getItemCoord', groupIndex, serieIndex, itemIndex);
-
    }
    getXAxisRect(groupIndex: number): jqwidgets.ChartRect {
       return this.host.jqxChart('getXAxisRect', groupIndex);
-
    }
    getXAxisLabels(groupIndex: number): Array<any> {
       return this.host.jqxChart('getXAxisLabels', groupIndex);
-
    }
    getValueAxisRect(groupIndex: number): jqwidgets.ChartRect {
       return this.host.jqxChart('getValueAxisRect', groupIndex);
-
    }
    getValueAxisLabels(groupIndex: number): Array<any> {
       return this.host.jqxChart('getValueAxisLabels', groupIndex);
-
    }
    getColorScheme(colorScheme: string): Array<string> {
       return this.host.jqxChart('getColorScheme', colorScheme);
-
    }
    hideSerie(groupIndex: number, serieIndex: number, itemIndex?: number): void {
       this.host.jqxChart('hideSerie', groupIndex, serieIndex, itemIndex);
-
    }
    showSerie(groupIndex: number, serieIndex: number, itemIndex?: number): void {
       this.host.jqxChart('showSerie', groupIndex, serieIndex, itemIndex);
-
    }
    hideToolTip(hideDelay: number): void {
       this.host.jqxChart('hideToolTip', hideDelay);
-
    }
    showToolTip(groupIndex: number, serieIndex: number, itemIndex: number, showDelay?: number, hideDelay?: number): void {
       this.host.jqxChart('showToolTip', groupIndex, serieIndex, itemIndex, showDelay, hideDelay);
-
    }
    saveAsJPEG(fileName: string, exportServerUrl: string): void {
       this.host.jqxChart('saveAsJPEG', fileName, exportServerUrl);
-
    }
    saveAsPDF(fileName: string, exportServerUrl: string): void {
       this.host.jqxChart('saveAsPDF', fileName, exportServerUrl);
-
    }
    getXAxisValue(offset: number, groupIndex: number): any {
       return this.host.jqxChart('getXAxisValue', offset, groupIndex);
-
    }
    getValueAxisValue(offset: number, groupIndex: number): any {
       return this.host.jqxChart('getValueAxisValue', offset, groupIndex);
-
    }
 
    // jqxChartComponent events
-   @Output() OnToggle = new EventEmitter();
-   @Output() OnClick = new EventEmitter();
-   @Output() OnMouseOver = new EventEmitter();
-   @Output() OnMouseOut = new EventEmitter();
-   @Output() OnRefreshBegin = new EventEmitter();
-   @Output() OnRefreshEnd = new EventEmitter();
-   @Output() OnRangeSelectionChanging = new EventEmitter();
-   @Output() OnRangeSelectionChanged = new EventEmitter();
+   @Output() onToggle = new EventEmitter();
+   @Output() onClick = new EventEmitter();
+   @Output() onMouseOver = new EventEmitter();
+   @Output() onMouseOut = new EventEmitter();
+   @Output() onRefreshBegin = new EventEmitter();
+   @Output() onRefreshEnd = new EventEmitter();
+   @Output() onRangeSelectionChanging = new EventEmitter();
+   @Output() onRangeSelectionChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('toggle', (eventData) => { this.OnToggle.emit(eventData); });
-      this.host.on('click', (eventData) => { this.OnClick.emit(eventData); });
-      this.host.on('mouseOver', (eventData) => { this.OnMouseOver.emit(eventData); });
-      this.host.on('mouseOut', (eventData) => { this.OnMouseOut.emit(eventData); });
-      this.host.on('refreshBegin', (eventData) => { this.OnRefreshBegin.emit(eventData); });
-      this.host.on('refreshEnd', (eventData) => { this.OnRefreshEnd.emit(eventData); });
-      this.host.on('rangeSelectionChanging', (eventData) => { this.OnRangeSelectionChanging.emit(eventData); });
-      this.host.on('rangeSelectionChanged', (eventData) => { this.OnRangeSelectionChanged.emit(eventData); });
+      this.host.on('toggle', (eventData) => { this.onToggle.emit(eventData); });
+      this.host.on('click', (eventData) => { this.onClick.emit(eventData); });
+      this.host.on('mouseOver', (eventData) => { this.onMouseOver.emit(eventData); });
+      this.host.on('mouseOut', (eventData) => { this.onMouseOut.emit(eventData); });
+      this.host.on('refreshBegin', (eventData) => { this.onRefreshBegin.emit(eventData); });
+      this.host.on('refreshEnd', (eventData) => { this.onRefreshEnd.emit(eventData); });
+      this.host.on('rangeSelectionChanging', (eventData) => { this.onRangeSelectionChanging.emit(eventData); });
+      this.host.on('rangeSelectionChanged', (eventData) => { this.onRangeSelectionChanged.emit(eventData); });
    }
 
 } //jqxChartComponent

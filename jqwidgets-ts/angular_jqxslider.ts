@@ -1,7 +1,8 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {noop} from '@angular/http';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+const noop = () => { };
 declare let $: any;
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -16,55 +17,132 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
-export class jqxSliderComponent implements ControlValueAccessor {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxSliderComponent implements ControlValueAccessor, OnChanges 
+{
+   @Input('buttonsPosition') attrButtonsPosition;
+   @Input('disabled') attrDisabled;
+   @Input('layout') attrLayout;
+   @Input('mode') attrMode;
+   @Input('minorTicksFrequency') attrMinorTicksFrequency;
+   @Input('minorTickSize') attrMinorTickSize;
+   @Input('max') attrMax;
+   @Input('min') attrMin;
+   @Input('rangeSlider') attrRangeSlider;
+   @Input('rtl') attrRtl;
+   @Input('step') attrStep;
+   @Input('showTicks') attrShowTicks;
+   @Input('showMinorTicks') attrShowMinorTicks;
+   @Input('showTickLabels') attrShowTickLabels;
+   @Input('showButtons') attrShowButtons;
+   @Input('showRange') attrShowRange;
+   @Input('template') attrTemplate;
+   @Input('theme') attrTheme;
+   @Input('ticksPosition') attrTicksPosition;
+   @Input('ticksFrequency') attrTicksFrequency;
+   @Input('tickSize') attrTickSize;
+   @Input('tickLabelFormatFunction') attrTickLabelFormatFunction;
+   @Input('tooltip') attrTooltip;
+   @Input('tooltipHideDelay') attrTooltipHideDelay;
+   @Input('tooltipPosition') attrTooltipPosition;
+   @Input('tooltipFormatFunction') attrTooltipFormatFunction;
+   @Input('value') attrValue;
+   @Input('values') attrValues;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['buttonsPosition','disabled','height','layout','mode','minorTicksFrequency','minorTickSize','max','min','rangeSlider','rtl','step','showTicks','showMinorTicks','showTickLabels','showButtons','showRange','template','theme','ticksPosition','ticksFrequency','tickSize','tickLabelFormatFunction','tooltip','tooltipHideDelay','tooltipPosition','tooltipFormatFunction','value','values','width'];
    host;
+   elementRef: ElementRef;
+   widgetObject:  jqwidgets.jqxSlider;
+
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
-   widgetObject:  jqwidgets.jqxSlider;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxSlider(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxSlider', options);
-         this.__updateRect__();
+                  this.host.jqxSlider(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxSlider(this.properties[i])) {
+                  this.host.jqxSlider(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxSlider', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    get ngValue(): any {
        if (this.widgetObject)
-           return this.host.jqxSlider('val');
+           return this.host.val();
        return '';
    }
 
    set ngValue(value: any) {
        if (this.widgetObject) {
-           this.host.jqxSlider('val', value)
            this.onChangeCallback(value);
        }
    }
 
-   writengValue(value: any): void {
-       if(value !== this.ngValue && this.widgetObject) {
-            this.host.jqxSlider('val', value)
+   writeValue(value: any): void {
+       if(this.widgetObject) {
+           this.onChangeCallback(this.host.val());
        }
    }
 
@@ -325,54 +403,45 @@ export class jqxSliderComponent implements ControlValueAccessor {
    // jqxSliderComponent functions
    destroy(): void {
       this.host.jqxSlider('destroy');
-
    }
    decrementValue(): void {
       this.host.jqxSlider('decrementValue');
-
    }
    disable(): void {
       this.host.jqxSlider('disable');
-
    }
    enable(): void {
       this.host.jqxSlider('enable');
-
    }
    focus(): void {
       this.host.jqxSlider('focus');
-
    }
    getValue(): number {
       return this.host.jqxSlider('getValue');
-
    }
    incrementValue(): void {
       this.host.jqxSlider('incrementValue');
-
    }
    setValue(index: number): void {
       this.host.jqxSlider('setValue', index);
-
    }
    val(value: string): string {
       return this.host.jqxSlider('val', value);
-
    }
 
    // jqxSliderComponent events
-   @Output() OnChange = new EventEmitter();
-   @Output() OnCreated = new EventEmitter();
-   @Output() OnSlide = new EventEmitter();
-   @Output() OnSlideStart = new EventEmitter();
-   @Output() OnSlideEnd = new EventEmitter();
+   @Output() onChange = new EventEmitter();
+   @Output() onCreated = new EventEmitter();
+   @Output() onSlide = new EventEmitter();
+   @Output() onSlideStart = new EventEmitter();
+   @Output() onSlideEnd = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.OnChange.emit(eventData); });
-      this.host.on('created', (eventData) => { this.OnCreated.emit(eventData); });
-      this.host.on('slide', (eventData) => { this.OnSlide.emit(eventData); });
-      this.host.on('slideStart', (eventData) => { this.OnSlideStart.emit(eventData); });
-      this.host.on('slideEnd', (eventData) => { this.OnSlideEnd.emit(eventData); });
+      this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
+      this.host.on('created', (eventData) => { this.onCreated.emit(eventData); });
+      this.host.on('slide', (eventData) => { this.onSlide.emit(eventData); });
+      this.host.on('slideStart', (eventData) => { this.onSlideStart.emit(eventData); });
+      this.host.on('slideEnd', (eventData) => { this.onSlideEnd.emit(eventData); });
    }
 
 } //jqxSliderComponent

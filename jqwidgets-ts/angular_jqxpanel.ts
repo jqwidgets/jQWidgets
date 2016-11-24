@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,90 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxPanelComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxPanelComponent implements OnChanges
+{
+   @Input('autoUpdate') attrAutoUpdate;
+   @Input('disabled') attrDisabled;
+   @Input('rtl') attrRtl;
+   @Input('sizeMode') attrSizeMode;
+   @Input('scrollBarSize') attrScrollBarSize;
+   @Input('theme') attrTheme;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['autoUpdate','disabled','height','rtl','sizeMode','scrollBarSize','theme','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxPanel;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxPanel(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxPanel', options);
-         this.__updateRect__();
+                  this.host.jqxPanel(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxPanel(this.properties[i])) {
+                  this.host.jqxPanel(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxPanel', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -111,47 +166,36 @@ export class jqxPanelComponent {
    // jqxPanelComponent functions
    append(HTMLElement: any): void {
       this.host.jqxPanel('append', HTMLElement);
-
    }
    clearcontent(): void {
       this.host.jqxPanel('clearcontent');
-
    }
    destroy(): void {
       this.host.jqxPanel('destroy');
-
    }
    focus(): void {
       this.host.jqxPanel('focus');
-
    }
    getScrollHeight(): number {
       return this.host.jqxPanel('getScrollHeight');
-
    }
    getVScrollPosition(): number {
       return this.host.jqxPanel('getVScrollPosition');
-
    }
    getScrollWidth(): number {
       return this.host.jqxPanel('getScrollWidth');
-
    }
    getHScrollPosition(): number {
       return this.host.jqxPanel('getHScrollPosition');
-
    }
    prepend(HTMLElement: any): void {
       this.host.jqxPanel('prepend', HTMLElement);
-
    }
    remove(HTMLElement: any): void {
       this.host.jqxPanel('remove', HTMLElement);
-
    }
    scrollTo(top: String | Number, left: String | Number): void {
       this.host.jqxPanel('scrollTo', top, left);
-
    }
 
    // jqxPanelComponent events

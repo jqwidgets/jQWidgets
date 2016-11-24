@@ -1,5 +1,5 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -7,35 +7,106 @@ declare let $: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxRangeSelectorComponent {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxRangeSelectorComponent implements OnChanges
+{
+   @Input('disabled') attrDisabled;
+   @Input('labelFormat') attrLabelFormat;
+   @Input('labelsFormatFunction') attrLabelsFormatFunction;
+   @Input('labelPrecision') attrLabelPrecision;
+   @Input('moveOnClick') attrMoveOnClick;
+   @Input('markerRenderer') attrMarkerRenderer;
+   @Input('markerPrecision') attrMarkerPrecision;
+   @Input('majorLabelRenderer') attrMajorLabelRenderer;
+   @Input('markerFormat') attrMarkerFormat;
+   @Input('majorTicksInterval') attrMajorTicksInterval;
+   @Input('minorTicksInterval') attrMinorTicksInterval;
+   @Input('max') attrMax;
+   @Input('min') attrMin;
+   @Input('padding') attrPadding;
+   @Input('range') attrRange;
+   @Input('resizable') attrResizable;
+   @Input('rtl') attrRtl;
+   @Input('showMinorTicks') attrShowMinorTicks;
+   @Input('snapToTicks') attrSnapToTicks;
+   @Input('showMajorLabels') attrShowMajorLabels;
+   @Input('showMarkers') attrShowMarkers;
+   @Input('theme') attrTheme;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['disabled','height','labelFormat','labelsFormatFunction','labelPrecision','moveOnClick','markerRenderer','markerPrecision','majorLabelRenderer','markerFormat','majorTicksInterval','minorTicksInterval','max','min','padding','range','resizable','rtl','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
    host;
+   elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxRangeSelector;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxRangeSelector(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxRangeSelector', options);
-         this.__updateRect__();
+                  this.host.jqxRangeSelector(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxRangeSelector(this.properties[i])) {
+                  this.host.jqxRangeSelector(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxRangeSelector', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
    setOptions(options: any) : void {
@@ -239,30 +310,25 @@ export class jqxRangeSelectorComponent {
    // jqxRangeSelectorComponent functions
    destroy(): void {
       this.host.jqxRangeSelector('destroy');
-
    }
    getRange(): jqwidgets.RangeSelectorGetRange {
       return this.host.jqxRangeSelector('getRange');
-
    }
    render(): void {
       this.host.jqxRangeSelector('render');
-
    }
    refresh(): void {
       this.host.jqxRangeSelector('refresh');
-
    }
    setRange(from: any, to: any): void {
       this.host.jqxRangeSelector('setRange', from, to);
-
    }
 
    // jqxRangeSelectorComponent events
-   @Output() OnChange = new EventEmitter();
+   @Output() onChange = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.OnChange.emit(eventData); });
+      this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
    }
 
 } //jqxRangeSelectorComponent

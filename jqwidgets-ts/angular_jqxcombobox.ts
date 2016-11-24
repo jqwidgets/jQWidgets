@@ -1,7 +1,8 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {noop} from '@angular/http';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+const noop = () => { };
 declare let $: any;
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -16,55 +17,130 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
-export class jqxComboBoxComponent implements ControlValueAccessor {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges 
+{
+   @Input('animationType') attrAnimationType;
+   @Input('autoComplete') attrAutoComplete;
+   @Input('autoOpen') attrAutoOpen;
+   @Input('autoItemsHeight') attrAutoItemsHeight;
+   @Input('autoDropDownHeight') attrAutoDropDownHeight;
+   @Input('closeDelay') attrCloseDelay;
+   @Input('checkboxes') attrCheckboxes;
+   @Input('disabled') attrDisabled;
+   @Input('displayMember') attrDisplayMember;
+   @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment;
+   @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment;
+   @Input('dropDownHeight') attrDropDownHeight;
+   @Input('dropDownWidth') attrDropDownWidth;
+   @Input('enableHover') attrEnableHover;
+   @Input('enableSelection') attrEnableSelection;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection;
+   @Input('itemHeight') attrItemHeight;
+   @Input('multiSelect') attrMultiSelect;
+   @Input('minLength') attrMinLength;
+   @Input('openDelay') attrOpenDelay;
+   @Input('popupZIndex') attrPopupZIndex;
+   @Input('placeHolder') attrPlaceHolder;
+   @Input('remoteAutoComplete') attrRemoteAutoComplete;
+   @Input('remoteAutoCompleteDelay') attrRemoteAutoCompleteDelay;
+   @Input('renderer') attrRenderer;
+   @Input('renderSelectedItem') attrRenderSelectedItem;
+   @Input('rtl') attrRtl;
+   @Input('selectedIndex') attrSelectedIndex;
+   @Input('showArrow') attrShowArrow;
+   @Input('showCloseButtons') attrShowCloseButtons;
+   @Input('searchMode') attrSearchMode;
+   @Input('search') attrSearch;
+   @Input('source') attrSource;
+   @Input('scrollBarSize') attrScrollBarSize;
+   @Input('template') attrTemplate;
+   @Input('theme') attrTheme;
+   @Input('validateSelection') attrValidateSelection;
+   @Input('valueMember') attrValueMember;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['animationType','autoComplete','autoOpen','autoItemsHeight','autoDropDownHeight','closeDelay','checkboxes','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableHover','enableSelection','enableBrowserBoundsDetection','height','itemHeight','multiSelect','minLength','openDelay','popupZIndex','placeHolder','remoteAutoComplete','remoteAutoCompleteDelay','renderer','renderSelectedItem','rtl','selectedIndex','showArrow','showCloseButtons','searchMode','search','source','scrollBarSize','template','theme','validateSelection','valueMember','width'];
    host;
+   elementRef: ElementRef;
+   widgetObject:  jqwidgets.jqxComboBox;
+
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
-   widgetObject:  jqwidgets.jqxComboBox;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxComboBox(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxComboBox', options);
-         this.__updateRect__();
+                  this.host.jqxComboBox(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxComboBox(this.properties[i])) {
+                  this.host.jqxComboBox(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxComboBox', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
-   get ngValue(): any {
-       if (this.widgetObject)
-           return this.host.jqxComboBox('val');
-       return '';
-   }
-
-   set ngValue(value: any) {
-       if (this.widgetObject) {
-           this.host.jqxComboBox('val', value)
-           this.onChangeCallback(value);
-       }
-   }
-
-   writengValue(value: any): void {
-       if(value !== this.ngValue && this.widgetObject) {
-            this.host.jqxComboBox('val', value)
+   writeValue(value: any): void {
+       if(this.widgetObject) {
+           this.onChangeCallback(this.host.val());
        }
    }
 
@@ -405,182 +481,142 @@ export class jqxComboBoxComponent implements ControlValueAccessor {
    // jqxComboBoxComponent functions
    addItem(item: any): boolean {
       return this.host.jqxComboBox('addItem', item);
-
    }
    clearSelection(): void {
       this.host.jqxComboBox('clearSelection');
-
    }
    clear(): void {
       this.host.jqxComboBox('clear');
-
    }
    close(): void {
       this.host.jqxComboBox('close');
-
    }
    checkIndex(index: number): void {
       this.host.jqxComboBox('checkIndex', index);
-
    }
    checkItem(item: any): void {
       this.host.jqxComboBox('checkItem', item);
-
    }
    checkAll(): void {
       this.host.jqxComboBox('checkAll');
-
    }
    destroy(): void {
       this.host.jqxComboBox('destroy');
-
    }
    disableItem(item: any): void {
       this.host.jqxComboBox('disableItem', item);
-
    }
    disableAt(index: number): void {
       this.host.jqxComboBox('disableAt', index);
-
    }
    enableItem(item: any): void {
       this.host.jqxComboBox('enableItem', item);
-
    }
    enableAt(index: number): void {
       this.host.jqxComboBox('enableAt', index);
-
    }
    ensureVisible(index: number): void {
       this.host.jqxComboBox('ensureVisible', index);
-
    }
    focus(): void {
       this.host.jqxComboBox('focus');
-
    }
    getItem(index: number): any {
       return this.host.jqxComboBox('getItem', index);
-
    }
    getItemByValue(value: string): any {
       return this.host.jqxComboBox('getItemByValue', value);
-
    }
    getVisibleItems(): Array<any> {
       return this.host.jqxComboBox('getVisibleItems');
-
    }
    getItems(): Array<any> {
       return this.host.jqxComboBox('getItems');
-
    }
    getCheckedItems(): Array<any> {
       return this.host.jqxComboBox('getCheckedItems');
-
    }
    getSelectedItem(): any {
       return this.host.jqxComboBox('getSelectedItem');
-
    }
    getSelectedItems(): Array<any> {
       return this.host.jqxComboBox('getSelectedItems');
-
    }
    getSelectedIndex(): number {
       return this.host.jqxComboBox('getSelectedIndex');
-
    }
    insertAt(item: any, index: number): boolean {
       return this.host.jqxComboBox('insertAt', item, index);
-
    }
    isOpened(): boolean {
       return this.host.jqxComboBox('isOpened');
-
    }
    indeterminateIndex(index: number): void {
       this.host.jqxComboBox('indeterminateIndex', index);
-
    }
    indeterminateItem(item: any): void {
       this.host.jqxComboBox('indeterminateItem', item);
-
    }
    loadFromSelect(selectTagId: string): void {
       this.host.jqxComboBox('loadFromSelect', selectTagId);
-
    }
    open(): void {
       this.host.jqxComboBox('open');
-
    }
    removeItem(item: any): boolean {
       return this.host.jqxComboBox('removeItem', item);
-
    }
    removeAt(index: number): boolean {
       return this.host.jqxComboBox('removeAt', index);
-
    }
    selectIndex(index: number): void {
       this.host.jqxComboBox('selectIndex', index);
-
    }
    selectItem(item: any): void {
       this.host.jqxComboBox('selectItem', item);
-
    }
    updateItem(item: any, itemValue: string): void {
       this.host.jqxComboBox('updateItem', item, itemValue);
-
    }
    updateAt(item: any, index: any): void {
       this.host.jqxComboBox('updateAt', item, index);
-
    }
    unselectIndex(index: number): void {
       this.host.jqxComboBox('unselectIndex', index);
-
    }
    unselectItem(item: any): void {
       this.host.jqxComboBox('unselectItem', item);
-
    }
    uncheckIndex(index: number): void {
       this.host.jqxComboBox('uncheckIndex', index);
-
    }
    uncheckItem(item: any): void {
       this.host.jqxComboBox('uncheckItem', item);
-
    }
    uncheckAll(): void {
       this.host.jqxComboBox('uncheckAll');
-
    }
    val(value: string): string {
       return this.host.jqxComboBox('val', value);
-
    }
 
    // jqxComboBoxComponent events
-   @Output() OnBindingComplete = new EventEmitter();
-   @Output() OnCheckChange = new EventEmitter();
-   @Output() OnClose = new EventEmitter();
-   @Output() OnChange = new EventEmitter();
-   @Output() OnOpen = new EventEmitter();
-   @Output() OnSelect = new EventEmitter();
-   @Output() OnUnselect = new EventEmitter();
+   @Output() onBindingComplete = new EventEmitter();
+   @Output() onCheckChange = new EventEmitter();
+   @Output() onClose = new EventEmitter();
+   @Output() onChange = new EventEmitter();
+   @Output() onOpen = new EventEmitter();
+   @Output() onSelect = new EventEmitter();
+   @Output() onUnselect = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('bindingComplete', (eventData) => { this.OnBindingComplete.emit(eventData); });
-      this.host.on('checkChange', (eventData) => { this.OnCheckChange.emit(eventData); });
-      this.host.on('close', (eventData) => { this.OnClose.emit(eventData); });
-      this.host.on('change', (eventData) => { this.OnChange.emit(eventData); });
-      this.host.on('open', (eventData) => { this.OnOpen.emit(eventData); });
-      this.host.on('select', (eventData) => { this.OnSelect.emit(eventData); });
-      this.host.on('unselect', (eventData) => { this.OnUnselect.emit(eventData); });
+      this.host.on('bindingComplete', (eventData) => { this.onBindingComplete.emit(eventData); });
+      this.host.on('checkChange', (eventData) => { this.onCheckChange.emit(eventData); });
+      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+      this.host.on('change', (eventData) => { this.onChange.emit(eventData); if(eventData.args) if(eventData.args.item !== null) this.onChangeCallback(eventData.args.item.label); });
+      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
+      this.host.on('select', (eventData) => { this.onSelect.emit(eventData); });
+      this.host.on('unselect', (eventData) => { this.onUnselect.emit(eventData); });
    }
 
 } //jqxComboBoxComponent

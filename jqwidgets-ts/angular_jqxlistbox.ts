@@ -1,7 +1,8 @@
 /// <reference path="jqwidgets.d.ts" />
-import {Component, Input, Output, EventEmitter, ElementRef, forwardRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {noop} from '@angular/http';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+const noop = () => { };
 declare let $: any;
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -16,55 +17,122 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
-export class jqxListBoxComponent implements ControlValueAccessor {
-   @Input('width') containerWidth: any;
-   @Input('height') containerHeight: any;
+export class jqxListBoxComponent implements ControlValueAccessor, OnChanges 
+{
+   @Input('autoHeight') attrAutoHeight;
+   @Input('allowDrag') attrAllowDrag;
+   @Input('allowDrop') attrAllowDrop;
+   @Input('checkboxes') attrCheckboxes;
+   @Input('disabled') attrDisabled;
+   @Input('displayMember') attrDisplayMember;
+   @Input('dropAction') attrDropAction;
+   @Input('dragStart') attrDragStart;
+   @Input('dragEnd') attrDragEnd;
+   @Input('enableHover') attrEnableHover;
+   @Input('enableSelection') attrEnableSelection;
+   @Input('equalItemsWidth') attrEqualItemsWidth;
+   @Input('filterable') attrFilterable;
+   @Input('filterHeight') attrFilterHeight;
+   @Input('filterDelay') attrFilterDelay;
+   @Input('filterPlaceHolder') attrFilterPlaceHolder;
+   @Input('hasThreeStates') attrHasThreeStates;
+   @Input('itemHeight') attrItemHeight;
+   @Input('incrementalSearch') attrIncrementalSearch;
+   @Input('incrementalSearchDelay') attrIncrementalSearchDelay;
+   @Input('multiple') attrMultiple;
+   @Input('multipleextended') attrMultipleextended;
+   @Input('renderer') attrRenderer;
+   @Input('rtl') attrRtl;
+   @Input('selectedIndex') attrSelectedIndex;
+   @Input('source') attrSource;
+   @Input('scrollBarSize') attrScrollBarSize;
+   @Input('searchMode') attrSearchMode;
+   @Input('theme') attrTheme;
+   @Input('valueMember') attrValueMember;
+   @Input('width') attrWidth;
+   @Input('height') attrHeight;
 
-   elementRef: ElementRef;
+   properties: Array<string> = ['autoHeight','allowDrag','allowDrop','checkboxes','disabled','displayMember','dropAction','dragStart','dragEnd','enableHover','enableSelection','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','height','hasThreeStates','itemHeight','incrementalSearch','incrementalSearchDelay','multiple','multipleextended','renderer','rtl','selectedIndex','source','scrollBarSize','searchMode','theme','valueMember','width'];
    host;
+   elementRef: ElementRef;
+   widgetObject:  jqwidgets.jqxListBox;
+
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
-   widgetObject:  jqwidgets.jqxListBox;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
-   isHostReady(): boolean {
-       return (this.host !== undefined && this.host.length == 1);
-   }
+   ngOnChanges(changes) {
+      if (this.host) {
+         for (let i = 0; i < this.properties.length; i++) {
+            let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+            let areEqual: boolean;
 
-   createWidget(options: any): void {
-      if (!this.isHostReady()) {
+            if (this[attrName]) {
+               if (typeof this[attrName] === 'object') {
+                  if (this[attrName] instanceof Array) {
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxListBox(this.properties[i]));
+                  }
+                  if (areEqual) {
+                     return false;
+                  }
 
-         this.host = $(this.elementRef.nativeElement.firstChild);
-         this.__wireEvents__();
-         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxListBox', options);
-         this.__updateRect__();
+                  this.host.jqxListBox(this.properties[i], this[attrName]);
+                  continue;
+               }
 
+               if (this[attrName] !== this.host.jqxListBox(this.properties[i])) {
+                  this.host.jqxListBox(this.properties[i], this[attrName]); 
+               }
+            }
+         }
       }
    }
 
+   arraysEqual(attrValue: any, hostValue: any): boolean {
+      if (attrValue.length != hostValue.length) {
+         return false;
+      }
+      for (let i = 0; i < attrValue.length; i++) {
+         if (attrValue[i] !== hostValue[i]) {
+            return false;
+         }
+      }
+      return true;
+   }
+
+   manageAttributes(): any {
+      let options = {};
+      for (let i = 0; i < this.properties.length; i++) {
+         let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+         if (this[attrName] !== undefined) {
+            options[this.properties[i]] = this[attrName];
+         }
+      }
+      return options;
+   }
+   createWidget(options?: any): void {
+      if (options) {
+         $.extend(options, this.manageAttributes());
+      }
+      else {
+        options = this.manageAttributes();
+      }
+      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.__wireEvents__();
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxListBox', options);
+      this.__updateRect__();
+   }
+
    __updateRect__() : void {
-      this.host.css({width: this.containerWidth, height: this.containerHeight});
+      this.host.css({width: this.attrWidth, height: this.attrHeight});
    }
 
-   get ngValue(): any {
-       if (this.widgetObject)
-           return this.host.jqxListBox('val');
-       return '';
-   }
-
-   set ngValue(value: any) {
-       if (this.widgetObject) {
-           this.host.jqxListBox('val', value)
-           this.onChangeCallback(value);
-       }
-   }
-
-   writengValue(value: any): void {
-       if(value !== this.ngValue && this.widgetObject) {
-            this.host.jqxListBox('val', value)
+   writeValue(value: any): void {
+       if(this.widgetObject) {
+           this.onChangeCallback(this.host.val());
        }
    }
 
@@ -341,186 +409,145 @@ export class jqxListBoxComponent implements ControlValueAccessor {
    // jqxListBoxComponent functions
    addItem(Item: any): boolean {
       return this.host.jqxListBox('addItem', Item);
-
    }
    beginUpdate(): void {
       this.host.jqxListBox('beginUpdate');
-
    }
    clear(): void {
       this.host.jqxListBox('clear');
-
    }
    clearSelection(): void {
       this.host.jqxListBox('clearSelection');
-
    }
    checkIndex(Index: number): void {
       this.host.jqxListBox('checkIndex', Index);
-
    }
    checkItem(Item: any): void {
       this.host.jqxListBox('checkItem', Item);
-
    }
    checkAll(): void {
       this.host.jqxListBox('checkAll');
-
    }
    clearFilter(): void {
       this.host.jqxListBox('clearFilter');
-
    }
    destroy(): void {
       this.host.jqxListBox('destroy');
-
    }
    disableItem(Item: any): void {
       this.host.jqxListBox('disableItem', Item);
-
    }
    disableAt(Index: number): void {
       this.host.jqxListBox('disableAt', Index);
-
    }
    enableItem(Item: any): void {
       this.host.jqxListBox('enableItem', Item);
-
    }
    enableAt(Index: String | Number): void {
       this.host.jqxListBox('enableAt', Index);
-
    }
    ensureVisible(item: any): void {
       this.host.jqxListBox('ensureVisible', item);
-
    }
    endUpdate(): void {
       this.host.jqxListBox('endUpdate');
-
    }
    focus(): void {
       this.host.jqxListBox('focus');
-
    }
    getItems(): Array<any> {
       return this.host.jqxListBox('getItems');
-
    }
    getSelectedItems(): Array<any> {
       return this.host.jqxListBox('getSelectedItems');
-
    }
    getCheckedItems(): Array<any> {
       return this.host.jqxListBox('getCheckedItems');
-
    }
    getItem(Index: number): any {
       return this.host.jqxListBox('getItem', Index);
-
    }
    getItemByValue(Item: any): any {
       return this.host.jqxListBox('getItemByValue', Item);
-
    }
    getSelectedItem(): any {
       return this.host.jqxListBox('getSelectedItem');
-
    }
    getSelectedIndex(): number {
       return this.host.jqxListBox('getSelectedIndex');
-
    }
    insertAt(Item: any, Index: String | Number): void {
       this.host.jqxListBox('insertAt', Item, Index);
-
    }
    invalidate(): void {
       this.host.jqxListBox('invalidate');
-
    }
    indeterminateItem(Item: any): void {
       this.host.jqxListBox('indeterminateItem', Item);
-
    }
    indeterminateIndex(Index: number): void {
       this.host.jqxListBox('indeterminateIndex', Index);
-
    }
    removeItem(Item: any): void {
       this.host.jqxListBox('removeItem', Item);
-
    }
    removeAt(Index: String | Number): void {
       this.host.jqxListBox('removeAt', Index);
-
    }
    render(): void {
       this.host.jqxListBox('render');
-
    }
    refresh(): void {
       this.host.jqxListBox('refresh');
-
    }
    selectItem(Item: any): void {
       this.host.jqxListBox('selectItem', Item);
-
    }
    selectIndex(Index: String | Number): void {
       this.host.jqxListBox('selectIndex', Index);
-
    }
    updateItem(Item: any, Value: String | Number): void {
       this.host.jqxListBox('updateItem', Item, Value);
-
    }
    updateAt(item: any, index: String | Number): void {
       this.host.jqxListBox('updateAt', item, index);
-
    }
    unselectIndex(index: String | Number): void {
       this.host.jqxListBox('unselectIndex', index);
-
    }
    unselectItem(item: any): void {
       this.host.jqxListBox('unselectItem', item);
-
    }
    uncheckIndex(index: String | Number): void {
       this.host.jqxListBox('uncheckIndex', index);
-
    }
    uncheckItem(item: any): void {
       this.host.jqxListBox('uncheckItem', item);
-
    }
    uncheckAll(): void {
       this.host.jqxListBox('uncheckAll');
-
    }
    val(value: String | Number): string {
       return this.host.jqxListBox('val', value);
-
    }
 
    // jqxListBoxComponent events
-   @Output() OnBindingComplete = new EventEmitter();
-   @Output() OnChange = new EventEmitter();
-   @Output() OnCheckChange = new EventEmitter();
-   @Output() OnDragStart = new EventEmitter();
-   @Output() OnDragEnd = new EventEmitter();
-   @Output() OnSelect = new EventEmitter();
-   @Output() OnUnselect = new EventEmitter();
+   @Output() onBindingComplete = new EventEmitter();
+   @Output() onChange = new EventEmitter();
+   @Output() onCheckChange = new EventEmitter();
+   @Output() onDragStart = new EventEmitter();
+   @Output() onDragEnd = new EventEmitter();
+   @Output() onSelect = new EventEmitter();
+   @Output() onUnselect = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('bindingComplete', (eventData) => { this.OnBindingComplete.emit(eventData); });
-      this.host.on('change', (eventData) => { this.OnChange.emit(eventData); });
-      this.host.on('checkChange', (eventData) => { this.OnCheckChange.emit(eventData); });
-      this.host.on('dragStart', (eventData) => { this.OnDragStart.emit(eventData); });
-      this.host.on('dragEnd', (eventData) => { this.OnDragEnd.emit(eventData); });
-      this.host.on('select', (eventData) => { this.OnSelect.emit(eventData); });
-      this.host.on('unselect', (eventData) => { this.OnUnselect.emit(eventData); });
+      this.host.on('bindingComplete', (eventData) => { this.onBindingComplete.emit(eventData); });
+      this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(eventData.args.item.label); });
+      this.host.on('checkChange', (eventData) => { this.onCheckChange.emit(eventData); });
+      this.host.on('dragStart', (eventData) => { this.onDragStart.emit(eventData); });
+      this.host.on('dragEnd', (eventData) => { this.onDragEnd.emit(eventData); });
+      this.host.on('select', (eventData) => { this.onSelect.emit(eventData); });
+      this.host.on('unselect', (eventData) => { this.onUnselect.emit(eventData); });
    }
 
 } //jqxListBoxComponent
