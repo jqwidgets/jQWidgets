@@ -10,12 +10,13 @@ jQWidgets represents a framework based on Javascript for building web-based appl
 
 Highlights
 ---------
-* Feature complete UI widgets.
+* Feature complete User Interface widgets.
 * Works on PC, Touch and Mobile Devices.
 * Rich functionality and great performance.
-* Easy PHP & ASP .NET integration and how-to demos.
 * React Javascript Library User Interface Components
 * Angular and AngularJS 1.x Directives for every widget.
+* ASP .NET Core UI Components
+* Easy PHP & ASP .NET integration and how-to demos.
 * Typescript Definitions for all widgets.
 * PhoneGap Integration.
 * Java Integration.
@@ -36,13 +37,6 @@ Works across devices and browsers
 ---------
 
 jQWidgets takes the JavaScript & HTML UI development to a new level. It is platform independent, cross-browser compatible and works on PC and mobile devices. Don’t spend time testing on different devices and browsers. Use a reliable, CSS compliant JavaScript library based jQuery, HTML5 and CSS3.The product supports all major desktop and mobile web browsers - Internet Explorer 7.0+, Firefox 2.0+, Safari 3.0+, Opera 9.0+, Google Chrome, IE Mobile, Android, Opera Mini, Mobile Safari(IPhone, IPad).
-
-jQuery dependency and compatibility
----------
-
-jQWidgets has a dependency on the jQuery library. jQWidgets is tested and compatible with all jQuery versions from jQuery 1.7.0 to jQuery 2.1.1. We are committed to supporting all new versions of jQuery and ensuring the highest level quality. At present, we highly recommend that you use jQuery 1.11.1. This version is stable, high quality, and works well with a large number of popular devices and browsers. It is ideal for enterprise web applications and Internet web sites where the visitors use a mix of mobile devices, PCs, new and older browsers.
-
-Important: jQuery team has decided that starting from jQuery version 1.9.0 the project will evolve in two parallel tracks. Versions 1.9.* will support older browsers while versions starting from 2.* will not. This means that if you are looking for the highest possible compatibility across the broadest set of devices and browsers, you should stick with versions earlier than 2.0.0 for some time. On the other hand, if you are using jQWidgets in a mobile application or building a solution where certain older browsers will not be required, feel free to use jQWidgets along with jQuery 2.0.0. It is important to emphasize that the pros and cons of maintaining compatibility with certain older browsers is always changing. If you want to make a good, well informed decision, we recommend you to check the recent browser usage statistics and analyze the browsers and devices used by your website’s visitors.
 
 Licensing
 ---------
@@ -67,7 +61,10 @@ For more information, please visit http://www.jqwidgets.com/license/.
 
 More
 -
-* jQWidgets Demos: http://www.jqwidgets.com/jquery-widgets-demo/.
-* Documentation: http://www.jqwidgets.com/jquery-widgets-documentation/.
+* React Demos: http://www.jqwidgets.com/react/
+* Angular Demos: http://www.jqwidgets.com/angular/
+* ASP .NET Core Demos: http://www.jqwidgets.com/asp.net-core-mvc-tag-helpers/
+* Showcase Demos: http://www.jqwidgets.com/jquery-widgets-demo/showcasedemos/
+* Javascript/jQuery Demos: http://www.jqwidgets.com/jquery-widgets-demo/.
 * Services: http://www.jqwidgets.com/services/.
 * Community Forums: http://www.jqwidgets.com/community/.
