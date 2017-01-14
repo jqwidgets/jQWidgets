@@ -827,7 +827,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 /*jqxProgresBar Style*/
 .jqx-progressbar
 {
-	position: relative;
+    position: relative;
     overflow: hidden;
     outline: none;
     border: 1px solid transparent;
@@ -6762,4 +6762,40 @@ ol li .jqx-listmenu-item-label:before
     color: #333 !important;
     text-shadow: none !important;
     border-color:  #f5f5f5 !important;
+}
+.jqx-element {
+    overflow: hidden;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c7c7c7;
+}
+.jqx-element-no-border {
+    border-width:0px;
+}
+.jqx-element-container {
+    border-width: 0px !important;
+}
+.jqx-resize-trigger, .jqx-resize-trigger-shrink {
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    transition: 0s
+}
+.jqx-resize-trigger-shrink {
+    width: 200%; 
+    height: 200%;
+}
+.jqx-resize-trigger-container {
+    display: block;
+    visibility:hidden;
+    position: relative;
+    top: -100%; 
+    left: 0; 
+    min-height:0.1px;
+    height: 100%; 
+    width: 100%; 
+    overflow: hidden; 
+    pointer-events: none; 
+    z-index: -1;
+    visibility:hidden;
 }
