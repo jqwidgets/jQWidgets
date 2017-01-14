@@ -1,0 +1,37 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Splitter Example";
+}
+<label>ASP .NET Core MVC Splitter Tag Helper Example</label><br/><br/>
+<jqx-splitter theme="@ViewData["theme"]" width="800" height="400">
+    <jqx-splitter-panel>
+        <jqx-tabs theme="@ViewData["theme"]" style="border:none;" width="100%" height="100%">
+            <jqx-tab-panel>
+                <jqx-tab-panel-header style="margin-left:30px;">Tab 1</jqx-tab-panel-header>
+                <jqx-tab-panel-body>Content 1</jqx-tab-panel-body>
+            </jqx-tab-panel>
+            <jqx-tab-panel>
+                <jqx-tab-panel-header>Tab 2</jqx-tab-panel-header>
+                <jqx-tab-panel-body>Content 2</jqx-tab-panel-body>
+            </jqx-tab-panel>
+        </jqx-tabs>
+    </jqx-splitter-panel>
+    <jqx-splitter-panel>
+        <jqx-tree style="border:none;" height="100%" width="100%">
+            <jqx-tree-items>
+                <jqx-tree-item>Item 1</jqx-tree-item>
+                <jqx-tree-item>Item 2</jqx-tree-item>
+                <jqx-tree-item>Item 3
+                    <jqx-tree-items>
+                        <jqx-tree-item>Sub Item 3.1</jqx-tree-item>
+                        <jqx-tree-item>Sub Item 3.2</jqx-tree-item>
+                        <jqx-tree-item>Sub Item 3.3</jqx-tree-item>
+            </jqx-tree-items>
+                </jqx-tree-item>
+                <jqx-tree-item>Item 4</jqx-tree-item>
+                <jqx-tree-item>Item 5</jqx-tree-item>
+     </jqx-tree-items>
+        </jqx-tree>
+    </jqx-splitter-panel>
+</jqx-splitter>

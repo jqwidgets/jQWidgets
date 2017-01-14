@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+  <head>
+    <title id='Description'>DataTable Filtering example built with TypeScript.</title>
+    <meta name="description" content="This Filtering typescript demo allows you to display a subset of the records in the data source that meet a particular criteria. When filtering is applied to a DataTable, displayed records are restricted to those that meet the current filter criteria.
+      You can filter data against single or multiple columns. End-users can apply filtering by selecting a column's value from the filter dropdown, typing a filter value into the search field and clicking the search button." />
+
+    <!-- 1. Load references -->
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdata.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script src="../../../jqwidgets/jqxdatatable.js"></script>
+    <script src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script src="typescript-datatable-filtering.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createDataTableFiltering('#table');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+
+      <div class="example-description">
+        DataTable Filtering example built with TypeScript.
+      </div>
+      <div id="table"></div>
+  </body>
+
+</html>

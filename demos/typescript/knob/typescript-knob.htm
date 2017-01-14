@@ -1,0 +1,56 @@
+﻿<html>
+<head>
+    <title id='Description'>Knob widget. TypeScript example.</title>
+    <meta name="description" content="Knob widget typescript example" />
+
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdata.js"></script>
+    <script src="../../../jqwidgets/jqxdraw.js"></script>
+    <script src="../../../jqwidgets/jqxknob.js"></script>
+    <script src="../../../jqwidgets/jqxnumberinput.js"></script>
+    <script src="typescript-knob.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <style type="text/css">
+        #container {
+            position: relative;
+        }
+
+        .inputField {
+            left: 110px;
+            top: 323px;
+            position: absolute;
+            background: transparent;
+            border: none;
+        }
+
+        text.jqx-knob-label {
+            font-size: 20px;
+        }
+
+        .inputField .jqx-input-content {
+            background: transparent;
+            border:none;
+            font-size: 20px;
+            color: grey;
+        }
+        .jqx-input {
+            border: none;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            createKnob('#container');
+        });
+    </script>
+</head>
+<body>
+    <div class="example-description">
+      Knob widget. TypeScript example.
+    </div>
+
+    <div id="container" style="width: 400px; height: 400px;"></div>
+</body>
+</html>

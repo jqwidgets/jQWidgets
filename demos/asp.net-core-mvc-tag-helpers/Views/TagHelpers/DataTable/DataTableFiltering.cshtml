@@ -1,0 +1,19 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC DataTable Filtering Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<label>ASP .NET Core MVC DataTable Filtering Example</label><br/><br/>
+<jqx-datatable id="dataTable" altrows="true" filterable="true" pageable="true" sourceId="@employee.ID" theme="@ViewData["Theme"]" sortable="true" width="850" source="Model">
+    <jqx-datatable-columns>
+        <jqx-datatable-column dataField-for="@(employee.FirstName)" width="150" text="First Name"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.LastName)" width="150" text="Last Name"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.ProductName)" width="250" text="Product Name"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Price)" width="100" text="Price" cellsFormat="c2" cellsalign="HorizontalAlignment.Right"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Quantity)" width="100" text="Quantity" cellsAlign="HorizontalAlignment.Right"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Total)" width="100" text="Total" cellsFormat="c2" cellsAlign="HorizontalAlignment.Right"></jqx-datatable-column>
+ </jqx-datatable-columns>
+</jqx-datatable>

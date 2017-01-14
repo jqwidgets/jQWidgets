@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+  <head>
+    <meta name="keywords" content="jqxDragDrop, jQuery Draggable, jQWidgets, Default Functionality" />
+    <meta name="description" content="The DragDrop is a plugin which will make any DOM element draggable. It can be used in
+cobination with many widgets like jqxTree, jqxGrid, jqxListBox and etc." />
+    <title id='Description'>Drag a T-Shirt from the left area and drop it into the 'Shopping Cart' table. TypeScript example.</title>
+
+    <!-- 1. Load references -->
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script src="../../../jqwidgets/jqxpanel.js"></script>
+    <script src="../../../jqwidgets/jqxdragdrop.js"></script>
+    <script src="typescript-dragdrop.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <style type="text/css">
+    .row
+    {
+        padding: 1px;
+    }
+    .draggable
+    {
+        border: 1px solid #bbb;
+        background-color: #C9ECFF;
+        width: 100px;
+        height: 100px;
+        left: 30px;
+        top: 50px;
+        padding: 5px;
+        z-index: 2;
+    }
+    #draggable-parent
+    {
+        background-color: #eeffee;
+        width: 350px;
+        height: 350px;
+        text-align: center;
+        border: 1px solid #eee;
+        float: left;
+    }
+    .main-container
+    {
+        width: 650px;
+        z-index: 0;
+    }
+    .events
+    {
+        float: right;
+        padding: 10px;
+        font-family: Tahoma;
+        font-size: 13px;
+    }
+    .label
+    {
+        position: relative;
+        font-family: Verdana;
+        font-size: 11px;
+        color: #000;
+    }
+    .drop-target
+    {
+        background-color: #FBFFB5;
+        width: 150px;
+        height: 150px;
+        border: 1px solid #ddd;
+        margin-left: 190px;
+        margin-top: 70px;
+        z-index: 1;
+    }
+    </style>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createDragDrop('#draggable', '#events');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+      <div class="example-description">
+        Drag a T-Shirt from the left area and drop it into the 'Shopping Cart' table. TypeScript example.
+      </div>
+      <div class="main-container">
+          <div id="draggable-parent">
+              <div id="draggable" class="draggable">
+                  <div class="label">I can be dragged only inside my parent</div>
+              </div>
+              <div class="drop-target"><div class="label">I'm a drop target</div></div>
+          </div>
+          <div id="events" class="events">
+          </div>
+      </div>
+  </body>
+
+</html>

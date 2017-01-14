@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="keywords" content="jQuery Button, CheckBox, Toggle Button, Repeat Button, Radio Button, Link Button, Button" />
+    <meta name="description" content="With the jqxRadioButton, users make a choice among a set of mutually exclusive, related options. Users can choose one and only one option." />
+    <title id='Description'>
+        With the jqxRadioButton, users make a choice among a set of
+        mutually exclusive, related options. Users can choose one and only one option. TypeScript example.
+    </title>
+
+    <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxradiobutton.js"></script>
+    <script src="typescript-radiobutton.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+            $(document).ready(function () {
+                createRadioButtons('#jqxRadioButton', '#jqxRadioButton2', '#jqxRadioButton3', '#jqxRadioButton4', 'events');
+            });
+    </script>
+
+</head>
+
+<!-- 3. Display the application -->
+<body>
+    <div class="example-description">
+      With the jqxRadioButton, users make a choice among a set of
+      mutually exclusive, related options. Users can choose one and only one option. TypeScript example.
+    </div>
+
+    <div id='jqxWidget' style='font-family: Verdana Arial; font-size: 12px; width: 400px;'>
+        <h3>
+            House Contract
+        </h3>
+        <div style='margin-top: 10px;' id='jqxRadioButton'>
+            12 Months Contract
+        </div>
+        <div style='margin-top: 10px;' id='jqxRadioButton2'>
+            <span>6 Months Contract</span>
+        </div>
+        <div style='margin-top: 10px;' id='jqxRadioButton3'>
+            <span>3 Months Contract</span>
+        </div>
+        <div style='margin-top: 10px;' id='jqxRadioButton4'>
+            <span>1 Month Contract</span>
+        </div>
+        <div style='margin-top: 10px;'>
+            <div>
+                Events:
+            </div>
+            <div id='events'>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

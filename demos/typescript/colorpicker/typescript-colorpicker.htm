@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title id='Description'>
+        The ColorPicker widget allows you to easily pick a color. TypeScript example.
+    </title>
+   <meta name="description" content="ColorPicker widget example built with typescript. ColorPicker typescript definitions enables you to easily add a color picker to your web page" />
+
+    <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxcolorpicker.js"></script>
+    <script src="../../../jqwidgets/jqxradiobutton.js"></script>
+    <script src="../../../jqwidgets/jqxdropdownbutton.js"></script>
+    <script src="../../../jqwidgets/jqxscrollview.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="typescript-colorpicker.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <style type="text/css">
+        .photo {
+            width: 500px;
+            height: 350px;
+            background-color: #000;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .gallery {
+            border: 15px solid #ffaabb;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+    </style>
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createColorPicker('#colorPicker', '#photoGallery', '#dropDownButton');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+
+        <div class="example-description">
+          The ColorPicker widget allows you to easily pick a color. TypeScript example.
+        </div>
+
+        <div class="gallery" id="photoGallery">
+            <div>
+                <div class="photo" style="background-image: url(../../../images/imageNature1.jpg)"></div>
+            </div>
+            <div>
+                <div class="photo" style="background-image: url(../../../images/imageNature2.jpg)"></div>
+            </div>
+            <div>
+                <div class="photo" style="background-image: url(../../../images/imageNature3.jpg)"></div>
+            </div>
+            <div>
+                <div class="photo" style="background-image: url(../../../images/imageNature4.jpg)"></div>
+            </div>
+            <div>
+                <div class="photo" style="background-image: url(../../../images/imageNature5.jpg)"></div>
+            </div>
+        </div>
+
+        <label style="margin-left: 5px; font-size: 12px; font-family: Verdana;">Select Frame color</label>
+        <br />
+        <div style="margin: 3px; float: left;" id="dropDownButton">
+            <div style="padding: 3px;">
+                <div id="colorPicker">
+                </div>
+            </div>
+        </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title id="Description">
+        This typescript demo shows the default functionality of the ComplexInput widget.
+        This Input widget can be used for inputting complex numbers and getting their real and
+        imaginary parts.
+    </title>
+    <meta name="description" content="This demo shows the default functionality of the ComplexInput. This widget can be used for inputting complex numbers and getting their real and imaginary parts." />
+
+    <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="../../../jqwidgets/jqxcomplexinput.js"></script>
+    <script src="typescript-complexinput.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createComplexInput('#container', '#getReal', '#getImaginary');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+      <div class="example-description">
+        This typescript demo shows the default functionality of the ComplexInput widget.
+        This Input widget can be used for inputting complex numbers and getting their real and
+        imaginary parts.
+      </div>
+      <input id="container" type="text" /><br/>
+      <div style="margin-top: 20px;">
+          <button id="getReal"> Get real part </button>
+          <button id="getImaginary"> Get imaginary part </button>
+      </div>
+</body>
+
+</html>

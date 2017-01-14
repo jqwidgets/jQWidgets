@@ -1,0 +1,36 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Grid Server Editing, Paging, Sorting & Filtering Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<script>
+    function createEditor(row, column, editor)
+    {
+        var source = {
+            url: "@Url.Action("GetEmployees","TagHelpers")",
+            dataType: "json",
+            type: "POST",
+            dataFields: [
+                {name: "ProductName"}
+            ],
+            uniqueDataFields: ["ProductName"],
+            async: false
+        }
+        var adapter = new $.jqx.dataAdapter(source, { autoSort: true });
+        editor.jqxDropDownList({ source: adapter });
+    }
+</script>
+<label>ASP .NET Core MVC Grid Server Edit Paging Sorting and Filtering Example</label><br/><br/>
+<jqx-grid id="grid" serverProcessing="true" altrows="true" filterable="true" pageable="true" editable="true" autoheight="true" sourceId-for="@employee.ID" theme="@ViewData["Theme"]" sortable="true" width="850" sourceRoot="Employees" sourceTotalRecords="TotalRecords" edit="@Url.Action("Edit","TagHelpers")" sourceUrl="@Url.Action("GetPageData","TagHelpers")" sourceModel="employee">
+    <jqx-grid-columns>
+        <jqx-grid-column datafield-for="@(employee.FirstName)" width="150" text="First Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.LastName)" width="150" text="Last Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.ProductName)" columntype="dropdownlist" createeditor="createEditor()" width="250" text="Product Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Price)" width="100" text="Price" cellsformat="c2" cellsalign="HorizontalAlignment.Right"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Quantity)" width="100" text="Quantity" cellsalign="HorizontalAlignment.Right"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Total)" width="100" text="Total" cellsformat="c2" cellsalign="HorizontalAlignment.Right"></jqx-grid-column>
+ </jqx-grid-columns>
+</jqx-grid>

@@ -1,0 +1,68 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Grid CRUD Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<label>ASP .NET Core MVC Grid Edit Example</label><br/><br/>
+<jqx-grid id="grid" altrows="true" pageable="true" autoheight="true" editmode="selectedrow" sourceId-for="@employee.ID" instance="gridInstance()" theme="@ViewData["Theme"]" create="@Url.Action("Add","TagHelpers")" delete="@Url.Action("Delete","TagHelpers")" edit="@Url.Action("Edit","TagHelpers")" sortable="true" width="600" source="Model"> 
+    <jqx-grid-columns>
+        <jqx-grid-column datafield-for="@(employee.ID)" width="25%" text="ID"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.FirstName)" width="25%" text="First Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.LastName)" width="25%" text="Last Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.ProductName)" width="25%" text="Product Name"></jqx-grid-column>
+  </jqx-grid-columns>
+</jqx-grid>
+<div style="margin-top:30px;">
+    <label>Add/Delete/Update</label>
+    <table>
+        <tr>
+            <td style="padding:10px;"  align="right">First Name:</td>
+            <td><jqx-input height="25" id="firstName"></jqx-input></td>
+        </tr>
+        <tr>
+            <td style="padding:10px;"  align="right">Last Name:</td>
+            <td><jqx-input height="25" id="lastName"></jqx-input></td>
+        </tr>
+        <tr>
+            <td style="padding:10px;"  align="right">Product Name:</td>
+            <td><jqx-input height="25" id="productName"></jqx-input></td>
+        </tr>
+    </table>
+</div>
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="addRow()">Add New Row</jqx-button>
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="deleteRow()">Delete Selected Row</jqx-button>
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="updateRow()">Update Selected Row</jqx-button>
+<script>
+    var jqxGridInstance = {};
+    function addRow() {
+        jqxGridInstance.addrow(null, { FirstName: $("#firstName").val(), LastName: $("#lastName").val(), ProductName: $("#productName").val() });
+    }
+
+    function deleteRow() {
+        var selectedRow = jqxGridInstance.getselectedrowindex();
+        if (selectedRow < 0)
+            return;
+        var rowID = jqxGridInstance.getrowid(selectedRow);
+        if (rowID != null)
+        {
+            jqxGridInstance.deleterow(rowID);
+        }
+    }
+
+    function updateRow() {
+        var selectedRow = jqxGridInstance.getselectedrowindex();
+        if (selectedRow < 0)
+            return;
+        var rowID = jqxGridInstance.getrowid(selectedRow);
+        if (rowID != null) {
+            jqxGridInstance.updaterow(rowID, { FirstName: $("#firstName").val(), LastName: $("#lastName").val(), ProductName: $("#productName").val() });
+        }
+    }
+
+    function gridInstance(instance) {
+        jqxGridInstance = instance;
+    }
+</script>

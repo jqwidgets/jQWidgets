@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "ASP .NET MVC MaskedInput Example";
+}
+<label>ASP .NET Core MVC Masked Input Example</label><br/><br/>
+    <div style='margin-top: 10px;'>
+        Numeric
+    </div>
+    <jqx-maskedinput width="250" style='margin-top: 3px;' id='numericInput'></jqx-maskedinput>
+    <div style='margin-top: 10px;'>
+        Zip Code
+    </div>
+    <jqx-maskedinput width="250" mask="#####-####" style='margin-top: 3px;' id='zipCodeInput'></jqx-maskedinput>
+    <div style='margin-top: 10px;'>
+        SSN
+    </div>
+    <jqx-maskedinput width="250" mask="###-##-####" style='margin-top: 3px;' id='ssnInput'></jqx-maskedinput>
+    <div style='margin-top: 10px;'>
+        Phone Number
+    </div>
+    <jqx-maskedinput width="250" mask="(###)###-####" style='margin-top: 3px;' id='phoneInput'> </jqx-maskedinput>
+    <div style='margin-top: 10px;'>
+        Disabled
+    </div>
+    <jqx-maskedinput width="250" disabled="true"  style='margin-top: 3px;' id='disabledInput'></jqx-maskedinput>

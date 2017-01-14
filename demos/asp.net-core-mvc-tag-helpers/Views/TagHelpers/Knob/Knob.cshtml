@@ -1,0 +1,37 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Knob Example";
+    KnobMarks marks = new KnobMarks()
+    {
+        ColorProgress = new KnobColor() { Color = "#00a4e1", Border = "#00a4e1" },
+        ColorRemaining = new KnobColor() { Color = "#grey", Border = "#grey" },
+        Type = "line",
+        Offset = "71%",
+        Thickness = 3,
+        Size = "6%",
+        MajorSize = "9%",
+        MajorInterval = 10,
+        MinorInterval = 2
+    };
+    KnobStyle style = new KnobStyle()
+    {
+        Stroke = "#dfe3e9",
+        StrokeWidth = 3,
+        Fill = new KnobGradientFill() { Color = "#fefefe", GradientStops = new List<string>() { "[0, 1]", "[50, 0.9]", "[100, 1]" } }
+    };
+
+    KnobLabels labels = new KnobLabels()
+    {
+        Offset = "88%",
+        Step = 10
+    };
+    KnobProgressBar progressBar = new KnobProgressBar()
+    {
+        Style = new KnobStyle() { Fill = new KnobGradientFill() { Color = "#00a4e1" }, Stroke = "grey" },
+        Size = "9%",
+        Offset = "60%",
+        Background = new KnobStyle() { Fill = new KnobGradientFill() { Color = "gray" }, Stroke = "gray" }
+    };
+}
+<label>ASP .NET Core MVC Knob Tag Helper Example</label><br/><br/>
+<jqx-knob min="0" max="100" value="60" startAngle="120" endAngle="420" rotation="clockwise"  progressBar="progressBar" labels="labels" style="style" marks="marks"></jqx-knob>

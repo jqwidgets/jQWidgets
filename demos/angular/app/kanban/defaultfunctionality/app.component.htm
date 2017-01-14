@@ -1,0 +1,27 @@
+﻿<jqxSplitter [width]='700'  [height]='600'  [panels]='mainSplitterPanels'>
+
+    <jqxKanban id="kanban1" #first
+        [width]='"100%"' [height]='"100%"' [source]='dataAdapter' 
+        [columns]='kanbanOneColumns' [connectWith]='"#kanban2, #kanban3"'
+        [resources]='resourcesAdapterFunc()' [columnRenderer]='kanbanOneColumnRenderer'>
+    </jqxKanban>
+
+    <jqxSplitter
+        [width]='"100%"'  [height]='"100%"' 
+        [orientation]='"horizontal"' [panels]='rightSplitterPanels'>
+
+        <jqxKanban id="kanban2" #second
+            [width]='"100%"' [height]='"100%"' [source]='dataAdapter2' 
+            [columns]='kanbanTwoColumns' [connectWith]='"#kanban1, #kanban3"'
+            [resources]='resourcesAdapterFunc()' [columnRenderer]='kanbanTwoColumnRenderer'>          
+        </jqxKanban>
+
+        <jqxKanban id="kanban3" #third
+            [width]='"100%"' [height]='"100%"' [source]='dataAdapter3' 
+            [columns]='kanbanThreeColumns' [connectWith]='"#kanban2, #kanban1"'
+            [resources]='resourcesAdapterFunc()' [columnRenderer]='kanbanThreeColumnRenderer'>           
+        </jqxKanban>
+
+    </jqxSplitter>
+
+</jqxSplitter>

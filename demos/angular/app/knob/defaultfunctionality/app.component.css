@@ -1,0 +1,22 @@
+﻿#container {
+    position: relative;
+}
+
+.inputField {
+    left: 178px;
+    top: 331px;
+    position: absolute;
+    background: transparent;
+    border: none;
+}
+
+text.jqx-knob-label {
+    font-size: 20px;
+}
+
+.inputField .jqx-input-content {
+    border:none;
+    background: transparent;
+    font-size: 20px;
+    color: grey;
+}

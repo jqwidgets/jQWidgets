@@ -1,0 +1,23 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC ScrollBar Example";
+
+    List<KeyValuePair<string, object>> settings = new List<KeyValuePair<string, object>>()
+    {
+        new KeyValuePair<string, object>("width", 450),
+        new KeyValuePair<string, object>("height", 18),
+        new KeyValuePair<string, object>("min", 0),
+        new KeyValuePair<string, object>("max", 10000),
+        new KeyValuePair<string, object>("theme", ViewData["Theme"])
+    };
+}
+<script>
+    function valueChanged(event) {
+        $("#log").html("Horizontal (" + parseInt(event.currentValue) + ")");
+    }
+</script>
+<label>ASP .NET Core MVC ScrollBar Tag Helper Example</label><br/><br/>
+<jqx-scrollbar on-valueChanged="valueChanged()" settings="settings" ></jqx-scrollbar>
+<br /><br />
+<div id="log"></div>

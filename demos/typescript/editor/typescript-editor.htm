@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title id='Description'>Editor represents a ready-for-use HTML editor which can simplify web content creation or be a replacement of your HTML Text Areas. TypeScript example.</title>
+    <meta name="description" content="Rich Text Editor demonstration with Typescript definitions'" />
+
+    <!-- 1. Load references -->
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script src="../../../jqwidgets/jqxdropdownbutton.js"></script>
+    <script src="../../../jqwidgets/jqxcolorpicker.js"></script>
+    <script src="../../../jqwidgets/jqxwindow.js"></script>
+    <script src="../../../jqwidgets/jqxeditor.js"></script>
+    <script src="../../../jqwidgets/jqxtooltip.js"></script>
+    <script src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script src="typescript-editor.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createEditor('#editor');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+      <div class="example-description">
+          Editor represents a ready-for-use HTML editor which can simplify web content creation or be a replacement of your HTML Text Areas. TypeScript example.
+      </div>
+      <textarea id="editor">
+          &lt;b&gt;jqxEditor&lt;/b&gt; is a HTML text editor designed to simplify web content creation. You can use it as a replacement of your Textarea or you can create it from a DIV element.
+          &lt;br /&gt;
+          &lt;br /&gt;
+          Features include:
+          &lt;br /&gt;
+          &lt;ul&gt;
+          &lt;li&gt;Text formatting&lt;/li&gt;
+          &lt;li&gt;Text alignment&lt;/li&gt;
+          &lt;li&gt;Hyperlink dialog&lt;/li&gt;
+          &lt;li&gt;Image dialog&lt;/li&gt;
+          &lt;li&gt;Bulleted list&lt;/li&gt;
+          &lt;li&gt;Numbered list&lt;/li&gt;
+          &lt;/ul&gt;
+      </textarea>
+  </body>
+
+</html>

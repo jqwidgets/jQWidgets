@@ -1,0 +1,9 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.TreeItem>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Tree Example";
+}
+
+<label>ASP .NET Core MVC Tree Tag Helper Example</label><br/><br/>
+<jqx-tree theme="@ViewData["Theme"]" id="solutionExplorerTree" width="200" itemsMember="Items" displayMember="Label" source="Model"></jqx-tree>

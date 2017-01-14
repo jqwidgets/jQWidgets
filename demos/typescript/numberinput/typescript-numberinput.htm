@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="keywords" content="jQuery Input, Number Input, Currency Input, Percentage Input, Floating-Point Input, Decimal Input, jqxNumberInput" />
+    <meta name="description" content="The jqxNumberInput widget allows you to edit currency, percentages and any type of numeric data. The edited data can
+    be presented in various formats. Other built-in capabilities are customizable number of digits and decimal digits, currency symbol's string and position, group and decimal separator character" />
+    <title id='Description'>
+        The jqxNumberInput widget allows you to edit currency, percentages and any type of numeric data. The edited data can
+        be presented in various formats. Other built-in capabilities are customizable number of digits and decimal digits, currency symbol's string and position, group and decimal separator character. TypeScript example.
+    </title>
+
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdata.js"></script>
+    <script src="../../../jqwidgets/jqxnumberinput.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="typescript-numberinput.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Create diverse NumberInputs
+            numericInput('#numericInput');
+
+            percentageInput('#percentageInput');
+
+            currencyInput('#currencyInput');
+
+            disabledInput('#disabledInput');
+        });
+    </script>
+</head>
+<body>
+    <div class="example-description">
+      The jqxNumberInput widget allows you to edit currency, percentages and any type of numeric data. The edited data can
+      be presented in various formats. Other built-in capabilities are customizable number of digits and decimal digits, currency symbol's string and position, group and decimal separator character. TypeScript example.
+    </div>
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+        <div style='margin-top: 10px;'>
+            Number
+        </div>
+        <div style='margin-top: 3px;' id='numericInput'>
+        </div>
+        <div style='margin-top: 10px;'>
+            Percentage
+        </div>
+        <div style='margin-top: 3px;' id='percentageInput'>
+        </div>
+        <div style='margin-top: 10px;'>
+            Currency
+        </div>
+        <div style='margin-top: 3px;' id='currencyInput'>
+        </div>
+        <div style='margin-top: 10px;'>
+            Disabled
+        </div>
+        <div style='margin-top: 3px;' id='disabledInput'>
+        </div>
+    </div>
+</body>
+</html>

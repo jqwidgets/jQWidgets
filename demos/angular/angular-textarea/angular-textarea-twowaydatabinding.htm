@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title id="Description">
+        The sample illustrates the basic functionality of the jqxTextArea
+        widget. The jqxTextArea widget provides suggestions while you type into the field.
+        The datasource is a simple JavaScript array, provided to the widget using the "source"
+        property. Angular2 demo
+    </title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <style>
+        body, html {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- jQWidgets -->
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxtextarea.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+
+    
+    <script src="../node_modules/typescript/lib/typescript.js"></script>
+    <script src="../node_modules/core-js/client/shim.min.js"></script>
+    <script src="../node_modules/zone.js/dist/zone.js"></script>
+    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- Configure SystemJS -->
+    <script src="../systemjs.config.js"></script>
+    <script>
+        System.import('../app/textarea/twowaydatabinding/main').catch( (err) => { console.error(err); });
+    </script>
+
+</head>
+
+<!-- Display the application -->
+<body>
+    <div class="example-description">
+        Angular Text Area Example.
+    </div>
+    <my-app></my-app>
+</body>
+</html>

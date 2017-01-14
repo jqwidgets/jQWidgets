@@ -1,0 +1,19 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC RangeSelector Example";
+
+    List<KeyValuePair<string, object>> settings = new List<KeyValuePair<string, object>>()
+    {
+        new KeyValuePair<string, object>("width", 750),
+        new KeyValuePair<string, object>("height", 100),
+        new KeyValuePair<string, object>("min", 0),
+        new KeyValuePair<string, object>("minorTicksInterval", 1),
+        new KeyValuePair<string, object>("majorTicksInterval", 10),
+        new KeyValuePair<string, object>("max", 200),
+        new KeyValuePair<string, object>("range", "{ from: 10, to: 50 }"),
+        new KeyValuePair<string, object>("theme", ViewData["Theme"])
+    };
+}
+<label>ASP .NET Core MVC Range Selector Tag Helper Example</label><br/><br/>
+<jqx-rangeselector settings="settings" ></jqx-rangeselector>

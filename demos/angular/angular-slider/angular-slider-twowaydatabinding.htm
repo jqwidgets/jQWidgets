@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="keywords" content="jQuery Slider, Slider Widget, RangeSlider" />
+    <meta name="description" content="jqxSlider represents a flexible jQuery Slider that lets the user
+          select from a range of values by moving a thumb along a track. The widget is completely customizable
+          in terms of appearance and offers numerous configuration options like mouse wheel and keyboard support,
+          smooth or step-based slider and support for range sliders. " />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title id='Description'>jqxSlider represents a flexible jQuery Slider that lets the user select from a range of
+        values by moving a thumb along a track. The widget is completely customizable in terms of appearance and offers
+        numerous configuration options like mouse wheel and keyboard support, smooth or step-based slider and support for range sliders.Angular2 demo"</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <style>
+        body, html {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- jQWidgets -->
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxslider.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+
+    
+    <script src="../node_modules/typescript/lib/typescript.js"></script>
+    <script src="../node_modules/core-js/client/shim.min.js"></script>
+    <script src="../node_modules/zone.js/dist/zone.js"></script>
+    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- Configure SystemJS -->
+    <script src="../systemjs.config.js"></script>
+    <script>
+        System.import('../app/slider/twowaydatabinding/main').catch((err) => { console.error(err); });
+    </script>
+
+</head>
+
+<!-- Display the application -->
+<body>
+    <div class="example-description">
+        Angular Slider Example.
+    </div>
+    <my-app></my-app>
+</body>
+
+</html>

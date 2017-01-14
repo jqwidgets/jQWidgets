@@ -1,0 +1,20 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.Employee>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Grid Example";
+}
+<label>ASP .NET Core MVC Grid Tag Helper Example</label><br/><br/>
+<jqx-grid theme="@ViewData["Theme"]" sortable="true" filterable="true" autoheight="true" width="850" source="Model"> 
+    <jqx-grid-columns>
+        <jqx-grid-column columngroup="name" datafield="FirstName" width="100" text="First Name"></jqx-grid-column>
+        <jqx-grid-column columngroup="name" datafield="LastName" width="100" text="Last Name"></jqx-grid-column>
+        <jqx-grid-column datafield="Title" width="150"></jqx-grid-column>
+        <jqx-grid-column datafield="Address" width="200"></jqx-grid-column> 
+        <jqx-grid-column datafield="City" width="150"></jqx-grid-column>
+        <jqx-grid-column datafield="Country"></jqx-grid-column>
+  </jqx-grid-columns>
+    <jqx-grid-column-groups>
+        <jqx-grid-column-group name="name" text="Name"></jqx-grid-column-group>
+    </jqx-grid-column-groups>
+</jqx-grid>
+

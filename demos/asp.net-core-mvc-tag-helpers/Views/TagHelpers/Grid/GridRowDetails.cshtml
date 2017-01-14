@@ -1,0 +1,61 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Grid Row Details Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<script>
+    var template = { rowdetails: "<div style=\"margin: 10px;\"></div>", rowdetailsheight: 220, rowdetailshidden: true };
+    var initRowDetails = function (index, parentElement, gridElement, record) {
+        var id = record.uid.toString();
+        var grid = $($(parentElement).children()[0]);
+
+        var data = [];
+
+        var generaterow = function (i) {
+            var row = {};      
+            row["OrderDate"] = new Date(2016, Math.floor(Math.random() * 11), Math.floor(Math.random() * 27))
+            row["Quantity"] = Math.floor(Math.random() * 50)
+            row["ProductName"] = record.ProductName;
+            return row;
+        }
+
+        for (var i = 0; i < Math.max(10, Math.floor(Math.random() * 20)) ; i++) {
+            var row = generaterow(i);
+            data[i] = row;
+        }
+
+        var source = {
+            datafields: [
+                { name: 'OrderDate', type: 'date' },
+                { name: 'Quantity', type: 'string' },
+                { name: 'ProductName', type: 'string' }
+            ],
+            localdata: data
+        }
+        var nestedGridAdapter = new $.jqx.dataAdapter(source);
+        if (grid != null) {
+            grid.jqxGrid({
+                source: nestedGridAdapter, width: 780, height: 200,
+                columns: [
+                  { text: 'Order Date', cellsformat:'d', datafield: 'OrderDate', width: 200 },
+                  { text: 'Quantity', cellsalign:'right', datafield: 'Quantity', width: 200 },
+                  { text: 'Product Name', datafield: 'ProductName' }
+                ]
+            });
+        }
+    }
+</script>
+<label>ASP .NET Core MVC Grid Row Details Example</label><br/><br/>
+<jqx-grid id="grid" altrows="true" rowdetails="true" rowdetailstemplate="{{template}}" initrowdetails="initRowDetails()" sourceId="ID" theme="@ViewData["Theme"]" sortable="true" width="850" source="Model">
+    <jqx-grid-columns>
+        <jqx-grid-column datafield-for="@(employee.FirstName)" width="150" text="First Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.LastName)" width="150" text="Last Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.ProductName)" width="200" text="Product Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Price)" width="100" text="Price" cellsformat="c2" cellsalign="HorizontalAlignment.Right"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Quantity)" width="100" text="Quantity" cellsalign="HorizontalAlignment.Right"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Total)" text="Total" cellsformat="c2" cellsalign="HorizontalAlignment.Right"></jqx-grid-column>
+ </jqx-grid-columns>
+</jqx-grid>

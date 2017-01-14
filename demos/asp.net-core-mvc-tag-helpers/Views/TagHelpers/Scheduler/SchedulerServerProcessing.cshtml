@@ -1,0 +1,14 @@
+@model jQWidgets.AspNet.Core.Models.jQWidgetsDemosContext
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Scheduler Server Example";
+}
+<label>ASP .NET Core MVC Scheduler Server Processing Example</label><br/><br/>
+<jqx-scheduler source="Model.Appointments" showLegend="true" view="WeekView" create="@Url.Action("AddAppointment","TagHelpers")" delete="@Url.Action("DeleteAppointment","TagHelpers")" edit="@Url.Action("EditAppointment","TagHelpers")" resources="Model.Resources" appointmentDataFields="Model.AppointmentDataFields" theme="@ViewData["Theme"]"  date="Model.Date" width="850" height="600">
+    <jqx-scheduler-views>
+        <jqx-scheduler-view type="DayView"></jqx-scheduler-view>
+        <jqx-scheduler-view type="WeekView"></jqx-scheduler-view>
+        <jqx-scheduler-view type="MonthView"></jqx-scheduler-view>
+    </jqx-scheduler-views>
+</jqx-scheduler>
+

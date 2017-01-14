@@ -1,0 +1,43 @@
+﻿<html>
+<head>
+    <title id='Description'>Kanban widget. TypeScript example.</title>
+    <meta name="description" content="Kanban widget typescript example" />
+
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdata.js"></script>
+    <script src="../../../jqwidgets/jqxsortable.js"></script>
+    <script src="../../../jqwidgets/jqxkanban.js"></script>
+    <script src="../../../jqwidgets/jqxsplitter.js"></script>
+    <script src="typescript-kanban.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            createKanban('#kanban1', '#kanban2', '#kanban3', '#mainSplitter', '#rightSplitter');
+        });
+    </script>
+</head>
+<body>
+    <div class="example-description">
+      Kanban widget. TypeScript example.
+    </div>
+
+    <div style="overflow: visible;" id="mainSplitter">
+        <div style="overflow: visible;">
+            <div id="kanban1"></div>
+        </div>
+        <div style="overflow: visible;">
+            <div style="overflow: visible;" id="rightSplitter">
+                <div style="overflow: visible;">
+                    <div id="kanban2"></div>
+                </div>
+                <div style="overflow: visible;">
+                    <div id="kanban3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

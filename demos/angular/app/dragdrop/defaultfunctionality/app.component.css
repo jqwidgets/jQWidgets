@@ -1,0 +1,39 @@
+﻿.row
+{
+    padding: 1px;
+}
+
+#draggable-parent
+{
+    background-color: #eeffee;
+    width: 350px;
+    height: 350px;     
+    text-align: center;
+    border: 1px solid #eee;
+    float: left;
+}
+
+.main-container
+{
+    width: 650px;
+    z-index: 0;
+}
+   
+.label
+{
+    position: relative; 
+    font-family: Verdana;
+    font-size: 11px;
+    color: #000;
+}
+
+.drop-target
+{
+    background-color: #FBFFB5;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ddd;
+    margin-left: 190px;
+    margin-top: 70px;        
+    z-index: 1;
+}

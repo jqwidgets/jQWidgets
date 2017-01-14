@@ -1,0 +1,23 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Grid Cells Rendering Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+    List<string> groups = new List<string>() {"ProductName"};
+    }
+    @section scripts {
+    <script type="text/javascript">
+
+    </script>
+}
+<label>ASP .NET Core MVC Grid Grouping Example</label><br/><br/>
+<jqx-grid id="grid" altrows="true" groupable="true" groups="@(groups)" sourceId-for="@(employee.ID)" theme="@ViewData["Theme"]" sortable="true" height="350" width="700" source="Model">
+     <jqx-grid-columns>
+        <jqx-grid-column datafield-for="@(employee.ID)" width="25%" text="ID"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.FirstName)" width="25%" text="First Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.LastName)" width="25%" text="Last Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.ProductName)" width="25%" text="Product Name"></jqx-grid-column>
+    </jqx-grid-columns>
+</jqx-grid>

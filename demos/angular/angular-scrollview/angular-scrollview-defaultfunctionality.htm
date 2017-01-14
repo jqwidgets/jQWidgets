@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="keywords" content="jQuery ScrollView, ScrollView Widget, ScrollView, Mobile ScrollView" />
+    <meta name="description" content="jqxScrollView represents a widget which can be used for viewing content which is wider than the visible area outlined by the device's screen.
+    Specific item can be chosen using drag movements or clicking/tapping on the buttons at the bottom of the jqxScrollView." />
+    <title id="Description">
+        jqxScrollView represents a widget which can be used for viewing content which is wider than the visible area outlined by the device's screen.
+        Specific item can be chosen using drag movements or clicking/tapping on the buttons at the bottom of the jqxScrollView. Angular2 demo
+    </title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <style>
+        body, html {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- jQWidgets -->
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollview.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+
+    
+    <script src="../node_modules/typescript/lib/typescript.js"></script>
+    <script src="../node_modules/core-js/client/shim.min.js"></script>
+    <script src="../node_modules/zone.js/dist/zone.js"></script>
+    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- Configure SystemJS -->
+    <script src="../systemjs.config.js"></script>
+    <script>
+        System.import('../app/scrollview/defaultfunctionality/main').catch( (err) => { console.error(err); });
+    </script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+
+</head>
+
+<!-- Display the application -->
+<body>
+    <div class="example-description">
+        Angular Scroll View Example.
+    </div>
+    <my-app></my-app>
+</body>
+</html>

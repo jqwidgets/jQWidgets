@@ -1,0 +1,15 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Gauge Example";
+    List<GaugeRange> ranges = new List<GaugeRange>()
+    {
+        new GaugeRange() {StartValue = 0, EndValue = 55, StartWidth = 1, EndWidth = 5, Style = new GaugeStyle() {Fill = "#4bb648", Stroke = "#4bb648" }},
+        new GaugeRange() {StartValue = 55, EndValue = 110, StartWidth = 5, EndWidth = 10, Style = new GaugeStyle() {Fill = "#fbd109", Stroke = "#fbd109" }},
+        new GaugeRange() {StartValue = 110, EndValue = 165, StartWidth = 10, EndWidth = 13, Style = new GaugeStyle() {Fill = "#ff8000", Stroke = "#ff8000"} },
+        new GaugeRange() {StartValue = 165, EndValue = 220, StartWidth = 13, EndWidth = 16, Style = new GaugeStyle() {Fill = "#e02629", Stroke = "#e02629" } }
+    };
+    GaugeTicks ticksMinor = new GaugeTicks() { Interval = 5, Size = "5%" };
+    GaugeTicks ticksMajor = new GaugeTicks() { Interval = 10, Size = "9%" };
+}
+<label>ASP .NET Core MVC Gauge Tag Helper Example</label><br/><br/>
+<jqx-gauge ranges="ranges" ticksMinor="ticksMinor" ticksMajor="ticksMajor" value="50" colorScheme="scheme05" animationDuration="1200"></jqx-gauge>

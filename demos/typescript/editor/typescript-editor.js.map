@@ -1,0 +1,1 @@
+{"version":3,"file":"typescript-editor.js","sourceRoot":"","sources":["typescript-editor.ts"],"names":[],"mappings":"AAAA,6DAA6D;AAC7D,sBAAsB,QAAQ;IAE1B,mDAAmD;IACnD,sDAAsD;IACtD,IAAI,OAAO,GACX;QACI,MAAM,EAAE,OAAO,EAAE,KAAK,EAAE,OAAO;KAClC,CAAC;IAEF,sBAAsB;IACtB,IAAI,QAAQ,GAAwB,SAAS,CAAC,cAAc,CAAC,QAAQ,EAAE,WAAW,EAAE,OAAO,CAAC,CAAC;AACjG,CAAC"}

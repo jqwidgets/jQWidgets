@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "ASP .NET MVC ButtonGroup Example";
+}
+<label>ASP .NET Core MVC Button Group Tag Helper Example</label><br/><br/>
+Default Mode<br/>
+<jqx-buttongroup theme="@ViewData["Theme"]" id='jqxWidget'>
+    <button style="padding:4px 16px;">
+        Left
+    </button>
+    <button style="padding:4px 16px;">
+        Center
+    </button>
+    <button style="padding:4px 16px;">
+        Right
+    </button>
+</jqx-buttongroup>
+Radio Mode<br/>
+<jqx-buttongroup id="buttongroup2" theme="@ViewData["Theme"]" mode="radio">
+    <button style="padding:4px 16px;">
+        Left
+    </button>
+    <button style="padding:4px 16px;">
+        Center
+    </button>
+    <button style="padding:4px 16px;">
+        Right
+    </button>
+</jqx-buttongroup>
+CheckBox Mode<br/>
+<jqx-buttongroup id="buttongroup3" theme="@ViewData["Theme"]" mode="checkbox">
+    <button style="padding:4px 16px;">
+        Left
+    </button>
+    <button style="padding:4px 16px;">
+        Center
+    </button>
+    <button style="padding:4px 16px;">
+        Right
+    </button>
+</jqx-buttongroup>

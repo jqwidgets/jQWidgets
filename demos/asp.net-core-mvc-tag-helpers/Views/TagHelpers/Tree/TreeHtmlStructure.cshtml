@@ -1,0 +1,55 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Tree Example";
+}
+
+<label>ASP .NET Core MVC TreeView HTML Structure Example</label><br/><br/>
+<jqx-tree width="300" theme="@ViewData["Theme"]">
+    <jqx-tree-items>
+        <jqx-tree-item id='home' item-selected='true'>Home</jqx-tree-item>
+        <jqx-tree-item item-expanded='true'>
+            Solutions
+            <jqx-tree-items>
+                <jqx-tree-item>Education</jqx-tree-item>
+                <jqx-tree-item>Financial services</jqx-tree-item>
+                <jqx-tree-item>Government</jqx-tree-item>
+                <jqx-tree-item>Manufacturing</jqx-tree-item>
+                <jqx-tree-item>
+                    Solutions
+                    <jqx-tree-items>
+                        <jqx-tree-item>Consumer photo and video</jqx-tree-item>
+                        <jqx-tree-item>Mobile</jqx-tree-item>
+                        <jqx-tree-item>Rich Internet appjqx-tree-itemcations</jqx-tree-item>
+                        <jqx-tree-item>Technical communication</jqx-tree-item>
+                        <jqx-tree-item>Training and eLearning</jqx-tree-item>
+                        <jqx-tree-item>Web conferencing</jqx-tree-item>
+                    </jqx-tree-items>
+                </jqx-tree-item>
+                <jqx-tree-item>All industries and solutions</jqx-tree-item>
+            </jqx-tree-items>
+        </jqx-tree-item>
+        <jqx-tree-item>
+            Products
+            <jqx-tree-items>
+                <jqx-tree-item>PC products</jqx-tree-item>
+                <jqx-tree-item>Mobile products</jqx-tree-item>
+                <jqx-tree-item>All products</jqx-tree-item>
+            </jqx-tree-items>
+        </jqx-tree-item>
+        <jqx-tree-item>
+            Support
+            <jqx-tree-items>
+                <jqx-tree-item>Support home</jqx-tree-item>
+                <jqx-tree-item>Customer Service</jqx-tree-item>
+                <jqx-tree-item>Knowledge base</jqx-tree-item>
+                <jqx-tree-item>Books</jqx-tree-item>
+                <jqx-tree-item>Training and certification</jqx-tree-item>
+                <jqx-tree-item>Support programs</jqx-tree-item>
+                <jqx-tree-item>Forums</jqx-tree-item>
+                <jqx-tree-item>Documentation</jqx-tree-item>
+                <jqx-tree-item>Updates</jqx-tree-item>
+            </jqx-tree-items>
+        </jqx-tree-item>
+    </jqx-tree-items>
+</jqx-tree>

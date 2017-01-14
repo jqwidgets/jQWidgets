@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "ASP .NET MVC Notification Example";
+}
+<label>ASP .NET Core MVC Notification Tag Helper Example</label><br/><br/>
+<jqx-button on-click="openMessage()" theme="@ViewData["Theme"]">Open Notification Message</jqx-button>
+<jqx-notification id="notification" instance="getNotification()" theme="@ViewData["Theme"]">Notification Message</jqx-notification>
+<script>
+    var notification = {};
+
+    function getNotification(instance) {
+        notification = instance;
+    }
+
+    function openMessage() {
+        notification.open();
+    }
+</script>

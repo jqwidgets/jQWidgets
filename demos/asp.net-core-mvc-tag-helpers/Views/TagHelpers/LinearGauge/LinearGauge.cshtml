@@ -1,0 +1,32 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Linear Gauge Example";
+    GaugeLabels labels = new GaugeLabels() { Interval = 20, FormatValue = "formatValue()" };
+        List<GaugeRange> ranges = new List<GaugeRange>()
+        {
+            new GaugeRange() {StartValue = -10, EndValue = 10, Style = new GaugeStyle() {Fill = "#4bb648", Stroke = "#4bb648" }},
+            new GaugeRange() {StartValue = 10, EndValue = 35, Style = new GaugeStyle() {Fill = "#fbd109", Stroke = "#fbd109" }},
+            new GaugeRange() {StartValue = 35, EndValue = 60, Style = new GaugeStyle() {Fill = "#ff8000", Stroke = "#ff8000"}}
+        };
+    GaugeTicks ticksMinor = new GaugeTicks() { Interval = 2.5, Size = "5%", Style = new GaugeStyle() { StrokeWidth = 1, Stroke = "#aaaaaa" } };
+    GaugeTicks ticksMajor = new GaugeTicks() { Interval = 10, Size = "10%" };
+    GaugePointer pointer = new GaugePointer() { Size = "5%" };
+}
+
+<script>
+    function formatValue(value, position) {
+        if (position === 'far') {
+            value = (9 / 5) * value + 32;
+            if (value === -76) {
+                return 'F';
+            }
+            return value + '';
+        }
+        if (value === -60) {
+            return 'C';
+        }
+        return value + '';
+    }
+</script>
+<label>ASP .NET Core MVC Linear Gauge Tag Helper Example</label><br/><br/>
+<jqx-lineargauge width="100" max="60" orientation="Orientation.Vertical" height="350" pointer="pointer" ranges="ranges" labels="labels" ticksMinor="ticksMinor" ticksMajor="ticksMajor" value="50" colorScheme="scheme05" animationDuration="1200"></jqx-lineargauge>

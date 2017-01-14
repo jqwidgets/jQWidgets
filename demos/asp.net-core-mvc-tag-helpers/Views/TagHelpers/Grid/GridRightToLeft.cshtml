@@ -1,0 +1,23 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.Employee>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Grid RTL Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<label>ASP .NET Core MVC Grid Right To Left Layout Example</label><br/><br/>
+<jqx-grid theme="@ViewData["Theme"]" rtl="true" sortable="true" filterable="true" autoheight="true" width="850" source="Model"> 
+    <jqx-grid-columns>
+        <jqx-grid-column columngroup="name" datafield-for="@(employee.FirstName)" width="100" text="First Name"></jqx-grid-column>
+        <jqx-grid-column columngroup="name" datafield-for="@(employee.LastName)" width="100" text="Last Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Title)" width="150"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Address)" width="200"></jqx-grid-column> 
+        <jqx-grid-column datafield-for="@(employee.City)" width="150"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Country)"></jqx-grid-column>
+  </jqx-grid-columns>
+    <jqx-grid-column-groups>
+        <jqx-grid-column-group name="name" text="Name"></jqx-grid-column-group>
+    </jqx-grid-column-groups>
+</jqx-grid>
+

@@ -1,0 +1,5 @@
+@{
+    ViewData["Title"] = "ASP .NET MVC FileUpload Example";
+}
+<label>ASP .NET Core MVC File Upload Example</label><br/><br/>
+<jqx-fileupload width="300" multipleFilesUpload="false" uploadUrl="@Url.Action("UploadFile", "TagHelpers")", fileInputName="fileToUpload" ></jqx-fileupload>

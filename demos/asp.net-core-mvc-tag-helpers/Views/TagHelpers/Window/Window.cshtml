@@ -1,0 +1,50 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Window Example";
+}
+<label>ASP .NET Core MVC Window Example</label><br/><br/>
+<jqx-window theme="@ViewData["Theme"]" width="500" height="250">
+    <jqx-window-header>Info</jqx-window-header>
+    <jqx-window-body>
+        <jqx-tabs theme="@ViewData["Theme"]" width="100%" height="100%">
+            <jqx-tab-panel>
+                <jqx-tab-panel-header style="margin-left:30px;">CISC</jqx-tab-panel-header>
+                <jqx-tab-panel-body>
+                    <div style="padding: 10px;">
+                        Before the RISC philosophy became prominent, many computer architects tried to bridge
+                        the so called semantic gap, i.e. to design instruction sets that directly supported
+                        high-level programming constructs such as procedure calls, loop control, and complex
+                        addressing modes, allowing data structure and array accesses to be combined into
+                        single instructions. Instructions are also typically highly encoded in order to
+                        further enhance the code density...
+                    </div>
+                </jqx-tab-panel-body>
+            </jqx-tab-panel>
+            <jqx-tab-panel>
+                <jqx-tab-panel-header>RISC</jqx-tab-panel-header>
+                <jqx-tab-panel-body>
+                    <div style="padding: 10px;">
+                        Some aspects attributed to the first RISC-labeled designs around 1975 include the
+                        observations that the memory-restricted compilers of the time were often unable
+                        to take advantage of features intended to facilitate manual assembly coding, and
+                        that complex addressing modes take many cycles to perform due to the required additional
+                        memory accesses...
+                    </div>
+                </jqx-tab-panel-body>
+            </jqx-tab-panel>
+            <jqx-tab-panel>
+                <jqx-tab-panel-header>Database management system</jqx-tab-panel-header>
+                <jqx-tab-panel-body>
+                    <div style="padding: 10px;">
+                        A database management system (DBMS) is a software package with computer programs
+                        that control the creation, maintenance, and the use of a database. It allows organizations
+                        to conveniently develop databases for various applications by database administrators
+                        (DBAs) and other specialists. A database is an integrated collection of data records,
+                        files, and other database objects...
+                    </div>
+                </jqx-tab-panel-body>
+            </jqx-tab-panel>
+        </jqx-tabs>
+    </jqx-window-body>
+</jqx-window>

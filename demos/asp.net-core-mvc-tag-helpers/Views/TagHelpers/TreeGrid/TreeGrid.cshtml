@@ -1,0 +1,31 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.Employee>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC TreeGrid Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<script>
+    var treeGridInstance;
+    function getInstance(instance)
+    {
+        treeGridInstance = instance;
+    }
+    function treeGridReady()
+    {
+        treeGridInstance.expandRow(2);
+    }
+</script>
+<label>ASP .NET Core MVC Tree Grid Example</label><br/><br/>
+<jqx-treegrid keyDataField-for="@(employee.EmployeeID)" ready="treeGridReady()" sourceId-for="@(employee.EmployeeID)" instance="getInstance()" parentDataField-for="@(employee.ManagerID)" theme="@ViewData["Theme"]" sortable="true" width="850" source="Model"> 
+    <jqx-treegrid-columns>
+        <jqx-treegrid-column dataField-for="@(employee.FirstName)" width="100" text="First Name"></jqx-treegrid-column>
+        <jqx-treegrid-column datafield-for="@(employee.LastName)" width="100" text="Last Name"></jqx-treegrid-column>
+        <jqx-treegrid-column datafield-for="@(employee.Title)" width="150"></jqx-treegrid-column>
+        <jqx-treegrid-column datafield-for="@(employee.Address)" width="200"></jqx-treegrid-column>
+        <jqx-treegrid-column datafield-for="@(employee.City)" width="150"></jqx-treegrid-column>
+        <jqx-treegrid-column datafield-for="@(employee.Country)"></jqx-treegrid-column>
+    </jqx-treegrid-columns>
+</jqx-treegrid>
+

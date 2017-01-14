@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="jQuery Splitter, Splitter Widget, Splitter, jqxSplitter" />
+    <meta name="description" content="jQuery Splitter Widget - API. jqxSplitter is widget based on jQuery which provides an easy way to create dynamic
+    layout allowing you to resize, collapse panels. These panels are actualy are HTML container's children.
+    You can create both horizontal and vertical splitters based on your needs. This is allowing you to create complex layouts." />
+    <title id='Description'>
+        jqxSplitter is a widget based on jQuery which provides an easy
+        way to create dynamic layouts with resizable and collapsible panels. TypeScript example.
+    </title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="typescript-splitter.js" ></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script>
+        $(document).ready(function ()
+        {
+            createSplitter('#mainSplitter', '#contentSplitter', '#feedExpander', '#jqxTree', '#feedContentExpander', '#feedItemContent', '#feedListExpander', '#feedListContainer');
+        });
+    </script>
+</head>
+<body>
+    <div class="example-description">
+      jqxSplitter is a widget based on jQuery which provides an easy
+      way to create dynamic layouts with resizable and collapsible panels. TypeScript example.
+    </div>
+
+    <div id='jqxWidget'>
+        <div id="mainSplitter">
+            <div>
+                <div style="border: none;" id="feedExpander">
+                    <div class="jqx-hideborder">
+                        Feeds
+                    </div>
+                    <div class="jqx-hideborder jqx-hidescrollbars">
+                        <div class="jqx-hideborder" id='jqxTree'>
+                            <ul>
+                                <li item-expanded='true' id="t1">
+                                    <img style='float: left; margin-right: 5px;' src='../../../images/contactsIcon.png' /><span item-title="true">News and Blogs</span>
+                                    <ul>
+                                        <li>
+                                            <img style='float: left; margin-right: 5px;' src='../../../images/favorites.png' /><span item-title="true">Favorites</span>
+                                            <ul>
+                                                <li>
+                                                    <img style='float: left; margin-right: 5px;' src='../../../images/folder.png' /><span item-title="true">ScienceDaily</span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <img style='float: left; margin-right: 5px;' src='../../../images/folder.png' /><span item-title="true">Geek.com</span>
+                                        </li>
+                                        <li>
+                                            <img style='float: left; margin-right: 5px;' src='../../../images/folder.png' /><span item-title="true">CNN.com</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id="contentSplitter">
+                    <div class="feed-item-list-container" id="feedUpperPanel">
+                        <div class="jqx-hideborder" id="feedListExpander">
+                            <div class="jqx-hideborder" id="feedHeader">
+                            </div>
+                            <div class="jqx-hideborder jqx-hidescrollbars">
+                                <div class="jqx-hideborder" id="feedListContainer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="feedContentArea">
+                        <div class="jqx-hideborder" id="feedContentExpander">
+                            <div class="jqx-hideborder" id="feedItemHeader">
+                            </div>
+                            <div class="jqx-hideborder jqx-hidescrollbars">
+                                <div class="jqx-hideborder" id="feedItemContent">
+                                    Select a news item to see it's content
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

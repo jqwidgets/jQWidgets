@@ -1,0 +1,20 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Grid Sort Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<label>ASP .NET Core MVC Grid Sorting Example</label><br/><br/>
+<jqx-grid theme="@ViewData["Theme"]" sortable="true" width="850" source="Model"> 
+    <jqx-grid-columns>
+        <jqx-grid-column datafield-for="@(employee.FirstName)" width="100" text="First Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.LastName)" width="100" text="Last Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Available)" columntype="checkbox" text="Available" width="100"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Date)" width="200" cellsformat="d" text="Date"></jqx-grid-column> 
+        <jqx-grid-column datafield-for="@(employee.ProductName)" text="Product Name" width="200"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Total)" cellsalign="HorizontalAlignment.Right" cellsformat="c2" text="Total"></jqx-grid-column>
+  </jqx-grid-columns>
+</jqx-grid>
+

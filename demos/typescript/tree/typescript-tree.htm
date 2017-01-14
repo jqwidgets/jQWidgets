@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
+    <meta name="description" content="The jqxTree can easily display images next to each item. In order to achieve that, you need to add 'img' element inside a 'li' element." />
+    <title id='Description'>
+        The jqxTree in this demo displays images next to the tree items. TypeScript example.
+    </title>
+
+
+    <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script src="../../../jqwidgets/jqxpanel.js"></script>
+    <script src="../../../jqwidgets/jqxtree.js"></script>
+    <script src="../../../jqwidgets/jqxexpander.js"></script>
+    <script src="typescript-tree.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createTree('#jqxTree', '#jqxExpander');
+        });
+    </script>
+
+</head>
+
+<!-- 3. Display the application -->
+<body>
+    <div class="example-description">
+      The jqxTree in this demo displays images next to the tree items. TypeScript example.
+    </div>
+
+    <div id='jqxWidget'>
+        <div id='jqxExpander'>
+            <div>
+                Folders
+            </div>
+            <div style="overflow: hidden;">
+                <div style="border: none;" id='jqxTree'>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

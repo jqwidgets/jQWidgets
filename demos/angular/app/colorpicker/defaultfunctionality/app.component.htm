@@ -1,0 +1,29 @@
+﻿<jqxScrollView [width]='500' [height]='350' [slideShow]='true' [showButtons]='false'>
+    <div>
+        <div class="photo" style="background-image: url(../../../../images/imageNature1.jpg)"></div>
+    </div>
+    <div>
+        <div class="photo" style="background-image: url(../../../../images/imageNature2.jpg)"></div>
+    </div>
+    <div>
+        <div class="photo" style="background-image: url(../../../../images/imageNature3.jpg)"></div>
+    </div>
+    <div>
+        <div class="photo" style="background-image: url(../../../../images/imageNature4.jpg)"></div>
+    </div>
+    <div>
+        <div class="photo" style="background-image: url(../../../../images/imageNature5.jpg)"></div>
+    </div>
+</jqxScrollView>
+<br />
+<label style="margin-left: 5px; font-size: 12px; font-family: Verdana;">Select Frame color</label>
+<br />
+<jqxDropDownButton style="margin: 3px; float: left;" #dropDownButton
+     [width]='150' [height]='22'>
+    <div style="padding: 3px;">
+        <jqxColorPicker (onColorchange)="colorPickerEvent($event)"
+            [width]='220' [height]='220' [colorMode]='"hue"'>
+        </jqxColorPicker>
+    </div>
+</jqxDropDownButton>
+  

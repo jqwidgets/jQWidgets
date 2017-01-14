@@ -1,0 +1,19 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Grid Aggregates Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<label>ASP .NET Core MVC Grid Aggregates Example</label><br/><br/>
+<jqx-grid id="grid" altrows="true" showstatusbar="true" showaggregates="true" filterable="true" pageable="true" autoheight="true" sourceId="ID" theme="@ViewData["Theme"]" sortable="true" width="850" source="Model">
+    <jqx-grid-columns>
+        <jqx-grid-column aggregates="['count']" datafield-for="@(employee.FirstName)" width="150" text="First Name"></jqx-grid-column>
+        <jqx-grid-column aggregates="['count']" datafield-for="@(employee.LastName)" width="150" text="Last Name"></jqx-grid-column>
+        <jqx-grid-column aggregates="['count']" datafield-for="@(employee.ProductName)" width="200" text="Product Name"></jqx-grid-column>
+        <jqx-grid-column aggregates="['sum']" datafield-for="@(employee.Price)" width="100" text="Price" cellsformat="c2" cellsalign="HorizontalAlignment.Right"></jqx-grid-column>
+        <jqx-grid-column aggregates="['sum']" datafield-for="@(employee.Quantity)" width="100" text="Quantity" cellsalign="HorizontalAlignment.Right"></jqx-grid-column>
+        <jqx-grid-column aggregates="['sum']" datafield-for="@(employee.Total)" width="150" text="Total" cellsformat="c2" cellsalign="HorizontalAlignment.Right"></jqx-grid-column>
+ </jqx-grid-columns>
+</jqx-grid>

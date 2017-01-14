@@ -1,0 +1,16 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Tooltip Example";
+
+    List<KeyValuePair<string, object>> settings = new List<KeyValuePair<string, object>>()
+    {
+        new KeyValuePair<string, object>("position", "mouse"),
+        new KeyValuePair<string, object>("content", "Tooltip"),
+        new KeyValuePair<string, object>("selector", "tooltip"),
+        new KeyValuePair<string, object>("theme", ViewData["Theme"])
+    };
+}
+<label>ASP .NET Core MVC Tooltip Tag Helper Example</label><br/><br/>
+<span id="tooltip">Move cursor here to see the tooltip</span>
+<jqx-tooltip settings="settings"></jqx-tooltip>

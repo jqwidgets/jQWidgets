@@ -1,0 +1,67 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Toolbar Example";
+}
+<style type="text/css">
+    .buttonIcon {
+        margin: -5px 0 0 -3px;
+        width: 16px;
+        height: 17px;
+    }
+</style>
+
+<script>
+    function initTools (type, index, tool, menuToolIninitialization) {
+        var theme = $("#toolbar").jqxToolBar("theme");
+
+        if (type == "toggleButton") {
+            var icon = $("<div class='jqx-editor-toolbar-icon jqx-editor-toolbar-icon-" + theme + " buttonIcon'></div>");
+        }
+        switch (index) {
+            case 0:
+                icon.addClass("jqx-editor-toolbar-icon-bold jqx-editor-toolbar-icon-bold-" + theme);
+                icon.attr("title", "Bold");
+                tool.append(icon);
+                break;
+            case 1:
+                icon.addClass("jqx-editor-toolbar-icon-italic jqx-editor-toolbar-icon-italic-" + theme);
+                icon.attr("title", "Italic");
+                tool.append(icon);
+                break;
+            case 2:
+                icon.addClass("jqx-editor-toolbar-icon-underline jqx-editor-toolbar-icon-underline-" + theme);
+                icon.attr("title", "Underline");
+                tool.append(icon);
+                break;
+            case 3:
+                tool.jqxToggleButton({ width: 80, toggled: true });
+                tool.text("Enabled");
+                tool.on("click", function () {
+                    var toggled = tool.jqxToggleButton("toggled");
+                    if (toggled) {
+                        tool.text("Enabled");
+                    } else {
+                        tool.text("Disabled");
+                    }
+                });
+                break;
+            case 4:
+                tool.jqxDropDownList({ width: 130, source: ["<span style='font-family: Courier New;'>Courier New</span>", "<span style='font-family: Times New Roman;'>Times New Roman</span>", "<span style='font-family: Verdana;'>Verdana</span>"], selectedIndex: 1 });
+                break;
+            case 5:
+                tool.jqxComboBox({ width: 50, source: [8, 9, 10, 11, 12, 14, 16, 18, 20], selectedIndex: 3 });
+                break;
+            case 6:
+                tool.jqxInput({ width: 200, placeHolder: "Type here to search..." });
+                break;
+            case 7:
+                var button = $("<div>" + "<img src='../../images/administrator.png' title='Custom tool' />" + "</div>");
+                tool.append(button);
+                button.jqxButton({ height: 15 });
+                break;
+        }
+    }
+</script>
+<label>ASP .NET Core MVC Toolbar Tag Helper Example</label><br/><br/>
+<jqx-toolbar id="toolbar" theme="@ViewData["theme"]" initTools="initTools()" tools="toggleButton toggleButton toggleButton | toggleButton | dropdownlist combobox | input | custom" width="800" height="35"></jqx-toolbar>

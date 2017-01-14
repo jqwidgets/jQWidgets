@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grouping with Aggregates.</title>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.grouping.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.aggregates.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
+    <script type="text/javascript" src="generatedata.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+
+            // prepare the data
+            var data = generatedata(50);
+
+            var source =
+            {
+                localdata: data,
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'date', type: 'date' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'total', type: 'number' }
+                 ],
+                datatype: "array",
+                updaterow: function (rowid, rowdata) {
+                    // synchronize with the server - send update command   
+                }
+            };
+
+            var dataAdapter = new $.jqx.dataAdapter(source);
+
+         
+
+            // initialize jqxGrid
+            $("#jqxgrid").jqxGrid(
+            {
+                width: 850,
+                source: dataAdapter,
+                groupable: true,
+                selectionmode: 'singlecell',
+                showgroupaggregates: true,
+                showstatusbar: true,
+                showaggregates: true,
+                statusbarheight: 25,
+                groups: ['price'],
+                columns: [
+                  { text: 'First Name', groupable: true, aggregates: ["count"], datafield: 'firstname', width: 100 },
+                  { text: 'Last Name', groupable: true, aggregates: ["count"], datafield: 'lastname', width: 100 },
+                  { text: 'Product', groupable: true, columntype: 'dropdownlist', datafield: 'productname', width: 200 },
+                  { text: 'Quantity', datafield: 'quantity', aggregates: ["sum"], width: 70, cellsalign: 'right' },
+                  { text: 'Price', datafield: 'price', aggregates: ["sum"], cellsalign: 'right', width: 100, cellsformat: 'c2' },
+                  {
+                      text: 'Total', datafield: 'total', aggregates: ["sum"], cellsalign: 'right', cellsformat: 'c2',
+                      cellsrenderer: function (row, column, value, defaultRender, column, rowData) {
+                          if (value.toString().indexOf("Sum") >= 0) {
+                              return defaultRender.replace("Sum", "Total");
+                          }
+                      },
+                      aggregatesrenderer: function (aggregates, column, element) {
+                          var renderstring = '<div style="position: relative; margin-top: 4px; margin-right:5px; text-align: right; overflow: hidden;">' + "Total" + ': ' + aggregates.sum + '</div>';
+                          return renderstring;
+                      }
+                  }
+                ]
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id='jqxWidget'>
+        <div id="jqxgrid"></div>
+
+    </div>
+</body>
+</html>

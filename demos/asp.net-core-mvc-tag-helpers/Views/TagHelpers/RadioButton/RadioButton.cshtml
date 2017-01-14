@@ -1,0 +1,31 @@
+@model jQWidgetsDemosContext
+@using jQWidgets.AspNet.Core.Models;
+@{
+    ViewData["Title"] = "ASP .NET MVC Radio Button Example";
+    Contract contract = Model.ContractDuration;
+    bool year = false;
+    bool halfYear = false;
+    bool quarterYear = false;
+    bool month = false;
+    if (contract == Contract.Year)
+    {
+        year = true;
+    }
+    if (contract == Contract.HalfYear)
+    {
+        halfYear = true;
+    }
+    if (contract == Contract.QuarterYear)
+    {
+        quarterYear = true;
+    }
+    if (contract == Contract.Month)
+    {
+        month = true;
+    }
+}
+<label>ASP .NET Core MVC Radio Button Tag Helper Example</label><br/><br/>
+<jqx-radiobutton width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("Year", "TagHelpers")" checked="year">12 Months Contract</jqx-radiobutton>
+<jqx-radiobutton width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("HalfYear", "TagHelpers")" checked="halfYear">6 Months Contract</jqx-radiobutton>
+<jqx-radiobutton width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("QuarterYear", "TagHelpers")" checked="quarterYear">3 Months Contract</jqx-radiobutton>
+<jqx-radiobutton width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("Month", "TagHelpers")" checked="month">1 Month Contract</jqx-radiobutton>

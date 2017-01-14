@@ -1,0 +1,220 @@
+﻿
+        .img {
+            margin-left: 2px;
+        }
+        .sectionSeparator {
+            width: 1px;
+            height: 105px;
+            background-color: #eee;
+            float: left;
+            margin: 10px 5px 0 5px;
+        }
+        .bigTd {
+            text-align: center;
+            vertical-align: top;
+            width: 50px;
+        }
+        .left {
+            margin-left: 7px;
+        }
+        #clipBoardTable {
+            height: 100%;
+            border-collapse: separate;
+            border-spacing: 0 0;
+            float: left;
+        }
+        #jqxgrid {
+            border-top: none;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        #jqxRibbon, #jqxRibbon div, #jqxRibbon li {
+            font-size:11px;
+        }
+        #jqxRibbon li {
+            line-height:16px;
+        }
+        #jqxRibbon, .jqx-ribbon-content-section-demoTheme {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .pasteText {
+            font-size: 10px;
+        }
+        #pasteButton>div:first-child {
+            text-align: center;
+        }
+        #pasteDropDown .jqx-listitem-element-demoTheme {
+            border: none;
+            font-size: 10px;
+        }
+        #font {
+            font-size: 11px;
+            line-height: 17px;
+        }
+        #fontSize {
+            line-height: 13px;
+        }   
+        #help button, #about button, #update button {
+            right: 5px;
+            height: 33px !important;
+            width: 33px !important;
+        } 
+        #help button {
+            right: 3px;
+        }
+        #about button {
+            right: 2px;
+        }
+        #save button, #saveAs button, #open button,  #close button {
+        width: 110px !important;
+        }
+        #bucketColor div {
+            vertical-align: top;
+        }
+        .jqx-dropdownlist-state-normal {
+            background: transparent;
+            border:none;
+        }
+        .separator {
+            padding: 0 0 0 1px;
+            height: 20px;
+            border: solid 1px #fff;
+            border-top: 0;
+            border-bottom: 0;
+            margin: 0 2px;
+            width: 1px;
+            display: inline-block;
+            position: relative;
+            background: #bfc3c7;
+            background: linear-gradient(#f8f9fa, #bfc3c7, #f8f9fa);
+        }
+        .firstrow, .secondrow, .thirdrow {
+            font-size: 0;
+            padding: 0;
+        }
+        .firstrow .jqx-widget,
+        .secondrow .jqx-widget,
+        .thirdrow .jqx-widget {
+            position: relative;
+            display: inline-block;
+            font-size: 10px;
+        }
+        .thirdrow .separator {
+            margin: 0 2px;
+            height: 14px;
+        }
+        .jqx-button-demoTheme span {
+            margin-left: 2px;
+        }
+        .jqx-button {
+            position: relative;
+            height: 23px;
+            padding: 2px;
+            border: 1px solid transparent;
+            background: transparent;
+            line-height: 16px;
+            text-align: left;
+        }
+        #fileItem {
+            padding: 0px;
+        }
+        #fileItem {
+            background: #006400;
+            color: White !important;
+            background-image: none;
+            text-shadow: none;
+        }
+        #fileItem{
+            background: #338333 !important;
+            color: White !important;
+            text-shadow: none;
+        }
+        #fileItem {
+            background: #005000 !important;
+            color: White !important;
+            text-shadow: none;
+        }
+        .jqx-ribbon-content {
+            padding: 33px 0px 0px !important;
+        }
+        .jqx-ribbon-content-section-demoTheme {
+            background: #eaedf1;
+            background: linear-gradient(#fff 40%, #eaedf1);
+        }
+        .jqx-button-demoTheme:hover {
+            border-color: #f1ca58;
+            box-shadow: 0 0 1px 1px #fff inset;
+            background: #fde38a;
+            background: linear-gradient(#fdeeb3, #fde38a, #fdefbb);
+        }
+        .jqx-button-demoTheme:active {
+            border-color: #c2963d;
+            background: #fff37f;
+            background: linear-gradient(#ffe575, #fff37f);
+        }
+        .jqx-fill-state-hover-demoTheme,
+        .jqx-fill-state-pressed-demoTheme {
+            border-color: #c2963d;
+            background: #fff37f;
+            background: linear-gradient(#ffe575, #fff37f);
+        }
+        #fileItemButton {
+            background: transparent;
+            border: none;
+            color: #fff;
+         }
+        .icon {
+            background: url('../../../../images/ribbon-icons.png') no-repeat top left;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            margin-right: 1px;
+            vertical-align: middle;
+        }
+        .icon.closed_door { background-position: 0 0; }
+        .icon.change-case-16 { background-position: -26px 0; }
+        .icon.ClearFormattingImage { background-position: -52px 0; width: 17px; }
+        .icon.close { background-position: -78px 0; }
+        .icon.cut { background-position: -104px 0; }
+        .icon.cut_red { background-position: -130px 0; }
+        .icon.cut-icon-16 { background-position: -156px 0; }
+        .icon.CutImage { background-position: -182px 0; }
+        .icon.folder { background-position: -208px 0; }
+        .icon.FontDialogImage { background-position: -234px 0; }
+        .icon.fontsizedecrease16 { background-position: -260px 0; }
+        .icon.fontsizeincrease16 { background-position: -286px 0; }
+        .icon.FormatPainterImage { background-position: -312px 0; }
+        .icon.page_copy { background-position: -338px 0; }
+        .icon.page_paste { background-position: -364px 0; }
+        .icon.page_white_paste { background-position: -390px 0; }
+        .icon.paintcan { background-position: -416px 0; }
+        .icon.paste_plain { background-position: -442px 0; }
+        .icon.paste_word { background-position: -468px 0; }
+        .icon.paste-24 { background-position: -494px 0; width: 24px; height: 24px; }
+        .icon.paste-48 { background-position: -528px 0; width: 48px; height: 48px; }
+        .icon.PasteImage { background-position: -586px 0; }
+        .icon.PasteImageLarge { background-position: -612px 0; width: 32px; height: 32px; }
+        .icon.PasteSpecialImage { background-position: -654px 0; }
+        .icon.pencil { background-position: -680px 0; }
+        .icon.SaveImage { background-position: -706px 0; }
+        .icon.SaveSelectionImage { background-position: -732px 0; }
+        .icon.ShowParagraphMarksImage { background-position: -758px 0; }
+        .icon.SortHS { background-position: -784px 0; }
+        .icon.spellcheck { background-position: -810px 0; }
+        .icon.text_align_center { background-position: -836px 0; }
+        .icon.text_align_justify { background-position: -862px 0; }
+        .icon.text_align_left { background-position: -888px 0; }
+        .icon.text_align_right { background-position: -914px 0; }
+        .icon.text_bold { background-position: -940px 0; }
+        .icon.text_indent { background-position: -966px 0; }
+        .icon.text_indent_remove { background-position: -992px 0; }
+        .icon.text_italic { background-position: -1018px 0; }
+        .icon.text_linespacing { background-position: -1044px 0; }
+        .icon.text_list_bullets { background-position: -1070px 0; }
+        .icon.text_list_numbers { background-position: -1096px 0; }
+        .icon.text_strikethrough { background-position: -1122px 0; }
+        .icon.text_subscript { background-position: -1148px 0; }
+        .icon.text_superscript { background-position: -1174px 0; }
+        .icon.text_underline { background-position: -1200px 0; }  
+        .jqx-ribbon-content-section { border-bottom: none; }

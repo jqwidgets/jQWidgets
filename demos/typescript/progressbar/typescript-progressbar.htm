@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="keywords" content="jQuery Progress, Progress Bar, jqxProgressBar, Loading Bar, Progress Widget" />
+    <meta name="description" content="The jqxProgressBar widget visually indicates the progress of a lengthy operation" />
+    <title id='Description'>The jqxProgressBar widget visually indicates the progress of a lengthy operation. TypeScript example.</title>
+
+    <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxprogressbar.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script src="typescript-progressbar.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+          $(document).ready(function () {
+              createProgressBar('#jqxProgressBar', '#jqxVerticalProgressBar', 'ValueInput', '#button', '#checkbox', '#customtextcheckbox');
+          });
+    </script>
+
+</head>
+
+<!-- 3. Display the application -->
+<body>
+    <div class="example-description">
+      The jqxProgressBar widget visually indicates the progress of a lengthy operation. TypeScript example.
+    </div>
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+        <div style='margin-top: 10px;'>Horizontal</div>
+        <div style='margin-top: 10px; overflow: hidden;' id='jqxProgressBar'>
+
+        </div>
+        <div style='margin-top: 10px;'>Vertical</div>
+        <div style='margin-top: 10px; overflow: hidden;' id='jqxVerticalProgressBar'>
+
+        </div>
+        <br />
+        <div>Enter a value between 0 and 100</div>
+        <input id='ValueInput' type='text' style='margin-top: 5px;' />
+        <input id='button' type='button' value='Update' style='padding: 3px; margin-top: 5px;' />
+
+        <div id="checkbox" style="margin-top: 20px;">Show Progress Text</div>
+        <div id="customtextcheckbox" style="margin-top: 20px;">Custom Progress Text</div>
+    </div>
+</body>
+
+</html>

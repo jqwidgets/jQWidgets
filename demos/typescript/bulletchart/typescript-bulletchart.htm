@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title id="Description">
+        This demo shows the default functionality of the BulletChart.
+        It displays two measures - a featured one (the pointer) and a comparative one (the
+        target) over a number of differently styled ranges. TypeScript example.
+    </title>
+    <meta name="keywords" content="bullet chart, bullet graph, BulletChart, chart, jQuery bullet graph, jQuery bullet chart, jQWidgets, jqxBulletChart" />
+    <meta name="description" content="This Typescript demo shows the default functionality of the BulletChart widget. It displays two measures - a featured one (the pointer) and a comparative one (the target) over a number of differently styled ranges." />
+
+    <!-- 1. Load references -->
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdata.js"></script>
+    <script src="../../../jqwidgets/jqxtooltip.js"></script>
+    <script src="../../../jqwidgets/jqxbulletchart.js"></script>
+    <script src="typescript-bulletchart.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+
+     <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createBulletChart('#container');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+    <div class="example-description">
+      This demo shows the default functionality of the BulletChart.
+      It displays two measures - a featured one (the pointer) and a comparative one (the
+      target) over a number of differently styled ranges. TypeScript example.
+    </div>
+    <div id="container"></div>
+  </body>
+
+</html>

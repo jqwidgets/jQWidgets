@@ -1,0 +1,24 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Popover Example";
+
+    List<KeyValuePair<string, object>> settings = new List<KeyValuePair<string, object>>()
+    {
+        new KeyValuePair<string, object>("offset", "{left: -50, top: 0}"),
+        new KeyValuePair<string, object>("arrowOffsetValue", 50),
+        new KeyValuePair<string, object>("title", "Employees"),
+        new KeyValuePair<string, object>("showCloseButton", true),
+        new KeyValuePair<string, object>("selector", "button"),
+        new KeyValuePair<string, object>("theme", ViewData["Theme"])
+    };
+}
+<label>ASP .NET Core MVC PopOver Tag Helper Example</label><br/><br/>
+<div class="jqx-widget-header" style="height: 33px; border-width: 1px; border-style: solid; padding:10px;" id="header">
+    <jqx-button style="float: right; margin-right: 10px; padding: 8px 12px; border-radius: 6px;" theme="@ViewData["Theme"]" template="inverse">View Employees</jqx-button>
+</div>
+<jqx-popover settings="settings">
+    <div id="movies">
+        <table style="min-width: 150px;"><tbody><tr><td style="width: 55px;" rowspan="2"><img height="50" width="45" src="~/images/nancy.png"></td><td>Nancy Davolio</td></tr><tr><td>Sales Representative</td></tr></tbody></table><table style="min-width: 150px;"><tbody><tr><td style="width: 55px;" rowspan="2"><img height="50" width="45" src="~/images/andrew.png"></td><td>Andrew Fuller</td></tr><tr><td>Vice President, Sales</td></tr></tbody></table><table style="min-width: 150px;"><tbody><tr><td style="width: 55px;" rowspan="2"><img height="50" width="45" src="~/images/janet.png"></td><td>Janet Leverling</td></tr><tr><td>Sales Representative</td></tr></tbody></table><table style="min-width: 150px;"><tbody><tr><td style="width: 55px;" rowspan="2"><img height="50" width="45" src="~/images/margaret.png"></td><td>Margaret Peacock</td></tr><tr><td>Sales Representative</td></tr></tbody></table><table style="min-width: 150px;"><tbody><tr><td style="width: 55px;" rowspan="2"><img height="50" width="45" src="~/images/steven.png"></td><td>Steven Buchanan</td></tr><tr><td>Sales Manager</td></tr></tbody></table><table style="min-width: 150px;"><tbody><tr><td style="width: 55px;" rowspan="2"><img height="50" width="45" src="~/images/michael.png"></td><td>Michael Suyama</td></tr><tr><td>Sales Representative</td></tr></tbody></table><table style="min-width: 150px;"><tbody><tr><td style="width: 55px;" rowspan="2"><img height="50" width="45" src="~/images/robert.png"></td><td>Robert King</td></tr><tr><td>Sales Representative</td></tr></tbody></table><table style="min-width: 150px;"><tbody><tr><td style="width: 55px;" rowspan="2"><img height="50" width="45" src="~/images/laura.png"></td><td>Laura Callahan</td></tr><tr><td>Inside Sales Coordinator</td></tr></tbody></table><table style="min-width: 150px;"><tbody><tr><td style="width: 55px;" rowspan="2"><img height="50" width="45" src="~/images/anne.png"></td><td>Anne Dodsworth</td></tr><tr><td>Sales Representative</td></tr></tbody></table>
+    </div>
+</jqx-popover>

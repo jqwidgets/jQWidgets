@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="keywords" content="jQuery ScrollView, ScrollView Widget, ScrollView, Mobile ScrollView" />
+    <meta name="description" content="jqxScrollView represents a widget which can be used for viewing content which is wider than the visible area outlined by the device's screen. Specific item can be chosen using drag movements or clicking/tapping on the buttons at the bottom of the jqxScrollView." />
+    <title id="Description">jqxScrollView represents a widget which can be used for viewing content which is wider than the visible area outlined by the device's screen. Specific item can be chosen using drag movements or clicking/tapping on the buttons at the bottom of the jqxScrollView. TypeScript example.</title>
+
+    <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css"/>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.arctic.css" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollview.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="typescript-scrollview.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <style type="text/css">
+        .photo {
+            width: 600px;
+            height: 450px;
+            background-color: #000;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function ()
+        {
+            createScrollView('#photoGallery', '#StartBtn', '#StopBtn');
+        });
+    </script>
+</head>
+
+<!-- 3. Display the application -->
+<body>
+    <div class="example-description">
+      jqxScrollView represents a widget which can be used for viewing content which is wider than the visible area outlined by the device's screen. Specific item can be chosen using drag movements or clicking/tapping on the buttons at the bottom of the jqxScrollView. TypeScript example.
+    </div>
+
+    <div id="photoGallery">
+        <div><div class="photo" style="background-image: url(../../../images/imageNature1.jpg)"></div></div>
+        <div><div class="photo" style="background-image: url(../../../images/imageNature2.jpg)"></div></div>
+        <div><div class="photo" style="background-image: url(../../../images/imageNature3.jpg)"></div></div>
+        <div><div class="photo" style="background-image: url(../../../images/imageNature4.jpg)"></div></div>
+        <div><div class="photo" style="background-image: url(../../../images/imageNature5.jpg)"></div></div>
+    </div>
+    <div style='margin-top: 20px;'>
+        <br />
+        <div>
+            <input type="button" value="Start Slideshow" id="StartBtn" />
+            <input type="button" value="Stop Slideshow" id="StopBtn" />
+        </div>
+    </div>
+</body>
+</html>

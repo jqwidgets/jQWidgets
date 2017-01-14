@@ -1,0 +1,22 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC ScrollView Example";
+}
+<style type="text/css">
+    .photo {
+        width: 600px;
+        height: 450px;
+        background-color: #000;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
+<label>ASP .NET Core MVC ScrollView Tag Helper Example</label><br/><br/>
+<jqx-scrollview theme="@ViewData["Theme"]" width="600" height="450" id="photoGallery">
+    <div><div class="photo" style="background-image: url(/images/imageNature1.jpg)"></div></div>
+    <div><div class="photo" style="background-image: url(/images/imageNature2.jpg)"></div></div>
+    <div><div class="photo" style="background-image: url(/images/imageNature3.jpg)"></div></div>
+    <div><div class="photo" style="background-image: url(/images/imageNature4.jpg)"></div></div>
+    <div><div class="photo" style="background-image: url(/images/imageNature5.jpg)"></div></div>
+</jqx-scrollview>

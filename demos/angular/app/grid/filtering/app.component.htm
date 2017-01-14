@@ -1,0 +1,24 @@
+﻿<jqxGrid #gridReference (onfilter)="onFilter()"
+    [width]='850' [source]='dataAdapter' [filterable]='true'
+    [sortable]='true' [ready]='ready' [autoshowfiltericon]='true' [columns]='columns'>
+</jqxGrid>
+<div id="eventslog" style="margin-top: 30px;">
+    <div style="width: 200px; float: left; margin-right: 10px;">
+        <jqxButton (onClick)="clearFiltering()"
+            [width]='120'>
+            Remove Filter
+        </jqxButton>
+        <jqxCheckBox (onChange)="onFilterBackground($event)"
+            [checked]='true' [height]='25'>
+            Filter Background
+        </jqxCheckBox>
+        <jqxCheckBox (onChange)="onFilterIcon($event)"
+            [checked]='false' [height]='25'>
+            Show All Filter Icons
+        </jqxCheckBox>
+    </div>
+    <div style="float: left;">
+        Event Log:
+        <jqxPanel [width]='300' [height]='80'></jqxPanel>
+    </div>
+</div>

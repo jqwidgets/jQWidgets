@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Angular Window, Window Widget, Window" />
+    <meta name="description" content="The jqxWindow is a floating window which have two main parts - title and content.
+          In the title you can have any html content and close button.In the content you could put any html content." />
+    <title id='Description'>
+        You can use the jqxWindow to direct a user’s attention to a particular activity in your application,
+        such as entering data or viewing information. Consider using a jqxWindow when you want greater customization,
+        you want to block the user interface outside the window, or when you want to retrieve a DialogResult and other data from the popup window.
+        jqxWindow can be displayed as a modal dialog window that blocks user interaction with the underlying user interface or as a standard window without blocking the web page's user interface.
+    </title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <style>
+        body, html {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- jQWidgets -->
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+
+    
+    <script src="../node_modules/typescript/lib/typescript.js"></script>
+    <script src="../node_modules/core-js/client/shim.min.js"></script>
+    <script src="../node_modules/zone.js/dist/zone.js"></script>
+    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- Configure SystemJS -->
+    <script src="../systemjs.config.js"></script>
+    <script>
+        System.import('../app/window/defaultfunctionality/main').catch( (err) => { console.error(err); });
+    </script>
+</head>
+
+<!-- Display the application -->
+<body>
+    <div class="example-description">
+        Angular Window Example.
+    </div>
+    <my-app></my-app>
+</body>
+</html>

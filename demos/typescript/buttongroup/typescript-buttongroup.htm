@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title id='Description'>The ButtonGroup widget creates a set of buttons that can work as normal buttons, radio buttons or checkboxes. TypeScript example.</title>
+    <meta name="description" content="The Typescript sample demonstrates how to create ButtonGroup widget and modify its mode dynamically." />
+
+     <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxbuttongroup.js"></script>
+    <script src="../../../jqwidgets/jqxradiobutton.js"></script>
+    <script src="typescript-buttongroup.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+     <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createButtonGroup('#container', '#defaultMode', '#radioMode', '#checkboxMode');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+
+      <div class="example-description">
+          The ButtonGroup widget creates a set of buttons that can work as normal buttons, radio buttons or checkboxes. TypeScript example.
+      </div>
+      <div id='container'>
+          <button style="padding:4px 16px;" id="Left">
+              Left
+          </button>
+          <button style="padding:4px 16px;" id="Center">
+              Center
+          </button>
+          <button style="padding:4px 16px;" id="Right">
+              Right
+          </button>
+      </div>
+      <div style="margin-top: 10px;">
+          <h4>
+              Modes
+          </h4>
+          <div style="margin: 3px;" id="defaultMode">
+              Default
+          </div>
+          <div style="margin: 3px;" id="radioMode">
+              RadioButtons
+          </div>
+          <div style="margin: 3px;" id="checkboxMode">
+              CheckBoxes
+          </div>
+      </div>
+      <div id="events" style="margin-top: 10px;"></div>
+
+  </body>
+
+</html>

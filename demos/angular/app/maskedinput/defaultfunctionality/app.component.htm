@@ -1,0 +1,32 @@
+﻿<div style='margin-top: 10px;'>Numeric</div>
+<jqxMaskedInput #numericInput
+    [width]='250' [height]='25'>
+</jqxMaskedInput>
+
+<div style='margin-top: 10px;'>Zip Code</div>
+<jqxMaskedInput #zipCodeInput
+    [width]='250' [height]='25' [mask]='"#####-####"'>
+</jqxMaskedInput>
+
+<div style='margin-top: 10px;'>SSN</div>
+<jqxMaskedInput #ssnInput
+    [width]='250' [height]='25' [mask]='"###-##-####"'>
+</jqxMaskedInput>
+
+<div style='margin-top: 10px;'>Phone Number</div>
+<jqxMaskedInput #phoneInput
+    [width]='250' [height]='25' [mask]='"(###)###-####"'>
+</jqxMaskedInput>
+
+<div style='margin-top: 10px;'>IP Address (ex: 255.255.255.255)</div>
+<jqxMaskedInput #regexInput
+    [width]='250' [height]='25' [mask]='"[0-2][0-5][0-5].[0-2][0-5][0-5].[0-2][0-5][0-5].[0-2][0-5][0-5]"'>
+</jqxMaskedInput>
+
+<div style='margin-top: 10px;'>Disabled</div>
+<jqxMaskedInput #disabledInput
+    [width]='250' [height]='25' [disabled]='true'>
+</jqxMaskedInput>
+
+<div style='margin-top: 10px;'></div>
+<jqxButton (onClick)="clear()">Clear</jqxButton>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+  <head>
+    <title id='Description'>Draw plugin - Basic shapes drawing example.</title>
+    <!-- 1. Load references -->
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdraw.js"></script>
+    <script src="../../../jqwidgets/jqxtooltip.js"></script>
+    <script src="typescript-draw.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <style type="text/css">
+        .smallText {
+            font-size: 16px;
+            font-family: Sans-Serif;
+        }
+
+        .largeText {
+            font-size: 36px;
+            font-family: Sans-Serif;
+        }
+    </style>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createDraw('#container');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+      <div class="example-description">
+        Draw plugin - Basic shapes drawing example.
+      </div>
+      <div id='container' style="width:850px; height:500px"></div>
+  </body>
+
+</html>

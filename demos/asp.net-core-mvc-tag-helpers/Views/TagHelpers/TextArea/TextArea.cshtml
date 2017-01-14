@@ -1,0 +1,17 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC TextArea Example";
+}
+<script>
+    function change(event) {
+        var args = event.args;
+        document.getElementById("log").innerHTML = "Label: " + args.label + ", Value: " + args.value;;
+    }
+</script>
+<label>ASP .NET Core MVC Text Area Tag Helper Example</label><br/><br/>
+<label>Enter Name:</label>
+<jqx-textarea on-change="change()" displayMember="Name" selectedIndex="0" valueMember="ID" theme="@ViewData["Theme"]" width="250" height="100" source="Model"></jqx-textarea>
+(ex: An)
+<br /><br />
+<div id="log"></div>

@@ -1,0 +1,29 @@
+﻿
+<div style='margin-top: 10px;'>
+    Number
+</div>
+<jqxNumberInput #numericInput
+    [width]='250' [height]='25' [spinButtons]='true'>
+</jqxNumberInput>
+
+<div style='margin-top: 10px;'>
+    Percentage
+</div>
+<jqxNumberInput #percentageInput
+    [width]='250' [height]='25' [symbolPosition]='"right"'
+    [symbol]='"%"' [spinButtons]='true' [digits]='3'>
+</jqxNumberInput>
+
+<div style='margin-top: 10px;'>
+    Currency
+</div>
+<jqxNumberInput #currencyInput
+    [width]='250' [height]='25' [symbol]='"$"' [spinButtons]='true'>
+</jqxNumberInput>
+
+<div style='margin-top: 10px;'>
+    Disabled
+</div>
+<jqxNumberInput #disabledInput
+    [width]='250' [height]='25' [disabled]='true' [spinButtons]='true'>
+</jqxNumberInput>

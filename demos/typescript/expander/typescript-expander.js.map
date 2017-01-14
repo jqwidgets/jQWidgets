@@ -1,0 +1,1 @@
+{"version":3,"file":"typescript-expander.js","sourceRoot":"","sources":["typescript-expander.ts"],"names":[],"mappings":"AAAA,6DAA6D;AAC7D,wBAAwB,QAAQ;IAE5B,mDAAmD;IACnD,wDAAwD;IACxD,IAAI,OAAO,GACX;QACK,KAAK,EAAE,OAAO;KAClB,CAAC;IAEF,sBAAsB;IACtB,IAAI,UAAU,GAA0B,SAAS,CAAC,cAAc,CAAC,QAAQ,EAAE,aAAa,EAAE,OAAO,CAAC,CAAC;AACvG,CAAC"}

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title id="Description">
+        This demo shows the default functionality of the jqxLayout widget.
+        This control allows the creation of complex layouts with panels that can be nested,
+        resized, pinned, unpinned and closed. TypeScript example.
+    </title>
+    <meta name="description" content="Layout widget example. With the Layout widget you can create interactive layouts using Typescript definitions" />
+
+    <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <style type="text/css">
+        .jqx-layout-group-auto-hide-content-vertical {
+            width: 200px;
+        }
+    </style>
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxribbon.js"></script>
+    <script src="../../../jqwidgets/jqxlayout.js"></script>
+    <script src="../../../jqwidgets/jqxtree.js"></script>
+    <script src="typescript-layout.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+            $(document).ready(function () {
+                createLayout('#jqxLayout', '#solutionExplorerTree');
+            });
+    </script>
+
+</head>
+
+<!-- 3. Display the application -->
+<body style="background: white;">
+
+    <div class="example-description">
+      This demo shows the default functionality of the jqxLayout widget.
+      This control allows the creation of complex layouts with panels that can be nested,
+      resized, pinned, unpinned and closed. TypeScript example.
+    </div>
+
+    <div id="jqxLayout">
+        <!--The panel content divs can have a flat structure-->
+        <!--autoHideGroup-->
+        <div data-container="ToolboxPanel">
+            List of tools
+        </div>
+        <div data-container="HelpPanel">
+            Help topics
+        </div>
+        <!--documentGroup-->
+        <div data-container="Document1Panel">
+            Document 1 content
+        </div>
+        <div data-container="Document2Panel">
+            Document 2 content
+        </div>
+        <!--bottom tabbedGroup-->
+        <div data-container="ErrorListPanel">
+            List of errors
+        </div>
+        <div data-container="OutputPanel">
+            Output
+        </div>
+        <!--right tabbedGroup-->
+        <div data-container="SolutionExplorerPanel">
+            <div id="solutionExplorerTree" style="border: none;">
+            </div>
+        </div>
+        <div data-container="PropertiesPanel">
+            List of properties
+        </div>
+    </div>
+</body>
+
+</html>

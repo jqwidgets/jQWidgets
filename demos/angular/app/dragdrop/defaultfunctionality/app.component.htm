@@ -1,0 +1,18 @@
+﻿<div class="main-container">
+    <div id="draggable-parent">
+
+        <jqxDragDrop
+            [restricter]='"#draggable-parent"' [dropTarget]='".drop-target"' [appendTo]='"#draggable-parent"'
+            (ondragstart)="onDragStart($event)" (ondragend)="onDragEnd($event)"
+            (ondroptargetenter)="onDropTargetEnter($event)" (ondroptargetleave)="onDropTargetLeave($event)">
+            <div class="label"><p>I can be dragged only inside my parent</p></div>
+        </jqxDragDrop>
+
+        <div class="drop-target"><div class="label">I'm a drop target</div></div>
+    </div>
+
+    <jqxPanel #panelReference class="events"
+        [width]='260' [height]='330'>
+    </jqxPanel>
+
+</div>

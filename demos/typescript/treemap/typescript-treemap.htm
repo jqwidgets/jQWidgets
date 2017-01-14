@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title id='Description'>
+      The sample showcases the jqxTreeMap widget.
+      jqxTreeMap displays hierarchical data as a set of nested rectangles.
+      Each branch of the tree is given a rectangle, which is then tiled with smaller rectangles representing sub-branches.
+      A leaf node's rectangle has an area proportional to a specified dimension on the data. TypeScript example.
+    </title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" />
+    <script  src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script  src="../../../jqwidgets/jqxcore.js"></script>
+    <script  src="../../../scripts/demos.js"></script>
+    <script  src="../../../jqwidgets/jqxtooltip.js"></script>
+    <script  src="../../../jqwidgets/jqxtreemap.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script  src="typescript-treemap.js"></script>
+    <script>
+        $(document).ready(function ()
+        {
+            createTreeMap('#treemap');
+        });
+    </script>
+</head>
+<body>
+    <div class="example-description">
+      The sample showcases the jqxTreeMap widget.
+      jqxTreeMap displays hierarchical data as a set of nested rectangles.
+      Each branch of the tree is given a rectangle, which is then tiled with smaller rectangles representing sub-branches.
+      A leaf node's rectangle has an area proportional to a specified dimension on the data. TypeScript example.
+    </div>
+
+    <div id="treemap"></div>
+</body>
+</html>

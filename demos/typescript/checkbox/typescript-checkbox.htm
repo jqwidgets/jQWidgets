@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkbox TypeScript example.</title>
+    <meta name="description" content="Checkbox widget example built with typescript. Checkbox typescript definitions enables you to easily add a checkbox to your web page" />
+
+     <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script src="typescript-checkbox.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+     <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createCheckBox('#jqxCheckBox', '#jqxCheckBox2', '#jqxCheckBox3', '#jqxCheckBox4', '#jqxCheckBox5', '#jqxCheckBox6',
+                '#jqxCheckBox7', '#jqxCheckBox8', '#jqxCheckBox9', '#jqxCheckBox10', '#jqxCheckBox11', '#jqxCheckBox12', '#jqxCheckBox13');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+      
+      <div class="example-description">
+        Checkbox TypeScript example.
+      </div>
+      <div style='float: left; width: 100%;'>
+          <h3 style='margin-left: 15px;'>Categories</h3>
+          <div id='jqxCheckBox' style='margin-left: 10px; float: left;'>
+              Entertainment
+          </div>
+          <div id='jqxCheckBox2' style='margin-left: 10px; float: left;'>
+              <span>Computers</span>
+          </div>
+          <div id='jqxCheckBox3' style='margin-left: 10px; float: left;'>
+              <span>Sports</span>
+          </div>
+      </div>
+      <div style='float: left; width: 100%; margin-top: 10px;'>
+          <div id='jqxCheckBox4' style='margin-left: 10px; float: left;'>
+              Health
+          </div>
+          <div id='jqxCheckBox5' style='margin-left: 10px; float: left;'>
+              <span>Finance</span>
+          </div>
+          <div id='jqxCheckBox6' style='margin-left: 10px; float: left;'>
+              <span>Travel</span>
+          </div>
+      </div>
+      <div style='float: left; width: 100%; margin-top: 10px;'>
+          <div id='jqxCheckBox7' style='margin-left: 10px; float: left;'>
+              Music
+          </div>
+          <div id='jqxCheckBox8' style='margin-left: 10px; float: left;'>
+              <span>Technology</span>
+          </div>
+          <div id='jqxCheckBox9' style='margin-left: 10px; float: left;'>
+              <span>Publishing</span>
+          </div>
+      </div>
+
+      <div style='float: left; width: 100%; margin-top: 10px;'>
+          <h3 style='margin-left: 15px;'>States</h3>
+          <div id='jqxCheckBox10' style='margin-left: 10px; float: left;'>
+              <span>Checked</span>
+          </div>
+          <div id='jqxCheckBox11' style='margin-left: 10px; float: left;'>
+              <span>Unchecked</span>
+          </div>
+      </div>
+      <div style='float: left; width: 100%; margin-top: 10px;'>
+          <div id='jqxCheckBox12' style='margin-left: 10px; float: left;'>
+              <span>Indeterminate</span>
+          </div>
+          <div id='jqxCheckBox13' style='margin-left: 10px; float: left;'>
+              <span>Disabled</span>
+          </div>
+      </div>
+  </body>
+
+</html>

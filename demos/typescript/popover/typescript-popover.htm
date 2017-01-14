@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title id='Description'>jqxPopover TypeScript example.</title>
+    <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxpopover.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="typescript-popover.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+            $(document).ready(function () {
+                createPopover('#popover', 'header', 'button', 'table');
+            });
+    </script>
+
+</head>
+
+<!-- 3. Display the application -->
+<body>
+    <div class="example-description">
+      jqxPopover TypeScript example.
+    </div>
+
+    <div id="popover">
+        <div id="table">
+        </div>
+    </div>
+    <div style="height: 33px; border-width: 1px; border-style: solid; padding:10px;" id="header">
+        <button style="float: right; margin-right: 10px; padding: 8px 12px; border-radius: 6px;" id="button">View Employees</button>
+    </div>
+</body>
+
+</html>

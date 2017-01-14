@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="keywords" content="jQuery Rating, jqxRating, Rating Widget" />
+    <meta name="description" content="The jqxRating control represents a widget that allows you to choose a rating." />
+    <title id='Description'>The jqxRating control represents a widget that allows you to choose a rating. You can configure the rating item's size, image and the number of displayed items. TypeScript example.</title>
+
+    <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.arctic.css" type="text/css" />
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxrating.js"></script>
+    <script src="typescript-rating.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+            $(document).ready(function () {
+                createRating('#jqxRating', 'rate');
+            });
+    </script>
+
+</head>
+
+<!-- 3. Display the application -->
+<body>
+    <div class="example-description">
+      The jqxRating control represents a widget that allows you to choose a rating. You can configure the rating item's size, image and the number of displayed items. TypeScript example.<br />
+    </div>
+
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana;">
+        <div id='jqxRating'></div>
+        <div style='margin-top:10px;'>
+            <div style='float: left;'>Rating:</div> <div style='float: left;' id='rate'></div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Menu Example";
+}
+
+<label>ASP .NET Core MVC Menu Tag Helper Example</label><br/><br/>
+<jqx-menu theme="@ViewData["Theme"]">
+    <jqx-menu-items>
+        <jqx-menu-item><a href="#Home">Home</a></jqx-menu-item>
+        <jqx-menu-item>
+            Solutions
+            <jqx-menu-items style='width: 250px;'>
+                <jqx-menu-item><a href="#Education">Education</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Financial">Financial services</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Government">Government</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Manufacturing">Manufacturing</a></jqx-menu-item>
+                <jqx-menu-item type='separator'></jqx-menu-item>
+                <jqx-menu-item>
+                    Software Solutions
+                    <jqx-menu-items style='width: 220px;'>
+                        <jqx-menu-item><a href="#ConsumerPhoto">Consumer photo and video</a></jqx-menu-item>
+                        <jqx-menu-item><a href="#Mobile">Mobile</a></jqx-menu-item>
+                        <jqx-menu-item><a href="#RIA">Rich Internet apps</a></jqx-menu-item>
+                        <jqx-menu-item><a href="#TechnicalCommunication">Technical communication</a></jqx-menu-item>
+                        <jqx-menu-item><a href="#Training">Training and eLearning</a></jqx-menu-item>
+                        <jqx-menu-item><a href="#WebConferencing">Web conferencing</a></jqx-menu-item>
+                    </jqx-menu-items>
+                </jqx-menu-item>
+                <jqx-menu-item><a href="#">All industries and solutions</a></jqx-menu-item>
+            </jqx-menu-items>
+        </jqx-menu-item>
+        <jqx-menu-item>
+            Products
+            <jqx-menu-items>
+                <jqx-menu-item><a href="#PCProducts">PC products</a></jqx-menu-item>
+                <jqx-menu-item><a href="#MobileProducts">Mobile products</a></jqx-menu-item>
+                <jqx-menu-item><a href="#AllProducts">All products</a></jqx-menu-item>
+            </jqx-menu-items>
+        </jqx-menu-item>
+        <jqx-menu-item>
+            Support
+            <jqx-menu-items style='width: 200px;'>
+                <jqx-menu-item><a href="#SupportHome">Support home</a></jqx-menu-item>
+                <jqx-menu-item><a href="#CustomerService">Customer Service</a></jqx-menu-item>
+                <jqx-menu-item><a href="#KB">Knowledge base</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Books">Books</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Training">Training and certification</a></jqx-menu-item>
+                <jqx-menu-item><a href="#SupportPrograms">Support programs</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Forums">Forums</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Documentation">Documentation</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Updates">Updates</a></jqx-menu-item>
+            </jqx-menu-items>
+        </jqx-menu-item>
+        <jqx-menu-item>
+            Communities
+            <jqx-menu-items style='width: 200px;'>
+                <jqx-menu-item><a href="#Designers">Designers</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Developers">Developers</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Educators">Educators and students</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Partners">Partners</a></jqx-menu-item>
+                <jqx-menu-item type='separator'></jqx-menu-item>
+                <jqx-menu-item>
+                    By resource
+                    <jqx-menu-items>
+                        <jqx-menu-item><a href="#Labs">Labs</a></jqx-menu-item>
+                        <jqx-menu-item><a href="#TV">TV</a></jqx-menu-item>
+                        <jqx-menu-item><a href="#Forums">Forums</a></jqx-menu-item>
+                        <jqx-menu-item><a href="#Exchange">Exchange</a></jqx-menu-item>
+                        <jqx-menu-item><a href="#Blogs">Blogs</a></jqx-menu-item>
+                        <jqx-menu-item><a href="#Experience Design">Experience Design</a></jqx-menu-item>
+                    </jqx-menu-items>
+                </jqx-menu-item>
+            </jqx-menu-items>
+        </jqx-menu-item>
+        <jqx-menu-item>
+            Company
+            <jqx-menu-items style='width: 180px;'>
+                <jqx-menu-item><a href="#About">About Us</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Press">Press</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Investor">Investor Relations</a></jqx-menu-item>
+                <jqx-menu-item><a href="#CorporateAffairs">Corporate Affairs</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Careers">Careers</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Showcase">Showcase</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Events">Events</a></jqx-menu-item>
+                <jqx-menu-item><a href="#ContactUs">Contact Us</a></jqx-menu-item>
+                <jqx-menu-item><a href="#Become an affijqx-menu-itemate">Become an affiliate</a></jqx-menu-item>
+            </jqx-menu-items>
+        </jqx-menu-item>
+    </jqx-menu-items>
+</jqx-menu>

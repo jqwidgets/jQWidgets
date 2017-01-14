@@ -1,0 +1,44 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "ASP .NET MVC Bullet Chart Example";
+    BulletChartDataObject pointer = new BulletChartDataObject()
+    {
+        Value = 270,
+        Label = "Revenue 2016 YTD",
+        Size = "25%",
+        Color = "Black"
+    };
+
+    BulletChartDataObject target = new BulletChartDataObject()
+    {
+        Value = 260,
+        Label = "Revenue 2015 YTD",
+        Size = "4",
+        Color = "Black"
+    };
+
+    BulletChartDataObject ticks = new BulletChartDataObject()
+    {
+        Position = "both",
+        Interval = 50,
+        Size = "10"
+    };
+
+    List<BulletChartRange> ranges = new List<BulletChartRange>()
+    {
+        new BulletChartRange()
+        {
+            StartValue = 0, EndValue = 200, Color = "#000", Opacity = 0.5
+        },
+        new BulletChartRange()
+        {
+            StartValue = 200, EndValue = 250, Color = "#000", Opacity = 0.3
+        },
+        new BulletChartRange()
+        {
+            StartValue = 250, EndValue = 300, Color = "#000", Opacity = 0.1
+        }
+    };
+}
+<label>ASP .NET MVC Core Bullet Chart Tag Helper Example</label><br/><br/>
+<jqx-bulletchart labelsFormat="c" width="500" height="80" barSize="40%" pointer="pointer" ticks="ticks" ranges="ranges" target="target"  title="Revenue 2016 YTD" description="(U.S. $ in thousands)" ></jqx-bulletchart>

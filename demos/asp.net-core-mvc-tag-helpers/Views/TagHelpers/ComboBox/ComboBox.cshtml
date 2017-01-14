@@ -1,0 +1,48 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC ComboBox Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<label>ASP .NET Core MVC ComboBox Example</label><br/><br/>
+<jqx-combobox for="@employee.Name" value-for="@employee.ID" selectedIndex="0" edit="@Url.Action("EditItem","TagHelpers")" create="@Url.Action("AddItem","TagHelpers")" delete="@Url.Action("DeleteItem","TagHelpers")" instance="listInstance()" theme="@ViewData["Theme"]" width="250" height="30" source="Model"></jqx-combobox>
+<div style="margin-top:30px;">
+    <label>Add/Delete/Update</label>
+    <table>
+        <tr>
+            <td style="padding:10px;" align="right">Name:</td>
+            <td><jqx-input value="Peter Green" height="25" id="name"></jqx-input></td>
+        </tr>
+    </table>
+</div>
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="addItem()">Add Item</jqx-button>
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="removeItem()">Delete Item</jqx-button>
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="updateItem()">Update Item</jqx-button>
+<script>
+    var list = {};
+    function addItem() {
+       list.addItem($("#name").val());
+    }
+
+    function removeItem() {
+        var item = list.getSelectedItem();
+        if (item)
+        {
+            list.removeItem(item);
+        }
+    }
+
+    function updateItem() {
+        var item = list.getSelectedItem();
+        if (item)
+        {
+            list.updateItem({value: item.value, label: $("#name").val() }, item);
+        }
+    }
+
+    function listInstance(instance) {
+        list = instance;
+    }
+</script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title id='Description'>Chart Polar Axis Typescript Example.</title>
+    <meta name="description" content="Chart with Polar Axis Typescript Example. The sample shows how to build Chart with Polar Axis using Chart Typescript definitions" />
+    <meta name="keywords" content="jqwidgets charts, jquery charts, javascript charts, ajax charts, graphs, plots, line charts, polar charts, financial charts, bar charts, pie charts, javascript plots, ajax plots" />
+
+    <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdata.js"></script>
+    <script src="../../../jqwidgets/jqxdraw.js"></script>
+    <script src="../../../jqwidgets/jqxchart.core.js"></script>
+    <script src="../../../jqwidgets/jqxslider.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script src="typescript-chart-polarseries.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createChartPolarSeries('#chartContainer', '#sliderStartAngle', '#dropDownSeries', '#sliderRadius', '#dropDownColors');
+        });
+    </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+      <div class="example-description">
+        Chart Polar Axis Typescript Example.
+      </div>
+
+      <div id='chartContainer' style="width: 850px; height: 500px">
+      </div>
+      <table style="width: 850px">
+          <tr>
+              <td style="padding-left:50px">
+                  <p style="font-family: Verdana; font-size: 12px;">
+                      Move the slider to rotate:
+                  </p>
+                  <div id='sliderStartAngle'>
+                  </div>
+              </td>
+              <td>
+                  <p style="font-family: Verdana; font-size: 12px;">
+                      Select the series type:
+                  </p>
+                  <div id='dropDownSeries'>
+                  </div>
+              </td>
+          </tr>
+          <tr>
+              <td style="padding-left:50px">
+                  <p style="font-family: Verdana; font-size: 12px;">
+                      Move the slider to change the radius:
+                  </p>
+                  <div id='sliderRadius'>
+                  </div>
+              </td>
+              <td>
+                  <p style="font-family: Verdana; font-size: 12px;">
+                      Select color scheme:
+                  </p>
+                  <div id='dropDownColors'>
+                  </div>
+              </td>
+          </tr>
+      </table>
+  </body>
+
+</html>

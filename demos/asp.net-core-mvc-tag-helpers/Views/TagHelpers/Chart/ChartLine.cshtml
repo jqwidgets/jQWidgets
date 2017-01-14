@@ -1,0 +1,24 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.ChartDataItem>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Lines Chart Example";
+
+    Padding padding = new Padding() { Left = 5, Top = 5, Right = 35, Bottom = 5 };
+    Padding titlePadding = new Padding() { Left = 90, Top = 0, Right = 0, Bottom = 10 };
+    Rectangle legendPosition = new Rectangle(){ Left = 520, Top = 140, Width = 100, Height = 100 };
+    FormatSettings formatSettings = new FormatSettings() { Sufix = "%", DecimalPlaces = 1 };
+}
+<label>ASP .NET Core MVC Line Chart Example</label><br/><br/>
+<jqx-chart style="width: 850px; height: 500px;" colorScheme="scheme02" padding="padding" titlePadding="titlePadding" title="Fitness & exercise weekly scorecard" description="Time spent in vigorous exercise" showLegend="true" legendPosition="legendPosition" source="Model">
+    <jqx-chart-x-axis dataField="Day" showGridLines="true"></jqx-chart-x-axis>
+     <jqx-chart-series-groups>   
+         <jqx-chart-serie-group showLabels="true" columnsGapPercent="50" seriesGapPercent="0" type=@SerieType.Line>
+             <jqx-chart-value-axis axisSize="auto" displayValueAxis="true" description="Time in minutes" tickMarksColor="#888888" minValue="0" maxValue="100" unitInterval="10"></jqx-chart-value-axis>
+                <jqx-chart-series>
+                    <jqx-chart-serie symbolType="square" dataField='Keith' displayText='Keith'></jqx-chart-serie>
+                    <jqx-chart-serie symbolType="square" dataField='Erica' displayText='Erica'></jqx-chart-serie>
+                    <jqx-chart-serie symbolType="square" dataField='George' displayText='George'></jqx-chart-serie>
+                </jqx-chart-series>
+         </jqx-chart-serie-group>
+    </jqx-chart-series-groups>
+</jqx-chart>

@@ -1,0 +1,57 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC TreeGrid Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<script>
+    function virtualModeCreateRecords(expandedRecord, done)
+    {
+        var json = expandedRecord ? JSON.stringify(expandedRecord) : "{ReportsTo: null}";
+        var source =
+            {
+                type: 'POST', dataType: 'json',
+                dataFields:
+                    [
+                        { name: "FirstName", type: "string" },
+                        { name: "LastName", type: "string" },
+                        { name: "ProductName", type: "string" },
+                        { name: "ID", type: "string" },
+                        { name: "ReportsTo", type: "string" }
+                    ],
+                data: { 'jsonData': json },
+                root: "Employees",
+                id: "ID",
+                url: "@Url.Action("GetChildren","TagHelpers")"
+                };
+
+        var dataAdapter = new $.jqx.dataAdapter(source,
+        {
+            loadComplete: function () {
+                done(dataAdapter.records);
+            },
+            loadError: function (xhr, status, error) {
+                done(false);
+            }
+        });
+        dataAdapter.dataBind();
+    }
+    function virtualModeRecordCreating(record)
+    {
+        if (record.level == 1) {
+            // by setting the record's leaf member to true, you will define the record as a leaf node.
+            record.leaf = true;
+        }
+    }
+</script>
+<label>ASP .NET Core MVC TreeGrid Load On Demand Example</label><br/><br/>
+<jqx-treegrid pageable="true" virtualModeCreateRecords="virtualModeCreateRecords()" virtualModeRecordCreating="virtualModeRecordCreating()" theme="@ViewData["Theme"]" width="600"> 
+    <jqx-treegrid-columns>
+        <jqx-treegrid-column dataField-for="@(employee.FirstName)" width="200" text="First Name"></jqx-treegrid-column>
+        <jqx-treegrid-column dataField-for="@(employee.LastName)" width="200" text="Last Name"></jqx-treegrid-column>
+        <jqx-treegrid-column dataField-for="@(employee.ProductName)" width="200"></jqx-treegrid-column>
+    </jqx-treegrid-columns>
+</jqx-treegrid>
+

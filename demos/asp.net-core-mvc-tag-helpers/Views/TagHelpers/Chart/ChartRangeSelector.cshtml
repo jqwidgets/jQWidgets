@@ -1,0 +1,53 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.StockPrice>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Zooming Chart Example";
+
+    Padding padding = new Padding() { Left = 5, Top = 5, Right = 30, Bottom = 5 };
+    Padding titlePadding = new Padding() { Left = 30, Top = 5, Right = 0, Bottom = 10 };
+    Rectangle legendPosition = new Rectangle(){ Left = 520, Top = 140, Width = 100, Height = 100 };
+    FormatSettings formatSettings = new FormatSettings() { Sufix = "%", DecimalPlaces = 1 };
+
+    DateTime minDate = new DateTime(2012, 1, 1);
+    DateTime maxDate = new DateTime(2013, 12, 31);
+
+}
+<script>
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    function labelsCustomFormatFn (value) {
+        return value.getDate() + '-' + months[value.getMonth()] + '\'' + value.getFullYear().toString().substring(2);
+    };
+    function rangeSelectorLabelsCustomFormatFn(value) {
+        return value.getDate() + '-' + months[value.getMonth()] + '\'' + value.getFullYear().toString().substring(2);
+    };
+
+    function toolTipCustomFormatFn(value, itemIndex, serie, group, categoryValue, categoryAxis) {
+        var dataItem = dataAdapter.records[itemIndex];
+        return '<DIV style="text-align:left"><b>Date: ' +
+                categoryValue.getDate() + '-' + months[categoryValue.getMonth()] + '-' + categoryValue.getFullYear() +
+                '</b><br />Open price: $' + dataItem.Open +
+                '</b><br />Close price: $' + dataItem.Close +
+                '</b><br />Daily volume: ' + dataItem.Volume +
+                 '</DIV>';
+    };
+</script>
+<label>ASP .NET Core MVC Range Selector Chart Example</label><br/><br/>
+<jqx-chart animationDuration="1500" style="width: 850px; height: 500px;" colorScheme="scheme02" padding="padding" titlePadding="titlePadding" title="Tesla Motors Stock Price" description="(June 2010 - March 2014)" showLegend="true" legendPosition="legendPosition" source="Model">
+     <jqx-chart-x-axis type="AxisType.Date" baseUnit="BaseUnit.Day" dataField="Date" minValue="minDate" maxValue="maxDate">
+       <jqx-chart-range-selector size="80" minValue="minDate" dataField="Close" baseUnit="BaseUnit.Month" serieType="SerieType.Area" backgroundColor="white">
+           <jqx-chart-labels formatFunction="rangeSelectorLabelsCustomFormatFn()"></jqx-chart-labels>
+       </jqx-chart-range-selector>
+        <jqx-chart-labels formatFunction="labelsCustomFormatFn()"></jqx-chart-labels>
+     </jqx-chart-x-axis>
+    <jqx-chart-value-axis text="Price per share [USD]">
+        <jqx-chart-labels horizontalAligment="HorizontalAlignment.Right"></jqx-chart-labels>
+    </jqx-chart-value-axis>
+     <jqx-chart-series-groups>   
+         <jqx-chart-serie-group toolTipFormatFunction=toolTipCustomFormatFn() type=SerieType.Line>
+            <jqx-chart-series>
+                <jqx-chart-serie dataField='Close' displayText='Close Price' lineWidth="1" lineWidthSelected="1"></jqx-chart-serie>
+            </jqx-chart-series>
+         </jqx-chart-serie-group>
+    </jqx-chart-series-groups>
+</jqx-chart>

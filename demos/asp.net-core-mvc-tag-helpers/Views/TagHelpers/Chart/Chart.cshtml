@@ -1,0 +1,21 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@model IEnumerable<jQWidgets.AspNet.Core.Models.BrowserShare>
+@{
+    ViewData["Title"] = "ASP .NET MVC Pie Chart Example";
+
+    Padding padding = new Padding() { Left = 5, Top = 5, Right = 5, Bottom = 5 };
+    Padding titlePadding = new Padding() { Left = 0, Top = 0, Right = 0, Bottom = 10 };
+    Rectangle legendPosition = new Rectangle() { Left = 520, Top = 140, Width = 100, Height = 100 };
+    FormatSettings formatSettings = new FormatSettings() { Sufix = "%", DecimalPlaces = 1 };
+}
+<label>ASP .NET Core MVC Chart Tag Helper Example</label><br/><br/>
+<jqx-chart style="width: 850px; height: 500px;" colorScheme="scheme02" padding="padding" titlePadding="titlePadding" title="Desktop browsers share" description="(source: wikipedia.org)" showLegend="false" legendPosition="legendPosition" source="Model">
+    <jqx-chart-series-groups>   
+         <jqx-chart-serie-group showLabels="true" type=@SerieType.Pie>
+                <jqx-chart-series>
+                    <jqx-chart-serie dataField="Share" displayText="Browser" labelRadius="120" initialAngle="15" radius="170" centerOffset="0" formatSettings="formatSettings">
+                   </jqx-chart-serie>
+                </jqx-chart-series>
+         </jqx-chart-serie-group>
+    </jqx-chart-series-groups>
+</jqx-chart>

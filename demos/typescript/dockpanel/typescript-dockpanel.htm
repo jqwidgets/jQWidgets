@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+  <head>
+    <title>Dock Panel TypeScript example.</title>
+      <meta name="description" content="Dock Panel Layout example." />
+
+    <!-- 1. Load references -->
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdockpanel.js"></script>
+    <script src="typescript-dockpanel.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createDockPanel('#jqxDockPanel', '#jqxDockPanel2');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+      <div class="example-description">
+        Dock Panel TypeScript example.
+      </div>
+      <div id='jqxWidget' style="width: 300px; height: 600px; font-size: 13px; font-family: Verdana;">
+          <div id='jqxDockPanel'>
+              <div id='first' dock='left' style='background: #486974;'>
+                  First Div
+              </div>
+              <div id='second' dock='top' style='height: 100px; background: #368ba7;'>
+                  Second Div
+              </div>
+              <div id='third' dock='right' style='background: #df7169;'>
+                  Third Div
+              </div>
+              <div id='fourth' style='background: #a73654;'>
+                  Fourth Div
+              </div>
+          </div>
+          <br />
+          <div>Layout Types:</div>
+          <div id='layout'>
+              <img title='click to apply a new layout' alt='layout types' src='../../../images/LayoutTypes.png' />
+          </div>
+          <br />
+          <div>Spiral:</div>
+          <div id='jqxDockPanel2'>
+              <div id='Div1' dock='left' style='background: #486974;'>
+                  Left
+              </div>
+              <div id='Div2' dock='top' style='background: #368ba7;'>
+                  Top
+              </div>
+              <div id='Div3' dock='right' style='background: #df7169;'>
+                  Right
+              </div>
+              <div id='Div4' dock='bottom' style='background: #a73654;'>
+                  Bottom
+              </div>
+          </div>
+      </div>
+  </body>
+
+</html>

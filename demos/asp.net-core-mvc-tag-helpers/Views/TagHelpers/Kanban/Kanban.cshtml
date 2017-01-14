@@ -1,0 +1,29 @@
+@model jQWidgets.AspNet.Core.Models.jQWidgetsDemosContext
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Kanban Example";
+    Dictionary<string, string> mappings = new Dictionary<string, string>();
+    mappings["Id"] = "id";
+    mappings["State"] = "status";
+    mappings["Text"] = "label";
+    mappings["Label"] = "label";
+    mappings["Tags"] = "tags";
+    mappings["Hex"] = "color";
+    mappings["ResourceId"] = "resourceId";
+    mappings["Name"] = "name";
+    mappings["Image"] = "image";
+}
+
+<script>
+
+
+</script>
+<label>ASP .NET Core MVC Kanban Tag Helper Example</label><br/><br/>
+<jqx-kanban mappings="mappings" resources="Model.KanbanResources" source="Model.KanbanDataItems" width="850">
+    <jqx-kanban-columns>
+        <jqx-kanban-column text="Backlog" dataField="New"></jqx-kanban-column>
+        <jqx-kanban-column text="In Progress" dataField="Work"></jqx-kanban-column>
+        <jqx-kanban-column text="Done" dataField="Done"></jqx-kanban-column>
+</jqx-kanban-columns>
+</jqx-kanban>

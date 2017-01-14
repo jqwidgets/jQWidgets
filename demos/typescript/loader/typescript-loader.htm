@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title id="Description">This demo shows the default functionality of Loader. TypeScript example.</title>
+        <meta name="keywords" content="Typescript loader, jQWidgets, jqxLoader, loader" />
+        <meta name="description" content="This demo shows the default functionality of Loader Typescript." />
+
+        <!-- 1. Load references -->
+        <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+        <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+        <script src="../../../scripts/demos.js"></script>
+        <script src="../../../jqwidgets/jqxcore.js"></script>
+        <script src="../../../jqwidgets/jqxloader.js"></script>
+        <script src="../../../jqwidgets/jqxbuttons.js"></script>
+        <script src="typescript-loader.js"></script>
+        <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+        <!-- 2. Create initialization -->
+        <script>
+            $(document).ready(function () {
+                createLoader('#jqxLoader', '#openLoader', '#closeLoader');
+            });
+        </script>
+
+    </head>
+
+    <!-- 3. Display the application -->
+    <body>
+        <div class="example-description">
+          This demo shows the default functionality of Loader. TypeScript example.
+        </div>
+        <div id="jqxLoader">
+        </div>
+        <input type="button" value="Open Loader" id="openLoader" />
+        <input type="button" value="Close" id="closeLoader" />
+    </body>
+
+</html>

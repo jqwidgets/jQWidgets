@@ -1,0 +1,47 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Validator Example";
+
+    List<KeyValuePair<string, object>> settings = new List<KeyValuePair<string, object>>()
+    {
+           new KeyValuePair<string, object>("rules", new List<ValidatorRule>()
+            {
+                new ValidatorRule() { Input ="#username", Action="keyup, blur", Rule="required" },
+                new ValidatorRule() { Input ="#password", Action="keyup, blur", Rule="required" }
+            }
+        ),
+        new KeyValuePair<string, object>("selector", "form"),
+        new KeyValuePair<string, object>("theme", ViewData["Theme"])
+    };
+}
+<script>
+    var validator;
+    function getValidator(instance) {
+        validator = instance;
+    }
+    function validate() {
+        validator.validate();
+    }
+</script>
+<label>ASP .NET Core MVC Validator Example</label><br/><br/>
+<jqx-validator hintType="label" instance="getValidator()" settings="settings"></jqx-validator>
+<form class="form" id="form" target="form-iframe" method="post" action="login.php" style="width: 650px;">
+    <div>
+        <h2>Login Demo</h2>
+    </div>
+    <label style="margin-top:10px;">Username:</label>
+    <div style="margin-top:10px;">
+        <jqx-input height="25" theme="@ViewData["theme"]" type="text" id="username" name="username"></jqx-input>
+    </div>
+    <label>Password:</label>
+    <div style="margin-top:10px;">
+        <jqx-passwordinput height="25" theme="@ViewData["theme"]" type="password" id="password" name="password"></jqx-passwordinput>
+    </div>
+    <div style="margin-top:10px;">
+        <jqx-checkbox theme="@ViewData["theme"]" name="rememberme" id="rememberme">Keep me logged in on this computer</jqx-checkbox>
+    </div>
+    <div style="margin-top:10px;">
+        <jqx-button theme="@ViewData["theme"]" on-click="validate()" id="loginButton" type="submit" value="Login"></jqx-button>
+    </div>
+</form>

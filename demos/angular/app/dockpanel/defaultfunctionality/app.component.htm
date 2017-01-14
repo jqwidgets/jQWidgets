@@ -1,0 +1,41 @@
+﻿<div style="width: 300px; height: 600px; font-size: 13px; font-family: Verdana;">
+
+    <jqxDockPanel #DockPanel1 [width]='300' [height]='210'>
+        <div id='first' class='panel' dock='left' style='background: #486974;'>
+            First Div
+        </div>
+        <div id='second' class='panel' dock='top' style='height: 100px; background: #368ba7;'>
+            Second Div
+        </div>
+        <div id='third' class='panel' dock='right' style='background: #df7169;'>
+            Third Div
+        </div>
+        <div id='fourth' class='panel' style='background: #a73654;'>
+            Fourth Div
+        </div>
+    </jqxDockPanel>
+    <br />
+
+    <div>Layout Types:</div>
+    <div id='layout'>
+        <img title='click to apply a new layout' alt='layout types' src='../../../../images/LayoutTypes.png' />
+    </div>
+    <br />
+    <div>Spiral:</div>
+
+    <jqxDockPanel [width]='300' [height]='210' [lastchildfill]='false'>
+        <div id='Div1' class='panel panel2' dock='left' style='background: #486974;'>
+            1
+        </div>
+        <div id='Div2' class='panel panel2' dock='top' style='background: #368ba7;'>
+            2
+        </div>
+        <div id='Div3' class='panel panel2' dock='right' style='background: #df7169;'>
+            3
+        </div>
+        <div id='Div4' class='panel panel2' dock='bottom' style='background: #a73654;'>
+            4
+        </div>
+    </jqxDockPanel>
+
+</div>

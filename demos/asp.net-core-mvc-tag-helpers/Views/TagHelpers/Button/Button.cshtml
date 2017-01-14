@@ -1,0 +1,8 @@
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Button, ToggleButton and RepeatButton Example";
+}
+<label>ASP .NET MVC Button, ToggleButton and RepeatButton Example</label><br/><br/>
+<jqx-button theme="@ViewData["Theme"]" on-click="@Url.Action("Increment", "TagHelpers")">Button</jqx-button>
+<jqx-togglebutton style="margin-left:20px;" theme="@ViewData["Theme"]">Toggle Button</jqx-togglebutton>
+<jqx-repeatbutton style="margin-left:20px;" on-click="@Url.Action("Increment", "TagHelpers")" theme="@ViewData["Theme"]">Repeat Button</jqx-repeatbutton>

@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "ASP .NET MVC CheckBox Example";
+
+}
+<label>ASP .NET Core MVC CheckBox Example</label><br/><br/>
+<form asp-action="CarFeatures" method="post">
+    Choose Optional Features:
+   @foreach (var item in Model.CarFeatures)
+   {
+        <jqx-checkbox height="30" name="carFeatures" checked="@item.Value" theme="@ViewData["Theme"]">@item.Key</jqx-checkbox>
+   }
+  <jqx-button type="submit" theme="@ViewData["Theme"]">Submit</jqx-button>
+</form>

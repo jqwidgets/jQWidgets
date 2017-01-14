@@ -1,0 +1,49 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Grid Data Export Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<label>ASP .NET Core MVC Grid Data Export Example</label><br/><br/>
+<jqx-grid id="grid" altrows="true" pageable="true" autoheight="true" editmode="selectedrow" sourceId-for="@employee.ID" instance="gridInstance()" theme="@ViewData["Theme"]" create="@Url.Action("Add","TagHelpers")" delete="@Url.Action("Delete","TagHelpers")" edit="@Url.Action("Edit","TagHelpers")" sortable="true" width="600" source="Model"> 
+    <jqx-grid-columns>
+        <jqx-grid-column datafield-for="@(employee.ID)" width="25%" text="ID"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.FirstName)" width="25%" text="First Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.LastName)" width="25%" text="Last Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.ProductName)" width="25%" text="Product Name"></jqx-grid-column>
+  </jqx-grid-columns>
+</jqx-grid>
+
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="exportExcel()">Excel Export</jqx-button>
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="htmlExport()">HTML Export</jqx-button>
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="csvExport()">CSV Export</jqx-button>
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="xmlExport()">XML Export</jqx-button>
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="pdfExport()">PDF Export</jqx-button>
+<jqx-button style="margin-top:20px;" theme="@ViewData["Theme"]" on-click="tsvExport()">TSV Export</jqx-button>
+<script>
+    var jqxGridInstance = {};
+    function exportExcel() {
+        jqxGridInstance.exportdata("xls", "Grid", true, null, true, '@Url.Action("ExportData", "TagHelpers")');
+    }
+    function htmlExport() {
+        jqxGridInstance.exportdata("html", "Grid", true, null, true, '@Url.Action("ExportData", "TagHelpers")');
+    }
+    function csvExport() {
+        jqxGridInstance.exportdata("csv", "Grid", true, null, true, '@Url.Action("ExportData", "TagHelpers")');
+    }
+    function pdfExport() {
+        jqxGridInstance.exportdata("pdf", "Grid", true, null, true, '@Url.Action("ExportData", "TagHelpers")');
+    }
+    function tsvExport() {
+        jqxGridInstance.exportdata("tsv", "Grid", true, null, true, '@Url.Action("ExportData", "TagHelpers")');
+    }
+    function xmlExport() {
+        jqxGridInstance.exportdata("xml", "Grid", true, null, true, '@Url.Action("ExportData", "TagHelpers")');
+    }
+
+    function gridInstance(instance) {
+        jqxGridInstance = instance;
+    }
+</script>

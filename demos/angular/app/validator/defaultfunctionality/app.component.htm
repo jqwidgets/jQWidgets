@@ -1,0 +1,96 @@
+﻿<jqxExpander
+    [width]='300' [toggleMode]='"none"' [showArrow]='false'>
+    <div><h3>Register</h3></div>
+    <div>
+        <jqxValidator #validatorReference [rules]='rules'>
+            <form id='form' action="./">
+                <table class="register-table">
+                    <tr>
+                        <td>Username:</td>
+                        <td>
+                            <jqxInput id="userInput" class="text-input"></jqxInput>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td>
+                            <jqxPasswordInput #passwordInput id="passwordInput" class="text-input" 
+                                [width]='146' [height]='22'>
+                            </jqxPasswordInput>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Confirm password:</td>
+                        <td>
+                            <jqxPasswordInput #passwordConfirmInput id="passwordConfirmInput" class="text-input" 
+                                [width]='146' [height]='22'>
+                            </jqxPasswordInput>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Real name:</td>
+                        <td>
+                            <jqxInput id="realNameInput" class="text-input"></jqxInput>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Birth date:</td>
+                        <td>
+                            <jqxDateTimeInput #birthInput id="birthInput"
+                                [width]='150' [height]='22' [value]='birthDate'>
+                            </jqxDateTimeInput>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>E-mail:</td>
+                        <td>
+                            <jqxInput id="emailInput" class="text-input" 
+                                [placeHolder]='"someone@mail.com"'>
+                            </jqxInput>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SSN:</td>
+                        <td>
+                            <jqxMaskedInput id="ssnInput"
+                                [width]='150' [height]='22' [mask]='"###-##-####"'>
+                            </jqxMaskedInput>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Phone:</td>
+                        <td>
+                            <jqxMaskedInput id="phoneInput"
+                                [width]='150' [height]='22' [mask]='"(###)###-####"'>
+                            </jqxMaskedInput>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zip code:</td>
+                        <td>
+                            <jqxMaskedInput id="zipInput"
+                                [width]='150' [height]='22' [mask]='"#####-####"'>                    
+                            </jqxMaskedInput>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 5px;">
+                            <jqxCheckBox id="acceptCheckBox"
+                                [width]='130'>
+                                I accept terms
+                            </jqxCheckBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <jqxButton (onClick)="onSend($event)"
+                                [width]='60' [height]='25'>
+                                Send
+                            </jqxButton>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </jqxValidator>
+    </div>
+</jqxExpander>

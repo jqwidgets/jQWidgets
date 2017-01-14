@@ -1,0 +1,1 @@
+{"version":3,"file":"typescript-fileupload.js","sourceRoot":"","sources":["typescript-fileupload.ts"],"names":[],"mappings":"AAAA,6DAA6D;AAC7D,0BAA0B,QAAQ;IAE9B,mDAAmD;IACnD,0DAA0D;IAC1D,IAAI,OAAO,GACX;QACI,KAAK,EAAE,GAAG,EAAE,SAAS,EAAE,iBAAiB,EAAE,aAAa,EAAE,cAAc;KAC1E,CAAC;IAEF,sBAAsB;IACtB,IAAI,YAAY,GAA4B,SAAS,CAAC,cAAc,CAAC,QAAQ,EAAE,eAAe,EAAE,OAAO,CAAC,CAAC;AAC7G,CAAC"}

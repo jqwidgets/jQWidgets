@@ -1,0 +1,37 @@
+﻿<table style="overflow: hidden; padding: 10px; border: 2px solid lightgrey">
+    <tr>
+        <td colspan="2">
+            Choose your username:
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <jqxInput #userName [width]='200' [height]='21'></jqxInput>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            Create a password:
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <jqxPasswordInput #password [width]='200' [height]='21'></jqxPasswordInput>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            Confirm your password:
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <jqxPasswordInput #passwordConfirm [width]='200' [height]='21'></jqxPasswordInput>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <jqxButton [width]='150' (onClick)="buttonClicked()">Create account</jqxButton>
+        </td>
+    </tr>
+</table>

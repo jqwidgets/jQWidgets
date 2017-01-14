@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title id='Description'>
+        With the DropDownButton, you can display any type of content
+        in a popup. TypeScript example.
+    </title>
+    <meta name="description" content="DropDownButton Typescript definition allows you to easily display a dropdown content." />
+
+    <!-- 1. Load references -->
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdropdownbutton.js"></script>
+    <script src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="../../../jqwidgets/jqxtree.js"></script>
+    <script src="../../../jqwidgets/jqxpanel.js"></script>
+    <script src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script src="typescript-dropdownbutton.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createDropDownButton('#dropDownButton', '#jqxTree', '#checkbox');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+
+      <div class="example-description">
+        With the DropDownButton, you can display any type of content
+        in a popup. TypeScript example.
+      </div>
+      <div id='jqxWidget'>
+          <div style='float: left;' id="dropDownButton">
+              <div style="border: none;" id='jqxTree'>
+                  <ul>
+                      <li item-selected='true'>Home</li>
+                      <li item-expanded='true'>
+                          Solutions
+                          <ul>
+                              <li>Education</li>
+                              <li>Financial services</li>
+                              <li>Government</li>
+                              <li>Manufacturing</li>
+                              <li>
+                                  Solutions
+                                  <ul>
+                                      <li>eLearning</li>
+                                      <li>Mobile</li>
+                                      <li>RIA</li>
+                                      <li>Training</li>
+                                  </ul>
+                              </li>
+                          </ul>
+                      </li>
+                      <li>
+                          Products
+                          <ul>
+                              <li>PC products</li>
+                              <li>Mobile products</li>
+                              <li>All products</li>
+                          </ul>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          <div style='float: left; margin-top: 5px; margin-left: 30px;'>
+              <div id='checkbox'>Open on mouse over</div>
+          </div>
+      </div>
+  </body>
+
+</html>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="keywords" content="jqxValidator, jQuery Validation, jQWidgets, Default Functionality" />
+    <meta name="description" content="jqxValidator is a plug-in which enables you to validate html forms.
+    It has a set of built-in rules (required inputs, e-mail, SSN, ZIP, max value, min value, interval etc.)
+     for validating the user input. You can also write a custom rule which will fit best to your requirements." />
+    <title id='Description'>This demo demonstrates the basic functionality of the Validator plugin. TypeScript example.</title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxvalidator.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxmaskedinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxpasswordinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript" src="typescript-validator.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <style type="text/css">
+        .register-table {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+            .register-table td,
+            .register-table tr {
+                margin: 0px;
+                padding: 2px;
+                border-spacing: 0px;
+                border-collapse: collapse;
+                font-family: Verdana;
+                font-size: 12px;
+            }
+
+        h3 {
+            display: inline-block;
+            margin: 0px;
+        }
+    </style>
+    <script>
+        $(document).ready(function ()
+        {
+            createValidatorFields('#register', '#sendButton', '#acceptInput', '#ssnInput', '#phoneInput', '#zipInput', '#birthInput', '#testForm',
+                '#userInput', '#passwordInput', '#passwordConfirmInput', '#realNameInput', '#emailInput', '#acceptInput');
+        });
+    </script>
+</head>
+<body>
+    <div class="example-description">
+      This demo demonstrates the basic functionality of the Validator plugin. TypeScript example.
+    </div>
+
+    <div id="register">
+        <div><h3>Register</h3></div>
+        <div>
+            <form id="testForm" action="./">
+                <table class="register-table">
+                    <tr>
+                        <td>Username:</td>
+                        <td><input id="userInput" class="text-input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" id="passwordInput" class="text-input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Confirm password:</td>
+                        <td><input type="password" id="passwordConfirmInput" class="text-input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Real name:</td>
+                        <td><input id="realNameInput" class="text-input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Birth date:</td>
+                        <td><div id="birthInput"></div></td>
+                    </tr>
+                    <tr>
+                        <td>E-mail:</td>
+                        <td><input id="emailInput" placeholder="someone@mail.com" class="text-input" /></td>
+                    </tr>
+                    <tr>
+                        <td>SSN:</td>
+                        <td><div id="ssnInput"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Phone:</td>
+                        <td><div id="phoneInput"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Zip code:</td>
+                        <td><div id="zipInput"></div></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 5px;"><div id="acceptInput" style="margin-left: 50px;">I accept terms</div></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;"><input type="button" value="Send" id="sendButton" /></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

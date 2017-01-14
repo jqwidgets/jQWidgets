@@ -1,0 +1,61 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC DataTable Row Details Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<script>
+    var initRowDetails = function (id, record, element, rowinfo) {
+        var id = id.toString();
+        
+        var grid = element;
+
+        var data = [];
+
+        var generaterow = function (i) {
+            var row = {};      
+            row["OrderDate"] = new Date(2016, Math.floor(Math.random() * 11), Math.floor(Math.random() * 27))
+            row["Quantity"] = Math.floor(Math.random() * 50)
+            row["ProductName"] = record.ProductName;
+            return row;
+        }
+
+        for (var i = 0; i < Math.max(10, Math.floor(Math.random() * 20)) ; i++) {
+            var row = generaterow(i);
+            data[i] = row;
+        }
+
+        var source = {
+            datafields: [
+                { name: 'OrderDate', type: 'date' },
+                { name: 'Quantity', type: 'string' },
+                { name: 'ProductName', type: 'string' }
+            ],
+            localdata: data
+        }
+        var nestedGridAdapter = new $.jqx.dataAdapter(source);
+        if (grid != null) {
+            grid.jqxDataTable({
+                source: nestedGridAdapter, width: 780, height: 200,
+                columns: [
+                  { text: 'Order Date', cellsformat:'d', dataField: 'OrderDate', width: 200 },
+                  { text: 'Quantity', cellsalign:'right', dataField: 'Quantity', width: 200 },
+                  { text: 'Product Name', dataField: 'ProductName' }
+                ]
+            });
+        }
+    }
+</script>
+<label>ASP .NET Core MVC DataTable Row Details Example</label><br/><br/>
+<jqx-datatable id="grid" altRows="true" rowDetails="true" pageable="true" initRowDetails="initRowDetails()" sourceId="@(employee.ID)" theme="@ViewData["Theme"]" sortable="true" width="790" source="Model">
+    <jqx-datatable-columns>
+        <jqx-datatable-column dataField-for="@(employee.FirstName)" width="150" text="First Name"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.LastName)" width="150" text="Last Name"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.ProductName)" width="200" text="Product Name"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Price)" width="100" text="Price" cellsformat="c2" cellsalign="HorizontalAlignment.Right"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Quantity)" width="100" text="Quantity" cellsalign="HorizontalAlignment.Right"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Total)" text="Total" cellsformat="c2" cellsalign="HorizontalAlignment.Right"></jqx-datatable-column>
+ </jqx-datatable-columns>
+</jqx-datatable>

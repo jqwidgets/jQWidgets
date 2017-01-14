@@ -1,0 +1,57 @@
+﻿<html>
+<head>
+    <meta name="keywords" content="jQuery Gauge, Gauge, Radial Gauge, jqxGauge" />
+    <meta name="description" content="In the following demo you can see how you can cuztomize Gauge's ranges. You can set range's start and end width, start and end distance from the gauge's bundaries and custom style." />
+    <title id='Description'>
+        Gauge displays an indicator within a range of values. Gauges
+        can be used in a table or matrix to show the relative value of a field in a range
+        of values in the data region, for example, as a KPI. TypeScript example.
+    </title>
+
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdraw.js"></script>
+    <script src="../../../jqwidgets/jqxgauge.js"></script>
+    <script src="../../../jqwidgets/jqxinput.js"></script>
+    <script src="typescript-gauge.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <style type="text/css">
+        #gaugeValue {
+            background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fafafa), color-stop(100%, #f3f3f3));
+            background-image: -webkit-linear-gradient(#fafafa, #f3f3f3);
+            background-image: -moz-linear-gradient(#fafafa, #f3f3f3);
+            background-image: -o-linear-gradient(#fafafa, #f3f3f3);
+            background-image: -ms-linear-gradient(#fafafa, #f3f3f3);
+            background-image: linear-gradient(#fafafa, #f3f3f3);
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -ms-border-radius: 3px;
+            -o-border-radius: 3px;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            createGauge('#gaugeContainer', '#gaugeValue');
+        });
+    </script>
+</head>
+<body style="background: white;">
+    <div class="example-description">
+      Gauge displays an indicator within a range of values. Gauges
+      can be used in a table or matrix to show the relative value of a field in a range
+      of values in the data region, for example, as a KPI. TypeScript example.
+    </div>
+    <div id="demoWidget" style="position: relative;">
+        <div style="float: left;" id="gaugeContainer"></div>
+        <input id="gaugeValue" type="text" style="position: absolute; top: 235px; left: 125px; font-family: Sans-Serif; text-align: center; font-size: 17px; width: 70px;" />
+    </div>
+</body>
+</html>

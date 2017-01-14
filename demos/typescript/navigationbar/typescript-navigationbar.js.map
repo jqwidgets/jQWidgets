@@ -1,0 +1,1 @@
+{"version":3,"file":"typescript-navigationbar.js","sourceRoot":"","sources":["typescript-navigationbar.ts"],"names":[],"mappings":"AAAA,6DAA6D;AAC7D,6BAA6B,QAAQ;IACjC,mDAAmD;IACnD,sDAAsD;IACtD,IAAI,OAAO,GAAmC;QAC1C,KAAK,EAAE,GAAG;QACV,MAAM,EAAE,GAAG;KACd,CAAC;IAEF,sBAAsB;IACtB,IAAI,eAAe,GAA+B,SAAS,CAAC,cAAc,CAAC,QAAQ,EAAE,kBAAkB,EAAE,OAAO,CAAC,CAAC;AACtH,CAAC"}

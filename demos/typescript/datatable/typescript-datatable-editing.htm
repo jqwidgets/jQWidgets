@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+  <head>
+    <title id='Description'>DataTable with Create, Remove and Update commands. TypeScript example.</title>
+    <meta name="description" content="Typescript is used to build a DataTable and enable its Inline Editing functionality." />
+
+    <!-- 1. Load references -->
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdata.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script src="../../../jqwidgets/jqxdatatable.js"></script>
+    <script src="../../../jqwidgets/jqxtooltip.js"></script>
+    <script src="../../../jqwidgets/jqxinput.js"></script>
+    <script src="../../sampledata/generatedata.js"></script>
+    <script src="typescript-datatable-editing.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createDataTableEditing('#table');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+
+      <div class="example-description">
+        DataTable with Create, Remove and Update commands. TypeScript example.
+      </div>
+      <div id="table"></div>
+  </body>
+
+</html>

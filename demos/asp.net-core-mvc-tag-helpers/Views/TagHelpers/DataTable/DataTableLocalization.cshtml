@@ -1,0 +1,78 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.Employee>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC DataTable Localization Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<script>
+    var datatableInstance;
+    function getInstance(instance)
+    {
+        datatableInstance = instance;
+    }
+    function datatableReady()
+    {
+    }
+    var localization = function () {
+        var localizationobj = {};
+        localizationobj.pagerGoToPageString = "Gehe zu:";
+        localizationobj.pagerShowRowsString = "Zeige Zeile:";
+        localizationobj.pagerRangeString = " von ";
+        localizationobj.pagerNextButtonString = "voriger";
+        localizationobj.pagerFirstButtonString = "erste";
+        localizationobj.pagerLastButtonString = "letzte";
+        localizationobj.pagerPreviousButtonString = "nächster";
+        localizationobj.sortAscendingString = "Sortiere aufsteigend";
+        localizationobj.sortDescendingString = "Sortiere absteigend";
+        localizationobj.sortRemoveString = "Entferne Sortierung";
+        localizationobj.emptydatastring = "keine Daten angezeigt";
+        localizationobj.firstDay = 1;
+        localizationobj.percentSymbol = "%";
+        localizationobj.currencySymbol = "€";
+        localizationobj.currencySymbolPosition = "after";
+        localizationobj.decimalSeparator = ".";
+        localizationobj.thousandsSeparator = ",";
+        var days = {
+            // full day names
+            names: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+            // abbreviated day names
+            namesAbbr: ["Sonn", "Mon", "Dien", "Mitt", "Donn", "Fre", "Sams"],
+            // shortest day names
+            namesShort: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"]
+        };
+        localizationobj.days = days;
+        var months = {
+            // full month names (13 months for lunar calendards -- 13th month should be "" if not lunar)
+            names: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember", ""],
+            // abbreviated month names
+            namesAbbr: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dez", ""]
+        };
+        var patterns = {
+            d: "dd.MM.yyyy",
+            D: "dddd, d. MMMM yyyy",
+            t: "HH:mm",
+            T: "HH:mm:ss",
+            f: "dddd, d. MMMM yyyy HH:mm",
+            F: "dddd, d. MMMM yyyy HH:mm:ss",
+            M: "dd MMMM",
+            Y: "MMMM yyyy"
+        }
+        localizationobj.patterns = patterns;
+        localizationobj.months = months;
+        return localizationobj;
+    }();
+</script>
+<label>ASP .NET Core MVC DataTable Localization Example</label><br/><br/>
+<jqx-datatable localization="{{localization}}" sortable=true pageable=true pagerMode="advanced" ready="datatableReady()" sourceId="@(employee.EmployeeID)" instance="getInstance()" theme="@ViewData["Theme"]" width="850" source="Model"> 
+    <jqx-datatable-columns>
+        <jqx-datatable-column dataField-for="@(employee.FirstName)" width="100" text="Vorname"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.LastName)" width="100" text="Familienname"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Title)" text="Titel" width="150"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Address)" text="Adresse" width="200"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.City)" text="Stadt" width="150"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Country)" text="Land"></jqx-datatable-column>
+    </jqx-datatable-columns>
+</jqx-datatable>
+

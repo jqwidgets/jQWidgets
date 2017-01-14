@@ -1,0 +1,192 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.TreeItem>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "ASP .NET MVC Layout Example";
+
+    // Create Layout Object.
+    List<LayoutItem> layout = new List<LayoutItem>()
+    {
+        new LayoutItem()
+        {
+           Type = LayoutItemType.LayoutGroup,
+          Orientation = Orientation.Horizontal,
+          Items = new List<LayoutItem>()
+          {
+              new LayoutItem()
+              {
+                  Type = LayoutItemType.AutoHideGroup,
+                  Alignment = Alignment.Left,
+                  Width = "80",
+                  UnpinnedWidth = "200",
+                  Items = new List<LayoutItem>()
+                  {
+                      new LayoutItem()
+                      {
+                          Type = LayoutItemType.LayoutPanel,
+                          Title = "Toolbox",
+                          ContentContainer = "ToolboxPanel"
+                      },
+                      new LayoutItem()
+                      {
+                          Type = LayoutItemType.LayoutPanel,
+                          Title = "Helper",
+                          ContentContainer = "HelperPanel"
+                      }
+                  }
+              },
+             new LayoutItem()
+             {
+                Type = LayoutItemType.LayoutGroup,
+                Orientation = Orientation.Vertical,
+                Width = "500",
+                Items = new List<LayoutItem>()
+                {
+                    new LayoutItem()
+                    {
+                        Type = LayoutItemType.DocumentGroup,
+                        Height = "400",
+                        MinHeight = "200",
+                        Items = new List<LayoutItem>()
+                        {
+                            new LayoutItem()
+                            {
+                                Type = LayoutItemType.DocumentPanel,
+                                Title = "Document 1",
+                                ContentContainer = "Document1Panel"
+                            },
+                            new LayoutItem()
+                            {
+                                Type = LayoutItemType.DocumentPanel,
+                                Title = "Document 2",
+                                ContentContainer = "Document2Panel"
+                            }
+                        }
+                    },
+                    new LayoutItem()
+                    {
+                        Type = LayoutItemType.TabbedGroup,
+                        Height = "200",
+                        PinnedHeight = "30",
+                        Items = new List<LayoutItem>()
+                        {
+                            new LayoutItem()
+                            {
+                                Type = LayoutItemType.LayoutPanel,
+                                Title = "Error List",
+                                ContentContainer = "ErrorListPanel"
+                            }
+                        }
+                    }
+                }
+              },
+            new LayoutItem()
+            {
+                Type = LayoutItemType.TabbedGroup,
+                Width = "220",
+                MinWidth = "200",
+                Items = new List<LayoutItem>()
+                {
+                    new LayoutItem()
+                    {
+                        Type = LayoutItemType.LayoutPanel,
+                        Title = "Solution Explorer",
+                        ContentContainer = "SolutionExplorerPanel",
+                        InitContent = "InitSolutionExplorerPanel()"
+                    },
+                    new LayoutItem()
+                    {
+                        Type = LayoutItemType.LayoutPanel,
+                        Title = "Properties",
+                        ContentContainer= "PropertiesPanel"
+                    }
+                }
+            }
+          }
+        }
+    };
+}
+
+<script>
+ 
+    function InitSolutionExplorerPanel() {
+        $('#solutionExplorerTree')[0].setAttribute("initInstance", "true");       
+    }
+
+</script>
+<label>ASP .NET Core MVC Layout Tag Helper Example</label><br/><br/>
+<jqx-layout width="800" height="600" layout="@layout" theme="@ViewData["Theme"]">
+    <!--The panel content divs can have a flat structure-->
+    <!--autoHideGroup-->
+    <div data-container="ToolboxPanel">
+        List of tools
+    </div>
+    <div data-container="HelpPanel">
+        Help topics
+    </div>
+    <!--documentGroup-->
+    <div data-container="Document1Panel">
+        Document 1 content
+    </div>
+    <div data-container="Document2Panel">
+        Document 2 content
+    </div>
+    <!--bottom tabbedGroup-->
+    <div data-container="ErrorListPanel">
+        List of errors
+    </div>
+    <!--right tabbedGroup-->
+    <div data-container="SolutionExplorerPanel">
+        <jqx-tree initInstance="false" theme="@ViewData["Theme"]" id="solutionExplorerTree" width="190" itemsMember="Items" displayMember="Label" source="Model" style="border: none;">
+        </jqx-tree>
+    </div>
+    <div data-container="PropertiesPanel">
+        List of properties
+    </div>
+    <!--floatGroup-->
+    <div data-container="OutputPanel">
+        <div style="font-family: Consolas;">
+            <p>
+                Themes installation complete.
+            </p>
+            <p>
+                List of installed stylesheet files. Include at least one stylesheet Theme file and
+                the images folder:
+            </p>
+            <ul>
+                <li>
+                    styles/jqx.base.css: Stylesheet for the base Theme. The jqx.base.css file should
+                    be always included in your project.
+                </li>
+                <li>styles/jqx.arctic.css: Stylesheet for the Arctic Theme</li>
+                <li>styles/jqx.web.css: Stylesheet for the Web Theme</li>
+                <li>styles/jqx.bootstrap.css: Stylesheet for the Bootstrap Theme</li>
+                <li>styles/jqx.classic.css: Stylesheet for the Classic Theme</li>
+                <li>styles/jqx.darkblue.css: Stylesheet for the DarkBlue Theme</li>
+                <li>styles/jqx.energyblue.css: Stylesheet for the EnergyBlue Theme</li>
+                <li>styles/jqx.shinyblack.css: Stylesheet for the ShinyBlack Theme</li>
+                <li>styles/jqx.office.css: Stylesheet for the Office Theme</li>
+                <li>styles/jqx.metro.css: Stylesheet for the Metro Theme</li>
+                <li>styles/jqx.metrodark.css: Stylesheet for the Metro Dark Theme</li>
+                <li>styles/jqx.orange.css: Stylesheet for the Orange Theme</li>
+                <li>styles/jqx.summer.css: Stylesheet for the Summer Theme</li>
+                <li>styles/jqx.black.css: Stylesheet for the Black Theme</li>
+                <li>styles/jqx.fresh.css: Stylesheet for the Fresh Theme</li>
+                <li>styles/jqx.highcontrast.css: Stylesheet for the HighContrast Theme</li>
+                <li>styles/jqx.blackberry.css: Stylesheet for the Blackberry Theme</li>
+                <li>styles/jqx.android.css: Stylesheet for the Android Theme</li>
+                <li>styles/jqx.mobile.css: Stylesheet for the Mobile Theme</li>
+                <li>styles/jqx.windowsphone.css: Stylesheet for the Windows Phone Theme</li>
+                <li>styles/jqx.ui-darkness.css: Stylesheet for the UI Darkness Theme</li>
+                <li>styles/jqx.ui-lightness.css: Stylesheet for the UI Lightness Theme</li>
+                <li>styles/jqx.ui-le-frog.css: Stylesheet for the UI Le Frog Theme</li>
+                <li>styles/jqx.ui-overcast.css: Stylesheet for the UI Overcast Theme</li>
+                <li>styles/jqx.ui-redmond.css: Stylesheet for the UI Redmond Theme</li>
+                <li>styles/jqx.ui-smoothness.css: Stylesheet for the UI Smoothness Theme</li>
+                <li>styles/jqx.ui-start.css: Stylesheet for the UI Start Theme</li>
+                <li>styles/jqx.ui-sunny.css: Stylesheet for the UI Sunny Theme</li>
+                <li>styles/images: contains images referenced in the stylesheet files</li>
+            </ul>
+        </div>
+    </div>
+</jqx-layout>

@@ -1,0 +1,23 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.Employee>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC DataTable Sorting Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<label>ASP .NET Core MVC DataTable Sorting Example</label><br/><br/>
+<jqx-datatable theme="@ViewData["Theme"]" sortable="true" width="850" source="Model"> 
+    <jqx-datatable-columns>
+        <jqx-datatable-column columngroup="name" dataField-for="@(employee.FirstName)" width="100" text="First Name"></jqx-datatable-column>
+        <jqx-datatable-column columngroup="name" dataField-for="@(employee.LastName)" width="100" text="Last Name"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Title)" width="150"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Address)" width="200"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.City)" width="150"></jqx-datatable-column>
+        <jqx-datatable-column dataField-for="@(employee.Country)"></jqx-datatable-column>
+    </jqx-datatable-columns>
+    <jqx-datatable-column-groups>
+        <jqx-datatable-column-group name="name" text="Name"></jqx-datatable-column-group>
+    </jqx-datatable-column-groups>
+</jqx-datatable>
+

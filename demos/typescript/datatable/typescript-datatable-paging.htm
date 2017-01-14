@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title id='Description'>DataTable with Data Paging typeScript example.</title>
+    <meta name="description" content="This sample demonstrates how to enable Data Paging in the DataTable. The sample is built by using the Typescript DataTable definitions.">
+
+    <!-- 1. Load references -->
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdata.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script src="../../../jqwidgets/jqxdatatable.js"></script>
+    <script src="../../../jqwidgets/jqxpanel.js"></script>
+    <script src="../../../jqwidgets/jqxradiobutton.js"></script>
+    <script src="../../../jqwidgets/jqxinput.js"></script>
+    <script src="../../sampledata/generatedata.js"></script>
+    <script src="typescript-datatable-paging.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createDataTablePaging('#dataTable');
+        });
+     </script>
+
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+      <div class="example-description">
+          DataTable with Data Paging typeScript example.
+      </div>
+      <div id="dataTable"></div>
+  </body>
+
+</html>

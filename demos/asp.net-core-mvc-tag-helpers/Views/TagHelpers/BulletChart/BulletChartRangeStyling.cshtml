@@ -1,0 +1,15 @@
+@using jQWidgets.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "ASP .NET MVC Bullet Chart Range Styling Example";
+}
+<label>ASP .NET MVC Core BulletChart Tag Helper Ranges Styling Example</label><br/><br/>
+<jqx-bulletchart labelsFormat="c" width="700" height="80" barSize="40%" title="Revenue 2016 YTD" description="(U.S. $ in thousands)" >
+    <jqx-bulletchart-pointer value="270" label="Revenue 2016 YTD" size="25%"></jqx-bulletchart-pointer>
+    <jqx-bulletchart-target value="260" label="Revenue 2016 YTD" size="4"></jqx-bulletchart-target>
+    <jqx-bulletchart-ticks position="far" interval="50" size="10"></jqx-bulletchart-ticks>
+    <jqx-bulletchart-ranges>
+        <jqx-bulletchart-range startValue="0" endValue="200" color="#CC0000" opacity="1"></jqx-bulletchart-range>
+        <jqx-bulletchart-range startValue="200" endValue="250" color="#FFD633" opacity="1"></jqx-bulletchart-range>
+        <jqx-bulletchart-range startValue="250" endValue="300" color="#00CC00" opacity="1"></jqx-bulletchart-range>
+  </jqx-bulletchart-ranges>
+</jqx-bulletchart>

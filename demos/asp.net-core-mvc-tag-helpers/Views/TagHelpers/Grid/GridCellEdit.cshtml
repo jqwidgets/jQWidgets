@@ -1,0 +1,17 @@
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Grid Cell Edit Example";
+}
+@{
+    var employee = Model.FirstOrDefault();
+}
+<label>ASP .NET Core MVC Grid Cell Edit Example</label><br/><br/>
+<jqx-grid id="grid" altrows="true" selectionmode="multiplecellsadvanced" editmode="selectedcell" editable="true" sourceId-for="@(employee.ID)"  theme="@ViewData["Theme"]" edit="@Url.Action("Edit","TagHelpers")" width="850" source="Model"> 
+    <jqx-grid-columns>
+        <jqx-grid-column datafield-for="@(employee.FirstName)" width="25%" text="First Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.LastName)" width="25%" text="Last Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.ProductName)" width="30%" text="Product Name"></jqx-grid-column>
+        <jqx-grid-column datafield-for="@(employee.Price)" width="20%" cellsformat="c2" cellsalign="HorizontalAlignment.Right" columntype="numberinput" text="Price"></jqx-grid-column>
+  </jqx-grid-columns>
+</jqx-grid>

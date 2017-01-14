@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title id='Description'>The sample illustrates the basic functionality of the jqxInput widget. The jqxInput widget provides suggestions while you type into the field. The datasource is a simple JavaScript array, provided to the widget using the "source" property. TypeScript example.</title>
+    <meta name="description" content="Input typescript example" />
+
+    <!-- 1. Load references -->
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdata.js"></script>
+    <script src="../../../jqwidgets/jqxinput.js"></script>
+    <script src="typescript-input.js"></script>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+            $(document).ready(function () {
+                createInput('#input');
+            });
+    </script>
+
+</head>
+
+<!-- 3. Display the application -->
+<body>
+    <div class="example-description">
+      The sample illustrates the basic functionality of the jqxInput widget. The jqxInput widget provides suggestions while you type into the field. The datasource is a simple JavaScript array, provided to the widget using the "source" property. TypeScript example.
+    </div>
+    <div id="demoWidget">
+        <input type="text" id="input" />
+    </div>
+</body>
+
+</html>

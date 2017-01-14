@@ -1,0 +1,71 @@
+ 
+import { Component } from '@angular/core';
+
+import { jqxChartComponent } from '../../../../../jqwidgets-ts/angular_jqxChart';
+
+@Component({
+    selector: 'my-app',
+    template:
+        `<jqxChart [width]='850' [height]='500'
+            [title]='title' [description]='description' [showLegend]='true'
+            [enableAnimations]='true' [padding]='padding' [titlePadding]='titlePadding'
+            [source]='sampleData' [xAxis]='xAxis' [colorScheme]='"scheme01"'
+            [seriesGroups]='seriesGroups'>
+        </jqxChart>`
+})
+
+export class AppComponent
+{ 
+    sampleData = [
+        { Day: 'Monday', Keith: 30, Erica: 15, George: 25 },
+        { Day: 'Tuesday', Keith: 25, Erica: 25, George: 30 },
+        { Day: 'Wednesday', Keith: 30, Erica: 20, George: 25 },
+        { Day: 'Thursday', Keith: 35, Erica: 25, George: 45 },
+        { Day: 'Friday', Keith: 20, Erica: 20, George: 25 },
+        { Day: 'Saturday', Keith: 30, Erica: 20, George: 30 },
+        { Day: 'Sunday', Keith: 60, Erica: 45, George: 90 }
+    ];
+
+    title: string = "Fitness & exercise weekly scorecard";
+
+    description: string = "Time spent in vigorous exercise";
+
+    padding: any = { left: 5, top: 5, right: 5, bottom: 5 };
+
+    titlePadding: any = { left: 90, top: 0, right: 0, bottom: 10 };
+
+    xAxis: any =
+    {
+        dataField: 'Day',
+        gridLines: {
+            visible: true
+        }
+    };
+
+    seriesGroups: any[] = 
+    [
+        {
+            type: 'column',
+            columnsGapPercent: 50,
+            seriesGapPercent: 0,
+            valueAxis:
+            {
+                unitInterval: 10,
+                minValue: 0,
+                maxValue: 100,
+                displayValueAxis: true,
+                description: 'Time in minutes',
+                axisSize: 'auto',
+                tickMarksColor: '#888888'
+            },
+            series: [
+                { dataField: 'Keith', displayText: 'Keith' },
+                { dataField: 'Erica', displayText: 'Erica' },
+                { dataField: 'George', displayText: 'George' }
+            ]
+        }
+    ];
+    
+}
+
+

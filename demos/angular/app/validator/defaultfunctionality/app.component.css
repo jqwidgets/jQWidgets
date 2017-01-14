@@ -1,0 +1,24 @@
+﻿.text-input {
+    height: 21px;
+    width: 150px;
+}
+
+.register-table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+    .register-table td,
+    .register-table tr {
+        margin: 0px;
+        padding: 2px;
+        border-spacing: 0px;
+        border-collapse: collapse;
+        font-family: Verdana;
+        font-size: 12px;
+    }
+
+h3 {
+    display: inline-block;
+    margin: 0px;
+}

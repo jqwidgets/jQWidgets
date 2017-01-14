@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title id="Description">
+        This demo shows the basic functionality of jqxRangeSelector.
+        By resizing or moving the slider, you can select a different range. TypeScript example.
+    </title>
+    <meta name="keywords" content="jQuery range selector, jQWidgets, jqxRangeSelector, range, range selector, range selector widget" />
+    <meta name="description" content="This demo shows the basic functionality of jqxRangeSelector. By resizing or moving
+        the slider, you can select a different range." />
+
+    <!-- 1. Load references -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script src="../../../scripts/demos.js"></script>
+    <script src="../../../jqwidgets/jqxcore.js"></script>
+    <script src="../../../jqwidgets/jqxdata.js"></script>
+    <script src="../../../jqwidgets/jqxrangeselector.js"></script>
+    <script src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script src="typescript-rangeselector.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <!-- 2. Create initialization -->
+    <script>
+        $(document).ready(function () {
+            createRangeSelector('#rangeSelector', '#setSelection', '#getSelection');
+        });
+    </script>
+
+</head>
+
+<!-- 3. Display the application -->
+<body>
+    <div class="example-description">
+      This demo shows the basic functionality of jqxRangeSelector.
+      By resizing or moving the slider, you can select a different range. TypeScript example.
+    </div>
+
+    <div id="rangeSelector">
+        <div id="rangeSelectorContent">
+        </div>
+    </div>
+    <div id="Div1" style="margin-left:30px; margin-top: 50px;">
+        <button id="setSelection">
+            Set range
+        </button>
+        <button id="getSelection">
+            Get range
+        </button>
+    </div>
+</body>
+
+</html>

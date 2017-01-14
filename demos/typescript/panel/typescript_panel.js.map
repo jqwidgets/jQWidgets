@@ -1,0 +1,1 @@
+{"version":3,"file":"typescript_panel.js","sourceRoot":"","sources":["typescript_panel.ts"],"names":[],"mappings":"AAAA,6DAA6D;AAC7D,qBAAqB,QAAQ;IACzB,mDAAmD;IACnD,qDAAqD;IACrD,IAAI,OAAO,GAA2B;QAClC,KAAK,EAAE,GAAG;QACV,MAAM,EAAE,GAAG;KACd,CAAC;IAEF,sBAAsB;IACtB,IAAI,OAAO,GAAuB,SAAS,CAAC,cAAc,CAAC,QAAQ,EAAE,UAAU,EAAE,OAAO,CAAC,CAAC;AAC9F,CAAC"}

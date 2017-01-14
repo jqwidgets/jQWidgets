@@ -1,0 +1,116 @@
+﻿
+<div id="personalSalesHeader" class="headerband">
+    <div class="sampleheader container">
+        <div id="personalSales">
+            <div id="header" class="col-xs-12">
+                <div class="headerTitle">
+                    <span class="glyphicon glyphicon-piggy-bank seticon" aria-hidden="true"></span>
+                    <span>Personal Sales</span>
+                    <jqx-dropdownlist (currentEmployeIDChange)="employeIDChanged($event);"></jqx-dropdownlist>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="samplecontainer container">
+    <div class="row personpresent">
+        <div id="tablePurchase" class="col-md-6 pull-left purchase">
+            <div class="inittable">
+                <table class="purchase">
+                    <tbody>
+                        <tr>
+                            <td class="total-amt sideborder">
+                                <p class="total-text"></p>
+                                <p class="total-val"></p>
+                            </td>
+                            <td class="orders-amt sideborder">
+                                <p class="orders-val"></p>
+                                <p class="orders-text"></p>
+                            </td>
+                            <td class="amount-amt">
+                                <p class="amount-val"></p>
+                                <p class="amount-text"></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="person" class="col-md-5"></div>
+        <div style="clear: both;"></div>
+        <div id="content">
+            <div class="row container">
+        
+                <div class="row">
+                    <div id="controlPanel" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class="label col-xs-6 col-sm-6" style="display: inline-block;">Personal Sales Grid</p>
+                        <div id="controlPanelSettings" class="col-xs-6 col-sm-6">
+                            <jqx-combobox style="display: inline-block;" (currentQuarterChange)="quarterChanged($event);"></jqx-combobox>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gridcontent">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <jqx-grid [employeID]="employeID" [quarter]="quarter"></jqx-grid>
+                    </div>
+                </div>
+
+    
+                <div class="row chartcontent">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="chartsection">
+                            <div id="pin" class="sectionname">
+                                <div>
+                                    <p class="label chartLabel">Personal Sales Chart</p>
+                                </div>
+                            </div>
+
+                            <div class="sectionbody">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <jqx-chart [employeID]="employeID"></jqx-chart>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="amountcontent">
+                                            <table cellspacing="10">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="big-value">
+                                                            <p class="big-value-text">
+                                                                Biggest Amount
+                                                            </p>
+                                                            <p class="big-value-amt"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="small-value">
+                                                            <p class="small-value-text">
+                                                                Smallest Amount
+                                                            </p>
+                                                            <p class="small-value-amt"></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="avg-value">
+                                                            <p class="avg-value-text">
+                                                                Average Amount
+                                                            </p>
+                                                            <p class="avg-value-amt"></p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
