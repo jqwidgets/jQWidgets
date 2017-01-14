@@ -1,5 +1,10 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -12,35 +17,37 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 }
 
 @Component({
-    selector: 'angularFormattedInput',
+    selector: 'jqxFormattedInput',
     template: '<div><input type="text" [(ngModel)]="ngValue"><div></div><div></div></div>',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
 export class jqxFormattedInputComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('disabled') attrDisabled;
-   @Input('decimalNotation') attrDecimalNotation;
-   @Input('dropDown') attrDropDown;
-   @Input('dropDownWidth') attrDropDownWidth;
-   @Input('min') attrMin;
-   @Input('max') attrMax;
-   @Input('placeHolder') attrPlaceHolder;
-   @Input('popupZIndex') attrPopupZIndex;
-   @Input('roundedCorners') attrRoundedCorners;
-   @Input('rtl') attrRtl;
-   @Input('radix') attrRadix;
-   @Input('spinButtons') attrSpinButtons;
-   @Input('spinButtonsStep') attrSpinButtonsStep;
-   @Input('template') attrTemplate;
-   @Input('theme') attrTheme;
-   @Input('upperCase') attrUpperCase;
-   @Input('value') attrValue;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('disabled') attrDisabled: any;
+   @Input('decimalNotation') attrDecimalNotation: any;
+   @Input('dropDown') attrDropDown: any;
+   @Input('dropDownWidth') attrDropDownWidth: any;
+   @Input('min') attrMin: any;
+   @Input('max') attrMax: any;
+   @Input('placeHolder') attrPlaceHolder: any;
+   @Input('popupZIndex') attrPopupZIndex: any;
+   @Input('roundedCorners') attrRoundedCorners: any;
+   @Input('rtl') attrRtl: any;
+   @Input('radix') attrRadix: any;
+   @Input('spinButtons') attrSpinButtons: any;
+   @Input('spinButtonsStep') attrSpinButtonsStep: any;
+   @Input('template') attrTemplate: any;
+   @Input('theme') attrTheme: any;
+   @Input('upperCase') attrUpperCase: any;
+   @Input('value') attrValue: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['disabled','decimalNotation','dropDown','dropDownWidth','height','min','max','placeHolder','popupZIndex','roundedCorners','rtl','radix','spinButtons','spinButtonsStep','template','theme','upperCase','value','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['disabled','decimalNotation','dropDown','dropDownWidth','height','min','max','placeHolder','popupZIndex','roundedCorners','rtl','radix','spinButtons','spinButtonsStep','template','theme','upperCase','value','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxFormattedInput;
 
@@ -49,9 +56,14 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -100,7 +112,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -114,6 +126,10 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       setTimeout(() => {
          this.host.jqxFormattedInput('val', parseFloat(options.value));
       }, 1);
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -308,33 +324,47 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
    close(): void {
       this.host.jqxFormattedInput('close');
    }
+
    destroy(): void {
       this.host.jqxFormattedInput('destroy');
    }
+
    focus(): void {
       this.host.jqxFormattedInput('focus');
    }
+
    open(): void {
       this.host.jqxFormattedInput('open');
    }
+
    render(): void {
       this.host.jqxFormattedInput('render');
    }
+
    refresh(): void {
       this.host.jqxFormattedInput('refresh');
    }
+
    selectAll(): void {
       this.host.jqxFormattedInput('selectAll');
    }
+
    selectFirst(): void {
       this.host.jqxFormattedInput('selectFirst');
    }
+
    selectLast(): void {
       this.host.jqxFormattedInput('selectLast');
    }
-   val(value: String | Number): any {
-      return this.host.jqxFormattedInput('val', value);
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxFormattedInput("val", arg);
+      } else {
+         return this.host.jqxFormattedInput("val");
+      }
+   };
+
 
    // jqxFormattedInputComponent events
    @Output() onChange = new EventEmitter();
@@ -343,10 +373,12 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
    @Output() onRadixChange = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.value); });
-      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
-      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
-      this.host.on('radixChange', (eventData) => { this.onRadixChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.value); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.value); });
+      this.host.on('close', (eventData: any) => { this.onClose.emit(eventData); });
+      this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
+      this.host.on('radixChange', (eventData: any) => { this.onRadixChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.value); });
    }
 
 } //jqxFormattedInputComponent
+
+

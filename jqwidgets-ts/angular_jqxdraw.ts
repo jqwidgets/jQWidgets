@@ -1,28 +1,40 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularDraw',
+    selector: 'jqxDraw',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxDrawComponent implements OnChanges
 {
-   @Input('renderEngine') attrRenderEngine;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('renderEngine') attrRenderEngine: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['renderEngine'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['renderEngine'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDraw;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -71,7 +83,7 @@ export class jqxDrawComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -84,6 +96,10 @@ export class jqxDrawComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDraw', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -108,51 +124,67 @@ export class jqxDrawComponent implements OnChanges
    attr(element: any, attributes: any): void {
       this.host.jqxDraw('attr', element, attributes);
    }
+
    circle(cx: number, cy: number, r: number, attributes: any): any {
       return this.host.jqxDraw('circle', cx, cy, r, attributes);
    }
+
    clear(): void {
       this.host.jqxDraw('clear');
    }
+
    getAttr(element: any, attributes: any): string {
       return this.host.jqxDraw('getAttr', element, attributes);
    }
+
    getSize(): any {
       return this.host.jqxDraw('getSize');
    }
+
    line(x1: number, y1: number, x2: number, y2: number, attributes: any): any {
       return this.host.jqxDraw('line', x1, y1, x2, y2, attributes);
    }
+
    measureText(text: string, angle: number, attributes: any): any {
       return this.host.jqxDraw('measureText', text, angle, attributes);
    }
+
    on(element: any, event: string, func: any): void {
       this.host.jqxDraw('on', element, event, func);
    }
+
    off(element: any, event: string, func: any): void {
       this.host.jqxDraw('off', element, event, func);
    }
+
    path(path: string, attributes: any): any {
       return this.host.jqxDraw('path', path, attributes);
    }
+
    pieslice(cx: number, xy: number, innerRadius: any, outerRadius: any, fromAngle: number, endAngle: number, centerOffset: number, attributes: any): any {
       return this.host.jqxDraw('pieslice', cx, xy, innerRadius, outerRadius, fromAngle, endAngle, centerOffset, attributes);
    }
+
    refresh(): void {
       this.host.jqxDraw('refresh');
    }
+
    rect(x: number, y: number, width: jqwidgets.Size, height: jqwidgets.Size, attributes: any): any {
       return this.host.jqxDraw('rect', x, y, width, height, attributes);
    }
+
    saveAsJPEG(image: string, url: string): void {
       this.host.jqxDraw('saveAsJPEG', image, url);
    }
+
    saveAsPNG(image: string, url: string): void {
       this.host.jqxDraw('saveAsPNG', image, url);
    }
+
    text(x: number, y: number, width: jqwidgets.Size, height: jqwidgets.Size, angle: number, attributes: Array<any>, clip: boolean, halign: string, valign: string, rotateAround: string): any {
       return this.host.jqxDraw('text', x, y, width, height, angle, attributes, clip, halign, valign, rotateAround);
    }
+
 
    // jqxDrawComponent events
 
@@ -162,3 +194,5 @@ export class jqxDrawComponent implements OnChanges
    }
 
 } //jqxDrawComponent
+
+

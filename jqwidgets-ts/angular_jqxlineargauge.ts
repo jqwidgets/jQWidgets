@@ -1,51 +1,63 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularLinearGauge',
+    selector: 'jqxLinearGauge',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxLinearGaugeComponent implements OnChanges
 {
-   @Input('animationDuration') attrAnimationDuration;
-   @Input('background') attrBackground;
-   @Input('colorScheme') attrColorScheme;
-   @Input('disabled') attrDisabled;
-   @Input('easing') attrEasing;
-   @Input('int64') attrInt64;
-   @Input('labels') attrLabels;
-   @Input('min') attrMin;
-   @Input('max') attrMax;
-   @Input('orientation') attrOrientation;
-   @Input('pointer') attrPointer;
-   @Input('rangesOffset') attrRangesOffset;
-   @Input('rangeSize') attrRangeSize;
-   @Input('ranges') attrRanges;
-   @Input('showRanges') attrShowRanges;
-   @Input('scaleStyle') attrScaleStyle;
-   @Input('scaleLength') attrScaleLength;
-   @Input('ticksOffset') attrTicksOffset;
-   @Input('ticksPosition') attrTicksPosition;
-   @Input('ticksMinor') attrTicksMinor;
-   @Input('ticksMajor') attrTicksMajor;
-   @Input('value') attrValue;
-   @Input('disable') attrDisable;
-   @Input('enable') attrEnable;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('animationDuration') attrAnimationDuration: any;
+   @Input('background') attrBackground: any;
+   @Input('colorScheme') attrColorScheme: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('easing') attrEasing: any;
+   @Input('int64') attrInt64: any;
+   @Input('labels') attrLabels: any;
+   @Input('min') attrMin: any;
+   @Input('max') attrMax: any;
+   @Input('orientation') attrOrientation: any;
+   @Input('pointer') attrPointer: any;
+   @Input('rangesOffset') attrRangesOffset: any;
+   @Input('rangeSize') attrRangeSize: any;
+   @Input('ranges') attrRanges: any;
+   @Input('showRanges') attrShowRanges: any;
+   @Input('scaleStyle') attrScaleStyle: any;
+   @Input('scaleLength') attrScaleLength: any;
+   @Input('ticksOffset') attrTicksOffset: any;
+   @Input('ticksPosition') attrTicksPosition: any;
+   @Input('ticksMinor') attrTicksMinor: any;
+   @Input('ticksMajor') attrTicksMajor: any;
+   @Input('value') attrValue: any;
+   @Input('disable') attrDisable: any;
+   @Input('enable') attrEnable: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width','disable','enable'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width','disable','enable'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxLinearGauge;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -94,7 +106,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -105,6 +117,10 @@ export class jqxLinearGaugeComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxLinearGauge', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -326,17 +342,24 @@ export class jqxLinearGaugeComponent implements OnChanges
 
 
    // jqxLinearGaugeComponent functions
-   val(value: String | Number): number {
-      return this.host.jqxLinearGauge('val', value);
-   }
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxLinearGauge("val", arg);
+      } else {
+         return this.host.jqxLinearGauge("val");
+      }
+   };
+
 
    // jqxLinearGaugeComponent events
    @Output() onValueChanging = new EventEmitter();
    @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('valueChanging', (eventData) => { this.onValueChanging.emit(eventData); });
-      this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); });
+      this.host.on('valueChanging', (eventData: any) => { this.onValueChanging.emit(eventData); });
+      this.host.on('valueChanged', (eventData: any) => { this.onValueChanged.emit(eventData); });
    }
 
 } //jqxLinearGaugeComponent
+
+

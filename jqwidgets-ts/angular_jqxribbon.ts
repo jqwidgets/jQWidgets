@@ -1,41 +1,53 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularRibbon',
+    selector: 'jqxRibbon',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxRibbonComponent implements OnChanges
 {
-   @Input('animationType') attrAnimationType;
-   @Input('animationDelay') attrAnimationDelay;
-   @Input('disabled') attrDisabled;
-   @Input('initContent') attrInitContent;
-   @Input('mode') attrMode;
-   @Input('popupCloseMode') attrPopupCloseMode;
-   @Input('position') attrPosition;
-   @Input('rtl') attrRtl;
-   @Input('selectedIndex') attrSelectedIndex;
-   @Input('selectionMode') attrSelectionMode;
-   @Input('scrollPosition') attrScrollPosition;
-   @Input('scrollStep') attrScrollStep;
-   @Input('scrollDelay') attrScrollDelay;
-   @Input('theme') attrTheme;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('animationType') attrAnimationType: any;
+   @Input('animationDelay') attrAnimationDelay: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('initContent') attrInitContent: any;
+   @Input('mode') attrMode: any;
+   @Input('popupCloseMode') attrPopupCloseMode: any;
+   @Input('position') attrPosition: any;
+   @Input('rtl') attrRtl: any;
+   @Input('selectedIndex') attrSelectedIndex: any;
+   @Input('selectionMode') attrSelectionMode: any;
+   @Input('scrollPosition') attrScrollPosition: any;
+   @Input('scrollStep') attrScrollStep: any;
+   @Input('scrollDelay') attrScrollDelay: any;
+   @Input('theme') attrTheme: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['animationType','animationDelay','disabled','height','initContent','mode','popupCloseMode','position','rtl','selectedIndex','selectionMode','scrollPosition','scrollStep','scrollDelay','theme','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['animationType','animationDelay','disabled','height','initContent','mode','popupCloseMode','position','rtl','selectedIndex','selectionMode','scrollPosition','scrollStep','scrollDelay','theme','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxRibbon;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -84,7 +96,7 @@ export class jqxRibbonComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -95,6 +107,10 @@ export class jqxRibbonComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxRibbon', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -239,45 +255,63 @@ export class jqxRibbonComponent implements OnChanges
    addAt(index: number, item: jqwidgets.RibbonItem): void {
       this.host.jqxRibbon('addAt', index, item);
    }
+
    clearSelection(): void {
       this.host.jqxRibbon('clearSelection');
    }
+
    disableAt(index: number): void {
       this.host.jqxRibbon('disableAt', index);
    }
+
    destroy(): void {
       this.host.jqxRibbon('destroy');
    }
+
    enableAt(index: number): void {
       this.host.jqxRibbon('enableAt', index);
    }
+
    hideAt(index: number): void {
       this.host.jqxRibbon('hideAt', index);
    }
+
    removeAt(index: number): void {
       this.host.jqxRibbon('removeAt', index);
    }
+
    render(): void {
       this.host.jqxRibbon('render');
    }
+
    refresh(): void {
       this.host.jqxRibbon('refresh');
    }
+
    selectAt(index: number): void {
       this.host.jqxRibbon('selectAt', index);
    }
+
    showAt(index: number): void {
       this.host.jqxRibbon('showAt', index);
    }
+
    setPopupLayout(index: number, layout: any, width: String | Number, height: String | Number): void {
       this.host.jqxRibbon('setPopupLayout', index, layout, width, height);
    }
+
    updateAt(index: number, item: jqwidgets.RibbonItem): void {
       this.host.jqxRibbon('updateAt', index, item);
    }
-   val(value: string): string {
-      return this.host.jqxRibbon('val', value);
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxRibbon("val", arg);
+      } else {
+         return this.host.jqxRibbon("val");
+      }
+   };
+
 
    // jqxRibbonComponent events
    @Output() onChange = new EventEmitter();
@@ -286,10 +320,12 @@ export class jqxRibbonComponent implements OnChanges
    @Output() onUnselect = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
-      this.host.on('reorder', (eventData) => { this.onReorder.emit(eventData); });
-      this.host.on('select', (eventData) => { this.onSelect.emit(eventData); });
-      this.host.on('unselect', (eventData) => { this.onUnselect.emit(eventData); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); });
+      this.host.on('reorder', (eventData: any) => { this.onReorder.emit(eventData); });
+      this.host.on('select', (eventData: any) => { this.onSelect.emit(eventData); });
+      this.host.on('unselect', (eventData: any) => { this.onUnselect.emit(eventData); });
    }
 
 } //jqxRibbonComponent
+
+

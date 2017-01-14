@@ -1,32 +1,44 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularTouch',
+    selector: 'jqxTouch',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxTouchComponent implements OnChanges
 {
-   @Input('orientationChangeEnabled') attrOrientationChangeEnabled;
-   @Input('swipeMin') attrSwipeMin;
-   @Input('swipeMax') attrSwipeMax;
-   @Input('swipeDelay') attrSwipeDelay;
-   @Input('tapHoldDelay') attrTapHoldDelay;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('orientationChangeEnabled') attrOrientationChangeEnabled: any;
+   @Input('swipeMin') attrSwipeMin: any;
+   @Input('swipeMax') attrSwipeMax: any;
+   @Input('swipeDelay') attrSwipeDelay: any;
+   @Input('tapHoldDelay') attrTapHoldDelay: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['orientationChangeEnabled','swipeMin','swipeMax','swipeDelay','tapHoldDelay'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['orientationChangeEnabled','swipeMin','swipeMax','swipeDelay','tapHoldDelay'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTouch;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -75,7 +87,7 @@ export class jqxTouchComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -86,6 +98,10 @@ export class jqxTouchComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTouch', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -152,14 +168,16 @@ export class jqxTouchComponent implements OnChanges
    @Output() onTaphold = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('orientationchange', (eventData) => { this.onOrientationchange.emit(eventData); });
-      this.host.on('swipe', (eventData) => { this.onSwipe.emit(eventData); });
-      this.host.on('swipeleft', (eventData) => { this.onSwipeleft.emit(eventData); });
-      this.host.on('swiperight', (eventData) => { this.onSwiperight.emit(eventData); });
-      this.host.on('swipetop', (eventData) => { this.onSwipetop.emit(eventData); });
-      this.host.on('swipebottom', (eventData) => { this.onSwipebottom.emit(eventData); });
-      this.host.on('tap', (eventData) => { this.onTap.emit(eventData); });
-      this.host.on('taphold', (eventData) => { this.onTaphold.emit(eventData); });
+      this.host.on('orientationchange', (eventData: any) => { this.onOrientationchange.emit(eventData); });
+      this.host.on('swipe', (eventData: any) => { this.onSwipe.emit(eventData); });
+      this.host.on('swipeleft', (eventData: any) => { this.onSwipeleft.emit(eventData); });
+      this.host.on('swiperight', (eventData: any) => { this.onSwiperight.emit(eventData); });
+      this.host.on('swipetop', (eventData: any) => { this.onSwipetop.emit(eventData); });
+      this.host.on('swipebottom', (eventData: any) => { this.onSwipebottom.emit(eventData); });
+      this.host.on('tap', (eventData: any) => { this.onTap.emit(eventData); });
+      this.host.on('taphold', (eventData: any) => { this.onTaphold.emit(eventData); });
    }
 
 } //jqxTouchComponent
+
+

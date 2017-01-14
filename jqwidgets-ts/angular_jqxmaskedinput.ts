@@ -1,5 +1,10 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -12,26 +17,28 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 }
 
 @Component({
-    selector: 'angularMaskedInput',
+    selector: 'jqxMaskedInput',
     template: '<input>',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
 export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('disabled') attrDisabled;
-   @Input('mask') attrMask;
-   @Input('promptChar') attrPromptChar;
-   @Input('readOnly') attrReadOnly;
-   @Input('rtl') attrRtl;
-   @Input('theme') attrTheme;
-   @Input('textAlign') attrTextAlign;
-   @Input('value') attrValue;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('disabled') attrDisabled: any;
+   @Input('mask') attrMask: any;
+   @Input('promptChar') attrPromptChar: any;
+   @Input('readOnly') attrReadOnly: any;
+   @Input('rtl') attrRtl: any;
+   @Input('theme') attrTheme: any;
+   @Input('textAlign') attrTextAlign: any;
+   @Input('value') attrValue: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['disabled','height','mask','promptChar','readOnly','rtl','theme','textAlign','value','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['disabled','height','mask','promptChar','readOnly','rtl','theme','textAlign','value','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxMaskedInput;
 
@@ -40,9 +47,14 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -91,7 +103,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -102,6 +114,10 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxMaskedInput', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -212,23 +228,33 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
    clear(): void {
       this.host.jqxMaskedInput('clear');
    }
+
    destroy(): void {
       this.host.jqxMaskedInput('destroy');
    }
+
    focus(): void {
       this.host.jqxMaskedInput('focus');
    }
-   val(value: String | Number): string {
-      return this.host.jqxMaskedInput('val', value);
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxMaskedInput("val", arg);
+      } else {
+         return this.host.jqxMaskedInput("val");
+      }
+   };
+
 
    // jqxMaskedInputComponent events
    @Output() onChange = new EventEmitter();
    @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.text); });
-      this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.text); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.text); });
+      this.host.on('valueChanged', (eventData: any) => { this.onValueChanged.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.text); });
    }
 
 } //jqxMaskedInputComponent
+
+

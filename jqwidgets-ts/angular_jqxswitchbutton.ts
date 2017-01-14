@@ -1,5 +1,10 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -12,24 +17,26 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 }
 
 @Component({
-    selector: 'angularSwitchButton',
+    selector: 'jqxSwitchButton',
     template: '<div><ng-content></ng-content></div>',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
 export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('checked') attrChecked;
-   @Input('disabled') attrDisabled;
-   @Input('orientation') attrOrientation;
-   @Input('onLabel') attrOnLabel;
-   @Input('offLabel') attrOffLabel;
-   @Input('thumbSize') attrThumbSize;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('checked') attrChecked: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('orientation') attrOrientation: any;
+   @Input('onLabel') attrOnLabel: any;
+   @Input('offLabel') attrOffLabel: any;
+   @Input('thumbSize') attrThumbSize: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['checked','disabled','height','orientation','onLabel','offLabel','thumbSize','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['checked','disabled','height','orientation','onLabel','offLabel','thumbSize','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxSwitchButton;
 
@@ -38,9 +45,14 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -89,7 +101,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -100,6 +112,10 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxSwitchButton', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -194,21 +210,31 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
    check(): void {
       this.host.jqxSwitchButton('check');
    }
+
    disable(): void {
       this.host.jqxSwitchButton('disable');
    }
+
    enable(): void {
       this.host.jqxSwitchButton('enable');
    }
+
    toggle(): void {
       this.host.jqxSwitchButton('toggle');
    }
+
    uncheck(): void {
       this.host.jqxSwitchButton('uncheck');
    }
-   val(value: boolean): boolean {
-      return this.host.jqxSwitchButton('val', value);
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxSwitchButton("val", arg);
+      } else {
+         return this.host.jqxSwitchButton("val");
+      }
+   };
+
 
    // jqxSwitchButtonComponent events
    @Output() onChecked = new EventEmitter();
@@ -216,9 +242,11 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
    @Output() onUnchecked = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('checked', (eventData) => { this.onChecked.emit(eventData); });
-      this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
-      this.host.on('unchecked', (eventData) => { this.onUnchecked.emit(eventData); });
+      this.host.on('checked', (eventData: any) => { this.onChecked.emit(eventData); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
+      this.host.on('unchecked', (eventData: any) => { this.onUnchecked.emit(eventData); });
    }
 
 } //jqxSwitchButtonComponent
+
+

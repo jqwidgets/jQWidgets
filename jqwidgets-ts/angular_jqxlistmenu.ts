@@ -1,45 +1,57 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularListMenu',
+    selector: 'jqxListMenu',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxListMenuComponent implements OnChanges
 {
-   @Input('alwaysShowNavigationArrows') attrAlwaysShowNavigationArrows;
-   @Input('animationType') attrAnimationType;
-   @Input('animationDuration') attrAnimationDuration;
-   @Input('autoSeparators') attrAutoSeparators;
-   @Input('backLabel') attrBackLabel;
-   @Input('disabled') attrDisabled;
-   @Input('enableScrolling') attrEnableScrolling;
-   @Input('filterCallback') attrFilterCallback;
-   @Input('headerAnimationDuration') attrHeaderAnimationDuration;
-   @Input('placeHolder') attrPlaceHolder;
-   @Input('readOnly') attrReadOnly;
-   @Input('rtl') attrRtl;
-   @Input('roundedCorners') attrRoundedCorners;
-   @Input('showNavigationArrows') attrShowNavigationArrows;
-   @Input('showFilter') attrShowFilter;
-   @Input('showHeader') attrShowHeader;
-   @Input('showBackButton') attrShowBackButton;
-   @Input('theme') attrTheme;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('alwaysShowNavigationArrows') attrAlwaysShowNavigationArrows: any;
+   @Input('animationType') attrAnimationType: any;
+   @Input('animationDuration') attrAnimationDuration: any;
+   @Input('autoSeparators') attrAutoSeparators: any;
+   @Input('backLabel') attrBackLabel: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('enableScrolling') attrEnableScrolling: any;
+   @Input('filterCallback') attrFilterCallback: any;
+   @Input('headerAnimationDuration') attrHeaderAnimationDuration: any;
+   @Input('placeHolder') attrPlaceHolder: any;
+   @Input('readOnly') attrReadOnly: any;
+   @Input('rtl') attrRtl: any;
+   @Input('roundedCorners') attrRoundedCorners: any;
+   @Input('showNavigationArrows') attrShowNavigationArrows: any;
+   @Input('showFilter') attrShowFilter: any;
+   @Input('showHeader') attrShowHeader: any;
+   @Input('showBackButton') attrShowBackButton: any;
+   @Input('theme') attrTheme: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['alwaysShowNavigationArrows','animationType','animationDuration','autoSeparators','backLabel','disabled','enableScrolling','filterCallback','height','headerAnimationDuration','placeHolder','readOnly','rtl','roundedCorners','showNavigationArrows','showFilter','showHeader','showBackButton','theme','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['alwaysShowNavigationArrows','animationType','animationDuration','autoSeparators','backLabel','disabled','enableScrolling','filterCallback','height','headerAnimationDuration','placeHolder','readOnly','rtl','roundedCorners','showNavigationArrows','showFilter','showHeader','showBackButton','theme','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxListMenu;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -88,7 +100,7 @@ export class jqxListMenuComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -99,6 +111,10 @@ export class jqxListMenuComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxListMenu', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -275,12 +291,15 @@ export class jqxListMenuComponent implements OnChanges
    back(): void {
       this.host.jqxListMenu('back');
    }
+
    changePage(Item: any): void {
       this.host.jqxListMenu('changePage', Item);
    }
+
    destroy(): void {
       this.host.jqxListMenu('destroy');
    }
+
 
    // jqxListMenuComponent events
 
@@ -290,3 +309,5 @@ export class jqxListMenuComponent implements OnChanges
    }
 
 } //jqxListMenuComponent
+
+

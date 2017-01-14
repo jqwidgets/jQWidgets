@@ -1,31 +1,43 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularColorPicker',
+    selector: 'jqxColorPicker',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxColorPickerComponent implements OnChanges
 {
-   @Input('color') attrColor;
-   @Input('colorMode') attrColorMode;
-   @Input('disabled') attrDisabled;
-   @Input('showTransparent') attrShowTransparent;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('color') attrColor: any;
+   @Input('colorMode') attrColorMode: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('showTransparent') attrShowTransparent: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['color','colorMode','disabled','height','showTransparent','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['color','colorMode','disabled','height','showTransparent','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxColorPicker;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -74,7 +86,7 @@ export class jqxColorPickerComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -85,6 +97,10 @@ export class jqxColorPickerComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxColorPicker', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -149,15 +165,19 @@ export class jqxColorPickerComponent implements OnChanges
    getColor(): Object {
       return this.host.jqxColorPicker('getColor');
    }
+
    setColor(color: any): void {
       this.host.jqxColorPicker('setColor', color);
    }
+
 
    // jqxColorPickerComponent events
    @Output() onColorchange = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('colorchange', (eventData) => { this.onColorchange.emit(eventData); });
+      this.host.on('colorchange', (eventData: any) => { this.onColorchange.emit(eventData); });
    }
 
 } //jqxColorPickerComponent
+
+

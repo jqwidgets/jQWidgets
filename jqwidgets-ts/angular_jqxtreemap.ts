@@ -1,43 +1,55 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularTreeMap',
+    selector: 'jqxTreeMap',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxTreeMapComponent implements OnChanges
 {
-   @Input('baseColor') attrBaseColor;
-   @Input('colorRanges') attrColorRanges;
-   @Input('colorRange') attrColorRange;
-   @Input('colorMode') attrColorMode;
-   @Input('displayMember') attrDisplayMember;
-   @Input('hoverEnabled') attrHoverEnabled;
-   @Input('headerHeight') attrHeaderHeight;
-   @Input('legendLabel') attrLegendLabel;
-   @Input('legendPosition') attrLegendPosition;
-   @Input('legendScaleCallback') attrLegendScaleCallback;
-   @Input('renderCallbacks') attrRenderCallbacks;
-   @Input('selectionEnabled') attrSelectionEnabled;
-   @Input('showLegend') attrShowLegend;
-   @Input('source') attrSource;
-   @Input('theme') attrTheme;
-   @Input('valueMember') attrValueMember;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('baseColor') attrBaseColor: any;
+   @Input('colorRanges') attrColorRanges: any;
+   @Input('colorRange') attrColorRange: any;
+   @Input('colorMode') attrColorMode: any;
+   @Input('displayMember') attrDisplayMember: any;
+   @Input('hoverEnabled') attrHoverEnabled: any;
+   @Input('headerHeight') attrHeaderHeight: any;
+   @Input('legendLabel') attrLegendLabel: any;
+   @Input('legendPosition') attrLegendPosition: any;
+   @Input('legendScaleCallback') attrLegendScaleCallback: any;
+   @Input('renderCallbacks') attrRenderCallbacks: any;
+   @Input('selectionEnabled') attrSelectionEnabled: any;
+   @Input('showLegend') attrShowLegend: any;
+   @Input('source') attrSource: any;
+   @Input('theme') attrTheme: any;
+   @Input('valueMember') attrValueMember: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['baseColor','colorRanges','colorRange','colorMode','displayMember','height','hoverEnabled','headerHeight','legendLabel','legendPosition','legendScaleCallback','renderCallbacks','selectionEnabled','showLegend','source','theme','valueMember','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['baseColor','colorRanges','colorRange','colorMode','displayMember','height','hoverEnabled','headerHeight','legendLabel','legendPosition','legendScaleCallback','renderCallbacks','selectionEnabled','showLegend','source','theme','valueMember','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTreeMap;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -86,7 +98,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -98,6 +110,10 @@ export class jqxTreeMapComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTreeMap', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -258,15 +274,19 @@ export class jqxTreeMapComponent implements OnChanges
    destroy(): void {
       this.host.jqxTreeMap('destroy');
    }
+
    render(): void {
       this.host.jqxTreeMap('render');
    }
+
 
    // jqxTreeMapComponent events
    @Output() onBindingComplete = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('bindingComplete', (eventData) => { this.onBindingComplete.emit(eventData); });
+      this.host.on('bindingComplete', (eventData: any) => { this.onBindingComplete.emit(eventData); });
    }
 
 } //jqxTreeMapComponent
+
+

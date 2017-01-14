@@ -1,40 +1,52 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularProgressBar',
+    selector: 'jqxProgressBar',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxProgressBarComponent implements OnChanges
 {
-   @Input('animationDuration') attrAnimationDuration;
-   @Input('colorRanges') attrColorRanges;
-   @Input('disabled') attrDisabled;
-   @Input('layout') attrLayout;
-   @Input('max') attrMax;
-   @Input('min') attrMin;
-   @Input('orientation') attrOrientation;
-   @Input('rtl') attrRtl;
-   @Input('renderText') attrRenderText;
-   @Input('showText') attrShowText;
-   @Input('template') attrTemplate;
-   @Input('theme') attrTheme;
-   @Input('value') attrValue;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('animationDuration') attrAnimationDuration: any;
+   @Input('colorRanges') attrColorRanges: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('layout') attrLayout: any;
+   @Input('max') attrMax: any;
+   @Input('min') attrMin: any;
+   @Input('orientation') attrOrientation: any;
+   @Input('rtl') attrRtl: any;
+   @Input('renderText') attrRenderText: any;
+   @Input('showText') attrShowText: any;
+   @Input('template') attrTemplate: any;
+   @Input('theme') attrTheme: any;
+   @Input('value') attrValue: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['animationDuration','colorRanges','disabled','height','layout','max','min','orientation','rtl','renderText','showText','template','theme','value','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['animationDuration','colorRanges','disabled','height','layout','max','min','orientation','rtl','renderText','showText','template','theme','value','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxProgressBar;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -83,7 +95,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -94,6 +106,10 @@ export class jqxProgressBarComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxProgressBar', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -230,12 +246,19 @@ export class jqxProgressBarComponent implements OnChanges
    actualValue(value: String | Number): void {
       this.host.jqxProgressBar('actualValue', value);
    }
+
    destroy(): void {
       this.host.jqxProgressBar('destroy');
    }
-   val(value: String | Number): number {
-      return this.host.jqxProgressBar('val', value);
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxProgressBar("val", arg);
+      } else {
+         return this.host.jqxProgressBar("val");
+      }
+   };
+
 
    // jqxProgressBarComponent events
    @Output() onComplete = new EventEmitter();
@@ -243,9 +266,11 @@ export class jqxProgressBarComponent implements OnChanges
    @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('complete', (eventData) => { this.onComplete.emit(eventData); });
-      this.host.on('invalidvalue', (eventData) => { this.onInvalidvalue.emit(eventData); });
-      this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); });
+      this.host.on('complete', (eventData: any) => { this.onComplete.emit(eventData); });
+      this.host.on('invalidvalue', (eventData: any) => { this.onInvalidvalue.emit(eventData); });
+      this.host.on('valueChanged', (eventData: any) => { this.onValueChanged.emit(eventData); });
    }
 
 } //jqxProgressBarComponent
+
+

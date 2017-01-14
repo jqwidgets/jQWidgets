@@ -1,77 +1,89 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularDataTable',
+    selector: 'jqxDataTable',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxDataTableComponent implements OnChanges
 {
-   @Input('altRows') attrAltRows;
-   @Input('autoRowHeight') attrAutoRowHeight;
-   @Input('aggregatesHeight') attrAggregatesHeight;
-   @Input('autoShowLoadElement') attrAutoShowLoadElement;
-   @Input('columnsHeight') attrColumnsHeight;
-   @Input('columns') attrColumns;
-   @Input('columnGroups') attrColumnGroups;
-   @Input('columnsResize') attrColumnsResize;
-   @Input('columnsReorder') attrColumnsReorder;
-   @Input('disabled') attrDisabled;
-   @Input('editable') attrEditable;
-   @Input('editSettings') attrEditSettings;
-   @Input('exportSettings') attrExportSettings;
-   @Input('enableHover') attrEnableHover;
-   @Input('enableBrowserSelection') attrEnableBrowserSelection;
-   @Input('filterable') attrFilterable;
-   @Input('filterHeight') attrFilterHeight;
-   @Input('filterMode') attrFilterMode;
-   @Input('groups') attrGroups;
-   @Input('groupsRenderer') attrGroupsRenderer;
-   @Input('initRowDetails') attrInitRowDetails;
-   @Input('incrementalSearch') attrIncrementalSearch;
-   @Input('localization') attrLocalization;
-   @Input('pagerHeight') attrPagerHeight;
-   @Input('pageSize') attrPageSize;
-   @Input('pageSizeOptions') attrPageSizeOptions;
-   @Input('pageable') attrPageable;
-   @Input('pagerPosition') attrPagerPosition;
-   @Input('pagerMode') attrPagerMode;
-   @Input('pagerButtonsCount') attrPagerButtonsCount;
-   @Input('pagerRenderer') attrPagerRenderer;
-   @Input('ready') attrReady;
-   @Input('rowDetails') attrRowDetails;
-   @Input('renderToolbar') attrRenderToolbar;
-   @Input('renderStatusbar') attrRenderStatusbar;
-   @Input('rendering') attrRendering;
-   @Input('rendered') attrRendered;
-   @Input('rtl') attrRtl;
-   @Input('source') attrSource;
-   @Input('sortable') attrSortable;
-   @Input('showAggregates') attrShowAggregates;
-   @Input('showToolbar') attrShowToolbar;
-   @Input('showStatusbar') attrShowStatusbar;
-   @Input('statusBarHeight') attrStatusBarHeight;
-   @Input('scrollBarSize') attrScrollBarSize;
-   @Input('selectionMode') attrSelectionMode;
-   @Input('serverProcessing') attrServerProcessing;
-   @Input('showHeader') attrShowHeader;
-   @Input('theme') attrTheme;
-   @Input('toolbarHeight') attrToolbarHeight;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('altRows') attrAltRows: any;
+   @Input('autoRowHeight') attrAutoRowHeight: any;
+   @Input('aggregatesHeight') attrAggregatesHeight: any;
+   @Input('autoShowLoadElement') attrAutoShowLoadElement: any;
+   @Input('columnsHeight') attrColumnsHeight: any;
+   @Input('columns') attrColumns: any;
+   @Input('columnGroups') attrColumnGroups: any;
+   @Input('columnsResize') attrColumnsResize: any;
+   @Input('columnsReorder') attrColumnsReorder: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('editable') attrEditable: any;
+   @Input('editSettings') attrEditSettings: any;
+   @Input('exportSettings') attrExportSettings: any;
+   @Input('enableHover') attrEnableHover: any;
+   @Input('enableBrowserSelection') attrEnableBrowserSelection: any;
+   @Input('filterable') attrFilterable: any;
+   @Input('filterHeight') attrFilterHeight: any;
+   @Input('filterMode') attrFilterMode: any;
+   @Input('groups') attrGroups: any;
+   @Input('groupsRenderer') attrGroupsRenderer: any;
+   @Input('initRowDetails') attrInitRowDetails: any;
+   @Input('incrementalSearch') attrIncrementalSearch: any;
+   @Input('localization') attrLocalization: any;
+   @Input('pagerHeight') attrPagerHeight: any;
+   @Input('pageSize') attrPageSize: any;
+   @Input('pageSizeOptions') attrPageSizeOptions: any;
+   @Input('pageable') attrPageable: any;
+   @Input('pagerPosition') attrPagerPosition: any;
+   @Input('pagerMode') attrPagerMode: any;
+   @Input('pagerButtonsCount') attrPagerButtonsCount: any;
+   @Input('pagerRenderer') attrPagerRenderer: any;
+   @Input('ready') attrReady: any;
+   @Input('rowDetails') attrRowDetails: any;
+   @Input('renderToolbar') attrRenderToolbar: any;
+   @Input('renderStatusbar') attrRenderStatusbar: any;
+   @Input('rendering') attrRendering: any;
+   @Input('rendered') attrRendered: any;
+   @Input('rtl') attrRtl: any;
+   @Input('source') attrSource: any;
+   @Input('sortable') attrSortable: any;
+   @Input('showAggregates') attrShowAggregates: any;
+   @Input('showToolbar') attrShowToolbar: any;
+   @Input('showStatusbar') attrShowStatusbar: any;
+   @Input('statusBarHeight') attrStatusBarHeight: any;
+   @Input('scrollBarSize') attrScrollBarSize: any;
+   @Input('selectionMode') attrSelectionMode: any;
+   @Input('serverProcessing') attrServerProcessing: any;
+   @Input('showHeader') attrShowHeader: any;
+   @Input('theme') attrTheme: any;
+   @Input('toolbarHeight') attrToolbarHeight: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','groups','groupsRenderer','height','initRowDetails','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','renderToolbar','renderStatusbar','rendering','rendered','rtl','source','sortable','showAggregates','showToolbar','showStatusbar','statusBarHeight','scrollBarSize','selectionMode','serverProcessing','showHeader','theme','toolbarHeight','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','groups','groupsRenderer','height','initRowDetails','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','renderToolbar','renderStatusbar','rendering','rendered','rtl','source','sortable','showAggregates','showToolbar','showStatusbar','statusBarHeight','scrollBarSize','selectionMode','serverProcessing','showHeader','theme','toolbarHeight','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDataTable;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -120,7 +132,7 @@ export class jqxDataTableComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -131,6 +143,10 @@ export class jqxDataTableComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDataTable', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -563,135 +579,179 @@ export class jqxDataTableComponent implements OnChanges
    addRow(rowIndex: number, rowData: any, rowPosition: any): void {
       this.host.jqxDataTable('addRow', rowIndex, rowData, rowPosition);
    }
+
    addFilter(dataField: string, filerGroup: any): void {
       this.host.jqxDataTable('addFilter', dataField, filerGroup);
    }
+
    applyFilters(): void {
       this.host.jqxDataTable('applyFilters');
    }
+
    beginUpdate(): void {
       this.host.jqxDataTable('beginUpdate');
    }
+
    beginRowEdit(rowIndex: number): void {
       this.host.jqxDataTable('beginRowEdit', rowIndex);
    }
+
    beginCellEdit(rowIndex: number, dataField: string): void {
       this.host.jqxDataTable('beginCellEdit', rowIndex, dataField);
    }
+
    clearSelection(): void {
       this.host.jqxDataTable('clearSelection');
    }
+
    clearFilters(): void {
       this.host.jqxDataTable('clearFilters');
    }
+
    clear(): void {
       this.host.jqxDataTable('clear');
    }
+
    destroy(): void {
       this.host.jqxDataTable('destroy');
    }
+
    deleteRow(rowIndex: number): void {
       this.host.jqxDataTable('deleteRow', rowIndex);
    }
+
    endUpdate(): void {
       this.host.jqxDataTable('endUpdate');
    }
+
    ensureRowVisible(rowIndex: number): void {
       this.host.jqxDataTable('ensureRowVisible', rowIndex);
    }
+
    endRowEdit(rowIndex: number, cancelChanges: boolean): void {
       this.host.jqxDataTable('endRowEdit', rowIndex, cancelChanges);
    }
+
    endCellEdit(rowIndex: number, dataField: string): void {
       this.host.jqxDataTable('endCellEdit', rowIndex, dataField);
    }
+
    exportData(exportDataType: any): any {
       return this.host.jqxDataTable('exportData', exportDataType);
    }
+
    focus(): void {
       this.host.jqxDataTable('focus');
    }
+
    getColumnProperty(dataField: string, propertyName: string): any {
       return this.host.jqxDataTable('getColumnProperty', dataField, propertyName);
    }
+
    goToPage(pageIndex: number): void {
       this.host.jqxDataTable('goToPage', pageIndex);
    }
+
    goToPrevPage(): void {
       this.host.jqxDataTable('goToPrevPage');
    }
+
    goToNextPage(): void {
       this.host.jqxDataTable('goToNextPage');
    }
+
    getSelection(): Array<any> {
       return this.host.jqxDataTable('getSelection');
    }
+
    getRows(): Array<any> {
       return this.host.jqxDataTable('getRows');
    }
+
    getView(): Array<any> {
       return this.host.jqxDataTable('getView');
    }
+
    getCellValue(rowIndex: number, dataField: string): any {
       return this.host.jqxDataTable('getCellValue', rowIndex, dataField);
    }
+
    hideColumn(dataField: string): void {
       this.host.jqxDataTable('hideColumn', dataField);
    }
+
    hideDetails(rowIndex: boolean): void {
       this.host.jqxDataTable('hideDetails', rowIndex);
    }
+
    isBindingCompleted(): boolean {
       return this.host.jqxDataTable('isBindingCompleted');
    }
+
    lockRow(rowIndex: number): void {
       this.host.jqxDataTable('lockRow', rowIndex);
    }
+
    refresh(): void {
       this.host.jqxDataTable('refresh');
    }
+
    render(): void {
       this.host.jqxDataTable('render');
    }
+
    removeFilter(dataField: string): void {
       this.host.jqxDataTable('removeFilter', dataField);
    }
+
    scrollOffset(top: number, left: number): any {
       return this.host.jqxDataTable('scrollOffset', top, left);
    }
+
    setColumnProperty(dataField: string, propertyName: string, propertyValue: any): void {
       this.host.jqxDataTable('setColumnProperty', dataField, propertyName, propertyValue);
    }
+
    showColumn(dataField: string): void {
       this.host.jqxDataTable('showColumn', dataField);
    }
+
    selectRow(rowIndex: number): void {
       this.host.jqxDataTable('selectRow', rowIndex);
    }
+
    showDetails(rowIndex: number): void {
       this.host.jqxDataTable('showDetails', rowIndex);
    }
+
    setCellValue(rowIndex: number, dataField: string, value: any): void {
       this.host.jqxDataTable('setCellValue', rowIndex, dataField, value);
    }
+
    sortBy(dataField: string, sortOrder: any): void {
       this.host.jqxDataTable('sortBy', dataField, sortOrder);
    }
+
    updating(): boolean {
       return this.host.jqxDataTable('updating');
    }
+
    updateBoundData(): void {
       this.host.jqxDataTable('updateBoundData');
    }
+
    unselectRow(rowIndex: number): void {
       this.host.jqxDataTable('unselectRow', rowIndex);
    }
+
    updateRow(rowIndex: number, rowData: any): void {
       this.host.jqxDataTable('updateRow', rowIndex, rowData);
    }
+
    unlockRow(rowIndex: number): void {
       this.host.jqxDataTable('unlockRow', rowIndex);
    }
+
 
    // jqxDataTableComponent events
    @Output() onBindingComplete = new EventEmitter();
@@ -714,24 +774,26 @@ export class jqxDataTableComponent implements OnChanges
    @Output() onRowCollapse = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('bindingComplete', (eventData) => { this.onBindingComplete.emit(eventData); });
-      this.host.on('cellBeginEdit', (eventData) => { this.onCellBeginEdit.emit(eventData); });
-      this.host.on('cellEndEdit', (eventData) => { this.onCellEndEdit.emit(eventData); });
-      this.host.on('cellValueChanged', (eventData) => { this.onCellValueChanged.emit(eventData); });
-      this.host.on('columnResized', (eventData) => { this.onColumnResized.emit(eventData); });
-      this.host.on('columnReordered', (eventData) => { this.onColumnReordered.emit(eventData); });
-      this.host.on('sort', (eventData) => { this.onSort.emit(eventData); });
-      this.host.on('filter', (eventData) => { this.onFilter.emit(eventData); });
-      this.host.on('pageChanged', (eventData) => { this.onPageChanged.emit(eventData); });
-      this.host.on('pageSizeChanged', (eventData) => { this.onPageSizeChanged.emit(eventData); });
-      this.host.on('rowClick', (eventData) => { this.onRowClick.emit(eventData); });
-      this.host.on('rowDoubleClick', (eventData) => { this.onRowDoubleClick.emit(eventData); });
-      this.host.on('rowSelect', (eventData) => { this.onRowSelect.emit(eventData); });
-      this.host.on('rowUnselect', (eventData) => { this.onRowUnselect.emit(eventData); });
-      this.host.on('rowBeginEdit', (eventData) => { this.onRowBeginEdit.emit(eventData); });
-      this.host.on('rowEndEdit', (eventData) => { this.onRowEndEdit.emit(eventData); });
-      this.host.on('rowExpand', (eventData) => { this.onRowExpand.emit(eventData); });
-      this.host.on('rowCollapse', (eventData) => { this.onRowCollapse.emit(eventData); });
+      this.host.on('bindingComplete', (eventData: any) => { this.onBindingComplete.emit(eventData); });
+      this.host.on('cellBeginEdit', (eventData: any) => { this.onCellBeginEdit.emit(eventData); });
+      this.host.on('cellEndEdit', (eventData: any) => { this.onCellEndEdit.emit(eventData); });
+      this.host.on('cellValueChanged', (eventData: any) => { this.onCellValueChanged.emit(eventData); });
+      this.host.on('columnResized', (eventData: any) => { this.onColumnResized.emit(eventData); });
+      this.host.on('columnReordered', (eventData: any) => { this.onColumnReordered.emit(eventData); });
+      this.host.on('sort', (eventData: any) => { this.onSort.emit(eventData); });
+      this.host.on('filter', (eventData: any) => { this.onFilter.emit(eventData); });
+      this.host.on('pageChanged', (eventData: any) => { this.onPageChanged.emit(eventData); });
+      this.host.on('pageSizeChanged', (eventData: any) => { this.onPageSizeChanged.emit(eventData); });
+      this.host.on('rowClick', (eventData: any) => { this.onRowClick.emit(eventData); });
+      this.host.on('rowDoubleClick', (eventData: any) => { this.onRowDoubleClick.emit(eventData); });
+      this.host.on('rowSelect', (eventData: any) => { this.onRowSelect.emit(eventData); });
+      this.host.on('rowUnselect', (eventData: any) => { this.onRowUnselect.emit(eventData); });
+      this.host.on('rowBeginEdit', (eventData: any) => { this.onRowBeginEdit.emit(eventData); });
+      this.host.on('rowEndEdit', (eventData: any) => { this.onRowEndEdit.emit(eventData); });
+      this.host.on('rowExpand', (eventData: any) => { this.onRowExpand.emit(eventData); });
+      this.host.on('rowCollapse', (eventData: any) => { this.onRowCollapse.emit(eventData); });
    }
 
 } //jqxDataTableComponent
+
+

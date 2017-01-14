@@ -1,40 +1,52 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularKanban',
+    selector: 'jqxKanban',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxKanbanComponent implements OnChanges
 {
-   @Input('columnRenderer') attrColumnRenderer;
-   @Input('columns') attrColumns;
-   @Input('connectWith') attrConnectWith;
-   @Input('headerHeight') attrHeaderHeight;
-   @Input('headerWidth') attrHeaderWidth;
-   @Input('itemRenderer') attrItemRenderer;
-   @Input('ready') attrReady;
-   @Input('rtl') attrRtl;
-   @Input('source') attrSource;
-   @Input('resources') attrResources;
-   @Input('template') attrTemplate;
-   @Input('templateContent') attrTemplateContent;
-   @Input('theme') attrTheme;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('columnRenderer') attrColumnRenderer: any;
+   @Input('columns') attrColumns: any;
+   @Input('connectWith') attrConnectWith: any;
+   @Input('headerHeight') attrHeaderHeight: any;
+   @Input('headerWidth') attrHeaderWidth: any;
+   @Input('itemRenderer') attrItemRenderer: any;
+   @Input('ready') attrReady: any;
+   @Input('rtl') attrRtl: any;
+   @Input('source') attrSource: any;
+   @Input('resources') attrResources: any;
+   @Input('template') attrTemplate: any;
+   @Input('templateContent') attrTemplateContent: any;
+   @Input('theme') attrTheme: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['columnRenderer','columns','connectWith','headerHeight','headerWidth','height','itemRenderer','ready','rtl','source','resources','template','templateContent','theme','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['columnRenderer','columns','connectWith','headerHeight','headerWidth','height','itemRenderer','ready','rtl','source','resources','template','templateContent','theme','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxKanban;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -83,7 +95,7 @@ export class jqxKanbanComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -94,6 +106,10 @@ export class jqxKanbanComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxKanban', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -230,24 +246,31 @@ export class jqxKanbanComponent implements OnChanges
    addItem(newItem: any): void {
       this.host.jqxKanban('addItem', newItem);
    }
+
    destroy(): void {
       this.host.jqxKanban('destroy');
    }
+
    getColumn(dataField: string): jqwidgets.KanbanColumns {
       return this.host.jqxKanban('getColumn', dataField);
    }
+
    getColumnItems(dataField: string): Array<jqwidgets.KanbanSource> {
       return this.host.jqxKanban('getColumnItems', dataField);
    }
+
    getItems(): jqwidgets.KanbanSource {
       return this.host.jqxKanban('getItems');
    }
+
    removeItem(itemId: string): void {
       this.host.jqxKanban('removeItem', itemId);
    }
+
    updateItem(itemId: string, newContent: jqwidgets.KanbanUpdateItem): void {
       this.host.jqxKanban('updateItem', itemId, newContent);
    }
+
 
    // jqxKanbanComponent events
    @Output() onColumnAttrClicked = new EventEmitter();
@@ -257,11 +280,13 @@ export class jqxKanbanComponent implements OnChanges
    @Output() onItemMoved = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('columnAttrClicked', (eventData) => { this.onColumnAttrClicked.emit(eventData); });
-      this.host.on('columnCollapsed', (eventData) => { this.onColumnCollapsed.emit(eventData); });
-      this.host.on('columnExpanded', (eventData) => { this.onColumnExpanded.emit(eventData); });
-      this.host.on('itemAttrClicked', (eventData) => { this.onItemAttrClicked.emit(eventData); });
-      this.host.on('itemMoved', (eventData) => { this.onItemMoved.emit(eventData); });
+      this.host.on('columnAttrClicked', (eventData: any) => { this.onColumnAttrClicked.emit(eventData); });
+      this.host.on('columnCollapsed', (eventData: any) => { this.onColumnCollapsed.emit(eventData); });
+      this.host.on('columnExpanded', (eventData: any) => { this.onColumnExpanded.emit(eventData); });
+      this.host.on('itemAttrClicked', (eventData: any) => { this.onItemAttrClicked.emit(eventData); });
+      this.host.on('itemMoved', (eventData: any) => { this.onItemMoved.emit(eventData); });
    }
 
 } //jqxKanbanComponent
+
+

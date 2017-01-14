@@ -1,34 +1,46 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularLayout',
+    selector: 'jqxLayout',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxLayoutComponent implements OnChanges
 {
-   @Input('contextMenu') attrContextMenu;
-   @Input('layout') attrLayout;
-   @Input('minGroupHeight') attrMinGroupHeight;
-   @Input('minGroupWidth') attrMinGroupWidth;
-   @Input('resizable') attrResizable;
-   @Input('rtl') attrRtl;
-   @Input('theme') attrTheme;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('contextMenu') attrContextMenu: any;
+   @Input('layout') attrLayout: any;
+   @Input('minGroupHeight') attrMinGroupHeight: any;
+   @Input('minGroupWidth') attrMinGroupWidth: any;
+   @Input('resizable') attrResizable: any;
+   @Input('rtl') attrRtl: any;
+   @Input('theme') attrTheme: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['contextMenu','height','layout','minGroupHeight','minGroupWidth','resizable','rtl','theme','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['contextMenu','height','layout','minGroupHeight','minGroupWidth','resizable','rtl','theme','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxLayout;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -77,7 +89,7 @@ export class jqxLayoutComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -88,6 +100,10 @@ export class jqxLayoutComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxLayout', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -176,18 +192,23 @@ export class jqxLayoutComponent implements OnChanges
    destroy(): void {
       this.host.jqxLayout('destroy');
    }
+
    loadLayout(Layout: any): void {
       this.host.jqxLayout('loadLayout', Layout);
    }
+
    refresh(): void {
       this.host.jqxLayout('refresh');
    }
+
    render(): void {
       this.host.jqxLayout('render');
    }
+
    saveLayout(): any {
       return this.host.jqxLayout('saveLayout');
    }
+
 
    // jqxLayoutComponent events
    @Output() onCreate = new EventEmitter();
@@ -196,10 +217,12 @@ export class jqxLayoutComponent implements OnChanges
    @Output() onUnpin = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('create', (eventData) => { this.onCreate.emit(eventData); });
-      this.host.on('pin', (eventData) => { this.onPin.emit(eventData); });
-      this.host.on('resize', (eventData) => { this.onResize.emit(eventData); });
-      this.host.on('unpin', (eventData) => { this.onUnpin.emit(eventData); });
+      this.host.on('create', (eventData: any) => { this.onCreate.emit(eventData); });
+      this.host.on('pin', (eventData: any) => { this.onPin.emit(eventData); });
+      this.host.on('resize', (eventData: any) => { this.onResize.emit(eventData); });
+      this.host.on('unpin', (eventData: any) => { this.onUnpin.emit(eventData); });
    }
 
 } //jqxLayoutComponent
+
+

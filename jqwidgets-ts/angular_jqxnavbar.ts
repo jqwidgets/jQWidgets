@@ -1,39 +1,51 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularNavBar',
+    selector: 'jqxNavBar',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxNavBarComponent implements OnChanges
 {
-   @Input('columns') attrColumns;
-   @Input('disabled') attrDisabled;
-   @Input('minimized') attrMinimized;
-   @Input('minimizeButtonPosition') attrMinimizeButtonPosition;
-   @Input('minimizedHeight') attrMinimizedHeight;
-   @Input('minimizedTitle') attrMinimizedTitle;
-   @Input('orientation') attrOrientation;
-   @Input('popupAnimationDelay') attrPopupAnimationDelay;
-   @Input('rtl') attrRtl;
-   @Input('selection') attrSelection;
-   @Input('selectedItem') attrSelectedItem;
-   @Input('theme') attrTheme;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('columns') attrColumns: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('minimized') attrMinimized: any;
+   @Input('minimizeButtonPosition') attrMinimizeButtonPosition: any;
+   @Input('minimizedHeight') attrMinimizedHeight: any;
+   @Input('minimizedTitle') attrMinimizedTitle: any;
+   @Input('orientation') attrOrientation: any;
+   @Input('popupAnimationDelay') attrPopupAnimationDelay: any;
+   @Input('rtl') attrRtl: any;
+   @Input('selection') attrSelection: any;
+   @Input('selectedItem') attrSelectedItem: any;
+   @Input('theme') attrTheme: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['columns','disabled','height','minimized','minimizeButtonPosition','minimizedHeight','minimizedTitle','orientation','popupAnimationDelay','rtl','selection','selectedItem','theme','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['columns','disabled','height','minimized','minimizeButtonPosition','minimizedHeight','minimizedTitle','orientation','popupAnimationDelay','rtl','selection','selectedItem','theme','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxNavBar;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -82,7 +94,7 @@ export class jqxNavBarComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -93,6 +105,10 @@ export class jqxNavBarComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxNavBar', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -221,24 +237,31 @@ export class jqxNavBarComponent implements OnChanges
    close(): void {
       this.host.jqxNavBar('close');
    }
+
    destroy(): void {
       this.host.jqxNavBar('destroy');
    }
+
    getSelectedIndex(): number {
       return this.host.jqxNavBar('getSelectedIndex');
    }
+
    open(): void {
       this.host.jqxNavBar('open');
    }
+
    selectAt(index: String | Number): void {
       this.host.jqxNavBar('selectAt', index);
    }
+
 
    // jqxNavBarComponent events
    @Output() onChange = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); });
    }
 
 } //jqxNavBarComponent
+
+

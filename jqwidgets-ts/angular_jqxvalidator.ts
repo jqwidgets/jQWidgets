@@ -1,38 +1,50 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularValidator',
+    selector: 'jqxValidator',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxValidatorComponent implements OnChanges
 {
-   @Input('arrow') attrArrow;
-   @Input('animation') attrAnimation;
-   @Input('animationDuration') attrAnimationDuration;
-   @Input('closeOnClick') attrCloseOnClick;
-   @Input('focus') attrFocus;
-   @Input('hintType') attrHintType;
-   @Input('onError') attrOnError;
-   @Input('onSuccess') attrOnSuccess;
-   @Input('position') attrPosition;
-   @Input('rules') attrRules;
-   @Input('rtl') attrRtl;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('arrow') attrArrow: any;
+   @Input('animation') attrAnimation: any;
+   @Input('animationDuration') attrAnimationDuration: any;
+   @Input('closeOnClick') attrCloseOnClick: any;
+   @Input('focus') attrFocus: any;
+   @Input('hintType') attrHintType: any;
+   @Input('onError') attrOnError: any;
+   @Input('onSuccess') attrOnSuccess: any;
+   @Input('position') attrPosition: any;
+   @Input('rules') attrRules: any;
+   @Input('rtl') attrRtl: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['arrow','animation','animationDuration','closeOnClick','focus','hintType','onError','onSuccess','position','rules','rtl'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['arrow','animation','animationDuration','closeOnClick','focus','hintType','onError','onSuccess','position','rules','rtl'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxValidator;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -81,7 +93,7 @@ export class jqxValidatorComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -92,6 +104,10 @@ export class jqxValidatorComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxValidator', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -196,26 +212,33 @@ export class jqxValidatorComponent implements OnChanges
    hideHint(id: string): void {
       this.host.jqxValidator('hideHint', id);
    }
+
    hide(): void {
       this.host.jqxValidator('hide');
    }
+
    updatePosition(): void {
       this.host.jqxValidator('updatePosition');
    }
+
    validate(htmlElement: any): void {
       this.host.jqxValidator('validate', htmlElement);
    }
+
    validateInput(id: string): void {
       this.host.jqxValidator('validateInput', id);
    }
+
 
    // jqxValidatorComponent events
    @Output() onValidationError = new EventEmitter();
    @Output() onValidationSuccess = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('validationError', (eventData) => { this.onValidationError.emit(eventData); });
-      this.host.on('validationSuccess', (eventData) => { this.onValidationSuccess.emit(eventData); });
+      this.host.on('validationError', (eventData: any) => { this.onValidationError.emit(eventData); });
+      this.host.on('validationSuccess', (eventData: any) => { this.onValidationSuccess.emit(eventData); });
    }
 
 } //jqxValidatorComponent
+
+

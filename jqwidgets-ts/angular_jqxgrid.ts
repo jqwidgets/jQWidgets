@@ -1,130 +1,142 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularGrid',
+    selector: 'jqxGrid',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxGridComponent implements OnChanges
 {
-   @Input('altrows') attrAltrows;
-   @Input('altstart') attrAltstart;
-   @Input('altstep') attrAltstep;
-   @Input('autoshowloadelement') attrAutoshowloadelement;
-   @Input('autoshowfiltericon') attrAutoshowfiltericon;
-   @Input('autoshowcolumnsmenubutton') attrAutoshowcolumnsmenubutton;
-   @Input('clipboard') attrClipboard;
-   @Input('closeablegroups') attrCloseablegroups;
-   @Input('columnsmenuwidth') attrColumnsmenuwidth;
-   @Input('columnmenuopening') attrColumnmenuopening;
-   @Input('columnmenuclosing') attrColumnmenuclosing;
-   @Input('cellhover') attrCellhover;
-   @Input('enablekeyboarddelete') attrEnablekeyboarddelete;
-   @Input('enableellipsis') attrEnableellipsis;
-   @Input('enablemousewheel') attrEnablemousewheel;
-   @Input('enableanimations') attrEnableanimations;
-   @Input('enabletooltips') attrEnabletooltips;
-   @Input('enablehover') attrEnablehover;
-   @Input('enablebrowserselection') attrEnablebrowserselection;
-   @Input('everpresentrowposition') attrEverpresentrowposition;
-   @Input('everpresentrowheight') attrEverpresentrowheight;
-   @Input('everpresentrowactions') attrEverpresentrowactions;
-   @Input('everpresentrowactionsmode') attrEverpresentrowactionsmode;
-   @Input('filterrowheight') attrFilterrowheight;
-   @Input('filtermode') attrFiltermode;
-   @Input('groupsrenderer') attrGroupsrenderer;
-   @Input('groupcolumnrenderer') attrGroupcolumnrenderer;
-   @Input('groupsexpandedbydefault') attrGroupsexpandedbydefault;
-   @Input('handlekeyboardnavigation') attrHandlekeyboardnavigation;
-   @Input('pagerrenderer') attrPagerrenderer;
-   @Input('rtl') attrRtl;
-   @Input('showdefaultloadelement') attrShowdefaultloadelement;
-   @Input('showfiltercolumnbackground') attrShowfiltercolumnbackground;
-   @Input('showfiltermenuitems') attrShowfiltermenuitems;
-   @Input('showpinnedcolumnbackground') attrShowpinnedcolumnbackground;
-   @Input('showsortcolumnbackground') attrShowsortcolumnbackground;
-   @Input('showsortmenuitems') attrShowsortmenuitems;
-   @Input('showgroupmenuitems') attrShowgroupmenuitems;
-   @Input('showrowdetailscolumn') attrShowrowdetailscolumn;
-   @Input('showheader') attrShowheader;
-   @Input('showgroupsheader') attrShowgroupsheader;
-   @Input('showaggregates') attrShowaggregates;
-   @Input('showgroupaggregates') attrShowgroupaggregates;
-   @Input('showeverpresentrow') attrShoweverpresentrow;
-   @Input('showfilterrow') attrShowfilterrow;
-   @Input('showemptyrow') attrShowemptyrow;
-   @Input('showstatusbar') attrShowstatusbar;
-   @Input('statusbarheight') attrStatusbarheight;
-   @Input('showtoolbar') attrShowtoolbar;
-   @Input('selectionmode') attrSelectionmode;
-   @Input('theme') attrTheme;
-   @Input('toolbarheight') attrToolbarheight;
-   @Input('autoheight') attrAutoheight;
-   @Input('autorowheight') attrAutorowheight;
-   @Input('columnsheight') attrColumnsheight;
-   @Input('deferreddatafields') attrDeferreddatafields;
-   @Input('groupsheaderheight') attrGroupsheaderheight;
-   @Input('groupindentwidth') attrGroupindentwidth;
-   @Input('pagerheight') attrPagerheight;
-   @Input('rowsheight') attrRowsheight;
-   @Input('scrollbarsize') attrScrollbarsize;
-   @Input('scrollmode') attrScrollmode;
-   @Input('scrollfeedback') attrScrollfeedback;
-   @Input('autosavestate') attrAutosavestate;
-   @Input('autoloadstate') attrAutoloadstate;
-   @Input('columns') attrColumns;
-   @Input('columngroups') attrColumngroups;
-   @Input('columnsmenu') attrColumnsmenu;
-   @Input('columnsresize') attrColumnsresize;
-   @Input('columnsautoresize') attrColumnsautoresize;
-   @Input('columnsreorder') attrColumnsreorder;
-   @Input('disabled') attrDisabled;
-   @Input('editable') attrEditable;
-   @Input('editmode') attrEditmode;
-   @Input('filter') attrFilter;
-   @Input('filterable') attrFilterable;
-   @Input('groupable') attrGroupable;
-   @Input('groups') attrGroups;
-   @Input('horizontalscrollbarstep') attrHorizontalscrollbarstep;
-   @Input('horizontalscrollbarlargestep') attrHorizontalscrollbarlargestep;
-   @Input('initrowdetails') attrInitrowdetails;
-   @Input('keyboardnavigation') attrKeyboardnavigation;
-   @Input('pagesize') attrPagesize;
-   @Input('pagesizeoptions') attrPagesizeoptions;
-   @Input('pagermode') attrPagermode;
-   @Input('pagerbuttonscount') attrPagerbuttonscount;
-   @Input('pageable') attrPageable;
-   @Input('rowdetails') attrRowdetails;
-   @Input('rowdetailstemplate') attrRowdetailstemplate;
-   @Input('ready') attrReady;
-   @Input('rendered') attrRendered;
-   @Input('renderstatusbar') attrRenderstatusbar;
-   @Input('rendertoolbar') attrRendertoolbar;
-   @Input('rendergridrows') attrRendergridrows;
-   @Input('sortable') attrSortable;
-   @Input('selectedrowindex') attrSelectedrowindex;
-   @Input('selectedrowindexes') attrSelectedrowindexes;
-   @Input('source') attrSource;
-   @Input('sorttogglestates') attrSorttogglestates;
-   @Input('updatedelay') attrUpdatedelay;
-   @Input('virtualmode') attrVirtualmode;
-   @Input('verticalscrollbarstep') attrVerticalscrollbarstep;
-   @Input('verticalscrollbarlargestep') attrVerticalscrollbarlargestep;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('altrows') attrAltrows: any;
+   @Input('altstart') attrAltstart: any;
+   @Input('altstep') attrAltstep: any;
+   @Input('autoshowloadelement') attrAutoshowloadelement: any;
+   @Input('autoshowfiltericon') attrAutoshowfiltericon: any;
+   @Input('autoshowcolumnsmenubutton') attrAutoshowcolumnsmenubutton: any;
+   @Input('clipboard') attrClipboard: any;
+   @Input('closeablegroups') attrCloseablegroups: any;
+   @Input('columnsmenuwidth') attrColumnsmenuwidth: any;
+   @Input('columnmenuopening') attrColumnmenuopening: any;
+   @Input('columnmenuclosing') attrColumnmenuclosing: any;
+   @Input('cellhover') attrCellhover: any;
+   @Input('enablekeyboarddelete') attrEnablekeyboarddelete: any;
+   @Input('enableellipsis') attrEnableellipsis: any;
+   @Input('enablemousewheel') attrEnablemousewheel: any;
+   @Input('enableanimations') attrEnableanimations: any;
+   @Input('enabletooltips') attrEnabletooltips: any;
+   @Input('enablehover') attrEnablehover: any;
+   @Input('enablebrowserselection') attrEnablebrowserselection: any;
+   @Input('everpresentrowposition') attrEverpresentrowposition: any;
+   @Input('everpresentrowheight') attrEverpresentrowheight: any;
+   @Input('everpresentrowactions') attrEverpresentrowactions: any;
+   @Input('everpresentrowactionsmode') attrEverpresentrowactionsmode: any;
+   @Input('filterrowheight') attrFilterrowheight: any;
+   @Input('filtermode') attrFiltermode: any;
+   @Input('groupsrenderer') attrGroupsrenderer: any;
+   @Input('groupcolumnrenderer') attrGroupcolumnrenderer: any;
+   @Input('groupsexpandedbydefault') attrGroupsexpandedbydefault: any;
+   @Input('handlekeyboardnavigation') attrHandlekeyboardnavigation: any;
+   @Input('pagerrenderer') attrPagerrenderer: any;
+   @Input('rtl') attrRtl: any;
+   @Input('showdefaultloadelement') attrShowdefaultloadelement: any;
+   @Input('showfiltercolumnbackground') attrShowfiltercolumnbackground: any;
+   @Input('showfiltermenuitems') attrShowfiltermenuitems: any;
+   @Input('showpinnedcolumnbackground') attrShowpinnedcolumnbackground: any;
+   @Input('showsortcolumnbackground') attrShowsortcolumnbackground: any;
+   @Input('showsortmenuitems') attrShowsortmenuitems: any;
+   @Input('showgroupmenuitems') attrShowgroupmenuitems: any;
+   @Input('showrowdetailscolumn') attrShowrowdetailscolumn: any;
+   @Input('showheader') attrShowheader: any;
+   @Input('showgroupsheader') attrShowgroupsheader: any;
+   @Input('showaggregates') attrShowaggregates: any;
+   @Input('showgroupaggregates') attrShowgroupaggregates: any;
+   @Input('showeverpresentrow') attrShoweverpresentrow: any;
+   @Input('showfilterrow') attrShowfilterrow: any;
+   @Input('showemptyrow') attrShowemptyrow: any;
+   @Input('showstatusbar') attrShowstatusbar: any;
+   @Input('statusbarheight') attrStatusbarheight: any;
+   @Input('showtoolbar') attrShowtoolbar: any;
+   @Input('selectionmode') attrSelectionmode: any;
+   @Input('theme') attrTheme: any;
+   @Input('toolbarheight') attrToolbarheight: any;
+   @Input('autoheight') attrAutoheight: any;
+   @Input('autorowheight') attrAutorowheight: any;
+   @Input('columnsheight') attrColumnsheight: any;
+   @Input('deferreddatafields') attrDeferreddatafields: any;
+   @Input('groupsheaderheight') attrGroupsheaderheight: any;
+   @Input('groupindentwidth') attrGroupindentwidth: any;
+   @Input('pagerheight') attrPagerheight: any;
+   @Input('rowsheight') attrRowsheight: any;
+   @Input('scrollbarsize') attrScrollbarsize: any;
+   @Input('scrollmode') attrScrollmode: any;
+   @Input('scrollfeedback') attrScrollfeedback: any;
+   @Input('autosavestate') attrAutosavestate: any;
+   @Input('autoloadstate') attrAutoloadstate: any;
+   @Input('columns') attrColumns: any;
+   @Input('columngroups') attrColumngroups: any;
+   @Input('columnsmenu') attrColumnsmenu: any;
+   @Input('columnsresize') attrColumnsresize: any;
+   @Input('columnsautoresize') attrColumnsautoresize: any;
+   @Input('columnsreorder') attrColumnsreorder: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('editable') attrEditable: any;
+   @Input('editmode') attrEditmode: any;
+   @Input('filter') attrFilter: any;
+   @Input('filterable') attrFilterable: any;
+   @Input('groupable') attrGroupable: any;
+   @Input('groups') attrGroups: any;
+   @Input('horizontalscrollbarstep') attrHorizontalscrollbarstep: any;
+   @Input('horizontalscrollbarlargestep') attrHorizontalscrollbarlargestep: any;
+   @Input('initrowdetails') attrInitrowdetails: any;
+   @Input('keyboardnavigation') attrKeyboardnavigation: any;
+   @Input('pagesize') attrPagesize: any;
+   @Input('pagesizeoptions') attrPagesizeoptions: any;
+   @Input('pagermode') attrPagermode: any;
+   @Input('pagerbuttonscount') attrPagerbuttonscount: any;
+   @Input('pageable') attrPageable: any;
+   @Input('rowdetails') attrRowdetails: any;
+   @Input('rowdetailstemplate') attrRowdetailstemplate: any;
+   @Input('ready') attrReady: any;
+   @Input('rendered') attrRendered: any;
+   @Input('renderstatusbar') attrRenderstatusbar: any;
+   @Input('rendertoolbar') attrRendertoolbar: any;
+   @Input('rendergridrows') attrRendergridrows: any;
+   @Input('sortable') attrSortable: any;
+   @Input('selectedrowindex') attrSelectedrowindex: any;
+   @Input('selectedrowindexes') attrSelectedrowindexes: any;
+   @Input('source') attrSource: any;
+   @Input('sorttogglestates') attrSorttogglestates: any;
+   @Input('updatedelay') attrUpdatedelay: any;
+   @Input('virtualmode') attrVirtualmode: any;
+   @Input('verticalscrollbarstep') attrVerticalscrollbarstep: any;
+   @Input('verticalscrollbarlargestep') attrVerticalscrollbarlargestep: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGrid;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -173,7 +185,7 @@ export class jqxGridComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -184,6 +196,10 @@ export class jqxGridComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxGrid', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -1040,309 +1056,411 @@ export class jqxGridComponent implements OnChanges
    autoresizecolumns(type: string): void {
       this.host.jqxGrid('autoresizecolumns', type);
    }
+
    autoresizecolumn(dataField: string, type: string): void {
       this.host.jqxGrid('autoresizecolumn', dataField, type);
    }
+
    beginupdate(): void {
       this.host.jqxGrid('beginupdate');
    }
+
    clear(): void {
       this.host.jqxGrid('clear');
    }
+
    destroy(): void {
       this.host.jqxGrid('destroy');
    }
+
    endupdate(): void {
       this.host.jqxGrid('endupdate');
    }
+
    ensurerowvisible(rowBoundIndex: number): void {
       this.host.jqxGrid('ensurerowvisible', rowBoundIndex);
    }
+
    focus(): void {
       this.host.jqxGrid('focus');
    }
+
    getcolumnindex(dataField: string): number {
       return this.host.jqxGrid('getcolumnindex', dataField);
    }
+
    getcolumn(dataField: string): jqwidgets.GridGetColumn {
       return this.host.jqxGrid('getcolumn', dataField);
    }
+
    getcolumnproperty(dataField: string, propertyName: string): any {
       return this.host.jqxGrid('getcolumnproperty', dataField, propertyName);
    }
+
    getrowid(rowBoundIndex: number): string {
       return this.host.jqxGrid('getrowid', rowBoundIndex);
    }
+
    getrowdata(rowBoundIndex: number): any {
       return this.host.jqxGrid('getrowdata', rowBoundIndex);
    }
+
    getrowdatabyid(rowID: string): any {
       return this.host.jqxGrid('getrowdatabyid', rowID);
    }
+
    getrowboundindexbyid(rowID: string): number {
       return this.host.jqxGrid('getrowboundindexbyid', rowID);
    }
+
    getrowboundindex(rowDisplayIndex: number): number {
       return this.host.jqxGrid('getrowboundindex', rowDisplayIndex);
    }
+
    getrows(): Array<any> {
       return this.host.jqxGrid('getrows');
    }
+
    getboundrows(): Array<any> {
       return this.host.jqxGrid('getboundrows');
    }
+
    getdisplayrows(): Array<any> {
       return this.host.jqxGrid('getdisplayrows');
    }
+
    getdatainformation(): jqwidgets.GridGetDataInformation {
       return this.host.jqxGrid('getdatainformation');
    }
+
    getsortinformation(): jqwidgets.GridGetSortInformation {
       return this.host.jqxGrid('getsortinformation');
    }
+
    getpaginginformation(): jqwidgets.GridGetPagingInformation {
       return this.host.jqxGrid('getpaginginformation');
    }
+
    hidecolumn(dataField: string): void {
       this.host.jqxGrid('hidecolumn', dataField);
    }
+
    hideloadelement(): void {
       this.host.jqxGrid('hideloadelement');
    }
+
    hiderowdetails(rowBoundIndex: number): void {
       this.host.jqxGrid('hiderowdetails', rowBoundIndex);
    }
+
    iscolumnvisible(dataField: string): boolean {
       return this.host.jqxGrid('iscolumnvisible', dataField);
    }
+
    iscolumnpinned(dataField: string): boolean {
       return this.host.jqxGrid('iscolumnpinned', dataField);
    }
+
    localizestrings(localizationObject: jqwidgets.GridLocalizationObject): void {
       this.host.jqxGrid('localizestrings', localizationObject);
    }
+
    pincolumn(dataField: string): void {
       this.host.jqxGrid('pincolumn', dataField);
    }
+
    refreshdata(): void {
       this.host.jqxGrid('refreshdata');
    }
+
    refresh(): void {
       this.host.jqxGrid('refresh');
    }
+
    render(): void {
       this.host.jqxGrid('render');
    }
+
    scrolloffset(top: number, left: number): void {
       this.host.jqxGrid('scrolloffset', top, left);
    }
+
    scrollposition(): jqwidgets.GridScrollPosition {
       return this.host.jqxGrid('scrollposition');
    }
+
    showloadelement(): void {
       this.host.jqxGrid('showloadelement');
    }
+
    showrowdetails(rowBoundIndex: number): void {
       this.host.jqxGrid('showrowdetails', rowBoundIndex);
    }
+
    setcolumnindex(dataField: string, index: number): void {
       this.host.jqxGrid('setcolumnindex', dataField, index);
    }
+
    setcolumnproperty(dataField: string, propertyName: any, propertyValue: any): void {
       this.host.jqxGrid('setcolumnproperty', dataField, propertyName, propertyValue);
    }
+
    showcolumn(dataField: string): void {
       this.host.jqxGrid('showcolumn', dataField);
    }
+
    unpincolumn(dataField: string): void {
       this.host.jqxGrid('unpincolumn', dataField);
    }
+
    updatebounddata(type: any): void {
       this.host.jqxGrid('updatebounddata', type);
    }
+
    updating(): boolean {
       return this.host.jqxGrid('updating');
    }
+
    getsortcolumn(): string {
       return this.host.jqxGrid('getsortcolumn');
    }
+
    removesort(): void {
       this.host.jqxGrid('removesort');
    }
+
    sortby(dataField: string, sortOrder: string): void {
       this.host.jqxGrid('sortby', dataField, sortOrder);
    }
+
    addgroup(dataField: string): void {
       this.host.jqxGrid('addgroup', dataField);
    }
+
    cleargroups(): void {
       this.host.jqxGrid('cleargroups');
    }
+
    collapsegroup(group: String | Number): void {
       this.host.jqxGrid('collapsegroup', group);
    }
+
    collapseallgroups(): void {
       this.host.jqxGrid('collapseallgroups');
    }
+
    expandallgroups(): void {
       this.host.jqxGrid('expandallgroups');
    }
+
    expandgroup(group: String | Number): void {
       this.host.jqxGrid('expandgroup', group);
    }
+
    getrootgroupscount(): number {
       return this.host.jqxGrid('getrootgroupscount');
    }
+
    getgroup(groupIndex: number): jqwidgets.GridGetGroup {
       return this.host.jqxGrid('getgroup', groupIndex);
    }
+
    insertgroup(groupIndex: number, dataField: string): void {
       this.host.jqxGrid('insertgroup', groupIndex, dataField);
    }
+
    iscolumngroupable(): boolean {
       return this.host.jqxGrid('iscolumngroupable');
    }
+
    removegroupat(groupIndex: number): void {
       this.host.jqxGrid('removegroupat', groupIndex);
    }
+
    removegroup(dataField: string): void {
       this.host.jqxGrid('removegroup', dataField);
    }
+
    addfilter(dataField: string, filterGroup: any, refreshGrid: boolean): void {
       this.host.jqxGrid('addfilter', dataField, filterGroup, refreshGrid);
    }
+
    applyfilters(): void {
       this.host.jqxGrid('applyfilters');
    }
+
    clearfilters(): void {
       this.host.jqxGrid('clearfilters');
    }
+
    getfilterinformation(): any {
       return this.host.jqxGrid('getfilterinformation');
    }
+
    removefilter(dataField: string, refreshGrid: boolean): void {
       this.host.jqxGrid('removefilter', dataField, refreshGrid);
    }
+
    refreshfilterrow(): void {
       this.host.jqxGrid('refreshfilterrow');
    }
+
    gotopage(pageNumber: number): void {
       this.host.jqxGrid('gotopage', pageNumber);
    }
+
    gotoprevpage(): void {
       this.host.jqxGrid('gotoprevpage');
    }
+
    gotonextpage(): void {
       this.host.jqxGrid('gotonextpage');
    }
+
    addrow(rowIds: any, data: any, rowPosition: any): void {
       this.host.jqxGrid('addrow', rowIds, data, rowPosition);
    }
+
    begincelledit(rowBoundIndex: number, dataField: string): void {
       this.host.jqxGrid('begincelledit', rowBoundIndex, dataField);
    }
+
    beginrowedit(rowBoundIndex: number): void {
       this.host.jqxGrid('beginrowedit', rowBoundIndex);
    }
+
    closemenu(): void {
       this.host.jqxGrid('closemenu');
    }
+
    deleterow(rowIds: String | Number | Array<String | Number>): void {
       this.host.jqxGrid('deleterow', rowIds);
    }
+
    endcelledit(rowBoundIndex: number, dataField: string, confirmChanges: boolean): void {
       this.host.jqxGrid('endcelledit', rowBoundIndex, dataField, confirmChanges);
    }
+
    endrowedit(rowBoundIndex: number, confirmChanges: boolean): void {
       this.host.jqxGrid('endrowedit', rowBoundIndex, confirmChanges);
    }
+
    getcell(rowBoundIndex: number, datafield: string): jqwidgets.GridGetCell {
       return this.host.jqxGrid('getcell', rowBoundIndex, datafield);
    }
+
    getcellatposition(left: number, top: number): jqwidgets.GridGetCell {
       return this.host.jqxGrid('getcellatposition', left, top);
    }
+
    getcelltext(rowBoundIndex: number, dataField: string): string {
       return this.host.jqxGrid('getcelltext', rowBoundIndex, dataField);
    }
+
    getcelltextbyid(rowID: string, dataField: string): string {
       return this.host.jqxGrid('getcelltextbyid', rowID, dataField);
    }
+
    getcellvaluebyid(rowID: string, dataField: string): any {
       return this.host.jqxGrid('getcellvaluebyid', rowID, dataField);
    }
+
    getcellvalue(rowBoundIndex: number, dataField: string): any {
       return this.host.jqxGrid('getcellvalue', rowBoundIndex, dataField);
    }
+
    isBindingCompleted(): boolean {
       return this.host.jqxGrid('isBindingCompleted');
    }
+
    openmenu(dataField: string): void {
       this.host.jqxGrid('openmenu', dataField);
    }
+
    setcellvalue(rowBoundIndex: number, dataField: string, value: any): void {
       this.host.jqxGrid('setcellvalue', rowBoundIndex, dataField, value);
    }
+
    setcellvaluebyid(rowID: string, dataField: string, value: any): void {
       this.host.jqxGrid('setcellvaluebyid', rowID, dataField, value);
    }
+
    showvalidationpopup(rowBoundIndex: number, dataField: string, validationMessage: string): void {
       this.host.jqxGrid('showvalidationpopup', rowBoundIndex, dataField, validationMessage);
    }
+
    updaterow(rowIds: String | Number | Array<String | Number>, data: any): void {
       this.host.jqxGrid('updaterow', rowIds, data);
    }
+
    clearselection(): void {
       this.host.jqxGrid('clearselection');
    }
+
    getselectedrowindex(): number {
       return this.host.jqxGrid('getselectedrowindex');
    }
+
    getselectedrowindexes(): Array<Number> {
       return this.host.jqxGrid('getselectedrowindexes');
    }
+
    getselectedcell(): jqwidgets.GridGetSelectedCell {
       return this.host.jqxGrid('getselectedcell');
    }
+
    getselectedcells(): Array<jqwidgets.GridGetSelectedCell> {
       return this.host.jqxGrid('getselectedcells');
    }
+
    selectcell(rowBoundIndex: number, dataField: string): void {
       this.host.jqxGrid('selectcell', rowBoundIndex, dataField);
    }
+
    selectallrows(): void {
       this.host.jqxGrid('selectallrows');
    }
+
    selectrow(rowBoundIndex: number): void {
       this.host.jqxGrid('selectrow', rowBoundIndex);
    }
+
    unselectrow(rowBoundIndex: number): void {
       this.host.jqxGrid('unselectrow', rowBoundIndex);
    }
+
    unselectcell(rowBoundIndex: number, dataField: string): void {
       this.host.jqxGrid('unselectcell', rowBoundIndex, dataField);
    }
+
    getcolumnaggregateddata(dataField: string, aggregates: Array<any>): string {
       return this.host.jqxGrid('getcolumnaggregateddata', dataField, aggregates);
    }
+
    refreshaggregates(): void {
       this.host.jqxGrid('refreshaggregates');
    }
+
    renderaggregates(): void {
       this.host.jqxGrid('renderaggregates');
    }
-   exportdata(dataType: string, fileName: string, exportHeader: boolean, rows: Array<Number>, exportHiddenColumns: boolean, serverURL: string, charSet: string): void {
-      this.host.jqxGrid('exportdata', dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet);
+
+   exportdata(dataType: string, fileName: string, exportHeader: boolean, rows: Array<Number>, exportHiddenColumns: boolean, serverURL: string, charSet: string): any {
+      return this.host.jqxGrid('exportdata', dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet);
    }
+
    getstate(): jqwidgets.GridGetState {
       return this.host.jqxGrid('getstate');
    }
+
    loadstate(stateObject: any): void {
       this.host.jqxGrid('loadstate', stateObject);
    }
+
    savestate(): jqwidgets.GridGetState {
       return this.host.jqxGrid('savestate');
    }
+
 
    // jqxGridComponent events
    @Output() onBindingcomplete = new EventEmitter();
@@ -1371,30 +1489,32 @@ export class jqxGridComponent implements OnChanges
    @Output() onSort = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('bindingcomplete', (eventData) => { this.onBindingcomplete.emit(eventData); });
-      this.host.on('columnresized', (eventData) => { this.onColumnresized.emit(eventData); });
-      this.host.on('columnreordered', (eventData) => { this.onColumnreordered.emit(eventData); });
-      this.host.on('columnclick', (eventData) => { this.onColumnclick.emit(eventData); });
-      this.host.on('cellclick', (eventData) => { this.onCellclick.emit(eventData); });
-      this.host.on('celldoubleclick', (eventData) => { this.onCelldoubleclick.emit(eventData); });
-      this.host.on('cellselect', (eventData) => { this.onCellselect.emit(eventData); });
-      this.host.on('cellunselect', (eventData) => { this.onCellunselect.emit(eventData); });
-      this.host.on('cellvaluechanged', (eventData) => { this.onCellvaluechanged.emit(eventData); });
-      this.host.on('cellbeginedit', (eventData) => { this.onCellbeginedit.emit(eventData); });
-      this.host.on('cellendedit', (eventData) => { this.onCellendedit.emit(eventData); });
-      this.host.on('filter', (eventData) => { this.onFilter.emit(eventData); });
-      this.host.on('groupschanged', (eventData) => { this.onGroupschanged.emit(eventData); });
-      this.host.on('groupexpand', (eventData) => { this.onGroupexpand.emit(eventData); });
-      this.host.on('groupcollapse', (eventData) => { this.onGroupcollapse.emit(eventData); });
-      this.host.on('pagechanged', (eventData) => { this.onPagechanged.emit(eventData); });
-      this.host.on('pagesizechanged', (eventData) => { this.onPagesizechanged.emit(eventData); });
-      this.host.on('rowclick', (eventData) => { this.onRowclick.emit(eventData); });
-      this.host.on('rowdoubleclick', (eventData) => { this.onRowdoubleclick.emit(eventData); });
-      this.host.on('rowselect', (eventData) => { this.onRowselect.emit(eventData); });
-      this.host.on('rowunselect', (eventData) => { this.onRowunselect.emit(eventData); });
-      this.host.on('rowexpand', (eventData) => { this.onRowexpand.emit(eventData); });
-      this.host.on('rowcollapse', (eventData) => { this.onRowcollapse.emit(eventData); });
-      this.host.on('sort', (eventData) => { this.onSort.emit(eventData); });
+      this.host.on('bindingcomplete', (eventData: any) => { this.onBindingcomplete.emit(eventData); });
+      this.host.on('columnresized', (eventData: any) => { this.onColumnresized.emit(eventData); });
+      this.host.on('columnreordered', (eventData: any) => { this.onColumnreordered.emit(eventData); });
+      this.host.on('columnclick', (eventData: any) => { this.onColumnclick.emit(eventData); });
+      this.host.on('cellclick', (eventData: any) => { this.onCellclick.emit(eventData); });
+      this.host.on('celldoubleclick', (eventData: any) => { this.onCelldoubleclick.emit(eventData); });
+      this.host.on('cellselect', (eventData: any) => { this.onCellselect.emit(eventData); });
+      this.host.on('cellunselect', (eventData: any) => { this.onCellunselect.emit(eventData); });
+      this.host.on('cellvaluechanged', (eventData: any) => { this.onCellvaluechanged.emit(eventData); });
+      this.host.on('cellbeginedit', (eventData: any) => { this.onCellbeginedit.emit(eventData); });
+      this.host.on('cellendedit', (eventData: any) => { this.onCellendedit.emit(eventData); });
+      this.host.on('filter', (eventData: any) => { this.onFilter.emit(eventData); });
+      this.host.on('groupschanged', (eventData: any) => { this.onGroupschanged.emit(eventData); });
+      this.host.on('groupexpand', (eventData: any) => { this.onGroupexpand.emit(eventData); });
+      this.host.on('groupcollapse', (eventData: any) => { this.onGroupcollapse.emit(eventData); });
+      this.host.on('pagechanged', (eventData: any) => { this.onPagechanged.emit(eventData); });
+      this.host.on('pagesizechanged', (eventData: any) => { this.onPagesizechanged.emit(eventData); });
+      this.host.on('rowclick', (eventData: any) => { this.onRowclick.emit(eventData); });
+      this.host.on('rowdoubleclick', (eventData: any) => { this.onRowdoubleclick.emit(eventData); });
+      this.host.on('rowselect', (eventData: any) => { this.onRowselect.emit(eventData); });
+      this.host.on('rowunselect', (eventData: any) => { this.onRowunselect.emit(eventData); });
+      this.host.on('rowexpand', (eventData: any) => { this.onRowexpand.emit(eventData); });
+      this.host.on('rowcollapse', (eventData: any) => { this.onRowcollapse.emit(eventData); });
+      this.host.on('sort', (eventData: any) => { this.onSort.emit(eventData); });
    }
 
 } //jqxGridComponent
+
+

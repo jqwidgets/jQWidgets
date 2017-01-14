@@ -1,46 +1,58 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularBarGauge',
+    selector: 'jqxBarGauge',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxBarGaugeComponent implements OnChanges
 {
-   @Input('animationDuration') attrAnimationDuration;
-   @Input('backgroundColor') attrBackgroundColor;
-   @Input('barSpacing') attrBarSpacing;
-   @Input('baseValue') attrBaseValue;
-   @Input('colorScheme') attrColorScheme;
-   @Input('customColorScheme') attrCustomColorScheme;
-   @Input('disabled') attrDisabled;
-   @Input('endAngle') attrEndAngle;
-   @Input('formatFunction') attrFormatFunction;
-   @Input('labels') attrLabels;
-   @Input('max') attrMax;
-   @Input('min') attrMin;
-   @Input('relativeInnerRadius') attrRelativeInnerRadius;
-   @Input('rendered') attrRendered;
-   @Input('startAngle') attrStartAngle;
-   @Input('title') attrTitle;
-   @Input('tooltip') attrTooltip;
-   @Input('useGradient') attrUseGradient;
-   @Input('values') attrValues;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('animationDuration') attrAnimationDuration: any;
+   @Input('backgroundColor') attrBackgroundColor: any;
+   @Input('barSpacing') attrBarSpacing: any;
+   @Input('baseValue') attrBaseValue: any;
+   @Input('colorScheme') attrColorScheme: any;
+   @Input('customColorScheme') attrCustomColorScheme: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('endAngle') attrEndAngle: any;
+   @Input('formatFunction') attrFormatFunction: any;
+   @Input('labels') attrLabels: any;
+   @Input('max') attrMax: any;
+   @Input('min') attrMin: any;
+   @Input('relativeInnerRadius') attrRelativeInnerRadius: any;
+   @Input('rendered') attrRendered: any;
+   @Input('startAngle') attrStartAngle: any;
+   @Input('title') attrTitle: any;
+   @Input('tooltip') attrTooltip: any;
+   @Input('useGradient') attrUseGradient: any;
+   @Input('values') attrValues: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['animationDuration','backgroundColor','barSpacing','baseValue','colorScheme','customColorScheme','disabled','endAngle','formatFunction','height','labels','max','min','relativeInnerRadius','rendered','startAngle','title','tooltip','useGradient','values','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['animationDuration','backgroundColor','barSpacing','baseValue','colorScheme','customColorScheme','disabled','endAngle','formatFunction','height','labels','max','min','relativeInnerRadius','rendered','startAngle','title','tooltip','useGradient','values','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxBarGauge;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -89,7 +101,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -100,6 +112,10 @@ export class jqxBarGaugeComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxBarGauge', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -284,12 +300,19 @@ export class jqxBarGaugeComponent implements OnChanges
    refresh(): void {
       this.host.jqxBarGauge('refresh');
    }
+
    render(): void {
       this.host.jqxBarGauge('render');
    }
-   val(value: Array<Number>): Array<Number> {
-      return this.host.jqxBarGauge('val', value);
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxBarGauge("val", arg);
+      } else {
+         return this.host.jqxBarGauge("val");
+      }
+   };
+
 
    // jqxBarGaugeComponent events
    @Output() onDrawEnd = new EventEmitter();
@@ -300,12 +323,14 @@ export class jqxBarGaugeComponent implements OnChanges
    @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('drawEnd', (eventData) => { this.onDrawEnd.emit(eventData); });
-      this.host.on('drawStart', (eventData) => { this.onDrawStart.emit(eventData); });
-      this.host.on('initialized', (eventData) => { this.onInitialized.emit(eventData); });
-      this.host.on('tooltipClose', (eventData) => { this.onTooltipClose.emit(eventData); });
-      this.host.on('tooltipOpen', (eventData) => { this.onTooltipOpen.emit(eventData); });
-      this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); });
+      this.host.on('drawEnd', (eventData: any) => { this.onDrawEnd.emit(eventData); });
+      this.host.on('drawStart', (eventData: any) => { this.onDrawStart.emit(eventData); });
+      this.host.on('initialized', (eventData: any) => { this.onInitialized.emit(eventData); });
+      this.host.on('tooltipClose', (eventData: any) => { this.onTooltipClose.emit(eventData); });
+      this.host.on('tooltipOpen', (eventData: any) => { this.onTooltipOpen.emit(eventData); });
+      this.host.on('valueChanged', (eventData: any) => { this.onValueChanged.emit(eventData); });
    }
 
 } //jqxBarGaugeComponent
+
+

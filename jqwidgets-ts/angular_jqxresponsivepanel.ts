@@ -1,38 +1,50 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularResponsivePanel',
+    selector: 'jqxResponsivePanel',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxResponsivePanelComponent implements OnChanges
 {
-   @Input('animationDirection') attrAnimationDirection;
-   @Input('animationHideDelay') attrAnimationHideDelay;
-   @Input('animationShowDelay') attrAnimationShowDelay;
-   @Input('animationType') attrAnimationType;
-   @Input('autoClose') attrAutoClose;
-   @Input('collapseBreakpoint') attrCollapseBreakpoint;
-   @Input('collapseWidth') attrCollapseWidth;
-   @Input('initContent') attrInitContent;
-   @Input('theme') attrTheme;
-   @Input('toggleButton') attrToggleButton;
-   @Input('toggleButtonSize') attrToggleButtonSize;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('animationDirection') attrAnimationDirection: any;
+   @Input('animationHideDelay') attrAnimationHideDelay: any;
+   @Input('animationShowDelay') attrAnimationShowDelay: any;
+   @Input('animationType') attrAnimationType: any;
+   @Input('autoClose') attrAutoClose: any;
+   @Input('collapseBreakpoint') attrCollapseBreakpoint: any;
+   @Input('collapseWidth') attrCollapseWidth: any;
+   @Input('initContent') attrInitContent: any;
+   @Input('theme') attrTheme: any;
+   @Input('toggleButton') attrToggleButton: any;
+   @Input('toggleButtonSize') attrToggleButtonSize: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['animationDirection','animationHideDelay','animationShowDelay','animationType','autoClose','collapseBreakpoint','collapseWidth','height','initContent','theme','toggleButton','toggleButtonSize','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['animationDirection','animationHideDelay','animationShowDelay','animationType','autoClose','collapseBreakpoint','collapseWidth','height','initContent','theme','toggleButton','toggleButtonSize','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxResponsivePanel;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -81,7 +93,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -92,6 +104,10 @@ export class jqxResponsivePanelComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxResponsivePanel', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -212,24 +228,31 @@ export class jqxResponsivePanelComponent implements OnChanges
    close(): void {
       this.host.jqxResponsivePanel('close');
    }
+
    destroy(): void {
       this.host.jqxResponsivePanel('destroy');
    }
+
    isCollapsed(): boolean {
       return this.host.jqxResponsivePanel('isCollapsed');
    }
+
    isOpened(): boolean {
       return this.host.jqxResponsivePanel('isOpened');
    }
+
    open(): void {
       this.host.jqxResponsivePanel('open');
    }
+
    refresh(): void {
       this.host.jqxResponsivePanel('refresh');
    }
+
    render(): void {
       this.host.jqxResponsivePanel('render');
    }
+
 
    // jqxResponsivePanelComponent events
    @Output() onClose = new EventEmitter();
@@ -238,10 +261,12 @@ export class jqxResponsivePanelComponent implements OnChanges
    @Output() onOpen = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
-      this.host.on('collapse', (eventData) => { this.onCollapse.emit(eventData); });
-      this.host.on('expand', (eventData) => { this.onExpand.emit(eventData); });
-      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
+      this.host.on('close', (eventData: any) => { this.onClose.emit(eventData); });
+      this.host.on('collapse', (eventData: any) => { this.onCollapse.emit(eventData); });
+      this.host.on('expand', (eventData: any) => { this.onExpand.emit(eventData); });
+      this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
    }
 
 } //jqxResponsivePanelComponent
+
+

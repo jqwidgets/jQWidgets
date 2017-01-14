@@ -1,58 +1,70 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularDataAdapter',
+    selector: 'jqxDataAdapter',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxDataAdapterComponent implements OnChanges
 {
-   @Input('columnDelimiter') attrColumnDelimiter;
-   @Input('datafields') attrDatafields;
-   @Input('data') attrData;
-   @Input('datatype') attrDatatype;
-   @Input('type') attrType;
-   @Input('id') attrId;
-   @Input('localdata') attrLocaldata;
-   @Input('mapChar') attrMapChar;
-   @Input('rowDelimiter') attrRowDelimiter;
-   @Input('root') attrRoot;
-   @Input('record') attrRecord;
-   @Input('url') attrUrl;
-   @Input('async') attrAsync;
-   @Input('autoBind') attrAutoBind;
-   @Input('beforeSend') attrBeforeSend;
-   @Input('beforeLoadComplete') attrBeforeLoadComplete;
-   @Input('contentType') attrContentType;
-   @Input('formatData') attrFormatData;
-   @Input('loadError') attrLoadError;
-   @Input('loadComplete') attrLoadComplete;
-   @Input('loadServerData') attrLoadServerData;
-   @Input('processData') attrProcessData;
-   @Input('beginUpdate') attrBeginUpdate;
-   @Input('dataBind') attrDataBind;
-   @Input('endUpdate') attrEndUpdate;
-   @Input('formatDate') attrFormatDate;
-   @Input('formatNumber') attrFormatNumber;
-   @Input('getRecordsHierarchy') attrGetRecordsHierarchy;
-   @Input('getGroupedRecords') attrGetGroupedRecords;
-   @Input('getAggregatedData') attrGetAggregatedData;
-   @Input('records') attrRecords;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('columnDelimiter') attrColumnDelimiter: any;
+   @Input('datafields') attrDatafields: any;
+   @Input('data') attrData: any;
+   @Input('datatype') attrDatatype: any;
+   @Input('type') attrType: any;
+   @Input('id') attrId: any;
+   @Input('localdata') attrLocaldata: any;
+   @Input('mapChar') attrMapChar: any;
+   @Input('rowDelimiter') attrRowDelimiter: any;
+   @Input('root') attrRoot: any;
+   @Input('record') attrRecord: any;
+   @Input('url') attrUrl: any;
+   @Input('async') attrAsync: any;
+   @Input('autoBind') attrAutoBind: any;
+   @Input('beforeSend') attrBeforeSend: any;
+   @Input('beforeLoadComplete') attrBeforeLoadComplete: any;
+   @Input('contentType') attrContentType: any;
+   @Input('formatData') attrFormatData: any;
+   @Input('loadError') attrLoadError: any;
+   @Input('loadComplete') attrLoadComplete: any;
+   @Input('loadServerData') attrLoadServerData: any;
+   @Input('processData') attrProcessData: any;
+   @Input('beginUpdate') attrBeginUpdate: any;
+   @Input('dataBind') attrDataBind: any;
+   @Input('endUpdate') attrEndUpdate: any;
+   @Input('formatDate') attrFormatDate: any;
+   @Input('formatNumber') attrFormatNumber: any;
+   @Input('getRecordsHierarchy') attrGetRecordsHierarchy: any;
+   @Input('getGroupedRecords') attrGetGroupedRecords: any;
+   @Input('getAggregatedData') attrGetAggregatedData: any;
+   @Input('records') attrRecords: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['columnDelimiter','datafields','data','datatype','type','id','localdata','mapChar','rowDelimiter','root','record','url','async','autoBind','beforeSend','beforeLoadComplete','contentType','formatData','loadError','loadComplete','loadServerData','processData','beginUpdate','dataBind','endUpdate','formatDate','formatNumber','getRecordsHierarchy','getGroupedRecords','getAggregatedData','records'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['columnDelimiter','datafields','data','datatype','type','id','localdata','mapChar','rowDelimiter','root','record','url','async','autoBind','beforeSend','beforeLoadComplete','contentType','formatData','loadError','loadComplete','loadServerData','processData','beginUpdate','dataBind','endUpdate','formatDate','formatNumber','getRecordsHierarchy','getGroupedRecords','getAggregatedData','records'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDataAdapter;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -101,7 +113,7 @@ export class jqxDataAdapterComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -112,6 +124,10 @@ export class jqxDataAdapterComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDataAdapter', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -383,3 +399,5 @@ export class jqxDataAdapterComponent implements OnChanges
    }
 
 } //jqxDataAdapterComponent
+
+

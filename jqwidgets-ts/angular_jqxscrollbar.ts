@@ -1,38 +1,50 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularScrollBar',
+    selector: 'jqxScrollBar',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxScrollBarComponent implements OnChanges
 {
-   @Input('disabled') attrDisabled;
-   @Input('largestep') attrLargestep;
-   @Input('min') attrMin;
-   @Input('max') attrMax;
-   @Input('rtl') attrRtl;
-   @Input('step') attrStep;
-   @Input('showButtons') attrShowButtons;
-   @Input('thumbMinSize') attrThumbMinSize;
-   @Input('theme') attrTheme;
-   @Input('vertical') attrVertical;
-   @Input('value') attrValue;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('disabled') attrDisabled: any;
+   @Input('largestep') attrLargestep: any;
+   @Input('min') attrMin: any;
+   @Input('max') attrMax: any;
+   @Input('rtl') attrRtl: any;
+   @Input('step') attrStep: any;
+   @Input('showButtons') attrShowButtons: any;
+   @Input('thumbMinSize') attrThumbMinSize: any;
+   @Input('theme') attrTheme: any;
+   @Input('vertical') attrVertical: any;
+   @Input('value') attrValue: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['disabled','height','largestep','min','max','rtl','step','showButtons','thumbMinSize','theme','vertical','value','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['disabled','height','largestep','min','max','rtl','step','showButtons','thumbMinSize','theme','vertical','value','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxScrollBar;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -81,7 +93,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -92,6 +104,10 @@ export class jqxScrollBarComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxScrollBar', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -212,18 +228,23 @@ export class jqxScrollBarComponent implements OnChanges
    destroy(): void {
       this.host.jqxScrollBar('destroy');
    }
+
    isScrolling(): boolean {
       return this.host.jqxScrollBar('isScrolling');
    }
+
    setPosition(index: number): void {
       this.host.jqxScrollBar('setPosition', index);
    }
+
 
    // jqxScrollBarComponent events
    @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); });
+      this.host.on('valueChanged', (eventData: any) => { this.onValueChanged.emit(eventData); });
    }
 
 } //jqxScrollBarComponent
+
+

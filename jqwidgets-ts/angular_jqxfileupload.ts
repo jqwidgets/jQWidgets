@@ -1,40 +1,52 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularFileUpload',
+    selector: 'jqxFileUpload',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxFileUploadComponent implements OnChanges
 {
-   @Input('autoUpload') attrAutoUpload;
-   @Input('accept') attrAccept;
-   @Input('browseTemplate') attrBrowseTemplate;
-   @Input('cancelTemplate') attrCancelTemplate;
-   @Input('disabled') attrDisabled;
-   @Input('fileInputName') attrFileInputName;
-   @Input('localization') attrLocalization;
-   @Input('multipleFilesUpload') attrMultipleFilesUpload;
-   @Input('renderFiles') attrRenderFiles;
-   @Input('rtl') attrRtl;
-   @Input('theme') attrTheme;
-   @Input('uploadUrl') attrUploadUrl;
-   @Input('uploadTemplate') attrUploadTemplate;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('autoUpload') attrAutoUpload: any;
+   @Input('accept') attrAccept: any;
+   @Input('browseTemplate') attrBrowseTemplate: any;
+   @Input('cancelTemplate') attrCancelTemplate: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('fileInputName') attrFileInputName: any;
+   @Input('localization') attrLocalization: any;
+   @Input('multipleFilesUpload') attrMultipleFilesUpload: any;
+   @Input('renderFiles') attrRenderFiles: any;
+   @Input('rtl') attrRtl: any;
+   @Input('theme') attrTheme: any;
+   @Input('uploadUrl') attrUploadUrl: any;
+   @Input('uploadTemplate') attrUploadTemplate: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['autoUpload','accept','browseTemplate','cancelTemplate','disabled','fileInputName','height','localization','multipleFilesUpload','renderFiles','rtl','theme','uploadUrl','uploadTemplate','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['autoUpload','accept','browseTemplate','cancelTemplate','disabled','fileInputName','height','localization','multipleFilesUpload','renderFiles','rtl','theme','uploadUrl','uploadTemplate','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxFileUpload;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -83,7 +95,7 @@ export class jqxFileUploadComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -94,6 +106,10 @@ export class jqxFileUploadComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxFileUpload', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -230,27 +246,35 @@ export class jqxFileUploadComponent implements OnChanges
    browse(): void {
       this.host.jqxFileUpload('browse');
    }
+
    cancelFile(): void {
       this.host.jqxFileUpload('cancelFile');
    }
+
    cancelAll(): void {
       this.host.jqxFileUpload('cancelAll');
    }
+
    destroy(): void {
       this.host.jqxFileUpload('destroy');
    }
+
    render(): void {
       this.host.jqxFileUpload('render');
    }
+
    refresh(): void {
       this.host.jqxFileUpload('refresh');
    }
+
    uploadFile(fileIndex: number): void {
       this.host.jqxFileUpload('uploadFile', fileIndex);
    }
+
    uploadAll(): void {
       this.host.jqxFileUpload('uploadAll');
    }
+
 
    // jqxFileUploadComponent events
    @Output() onRemove = new EventEmitter();
@@ -259,10 +283,12 @@ export class jqxFileUploadComponent implements OnChanges
    @Output() onUploadEnd = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('remove', (eventData) => { this.onRemove.emit(eventData); });
-      this.host.on('select', (eventData) => { this.onSelect.emit(eventData); });
-      this.host.on('uploadStart', (eventData) => { this.onUploadStart.emit(eventData); });
-      this.host.on('uploadEnd', (eventData) => { this.onUploadEnd.emit(eventData); });
+      this.host.on('remove', (eventData: any) => { this.onRemove.emit(eventData); });
+      this.host.on('select', (eventData: any) => { this.onSelect.emit(eventData); });
+      this.host.on('uploadStart', (eventData: any) => { this.onUploadStart.emit(eventData); });
+      this.host.on('uploadEnd', (eventData: any) => { this.onUploadEnd.emit(eventData); });
    }
 
 } //jqxFileUploadComponent
+
+

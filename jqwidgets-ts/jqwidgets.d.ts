@@ -1,7 +1,7 @@
 /*
    jQWidgets TypeScript definitions
 
-   Copyright (c) 2011-2016 jQWidgets.
+   Copyright (c) 2011-2017 jQWidgets.
    License: http://jqwidgets.com/license/
 */
 
@@ -17,7 +17,7 @@ declare module jqwidgets {
         refresh(): void;
         destroy(): void;
         getInstance(): any;
-        addEventHandler(event: string, funcEventHandler: ( any ) => void): void;
+        addEventHandler(event: string, funcEventHandler: (any: any) => void): void;
         removeEventHandler(event: string): void;
         setOptions(params?: any): any;
     }
@@ -335,6 +335,7 @@ declare module jqwidgets {
         dashStyle?: string;
         lineWidth?: number;
         size?: number;
+        interval?: any;
         custom?: Array<ChartCustomOffset>;
     }// ChartTickMarks
 
@@ -345,6 +346,7 @@ declare module jqwidgets {
         step?: number;
         dashStyle?: string;
         lineWidth?: number;
+        interval?: any;
         custom?: Array<ChartCustomOffset>;
     }// ChartGridLines
 
@@ -452,8 +454,8 @@ declare module jqwidgets {
         labels?: ChartAxisLabels;
         logarithmicScale?: boolean;
         logarithmicScaleBase?: number;
-        minValue?: number;
-        maxValue?: number;
+        minValue?: any;
+        maxValue?: any;
         bands?: Array<ChartColorBand>;
         alternatingBackgroundColor?: string;
         alternatingBackgroundColor2?: string;
@@ -1783,9 +1785,9 @@ declare module jqwidgets {
         filter?: (filters?: any, recordsArray?: any) => void;
         addrow?: (rowid?: any, rowdata?: any, position?: any, commit?: Boolean) => void;
         deleterow?: (rowid?: any, commit?: Boolean) => void;
-        updaterow?: (rowid, newdata, commit) => void;
-        processdata?: (data) => void;
-        formatdata?: (data) => any;
+        updaterow?: (rowid?: any, newdata?: any, commit? : any) => void;
+        processdata?: (data: any) => void;
+        formatdata?: (data: any) => any;
         async?: boolean;
     }// GridSource
 
@@ -2125,7 +2127,7 @@ declare module jqwidgets {
         getcolumnaggregateddata(dataField: string, aggregates: Array<any>): string;
         refreshaggregates(): void;
         renderaggregates(): void;
-        exportdata(dataType: string, fileName: string, exportHeader: boolean, rows: Array<Number>, exportHiddenColumns: boolean, serverURL: string, charSet: string): void;
+        exportdata(dataType: string, fileName: string, exportHeader: boolean, rows: Array<Number>, exportHiddenColumns: boolean, serverURL: string, charSet: string): any;
         getstate(): GridGetState;
         loadstate(stateObject: any): void;
         savestate(): GridGetState;
@@ -3436,7 +3438,7 @@ declare module jqwidgets {
         tooltip?: boolean;
         tooltipHideDelay?: number;
         tooltipPosition?: string;
-        tooltipFormatFunction?: (value: any) => string;
+        tooltipFormatFunction?: (value: any) => any;
         value?: any;
         values?: Array<Number>;
         width?: String | Number;

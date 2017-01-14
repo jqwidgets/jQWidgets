@@ -1,5 +1,10 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -12,29 +17,31 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 }
 
 @Component({
-    selector: 'angularRadioButton',
+    selector: 'jqxRadioButton',
     template: '<div><ng-content></ng-content></div>',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
 export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('animationShowDelay') attrAnimationShowDelay;
-   @Input('animationHideDelay') attrAnimationHideDelay;
-   @Input('boxSize') attrBoxSize;
-   @Input('checked') attrChecked;
-   @Input('disabled') attrDisabled;
-   @Input('enableContainerClick') attrEnableContainerClick;
-   @Input('groupName') attrGroupName;
-   @Input('hasThreeStates') attrHasThreeStates;
-   @Input('rtl') attrRtl;
-   @Input('theme') attrTheme;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('animationShowDelay') attrAnimationShowDelay: any;
+   @Input('animationHideDelay') attrAnimationHideDelay: any;
+   @Input('boxSize') attrBoxSize: any;
+   @Input('checked') attrChecked: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('enableContainerClick') attrEnableContainerClick: any;
+   @Input('groupName') attrGroupName: any;
+   @Input('hasThreeStates') attrHasThreeStates: any;
+   @Input('rtl') attrRtl: any;
+   @Input('theme') attrTheme: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','groupName','hasThreeStates','height','rtl','theme','width'];
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','groupName','hasThreeStates','height','rtl','theme','width'];
    valueAttr;
-   host;
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxRadioButton;
 
@@ -43,9 +50,14 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -94,7 +106,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -107,6 +119,10 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       this.__updateRect__();
       this.valueAttr = this.host[0].parentElement.getAttribute('value');
       if (options.checked === true) this.onChangeCallback(this.valueAttr);
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -232,27 +248,39 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
    check(): void {
       this.host.jqxRadioButton('check');
    }
+
    disable(): void {
       this.host.jqxRadioButton('disable');
    }
+
    destroy(): void {
       this.host.jqxRadioButton('destroy');
    }
+
    enable(): void {
       this.host.jqxRadioButton('enable');
    }
+
    focus(): void {
       this.host.jqxRadioButton('focus');
    }
+
    render(): void {
       this.host.jqxRadioButton('render');
    }
+
    uncheck(): void {
       this.host.jqxRadioButton('uncheck');
    }
-   val(value: boolean): boolean {
-      return this.host.jqxRadioButton('val', value);
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxRadioButton("val", arg);
+      } else {
+         return this.host.jqxRadioButton("val");
+      }
+   };
+
 
    // jqxRadioButtonComponent events
    @Output() onChecked = new EventEmitter();
@@ -260,9 +288,11 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
    @Output() onUnchecked = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('checked', (eventData) => { this.onChecked.emit(eventData); this.onChangeCallback(this.valueAttr); });
-      this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
-      this.host.on('unchecked', (eventData) => { this.onUnchecked.emit(eventData); });
+      this.host.on('checked', (eventData: any) => { this.onChecked.emit(eventData); this.onChangeCallback(this.valueAttr); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); });
+      this.host.on('unchecked', (eventData: any) => { this.onUnchecked.emit(eventData); });
    }
 
 } //jqxRadioButtonComponent
+
+

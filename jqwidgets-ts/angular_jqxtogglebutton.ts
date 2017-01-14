@@ -1,41 +1,53 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularToggleButton',
+    selector: 'jqxToggleButton',
     template: '<button><ng-content></ng-content></button>'
 })
 
 export class jqxToggleButtonComponent implements OnChanges
 {
-   @Input('delay') attrDelay;
-   @Input('disabled') attrDisabled;
-   @Input('imgSrc') attrImgSrc;
-   @Input('imgWidth') attrImgWidth;
-   @Input('imgHeight') attrImgHeight;
-   @Input('imgPosition') attrImgPosition;
-   @Input('roundedCorners') attrRoundedCorners;
-   @Input('rtl') attrRtl;
-   @Input('textPosition') attrTextPosition;
-   @Input('textImageRelation') attrTextImageRelation;
-   @Input('theme') attrTheme;
-   @Input('template') attrTemplate;
-   @Input('toggled') attrToggled;
-   @Input('value') attrValue;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('delay') attrDelay: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('imgSrc') attrImgSrc: any;
+   @Input('imgWidth') attrImgWidth: any;
+   @Input('imgHeight') attrImgHeight: any;
+   @Input('imgPosition') attrImgPosition: any;
+   @Input('roundedCorners') attrRoundedCorners: any;
+   @Input('rtl') attrRtl: any;
+   @Input('textPosition') attrTextPosition: any;
+   @Input('textImageRelation') attrTextImageRelation: any;
+   @Input('theme') attrTheme: any;
+   @Input('template') attrTemplate: any;
+   @Input('toggled') attrToggled: any;
+   @Input('value') attrValue: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['delay','disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['delay','disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxToggleButton;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -84,7 +96,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -95,6 +107,10 @@ export class jqxToggleButtonComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxToggleButton', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -239,30 +255,43 @@ export class jqxToggleButtonComponent implements OnChanges
    check(): void {
       this.host.jqxToggleButton('check');
    }
+
    destroy(): void {
       this.host.jqxToggleButton('destroy');
    }
+
    focus(): void {
       this.host.jqxToggleButton('focus');
    }
+
    render(): void {
       this.host.jqxToggleButton('render');
    }
+
    toggle(): void {
       this.host.jqxToggleButton('toggle');
    }
+
    unCheck(): void {
       this.host.jqxToggleButton('unCheck');
    }
-   val(value: string): string {
-      return this.host.jqxToggleButton('val', value);
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxToggleButton("val", arg);
+      } else {
+         return this.host.jqxToggleButton("val");
+      }
+   };
+
 
    // jqxToggleButtonComponent events
    @Output() onClick = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('click', (eventData) => { this.onClick.emit(eventData); });
+      this.host.on('click', (eventData: any) => { this.onClick.emit(eventData); });
    }
 
 } //jqxToggleButtonComponent
+
+

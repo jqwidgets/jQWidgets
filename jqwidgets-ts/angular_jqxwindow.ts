@@ -1,60 +1,72 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularWindow',
+    selector: 'jqxWindow',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxWindowComponent implements OnChanges
 {
-   @Input('autoOpen') attrAutoOpen;
-   @Input('animationType') attrAnimationType;
-   @Input('collapsed') attrCollapsed;
-   @Input('collapseAnimationDuration') attrCollapseAnimationDuration;
-   @Input('content') attrContent;
-   @Input('closeAnimationDuration') attrCloseAnimationDuration;
-   @Input('closeButtonSize') attrCloseButtonSize;
-   @Input('closeButtonAction') attrCloseButtonAction;
-   @Input('cancelButton') attrCancelButton;
-   @Input('dragArea') attrDragArea;
-   @Input('draggable') attrDraggable;
-   @Input('disabled') attrDisabled;
-   @Input('initContent') attrInitContent;
-   @Input('isModal') attrIsModal;
-   @Input('keyboardCloseKey') attrKeyboardCloseKey;
-   @Input('keyboardNavigation') attrKeyboardNavigation;
-   @Input('minHeight') attrMinHeight;
-   @Input('maxHeight') attrMaxHeight;
-   @Input('minWidth') attrMinWidth;
-   @Input('maxWidth') attrMaxWidth;
-   @Input('modalOpacity') attrModalOpacity;
-   @Input('modalZIndex') attrModalZIndex;
-   @Input('modalBackgroundZIndex') attrModalBackgroundZIndex;
-   @Input('okButton') attrOkButton;
-   @Input('position') attrPosition;
-   @Input('rtl') attrRtl;
-   @Input('resizable') attrResizable;
-   @Input('showAnimationDuration') attrShowAnimationDuration;
-   @Input('showCloseButton') attrShowCloseButton;
-   @Input('showCollapseButton') attrShowCollapseButton;
-   @Input('theme') attrTheme;
-   @Input('title') attrTitle;
-   @Input('zIndex') attrZIndex;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('autoOpen') attrAutoOpen: any;
+   @Input('animationType') attrAnimationType: any;
+   @Input('collapsed') attrCollapsed: any;
+   @Input('collapseAnimationDuration') attrCollapseAnimationDuration: any;
+   @Input('content') attrContent: any;
+   @Input('closeAnimationDuration') attrCloseAnimationDuration: any;
+   @Input('closeButtonSize') attrCloseButtonSize: any;
+   @Input('closeButtonAction') attrCloseButtonAction: any;
+   @Input('cancelButton') attrCancelButton: any;
+   @Input('dragArea') attrDragArea: any;
+   @Input('draggable') attrDraggable: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('initContent') attrInitContent: any;
+   @Input('isModal') attrIsModal: any;
+   @Input('keyboardCloseKey') attrKeyboardCloseKey: any;
+   @Input('keyboardNavigation') attrKeyboardNavigation: any;
+   @Input('minHeight') attrMinHeight: any;
+   @Input('maxHeight') attrMaxHeight: any;
+   @Input('minWidth') attrMinWidth: any;
+   @Input('maxWidth') attrMaxWidth: any;
+   @Input('modalOpacity') attrModalOpacity: any;
+   @Input('modalZIndex') attrModalZIndex: any;
+   @Input('modalBackgroundZIndex') attrModalBackgroundZIndex: any;
+   @Input('okButton') attrOkButton: any;
+   @Input('position') attrPosition: any;
+   @Input('rtl') attrRtl: any;
+   @Input('resizable') attrResizable: any;
+   @Input('showAnimationDuration') attrShowAnimationDuration: any;
+   @Input('showCloseButton') attrShowCloseButton: any;
+   @Input('showCollapseButton') attrShowCollapseButton: any;
+   @Input('theme') attrTheme: any;
+   @Input('title') attrTitle: any;
+   @Input('zIndex') attrZIndex: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['autoOpen','animationType','collapsed','collapseAnimationDuration','content','closeAnimationDuration','closeButtonSize','closeButtonAction','cancelButton','dragArea','draggable','disabled','height','initContent','isModal','keyboardCloseKey','keyboardNavigation','minHeight','maxHeight','minWidth','maxWidth','modalOpacity','modalZIndex','modalBackgroundZIndex','okButton','position','rtl','resizable','showAnimationDuration','showCloseButton','showCollapseButton','theme','title','width','zIndex'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['autoOpen','animationType','collapsed','collapseAnimationDuration','content','closeAnimationDuration','closeButtonSize','closeButtonAction','cancelButton','dragArea','draggable','disabled','height','initContent','isModal','keyboardCloseKey','keyboardNavigation','minHeight','maxHeight','minWidth','maxWidth','modalOpacity','modalZIndex','modalBackgroundZIndex','okButton','position','rtl','resizable','showAnimationDuration','showCloseButton','showCollapseButton','theme','title','width','zIndex'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxWindow;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -103,7 +115,7 @@ export class jqxWindowComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -114,6 +126,10 @@ export class jqxWindowComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxWindow', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -410,48 +426,63 @@ export class jqxWindowComponent implements OnChanges
    bringToFront(): void {
       this.host.jqxWindow('bringToFront');
    }
+
    close(): void {
       this.host.jqxWindow('close');
    }
+
    collapse(): void {
       this.host.jqxWindow('collapse');
    }
+
    closeAll(): void {
       this.host.jqxWindow('closeAll');
    }
+
    disable(): void {
       this.host.jqxWindow('disable');
    }
+
    destroy(): void {
       this.host.jqxWindow('destroy');
    }
+
    enable(): void {
       this.host.jqxWindow('enable');
    }
+
    expand(): void {
       this.host.jqxWindow('expand');
    }
+
    focus(): void {
       this.host.jqxWindow('focus');
    }
+
    isOpen(): boolean {
       return this.host.jqxWindow('isOpen');
    }
+
    move(top: number, left: number): void {
       this.host.jqxWindow('move', top, left);
    }
+
    open(): void {
       this.host.jqxWindow('open');
    }
+
    resize(top: number, left: number): void {
       this.host.jqxWindow('resize', top, left);
    }
+
    setTitle(title: string): void {
       this.host.jqxWindow('setTitle', title);
    }
+
    setContent(content: string): void {
       this.host.jqxWindow('setContent', content);
    }
+
 
    // jqxWindowComponent events
    @Output() onClose = new EventEmitter();
@@ -465,15 +496,17 @@ export class jqxWindowComponent implements OnChanges
    @Output() onResized = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
-      this.host.on('collapse', (eventData) => { this.onCollapse.emit(eventData); });
-      this.host.on('created', (eventData) => { this.onCreated.emit(eventData); });
-      this.host.on('expand', (eventData) => { this.onExpand.emit(eventData); });
-      this.host.on('moving', (eventData) => { this.onMoving.emit(eventData); });
-      this.host.on('moved', (eventData) => { this.onMoved.emit(eventData); });
-      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
-      this.host.on('resizing', (eventData) => { this.onResizing.emit(eventData); });
-      this.host.on('resized', (eventData) => { this.onResized.emit(eventData); });
+      this.host.on('close', (eventData: any) => { this.onClose.emit(eventData); });
+      this.host.on('collapse', (eventData: any) => { this.onCollapse.emit(eventData); });
+      this.host.on('created', (eventData: any) => { this.onCreated.emit(eventData); });
+      this.host.on('expand', (eventData: any) => { this.onExpand.emit(eventData); });
+      this.host.on('moving', (eventData: any) => { this.onMoving.emit(eventData); });
+      this.host.on('moved', (eventData: any) => { this.onMoved.emit(eventData); });
+      this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
+      this.host.on('resizing', (eventData: any) => { this.onResizing.emit(eventData); });
+      this.host.on('resized', (eventData: any) => { this.onResized.emit(eventData); });
    }
 
 } //jqxWindowComponent
+
+

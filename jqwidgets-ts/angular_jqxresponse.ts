@@ -1,33 +1,45 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularResponse',
+    selector: 'jqxResponse',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxResponseComponent implements OnChanges
 {
-   @Input('browser') attrBrowser;
-   @Input('device') attrDevice;
-   @Input('document') attrDocument;
-   @Input('destroyProperty') attrDestroyProperty;
-   @Input('resize') attrResize;
-   @Input('os') attrOs;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('browser') attrBrowser: any;
+   @Input('device') attrDevice: any;
+   @Input('document') attrDocument: any;
+   @Input('destroyProperty') attrDestroyProperty: any;
+   @Input('resize') attrResize: any;
+   @Input('os') attrOs: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['browser','device','document','destroyProperty','resize','os'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['browser','device','document','destroyProperty','resize','os'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxResponse;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -76,7 +88,7 @@ export class jqxResponseComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -87,6 +99,10 @@ export class jqxResponseComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxResponse', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -151,30 +167,39 @@ export class jqxResponseComponent implements OnChanges
    refresh(): void {
       this.host.jqxResponse('refresh');
    }
+
    responsive(container: string, colWidths: Array<Number>, colOffsets: Array<Number>, colClass: string, deviceTypes: string, margin: jqwidgets.ResponseOffset, padding: jqwidgets.ResponseOffset, breakpoints: Array<jqwidgets.ResponseBreakpoint>): void {
       this.host.jqxResponse('responsive', container, colWidths, colOffsets, colClass, deviceTypes, margin, padding, breakpoints);
    }
+
    isHidden(element: any): boolean {
       return this.host.jqxResponse('isHidden', element);
    }
+
    inViewPort(element: any): boolean {
       return this.host.jqxResponse('inViewPort', element);
    }
+
    pointerDown(element: any, callback: any): void {
       this.host.jqxResponse('pointerDown', element, callback);
    }
+
    pointerMove(element: any, callback: any): void {
       this.host.jqxResponse('pointerMove', element, callback);
    }
+
    pointerUp(element: any, callback: any): void {
       this.host.jqxResponse('pointerUp', element, callback);
    }
+
    scroll(): Object {
       return this.host.jqxResponse('scroll');
    }
+
    viewPort(): Object {
       return this.host.jqxResponse('viewPort');
    }
+
 
    // jqxResponseComponent events
 
@@ -184,3 +209,5 @@ export class jqxResponseComponent implements OnChanges
    }
 
 } //jqxResponseComponent
+
+

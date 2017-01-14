@@ -1,50 +1,62 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularKnob',
+    selector: 'jqxKnob',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxKnobComponent implements OnChanges
 {
-   @Input('allowValueChangeOnClick') attrAllowValueChangeOnClick;
-   @Input('allowValueChangeOnDrag') attrAllowValueChangeOnDrag;
-   @Input('allowValueChangeOnMouseWheel') attrAllowValueChangeOnMouseWheel;
-   @Input('changing') attrChanging;
-   @Input('dragEndAngle') attrDragEndAngle;
-   @Input('dragStartAngle') attrDragStartAngle;
-   @Input('disabled') attrDisabled;
-   @Input('dial') attrDial;
-   @Input('endAngle') attrEndAngle;
-   @Input('labels') attrLabels;
-   @Input('marks') attrMarks;
-   @Input('min') attrMin;
-   @Input('max') attrMax;
-   @Input('progressBar') attrProgressBar;
-   @Input('pointer') attrPointer;
-   @Input('pointerGrabAction') attrPointerGrabAction;
-   @Input('rotation') attrRotation;
-   @Input('startAngle') attrStartAngle;
-   @Input('spinner') attrSpinner;
-   @Input('style') attrStyle;
-   @Input('step') attrStep;
-   @Input('snapToStep') attrSnapToStep;
-   @Input('value') attrValue;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('allowValueChangeOnClick') attrAllowValueChangeOnClick: any;
+   @Input('allowValueChangeOnDrag') attrAllowValueChangeOnDrag: any;
+   @Input('allowValueChangeOnMouseWheel') attrAllowValueChangeOnMouseWheel: any;
+   @Input('changing') attrChanging: any;
+   @Input('dragEndAngle') attrDragEndAngle: any;
+   @Input('dragStartAngle') attrDragStartAngle: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('dial') attrDial: any;
+   @Input('endAngle') attrEndAngle: any;
+   @Input('labels') attrLabels: any;
+   @Input('marks') attrMarks: any;
+   @Input('min') attrMin: any;
+   @Input('max') attrMax: any;
+   @Input('progressBar') attrProgressBar: any;
+   @Input('pointer') attrPointer: any;
+   @Input('pointerGrabAction') attrPointerGrabAction: any;
+   @Input('rotation') attrRotation: any;
+   @Input('startAngle') attrStartAngle: any;
+   @Input('spinner') attrSpinner: any;
+   @Input('style') attrStyle: any;
+   @Input('step') attrStep: any;
+   @Input('snapToStep') attrSnapToStep: any;
+   @Input('value') attrValue: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['allowValueChangeOnClick','allowValueChangeOnDrag','allowValueChangeOnMouseWheel','changing','dragEndAngle','dragStartAngle','disabled','dial','endAngle','height','labels','marks','min','max','progressBar','pointer','pointerGrabAction','rotation','startAngle','spinner','style','step','snapToStep','value','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['allowValueChangeOnClick','allowValueChangeOnDrag','allowValueChangeOnMouseWheel','changing','dragEndAngle','dragStartAngle','disabled','dial','endAngle','height','labels','marks','min','max','progressBar','pointer','pointerGrabAction','rotation','startAngle','spinner','style','step','snapToStep','value','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxKnob;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -93,7 +105,7 @@ export class jqxKnobComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -104,6 +116,10 @@ export class jqxKnobComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxKnob', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -320,15 +336,23 @@ export class jqxKnobComponent implements OnChanges
    destroy(): void {
       this.host.jqxKnob('destroy');
    }
-   val(value: String | Number): number {
-      return this.host.jqxKnob('val', value);
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxKnob("val", arg);
+      } else {
+         return this.host.jqxKnob("val");
+      }
+   };
+
 
    // jqxKnobComponent events
    @Output() onChange = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); });
    }
 
 } //jqxKnobComponent
+
+

@@ -1,5 +1,10 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -12,28 +17,30 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 }
 
 @Component({
-    selector: 'angularComplexInput',
-    template: '<div><input [(ngModel)]="ngValue"><div></div></div>',
+    selector: 'jqxComplexInput',
+    template: '<div style="padding-right: 2px;"><input [(ngModel)]="ngValue"><div></div></div>',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
 export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('decimalNotation') attrDecimalNotation;
-   @Input('disabled') attrDisabled;
-   @Input('placeHolder') attrPlaceHolder;
-   @Input('roundedCorners') attrRoundedCorners;
-   @Input('rtl') attrRtl;
-   @Input('spinButtons') attrSpinButtons;
-   @Input('spinButtonsStep') attrSpinButtonsStep;
-   @Input('template') attrTemplate;
-   @Input('theme') attrTheme;
-   @Input('value') attrValue;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('decimalNotation') attrDecimalNotation: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('placeHolder') attrPlaceHolder: any;
+   @Input('roundedCorners') attrRoundedCorners: any;
+   @Input('rtl') attrRtl: any;
+   @Input('spinButtons') attrSpinButtons: any;
+   @Input('spinButtonsStep') attrSpinButtonsStep: any;
+   @Input('template') attrTemplate: any;
+   @Input('theme') attrTheme: any;
+   @Input('value') attrValue: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['decimalNotation','disabled','height','placeHolder','roundedCorners','rtl','spinButtons','spinButtonsStep','template','theme','value','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['decimalNotation','disabled','height','placeHolder','roundedCorners','rtl','spinButtons','spinButtonsStep','template','theme','value','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxComplexInput;
 
@@ -42,9 +49,14 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -93,7 +105,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -108,6 +120,10 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
          let valueWithWS = ' ' + options.value;
          this.host.jqxComplexInput({ value: valueWithWS });
       }, 1);
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -247,27 +263,39 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
    destroy(): void {
       this.host.jqxComplexInput('destroy');
    }
+
    getReal(complexNumber: number): number {
       return this.host.jqxComplexInput('getReal', complexNumber);
    }
+
    getImaginary(complexNumber: number): number {
       return this.host.jqxComplexInput('getImaginary', complexNumber);
    }
+
    render(): void {
       this.host.jqxComplexInput('render');
    }
+
    refresh(): void {
       this.host.jqxComplexInput('refresh');
    }
-   val(): string {
-      return this.host.jqxComplexInput('val');
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxComplexInput("val", arg);
+      } else {
+         return this.host.jqxComplexInput("val");
+      }
+   };
+
 
    // jqxComplexInputComponent events
    @Output() onChange = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.value); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.value); });
    }
 
 } //jqxComplexInputComponent
+
+

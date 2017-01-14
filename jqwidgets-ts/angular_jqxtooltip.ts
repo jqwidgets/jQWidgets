@@ -1,47 +1,59 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularTooltip',
+    selector: 'jqxTooltip',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxTooltipComponent implements OnChanges
 {
-   @Input('absolutePositionX') attrAbsolutePositionX;
-   @Input('absolutePositionY') attrAbsolutePositionY;
-   @Input('autoHide') attrAutoHide;
-   @Input('autoHideDelay') attrAutoHideDelay;
-   @Input('animationShowDelay') attrAnimationShowDelay;
-   @Input('animationHideDelay') attrAnimationHideDelay;
-   @Input('content') attrContent;
-   @Input('closeOnClick') attrCloseOnClick;
-   @Input('disabled') attrDisabled;
-   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection;
-   @Input('left') attrLeft;
-   @Input('name') attrName;
-   @Input('opacity') attrOpacity;
-   @Input('position') attrPosition;
-   @Input('rtl') attrRtl;
-   @Input('showDelay') attrShowDelay;
-   @Input('showArrow') attrShowArrow;
-   @Input('top') attrTop;
-   @Input('trigger') attrTrigger;
-   @Input('theme') attrTheme;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('absolutePositionX') attrAbsolutePositionX: any;
+   @Input('absolutePositionY') attrAbsolutePositionY: any;
+   @Input('autoHide') attrAutoHide: any;
+   @Input('autoHideDelay') attrAutoHideDelay: any;
+   @Input('animationShowDelay') attrAnimationShowDelay: any;
+   @Input('animationHideDelay') attrAnimationHideDelay: any;
+   @Input('content') attrContent: any;
+   @Input('closeOnClick') attrCloseOnClick: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: any;
+   @Input('left') attrLeft: any;
+   @Input('name') attrName: any;
+   @Input('opacity') attrOpacity: any;
+   @Input('position') attrPosition: any;
+   @Input('rtl') attrRtl: any;
+   @Input('showDelay') attrShowDelay: any;
+   @Input('showArrow') attrShowArrow: any;
+   @Input('top') attrTop: any;
+   @Input('trigger') attrTrigger: any;
+   @Input('theme') attrTheme: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['absolutePositionX','absolutePositionY','autoHide','autoHideDelay','animationShowDelay','animationHideDelay','content','closeOnClick','disabled','enableBrowserBoundsDetection','height','left','name','opacity','position','rtl','showDelay','showArrow','top','trigger','theme','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['absolutePositionX','absolutePositionY','autoHide','autoHideDelay','animationShowDelay','animationHideDelay','content','closeOnClick','disabled','enableBrowserBoundsDetection','height','left','name','opacity','position','rtl','showDelay','showArrow','top','trigger','theme','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTooltip;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -90,7 +102,7 @@ export class jqxTooltipComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -101,6 +113,10 @@ export class jqxTooltipComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTooltip', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -293,15 +309,19 @@ export class jqxTooltipComponent implements OnChanges
    close(index: number): void {
       this.host.jqxTooltip('close', index);
    }
+
    destroy(): void {
       this.host.jqxTooltip('destroy');
    }
+
    open(): void {
       this.host.jqxTooltip('open');
    }
+
    refresh(): void {
       this.host.jqxTooltip('refresh');
    }
+
 
    // jqxTooltipComponent events
    @Output() onClose = new EventEmitter();
@@ -310,10 +330,12 @@ export class jqxTooltipComponent implements OnChanges
    @Output() onOpening = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
-      this.host.on('closing', (eventData) => { this.onClosing.emit(eventData); });
-      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
-      this.host.on('opening', (eventData) => { this.onOpening.emit(eventData); });
+      this.host.on('close', (eventData: any) => { this.onClose.emit(eventData); });
+      this.host.on('closing', (eventData: any) => { this.onClosing.emit(eventData); });
+      this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
+      this.host.on('opening', (eventData: any) => { this.onOpening.emit(eventData); });
    }
 
 } //jqxTooltipComponent
+
+

@@ -1,42 +1,54 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularDropDownButton',
+    selector: 'jqxDropDownButton',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxDropDownButtonComponent implements OnChanges
 {
-   @Input('animationType') attrAnimationType;
-   @Input('arrowSize') attrArrowSize;
-   @Input('autoOpen') attrAutoOpen;
-   @Input('closeDelay') attrCloseDelay;
-   @Input('disabled') attrDisabled;
-   @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment;
-   @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment;
-   @Input('dropDownWidth') attrDropDownWidth;
-   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection;
-   @Input('initContent') attrInitContent;
-   @Input('openDelay') attrOpenDelay;
-   @Input('popupZIndex') attrPopupZIndex;
-   @Input('rtl') attrRtl;
-   @Input('template') attrTemplate;
-   @Input('theme') attrTheme;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('animationType') attrAnimationType: any;
+   @Input('arrowSize') attrArrowSize: any;
+   @Input('autoOpen') attrAutoOpen: any;
+   @Input('closeDelay') attrCloseDelay: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: any;
+   @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: any;
+   @Input('dropDownWidth') attrDropDownWidth: any;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: any;
+   @Input('initContent') attrInitContent: any;
+   @Input('openDelay') attrOpenDelay: any;
+   @Input('popupZIndex') attrPopupZIndex: any;
+   @Input('rtl') attrRtl: any;
+   @Input('template') attrTemplate: any;
+   @Input('theme') attrTheme: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['animationType','arrowSize','autoOpen','closeDelay','disabled','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownWidth','enableBrowserBoundsDetection','height','initContent','openDelay','popupZIndex','rtl','template','theme','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['animationType','arrowSize','autoOpen','closeDelay','disabled','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownWidth','enableBrowserBoundsDetection','height','initContent','openDelay','popupZIndex','rtl','template','theme','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDropDownButton;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -85,7 +97,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -96,6 +108,10 @@ export class jqxDropDownButtonComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDropDownButton', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -248,32 +264,41 @@ export class jqxDropDownButtonComponent implements OnChanges
    close(): void {
       this.host.jqxDropDownButton('close');
    }
+
    destroy(): void {
       this.host.jqxDropDownButton('destroy');
    }
+
    focus(): void {
       this.host.jqxDropDownButton('focus');
    }
+
    getContent(): any {
       return this.host.jqxDropDownButton('getContent');
    }
+
    isOpened(): boolean {
       return this.host.jqxDropDownButton('isOpened');
    }
+
    open(): void {
       this.host.jqxDropDownButton('open');
    }
+
    setContent(content: string): void {
       this.host.jqxDropDownButton('setContent', content);
    }
+
 
    // jqxDropDownButtonComponent events
    @Output() onClose = new EventEmitter();
    @Output() onOpen = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
-      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
+      this.host.on('close', (eventData: any) => { this.onClose.emit(eventData); });
+      this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
    }
 
 } //jqxDropDownButtonComponent
+
+

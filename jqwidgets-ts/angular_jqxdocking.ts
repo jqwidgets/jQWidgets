@@ -1,38 +1,50 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularDocking',
+    selector: 'jqxDocking',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxDockingComponent implements OnChanges
 {
-   @Input('cookies') attrCookies;
-   @Input('cookieOptions') attrCookieOptions;
-   @Input('disabled') attrDisabled;
-   @Input('floatingWindowOpacity') attrFloatingWindowOpacity;
-   @Input('keyboardNavigation') attrKeyboardNavigation;
-   @Input('mode') attrMode;
-   @Input('orientation') attrOrientation;
-   @Input('rtl') attrRtl;
-   @Input('theme') attrTheme;
-   @Input('windowsMode') attrWindowsMode;
-   @Input('windowsOffset') attrWindowsOffset;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('cookies') attrCookies: any;
+   @Input('cookieOptions') attrCookieOptions: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('floatingWindowOpacity') attrFloatingWindowOpacity: any;
+   @Input('keyboardNavigation') attrKeyboardNavigation: any;
+   @Input('mode') attrMode: any;
+   @Input('orientation') attrOrientation: any;
+   @Input('rtl') attrRtl: any;
+   @Input('theme') attrTheme: any;
+   @Input('windowsMode') attrWindowsMode: any;
+   @Input('windowsOffset') attrWindowsOffset: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['cookies','cookieOptions','disabled','floatingWindowOpacity','height','keyboardNavigation','mode','orientation','rtl','theme','width','windowsMode','windowsOffset'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['cookies','cookieOptions','disabled','floatingWindowOpacity','height','keyboardNavigation','mode','orientation','rtl','theme','width','windowsMode','windowsOffset'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDocking;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -81,7 +93,7 @@ export class jqxDockingComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -92,6 +104,10 @@ export class jqxDockingComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDocking', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -212,86 +228,113 @@ export class jqxDockingComponent implements OnChanges
    addWindow(windowId: string, mode: any, panel: number, position: any): void {
       this.host.jqxDocking('addWindow', windowId, mode, panel, position);
    }
+
    closeWindow(windowId: string): void {
       this.host.jqxDocking('closeWindow', windowId);
    }
+
    collapseWindow(windowId: string): void {
       this.host.jqxDocking('collapseWindow', windowId);
    }
+
    destroy(): void {
       this.host.jqxDocking('destroy');
    }
+
    disableWindowResize(windowId: string): void {
       this.host.jqxDocking('disableWindowResize', windowId);
    }
+
    disable(): void {
       this.host.jqxDocking('disable');
    }
+
    exportLayout(): string {
       return this.host.jqxDocking('exportLayout');
    }
+
    enable(): void {
       this.host.jqxDocking('enable');
    }
+
    expandWindow(windowId: string): void {
       this.host.jqxDocking('expandWindow', windowId);
    }
+
    enableWindowResize(windowId: string): void {
       this.host.jqxDocking('enableWindowResize', windowId);
    }
+
    focus(): void {
       this.host.jqxDocking('focus');
    }
+
    hideAllCloseButtons(): void {
       this.host.jqxDocking('hideAllCloseButtons');
    }
+
    hideAllCollapseButtons(): void {
       this.host.jqxDocking('hideAllCollapseButtons');
    }
+
    hideCollapseButton(windowId: string): void {
       this.host.jqxDocking('hideCollapseButton', windowId);
    }
+
    hideCloseButton(windowId: string): void {
       this.host.jqxDocking('hideCloseButton', windowId);
    }
+
    importLayout(Json: string): void {
       this.host.jqxDocking('importLayout', Json);
    }
+
    move(windowId: string, panel: number, position: number): void {
       this.host.jqxDocking('move', windowId, panel, position);
    }
+
    pinWindow(windowId: string): void {
       this.host.jqxDocking('pinWindow', windowId);
    }
+
    setWindowMode(windowId: string, mode: any): void {
       this.host.jqxDocking('setWindowMode', windowId, mode);
    }
+
    showCloseButton(windowId: string): void {
       this.host.jqxDocking('showCloseButton', windowId);
    }
+
    showCollapseButton(windowId: string): void {
       this.host.jqxDocking('showCollapseButton', windowId);
    }
+
    setWindowPosition(windowId: string, top: any, left: number): void {
       this.host.jqxDocking('setWindowPosition', windowId, top, left);
    }
+
    showAllCloseButtons(): void {
       this.host.jqxDocking('showAllCloseButtons');
    }
+
    showAllCollapseButtons(): void {
       this.host.jqxDocking('showAllCollapseButtons');
    }
+
    unpinWindow(windowId: string): void {
       this.host.jqxDocking('unpinWindow', windowId);
    }
+
 
    // jqxDockingComponent events
    @Output() onDragStart = new EventEmitter();
    @Output() onDragEnd = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('dragStart', (eventData) => { this.onDragStart.emit(eventData); });
-      this.host.on('dragEnd', (eventData) => { this.onDragEnd.emit(eventData); });
+      this.host.on('dragStart', (eventData: any) => { this.onDragStart.emit(eventData); });
+      this.host.on('dragEnd', (eventData: any) => { this.onDragEnd.emit(eventData); });
    }
 
 } //jqxDockingComponent
+
+

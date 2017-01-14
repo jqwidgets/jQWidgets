@@ -1,29 +1,41 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularDockPanel',
+    selector: 'jqxDockPanel',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxDockPanelComponent implements OnChanges
 {
-   @Input('disabled') attrDisabled;
-   @Input('lastchildfill') attrLastchildfill;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('disabled') attrDisabled: any;
+   @Input('lastchildfill') attrLastchildfill: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['disabled','height','lastchildfill','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['disabled','height','lastchildfill','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDockPanel;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -72,7 +84,7 @@ export class jqxDockPanelComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -83,6 +95,10 @@ export class jqxDockPanelComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDockPanel', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -132,11 +148,14 @@ export class jqxDockPanelComponent implements OnChanges
       this.host.jqxDockPanel('refresh');
    }
 
+
    // jqxDockPanelComponent events
    @Output() onLayout = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('layout', (eventData) => { this.onLayout.emit(eventData); });
+      this.host.on('layout', (eventData: any) => { this.onLayout.emit(eventData); });
    }
 
 } //jqxDockPanelComponent
+
+

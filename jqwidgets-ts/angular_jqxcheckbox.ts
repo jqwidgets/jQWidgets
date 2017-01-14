@@ -1,5 +1,10 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -12,29 +17,31 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 }
 
 @Component({
-    selector: 'angularCheckBox',
+    selector: 'jqxCheckBox',
     template: '<div><ng-content></ng-content></div>',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
 export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('animationShowDelay') attrAnimationShowDelay;
-   @Input('animationHideDelay') attrAnimationHideDelay;
-   @Input('boxSize') attrBoxSize;
-   @Input('checked') attrChecked;
-   @Input('disabled') attrDisabled;
-   @Input('enableContainerClick') attrEnableContainerClick;
-   @Input('groupName') attrGroupName;
-   @Input('hasThreeStates') attrHasThreeStates;
-   @Input('locked') attrLocked;
-   @Input('rtl') attrRtl;
-   @Input('theme') attrTheme;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('animationShowDelay') attrAnimationShowDelay: any;
+   @Input('animationHideDelay') attrAnimationHideDelay: any;
+   @Input('boxSize') attrBoxSize: any;
+   @Input('checked') attrChecked: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('enableContainerClick') attrEnableContainerClick: any;
+   @Input('groupName') attrGroupName: any;
+   @Input('hasThreeStates') attrHasThreeStates: any;
+   @Input('locked') attrLocked: any;
+   @Input('rtl') attrRtl: any;
+   @Input('theme') attrTheme: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','groupName','height','hasThreeStates','locked','rtl','theme','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','groupName','height','hasThreeStates','locked','rtl','theme','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxCheckBox;
 
@@ -43,9 +50,14 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -94,7 +106,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -106,6 +118,10 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxCheckBox', options);
       this.__updateRect__();
       options.checked !== undefined ? this.onChangeCallback(options.checked) : this.onChangeCallback(false);
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -239,33 +255,47 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
    check(): void {
       this.host.jqxCheckBox('check');
    }
+
    disable(): void {
       this.host.jqxCheckBox('disable');
    }
+
    destroy(): void {
       this.host.jqxCheckBox('destroy');
    }
+
    enable(): void {
       this.host.jqxCheckBox('enable');
    }
+
    focus(): void {
       this.host.jqxCheckBox('focus');
    }
+
    indeterminate(): void {
       this.host.jqxCheckBox('indeterminate');
    }
+
    render(): void {
       this.host.jqxCheckBox('render');
    }
+
    toggle(): void {
       this.host.jqxCheckBox('toggle');
    }
+
    uncheck(): void {
       this.host.jqxCheckBox('uncheck');
    }
-   val(value: boolean): boolean {
-      return this.host.jqxCheckBox('val', value);
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxCheckBox("val", arg);
+      } else {
+         return this.host.jqxCheckBox("val");
+      }
+   };
+
 
    // jqxCheckBoxComponent events
    @Output() onChecked = new EventEmitter();
@@ -274,10 +304,12 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
    @Output() onUnchecked = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('checked', (eventData) => { this.onChecked.emit(eventData); });
-      this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(eventData.args.checked); });
-      this.host.on('indeterminate', (eventData) => { this.onIndeterminate.emit(eventData); });
-      this.host.on('unchecked', (eventData) => { this.onUnchecked.emit(eventData); });
+      this.host.on('checked', (eventData: any) => { this.onChecked.emit(eventData); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.checked); });
+      this.host.on('indeterminate', (eventData: any) => { this.onIndeterminate.emit(eventData); });
+      this.host.on('unchecked', (eventData: any) => { this.onUnchecked.emit(eventData); });
    }
 
 } //jqxCheckBoxComponent
+
+

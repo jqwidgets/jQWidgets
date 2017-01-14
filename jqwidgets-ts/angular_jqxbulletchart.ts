@@ -1,42 +1,54 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularBulletChart',
+    selector: 'jqxBulletChart',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxBulletChartComponent implements OnChanges
 {
-   @Input('animationDuration') attrAnimationDuration;
-   @Input('barSize') attrBarSize;
-   @Input('description') attrDescription;
-   @Input('disabled') attrDisabled;
-   @Input('labelsFormat') attrLabelsFormat;
-   @Input('labelsFormatFunction') attrLabelsFormatFunction;
-   @Input('orientation') attrOrientation;
-   @Input('pointer') attrPointer;
-   @Input('rtl') attrRtl;
-   @Input('ranges') attrRanges;
-   @Input('showTooltip') attrShowTooltip;
-   @Input('target') attrTarget;
-   @Input('ticks') attrTicks;
-   @Input('title') attrTitle;
-   @Input('tooltipFormatFunction') attrTooltipFormatFunction;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('animationDuration') attrAnimationDuration: any;
+   @Input('barSize') attrBarSize: any;
+   @Input('description') attrDescription: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('labelsFormat') attrLabelsFormat: any;
+   @Input('labelsFormatFunction') attrLabelsFormatFunction: any;
+   @Input('orientation') attrOrientation: any;
+   @Input('pointer') attrPointer: any;
+   @Input('rtl') attrRtl: any;
+   @Input('ranges') attrRanges: any;
+   @Input('showTooltip') attrShowTooltip: any;
+   @Input('target') attrTarget: any;
+   @Input('ticks') attrTicks: any;
+   @Input('title') attrTitle: any;
+   @Input('tooltipFormatFunction') attrTooltipFormatFunction: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['animationDuration','barSize','description','disabled','height','labelsFormat','labelsFormatFunction','orientation','pointer','rtl','ranges','showTooltip','target','ticks','title','tooltipFormatFunction','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['animationDuration','barSize','description','disabled','height','labelsFormat','labelsFormatFunction','orientation','pointer','rtl','ranges','showTooltip','target','ticks','title','tooltipFormatFunction','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxBulletChart;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -85,7 +97,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -96,6 +108,10 @@ export class jqxBulletChartComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxBulletChart', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -248,21 +264,31 @@ export class jqxBulletChartComponent implements OnChanges
    destroy(): void {
       this.host.jqxBulletChart('destroy');
    }
+
    render(): void {
       this.host.jqxBulletChart('render');
    }
+
    refresh(): void {
       this.host.jqxBulletChart('refresh');
    }
-   val(value: number): number {
-      return this.host.jqxBulletChart('val', value);
-   }
+
+   val(arg?: String | Number): any {
+      if (arg !== undefined) {
+         this.host.jqxBulletChart("val", arg);
+      } else {
+         return this.host.jqxBulletChart("val");
+      }
+   };
+
 
    // jqxBulletChartComponent events
    @Output() onChange = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); });
    }
 
 } //jqxBulletChartComponent
+
+

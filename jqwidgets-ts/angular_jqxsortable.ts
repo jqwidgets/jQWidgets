@@ -1,52 +1,64 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularSortable',
+    selector: 'jqxSortable',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxSortableComponent implements OnChanges
 {
-   @Input('appendTo') attrAppendTo;
-   @Input('axis') attrAxis;
-   @Input('cancelProperty') attrCancelProperty;
-   @Input('connectWith') attrConnectWith;
-   @Input('containment') attrContainment;
-   @Input('cursor') attrCursor;
-   @Input('cursorAt') attrCursorAt;
-   @Input('delay') attrDelay;
-   @Input('disabled') attrDisabled;
-   @Input('distance') attrDistance;
-   @Input('dropOnEmpty') attrDropOnEmpty;
-   @Input('forceHelperSize') attrForceHelperSize;
-   @Input('forcePlaceholderSize') attrForcePlaceholderSize;
-   @Input('grid') attrGrid;
-   @Input('handle') attrHandle;
-   @Input('helper') attrHelper;
-   @Input('items') attrItems;
-   @Input('opacity') attrOpacity;
-   @Input('placeholderShow') attrPlaceholderShow;
-   @Input('revert') attrRevert;
-   @Input('scroll') attrScroll;
-   @Input('scrollSensitivity') attrScrollSensitivity;
-   @Input('scrollSpeed') attrScrollSpeed;
-   @Input('tolerance') attrTolerance;
-   @Input('zIndex') attrZIndex;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('appendTo') attrAppendTo: any;
+   @Input('axis') attrAxis: any;
+   @Input('cancelProperty') attrCancelProperty: any;
+   @Input('connectWith') attrConnectWith: any;
+   @Input('containment') attrContainment: any;
+   @Input('cursor') attrCursor: any;
+   @Input('cursorAt') attrCursorAt: any;
+   @Input('delay') attrDelay: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('distance') attrDistance: any;
+   @Input('dropOnEmpty') attrDropOnEmpty: any;
+   @Input('forceHelperSize') attrForceHelperSize: any;
+   @Input('forcePlaceholderSize') attrForcePlaceholderSize: any;
+   @Input('grid') attrGrid: any;
+   @Input('handle') attrHandle: any;
+   @Input('helper') attrHelper: any;
+   @Input('items') attrItems: any;
+   @Input('opacity') attrOpacity: any;
+   @Input('placeholderShow') attrPlaceholderShow: any;
+   @Input('revert') attrRevert: any;
+   @Input('scroll') attrScroll: any;
+   @Input('scrollSensitivity') attrScrollSensitivity: any;
+   @Input('scrollSpeed') attrScrollSpeed: any;
+   @Input('tolerance') attrTolerance: any;
+   @Input('zIndex') attrZIndex: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['appendTo','axis','cancelProperty','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','tolerance','zIndex'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['appendTo','axis','cancelProperty','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','tolerance','zIndex'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxSortable;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -95,7 +107,7 @@ export class jqxSortableComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -106,6 +118,10 @@ export class jqxSortableComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxSortable', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -322,27 +338,35 @@ export class jqxSortableComponent implements OnChanges
    cancelMethod(): void {
       this.host.jqxSortable('cancelMethod');
    }
+
    destroy(): void {
       this.host.jqxSortable('destroy');
    }
+
    disable(): void {
       this.host.jqxSortable('disable');
    }
+
    enable(): void {
       this.host.jqxSortable('enable');
    }
+
    refresh(): void {
       this.host.jqxSortable('refresh');
    }
+
    refreshPositions(): void {
       this.host.jqxSortable('refreshPositions');
    }
+
    serialize(): void {
       this.host.jqxSortable('serialize');
    }
+
    toArray(): Array<any> {
       return this.host.jqxSortable('toArray');
    }
+
 
    // jqxSortableComponent events
    @Output() onActivate = new EventEmitter();
@@ -360,19 +384,21 @@ export class jqxSortableComponent implements OnChanges
    @Output() onUpdate = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('activate', (eventData) => { this.onActivate.emit(eventData); });
-      this.host.on('beforeStop', (eventData) => { this.onBeforeStop.emit(eventData); });
-      this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
-      this.host.on('create', (eventData) => { this.onCreate.emit(eventData); });
-      this.host.on('deactivate', (eventData) => { this.onDeactivate.emit(eventData); });
-      this.host.on('out', (eventData) => { this.onOut.emit(eventData); });
-      this.host.on('over', (eventData) => { this.onOver.emit(eventData); });
-      this.host.on('receive', (eventData) => { this.onReceive.emit(eventData); });
-      this.host.on('remove', (eventData) => { this.onRemove.emit(eventData); });
-      this.host.on('sort', (eventData) => { this.onSort.emit(eventData); });
-      this.host.on('start', (eventData) => { this.onStart.emit(eventData); });
-      this.host.on('stop', (eventData) => { this.onStop.emit(eventData); });
-      this.host.on('update', (eventData) => { this.onUpdate.emit(eventData); });
+      this.host.on('activate', (eventData: any) => { this.onActivate.emit(eventData); });
+      this.host.on('beforeStop', (eventData: any) => { this.onBeforeStop.emit(eventData); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); });
+      this.host.on('create', (eventData: any) => { this.onCreate.emit(eventData); });
+      this.host.on('deactivate', (eventData: any) => { this.onDeactivate.emit(eventData); });
+      this.host.on('out', (eventData: any) => { this.onOut.emit(eventData); });
+      this.host.on('over', (eventData: any) => { this.onOver.emit(eventData); });
+      this.host.on('receive', (eventData: any) => { this.onReceive.emit(eventData); });
+      this.host.on('remove', (eventData: any) => { this.onRemove.emit(eventData); });
+      this.host.on('sort', (eventData: any) => { this.onSort.emit(eventData); });
+      this.host.on('start', (eventData: any) => { this.onStart.emit(eventData); });
+      this.host.on('stop', (eventData: any) => { this.onStop.emit(eventData); });
+      this.host.on('update', (eventData: any) => { this.onUpdate.emit(eventData); });
    }
 
 } //jqxSortableComponent
+
+

@@ -1,46 +1,58 @@
+/*
+jQWidgets v4.5.0 (2017-Jan)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let $: any;
 
 @Component({
-    selector: 'angularNotification',
+    selector: 'jqxNotification',
     template: '<div><ng-content></ng-content></div>'
 })
 
 export class jqxNotificationComponent implements OnChanges
 {
-   @Input('appendContainer') attrAppendContainer;
-   @Input('autoOpen') attrAutoOpen;
-   @Input('animationOpenDelay') attrAnimationOpenDelay;
-   @Input('animationCloseDelay') attrAnimationCloseDelay;
-   @Input('autoClose') attrAutoClose;
-   @Input('autoCloseDelay') attrAutoCloseDelay;
-   @Input('blink') attrBlink;
-   @Input('browserBoundsOffset') attrBrowserBoundsOffset;
-   @Input('closeOnClick') attrCloseOnClick;
-   @Input('disabled') attrDisabled;
-   @Input('hoverOpacity') attrHoverOpacity;
-   @Input('icon') attrIcon;
-   @Input('notificationOffset') attrNotificationOffset;
-   @Input('opacity') attrOpacity;
-   @Input('position') attrPosition;
-   @Input('rtl') attrRtl;
-   @Input('showCloseButton') attrShowCloseButton;
-   @Input('template') attrTemplate;
-   @Input('theme') attrTheme;
-   @Input('width') attrWidth;
-   @Input('height') attrHeight;
+   @Input('appendContainer') attrAppendContainer: any;
+   @Input('autoOpen') attrAutoOpen: any;
+   @Input('animationOpenDelay') attrAnimationOpenDelay: any;
+   @Input('animationCloseDelay') attrAnimationCloseDelay: any;
+   @Input('autoClose') attrAutoClose: any;
+   @Input('autoCloseDelay') attrAutoCloseDelay: any;
+   @Input('blink') attrBlink: any;
+   @Input('browserBoundsOffset') attrBrowserBoundsOffset: any;
+   @Input('closeOnClick') attrCloseOnClick: any;
+   @Input('disabled') attrDisabled: any;
+   @Input('hoverOpacity') attrHoverOpacity: any;
+   @Input('icon') attrIcon: any;
+   @Input('notificationOffset') attrNotificationOffset: any;
+   @Input('opacity') attrOpacity: any;
+   @Input('position') attrPosition: any;
+   @Input('rtl') attrRtl: any;
+   @Input('showCloseButton') attrShowCloseButton: any;
+   @Input('template') attrTemplate: any;
+   @Input('theme') attrTheme: any;
+   @Input('width') attrWidth: any;
+   @Input('height') attrHeight: any;
 
-   properties: Array<string> = ['appendContainer','autoOpen','animationOpenDelay','animationCloseDelay','autoClose','autoCloseDelay','blink','browserBoundsOffset','closeOnClick','disabled','height','hoverOpacity','icon','notificationOffset','opacity','position','rtl','showCloseButton','template','theme','width'];
-   host;
+   @Input('auto-create') autoCreate: boolean = true;
+
+   properties: string[] = ['appendContainer','autoOpen','animationOpenDelay','animationCloseDelay','autoClose','autoCloseDelay','blink','browserBoundsOffset','closeOnClick','disabled','height','hoverOpacity','icon','notificationOffset','opacity','position','rtl','showCloseButton','template','theme','width'];
+   host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxNotification;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      setTimeout(() => {
+         if (this.autoCreate) {
+            this.createComponent(); 
+         }
+      }); 
    }
 
-   ngOnChanges(changes) {
+   ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
@@ -89,7 +101,7 @@ export class jqxNotificationComponent implements OnChanges
       }
       return options;
    }
-   createWidget(options?: any): void {
+   createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
       }
@@ -100,6 +112,10 @@ export class jqxNotificationComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxNotification', options);
       this.__updateRect__();
+   }
+
+   createWidget(options?: any): void {
+        this.createComponent(options);
    }
 
    __updateRect__() : void {
@@ -284,21 +300,27 @@ export class jqxNotificationComponent implements OnChanges
    closeAll(): void {
       this.host.jqxNotification('closeAll');
    }
+
    closeLast(): void {
       this.host.jqxNotification('closeLast');
    }
+
    destroy(): void {
       this.host.jqxNotification('destroy');
    }
+
    open(): void {
       this.host.jqxNotification('open');
    }
+
    refresh(): void {
       this.host.jqxNotification('refresh');
    }
+
    render(): void {
       this.host.jqxNotification('render');
    }
+
 
    // jqxNotificationComponent events
    @Output() onClose = new EventEmitter();
@@ -306,9 +328,11 @@ export class jqxNotificationComponent implements OnChanges
    @Output() onOpen = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
-      this.host.on('click', (eventData) => { this.onClick.emit(eventData); });
-      this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
+      this.host.on('close', (eventData: any) => { this.onClose.emit(eventData); });
+      this.host.on('click', (eventData: any) => { this.onClick.emit(eventData); });
+      this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
    }
 
 } //jqxNotificationComponent
+
+
