@@ -1,12 +1,12 @@
 jQWidgets
 =========
 
-jQWidgets is an advanced jQuery and HTML5 UI framework.
+jQWidgets is an advanced Javascript and HTML5 UI framework.
 
 What is jQWidgets?
 ---------
 
-jQWidgets represents a framework based on jQuery for building web-based applications that run on PC, Touch and Mobile devices. jQWidgets includes more than 40 UI widgets. jQWidgets is not a modified version of the jQuery UI toolkit. All widgets are designed from ground-up and based on a powerful common core. The framework core provides fundamental capabilities like support for widget extensions and inheritance, widget settings, internal event handling and routing, property change notifications, device and browser compatibility detection and adjustments.
+jQWidgets represents a framework based on Javascript for building web-based applications that run on PC, Touch and Mobile devices. jQWidgets includes more than 40 UI widgets. jQWidgets is not a modified version of the jQuery UI toolkit. All widgets are designed from ground-up and based on a powerful common core. The framework core provides fundamental capabilities like support for widget extensions and inheritance, widget settings, internal event handling and routing, property change notifications, device and browser compatibility detection and adjustments.
 
 Highlights
 ---------
@@ -14,7 +14,8 @@ Highlights
 * Works on PC, Touch and Mobile Devices.
 * Rich functionality and great performance.
 * Easy PHP & ASP .NET integration and how-to demos.
-* AngularJS 2.0 and AngularJS 1.x Directives for every widget.
+* React Javascript Library User Interface Components
+* Angular and AngularJS 1.x Directives for every widget.
 * Typescript Definitions for all widgets.
 * PhoneGap Integration.
 * Java Integration.
