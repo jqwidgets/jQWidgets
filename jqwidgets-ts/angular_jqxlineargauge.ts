@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -124,7 +124,7 @@ export class jqxLinearGaugeComponent implements OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    setOptions(options: any) : void {
@@ -342,9 +342,9 @@ export class jqxLinearGaugeComponent implements OnChanges
 
 
    // jqxLinearGaugeComponent functions
-   val(arg?: String | Number): any {
-      if (arg !== undefined) {
-         this.host.jqxLinearGauge("val", arg);
+   val(value): any {
+      if (value !== undefined) {
+         this.host.jqxLinearGauge("val", value);
       } else {
          return this.host.jqxLinearGauge("val");
       }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -154,7 +154,7 @@ export class jqxTreeGridComponent implements OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    setOptions(options: any) : void {
@@ -612,7 +612,7 @@ export class jqxTreeGridComponent implements OnChanges
 
 
    // jqxTreeGridComponent functions
-   addRow(rowKey: string, rowData: any, rowPosition: string, parent: string): void {
+   addRow(rowKey: string, rowData: any, rowPosition: string, parent?: string): void {
       this.host.jqxTreeGrid('addRow', rowKey, rowData, rowPosition, parent);
    }
 
@@ -684,11 +684,11 @@ export class jqxTreeGridComponent implements OnChanges
       this.host.jqxTreeGrid('ensureRowVisible', rowKey);
    }
 
-   endRowEdit(rowKey: string, cancelChanges: boolean): void {
+   endRowEdit(rowKey: string, cancelChanges?: boolean): void {
       this.host.jqxTreeGrid('endRowEdit', rowKey, cancelChanges);
    }
 
-   endCellEdit(rowKey: string, dataField: string, cancelChanges: boolean): void {
+   endCellEdit(rowKey: string, dataField: string, cancelChanges?: boolean): void {
       this.host.jqxTreeGrid('endCellEdit', rowKey, dataField, cancelChanges);
    }
 

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -125,31 +125,32 @@ let jqxSwitchButton = React.createClass ({
     }
   },
   check: function () {
-    $("#" +this.componentSelector).jqxSwitchButton("check");  
+    $("#" + this.componentSelector).jqxSwitchButton("check");  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxSwitchButton("disable");  
+    $("#" + this.componentSelector).jqxSwitchButton("disable");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxSwitchButton("enable");  
+    $("#" + this.componentSelector).jqxSwitchButton("enable");  
   },
   toggle: function () {
-    $("#" +this.componentSelector).jqxSwitchButton("toggle");  
+    $("#" + this.componentSelector).jqxSwitchButton("toggle");  
   },
   uncheck: function () {
-    $("#" +this.componentSelector).jqxSwitchButton("uncheck");  
+    $("#" + this.componentSelector).jqxSwitchButton("uncheck");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxSwitchButton("val", value)
+      $("#" + this.componentSelector).jqxSwitchButton("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxSwitchButton("val");
+      return $("#" + this.componentSelector).jqxSwitchButton("val");
     }
   },
 
   render: function () {
-    let id = 'jqxSwitchButton' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxSwitchButton' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

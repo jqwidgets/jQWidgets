@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -202,47 +202,67 @@ let jqxFormattedInput = React.createClass ({
     }
   },
   close: function () {
-    $("#" +this.componentSelector).jqxFormattedInput("close");  
+    $("#" + this.componentSelector).jqxFormattedInput("close");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxFormattedInput("destroy");  
+    $("#" + this.componentSelector).jqxFormattedInput("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxFormattedInput("focus");  
+    $("#" + this.componentSelector).jqxFormattedInput("focus");  
   },
   open: function () {
-    $("#" +this.componentSelector).jqxFormattedInput("open");  
+    $("#" + this.componentSelector).jqxFormattedInput("open");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxFormattedInput("render");
+    $("#" + this.componentSelector).jqxFormattedInput("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxFormattedInput("refresh");  
+    $("#" + this.componentSelector).jqxFormattedInput("refresh");  
   },
   selectAll: function () {
-    $("#" +this.componentSelector).jqxFormattedInput("selectAll");  
+    $("#" + this.componentSelector).jqxFormattedInput("selectAll");  
   },
   selectFirst: function () {
-    $("#" +this.componentSelector).jqxFormattedInput("selectFirst");  
+    $("#" + this.componentSelector).jqxFormattedInput("selectFirst");  
   },
   selectLast: function () {
-    $("#" +this.componentSelector).jqxFormattedInput("selectLast");  
+    $("#" + this.componentSelector).jqxFormattedInput("selectLast");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxFormattedInput("val", value)
+    if(typeof value === "string") {      return $("#" +this.componentSelector).jqxFormattedInput("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxFormattedInput("val");
+      $("#" + this.componentSelector).jqxFormattedInput("val", value)
+    }
+      $("#" + this.componentSelector).jqxFormattedInput("val", value)
+    } else {
+      return $("#" + this.componentSelector).jqxFormattedInput("val");
     }
   },
 
   render: function () {
-    let id = 'jqxFormattedInput' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
-      <div id={id}>
-          <input type='text'></input>
-          <div></div>
-          <div></div>
+    var id = 'jqxFormattedInput' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    let spinButtons = this.props.spinButtons;
+    if ((!spinButtons) && (spinButtons !== false)) spinButtons = true;
+    return (
+      <div>
+      {
+          this.props.rtl ?
+              (
+                  <div id={id}>
+                        {spinButtons ? <div></div> : null}
+                        {this.props.dropDown ? <div></div> : null}
+                        <input type='text'></input>
+                  </div>
+              ) : (
+                  <div id={id}>
+                        <input type='text'></input>
+                        {spinButtons ? <div></div> : null}
+                        {this.props.dropDown ? <div></div> : null}
+                  </div>
+              )
+      }
       </div>
     )
   }

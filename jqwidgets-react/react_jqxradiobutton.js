@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -153,37 +153,38 @@ let jqxRadioButton = React.createClass ({
     }
   },
   check: function () {
-    $("#" +this.componentSelector).jqxRadioButton("check");  
+    $("#" + this.componentSelector).jqxRadioButton("check");  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxRadioButton("disable");  
+    $("#" + this.componentSelector).jqxRadioButton("disable");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxRadioButton("destroy");  
+    $("#" + this.componentSelector).jqxRadioButton("destroy");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxRadioButton("enable");  
+    $("#" + this.componentSelector).jqxRadioButton("enable");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxRadioButton("focus");  
+    $("#" + this.componentSelector).jqxRadioButton("focus");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxRadioButton("render");
+    $("#" + this.componentSelector).jqxRadioButton("render");
   },
   uncheck: function () {
-    $("#" +this.componentSelector).jqxRadioButton("uncheck");  
+    $("#" + this.componentSelector).jqxRadioButton("uncheck");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxRadioButton("val", value)
+      $("#" + this.componentSelector).jqxRadioButton("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxRadioButton("val");
+      return $("#" + this.componentSelector).jqxRadioButton("val");
     }
   },
 
   render: function () {
-    let id = 'jqxRadioButton' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxRadioButton' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

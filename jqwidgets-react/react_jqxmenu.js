@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -230,38 +230,39 @@ let jqxMenu = React.createClass ({
     }
   },
   closeItem: function (itemID) {
-    $("#" +this.componentSelector).jqxMenu("closeItem", itemID);  
+    $("#" + this.componentSelector).jqxMenu("closeItem", itemID);  
   },
   close: function () {
-    $("#" +this.componentSelector).jqxMenu("close");  
+    $("#" + this.componentSelector).jqxMenu("close");  
   },
   disable: function (itemID, value) {
-    $("#" +this.componentSelector).jqxMenu("disable", itemID, value);  
+    $("#" + this.componentSelector).jqxMenu("disable", itemID, value);  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxMenu("destroy");  
+    $("#" + this.componentSelector).jqxMenu("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxMenu("focus");  
+    $("#" + this.componentSelector).jqxMenu("focus");  
   },
   minimize: function () {
-    $("#" +this.componentSelector).jqxMenu("minimize");  
+    $("#" + this.componentSelector).jqxMenu("minimize");  
   },
   open: function (left, top) {
-    $("#" +this.componentSelector).jqxMenu("open", left, top);  
+    $("#" + this.componentSelector).jqxMenu("open", left, top);  
   },
   openItem: function (itemID) {
-    $("#" +this.componentSelector).jqxMenu("openItem", itemID);  
+    $("#" + this.componentSelector).jqxMenu("openItem", itemID);  
   },
   restore: function () {
-    $("#" +this.componentSelector).jqxMenu("restore");  
+    $("#" + this.componentSelector).jqxMenu("restore");  
   },
   setItemOpenDirection: function (item, horizontaldirection, verticaldirection) {
-    $("#" +this.componentSelector).jqxMenu("setItemOpenDirection", item, horizontaldirection, verticaldirection);  
+    $("#" + this.componentSelector).jqxMenu("setItemOpenDirection", item, horizontaldirection, verticaldirection);  
   },
   render: function () {
-    let id = 'jqxMenu' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxMenu' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

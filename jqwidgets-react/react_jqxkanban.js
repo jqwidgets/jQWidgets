@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -174,29 +174,30 @@ let jqxKanban = React.createClass ({
     }
   },
   addItem: function (newItem) {
-    $("#" +this.componentSelector).jqxKanban("addItem", newItem);  
+    $("#" + this.componentSelector).jqxKanban("addItem", newItem);  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxKanban("destroy");  
+    $("#" + this.componentSelector).jqxKanban("destroy");  
   },
   getColumn: function (dataField) {
-    return $("#" +this.componentSelector).jqxKanban("getColumn", dataField);  
+    return $("#" + this.componentSelector).jqxKanban("getColumn", dataField);  
   },
   getColumnItems: function (dataField) {
-    return $("#" +this.componentSelector).jqxKanban("getColumnItems", dataField);  
+    return $("#" + this.componentSelector).jqxKanban("getColumnItems", dataField);  
   },
   getItems: function () {
-    return $("#" +this.componentSelector).jqxKanban("getItems");  
+    return $("#" + this.componentSelector).jqxKanban("getItems");  
   },
   removeItem: function (itemId) {
-    $("#" +this.componentSelector).jqxKanban("removeItem", itemId);  
+    $("#" + this.componentSelector).jqxKanban("removeItem", itemId);  
   },
   updateItem: function (itemId, newContent) {
-    $("#" +this.componentSelector).jqxKanban("updateItem", itemId, newContent);  
+    $("#" + this.componentSelector).jqxKanban("updateItem", itemId, newContent);  
   },
   render: function () {
-    let id = 'jqxKanban' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxKanban' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,7 @@ let jqxGrid = React.createClass ({
     this.createComponent(options);
   },
   manageAttributes: function () {
-      let properties = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+      let properties = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','localization','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
       let options = {};
     for(let item in this.props) {
         if(item === 'settings') {
@@ -488,6 +488,13 @@ let jqxGrid = React.createClass ({
       return $("#" +this.componentSelector).jqxGrid("pagerheight");
     }
   },
+  localization: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxGrid("localization", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxGrid("localization");
+    }
+  },
   rowsheight: function (arg) {
     if (arg !== undefined) {
       $("#" +this.componentSelector).jqxGrid("rowsheight", arg)
@@ -656,6 +663,13 @@ let jqxGrid = React.createClass ({
       return $("#" +this.componentSelector).jqxGrid("keyboardnavigation");
     }
   },
+  localization: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxGrid("localization", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxGrid("localization");
+    }
+  },
   pagesize: function (arg) {
     if (arg !== undefined) {
       $("#" +this.componentSelector).jqxGrid("pagesize", arg)
@@ -804,314 +818,318 @@ let jqxGrid = React.createClass ({
     }
   },
   autoresizecolumns: function (type) {
-    $("#" +this.componentSelector).jqxGrid("autoresizecolumns", type);  
+    $("#" + this.componentSelector).jqxGrid("autoresizecolumns", type);  
   },
   autoresizecolumn: function (dataField, type) {
-    $("#" +this.componentSelector).jqxGrid("autoresizecolumn", dataField, type);  
+    $("#" + this.componentSelector).jqxGrid("autoresizecolumn", dataField, type);  
   },
   beginupdate: function () {
-    $("#" +this.componentSelector).jqxGrid("beginupdate");  
+    $("#" + this.componentSelector).jqxGrid("beginupdate");  
   },
   clear: function () {
-    $("#" +this.componentSelector).jqxGrid("clear");  
+    $("#" + this.componentSelector).jqxGrid("clear");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxGrid("destroy");  
+    $("#" + this.componentSelector).jqxGrid("destroy");  
   },
   endupdate: function () {
-    $("#" +this.componentSelector).jqxGrid("endupdate");  
+    $("#" + this.componentSelector).jqxGrid("endupdate");  
   },
   ensurerowvisible: function (rowBoundIndex) {
-    $("#" +this.componentSelector).jqxGrid("ensurerowvisible", rowBoundIndex);  
+    $("#" + this.componentSelector).jqxGrid("ensurerowvisible", rowBoundIndex);  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxGrid("focus");  
+    $("#" + this.componentSelector).jqxGrid("focus");  
   },
   getcolumnindex: function (dataField) {
-    return $("#" +this.componentSelector).jqxGrid("getcolumnindex", dataField);  
+    return $("#" + this.componentSelector).jqxGrid("getcolumnindex", dataField);  
   },
   getcolumn: function (dataField) {
-    return $("#" +this.componentSelector).jqxGrid("getcolumn", dataField);  
+    return $("#" + this.componentSelector).jqxGrid("getcolumn", dataField);  
   },
   getcolumnproperty: function (dataField, propertyName) {
-    return $("#" +this.componentSelector).jqxGrid("getcolumnproperty", dataField, propertyName);  
+    return $("#" + this.componentSelector).jqxGrid("getcolumnproperty", dataField, propertyName);  
   },
   getrowid: function (rowBoundIndex) {
-    return $("#" +this.componentSelector).jqxGrid("getrowid", rowBoundIndex);  
+    return $("#" + this.componentSelector).jqxGrid("getrowid", rowBoundIndex);  
   },
   getrowdata: function (rowBoundIndex) {
-    return $("#" +this.componentSelector).jqxGrid("getrowdata", rowBoundIndex);  
+    return $("#" + this.componentSelector).jqxGrid("getrowdata", rowBoundIndex);  
   },
   getrowdatabyid: function (rowID) {
-    return $("#" +this.componentSelector).jqxGrid("getrowdatabyid", rowID);  
+    return $("#" + this.componentSelector).jqxGrid("getrowdatabyid", rowID);  
   },
   getrowboundindexbyid: function (rowID) {
-    return $("#" +this.componentSelector).jqxGrid("getrowboundindexbyid", rowID);  
+    return $("#" + this.componentSelector).jqxGrid("getrowboundindexbyid", rowID);  
   },
   getrowboundindex: function (rowDisplayIndex) {
-    return $("#" +this.componentSelector).jqxGrid("getrowboundindex", rowDisplayIndex);  
+    return $("#" + this.componentSelector).jqxGrid("getrowboundindex", rowDisplayIndex);  
   },
   getrows: function () {
-    return $("#" +this.componentSelector).jqxGrid("getrows");  
+    return $("#" + this.componentSelector).jqxGrid("getrows");  
   },
   getboundrows: function () {
-    return $("#" +this.componentSelector).jqxGrid("getboundrows");  
+    return $("#" + this.componentSelector).jqxGrid("getboundrows");  
   },
   getdisplayrows: function () {
-    return $("#" +this.componentSelector).jqxGrid("getdisplayrows");  
+    return $("#" + this.componentSelector).jqxGrid("getdisplayrows");  
   },
   getdatainformation: function () {
-    return $("#" +this.componentSelector).jqxGrid("getdatainformation");  
+    return $("#" + this.componentSelector).jqxGrid("getdatainformation");  
   },
   getsortinformation: function () {
-    return $("#" +this.componentSelector).jqxGrid("getsortinformation");  
+    return $("#" + this.componentSelector).jqxGrid("getsortinformation");  
   },
   getpaginginformation: function () {
-    return $("#" +this.componentSelector).jqxGrid("getpaginginformation");  
+    return $("#" + this.componentSelector).jqxGrid("getpaginginformation");  
   },
   hidecolumn: function (dataField) {
-    $("#" +this.componentSelector).jqxGrid("hidecolumn", dataField);  
+    $("#" + this.componentSelector).jqxGrid("hidecolumn", dataField);  
   },
   hideloadelement: function () {
-    $("#" +this.componentSelector).jqxGrid("hideloadelement");  
+    $("#" + this.componentSelector).jqxGrid("hideloadelement");  
   },
   hiderowdetails: function (rowBoundIndex) {
-    $("#" +this.componentSelector).jqxGrid("hiderowdetails", rowBoundIndex);  
+    $("#" + this.componentSelector).jqxGrid("hiderowdetails", rowBoundIndex);  
   },
   iscolumnvisible: function (dataField) {
-    return $("#" +this.componentSelector).jqxGrid("iscolumnvisible", dataField);  
+    return $("#" + this.componentSelector).jqxGrid("iscolumnvisible", dataField);  
   },
   iscolumnpinned: function (dataField) {
-    return $("#" +this.componentSelector).jqxGrid("iscolumnpinned", dataField);  
+    return $("#" + this.componentSelector).jqxGrid("iscolumnpinned", dataField);  
   },
   localizestrings: function (localizationObject) {
-    $("#" +this.componentSelector).jqxGrid("localizestrings", localizationObject);  
+    $("#" + this.componentSelector).jqxGrid("localizestrings", localizationObject);  
   },
   pincolumn: function (dataField) {
-    $("#" +this.componentSelector).jqxGrid("pincolumn", dataField);  
+    $("#" + this.componentSelector).jqxGrid("pincolumn", dataField);  
   },
   refreshdata: function () {
-    $("#" +this.componentSelector).jqxGrid("refreshdata");  
+    $("#" + this.componentSelector).jqxGrid("refreshdata");  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxGrid("refresh");  
+    $("#" + this.componentSelector).jqxGrid("refresh");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxGrid("render");
+    $("#" + this.componentSelector).jqxGrid("render");
   },
   scrolloffset: function (top, left) {
-    $("#" +this.componentSelector).jqxGrid("scrolloffset", top, left);  
+    $("#" + this.componentSelector).jqxGrid("scrolloffset", top, left);  
   },
   scrollposition: function () {
-    return $("#" +this.componentSelector).jqxGrid("scrollposition");  
+    return $("#" + this.componentSelector).jqxGrid("scrollposition");  
   },
   showloadelement: function () {
-    $("#" +this.componentSelector).jqxGrid("showloadelement");  
+    $("#" + this.componentSelector).jqxGrid("showloadelement");  
   },
   showrowdetails: function (rowBoundIndex) {
-    $("#" +this.componentSelector).jqxGrid("showrowdetails", rowBoundIndex);  
+    $("#" + this.componentSelector).jqxGrid("showrowdetails", rowBoundIndex);  
   },
   setcolumnindex: function (dataField, index) {
-    $("#" +this.componentSelector).jqxGrid("setcolumnindex", dataField, index);  
+    $("#" + this.componentSelector).jqxGrid("setcolumnindex", dataField, index);  
   },
   setcolumnproperty: function (dataField, propertyName, propertyValue) {
-    $("#" +this.componentSelector).jqxGrid("setcolumnproperty", dataField, propertyName, propertyValue);  
+    $("#" + this.componentSelector).jqxGrid("setcolumnproperty", dataField, propertyName, propertyValue);  
   },
   showcolumn: function (dataField) {
-    $("#" +this.componentSelector).jqxGrid("showcolumn", dataField);  
+    $("#" + this.componentSelector).jqxGrid("showcolumn", dataField);  
   },
   unpincolumn: function (dataField) {
-    $("#" +this.componentSelector).jqxGrid("unpincolumn", dataField);  
+    $("#" + this.componentSelector).jqxGrid("unpincolumn", dataField);  
   },
   updatebounddata: function (type) {
-    $("#" +this.componentSelector).jqxGrid("updatebounddata", type);  
+    $("#" + this.componentSelector).jqxGrid("updatebounddata", type);  
   },
   updating: function () {
-    return $("#" +this.componentSelector).jqxGrid("updating");  
+    return $("#" + this.componentSelector).jqxGrid("updating");  
   },
   getsortcolumn: function () {
-    return $("#" +this.componentSelector).jqxGrid("getsortcolumn");  
+    return $("#" + this.componentSelector).jqxGrid("getsortcolumn");  
   },
   removesort: function () {
-    $("#" +this.componentSelector).jqxGrid("removesort");  
+    $("#" + this.componentSelector).jqxGrid("removesort");  
   },
   sortby: function (dataField, sortOrder) {
-    $("#" +this.componentSelector).jqxGrid("sortby", dataField, sortOrder);  
+    $("#" + this.componentSelector).jqxGrid("sortby", dataField, sortOrder);  
   },
   addgroup: function (dataField) {
-    $("#" +this.componentSelector).jqxGrid("addgroup", dataField);  
+    $("#" + this.componentSelector).jqxGrid("addgroup", dataField);  
   },
   cleargroups: function () {
-    $("#" +this.componentSelector).jqxGrid("cleargroups");  
+    $("#" + this.componentSelector).jqxGrid("cleargroups");  
   },
   collapsegroup: function (group) {
-    $("#" +this.componentSelector).jqxGrid("collapsegroup", group);  
+    $("#" + this.componentSelector).jqxGrid("collapsegroup", group);  
   },
   collapseallgroups: function () {
-    $("#" +this.componentSelector).jqxGrid("collapseallgroups");  
+    $("#" + this.componentSelector).jqxGrid("collapseallgroups");  
   },
   expandallgroups: function () {
-    $("#" +this.componentSelector).jqxGrid("expandallgroups");  
+    $("#" + this.componentSelector).jqxGrid("expandallgroups");  
   },
   expandgroup: function (group) {
-    $("#" +this.componentSelector).jqxGrid("expandgroup", group);  
+    $("#" + this.componentSelector).jqxGrid("expandgroup", group);  
   },
   getrootgroupscount: function () {
-    return $("#" +this.componentSelector).jqxGrid("getrootgroupscount");  
+    return $("#" + this.componentSelector).jqxGrid("getrootgroupscount");  
   },
   getgroup: function (groupIndex) {
-    return $("#" +this.componentSelector).jqxGrid("getgroup", groupIndex);  
+    return $("#" + this.componentSelector).jqxGrid("getgroup", groupIndex);  
   },
   insertgroup: function (groupIndex, dataField) {
-    $("#" +this.componentSelector).jqxGrid("insertgroup", groupIndex, dataField);  
+    $("#" + this.componentSelector).jqxGrid("insertgroup", groupIndex, dataField);  
   },
   iscolumngroupable: function () {
-    return $("#" +this.componentSelector).jqxGrid("iscolumngroupable");  
+    return $("#" + this.componentSelector).jqxGrid("iscolumngroupable");  
   },
   removegroupat: function (groupIndex) {
-    $("#" +this.componentSelector).jqxGrid("removegroupat", groupIndex);  
+    $("#" + this.componentSelector).jqxGrid("removegroupat", groupIndex);  
   },
   removegroup: function (dataField) {
-    $("#" +this.componentSelector).jqxGrid("removegroup", dataField);  
+    $("#" + this.componentSelector).jqxGrid("removegroup", dataField);  
   },
   addfilter: function (dataField, filterGroup, refreshGrid) {
-    $("#" +this.componentSelector).jqxGrid("addfilter", dataField, filterGroup, refreshGrid);  
+    $("#" + this.componentSelector).jqxGrid("addfilter", dataField, filterGroup, refreshGrid);  
   },
   applyfilters: function () {
-    $("#" +this.componentSelector).jqxGrid("applyfilters");  
+    $("#" + this.componentSelector).jqxGrid("applyfilters");  
   },
   clearfilters: function () {
-    $("#" +this.componentSelector).jqxGrid("clearfilters");  
+    $("#" + this.componentSelector).jqxGrid("clearfilters");  
   },
   getfilterinformation: function () {
-    return $("#" +this.componentSelector).jqxGrid("getfilterinformation");  
+    return $("#" + this.componentSelector).jqxGrid("getfilterinformation");  
+  },
+  getcolumnat: function (index) {
+    return $("#" + this.componentSelector).jqxGrid("getcolumnat", index);  
   },
   removefilter: function (dataField, refreshGrid) {
-    $("#" +this.componentSelector).jqxGrid("removefilter", dataField, refreshGrid);  
+    $("#" + this.componentSelector).jqxGrid("removefilter", dataField, refreshGrid);  
   },
   refreshfilterrow: function () {
-    $("#" +this.componentSelector).jqxGrid("refreshfilterrow");  
+    $("#" + this.componentSelector).jqxGrid("refreshfilterrow");  
   },
   gotopage: function (pageNumber) {
-    $("#" +this.componentSelector).jqxGrid("gotopage", pageNumber);  
+    $("#" + this.componentSelector).jqxGrid("gotopage", pageNumber);  
   },
   gotoprevpage: function () {
-    $("#" +this.componentSelector).jqxGrid("gotoprevpage");  
+    $("#" + this.componentSelector).jqxGrid("gotoprevpage");  
   },
   gotonextpage: function () {
-    $("#" +this.componentSelector).jqxGrid("gotonextpage");  
+    $("#" + this.componentSelector).jqxGrid("gotonextpage");  
   },
   addrow: function (rowIds, data, rowPosition) {
-    $("#" +this.componentSelector).jqxGrid("addrow", rowIds, data, rowPosition);  
+    $("#" + this.componentSelector).jqxGrid("addrow", rowIds, data, rowPosition);  
   },
   begincelledit: function (rowBoundIndex, dataField) {
-    $("#" +this.componentSelector).jqxGrid("begincelledit", rowBoundIndex, dataField);  
+    $("#" + this.componentSelector).jqxGrid("begincelledit", rowBoundIndex, dataField);  
   },
   beginrowedit: function (rowBoundIndex) {
-    $("#" +this.componentSelector).jqxGrid("beginrowedit", rowBoundIndex);  
+    $("#" + this.componentSelector).jqxGrid("beginrowedit", rowBoundIndex);  
   },
   closemenu: function () {
-    $("#" +this.componentSelector).jqxGrid("closemenu");  
+    $("#" + this.componentSelector).jqxGrid("closemenu");  
   },
   deleterow: function (rowIds) {
-    $("#" +this.componentSelector).jqxGrid("deleterow", rowIds);  
+    $("#" + this.componentSelector).jqxGrid("deleterow", rowIds);  
   },
   endcelledit: function (rowBoundIndex, dataField, confirmChanges) {
-    $("#" +this.componentSelector).jqxGrid("endcelledit", rowBoundIndex, dataField, confirmChanges);  
+    $("#" + this.componentSelector).jqxGrid("endcelledit", rowBoundIndex, dataField, confirmChanges);  
   },
   endrowedit: function (rowBoundIndex, confirmChanges) {
-    $("#" +this.componentSelector).jqxGrid("endrowedit", rowBoundIndex, confirmChanges);  
+    $("#" + this.componentSelector).jqxGrid("endrowedit", rowBoundIndex, confirmChanges);  
   },
   getcell: function (rowBoundIndex, datafield) {
-    return $("#" +this.componentSelector).jqxGrid("getcell", rowBoundIndex, datafield);  
+    return $("#" + this.componentSelector).jqxGrid("getcell", rowBoundIndex, datafield);  
   },
   getcellatposition: function (left, top) {
-    return $("#" +this.componentSelector).jqxGrid("getcellatposition", left, top);  
+    return $("#" + this.componentSelector).jqxGrid("getcellatposition", left, top);  
   },
   getcelltext: function (rowBoundIndex, dataField) {
-    return $("#" +this.componentSelector).jqxGrid("getcelltext", rowBoundIndex, dataField);  
+    return $("#" + this.componentSelector).jqxGrid("getcelltext", rowBoundIndex, dataField);  
   },
   getcelltextbyid: function (rowID, dataField) {
-    return $("#" +this.componentSelector).jqxGrid("getcelltextbyid", rowID, dataField);  
+    return $("#" + this.componentSelector).jqxGrid("getcelltextbyid", rowID, dataField);  
   },
   getcellvaluebyid: function (rowID, dataField) {
-    return $("#" +this.componentSelector).jqxGrid("getcellvaluebyid", rowID, dataField);  
+    return $("#" + this.componentSelector).jqxGrid("getcellvaluebyid", rowID, dataField);  
   },
   getcellvalue: function (rowBoundIndex, dataField) {
-    return $("#" +this.componentSelector).jqxGrid("getcellvalue", rowBoundIndex, dataField);  
+    return $("#" + this.componentSelector).jqxGrid("getcellvalue", rowBoundIndex, dataField);  
   },
   isBindingCompleted: function () {
-    return $("#" +this.componentSelector).jqxGrid("isBindingCompleted");  
+    return $("#" + this.componentSelector).jqxGrid("isBindingCompleted");  
   },
   openmenu: function (dataField) {
-    $("#" +this.componentSelector).jqxGrid("openmenu", dataField);  
+    $("#" + this.componentSelector).jqxGrid("openmenu", dataField);  
   },
   setcellvalue: function (rowBoundIndex, dataField, value) {
-    $("#" +this.componentSelector).jqxGrid("setcellvalue", rowBoundIndex, dataField, value);  
+    $("#" + this.componentSelector).jqxGrid("setcellvalue", rowBoundIndex, dataField, value);  
   },
   setcellvaluebyid: function (rowID, dataField, value) {
-    $("#" +this.componentSelector).jqxGrid("setcellvaluebyid", rowID, dataField, value);  
+    $("#" + this.componentSelector).jqxGrid("setcellvaluebyid", rowID, dataField, value);  
   },
   showvalidationpopup: function (rowBoundIndex, dataField, validationMessage) {
-    $("#" +this.componentSelector).jqxGrid("showvalidationpopup", rowBoundIndex, dataField, validationMessage);  
+    $("#" + this.componentSelector).jqxGrid("showvalidationpopup", rowBoundIndex, dataField, validationMessage);  
   },
   updaterow: function (rowIds, data) {
-    $("#" +this.componentSelector).jqxGrid("updaterow", rowIds, data);  
+    $("#" + this.componentSelector).jqxGrid("updaterow", rowIds, data);  
   },
   clearselection: function () {
-    $("#" +this.componentSelector).jqxGrid("clearselection");  
+    $("#" + this.componentSelector).jqxGrid("clearselection");  
   },
   getselectedrowindex: function () {
-    return $("#" +this.componentSelector).jqxGrid("getselectedrowindex");  
+    return $("#" + this.componentSelector).jqxGrid("getselectedrowindex");  
   },
   getselectedrowindexes: function () {
-    return $("#" +this.componentSelector).jqxGrid("getselectedrowindexes");  
+    return $("#" + this.componentSelector).jqxGrid("getselectedrowindexes");  
   },
   getselectedcell: function () {
-    return $("#" +this.componentSelector).jqxGrid("getselectedcell");  
+    return $("#" + this.componentSelector).jqxGrid("getselectedcell");  
   },
   getselectedcells: function () {
-    return $("#" +this.componentSelector).jqxGrid("getselectedcells");  
+    return $("#" + this.componentSelector).jqxGrid("getselectedcells");  
   },
   selectcell: function (rowBoundIndex, dataField) {
-    $("#" +this.componentSelector).jqxGrid("selectcell", rowBoundIndex, dataField);  
+    $("#" + this.componentSelector).jqxGrid("selectcell", rowBoundIndex, dataField);  
   },
   selectallrows: function () {
-    $("#" +this.componentSelector).jqxGrid("selectallrows");  
+    $("#" + this.componentSelector).jqxGrid("selectallrows");  
   },
   selectrow: function (rowBoundIndex) {
-    $("#" +this.componentSelector).jqxGrid("selectrow", rowBoundIndex);  
+    $("#" + this.componentSelector).jqxGrid("selectrow", rowBoundIndex);  
   },
   unselectrow: function (rowBoundIndex) {
-    $("#" +this.componentSelector).jqxGrid("unselectrow", rowBoundIndex);  
+    $("#" + this.componentSelector).jqxGrid("unselectrow", rowBoundIndex);  
   },
   unselectcell: function (rowBoundIndex, dataField) {
-    $("#" +this.componentSelector).jqxGrid("unselectcell", rowBoundIndex, dataField);  
+    $("#" + this.componentSelector).jqxGrid("unselectcell", rowBoundIndex, dataField);  
   },
   getcolumnaggregateddata: function (dataField, aggregates) {
-    return $("#" +this.componentSelector).jqxGrid("getcolumnaggregateddata", dataField, aggregates);  
+    return $("#" + this.componentSelector).jqxGrid("getcolumnaggregateddata", dataField, aggregates);  
   },
   refreshaggregates: function () {
-    $("#" +this.componentSelector).jqxGrid("refreshaggregates");  
+    $("#" + this.componentSelector).jqxGrid("refreshaggregates");  
   },
   renderaggregates: function () {
-    $("#" +this.componentSelector).jqxGrid("renderaggregates");  
+    $("#" + this.componentSelector).jqxGrid("renderaggregates");  
   },
   exportdata: function (dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet) {
-    return $("#" +this.componentSelector).jqxGrid("exportdata", dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet);  
+    $("#" + this.componentSelector).jqxGrid("exportdata", dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet);  
   },
   getstate: function () {
-    return $("#" +this.componentSelector).jqxGrid("getstate");  
+    return $("#" + this.componentSelector).jqxGrid("getstate");  
   },
   loadstate: function (stateObject) {
-    $("#" +this.componentSelector).jqxGrid("loadstate", stateObject);  
+    $("#" + this.componentSelector).jqxGrid("loadstate", stateObject);  
   },
   savestate: function () {
-    return $("#" +this.componentSelector).jqxGrid("savestate");  
+    return $("#" + this.componentSelector).jqxGrid("savestate");  
   },
   render: function () {
-    let id = 'jqxGrid' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxGrid' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

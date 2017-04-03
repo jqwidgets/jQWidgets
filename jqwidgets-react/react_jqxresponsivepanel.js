@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -160,29 +160,30 @@ let jqxResponsivePanel = React.createClass ({
     }
   },
   close: function () {
-    $("#" +this.componentSelector).jqxResponsivePanel("close");  
+    $("#" + this.componentSelector).jqxResponsivePanel("close");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxResponsivePanel("destroy");  
+    $("#" + this.componentSelector).jqxResponsivePanel("destroy");  
   },
   isCollapsed: function () {
-    return $("#" +this.componentSelector).jqxResponsivePanel("isCollapsed");  
+    return $("#" + this.componentSelector).jqxResponsivePanel("isCollapsed");  
   },
   isOpened: function () {
-    return $("#" +this.componentSelector).jqxResponsivePanel("isOpened");  
+    return $("#" + this.componentSelector).jqxResponsivePanel("isOpened");  
   },
   open: function () {
-    $("#" +this.componentSelector).jqxResponsivePanel("open");  
+    $("#" + this.componentSelector).jqxResponsivePanel("open");  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxResponsivePanel("refresh");  
+    $("#" + this.componentSelector).jqxResponsivePanel("refresh");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxResponsivePanel("render");
+    $("#" + this.componentSelector).jqxResponsivePanel("render");
   },
   render: function () {
-    let id = 'jqxResponsivePanel' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxResponsivePanel' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

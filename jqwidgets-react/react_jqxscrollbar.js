@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -160,17 +160,18 @@ let jqxScrollBar = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxScrollBar("destroy");  
+    $("#" + this.componentSelector).jqxScrollBar("destroy");  
   },
   isScrolling: function () {
-    return $("#" +this.componentSelector).jqxScrollBar("isScrolling");  
+    return $("#" + this.componentSelector).jqxScrollBar("isScrolling");  
   },
   setPosition: function (index) {
-    $("#" +this.componentSelector).jqxScrollBar("setPosition", index);  
+    $("#" + this.componentSelector).jqxScrollBar("setPosition", index);  
   },
   render: function () {
-    let id = 'jqxScrollBar' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxScrollBar' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

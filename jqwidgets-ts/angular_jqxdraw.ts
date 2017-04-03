@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -103,7 +103,7 @@ export class jqxDrawComponent implements OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    setOptions(options: any) : void {
@@ -121,11 +121,11 @@ export class jqxDrawComponent implements OnChanges
 
 
    // jqxDrawComponent functions
-   attr(element: any, attributes: any): void {
+   attr(element?: any, attributes?: any): void {
       this.host.jqxDraw('attr', element, attributes);
    }
 
-   circle(cx: number, cy: number, r: number, attributes: any): any {
+   circle(cx?: number, cy?: number, r?: number, attributes?: any): any {
       return this.host.jqxDraw('circle', cx, cy, r, attributes);
    }
 
@@ -133,7 +133,7 @@ export class jqxDrawComponent implements OnChanges
       this.host.jqxDraw('clear');
    }
 
-   getAttr(element: any, attributes: any): string {
+   getAttr(element?: any, attributes?: any): string {
       return this.host.jqxDraw('getAttr', element, attributes);
    }
 
@@ -141,27 +141,27 @@ export class jqxDrawComponent implements OnChanges
       return this.host.jqxDraw('getSize');
    }
 
-   line(x1: number, y1: number, x2: number, y2: number, attributes: any): any {
+   line(x1?: number, y1?: number, x2?: number, y2?: number, attributes?: any): any {
       return this.host.jqxDraw('line', x1, y1, x2, y2, attributes);
    }
 
-   measureText(text: string, angle: number, attributes: any): any {
+   measureText(text?: string, angle?: number, attributes?: any): any {
       return this.host.jqxDraw('measureText', text, angle, attributes);
    }
 
-   on(element: any, event: string, func: any): void {
+   on(element?: any, event?: string, func?: any): void {
       this.host.jqxDraw('on', element, event, func);
    }
 
-   off(element: any, event: string, func: any): void {
+   off(element?: any, event?: string, func?: any): void {
       this.host.jqxDraw('off', element, event, func);
    }
 
-   path(path: string, attributes: any): any {
+   path(path?: string, attributes?: any): any {
       return this.host.jqxDraw('path', path, attributes);
    }
 
-   pieslice(cx: number, xy: number, innerRadius: any, outerRadius: any, fromAngle: number, endAngle: number, centerOffset: number, attributes: any): any {
+   pieslice(cx?: number, xy?: number, innerRadius?: any, outerRadius?: any, fromAngle?: number, endAngle?: number, centerOffset?: number, attributes?: any): any {
       return this.host.jqxDraw('pieslice', cx, xy, innerRadius, outerRadius, fromAngle, endAngle, centerOffset, attributes);
    }
 
@@ -169,20 +169,20 @@ export class jqxDrawComponent implements OnChanges
       this.host.jqxDraw('refresh');
    }
 
-   rect(x: number, y: number, width: jqwidgets.Size, height: jqwidgets.Size, attributes: any): any {
+   rect(x?: number, y?: number, width?: jqwidgets.Size, height?: jqwidgets.Size, attributes?: any): any {
       return this.host.jqxDraw('rect', x, y, width, height, attributes);
    }
 
-   saveAsJPEG(image: string, url: string): void {
+   saveAsJPEG(image?: string, url?: string): void {
       this.host.jqxDraw('saveAsJPEG', image, url);
    }
 
-   saveAsPNG(image: string, url: string): void {
+   saveAsPNG(image?: string, url?: string): void {
       this.host.jqxDraw('saveAsPNG', image, url);
    }
 
-   text(x: number, y: number, width: jqwidgets.Size, height: jqwidgets.Size, angle: number, attributes: Array<any>, clip: boolean, halign: string, valign: string, rotateAround: string): any {
-      return this.host.jqxDraw('text', x, y, width, height, angle, attributes, clip, halign, valign, rotateAround);
+   text(text?: string, x?: number, y?: number, width?: jqwidgets.Size, height?: jqwidgets.Size, angle?: number, attributes?: any, clip?: boolean, halign?: string, valign?: string, rotateAround?: string): any {
+      return this.host.jqxDraw('text', text, x, y, width, height, angle, attributes, clip, halign, valign, rotateAround);
    }
 
 

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -244,32 +244,33 @@ let jqxSortable = React.createClass ({
     }
   },
   cancelMethod: function () {
-    $("#" +this.componentSelector).jqxSortable("cancelMethod");  
+    $("#" + this.componentSelector).jqxSortable("cancelMethod");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxSortable("destroy");  
+    $("#" + this.componentSelector).jqxSortable("destroy");  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxSortable("disable");  
+    $("#" + this.componentSelector).jqxSortable("disable");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxSortable("enable");  
+    $("#" + this.componentSelector).jqxSortable("enable");  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxSortable("refresh");  
+    $("#" + this.componentSelector).jqxSortable("refresh");  
   },
   refreshPositions: function () {
-    $("#" +this.componentSelector).jqxSortable("refreshPositions");  
+    $("#" + this.componentSelector).jqxSortable("refreshPositions");  
   },
   serialize: function () {
-    $("#" +this.componentSelector).jqxSortable("serialize");  
+    $("#" + this.componentSelector).jqxSortable("serialize");  
   },
   toArray: function () {
-    return $("#" +this.componentSelector).jqxSortable("toArray");  
+    return $("#" + this.componentSelector).jqxSortable("toArray");  
   },
   render: function () {
-    let id = 'jqxSortable' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxSortable' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

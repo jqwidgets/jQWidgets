@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -147,7 +147,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    writeValue(value: any): void {
@@ -471,7 +471,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       this.host.jqxCalendar('focus');
    }
 
-   addSpecialDate(date: any, tooltip: any, text: any): void {
+   addSpecialDate(date?: any, tooltip?: any, text?: any): void {
       this.host.jqxCalendar('addSpecialDate', date, tooltip, text);
    }
 
@@ -527,9 +527,9 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       this.host.jqxCalendar('today');
    }
 
-   val(arg?: String | Number): any {
-      if (arg !== undefined) {
-         this.host.jqxCalendar("val", arg);
+   val(date, date2): any {
+      if (value !== undefined) {
+         this.host.jqxCalendar("val", date, date2);
       } else {
          return this.host.jqxCalendar("val");
       }

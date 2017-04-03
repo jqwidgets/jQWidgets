@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -12,6 +12,7 @@ let jqxInput = React.createClass ({
   componentDidMount: function () {
       let options = this.manageAttributes();
     this.createComponent(options);
+    this.val(this.props.value);
   },
   manageAttributes: function () {
       let properties = ['disabled','dropDownWidth','displayMember','height','items','minLength','maxLength','opened','placeHolder','popupZIndex','query','renderer','rtl','searchMode','source','theme','valueMember','width'];
@@ -195,25 +196,26 @@ let jqxInput = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxInput("destroy");  
+    $("#" + this.componentSelector).jqxInput("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxInput("focus");  
+    $("#" + this.componentSelector).jqxInput("focus");  
   },
   selectAll: function () {
-    $("#" +this.componentSelector).jqxInput("selectAll");  
+    $("#" + this.componentSelector).jqxInput("selectAll");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxInput("val", value)
+      $("#" + this.componentSelector).jqxInput("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxInput("val");
+      return $("#" + this.componentSelector).jqxInput("val");
     }
   },
 
   render: function () {
-    let id = 'jqxInput' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxInput' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <input type='text' id={id}></input>
     )
   }

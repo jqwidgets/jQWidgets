@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -181,55 +181,56 @@ let jqxRibbon = React.createClass ({
     }
   },
   addAt: function (index, item) {
-    $("#" +this.componentSelector).jqxRibbon("addAt", index, item);  
+    $("#" + this.componentSelector).jqxRibbon("addAt", index, item);  
   },
   clearSelection: function () {
-    $("#" +this.componentSelector).jqxRibbon("clearSelection");  
+    $("#" + this.componentSelector).jqxRibbon("clearSelection");  
   },
   disableAt: function (index) {
-    $("#" +this.componentSelector).jqxRibbon("disableAt", index);  
+    $("#" + this.componentSelector).jqxRibbon("disableAt", index);  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxRibbon("destroy");  
+    $("#" + this.componentSelector).jqxRibbon("destroy");  
   },
   enableAt: function (index) {
-    $("#" +this.componentSelector).jqxRibbon("enableAt", index);  
+    $("#" + this.componentSelector).jqxRibbon("enableAt", index);  
   },
   hideAt: function (index) {
-    $("#" +this.componentSelector).jqxRibbon("hideAt", index);  
+    $("#" + this.componentSelector).jqxRibbon("hideAt", index);  
   },
   removeAt: function (index) {
-    $("#" +this.componentSelector).jqxRibbon("removeAt", index);  
+    $("#" + this.componentSelector).jqxRibbon("removeAt", index);  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxRibbon("render");
+    $("#" + this.componentSelector).jqxRibbon("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxRibbon("refresh");  
+    $("#" + this.componentSelector).jqxRibbon("refresh");  
   },
   selectAt: function (index) {
-    $("#" +this.componentSelector).jqxRibbon("selectAt", index);  
+    $("#" + this.componentSelector).jqxRibbon("selectAt", index);  
   },
   showAt: function (index) {
-    $("#" +this.componentSelector).jqxRibbon("showAt", index);  
+    $("#" + this.componentSelector).jqxRibbon("showAt", index);  
   },
   setPopupLayout: function (index, layout, width, height) {
-    $("#" +this.componentSelector).jqxRibbon("setPopupLayout", index, layout, width, height);  
+    $("#" + this.componentSelector).jqxRibbon("setPopupLayout", index, layout, width, height);  
   },
   updateAt: function (index, item) {
-    $("#" +this.componentSelector).jqxRibbon("updateAt", index, item);  
+    $("#" + this.componentSelector).jqxRibbon("updateAt", index, item);  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxRibbon("val", value)
+      $("#" + this.componentSelector).jqxRibbon("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxRibbon("val");
+      return $("#" + this.componentSelector).jqxRibbon("val");
     }
   },
 
   render: function () {
-    let id = 'jqxRibbon' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxRibbon' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

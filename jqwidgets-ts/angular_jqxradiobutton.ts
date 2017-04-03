@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -40,7 +40,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
    @Input('auto-create') autoCreate: boolean = true;
 
    properties: string[] = ['animationShowDelay','animationHideDelay','boxSize','checked','disabled','enableContainerClick','groupName','hasThreeStates','height','rtl','theme','width'];
-   valueAttr;
+   valueAttr: any;
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxRadioButton;
@@ -126,7 +126,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    writeValue(value: any): void {
@@ -273,9 +273,9 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       this.host.jqxRadioButton('uncheck');
    }
 
-   val(arg?: String | Number): any {
-      if (arg !== undefined) {
-         this.host.jqxRadioButton("val", arg);
+   val(value): any {
+      if (value !== undefined) {
+         this.host.jqxRadioButton("val", value);
       } else {
          return this.host.jqxRadioButton("val");
       }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -49,12 +49,13 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
    @Input('textAlign') attrTextAlign: any;
    @Input('template') attrTemplate: any;
    @Input('theme') attrTheme: any;
+   @Input('value') attrValue: any;
    @Input('width') attrWidth: any;
    @Input('height') attrHeight: any;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['allowNull','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','width'];
+   properties: string[] = ['allowNull','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxNumberInput;
@@ -139,7 +140,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    writeValue(value: any): void {
@@ -369,6 +370,14 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   value(arg?: String | Number) : any {
+      if (arg !== undefined) {
+          this.host.jqxNumberInput('value', arg);
+      } else {
+          return this.host.jqxNumberInput('value');
+      }
+   }
+
    width(arg?: String | Number) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('width', arg);
@@ -399,9 +408,9 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       this.host.jqxNumberInput('setDecimal', index);
    }
 
-   val(arg?: String | Number): any {
-      if (arg !== undefined) {
-         this.host.jqxNumberInput("val", arg);
+   val(value): any {
+      if (value !== undefined) {
+         this.host.jqxNumberInput("val", value);
       } else {
          return this.host.jqxNumberInput("val");
       }

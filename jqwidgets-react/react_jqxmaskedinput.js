@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -139,25 +139,26 @@ let jqxMaskedInput = React.createClass ({
     }
   },
   clear: function () {
-    $("#" +this.componentSelector).jqxMaskedInput("clear");  
+    $("#" + this.componentSelector).jqxMaskedInput("clear");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxMaskedInput("destroy");  
+    $("#" + this.componentSelector).jqxMaskedInput("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxMaskedInput("focus");  
+    $("#" + this.componentSelector).jqxMaskedInput("focus");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxMaskedInput("val", value)
+      $("#" + this.componentSelector).jqxMaskedInput("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxMaskedInput("val");
+      return $("#" + this.componentSelector).jqxMaskedInput("val");
     }
   },
 
   render: function () {
-    let id = 'jqxMaskedInput' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxMaskedInput' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

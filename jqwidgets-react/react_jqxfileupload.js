@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -174,32 +174,33 @@ let jqxFileUpload = React.createClass ({
     }
   },
   browse: function () {
-    $("#" +this.componentSelector).jqxFileUpload("browse");  
+    $("#" + this.componentSelector).jqxFileUpload("browse");  
   },
   cancelFile: function () {
-    $("#" +this.componentSelector).jqxFileUpload("cancelFile");  
+    $("#" + this.componentSelector).jqxFileUpload("cancelFile");  
   },
   cancelAll: function () {
-    $("#" +this.componentSelector).jqxFileUpload("cancelAll");  
+    $("#" + this.componentSelector).jqxFileUpload("cancelAll");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxFileUpload("destroy");  
+    $("#" + this.componentSelector).jqxFileUpload("destroy");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxFileUpload("render");
+    $("#" + this.componentSelector).jqxFileUpload("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxFileUpload("refresh");  
+    $("#" + this.componentSelector).jqxFileUpload("refresh");  
   },
   uploadFile: function (fileIndex) {
-    $("#" +this.componentSelector).jqxFileUpload("uploadFile", fileIndex);  
+    $("#" + this.componentSelector).jqxFileUpload("uploadFile", fileIndex);  
   },
   uploadAll: function () {
-    $("#" +this.componentSelector).jqxFileUpload("uploadAll");  
+    $("#" + this.componentSelector).jqxFileUpload("uploadAll");  
   },
   render: function () {
-    let id = 'jqxFileUpload' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxFileUpload' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

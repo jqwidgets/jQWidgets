@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -139,29 +139,30 @@ let jqxToolBar = React.createClass ({
     }
   },
   addTool: function (type, position, separator, menuToolIninitialization) {
-    $("#" +this.componentSelector).jqxToolBar("addTool", type, position, separator, menuToolIninitialization);  
+    $("#" + this.componentSelector).jqxToolBar("addTool", type, position, separator, menuToolIninitialization);  
   },
   disableTool: function (index, disable) {
-    $("#" +this.componentSelector).jqxToolBar("disableTool", index, disable);  
+    $("#" + this.componentSelector).jqxToolBar("disableTool", index, disable);  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxToolBar("destroy");  
+    $("#" + this.componentSelector).jqxToolBar("destroy");  
   },
   destroyTool: function (index) {
-    $("#" +this.componentSelector).jqxToolBar("destroyTool", index);  
+    $("#" + this.componentSelector).jqxToolBar("destroyTool", index);  
   },
   getTools: function () {
-    return $("#" +this.componentSelector).jqxToolBar("getTools");  
+    return $("#" + this.componentSelector).jqxToolBar("getTools");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxToolBar("render");
+    $("#" + this.componentSelector).jqxToolBar("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxToolBar("refresh");  
+    $("#" + this.componentSelector).jqxToolBar("refresh");  
   },
   render: function () {
-    let id = 'jqxToolBar' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxToolBar' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

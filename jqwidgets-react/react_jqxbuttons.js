@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -181,34 +181,35 @@ let jqxButton = React.createClass ({
     }
   },
   check: function () {
-    $("#" +this.componentSelector).jqxButton("check");  
+    $("#" + this.componentSelector).jqxButton("check");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxButton("destroy");  
+    $("#" + this.componentSelector).jqxButton("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxButton("focus");  
+    $("#" + this.componentSelector).jqxButton("focus");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxButton("render");
+    $("#" + this.componentSelector).jqxButton("render");
   },
   toggle: function () {
-    $("#" +this.componentSelector).jqxButton("toggle");  
+    $("#" + this.componentSelector).jqxButton("toggle");  
   },
   unCheck: function () {
-    $("#" +this.componentSelector).jqxButton("unCheck");  
+    $("#" + this.componentSelector).jqxButton("unCheck");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxButton("val", value)
+      $("#" + this.componentSelector).jqxButton("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxButton("val");
+      return $("#" + this.componentSelector).jqxButton("val");
     }
   },
 
   render: function () {
-    let id = 'jqxButton' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxButton' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

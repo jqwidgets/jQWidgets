@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -167,23 +167,24 @@ let jqxNavBar = React.createClass ({
     }
   },
   close: function () {
-    $("#" +this.componentSelector).jqxNavBar("close");  
+    $("#" + this.componentSelector).jqxNavBar("close");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxNavBar("destroy");  
+    $("#" + this.componentSelector).jqxNavBar("destroy");  
   },
   getSelectedIndex: function () {
-    return $("#" +this.componentSelector).jqxNavBar("getSelectedIndex");  
+    return $("#" + this.componentSelector).jqxNavBar("getSelectedIndex");  
   },
   open: function () {
-    $("#" +this.componentSelector).jqxNavBar("open");  
+    $("#" + this.componentSelector).jqxNavBar("open");  
   },
   selectAt: function (index) {
-    $("#" +this.componentSelector).jqxNavBar("selectAt", index);  
+    $("#" + this.componentSelector).jqxNavBar("selectAt", index);  
   },
   render: function () {
-    let id = 'jqxNavBar' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxNavBar' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

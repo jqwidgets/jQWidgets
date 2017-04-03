@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -160,28 +160,29 @@ let jqxEditor = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxEditor("destroy");  
+    $("#" + this.componentSelector).jqxEditor("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxEditor("focus");  
+    $("#" + this.componentSelector).jqxEditor("focus");  
   },
   print: function () {
-    $("#" +this.componentSelector).jqxEditor("print");  
+    $("#" + this.componentSelector).jqxEditor("print");  
   },
   setMode: function (mode) {
-    $("#" +this.componentSelector).jqxEditor("setMode", mode);  
+    $("#" + this.componentSelector).jqxEditor("setMode", mode);  
   },
-  val: function (htmlValue) {
+  val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxEditor("val", value)
+      $("#" + this.componentSelector).jqxEditor("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxEditor("val");
+      return $("#" + this.componentSelector).jqxEditor("val");
     }
   },
 
   render: function () {
-    let id = 'jqxEditor' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxEditor' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

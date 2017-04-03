@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -279,40 +279,41 @@ let jqxSlider = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxSlider("destroy");  
+    $("#" + this.componentSelector).jqxSlider("destroy");  
   },
   decrementValue: function () {
-    $("#" +this.componentSelector).jqxSlider("decrementValue");  
+    $("#" + this.componentSelector).jqxSlider("decrementValue");  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxSlider("disable");  
+    $("#" + this.componentSelector).jqxSlider("disable");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxSlider("enable");  
+    $("#" + this.componentSelector).jqxSlider("enable");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxSlider("focus");  
+    $("#" + this.componentSelector).jqxSlider("focus");  
   },
   getValue: function () {
-    return $("#" +this.componentSelector).jqxSlider("getValue");  
+    return $("#" + this.componentSelector).jqxSlider("getValue");  
   },
   incrementValue: function () {
-    $("#" +this.componentSelector).jqxSlider("incrementValue");  
+    $("#" + this.componentSelector).jqxSlider("incrementValue");  
   },
   setValue: function (index) {
-    $("#" +this.componentSelector).jqxSlider("setValue", index);  
+    $("#" + this.componentSelector).jqxSlider("setValue", index);  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxSlider("val", value)
+      $("#" + this.componentSelector).jqxSlider("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxSlider("val");
+      return $("#" + this.componentSelector).jqxSlider("val");
     }
   },
 
   render: function () {
-    let id = 'jqxSlider' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxSlider' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

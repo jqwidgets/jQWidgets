@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -167,47 +167,48 @@ let jqxExpander = React.createClass ({
     }
   },
   collapse: function () {
-    $("#" +this.componentSelector).jqxExpander("collapse");  
+    $("#" + this.componentSelector).jqxExpander("collapse");  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxExpander("disable");  
+    $("#" + this.componentSelector).jqxExpander("disable");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxExpander("destroy");  
+    $("#" + this.componentSelector).jqxExpander("destroy");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxExpander("enable");  
+    $("#" + this.componentSelector).jqxExpander("enable");  
   },
   expand: function () {
-    $("#" +this.componentSelector).jqxExpander("expand");  
+    $("#" + this.componentSelector).jqxExpander("expand");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxExpander("focus");  
+    $("#" + this.componentSelector).jqxExpander("focus");  
   },
   getContent: function () {
-    return $("#" +this.componentSelector).jqxExpander("getContent");  
+    return $("#" + this.componentSelector).jqxExpander("getContent");  
   },
   getHeaderContent: function () {
-    return $("#" +this.componentSelector).jqxExpander("getHeaderContent");  
+    return $("#" + this.componentSelector).jqxExpander("getHeaderContent");  
   },
   invalidate: function () {
-    $("#" +this.componentSelector).jqxExpander("invalidate");  
+    $("#" + this.componentSelector).jqxExpander("invalidate");  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxExpander("refresh");  
+    $("#" + this.componentSelector).jqxExpander("refresh");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxExpander("render");
+    $("#" + this.componentSelector).jqxExpander("render");
   },
   setHeaderContent: function (headerContent) {
-    $("#" +this.componentSelector).jqxExpander("setHeaderContent", headerContent);  
+    $("#" + this.componentSelector).jqxExpander("setHeaderContent", headerContent);  
   },
   setContent: function (content) {
-    $("#" +this.componentSelector).jqxExpander("setContent", content);  
+    $("#" + this.componentSelector).jqxExpander("setContent", content);  
   },
   render: function () {
-    let id = 'jqxExpander' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxExpander' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

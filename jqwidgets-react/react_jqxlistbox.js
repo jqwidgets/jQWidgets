@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -293,136 +293,140 @@ let jqxListBox = React.createClass ({
     }
   },
   addItem: function (Item) {
-    return $("#" +this.componentSelector).jqxListBox("addItem", Item);  
+    return $("#" + this.componentSelector).jqxListBox("addItem", Item);  
   },
   beginUpdate: function () {
-    $("#" +this.componentSelector).jqxListBox("beginUpdate");  
+    $("#" + this.componentSelector).jqxListBox("beginUpdate");  
   },
   clear: function () {
-    $("#" +this.componentSelector).jqxListBox("clear");  
+    $("#" + this.componentSelector).jqxListBox("clear");  
   },
   clearSelection: function () {
-    $("#" +this.componentSelector).jqxListBox("clearSelection");  
+    $("#" + this.componentSelector).jqxListBox("clearSelection");  
   },
   checkIndex: function (Index) {
-    $("#" +this.componentSelector).jqxListBox("checkIndex", Index);  
+    $("#" + this.componentSelector).jqxListBox("checkIndex", Index);  
   },
   checkItem: function (Item) {
-    $("#" +this.componentSelector).jqxListBox("checkItem", Item);  
+    $("#" + this.componentSelector).jqxListBox("checkItem", Item);  
   },
   checkAll: function () {
-    $("#" +this.componentSelector).jqxListBox("checkAll");  
+    $("#" + this.componentSelector).jqxListBox("checkAll");  
   },
   clearFilter: function () {
-    $("#" +this.componentSelector).jqxListBox("clearFilter");  
+    $("#" + this.componentSelector).jqxListBox("clearFilter");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxListBox("destroy");  
+    $("#" + this.componentSelector).jqxListBox("destroy");  
   },
   disableItem: function (Item) {
-    $("#" +this.componentSelector).jqxListBox("disableItem", Item);  
+    $("#" + this.componentSelector).jqxListBox("disableItem", Item);  
   },
   disableAt: function (Index) {
-    $("#" +this.componentSelector).jqxListBox("disableAt", Index);  
+    $("#" + this.componentSelector).jqxListBox("disableAt", Index);  
   },
   enableItem: function (Item) {
-    $("#" +this.componentSelector).jqxListBox("enableItem", Item);  
+    $("#" + this.componentSelector).jqxListBox("enableItem", Item);  
   },
   enableAt: function (Index) {
-    $("#" +this.componentSelector).jqxListBox("enableAt", Index);  
+    $("#" + this.componentSelector).jqxListBox("enableAt", Index);  
   },
   ensureVisible: function (item) {
-    $("#" +this.componentSelector).jqxListBox("ensureVisible", item);  
+    $("#" + this.componentSelector).jqxListBox("ensureVisible", item);  
   },
   endUpdate: function () {
-    $("#" +this.componentSelector).jqxListBox("endUpdate");  
+    $("#" + this.componentSelector).jqxListBox("endUpdate");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxListBox("focus");  
+    $("#" + this.componentSelector).jqxListBox("focus");  
   },
   getItems: function () {
-    return $("#" +this.componentSelector).jqxListBox("getItems");  
+    return $("#" + this.componentSelector).jqxListBox("getItems");  
   },
   getSelectedItems: function () {
-    return $("#" +this.componentSelector).jqxListBox("getSelectedItems");  
+    return $("#" + this.componentSelector).jqxListBox("getSelectedItems");  
   },
   getCheckedItems: function () {
-    return $("#" +this.componentSelector).jqxListBox("getCheckedItems");  
+    return $("#" + this.componentSelector).jqxListBox("getCheckedItems");  
   },
   getItem: function (Index) {
-    return $("#" +this.componentSelector).jqxListBox("getItem", Index);  
+    return $("#" + this.componentSelector).jqxListBox("getItem", Index);  
   },
   getItemByValue: function (Item) {
-    return $("#" +this.componentSelector).jqxListBox("getItemByValue", Item);  
+    return $("#" + this.componentSelector).jqxListBox("getItemByValue", Item);  
   },
   getSelectedItem: function () {
-    return $("#" +this.componentSelector).jqxListBox("getSelectedItem");  
+    return $("#" + this.componentSelector).jqxListBox("getSelectedItem");  
   },
   getSelectedIndex: function () {
-    return $("#" +this.componentSelector).jqxListBox("getSelectedIndex");  
+    return $("#" + this.componentSelector).jqxListBox("getSelectedIndex");  
   },
   insertAt: function (Item, Index) {
-    $("#" +this.componentSelector).jqxListBox("insertAt", Item, Index);  
+    $("#" + this.componentSelector).jqxListBox("insertAt", Item, Index);  
   },
   invalidate: function () {
-    $("#" +this.componentSelector).jqxListBox("invalidate");  
+    $("#" + this.componentSelector).jqxListBox("invalidate");  
   },
   indeterminateItem: function (Item) {
-    $("#" +this.componentSelector).jqxListBox("indeterminateItem", Item);  
+    $("#" + this.componentSelector).jqxListBox("indeterminateItem", Item);  
   },
   indeterminateIndex: function (Index) {
-    $("#" +this.componentSelector).jqxListBox("indeterminateIndex", Index);  
+    $("#" + this.componentSelector).jqxListBox("indeterminateIndex", Index);  
+  },
+  loadFromSelect: function (selector) {
+    $("#" + this.componentSelector).jqxListBox("loadFromSelect", selector);  
   },
   removeItem: function (Item) {
-    $("#" +this.componentSelector).jqxListBox("removeItem", Item);  
+    $("#" + this.componentSelector).jqxListBox("removeItem", Item);  
   },
   removeAt: function (Index) {
-    $("#" +this.componentSelector).jqxListBox("removeAt", Index);  
+    $("#" + this.componentSelector).jqxListBox("removeAt", Index);  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxListBox("render");
+    $("#" + this.componentSelector).jqxListBox("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxListBox("refresh");  
+    $("#" + this.componentSelector).jqxListBox("refresh");  
   },
   selectItem: function (Item) {
-    $("#" +this.componentSelector).jqxListBox("selectItem", Item);  
+    $("#" + this.componentSelector).jqxListBox("selectItem", Item);  
   },
   selectIndex: function (Index) {
-    $("#" +this.componentSelector).jqxListBox("selectIndex", Index);  
+    $("#" + this.componentSelector).jqxListBox("selectIndex", Index);  
   },
   updateItem: function (Item, Value) {
-    $("#" +this.componentSelector).jqxListBox("updateItem", Item, Value);  
+    $("#" + this.componentSelector).jqxListBox("updateItem", Item, Value);  
   },
   updateAt: function (item, index) {
-    $("#" +this.componentSelector).jqxListBox("updateAt", item, index);  
+    $("#" + this.componentSelector).jqxListBox("updateAt", item, index);  
   },
   unselectIndex: function (index) {
-    $("#" +this.componentSelector).jqxListBox("unselectIndex", index);  
+    $("#" + this.componentSelector).jqxListBox("unselectIndex", index);  
   },
   unselectItem: function (item) {
-    $("#" +this.componentSelector).jqxListBox("unselectItem", item);  
+    $("#" + this.componentSelector).jqxListBox("unselectItem", item);  
   },
   uncheckIndex: function (index) {
-    $("#" +this.componentSelector).jqxListBox("uncheckIndex", index);  
+    $("#" + this.componentSelector).jqxListBox("uncheckIndex", index);  
   },
   uncheckItem: function (item) {
-    $("#" +this.componentSelector).jqxListBox("uncheckItem", item);  
+    $("#" + this.componentSelector).jqxListBox("uncheckItem", item);  
   },
   uncheckAll: function () {
-    $("#" +this.componentSelector).jqxListBox("uncheckAll");  
+    $("#" + this.componentSelector).jqxListBox("uncheckAll");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxListBox("val", value)
+      $("#" + this.componentSelector).jqxListBox("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxListBox("val");
+      return $("#" + this.componentSelector).jqxListBox("val");
     }
   },
 
   render: function () {
-    let id = 'jqxListBox' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxListBox' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

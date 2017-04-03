@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -125,41 +125,42 @@ let jqxPanel = React.createClass ({
     }
   },
   append: function (HTMLElement) {
-    $("#" +this.componentSelector).jqxPanel("append", HTMLElement);  
+    $("#" + this.componentSelector).jqxPanel("append", HTMLElement);  
   },
   clearcontent: function () {
-    $("#" +this.componentSelector).jqxPanel("clearcontent");  
+    $("#" + this.componentSelector).jqxPanel("clearcontent");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxPanel("destroy");  
+    $("#" + this.componentSelector).jqxPanel("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxPanel("focus");  
+    $("#" + this.componentSelector).jqxPanel("focus");  
   },
   getScrollHeight: function () {
-    return $("#" +this.componentSelector).jqxPanel("getScrollHeight");  
+    return $("#" + this.componentSelector).jqxPanel("getScrollHeight");  
   },
   getVScrollPosition: function () {
-    return $("#" +this.componentSelector).jqxPanel("getVScrollPosition");  
+    return $("#" + this.componentSelector).jqxPanel("getVScrollPosition");  
   },
   getScrollWidth: function () {
-    return $("#" +this.componentSelector).jqxPanel("getScrollWidth");  
+    return $("#" + this.componentSelector).jqxPanel("getScrollWidth");  
   },
   getHScrollPosition: function () {
-    return $("#" +this.componentSelector).jqxPanel("getHScrollPosition");  
+    return $("#" + this.componentSelector).jqxPanel("getHScrollPosition");  
   },
   prepend: function (HTMLElement) {
-    $("#" +this.componentSelector).jqxPanel("prepend", HTMLElement);  
+    $("#" + this.componentSelector).jqxPanel("prepend", HTMLElement);  
   },
   remove: function (HTMLElement) {
-    $("#" +this.componentSelector).jqxPanel("remove", HTMLElement);  
+    $("#" + this.componentSelector).jqxPanel("remove", HTMLElement);  
   },
   scrollTo: function (top, left) {
-    $("#" +this.componentSelector).jqxPanel("scrollTo", top, left);  
+    $("#" + this.componentSelector).jqxPanel("scrollTo", top, left);  
   },
   render: function () {
-    let id = 'jqxPanel' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxPanel' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -237,91 +237,92 @@ let jqxTabs = React.createClass ({
     }
   },
   addAt: function (index, title, content) {
-    $("#" +this.componentSelector).jqxTabs("addAt", index, title, content);  
+    $("#" + this.componentSelector).jqxTabs("addAt", index, title, content);  
   },
   addFirst: function (htmlElement) {
-    $("#" +this.componentSelector).jqxTabs("addFirst", htmlElement);  
+    $("#" + this.componentSelector).jqxTabs("addFirst", htmlElement);  
   },
   addLast: function (htmlElement) {
-    $("#" +this.componentSelector).jqxTabs("addLast", htmlElement);  
+    $("#" + this.componentSelector).jqxTabs("addLast", htmlElement);  
   },
   collapse: function () {
-    $("#" +this.componentSelector).jqxTabs("collapse");  
+    $("#" + this.componentSelector).jqxTabs("collapse");  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxTabs("disable");  
+    $("#" + this.componentSelector).jqxTabs("disable");  
   },
   disableAt: function (index) {
-    $("#" +this.componentSelector).jqxTabs("disableAt", index);  
+    $("#" + this.componentSelector).jqxTabs("disableAt", index);  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxTabs("destroy");  
+    $("#" + this.componentSelector).jqxTabs("destroy");  
   },
   ensureVisible: function (index) {
-    $("#" +this.componentSelector).jqxTabs("ensureVisible", index);  
+    $("#" + this.componentSelector).jqxTabs("ensureVisible", index);  
   },
   enableAt: function (index) {
-    $("#" +this.componentSelector).jqxTabs("enableAt", index);  
+    $("#" + this.componentSelector).jqxTabs("enableAt", index);  
   },
   expand: function () {
-    $("#" +this.componentSelector).jqxTabs("expand");  
+    $("#" + this.componentSelector).jqxTabs("expand");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxTabs("enable");  
+    $("#" + this.componentSelector).jqxTabs("enable");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxTabs("focus");  
+    $("#" + this.componentSelector).jqxTabs("focus");  
   },
   getTitleAt: function (index) {
-    return $("#" +this.componentSelector).jqxTabs("getTitleAt", index);  
+    return $("#" + this.componentSelector).jqxTabs("getTitleAt", index);  
   },
   getContentAt: function (index) {
-    return $("#" +this.componentSelector).jqxTabs("getContentAt", index);  
+    return $("#" + this.componentSelector).jqxTabs("getContentAt", index);  
   },
   hideCloseButtonAt: function (index) {
-    $("#" +this.componentSelector).jqxTabs("hideCloseButtonAt", index);  
+    $("#" + this.componentSelector).jqxTabs("hideCloseButtonAt", index);  
   },
   hideAllCloseButtons: function () {
-    $("#" +this.componentSelector).jqxTabs("hideAllCloseButtons");  
+    $("#" + this.componentSelector).jqxTabs("hideAllCloseButtons");  
   },
   length: function () {
-    return $("#" +this.componentSelector).jqxTabs("length");  
+    return $("#" + this.componentSelector).jqxTabs("length");  
   },
   removeAt: function (index) {
-    $("#" +this.componentSelector).jqxTabs("removeAt", index);  
+    $("#" + this.componentSelector).jqxTabs("removeAt", index);  
   },
   removeFirst: function () {
-    $("#" +this.componentSelector).jqxTabs("removeFirst");  
+    $("#" + this.componentSelector).jqxTabs("removeFirst");  
   },
   removeLast: function () {
-    $("#" +this.componentSelector).jqxTabs("removeLast");  
+    $("#" + this.componentSelector).jqxTabs("removeLast");  
   },
   select: function (index) {
-    $("#" +this.componentSelector).jqxTabs("select", index);  
+    $("#" + this.componentSelector).jqxTabs("select", index);  
   },
   setContentAt: function (index, htmlElement) {
-    $("#" +this.componentSelector).jqxTabs("setContentAt", index, htmlElement);  
+    $("#" + this.componentSelector).jqxTabs("setContentAt", index, htmlElement);  
   },
   setTitleAt: function (index, htmlElement) {
-    $("#" +this.componentSelector).jqxTabs("setTitleAt", index, htmlElement);  
+    $("#" + this.componentSelector).jqxTabs("setTitleAt", index, htmlElement);  
   },
   showCloseButtonAt: function (index) {
-    $("#" +this.componentSelector).jqxTabs("showCloseButtonAt", index);  
+    $("#" + this.componentSelector).jqxTabs("showCloseButtonAt", index);  
   },
   showAllCloseButtons: function () {
-    $("#" +this.componentSelector).jqxTabs("showAllCloseButtons");  
+    $("#" + this.componentSelector).jqxTabs("showAllCloseButtons");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("val", value)
+      $("#" + this.componentSelector).jqxTabs("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxTabs("val");
+      return $("#" + this.componentSelector).jqxTabs("val");
     }
   },
 
   render: function () {
-    let id = 'jqxTabs' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxTabs' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

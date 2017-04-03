@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,7 @@ let jqxChart = React.createClass ({
     this.createComponent(options);
   },
   manageAttributes: function () {
-      let properties = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
+      let properties = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','categoryAxis','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
       let options = {};
     for(let item in this.props) {
         if(item === 'settings') {
@@ -138,6 +138,13 @@ let jqxChart = React.createClass ({
       return $("#" +this.componentSelector).jqxChart("legendLayout");
     }
   },
+  categoryAxis: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxChart("categoryAxis", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxChart("categoryAxis");
+    }
+  },
   padding: function (arg) {
     if (arg !== undefined) {
       $("#" +this.componentSelector).jqxChart("padding", arg)
@@ -192,6 +199,20 @@ let jqxChart = React.createClass ({
       $("#" +this.componentSelector).jqxChart("toolTipMoveDuration", arg)
     } else {
       return $("#" +this.componentSelector).jqxChart("toolTipMoveDuration");
+    }
+  },
+  drawBefore: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxChart("drawBefore", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxChart("drawBefore");
+    }
+  },
+  draw: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxChart("draw", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxChart("draw");
     }
   },
   rtl: function (arg) {
@@ -292,69 +313,76 @@ let jqxChart = React.createClass ({
       return $("#" +this.componentSelector).jqxChart("seriesGroups");
     }
   },
+  getInstance: function () {
+    return $("#" + this.componentSelector).jqxChart("getInstance");  
+  },
   refresh: function () {
-    return $("#" +this.componentSelector).jqxChart("refresh");  
+    return $("#" + this.componentSelector).jqxChart("refresh");  
   },
   update: function () {
-    return $("#" +this.componentSelector).jqxChart("update");  
+    return $("#" + this.componentSelector).jqxChart("update");  
   },
   destroy: function () {
-    return $("#" +this.componentSelector).jqxChart("destroy");  
+    return $("#" + this.componentSelector).jqxChart("destroy");  
   },
   addColorScheme: function (schemeName, colors) {
-    return $("#" +this.componentSelector).jqxChart("addColorScheme", schemeName, colors);  
+    return $("#" + this.componentSelector).jqxChart("addColorScheme", schemeName, colors);  
   },
   removeColorScheme: function (schemeName) {
-    return $("#" +this.componentSelector).jqxChart("removeColorScheme", schemeName);  
+    return $("#" + this.componentSelector).jqxChart("removeColorScheme", schemeName);  
   },
   getItemsCount: function (groupIndex, serieIndex) {
-    return $("#" +this.componentSelector).jqxChart("getItemsCount", groupIndex, serieIndex);  
+    return $("#" + this.componentSelector).jqxChart("getItemsCount", groupIndex, serieIndex);  
   },
   getItemCoord: function (groupIndex, serieIndex, itemIndex) {
-    return $("#" +this.componentSelector).jqxChart("getItemCoord", groupIndex, serieIndex, itemIndex);  
+    return $("#" + this.componentSelector).jqxChart("getItemCoord", groupIndex, serieIndex, itemIndex);  
   },
   getXAxisRect: function (groupIndex) {
-    return $("#" +this.componentSelector).jqxChart("getXAxisRect", groupIndex);  
+    return $("#" + this.componentSelector).jqxChart("getXAxisRect", groupIndex);  
   },
   getXAxisLabels: function (groupIndex) {
-    return $("#" +this.componentSelector).jqxChart("getXAxisLabels", groupIndex);  
+    return $("#" + this.componentSelector).jqxChart("getXAxisLabels", groupIndex);  
   },
   getValueAxisRect: function (groupIndex) {
-    return $("#" +this.componentSelector).jqxChart("getValueAxisRect", groupIndex);  
+    return $("#" + this.componentSelector).jqxChart("getValueAxisRect", groupIndex);  
   },
   getValueAxisLabels: function (groupIndex) {
-    return $("#" +this.componentSelector).jqxChart("getValueAxisLabels", groupIndex);  
+    return $("#" + this.componentSelector).jqxChart("getValueAxisLabels", groupIndex);  
   },
   getColorScheme: function (colorScheme) {
-    return $("#" +this.componentSelector).jqxChart("getColorScheme", colorScheme);  
+    return $("#" + this.componentSelector).jqxChart("getColorScheme", colorScheme);  
   },
   hideSerie: function (groupIndex, serieIndex, itemIndex) {
-    return $("#" +this.componentSelector).jqxChart("hideSerie", groupIndex, serieIndex, itemIndex);  
+    return $("#" + this.componentSelector).jqxChart("hideSerie", groupIndex, serieIndex, itemIndex);  
   },
   showSerie: function (groupIndex, serieIndex, itemIndex) {
-    return $("#" +this.componentSelector).jqxChart("showSerie", groupIndex, serieIndex, itemIndex);  
+    return $("#" + this.componentSelector).jqxChart("showSerie", groupIndex, serieIndex, itemIndex);  
   },
   hideToolTip: function (hideDelay) {
-    return $("#" +this.componentSelector).jqxChart("hideToolTip", hideDelay);  
+    return $("#" + this.componentSelector).jqxChart("hideToolTip", hideDelay);  
   },
   showToolTip: function (groupIndex, serieIndex, itemIndex, showDelay, hideDelay) {
-    return $("#" +this.componentSelector).jqxChart("showToolTip", groupIndex, serieIndex, itemIndex, showDelay, hideDelay);  
+    return $("#" + this.componentSelector).jqxChart("showToolTip", groupIndex, serieIndex, itemIndex, showDelay, hideDelay);  
   },
   saveAsJPEG: function (fileName, exportServerUrl) {
-    return $("#" +this.componentSelector).jqxChart("saveAsJPEG", fileName, exportServerUrl);  
+    return $("#" + this.componentSelector).jqxChart("saveAsJPEG", fileName, exportServerUrl);  
+  },
+  saveAsPNG: function (fileName, exportServerUrl) {
+    return $("#" + this.componentSelector).jqxChart("saveAsPNG", fileName, exportServerUrl);  
   },
   saveAsPDF: function (fileName, exportServerUrl) {
-    return $("#" +this.componentSelector).jqxChart("saveAsPDF", fileName, exportServerUrl);  
+    return $("#" + this.componentSelector).jqxChart("saveAsPDF", fileName, exportServerUrl);  
   },
   getXAxisValue: function (offset, groupIndex) {
-    return $("#" +this.componentSelector).jqxChart("getXAxisValue", offset, groupIndex);  
+    return $("#" + this.componentSelector).jqxChart("getXAxisValue", offset, groupIndex);  
   },
   getValueAxisValue: function (offset, groupIndex) {
-    return $("#" +this.componentSelector).jqxChart("getValueAxisValue", offset, groupIndex);  
+    return $("#" + this.componentSelector).jqxChart("getValueAxisValue", offset, groupIndex);  
   },
   render: function () {
-    let id = 'jqxChart' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxChart' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

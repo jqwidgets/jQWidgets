@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -112,7 +112,7 @@ export class jqxNavigationBarComponent implements OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    setOptions(options: any) : void {
@@ -318,9 +318,9 @@ export class jqxNavigationBarComponent implements OnChanges
       this.host.jqxNavigationBar('update', index, header, content);
    }
 
-   val(arg?: String | Number): any {
-      if (arg !== undefined) {
-         this.host.jqxNavigationBar("val", arg);
+   val(value): any {
+      if (value !== undefined) {
+         this.host.jqxNavigationBar("val", value);
       } else {
          return this.host.jqxNavigationBar("val");
       }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -119,7 +119,7 @@ export class jqxBarGaugeComponent implements OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    setOptions(options: any) : void {
@@ -305,9 +305,9 @@ export class jqxBarGaugeComponent implements OnChanges
       this.host.jqxBarGauge('render');
    }
 
-   val(arg?: String | Number): any {
-      if (arg !== undefined) {
-         this.host.jqxBarGauge("val", arg);
+   val(value): any {
+      if (value !== undefined) {
+         this.host.jqxBarGauge("val", value);
       } else {
          return this.host.jqxBarGauge("val");
       }

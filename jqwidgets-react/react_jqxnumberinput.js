@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,7 @@ let jqxNumberInput = React.createClass ({
     this.createComponent(options);
   },
   manageAttributes: function () {
-      let properties = ['allowNull','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','width'];
+      let properties = ['allowNull','decimal','disabled','decimalDigits','decimalSeparator','digits','groupSeparator','groupSize','height','inputMode','min','max','negativeSymbol','placeHolder','promptChar','rtl','readOnly','spinMode','spinButtons','spinButtonsWidth','spinButtonsStep','symbol','symbolPosition','textAlign','template','theme','value','width'];
       let options = {};
     for(let item in this.props) {
         if(item === 'settings') {
@@ -250,6 +250,13 @@ let jqxNumberInput = React.createClass ({
       return $("#" +this.componentSelector).jqxNumberInput("theme");
     }
   },
+  value: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxNumberInput("value", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxNumberInput("value");
+    }
+  },
   width: function (arg) {
     if (arg !== undefined) {
       $("#" +this.componentSelector).jqxNumberInput("width", arg)
@@ -258,32 +265,33 @@ let jqxNumberInput = React.createClass ({
     }
   },
   clear: function () {
-    $("#" +this.componentSelector).jqxNumberInput("clear");  
+    $("#" + this.componentSelector).jqxNumberInput("clear");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxNumberInput("destroy");  
+    $("#" + this.componentSelector).jqxNumberInput("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxNumberInput("focus");  
+    $("#" + this.componentSelector).jqxNumberInput("focus");  
   },
   getDecimal: function () {
-    return $("#" +this.componentSelector).jqxNumberInput("getDecimal");  
+    return $("#" + this.componentSelector).jqxNumberInput("getDecimal");  
   },
   setDecimal: function (index) {
-    $("#" +this.componentSelector).jqxNumberInput("setDecimal", index);  
+    $("#" + this.componentSelector).jqxNumberInput("setDecimal", index);  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxNumberInput("val", value)
+      $("#" + this.componentSelector).jqxNumberInput("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxNumberInput("val");
+      return $("#" + this.componentSelector).jqxNumberInput("val");
     }
   },
 
   render: function () {
-    let id = 'jqxNumberInput' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
-      <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
+    var id = 'jqxNumberInput' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
+      <div id={id}></div>
     )
   }
 });

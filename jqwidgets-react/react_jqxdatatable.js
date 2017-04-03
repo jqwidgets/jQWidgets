@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -433,140 +433,141 @@ let jqxDataTable = React.createClass ({
     }
   },
   addRow: function (rowIndex, rowData, rowPosition) {
-    $("#" +this.componentSelector).jqxDataTable("addRow", rowIndex, rowData, rowPosition);  
+    $("#" + this.componentSelector).jqxDataTable("addRow", rowIndex, rowData, rowPosition);  
   },
   addFilter: function (dataField, filerGroup) {
-    return $("#" +this.componentSelector).jqxDataTable("addFilter", dataField, filerGroup);  
+    return $("#" + this.componentSelector).jqxDataTable("addFilter", dataField, filerGroup);  
   },
   applyFilters: function () {
-    $("#" +this.componentSelector).jqxDataTable("applyFilters");  
+    $("#" + this.componentSelector).jqxDataTable("applyFilters");  
   },
   beginUpdate: function () {
-    $("#" +this.componentSelector).jqxDataTable("beginUpdate");  
+    $("#" + this.componentSelector).jqxDataTable("beginUpdate");  
   },
   beginRowEdit: function (rowIndex) {
-    $("#" +this.componentSelector).jqxDataTable("beginRowEdit", rowIndex);  
+    $("#" + this.componentSelector).jqxDataTable("beginRowEdit", rowIndex);  
   },
   beginCellEdit: function (rowIndex, dataField) {
-    $("#" +this.componentSelector).jqxDataTable("beginCellEdit", rowIndex, dataField);  
+    $("#" + this.componentSelector).jqxDataTable("beginCellEdit", rowIndex, dataField);  
   },
   clearSelection: function () {
-    $("#" +this.componentSelector).jqxDataTable("clearSelection");  
+    $("#" + this.componentSelector).jqxDataTable("clearSelection");  
   },
   clearFilters: function () {
-    $("#" +this.componentSelector).jqxDataTable("clearFilters");  
+    $("#" + this.componentSelector).jqxDataTable("clearFilters");  
   },
   clear: function () {
-    $("#" +this.componentSelector).jqxDataTable("clear");  
+    $("#" + this.componentSelector).jqxDataTable("clear");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxDataTable("destroy");  
+    $("#" + this.componentSelector).jqxDataTable("destroy");  
   },
   deleteRow: function (rowIndex) {
-    $("#" +this.componentSelector).jqxDataTable("deleteRow", rowIndex);  
+    $("#" + this.componentSelector).jqxDataTable("deleteRow", rowIndex);  
   },
   endUpdate: function () {
-    $("#" +this.componentSelector).jqxDataTable("endUpdate");  
+    $("#" + this.componentSelector).jqxDataTable("endUpdate");  
   },
   ensureRowVisible: function (rowIndex) {
-    $("#" +this.componentSelector).jqxDataTable("ensureRowVisible", rowIndex);  
+    $("#" + this.componentSelector).jqxDataTable("ensureRowVisible", rowIndex);  
   },
   endRowEdit: function (rowIndex, cancelChanges) {
-    $("#" +this.componentSelector).jqxDataTable("endRowEdit", rowIndex, cancelChanges);  
+    $("#" + this.componentSelector).jqxDataTable("endRowEdit", rowIndex, cancelChanges);  
   },
   endCellEdit: function (rowIndex, dataField) {
-    $("#" +this.componentSelector).jqxDataTable("endCellEdit", rowIndex, dataField);  
+    $("#" + this.componentSelector).jqxDataTable("endCellEdit", rowIndex, dataField);  
   },
   exportData: function (exportDataType) {
-    return $("#" +this.componentSelector).jqxDataTable("exportData", exportDataType);  
+    return $("#" + this.componentSelector).jqxDataTable("exportData", exportDataType);  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxDataTable("focus");  
+    $("#" + this.componentSelector).jqxDataTable("focus");  
   },
   getColumnProperty: function (dataField, propertyName) {
-    return $("#" +this.componentSelector).jqxDataTable("getColumnProperty", dataField, propertyName);  
+    return $("#" + this.componentSelector).jqxDataTable("getColumnProperty", dataField, propertyName);  
   },
   goToPage: function (pageIndex) {
-    $("#" +this.componentSelector).jqxDataTable("goToPage", pageIndex);  
+    $("#" + this.componentSelector).jqxDataTable("goToPage", pageIndex);  
   },
   goToPrevPage: function () {
-    $("#" +this.componentSelector).jqxDataTable("goToPrevPage");  
+    $("#" + this.componentSelector).jqxDataTable("goToPrevPage");  
   },
   goToNextPage: function () {
-    $("#" +this.componentSelector).jqxDataTable("goToNextPage");  
+    $("#" + this.componentSelector).jqxDataTable("goToNextPage");  
   },
   getSelection: function () {
-    return $("#" +this.componentSelector).jqxDataTable("getSelection");  
+    return $("#" + this.componentSelector).jqxDataTable("getSelection");  
   },
   getRows: function () {
-    return $("#" +this.componentSelector).jqxDataTable("getRows");  
+    return $("#" + this.componentSelector).jqxDataTable("getRows");  
   },
   getView: function () {
-    return $("#" +this.componentSelector).jqxDataTable("getView");  
+    return $("#" + this.componentSelector).jqxDataTable("getView");  
   },
   getCellValue: function (rowIndex, dataField) {
-    return $("#" +this.componentSelector).jqxDataTable("getCellValue", rowIndex, dataField);  
+    return $("#" + this.componentSelector).jqxDataTable("getCellValue", rowIndex, dataField);  
   },
   hideColumn: function (dataField) {
-    $("#" +this.componentSelector).jqxDataTable("hideColumn", dataField);  
+    $("#" + this.componentSelector).jqxDataTable("hideColumn", dataField);  
   },
   hideDetails: function (rowIndex) {
-    $("#" +this.componentSelector).jqxDataTable("hideDetails", rowIndex);  
+    $("#" + this.componentSelector).jqxDataTable("hideDetails", rowIndex);  
   },
   isBindingCompleted: function () {
-    return $("#" +this.componentSelector).jqxDataTable("isBindingCompleted");  
+    return $("#" + this.componentSelector).jqxDataTable("isBindingCompleted");  
   },
   lockRow: function (rowIndex) {
-    $("#" +this.componentSelector).jqxDataTable("lockRow", rowIndex);  
+    $("#" + this.componentSelector).jqxDataTable("lockRow", rowIndex);  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxDataTable("refresh");  
+    $("#" + this.componentSelector).jqxDataTable("refresh");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxDataTable("render");
+    $("#" + this.componentSelector).jqxDataTable("render");
   },
   removeFilter: function (dataField) {
-    $("#" +this.componentSelector).jqxDataTable("removeFilter", dataField);  
+    $("#" + this.componentSelector).jqxDataTable("removeFilter", dataField);  
   },
   scrollOffset: function (top, left) {
-    return $("#" +this.componentSelector).jqxDataTable("scrollOffset", top, left);  
+    return $("#" + this.componentSelector).jqxDataTable("scrollOffset", top, left);  
   },
   setColumnProperty: function (dataField, propertyName, propertyValue) {
-    $("#" +this.componentSelector).jqxDataTable("setColumnProperty", dataField, propertyName, propertyValue);  
+    $("#" + this.componentSelector).jqxDataTable("setColumnProperty", dataField, propertyName, propertyValue);  
   },
   showColumn: function (dataField) {
-    $("#" +this.componentSelector).jqxDataTable("showColumn", dataField);  
+    $("#" + this.componentSelector).jqxDataTable("showColumn", dataField);  
   },
   selectRow: function (rowIndex) {
-    $("#" +this.componentSelector).jqxDataTable("selectRow", rowIndex);  
+    $("#" + this.componentSelector).jqxDataTable("selectRow", rowIndex);  
   },
   showDetails: function (rowIndex) {
-    $("#" +this.componentSelector).jqxDataTable("showDetails", rowIndex);  
+    $("#" + this.componentSelector).jqxDataTable("showDetails", rowIndex);  
   },
   setCellValue: function (rowIndex, dataField, value) {
-    $("#" +this.componentSelector).jqxDataTable("setCellValue", rowIndex, dataField, value);  
+    $("#" + this.componentSelector).jqxDataTable("setCellValue", rowIndex, dataField, value);  
   },
   sortBy: function (dataField, sortOrder) {
-    $("#" +this.componentSelector).jqxDataTable("sortBy", dataField, sortOrder);  
+    $("#" + this.componentSelector).jqxDataTable("sortBy", dataField, sortOrder);  
   },
   updating: function () {
-    return $("#" +this.componentSelector).jqxDataTable("updating");  
+    return $("#" + this.componentSelector).jqxDataTable("updating");  
   },
   updateBoundData: function () {
-    $("#" +this.componentSelector).jqxDataTable("updateBoundData");  
+    $("#" + this.componentSelector).jqxDataTable("updateBoundData");  
   },
   unselectRow: function (rowIndex) {
-    $("#" +this.componentSelector).jqxDataTable("unselectRow", rowIndex);  
+    $("#" + this.componentSelector).jqxDataTable("unselectRow", rowIndex);  
   },
   updateRow: function (rowIndex, rowData) {
-    $("#" +this.componentSelector).jqxDataTable("updateRow", rowIndex, rowData);  
+    $("#" + this.componentSelector).jqxDataTable("updateRow", rowIndex, rowData);  
   },
   unlockRow: function (rowIndex) {
-    $("#" +this.componentSelector).jqxDataTable("unlockRow", rowIndex);  
+    $("#" + this.componentSelector).jqxDataTable("unlockRow", rowIndex);  
   },
   render: function () {
-    let id = 'jqxDataTable' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxDataTable' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

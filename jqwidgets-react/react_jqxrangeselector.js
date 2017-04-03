@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -237,23 +237,24 @@ let jqxRangeSelector = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxRangeSelector("destroy");  
+    $("#" + this.componentSelector).jqxRangeSelector("destroy");  
   },
   getRange: function () {
-    return $("#" +this.componentSelector).jqxRangeSelector("getRange");  
+    return $("#" + this.componentSelector).jqxRangeSelector("getRange");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxRangeSelector("render");
+    $("#" + this.componentSelector).jqxRangeSelector("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxRangeSelector("refresh");  
+    $("#" + this.componentSelector).jqxRangeSelector("refresh");  
   },
   setRange: function (from, to) {
-    $("#" +this.componentSelector).jqxRangeSelector("setRange", from, to);  
+    $("#" + this.componentSelector).jqxRangeSelector("setRange", from, to);  
   },
   render: function () {
-    let id = 'jqxRangeSelector' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxRangeSelector' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

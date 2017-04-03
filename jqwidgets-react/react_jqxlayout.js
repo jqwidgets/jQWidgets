@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -132,23 +132,24 @@ let jqxLayout = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxLayout("destroy");  
+    $("#" + this.componentSelector).jqxLayout("destroy");  
   },
   loadLayout: function (Layout) {
-    $("#" +this.componentSelector).jqxLayout("loadLayout", Layout);  
+    $("#" + this.componentSelector).jqxLayout("loadLayout", Layout);  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxLayout("refresh");  
+    $("#" + this.componentSelector).jqxLayout("refresh");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxLayout("render");
+    $("#" + this.componentSelector).jqxLayout("render");
   },
   saveLayout: function () {
-    return $("#" +this.componentSelector).jqxLayout("saveLayout");  
+    return $("#" + this.componentSelector).jqxLayout("saveLayout");  
   },
   render: function () {
-    let id = 'jqxLayout' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxLayout' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -349,133 +349,137 @@ let jqxComboBox = React.createClass ({
     }
   },
   addItem: function (item) {
-    return $("#" +this.componentSelector).jqxComboBox("addItem", item);  
+    return $("#" + this.componentSelector).jqxComboBox("addItem", item);  
   },
   clearSelection: function () {
-    $("#" +this.componentSelector).jqxComboBox("clearSelection");  
+    $("#" + this.componentSelector).jqxComboBox("clearSelection");  
   },
   clear: function () {
-    $("#" +this.componentSelector).jqxComboBox("clear");  
+    $("#" + this.componentSelector).jqxComboBox("clear");  
   },
   close: function () {
-    $("#" +this.componentSelector).jqxComboBox("close");  
+    $("#" + this.componentSelector).jqxComboBox("close");  
   },
   checkIndex: function (index) {
-    $("#" +this.componentSelector).jqxComboBox("checkIndex", index);  
+    $("#" + this.componentSelector).jqxComboBox("checkIndex", index);  
   },
   checkItem: function (item) {
-    $("#" +this.componentSelector).jqxComboBox("checkItem", item);  
+    $("#" + this.componentSelector).jqxComboBox("checkItem", item);  
   },
   checkAll: function () {
-    $("#" +this.componentSelector).jqxComboBox("checkAll");  
+    $("#" + this.componentSelector).jqxComboBox("checkAll");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxComboBox("destroy");  
+    $("#" + this.componentSelector).jqxComboBox("destroy");  
   },
   disableItem: function (item) {
-    $("#" +this.componentSelector).jqxComboBox("disableItem", item);  
+    $("#" + this.componentSelector).jqxComboBox("disableItem", item);  
   },
   disableAt: function (index) {
-    $("#" +this.componentSelector).jqxComboBox("disableAt", index);  
+    $("#" + this.componentSelector).jqxComboBox("disableAt", index);  
   },
   enableItem: function (item) {
-    $("#" +this.componentSelector).jqxComboBox("enableItem", item);  
+    $("#" + this.componentSelector).jqxComboBox("enableItem", item);  
   },
   enableAt: function (index) {
-    $("#" +this.componentSelector).jqxComboBox("enableAt", index);  
+    $("#" + this.componentSelector).jqxComboBox("enableAt", index);  
   },
   ensureVisible: function (index) {
-    $("#" +this.componentSelector).jqxComboBox("ensureVisible", index);  
+    $("#" + this.componentSelector).jqxComboBox("ensureVisible", index);  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxComboBox("focus");  
+    $("#" + this.componentSelector).jqxComboBox("focus");  
   },
   getItem: function (index) {
-    return $("#" +this.componentSelector).jqxComboBox("getItem", index);  
+    return $("#" + this.componentSelector).jqxComboBox("getItem", index);  
   },
   getItemByValue: function (value) {
-    return $("#" +this.componentSelector).jqxComboBox("getItemByValue", value);  
+    return $("#" + this.componentSelector).jqxComboBox("getItemByValue", value);  
   },
   getVisibleItems: function () {
-    return $("#" +this.componentSelector).jqxComboBox("getVisibleItems");  
+    return $("#" + this.componentSelector).jqxComboBox("getVisibleItems");  
   },
   getItems: function () {
-    return $("#" +this.componentSelector).jqxComboBox("getItems");  
+    return $("#" + this.componentSelector).jqxComboBox("getItems");  
   },
   getCheckedItems: function () {
-    return $("#" +this.componentSelector).jqxComboBox("getCheckedItems");  
+    return $("#" + this.componentSelector).jqxComboBox("getCheckedItems");  
   },
   getSelectedItem: function () {
-    return $("#" +this.componentSelector).jqxComboBox("getSelectedItem");  
+    return $("#" + this.componentSelector).jqxComboBox("getSelectedItem");  
   },
   getSelectedItems: function () {
-    return $("#" +this.componentSelector).jqxComboBox("getSelectedItems");  
+    return $("#" + this.componentSelector).jqxComboBox("getSelectedItems");  
   },
   getSelectedIndex: function () {
-    return $("#" +this.componentSelector).jqxComboBox("getSelectedIndex");  
+    return $("#" + this.componentSelector).jqxComboBox("getSelectedIndex");  
   },
   insertAt: function (item, index) {
-    return $("#" +this.componentSelector).jqxComboBox("insertAt", item, index);  
+    return $("#" + this.componentSelector).jqxComboBox("insertAt", item, index);  
   },
   isOpened: function () {
-    return $("#" +this.componentSelector).jqxComboBox("isOpened");  
+    return $("#" + this.componentSelector).jqxComboBox("isOpened");  
   },
   indeterminateIndex: function (index) {
-    $("#" +this.componentSelector).jqxComboBox("indeterminateIndex", index);  
+    $("#" + this.componentSelector).jqxComboBox("indeterminateIndex", index);  
   },
   indeterminateItem: function (item) {
-    $("#" +this.componentSelector).jqxComboBox("indeterminateItem", item);  
+    $("#" + this.componentSelector).jqxComboBox("indeterminateItem", item);  
   },
   loadFromSelect: function (selectTagId) {
-    $("#" +this.componentSelector).jqxComboBox("loadFromSelect", selectTagId);  
+    $("#" + this.componentSelector).jqxComboBox("loadFromSelect", selectTagId);  
   },
   open: function () {
-    $("#" +this.componentSelector).jqxComboBox("open");  
+    $("#" + this.componentSelector).jqxComboBox("open");  
   },
   removeItem: function (item) {
-    return $("#" +this.componentSelector).jqxComboBox("removeItem", item);  
+    return $("#" + this.componentSelector).jqxComboBox("removeItem", item);  
   },
   removeAt: function (index) {
-    return $("#" +this.componentSelector).jqxComboBox("removeAt", index);  
+    return $("#" + this.componentSelector).jqxComboBox("removeAt", index);  
   },
   selectIndex: function (index) {
-    $("#" +this.componentSelector).jqxComboBox("selectIndex", index);  
+    $("#" + this.componentSelector).jqxComboBox("selectIndex", index);  
   },
   selectItem: function (item) {
-    $("#" +this.componentSelector).jqxComboBox("selectItem", item);  
+    $("#" + this.componentSelector).jqxComboBox("selectItem", item);  
+  },
+  searchString: function () {
+    return $("#" + this.componentSelector).jqxComboBox("searchString");  
   },
   updateItem: function (item, itemValue) {
-    $("#" +this.componentSelector).jqxComboBox("updateItem", item, itemValue);  
+    $("#" + this.componentSelector).jqxComboBox("updateItem", item, itemValue);  
   },
   updateAt: function (item, index) {
-    $("#" +this.componentSelector).jqxComboBox("updateAt", item, index);  
+    $("#" + this.componentSelector).jqxComboBox("updateAt", item, index);  
   },
   unselectIndex: function (index) {
-    $("#" +this.componentSelector).jqxComboBox("unselectIndex", index);  
+    $("#" + this.componentSelector).jqxComboBox("unselectIndex", index);  
   },
   unselectItem: function (item) {
-    $("#" +this.componentSelector).jqxComboBox("unselectItem", item);  
+    $("#" + this.componentSelector).jqxComboBox("unselectItem", item);  
   },
   uncheckIndex: function (index) {
-    $("#" +this.componentSelector).jqxComboBox("uncheckIndex", index);  
+    $("#" + this.componentSelector).jqxComboBox("uncheckIndex", index);  
   },
   uncheckItem: function (item) {
-    $("#" +this.componentSelector).jqxComboBox("uncheckItem", item);  
+    $("#" + this.componentSelector).jqxComboBox("uncheckItem", item);  
   },
   uncheckAll: function () {
-    $("#" +this.componentSelector).jqxComboBox("uncheckAll");  
+    $("#" + this.componentSelector).jqxComboBox("uncheckAll");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxComboBox("val", value)
+      $("#" + this.componentSelector).jqxComboBox("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxComboBox("val");
+      return $("#" + this.componentSelector).jqxComboBox("val");
     }
   },
 
   render: function () {
-    let id = 'jqxComboBox' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxComboBox' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

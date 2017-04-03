@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -188,25 +188,26 @@ let jqxBulletChart = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxBulletChart("destroy");  
+    $("#" + this.componentSelector).jqxBulletChart("destroy");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxBulletChart("render");
+    $("#" + this.componentSelector).jqxBulletChart("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxBulletChart("refresh");  
+    $("#" + this.componentSelector).jqxBulletChart("refresh");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxBulletChart("val", value)
+      $("#" + this.componentSelector).jqxBulletChart("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxBulletChart("val");
+      return $("#" + this.componentSelector).jqxBulletChart("val");
     }
   },
 
   render: function () {
-    let id = 'jqxBulletChart' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxBulletChart' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

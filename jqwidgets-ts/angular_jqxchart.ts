@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -24,6 +24,7 @@ export class jqxChartComponent implements OnChanges
    @Input('backgroundImage') attrBackgroundImage: any;
    @Input('showLegend') attrShowLegend: any;
    @Input('legendLayout') attrLegendLayout: any;
+   @Input('categoryAxis') attrCategoryAxis: any;
    @Input('padding') attrPadding: any;
    @Input('titlePadding') attrTitlePadding: any;
    @Input('colorScheme') attrColorScheme: any;
@@ -32,6 +33,8 @@ export class jqxChartComponent implements OnChanges
    @Input('toolTipShowDelay') attrToolTipShowDelay: any;
    @Input('toolTipHideDelay') attrToolTipHideDelay: any;
    @Input('toolTipMoveDuration') attrToolTipMoveDuration: any;
+   @Input('drawBefore') attrDrawBefore: any;
+   @Input('draw') attrDraw: any;
    @Input('rtl') attrRtl: any;
    @Input('enableCrosshairs') attrEnableCrosshairs: any;
    @Input('crosshairsColor') attrCrosshairsColor: any;
@@ -51,7 +54,7 @@ export class jqxChartComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
+   properties: string[] = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','categoryAxis','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxChart;
@@ -63,11 +66,14 @@ export class jqxChartComponent implements OnChanges
             this.createComponent(); 
          }
       }); 
+      window.onresize = () => {
+          this.__updateRect__();
+      };
    }
 
    ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
-         if (changes.attrWidth || changes.attrHeight) {
+         if (changes.hasOwnProperty('attrWidth') || changes.hasOwnProperty('attrHeight')) {
             this.__updateRect__();
          }
          for (let i = 0; i < this.properties.length; i++) {
@@ -135,7 +141,7 @@ export class jqxChartComponent implements OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
       this.refresh();
    }
 
@@ -224,6 +230,14 @@ export class jqxChartComponent implements OnChanges
       }
    }
 
+   categoryAxis(arg?: any) : any {
+      if (arg !== undefined) {
+          this.host.jqxChart('categoryAxis', arg);
+      } else {
+          return this.host.jqxChart('categoryAxis');
+      }
+   }
+
    padding(arg?: jqwidgets.ChartPadding) : any {
       if (arg !== undefined) {
           this.host.jqxChart('padding', arg);
@@ -285,6 +299,22 @@ export class jqxChartComponent implements OnChanges
           this.host.jqxChart('toolTipMoveDuration', arg);
       } else {
           return this.host.jqxChart('toolTipMoveDuration');
+      }
+   }
+
+   drawBefore(arg?: any) : any {
+      if (arg !== undefined) {
+          this.host.jqxChart('drawBefore', arg);
+      } else {
+          return this.host.jqxChart('drawBefore');
+      }
+   }
+
+   draw(arg?: any) : any {
+      if (arg !== undefined) {
+          this.host.jqxChart('draw', arg);
+      } else {
+          return this.host.jqxChart('draw');
       }
    }
 
@@ -402,6 +432,10 @@ export class jqxChartComponent implements OnChanges
 
 
    // jqxChartComponent functions
+   getInstance(): any {
+      return this.host.jqxChart('getInstance');
+   }
+
    refresh(): void {
       this.host.jqxChart('refresh');
    }
@@ -450,11 +484,11 @@ export class jqxChartComponent implements OnChanges
       return this.host.jqxChart('getColorScheme', colorScheme);
    }
 
-   hideSerie(groupIndex: number, serieIndex: number, itemIndex?: number): void {
+   hideSerie(groupIndex: number, serieIndex: number, itemIndex: number): void {
       this.host.jqxChart('hideSerie', groupIndex, serieIndex, itemIndex);
    }
 
-   showSerie(groupIndex: number, serieIndex: number, itemIndex?: number): void {
+   showSerie(groupIndex: number, serieIndex: number, itemIndex: number): void {
       this.host.jqxChart('showSerie', groupIndex, serieIndex, itemIndex);
    }
 
@@ -462,12 +496,16 @@ export class jqxChartComponent implements OnChanges
       this.host.jqxChart('hideToolTip', hideDelay);
    }
 
-   showToolTip(groupIndex: number, serieIndex: number, itemIndex: number, showDelay?: number, hideDelay?: number): void {
+   showToolTip(groupIndex: number, serieIndex: number, itemIndex: number, showDelay: number, hideDelay: number): void {
       this.host.jqxChart('showToolTip', groupIndex, serieIndex, itemIndex, showDelay, hideDelay);
    }
 
    saveAsJPEG(fileName: string, exportServerUrl: string): void {
       this.host.jqxChart('saveAsJPEG', fileName, exportServerUrl);
+   }
+
+   saveAsPNG(fileName: string, exportServerUrl: string): void {
+      this.host.jqxChart('saveAsPNG', fileName, exportServerUrl);
    }
 
    saveAsPDF(fileName: string, exportServerUrl: string): void {

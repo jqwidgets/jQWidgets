@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -153,31 +153,35 @@ let jqxComplexInput = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxComplexInput("destroy");  
+    $("#" + this.componentSelector).jqxComplexInput("destroy");  
   },
   getReal: function (complexNumber) {
-    return $("#" +this.componentSelector).jqxComplexInput("getReal", complexNumber);  
+    return $("#" + this.componentSelector).jqxComplexInput("getReal", complexNumber);  
   },
   getImaginary: function (complexNumber) {
-    return $("#" +this.componentSelector).jqxComplexInput("getImaginary", complexNumber);  
+    return $("#" + this.componentSelector).jqxComplexInput("getImaginary", complexNumber);  
+  },
+  getDecimalNotation: function (part, type) {
+    return $("#" + this.componentSelector).jqxComplexInput("getDecimalNotation", part, type);  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxComplexInput("render");
+    $("#" + this.componentSelector).jqxComplexInput("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxComplexInput("refresh");  
+    $("#" + this.componentSelector).jqxComplexInput("refresh");  
   },
   val: function () {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxComplexInput("val", value)
+      $("#" + this.componentSelector).jqxComplexInput("val", )
     } else {
-      return $("#" +this.componentSelector).jqxComplexInput("val");
+      return $("#" + this.componentSelector).jqxComplexInput("val");
     }
   },
 
   render: function () {
-    let id = 'jqxComplexInput' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxComplexInput' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>
           <input type='text'></input>
           <div></div>

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -148,7 +148,7 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    get ngValue(): any {
@@ -500,9 +500,9 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       this.host.jqxDateTimeInput('setDate', date);
    }
 
-   val(arg?: String | Number): any {
-      if (arg !== undefined) {
-         this.host.jqxDateTimeInput("val", arg);
+   val(value, value2): any {
+      if (value !== undefined) {
+         this.host.jqxDateTimeInput("val", value, value2);
       } else {
          return this.host.jqxDateTimeInput("val");
       }

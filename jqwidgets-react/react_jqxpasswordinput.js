@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -167,22 +167,23 @@ let jqxPasswordInput = React.createClass ({
     }
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxPasswordInput("render");
+    $("#" + this.componentSelector).jqxPasswordInput("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxPasswordInput("refresh");  
+    $("#" + this.componentSelector).jqxPasswordInput("refresh");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxPasswordInput("val", value)
+      $("#" + this.componentSelector).jqxPasswordInput("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxPasswordInput("val");
+      return $("#" + this.componentSelector).jqxPasswordInput("val");
     }
   },
 
   render: function () {
-    let id = 'jqxPasswordInput' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxPasswordInput' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <input type='password' id={id}></input>
     )
   }

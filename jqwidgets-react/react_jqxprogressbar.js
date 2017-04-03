@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -174,22 +174,23 @@ let jqxProgressBar = React.createClass ({
     }
   },
   actualValue: function (value) {
-    $("#" +this.componentSelector).jqxProgressBar("actualValue", value);  
+    $("#" + this.componentSelector).jqxProgressBar("actualValue", value);  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxProgressBar("destroy");  
+    $("#" + this.componentSelector).jqxProgressBar("destroy");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("val", value)
+      $("#" + this.componentSelector).jqxProgressBar("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxProgressBar("val");
+      return $("#" + this.componentSelector).jqxProgressBar("val");
     }
   },
 
   render: function () {
-    let id = 'jqxProgressBar' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxProgressBar' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

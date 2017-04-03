@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -321,67 +321,68 @@ let jqxCalendar = React.createClass ({
     }
   },
   clear: function () {
-    $("#" +this.componentSelector).jqxCalendar("clear");  
+    $("#" + this.componentSelector).jqxCalendar("clear");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxCalendar("destroy");  
+    $("#" + this.componentSelector).jqxCalendar("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxCalendar("focus");  
+    $("#" + this.componentSelector).jqxCalendar("focus");  
   },
   addSpecialDate: function (date, tooltip, text) {
-    $("#" +this.componentSelector).jqxCalendar("addSpecialDate", date, tooltip, text);  
+    $("#" + this.componentSelector).jqxCalendar("addSpecialDate", date, tooltip, text);  
   },
   getMinDate: function () {
-    return $("#" +this.componentSelector).jqxCalendar("getMinDate");  
+    return $("#" + this.componentSelector).jqxCalendar("getMinDate");  
   },
   getMaxDate: function () {
-    return $("#" +this.componentSelector).jqxCalendar("getMaxDate");  
+    return $("#" + this.componentSelector).jqxCalendar("getMaxDate");  
   },
   getDate: function () {
-    return $("#" +this.componentSelector).jqxCalendar("getDate");  
+    return $("#" + this.componentSelector).jqxCalendar("getDate");  
   },
   getRange: function () {
-    return $("#" +this.componentSelector).jqxCalendar("getRange");  
+    return $("#" + this.componentSelector).jqxCalendar("getRange");  
   },
   navigateForward: function (months) {
-    $("#" +this.componentSelector).jqxCalendar("navigateForward", months);  
+    $("#" + this.componentSelector).jqxCalendar("navigateForward", months);  
   },
   navigateBackward: function (months) {
-    $("#" +this.componentSelector).jqxCalendar("navigateBackward", months);  
+    $("#" + this.componentSelector).jqxCalendar("navigateBackward", months);  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxCalendar("render");
+    $("#" + this.componentSelector).jqxCalendar("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxCalendar("refresh");  
+    $("#" + this.componentSelector).jqxCalendar("refresh");  
   },
   setMinDate: function (date) {
-    $("#" +this.componentSelector).jqxCalendar("setMinDate", date);  
+    $("#" + this.componentSelector).jqxCalendar("setMinDate", date);  
   },
   setMaxDate: function (date) {
-    $("#" +this.componentSelector).jqxCalendar("setMaxDate", date);  
+    $("#" + this.componentSelector).jqxCalendar("setMaxDate", date);  
   },
   setDate: function (date) {
-    $("#" +this.componentSelector).jqxCalendar("setDate", date);  
+    $("#" + this.componentSelector).jqxCalendar("setDate", date);  
   },
   setRange: function (date, date2) {
-    $("#" +this.componentSelector).jqxCalendar("setRange", date, date2);  
+    $("#" + this.componentSelector).jqxCalendar("setRange", date, date2);  
   },
   today: function () {
-    $("#" +this.componentSelector).jqxCalendar("today");  
+    $("#" + this.componentSelector).jqxCalendar("today");  
   },
   val: function (date, date2) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxCalendar("val", value)
+      $("#" + this.componentSelector).jqxCalendar("val", date, date2)
     } else {
-      return $("#" +this.componentSelector).jqxCalendar("val");
+      return $("#" + this.componentSelector).jqxCalendar("val");
     }
   },
 
   render: function () {
-    let id = 'jqxCalendar' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxCalendar' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

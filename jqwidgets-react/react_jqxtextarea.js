@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -209,31 +209,32 @@ let jqxTextArea = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxTextArea("destroy");  
+    $("#" + this.componentSelector).jqxTextArea("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxTextArea("focus");  
+    $("#" + this.componentSelector).jqxTextArea("focus");  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxTextArea("refresh");  
+    $("#" + this.componentSelector).jqxTextArea("refresh");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxTextArea("render");
+    $("#" + this.componentSelector).jqxTextArea("render");
   },
   selectAll: function () {
-    $("#" +this.componentSelector).jqxTextArea("selectAll");  
+    $("#" + this.componentSelector).jqxTextArea("selectAll");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxTextArea("val", value)
+      $("#" + this.componentSelector).jqxTextArea("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxTextArea("val");
+      return $("#" + this.componentSelector).jqxTextArea("val");
     }
   },
 
   render: function () {
-    let id = 'jqxTextArea' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxTextArea' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

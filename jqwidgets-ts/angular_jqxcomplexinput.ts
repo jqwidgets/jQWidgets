@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -127,7 +127,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    get ngValue(): any {
@@ -264,12 +264,16 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       this.host.jqxComplexInput('destroy');
    }
 
-   getReal(complexNumber: number): number {
+   getReal(complexNumber?: number): number {
       return this.host.jqxComplexInput('getReal', complexNumber);
    }
 
-   getImaginary(complexNumber: number): number {
+   getImaginary(complexNumber?: number): number {
       return this.host.jqxComplexInput('getImaginary', complexNumber);
+   }
+
+   getDecimalNotation(part?: string, type?: string): string {
+      return this.host.jqxComplexInput('getDecimalNotation', part, type);
    }
 
    render(): void {
@@ -280,9 +284,9 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       this.host.jqxComplexInput('refresh');
    }
 
-   val(arg?: String | Number): any {
-      if (arg !== undefined) {
-         this.host.jqxComplexInput("val", arg);
+   val(): any {
+      if (value !== undefined) {
+         this.host.jqxComplexInput("val", );
       } else {
          return this.host.jqxComplexInput("val");
       }

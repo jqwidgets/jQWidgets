@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -195,14 +195,15 @@ let jqxTreeMap = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxTreeMap("destroy");  
+    $("#" + this.componentSelector).jqxTreeMap("destroy");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxTreeMap("render");
+    $("#" + this.componentSelector).jqxTreeMap("render");
   },
   render: function () {
-    let id = 'jqxTreeMap' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxTreeMap' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

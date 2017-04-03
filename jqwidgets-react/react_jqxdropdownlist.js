@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,7 @@ let jqxDropDownList = React.createClass ({
     this.createComponent(options);
   },
   manageAttributes: function () {
-      let properties = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','scrollBarSize','source','selectedIndex','theme','valueMember','width'];
+      let properties = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','scrollBarSize','source','selectedIndex','theme','template','valueMember','width'];
       let options = {};
     for(let item in this.props) {
         if(item === 'settings') {
@@ -292,6 +292,13 @@ let jqxDropDownList = React.createClass ({
       return $("#" +this.componentSelector).jqxDropDownList("theme");
     }
   },
+  template: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxDropDownList("template", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxDropDownList("template");
+    }
+  },
   valueMember: function (arg) {
     if (arg !== undefined) {
       $("#" +this.componentSelector).jqxDropDownList("valueMember", arg)
@@ -307,133 +314,134 @@ let jqxDropDownList = React.createClass ({
     }
   },
   addItem: function (item) {
-    return $("#" +this.componentSelector).jqxDropDownList("addItem", item);  
+    return $("#" + this.componentSelector).jqxDropDownList("addItem", item);  
   },
   clearSelection: function () {
-    $("#" +this.componentSelector).jqxDropDownList("clearSelection");  
+    $("#" + this.componentSelector).jqxDropDownList("clearSelection");  
   },
   clear: function () {
-    $("#" +this.componentSelector).jqxDropDownList("clear");  
+    $("#" + this.componentSelector).jqxDropDownList("clear");  
   },
   close: function () {
-    $("#" +this.componentSelector).jqxDropDownList("close");  
+    $("#" + this.componentSelector).jqxDropDownList("close");  
   },
   checkIndex: function (index) {
-    $("#" +this.componentSelector).jqxDropDownList("checkIndex", index);  
+    $("#" + this.componentSelector).jqxDropDownList("checkIndex", index);  
   },
   checkItem: function (item) {
-    $("#" +this.componentSelector).jqxDropDownList("checkItem", item);  
+    $("#" + this.componentSelector).jqxDropDownList("checkItem", item);  
   },
   checkAll: function () {
-    $("#" +this.componentSelector).jqxDropDownList("checkAll");  
+    $("#" + this.componentSelector).jqxDropDownList("checkAll");  
   },
   clearFilter: function () {
-    $("#" +this.componentSelector).jqxDropDownList("clearFilter");  
+    $("#" + this.componentSelector).jqxDropDownList("clearFilter");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxDropDownList("destroy");  
+    $("#" + this.componentSelector).jqxDropDownList("destroy");  
   },
   disableItem: function (item) {
-    $("#" +this.componentSelector).jqxDropDownList("disableItem", item);  
+    $("#" + this.componentSelector).jqxDropDownList("disableItem", item);  
   },
   disableAt: function (index) {
-    $("#" +this.componentSelector).jqxDropDownList("disableAt", index);  
+    $("#" + this.componentSelector).jqxDropDownList("disableAt", index);  
   },
   enableItem: function (item) {
-    $("#" +this.componentSelector).jqxDropDownList("enableItem", item);  
+    $("#" + this.componentSelector).jqxDropDownList("enableItem", item);  
   },
   enableAt: function (index) {
-    $("#" +this.componentSelector).jqxDropDownList("enableAt", index);  
+    $("#" + this.componentSelector).jqxDropDownList("enableAt", index);  
   },
   ensureVisible: function (index) {
-    $("#" +this.componentSelector).jqxDropDownList("ensureVisible", index);  
+    $("#" + this.componentSelector).jqxDropDownList("ensureVisible", index);  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxDropDownList("focus");  
+    $("#" + this.componentSelector).jqxDropDownList("focus");  
   },
   getItem: function (index) {
-    return $("#" +this.componentSelector).jqxDropDownList("getItem", index);  
+    return $("#" + this.componentSelector).jqxDropDownList("getItem", index);  
   },
   getItemByValue: function (itemValue) {
-    return $("#" +this.componentSelector).jqxDropDownList("getItemByValue", itemValue);  
+    return $("#" + this.componentSelector).jqxDropDownList("getItemByValue", itemValue);  
   },
   getItems: function () {
-    return $("#" +this.componentSelector).jqxDropDownList("getItems");  
+    return $("#" + this.componentSelector).jqxDropDownList("getItems");  
   },
   getCheckedItems: function () {
-    return $("#" +this.componentSelector).jqxDropDownList("getCheckedItems");  
+    return $("#" + this.componentSelector).jqxDropDownList("getCheckedItems");  
   },
   getSelectedItem: function () {
-    return $("#" +this.componentSelector).jqxDropDownList("getSelectedItem");  
+    return $("#" + this.componentSelector).jqxDropDownList("getSelectedItem");  
   },
   getSelectedIndex: function () {
-    return $("#" +this.componentSelector).jqxDropDownList("getSelectedIndex");  
+    return $("#" + this.componentSelector).jqxDropDownList("getSelectedIndex");  
   },
   insertAt: function (item, index) {
-    $("#" +this.componentSelector).jqxDropDownList("insertAt", item, index);  
+    $("#" + this.componentSelector).jqxDropDownList("insertAt", item, index);  
   },
   isOpened: function () {
-    return $("#" +this.componentSelector).jqxDropDownList("isOpened");  
+    return $("#" + this.componentSelector).jqxDropDownList("isOpened");  
   },
   indeterminateIndex: function (index) {
-    $("#" +this.componentSelector).jqxDropDownList("indeterminateIndex", index);  
+    $("#" + this.componentSelector).jqxDropDownList("indeterminateIndex", index);  
   },
   indeterminateItem: function (item) {
-    $("#" +this.componentSelector).jqxDropDownList("indeterminateItem", item);  
+    $("#" + this.componentSelector).jqxDropDownList("indeterminateItem", item);  
   },
   loadFromSelect: function (arg) {
-    $("#" +this.componentSelector).jqxDropDownList("loadFromSelect", arg);  
+    $("#" + this.componentSelector).jqxDropDownList("loadFromSelect", arg);  
   },
   open: function () {
-    $("#" +this.componentSelector).jqxDropDownList("open");  
+    $("#" + this.componentSelector).jqxDropDownList("open");  
   },
   removeItem: function (item) {
-    $("#" +this.componentSelector).jqxDropDownList("removeItem", item);  
+    $("#" + this.componentSelector).jqxDropDownList("removeItem", item);  
   },
   removeAt: function (index) {
-    $("#" +this.componentSelector).jqxDropDownList("removeAt", index);  
+    $("#" + this.componentSelector).jqxDropDownList("removeAt", index);  
   },
   selectIndex: function (index) {
-    $("#" +this.componentSelector).jqxDropDownList("selectIndex", index);  
+    $("#" + this.componentSelector).jqxDropDownList("selectIndex", index);  
   },
   selectItem: function (item) {
-    $("#" +this.componentSelector).jqxDropDownList("selectItem", item);  
+    $("#" + this.componentSelector).jqxDropDownList("selectItem", item);  
   },
   setContent: function (content) {
-    $("#" +this.componentSelector).jqxDropDownList("setContent", content);  
+    $("#" + this.componentSelector).jqxDropDownList("setContent", content);  
   },
   updateItem: function (newItem, item) {
-    $("#" +this.componentSelector).jqxDropDownList("updateItem", newItem, item);  
+    $("#" + this.componentSelector).jqxDropDownList("updateItem", newItem, item);  
   },
   updateAt: function (item, index) {
-    $("#" +this.componentSelector).jqxDropDownList("updateAt", item, index);  
+    $("#" + this.componentSelector).jqxDropDownList("updateAt", item, index);  
   },
   unselectIndex: function (index) {
-    $("#" +this.componentSelector).jqxDropDownList("unselectIndex", index);  
+    $("#" + this.componentSelector).jqxDropDownList("unselectIndex", index);  
   },
   unselectItem: function (item) {
-    $("#" +this.componentSelector).jqxDropDownList("unselectItem", item);  
+    $("#" + this.componentSelector).jqxDropDownList("unselectItem", item);  
   },
   uncheckIndex: function (index) {
-    $("#" +this.componentSelector).jqxDropDownList("uncheckIndex", index);  
+    $("#" + this.componentSelector).jqxDropDownList("uncheckIndex", index);  
   },
   uncheckItem: function (item) {
-    $("#" +this.componentSelector).jqxDropDownList("uncheckItem", item);  
+    $("#" + this.componentSelector).jqxDropDownList("uncheckItem", item);  
   },
   uncheckAll: function () {
-    $("#" +this.componentSelector).jqxDropDownList("uncheckAll");  
+    $("#" + this.componentSelector).jqxDropDownList("uncheckAll");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxDropDownList("val", value)
+      $("#" + this.componentSelector).jqxDropDownList("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxDropDownList("val");
+      return $("#" + this.componentSelector).jqxDropDownList("val");
     }
   },
 
   render: function () {
-    let id = 'jqxDropDownList' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxDropDownList' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

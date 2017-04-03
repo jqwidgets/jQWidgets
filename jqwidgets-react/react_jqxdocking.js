@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -160,83 +160,84 @@ let jqxDocking = React.createClass ({
     }
   },
   addWindow: function (windowId, mode, panel, position) {
-    $("#" +this.componentSelector).jqxDocking("addWindow", windowId, mode, panel, position);  
+    $("#" + this.componentSelector).jqxDocking("addWindow", windowId, mode, panel, position);  
   },
   closeWindow: function (windowId) {
-    $("#" +this.componentSelector).jqxDocking("closeWindow", windowId);  
+    $("#" + this.componentSelector).jqxDocking("closeWindow", windowId);  
   },
   collapseWindow: function (windowId) {
-    $("#" +this.componentSelector).jqxDocking("collapseWindow", windowId);  
+    $("#" + this.componentSelector).jqxDocking("collapseWindow", windowId);  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxDocking("destroy");  
+    $("#" + this.componentSelector).jqxDocking("destroy");  
   },
   disableWindowResize: function (windowId) {
-    $("#" +this.componentSelector).jqxDocking("disableWindowResize", windowId);  
+    $("#" + this.componentSelector).jqxDocking("disableWindowResize", windowId);  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxDocking("disable");  
+    $("#" + this.componentSelector).jqxDocking("disable");  
   },
   exportLayout: function () {
-    return $("#" +this.componentSelector).jqxDocking("exportLayout");  
+    return $("#" + this.componentSelector).jqxDocking("exportLayout");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxDocking("enable");  
+    $("#" + this.componentSelector).jqxDocking("enable");  
   },
   expandWindow: function (windowId) {
-    $("#" +this.componentSelector).jqxDocking("expandWindow", windowId);  
+    $("#" + this.componentSelector).jqxDocking("expandWindow", windowId);  
   },
   enableWindowResize: function (windowId) {
-    $("#" +this.componentSelector).jqxDocking("enableWindowResize", windowId);  
+    $("#" + this.componentSelector).jqxDocking("enableWindowResize", windowId);  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxDocking("focus");  
+    $("#" + this.componentSelector).jqxDocking("focus");  
   },
   hideAllCloseButtons: function () {
-    $("#" +this.componentSelector).jqxDocking("hideAllCloseButtons");  
+    $("#" + this.componentSelector).jqxDocking("hideAllCloseButtons");  
   },
   hideAllCollapseButtons: function () {
-    $("#" +this.componentSelector).jqxDocking("hideAllCollapseButtons");  
+    $("#" + this.componentSelector).jqxDocking("hideAllCollapseButtons");  
   },
   hideCollapseButton: function (windowId) {
-    $("#" +this.componentSelector).jqxDocking("hideCollapseButton", windowId);  
+    $("#" + this.componentSelector).jqxDocking("hideCollapseButton", windowId);  
   },
   hideCloseButton: function (windowId) {
-    $("#" +this.componentSelector).jqxDocking("hideCloseButton", windowId);  
+    $("#" + this.componentSelector).jqxDocking("hideCloseButton", windowId);  
   },
   importLayout: function (Json) {
-    $("#" +this.componentSelector).jqxDocking("importLayout", Json);  
+    $("#" + this.componentSelector).jqxDocking("importLayout", Json);  
   },
   move: function (windowId, panel, position) {
-    $("#" +this.componentSelector).jqxDocking("move", windowId, panel, position);  
+    $("#" + this.componentSelector).jqxDocking("move", windowId, panel, position);  
   },
   pinWindow: function (windowId) {
-    $("#" +this.componentSelector).jqxDocking("pinWindow", windowId);  
+    $("#" + this.componentSelector).jqxDocking("pinWindow", windowId);  
   },
   setWindowMode: function (windowId, mode) {
-    $("#" +this.componentSelector).jqxDocking("setWindowMode", windowId, mode);  
+    $("#" + this.componentSelector).jqxDocking("setWindowMode", windowId, mode);  
   },
   showCloseButton: function (windowId) {
-    $("#" +this.componentSelector).jqxDocking("showCloseButton", windowId);  
+    $("#" + this.componentSelector).jqxDocking("showCloseButton", windowId);  
   },
   showCollapseButton: function (windowId) {
-    $("#" +this.componentSelector).jqxDocking("showCollapseButton", windowId);  
+    $("#" + this.componentSelector).jqxDocking("showCollapseButton", windowId);  
   },
   setWindowPosition: function (windowId, top, left) {
-    $("#" +this.componentSelector).jqxDocking("setWindowPosition", windowId, top, left);  
+    $("#" + this.componentSelector).jqxDocking("setWindowPosition", windowId, top, left);  
   },
   showAllCloseButtons: function () {
-    $("#" +this.componentSelector).jqxDocking("showAllCloseButtons");  
+    $("#" + this.componentSelector).jqxDocking("showAllCloseButtons");  
   },
   showAllCollapseButtons: function () {
-    $("#" +this.componentSelector).jqxDocking("showAllCollapseButtons");  
+    $("#" + this.componentSelector).jqxDocking("showAllCollapseButtons");  
   },
   unpinWindow: function (windowId) {
-    $("#" +this.componentSelector).jqxDocking("unpinWindow", windowId);  
+    $("#" + this.componentSelector).jqxDocking("unpinWindow", windowId);  
   },
   render: function () {
-    let id = 'jqxDocking' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxDocking' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -244,19 +244,20 @@ let jqxKnob = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxKnob("destroy");  
+    $("#" + this.componentSelector).jqxKnob("destroy");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxKnob("val", value)
+      $("#" + this.componentSelector).jqxKnob("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxKnob("val");
+      return $("#" + this.componentSelector).jqxKnob("val");
     }
   },
 
   render: function () {
-    let id = 'jqxKnob' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxKnob' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

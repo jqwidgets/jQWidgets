@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -146,23 +146,24 @@ let jqxValidator = React.createClass ({
     }
   },
   hideHint: function (id) {
-    $("#" +this.componentSelector).jqxValidator("hideHint", id);  
+    $("#" + this.componentSelector).jqxValidator("hideHint", id);  
   },
   hide: function () {
-    $("#" +this.componentSelector).jqxValidator("hide");  
+    $("#" + this.componentSelector).jqxValidator("hide");  
   },
   updatePosition: function () {
-    $("#" +this.componentSelector).jqxValidator("updatePosition");  
+    $("#" + this.componentSelector).jqxValidator("updatePosition");  
   },
   validate: function (htmlElement) {
-    $("#" +this.componentSelector).jqxValidator("validate", htmlElement);  
+    $("#" + this.componentSelector).jqxValidator("validate", htmlElement);  
   },
   validateInput: function (id) {
-    $("#" +this.componentSelector).jqxValidator("validateInput", id);  
+    $("#" + this.componentSelector).jqxValidator("validateInput", id);  
   },
   render: function () {
-    let id = 'jqxValidator' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxValidator' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

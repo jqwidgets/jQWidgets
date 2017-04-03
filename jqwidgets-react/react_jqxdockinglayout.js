@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -132,26 +132,27 @@ let jqxDockingLayout = React.createClass ({
     }
   },
   addFloatGroup: function (width, height, position, panelType, title, content, initContent) {
-    $("#" +this.componentSelector).jqxDockingLayout("addFloatGroup", width, height, position, panelType, title, content, initContent);  
+    $("#" + this.componentSelector).jqxDockingLayout("addFloatGroup", width, height, position, panelType, title, content, initContent);  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxDockingLayout("destroy");  
+    $("#" + this.componentSelector).jqxDockingLayout("destroy");  
   },
   loadLayout: function (layout) {
-    $("#" +this.componentSelector).jqxDockingLayout("loadLayout", layout);  
+    $("#" + this.componentSelector).jqxDockingLayout("loadLayout", layout);  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxDockingLayout("refresh");  
+    $("#" + this.componentSelector).jqxDockingLayout("refresh");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxDockingLayout("render");
+    $("#" + this.componentSelector).jqxDockingLayout("render");
   },
   saveLayout: function () {
-    return $("#" +this.componentSelector).jqxDockingLayout("saveLayout");  
+    return $("#" + this.componentSelector).jqxDockingLayout("saveLayout");  
   },
   render: function () {
-    let id = 'jqxDockingLayout' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxDockingLayout' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

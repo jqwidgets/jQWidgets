@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,7 @@ let jqxToggleButton = React.createClass ({
     this.createComponent(options);
   },
   manageAttributes: function () {
-      let properties = ['delay','disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
+      let properties = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
       let options = {};
     for(let item in this.props) {
         if(item === 'settings') {
@@ -67,13 +67,6 @@ let jqxToggleButton = React.createClass ({
   },
   off: function (name) {
     $('#' +this.componentSelector).off(name);
-  },
-  delay: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxToggleButton("delay", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxToggleButton("delay");
-    }
   },
   disabled: function (arg) {
     if (arg !== undefined) {
@@ -181,34 +174,35 @@ let jqxToggleButton = React.createClass ({
     }
   },
   check: function () {
-    $("#" +this.componentSelector).jqxToggleButton("check");  
+    $("#" + this.componentSelector).jqxToggleButton("check");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxToggleButton("destroy");  
+    $("#" + this.componentSelector).jqxToggleButton("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxToggleButton("focus");  
+    $("#" + this.componentSelector).jqxToggleButton("focus");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxToggleButton("render");
+    $("#" + this.componentSelector).jqxToggleButton("render");
   },
   toggle: function () {
-    $("#" +this.componentSelector).jqxToggleButton("toggle");  
+    $("#" + this.componentSelector).jqxToggleButton("toggle");  
   },
   unCheck: function () {
-    $("#" +this.componentSelector).jqxToggleButton("unCheck");  
+    $("#" + this.componentSelector).jqxToggleButton("unCheck");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxToggleButton("val", value)
+      $("#" + this.componentSelector).jqxToggleButton("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxToggleButton("val");
+      return $("#" + this.componentSelector).jqxToggleButton("val");
     }
   },
 
   render: function () {
-    let id = 'jqxToggleButton' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxToggleButton' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

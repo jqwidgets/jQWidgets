@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -153,20 +153,21 @@ let jqxScrollView = React.createClass ({
     }
   },
   back: function () {
-    $("#" +this.componentSelector).jqxScrollView("back");  
+    $("#" + this.componentSelector).jqxScrollView("back");  
   },
   changePage: function (index) {
-    $("#" +this.componentSelector).jqxScrollView("changePage", index);  
+    $("#" + this.componentSelector).jqxScrollView("changePage", index);  
   },
   forward: function () {
-    $("#" +this.componentSelector).jqxScrollView("forward");  
+    $("#" + this.componentSelector).jqxScrollView("forward");  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxScrollView("refresh");  
+    $("#" + this.componentSelector).jqxScrollView("refresh");  
   },
   render: function () {
-    let id = 'jqxScrollView' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxScrollView' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

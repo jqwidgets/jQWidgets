@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -209,106 +209,107 @@ let jqxTree = React.createClass ({
     }
   },
   addBefore: function (item, id) {
-    $("#" +this.componentSelector).jqxTree("addBefore", item, id);  
+    $("#" + this.componentSelector).jqxTree("addBefore", item, id);  
   },
   addAfter: function (item, id) {
-    $("#" +this.componentSelector).jqxTree("addAfter", item, id);  
+    $("#" + this.componentSelector).jqxTree("addAfter", item, id);  
   },
   addTo: function (item, id) {
-    $("#" +this.componentSelector).jqxTree("addTo", item, id);  
+    $("#" + this.componentSelector).jqxTree("addTo", item, id);  
   },
   clear: function () {
-    $("#" +this.componentSelector).jqxTree("clear");  
+    $("#" + this.componentSelector).jqxTree("clear");  
   },
   checkAll: function () {
-    $("#" +this.componentSelector).jqxTree("checkAll");  
+    $("#" + this.componentSelector).jqxTree("checkAll");  
   },
   checkItem: function (item, checked) {
-    $("#" +this.componentSelector).jqxTree("checkItem", item, checked);  
+    $("#" + this.componentSelector).jqxTree("checkItem", item, checked);  
   },
   collapseAll: function () {
-    $("#" +this.componentSelector).jqxTree("collapseAll");  
+    $("#" + this.componentSelector).jqxTree("collapseAll");  
   },
   collapseItem: function (item) {
-    $("#" +this.componentSelector).jqxTree("collapseItem", item);  
+    $("#" + this.componentSelector).jqxTree("collapseItem", item);  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxTree("destroy");  
+    $("#" + this.componentSelector).jqxTree("destroy");  
   },
   disableItem: function (item) {
-    $("#" +this.componentSelector).jqxTree("disableItem", item);  
+    $("#" + this.componentSelector).jqxTree("disableItem", item);  
   },
   ensureVisible: function (item) {
-    $("#" +this.componentSelector).jqxTree("ensureVisible", item);  
+    $("#" + this.componentSelector).jqxTree("ensureVisible", item);  
   },
   enableItem: function (item) {
-    $("#" +this.componentSelector).jqxTree("enableItem", item);  
+    $("#" + this.componentSelector).jqxTree("enableItem", item);  
   },
   expandAll: function () {
-    $("#" +this.componentSelector).jqxTree("expandAll");  
+    $("#" + this.componentSelector).jqxTree("expandAll");  
   },
   expandItem: function (item) {
-    $("#" +this.componentSelector).jqxTree("expandItem", item);  
+    $("#" + this.componentSelector).jqxTree("expandItem", item);  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxTree("focus");  
+    $("#" + this.componentSelector).jqxTree("focus");  
   },
   getCheckedItems: function () {
-    return $("#" +this.componentSelector).jqxTree("getCheckedItems");  
+    return $("#" + this.componentSelector).jqxTree("getCheckedItems");  
   },
   getUncheckedItems: function () {
-    return $("#" +this.componentSelector).jqxTree("getUncheckedItems");  
+    return $("#" + this.componentSelector).jqxTree("getUncheckedItems");  
   },
   getItems: function () {
-    return $("#" +this.componentSelector).jqxTree("getItems");  
+    return $("#" + this.componentSelector).jqxTree("getItems");  
   },
   getItem: function (element) {
-    return $("#" +this.componentSelector).jqxTree("getItem", element);  
+    return $("#" + this.componentSelector).jqxTree("getItem", element);  
   },
   getSelectedItem: function () {
-    return $("#" +this.componentSelector).jqxTree("getSelectedItem");  
+    return $("#" + this.componentSelector).jqxTree("getSelectedItem");  
   },
   getPrevItem: function () {
-    return $("#" +this.componentSelector).jqxTree("getPrevItem");  
+    return $("#" + this.componentSelector).jqxTree("getPrevItem");  
   },
   getNextItem: function () {
-    return $("#" +this.componentSelector).jqxTree("getNextItem");  
+    return $("#" + this.componentSelector).jqxTree("getNextItem");  
   },
   hitTest: function (left, top) {
-    return $("#" +this.componentSelector).jqxTree("hitTest", left, top);  
+    return $("#" + this.componentSelector).jqxTree("hitTest", left, top);  
   },
   removeItem: function (item) {
-    $("#" +this.componentSelector).jqxTree("removeItem", item);  
+    $("#" + this.componentSelector).jqxTree("removeItem", item);  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxTree("render");
+    $("#" + this.componentSelector).jqxTree("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxTree("refresh");  
+    $("#" + this.componentSelector).jqxTree("refresh");  
   },
   selectItem: function (item) {
-    $("#" +this.componentSelector).jqxTree("selectItem", item);  
+    $("#" + this.componentSelector).jqxTree("selectItem", item);  
   },
   uncheckAll: function () {
-    $("#" +this.componentSelector).jqxTree("uncheckAll");  
+    $("#" + this.componentSelector).jqxTree("uncheckAll");  
   },
   uncheckItem: function (item) {
-    $("#" +this.componentSelector).jqxTree("uncheckItem", item);  
+    $("#" + this.componentSelector).jqxTree("uncheckItem", item);  
   },
   updateItem: function (item, newItem) {
-    $("#" +this.componentSelector).jqxTree("updateItem", item, newItem);  
+    $("#" + this.componentSelector).jqxTree("updateItem", item, newItem);  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxTree("val", value)
+      $("#" + this.componentSelector).jqxTree("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxTree("val");
+      return $("#" + this.componentSelector).jqxTree("val");
     }
   },
 
   render: function () {
-    let id = 'jqxTree' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxTree' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

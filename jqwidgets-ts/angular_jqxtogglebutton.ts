@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,6 @@ declare let $: any;
 
 export class jqxToggleButtonComponent implements OnChanges
 {
-   @Input('delay') attrDelay: any;
    @Input('disabled') attrDisabled: any;
    @Input('imgSrc') attrImgSrc: any;
    @Input('imgWidth') attrImgWidth: any;
@@ -33,7 +32,7 @@ export class jqxToggleButtonComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['delay','disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
+   properties: string[] = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxToggleButton;
@@ -114,7 +113,7 @@ export class jqxToggleButtonComponent implements OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    setOptions(options: any) : void {
@@ -122,14 +121,6 @@ export class jqxToggleButtonComponent implements OnChanges
    }
 
    // jqxToggleButtonComponent properties
-   delay(arg?: number) : any {
-      if (arg !== undefined) {
-          this.host.jqxToggleButton('delay', arg);
-      } else {
-          return this.host.jqxToggleButton('delay');
-      }
-   }
-
    disabled(arg?: boolean) : any {
       if (arg !== undefined) {
           this.host.jqxToggleButton('disabled', arg);
@@ -276,9 +267,9 @@ export class jqxToggleButtonComponent implements OnChanges
       this.host.jqxToggleButton('unCheck');
    }
 
-   val(arg?: String | Number): any {
-      if (arg !== undefined) {
-         this.host.jqxToggleButton("val", arg);
+   val(value): any {
+      if (value !== undefined) {
+         this.host.jqxToggleButton("val", value);
       } else {
          return this.host.jqxToggleButton("val");
       }

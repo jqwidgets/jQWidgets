@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -167,79 +167,80 @@ let jqxNavigationBar = React.createClass ({
     }
   },
   add: function (header, content) {
-    $("#" +this.componentSelector).jqxNavigationBar("add", header, content);  
+    $("#" + this.componentSelector).jqxNavigationBar("add", header, content);  
   },
   collapseAt: function (index) {
-    $("#" +this.componentSelector).jqxNavigationBar("collapseAt", index);  
+    $("#" + this.componentSelector).jqxNavigationBar("collapseAt", index);  
   },
   disableAt: function (index) {
-    $("#" +this.componentSelector).jqxNavigationBar("disableAt", index);  
+    $("#" + this.componentSelector).jqxNavigationBar("disableAt", index);  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxNavigationBar("disable");  
+    $("#" + this.componentSelector).jqxNavigationBar("disable");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxNavigationBar("destroy");  
+    $("#" + this.componentSelector).jqxNavigationBar("destroy");  
   },
   expandAt: function (index) {
-    $("#" +this.componentSelector).jqxNavigationBar("expandAt", index);  
+    $("#" + this.componentSelector).jqxNavigationBar("expandAt", index);  
   },
   enableAt: function (index) {
-    $("#" +this.componentSelector).jqxNavigationBar("enableAt", index);  
+    $("#" + this.componentSelector).jqxNavigationBar("enableAt", index);  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxNavigationBar("enable");  
+    $("#" + this.componentSelector).jqxNavigationBar("enable");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxNavigationBar("focus");  
+    $("#" + this.componentSelector).jqxNavigationBar("focus");  
   },
   getHeaderContentAt: function (index) {
-    return $("#" +this.componentSelector).jqxNavigationBar("getHeaderContentAt", index);  
+    return $("#" + this.componentSelector).jqxNavigationBar("getHeaderContentAt", index);  
   },
   getContentAt: function (index) {
-    return $("#" +this.componentSelector).jqxNavigationBar("getContentAt", index);  
+    return $("#" + this.componentSelector).jqxNavigationBar("getContentAt", index);  
   },
   hideArrowAt: function (index) {
-    $("#" +this.componentSelector).jqxNavigationBar("hideArrowAt", index);  
+    $("#" + this.componentSelector).jqxNavigationBar("hideArrowAt", index);  
   },
   invalidate: function () {
-    $("#" +this.componentSelector).jqxNavigationBar("invalidate");  
+    $("#" + this.componentSelector).jqxNavigationBar("invalidate");  
   },
   insert: function (Index, header, content) {
-    $("#" +this.componentSelector).jqxNavigationBar("insert", Index, header, content);  
+    $("#" + this.componentSelector).jqxNavigationBar("insert", Index, header, content);  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxNavigationBar("refresh");  
+    $("#" + this.componentSelector).jqxNavigationBar("refresh");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxNavigationBar("render");
+    $("#" + this.componentSelector).jqxNavigationBar("render");
   },
   remove: function (index) {
-    $("#" +this.componentSelector).jqxNavigationBar("remove", index);  
+    $("#" + this.componentSelector).jqxNavigationBar("remove", index);  
   },
   setContentAt: function (index, item) {
-    $("#" +this.componentSelector).jqxNavigationBar("setContentAt", index, item);  
+    $("#" + this.componentSelector).jqxNavigationBar("setContentAt", index, item);  
   },
   setHeaderContentAt: function (index, item) {
-    $("#" +this.componentSelector).jqxNavigationBar("setHeaderContentAt", index, item);  
+    $("#" + this.componentSelector).jqxNavigationBar("setHeaderContentAt", index, item);  
   },
   showArrowAt: function (index) {
-    $("#" +this.componentSelector).jqxNavigationBar("showArrowAt", index);  
+    $("#" + this.componentSelector).jqxNavigationBar("showArrowAt", index);  
   },
   update: function (index, header, content) {
-    $("#" +this.componentSelector).jqxNavigationBar("update", index, header, content);  
+    $("#" + this.componentSelector).jqxNavigationBar("update", index, header, content);  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("val", value)
+      $("#" + this.componentSelector).jqxNavigationBar("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("val");
+      return $("#" + this.componentSelector).jqxNavigationBar("val");
     }
   },
 
   render: function () {
-    let id = 'jqxNavigationBar' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxNavigationBar' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

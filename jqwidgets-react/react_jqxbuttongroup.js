@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -111,35 +111,36 @@ let jqxButtonGroup = React.createClass ({
     }
   },
   disableAt: function (index) {
-    $("#" +this.componentSelector).jqxButtonGroup("disableAt", index);  
+    $("#" + this.componentSelector).jqxButtonGroup("disableAt", index);  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxButtonGroup("disable");  
+    $("#" + this.componentSelector).jqxButtonGroup("disable");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxButtonGroup("destroy");  
+    $("#" + this.componentSelector).jqxButtonGroup("destroy");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxButtonGroup("enable");  
+    $("#" + this.componentSelector).jqxButtonGroup("enable");  
   },
   enableAt: function (index) {
-    $("#" +this.componentSelector).jqxButtonGroup("enableAt", index);  
+    $("#" + this.componentSelector).jqxButtonGroup("enableAt", index);  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxButtonGroup("focus");  
+    $("#" + this.componentSelector).jqxButtonGroup("focus");  
   },
   getSelection: function () {
-    return $("#" +this.componentSelector).jqxButtonGroup("getSelection");  
+    return $("#" + this.componentSelector).jqxButtonGroup("getSelection");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxButtonGroup("render");
+    $("#" + this.componentSelector).jqxButtonGroup("render");
   },
   setSelection: function (index) {
-    $("#" +this.componentSelector).jqxButtonGroup("setSelection", index);  
+    $("#" + this.componentSelector).jqxButtonGroup("setSelection", index);  
   },
   render: function () {
-    let id = 'jqxButtonGroup' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxButtonGroup' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

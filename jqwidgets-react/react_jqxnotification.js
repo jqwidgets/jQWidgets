@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -216,26 +216,27 @@ let jqxNotification = React.createClass ({
     }
   },
   closeAll: function () {
-    $("#" +this.componentSelector).jqxNotification("closeAll");  
+    $("#" + this.componentSelector).jqxNotification("closeAll");  
   },
   closeLast: function () {
-    $("#" +this.componentSelector).jqxNotification("closeLast");  
+    $("#" + this.componentSelector).jqxNotification("closeLast");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxNotification("destroy");  
+    $("#" + this.componentSelector).jqxNotification("destroy");  
   },
   open: function () {
-    $("#" +this.componentSelector).jqxNotification("open");  
+    $("#" + this.componentSelector).jqxNotification("open");  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxNotification("refresh");  
+    $("#" + this.componentSelector).jqxNotification("refresh");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxNotification("render");
+    $("#" + this.componentSelector).jqxNotification("render");
   },
   render: function () {
-    let id = 'jqxNotification' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxNotification' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

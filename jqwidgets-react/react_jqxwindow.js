@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -314,53 +314,57 @@ let jqxWindow = React.createClass ({
     }
   },
   bringToFront: function () {
-    $("#" +this.componentSelector).jqxWindow("bringToFront");  
+    $("#" + this.componentSelector).jqxWindow("bringToFront");  
   },
   close: function () {
-    $("#" +this.componentSelector).jqxWindow("close");  
+    $("#" + this.componentSelector).jqxWindow("close");  
   },
   collapse: function () {
-    $("#" +this.componentSelector).jqxWindow("collapse");  
+    $("#" + this.componentSelector).jqxWindow("collapse");  
   },
   closeAll: function () {
-    $("#" +this.componentSelector).jqxWindow("closeAll");  
+    $("#" + this.componentSelector).jqxWindow("closeAll");  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxWindow("disable");  
+    $("#" + this.componentSelector).jqxWindow("disable");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxWindow("destroy");  
+    $("#" + this.componentSelector).jqxWindow("destroy");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxWindow("enable");  
+    $("#" + this.componentSelector).jqxWindow("enable");  
   },
   expand: function () {
-    $("#" +this.componentSelector).jqxWindow("expand");  
+    $("#" + this.componentSelector).jqxWindow("expand");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxWindow("focus");  
+    $("#" + this.componentSelector).jqxWindow("focus");  
   },
   isOpen: function () {
-    return $("#" +this.componentSelector).jqxWindow("isOpen");  
+    return $("#" + this.componentSelector).jqxWindow("isOpen");  
   },
   move: function (top, left) {
-    $("#" +this.componentSelector).jqxWindow("move", top, left);  
+    $("#" + this.componentSelector).jqxWindow("move", top, left);  
   },
   open: function () {
-    $("#" +this.componentSelector).jqxWindow("open");  
+    $("#" + this.componentSelector).jqxWindow("open");  
+  },
+  hide: function () {
+    $("#" + this.componentSelector).jqxWindow("hide");  
   },
   resize: function (top, left) {
-    $("#" +this.componentSelector).jqxWindow("resize", top, left);  
+    $("#" + this.componentSelector).jqxWindow("resize", top, left);  
   },
   setTitle: function (title) {
-    $("#" +this.componentSelector).jqxWindow("setTitle", title);  
+    $("#" + this.componentSelector).jqxWindow("setTitle", title);  
   },
   setContent: function (content) {
-    $("#" +this.componentSelector).jqxWindow("setContent", content);  
+    $("#" + this.componentSelector).jqxWindow("setContent", content);  
   },
   render: function () {
-    let id = 'jqxWindow' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxWindow' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

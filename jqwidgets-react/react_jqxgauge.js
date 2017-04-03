@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -237,22 +237,23 @@ let jqxGauge = React.createClass ({
     }
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxGauge("disable");  
+    $("#" + this.componentSelector).jqxGauge("disable");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxGauge("enable");  
+    $("#" + this.componentSelector).jqxGauge("enable");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxGauge("val", value)
+      $("#" + this.componentSelector).jqxGauge("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxGauge("val");
+      return $("#" + this.componentSelector).jqxGauge("val");
     }
   },
 
   render: function () {
-    let id = 'jqxGauge' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxGauge' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

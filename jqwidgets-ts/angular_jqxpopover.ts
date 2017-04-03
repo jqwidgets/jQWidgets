@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -105,8 +105,9 @@ export class jqxPopoverComponent implements OnChanges
         options = this.manageAttributes();
       }
       this.host = $(this.elementRef.nativeElement.firstChild);
-      this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxPopover', options);
+      this.host = this.widgetObject['host'];
+      this.__wireEvents__();
       this.__updateRect__();
    }
 
@@ -115,7 +116,7 @@ export class jqxPopoverComponent implements OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    setOptions(options: any) : void {
@@ -279,8 +280,10 @@ export class jqxPopoverComponent implements OnChanges
    @Output() onOpen = new EventEmitter();
 
    __wireEvents__(): void {
+      setTimeout(() => {
       this.host.on('close', (eventData: any) => { this.onClose.emit(eventData); });
       this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
+      });
    }
 
 } //jqxPopoverComponent

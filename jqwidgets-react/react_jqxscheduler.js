@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -440,92 +440,93 @@ let jqxScheduler = React.createClass ({
     }
   },
   addAppointment: function (item) {
-    $("#" +this.componentSelector).jqxScheduler("addAppointment", item);  
+    $("#" + this.componentSelector).jqxScheduler("addAppointment", item);  
   },
   beginAppointmentsUpdate: function () {
-    $("#" +this.componentSelector).jqxScheduler("beginAppointmentsUpdate");  
+    $("#" + this.componentSelector).jqxScheduler("beginAppointmentsUpdate");  
   },
   clearAppointmentsSelection: function () {
-    $("#" +this.componentSelector).jqxScheduler("clearAppointmentsSelection");  
+    $("#" + this.componentSelector).jqxScheduler("clearAppointmentsSelection");  
   },
   clearSelection: function () {
-    $("#" +this.componentSelector).jqxScheduler("clearSelection");  
+    $("#" + this.componentSelector).jqxScheduler("clearSelection");  
   },
   closeMenu: function () {
-    $("#" +this.componentSelector).jqxScheduler("closeMenu");  
+    $("#" + this.componentSelector).jqxScheduler("closeMenu");  
   },
   closeDialog: function () {
-    $("#" +this.componentSelector).jqxScheduler("closeDialog");  
+    $("#" + this.componentSelector).jqxScheduler("closeDialog");  
   },
   deleteAppointment: function (appointmenId) {
-    $("#" +this.componentSelector).jqxScheduler("deleteAppointment", appointmenId);  
+    $("#" + this.componentSelector).jqxScheduler("deleteAppointment", appointmenId);  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxScheduler("destroy");  
+    $("#" + this.componentSelector).jqxScheduler("destroy");  
   },
   endAppointmentsUpdate: function () {
-    $("#" +this.componentSelector).jqxScheduler("endAppointmentsUpdate");  
+    $("#" + this.componentSelector).jqxScheduler("endAppointmentsUpdate");  
   },
   ensureAppointmentVisible: function (id) {
-    $("#" +this.componentSelector).jqxScheduler("ensureAppointmentVisible", id);  
+    $("#" + this.componentSelector).jqxScheduler("ensureAppointmentVisible", id);  
   },
   ensureVisible: function (item, resourceId) {
-    $("#" +this.componentSelector).jqxScheduler("ensureVisible", item, resourceId);  
+    $("#" + this.componentSelector).jqxScheduler("ensureVisible", item, resourceId);  
   },
   exportData: function (format) {
-    return $("#" +this.componentSelector).jqxScheduler("exportData", format);  
+    return $("#" + this.componentSelector).jqxScheduler("exportData", format);  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxScheduler("focus");  
+    $("#" + this.componentSelector).jqxScheduler("focus");  
   },
   getAppointmentProperty: function (appointmentId, name) {
-    return $("#" +this.componentSelector).jqxScheduler("getAppointmentProperty", appointmentId, name);  
+    return $("#" + this.componentSelector).jqxScheduler("getAppointmentProperty", appointmentId, name);  
   },
   getSelection: function () {
-    return $("#" +this.componentSelector).jqxScheduler("getSelection");  
+    return $("#" + this.componentSelector).jqxScheduler("getSelection");  
   },
   getAppointments: function () {
-    return $("#" +this.componentSelector).jqxScheduler("getAppointments");  
+    return $("#" + this.componentSelector).jqxScheduler("getAppointments");  
   },
   getDataAppointments: function () {
-    return $("#" +this.componentSelector).jqxScheduler("getDataAppointments");  
+    return $("#" + this.componentSelector).jqxScheduler("getDataAppointments");  
   },
   hideAppointmentsByResource: function (resourcesId) {
-    $("#" +this.componentSelector).jqxScheduler("hideAppointmentsByResource", resourcesId);  
+    $("#" + this.componentSelector).jqxScheduler("hideAppointmentsByResource", resourcesId);  
   },
   openMenu: function (left, top) {
-    $("#" +this.componentSelector).jqxScheduler("openMenu", left, top);  
+    $("#" + this.componentSelector).jqxScheduler("openMenu", left, top);  
   },
   openDialog: function (left, top) {
-    $("#" +this.componentSelector).jqxScheduler("openDialog", left, top);  
+    $("#" + this.componentSelector).jqxScheduler("openDialog", left, top);  
   },
   selectAppointment: function (appointmentId) {
-    $("#" +this.componentSelector).jqxScheduler("selectAppointment", appointmentId);  
+    $("#" + this.componentSelector).jqxScheduler("selectAppointment", appointmentId);  
   },
   setAppointmentProperty: function (appointmentId, name, value) {
-    $("#" +this.componentSelector).jqxScheduler("setAppointmentProperty", appointmentId, name, value);  
+    $("#" + this.componentSelector).jqxScheduler("setAppointmentProperty", appointmentId, name, value);  
   },
   selectCell: function (date, allday, resourceId) {
-    $("#" +this.componentSelector).jqxScheduler("selectCell", date, allday, resourceId);  
+    $("#" + this.componentSelector).jqxScheduler("selectCell", date, allday, resourceId);  
   },
   showAppointmentsByResource: function (resourceId) {
-    $("#" +this.componentSelector).jqxScheduler("showAppointmentsByResource", resourceId);  
+    $("#" + this.componentSelector).jqxScheduler("showAppointmentsByResource", resourceId);  
   },
   scrollWidth: function () {
-    return $("#" +this.componentSelector).jqxScheduler("scrollWidth");  
+    return $("#" + this.componentSelector).jqxScheduler("scrollWidth");  
   },
   scrollHeight: function () {
-    return $("#" +this.componentSelector).jqxScheduler("scrollHeight");  
+    return $("#" + this.componentSelector).jqxScheduler("scrollHeight");  
   },
   scrollLeft: function (left) {
-    $("#" +this.componentSelector).jqxScheduler("scrollLeft", left);  
+    $("#" + this.componentSelector).jqxScheduler("scrollLeft", left);  
   },
   scrollTop: function (top) {
-    $("#" +this.componentSelector).jqxScheduler("scrollTop", top);  
+    $("#" + this.componentSelector).jqxScheduler("scrollTop", top);  
   },
   render: function () {
-    let id = 'jqxScheduler' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxScheduler' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

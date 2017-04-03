@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -188,29 +188,30 @@ let jqxDropDownButton = React.createClass ({
     }
   },
   close: function () {
-    $("#" +this.componentSelector).jqxDropDownButton("close");  
+    $("#" + this.componentSelector).jqxDropDownButton("close");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxDropDownButton("destroy");  
+    $("#" + this.componentSelector).jqxDropDownButton("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxDropDownButton("focus");  
+    $("#" + this.componentSelector).jqxDropDownButton("focus");  
   },
   getContent: function () {
-    return $("#" +this.componentSelector).jqxDropDownButton("getContent");  
+    return $("#" + this.componentSelector).jqxDropDownButton("getContent");  
   },
   isOpened: function () {
-    return $("#" +this.componentSelector).jqxDropDownButton("isOpened");  
+    return $("#" + this.componentSelector).jqxDropDownButton("isOpened");  
   },
   open: function () {
-    $("#" +this.componentSelector).jqxDropDownButton("open");  
+    $("#" + this.componentSelector).jqxDropDownButton("open");  
   },
   setContent: function (content) {
-    $("#" +this.componentSelector).jqxDropDownButton("setContent", content);  
+    $("#" + this.componentSelector).jqxDropDownButton("setContent", content);  
   },
   render: function () {
-    let id = 'jqxDropDownButton' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxDropDownButton' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

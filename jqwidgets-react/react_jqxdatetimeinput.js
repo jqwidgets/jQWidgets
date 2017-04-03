@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -300,55 +300,56 @@ let jqxDateTimeInput = React.createClass ({
     }
   },
   close: function () {
-    $("#" +this.componentSelector).jqxDateTimeInput("close");  
+    $("#" + this.componentSelector).jqxDateTimeInput("close");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxDateTimeInput("destroy");  
+    $("#" + this.componentSelector).jqxDateTimeInput("destroy");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxDateTimeInput("focus");  
+    $("#" + this.componentSelector).jqxDateTimeInput("focus");  
   },
   getRange: function (date) {
-    return $("#" +this.componentSelector).jqxDateTimeInput("getRange", date);  
+    return $("#" + this.componentSelector).jqxDateTimeInput("getRange", date);  
   },
   getText: function () {
-    return $("#" +this.componentSelector).jqxDateTimeInput("getText");  
+    return $("#" + this.componentSelector).jqxDateTimeInput("getText");  
   },
   getDate: function () {
-    return $("#" +this.componentSelector).jqxDateTimeInput("getDate");  
+    return $("#" + this.componentSelector).jqxDateTimeInput("getDate");  
   },
   getMaxDate: function () {
-    return $("#" +this.componentSelector).jqxDateTimeInput("getMaxDate");  
+    return $("#" + this.componentSelector).jqxDateTimeInput("getMaxDate");  
   },
   getMinDate: function () {
-    return $("#" +this.componentSelector).jqxDateTimeInput("getMinDate");  
+    return $("#" + this.componentSelector).jqxDateTimeInput("getMinDate");  
   },
   open: function () {
-    $("#" +this.componentSelector).jqxDateTimeInput("open");  
+    $("#" + this.componentSelector).jqxDateTimeInput("open");  
   },
   setRange: function (date, date2) {
-    $("#" +this.componentSelector).jqxDateTimeInput("setRange", date, date2);  
+    $("#" + this.componentSelector).jqxDateTimeInput("setRange", date, date2);  
   },
   setMinDate: function (date) {
-    $("#" +this.componentSelector).jqxDateTimeInput("setMinDate", date);  
+    $("#" + this.componentSelector).jqxDateTimeInput("setMinDate", date);  
   },
   setMaxDate: function (date) {
-    $("#" +this.componentSelector).jqxDateTimeInput("setMaxDate", date);  
+    $("#" + this.componentSelector).jqxDateTimeInput("setMaxDate", date);  
   },
   setDate: function (date) {
-    $("#" +this.componentSelector).jqxDateTimeInput("setDate", date);  
+    $("#" + this.componentSelector).jqxDateTimeInput("setDate", date);  
   },
-  val: function (date, date2) {
+  val: function (value, value2) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("val", value)
+      $("#" + this.componentSelector).jqxDateTimeInput("val", value, value2)
     } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("val");
+      return $("#" + this.componentSelector).jqxDateTimeInput("val");
     }
   },
 
   render: function () {
-    let id = 'jqxDateTimeInput' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxDateTimeInput' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

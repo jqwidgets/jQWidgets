@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -143,7 +143,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    writeValue(value: any): void {
@@ -531,6 +531,10 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
       this.host.jqxListBox('indeterminateIndex', Index);
    }
 
+   loadFromSelect(selector: string): void {
+      this.host.jqxListBox('loadFromSelect', selector);
+   }
+
    removeItem(Item: any): void {
       this.host.jqxListBox('removeItem', Item);
    }
@@ -583,9 +587,9 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
       this.host.jqxListBox('uncheckAll');
    }
 
-   val(arg?: String | Number): any {
-      if (arg !== undefined) {
-         this.host.jqxListBox("val", arg);
+   val(value): any {
+      if (value !== undefined) {
+         this.host.jqxListBox("val", value);
       } else {
          return this.host.jqxListBox("val");
       }

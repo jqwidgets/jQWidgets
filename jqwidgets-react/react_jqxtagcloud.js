@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -237,38 +237,39 @@ let jqxTagCloud = React.createClass ({
     }
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxTagCloud("destroy");  
+    $("#" + this.componentSelector).jqxTagCloud("destroy");  
   },
   findTagIndex: function (tag) {
-    return $("#" +this.componentSelector).jqxTagCloud("findTagIndex", tag);  
+    return $("#" + this.componentSelector).jqxTagCloud("findTagIndex", tag);  
   },
   getHiddenTagsList: function () {
-    return $("#" +this.componentSelector).jqxTagCloud("getHiddenTagsList");  
+    return $("#" + this.componentSelector).jqxTagCloud("getHiddenTagsList");  
   },
   getRenderedTags: function () {
-    return $("#" +this.componentSelector).jqxTagCloud("getRenderedTags");  
+    return $("#" + this.componentSelector).jqxTagCloud("getRenderedTags");  
   },
   getTagsList: function () {
-    return $("#" +this.componentSelector).jqxTagCloud("getTagsList");  
+    return $("#" + this.componentSelector).jqxTagCloud("getTagsList");  
   },
   hideItem: function (index) {
-    $("#" +this.componentSelector).jqxTagCloud("hideItem", index);  
+    $("#" + this.componentSelector).jqxTagCloud("hideItem", index);  
   },
   insertAt: function (index, item) {
-    $("#" +this.componentSelector).jqxTagCloud("insertAt", index, item);  
+    $("#" + this.componentSelector).jqxTagCloud("insertAt", index, item);  
   },
   removeAt: function (index) {
-    $("#" +this.componentSelector).jqxTagCloud("removeAt", index);  
+    $("#" + this.componentSelector).jqxTagCloud("removeAt", index);  
   },
   updateAt: function (index, item) {
-    $("#" +this.componentSelector).jqxTagCloud("updateAt", index, item);  
+    $("#" + this.componentSelector).jqxTagCloud("updateAt", index, item);  
   },
   showItem: function (index) {
-    $("#" +this.componentSelector).jqxTagCloud("showItem", index);  
+    $("#" + this.componentSelector).jqxTagCloud("showItem", index);  
   },
   render: function () {
-    let id = 'jqxTagCloud' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxTagCloud' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

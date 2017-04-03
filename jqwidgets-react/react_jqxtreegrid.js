@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -461,161 +461,162 @@ let jqxTreeGrid = React.createClass ({
     }
   },
   addRow: function (rowKey, rowData, rowPosition, parent) {
-    $("#" +this.componentSelector).jqxTreeGrid("addRow", rowKey, rowData, rowPosition, parent);  
+    $("#" + this.componentSelector).jqxTreeGrid("addRow", rowKey, rowData, rowPosition, parent);  
   },
   addFilter: function (dataField, filerGroup) {
-    $("#" +this.componentSelector).jqxTreeGrid("addFilter", dataField, filerGroup);  
+    $("#" + this.componentSelector).jqxTreeGrid("addFilter", dataField, filerGroup);  
   },
   applyFilters: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("applyFilters");  
+    $("#" + this.componentSelector).jqxTreeGrid("applyFilters");  
   },
   beginUpdate: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("beginUpdate");  
+    $("#" + this.componentSelector).jqxTreeGrid("beginUpdate");  
   },
   beginRowEdit: function (rowKey) {
-    $("#" +this.componentSelector).jqxTreeGrid("beginRowEdit", rowKey);  
+    $("#" + this.componentSelector).jqxTreeGrid("beginRowEdit", rowKey);  
   },
   beginCellEdit: function (rowKey, dataField) {
-    $("#" +this.componentSelector).jqxTreeGrid("beginCellEdit", rowKey, dataField);  
+    $("#" + this.componentSelector).jqxTreeGrid("beginCellEdit", rowKey, dataField);  
   },
   clearSelection: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("clearSelection");  
+    $("#" + this.componentSelector).jqxTreeGrid("clearSelection");  
   },
   clearFilters: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("clearFilters");  
+    $("#" + this.componentSelector).jqxTreeGrid("clearFilters");  
   },
   clear: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("clear");  
+    $("#" + this.componentSelector).jqxTreeGrid("clear");  
   },
   checkRow: function (rowKey) {
-    $("#" +this.componentSelector).jqxTreeGrid("checkRow", rowKey);  
+    $("#" + this.componentSelector).jqxTreeGrid("checkRow", rowKey);  
   },
   collapseRow: function (rowKey) {
-    $("#" +this.componentSelector).jqxTreeGrid("collapseRow", rowKey);  
+    $("#" + this.componentSelector).jqxTreeGrid("collapseRow", rowKey);  
   },
   collapseAll: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("collapseAll");  
+    $("#" + this.componentSelector).jqxTreeGrid("collapseAll");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("destroy");  
+    $("#" + this.componentSelector).jqxTreeGrid("destroy");  
   },
   deleteRow: function (rowKey) {
-    $("#" +this.componentSelector).jqxTreeGrid("deleteRow", rowKey);  
+    $("#" + this.componentSelector).jqxTreeGrid("deleteRow", rowKey);  
   },
   expandRow: function (rowKey) {
-    $("#" +this.componentSelector).jqxTreeGrid("expandRow", rowKey);  
+    $("#" + this.componentSelector).jqxTreeGrid("expandRow", rowKey);  
   },
   expandAll: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("expandAll");  
+    $("#" + this.componentSelector).jqxTreeGrid("expandAll");  
   },
   endUpdate: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("endUpdate");  
+    $("#" + this.componentSelector).jqxTreeGrid("endUpdate");  
   },
   ensureRowVisible: function (rowKey) {
-    $("#" +this.componentSelector).jqxTreeGrid("ensureRowVisible", rowKey);  
+    $("#" + this.componentSelector).jqxTreeGrid("ensureRowVisible", rowKey);  
   },
   endRowEdit: function (rowKey, cancelChanges) {
-    $("#" +this.componentSelector).jqxTreeGrid("endRowEdit", rowKey, cancelChanges);  
+    $("#" + this.componentSelector).jqxTreeGrid("endRowEdit", rowKey, cancelChanges);  
   },
   endCellEdit: function (rowKey, dataField, cancelChanges) {
-    $("#" +this.componentSelector).jqxTreeGrid("endCellEdit", rowKey, dataField, cancelChanges);  
+    $("#" + this.componentSelector).jqxTreeGrid("endCellEdit", rowKey, dataField, cancelChanges);  
   },
   exportData: function (exportDataType) {
-    return $("#" +this.componentSelector).jqxTreeGrid("exportData", exportDataType);  
+    return $("#" + this.componentSelector).jqxTreeGrid("exportData", exportDataType);  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("focus");  
+    $("#" + this.componentSelector).jqxTreeGrid("focus");  
   },
   getColumnProperty: function (dataField, propertyName) {
-    return $("#" +this.componentSelector).jqxTreeGrid("getColumnProperty", dataField, propertyName);  
+    return $("#" + this.componentSelector).jqxTreeGrid("getColumnProperty", dataField, propertyName);  
   },
   goToPage: function (pageIndex) {
-    $("#" +this.componentSelector).jqxTreeGrid("goToPage", pageIndex);  
+    $("#" + this.componentSelector).jqxTreeGrid("goToPage", pageIndex);  
   },
   goToPrevPage: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("goToPrevPage");  
+    $("#" + this.componentSelector).jqxTreeGrid("goToPrevPage");  
   },
   goToNextPage: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("goToNextPage");  
+    $("#" + this.componentSelector).jqxTreeGrid("goToNextPage");  
   },
   getSelection: function () {
-    return $("#" +this.componentSelector).jqxTreeGrid("getSelection");  
+    return $("#" + this.componentSelector).jqxTreeGrid("getSelection");  
   },
   getKey: function (row) {
-    return $("#" +this.componentSelector).jqxTreeGrid("getKey", row);  
+    return $("#" + this.componentSelector).jqxTreeGrid("getKey", row);  
   },
   getRow: function (rowKey) {
-    return $("#" +this.componentSelector).jqxTreeGrid("getRow", rowKey);  
+    return $("#" + this.componentSelector).jqxTreeGrid("getRow", rowKey);  
   },
   getRows: function () {
-    return $("#" +this.componentSelector).jqxTreeGrid("getRows");  
+    return $("#" + this.componentSelector).jqxTreeGrid("getRows");  
   },
   getCheckedRows: function () {
-    return $("#" +this.componentSelector).jqxTreeGrid("getCheckedRows");  
+    return $("#" + this.componentSelector).jqxTreeGrid("getCheckedRows");  
   },
   getView: function () {
-    return $("#" +this.componentSelector).jqxTreeGrid("getView");  
+    return $("#" + this.componentSelector).jqxTreeGrid("getView");  
   },
   getCellValue: function (rowKey, dataField) {
-    return $("#" +this.componentSelector).jqxTreeGrid("getCellValue", rowKey, dataField);  
+    return $("#" + this.componentSelector).jqxTreeGrid("getCellValue", rowKey, dataField);  
   },
   hideColumn: function (dataField) {
-    $("#" +this.componentSelector).jqxTreeGrid("hideColumn", dataField);  
+    $("#" + this.componentSelector).jqxTreeGrid("hideColumn", dataField);  
   },
   isBindingCompleted: function () {
-    return $("#" +this.componentSelector).jqxTreeGrid("isBindingCompleted");  
+    return $("#" + this.componentSelector).jqxTreeGrid("isBindingCompleted");  
   },
   lockRow: function (rowKey) {
-    $("#" +this.componentSelector).jqxTreeGrid("lockRow", rowKey);  
+    $("#" + this.componentSelector).jqxTreeGrid("lockRow", rowKey);  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("refresh");  
+    $("#" + this.componentSelector).jqxTreeGrid("refresh");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("render");
+    $("#" + this.componentSelector).jqxTreeGrid("render");
   },
   removeFilter: function (dataField) {
-    $("#" +this.componentSelector).jqxTreeGrid("removeFilter", dataField);  
+    $("#" + this.componentSelector).jqxTreeGrid("removeFilter", dataField);  
   },
   scrollOffset: function (top, left) {
-    return $("#" +this.componentSelector).jqxTreeGrid("scrollOffset", top, left);  
+    return $("#" + this.componentSelector).jqxTreeGrid("scrollOffset", top, left);  
   },
   setColumnProperty: function (dataField, propertyName, propertyValue) {
-    $("#" +this.componentSelector).jqxTreeGrid("setColumnProperty", dataField, propertyName, propertyValue);  
+    $("#" + this.componentSelector).jqxTreeGrid("setColumnProperty", dataField, propertyName, propertyValue);  
   },
   showColumn: function (dataField) {
-    $("#" +this.componentSelector).jqxTreeGrid("showColumn", dataField);  
+    $("#" + this.componentSelector).jqxTreeGrid("showColumn", dataField);  
   },
   selectRow: function (rowId) {
-    $("#" +this.componentSelector).jqxTreeGrid("selectRow", rowId);  
+    $("#" + this.componentSelector).jqxTreeGrid("selectRow", rowId);  
   },
   setCellValue: function (rowId, dataField, cellValue) {
-    $("#" +this.componentSelector).jqxTreeGrid("setCellValue", rowId, dataField, cellValue);  
+    $("#" + this.componentSelector).jqxTreeGrid("setCellValue", rowId, dataField, cellValue);  
   },
   sortBy: function (dataField, sortOrder) {
-    $("#" +this.componentSelector).jqxTreeGrid("sortBy", dataField, sortOrder);  
+    $("#" + this.componentSelector).jqxTreeGrid("sortBy", dataField, sortOrder);  
   },
   updating: function () {
-    return $("#" +this.componentSelector).jqxTreeGrid("updating");  
+    return $("#" + this.componentSelector).jqxTreeGrid("updating");  
   },
   updateBoundData: function () {
-    $("#" +this.componentSelector).jqxTreeGrid("updateBoundData");  
+    $("#" + this.componentSelector).jqxTreeGrid("updateBoundData");  
   },
   unselectRow: function (rowId) {
-    $("#" +this.componentSelector).jqxTreeGrid("unselectRow", rowId);  
+    $("#" + this.componentSelector).jqxTreeGrid("unselectRow", rowId);  
   },
   uncheckRow: function (rowId) {
-    $("#" +this.componentSelector).jqxTreeGrid("uncheckRow", rowId);  
+    $("#" + this.componentSelector).jqxTreeGrid("uncheckRow", rowId);  
   },
   updateRow: function (rowId, data) {
-    $("#" +this.componentSelector).jqxTreeGrid("updateRow", rowId, data);  
+    $("#" + this.componentSelector).jqxTreeGrid("updateRow", rowId, data);  
   },
   unlockRow: function (rowId) {
-    $("#" +this.componentSelector).jqxTreeGrid("unlockRow", rowId);  
+    $("#" + this.componentSelector).jqxTreeGrid("unlockRow", rowId);  
   },
   render: function () {
-    let id = 'jqxTreeGrid' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxTreeGrid' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

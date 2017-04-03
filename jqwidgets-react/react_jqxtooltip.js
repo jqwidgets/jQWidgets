@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -223,20 +223,21 @@ let jqxTooltip = React.createClass ({
     }
   },
   close: function (index) {
-    $("#" +this.componentSelector).jqxTooltip("close", index);  
+    $("#" + this.componentSelector).jqxTooltip("close", index);  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxTooltip("destroy");  
+    $("#" + this.componentSelector).jqxTooltip("destroy");  
   },
   open: function () {
-    $("#" +this.componentSelector).jqxTooltip("open");  
+    $("#" + this.componentSelector).jqxTooltip("open");  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxTooltip("refresh");  
+    $("#" + this.componentSelector).jqxTooltip("refresh");  
   },
   render: function () {
-    let id = 'jqxTooltip' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxTooltip' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

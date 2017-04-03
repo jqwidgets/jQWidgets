@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -160,43 +160,44 @@ let jqxCheckBox = React.createClass ({
     }
   },
   check: function () {
-    $("#" +this.componentSelector).jqxCheckBox("check");  
+    $("#" + this.componentSelector).jqxCheckBox("check");  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxCheckBox("disable");  
+    $("#" + this.componentSelector).jqxCheckBox("disable");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxCheckBox("destroy");  
+    $("#" + this.componentSelector).jqxCheckBox("destroy");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxCheckBox("enable");  
+    $("#" + this.componentSelector).jqxCheckBox("enable");  
   },
   focus: function () {
-    $("#" +this.componentSelector).jqxCheckBox("focus");  
+    $("#" + this.componentSelector).jqxCheckBox("focus");  
   },
   indeterminate: function () {
-    $("#" +this.componentSelector).jqxCheckBox("indeterminate");  
+    $("#" + this.componentSelector).jqxCheckBox("indeterminate");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxCheckBox("render");
+    $("#" + this.componentSelector).jqxCheckBox("render");
   },
   toggle: function () {
-    $("#" +this.componentSelector).jqxCheckBox("toggle");  
+    $("#" + this.componentSelector).jqxCheckBox("toggle");  
   },
   uncheck: function () {
-    $("#" +this.componentSelector).jqxCheckBox("uncheck");  
+    $("#" + this.componentSelector).jqxCheckBox("uncheck");  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxCheckBox("val", value)
+      $("#" + this.componentSelector).jqxCheckBox("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxCheckBox("val");
+      return $("#" + this.componentSelector).jqxCheckBox("val");
     }
   },
 
   render: function () {
-    let id = 'jqxCheckBox' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxCheckBox' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}><span>{this.value ? null : this.props.value}</span></div>
     )
   }

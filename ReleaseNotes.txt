@@ -1,4 +1,30 @@
 ﻿*********************************************
+* jQWidgets v4.5.1 Release, April-01-2017   *
+*********************************************
+
+What's Improved:
+- The jqxLayout/jqxDockingLayout "allowClose" setting in is now preserved when pinning tabbedGroups or unpinning autoHideGroups.
+
+What's Fixed:
+
+- Fixed an issue in jqxNumberInput regarding mobile devices behavior when decimalSeparator is ",".
+- Fixed an issue in jqxScheduler regarding the exactTimeRendering functionality, when an appointment is rendered in 2 days.
+- Fixed an issue in jqxScheduler regarding the edit dialog when the dialog is opened when there's no focused cell.
+- Fixed an issue in jqxPopover regarding the showArrowButton property, when it is set dynamically.
+- Fixed an issue in jqxGrid regarding the tooltips in Checkbox column.
+- Fixed an issue in jqxGrid regarding the clipboard paste functionality.
+- Fixed an issue in jqxGrid regarding the toggle arrows display when the grid's row details and grouping with aggregates features are enabled. 
+- Fixed an issue in jqxGrid regarding the grouping aggregates rendering logic.
+- Fixed an issue in jqxGrid regarding the filter row dropdownlist and "select all" item.
+- Fixed an issue in jqxGrid regarding the full row edit when "ESC" is pressed and "updaterow" is defined in the source object.
+- Fixed an issue in jqxDataTable regarding the server-side filtering.
+- Fixed an issue in jqxWindow regarding the dynamic enabling/disabling of window dragging.
+- Fixed an issue in jqxWindow regarding the Tab key navigation after closing modal window.
+- Fixed an issue in jqxTabs regarding the setTitleAt method when close buttons are enabled.
+- Fixed an issue in jqxRibbon about the animationType: "slide".
+- Fixed an issue in jqxWindow regarding the method "destroy" in Internet Explorer.
+
+*********************************************
 * jQWidgets v4.5.0 Release, Jan-13-2017     *
 *********************************************
 

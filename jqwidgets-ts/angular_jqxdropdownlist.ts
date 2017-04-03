@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -55,13 +55,14 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    @Input('source') attrSource: any;
    @Input('selectedIndex') attrSelectedIndex: any;
    @Input('theme') attrTheme: any;
+   @Input('template') attrTemplate: any;
    @Input('valueMember') attrValueMember: any;
    @Input('width') attrWidth: any;
    @Input('height') attrHeight: any;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','scrollBarSize','source','selectedIndex','theme','valueMember','width'];
+   properties: string[] = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','scrollBarSize','source','selectedIndex','theme','template','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDropDownList;
@@ -145,7 +146,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({width: this.attrWidth, height: this.attrHeight});
+      this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    writeValue(value: any): void {
@@ -423,6 +424,14 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   template(arg?: string) : any {
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('template', arg);
+      } else {
+          return this.host.jqxDropDownList('template');
+      }
+   }
+
    valueMember(arg?: string) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownList('valueMember', arg);
@@ -597,9 +606,9 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       this.host.jqxDropDownList('uncheckAll');
    }
 
-   val(arg?: String | Number): any {
-      if (arg !== undefined) {
-         this.host.jqxDropDownList("val", arg);
+   val(value): any {
+      if (value !== undefined) {
+         this.host.jqxDropDownList("val", value);
       } else {
          return this.host.jqxDropDownList("val");
       }

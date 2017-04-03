@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -132,29 +132,30 @@ let jqxSplitter = React.createClass ({
     }
   },
   collapse: function () {
-    $("#" +this.componentSelector).jqxSplitter("collapse");  
+    $("#" + this.componentSelector).jqxSplitter("collapse");  
   },
   destroy: function () {
-    $("#" +this.componentSelector).jqxSplitter("destroy");  
+    $("#" + this.componentSelector).jqxSplitter("destroy");  
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxSplitter("disable");  
+    $("#" + this.componentSelector).jqxSplitter("disable");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxSplitter("enable");  
+    $("#" + this.componentSelector).jqxSplitter("enable");  
   },
   expand: function () {
-    $("#" +this.componentSelector).jqxSplitter("expand");  
+    $("#" + this.componentSelector).jqxSplitter("expand");  
   },
   performRender: function () {
-    $("#" +this.componentSelector).jqxSplitter("render");
+    $("#" + this.componentSelector).jqxSplitter("render");
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxSplitter("refresh");  
+    $("#" + this.componentSelector).jqxSplitter("refresh");  
   },
   render: function () {
-    let id = 'jqxSplitter' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxSplitter' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

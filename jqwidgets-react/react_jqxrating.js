@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -132,28 +132,29 @@ let jqxRating = React.createClass ({
     }
   },
   disable: function () {
-    $("#" +this.componentSelector).jqxRating("disable");  
+    $("#" + this.componentSelector).jqxRating("disable");  
   },
   enable: function () {
-    $("#" +this.componentSelector).jqxRating("enable");  
+    $("#" + this.componentSelector).jqxRating("enable");  
   },
   getValue: function () {
-    return $("#" +this.componentSelector).jqxRating("getValue");  
+    return $("#" + this.componentSelector).jqxRating("getValue");  
   },
   setValue: function (value) {
-    $("#" +this.componentSelector).jqxRating("setValue", value);  
+    $("#" + this.componentSelector).jqxRating("setValue", value);  
   },
   val: function (value) {
     if (value !== undefined) {
-      $("#" +this.componentSelector).jqxRating("val", value)
+      $("#" + this.componentSelector).jqxRating("val", value)
     } else {
-      return $("#" +this.componentSelector).jqxRating("val");
+      return $("#" + this.componentSelector).jqxRating("val");
     }
   },
 
   render: function () {
-    let id = 'jqxRating' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxRating' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }

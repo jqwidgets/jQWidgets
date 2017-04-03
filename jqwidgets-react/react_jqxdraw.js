@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.0 (2017-Jan)
+jQWidgets v4.5.1 (2017-April)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -76,56 +76,57 @@ let jqxDraw = React.createClass ({
     }
   },
   attr: function (element, attributes) {
-    $("#" +this.componentSelector).jqxDraw("attr", element, attributes);  
+    $("#" + this.componentSelector).jqxDraw("attr", element, attributes);  
   },
   circle: function (cx, cy, r, attributes) {
-    return $("#" +this.componentSelector).jqxDraw("circle", cx, cy, r, attributes);  
+    return $("#" + this.componentSelector).jqxDraw("circle", cx, cy, r, attributes);  
   },
   clear: function () {
-    $("#" +this.componentSelector).jqxDraw("clear");  
+    $("#" + this.componentSelector).jqxDraw("clear");  
   },
   getAttr: function (element, attributes) {
-    return $("#" +this.componentSelector).jqxDraw("getAttr", element, attributes);  
+    return $("#" + this.componentSelector).jqxDraw("getAttr", element, attributes);  
   },
   getSize: function () {
-    return $("#" +this.componentSelector).jqxDraw("getSize");  
+    return $("#" + this.componentSelector).jqxDraw("getSize");  
   },
   line: function (x1, y1, x2, y2, attributes) {
-    return $("#" +this.componentSelector).jqxDraw("line", x1, y1, x2, y2, attributes);  
+    return $("#" + this.componentSelector).jqxDraw("line", x1, y1, x2, y2, attributes);  
   },
   measureText: function (text, angle, attributes) {
-    return $("#" +this.componentSelector).jqxDraw("measureText", text, angle, attributes);  
+    return $("#" + this.componentSelector).jqxDraw("measureText", text, angle, attributes);  
   },
   on: function (element, event, func) {
-    $("#" +this.componentSelector).jqxDraw("on", element, event, func);  
+    $("#" + this.componentSelector).jqxDraw("on", element, event, func);  
   },
   off: function (element, event, func) {
-    $("#" +this.componentSelector).jqxDraw("off", element, event, func);  
+    $("#" + this.componentSelector).jqxDraw("off", element, event, func);  
   },
   path: function (path, attributes) {
-    return $("#" +this.componentSelector).jqxDraw("path", path, attributes);  
+    return $("#" + this.componentSelector).jqxDraw("path", path, attributes);  
   },
   pieslice: function (cx, xy, innerRadius, outerRadius, fromAngle, endAngle, centerOffset, attributes) {
-    return $("#" +this.componentSelector).jqxDraw("pieslice", cx, xy, innerRadius, outerRadius, fromAngle, endAngle, centerOffset, attributes);  
+    return $("#" + this.componentSelector).jqxDraw("pieslice", cx, xy, innerRadius, outerRadius, fromAngle, endAngle, centerOffset, attributes);  
   },
   refresh: function () {
-    $("#" +this.componentSelector).jqxDraw("refresh");  
+    $("#" + this.componentSelector).jqxDraw("refresh");  
   },
   rect: function (x, y, width, height, attributes) {
-    return $("#" +this.componentSelector).jqxDraw("rect", x, y, width, height, attributes);  
+    return $("#" + this.componentSelector).jqxDraw("rect", x, y, width, height, attributes);  
   },
   saveAsJPEG: function (image, url) {
-    $("#" +this.componentSelector).jqxDraw("saveAsJPEG", image, url);  
+    $("#" + this.componentSelector).jqxDraw("saveAsJPEG", image, url);  
   },
   saveAsPNG: function (image, url) {
-    $("#" +this.componentSelector).jqxDraw("saveAsPNG", image, url);  
+    $("#" + this.componentSelector).jqxDraw("saveAsPNG", image, url);  
   },
-  text: function (x, y, width, height, angle, attributes, clip, halign, valign, rotateAround) {
-    return $("#" +this.componentSelector).jqxDraw("text", x, y, width, height, angle, attributes, clip, halign, valign, rotateAround);  
+  text: function (text, x, y, width, height, angle, attributes, clip, halign, valign, rotateAround) {
+    return $("#" + this.componentSelector).jqxDraw("text", text, x, y, width, height, angle, attributes, clip, halign, valign, rotateAround);  
   },
   render: function () {
-    let id = 'jqxDraw' + this.generateID() + this.generateID();
-    this.componentSelector = id;    return (
+    var id = 'jqxDraw' + this.generateID() + this.generateID();
+    this.componentSelector = id;
+;    return (
       <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
     )
   }
