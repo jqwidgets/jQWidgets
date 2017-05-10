@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title id='Description'>
+        ReactJS Ribbon demo. This demo shows the default functionality of jqxRibbon. This widget can be used as a tabbed toolbar or mega menu.
+    </title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxribbon.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <style>
+        h4 {
+            font-size: 14px;
+            margin: 18px 0 15px 15px;
+        }
+
+        .tag-title-info {
+            background: transparent;
+            width: 1px;
+            height: 0px;
+            border-color: #4272b8 transparent #4272b8 #4272b8 !important;
+            border-width: 26px 26px;
+            border-style: solid;
+            z-index: 1000;
+            top: 0px;
+            position: absolute;
+            left: 600px;
+        }
+
+        .tag-title {
+            font-size: 16px;
+            color: #fff;
+            position: absolute;
+            z-index: 100;
+            left: 0;
+            line-height: 100%;
+            background: #4272b8 !important;
+            height: 52px;
+            padding: 0px;
+            margin: 0px;
+            top: 40px;
+            width: 600px;
+            vertical-align: middle;
+        }
+
+        .cart-top {
+            font-family: Arial, Helvetica, sans-serif;
+            height: 35px;
+            position: absolute;
+            left: 580px;
+            width: 100px;
+            top: 40px;
+            overflow: hidden;
+            color: #fff;
+            padding: 16px 14px 1px 14px;
+            font-size: 11px;
+            font-weight: 400;
+            background: #4272b8 !important;
+            z-index: 199;
+        }
+
+            .cart-top p {
+                font-weight: bold;
+                font-size: 11px;
+                background: url(../../images/cart-icon.png) no-repeat right center;
+                min-height: 16px;
+                text-align: left;
+                padding: 0 24px 0 0;
+                margin-top: 2px;
+                float: left;
+                font-size: 11px;
+                color: #fff;
+                text-decoration: none;
+            }
+
+        .next-page span {
+            padding-left: 22px;
+            padding-top: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="example-description" style="margin-bottom: 3em">
+        ReactJS Ribbon demo. This demo shows the default functionality of jqxRibbon. This widget can be used as a tabbed toolbar or mega menu.
+    </div>
+    <div id="app"></div>
+    <script src="../build/ribbon_collapsible.bundle.js"></script>
+</body>
+</html>

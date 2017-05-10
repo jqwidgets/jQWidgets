@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -170,9 +170,9 @@ let jqxComplexInput = React.createClass ({
   refresh: function () {
     $("#" + this.componentSelector).jqxComplexInput("refresh");  
   },
-  val: function () {
+  val: function (value) {
     if (value !== undefined) {
-      $("#" + this.componentSelector).jqxComplexInput("val", )
+      $("#" + this.componentSelector).jqxComplexInput("val", value)
     } else {
       return $("#" + this.componentSelector).jqxComplexInput("val");
     }

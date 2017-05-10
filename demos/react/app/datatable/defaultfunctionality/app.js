@@ -6,14 +6,14 @@ import JqxDataTable from '../../../jqwidgets-react/react_jqxdatatable.js';
 class App extends React.Component {
   render () {
     let dataTableHTML = `
-      <table id="table" border="1">
+      <table id='table' border='1'>
         <thead>
             <tr>
-                <th align="left">First Name</th>
-                <th align="left">Last Name</th>
-                <th align="left">Product</th>
-                <th align="right">Price</th>
-                <th align="right">Quantity</th>
+                <th align='left'>First Name</th>
+                <th align='left'>Last Name</th>
+                <th align='left'>Product</th>
+                <th align='right'>Price</th>
+                <th align='right'>Quantity</th>
             </tr>
         </thead>
         <tbody>

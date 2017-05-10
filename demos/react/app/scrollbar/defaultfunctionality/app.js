@@ -5,10 +5,10 @@ import JqxScrollBar from '../../../jqwidgets-react/react_jqxscrollbar.js';
 
 class App extends React.Component {
     componentDidMount() {
-        this.refs.myScrollBar.on('valueChanged', function (event) {
+        this.refs.myScrollBar.on('valueChanged', (event) => {
             document.getElementById('HorizontalDiv').innerText = 'Horizontal (' + parseInt(event.currentValue) + ')';
         });
-        this.refs.myVerticalScrollBar.on('valueChanged', function (event) {
+        this.refs.myVerticalScrollBar.on('valueChanged', (event) => {
             document.getElementById('VerticalDiv').innerText = 'Vertical (' + parseInt(event.currentValue) + ')';
         });
     }

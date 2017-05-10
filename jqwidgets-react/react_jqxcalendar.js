@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -371,9 +371,9 @@ let jqxCalendar = React.createClass ({
   today: function () {
     $("#" + this.componentSelector).jqxCalendar("today");  
   },
-  val: function (date, date2) {
+  val: function (value, value2) {
     if (value !== undefined) {
-      $("#" + this.componentSelector).jqxCalendar("val", date, date2)
+      $("#" + this.componentSelector).jqxCalendar("val", value, value2)
     } else {
       return $("#" + this.componentSelector).jqxCalendar("val");
     }

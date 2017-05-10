@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -15,14 +15,14 @@ declare let $: any;
 export class jqxRangeSelectorComponent implements OnChanges
 {
    @Input('disabled') attrDisabled: any;
-   @Input('labelFormat') attrLabelFormat: any;
+   @Input('labelsFormat') attrLabelsFormat: any;
    @Input('labelsFormatFunction') attrLabelsFormatFunction: any;
    @Input('labelPrecision') attrLabelPrecision: any;
    @Input('moveOnClick') attrMoveOnClick: any;
    @Input('markerRenderer') attrMarkerRenderer: any;
    @Input('markerPrecision') attrMarkerPrecision: any;
    @Input('majorLabelRenderer') attrMajorLabelRenderer: any;
-   @Input('markerFormat') attrMarkerFormat: any;
+   @Input('markersFormat') attrMarkersFormat: any;
    @Input('majorTicksInterval') attrMajorTicksInterval: any;
    @Input('minorTicksInterval') attrMinorTicksInterval: any;
    @Input('max') attrMax: any;
@@ -41,19 +41,20 @@ export class jqxRangeSelectorComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','height','labelFormat','labelsFormatFunction','labelPrecision','moveOnClick','markerRenderer','markerPrecision','majorLabelRenderer','markerFormat','majorTicksInterval','minorTicksInterval','max','min','padding','range','resizable','rtl','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
+   properties: string[] = ['disabled','height','labelsFormat','labelsFormatFunction','labelPrecision','moveOnClick','markerRenderer','markerPrecision','majorLabelRenderer','markersFormat','majorTicksInterval','minorTicksInterval','max','min','padding','range','resizable','rtl','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxRangeSelector;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
-      setTimeout(() => {
-         if (this.autoCreate) {
-            this.createComponent(); 
-         }
-      }); 
    }
+
+   ngOnInit() {
+      if (this.autoCreate) {
+         this.createComponent(); 
+      }
+   }; 
 
    ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
@@ -61,7 +62,7 @@ export class jqxRangeSelectorComponent implements OnChanges
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             let areEqual: boolean;
 
-            if (this[attrName]) {
+            if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
                   if (this[attrName] instanceof Array) {
                      areEqual = this.arraysEqual(this[attrName], this.host.jqxRangeSelector(this.properties[i]));
@@ -104,6 +105,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
       return options;
    }
+
    createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
@@ -114,6 +116,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       this.host = $(this.elementRef.nativeElement.firstChild);
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxRangeSelector', options);
+
       this.__updateRect__();
    }
 
@@ -146,11 +149,11 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   labelFormat(arg?: string) : any {
+   labelsFormat(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxRangeSelector('labelFormat', arg);
+          this.host.jqxRangeSelector('labelsFormat', arg);
       } else {
-          return this.host.jqxRangeSelector('labelFormat');
+          return this.host.jqxRangeSelector('labelsFormat');
       }
    }
 
@@ -202,11 +205,11 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   markerFormat(arg?: string) : any {
+   markersFormat(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxRangeSelector('markerFormat', arg);
+          this.host.jqxRangeSelector('markersFormat', arg);
       } else {
-          return this.host.jqxRangeSelector('markerFormat');
+          return this.host.jqxRangeSelector('markersFormat');
       }
    }
 

@@ -6,22 +6,26 @@ import JqxButton from '../../../jqwidgets-react/react_jqxbuttons.js';
 
 class App extends React.Component {
     componentDidMount() {
-        this.refs.myOpenLoader.on('click', () => {
+        this.refs.openLoader.on('click', () => {
             this.refs.myLoader.open();
         });
 
-        this.refs.myCloseLoader.on('click', () => {
+        this.refs.closeLoader.on('click', () => {
             this.refs.myLoader.close();
         });
     }
-    render () {
+    render() {
         return (
             <div>
-                <JqxLoader ref='myLoader'
-                  width={100} height={60} imagePosition={'top'}
+                <JqxLoader ref='myLoader' style={{ marginTop: 230 }}
+                    width={100} height={60} imagePosition={'top'}
                 />
-                <JqxButton ref='myOpenLoader' width={150} height={25} value="Open Loader"/>
-                <JqxButton ref='myCloseLoader' width={150} height={25} style={{marginTop: '5px'}} value="Close"/>
+                <JqxButton ref='openLoader' style={{ float: 'left', marginRight: 10 }}
+                    value='Open Loader' width={150} height={25}
+                />
+                <JqxButton ref='closeLoader' style={{ float: 'left' }}
+                    value='Close' width={150} height={25}
+                />
             </div>
         )
     }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -49,6 +49,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
    @Input('renderer') attrRenderer: any;
    @Input('rtl') attrRtl: any;
    @Input('selectedIndex') attrSelectedIndex: any;
+   @Input('selectedIndexes') attrSelectedIndexes: any;
    @Input('source') attrSource: any;
    @Input('scrollBarSize') attrScrollBarSize: any;
    @Input('searchMode') attrSearchMode: any;
@@ -59,7 +60,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['autoHeight','allowDrag','allowDrop','checkboxes','disabled','displayMember','dropAction','dragStart','dragEnd','enableHover','enableSelection','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','height','hasThreeStates','itemHeight','incrementalSearch','incrementalSearchDelay','multiple','multipleextended','renderer','rtl','selectedIndex','source','scrollBarSize','searchMode','theme','valueMember','width'];
+   properties: string[] = ['autoHeight','allowDrag','allowDrop','checkboxes','disabled','displayMember','dropAction','dragStart','dragEnd','enableHover','enableSelection','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','height','hasThreeStates','itemHeight','incrementalSearch','incrementalSearchDelay','multiple','multipleextended','renderer','rtl','selectedIndex','selectedIndexes','source','scrollBarSize','searchMode','theme','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxListBox;
@@ -69,12 +70,13 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
-      setTimeout(() => {
-         if (this.autoCreate) {
-            this.createComponent(); 
-         }
-      }); 
    }
+
+   ngOnInit() {
+      if (this.autoCreate) {
+         this.createComponent(); 
+      }
+   }; 
 
    ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
@@ -82,7 +84,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             let areEqual: boolean;
 
-            if (this[attrName]) {
+            if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
                   if (this[attrName] instanceof Array) {
                      areEqual = this.arraysEqual(this[attrName], this.host.jqxListBox(this.properties[i]));
@@ -125,6 +127,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
       }
       return options;
    }
+
    createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
@@ -135,6 +138,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
       this.host = $(this.elementRef.nativeElement.firstChild);
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxListBox', options);
+
       this.__updateRect__();
    }
 
@@ -373,6 +377,14 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
+   selectedIndexes(arg?: any) : any {
+      if (arg !== undefined) {
+          this.host.jqxListBox('selectedIndexes', arg);
+      } else {
+          return this.host.jqxListBox('selectedIndexes');
+      }
+   }
+
    source(arg?: Array<any>) : any {
       if (arg !== undefined) {
           this.host.jqxListBox('source', arg);
@@ -587,7 +599,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
       this.host.jqxListBox('uncheckAll');
    }
 
-   val(value): any {
+   val(value?: String | Number): any {
       if (value !== undefined) {
          this.host.jqxListBox("val", value);
       } else {

@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title id='Description'>
+        ReactJS Slider demo. jqxSlider represents a flexible React Slider that lets the user select from a range of values by moving a thumb along a track. The widget is completely customizable in terms of appearance and offers numerous configuration options like mouse wheel and keyboard support, smooth or step-based slider and support for range sliders.
+    </title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <style type="text/css">
+        .slider-demo-navigation-item {
+            margin-left: 3px;
+            cursor: pointer;
+        }
+
+        .slider-demo-info-header {
+            font-size: 20px;
+            font-family: Impact;
+            color: #aaa;
+        }
+
+        .slider-demo-info-content {
+            padding-top: 5px;
+            font-size: 11px;
+            width: 210px;
+            text-align: left;
+            font-family: Verdana, Arial;
+        }
+
+        .slider-demo-main {
+            width: 665px;
+            text-align: center;
+            border: 1px solid #ccc;
+            height: 376px;
+            padding: 3px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background: #332f2f;
+        }
+
+        .slider-demo-header {
+            background-image: url(../../images/slider-demo-header-background.png);
+            width: 665px;
+            height: 76px;
+        }
+
+        .slider-demo-header-content {
+            position: relative;
+            right: 25px;
+            top: 15px;
+            color: #eee;
+            font-family: Times New Roman, Verdana;
+            font-size: 35px;
+            text-align: right;
+        }
+
+        .slider-demo-content {
+            width: 663px;
+            height: 300px;
+            border: 1px solid #fbfbfb;
+            border-top-width: 0px;
+            background: #fafafa;
+            position: relative;
+        }
+
+        .slider-demo-content-inner {
+            position: relative;
+            width: 550px;
+            background-color: #fff;
+            height: 250px;
+            float: right;
+            right: 25px;
+            top: 25px;
+            border: 1px solid #ccc;
+            background-color: #fbfbfb;
+        }
+
+        .slider-demo-content-container {
+            position: relative;
+            left: 9px;
+            top: 9px;
+            width: 530px;
+            background-color: #fff;
+            height: 230px;
+            border: 1px solid #F5F5F5;
+        }
+
+        .slider-demo-content-navigation {
+            z-index: 50;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            height: 26px;
+            width: 130px;
+            background-color: #555;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        .slider-demo-content-image-border {
+            background-color: #eee;
+            padding: 5px;
+            border: 1px solid #ccc;
+            width: 231px;
+            height: 154px;
+            position: relative;
+            top: 30px;
+            left: 15px;
+            float: left;
+        }
+
+        .slider-demo-content-info {
+            position: relative;
+            top: 30px;
+            left: 50px;
+            float: left;
+        }
+
+        .slider-demo-slider-container {
+            position: relative;
+            top: 25px;
+            left: 20px;
+            text-align: left;
+            float: left;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="example-description" style="margin-bottom:3em">
+        ReactJS Slider demo. jqxSlider represents a flexible React Slider that lets the user select from a range of values by moving a thumb along a track. The widget is completely customizable in terms of appearance and offers numerous configuration options like mouse wheel and keyboard support, smooth or step-based slider and support for range sliders.
+    </div>
+    <div id="app"></div>
+    <script src="../build/slider_verticalslider.bundle.js"></script>
+</body>
+</html>

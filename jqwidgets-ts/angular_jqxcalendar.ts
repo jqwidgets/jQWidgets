@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -73,12 +73,13 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
-      setTimeout(() => {
-         if (this.autoCreate) {
-            this.createComponent(); 
-         }
-      }); 
    }
+
+   ngOnInit() {
+      if (this.autoCreate) {
+         this.createComponent(); 
+      }
+   }; 
 
    ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
@@ -86,7 +87,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             let areEqual: boolean;
 
-            if (this[attrName]) {
+            if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
                   if (this[attrName] instanceof Array) {
                      areEqual = this.arraysEqual(this[attrName], this.host.jqxCalendar(this.properties[i]));
@@ -129,6 +130,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
       return options;
    }
+
    createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
@@ -139,6 +141,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       this.host = $(this.elementRef.nativeElement.firstChild);
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxCalendar', options);
+
       this.__updateRect__();
    }
 
@@ -449,7 +452,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: number) : any {
+   width(arg?: jqwidgets.Size) : any {
       if (arg !== undefined) {
           this.host.jqxCalendar('width', arg);
       } else {
@@ -527,9 +530,9 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       this.host.jqxCalendar('today');
    }
 
-   val(date, date2): any {
+   val(value?: any, value2?: any): any {
       if (value !== undefined) {
-         this.host.jqxCalendar("val", date, date2);
+         this.host.jqxCalendar("val", value, value2);
       } else {
          return this.host.jqxCalendar("val");
       }

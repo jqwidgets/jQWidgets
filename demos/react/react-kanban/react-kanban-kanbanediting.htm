@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title id='Description'>
+        ReactJS Kanban demo. Kanban Editing. Double click on item's header or text to edit it.
+    </title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxsortable.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxkanban.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxtextarea.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <style>
+        .jqx-kanban-item-color-status {
+            width: 100%;
+            height: 25px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            position: relative;
+            margin-top: 0px;
+            overflow: hidden;
+            top: 0px;
+        }
+
+        .jqx-kanban-item {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        .jqx-kanban-item-text {
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+
+        .jqx-kanban-item-avatar {
+            top: 9px;
+        }
+
+        .jqx-kanban-template-icon {
+            position: absolute;
+            right: 3px;
+            top: 12px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="example-description" style="margin-bottom:3em">
+        ReactJS Kanban demo. Kanban Editing. Double click on item's header or text to edit it.
+    </div>
+    <div id="app"></div>
+    <script src="../build/kanban_kanbanediting.bundle.js"></script>
+</body>
+</html>

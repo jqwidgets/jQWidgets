@@ -27,10 +27,10 @@ class App extends React.Component {
                     width={600} height={450} buttonsOffset={[0, 0]}
                 />
                 <div style={{ marginTop: 20 }}>
-                    <JqxButton ref='myStartButton' value="Start Slideshow" style={{ display: 'inline-block' }}
+                    <JqxButton ref='myStartButton' value="Start Slideshow" style={{ float: 'left', display: 'inline-block' }}
                         width={150} height={25}
                     />
-                    <JqxButton ref='myStopButton'  value="Stop Slideshow"
+                    <JqxButton ref='myStopButton' style={{ float: 'left', marginLeft: 5 }} value="Stop Slideshow"
                         width={150} height={25}
                     />
                 </div>

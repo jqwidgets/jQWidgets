@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import JqxListMenu from '../../../jqwidgets-react/react_jqxlistmenu.js';
 
 class App extends React.Component {
-    render () {
-      let listMenuHTML = `
+    render() {
+        let listMenuHTML = `
         <ul  id="list" data-role="listmenu">
             <li>
             <img src="../../../images/andrew.png" alt="" /><div>
@@ -860,12 +860,10 @@ class App extends React.Component {
             </li>
         </ul>`;
         return (
-            <div>
-                <JqxListMenu template={listMenuHTML}
-                  width={600} autoSeparators={true} enableScrolling={false}
-                  showHeader={true} placeHolder={'Find contact...'}
-                />
-            </div>
+            <JqxListMenu template={listMenuHTML}
+                width={600} autoSeparators={true} enableScrolling={false}
+                showHeader={true} placeHolder={'Find contact...'}
+            />
         )
     }
 }

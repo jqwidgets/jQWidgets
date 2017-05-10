@@ -22,7 +22,7 @@ class App extends React.Component {
         id: 'EmployeeID',
         datatype: "xml",
         async: false,
-        url: "../sampledata/employees.xml"
+        url: "../../sampledata/employees.xml"
     };
     let employeesAdapter = new $.jqx.dataAdapter(employeesSource, { autoBind: true });
     let ordersSource =
@@ -38,7 +38,7 @@ class App extends React.Component {
         root: "Orders",
         record: "Order",
         datatype: "xml",
-        url: "../sampledata/orderdetails.xml",
+        url: "../../sampledata/orderdetails.xml",
         async: false
     };
     let ordersDataAdapter = new $.jqx.dataAdapter(ordersSource, { autoBind: true });

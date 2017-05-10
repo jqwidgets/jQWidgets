@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,7 @@ let jqxDropDownList = React.createClass ({
     this.createComponent(options);
   },
   manageAttributes: function () {
-      let properties = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','scrollBarSize','source','selectedIndex','theme','template','valueMember','width'];
+      let properties = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','scrollBarSize','source','selectedIndex','theme','template','valueMember','width'];
       let options = {};
     for(let item in this.props) {
         if(item === 'settings') {
@@ -122,6 +122,13 @@ let jqxDropDownList = React.createClass ({
       $("#" +this.componentSelector).jqxDropDownList("dropDownHorizontalAlignment", arg)
     } else {
       return $("#" +this.componentSelector).jqxDropDownList("dropDownHorizontalAlignment");
+    }
+  },
+  dropDownVerticalAlignment: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxDropDownList("dropDownVerticalAlignment", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxDropDownList("dropDownVerticalAlignment");
     }
   },
   dropDownHeight: function (arg) {

@@ -59,52 +59,52 @@ class App extends React.Component {
           <div><h3>Register</h3></div>
           <div>
               <JqxValidator ref='myValidator' rules={rules}>
-                  <form id='form' action="./">
-                      <table className="register-table">
+                  <form id='form' action='./'>
+                      <table className='register-table'>
                         <tbody>
                           <tr>
                               <td>Username:</td>
-                              <td><JqxInput className="userInput text-input"/></td>
+                              <td><JqxInput className='userInput text-input'/></td>
                           </tr>
                           <tr>
                               <td>Password:</td>
-                              <td><JqxPasswordInput ref='passwordInput' className="passwordInput text-input"/></td>
+                              <td><JqxPasswordInput ref='passwordInput' className='passwordInput text-input'/></td>
                           </tr>
                           <tr>
                               <td>Confirm password:</td>
-                              <td><JqxPasswordInput ref='confirmPasswordInput' className="passwordConfirmInput text-input"/></td>
+                              <td><JqxPasswordInput ref='confirmPasswordInput' className='passwordConfirmInput text-input'/></td>
                           </tr>
                           <tr>
                               <td>Real name:</td>
-                              <td><JqxInput createWidget={{  }} className="realNameInput text-input"/></td>
+                              <td><JqxInput createWidget={{  }} className='realNameInput text-input'/></td>
                           </tr>
                           <tr>
                               <td>Birth date:</td>
-                              <td><JqxDateTimeInput ref='dateTimeInput' width={156} height={22} value={new Date(2014, 4, 1)} className="birthInput"/></td>
+                              <td><JqxDateTimeInput ref='dateTimeInput' width={156} height={22} value={new Date(2014, 4, 1)} className='birthInput'/></td>
                           </tr>
                           <tr>
                               <td>E-mail:</td>
-                              <td><JqxInput placeHolder={'someone@mail.com'} className="emailInput text-input"/></td>
+                              <td><JqxInput placeHolder={'someone@mail.com'} className='emailInput text-input'/></td>
                           </tr>
                           <tr>
                               <td>SSN:</td>
-                              <td><JqxMaskedInput width={156} height={22} mask={'###-##-####'} className="ssnInput"/></td>
+                              <td><JqxMaskedInput width={156} height={22} mask={'###-##-####'} className='ssnInput'/></td>
                           </tr>
                           <tr>
                               <td>Phone:</td>
-                              <td><JqxMaskedInput  width={156} height={22} mask={'(###)###-####'} className="phoneInput"/></td>
+                              <td><JqxMaskedInput  width={156} height={22} mask={'(###)###-####'} className='phoneInput'/></td>
                           </tr>
                           <tr>
                               <td>Zip code:</td>
-                              <td><JqxMaskedInput  width={156} height={22} mask={'#####-####'} className="zipInput"/></td>
+                              <td><JqxMaskedInput  width={156} height={22} mask={'#####-####'} className='zipInput'/></td>
                           </tr>
                           <tr>
-                              <td colSpan="2" style={{ paddingLeft: 80,paddingTop:10, paddingBottom: 10 }}>
-                                  <JqxCheckBox width={130} className="acceptCheckBox" value='I accept terms'/>
+                              <td colSpan='2' style={{ paddingLeft: 80, paddingTop: 10, paddingBottom: 10 }}>
+                                  <JqxCheckBox width={130} className='acceptCheckBox' value='I accept terms'/>
                               </td>
                           </tr>
                           <tr>
-                              <td colSpan="2">
+                              <td colSpan='2'>
                                   <JqxButton width={60} height={25} ref='SendButton' value='Send' style={{ marginLeft: 8 + 'em' }}/>
                               </td>
                           </tr>

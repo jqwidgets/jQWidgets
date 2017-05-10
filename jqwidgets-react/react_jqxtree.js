@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,7 @@ let jqxTree = React.createClass ({
     this.createComponent(options);
   },
   manageAttributes: function () {
-      let properties = ['animationShowDuration','animationHideDuration','allowDrag','allowDrop','checkboxes','dragStart','dragEnd','disabled','easing','enableHover','height','hasThreeStates','incrementalSearch','keyboardNavigation','rtl','source','toggleIndicatorSize','toggleMode','theme','width'];
+      let properties = ['animationShowDuration','animationHideDuration','allowDrag','allowDrop','checkboxes','dragStart','dragEnd','disabled','easing','enableHover','height','hasThreeStates','incrementalSearch','keyboardNavigation','rtl','selectedItem','source','toggleIndicatorSize','toggleMode','theme','width'];
       let options = {};
     for(let item in this.props) {
         if(item === 'settings') {
@@ -173,6 +173,13 @@ let jqxTree = React.createClass ({
       return $("#" +this.componentSelector).jqxTree("rtl");
     }
   },
+  selectedItem: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxTree("selectedItem", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxTree("selectedItem");
+    }
+  },
   source: function (arg) {
     if (arg !== undefined) {
       $("#" +this.componentSelector).jqxTree("source", arg)
@@ -243,6 +250,9 @@ let jqxTree = React.createClass ({
   },
   enableItem: function (item) {
     $("#" + this.componentSelector).jqxTree("enableItem", item);  
+  },
+  enableAll: function () {
+    $("#" + this.componentSelector).jqxTree("enableAll");  
   },
   expandAll: function () {
     $("#" + this.componentSelector).jqxTree("expandAll");  

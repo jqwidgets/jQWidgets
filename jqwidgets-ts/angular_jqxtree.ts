@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -28,6 +28,7 @@ export class jqxTreeComponent implements OnChanges
    @Input('incrementalSearch') attrIncrementalSearch: any;
    @Input('keyboardNavigation') attrKeyboardNavigation: any;
    @Input('rtl') attrRtl: any;
+   @Input('selectedItem') attrSelectedItem: any;
    @Input('source') attrSource: any;
    @Input('toggleIndicatorSize') attrToggleIndicatorSize: any;
    @Input('toggleMode') attrToggleMode: any;
@@ -37,19 +38,20 @@ export class jqxTreeComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationShowDuration','animationHideDuration','allowDrag','allowDrop','checkboxes','dragStart','dragEnd','disabled','easing','enableHover','height','hasThreeStates','incrementalSearch','keyboardNavigation','rtl','source','toggleIndicatorSize','toggleMode','theme','width'];
+   properties: string[] = ['animationShowDuration','animationHideDuration','allowDrag','allowDrop','checkboxes','dragStart','dragEnd','disabled','easing','enableHover','height','hasThreeStates','incrementalSearch','keyboardNavigation','rtl','selectedItem','source','toggleIndicatorSize','toggleMode','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTree;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
-      setTimeout(() => {
-         if (this.autoCreate) {
-            this.createComponent(); 
-         }
-      }); 
    }
+
+   ngOnInit() {
+      if (this.autoCreate) {
+         this.createComponent(); 
+      }
+   }; 
 
    ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
@@ -57,7 +59,7 @@ export class jqxTreeComponent implements OnChanges
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             let areEqual: boolean;
 
-            if (this[attrName]) {
+            if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
                   if (this[attrName] instanceof Array) {
                      areEqual = this.arraysEqual(this[attrName], this.host.jqxTree(this.properties[i]));
@@ -100,6 +102,7 @@ export class jqxTreeComponent implements OnChanges
       }
       return options;
    }
+
    createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
@@ -110,6 +113,7 @@ export class jqxTreeComponent implements OnChanges
       this.host = $(this.elementRef.nativeElement.firstChild);
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTree', options);
+
       this.__updateRect__();
    }
 
@@ -246,6 +250,14 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
+   selectedItem(arg?: any) : any {
+      if (arg !== undefined) {
+          this.host.jqxTree('selectedItem', arg);
+      } else {
+          return this.host.jqxTree('selectedItem');
+      }
+   }
+
    source(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxTree('source', arg);
@@ -336,6 +348,10 @@ export class jqxTreeComponent implements OnChanges
       this.host.jqxTree('enableItem', item);
    }
 
+   enableAll(): void {
+      this.host.jqxTree('enableAll');
+   }
+
    expandAll(): void {
       this.host.jqxTree('expandAll');
    }
@@ -408,7 +424,7 @@ export class jqxTreeComponent implements OnChanges
       this.host.jqxTree('updateItem', item, newItem);
    }
 
-   val(value): any {
+   val(value?: string): any {
       if (value !== undefined) {
          this.host.jqxTree("val", value);
       } else {

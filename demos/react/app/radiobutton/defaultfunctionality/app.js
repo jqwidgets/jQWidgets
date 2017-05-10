@@ -9,11 +9,10 @@ class App extends React.Component {
             this.clearLog();
             let log = document.getElementById('events');
             let checked = event.args.checked;
-            if (checked)
-            {
+            if (checked) {
                 log.innerHTML += '<div><span>Checked: 12 Months Contract</span></div>';
-            } else
-            {
+            }
+            else {
                 log.innerHTML += '<div><span>Unchecked: 12 Months Contract</span></div>';
             }
         });
@@ -21,11 +20,9 @@ class App extends React.Component {
             this.clearLog();
             let log = document.getElementById('events');
             let checked = event.args.checked;
-            if (checked)
-            {
+            if (checked) {
                 log.innerHTML += '<div><span>Checked: 6 Months Contract</span></div>';
-            } else
-            {
+            } else {
                 log.innerHTML += '<div><span>Unchecked: 6 Months Contract</span></div>';
             }
         });
@@ -33,23 +30,20 @@ class App extends React.Component {
             this.clearLog();
             let log = document.getElementById('events');
             let checked = event.args.checked;
-            if (checked)
-            {
+            if (checked) {
                 log.innerHTML += '<div><span>Checked: 3 Months Contract</span></div>';
-            } else
-            {
+            } else {
                 log.innerHTML += '<div><span>Unchecked: 3 Months Contract</span></div>';
             }
         });
     }
     clearLog() {
         let log = document.getElementById('events').getElementsByTagName('span');
-        if (log.length >= 2)
-        {
+        if (log.length >= 2) {
             document.getElementById('events').innerHTML = '';
         }
     }
-    render () {
+    render() {
         return (
             <div>
                 <h3>

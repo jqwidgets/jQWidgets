@@ -7,11 +7,11 @@ import JqxButton from '../../../jqwidgets-react/react_jqxbuttons.js';
 class App extends React.Component {
     componentDidMount() {
         this.refs.setSelection.on('click', () => {
-            this.refs.myRangeSelector.setRange(30,70);
+            this.refs.myRangeSelector.setRange(30, 70);
         });
         this.refs.getSelection.on('click', () => {
             let range = this.refs.myRangeSelector.getRange();
-            alert("The selected range is from " + range.from + " to " + range.to);
+            alert('The selected range is from ' + range.from + ' to ' + range.to);
         });
     }
     render () {

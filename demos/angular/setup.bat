@@ -16,5 +16,5 @@ xcopy /S /I ..\..\scripts scripts
 xcopy /S /I ..\..\styles styles
 xcopy /S /I ..\sampledata sampledata
 
-npm install
-npm start
+call npm install
+call npm start

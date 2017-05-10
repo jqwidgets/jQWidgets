@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,7 @@ let jqxSlider = React.createClass ({
     this.createComponent(options);
   },
   manageAttributes: function () {
-      let properties = ['buttonsPosition','disabled','height','layout','mode','minorTicksFrequency','minorTickSize','max','min','rangeSlider','rtl','step','showTicks','showMinorTicks','showTickLabels','showButtons','showRange','template','theme','ticksPosition','ticksFrequency','tickSize','tickLabelFormatFunction','tooltip','tooltipHideDelay','tooltipPosition','tooltipFormatFunction','value','values','width'];
+      let properties = ['buttonsPosition','disabled','height','layout','mode','minorTicksFrequency','minorTickSize','max','min','orientation','rangeSlider','rtl','step','showTicks','showMinorTicks','showTickLabels','showButtons','showRange','template','theme','ticksPosition','ticksFrequency','tickSize','tickLabelFormatFunction','tooltip','tooltipHideDelay','tooltipPosition','tooltipFormatFunction','value','values','width'];
       let options = {};
     for(let item in this.props) {
         if(item === 'settings') {
@@ -129,6 +129,13 @@ let jqxSlider = React.createClass ({
       $("#" +this.componentSelector).jqxSlider("min", arg)
     } else {
       return $("#" +this.componentSelector).jqxSlider("min");
+    }
+  },
+  orientation: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxSlider("orientation", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxSlider("orientation");
     }
   },
   rangeSlider: function (arg) {

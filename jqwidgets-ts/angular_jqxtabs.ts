@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -24,6 +24,8 @@ export class jqxTabsComponent implements OnChanges
    @Input('enableScrollAnimation') attrEnableScrollAnimation: any;
    @Input('initTabContent') attrInitTabContent: any;
    @Input('keyboardNavigation') attrKeyboardNavigation: any;
+   @Input('next') attrNext: any;
+   @Input('previous') attrPrevious: any;
    @Input('position') attrPosition: any;
    @Input('reorder') attrReorder: any;
    @Input('rtl') attrRtl: any;
@@ -41,19 +43,20 @@ export class jqxTabsComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','height','initTabContent','keyboardNavigation','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
+   properties: string[] = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','height','initTabContent','keyboardNavigation','next','previous','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTabs;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
-      setTimeout(() => {
-         if (this.autoCreate) {
-            this.createComponent(); 
-         }
-      }); 
    }
+
+   ngOnInit() {
+      if (this.autoCreate) {
+         this.createComponent(); 
+      }
+   }; 
 
    ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
@@ -61,7 +64,7 @@ export class jqxTabsComponent implements OnChanges
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             let areEqual: boolean;
 
-            if (this[attrName]) {
+            if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
                   if (this[attrName] instanceof Array) {
                      areEqual = this.arraysEqual(this[attrName], this.host.jqxTabs(this.properties[i]));
@@ -104,6 +107,7 @@ export class jqxTabsComponent implements OnChanges
       }
       return options;
    }
+
    createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
@@ -114,6 +118,7 @@ export class jqxTabsComponent implements OnChanges
       this.host = $(this.elementRef.nativeElement.firstChild);
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTabs', options);
+
       this.__updateRect__();
    }
 
@@ -215,6 +220,22 @@ export class jqxTabsComponent implements OnChanges
           this.host.jqxTabs('keyboardNavigation', arg);
       } else {
           return this.host.jqxTabs('keyboardNavigation');
+      }
+   }
+
+   next(arg?: any) : any {
+      if (arg !== undefined) {
+          this.host.jqxTabs('next', arg);
+      } else {
+          return this.host.jqxTabs('next');
+      }
+   }
+
+   previous(arg?: any) : any {
+      if (arg !== undefined) {
+          this.host.jqxTabs('previous', arg);
+      } else {
+          return this.host.jqxTabs('previous');
       }
    }
 
@@ -332,8 +353,8 @@ export class jqxTabsComponent implements OnChanges
       this.host.jqxTabs('addFirst', htmlElement);
    }
 
-   addLast(htmlElement: any): void {
-      this.host.jqxTabs('addLast', htmlElement);
+   addLast(htmlElement1: any, htmlElemen2t?: any): void {
+      this.host.jqxTabs('addLast', htmlElement1, htmlElemen2t);
    }
 
    collapse(): void {
@@ -380,6 +401,10 @@ export class jqxTabsComponent implements OnChanges
       return this.host.jqxTabs('getContentAt', index);
    }
 
+   getDisabledTabsCount(): any {
+      return this.host.jqxTabs('getDisabledTabsCount');
+   }
+
    hideCloseButtonAt(index: number): void {
       this.host.jqxTabs('hideCloseButtonAt', index);
    }
@@ -424,7 +449,7 @@ export class jqxTabsComponent implements OnChanges
       this.host.jqxTabs('showAllCloseButtons');
    }
 
-   val(value): any {
+   val(value?: string): any {
       if (value !== undefined) {
          this.host.jqxTabs("val", value);
       } else {

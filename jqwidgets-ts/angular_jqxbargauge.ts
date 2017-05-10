@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -45,12 +45,13 @@ export class jqxBarGaugeComponent implements OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
-      setTimeout(() => {
-         if (this.autoCreate) {
-            this.createComponent(); 
-         }
-      }); 
    }
+
+   ngOnInit() {
+      if (this.autoCreate) {
+         this.createComponent(); 
+      }
+   }; 
 
    ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
@@ -58,7 +59,7 @@ export class jqxBarGaugeComponent implements OnChanges
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             let areEqual: boolean;
 
-            if (this[attrName]) {
+            if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
                   if (this[attrName] instanceof Array) {
                      areEqual = this.arraysEqual(this[attrName], this.host.jqxBarGauge(this.properties[i]));
@@ -101,6 +102,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
       return options;
    }
+
    createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
@@ -109,8 +111,15 @@ export class jqxBarGaugeComponent implements OnChanges
         options = this.manageAttributes();
       }
       this.host = $(this.elementRef.nativeElement.firstChild);
+      if (typeof options.width === 'string' && options.width.indexOf('%') !== -1) {
+         options.width = parseInt(options.width, 10) / 100 * this.host.parent().parent().parent().width();
+      }
+      if (typeof options.height === 'string' && options.height.indexOf('%') !== -1) {
+         options.height = parseInt(options.height, 10) / 100 * this.host.parent().parent().parent().height();
+      }
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxBarGauge', options);
+
       this.__updateRect__();
    }
 
@@ -215,7 +224,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   max(arg?: number) : any {
+   max(arg?: Number | String) : any {
       if (arg !== undefined) {
           this.host.jqxBarGauge('max', arg);
       } else {
@@ -305,7 +314,7 @@ export class jqxBarGaugeComponent implements OnChanges
       this.host.jqxBarGauge('render');
    }
 
-   val(value): any {
+   val(value?: Array<Number>): any {
       if (value !== undefined) {
          this.host.jqxBarGauge("val", value);
       } else {

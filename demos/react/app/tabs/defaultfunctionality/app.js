@@ -87,9 +87,9 @@ class App extends React.Component {
                 <JqxTabs ref='myTabs' template={tabsHTML}
                   width={'90%'} height={200} position={'top'}
                 />
-                <div id='settings'>
-                    <JqxCheckBox ref='animation'  value='Enable Select Animation'/>
-                    <JqxCheckBox ref='contentAnimation' value='Enable Content Animation'/>
+                <div id='settings' style={{ marginTop: 5 }}>
+                    <JqxCheckBox ref='animation' style={{ marginTop: 10 }} value='Enable Select Animation'/>
+                    <JqxCheckBox ref='contentAnimation' style={{ marginTop: 10 }} value='Enable Content Animation'/>
                 </div>
             </div>
         )

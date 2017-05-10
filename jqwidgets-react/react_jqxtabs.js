@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,7 @@ let jqxTabs = React.createClass ({
     this.createComponent(options);
   },
   manageAttributes: function () {
-      let properties = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','height','initTabContent','keyboardNavigation','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
+      let properties = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','height','initTabContent','keyboardNavigation','next','previous','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
       let options = {};
     for(let item in this.props) {
         if(item === 'settings') {
@@ -145,6 +145,20 @@ let jqxTabs = React.createClass ({
       return $("#" +this.componentSelector).jqxTabs("keyboardNavigation");
     }
   },
+  next: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxTabs("next", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxTabs("next");
+    }
+  },
+  previous: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxTabs("previous", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxTabs("previous");
+    }
+  },
   position: function (arg) {
     if (arg !== undefined) {
       $("#" +this.componentSelector).jqxTabs("position", arg)
@@ -242,8 +256,8 @@ let jqxTabs = React.createClass ({
   addFirst: function (htmlElement) {
     $("#" + this.componentSelector).jqxTabs("addFirst", htmlElement);  
   },
-  addLast: function (htmlElement) {
-    $("#" + this.componentSelector).jqxTabs("addLast", htmlElement);  
+  addLast: function (htmlElement1, htmlElemen2t) {
+    $("#" + this.componentSelector).jqxTabs("addLast", htmlElement1, htmlElemen2t);  
   },
   collapse: function () {
     $("#" + this.componentSelector).jqxTabs("collapse");  
@@ -277,6 +291,9 @@ let jqxTabs = React.createClass ({
   },
   getContentAt: function (index) {
     return $("#" + this.componentSelector).jqxTabs("getContentAt", index);  
+  },
+  getDisabledTabsCount: function () {
+    return $("#" + this.componentSelector).jqxTabs("getDisabledTabsCount");  
   },
   hideCloseButtonAt: function (index) {
     $("#" + this.componentSelector).jqxTabs("hideCloseButtonAt", index);  

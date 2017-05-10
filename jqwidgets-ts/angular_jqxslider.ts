@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -32,6 +32,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
    @Input('minorTickSize') attrMinorTickSize: any;
    @Input('max') attrMax: any;
    @Input('min') attrMin: any;
+   @Input('orientation') attrOrientation: any;
    @Input('rangeSlider') attrRangeSlider: any;
    @Input('rtl') attrRtl: any;
    @Input('step') attrStep: any;
@@ -57,7 +58,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['buttonsPosition','disabled','height','layout','mode','minorTicksFrequency','minorTickSize','max','min','rangeSlider','rtl','step','showTicks','showMinorTicks','showTickLabels','showButtons','showRange','template','theme','ticksPosition','ticksFrequency','tickSize','tickLabelFormatFunction','tooltip','tooltipHideDelay','tooltipPosition','tooltipFormatFunction','value','values','width'];
+   properties: string[] = ['buttonsPosition','disabled','height','layout','mode','minorTicksFrequency','minorTickSize','max','min','orientation','rangeSlider','rtl','step','showTicks','showMinorTicks','showTickLabels','showButtons','showRange','template','theme','ticksPosition','ticksFrequency','tickSize','tickLabelFormatFunction','tooltip','tooltipHideDelay','tooltipPosition','tooltipFormatFunction','value','values','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxSlider;
@@ -67,12 +68,13 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
-      setTimeout(() => {
-         if (this.autoCreate) {
-            this.createComponent(); 
-         }
-      }); 
    }
+
+   ngOnInit() {
+      if (this.autoCreate) {
+         this.createComponent(); 
+      }
+   }; 
 
    ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
@@ -80,7 +82,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             let areEqual: boolean;
 
-            if (this[attrName]) {
+            if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
                   if (this[attrName] instanceof Array) {
                      areEqual = this.arraysEqual(this[attrName], this.host.jqxSlider(this.properties[i]));
@@ -123,6 +125,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       }
       return options;
    }
+
    createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
@@ -133,6 +136,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       this.host = $(this.elementRef.nativeElement.firstChild);
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxSlider', options);
+
       this.__updateRect__();
    }
 
@@ -244,6 +248,14 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
           this.host.jqxSlider('min', arg);
       } else {
           return this.host.jqxSlider('min');
+      }
+   }
+
+   orientation(arg?: string) : any {
+      if (arg !== undefined) {
+          this.host.jqxSlider('orientation', arg);
+      } else {
+          return this.host.jqxSlider('orientation');
       }
    }
 
@@ -449,7 +461,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       this.host.jqxSlider('setValue', index);
    }
 
-   val(value): any {
+   val(value?: string): any {
       if (value !== undefined) {
          this.host.jqxSlider("val", value);
       } else {

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,7 @@ let jqxListBox = React.createClass ({
     this.createComponent(options);
   },
   manageAttributes: function () {
-      let properties = ['autoHeight','allowDrag','allowDrop','checkboxes','disabled','displayMember','dropAction','dragStart','dragEnd','enableHover','enableSelection','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','height','hasThreeStates','itemHeight','incrementalSearch','incrementalSearchDelay','multiple','multipleextended','renderer','rtl','selectedIndex','source','scrollBarSize','searchMode','theme','valueMember','width'];
+      let properties = ['autoHeight','allowDrag','allowDrop','checkboxes','disabled','displayMember','dropAction','dragStart','dragEnd','enableHover','enableSelection','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','height','hasThreeStates','itemHeight','incrementalSearch','incrementalSearchDelay','multiple','multipleextended','renderer','rtl','selectedIndex','selectedIndexes','source','scrollBarSize','searchMode','theme','valueMember','width'];
       let options = {};
     for(let item in this.props) {
         if(item === 'settings') {
@@ -248,6 +248,13 @@ let jqxListBox = React.createClass ({
       $("#" +this.componentSelector).jqxListBox("selectedIndex", arg)
     } else {
       return $("#" +this.componentSelector).jqxListBox("selectedIndex");
+    }
+  },
+  selectedIndexes: function (arg) {
+    if (arg !== undefined) {
+      $("#" +this.componentSelector).jqxListBox("selectedIndexes", arg)
+    } else {
+      return $("#" +this.componentSelector).jqxListBox("selectedIndexes");
     }
   },
   source: function (arg) {

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -40,12 +40,13 @@ export class jqxRibbonComponent implements OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
-      setTimeout(() => {
-         if (this.autoCreate) {
-            this.createComponent(); 
-         }
-      }); 
    }
+
+   ngOnInit() {
+      if (this.autoCreate) {
+         this.createComponent(); 
+      }
+   }; 
 
    ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
@@ -53,7 +54,7 @@ export class jqxRibbonComponent implements OnChanges
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             let areEqual: boolean;
 
-            if (this[attrName]) {
+            if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
                   if (this[attrName] instanceof Array) {
                      areEqual = this.arraysEqual(this[attrName], this.host.jqxRibbon(this.properties[i]));
@@ -96,6 +97,7 @@ export class jqxRibbonComponent implements OnChanges
       }
       return options;
    }
+
    createComponent(options?: any): void {
       if (options) {
          $.extend(options, this.manageAttributes());
@@ -106,6 +108,7 @@ export class jqxRibbonComponent implements OnChanges
       this.host = $(this.elementRef.nativeElement.firstChild);
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxRibbon', options);
+
       this.__updateRect__();
    }
 
@@ -304,7 +307,7 @@ export class jqxRibbonComponent implements OnChanges
       this.host.jqxRibbon('updateAt', index, item);
    }
 
-   val(value): any {
+   val(value?: string): any {
       if (value !== undefined) {
          this.host.jqxRibbon("val", value);
       } else {

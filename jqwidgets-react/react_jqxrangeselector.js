@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.1 (2017-April)
+jQWidgets v4.5.2 (2017-May)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -14,7 +14,7 @@ let jqxRangeSelector = React.createClass ({
     this.createComponent(options);
   },
   manageAttributes: function () {
-      let properties = ['disabled','height','labelFormat','labelsFormatFunction','labelPrecision','moveOnClick','markerRenderer','markerPrecision','majorLabelRenderer','markerFormat','majorTicksInterval','minorTicksInterval','max','min','padding','range','resizable','rtl','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
+      let properties = ['disabled','height','labelsFormat','labelsFormatFunction','labelPrecision','moveOnClick','markerRenderer','markerPrecision','majorLabelRenderer','markersFormat','majorTicksInterval','minorTicksInterval','max','min','padding','range','resizable','rtl','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
       let options = {};
     for(let item in this.props) {
         if(item === 'settings') {
@@ -82,11 +82,11 @@ let jqxRangeSelector = React.createClass ({
       return $("#" +this.componentSelector).jqxRangeSelector("height");
     }
   },
-  labelFormat: function (arg) {
+  labelsFormat: function (arg) {
     if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxRangeSelector("labelFormat", arg)
+      $("#" +this.componentSelector).jqxRangeSelector("labelsFormat", arg)
     } else {
-      return $("#" +this.componentSelector).jqxRangeSelector("labelFormat");
+      return $("#" +this.componentSelector).jqxRangeSelector("labelsFormat");
     }
   },
   labelsFormatFunction: function (arg) {
@@ -131,11 +131,11 @@ let jqxRangeSelector = React.createClass ({
       return $("#" +this.componentSelector).jqxRangeSelector("majorLabelRenderer");
     }
   },
-  markerFormat: function (arg) {
+  markersFormat: function (arg) {
     if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxRangeSelector("markerFormat", arg)
+      $("#" +this.componentSelector).jqxRangeSelector("markersFormat", arg)
     } else {
-      return $("#" +this.componentSelector).jqxRangeSelector("markerFormat");
+      return $("#" +this.componentSelector).jqxRangeSelector("markersFormat");
     }
   },
   majorTicksInterval: function (arg) {
