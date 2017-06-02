@@ -53,7 +53,7 @@ class App extends React.Component {
         });
         let rowDetailsRenderer = (rowKey, row) => {
             let indent = (1+row.level) * 20;
-            let details = "<table style='margin: 10px; min-height: 95px; height: 95px; margin-left: " + indent + "px;'><tr><td>" + "<img height='60' src='" + row.icon + "'/></td><td>" + row.notes + "</td></tr></table>";
+            let details = "<table style='margin: 10px; min-height: 95px; height: 95px; margin-left: " + indent + "px;'><tr><td>" + "<img style='max-width:initial;' height='60' src='" + row.icon + "'/></td><td>" + row.notes + "</td></tr></table>";
             return details;
         }
         // create Tree Grid

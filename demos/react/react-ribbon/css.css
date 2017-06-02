@@ -1,74 +1,74 @@
 
-        .button {
+       .jqx-ribbon .button {
             margin: 2px;
             margin-right: 0;
             font-size:11px;
          }
-        .sectionSeparator {
+        .jqx-ribbon .sectionSeparator {
             width: 1px;
             height: 105px;
             background-color: #eee;
             float: left;
             margin: 10px 5px 0 5px;
         }
-        .bigTd {
+        .jqx-ribbon .bigTd {
             text-align: center;
             vertical-align: top;
             width: 50px;
         }
-        #clipBoardTable {
+        .jqx-ribbon #clipBoardTable {
             height: 100%;
             border-collapse: separate;
             border-spacing: 0 0;
             float: left;
         }
-        #jqxgrid {
+        .jqx-ribbon #jqxgrid {
             border-top: none;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
-        #jqxRibbon, #jqxRibbon div, #jqxRibbon li {
+        .jqx-ribbon #jqxRibbon, #jqxRibbon div, #jqxRibbon li {
             font-size:11px;
         }
-        #jqxRibbon li {
+        .jqx-ribbon #jqxRibbon li {
             line-height:16px;
         }
-        #jqxRibbon, .jqx-ribbon-content-section-demoTheme {
+        .jqx-ribbon #jqxRibbon, .jqx-ribbon-content-section-demoTheme {
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
         }
-        .pasteText {
+        .jqx-ribbon .pasteText {
             font-size: 10px;
         }
-        .pasteButton {
+        .jqx-ribbon .pasteButton {
             text-align: center !important;
         }
-        #pasteDropDown .jqx-listitem-element-demoTheme {
+        .jqx-ribbon #pasteDropDown .jqx-listitem-element-demoTheme {
             border: none;
             font-size: 10px;
         }
-        #font {
+        .jqx-ribbon #font {
             font-size: 11px;
             line-height: 17px;
         }
-        #fontSize {
+        .jqx-ribbon #fontSize {
             line-height: 13px;
         }
-        .inline-block {
+        .jqx-ribbon .inline-block {
           display: inline-block;
         }
-        .top {
+        .jqx-ribbon .top {
           top: 5px;
         }
-        .jqx-dropdownlist-state-normal {
+        .jqx-ribbon .jqx-dropdownlist-state-normal {
             background: transparent;
             border:none;
         }
-        .jqx-button {
+        .jqx-ribbon .jqx-button {
             background: transparent;
             display: inline-block;;
         }
-        .separator {
+        .jqx-ribbon .separator {
             padding: 0 0 0 1px;
             height: 20px;
             border: solid 1px #fff;
@@ -81,25 +81,25 @@
             background: #bfc3c7;
             background: linear-gradient(#f8f9fa, #bfc3c7, #f8f9fa);
         }
-        .firstrow, .secondrow, .thirdrow {
+        .jqx-ribbon .firstrow, .jqx-ribbon .secondrow, .jqx-ribbon .thirdrow {
             font-size: 0;
             padding: 0;
         }
-        .firstrow .jqx-widget,
-        .secondrow .jqx-widget,
-        .thirdrow .jqx-widget {
+        .jqx-ribbon .firstrow .jqx-widget,
+        .jqx-ribbon .secondrow .jqx-widget,
+        .jqx-ribbon .thirdrow .jqx-widget {
             position: relative;
             display: inline-block;
             font-size: 10px;
         }
-        .thirdrow .separator {
+        .jqx-ribbon .thirdrow .separator {
             margin: 0 2px;
             height: 14px;
         }
-        .jqx-button-demoTheme span {
+        .jqx-ribbon .jqx-button-demoTheme span {
             margin-left: 2px;
         }
-        .jqx-button {
+        .jqx-ribbon .jqx-button {
             position: relative;
             height: 16px;
             padding: 2px;
@@ -107,44 +107,44 @@
             line-height: 16px;
             text-align: left;
         }
-        #fileItem {
+        .jqx-ribbon #fileItem {
             background: #006400;
             padding: 0px;
         }
-        .img {
+        .jqx-ribbon .img {
           margin-top: 5px;
           margin-left: 5px
         }
-        .fileItemDropDown {
+        .jqx-ribbon .fileItemDropDown {
           color: white;
         }
-        .jqx-ribbon-content-section-demoTheme {
+        .jqx-ribbon .jqx-ribbon-content-section-demoTheme {
             background: #eaedf1;
             background: linear-gradient(#fff 40%, #eaedf1);
         }
-        .jqx-button-demoTheme:hover {
+        .jqx-ribbon .jqx-button-demoTheme:hover {
             border-color: #f1ca58;
             box-shadow: 0 0 1px 1px #fff inset;
             background: #fde38a;
             background: linear-gradient(#fdeeb3, #fde38a, #fdefbb);
         }
-        .jqx-button-demoTheme:active {
+        .jqx-ribbon .jqx-button-demoTheme:active {
             border-color: #c2963d;
             background: #fff37f;
             background: linear-gradient(#ffe575, #fff37f);
         }
-        .jqx-fill-state-hover-demoTheme,
-        .jqx-fill-state-pressed-demoTheme {
+        .jqx-ribbon .jqx-fill-state-hover-demoTheme,
+        .jqx-ribbon .jqx-fill-state-pressed-demoTheme {
             border-color: #c2963d;
             background: #fff37f;
             background: linear-gradient(#ffe575, #fff37f);
         }
-        #fileItemButton {
+        .jqx-ribbon #fileItemButton {
             background: transparent;
             border: none;
             color: #fff;
          }
-        .icon {
+        .jqx-ribbon .icon {
             background: url('../../../images/ribbon-icons.png') no-repeat top left;
             width: 16px;
             height: 16px;

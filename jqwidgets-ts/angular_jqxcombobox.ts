@@ -1,10 +1,10 @@
 /*
-jQWidgets v4.5.2 (2017-May)
+jQWidgets v4.5.3 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -19,7 +19,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
     selector: 'jqxComboBox',
     template: '<div><ng-content></ng-content></div>',
-    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges 

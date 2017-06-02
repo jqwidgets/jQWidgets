@@ -5,8 +5,12 @@
    License: http://jqwidgets.com/license/
 */
 
+interface JQueryStatic {
+    jqx: any;
+}
+
 declare var generatedata: any;
-declare var $: any;
+declare var $: JQueryStatic;
 
 declare module jqwidgets {
     export function createInstance(selector: string, widgetName: string, params?: any): any;
@@ -2153,6 +2157,7 @@ declare module jqwidgets {
         theme?: string;
         valueMember?: string;
         width?: String | Number;
+        value?: String | Number;
     }// InputOptions
 
     export interface jqxInput extends widget, InputOptions {
@@ -3486,6 +3491,7 @@ declare module jqwidgets {
         onLabel?: string;
         offLabel?: string;
         thumbSize?: string;
+        rtl?: boolean;
         width?: String | Number;
     }// SwitchButtonOptions
 

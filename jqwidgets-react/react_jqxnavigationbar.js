@@ -1,250 +1,247 @@
 /*
-jQWidgets v4.5.2 (2017-May)
+jQWidgets v4.5.3 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 import React from 'react';
 
-let jqxNavigationBar = React.createClass ({
-  getInitialState: function () {
-    return { value: '' };
-  },
-  componentDidMount: function () {
-      let options = this.manageAttributes();
-    this.createComponent(options);
-  },
-  manageAttributes: function () {
-      let properties = ['animationType','arrowPosition','collapseAnimationDuration','disabled','expandAnimationDuration','expandMode','expandedIndexes','height','initContent','rtl','showArrow','theme','toggleMode','width'];
-      let options = {};
-    for(let item in this.props) {
-        if(item === 'settings') {
-          for(let itemTwo in this.props[item]) {
-            options[itemTwo] = this.props[item][itemTwo];
-              }
-          } else {
-              if(properties.indexOf(item) !== -1) {
-              options[item] = this.props[item];
-              }
+const JQXLite = window.JQXLite;
+
+export default class JqxNavigationBar extends React.Component {
+    componentDidMount() {
+        let options = this.manageAttributes();
+        this.createComponent(options);
+    };
+    manageAttributes() {
+        let properties = ['animationType','arrowPosition','collapseAnimationDuration','disabled','expandAnimationDuration','expandMode','expandedIndexes','height','initContent','rtl','showArrow','theme','toggleMode','width'];
+        let options = {};
+        for(let item in this.props) {
+              if(item === 'settings') {
+                  for(let itemTwo in this.props[item]) {
+                      options[itemTwo] = this.props[item][itemTwo];
+                      }
+                } else {
+                      if(properties.indexOf(item) !== -1) {
+                        options[item] = this.props[item];
+                      }
+                }
           }
-      }
-      return options;
-    },
-  createComponent : function (options) {
-    if(!this.style) {
-        for (let style in this.props.style) {
-          $('#' +this.componentSelector).css(style, this.props.style[style]);
+          return options;
+      };
+    createComponent(options) {
+        if(!this.style) {
+              for (let style in this.props.style) {
+                  JQXLite(this.componentSelector).css(style, this.props.style[style]);
+              }
         }
-    }
-    if(this.props.className !== undefined) {
-      let classes = this.props.className.split(' ');
-      for (let i = 0; i < classes.length; i++ ) {
-        $('#' +this.componentSelector).addClass(classes[i]);
-      }
-    }
-    if(!this.template) {
-        $('#' +this.componentSelector).html(this.props.template);
-    }
-    $('#' +this.componentSelector).jqxNavigationBar(options);
-  },
-  generateID : function () {    
-    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-  },
-  setOptions: function (options) {
-    $('#' +this.componentSelector).jqxNavigationBar('setOptions', options);
-  },
-  getOptions: function () {
-    if(arguments.length === 0) {
-      throw Error('At least one argument expected in getOptions()!');
-    }
-    let resultToReturn = {};
-    for(let i = 0; i < arguments.length; i++) {
-      resultToReturn[arguments[i]] = $('#' +this.componentSelector).jqxNavigationBar(arguments[i]);
-    }
-    return resultToReturn;
-  },
-  on: function (name,callbackFn) {
-    $('#' +this.componentSelector).on(name,callbackFn);
-  },
-  off: function (name) {
-    $('#' +this.componentSelector).off(name);
-  },
-  animationType: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("animationType", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("animationType");
-    }
-  },
-  arrowPosition: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("arrowPosition", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("arrowPosition");
-    }
-  },
-  collapseAnimationDuration: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("collapseAnimationDuration", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("collapseAnimationDuration");
-    }
-  },
-  disabled: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("disabled", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("disabled");
-    }
-  },
-  expandAnimationDuration: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("expandAnimationDuration", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("expandAnimationDuration");
-    }
-  },
-  expandMode: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("expandMode", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("expandMode");
-    }
-  },
-  expandedIndexes: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("expandedIndexes", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("expandedIndexes");
-    }
-  },
-  height: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("height", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("height");
-    }
-  },
-  initContent: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("initContent", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("initContent");
-    }
-  },
-  rtl: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("rtl", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("rtl");
-    }
-  },
-  showArrow: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("showArrow", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("showArrow");
-    }
-  },
-  theme: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("theme", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("theme");
-    }
-  },
-  toggleMode: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("toggleMode", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("toggleMode");
-    }
-  },
-  width: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxNavigationBar("width", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxNavigationBar("width");
-    }
-  },
-  add: function (header, content) {
-    $("#" + this.componentSelector).jqxNavigationBar("add", header, content);  
-  },
-  collapseAt: function (index) {
-    $("#" + this.componentSelector).jqxNavigationBar("collapseAt", index);  
-  },
-  disableAt: function (index) {
-    $("#" + this.componentSelector).jqxNavigationBar("disableAt", index);  
-  },
-  disable: function () {
-    $("#" + this.componentSelector).jqxNavigationBar("disable");  
-  },
-  destroy: function () {
-    $("#" + this.componentSelector).jqxNavigationBar("destroy");  
-  },
-  expandAt: function (index) {
-    $("#" + this.componentSelector).jqxNavigationBar("expandAt", index);  
-  },
-  enableAt: function (index) {
-    $("#" + this.componentSelector).jqxNavigationBar("enableAt", index);  
-  },
-  enable: function () {
-    $("#" + this.componentSelector).jqxNavigationBar("enable");  
-  },
-  focus: function () {
-    $("#" + this.componentSelector).jqxNavigationBar("focus");  
-  },
-  getHeaderContentAt: function (index) {
-    return $("#" + this.componentSelector).jqxNavigationBar("getHeaderContentAt", index);  
-  },
-  getContentAt: function (index) {
-    return $("#" + this.componentSelector).jqxNavigationBar("getContentAt", index);  
-  },
-  hideArrowAt: function (index) {
-    $("#" + this.componentSelector).jqxNavigationBar("hideArrowAt", index);  
-  },
-  invalidate: function () {
-    $("#" + this.componentSelector).jqxNavigationBar("invalidate");  
-  },
-  insert: function (Index, header, content) {
-    $("#" + this.componentSelector).jqxNavigationBar("insert", Index, header, content);  
-  },
-  refresh: function () {
-    $("#" + this.componentSelector).jqxNavigationBar("refresh");  
-  },
-  performRender: function () {
-    $("#" + this.componentSelector).jqxNavigationBar("render");
-  },
-  remove: function (index) {
-    $("#" + this.componentSelector).jqxNavigationBar("remove", index);  
-  },
-  setContentAt: function (index, item) {
-    $("#" + this.componentSelector).jqxNavigationBar("setContentAt", index, item);  
-  },
-  setHeaderContentAt: function (index, item) {
-    $("#" + this.componentSelector).jqxNavigationBar("setHeaderContentAt", index, item);  
-  },
-  showArrowAt: function (index) {
-    $("#" + this.componentSelector).jqxNavigationBar("showArrowAt", index);  
-  },
-  update: function (index, header, content) {
-    $("#" + this.componentSelector).jqxNavigationBar("update", index, header, content);  
-  },
-  val: function (value) {
-    if (value !== undefined) {
-      $("#" + this.componentSelector).jqxNavigationBar("val", value)
-    } else {
-      return $("#" + this.componentSelector).jqxNavigationBar("val");
-    }
-  },
+        if(this.props.className !== undefined) {
+            let classes = this.props.className.split(' ');
+            for (let i = 0; i < classes.length; i++ ) {
+                JQXLite(this.componentSelector).addClass(classes[i]);
+            }
+        }
+        if(!this.template) {
+              JQXLite(this.componentSelector).html(this.props.template);
+        }
+        JQXLite(this.componentSelector).jqxNavigationBar(options);
+    };
+    generateID() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    setOptions(options) {
+        JQXLite(this.componentSelector).jqxNavigationBar('setOptions', options);
+    };
+    getOptions() {
+        if(arguments.length === 0) {
+            throw Error('At least one argument expected in getOptions()!');
+        }
+        let resultToReturn = {};
+        for(let i = 0; i < arguments.length; i++) {
+            resultToReturn[arguments[i]] = JQXLite(this.componentSelector).jqxNavigationBar(arguments[i]);
+        }
+        return resultToReturn;
+    };
+    on(name,callbackFn) {
+        JQXLite(this.componentSelector).on(name,callbackFn);
+    };
+    off(name) {
+        JQXLite(this.componentSelector).off(name);
+    };
+    animationType(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('animationType', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('animationType');
+        }
+    };
+    arrowPosition(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('arrowPosition', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('arrowPosition');
+        }
+    };
+    collapseAnimationDuration(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('collapseAnimationDuration', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('collapseAnimationDuration');
+        }
+    };
+    disabled(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('disabled', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('disabled');
+        }
+    };
+    expandAnimationDuration(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('expandAnimationDuration', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('expandAnimationDuration');
+        }
+    };
+    expandMode(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('expandMode', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('expandMode');
+        }
+    };
+    expandedIndexes(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('expandedIndexes', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('expandedIndexes');
+        }
+    };
+    height(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('height', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('height');
+        }
+    };
+    initContent(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('initContent', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('initContent');
+        }
+    };
+    rtl(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('rtl', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('rtl');
+        }
+    };
+    showArrow(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('showArrow', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('showArrow');
+        }
+    };
+    theme(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('theme', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('theme');
+        }
+    };
+    toggleMode(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('toggleMode', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('toggleMode');
+        }
+    };
+    width(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('width', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('width');
+        }
+    };
+    add(header, content) {
+        JQXLite(this.componentSelector).jqxNavigationBar('add', header, content);  
+    };
+    collapseAt(index) {
+        JQXLite(this.componentSelector).jqxNavigationBar('collapseAt', index);  
+    };
+    disableAt(index) {
+        JQXLite(this.componentSelector).jqxNavigationBar('disableAt', index);  
+    };
+    disable() {
+        JQXLite(this.componentSelector).jqxNavigationBar('disable');  
+    };
+    destroy() {
+        JQXLite(this.componentSelector).jqxNavigationBar('destroy');  
+    };
+    expandAt(index) {
+        JQXLite(this.componentSelector).jqxNavigationBar('expandAt', index);  
+    };
+    enableAt(index) {
+        JQXLite(this.componentSelector).jqxNavigationBar('enableAt', index);  
+    };
+    enable() {
+        JQXLite(this.componentSelector).jqxNavigationBar('enable');  
+    };
+    focus() {
+        JQXLite(this.componentSelector).jqxNavigationBar('focus');  
+    };
+    getHeaderContentAt(index) {
+        return JQXLite(this.componentSelector).jqxNavigationBar('getHeaderContentAt', index);  
+    };
+    getContentAt(index) {
+        return JQXLite(this.componentSelector).jqxNavigationBar('getContentAt', index);  
+    };
+    hideArrowAt(index) {
+        JQXLite(this.componentSelector).jqxNavigationBar('hideArrowAt', index);  
+    };
+    invalidate() {
+        JQXLite(this.componentSelector).jqxNavigationBar('invalidate');  
+    };
+    insert(Index, header, content) {
+        JQXLite(this.componentSelector).jqxNavigationBar('insert', Index, header, content);  
+    };
+    refresh() {
+        JQXLite(this.componentSelector).jqxNavigationBar('refresh');  
+    };
+    performRender() {
+        JQXLite(this.componentSelector).jqxNavigationBar('render');
+    };
+    remove(index) {
+        JQXLite(this.componentSelector).jqxNavigationBar('remove', index);  
+    };
+    setContentAt(index, item) {
+        JQXLite(this.componentSelector).jqxNavigationBar('setContentAt', index, item);  
+    };
+    setHeaderContentAt(index, item) {
+        JQXLite(this.componentSelector).jqxNavigationBar('setHeaderContentAt', index, item);  
+    };
+    showArrowAt(index) {
+        JQXLite(this.componentSelector).jqxNavigationBar('showArrowAt', index);  
+    };
+    update(index, header, content) {
+        JQXLite(this.componentSelector).jqxNavigationBar('update', index, header, content);  
+    };
+    val(value) {
+        if (value !== undefined) {
+            JQXLite(this.componentSelector).jqxNavigationBar('val',  value)
+        } else {
+            return JQXLite(this.componentSelector).jqxNavigationBar('val');
+        }
+    };
 
-  render: function () {
-    var id = 'jqxNavigationBar' + this.generateID() + this.generateID();
-    this.componentSelector = id;
-;    return (
-      <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
-    )
-  }
-});
-
-module.exports = jqxNavigationBar;
+    render() {
+        let id = 'jqxNavigationBar' + this.generateID() + this.generateID();
+        this.componentSelector = '#' + id;
+        return (
+            <div id={id}>{this.props.value}{this.props.children}</div>
+        )
+    };
+};
 

@@ -3,7 +3,7 @@ import { BrowserModule }  from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
-import { jqxCalendarComponent } from 'components/angular_jqxcalendar';
+import { jqxCalendarComponent } from '../../../../../jqwidgets-ts/angular_jqxcalendar';
 
 @NgModule({
     imports: [BrowserModule],

@@ -1,392 +1,389 @@
 /*
-jQWidgets v4.5.2 (2017-May)
+jQWidgets v4.5.3 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 import React from 'react';
 
-let jqxChart = React.createClass ({
-  getInitialState: function () {
-    return { value: '' };
-  },
-  componentDidMount: function () {
-      let options = this.manageAttributes();
-    this.createComponent(options);
-  },
-  manageAttributes: function () {
-      let properties = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','categoryAxis','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
-      let options = {};
-    for(let item in this.props) {
-        if(item === 'settings') {
-          for(let itemTwo in this.props[item]) {
-            options[itemTwo] = this.props[item][itemTwo];
-              }
-          } else {
-              if(properties.indexOf(item) !== -1) {
-              options[item] = this.props[item];
-              }
-          }
-      }
-      return options;
-    },
-  createComponent : function (options) {
-    if(!this.style) {
-        for (let style in this.props.style) {
-          $('#' +this.componentSelector).css(style, this.props.style[style]);
-        }
-    }
-    if(this.props.className !== undefined) {
-      let classes = this.props.className.split(' ');
-      for (let i = 0; i < classes.length; i++ ) {
-        $('#' +this.componentSelector).addClass(classes[i]);
-      }
-    }
-    if(!this.template) {
-        $('#' +this.componentSelector).html(this.props.template);
-    }
-    $('#' +this.componentSelector).jqxChart(options);
-  },
-  generateID : function () {    
-    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-  },
-  setOptions: function (options) {
-    $('#' +this.componentSelector).jqxChart('setOptions', options);
-  },
-  getOptions: function () {
-    if(arguments.length === 0) {
-      throw Error('At least one argument expected in getOptions()!');
-    }
-    let resultToReturn = {};
-    for(let i = 0; i < arguments.length; i++) {
-      resultToReturn[arguments[i]] = $('#' +this.componentSelector).jqxChart(arguments[i]);
-    }
-    return resultToReturn;
-  },
-  on: function (name,callbackFn) {
-    $('#' +this.componentSelector).on(name,callbackFn);
-  },
-  off: function (name) {
-    $('#' +this.componentSelector).off(name);
-  },
-  title: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("title", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("title");
-    }
-  },
-  description: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("description", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("description");
-    }
-  },
-  source: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("source", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("source");
-    }
-  },
-  showBorderLine: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("showBorderLine", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("showBorderLine");
-    }
-  },
-  borderLineColor: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("borderLineColor", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("borderLineColor");
-    }
-  },
-  borderLineWidth: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("borderLineWidth", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("borderLineWidth");
-    }
-  },
-  backgroundColor: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("backgroundColor", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("backgroundColor");
-    }
-  },
-  backgroundImage: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("backgroundImage", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("backgroundImage");
-    }
-  },
-  showLegend: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("showLegend", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("showLegend");
-    }
-  },
-  legendLayout: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("legendLayout", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("legendLayout");
-    }
-  },
-  categoryAxis: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("categoryAxis", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("categoryAxis");
-    }
-  },
-  padding: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("padding", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("padding");
-    }
-  },
-  titlePadding: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("titlePadding", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("titlePadding");
-    }
-  },
-  colorScheme: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("colorScheme", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("colorScheme");
-    }
-  },
-  greyScale: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("greyScale", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("greyScale");
-    }
-  },
-  showToolTips: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("showToolTips", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("showToolTips");
-    }
-  },
-  toolTipShowDelay: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("toolTipShowDelay", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("toolTipShowDelay");
-    }
-  },
-  toolTipHideDelay: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("toolTipHideDelay", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("toolTipHideDelay");
-    }
-  },
-  toolTipMoveDuration: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("toolTipMoveDuration", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("toolTipMoveDuration");
-    }
-  },
-  drawBefore: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("drawBefore", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("drawBefore");
-    }
-  },
-  draw: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("draw", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("draw");
-    }
-  },
-  rtl: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("rtl", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("rtl");
-    }
-  },
-  enableCrosshairs: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("enableCrosshairs", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("enableCrosshairs");
-    }
-  },
-  crosshairsColor: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("crosshairsColor", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("crosshairsColor");
-    }
-  },
-  crosshairsDashStyle: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("crosshairsDashStyle", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("crosshairsDashStyle");
-    }
-  },
-  crosshairsLineWidth: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("crosshairsLineWidth", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("crosshairsLineWidth");
-    }
-  },
-  columnSeriesOverlap: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("columnSeriesOverlap", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("columnSeriesOverlap");
-    }
-  },
-  enabled: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("enabled", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("enabled");
-    }
-  },
-  enableAnimations: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("enableAnimations", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("enableAnimations");
-    }
-  },
-  animationDuration: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("animationDuration", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("animationDuration");
-    }
-  },
-  enableAxisTextAnimation: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("enableAxisTextAnimation", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("enableAxisTextAnimation");
-    }
-  },
-  renderEngine: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("renderEngine", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("renderEngine");
-    }
-  },
-  xAxis: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("xAxis", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("xAxis");
-    }
-  },
-  valueAxis: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("valueAxis", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("valueAxis");
-    }
-  },
-  seriesGroups: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxChart("seriesGroups", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxChart("seriesGroups");
-    }
-  },
-  getInstance: function () {
-    return $("#" + this.componentSelector).jqxChart("getInstance");  
-  },
-  refresh: function () {
-    return $("#" + this.componentSelector).jqxChart("refresh");  
-  },
-  update: function () {
-    return $("#" + this.componentSelector).jqxChart("update");  
-  },
-  destroy: function () {
-    return $("#" + this.componentSelector).jqxChart("destroy");  
-  },
-  addColorScheme: function (schemeName, colors) {
-    return $("#" + this.componentSelector).jqxChart("addColorScheme", schemeName, colors);  
-  },
-  removeColorScheme: function (schemeName) {
-    return $("#" + this.componentSelector).jqxChart("removeColorScheme", schemeName);  
-  },
-  getItemsCount: function (groupIndex, serieIndex) {
-    return $("#" + this.componentSelector).jqxChart("getItemsCount", groupIndex, serieIndex);  
-  },
-  getItemCoord: function (groupIndex, serieIndex, itemIndex) {
-    return $("#" + this.componentSelector).jqxChart("getItemCoord", groupIndex, serieIndex, itemIndex);  
-  },
-  getXAxisRect: function (groupIndex) {
-    return $("#" + this.componentSelector).jqxChart("getXAxisRect", groupIndex);  
-  },
-  getXAxisLabels: function (groupIndex) {
-    return $("#" + this.componentSelector).jqxChart("getXAxisLabels", groupIndex);  
-  },
-  getValueAxisRect: function (groupIndex) {
-    return $("#" + this.componentSelector).jqxChart("getValueAxisRect", groupIndex);  
-  },
-  getValueAxisLabels: function (groupIndex) {
-    return $("#" + this.componentSelector).jqxChart("getValueAxisLabels", groupIndex);  
-  },
-  getColorScheme: function (colorScheme) {
-    return $("#" + this.componentSelector).jqxChart("getColorScheme", colorScheme);  
-  },
-  hideSerie: function (groupIndex, serieIndex, itemIndex) {
-    return $("#" + this.componentSelector).jqxChart("hideSerie", groupIndex, serieIndex, itemIndex);  
-  },
-  showSerie: function (groupIndex, serieIndex, itemIndex) {
-    return $("#" + this.componentSelector).jqxChart("showSerie", groupIndex, serieIndex, itemIndex);  
-  },
-  hideToolTip: function (hideDelay) {
-    return $("#" + this.componentSelector).jqxChart("hideToolTip", hideDelay);  
-  },
-  showToolTip: function (groupIndex, serieIndex, itemIndex, showDelay, hideDelay) {
-    return $("#" + this.componentSelector).jqxChart("showToolTip", groupIndex, serieIndex, itemIndex, showDelay, hideDelay);  
-  },
-  saveAsJPEG: function (fileName, exportServerUrl) {
-    return $("#" + this.componentSelector).jqxChart("saveAsJPEG", fileName, exportServerUrl);  
-  },
-  saveAsPNG: function (fileName, exportServerUrl) {
-    return $("#" + this.componentSelector).jqxChart("saveAsPNG", fileName, exportServerUrl);  
-  },
-  saveAsPDF: function (fileName, exportServerUrl) {
-    return $("#" + this.componentSelector).jqxChart("saveAsPDF", fileName, exportServerUrl);  
-  },
-  getXAxisValue: function (offset, groupIndex) {
-    return $("#" + this.componentSelector).jqxChart("getXAxisValue", offset, groupIndex);  
-  },
-  getValueAxisValue: function (offset, groupIndex) {
-    return $("#" + this.componentSelector).jqxChart("getValueAxisValue", offset, groupIndex);  
-  },
-  render: function () {
-    var id = 'jqxChart' + this.generateID() + this.generateID();
-    this.componentSelector = id;
-;    return (
-      <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
-    )
-  }
-});
+const JQXLite = window.JQXLite;
 
-module.exports = jqxChart;
+export default class JqxChart extends React.Component {
+    componentDidMount() {
+        let options = this.manageAttributes();
+        this.createComponent(options);
+    };
+    manageAttributes() {
+        let properties = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','categoryAxis','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
+        let options = {};
+        for(let item in this.props) {
+              if(item === 'settings') {
+                  for(let itemTwo in this.props[item]) {
+                      options[itemTwo] = this.props[item][itemTwo];
+                      }
+                } else {
+                      if(properties.indexOf(item) !== -1) {
+                        options[item] = this.props[item];
+                      }
+                }
+          }
+          return options;
+      };
+    createComponent(options) {
+        if(!this.style) {
+              for (let style in this.props.style) {
+                  JQXLite(this.componentSelector).css(style, this.props.style[style]);
+              }
+        }
+        if(this.props.className !== undefined) {
+            let classes = this.props.className.split(' ');
+            for (let i = 0; i < classes.length; i++ ) {
+                JQXLite(this.componentSelector).addClass(classes[i]);
+            }
+        }
+        if(!this.template) {
+              JQXLite(this.componentSelector).html(this.props.template);
+        }
+        JQXLite(this.componentSelector).jqxChart(options);
+    };
+    generateID() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    setOptions(options) {
+        JQXLite(this.componentSelector).jqxChart('setOptions', options);
+    };
+    getOptions() {
+        if(arguments.length === 0) {
+            throw Error('At least one argument expected in getOptions()!');
+        }
+        let resultToReturn = {};
+        for(let i = 0; i < arguments.length; i++) {
+            resultToReturn[arguments[i]] = JQXLite(this.componentSelector).jqxChart(arguments[i]);
+        }
+        return resultToReturn;
+    };
+    on(name,callbackFn) {
+        JQXLite(this.componentSelector).on(name,callbackFn);
+    };
+    off(name) {
+        JQXLite(this.componentSelector).off(name);
+    };
+    title(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('title', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('title');
+        }
+    };
+    description(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('description', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('description');
+        }
+    };
+    source(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('source', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('source');
+        }
+    };
+    showBorderLine(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('showBorderLine', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('showBorderLine');
+        }
+    };
+    borderLineColor(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('borderLineColor', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('borderLineColor');
+        }
+    };
+    borderLineWidth(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('borderLineWidth', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('borderLineWidth');
+        }
+    };
+    backgroundColor(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('backgroundColor', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('backgroundColor');
+        }
+    };
+    backgroundImage(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('backgroundImage', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('backgroundImage');
+        }
+    };
+    showLegend(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('showLegend', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('showLegend');
+        }
+    };
+    legendLayout(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('legendLayout', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('legendLayout');
+        }
+    };
+    categoryAxis(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('categoryAxis', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('categoryAxis');
+        }
+    };
+    padding(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('padding', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('padding');
+        }
+    };
+    titlePadding(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('titlePadding', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('titlePadding');
+        }
+    };
+    colorScheme(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('colorScheme', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('colorScheme');
+        }
+    };
+    greyScale(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('greyScale', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('greyScale');
+        }
+    };
+    showToolTips(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('showToolTips', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('showToolTips');
+        }
+    };
+    toolTipShowDelay(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('toolTipShowDelay', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('toolTipShowDelay');
+        }
+    };
+    toolTipHideDelay(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('toolTipHideDelay', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('toolTipHideDelay');
+        }
+    };
+    toolTipMoveDuration(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('toolTipMoveDuration', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('toolTipMoveDuration');
+        }
+    };
+    drawBefore(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('drawBefore', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('drawBefore');
+        }
+    };
+    draw(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('draw', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('draw');
+        }
+    };
+    rtl(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('rtl', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('rtl');
+        }
+    };
+    enableCrosshairs(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('enableCrosshairs', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('enableCrosshairs');
+        }
+    };
+    crosshairsColor(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('crosshairsColor', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('crosshairsColor');
+        }
+    };
+    crosshairsDashStyle(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('crosshairsDashStyle', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('crosshairsDashStyle');
+        }
+    };
+    crosshairsLineWidth(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('crosshairsLineWidth', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('crosshairsLineWidth');
+        }
+    };
+    columnSeriesOverlap(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('columnSeriesOverlap', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('columnSeriesOverlap');
+        }
+    };
+    enabled(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('enabled', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('enabled');
+        }
+    };
+    enableAnimations(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('enableAnimations', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('enableAnimations');
+        }
+    };
+    animationDuration(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('animationDuration', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('animationDuration');
+        }
+    };
+    enableAxisTextAnimation(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('enableAxisTextAnimation', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('enableAxisTextAnimation');
+        }
+    };
+    renderEngine(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('renderEngine', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('renderEngine');
+        }
+    };
+    xAxis(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('xAxis', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('xAxis');
+        }
+    };
+    valueAxis(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('valueAxis', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('valueAxis');
+        }
+    };
+    seriesGroups(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('seriesGroups', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('seriesGroups');
+        }
+    };
+    getInstance() {
+        return JQXLite(this.componentSelector).jqxChart('getInstance');  
+    };
+    refresh() {
+        return JQXLite(this.componentSelector).jqxChart('refresh');  
+    };
+    update() {
+        return JQXLite(this.componentSelector).jqxChart('update');  
+    };
+    destroy() {
+        return JQXLite(this.componentSelector).jqxChart('destroy');  
+    };
+    addColorScheme(schemeName, colors) {
+        return JQXLite(this.componentSelector).jqxChart('addColorScheme', schemeName, colors);  
+    };
+    removeColorScheme(schemeName) {
+        return JQXLite(this.componentSelector).jqxChart('removeColorScheme', schemeName);  
+    };
+    getItemsCount(groupIndex, serieIndex) {
+        return JQXLite(this.componentSelector).jqxChart('getItemsCount', groupIndex, serieIndex);  
+    };
+    getItemCoord(groupIndex, serieIndex, itemIndex) {
+        return JQXLite(this.componentSelector).jqxChart('getItemCoord', groupIndex, serieIndex, itemIndex);  
+    };
+    getXAxisRect(groupIndex) {
+        return JQXLite(this.componentSelector).jqxChart('getXAxisRect', groupIndex);  
+    };
+    getXAxisLabels(groupIndex) {
+        return JQXLite(this.componentSelector).jqxChart('getXAxisLabels', groupIndex);  
+    };
+    getValueAxisRect(groupIndex) {
+        return JQXLite(this.componentSelector).jqxChart('getValueAxisRect', groupIndex);  
+    };
+    getValueAxisLabels(groupIndex) {
+        return JQXLite(this.componentSelector).jqxChart('getValueAxisLabels', groupIndex);  
+    };
+    getColorScheme(colorScheme) {
+        return JQXLite(this.componentSelector).jqxChart('getColorScheme', colorScheme);  
+    };
+    hideSerie(groupIndex, serieIndex, itemIndex) {
+        return JQXLite(this.componentSelector).jqxChart('hideSerie', groupIndex, serieIndex, itemIndex);  
+    };
+    showSerie(groupIndex, serieIndex, itemIndex) {
+        return JQXLite(this.componentSelector).jqxChart('showSerie', groupIndex, serieIndex, itemIndex);  
+    };
+    hideToolTip(hideDelay) {
+        return JQXLite(this.componentSelector).jqxChart('hideToolTip', hideDelay);  
+    };
+    showToolTip(groupIndex, serieIndex, itemIndex, showDelay, hideDelay) {
+        return JQXLite(this.componentSelector).jqxChart('showToolTip', groupIndex, serieIndex, itemIndex, showDelay, hideDelay);  
+    };
+    saveAsJPEG(fileName, exportServerUrl) {
+        return JQXLite(this.componentSelector).jqxChart('saveAsJPEG', fileName, exportServerUrl);  
+    };
+    saveAsPNG(fileName, exportServerUrl) {
+        return JQXLite(this.componentSelector).jqxChart('saveAsPNG', fileName, exportServerUrl);  
+    };
+    saveAsPDF(fileName, exportServerUrl) {
+        return JQXLite(this.componentSelector).jqxChart('saveAsPDF', fileName, exportServerUrl);  
+    };
+    getXAxisValue(offset, groupIndex) {
+        return JQXLite(this.componentSelector).jqxChart('getXAxisValue', offset, groupIndex);  
+    };
+    getValueAxisValue(offset, groupIndex) {
+        return JQXLite(this.componentSelector).jqxChart('getValueAxisValue', offset, groupIndex);  
+    };
+    render() {
+        let id = 'jqxChart' + this.generateID() + this.generateID();
+        this.componentSelector = '#' + id;
+        return (
+            <div id={id}>{this.props.value}{this.props.children}</div>
+        )
+    };
+};
 

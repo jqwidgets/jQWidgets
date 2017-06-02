@@ -1,10 +1,10 @@
 /*
-jQWidgets v4.5.2 (2017-May)
+jQWidgets v4.5.3 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -19,7 +19,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
     selector: 'jqxDateTimeInput',
     template: '<input [(ngModel)]="ngValue">',
-    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChanges 
@@ -141,9 +142,6 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       this.__wireEvents__();
 
       this.__updateRect__();
-      setTimeout(() => {
-         options.value !== undefined ? this.host.jqxDateTimeInput('val', options.value) : this.host.jqxDateTimeInput('val', new Date());
-      }, 1);
    }
 
    createWidget(options?: any): void {

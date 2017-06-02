@@ -1,10 +1,10 @@
 /*
-jQWidgets v4.5.2 (2017-May)
+jQWidgets v4.5.3 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -18,8 +18,9 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
     selector: 'jqxComplexInput',
-    template: '<div style="padding-right: 2px;"><input [(ngModel)]="ngValue"><div></div></div>',
-    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+    template: '<div style="display: inline-flex"><input [(ngModel)]="ngValue"><div></div></div>',
+    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges 
@@ -119,10 +120,10 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxComplexInput', options);
 
       this.__updateRect__();
-      setTimeout(() => {
-         let valueWithWS = ' ' + options.value;
+      setTimeout(_=> {
+         let valueWithWS = `${options.value}`;
          this.host.jqxComplexInput({ value: valueWithWS });
-      }, 1);
+      });
    }
 
    createWidget(options?: any): void {

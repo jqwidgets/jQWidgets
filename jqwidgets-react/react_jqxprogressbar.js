@@ -1,200 +1,197 @@
 /*
-jQWidgets v4.5.2 (2017-May)
+jQWidgets v4.5.3 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 import React from 'react';
 
-let jqxProgressBar = React.createClass ({
-  getInitialState: function () {
-    return { value: '' };
-  },
-  componentDidMount: function () {
-      let options = this.manageAttributes();
-    this.createComponent(options);
-  },
-  manageAttributes: function () {
-      let properties = ['animationDuration','colorRanges','disabled','height','layout','max','min','orientation','rtl','renderText','showText','template','theme','value','width'];
-      let options = {};
-    for(let item in this.props) {
-        if(item === 'settings') {
-          for(let itemTwo in this.props[item]) {
-            options[itemTwo] = this.props[item][itemTwo];
-              }
-          } else {
-              if(properties.indexOf(item) !== -1) {
-              options[item] = this.props[item];
-              }
+const JQXLite = window.JQXLite;
+
+export default class JqxProgressBar extends React.Component {
+    componentDidMount() {
+        let options = this.manageAttributes();
+        this.createComponent(options);
+    };
+    manageAttributes() {
+        let properties = ['animationDuration','colorRanges','disabled','height','layout','max','min','orientation','rtl','renderText','showText','template','theme','value','width'];
+        let options = {};
+        for(let item in this.props) {
+              if(item === 'settings') {
+                  for(let itemTwo in this.props[item]) {
+                      options[itemTwo] = this.props[item][itemTwo];
+                      }
+                } else {
+                      if(properties.indexOf(item) !== -1) {
+                        options[item] = this.props[item];
+                      }
+                }
           }
-      }
-      return options;
-    },
-  createComponent : function (options) {
-    if(!this.style) {
-        for (let style in this.props.style) {
-          $('#' +this.componentSelector).css(style, this.props.style[style]);
+          return options;
+      };
+    createComponent(options) {
+        if(!this.style) {
+              for (let style in this.props.style) {
+                  JQXLite(this.componentSelector).css(style, this.props.style[style]);
+              }
         }
-    }
-    if(this.props.className !== undefined) {
-      let classes = this.props.className.split(' ');
-      for (let i = 0; i < classes.length; i++ ) {
-        $('#' +this.componentSelector).addClass(classes[i]);
-      }
-    }
-    if(!this.template) {
-        $('#' +this.componentSelector).html(this.props.template);
-    }
-    $('#' +this.componentSelector).jqxProgressBar(options);
-  },
-  generateID : function () {    
-    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-  },
-  setOptions: function (options) {
-    $('#' +this.componentSelector).jqxProgressBar('setOptions', options);
-  },
-  getOptions: function () {
-    if(arguments.length === 0) {
-      throw Error('At least one argument expected in getOptions()!');
-    }
-    let resultToReturn = {};
-    for(let i = 0; i < arguments.length; i++) {
-      resultToReturn[arguments[i]] = $('#' +this.componentSelector).jqxProgressBar(arguments[i]);
-    }
-    return resultToReturn;
-  },
-  on: function (name,callbackFn) {
-    $('#' +this.componentSelector).on(name,callbackFn);
-  },
-  off: function (name) {
-    $('#' +this.componentSelector).off(name);
-  },
-  animationDuration: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("animationDuration", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("animationDuration");
-    }
-  },
-  colorRanges: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("colorRanges", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("colorRanges");
-    }
-  },
-  disabled: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("disabled", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("disabled");
-    }
-  },
-  height: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("height", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("height");
-    }
-  },
-  layout: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("layout", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("layout");
-    }
-  },
-  max: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("max", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("max");
-    }
-  },
-  min: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("min", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("min");
-    }
-  },
-  orientation: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("orientation", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("orientation");
-    }
-  },
-  rtl: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("rtl", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("rtl");
-    }
-  },
-  renderText: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("renderText", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("renderText");
-    }
-  },
-  showText: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("showText", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("showText");
-    }
-  },
-  template: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("template", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("template");
-    }
-  },
-  theme: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("theme", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("theme");
-    }
-  },
-  value: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("value", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("value");
-    }
-  },
-  width: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxProgressBar("width", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxProgressBar("width");
-    }
-  },
-  actualValue: function (value) {
-    $("#" + this.componentSelector).jqxProgressBar("actualValue", value);  
-  },
-  destroy: function () {
-    $("#" + this.componentSelector).jqxProgressBar("destroy");  
-  },
-  val: function (value) {
-    if (value !== undefined) {
-      $("#" + this.componentSelector).jqxProgressBar("val", value)
-    } else {
-      return $("#" + this.componentSelector).jqxProgressBar("val");
-    }
-  },
+        if(this.props.className !== undefined) {
+            let classes = this.props.className.split(' ');
+            for (let i = 0; i < classes.length; i++ ) {
+                JQXLite(this.componentSelector).addClass(classes[i]);
+            }
+        }
+        if(!this.template) {
+              JQXLite(this.componentSelector).html(this.props.template);
+        }
+        JQXLite(this.componentSelector).jqxProgressBar(options);
+    };
+    generateID() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    setOptions(options) {
+        JQXLite(this.componentSelector).jqxProgressBar('setOptions', options);
+    };
+    getOptions() {
+        if(arguments.length === 0) {
+            throw Error('At least one argument expected in getOptions()!');
+        }
+        let resultToReturn = {};
+        for(let i = 0; i < arguments.length; i++) {
+            resultToReturn[arguments[i]] = JQXLite(this.componentSelector).jqxProgressBar(arguments[i]);
+        }
+        return resultToReturn;
+    };
+    on(name,callbackFn) {
+        JQXLite(this.componentSelector).on(name,callbackFn);
+    };
+    off(name) {
+        JQXLite(this.componentSelector).off(name);
+    };
+    animationDuration(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('animationDuration', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('animationDuration');
+        }
+    };
+    colorRanges(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('colorRanges', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('colorRanges');
+        }
+    };
+    disabled(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('disabled', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('disabled');
+        }
+    };
+    height(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('height', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('height');
+        }
+    };
+    layout(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('layout', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('layout');
+        }
+    };
+    max(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('max', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('max');
+        }
+    };
+    min(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('min', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('min');
+        }
+    };
+    orientation(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('orientation', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('orientation');
+        }
+    };
+    rtl(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('rtl', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('rtl');
+        }
+    };
+    renderText(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('renderText', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('renderText');
+        }
+    };
+    showText(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('showText', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('showText');
+        }
+    };
+    template(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('template', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('template');
+        }
+    };
+    theme(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('theme', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('theme');
+        }
+    };
+    value(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('value', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('value');
+        }
+    };
+    width(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('width', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('width');
+        }
+    };
+    actualValue(value) {
+        JQXLite(this.componentSelector).jqxProgressBar('actualValue', value);  
+    };
+    destroy() {
+        JQXLite(this.componentSelector).jqxProgressBar('destroy');  
+    };
+    val(value) {
+        if (value !== undefined) {
+            JQXLite(this.componentSelector).jqxProgressBar('val',  value)
+        } else {
+            return JQXLite(this.componentSelector).jqxProgressBar('val');
+        }
+    };
 
-  render: function () {
-    var id = 'jqxProgressBar' + this.generateID() + this.generateID();
-    this.componentSelector = id;
-;    return (
-      <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
-    )
-  }
-});
-
-module.exports = jqxProgressBar;
+    render() {
+        let id = 'jqxProgressBar' + this.generateID() + this.generateID();
+        this.componentSelector = '#' + id;
+        return (
+            <div id={id}>{this.props.value}{this.props.children}</div>
+        )
+    };
+};
 

@@ -1,10 +1,10 @@
 /*
-jQWidgets v4.5.2 (2017-May)
+jQWidgets v4.5.3 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -19,7 +19,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
     selector: 'jqxInput',
     template: '<input type="text" [(ngModel)]="ngValue">',
-    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class jqxInputComponent implements ControlValueAccessor, OnChanges 
@@ -40,12 +41,13 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
    @Input('source') attrSource: any;
    @Input('theme') attrTheme: any;
    @Input('valueMember') attrValueMember: any;
+   @Input('value') attrValue: any;
    @Input('width') attrWidth: any;
    @Input('height') attrHeight: any;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','dropDownWidth','displayMember','height','items','minLength','maxLength','opened','placeHolder','popupZIndex','query','renderer','rtl','searchMode','source','theme','valueMember','width'];
+   properties: string[] = ['disabled','dropDownWidth','displayMember','height','items','minLength','maxLength','opened','placeHolder','popupZIndex','query','renderer','rtl','searchMode','source','theme','valueMember','width','value'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxInput;
@@ -307,6 +309,14 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
           this.host.jqxInput('width', arg);
       } else {
           return this.host.jqxInput('width');
+      }
+   }
+
+   value(arg?: String | Number) : any {
+      if (arg !== undefined) {
+          this.host.jqxInput('value', arg);
+      } else {
+          return this.host.jqxInput('value');
       }
    }
 

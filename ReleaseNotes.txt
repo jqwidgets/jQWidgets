@@ -1,4 +1,20 @@
 ﻿*********************************************
+* jQWidgets v4.5.3 Release, June-01-2017    *
+*********************************************
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid regarding the data editing when the edit mode is 'selectedrow' and selection mode is cell based. 
+- Fixed an issue in jqxGrid regarding loading dates with milliseconds precision.
+- Fixed an issue in jqxGrid regarding the destroy method when filter row is enabled and there are INPUT filters.
+- Fixed an issue in jqxGrid when caps-lock is on and you start editing with a key press.
+- Fixed an issue in jqxGrid when columns reorder is true in RTL mode.
+- Fixed an issue in jqxGrid regarding DatetimeInput editor when it is in time-input mode.
+- Fixed an issue in jqxScheduler regarding the agendaView usage on touch devices.
+- Fixed an issue in jqxListBox about submitting item value when the listbox is empty.
+- Fixed an issue in jqxDateTimeInput regarding showing time popup with Alt + Down key, if calendar button is hidden.
+
+*********************************************
 * jQWidgets v4.5.2 Release, May-04-2017     *
 *********************************************
 

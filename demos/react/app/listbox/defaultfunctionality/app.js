@@ -11,12 +11,12 @@ class App extends React.Component {
                 'Americano',
                 'Bicerin',
                 'Breve',
-                'Café Bombón',
-                'Café au lait',
-                'Caffé Corretto',
-                'Café Crema',
-                'Caffé Latte',
-                'Caffé macchiato'
+                'Cafe Bombon',
+                'Cafe au lait',
+                'Caffe Corretto',
+                'Cafe Crema',
+                'Caffe Latte',
+                'Caffe macchiato'
             ];
         return (
             <JqxListBox

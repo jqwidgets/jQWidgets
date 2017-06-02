@@ -1157,6 +1157,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 /*applied to the anchor elements*/
 .jqx-menu-item a:link, .jqx-menu-item a:visited, .jqx-menu-item a:hover, .jqx-menu-item-top a:link, .jqx-menu-item-top a:visited, .jqx-menu-item-top a:hover
 {
+    font:inherit;
     text-decoration: none;
     color: inherit;
     outline: none;

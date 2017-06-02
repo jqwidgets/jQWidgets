@@ -1,349 +1,346 @@
 /*
-jQWidgets v4.5.2 (2017-May)
+jQWidgets v4.5.3 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 import React from 'react';
 
-let jqxTabs = React.createClass ({
-  getInitialState: function () {
-    return { value: '' };
-  },
-  componentDidMount: function () {
-      let options = this.manageAttributes();
-    this.createComponent(options);
-  },
-  manageAttributes: function () {
-      let properties = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','height','initTabContent','keyboardNavigation','next','previous','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
-      let options = {};
-    for(let item in this.props) {
-        if(item === 'settings') {
-          for(let itemTwo in this.props[item]) {
-            options[itemTwo] = this.props[item][itemTwo];
-              }
-          } else {
-              if(properties.indexOf(item) !== -1) {
-              options[item] = this.props[item];
-              }
+const JQXLite = window.JQXLite;
+
+export default class JqxTabs extends React.Component {
+    componentDidMount() {
+        let options = this.manageAttributes();
+        this.createComponent(options);
+    };
+    manageAttributes() {
+        let properties = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','height','initTabContent','keyboardNavigation','next','previous','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
+        let options = {};
+        for(let item in this.props) {
+              if(item === 'settings') {
+                  for(let itemTwo in this.props[item]) {
+                      options[itemTwo] = this.props[item][itemTwo];
+                      }
+                } else {
+                      if(properties.indexOf(item) !== -1) {
+                        options[item] = this.props[item];
+                      }
+                }
           }
-      }
-      return options;
-    },
-  createComponent : function (options) {
-    if(!this.style) {
-        for (let style in this.props.style) {
-          $('#' +this.componentSelector).css(style, this.props.style[style]);
+          return options;
+      };
+    createComponent(options) {
+        if(!this.style) {
+              for (let style in this.props.style) {
+                  JQXLite(this.componentSelector).css(style, this.props.style[style]);
+              }
         }
-    }
-    if(this.props.className !== undefined) {
-      let classes = this.props.className.split(' ');
-      for (let i = 0; i < classes.length; i++ ) {
-        $('#' +this.componentSelector).addClass(classes[i]);
-      }
-    }
-    if(!this.template) {
-        $('#' +this.componentSelector).html(this.props.template);
-    }
-    $('#' +this.componentSelector).jqxTabs(options);
-  },
-  generateID : function () {    
-    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-  },
-  setOptions: function (options) {
-    $('#' +this.componentSelector).jqxTabs('setOptions', options);
-  },
-  getOptions: function () {
-    if(arguments.length === 0) {
-      throw Error('At least one argument expected in getOptions()!');
-    }
-    let resultToReturn = {};
-    for(let i = 0; i < arguments.length; i++) {
-      resultToReturn[arguments[i]] = $('#' +this.componentSelector).jqxTabs(arguments[i]);
-    }
-    return resultToReturn;
-  },
-  on: function (name,callbackFn) {
-    $('#' +this.componentSelector).on(name,callbackFn);
-  },
-  off: function (name) {
-    $('#' +this.componentSelector).off(name);
-  },
-  animationType: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("animationType", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("animationType");
-    }
-  },
-  autoHeight: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("autoHeight", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("autoHeight");
-    }
-  },
-  closeButtonSize: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("closeButtonSize", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("closeButtonSize");
-    }
-  },
-  collapsible: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("collapsible", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("collapsible");
-    }
-  },
-  contentTransitionDuration: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("contentTransitionDuration", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("contentTransitionDuration");
-    }
-  },
-  disabled: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("disabled", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("disabled");
-    }
-  },
-  enabledHover: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("enabledHover", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("enabledHover");
-    }
-  },
-  enableScrollAnimation: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("enableScrollAnimation", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("enableScrollAnimation");
-    }
-  },
-  height: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("height", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("height");
-    }
-  },
-  initTabContent: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("initTabContent", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("initTabContent");
-    }
-  },
-  keyboardNavigation: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("keyboardNavigation", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("keyboardNavigation");
-    }
-  },
-  next: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("next", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("next");
-    }
-  },
-  previous: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("previous", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("previous");
-    }
-  },
-  position: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("position", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("position");
-    }
-  },
-  reorder: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("reorder", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("reorder");
-    }
-  },
-  rtl: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("rtl", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("rtl");
-    }
-  },
-  scrollAnimationDuration: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("scrollAnimationDuration", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("scrollAnimationDuration");
-    }
-  },
-  selectedItem: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("selectedItem", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("selectedItem");
-    }
-  },
-  selectionTracker: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("selectionTracker", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("selectionTracker");
-    }
-  },
-  scrollable: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("scrollable", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("scrollable");
-    }
-  },
-  scrollPosition: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("scrollPosition", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("scrollPosition");
-    }
-  },
-  scrollStep: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("scrollStep", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("scrollStep");
-    }
-  },
-  showCloseButtons: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("showCloseButtons", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("showCloseButtons");
-    }
-  },
-  toggleMode: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("toggleMode", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("toggleMode");
-    }
-  },
-  theme: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("theme", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("theme");
-    }
-  },
-  width: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTabs("width", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTabs("width");
-    }
-  },
-  addAt: function (index, title, content) {
-    $("#" + this.componentSelector).jqxTabs("addAt", index, title, content);  
-  },
-  addFirst: function (htmlElement) {
-    $("#" + this.componentSelector).jqxTabs("addFirst", htmlElement);  
-  },
-  addLast: function (htmlElement1, htmlElemen2t) {
-    $("#" + this.componentSelector).jqxTabs("addLast", htmlElement1, htmlElemen2t);  
-  },
-  collapse: function () {
-    $("#" + this.componentSelector).jqxTabs("collapse");  
-  },
-  disable: function () {
-    $("#" + this.componentSelector).jqxTabs("disable");  
-  },
-  disableAt: function (index) {
-    $("#" + this.componentSelector).jqxTabs("disableAt", index);  
-  },
-  destroy: function () {
-    $("#" + this.componentSelector).jqxTabs("destroy");  
-  },
-  ensureVisible: function (index) {
-    $("#" + this.componentSelector).jqxTabs("ensureVisible", index);  
-  },
-  enableAt: function (index) {
-    $("#" + this.componentSelector).jqxTabs("enableAt", index);  
-  },
-  expand: function () {
-    $("#" + this.componentSelector).jqxTabs("expand");  
-  },
-  enable: function () {
-    $("#" + this.componentSelector).jqxTabs("enable");  
-  },
-  focus: function () {
-    $("#" + this.componentSelector).jqxTabs("focus");  
-  },
-  getTitleAt: function (index) {
-    return $("#" + this.componentSelector).jqxTabs("getTitleAt", index);  
-  },
-  getContentAt: function (index) {
-    return $("#" + this.componentSelector).jqxTabs("getContentAt", index);  
-  },
-  getDisabledTabsCount: function () {
-    return $("#" + this.componentSelector).jqxTabs("getDisabledTabsCount");  
-  },
-  hideCloseButtonAt: function (index) {
-    $("#" + this.componentSelector).jqxTabs("hideCloseButtonAt", index);  
-  },
-  hideAllCloseButtons: function () {
-    $("#" + this.componentSelector).jqxTabs("hideAllCloseButtons");  
-  },
-  length: function () {
-    return $("#" + this.componentSelector).jqxTabs("length");  
-  },
-  removeAt: function (index) {
-    $("#" + this.componentSelector).jqxTabs("removeAt", index);  
-  },
-  removeFirst: function () {
-    $("#" + this.componentSelector).jqxTabs("removeFirst");  
-  },
-  removeLast: function () {
-    $("#" + this.componentSelector).jqxTabs("removeLast");  
-  },
-  select: function (index) {
-    $("#" + this.componentSelector).jqxTabs("select", index);  
-  },
-  setContentAt: function (index, htmlElement) {
-    $("#" + this.componentSelector).jqxTabs("setContentAt", index, htmlElement);  
-  },
-  setTitleAt: function (index, htmlElement) {
-    $("#" + this.componentSelector).jqxTabs("setTitleAt", index, htmlElement);  
-  },
-  showCloseButtonAt: function (index) {
-    $("#" + this.componentSelector).jqxTabs("showCloseButtonAt", index);  
-  },
-  showAllCloseButtons: function () {
-    $("#" + this.componentSelector).jqxTabs("showAllCloseButtons");  
-  },
-  val: function (value) {
-    if (value !== undefined) {
-      $("#" + this.componentSelector).jqxTabs("val", value)
-    } else {
-      return $("#" + this.componentSelector).jqxTabs("val");
-    }
-  },
+        if(this.props.className !== undefined) {
+            let classes = this.props.className.split(' ');
+            for (let i = 0; i < classes.length; i++ ) {
+                JQXLite(this.componentSelector).addClass(classes[i]);
+            }
+        }
+        if(!this.template) {
+              JQXLite(this.componentSelector).html(this.props.template);
+        }
+        JQXLite(this.componentSelector).jqxTabs(options);
+    };
+    generateID() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    setOptions(options) {
+        JQXLite(this.componentSelector).jqxTabs('setOptions', options);
+    };
+    getOptions() {
+        if(arguments.length === 0) {
+            throw Error('At least one argument expected in getOptions()!');
+        }
+        let resultToReturn = {};
+        for(let i = 0; i < arguments.length; i++) {
+            resultToReturn[arguments[i]] = JQXLite(this.componentSelector).jqxTabs(arguments[i]);
+        }
+        return resultToReturn;
+    };
+    on(name,callbackFn) {
+        JQXLite(this.componentSelector).on(name,callbackFn);
+    };
+    off(name) {
+        JQXLite(this.componentSelector).off(name);
+    };
+    animationType(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('animationType', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('animationType');
+        }
+    };
+    autoHeight(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('autoHeight', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('autoHeight');
+        }
+    };
+    closeButtonSize(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('closeButtonSize', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('closeButtonSize');
+        }
+    };
+    collapsible(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('collapsible', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('collapsible');
+        }
+    };
+    contentTransitionDuration(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('contentTransitionDuration', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('contentTransitionDuration');
+        }
+    };
+    disabled(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('disabled', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('disabled');
+        }
+    };
+    enabledHover(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('enabledHover', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('enabledHover');
+        }
+    };
+    enableScrollAnimation(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('enableScrollAnimation', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('enableScrollAnimation');
+        }
+    };
+    height(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('height', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('height');
+        }
+    };
+    initTabContent(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('initTabContent', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('initTabContent');
+        }
+    };
+    keyboardNavigation(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('keyboardNavigation', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('keyboardNavigation');
+        }
+    };
+    next(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('next', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('next');
+        }
+    };
+    previous(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('previous', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('previous');
+        }
+    };
+    position(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('position', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('position');
+        }
+    };
+    reorder(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('reorder', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('reorder');
+        }
+    };
+    rtl(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('rtl', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('rtl');
+        }
+    };
+    scrollAnimationDuration(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('scrollAnimationDuration', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('scrollAnimationDuration');
+        }
+    };
+    selectedItem(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('selectedItem', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('selectedItem');
+        }
+    };
+    selectionTracker(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('selectionTracker', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('selectionTracker');
+        }
+    };
+    scrollable(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('scrollable', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('scrollable');
+        }
+    };
+    scrollPosition(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('scrollPosition', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('scrollPosition');
+        }
+    };
+    scrollStep(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('scrollStep', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('scrollStep');
+        }
+    };
+    showCloseButtons(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('showCloseButtons', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('showCloseButtons');
+        }
+    };
+    toggleMode(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('toggleMode', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('toggleMode');
+        }
+    };
+    theme(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('theme', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('theme');
+        }
+    };
+    width(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('width', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('width');
+        }
+    };
+    addAt(index, title, content) {
+        JQXLite(this.componentSelector).jqxTabs('addAt', index, title, content);  
+    };
+    addFirst(htmlElement) {
+        JQXLite(this.componentSelector).jqxTabs('addFirst', htmlElement);  
+    };
+    addLast(htmlElement1, htmlElemen2t) {
+        JQXLite(this.componentSelector).jqxTabs('addLast', htmlElement1, htmlElemen2t);  
+    };
+    collapse() {
+        JQXLite(this.componentSelector).jqxTabs('collapse');  
+    };
+    disable() {
+        JQXLite(this.componentSelector).jqxTabs('disable');  
+    };
+    disableAt(index) {
+        JQXLite(this.componentSelector).jqxTabs('disableAt', index);  
+    };
+    destroy() {
+        JQXLite(this.componentSelector).jqxTabs('destroy');  
+    };
+    ensureVisible(index) {
+        JQXLite(this.componentSelector).jqxTabs('ensureVisible', index);  
+    };
+    enableAt(index) {
+        JQXLite(this.componentSelector).jqxTabs('enableAt', index);  
+    };
+    expand() {
+        JQXLite(this.componentSelector).jqxTabs('expand');  
+    };
+    enable() {
+        JQXLite(this.componentSelector).jqxTabs('enable');  
+    };
+    focus() {
+        JQXLite(this.componentSelector).jqxTabs('focus');  
+    };
+    getTitleAt(index) {
+        return JQXLite(this.componentSelector).jqxTabs('getTitleAt', index);  
+    };
+    getContentAt(index) {
+        return JQXLite(this.componentSelector).jqxTabs('getContentAt', index);  
+    };
+    getDisabledTabsCount() {
+        return JQXLite(this.componentSelector).jqxTabs('getDisabledTabsCount');  
+    };
+    hideCloseButtonAt(index) {
+        JQXLite(this.componentSelector).jqxTabs('hideCloseButtonAt', index);  
+    };
+    hideAllCloseButtons() {
+        JQXLite(this.componentSelector).jqxTabs('hideAllCloseButtons');  
+    };
+    length() {
+        return JQXLite(this.componentSelector).jqxTabs('length');  
+    };
+    removeAt(index) {
+        JQXLite(this.componentSelector).jqxTabs('removeAt', index);  
+    };
+    removeFirst() {
+        JQXLite(this.componentSelector).jqxTabs('removeFirst');  
+    };
+    removeLast() {
+        JQXLite(this.componentSelector).jqxTabs('removeLast');  
+    };
+    select(index) {
+        JQXLite(this.componentSelector).jqxTabs('select', index);  
+    };
+    setContentAt(index, htmlElement) {
+        JQXLite(this.componentSelector).jqxTabs('setContentAt', index, htmlElement);  
+    };
+    setTitleAt(index, htmlElement) {
+        JQXLite(this.componentSelector).jqxTabs('setTitleAt', index, htmlElement);  
+    };
+    showCloseButtonAt(index) {
+        JQXLite(this.componentSelector).jqxTabs('showCloseButtonAt', index);  
+    };
+    showAllCloseButtons() {
+        JQXLite(this.componentSelector).jqxTabs('showAllCloseButtons');  
+    };
+    val(value) {
+        if (value !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('val',  value)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('val');
+        }
+    };
 
-  render: function () {
-    var id = 'jqxTabs' + this.generateID() + this.generateID();
-    this.componentSelector = id;
-;    return (
-      <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
-    )
-  }
-});
-
-module.exports = jqxTabs;
+    render() {
+        let id = 'jqxTabs' + this.generateID() + this.generateID();
+        this.componentSelector = '#' + id;
+        return (
+            <div id={id}>{this.props.value}{this.props.children}</div>
+        )
+    };
+};
 

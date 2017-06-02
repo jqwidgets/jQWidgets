@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>React Chart Component</title>
+    <meta name="description" content="React JS chart component demos. The most advanced chart for React JS" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <!-- load custom fonts from google-->
+    <link href='http://fonts.googleapis.com/css?family=Ek+Mukta:300,400' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css' />
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="../resources/design/css/main.css" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" media="screen" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.arctic.css" media="screen" />
+    <link rel="stylesheet" href="../styles/site.css" media="screen" />
+
+    <!-- html5 support for old browsers -->
+    <!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <!-- fav_icons for different browsers -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../resources/design/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../resources/design/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../resources/design/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../resources/design/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../resources/design/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../resources/design/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../resources/design/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../resources/design/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <!-- background images stylesheets -->
+    <!--[if lt IE 9]>
+            <link rel="stylesheet" href="css/img_ie.css" />
+        <![endif]-->
+    <!--[if gt IE 8]>
+            <link rel="stylesheet" href="css/img.css" />
+        <![endif]-->
+    <!--[if !IE]><!-->
+    <link rel="stylesheet" href="../resources/design/css/img.css" />
+    <!--<![endif]-->
+    <script type="text/javascript" src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../../../scripts/demofunctions.js"></script>
+
+    <!-- swipe plugin for slider -->
+    <script src="../resources/design/js/vendor/swipe.js"></script>
+
+    <!-- svg to png for old browsers -->
+    <script src="../resources/design/js/vendor/svgeezy.min.js"></script>
+    <script type="text/javascript">svgeezy.init(false, 'png');</script>
+
+    <!-- main functions -->
+    <script src="../resources/design/js/main.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxresponse.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxprogressbar.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        
+        });
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop">
+<div role="banner" class="header">
+    <div class="wrap cf">
+        <a class="header-logo" href="/">
+            <img src="../resources/design/i/logo-jqwidgets.svg" width="273" height="69" alt="jQWidgets" />
+        </a>
+
+        <a href="#" id="menu_link" class="menu_link">
+            <span class="t"></span>
+            <span class="m"></span>
+            <span class="b"></span>
+        </a>
+
+
+        <!-- MENU START -->
+        <div class="header-menu">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="http://www.jqwidgets.com/jquery-widgets-documentation">Documentation</a>
+                    </li>
+                    <li>
+                        <a href="http://www.jqwidgets.com/license">License and Pricing</a>
+                    </li>
+                    <li>
+                        <a href="http://www.jqwidgets.com/services">Services</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);">Community</a>
+                        <ul>
+                            <li>
+                                <a href="http://www.jqwidgets.com/community">Forums</a>
+                            </li>
+                            <li>
+                                <a href="http://www.jqwidgets.com/blog">Blogs</a>
+                            </li>
+                            <li>
+                                <a href="http://www.jqwidgets.com/follow">Follow Us</a>
+                            </li>
+                            <li>
+                                <a href="https://www.jqwidgets.com/wp-login.php">Client Login</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);">About</a>
+                        <ul>
+                            <li>
+                                <a href="http://www.jqwidgets.com/about">About Us</a>
+                            </li>
+                            <li>
+                                <a href="http://www.jqwidgets.com/contact-us">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="http://www.jqwidgets.com/faq">FAQ</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="demo" href="http://www.jqwidgets.com/jquery-widgets-demo">Demo</a>
+                    </li>
+                    <li>
+                        <a class="download" href="http://www.jqwidgets.com/download">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- MENU END -->
+
+    </div>
+</div>
+<!-- HEADER END -->
+<!-- MAIN CONTENT START -->
+<div class="main" role="main">
+
+    <!-- BIG TITLE START -->
+    <div class="big_title">
+        <h1>React UI Components</h1>
+
+        <!-- TITLE NAV START -->
+        <nav class="title_nav">
+            <div class="nav_wrap">
+                <div class="wrap">
+                    <ul>
+                        <li>
+                            <a href="../../jquery-widgets-demo/">Javascript/jQuery</a>
+                        </li>
+                        <li>
+                            <a href="../../angular">Angular 2</a>
+                        </li>
+                        <li class="current">
+                            <a href="../">React</a>
+                        </li>
+                        <li>
+                            <a href="http://www.jqwidgets.com/asp.net-core-mvc-tag-helpers/">ASP .NET MVC</a>
+                        </li>
+                        <li>
+                            <a href="../../jquery-widgets-demo/showcasedemos/">Showcase Demos</a>
+                        </li>
+                        <li>
+                            <a href="../../jquery-widgets-demo/mobiledemos/">Responsive Design</a>
+                        </li>
+                        <li>
+                            <a href="http://jqwidgets.com/themebuilder/">Theme Builder</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- TITLE NAV END -->
+
+    </div>
+    <!-- BIG TITLE END -->
+
+    <!-- WIDGETS START -->
+    <div class="widgets closed">
+        <div id="toggleButtonWrapper">
+            <div class="closed" id="toggleButton"></div>
+            <span id="toggleButtonLabel">Show Demo List</span>
+        </div>
+        <div style="display: none;" class="wrap">
+            <h3 class='widgets-title'>React UI Components</h3>
+            <ul class="cf">
+                <li>
+                    <div class="jqx-grid-icon" title="jqxGrid"></div>
+                    <div>
+                        <a title="jqxGrid - React Grid Component" href="../react-grid/index.htm">jqxGrid</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-tabs-icon" title="jqxTabs"></div>
+                    <div>
+                        <a title="jqxTabs - React Tabs Component" href="../react-tabs/index.htm">jqxTabs</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-textarea-icon" title="jqxTextArea"></div>
+                    <div><a title="jqxTextArea - React TextArea Component" href="../react-textarea/index.htm">jqxTextArea</a></div>
+                </li>
+                <li>
+                    <div class="jqx-window-icon" title="jqxWindow"></div>
+                    <div>
+                        <a title="jqxWindow - React Window/Dialog Component" href="../react-window/index.htm">jqxWindow</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-knob-icon" title="jqxKnob"></div>
+                    <div><a title="jqxKnob - React Knob Chart Component" href="../react-knob/index.htm">jqxKnob</a></div>
+                </li>
+                <li>
+                    <div class="jqx-responsivepanel-icon" title="jqxResponsivePanel"></div>
+                    <div><a title="jqxResponsivePanel - React Responsive Panel Component" href="../react-responsivepanel/index.htm">jqxResponsivePanel</a></div>
+                </li>
+
+                <!-- row 2 -->
+                <li>
+                    <div class="jqx-chart-icon" title="jqxChart"></div>
+                    <div>
+                        <a title="jqxChart - React Chart Component" href="../react-chart/index.htm">jqxChart</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-menu-icon" title="jqxMenu"></div>
+                    <div>
+                        <a title="jqxMenu - React Menu Component" href="../react-menu/index.htm">jqxMenu</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-inputfield-icon" title="jqxInput"></div>
+                    <div>
+                        <a title="jqxInput - React Input Component" href="../react-input/index.htm">jqxInput</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-docking-icon" title="jqxDocking"></div>
+                    <div>
+                        <a title="jqxDocking - React Docking Windows Component" href="../react-docking/index.htm">jqxDocking</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="jqx-gauge-icon" title="jqxGauge"></div>
+                    <div>
+                        <a title="jqxGauge - React Gauge and Linear Gauge Components" href="../react-gauge/index.htm">jqxGauge</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-navbar-icon" title="jqxNavBar"></div>
+                    <div><a title="jqxNavBar - React NavBar Component" href="../react-navbar/index.htm">jqxNavBar</a></div>
+                </li>
+
+                <!-- row 3 -->
+                <li>
+                    <div class="jqx-scheduler-icon" title="jqxScheduler"></div>
+                    <div><a title="jqxScheduler - React Scheduler Component" href="../react-scheduler/index.htm">jqxScheduler</a></div>
+                </li>
+                <li>
+                    <div class="jqx-tree-icon" title="jqxTree"></div>
+                    <div>
+                        <a title="jqxTree - React Tree Component" href="../react-tree/index.htm">jqxTree</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-passwordinput-icon" title="jqxPasswordInput"></div>
+                    <div><a title="jqxPasswordInput - React Password Input Component" href="../react-passwordinput/index.htm">jqxPasswordInput</a></div>
+                </li>
+                <li>
+                    <div class="jqx-notification-icon" title="jqxNotification"></div>
+                    <div>
+                        <a title="jqxNotification - React Notification Component" href="../react-notification/index.htm">jqxNotification</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="jqx-bar-gauge-icon" title="jqxBarGauge"></div>
+                    <div>
+                        <a title="jqxBarGauge - React Bar Gauge Component" href="../react-bargauge/index.htm">jqxBarGauge</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-sortable-icon" title="jqxSortable"></div>
+                    <div>
+                        <a title="jqxSortable - React Sortable Plugin" href="../react-sortable/index.htm">jqxSortable</a>
+                    </div>
+                </li>
+                <!-- row 4 -->
+                <li>
+                    <div class="jqx-treegrid-icon" title="jqxTreeGrid"></div>
+                    <div>
+                        <a title="jqxTreeGrid - React Tree Grid Component" href="../react-treegrid/index.htm">jqxTreeGrid</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-navigationbar-icon" title="jqxNavigationBar"></div>
+                    <div>
+                        <a title="jqxNavigationBar - React NavigationBar/Accordion Component" href="../react-navigationbar/index.htm">jqxNavigationBar</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-maskedinput-icon" title="jqxMaskedInput"></div>
+                    <div><a title="jqxMaskedInput - React Masked Input Component" href="../react-maskedinput/index.htm">jqxMaskedInput</a></div>
+                </li>
+
+                <li>
+                    <div class="jqx-popover-icon" title="jqxPopover"></div>
+                    <div><a tabindex="jqxPopover - React Popover Component" href="../react-popover/index.htm">jqxPopOver</a></div>
+                </li>
+                <li>
+                    <div class="jqx-expander-icon" title="jqxExpander"></div>
+                    <div>
+                        <a title="jqxExpander - React Expander Component" href="../react-expander/index.htm">jqxExpander</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-loader-icon" title="jqxLoader"></div>
+                    <div><a title="jqxLoader - React Loader Component" href="../react-loader/index.htm">jqxLoader</a></div>
+                </li>
+
+                <!-- row 5 -->
+                <li>
+                    <div class="jqx-datatable-icon" title="jqxDataTable"></div>
+                    <div>
+                        <a title="jqxDataTable - React Data Table Component" href="../react-datatable/index.htm">jqxDataTable</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-listmenu-icon" title="jqxListMenu"></div>
+                    <div>
+                        <a title="jqxListMenu - React List Menu Component" href="../react-listmenu/index.htm">jqxListMenu</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-complexinput-icon" title="jqxComplexInput"></div>
+                    <div>
+                        <a title="jqxComplexInput - React Complex Input Component" href="../react-complexinput/index.htm">jqxComplexInput</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="jqx-tooltip-icon" title="jqxTooltip"></div>
+                    <div>
+                        <a title="jqxToolTip - React Tooltip Component" href="../react-tooltip/index.htm">jqxTooltip</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="jqx-rating-icon" title="jqxRating"></div>
+                    <div><a title="jqxRating - React Rating Component" href="../react-rating/index.htm">jqxRating</a></div>
+                </li>
+                <li>
+                    <div class="jqx-draw-icon" title="jqxDraw"></div>
+                    <div>
+                        <a title="jqxDraw - React Draw(HTML5, SVG, VML) Plugin" href="../react-draw/index.htm">jqxDraw</a>
+                    </div>
+                </li>
+                <!-- row 6 -->
+                <li>
+                    <div class="jqx-treemap-icon" title="jqxTreeMap"></div>
+                    <div><a title="jqxTreeMap - React Tree Map Component" href="../react-treemap/index.htm">jqxTreeMap</a></div>
+                </li>
+                <li>
+                    <div class="jqx-toolbar-icon" title="jqxToolBar"></div>
+                    <div><a title="jqxToolBar - React ToolBar Component" href="../react-toolbar/index.htm">jqxToolBar</a></div>
+                </li>
+                <li>
+                    <div class="jqx-formattedinput-icon" title="jqxFormattedInput"></div>
+                    <div><a title="jqxFormattedInput - React Formatted Input Component" href="../react-formattedinput/index.htm">jqxFormattedInput</a></div>
+                </li>
+
+
+                <li>
+                    <div class="jqx-colorpicker-icon" title="jqxColorPicker"></div>
+                    <div><a title="jqxColorPicker - React Color Picker Component" href="../react-colorpicker/index.htm">jqxColorPicker</a></div>
+                </li>
+                <li>
+                    <div class="jqx-rangeselector-icon" title="jqxRangeSelector"></div>
+                    <div><a title="jqxRangeSelector - React Range Selector Component" href="../react-rangeselector/index.htm">jqxRangeSelector</a></div>
+                </li>
+
+                <li>
+                    <div class="jqx-dragdrop-icon" title="jqxDragDrop"></div>
+                    <div><a title="jqxDragDrop - React Drag Drop Component" href="../react-dragdrop/index.htm">jqxDragDrop</a></div>
+                </li>
+                <!-- row 7 -->
+                <li>
+                    <div class="jqx-editor-icon" title="jqxEditor"></div>
+                    <div>
+                        <a title="jqxEditor - React HTML Editor Component" href="../react-editor/index.htm">jqxEditor</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="jqx-combobox-icon" title="jqxComboBox"></div>
+                    <div><a title="jqxComboBox - React ComboBox Component" href="../react-combobox/index.htm">jqxComboBox</a></div>
+                </li>
+                <li>
+                    <div class="jqx-numberinput-icon" title="jqxNumberInput"></div>
+                    <div><a title="jqxNumberInput - React Number Input Component" href="../react-numberinput/index.htm">jqxNumberInput</a></div>
+                </li>
+                <li>
+                    <div class="jqx-scrollview-icon" title="jqxScrollView"></div>
+                    <div><a title="jqxScrollView - React ScrollView/Banner Component" href="../react-scrollview/index.htm">jqxScrollView</a></div>
+                </li>
+                <li>
+                    <div class="jqx-slider-icon" title="jqxSlider"></div>
+                    <div><a title="jqxSlider - React Slider Component" href="../react-slider/index.htm">jqxSlider</a></div>
+                </li>
+                <li>
+                    <div class="jqx-panel-icon" title="jqxPanel"></div>
+                    <div>
+                        <a title="jqxPanel - React Panel Component" href="../react-panel/index.htm">jqxPanel</a>
+                    </div>
+                </li>
+
+                <!-- row 8 -->
+                <li>
+                    <div class="jqx-ribbon-icon" title="jqxRibbon"></div>
+                    <div><a title="jqxRibbon - React Ribbon Bar Component" href="../react-ribbon/index.htm">jqxRibbon</a></div>
+                </li>
+                <li>
+                    <div class="jqx-dropdownlist-icon" title="jqxDropDownList"></div>
+                    <div><a title="jqxDropDownList - React DropDown List Component" href="../react-dropdownlist/index.htm">jqxDropDownList</a></div>
+                </li>
+                <li>
+                    <div class="jqx-datetimeinput-icon" title="jqxDateTimeInput"></div>
+                    <div>
+                        <a title="jqxDateTimeInput - React Date and Time Input Component" href="../react-datetimeinput/index.htm">jqxDateTimeInput</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="jqx-progressbar-icon" title="jqxProgressBar"></div>
+                    <div><a title="jqxProgressBar - React ProgressBar Component" href="../react-progressbar/index.htm">jqxProgressBar</a></div>
+                </li>
+                <li>
+                    <div class="jqx-scrollbar-icon" title="jqxScrollBar"></div>
+                    <div><a title="jqxScrollBar - React ScrollBar Component" href="../react-scrollbar/index.htm">jqxScrollBar</a></div>
+                </li>
+                <li>
+                    <div class="jqx-validator-icon" title="jqxValidator"></div>
+                    <div><a title="jqxValidator - React Validator Component" href="../react-validator/index.htm">jqxValidator</a></div>
+                </li>
+                <!-- row 9 -->
+                <li>
+                    <div class="jqx-layout-icon" title="jqxLayout"></div>
+                    <div><a title="jqxLayout - React Layout Component" href="../react-layout/index.htm">jqxLayout</a></div>
+                </li>
+
+                <li>
+                    <div class="jqx-listbox-icon" title="jqxListBox"></div>
+                    <div>
+                        <a title="jqxListBox - React ListBox Component" href="../react-listbox/index.htm">jqxListBox</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-calendar-icon" title="jqxCalendar"></div>
+                    <div>
+                        <a title="jqxCalendar - React Calendar Component" href="../react-calendar/index.htm">jqxCalendar</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-fileupload-icon" title="jqxFileUpload"></div>
+                    <div>
+                        <a title="jqxFileUpload - React File Upload Component" href="../react-fileupload/index.htm">jqxFileUpload</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="jqx-splitter-icon" title="jqxSplitter"></div>
+                    <div>
+                        <a title="jqxSplitter - React Splitter Component" href="../react-splitter/index.htm">jqxSplitter</a>
+                    </div>
+                </li>
+
+                <li style="visibility:hidden;">
+                    <div class="jqx-validator-icon" title="jqxValidator"></div>
+                    <div><a title="jqxValidator - React Validator Component" href="../react-validator/index.htm">jqxValidator</a></div>
+                </li>
+                <!-- row 10 -->
+                <li>
+                    <div class="jqx-docklayout-icon" title="jqxDockingLayout"></div>
+                    <div><a title="jqxDockingLayout - React Docking Layout Component" href="../react-dockinglayout/index.htm">jqxDockingLayout</a></div>
+                </li>
+                <li>
+                    <div class="jqx-buttons-icon" title="jqxButtons"></div>
+                    <div>
+                        <a title="jqxButtons - React Buttons Component" href="../react-buttons/index.htm">jqxButtons</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-kanban-icon" title="jqxKanban"></div>
+                    <div>
+                        <a title="jqxKanban - React Kanban Component" href="../react-kanban/index.htm">jqxKanban</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="jqx-bulletchart-icon" title="jqxBulletChart"></div>
+                    <div><a title="jqxBulletChart - React Bullet Chart Component" href="../react-bulletchart/index.htm">jqxBulletChart</a></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- WIDGETS END -->
+</div>
+
+    </div>
+    <!-- DOCUMENTATION START -->
+    <div class="documentation cf" id="doc">
+
+
+        <div class="wrap">
+            <div class="doc_mask"></div>
+            <!-- LEFT COLUMN -->
+            <nav class="doc_menu doc_menu_normal">
+                <div class="jqx-chart-icon jqx-widget-title-icon"></div>
+                <p class="doc_menu_title">
+                    <span>jqxChart</span>
+                </p>
+
+                <ul>
+                    <li>
+                        <div class="search">
+                            <div class="wrap">
+                                <input id="searchField" type="text" value="" autocomplete="off" placeholder="Search...">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Line&AreaSeries'><span>Line & Area Series</span></a>
+                        <ul>
+                            <li>
+                                <a href="react-chart-lineseries.htm">Line Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-stackedlineseries.htm">Stacked Line Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-100stackedlineseries.htm">100% Stacked Line Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-lineseriesmarkers.htm">Line Series Markers</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-lineseriewithmissingpoints.htm">Line Serie with Missing Points</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-lineseriewithconditionalcolors.htm">Line Serie with Conditional Colors</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-lineseriewithmultipledatasources.htm">Line Serie with Multiple Data Sources</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-steplineseries.htm">Step Line Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-splineseries.htm">Spline Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-areaseries.htm">Area Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-stackedareaseries.htm">Stacked Area Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-100stackedareaseries.htm">100% Stacked Area Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-areasplineseries.htm">Area Spline Series</a>
+                            </li>
+                        </ul>               
+                    </li>
+
+                    <li class="sub_menu">
+                        <a href='#Colum&BarSeries'><span>Column & Bar Series</span></a>
+                        <ul>
+                            <li>
+                                <a href="react-chart-columnseries.htm">Column Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-columnlocaldata.htm">Column Series with Local Data</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-stackedcolumnseries.htm">Stacked Column Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-stackedandgroupedcolumnseries.htm">Stacked and Grouped Column Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-100stackedcolumns.htm">100% Stacked Columns</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-columnseriewithconditionalcolors.htm">Column Serie with Conditional Colors</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-columnrange.htm">Column Range</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-barseries.htm">Bar Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-columnseriesspacing.htm">Column Series Spacing</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-negativevalues.htm">Negative Values</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-negativebarseries.htm">Negative Bar Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-columnserieswithmissingvalues.htm">Columns Series with Missing Values</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-columnserieswithlabels.htm">Column Series with Labels</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sub_menu">
+                        <a href='#Pie&DonutSeries'><span>Pie & Donut Series</span></a>
+                        <ul>
+                            <li>
+                                <a href="react-chart-pieseries.htm">Pie Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-pieserieslegend.htm">Pie Series Legend</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-partialpieseries.htm">Partial Pie Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-donutseries.htm">Donut Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-donutlabels.htm">Donut Labels</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sub_menu">
+                        <a href='#LogarithmicAxis'><span>Logarithmic Axis</span></a>
+                        <ul>
+                            <li>
+                                <a href="react-chart-columnswithlogarithmicaxis.htm">Columns with Logarithmic Axis</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-columnswithbase10logarithmicaxis.htm">Columns with base 10 Logarithmic Axis</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-logarithmicaxisbaseline.htm">Logarithmic Axis Base Line</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-percentagestackedcolumns.htm">Percentage Stacked Columns</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-stackedcolumns.htm">Stacked Columns</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-logarithmicXaxis.htm">Logarithmic X Axis</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-splinearea.htm">Spline Area</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-columnsrange.htm">Columns Range</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-logarithmicwaterfallseries.htm">Waterfall Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-stackedwaterfallseries.htm">Stacked Waterfall Series</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sub_menu">
+                        <a href='#Zooming'><span>Zooming</span></a>
+                        <ul>
+                            <li>
+                                <a href="react-chart-datetimexaxisrangeselection.htm">Date/Time X-Axis Range Selection</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-nondatexaxisrangeselection.htm">Non-Date X-Axis Range Selection</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sub_menu">
+                        <a href='#Waterfall Series'><span>Waterfall Series</span></a>
+                        <ul>
+                            <li>
+                                <a href="react-chart-waterfallseries.htm">Waterfall Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-waterfallwithmultipleseries.htm">Waterfall with Multiple Series</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sub_menu">
+                        <a href='#OHLC&Candlestick'><span>OHLC & Candlestick</span></a>
+                        <ul>
+                            <li>
+                                <a href="react-chart-candlestickchart.htm">Candlestick Chart</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-ohlcchart.htm">OHLC Chart</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sub_menu">
+                        <a href='#Polar&SpiderSeries'><span>Polar & Spider Series</span></a>
+                        <ul>
+                            <li>
+                                <a href="react-chart-polarseries.htm">Polar Chart</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-partialpolarchart.htm">Partial Polar Chart</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-polarseriesbands.htm">Polar Series Bands</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-spiderchart.htm">Spider Chart</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sub_menu">
+                        <a href='#Funnel&PyramidSeries'><span>Funnel & Pyramid Series</span></a>
+                        <ul>
+                            <li>
+                                <a href="react-chart-funnelchart.htm">Funnel Chart</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-stackedfunnelchart.htm">Stacked Funnel Chart</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-pyramidchart.htm">Pyramid Chart</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-stackedpyramidchart.htm">Stacked Pyramid Chart</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="react-chart-bublechart.htm">Bubble Chart</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-scatterchart.htm">Scatter Chart</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-multipleseriestypes.htm">Multiple Series Types</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-liveupdates.htm">Live Updates</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-liveupdateseverysecond.htm">Live Updates Every Second</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-liveupdatesperformance.htm">Live Updates Performance</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-colorbands.htm">Color Bands</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-colorbandsxaxis.htm">Color Bands X Axis</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-chartannotations.htm">Chart Annotations</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-dashboard.htm">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-sparklines.htm">Sparklines</a>
+                    </li>
+
+                    <li class="sub_menu">
+                        <a href='#Styling&Layout'><span>Styling & Layout</span></a>
+                        <ul>
+                            <li>
+                                <a href="react-chart-axisposition.htm">Axis Position</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-axisorientation.htm">Axis Orientation</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-axissettings.htm">Axis Settings</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-axisoffsettovalue.htm">Axis Offset to Value</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-axiscustomoffsetsandcolorbands.htm">Axis Custom Offsets and Color Bands</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-axiscustomoffsets.htm">Axis Custom Offsets</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-intervalandsteps.htm">Intervals and Steps</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-rigthtoleftlayout.htm">Right to Left Layout</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-textrotation.htm">Text Rotation</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-textwrapping.htm">Text Wrapping</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-alternatingbackgroundcolor.htm">Alternating Background Color</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-tooltipformatting.htm">Tooltip Formatting</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-chartcrosshairs.htm">Chart Crosshairs</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-gridlinesdashstyle.htm">Grid Lines Dash Style</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-greyscaleseries.htm">Greyscale Series</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-customstyling.htm">Custom Styling</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-darkbackground.htm">Dark Background</a>
+                            </li>
+                            <li>
+                                <a href="react-chart-themes.htm">Themes</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="react-chart-customdrawing.htm">Custom Drawing</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-fluidsize.htm">Fluid Size</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-chartevents.htm">Chart Events</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-chartrangeselectorevents.htm">Chart RangeSelector Events</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-exporttoimage.htm">Export to Image</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-chartprinting.htm">Chart Printing</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-chartwithgrid.htm">Chart with Grid</a>
+                    </li>
+                    <li>
+                        <a href="react-chart-chartwithtabs.htm">Chart with Tabs</a>
+                    </li>
+    
+                </ul>
+
+            </nav>
+            <!-- RIGHT COLUMN -->
+            <div class="doc_content">
+                <div style="position: relative; left: -20px; visibility: hidden; float: right;" class="themeSelector" id="themeSelector">
+                    <div style="float: left; margin-top: 4px;">
+                        Theme:
+                    </div>
+                    <div id="themeComboBox" style="margin-bottom: 3px; margin-top: 4px; margin-left: 10px; float: left;"></div>
+                </div>
+                     <div id="tabs" class="demoTabs" style='width: 850px; visibility: hidden; padding: 0px; margin: 0px;'>
+                    <ul style='margin-left: 30px;'>
+                        <li id='tab1'>Demo</li>
+                        <li id='tab2'>App.htm</li>
+                        <li id='tab3'>App.js</li>                                            
+                    </ul>
+                    <div style="overflow: hidden;" id="tabs-1">
+                        <table border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
+                            <tr>
+                                <td>
+                                    <div id='divDescription'>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id='innerdemoContainer'>
+
+
+    <meta charset="utf-8">
+    
+    <div style='display:none;'>The following React example demonstrates the Chart User Interface Component</div>
+    
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+
+<div>
+    <div class="example-description" style="margin-bottom:3em">
+        The following React example demonstrates the Chart User Interface Component
+    </div>
+    <div id="app"></div>
+    <script src="../build/chart_defaultfunctionality.bundle.js"></script>
+</div>
+
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="overflow-x: auto; overflow-y: hidden;" id="tabs-2">
+                    </div>
+                    <div style="overflow: auto;" id="tabs-3">
+                    </div>
+                     
+               </div>
+
+                <div id="introduction"></div></div></div></div>
+		<div id="pageBottom">
+<!-- FOOTER START -->
+<div class="footer" role="contentinfo">
+    <div class="wrap cf">
+        <a class="footer-logo" href="/">
+            <img src="../resources/design/i/logo-jqwidgets-white.svg" width="234" height="48" alt="jQWidgets" />
+        </a>
+
+        <ul class="nav socials">
+            <li>
+                <a href="https://www.facebook.com/jQWidgets-282600545090250/" target="_blank">
+                    <span class="fb"></span>Facebook
+                </a>
+            </li>
+            <li>
+                <a href="https://twitter.com/jqwidgets" target="_blank">
+                    <span class="tw"></span>Youtube
+                </a>
+            </li>
+            <li>
+                <a href="https://plus.google.com/112258917836957242269" target="_blank">
+                    <span class="gp"></span>Google +
+                </a>
+            </li>
+        </ul>
+
+        <nav class="nav" role="navigation">
+            <ul>
+                <li>
+                    <a href="http://www.jqwidgets.com/jquery-widgets-demo">Demo</a>
+                </li>
+                <li>
+                    <a href="http://www.jqwidgets.com/download">Download</a>
+                </li>
+                <li>
+                    <a href="http://www.jqwidgets.com/jquery-widgets-documentation/">Documentation</a>
+                </li>
+                <li>
+                    <a href="http://www.jqwidgets.com/license">License and Pricing</a>
+                </li>
+                <li>
+                    <a href="http://www.jqwidgets.com/services">Services</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="http://www.jqwidgets.com/community">Forums</a>
+                </li>
+                <li>
+                    <a href="http://www.jqwidgets.com/about">About</a>
+                </li>
+                <li>
+                    <a href="http://www.jqwidgets.com/terms-of-us">Terms of Use</a>
+                </li>
+                <li>
+                    <a href="http://www.jqwidgets.com/privacy">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="http://www.jqwidgets.com/contact-us">Contact Us</a>
+                </li>
+            </ul>
+        </nav>
+        <p>jQWidgets &copy; 2011-2017. All Rights Reserved.</p>
+    </div>
+</div>
+<!-- FOOTER END -->
+		</div>
+	</body>
+</html>

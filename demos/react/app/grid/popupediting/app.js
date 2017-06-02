@@ -73,7 +73,7 @@ class App extends React.Component {
                         this.setState({
                             editrow: row
                         });
-                        this.refs.myWindow.position({ x: 68, y: 119 });
+                        this.refs.myWindow.position({ x: 68, y: this.refs.myGrid.offsetTop });
                         // get the clicked row's data and initialize the input fields.
                         let dataRecord = this.refs.myGrid.getrowdata(this.state.editrow);
                         this.refs.firstName.val(dataRecord.firstname);

@@ -1,359 +1,356 @@
 /*
-jQWidgets v4.5.2 (2017-May)
+jQWidgets v4.5.3 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 import React from 'react';
 
-let jqxDateTimeInput = React.createClass ({
-  getInitialState: function () {
-    return { value: '' };
-  },
-  componentDidMount: function () {
-      let options = this.manageAttributes();
-    this.createComponent(options);
-  },
-  manageAttributes: function () {
-      let properties = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
-      let options = {};
-    for(let item in this.props) {
-        if(item === 'settings') {
-          for(let itemTwo in this.props[item]) {
-            options[itemTwo] = this.props[item][itemTwo];
-              }
-          } else {
-              if(properties.indexOf(item) !== -1) {
-              options[item] = this.props[item];
-              }
+const JQXLite = window.JQXLite;
+
+export default class JqxDateTimeInput extends React.Component {
+    componentDidMount() {
+        let options = this.manageAttributes();
+        this.createComponent(options);
+    };
+    manageAttributes() {
+        let properties = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
+        let options = {};
+        for(let item in this.props) {
+              if(item === 'settings') {
+                  for(let itemTwo in this.props[item]) {
+                      options[itemTwo] = this.props[item][itemTwo];
+                      }
+                } else {
+                      if(properties.indexOf(item) !== -1) {
+                        options[item] = this.props[item];
+                      }
+                }
           }
-      }
-      return options;
-    },
-  createComponent : function (options) {
-    if(!this.style) {
-        for (let style in this.props.style) {
-          $('#' +this.componentSelector).css(style, this.props.style[style]);
+          return options;
+      };
+    createComponent(options) {
+        if(!this.style) {
+              for (let style in this.props.style) {
+                  JQXLite(this.componentSelector).css(style, this.props.style[style]);
+              }
         }
-    }
-    if(this.props.className !== undefined) {
-      let classes = this.props.className.split(' ');
-      for (let i = 0; i < classes.length; i++ ) {
-        $('#' +this.componentSelector).addClass(classes[i]);
-      }
-    }
-    if(!this.template) {
-        $('#' +this.componentSelector).html(this.props.template);
-    }
-    $('#' +this.componentSelector).jqxDateTimeInput(options);
-  },
-  generateID : function () {    
-    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-  },
-  setOptions: function (options) {
-    $('#' +this.componentSelector).jqxDateTimeInput('setOptions', options);
-  },
-  getOptions: function () {
-    if(arguments.length === 0) {
-      throw Error('At least one argument expected in getOptions()!');
-    }
-    let resultToReturn = {};
-    for(let i = 0; i < arguments.length; i++) {
-      resultToReturn[arguments[i]] = $('#' +this.componentSelector).jqxDateTimeInput(arguments[i]);
-    }
-    return resultToReturn;
-  },
-  on: function (name,callbackFn) {
-    $('#' +this.componentSelector).on(name,callbackFn);
-  },
-  off: function (name) {
-    $('#' +this.componentSelector).off(name);
-  },
-  animationType: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("animationType", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("animationType");
-    }
-  },
-  allowNullDate: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("allowNullDate", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("allowNullDate");
-    }
-  },
-  allowKeyboardDelete: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("allowKeyboardDelete", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("allowKeyboardDelete");
-    }
-  },
-  clearString: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("clearString", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("clearString");
-    }
-  },
-  culture: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("culture", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("culture");
-    }
-  },
-  closeDelay: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("closeDelay", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("closeDelay");
-    }
-  },
-  closeCalendarAfterSelection: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("closeCalendarAfterSelection", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("closeCalendarAfterSelection");
-    }
-  },
-  dropDownHorizontalAlignment: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("dropDownHorizontalAlignment", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("dropDownHorizontalAlignment");
-    }
-  },
-  dropDownVerticalAlignment: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("dropDownVerticalAlignment", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("dropDownVerticalAlignment");
-    }
-  },
-  disabled: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("disabled", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("disabled");
-    }
-  },
-  enableBrowserBoundsDetection: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("enableBrowserBoundsDetection", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("enableBrowserBoundsDetection");
-    }
-  },
-  enableAbsoluteSelection: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("enableAbsoluteSelection", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("enableAbsoluteSelection");
-    }
-  },
-  firstDayOfWeek: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("firstDayOfWeek", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("firstDayOfWeek");
-    }
-  },
-  formatString: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("formatString", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("formatString");
-    }
-  },
-  height: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("height", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("height");
-    }
-  },
-  min: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("min", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("min");
-    }
-  },
-  max: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("max", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("max");
-    }
-  },
-  openDelay: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("openDelay", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("openDelay");
-    }
-  },
-  placeHolder: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("placeHolder", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("placeHolder");
-    }
-  },
-  popupZIndex: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("popupZIndex", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("popupZIndex");
-    }
-  },
-  rtl: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("rtl", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("rtl");
-    }
-  },
-  readonly: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("readonly", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("readonly");
-    }
-  },
-  showFooter: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("showFooter", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("showFooter");
-    }
-  },
-  selectionMode: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("selectionMode", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("selectionMode");
-    }
-  },
-  showWeekNumbers: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("showWeekNumbers", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("showWeekNumbers");
-    }
-  },
-  showTimeButton: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("showTimeButton", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("showTimeButton");
-    }
-  },
-  showCalendarButton: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("showCalendarButton", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("showCalendarButton");
-    }
-  },
-  theme: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("theme", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("theme");
-    }
-  },
-  template: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("template", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("template");
-    }
-  },
-  textAlign: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("textAlign", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("textAlign");
-    }
-  },
-  todayString: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("todayString", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("todayString");
-    }
-  },
-  value: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("value", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("value");
-    }
-  },
-  width: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxDateTimeInput("width", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxDateTimeInput("width");
-    }
-  },
-  close: function () {
-    $("#" + this.componentSelector).jqxDateTimeInput("close");  
-  },
-  destroy: function () {
-    $("#" + this.componentSelector).jqxDateTimeInput("destroy");  
-  },
-  focus: function () {
-    $("#" + this.componentSelector).jqxDateTimeInput("focus");  
-  },
-  getRange: function (date) {
-    return $("#" + this.componentSelector).jqxDateTimeInput("getRange", date);  
-  },
-  getText: function () {
-    return $("#" + this.componentSelector).jqxDateTimeInput("getText");  
-  },
-  getDate: function () {
-    return $("#" + this.componentSelector).jqxDateTimeInput("getDate");  
-  },
-  getMaxDate: function () {
-    return $("#" + this.componentSelector).jqxDateTimeInput("getMaxDate");  
-  },
-  getMinDate: function () {
-    return $("#" + this.componentSelector).jqxDateTimeInput("getMinDate");  
-  },
-  open: function () {
-    $("#" + this.componentSelector).jqxDateTimeInput("open");  
-  },
-  setRange: function (date, date2) {
-    $("#" + this.componentSelector).jqxDateTimeInput("setRange", date, date2);  
-  },
-  setMinDate: function (date) {
-    $("#" + this.componentSelector).jqxDateTimeInput("setMinDate", date);  
-  },
-  setMaxDate: function (date) {
-    $("#" + this.componentSelector).jqxDateTimeInput("setMaxDate", date);  
-  },
-  setDate: function (date) {
-    $("#" + this.componentSelector).jqxDateTimeInput("setDate", date);  
-  },
-  val: function (value, value2) {
-    if (value !== undefined) {
-      $("#" + this.componentSelector).jqxDateTimeInput("val", value, value2)
-    } else {
-      return $("#" + this.componentSelector).jqxDateTimeInput("val");
-    }
-  },
+        if(this.props.className !== undefined) {
+            let classes = this.props.className.split(' ');
+            for (let i = 0; i < classes.length; i++ ) {
+                JQXLite(this.componentSelector).addClass(classes[i]);
+            }
+        }
+        if(!this.template) {
+              JQXLite(this.componentSelector).html(this.props.template);
+        }
+        JQXLite(this.componentSelector).jqxDateTimeInput(options);
+    };
+    generateID() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    setOptions(options) {
+        JQXLite(this.componentSelector).jqxDateTimeInput('setOptions', options);
+    };
+    getOptions() {
+        if(arguments.length === 0) {
+            throw Error('At least one argument expected in getOptions()!');
+        }
+        let resultToReturn = {};
+        for(let i = 0; i < arguments.length; i++) {
+            resultToReturn[arguments[i]] = JQXLite(this.componentSelector).jqxDateTimeInput(arguments[i]);
+        }
+        return resultToReturn;
+    };
+    on(name,callbackFn) {
+        JQXLite(this.componentSelector).on(name,callbackFn);
+    };
+    off(name) {
+        JQXLite(this.componentSelector).off(name);
+    };
+    animationType(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('animationType', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('animationType');
+        }
+    };
+    allowNullDate(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('allowNullDate', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('allowNullDate');
+        }
+    };
+    allowKeyboardDelete(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('allowKeyboardDelete', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('allowKeyboardDelete');
+        }
+    };
+    clearString(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('clearString', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('clearString');
+        }
+    };
+    culture(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('culture', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('culture');
+        }
+    };
+    closeDelay(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('closeDelay', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('closeDelay');
+        }
+    };
+    closeCalendarAfterSelection(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('closeCalendarAfterSelection', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('closeCalendarAfterSelection');
+        }
+    };
+    dropDownHorizontalAlignment(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('dropDownHorizontalAlignment', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('dropDownHorizontalAlignment');
+        }
+    };
+    dropDownVerticalAlignment(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('dropDownVerticalAlignment', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('dropDownVerticalAlignment');
+        }
+    };
+    disabled(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('disabled', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('disabled');
+        }
+    };
+    enableBrowserBoundsDetection(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('enableBrowserBoundsDetection', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('enableBrowserBoundsDetection');
+        }
+    };
+    enableAbsoluteSelection(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('enableAbsoluteSelection', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('enableAbsoluteSelection');
+        }
+    };
+    firstDayOfWeek(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('firstDayOfWeek', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('firstDayOfWeek');
+        }
+    };
+    formatString(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('formatString', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('formatString');
+        }
+    };
+    height(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('height', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('height');
+        }
+    };
+    min(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('min', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('min');
+        }
+    };
+    max(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('max', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('max');
+        }
+    };
+    openDelay(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('openDelay', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('openDelay');
+        }
+    };
+    placeHolder(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('placeHolder', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('placeHolder');
+        }
+    };
+    popupZIndex(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('popupZIndex', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('popupZIndex');
+        }
+    };
+    rtl(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('rtl', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('rtl');
+        }
+    };
+    readonly(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('readonly', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('readonly');
+        }
+    };
+    showFooter(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('showFooter', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('showFooter');
+        }
+    };
+    selectionMode(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('selectionMode', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('selectionMode');
+        }
+    };
+    showWeekNumbers(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('showWeekNumbers', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('showWeekNumbers');
+        }
+    };
+    showTimeButton(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('showTimeButton', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('showTimeButton');
+        }
+    };
+    showCalendarButton(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('showCalendarButton', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('showCalendarButton');
+        }
+    };
+    theme(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('theme', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('theme');
+        }
+    };
+    template(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('template', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('template');
+        }
+    };
+    textAlign(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('textAlign', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('textAlign');
+        }
+    };
+    todayString(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('todayString', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('todayString');
+        }
+    };
+    value(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('value', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('value');
+        }
+    };
+    width(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('width', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('width');
+        }
+    };
+    close() {
+        JQXLite(this.componentSelector).jqxDateTimeInput('close');  
+    };
+    destroy() {
+        JQXLite(this.componentSelector).jqxDateTimeInput('destroy');  
+    };
+    focus() {
+        JQXLite(this.componentSelector).jqxDateTimeInput('focus');  
+    };
+    getRange(date) {
+        return JQXLite(this.componentSelector).jqxDateTimeInput('getRange', date);  
+    };
+    getText() {
+        return JQXLite(this.componentSelector).jqxDateTimeInput('getText');  
+    };
+    getDate() {
+        return JQXLite(this.componentSelector).jqxDateTimeInput('getDate');  
+    };
+    getMaxDate() {
+        return JQXLite(this.componentSelector).jqxDateTimeInput('getMaxDate');  
+    };
+    getMinDate() {
+        return JQXLite(this.componentSelector).jqxDateTimeInput('getMinDate');  
+    };
+    open() {
+        JQXLite(this.componentSelector).jqxDateTimeInput('open');  
+    };
+    setRange(date, date2) {
+        JQXLite(this.componentSelector).jqxDateTimeInput('setRange', date, date2);  
+    };
+    setMinDate(date) {
+        JQXLite(this.componentSelector).jqxDateTimeInput('setMinDate', date);  
+    };
+    setMaxDate(date) {
+        JQXLite(this.componentSelector).jqxDateTimeInput('setMaxDate', date);  
+    };
+    setDate(date) {
+        JQXLite(this.componentSelector).jqxDateTimeInput('setDate', date);  
+    };
+    val(value, value2) {
+        if (value !== undefined) {
+            JQXLite(this.componentSelector).jqxDateTimeInput('val', value, value2)
+        } else {
+            return JQXLite(this.componentSelector).jqxDateTimeInput('val');
+        }
+    };
 
-  render: function () {
-    var id = 'jqxDateTimeInput' + this.generateID() + this.generateID();
-    this.componentSelector = id;
-;    return (
-      <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
-    )
-  }
-});
-
-module.exports = jqxDateTimeInput;
+    render() {
+        let id = 'jqxDateTimeInput' + this.generateID() + this.generateID();
+        this.componentSelector = '#' + id;
+        return (
+            <div id={id}>{this.props.value}{this.props.children}</div>
+        )
+    };
+};
 

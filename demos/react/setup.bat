@@ -13,6 +13,7 @@ md jqwidgets-react
 md sampledata
 xcopy /S /I ..\..\jqwidgets-react jqwidgets-react
 xcopy /S /I ..\..\images images
+xcopy /S /I ..\..\images ..\images
 xcopy /S /I ..\..\scripts scripts
 xcopy /S /I ..\..\styles styles
 xcopy /S /I ..\sampledata sampledata

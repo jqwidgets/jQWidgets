@@ -38,12 +38,12 @@ class App extends React.Component {
                         <option>Americano</option>
                         <option>Bicerin</option>
                         <option>Breve</option>
-                        <option>Café Bombón</option>
-                        <option>Caffé Corretto</option>
-                        <option>Café Crema</option>
-                        <option>Caffé Latte</option>
-                        <option>Caffé macchiato</option>
-                        <option>Café mélange</option>
+                        <option>Cafe Bombon</option>
+                        <option>Caffe Corretto</option>
+                        <option>Cafe Crema</option>
+                        <option>Caffe Latte</option>
+                        <option>Caffe macchiato</option>
+                        <option>Cafe melange</option>
                         <option>Coffee milk</option>
                         <option>Cafe mocha</option>
                         <option>Cappuccino</option>
@@ -53,7 +53,7 @@ class App extends React.Component {
                         <option selected='true'>The Flat White</option>
                         <option>Frappuccino</option>
                         <option>Galao</option>
-                        <option>Greek frappé coffee</option>
+                        <option>Greek frappe coffee</option>
                         <option>Iced Coffee﻿</option>
                         <option>Indian filter coffee</option>
                         <option>Instant coffee</option>

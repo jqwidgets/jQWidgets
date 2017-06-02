@@ -1,279 +1,276 @@
 /*
-jQWidgets v4.5.2 (2017-May)
+jQWidgets v4.5.3 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 import React from 'react';
 
-let jqxTagCloud = React.createClass ({
-  getInitialState: function () {
-    return { value: '' };
-  },
-  componentDidMount: function () {
-      let options = this.manageAttributes();
-    this.createComponent(options);
-  },
-  manageAttributes: function () {
-      let properties = ['alterTextCase','disabled','displayLimit','displayMember','displayValue','fontSizeUnit','height','maxColor','maxFontSize','maxValueToDisplay','minColor','minFontSize','minValueToDisplay','rtl','sortBy','sortOrder','source','tagRenderer','takeTopWeightedItems','textColor','urlBase','urlMember','valueMember','width'];
-      let options = {};
-    for(let item in this.props) {
-        if(item === 'settings') {
-          for(let itemTwo in this.props[item]) {
-            options[itemTwo] = this.props[item][itemTwo];
-              }
-          } else {
-              if(properties.indexOf(item) !== -1) {
-              options[item] = this.props[item];
-              }
-          }
-      }
-      return options;
-    },
-  createComponent : function (options) {
-    if(!this.style) {
-        for (let style in this.props.style) {
-          $('#' +this.componentSelector).css(style, this.props.style[style]);
-        }
-    }
-    if(this.props.className !== undefined) {
-      let classes = this.props.className.split(' ');
-      for (let i = 0; i < classes.length; i++ ) {
-        $('#' +this.componentSelector).addClass(classes[i]);
-      }
-    }
-    if(!this.template) {
-        $('#' +this.componentSelector).html(this.props.template);
-    }
-    $('#' +this.componentSelector).jqxTagCloud(options);
-  },
-  generateID : function () {    
-    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-  },
-  setOptions: function (options) {
-    $('#' +this.componentSelector).jqxTagCloud('setOptions', options);
-  },
-  getOptions: function () {
-    if(arguments.length === 0) {
-      throw Error('At least one argument expected in getOptions()!');
-    }
-    let resultToReturn = {};
-    for(let i = 0; i < arguments.length; i++) {
-      resultToReturn[arguments[i]] = $('#' +this.componentSelector).jqxTagCloud(arguments[i]);
-    }
-    return resultToReturn;
-  },
-  on: function (name,callbackFn) {
-    $('#' +this.componentSelector).on(name,callbackFn);
-  },
-  off: function (name) {
-    $('#' +this.componentSelector).off(name);
-  },
-  alterTextCase: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("alterTextCase", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("alterTextCase");
-    }
-  },
-  disabled: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("disabled", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("disabled");
-    }
-  },
-  displayLimit: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("displayLimit", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("displayLimit");
-    }
-  },
-  displayMember: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("displayMember", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("displayMember");
-    }
-  },
-  displayValue: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("displayValue", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("displayValue");
-    }
-  },
-  fontSizeUnit: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("fontSizeUnit", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("fontSizeUnit");
-    }
-  },
-  height: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("height", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("height");
-    }
-  },
-  maxColor: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("maxColor", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("maxColor");
-    }
-  },
-  maxFontSize: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("maxFontSize", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("maxFontSize");
-    }
-  },
-  maxValueToDisplay: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("maxValueToDisplay", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("maxValueToDisplay");
-    }
-  },
-  minColor: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("minColor", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("minColor");
-    }
-  },
-  minFontSize: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("minFontSize", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("minFontSize");
-    }
-  },
-  minValueToDisplay: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("minValueToDisplay", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("minValueToDisplay");
-    }
-  },
-  rtl: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("rtl", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("rtl");
-    }
-  },
-  sortBy: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("sortBy", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("sortBy");
-    }
-  },
-  sortOrder: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("sortOrder", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("sortOrder");
-    }
-  },
-  source: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("source", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("source");
-    }
-  },
-  tagRenderer: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("tagRenderer", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("tagRenderer");
-    }
-  },
-  takeTopWeightedItems: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("takeTopWeightedItems", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("takeTopWeightedItems");
-    }
-  },
-  textColor: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("textColor", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("textColor");
-    }
-  },
-  urlBase: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("urlBase", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("urlBase");
-    }
-  },
-  urlMember: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("urlMember", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("urlMember");
-    }
-  },
-  valueMember: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("valueMember", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("valueMember");
-    }
-  },
-  width: function (arg) {
-    if (arg !== undefined) {
-      $("#" +this.componentSelector).jqxTagCloud("width", arg)
-    } else {
-      return $("#" +this.componentSelector).jqxTagCloud("width");
-    }
-  },
-  destroy: function () {
-    $("#" + this.componentSelector).jqxTagCloud("destroy");  
-  },
-  findTagIndex: function (tag) {
-    return $("#" + this.componentSelector).jqxTagCloud("findTagIndex", tag);  
-  },
-  getHiddenTagsList: function () {
-    return $("#" + this.componentSelector).jqxTagCloud("getHiddenTagsList");  
-  },
-  getRenderedTags: function () {
-    return $("#" + this.componentSelector).jqxTagCloud("getRenderedTags");  
-  },
-  getTagsList: function () {
-    return $("#" + this.componentSelector).jqxTagCloud("getTagsList");  
-  },
-  hideItem: function (index) {
-    $("#" + this.componentSelector).jqxTagCloud("hideItem", index);  
-  },
-  insertAt: function (index, item) {
-    $("#" + this.componentSelector).jqxTagCloud("insertAt", index, item);  
-  },
-  removeAt: function (index) {
-    $("#" + this.componentSelector).jqxTagCloud("removeAt", index);  
-  },
-  updateAt: function (index, item) {
-    $("#" + this.componentSelector).jqxTagCloud("updateAt", index, item);  
-  },
-  showItem: function (index) {
-    $("#" + this.componentSelector).jqxTagCloud("showItem", index);  
-  },
-  render: function () {
-    var id = 'jqxTagCloud' + this.generateID() + this.generateID();
-    this.componentSelector = id;
-;    return (
-      <div id={id}>{this.value ? null : this.props.value}{this.props.children}</div>
-    )
-  }
-});
+const JQXLite = window.JQXLite;
 
-module.exports = jqxTagCloud;
+export default class JqxTagCloud extends React.Component {
+    componentDidMount() {
+        let options = this.manageAttributes();
+        this.createComponent(options);
+    };
+    manageAttributes() {
+        let properties = ['alterTextCase','disabled','displayLimit','displayMember','displayValue','fontSizeUnit','height','maxColor','maxFontSize','maxValueToDisplay','minColor','minFontSize','minValueToDisplay','rtl','sortBy','sortOrder','source','tagRenderer','takeTopWeightedItems','textColor','urlBase','urlMember','valueMember','width'];
+        let options = {};
+        for(let item in this.props) {
+              if(item === 'settings') {
+                  for(let itemTwo in this.props[item]) {
+                      options[itemTwo] = this.props[item][itemTwo];
+                      }
+                } else {
+                      if(properties.indexOf(item) !== -1) {
+                        options[item] = this.props[item];
+                      }
+                }
+          }
+          return options;
+      };
+    createComponent(options) {
+        if(!this.style) {
+              for (let style in this.props.style) {
+                  JQXLite(this.componentSelector).css(style, this.props.style[style]);
+              }
+        }
+        if(this.props.className !== undefined) {
+            let classes = this.props.className.split(' ');
+            for (let i = 0; i < classes.length; i++ ) {
+                JQXLite(this.componentSelector).addClass(classes[i]);
+            }
+        }
+        if(!this.template) {
+              JQXLite(this.componentSelector).html(this.props.template);
+        }
+        JQXLite(this.componentSelector).jqxTagCloud(options);
+    };
+    generateID() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    setOptions(options) {
+        JQXLite(this.componentSelector).jqxTagCloud('setOptions', options);
+    };
+    getOptions() {
+        if(arguments.length === 0) {
+            throw Error('At least one argument expected in getOptions()!');
+        }
+        let resultToReturn = {};
+        for(let i = 0; i < arguments.length; i++) {
+            resultToReturn[arguments[i]] = JQXLite(this.componentSelector).jqxTagCloud(arguments[i]);
+        }
+        return resultToReturn;
+    };
+    on(name,callbackFn) {
+        JQXLite(this.componentSelector).on(name,callbackFn);
+    };
+    off(name) {
+        JQXLite(this.componentSelector).off(name);
+    };
+    alterTextCase(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('alterTextCase', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('alterTextCase');
+        }
+    };
+    disabled(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('disabled', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('disabled');
+        }
+    };
+    displayLimit(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('displayLimit', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('displayLimit');
+        }
+    };
+    displayMember(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('displayMember', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('displayMember');
+        }
+    };
+    displayValue(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('displayValue', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('displayValue');
+        }
+    };
+    fontSizeUnit(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('fontSizeUnit', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('fontSizeUnit');
+        }
+    };
+    height(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('height', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('height');
+        }
+    };
+    maxColor(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('maxColor', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('maxColor');
+        }
+    };
+    maxFontSize(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('maxFontSize', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('maxFontSize');
+        }
+    };
+    maxValueToDisplay(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('maxValueToDisplay', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('maxValueToDisplay');
+        }
+    };
+    minColor(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('minColor', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('minColor');
+        }
+    };
+    minFontSize(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('minFontSize', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('minFontSize');
+        }
+    };
+    minValueToDisplay(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('minValueToDisplay', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('minValueToDisplay');
+        }
+    };
+    rtl(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('rtl', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('rtl');
+        }
+    };
+    sortBy(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('sortBy', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('sortBy');
+        }
+    };
+    sortOrder(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('sortOrder', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('sortOrder');
+        }
+    };
+    source(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('source', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('source');
+        }
+    };
+    tagRenderer(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('tagRenderer', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('tagRenderer');
+        }
+    };
+    takeTopWeightedItems(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('takeTopWeightedItems', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('takeTopWeightedItems');
+        }
+    };
+    textColor(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('textColor', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('textColor');
+        }
+    };
+    urlBase(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('urlBase', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('urlBase');
+        }
+    };
+    urlMember(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('urlMember', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('urlMember');
+        }
+    };
+    valueMember(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('valueMember', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('valueMember');
+        }
+    };
+    width(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTagCloud('width', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTagCloud('width');
+        }
+    };
+    destroy() {
+        JQXLite(this.componentSelector).jqxTagCloud('destroy');  
+    };
+    findTagIndex(tag) {
+        return JQXLite(this.componentSelector).jqxTagCloud('findTagIndex', tag);  
+    };
+    getHiddenTagsList() {
+        return JQXLite(this.componentSelector).jqxTagCloud('getHiddenTagsList');  
+    };
+    getRenderedTags() {
+        return JQXLite(this.componentSelector).jqxTagCloud('getRenderedTags');  
+    };
+    getTagsList() {
+        return JQXLite(this.componentSelector).jqxTagCloud('getTagsList');  
+    };
+    hideItem(index) {
+        JQXLite(this.componentSelector).jqxTagCloud('hideItem', index);  
+    };
+    insertAt(index, item) {
+        JQXLite(this.componentSelector).jqxTagCloud('insertAt', index, item);  
+    };
+    removeAt(index) {
+        JQXLite(this.componentSelector).jqxTagCloud('removeAt', index);  
+    };
+    updateAt(index, item) {
+        JQXLite(this.componentSelector).jqxTagCloud('updateAt', index, item);  
+    };
+    showItem(index) {
+        JQXLite(this.componentSelector).jqxTagCloud('showItem', index);  
+    };
+    render() {
+        let id = 'jqxTagCloud' + this.generateID() + this.generateID();
+        this.componentSelector = '#' + id;
+        return (
+            <div id={id}>{this.props.value}{this.props.children}</div>
+        )
+    };
+};
 

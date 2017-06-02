@@ -1,10 +1,10 @@
 /*
-jQWidgets v4.5.2 (2017-May)
+jQWidgets v4.5.3 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -19,7 +19,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
     selector: 'jqxSwitchButton',
     template: '<div><ng-content></ng-content></div>',
-    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges 
@@ -30,12 +31,13 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
    @Input('onLabel') attrOnLabel: any;
    @Input('offLabel') attrOffLabel: any;
    @Input('thumbSize') attrThumbSize: any;
+   @Input('rtl') attrRtl: any;
    @Input('width') attrWidth: any;
    @Input('height') attrHeight: any;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['checked','disabled','height','orientation','onLabel','offLabel','thumbSize','width'];
+   properties: string[] = ['checked','disabled','height','orientation','onLabel','offLabel','thumbSize','rtl','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxSwitchButton;
@@ -197,6 +199,14 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
           this.host.jqxSwitchButton('thumbSize', arg);
       } else {
           return this.host.jqxSwitchButton('thumbSize');
+      }
+   }
+
+   rtl(arg?: boolean) : any {
+      if (arg !== undefined) {
+          this.host.jqxSwitchButton('rtl', arg);
+      } else {
+          return this.host.jqxSwitchButton('rtl');
       }
    }
 
