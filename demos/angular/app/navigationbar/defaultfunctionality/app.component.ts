@@ -1,14 +1,9 @@
-﻿ 
-import { Component } from '@angular/core';
-
-import { jqxNavigationBarComponent } from '../../../../../jqwidgets-ts/angular_jqxnavigationbar';
+﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: '../app/navigationbar/defaultfunctionality/app.component.htm'
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
-
+export class AppComponent {
 }

@@ -1,32 +1,21 @@
-﻿ 
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
 import { jqxSchedulerComponent } from '../../../../../jqwidgets-ts/angular_jqxscheduler';
 
 @Component({
-    selector: 'my-app',
-    template: `<jqxScheduler #schedulerReference
-                   [date]='date' [width]='800' [height]='600' [source]='dataAdapter' [showLegend]='true' [view]='"weekView"'
-                   [appointmentDataFields]='appointmentDataFields' [resources]='resources' [views]='views'>
-               </jqxScheduler>`
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent implements AfterViewInit
-{
+export class AppComponent implements AfterViewInit {
     @ViewChild('schedulerReference') scheduler: jqxSchedulerComponent;
 
-    ngAfterViewInit(): void 
-    {
-        setTimeout(() =>
-        {
-            this.scheduler.ensureAppointmentVisible('id1');
-        });
+    ngAfterViewInit(): void {
+        this.scheduler.ensureAppointmentVisible('id1');
     }
-    
-    generateAppointments(): any
-    {
-        let appointments = new Array();
 
+    generateAppointments(): any {
+        let appointments = new Array();
         let appointment1 = {
             id: "id1",
             description: "George brings projector for presentations.",
@@ -81,7 +70,6 @@ export class AppComponent implements AfterViewInit
             start: new Date(2016, 10, 26, 14, 0, 0),
             end: new Date(2016, 10, 26, 16, 0, 0)
         };
-
         appointments.push(appointment1);
         appointments.push(appointment2);
         appointments.push(appointment3);
@@ -90,7 +78,7 @@ export class AppComponent implements AfterViewInit
         appointments.push(appointment6);
 
         return appointments;
-    }
+    };
 
     source: any =
     {
@@ -106,11 +94,10 @@ export class AppComponent implements AfterViewInit
         ],
         id: 'id',
         localData: this.generateAppointments()
-    }
+    };
 
-    dataAdapter: any = new $.jqx.dataAdapter(this.source);
-
-    date: any = new $.jqx.date(2016, 11, 23);
+    dataAdapter: any = new jqx.dataAdapter(this.source);
+    date: any = new jqx.date(2016, 11, 23);
 
     appointmentDataFields: any =
     {
@@ -127,13 +114,13 @@ export class AppComponent implements AfterViewInit
     {
         colorScheme: "scheme05",
         dataField: "calendar",
-        source: new $.jqx.dataAdapter(this.source)
+        source: new jqx.dataAdapter(this.source)
     };
 
-    views: string[] =
+    views: any[] =
     [
         'dayView',
         'weekView',
         'monthView'
-    ]; 
+    ];  
 }

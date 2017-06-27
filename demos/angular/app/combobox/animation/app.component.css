@@ -1,0 +1,15 @@
+﻿#selectionlog {
+  float: left;
+  font-size: 13px;
+  font-family: Verdana;
+}
+
+.jqx-radiobutton {
+  margin-top: 10px;
+}
+
+.jqx-combobox {
+  float: left;
+  margin-top: 20px;
+  margin-left: 100px;
+}

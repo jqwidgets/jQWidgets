@@ -1,0 +1,18 @@
+﻿<jqxDateTimeInput #myDateTimeInput
+    [width]="250" [height]="25">
+</jqxDateTimeInput>
+
+<br />
+<div>
+    <div style="font-family: Verdana; font-size: 13px">
+        Choose Culture:
+    </div>
+    <br />
+
+    <jqxDropDownList (onSelect)="listOnSelect($event)"
+        [width]="200" [height]="25"
+        [source]="availableCultures" [selectedIndex]="3">
+    </jqxDropDownList>
+
+</div>
+

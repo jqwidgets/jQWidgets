@@ -1,21 +1,27 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-
-import { jqxRibbonComponent }         from '../../../../../jqwidgets-ts/angular_jqxribbon';
-import { jqxButtonComponent }         from '../../../../../jqwidgets-ts/angular_jqxbuttons';
-import { jqxTooltipComponent }        from '../../../../../jqwidgets-ts/angular_jqxtooltip';
-import { jqxDropDownButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownbutton';
-import { jqxColorPickerComponent }    from '../../../../../jqwidgets-ts/angular_jqxcolorpicker';
-import { jqxDropDownListComponent }   from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
-import { jqxGridComponent }           from '../../../../../jqwidgets-ts/angular_jqxgrid';
-import { jqxToggleButtonComponent }   from '../../../../../jqwidgets-ts/angular_jqxtogglebutton';
+import { AppComponent } from './app.component'; 
+import { RibbonModule } from '../../modules/ribbon.module';
+import { GridModule } from '../../modules/grid.module';
+import { ButtonModule } from '../../modules/button.module';
+import { TooltipModule } from '../../modules/tooltip.module';
+import { DropDownButtonModule } from '../../modules/dropdownbutton.module';
+import { ColorPickerModule } from '../../modules/colorpicker.module';
+import { DropDownListModule } from '../../modules/dropdownlist.module';
+import { ToggleButtonModule } from '../../modules/togglebutton.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxRibbonComponent, jqxButtonComponent, jqxTooltipComponent, jqxDropDownButtonComponent, jqxColorPickerComponent, jqxDropDownListComponent, jqxGridComponent, jqxToggleButtonComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, RibbonModule, GridModule, ButtonModule, TooltipModule, DropDownButtonModule, ColorPickerModule, DropDownListModule, ToggleButtonModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
 

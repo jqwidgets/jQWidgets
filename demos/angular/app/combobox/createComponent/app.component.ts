@@ -1,41 +1,35 @@
-/// <reference path="../../../jqwidgets-ts/jqwidgets.d.ts" /> 
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
 import { jqxComboBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcombobox';
 
 @Component({
-    selector: 'my-app',
-    template: `<jqxComboBox #comboBoxReference [auto-create]='false'></jqxComboBox>`
-}) 
+    selector: 'app-root',
+    templateUrl: './app.component.html'
+})
 
-export class AppComponent implements AfterViewInit
-{ 
-    @ViewChild('comboBoxReference') myComboBox: jqxComboBoxComponent;
+export class AppComponent implements AfterViewInit {
+    @ViewChild('myComboBox') myComboBox: jqxComboBoxComponent;
 
-    ngAfterViewInit(): void
-    {
+    ngAfterViewInit(): void {
         this.myComboBox.createComponent(this.settings);
-    }   
+    }
 
     settings: jqwidgets.ComboBoxOptions =
     {
         source: this.generateHTML(),
         selectedIndex: 0,
-        width: '250',
+        width: '250px',
         height: '25px'
     }
 
-    generateHTML()
-    {
+    generateHTML() {
         let source = new Array();
 
-        for (let i = 0; i < 10; i++)
-        {
+        for (let i = 0; i < 10; i++) {
             let movie = 'avatar.png';
             let title = 'Avatar';
             let year = 2009;
-            switch (i)
-            {
+            switch (i) {
                 case 1:
                     movie = 'endgame.png';
                     title = 'End Game';

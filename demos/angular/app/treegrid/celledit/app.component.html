@@ -1,0 +1,10 @@
+﻿<jqxTreeGrid
+    (onCellBeginEdit)="treeGridOnCellBeginEdit($event)" (onCellEndEdit)="treeGridOnCellEndEdit($event)"
+    [width]="850" [source]="dataAdapter" [columns]="columns"
+    [sortable]="true" [editable]="true" [editSettings]="editSettings">
+</jqxTreeGrid>
+
+<div style="font-size: 13px; font-family: Verdana; width: 800px; margin-top: 20px">
+    <h4>Event Log</h4>
+    <div #myLog style="max-height: 300px; overflow: auto"></div>
+</div>

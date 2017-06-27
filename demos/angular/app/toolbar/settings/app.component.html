@@ -1,0 +1,37 @@
+﻿<jqxToolbar #myToolBar
+    [width]="'100%'" [height]="35"
+    [initTools]="initTools" [tools]="tools">
+</jqxToolbar>
+
+<div style="margin-top: 50px">
+
+    <jqxButton (onClick)="addToggleBtnOnClick()" [width]="150">Add a Toggle Button</jqxButton>
+    <jqxButton (onClick)="addCustomToolBtnOnClick()" [width]="150">Add a Custom Tool</jqxButton>
+
+</div>
+
+<div style="margin-top: 10px; margin-bottom: 2px">
+    Insert position:
+</div>
+
+<jqxDropDownList #myDropDownList
+    [width]="150" [height]="22" [source]="['first','last']" 
+    [selectedIndex]="1" [autoDropDownHeight]="true">
+</jqxDropDownList>
+
+<div style="margin-top: 50px">
+
+    <jqxButton (onClick)="disableToolBtnOnClick()" [width]="150">Disable Tool</jqxButton>
+    <jqxButton (onClick)="enableToolBtnOnClick()"  [width]="150">Enable Tool</jqxButton>
+    <jqxButton (onClick)="destroyToolBtnOnClick()" [width]="150">Destroy Tool</jqxButton>
+
+</div>
+
+<div style="margin-top: 10px; margin-bottom: 2px">
+   Tool index:
+</div>
+
+<jqxNumberInput #myNumberInput
+    [width]="50" [height]="25" [decimal]="0" 
+    [decimalDigits]="0" [inputMode]="'simple'">
+</jqxNumberInput>

@@ -1,0 +1,33 @@
+﻿<jqxChart #myChart
+    [width]="850" [height]="500"
+    [title]="'Sales by City in Q1 & Q2'"
+    [description]="''"
+    [showLegend]="true" [enableAnimations]="true" [padding]="padding"
+    [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis"
+    [valueAxis]="valueAxis" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
+</jqxChart>
+
+<table style="width: 550px">
+    <tbody>
+        <tr>
+            <td>
+                <p>Select Serie 1 Symbol:</p>
+
+                <jqxDropDownList (onChange)="dropDownSerie1SymbolOnChange($event)"
+                    [width]="200" [height]="25" [selectedIndex]="2"
+                    [dropDownHeight]="100" [source]="symbolsList">
+                </jqxDropDownList>
+
+            </td>
+            <td>
+                <p>Select Serie 2 Symbol:</p>
+
+                <jqxDropDownList (onChange)="dropDownSerie2SymbolOnChange($event)"
+                    [width]="200" [height]="25" [selectedIndex]="1"
+                    [dropDownHeight]="100" [source]="symbolsList">
+                </jqxDropDownList>
+
+            </td>
+        </tr>
+    </tbody>
+</table>

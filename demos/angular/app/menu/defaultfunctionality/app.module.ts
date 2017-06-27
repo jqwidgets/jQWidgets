@@ -1,15 +1,19 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-
-import { jqxMenuComponent } from '../../../../../jqwidgets-ts/angular_jqxmenu';
-import { jqxCheckBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcheckbox';
+import { AppComponent } from './app.component'; 
+import { MenuModule } from '../../modules/menu.module';
+import { CheckBoxModule } from '../../modules/checkbox.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxMenuComponent, jqxCheckBoxComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, MenuModule, CheckBoxModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

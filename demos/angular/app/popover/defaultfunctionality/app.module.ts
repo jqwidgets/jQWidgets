@@ -1,15 +1,19 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-
-import { jqxPopoverComponent } from '../../../../../jqwidgets-ts/angular_jqxpopover';
-import { jqxButtonComponent }  from '../../../../../jqwidgets-ts/angular_jqxbuttons';
+import { AppComponent } from './app.component'; 
+import { PopoverModule } from '../../modules/popover.module';
+import { ButtonModule } from '../../modules/button.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxPopoverComponent, jqxButtonComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, PopoverModule, ButtonModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

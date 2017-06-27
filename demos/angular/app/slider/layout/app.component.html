@@ -1,0 +1,27 @@
+﻿<div id="container" style="font-family: Verdana; font-size: 12px; float: left">
+  <b>Default Layout</b>
+  <jqxSlider #horizontalSlider
+             [height]="50"
+             [width]="300">
+  </jqxSlider>
+  <jqxSlider style="margin-top: 10px;" #verticalSlider
+             [height]="300"
+             [width]="50"
+             [orientation]="'vertical'">
+  </jqxSlider>
+</div>
+<div style="float: right; font-family: Verdana; font-size: 12px;" id="rightContainer">
+  <b>Reversed Layout</b>
+  <jqxSlider #mirrorHorizontalSlider
+             [height]="50"
+             [width]="300"
+             [layout]="'reverse'">
+  </jqxSlider>
+  <jqxSlider style="margin-top: 10px; float: right;" #mirrorVerticalSlider
+             [height]="300"
+             [width]="50"
+             [orientation]="'vertical'"
+             [layout]="'reverse'">
+  </jqxSlider>
+</div>
+

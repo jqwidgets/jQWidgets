@@ -1,0 +1,15 @@
+﻿<jqxScheduler #scheduler
+              [width]="850" [height]="600"
+              [date]="date"
+              [source]="dataAdapter"
+              [resources]="resources"
+              [showLegend]="true"
+              [view]="'monthView'"
+              [views]="views"
+              [appointmentDataFields]="appointmentDataFields">
+</jqxScheduler>
+<br />
+<jqxButton #showAppointmentsButton
+           (onClick)="click()">
+  Show Hidden Appointments
+</jqxButton>

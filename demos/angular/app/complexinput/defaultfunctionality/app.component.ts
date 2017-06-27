@@ -1,27 +1,22 @@
- 
-import { Component, ViewChild } from '@angular/core';
+﻿import { Component, ViewChild } from '@angular/core';
 
 import { jqxComplexInputComponent } from '../../../../../jqwidgets-ts/angular_jqxcomplexinput';
-import { jqxButtonComponent }       from '../../../../../jqwidgets-ts/angular_jqxbuttons';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: `../app/complexinput/defaultfunctionality/app.component.htm`
-}) 
+    selector: 'app-root',
+    templateUrl: './app.component.html'
+})
 
-export class AppComponent
-{ 
-    @ViewChild('complexInputReference') myComplexInput: jqxComplexInputComponent;
+export class AppComponent {
+    @ViewChild('myComplexInput') myComplexInput: jqxComplexInputComponent;
 
-    getRealPart(): void
-    {
+    getRealPart(): void {
         let realPart = this.myComplexInput.getReal();
-        alert("Real part is " + realPart);
+        alert(`Real part is ${realPart}`);
     }
 
-    getImaginarypart(): void
-    {
+    getImaginarypart(): void {
         let imaginaryPart = this.myComplexInput.getImaginary();
-        alert("Imaginary part is " + imaginaryPart);
+        alert(`Imaginary part is ${imaginaryPart}`);
     }
 }

@@ -2,48 +2,40 @@
 <html>
 
   <head>
-    <title id='Description'>Angular DropDownList  </title>
+    <title id='Description'>Angular DropDownList CreateComponent</title>
+    <meta name="description" content="This is an example of Angular DropDownList created through one setting." />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- Styles -->
-      <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-      <style>
-          body, html {
-              height: 100%;
-              overflow: hidden;
-          }
-      </style>
 
-    <!-- jQWidgets -->
-    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+
+    <!-- jQWidgets -->    
     <script src="../../../jqwidgets/jqxcore.js"></script>
     <script src="../../../jqwidgets/jqxbuttons.js"></script>
     <script src="../../../jqwidgets/jqxscrollbar.js"></script>
     <script src="../../../jqwidgets/jqxlistbox.js"></script>
     <script src="../../../jqwidgets/jqxdropdownlist.js"></script>
     <script src="../../../scripts/demos.js"></script>
-
     
-    <script src="../node_modules/typescript/lib/typescript.js"></script>
+    <!-- Angular -->
     <script src="../node_modules/core-js/client/shim.min.js"></script>
-    <script src="../node_modules/zone.js/dist/zone.js"></script>
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
-
-    <!-- Configure SystemJS -->
-    <script src="../systemjs.config.js"></script>
-    <script>
-        System.import('../app/dropdownlist/createComponent/main').catch( (err) => { console.error(err); });
-    </script>
-
+    <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+    <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>
 
   </head>
 
   <!-- Display the application -->
   <body>
+
       <div class="example-description">
-          Angular DropDownList  
+          Angular DropDownList created through one single `settings` object.
       </div>
-    <my-app></my-app>
+
+      <app-root>Loading...</app-root>
+
+      <script src="../aot/dropdownlist_createComponent.bundle.js"></script>
+
   </body>
 
 </html>

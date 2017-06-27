@@ -1,38 +1,33 @@
-﻿ 
-import { Component, ViewChild } from '@angular/core';
+﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { jqxProgressBarComponent } from '../../../../../jqwidgets-ts/angular_jqxprogressbar';
-import { jqxButtonComponent }      from '../../../../../jqwidgets-ts/angular_jqxbuttons';
-import { jqxCheckBoxComponent }    from '../../../../../jqwidgets-ts/angular_jqxcheckbox';
+import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
+import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: '../app/progressbar/defaultfunctionality/app.component.htm'
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
+export class AppComponent {
     @ViewChild('horizontal') myHorizontalProgressBar: jqxProgressBarComponent;
     @ViewChild('vertical') myVerticalProgressBar: jqxProgressBarComponent;
+    @ViewChild('ValueInput') ValueInputElement: jqxInputComponent;
 
     valueInput: number;
     isUpdated: boolean = false;
 
-    renderText(text: string): string
-    {
+    renderText(text: string): string {
         return "<span class='jqx-rc-all' style='background: #ffe8a6; color: #e53d37; font-style: italic;'>" + text + "</span>";
     }
 
-    getValueInput(): number
-    {
-        return parseInt((<any>document.getElementById('ValueInput')).value);
+    getValueInput(): number {
+        return parseInt(this.ValueInputElement.val());
     }
-
-    onClick(): void
-    {
+    //display: none;
+    onClick(): void {
         let value = this.getValueInput();
-        if (!isNaN(value))
-        {
+        if (!isNaN(value)) {
             this.valueInput = value;
             this.myHorizontalProgressBar.val(value);
             this.myVerticalProgressBar.val(value);
@@ -40,11 +35,9 @@ export class AppComponent
         }
     }
 
-    onCheckBox(event: any): void
-    {
+    onCheckBox(event: any): void {
         let value = this.getValueInput();
-        if (value != null && this.isUpdated)
-        {
+        if (value != null && this.isUpdated) {
             this.myHorizontalProgressBar.value(this.valueInput);
             this.myVerticalProgressBar.value(this.valueInput);
         }
@@ -54,22 +47,18 @@ export class AppComponent
         this.myVerticalProgressBar.showText(isChecked);
     }
 
-    onCustomTextCheckBox(event: any): void
-    {
+    onCustomTextCheckBox(event: any): void {
         let value = this.getValueInput();
-        if (value != null && this.isUpdated)
-        {
+        if (value != null && this.isUpdated) {
             this.myHorizontalProgressBar.value(this.valueInput);
             this.myVerticalProgressBar.value(this.valueInput);
         }
 
-        if (event.args.checked)
-        {
+        if (event.args.checked) {
             this.myHorizontalProgressBar.renderText(this.renderText);
             this.myVerticalProgressBar.renderText(this.renderText);
         }
-        else
-        {
+        else {
             this.myHorizontalProgressBar.renderText(null);
             this.myVerticalProgressBar.renderText(null);
         }

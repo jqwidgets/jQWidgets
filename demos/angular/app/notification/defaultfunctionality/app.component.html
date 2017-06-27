@@ -1,0 +1,21 @@
+﻿<!--Notifications-->
+<jqxNotification #msgNotification
+                 [width]="250" [position]="'top-right'" [opacity]="0.9" [autoOpen]="false"
+                 [autoClose]="true" [animationOpenDelay]="800" [autoCloseDelay]="3000" [template]="'info'">
+  <div>
+    Welcome to our website.
+  </div>
+</jqxNotification>
+<jqxNotification #timeNotification
+                 [width]="250" [position]="'top-right'" [opacity]="0.9" [autoOpen]="false"
+                 [autoClose]="true" [animationOpenDelay]="800" [autoCloseDelay]="3000" [template]="'time'">
+  <div>Current time: <span id="currentTime" style="font-weight: bold;"></span>.</div>
+</jqxNotification>
+<!--Layout-->
+<jqxButton [width]="230" [height]="30" (onClick)="onClickOpenMessageNotification()">
+  Open a message notification
+</jqxButton>
+<br /><br />
+<jqxButton [width]="230" [height]="30" (onClick)="onClickOpenTimeNotification()">
+  Open a current time notification
+</jqxButton>

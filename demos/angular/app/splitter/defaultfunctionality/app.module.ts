@@ -1,19 +1,25 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule }    from '@angular/http';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-
-import { jqxSplitterComponent } from '../../../../../jqwidgets-ts/angular_jqxsplitter';
-import { jqxExpanderComponent } from '../../../../../jqwidgets-ts/angular_jqxexpander';
-import { jqxTreeComponent }     from '../../../../../jqwidgets-ts/angular_jqxtree';
-import { jqxPanelComponent }    from '../../../../../jqwidgets-ts/angular_jqxpanel';
-import { jqxListBoxComponent }  from '../../../../../jqwidgets-ts/angular_jqxlistbox';
+import { SplitterModule } from '../../modules/splitter.module';
+import { ExpanderModule } from '../../modules/expander.module';
+import { TreeModule } from '../../modules/tree.module';
+import { PanelModule } from '../../modules/panel.module';
+import { ListBoxModule } from '../../modules/listbox.module';
 
 @NgModule({
-    imports: [BrowserModule, HttpModule],
-    declarations: [AppComponent, jqxSplitterComponent, jqxExpanderComponent, jqxTreeComponent, jqxPanelComponent, jqxListBoxComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, HttpModule, SplitterModule, ExpanderModule, TreeModule, PanelModule, ListBoxModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
 

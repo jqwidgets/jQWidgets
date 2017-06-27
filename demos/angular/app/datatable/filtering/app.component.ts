@@ -1,22 +1,14 @@
- 
-import { Component } from '@angular/core';
-
-import { jqxDataTableComponent } from '../../../../../jqwidgets-ts/angular_jqxdatatable';
+﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    template:
-        `<jqxDataTable
-            [width]='850' [source]='dataAdapter' [columns]='columns'
-            [pageable]='true' [altRows]='true' [filterable]='true'>
-        </jqxDataTable>`
-}) 
+    selector: 'app-root',
+    templateUrl: './app.component.html'
+})
 
-export class AppComponent
-{ 
+export class AppComponent {
     source: any =
     {
-        dataType: "xml",
+        dataType: 'xml',
         dataFields: [
             { name: 'SupplierName', type: 'string' },
             { name: 'Quantity', type: 'number' },
@@ -33,7 +25,7 @@ export class AppComponent
         record: 'ROW'
     };
 
-    dataAdapter: any = new $.jqx.dataAdapter(this.source);
+    dataAdapter: any = new jqx.dataAdapter(this.source);
 
     columns: any[] =
     [
@@ -43,5 +35,5 @@ export class AppComponent
         { text: 'Price', dataField: 'Price', cellsFormat: 'c2', align: 'center', cellsAlign: 'center', width: 120 },
         { text: 'City', cellsAlign: 'center', align: 'center', dataField: 'City' }
     ];
-      
 }
+

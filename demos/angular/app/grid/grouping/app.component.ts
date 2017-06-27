@@ -1,77 +1,23 @@
-﻿ 
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+﻿import { Component, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
 
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
+import { jqxGridComponent }  from '../../../../../jqwidgets-ts/angular_jqxgrid';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: '../app/grid/grouping/app.component.htm'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent implements AfterViewInit
-{
-    @ViewChild('gridReference') myGrid: jqxGridComponent;
-
-    ngAfterViewInit(): void
-    {
-        setTimeout(() =>
-        {
-            let collapseButton = <HTMLElement>document.getElementsByTagName('angularButton')[1].firstElementChild;
-            let collapseAllButton = <HTMLElement>document.getElementsByTagName('angularButton')[3].firstElementChild;
-            collapseButton.style.marginTop = '10px';
-            collapseAllButton.style.marginTop = '10px';
-        })
-
-    }
-
-    onExpandGroup(): void
-    {
-        let inputDom = <any>document.getElementById('groupnum');
-        let groupnum = inputDom.value;
-        if (!isNaN(groupnum))
-        {
-            this.myGrid.expandgroup(groupnum);
-        }
-    }
-
-    onCollapseGroup(): void
-    {
-        let inputDom = <any>document.getElementById('groupnum');
-        let groupnum = inputDom.value;
-        if (!isNaN(groupnum))
-        {
-            this.myGrid.collapsegroup(groupnum);
-        }
-    }
-
-    onExpandAllGroup(): void
-    {
-        this.myGrid.expandallgroups();
-    }
-
-    onCollapseAllGroup(): void
-    {
-        this.myGrid.collapseallgroups();
-    }
-
-    onGroupExpand(event: any): void
-    {
-        let args = event.args;
-        let expandedgroupLog = document.getElementById('expandedgroup');
-        expandedgroupLog.innerText = "Group: " + args.group + ", Level: " + args.level;
-    }
-
-    onGroupCollapse(event: any): void
-    {
-        let args = event.args;
-        let collapsedgroupLog = document.getElementById('collapsedgroup');
-        collapsedgroupLog.innerText = "Group: " + args.group + ", Level: " + args.level;
-    }
+export class AppComponent {
+    @ViewChild('myGrid') myGrid: jqxGridComponent;
+    @ViewChild('groupNum') groupNum: ElementRef;
+    @ViewChild('expandedGroup') expandedGroup: ElementRef;
+    @ViewChild('collapsedGroup') collapsedGroup: ElementRef;
 
     source: any =
     {
-        datatype: "xml",
+        datatype: 'xml',
         datafields: [
             { name: 'CompanyName', map: 'm\\:properties>d\\:CompanyName', type: 'string' },
             { name: 'ContactName', map: 'm\\:properties>d\\:ContactName', type: 'string' },
@@ -80,13 +26,13 @@ export class AppComponent implements AfterViewInit
             { name: 'PostalCode', map: 'm\\:properties>d\\:PostalCode', type: 'string' },
             { name: 'Country', map: 'm\\:properties>d\\:Country', type: 'string' }
         ],
-        root: "entry",
-        record: "content",
+        root: 'entry',
+        record: 'content',
         id: 'm\\:properties>d\\:CustomerID',
-        url: "../../sampledata/customers.xml"
+        url: '../sampledata/customers.xml'
     };
 
-    dataAdapter: any = new $.jqx.dataAdapter(this.source);
+    dataAdapter: any = new jqx.dataAdapter(this.source);
 
     columns: any[] =
     [
@@ -94,4 +40,36 @@ export class AppComponent implements AfterViewInit
         { text: 'City', datafield: 'City', width: 120 },
         { text: 'Country', datafield: 'Country' }
     ];
+
+    onExpandGroup(): void {
+        let groupNum = this.groupNum.nativeElement.value;
+        if (!isNaN(groupNum)) {
+            this.myGrid.expandgroup(groupNum);
+        }
+    }
+
+    onCollapseGroup(): void {
+        let groupNum = this.groupNum.nativeElement.value;
+        if (!isNaN(groupNum)) {
+            this.myGrid.collapsegroup(groupNum);
+        }
+    }
+
+    onExpandAllGroup(): void {
+        this.myGrid.expandallgroups();
+    }
+
+    onCollapseAllGroup(): void {
+        this.myGrid.collapseallgroups();
+    }
+
+    onGroupExpand(event: any): void {
+        let args = event.args;
+        this.expandedGroup.nativeElement.innerHTML = 'Group: ' + args.group + ', Level: ' + args.level;
+    }
+
+    onGroupCollapse(event: any): void {
+        let args = event.args;
+        this.collapsedGroup.nativeElement.innerHTML = 'Group: ' + args.group + ', Level: ' + args.level;
+    }
 }

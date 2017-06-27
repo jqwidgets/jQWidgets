@@ -1,15 +1,19 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { jqxScrollViewComponent } from '../../../../../jqwidgets-ts/angular_jqxscrollview';
-import { jqxButtonComponent }     from '../../../../../jqwidgets-ts/angular_jqxbuttons';
+import { ScrollViewModule } from '../../modules/scrollview.module';
+import { ButtonModule } from '../../modules/button.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxScrollViewComponent, jqxButtonComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, ScrollViewModule, ButtonModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

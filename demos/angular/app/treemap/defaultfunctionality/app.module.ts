@@ -1,14 +1,20 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { jqxTreeMapComponent } from '../../../../../jqwidgets-ts/angular_jqxtreemap';
+import { TreeMapModule } from '../../modules/treemap.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxTreeMapComponent],
-    bootstrap: [AppComponent]
+  declarations: [
+      AppComponent
+  ],
+  imports: [
+      BrowserModule, TreeMapModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
 

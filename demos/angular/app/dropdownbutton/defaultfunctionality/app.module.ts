@@ -1,16 +1,23 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-
-import { jqxDropDownButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownbutton';
-import { jqxTreeComponent }           from '../../../../../jqwidgets-ts/angular_jqxtree';
-import { jqxCheckBoxComponent }       from '../../../../../jqwidgets-ts/angular_jqxcheckbox';
+import { DropDownButtonModule } from '../../modules/dropdownbutton.module';
+import { CheckBoxModule } from '../../modules/checkbox.module';
+import { TreeModule } from '../../modules/tree.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxDropDownButtonComponent, jqxTreeComponent, jqxCheckBoxComponent],
-    bootstrap: [AppComponent]
+  declarations: [
+      AppComponent
+  ],
+  imports: [
+      BrowserModule, CommonModule, DropDownButtonModule, CheckBoxModule, TreeModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
 

@@ -1,23 +1,22 @@
-/// <reference path="../../../jqwidgets-ts/jqwidgets.d.ts" /> 
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxChartComponent } from '../../../../../jqwidgets-ts/angular_jqxChart';
+import { jqxChartComponent } from '../../../../../jqwidgets-ts/angular_jqxchart';
 
 @Component({
-    selector: 'my-app',
-    template: `<jqxChart [width]='850' [height]='500' [auto-create]='false' #chartReference></jqxChart>`
+    selector: 'app-root',
+    templateUrl: './app.component.html',
 })
 
-export class AppComponent implements AfterViewInit
-{
-    @ViewChild('chartReference') myChart: jqxChartComponent;  
+export class AppComponent implements AfterViewInit {
+    @ViewChild('myChart') myChart: jqxChartComponent;
 
-    ngAfterViewInit(): void
-    {
+    ngAfterViewInit(): void {
         this.myChart.createComponent(this.settings);
     }
 
-    source =
+    months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    source: any =
     {
         datatype: "csv",
         datafields: [
@@ -25,14 +24,14 @@ export class AppComponent implements AfterViewInit
             { name: 'S&P 500' },
             { name: 'NASDAQ' }
         ],
-        url: '../../demos/sampledata/nasdaq_vs_sp500.txt'
+        url: '../sampledata/nasdaq_vs_sp500.txt'
     };
+    dataAdapter: any = new jqx.dataAdapter(this.source, { async: false, autoBind: true, loadError: function (xhr, status, error) { alert('Error loading "' + this.source.url + '" : ' + error); } });
 
-    dataAdapter = new $.jqx.dataAdapter(this.source, { async: false, autoBind: true, loadError: (xhr, status, error) => { alert('Error loading "' + this.source.url + '" : ' + error); } });
 
-    settings: jqwidgets.ChartOptions = {
-        title: "U.S. Stock Market Index Performance",
-        description: "NASDAQ Composite compared to S&P 500",
+    settings: any = {
+        title: 'U.S. Stock Market Index Performance',
+        description: 'NASDAQ Composite compared to S&P 500',
         enableAnimations: true,
         showLegend: true,
         padding: { left: 10, top: 5, right: 10, bottom: 5 },
@@ -41,6 +40,9 @@ export class AppComponent implements AfterViewInit
         xAxis:
         {
             dataField: 'Date',
+            formatFunction: (value: any) => {
+                return value.getDate() + '-' + this.months[value.getMonth()] + '-' + value.getFullYear();
+            },
             type: 'date',
             baseUnit: 'month',
             valuesOnTicks: true,
@@ -81,4 +83,5 @@ export class AppComponent implements AfterViewInit
             }
         ]
     }
+
 }

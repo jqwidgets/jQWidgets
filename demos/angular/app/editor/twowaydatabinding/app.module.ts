@@ -1,15 +1,21 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
-
-import { jqxEditorComponent } from '../../../../../jqwidgets-ts/angular_jqxeditor';
+import { EditorModule } from '../../modules/editor.module';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule],
-    declarations: [AppComponent, jqxEditorComponent],
-    bootstrap: [AppComponent]
+  declarations: [
+      AppComponent
+  ],
+  imports: [
+      BrowserModule, CommonModule, FormsModule, EditorModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

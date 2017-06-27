@@ -1,0 +1,15 @@
+﻿<h3>Employees</h3>
+
+<jqxDataTable #masterDataTable (onRowSelect)="masterTableOnRowSelect($event)"
+    [width]="850" [source]="employeesData" [columns]="masterColumns"
+    [pageable]="true" [sortable]="true" [pageSize]="5">
+</jqxDataTable>
+
+<h3>Orders by Employee</h3>
+
+<jqxDataTable #detailsDataTable
+    [width]="850" [columns]="detailsColumns"
+    [pageable]="true" [pageSize]="5">
+</jqxDataTable>
+
+

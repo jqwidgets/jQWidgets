@@ -2,46 +2,40 @@
 <html lang="en">
 
 <head>
-    <title id='Description'>Angular NavBar</title>
+    <title id='Description'>Angular NavBar DefaultFunctionality</title>
+    <meta name="description" content="This is an example of the default functionalities of Angular NavBar." />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Styles -->
     <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <style>
-        body, html {
-            height: 100%;
-            overflow: hidden;
-        }
-    </style>
 
-    <!-- jQWidgets -->
-    
-    <script src="../../../jqwidgets/jqxcore.js"></script>
-    <script src="../../../jqwidgets/jqxnavbar.js"></script>
-    <script src="../../../jqwidgets/jqxlistbox.js"></script>
-    <script src="../../../jqwidgets/jqxscrollbar.js"></script>
-
-    
-    <script src="../node_modules/typescript/lib/typescript.js"></script>
+    <!-- jQWidgets -->    
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxnavbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+   
+    <!-- Angular -->
     <script src="../node_modules/core-js/client/shim.min.js"></script>
-    <script src="../node_modules/zone.js/dist/zone.js"></script>
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+    <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+    <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>
     <script src="../../../scripts/demos.js"></script>
-
-    <!-- Configure SystemJS -->
-    <script src="../systemjs.config.js"></script>
-    <script>
-        System.import('../app/navbar/defaultfunctionality/main').catch( (err) => { console.error(err); });
-    </script>
 
 </head>
 
 <!-- Display the application -->
 <body>
+
     <div class="example-description">
-        Angular NavBar Example.
+        NavBar is a simple widget which arranges html elements horizontally or vertically.
     </div>
-    <my-app></my-app>
+
+    <app-root>Loading...</app-root>
+
+    <script src="../aot/navbar_defaultfunctionality.bundle.js"></script>
+
 </body>
 
 </html>

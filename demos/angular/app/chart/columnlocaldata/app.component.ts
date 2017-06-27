@@ -1,22 +1,12 @@
- 
-import { Component } from '@angular/core';
-
-import { jqxChartComponent } from '../../../../../jqwidgets-ts/angular_jqxChart';
+﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    template:
-        `<jqxChart [width]='850' [height]='500'
-            [title]='title' [description]='description' [showLegend]='true'
-            [enableAnimations]='true' [padding]='padding' [titlePadding]='titlePadding'
-            [source]='sampleData' [xAxis]='xAxis' [colorScheme]='"scheme01"'
-            [seriesGroups]='seriesGroups'>
-        </jqxChart>`
+    selector: 'app-root',
+    templateUrl: './app.component.html',
 })
 
-export class AppComponent
-{ 
-    sampleData = [
+export class AppComponent {
+    sampleData: any[] = [
         { Day: 'Monday', Keith: 30, Erica: 15, George: 25 },
         { Day: 'Tuesday', Keith: 25, Erica: 25, George: 30 },
         { Day: 'Wednesday', Keith: 30, Erica: 20, George: 25 },
@@ -26,10 +16,6 @@ export class AppComponent
         { Day: 'Sunday', Keith: 60, Erica: 45, George: 90 }
     ];
 
-    title: string = "Fitness & exercise weekly scorecard";
-
-    description: string = "Time spent in vigorous exercise";
-
     padding: any = { left: 5, top: 5, right: 5, bottom: 5 };
 
     titlePadding: any = { left: 90, top: 0, right: 0, bottom: 10 };
@@ -37,12 +23,10 @@ export class AppComponent
     xAxis: any =
     {
         dataField: 'Day',
-        gridLines: {
-            visible: true
-        }
+        showGridLines: true
     };
 
-    seriesGroups: any[] = 
+    seriesGroups: any[] =
     [
         {
             type: 'column',
@@ -65,7 +49,4 @@ export class AppComponent
             ]
         }
     ];
-    
 }
-
-

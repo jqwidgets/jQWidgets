@@ -1,15 +1,19 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { jqxNotificationComponent } from '../../../../../jqwidgets-ts/angular_jqxnotification';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
+import { NotificationModule } from '../../modules/notification.module';
+import { ButtonModule } from '../../modules/button.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxNotificationComponent, jqxButtonComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, NotificationModule, ButtonModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

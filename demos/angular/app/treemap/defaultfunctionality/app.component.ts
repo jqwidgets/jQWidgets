@@ -1,32 +1,22 @@
-﻿ 
-import { Component } from '@angular/core';
-
-import { jqxTreeMapComponent } from '../../../../../jqwidgets-ts/angular_jqxtreemap';
+﻿import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    template:
-        `<jqxTreeMap
-            [width]='850' [height]='600' [source]='data'
-            [colorRange]='50' [renderCallbacks]='renderCallbacks'> 
-        </jqxTreeMap>`
+    selector: 'app-root',
+    styleUrls: ['./app.component.css'],
+    templateUrl: './app.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent
-{
-
+export class AppComponent {
     renderCallbacks: any =
     {
-        '*': (elementObject: any, value: any): void =>
-        {
-            if (value.data === undefined)
-            {
+        '*': (elementObject: any, value: any): void => {
+            if (value.data === undefined) {
                 let element = elementObject[0];
                 element.style.backgroundColor = '#fff';
                 element.style.border = '1px solid #555';
             }
-            else
-            {
+            else {
                 elementObject.jqxTooltip({
                     content: '<div><div style="font-weight: bold; max-width: 200px; font-family: verdana; font-size: 13px;">' + value.data.title + '</div><div style="width: 200px; font-family: verdana; font-size: 12px;">' + value.data.description + '</div></div>',
                     position: 'mouse',
@@ -38,9 +28,9 @@ export class AppComponent
 
     data: any[] = this.generateData();
 
-    generateData(): any[]
-    {
-        let data: any[] =
+    generateData(): any[] {
+
+        let dataSource: any[] =
             [
                 {
                     label: 'Drama',
@@ -235,6 +225,6 @@ export class AppComponent
                 }
             ];
 
-        return data;
+        return dataSource;
     }
 }

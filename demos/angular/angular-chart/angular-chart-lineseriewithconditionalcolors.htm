@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <title id='Description'>Angular 4 Chart LineSeriesWithConditionalColors.</title>
+        <meta name="description" content="This is an example of conditional colors in Angular 4 Chart." />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+
+        <!-- jQWidgets -->    
+        <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxdraw.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxchart.core.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+        <script type="text/javascript" src="../../../scripts/demos.js"></script>
+  
+        <!-- Angular -->
+        <script src="../node_modules/core-js/client/shim.min.js"></script>
+        <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+        <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>
+
+    </head>
+
+    <!-- Display the application -->
+    <body>
+
+        <div class="example-description">
+            This is an example of Angular 4 Chart line series with conditional colors. The data of the chart is loaded from a csv file. The colorFunction is modified to return the desired color. jqxChart will call this function for each data point. Sequential points that have the same color will be grouped automatically in a line segment.
+        </div>
+
+        <app-root>Loading...</app-root>
+
+        <script src="../aot/chart_lineseriewithconditionalcolors.bundle.js"></script>
+
+    </body>
+
+</html>

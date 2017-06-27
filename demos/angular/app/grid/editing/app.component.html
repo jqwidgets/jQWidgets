@@ -1,0 +1,9 @@
+﻿<jqxGrid (onCellbeginedit)="cellBeginEditEvent($event)" (onCellendedit)="cellEndEditEvent($event)"
+    [width]="850" [source]="dataAdapter" [columns]="columns"
+    [editable]="true" [enabletooltips]="true" [selectionmode]="'multiplecellsadvanced'">
+</jqxGrid>
+
+<div style="font-size: 12px; font-family: Verdana; margin-top: 30px;">
+    <div #beginEdit></div>
+    <div #endEdit style="margin-top: 10px;"></div>
+</div>

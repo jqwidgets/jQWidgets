@@ -1,0 +1,60 @@
+﻿<jqxChart #myChart
+    [width]="850" [height]="500"
+    [title]="'Sales volume and revenue by city'"
+    [description]="'(revenue in thousands)'"
+    [showLegend]="true" [enableAnimations]="false" [padding]="padding"
+    [titlePadding]="titlePadding" [source]="dataset" [xAxis]="xAxis" 
+    [valueAxis]="valueAxis" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
+</jqxChart>
+
+<table style="width: 850px">
+    <tbody>
+        <tr>
+            <td style="padding-left: 50px">
+                <p style="font-family: Verdana; font-size: 12px">Move the slider to change start angle:</p>
+                <jqxSlider (onChange)="sliderStartAngle($event)"
+                    [width]="240" [min]="0" [max]="360" [step]="1"
+                    [ticksFrequency]="20" [mode]="'fixed'">
+                </jqxSlider>
+            </td>
+            <td>
+              <p style="font-family: Verdana; font-size: 12px">Move the slider to change end angle:</p>
+                <jqxSlider (onChange)="sliderEndAngle($event)"
+                    [width]="240" [min]="0" [max]="360" [step]="1"
+                    [ticksFrequency]="20" [mode]="'fixed'" [value]="90">
+                </jqxSlider>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-left: 50px">
+              <p style="font-family: Verdana; font-size: 12px">Move the slider to rotate:</p>
+                <jqxSlider (onChange)="sliderRotate($event)"
+                    [width]="240" [min]="80" [max]="360" [step]="1"
+                    [ticksFrequency]="20" [mode]="'fixed'">
+                </jqxSlider>
+            </td>
+            <td>
+              <p style="font-family: Verdana; font-size: 12px">Move the slider to change the radius:</p>
+                <jqxSlider (onChange)="sliderRadius($event)"
+                    [width]="240" [min]="80" [max]="140" [step]="1"
+                    [ticksFrequency]="20" [mode]="'fixed'" [value]="120">
+                </jqxSlider>
+            </td>
+          </tr>
+          <tr style="height: 15px"></tr>
+          <tr>
+            <td style="padding-left: 50px">
+                <jqxCheckBox (onChange)="checkBoxTicksBetween($event)"
+                    [width]="220" height="25">
+                    Tick marks between values
+                </jqxCheckBox>
+            </td>
+            <td>
+                <jqxCheckBox (onChange)="checkBoxAutoRotate($event)"
+                    [width]="220" height="25" checked="true">
+                    Auto rotate axis text
+                </jqxCheckBox>
+              </td>
+        </tr>
+    </tbody>
+</table>

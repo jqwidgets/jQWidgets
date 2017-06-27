@@ -1,15 +1,20 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-
-import { jqxMaskedInputComponent } from '../../../../../jqwidgets-ts/angular_jqxmaskedinput';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
+import { AppComponent } from './app.component'; 
+import { MaskedInputModule } from '../../modules/maskedinput.module';
+import { ButtonModule } from '../../modules/button.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxMaskedInputComponent, jqxButtonComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, FormsModule, MaskedInputModule, ButtonModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

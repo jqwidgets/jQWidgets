@@ -1,15 +1,18 @@
 import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule }  from '@angular/platform-browser';
+import { CommonModule }   from '@angular/common';
 
 import { AppComponent } from './app.component';
-
-import { jqxSplitterComponent } from '../../../../../jqwidgets-ts/angular_jqxsplitter';
-import { jqxKanbanComponent } from '../../../../../jqwidgets-ts/angular_jqxkanban';
+import { KanbanModule } from '../../modules/kanban.module';
+import { SplitterModule } from '../../modules/splitter.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxSplitterComponent, jqxKanbanComponent],
+    imports: [BrowserModule, CommonModule, KanbanModule, SplitterModule],
+    declarations: [AppComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
 

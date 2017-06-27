@@ -1,0 +1,21 @@
+﻿<jqxDataTable #myDataTable (onBindingComplete)="tableOnBindingComplete()"
+    [width]="850" [source]="dataAdapter" [columns]="columns"
+    [pageable]="true" [editable]="true">
+</jqxDataTable>
+
+<div style="font-family: Verdana; font-size: 12px; width: 670px">
+    <ul>
+        <li><b>Left Arrow</b> key is pressed - Navigates to the Previous Page. If Row Details is enabled, Collapses the Row.</li>
+        <li><b>Right Arrow</b> key is pressed - Navigates to the Next Page. If Row Details is enabled, Expands the Row.</li>
+        <li><b>Up Arrow</b> key is pressed - Selects the row above.</li>
+        <li><b>Down Arrow</b> key is pressed - Selects the row below.</li>
+        <li><b>Page Up/Down</b> is pressed - Navigate Up or Down with one page.</li>
+        <li><b>Home/End</b> is pressed - Navigate to the first or last row on the current page.</li>
+        <li><b>Enter</b> key is pressed - Saves the Edited Row.</li>
+        <li><b>Esc</b> key is pressed - Closes all Editors and Cancels the changes.</li>
+        <li><b>F2</b> key is pressed -  Enters edit mode for the currently selected row.</li>
+        <li><b>Shift+Arrow</b> key extends the selection.</li>
+        <li><b>Shift</b> extends the selection when an end user clicks on a row.</li>
+        <li><b>Ctrl</b> key is pressed - extends the selection when an end user clicks on a row. </li>
+    </ul>
+</div>

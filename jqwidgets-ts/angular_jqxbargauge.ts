@@ -1,11 +1,11 @@
 /*
-jQWidgets v4.5.3 (2017-June)
+jQWidgets v4.5.4 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
-declare let $: any;
+declare let JQXLite: any;
 
 @Component({
     selector: 'jqxBarGauge',
@@ -105,12 +105,12 @@ export class jqxBarGaugeComponent implements OnChanges
 
    createComponent(options?: any): void {
       if (options) {
-         $.extend(options, this.manageAttributes());
+         JQXLite.extend(options, this.manageAttributes());
       }
       else {
         options = this.manageAttributes();
       }
-      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.host = JQXLite(this.elementRef.nativeElement.firstChild);
       if (typeof options.width === 'string' && options.width.indexOf('%') !== -1) {
          options.width = parseInt(options.width, 10) / 100 * this.host.parent().parent().parent().width();
       }

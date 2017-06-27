@@ -1,43 +1,20 @@
-﻿ 
-import { Component, ElementRef, ViewEncapsulation } from '@angular/core';
-
-import { jqxToolBarComponent } from '../../../../../jqwidgets-ts/angular_jqxtoolbar';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
-import { jqxComboBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcombobox';
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
+﻿import { Component, ElementRef, ViewEncapsulation } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    template: 
-        `<jqxToolbar
-            [width]='700' [height]='35'
-            [tools]='tools' [initTools]='initTools'>
-        </jqxToolbar>`,
-    styles: [`
-        .buttonIcon
-        {
-            margin: -5px 0 0 -3px;
-            width: 16px;
-            height: 17px;
-        }
-    `],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
     encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent
-{
+export class AppComponent {
     tools: string = 'toggleButton toggleButton toggleButton | toggleButton | dropdownlist combobox | input | custom';
-
-    initTools: any = (type: string, index: number, tool: any, menuToolIninitialization): void =>
-    {
+    initTools: any = (type: string, index: number, tool: any, menuToolIninitialization): void => {
         let icon = document.createElement('div');
-        if (type == "toggleButton")
-        {
+        if (type == "toggleButton") {
             icon.className = 'jqx-editor-toolbar-icon jqx-editor-toolbar-icon-arctic buttonIcon ';
         }
-        switch (index)
-        {
+        switch (index) {
             case 0:
                 icon.className += "jqx-editor-toolbar-icon-bold jqx-editor-toolbar-icon-bold-arctic";
                 icon.setAttribute("title", "Bold");
@@ -56,14 +33,11 @@ export class AppComponent
             case 3:
                 tool.jqxToggleButton({ width: 80, toggled: true });
                 tool.text("Enabled");
-                tool.on("click", () =>
-                {
+                tool.on("click", () => {
                     let toggled = tool.jqxToggleButton("toggled");
-                    if (toggled)
-                    {
+                    if (toggled) {
                         tool.text("Enabled");
-                    } else
-                    {
+                    } else {
                         tool.text("Disabled");
                     }
                 });
@@ -80,7 +54,7 @@ export class AppComponent
             case 7:
                 let button = document.createElement('div');
                 let img = document.createElement('img');
-                img.src = '../../../../images/administrator.png'
+                img.src = '../images/administrator.png'
                 img.title = 'Custom tool';
                 button.appendChild(img);
                 tool[0].appendChild(button);

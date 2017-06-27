@@ -1,0 +1,27 @@
+﻿<jqxChart #myChart
+    [width]="850" [height]="500"
+    [title]="'Fitness & exercise weekly scorecard'"
+    [description]="'Time spent in vigorous exercise by activity'"
+    [showLegend]="true" [enableAnimations]="false" [padding]="padding"
+    [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis"
+    [valueAxis]="valueAxis" [seriesGroups]="seriesGroups" [colorScheme]="'scheme05'">
+</jqxChart>
+
+<div style="margin-top: 10px">
+    <div style="float: left">
+        <jqxCheckBox [width]="120" (onChange)="RunningOnChange($event)">
+          Running
+        </jqxCheckBox>
+        <jqxCheckBox [width]="120" (onChange)="SwimmingOnChange($event)">
+          Swimming
+        </jqxCheckBox>
+    </div>
+    <div style="float: left">
+        <jqxCheckBox [width]="120" checked="true" (onChange)="CyclingOnChange($event)">
+          Cycling
+        </jqxCheckBox>
+        <jqxCheckBox [width]="120" (onChange)="GoalOnChange($event)">
+          Personal Goal
+        </jqxCheckBox>
+    </div>
+</div>

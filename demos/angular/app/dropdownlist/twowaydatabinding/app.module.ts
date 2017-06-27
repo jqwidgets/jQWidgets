@@ -1,15 +1,20 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
+import { DropDownListModule } from '../../modules/dropdownlist.module';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule],
-    declarations: [AppComponent, jqxDropDownListComponent],
-    bootstrap: [AppComponent]
+  declarations: [
+      AppComponent
+  ],
+  imports: [
+      BrowserModule, CommonModule, FormsModule, DropDownListModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

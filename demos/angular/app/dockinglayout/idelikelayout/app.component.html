@@ -1,0 +1,44 @@
+﻿<jqxDockingLayout #myDockingLayout [width]='800' [height]='600' [layout]='layout'>
+    <!--The panel content divs can have a flat structure-->
+    <!--autoHideGroup-->
+    <div data-container="ToolboxPanel">
+      List of tools
+    </div>
+    <div data-container="HelpPanel">
+      Help topics
+    </div>
+    <!--documentGroup-->
+    <div data-container="Document1Panel">
+      <div style="padding: 5px;">
+        <textarea id="Document1TextArea" style="margin: 5px;"></textarea>
+      </div>
+    </div>
+    <div data-container="Document2Panel">
+      <div style="padding: 5px;">
+        <textarea id="Document2TextArea" style="margin: 5px;"></textarea>
+      </div>
+    </div>
+    <!--bottom tabbedGroup-->
+    <div data-container="ErrorListPanel">
+      No errors.
+    </div>
+    <div data-container="PerformancePanel">
+      <div id="cpuUsage" style="width: 99%; height: 100px;">
+      </div>
+    </div>
+    <!--right tabbedGroup-->
+    <div data-container="SolutionExplorerPanel">
+      <div id="solutionExplorerTree" style="border: none;">
+      </div>
+    </div>
+    <div data-container="PropertiesPanel">
+      List of properties
+    </div>
+</jqxDockingLayout>
+
+<br />
+
+<jqxButton #viewServerExplorerBtn
+    (onClick)="viewServerExplorerBtnOnClick()">   
+    View Server Explorer
+</jqxButton>

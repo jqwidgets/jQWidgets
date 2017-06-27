@@ -1,14 +1,18 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-
-import { jqxNavigationBarComponent } from '../../../../../jqwidgets-ts/angular_jqxnavigationbar';
+import { AppComponent } from './app.component'; 
+import { NavigationBarModule } from '../../modules/navigationbar.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxNavigationBarComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, NavigationBarModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

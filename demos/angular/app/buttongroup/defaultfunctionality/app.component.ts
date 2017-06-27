@@ -1,33 +1,30 @@
- 
-import { Component } from '@angular/core';
+﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { jqxButtonGroupComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttongroup';
-import { jqxRadioButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxradiobutton';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: `../app/buttongroup/defaultfunctionality/app.component.htm`
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
-    mode: string = 'default';
+export class AppComponent {
+    @ViewChild('myButtonGroup') myButtonGroup: jqxButtonGroupComponent;
+    @ViewChild('myLog') myLog: ElementRef;
 
-    defaltModeSelected(): void
-    {
-        this.mode = 'default';
-    }
-    checkBoxModeSelected(): void
-    {
-        this.mode = 'checkbox';
-    }
-    radioModeSelected(): void
-    {
-        this.mode = 'radio';
-    }
-    buttonGroupOnClick(event: any): void
-    {
+    myDefaultModeButtonChecked(): void {
+        this.myButtonGroup.mode('default');
+    };
+
+    myRadioModeButtonChecked(): void {
+        this.myButtonGroup.mode('radio');
+    };
+
+    myCheckBoxModeButtonChecked(): void {
+        this.myButtonGroup.mode('checkbox');
+    };
+
+    groupOnBtnClick(event: any): void {
         let clickedButton = event.args.button;
-        (<HTMLElement>document.getElementById("log")).innerHTML = "Clicked: " + clickedButton[0].id;
+        this.myLog.nativeElement.innerHTML = `Clicked: ${clickedButton[0].id}`;
     }
 }

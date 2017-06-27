@@ -2,44 +2,45 @@
 <html>
 
   <head>
-    <title id='Description'>Angular DockPanel</title>
+    <title id='Description'>Angular DockPanel DefaultFunctionalities</title>
+    <meta name="description" content="This example shows a drag and drop function in Angular DockPanel." />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- Styles -->
-      <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-      <style>
-          body, html {
-              height: 100%;
-              overflow: hidden;
-          }
-      </style>
 
-    <!-- jQWidgets -->
-    
-    <script src="../../../jqwidgets/jqxcore.js"></script>
-    <script src="../../../jqwidgets/jqxdockpanel.js"></script>
-    <script src="../../../scripts/demos.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
 
+    <!-- jQWidgets -->   
+      <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+      <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+      <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+      <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+      <script type="text/javascript" src="../../../jqwidgets/jqxmenu.js"></script>
+      <script type="text/javascript" src="../../../jqwidgets/jqxgrid.js"></script>
+      <script type="text/javascript" src="../../../jqwidgets/jqxgrid.columnsresize.js"></script>
+      <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+      <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+      <script type="text/javascript" src="../../../jqwidgets/jqxdragdrop.js"></script>
+      <script type="text/javascript" src="../../../scripts/demos.js"></script>
     
-    <script src="../node_modules/typescript/lib/typescript.js"></script>
+    <!-- Angular -->
     <script src="../node_modules/core-js/client/shim.min.js"></script>
-    <script src="../node_modules/zone.js/dist/zone.js"></script>
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
-
-    <!-- Configure SystemJS -->
-    <script src="../systemjs.config.js"></script>
-    <script>
-        System.import('../app/dockpanel/defaultfunctionality/main').catch( (err) => { console.error(err); });
-    </script>
+    <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+    <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>
 
   </head>
 
   <!-- Display the application -->
   <body>
+
     <div class="example-description">
-        Angular Dock Panel Example.
+        Drag a T-Shirt from the left area and drop it into the 'Shopping Cart' table.
     </div>
-    <my-app></my-app>
+
+    <app-root>Loading...</app-root>
+
+    <script src="../aot/dockpanel_defaultfunctionality.bundle.js"></script>
+
   </body>
 
 </html>

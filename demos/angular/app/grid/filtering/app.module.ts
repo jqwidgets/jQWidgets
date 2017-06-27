@@ -1,17 +1,26 @@
-import { NgModule }       from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
-import { jqxCheckBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcheckbox';
+import { GridModule } from '../../modules/grid.module';
+import { ButtonModule } from '../../modules/button.module';
+import { CheckBoxModule } from '../../modules/checkbox.module';
+import { PanelModule } from '../../modules/panel.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxGridComponent, jqxButtonComponent, jqxPanelComponent, jqxCheckBoxComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, CommonModule, GridModule, CheckBoxModule, ButtonModule, PanelModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
+
+
 

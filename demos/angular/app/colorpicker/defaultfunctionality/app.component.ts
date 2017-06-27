@@ -1,35 +1,23 @@
- 
-import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
+﻿import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
 
 import { jqxDropDownButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownbutton';
-import { jqxScrollViewComponent }     from '../../../../../jqwidgets-ts/angular_jqxscrollview';
-import { jqxColorPickerComponent }    from '../../../../../jqwidgets-ts/angular_jqxcolorpicker';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: `../app/colorpicker/defaultfunctionality/app.component.htm`,
-    styleUrls: ['../app/colorpicker/defaultfunctionality/app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent implements AfterViewInit
-{
+export class AppComponent implements AfterViewInit {
     @ViewChild('dropDownButton') myDropDown: jqxDropDownButtonComponent;
 
-    ngAfterViewInit(): void
-    {
-        setTimeout(() =>
-        {
-            this.myDropDown.setContent(this.getTextElementByColor({ hex: "FFAABB" }));
+    ngAfterViewInit(): void {
+        this.myDropDown.setContent(this.getTextElementByColor({ hex: "FFAABB" }));
+    }
 
-            (<HTMLElement>document.getElementsByClassName('jqx-scrollview')[0]).style.border = '15px solid #ffaabb';
-            (<HTMLElement>document.getElementsByClassName('jqx-scrollview')[0]).style.borderRadius = '10px';
-        });   
-    }   
-
-    getTextElementByColor(color: any): any
-    {
-        if (color == 'transparent' || color.hex == "")
-        {
+    getTextElementByColor(color: any): any {
+        if (color == 'transparent' || color.hex == "") {
             return '<div style="text-shadow: none; position: relative; padding-bottom: 2px; margin-top: 2px;">transparent</div>';
         }
         let nThreshold = 105;
@@ -39,8 +27,7 @@ export class AppComponent implements AfterViewInit
         return element;
     }
 
-    colorPickerEvent(event: any): void
-    { 
+    colorPickerEvent(event: any): void {
         this.myDropDown.setContent(this.getTextElementByColor(event.args.color));
         (<HTMLElement>document.getElementsByClassName('jqx-scrollview')[0]).style.borderColor = '#' + event.args.color.hex;
     }

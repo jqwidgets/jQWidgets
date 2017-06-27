@@ -1,0 +1,47 @@
+﻿<div style="margin-left: 60px; float: left">
+
+    <jqxTree #myTree (onSelect)="myTreeOnSelect($event)"
+        (onExpand)="myTreeOnExpand($event)" (onCollapse)="myTreeOnCollapse($event)"
+        [width]="250" [source]="source">
+        <ul>
+          <li item-selected='true'>Home</li>
+          <li item-expanded='true'>
+            Solutions
+            <ul>
+              <li>Education</li>
+              <li>Financial services</li>
+              <li>Government</li>
+              <li>Manufacturing</li>
+              <li>
+                Solutions
+                <ul>
+                  <li>eLearning</li>
+                  <li>Mobile</li>
+                  <li>RIA</li>
+                  <li>Training</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Products
+            <ul>
+              <li>PC products</li>
+              <li>Mobile products</li>
+              <li>All products</li>
+            </ul>
+          </li>
+        </ul>
+    </jqxTree>
+
+</div>
+
+<div style="margin-left: 20px; float: left; border: none !important">
+    <div>
+        <span>Events:</span>
+
+        <jqxPanel #myPanel [width]="250" [height]="200"></jqxPanel>
+
+    </div>
+</div>
+

@@ -1,54 +1,43 @@
- 
-import { Component } from '@angular/core';
-
-import { jqxCheckBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcheckbox';
+﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: `../app/checkbox/defaultfunctionality/app.component.htm`
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{ 
-    checkBox10OnChange(event)
-    {
-        let checked = event.args.checked;
-        if (checked)
-        {
-            (<HTMLElement>document.getElementsByTagName('angularCheckBox')[9].childNodes[0].childNodes.item(2)).innerHTML = 'Checked';
-        }
-        else
-        {
-            (<HTMLElement>document.getElementsByTagName('angularCheckBox')[9].childNodes[0].childNodes.item(2)).innerHTML = 'Unchecked';
-        }
-    }
-    checkBox11OnChange(event)
-    {
-        let checked = event.args.checked;
-        if (checked)
-        {
-            (<HTMLElement>document.getElementsByTagName('angularCheckBox')[10].childNodes[0].childNodes.item(2)).innerHTML = 'Checked';
-        }
-        else
-        {
-            (<HTMLElement>document.getElementsByTagName('angularCheckBox')[10].childNodes[0].childNodes.item(2)).innerHTML = 'Unchecked';
-        }
-    }
-    checkBox12OnChange(event)
-    {
-        let checked = event.args.checked;
-        if (checked)
-        {
-            (<HTMLElement>document.getElementsByTagName('angularCheckBox')[11].childNodes[0].childNodes.item(2)).innerHTML = 'Checked';
-        }
-        else if (false == checked)
-        {
-            (<HTMLElement>document.getElementsByTagName('angularCheckBox')[11].childNodes[0].childNodes.item(2)).innerHTML = 'Unchecked';
-        }
-        else
-        {
-            (<HTMLElement>document.getElementsByTagName('angularCheckBox')[11].childNodes[0].childNodes.item(2)).innerHTML = 'Indeterminate';
-        }
-    }
+export class AppComponent {
+    @ViewChild('span10') span10: ElementRef;
+    @ViewChild('span11') span11: ElementRef;
+    @ViewChild('span12') span12: ElementRef;
 
+    checkBox10OnChange(event: any): void {
+        let checked = event.args.checked;
+        if (checked) {
+            this.span10.nativeElement.innerHTML = 'Checked';
+        }
+        else {
+            this.span10.nativeElement.innerHTML = 'Unchecked';
+        }
+    }
+    checkBox11OnChange(event: any): void {
+        let checked = event.args.checked;
+        if (checked) {
+            this.span11.nativeElement.innerHTML = 'Checked';
+        }
+        else {
+            this.span11.nativeElement.innerHTML = 'Unchecked';
+        }
+    }
+    checkBox12OnChange(event: any): void {
+        let checked = event.args.checked;
+        if (checked) {
+            this.span12.nativeElement.innerHTML = 'Checked';
+        }
+        else if (false == checked) {
+            this.span12.nativeElement.innerHTML = 'Unchecked';
+        }
+        else {
+            this.span12.nativeElement.innerHTML = 'Indeterminate';
+        }
+    }
 }

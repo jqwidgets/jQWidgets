@@ -1,0 +1,14 @@
+﻿<jqxGrid 
+    [width]="850" [height]="150" [source]="dataAdapter" [columns]="columns" [columnsresize]="true">
+</jqxGrid>
+
+<br /><br />
+
+<jqxButton style="float: left; margin-right: 5px" (onClick)="addItemBtnOnClick()">Add Item</jqxButton>
+<jqxButton style="float: left; margin-right: 5px" (onClick)="deleteItemBtnOnClick()">Delete Item</jqxButton>
+<jqxButton style="float: left; margin-right: 5px" (onClick)="updateItemBtnOnClick()">Update Item</jqxButton>
+<jqxButton style="float: left" (onClick)="updatePathBtnOnClick()">Update Path</jqxButton>
+
+<br />
+
+<div #log style="clear: both"></div>

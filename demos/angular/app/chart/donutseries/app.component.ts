@@ -1,45 +1,34 @@
- 
-import { Component } from '@angular/core';
-
-import { jqxChartComponent } from '../../../../../jqwidgets-ts/angular_jqxChart';
+﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    template:
-    `<jqxChart [width]='850' [height]='500'
-        [title]='title' [description]='description' [showLegend]='true'
-        [enableAnimations]='true' [showBorderLine]='true' [padding]='padding'
-        [legendLayout]='legendLayout' [titlePadding]='titlePadding' [seriesGroups]='seriesGroups'>
-     </jqxChart>`
-}) 
+    selector: 'app-root',
+    templateUrl: './app.component.html'
+})
 
-export class AppComponent
-{
+export class AppComponent {
     data_source_mobile: any =
     {
-        datatype: "csv",
+        datatype: 'csv',
         datafields: [
             { name: 'Browser' },
             { name: 'Share' }
         ],
         url: '../sampledata/mobile_browsers_share_dec2011.txt'
     };
-    dataAdapter_mobile: any = new $.jqx.dataAdapter(this.data_source_mobile, { async: false, autoBind: true, loadError: (xhr, status, error) => { alert('Error loading "' + this.data_source_mobile.url + '" : ' + error); } });
+
+    dataAdapter_mobile: any = new jqx.dataAdapter(this.data_source_mobile, { async: false, autoBind: true, loadError: (xhr: any, status: any, error: any) => { alert('Error loading "' + this.data_source_mobile.url + '" : ' + error); } });
 
     data_source_desktop: any =
     {
-        datatype: "csv",
+        datatype: 'csv',
         datafields: [
             { name: 'Browser' },
             { name: 'Share' }
         ],
         url: '../sampledata/desktop_browsers_share_dec2011.txt'
     };
-    dataAdapter_desktop: any = new $.jqx.dataAdapter(this.data_source_desktop, { async: false, autoBind: true, loadError: (xhr, status, error) => { alert('Error loading "' + this.data_source_desktop.url + '" : ' + error); } });
 
-    title: string = "Mobile & Desktop browsers share";
-
-    description: string = "(source: wikipedia.org)";
+    dataAdapter_desktop: any = new jqx.dataAdapter(this.data_source_desktop, { async: false, autoBind: true, loadError: (xhr: any, status: any, error: any) => { alert('Error loading "' + this.data_source_desktop.url + '" : ' + error); } });
 
     legendLayout: any = { left: 520, top: 170, width: 300, height: 200, flow: 'vertical' };
 
@@ -47,7 +36,7 @@ export class AppComponent
 
     titlePadding: any = { left: 0, top: 0, right: 0, bottom: 10 };
 
-    seriesGroups: any[] = 
+    seriesGroups: any[] =
     [
         {
             type: 'donut',
@@ -95,5 +84,4 @@ export class AppComponent
             ]
         }
     ];
-    
 }

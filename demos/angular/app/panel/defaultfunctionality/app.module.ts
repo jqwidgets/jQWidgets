@@ -1,14 +1,18 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';;
+import { AppComponent } from './app.component'; 
+import { PanelModule } from '../../modules/panel.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxPanelComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, PanelModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

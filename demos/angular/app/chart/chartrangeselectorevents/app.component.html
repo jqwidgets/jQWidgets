@@ -1,0 +1,14 @@
+﻿<jqxChart #myChart 
+    (onClick)="dumpEventInfo($event)" (onToggle)="dumpEventInfo($event)"
+    (onRangeSelectionChanging)="dumpEventInfo($event)"  (onRangeSelectionChanged)="dumpEventInfo($event)"
+    (onRefreshBegin)="dumpEventInfo($event)"  (onRefreshEnd)="dumpEventInfo($event)"
+    [width]="850" [height]="500"
+    [title]="'S&P 500 Index value and daily volume'" 
+    [description]="'(June 2010 - November 2014)'"
+    [enableCrosshairs]="true" [enableAnimations]="true" [padding]="padding"
+    [animationDuration]="1500" [source]="dataAdapter" [xAxis]="xAxis"
+    [seriesGroups]="seriesGroups" [colorScheme]="'scheme17'">
+</jqxChart>
+
+<div #eventsText style="width: 847px; height: 200px; overflow: scroll; border: 1px solid lightgrey"></div>
+

@@ -1,15 +1,20 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-
-import { AppComponent } from './app.component';
-
-import { jqxRatingComponent } from '../../../../../jqwidgets-ts/angular_jqxrating';
+import { AppComponent } from './app.component'; 
+import { RatingModule } from '../../modules/rating.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxRatingComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, RatingModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
 

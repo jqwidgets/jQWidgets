@@ -1,0 +1,18 @@
+﻿<div #selectionlog style="float: left; font-size: 12px; font-family: Verdana">
+  <h3>Alignment</h3>
+
+  <jqxRadioButton (onChecked)="leftBtn()">
+      Left
+  </jqxRadioButton>
+
+  <jqxRadioButton style="margin-top: 10px" (onChecked)="rightBtn()" [checked]="true">
+      Right
+  </jqxRadioButton>
+
+</div>
+
+<jqxDateTimeInput #myDateTimeInput 
+    style="float: left; margin-top: 20px; margin-left: 100px;"
+    [width]="150" [height]="25" [animationType]="'fade'" 
+    [dropDownHorizontalAlignment]="'right'">
+</jqxDateTimeInput>

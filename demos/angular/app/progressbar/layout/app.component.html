@@ -1,0 +1,33 @@
+﻿<div id='jqxWidget'>
+  <div id="container" style="font-family: Verdana; font-size: 12px; float: left">
+    <b>Default Layout</b>
+    <jqxProgressBar #horizontalProgressBar
+                    [width]="300"
+                    [height]="40"
+                    [value]="50">
+    </jqxProgressBar><br />
+    <jqxProgressBar #verticalProgressBar style="margin-top: 10px;"
+                    [width]="40"
+                    [height]="300"
+                    [orientation]="'vertical'"
+                    [value]="50">
+    </jqxProgressBar>
+    <div style="margin-top: 10px;" id='verticalProgressBar'></div>
+  </div>
+  <div style="float: right; font-family: Verdana; font-size: 12px;" id="rightContainer">
+    <b>Reversed Layout</b>
+    <jqxProgressBar #mirrorHorizontalProgressBar
+                    [width]="300"
+                    [height]="40"
+                    [layout]="'reverse'"
+                    [value]="50">
+    </jqxProgressBar><br />
+    <jqxProgressBar #mirrorVerticalProgressBar style="float: right;"
+                    [width]="40"
+                    [height]="300"
+                    [orientation]="'reverse'"
+                    [layout]="'vertical'"
+                    [value]="50">
+    </jqxProgressBar>
+  </div>
+</div>

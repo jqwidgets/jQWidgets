@@ -1,0 +1,17 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left">
+
+    <jqxGrid #myGrid
+        [width]="850" [source]="dataAdapter" [columns]="columns"
+        [sortable]="true" [altrows]="true" [autoheight]="true"
+        [selectionmode]="'multiplecellsadvanced'">
+    </jqxGrid>
+
+    <div style="margin-top: 20px">
+      <div style="margin-left: 10px; float: left">
+
+        <jqxButton (onClick)="btnOnClick()">Print</jqxButton>
+
+      </div>
+    </div>
+
+</div>

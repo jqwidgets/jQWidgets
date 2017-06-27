@@ -1,14 +1,17 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
+import { CommonModule }   from '@angular/common';
 
+import { ComboBoxModule }   from '../../modules/combobox.module';
 import { AppComponent } from './app.component';
 
-import { jqxComboBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcombobox';
-
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxComboBoxComponent],
+    imports: [BrowserModule, CommonModule, ComboBoxModule],
+    declarations: [AppComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
 

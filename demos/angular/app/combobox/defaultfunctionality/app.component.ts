@@ -1,30 +1,21 @@
- 
-import { Component } from '@angular/core';
-
-import { jqxComboBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcombobox';
+﻿import { Component, ViewChild } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    template: `<jqxComboBox
-                   [width]='250' [height]='25' [source]='source' [selectedIndex]='0'>
-               </jqxComboBox>`
-}) 
+    selector: 'app-root',
+    templateUrl: './app.component.html'
+})
 
-export class AppComponent
-{ 
+export class AppComponent {
     source: any[] = this.generateHTML();
 
-    generateHTML(): any[]
-    {
+    generateHTML(): any[] {
         let source = new Array();
 
-        for (let i = 0; i < 10; i++)
-        {
+        for (let i = 0; i < 10; i++) {
             let movie = 'avatar.png';
             let title = 'Avatar';
             let year = 2009;
-            switch (i)
-            {
+            switch (i) {
                 case 1:
                     movie = 'endgame.png';
                     title = 'End Game';

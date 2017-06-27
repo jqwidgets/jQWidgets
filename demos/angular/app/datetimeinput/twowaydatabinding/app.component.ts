@@ -1,17 +1,3 @@
- 
-import { Component } from '@angular/core';
-
-import { jqxDateTimeInputComponent } from '../../../../../jqwidgets-ts/angular_jqxdatetimeinput';
-
-@Component({
-    selector: 'my-app',
-    templateUrl: `../app/datetimeinput/twowaydatabinding/app.component.htm`
-}) 
-
-export class AppComponent
-{ 
-    time: string;
-    date: string;
-}
-
-
+﻿import { Component } from '@angular/core';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent { 
+    time: any = new Date();
+    date: any = new Date(); }

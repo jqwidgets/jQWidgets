@@ -1,15 +1,19 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-
-import { jqxDockingLayoutComponent } from '../../../../../jqwidgets-ts/angular_jqxdockinglayout';
-import { jqxTreeComponent }          from '../../../../../jqwidgets-ts/angular_jqxtree';
+import { DockingLayoutModule } from '../../modules/dockinglayout.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxDockingLayoutComponent, jqxTreeComponent],
-    bootstrap: [AppComponent]
+  declarations: [
+      AppComponent
+  ],
+  imports: [
+      BrowserModule, CommonModule, DockingLayoutModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

@@ -1,24 +1,19 @@
-﻿ 
-import { Component, ViewChild } from '@angular/core';
+﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { jqxMenuComponent } from '../../../../../jqwidgets-ts/angular_jqxmenu';
-import { jqxCheckBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcheckbox';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: '../app/menu/defaultfunctionality/app.component.htm'
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
+export class AppComponent {
     @ViewChild('menuReference') myMenu: jqxMenuComponent;
 
-    animationOnChange(event: any): void
-    {
+    animationOnChange(event: any): void {
         let value = event.args.checked;
         // enable or disable the menu's animation.
-        if (!value)
-        {
+        if (!value) {
             this.myMenu.setOptions
                 ({
                     animationShowDuration: 0,
@@ -26,8 +21,7 @@ export class AppComponent
                     animationShowDelay: 0
                 });
         }
-        else
-        {
+        else {
             this.myMenu.setOptions
                 ({
                     animationShowDuration: 300,
@@ -36,59 +30,43 @@ export class AppComponent
                 });
         }
     }
-
-    disabledOnChange(event: any): void
-    {
+    disabledOnChange(event: any): void {
         let value = event.args.checked;
         // enable or disable the menu
-        if (!value)
-        {
+        if (!value) {
             this.myMenu.disabled(false);
         }
-        else
-        {
+        else {
             this.myMenu.disabled(true);
         }
     }
-
-    hoverOnChange(event: any): void
-    {
+    hoverOnChange(event: any): void {
         let value = event.args.checked;
         // enable or disable the menu's hover effect.
-        if (!value)
-        {
+        if (!value) {
             this.myMenu.enableHover(false);
         }
-        else
-        {
+        else {
             this.myMenu.enableHover(true);
         }
     }
-
-    openOnChange(event: any): void
-    {
+    openOnChange(event: any): void {
         let value = event.args.checked;
         // enable or disable the opening of the top level menu items when the user hovers them.
-        if (!value)
-        {
+        if (!value) {
             this.myMenu.autoOpen(false);
         }
-        else
-        {
+        else {
             this.myMenu.autoOpen(true);
         }
     }
-
-    topLevelArrowsOnChange(event: any): void
-    {
+    topLevelArrowsOnChange(event: any): void {
         let value = event.args.checked;
         // enable or disable the top level arrows.
-        if (!value)
-        {
+        if (!value) {
             this.myMenu.showTopLevelArrows(false);
         }
-        else
-        {
+        else {
             this.myMenu.showTopLevelArrows(true);
         }
     }

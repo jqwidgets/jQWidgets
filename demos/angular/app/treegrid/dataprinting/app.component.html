@@ -1,0 +1,15 @@
+﻿<jqxTreeGrid
+             [width]="850"
+             [source]="dataAdapter"
+             [sortable]="true"
+             [exportSettings]="{fileName: null}"
+             [columns]="columns"
+             [ready]="ready"
+             #TreeGrid>
+</jqxTreeGrid>
+
+<div style="margin-top: 20px;">
+  <div style="float: left; margin-left: 10px;">
+    <jqxButton #print [width]="80" (onClick)="printClick()">Print</jqxButton>
+  </div>
+</div>

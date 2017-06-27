@@ -1,0 +1,10 @@
+﻿<jqxKanban
+    (onItemMoved)="myKanbanOnItemMoved($event)"
+    (onColumnCollapsed)="myKanbanOnColumnCollapsed($event)"
+    (onColumnExpanded)="myKanbanOnColumnExpanded($event)" 
+    (onItemAttrClicked)="myKanbanOnItemAttrClicked($event)" 
+    (onColumnAttrClicked)="myKanbanOnColumnAttrClicked($event)"
+    [source]="dataAdapter" [columns]="columns" [resources]="resourcesAdapterFunc()">
+</jqxKanban>
+
+<div #myLog></div>

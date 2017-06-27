@@ -1,48 +1,22 @@
-﻿ 
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+﻿import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
 
-import { jqxExpanderComponent } from '../../../../../jqwidgets-ts/angular_jqxexpander';
 import { jqxTreeComponent } from '../../../../../jqwidgets-ts/angular_jqxtree';
+import { jqxDropDownButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownbutton';
 
 @Component({
-    selector: 'my-app',
-    template: 
-        `<jqxExpander
-             [width]='300' [height]='370' 
-             [showArrow]='false' [toggleMode]='none'> 
-        <div>
-            Folders
-        </div>
-        <div style="overflow: hidden;">
-
-            <jqxTree #treeReference 
-                [width]='"100%"' [height]='"100%"' [source]='treeSource'>
-            </jqxTree>
-
-        </div>
-    </jqxExpander>`,
-
-    styles: [`
-        angularTree > div:first-child
-        {
-            height: 100%;
-            border: none;
-        }
-    `]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent implements AfterViewInit
-{
+export class AppComponent implements AfterViewInit {
     @ViewChild('treeReference') tree: jqxTreeComponent;
-
-    ngAfterViewInit(): void 
-    {
-        setTimeout(() =>
-        {
+    ngAfterViewInit(): void {
+        setTimeout(() => {
             this.tree.selectItem(null);
-        });        
+        });
     }
-
     treeSource: any[] =
     [
         {

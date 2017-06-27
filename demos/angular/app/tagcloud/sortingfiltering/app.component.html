@@ -1,0 +1,49 @@
+﻿<jqxTagCloud #tagCloud
+             [width]="600"
+             [height]="200"
+             [source]="dataAdapter"
+             [fontSizeUnit]="'px'"
+             [minFontSize]="12"
+             [maxFontSize]="20"
+             [displayMember]="'country'"
+             [valueMember]="'rate'"
+             [urlBase]="'http://localhost/'"
+             [minColor]="'#00AA99'"
+             [maxColor]="'#FF0000'">
+</jqxTagCloud>
+
+    Sort by:
+<jqxDropDownList #sortByListBox
+                 (onSelect)="sortByListBoxSelect($event)"
+                 [selectedIndex]="0" [width]="width" [height]="height"
+                 [source]="['none', 'label', 'value']" [autoDropDownHeight]="true"></jqxDropDownList>
+
+    Sort Direction:
+<jqxDropDownList #sortDirectionListBox
+                 (onSelect)="sortDirectionListBoxSelect($event)"
+                 [selectedIndex]="0" [width]="width" [height]="height"
+                 [source]="['ascending', 'descending']" [autoDropDownHeight]="true"></jqxDropDownList>
+
+    Minimal Weight(value) Allowed:
+<jqxDropDownList #minValueListBox
+                 (onSelect)="minValueListBoxSelect($event)"
+                 [selectedIndex]="0" [width]="width" [height]="height"
+                 [source]="['0', '5', '15', '25']" [autoDropDownHeight]="true"></jqxDropDownList>
+
+    Max number of tags:
+<jqxDropDownList #maxTagsListBox
+                 (onSelect)="maxTagsListBoxSelect($event)"
+                 [selectedIndex]="0" [width]="width" [height]="height"
+                 [source]="['0', '10', '15', '20']" [autoDropDownHeight]="true"></jqxDropDownList>
+
+<jqxCheckBox #displayTagValueCheckbox style="margin-top: 5px"
+             (onChange)="displayTagValueCheckboxChange($event)"
+             [width]="120" [height]="25">
+  Display Tag Value
+</jqxCheckBox>
+
+<jqxCheckBox #takeTopWeightedItems
+             (onChange)="takeTopWeightedItemsChange($event)"
+             [width]="120" [height]="25">
+  takeTopWeightedItems
+</jqxCheckBox>

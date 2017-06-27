@@ -1,0 +1,8 @@
+﻿<jqxDropDownButton #myDropDownButton [width]="150" [height]="25">
+
+    <jqxGrid #myGrid (onRowselect)="myGridOnRowSelect($event)"
+        [width]="550" [source]="dataAdapter" [columns]="columns" [ready]="ready"
+        [pageable]="true" [columnsresize]="true" [autoheight]="true">
+    </jqxGrid>
+
+</jqxDropDownButton>

@@ -1,26 +1,23 @@
-﻿ 
-import { Component, ViewChild } from '@angular/core';
+﻿import { Component, ViewChild } from '@angular/core';
 
 import { jqxRangeSelectorComponent } from '../../../../../jqwidgets-ts/angular_jqxrangeselector';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: '../app/rangeselector/defaultfunctionality/app.component.htm'
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
+export class AppComponent {
     @ViewChild('rangeSelectorReference') myRangeSelector: jqxRangeSelectorComponent;
 
-    onClickGet(): void
-    {
+    onClickGet(): void {
+        // Get Range.
         let range = this.myRangeSelector.getRange();
         alert("The selected range is from " + range.from + " to " + range.to);
-    }
+    };
 
-    onClickSet(): void
-    {
+    onClickSet(): void {
+        // Set Range.
         this.myRangeSelector.setRange(30, 70);
-    }
+    };
 }

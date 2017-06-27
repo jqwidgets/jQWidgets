@@ -1,17 +1,12 @@
 ﻿ <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title id="Description">Angular ResponsivePanel DefaultFunctionality</title>
+    <meta name="description" content="This is an example of the default functionalities of Angular ResponsivePanel." />
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title id="Description">The Responsive Panel is collapsed when the owner's container width is less that the collapseBreakpoint property value and expanded when it is higher. Angular2 demos</title>
     <!-- Styles -->
     <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <style>
-        body, html {
-            height: 100%;
-            overflow: hidden;
-        }
-    </style>
 
     <!-- jQWidgets -->
     <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
@@ -20,26 +15,25 @@
     <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
     <script type="text/javascript" src="../../../jqwidgets/jqxpanel.js"></script>
     <script type="text/javascript" src="../../../jqwidgets/jqxresponsivepanel.js"></script>
-    <script src="../../../scripts/demos.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
 
     
-    <script src="../node_modules/typescript/lib/typescript.js"></script>
+    <!-- Angular -->
     <script src="../node_modules/core-js/client/shim.min.js"></script>
-    <script src="../node_modules/zone.js/dist/zone.js"></script>
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+    <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+    <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>
 
-    <!-- Configure SystemJS -->
-    <script src="../systemjs.config.js"></script>
-    <script>
-        System.import('../app/responsivePanel/defaultfunctionality/main').catch( (err) => { console.error(err); });
-    </script>
 </head>
 
 <!-- Display the application -->
 <body>
     <div class="example-description">
-        Angular Responsive Panel Example.
+        The Responsive Panel is collapsed when the owner's container width is less that the collapseBreakpoint property value and expanded when it is higher.
     </div>
-    <my-app></my-app>
+    <app-root>Loading...</app-root>
+
+        <script src="../aot/responsivepanel_defaultfunctionality.bundle.js"></script>
+
+
 </body>
 </html>

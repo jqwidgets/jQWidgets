@@ -1,0 +1,53 @@
+﻿<div id="settings-panel">
+  <div class="sections-top-shadow"></div>
+  <div class="settings-section-top settings-section">
+    <div class="settings-label">Ringtone</div>
+    <div class="settings-setter">
+      <div class="settings-melody">Marimba</div>
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-label">New Mail</div>
+    <div class="settings-setter">
+      <jqxSwitchButton (onChecked)="onChecked(1)" (onUnchecked)="onUnchecked(1)"
+          [width]='81' [height]='27' [checked]='true'>
+      </jqxSwitchButton>
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-label">Sent Mail</div>
+    <div class="settings-setter">
+      <jqxSwitchButton (onChecked)="onChecked(2)" (onUnchecked)="onUnchecked(2)"
+          [width]='81' [height]='27' [checked]='true'>
+      </jqxSwitchButton>
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-label">Calendar Alerts</div>
+    <div class="settings-setter">
+      <jqxSwitchButton (onChecked)="onChecked(3)" (onUnchecked)="onUnchecked(3)"
+          [width]='81' [height]='27' [checked]='true'>
+      </jqxSwitchButton>
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-label">Lock Sounds</div>
+    <div class="settings-setter">
+      <jqxSwitchButton (onChecked)="onChecked(4)" (onUnchecked)="onUnchecked(4)"
+          [width]='81' [height]='27' [checked]='true'>
+      </jqxSwitchButton>
+    </div>
+  </div>
+  <div class="sections-section-bottom settings-section">
+    <div class="settings-label">Keyboard Clicks</div>
+    <div class="settings-setter">
+      <jqxSwitchButton (onChecked)="onChecked(5)" (onUnchecked)="onUnchecked(5)"
+          [width]='81' [height]='27' [checked]='false'>
+      </jqxSwitchButton>
+    </div>
+  </div>
+</div>
+<div class="events-container">
+  <div>Events:</div>
+  <div #events></div>
+</div>

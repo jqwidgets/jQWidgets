@@ -1,33 +1,29 @@
-﻿/// <reference path="../../../jqwidgets-ts/jqwidgets.d.ts" />
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+﻿
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 
 import { jqxBarGaugeComponent } from '../../../../../jqwidgets-ts/angular_jqxbargauge';
 
 @Component({
-    selector: 'my-app',
-    template: `<jqxBarGauge #barGaugeReference [auto-create]='false'></jqxBarGauge>`
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent implements AfterViewInit
-{
-    @ViewChild('barGaugeReference') myBarGauge: jqxBarGaugeComponent;
+export class AppComponent implements AfterViewInit {
+    @ViewChild('myBarGauge') myBarGauge: jqxBarGaugeComponent;
 
-    ngAfterViewInit(): void
-    {
-        this.myBarGauge.createComponent(this.barGaugeSettings);
+    ngAfterViewInit(): void {
+        this.myBarGauge.createComponent(this.settings);
     }
 
-    barGaugeSettings: jqwidgets.BarGaugeOptions =
-    {
-        colorScheme: "scheme02",
+    settings: any = {
         width: 600,
         height: 600,
         max: 150,
         values: [102, 115, 130, 137],
+        colorScheme: 'scheme02',
         tooltip: {
             visible: true,
-            formatFunction: (value: string) =>
-            {
+            formatFunction: (value: string) => {
                 let realVal = parseInt(value);
                 return ('Year: 2016<br/>Price Index:' + realVal);
             }

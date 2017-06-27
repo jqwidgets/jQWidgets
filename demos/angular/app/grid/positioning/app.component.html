@@ -1,0 +1,15 @@
+﻿<jqxGrid #myGrid
+    [width]="850" [source]="dataAdapter" [columns]="columns"
+    [filterable]="true" [showeverpresentrow]="true" [editable]="true"
+    [showfilterrow]="true" [everpresentrowposition]="'top'" 
+    [selectionmode]="'multiplecellsadvanced'">
+</jqxGrid>
+
+<br />
+
+<jqxRadioButton (onChecked)="topBtnOnChecked()" [checked]="true">Top Position</jqxRadioButton>
+
+<jqxRadioButton (onChecked)="topAboveFilterRowBtnOnChecked()">Top Position Above Filter Row</jqxRadioButton>
+
+<jqxRadioButton  (onChecked)="bottomBtnOnChecked()">Bottom Position</jqxRadioButton>
+

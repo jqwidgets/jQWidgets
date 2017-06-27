@@ -5,12 +5,8 @@
    License: http://jqwidgets.com/license/
 */
 
-interface JQueryStatic {
-    jqx: any;
-}
-
 declare var generatedata: any;
-declare var $: JQueryStatic;
+declare var jqx;
 
 declare module jqwidgets {
     export function createInstance(selector: string, widgetName: string, params?: any): any;
@@ -2131,7 +2127,7 @@ declare module jqwidgets {
         getcolumnaggregateddata(dataField: string, aggregates: Array<any>): string;
         refreshaggregates(): void;
         renderaggregates(): void;
-        exportdata(dataType: string, fileName: string, exportHeader: boolean, rows: Array<Number>, exportHiddenColumns: boolean, serverURL: string, charSet: string): void;
+        exportdata(dataType: string, fileName: string, exportHeader: boolean, rows: Array<Number>, exportHiddenColumns: boolean, serverURL: string, charSet: string): String;
         getstate(): GridGetState;
         loadstate(stateObject: any): void;
         savestate(): GridGetState;

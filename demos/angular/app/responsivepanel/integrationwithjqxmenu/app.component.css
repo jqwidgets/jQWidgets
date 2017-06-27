@@ -1,0 +1,11 @@
+﻿jqxResponsivePanel > div, jqxPanel > div {
+  float: left;
+}
+
+jqxMenu > div {
+  border: none !important;
+}
+
+.jqx-rc-all {
+  border-radius: 0px;
+}

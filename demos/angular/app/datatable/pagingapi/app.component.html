@@ -1,0 +1,47 @@
+﻿<jqxDataTable #myDataTable style="float: left"
+    (onPageChanged)="tableonPageChanged($event)" (onPageSizeChanged)="tableOnPageSizeChanged($event)"
+    [width]="650" [source]="source" [columns]="columns"
+    [pageable]="true" [altRows]="true" [pagerPosition]="'both'">
+</jqxDataTable>
+
+<div style="font-size: 13px; font-family: Verdana; float: left; margin-left: 30px">
+    <div><strong>Settings</strong></div>
+    <div style="margin-top: 10px">
+        <div>Pager Mode:</div>
+
+        <jqxDropDownList style="margin-top: 5px" (onSelect)="pagerModeListOnSelect($event)"
+            [width]="120" [height]="25" [selectedIndex]="0"
+            [source]="['default','advanced']" [autoDropDownHeight]="true">
+        </jqxDropDownList>
+
+        <div style="margin-top: 10px">Pager Position:</div>
+ 
+        <jqxDropDownList style="margin-top: 5px" (onSelect)="pagerPositionListOnSelect($event)"
+            [width]="120" [height]="25" [selectedIndex]="2"
+            [source]="['top','bottom','both']" [autoDropDownHeight]="true">
+        </jqxDropDownList>
+
+        <div style="margin-top: 10px">Go to Page:</div>
+
+        <jqxInput #myInput style="margin-top: 5px; margin-right: 5px; float: left"
+            [width]="120" [height]="25" [value]="1">
+        </jqxInput>
+
+        <div style="margin-top: 6px; float: left">
+          <jqxButton (onClick)="btnOnClick()" [height]="25">
+              Apply
+          </jqxButton>
+        </div>
+
+
+    </div>
+    <div style="clear: both;"></div>
+    <div style="margin-top: 10px;">
+      <div>Event Log:</div>
+
+      <jqxPanel #myPanel style="margin-top: 5px"
+          [width]="150" [height]="150">
+      </jqxPanel>
+
+    </div>
+</div>

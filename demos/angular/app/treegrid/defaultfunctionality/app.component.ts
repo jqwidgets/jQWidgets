@@ -1,17 +1,13 @@
-﻿ 
-import { Component, ViewChild } from '@angular/core';
+﻿import { Component, ViewChild } from '@angular/core';
 
 import { jqxTreeGridComponent } from '../../../../../jqwidgets-ts/angular_jqxtreegrid';
 
 @Component({
-    selector: 'my-app',
-    template: `<jqxTreeGrid #treeGridReference
-                   [width]='850' [height]='"auto"' [source]='dataAdapter' [pageable]='true' [columns]='columns' [ready]='ready'>
-               </jqxTreeGrid>`
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
+export class AppComponent {
     @ViewChild('treeGridReference') treeGrid: jqxTreeGridComponent;
 
     source: any =
@@ -35,10 +31,10 @@ export class AppComponent
             parentDataField: { name: 'ParentEmployeeKey' }
         },
         id: 'EmployeeKey',
-        url: '../../demos/sampledata/employeesadv.csv'
-    }
+        url: '../sampledata/employeesadv.csv'
+    };
 
-    dataAdapter: any = new $.jqx.dataAdapter(this.source);
+    dataAdapter: any = new jqx.dataAdapter(this.source);
 
     columns: any[] =
     [
@@ -49,10 +45,9 @@ export class AppComponent
         { text: 'Birth Date', dataField: 'BirthDate', cellsFormat: 'd', width: 120 },
         { text: 'Hire Date', dataField: 'HireDate', cellsFormat: 'd', width: 120 },
         { text: 'Phone', dataField: 'Phone', cellsFormat: 'd', width: 120 }
-    ];   
+    ];
 
-    ready: any = () =>
-    {
+    ready: any = () => {
         this.treeGrid.expandRow(32);
     };
 }

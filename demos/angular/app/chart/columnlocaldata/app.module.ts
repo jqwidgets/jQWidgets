@@ -1,13 +1,14 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule }   from '@angular/common';
 
+import { ChartModule } from '../../modules/chart.module' 
 import { AppComponent } from './app.component';
 
-import { jqxChartComponent } from '../../../../../jqwidgets-ts/angular_jqxChart';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxChartComponent],
+    imports: [BrowserModule, ChartModule, CommonModule],
+    declarations: [AppComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

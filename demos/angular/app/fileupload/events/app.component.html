@@ -1,0 +1,14 @@
+﻿<jqxFileUpload #myFileUpload style="float: left"
+    (onSelect)="onSelect($event)"  (onRemove)="onRemove($event)"
+    (onUploadStart)="onUploadStart($event)"  (onUploadEnd)="onUploadEnd($event)"
+    [width]="300" [uploadUrl]="'upload.php'" [fileInputName]="'fileToUpload'">
+</jqxFileUpload>
+
+<div style="float: left; margin-left: 50px">
+    <div style="margin-bottom: 10px; font-family: Verdana; font-size: smaller">
+       Events log:
+    </div>
+
+    <jqxPanel #myPanel [width]="300" [height]="150"></jqxPanel>
+
+</div>

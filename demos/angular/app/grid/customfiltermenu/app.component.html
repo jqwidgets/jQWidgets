@@ -1,0 +1,31 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left">
+
+    <jqxGrid #myGrid (onFilter)="myGridOnFilter()"
+        [width]="850" [source]="dataAdapter" [columns]="columns"
+        [sortable]="true" [filterable]="true"
+        [autoshowfiltericon]="true" [columnmenuopening]="columnmenuopening">
+    </jqxGrid>
+
+    <div style="margin-top: 30px">
+        <div style="width: 200px; float: left; margin-right: 10px">
+
+            <jqxButton [height]="25" (onClick)="removeFilterBtnOnClick()">Remove Filter</jqxButton>
+
+            <jqxCheckBox (onChange)="filterBackgroundCheckBoxOnChange($event)"
+                [height]="25" [checked]="true">
+                Filter Background
+            </jqxCheckBox>
+
+            <jqxCheckBox [height]="25" (onChange)="filterIconsCheckBoxOnChange($event)">
+                Show All Filter Icons
+            </jqxCheckBox>
+
+        </div>
+        <div style="float: left">
+            Event Log:
+
+            <jqxPanel #myPanel [width]="300" [height]="80"></jqxPanel>
+
+        </div>
+    </div>
+</div>

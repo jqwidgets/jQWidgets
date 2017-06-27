@@ -1,0 +1,8 @@
+﻿<jqxKnob #myKnob (onChange)="myKnobOnChange($event)"
+    [width]="400" [height]="400"
+    [value]="30" [min]="0" [max]="100" [rotation]="'clockwise'"
+    [style]="{ fill: '#fff' }" [progressBar]="progressBar" [pointer]="pointer"
+    [dial]="dial" [startAngle]="270" [endAngle]="630">
+</jqxKnob>
+
+<jqxInput #myInput (onChange)="myInputOnChange()" [value]="30"></jqxInput>

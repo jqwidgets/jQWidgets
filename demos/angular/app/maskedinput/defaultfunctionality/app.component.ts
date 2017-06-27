@@ -1,16 +1,13 @@
-﻿ 
-import { Component, ViewChild } from '@angular/core';
+﻿import { Component, ViewChild } from '@angular/core';
 
 import { jqxMaskedInputComponent } from '../../../../../jqwidgets-ts/angular_jqxmaskedinput';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: `../app/maskedinput/defaultfunctionality/app.component.htm`
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
+export class AppComponent {
     @ViewChild('numericInput') myNumericInput: jqxMaskedInputComponent;
     @ViewChild('zipCodeInput') myZipCodeInput: jqxMaskedInputComponent;
     @ViewChild('ssnInput') mySsnInput: jqxMaskedInputComponent;
@@ -18,8 +15,7 @@ export class AppComponent
     @ViewChild('regexInput') myRegexInput: jqxMaskedInputComponent;
     @ViewChild('disabledInput') myDisabledInput: jqxMaskedInputComponent;
 
-    clear(): void
-    {
+    clear(): void {
         this.myNumericInput.clear();
         this.myZipCodeInput.clear();
         this.mySsnInput.clear();

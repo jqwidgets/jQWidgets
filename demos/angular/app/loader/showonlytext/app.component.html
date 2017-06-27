@@ -1,0 +1,15 @@
+﻿<jqxLoader #jqxLoader
+           [html]="'<div class=\'jqx-loader-text\'>Show only text in loader...</div>'"
+           [width]="100"
+           [height]="35">
+</jqxLoader>
+<jqxButton #openLoader
+           (onClick)="openLoaderClick($event)"
+           [width]="150">
+  Open Loader
+</jqxButton>
+<jqxButton #closeLoader
+           (onClick)="closeLoaderClick($event)"
+           [width]="100">
+  Close
+</jqxButton>

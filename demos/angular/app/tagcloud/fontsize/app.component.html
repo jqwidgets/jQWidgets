@@ -1,0 +1,30 @@
+﻿<jqxTagCloud #myTagCloud
+    [width]="600" [source]="dataAdapter" [fontSizeUnit]="'px'"
+    [displayMember]="'country'" [valueMember]="'rate'" [minFontSize]="12"
+    [maxFontSize]="30" [urlBase]="'http://localhost/'"
+    [minColor]="'#00AA99'" [maxColor]="'#FF0000'">
+</jqxTagCloud>
+
+<div style="float: left; margin-right: 5px">
+    minFontSize:
+    <jqxInput #myInput1
+        [width]="200" [height]="25" [value]="12" [placeHolder]="'MinFontSize'">
+    </jqxInput>
+</div>
+<div style="float: left; margin-right: 5px">
+    maxFontSize:
+    <jqxInput #myInput2
+        [width]="200" [height]="25" [value]="20" [placeHolder]="'maxFontSize'">
+    </jqxInput>
+</div>
+<div style="float: left; margin-right: 5px">
+    fontSizeUnit:
+    <jqxInput #myInput3
+        [width]="200" [height]="25" [minLength]="1" [value]="'px'"
+        [source]="['em','px','%']" [placeHolder]="'em/px/%'">
+    </jqxInput>
+</div>
+
+<div style="clear: both; margin-bottom: 5px;"></div>
+
+<jqxButton (onClick)="setFontSizeBtnOnClick()">Set Font</jqxButton>

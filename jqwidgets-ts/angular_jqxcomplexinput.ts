@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.3 (2017-June)
+jQWidgets v4.5.4 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -8,7 +8,7 @@ import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChang
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
-declare let $: any;
+declare let JQXLite: any;
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
@@ -110,18 +110,18 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
 
    createComponent(options?: any): void {
       if (options) {
-         $.extend(options, this.manageAttributes());
+         JQXLite.extend(options, this.manageAttributes());
       }
       else {
         options = this.manageAttributes();
       }
-      this.host = $(this.elementRef.nativeElement.firstChild);
+      this.host = JQXLite(this.elementRef.nativeElement.firstChild);
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxComplexInput', options);
 
       this.__updateRect__();
       setTimeout(_=> {
-         let valueWithWS = `${options.value}`;
+         let valueWithWS = `JQXLite{options.value}`;
          this.host.jqxComplexInput({ value: valueWithWS });
       });
    }

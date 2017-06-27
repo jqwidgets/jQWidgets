@@ -1,0 +1,38 @@
+﻿jqxSortable {
+  margin: 2px;
+  padding: 5px;
+  float: left;
+  width: 200px;
+  border: lightblue solid 1px;
+}
+
+.events {
+  margin: 2px;
+  padding: 5px;
+  float: left;
+  width: 400px;
+}
+
+.events span {
+  font-weight: bold;
+}
+
+jqxSortable div div {
+  border: 1px solid transparent;
+}
+
+  jqxSortable div div {
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    background-color: white;
+    color: black;
+  }
+
+jqxSortable div div:hover {
+  border: 1px solid #356AA0;
+}
+
+jqxPanel div:first-of-type {
+  border: none;
+}

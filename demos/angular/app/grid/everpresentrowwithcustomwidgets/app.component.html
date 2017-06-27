@@ -1,0 +1,11 @@
+﻿<jqxGrid #myGrid
+    [width]="850" [source]="dataAdapter" [columns]="columns" 
+    [filterable]="true" [showeverpresentrow]="true" [editable]="true"
+    [everpresentrowposition]="'top'" [everpresentrowactionsmode]="'columns'" 
+    [selectionmode]="'multiplecellsadvanced'" >
+</jqxGrid>
+
+<br />
+
+<jqxRadioButton (onChecked)="topRadioBtnOnChecked()" [checked]="true">Add New Row to Top</jqxRadioButton>
+<jqxRadioButton (onChecked)="bottomRadioBtnOnChecked()">Add New Row to Bottom</jqxRadioButton>

@@ -1,0 +1,20 @@
+﻿<jqxBarGauge #myBarGauge style="float: left"
+    [width]='600' [height]='600' [relativeInnerRadius]='0.2' [max]="500"
+    [values]='[450,15,330]' [baseValue]="50" [startAngle]="0" [endAngle]="360" 
+    [title]="'Nutritional Values'" [colorScheme]="'scheme05'" [tooltip]="tooltip"
+    [barSpacing]="9" [animationDuration]="0" [labels]="labels">
+</jqxBarGauge>
+
+<div style="margin-left: 50px; margin-top: 150px; float: left;">
+
+  <jqxListBox #myListBox (onCheckChange)="onCheckChange()"
+    [width]="230" [source]="dataAdapter" [displayMember]="'name'"
+    [valueMember]="'calories'" [checkboxes]="true">
+  </jqxListBox>
+
+  <br />
+  <br />
+  <div id='log'>
+    <strong>Summary calories: 970</strong>
+  </div>
+</div>

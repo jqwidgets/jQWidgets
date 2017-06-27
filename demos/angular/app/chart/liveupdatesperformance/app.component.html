@@ -1,0 +1,32 @@
+﻿<jqxChart #myChart
+    [width]="850" [height]="500"
+    [title]="'Live updates performance'" [enableAxisTextAnimation]="true"
+    [description]="'Data changes every 100 milliseconds'"
+    [showLegend]="true" [enableAnimations]="false" [padding]="padding"
+    [titlePadding]="titlePadding" [source]="data" [xAxis]="xAxis"
+    [valueAxis]="valueAxis" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
+</jqxChart>
+
+<table style="width: 680px">
+    <tbody>
+        <tr>
+            <td style="padding-left: 50px">
+                <p>Pause / Resume updates:</p>
+
+                <jqxButton #myBtn (onClick)="btnOnClick($event)" [width]="160">
+                    Pause
+                </jqxButton>
+
+            </td>
+            <td>
+                <p>Select color scheme:</p>
+
+                <jqxDropDownList (onChange)="colorsOnChange($event)"
+                    [width]="200" [height]="25" [selectedIndex]="0"
+                    [dropDownHeight]="100" [source]="colorsSchemesList">
+                </jqxDropDownList>
+
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿<jqxLayout #myLayout [width]="800" [height]="600" [layout]="layout">
+    <!--The panel content divs can have a flat structure-->
+    <!--autoHideGroup-->
+    <div data-container="ToolboxPanel">
+      List of tools
+    </div>
+    <div data-container="HelpPanel">
+      Help topics
+    </div>
+    <!--documentGroup-->
+    <div data-container="Document1Panel">
+      Document 1 content
+    </div>
+    <div data-container="Document2Panel">
+      Document 2 content
+    </div>
+    <!--bottom tabbedGroup-->
+    <div data-container="ErrorListPanel">
+      List of errors
+    </div>
+    <div data-container="OutputPanel">
+      Output
+    </div>
+    <!--right tabbedGroup-->
+    <div data-container="SolutionExplorerPanel">
+      <div id="treeContainer" style="border: none;"></div>
+    </div>
+    <div data-container="PropertiesPanel">
+      List of properties
+    </div>
+</jqxLayout>
+
+<div style="margin-top: 25px">
+
+    <jqxButton (onClick)="saveLayoutBtnOnClick()">Save Layout</jqxButton>
+
+    <jqxButton #myLoadLayoutBtn (onClick)="loadLayoutBtnOnClick()" [disabled]="true">Load Layout</jqxButton>
+
+</div>

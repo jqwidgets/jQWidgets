@@ -1,14 +1,22 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { CommonModule }   from '@angular/common';
 
 import { AppComponent } from './app.component';
-
-import { jqxButtonGroupComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttongroup';
-import { jqxRadioButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxradiobutton';
+import { ButtonGroupModule } from '../../modules/buttongroup.module';
+import { RadioButtonModule } from '../../modules/radiobutton.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxButtonGroupComponent, jqxRadioButtonComponent],
-    bootstrap: [AppComponent]
+  declarations: [
+      AppComponent
+  ],
+  imports: [
+    BrowserModule, CommonModule, ButtonGroupModule, RadioButtonModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
+

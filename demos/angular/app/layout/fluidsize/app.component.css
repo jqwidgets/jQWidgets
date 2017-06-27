@@ -1,0 +1,12 @@
+﻿body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 3px;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.jqx-layout-group-auto-hide-content-vertical {
+  width: 200px;
+}

@@ -1,23 +1,13 @@
-﻿ 
-import { Component } from '@angular/core';
-
-import { jqxTextAreaComponent } from '../../../../../jqwidgets-ts/angular_jqxtextarea';
+﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    template:
-        `<jqxTextArea
-            [width]='300' [height]='90' [source]='generateSource'
-            [minLength]='1' [placeHolder]='"Enter a sentence"'>
-        </jqxTextArea>`
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
-    generateSource(): string[]
-    {
+export class AppComponent {    
+    generateSource(): string[] {
         let quotes: string[] = [];
-
         quotes.push('Life is a dream for the wise, a game for the fool, a comedy for the rich, a tragedy for the poor.');
         quotes.push('Yesterday is not ours to recover, but tomorrow is ours to win or lose.');
         quotes.push('It does not matter how slowly you go as long as you do not stop.');

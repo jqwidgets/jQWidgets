@@ -1,0 +1,29 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left">
+
+    <jqxGrid #myGrid
+        [width]="850" [source]="dataAdapter" [columns]="columns"
+        [sortable]="true" [altrows]="true" [selectionmode]="'multiplecellsadvanced'">
+    </jqxGrid>
+
+    <div style="margin-top: 20px">
+      <div style="float: left">
+        <jqxButton (onClick)="excelBtnOnClick()">Export to Excel</jqxButton>
+        <br /><br />
+        <jqxButton (onClick)="xmlBtnOnClick()">Export to XML</jqxButton>
+      </div>
+      <div style="float: left; margin-left: 10px">
+        <jqxButton (onClick)="csvBtnOnClick()">Export to CSV</jqxButton>
+        <br /><br />
+        <jqxButton (onClick)="tsvBtnOnClick()">Export to TSV</jqxButton>
+      </div>
+      <div style="float: left; margin-left: 10px">
+        <jqxButton (onClick)="htmlBtnOnClick()">Export to HTML</jqxButton>
+        <br /><br />
+        <jqxButton (onClick)="jsonBtnOnClick()">Export to JSON</jqxButton>
+      </div>
+      <div style="float: left; margin-left: 10px">
+        <jqxButton (onClick)="pdfBtnOnClick()">Export to PDF</jqxButton>
+      </div>
+    </div>
+
+</div>

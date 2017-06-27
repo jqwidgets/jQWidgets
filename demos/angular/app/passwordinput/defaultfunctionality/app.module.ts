@@ -1,17 +1,25 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-
-import { jqxPasswordInputComponent } from '../../../../../jqwidgets-ts/angular_jqxpasswordinput';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
+import { AppComponent } from './app.component'; 
+import { PasswordInputModule } from '../../modules/passwordinput.module';
+import { ExpanderModule } from '../../modules/expander.module';
+import { InputModule } from '../../modules/input.module';
+import { ValidatorModule } from '../../modules/validator.module';
+import { DropDownListModule } from '../../modules/dropdownlist.module';
+import { DateTimeInputModule } from '../../modules/datetimeinput.module';
+import { ButtonModule } from '../../modules/button.module';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule],
-    declarations: [AppComponent, jqxPasswordInputComponent, jqxButtonComponent, jqxInputComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, FormsModule, PasswordInputModule, ExpanderModule, InputModule, ValidatorModule, DropDownListModule, DateTimeInputModule, ButtonModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule{ }
 
+export class AppModule { }

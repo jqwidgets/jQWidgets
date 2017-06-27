@@ -1,0 +1,19 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left">
+
+    <jqxGrid #myGrid
+        [width]="850" [source]="dataAdapter" [columns]="columns" [selectionmode]="'multiplecellsadvanced'">
+    </jqxGrid>
+
+    <div>
+        
+        <h3>Alignment</h3>
+
+        <jqxRadioButton style="float: left" (onChecked)="leftBtnOnChecked()">Left</jqxRadioButton>
+
+        <jqxRadioButton style="float: left" (onChecked)="centerBtnOnChecked()" [checked]="true">Center</jqxRadioButton>
+
+        <jqxRadioButton style="float: left" (onChecked)="rightBtnOnChecked()">Right</jqxRadioButton>
+
+    </div>
+
+</div>

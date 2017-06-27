@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.3 (2017-June)
+jQWidgets v4.5.4 (2017-June)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -44,9 +44,6 @@ export default class JqxTooltip extends React.Component {
               JQXLite(this.componentSelector).html(this.props.template);
         }
         JQXLite(this.componentSelector).jqxTooltip(options);
-    };
-    generateID() {
-        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     };
     setOptions(options) {
         JQXLite(this.componentSelector).jqxTooltip('setOptions', options);
@@ -234,7 +231,7 @@ export default class JqxTooltip extends React.Component {
         JQXLite(this.componentSelector).jqxTooltip('refresh');  
     };
     render() {
-        let id = 'jqxTooltip' + this.generateID() + this.generateID();
+        let id = 'jqxTooltip' + JQXLite.generateID();
         this.componentSelector = '#' + id;
         return (
             <div id={id}>{this.props.value}{this.props.children}</div>

@@ -1,14 +1,18 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-
-import { jqxListMenuComponent } from '../../../../../jqwidgets-ts/angular_jqxlistmenu';
+import { AppComponent } from './app.component'; 
+import { ListMenuModule } from '../../modules/listmenu.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxListMenuComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, ListMenuModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

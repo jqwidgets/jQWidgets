@@ -1,34 +1,18 @@
-﻿ 
-import { Component, ViewChild } from '@angular/core';
+﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
+import { jqxGridComponent }  from '../../../../../jqwidgets-ts/angular_jqxgrid';
+
+import { generatedata } from '../../../sampledata/generatedata';
 
 @Component({
-    selector: 'my-app',
-    template: 
-        `<jqxGrid #gridReference
-            [width]='850' [source]='dataAdapter' [showfilterrow]='true'
-            [filterable]='true' [selectionmode]='"multiplecellsextended"' [columns]='columns'>
-        </jqxGrid>
-        <br />
-
-        <jqxButton (onClick)="clearFiltering()"
-            [width]='120' [height]='30'>
-        Remove Filter
-        </jqxButton>`
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
-    @ViewChild('gridReference') myGrid: jqxGridComponent;
+export class AppComponent {
+    @ViewChild('myGrid') myGrid: jqxGridComponent;
 
-    clearFiltering(): void
-    {
-        this.myGrid.clearfilters();
-    }
-
-    data: any = generatedata(500);
+    data: any = generatedata(500, false);
 
     source: any =
     {
@@ -41,27 +25,21 @@ export class AppComponent
             { name: 'date', type: 'date' },
             { name: 'quantity', type: 'number' }
         ],
-        datatype: "array"
+        datatype: 'array'
     };
 
-    dataAdapter: any = new $.jqx.dataAdapter(this.source);
+    dataAdapter: any = new jqx.dataAdapter(this.source);
 
     columns: any[] =
     [
-        {
-            text: 'Name', columntype: 'textbox', filtertype: 'input', datafield: 'name', width: 215
-        },
-        {
-            text: 'Product', filtertype: 'checkedlist', datafield: 'productname', width: 220
-        },
-        {
-            text: 'Available', datafield: 'available', columntype: 'checkbox', filtertype: 'bool', width: 67
-        },
-        {
-            text: 'Ship Date', datafield: 'date', filtertype: 'range', width: 210, cellsalign: 'right', cellsformat: 'd'
-        },
-        {
-            text: 'Qty.', datafield: 'quantity', filtertype: 'number', cellsalign: 'right'
-        }
-    ];    
+        { text: 'Name', columntype: 'textbox', filtertype: 'input', datafield: 'name', width: 215 },
+        { text: 'Product', filtertype: 'checkedlist', datafield: 'productname', width: 220 },
+        { text: 'Available', datafield: 'available', columntype: 'checkbox', filtertype: 'bool', width: 67 },
+        { text: 'Ship Date', datafield: 'date', filtertype: 'range', width: 210, cellsalign: 'right', cellsformat: 'd' },
+        { text: 'Qty.', datafield: 'quantity', filtertype: 'number', cellsalign: 'right' }
+    ];  
+
+    clearFiltering(): void {
+        this.myGrid.clearfilters();
+    }
 }

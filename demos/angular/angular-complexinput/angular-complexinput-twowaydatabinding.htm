@@ -2,45 +2,38 @@
 <html>
 
   <head>
-    <title id='Description'>Angular ComplexInput</title>
+    <title id='Description'>Angular ComplexInput TwoWayDataBinding.</title>
+    <meta name="description" content="This example shows the Two way data binding of Angular ComplexInput." />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- Styles -->
-      <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-      <style>
-          body, html {
-              height: 100%;
-              overflow: hidden;
-          }
-      </style>
-    <!-- jQWidgets -->
-    
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+
+    <!-- jQWidgets -->   
     <script src="../../../jqwidgets/jqxcore.js"></script>
     <script src="../../../jqwidgets/jqxbuttons.js"></script>
     <script src="../../../jqwidgets/jqxcomplexinput.js"></script>
-
-    
-    <script src="../node_modules/typescript/lib/typescript.js"></script>
-    <script src="../node_modules/core-js/client/shim.min.js"></script>
-    <script src="../node_modules/zone.js/dist/zone.js"></script>
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
     <script src="../../../scripts/demos.js"></script>
-
-    <!-- Configure SystemJS -->
-    <script src="../systemjs.config.js"></script>
-    <script>
-        System.import('../app/complexinput/twowaydatabinding/main').catch( (err) => { console.error(err); });
-    </script>
-
+  
+    <!-- Angular -->
+    <script src="../node_modules/core-js/client/shim.min.js"></script>
+    <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+    <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>   
 
   </head>
 
   <!-- Display the application -->
   <body>
+
     <div class="example-description">
-        Angular Complex Input Example.
+        Angular ComplexInput Two Way Data Binding
     </div>
-    <my-app></my-app>
+
+    <app-root>Loading...</app-root>
+
+    <script src="../aot/complexinput_twowaydatabinding.bundle.js"></script>
+
   </body>
 
 </html>

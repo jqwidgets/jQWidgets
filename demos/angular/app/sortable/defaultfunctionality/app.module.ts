@@ -1,14 +1,20 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { jqxSortableComponent } from '../../../../../jqwidgets-ts/angular_jqxsortable';
+import { SortableModule } from '../../modules/sortable.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxSortableComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, SortableModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
 

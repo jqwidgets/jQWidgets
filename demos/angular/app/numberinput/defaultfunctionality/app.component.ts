@@ -1,14 +1,9 @@
-﻿ 
-import { Component } from '@angular/core';
-
-import { jqxNumberInputComponent } from '../../../../../jqwidgets-ts/angular_jqxnumberinput';
+﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: '../app/numberinput/defaultfunctionality/app.component.htm'
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
-
+export class AppComponent {
 }

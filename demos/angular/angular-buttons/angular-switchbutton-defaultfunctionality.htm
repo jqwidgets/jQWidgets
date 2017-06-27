@@ -1,50 +1,40 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta name="keywords" content="jQuery SwitchButton, SwitchButton Widget, jqxSwitchButton" />
-    <meta name="description" content="jqxSwitchButton is jQuery widget with functionality similar to checkbox. It has two states - check and uncheck (on/off).
-          The user can switch between the different states using mouse clicks or drag and drop." />
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title id='Description'>jqxSwitchButton is jQuery widget with behavior similar to the jqxCheckBox. It has two states - checked and unchecked (on/off).
-    The user can switch between the different states using mouse clicks or by drag and drop of the thumb. Angular2 demo</title>
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <style>
-        body, html {
-            height: 100%;
-            overflow: hidden;
-        }
-    </style>
+    <head>
+        <title id='Description'> Angular Buttons SwitchButton.</title>
+        <meta name="description" content=" This example shows Angular SwitchButton with a behavior that is similar to the Angular CheckBox. It has two states - checked and unchecked (on/off)" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+        <!-- Styles -->
+        <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
 
-    <!-- jQWidgets -->
-    <script type="text/javascript" src="../../../scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxswitchbutton.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
-    <script src="../../../scripts/demos.js"></script>
+        <!-- jQWidgets -->
+        <script type="text/javascript" src="../../../scripts/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxswitchbutton.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+        <script src="../../../scripts/demos.js"></script>
+  
+        <!-- Angular -->
+        <script src="../node_modules/core-js/client/shim.min.js"></script>
+        <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+        <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>
 
-    
-    <script src="../node_modules/typescript/lib/typescript.js"></script>
-    <script src="../node_modules/core-js/client/shim.min.js"></script>
-    <script src="../node_modules/zone.js/dist/zone.js"></script>
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+    </head>
 
-    <!-- Configure SystemJS -->
-    <script src="../systemjs.config.js"></script>
-    <script>
-        System.import('../app/switchbutton/defaultfunctionality/main').catch( (err) => { console.error(err); });
-    </script>
+    <!-- Display the application -->
+    <body>
 
-</head>
+        <div class="example-description">
+            Angular SwitchButton is a widget with behavior similar to the Angular CheckBox. It has two states - checked and unchecked (on/off). The user can switch between the different states using mouse clicks or by drag and drop of the thumb.
+        </div>
 
-<!-- Display the application -->
-<body>
-    <div class="example-description">
-        Angular Switch Button Example.
-    </div>
-    <my-app></my-app>
-</body>
+        <app-root>Loading...</app-root>
+
+        <script src="../aot/switchbutton_defaultfunctionality.bundle.js"></script>
+
+    </body>
 
 </html>

@@ -1,45 +1,29 @@
-﻿ 
-import { Component } from '@angular/core';
-
-import { jqxTagCloudComponent } from '../../../../../jqwidgets-ts/angular_jqxtagcloud';
+﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    template:
-        `<jqxTagCloud
-            [width]='600' [source]='dataAdapter'
-            [displayMember]='"countryName"' [valueMember]='"technologyRating"'>
-        </jqxTagCloud>`
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
-    generateData(): any
-    {
-        let data: Array<any> = [];
-
-        data.push
-            (
-                { countryName: "Australia", technologyRating: 35 },
-                { countryName: "United States", technologyRating: 60 },
-                { countryName: "Germany", technologyRating: 55 },
-                { countryName: "Brasil", technologyRating: 20 },
-                { countryName: "United Kingdom", technologyRating: 50 },
-                { countryName: "Japan", technologyRating: 80 }
-            );
-
-        return data;
-    }
-
+export class AppComponent {
+    data: any[] = [
+        { countryName: "Australia", technologyRating: 35 },
+        { countryName: "United States", technologyRating: 60 },
+        { countryName: "Germany", technologyRating: 55 },
+        { countryName: "Brasil", technologyRating: 20 },
+        { countryName: "United Kingdom", technologyRating: 50 },
+        { countryName: "Japan", technologyRating: 80 }
+    ];
+    
     source: any =
     {
-        localdata: this.generateData(),
+        localdata: this.data,
         datatype: "array",
         datafields: [
             { name: 'countryName' },
             { name: 'technologyRating' }
         ]
-    }
+    };
 
-    dataAdapter: any = new $.jqx.dataAdapter(this.source, {});
+    dataAdapter: any = new jqx.dataAdapter(this.source);    
 }

@@ -1,46 +1,39 @@
 ﻿<!DOCTYPE html>
 <html>
 
-<head>
-    <title id='Description'>Angular MaskedInput</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <style>
-        body, html {
-            height: 100%;
-            overflow: hidden;
-        }
-    </style>
+    <head>
+        <title id='Description'>Angular MaskedInput DefaultFunctionality</title>
+        <meta name="description" content="This is an example of the default functionalities in Angular MaskedInput." />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- jQWidgets -->
-    
-    <script src="../../../jqwidgets/jqxcore.js"></script>
-    <script src="../../../jqwidgets/jqxmaskedinput.js"></script>
-    <script src="../../../jqwidgets/jqxbuttons.js"></script>
-    <script src="../../../scripts/demos.js"></script>
+        <!-- Styles -->
+        <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
 
-    
-    <script src="../node_modules/typescript/lib/typescript.js"></script>
-    <script src="../node_modules/core-js/client/shim.min.js"></script>
-    <script src="../node_modules/zone.js/dist/zone.js"></script>
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+        <!-- jQWidgets -->   
+        <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxmaskedinput.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+        <script type="text/javascript" src="../../../scripts/demos.js"></script>
+   
+        <!-- Angular -->
+        <script src="../node_modules/core-js/client/shim.min.js"></script>
+        <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+        <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>
 
-    <!-- Configure SystemJS -->
-    <script src="../systemjs.config.js"></script>
-    <script>
-        System.import('../app/maskedinput/defaultfunctionality/main').catch( (err) => { console.error(err); });
-    </script>
+    </head>
 
-</head>
+    <!-- Display the application -->
+    <body>
 
-<!-- Display the application -->
-<body>
-    <div class="example-description">
-        Angular Masked Input Example.
-    </div>
-    <my-app></my-app>
-</body>
+        <div class="example-description">
+            The Angular MaskedInput widget uses a mask to distinguish between proper and improper user input. You can define phone number, ssn, zip code, dates, etc. masks by setting the MaskedInput mask property.
+        </div>
+
+        <app-root>Loading...</app-root>
+
+        <script src="../aot/maskedinput_defaultfunctionality.bundle.js"></script>
+
+    </body>
 
 </html>

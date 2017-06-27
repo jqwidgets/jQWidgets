@@ -1,23 +1,17 @@
- 
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 
-import { jqxDataTableComponent } from '../../../../../jqwidgets-ts/angular_jqxdatatable';
+import { generatedata } from '../../../sampledata/generatedata';
 
 @Component({
-    selector: 'my-app',
-    template: 
-        `<jqxDataTable
-            [width]='850' [source]='dataAdapter' [columns]='columns'
-            [pageable]='true' [altRows]='true' [pagerMode]='"advanced"'>
-        </jqxDataTable>`
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
+export class AppComponent {
     source: any =
     {
-        localData: generatedata(200),
-        dataType: "array",
+        localData: generatedata(200, false),
+        dataType: 'array',
         datafields:
         [
             { name: 'firstname', type: 'string' },
@@ -29,16 +23,16 @@ export class AppComponent
         ]
     };
 
-    dataAdapter: any = new $.jqx.dataAdapter(this.source);
+    dataAdapter: any = new jqx.dataAdapter(this.source);
 
     columns: any[] =
     [
         { text: 'Name', dataField: 'firstname', width: 150 },
         { text: 'Last Name', dataField: 'lastname', width: 150 },
         { text: 'Product', editable: false, dataField: 'productname', width: 250 },
-        { text: 'Quantity', dataField: 'quantity', width: 80, cellsAlign: 'right' },
-        { text: 'Unit Price', dataField: 'price', width: 80, cellsAlign: 'right', cellsFormat: 'c2' },
-        { text: 'Total', dataField: 'total', cellsAlign: 'right', cellsFormat: 'c2' }
+        { text: 'Quantity', dataField: 'quantity', width: 80, cellsalign: 'right' },
+        { text: 'Unit Price', dataField: 'price', width: 80, cellsalign: 'right', cellsFormat: 'c2' },
+        { text: 'Total', dataField: 'total', cellsalign: 'right', cellsFormat: 'c2' }
     ];
-    
 }
+

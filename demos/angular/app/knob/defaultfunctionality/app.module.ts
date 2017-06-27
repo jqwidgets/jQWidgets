@@ -1,15 +1,20 @@
-import { NgModule }       from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-
-import { jqxKnobComponent } from '../../../../../jqwidgets-ts/angular_jqxknob';
-import { jqxNumberInputComponent } from '../../../../../jqwidgets-ts/angular_jqxnumberinput';
+import { KnobModule } from '../../modules/knob.module';
+import { NumberInputModule } from '../../modules/numberinput.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxKnobComponent, jqxNumberInputComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, CommonModule, KnobModule, NumberInputModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

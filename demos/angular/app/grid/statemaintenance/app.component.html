@@ -1,0 +1,19 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left">
+
+    <jqxGrid #myGrid
+        [width]="850" [source]="dataAdapter" [columns]="columns"
+        [pageable]="true" [sortable]="true" [altrows]="true" [filterable]="true" 
+        [columnsreorder]="true" [autoloadstate]="true" [autosavestate]="true" 
+        [autoheight]="true" [editable]="true"  [columnsresize]="true"
+        [showfilterrow]="true" [selectionmode]="'multiplerowsextended'">
+    </jqxGrid>
+
+    <div style="margin-top: 30px; float: left">
+
+        <jqxButton (onClick)="saveStatebtn()">Save State</jqxButton>
+
+        <jqxButton (onClick)="loadStateBtn()">Load State</jqxButton>
+
+    </div>
+
+</div>

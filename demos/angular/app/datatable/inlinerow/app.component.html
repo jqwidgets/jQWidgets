@@ -1,0 +1,8 @@
+﻿<jqxDataTable #myDataTable
+    (onRowSelect)="onRowSelect($event)"  (onRowUnselect)="onRowUnselect($event)"
+    (onRowEndEdit)="onRowEndEdit($event)"  (onRowBeginEdit)="onRowBeginEdit($event)"
+    [width]="850" [source]="dataAdapter" [columns]="columns"
+    [altRows]="true" [editable]="true" [pageable]="true" 
+    [pagerButtonsCount]="8" [showToolbar]="true" [toolbarHeight]="35" 
+    [renderToolbar]="renderToolbar">
+</jqxDataTable>

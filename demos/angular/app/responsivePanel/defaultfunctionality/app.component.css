@@ -1,6 +1,11 @@
-﻿angularResponsivePanel, angularPanel {
-    float: left;
+﻿jqxResponsivePanel > div, jqxPanel > div {
+  float: left;
 }
-.jqx-rc-all{
-    border-radius: 0px;
+
+jqxTree > div {
+  border: none !important;
+}
+
+.jqx-rc-all {
+  border-radius: 0px;
 }

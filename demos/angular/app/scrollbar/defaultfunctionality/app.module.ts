@@ -1,14 +1,18 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { jqxScrollBarComponent } from '../../../../../jqwidgets-ts/angular_jqxscrollbar';
+import { ScrollBarModule } from '../../modules/scrollbar.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxScrollBarComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, ScrollBarModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

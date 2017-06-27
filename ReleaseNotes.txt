@@ -1,4 +1,19 @@
 ﻿*********************************************
+* jQWidgets v4.5.4 Release, June-27-2017    *
+*********************************************
+
+What's New:
+
+1500+ Angular 4 Demos.
+
+What's Fixed:
+
+- Fixed an issue in the CSS styling about DataTable and TreeGrid pager.
+- Fixed an issue in jqxScheduler about the Edit Dialog title showing incorrect results when adding and editing appointments.
+- Fixed an issue in jqxScheduler about the Edit Dialog Delete button visibility.
+
+
+*********************************************
 * jQWidgets v4.5.3 Release, June-01-2017    *
 *********************************************
 

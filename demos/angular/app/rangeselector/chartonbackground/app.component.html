@@ -1,0 +1,22 @@
+﻿<label style="margin-left: 250px; font-size: 18px; font-weight: bold;">Weather in Geneva, Switzerland</label>
+
+<br /> 
+
+<label style="margin-left: 250px; font-size: 14px; font-weight: bold;">Climatological Information about Geneva</label>
+
+<jqxRangeSelector
+    [width]="750" [height]="200" [min]="0" [max]="12"
+    [range]="{ from: 3, to: 9 }" [majorTicksInterval]="1"
+    [minorTicksInterval]="1" [labelsOnTicks]="false"
+    [labelsFormatFunction]="labelsFormatFunction"
+    [markersFormatFunction]="markersFormatFunction">
+
+    <jqxChart 
+        [width]="750" [height]="200"
+        [title]="''" [description]="''" [showBorderLine]="false"
+        [showLegend]="false" [enableAnimations]="true" [padding]="padding"
+        [titlePadding]="titlePadding" [source]="dataAdapter" [xAxis]="xAxis"
+        [colorScheme]="'scheme05'" [seriesGroups]="seriesGroups">
+    </jqxChart>
+
+</jqxRangeSelector>

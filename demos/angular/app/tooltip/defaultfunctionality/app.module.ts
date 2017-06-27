@@ -1,14 +1,18 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { jqxTooltipComponent } from '../../../../../jqwidgets-ts/angular_jqxtooltip';
+import { TooltipModule } from '../../modules/tooltip.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxTooltipComponent],
-    bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+  ],
+  imports: [
+      BrowserModule, TooltipModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

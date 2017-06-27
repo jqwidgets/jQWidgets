@@ -1,15 +1,19 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { jqxExpanderComponent } from '../../../../../jqwidgets-ts/angular_jqxexpander';
-import { jqxTreeComponent }     from '../../../../../jqwidgets-ts/angular_jqxtree';
+import { TreeModule } from '../../modules/tree.module';
+import { ExpanderModule } from '../../modules/expander.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxExpanderComponent, jqxTreeComponent],
-    bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+  ],
+  imports: [
+      BrowserModule, TreeModule, ExpanderModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

@@ -1,0 +1,14 @@
+﻿<jqxButton (onClick)="btnOnClick()">Open Editor</jqxButton>
+
+<jqxWindow #myWindow
+    [width]="600" [height]="400" [maxWidth]="800"
+    [autoOpen]="false" [resizable]="false" [position]="'top, left'">
+    <div>jqxEditor</div>
+    <div>
+
+      <jqxEditor 
+          [width]="'100%'" [height]="'99%'" [tools]="'bold italic underline font size'">
+      </jqxEditor>
+
+    </div>
+</jqxWindow>

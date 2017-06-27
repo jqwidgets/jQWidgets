@@ -1,0 +1,13 @@
+﻿<jqxDropDownList #myDropDownList style="float: left; margin-top: 10px"
+    (onSelect)="listOnSelect($event)" (onUnselect)="listOnUnselect($event)"
+    [width]="200" [height]="25" [source]="source" [selectedIndex]="0">
+</jqxDropDownList>
+
+<div style="float: left; margin-left: 20px; margin-top: 10px">
+    <div>
+      <span>Events:</span>
+
+      <jqxPanel #myPanel [width]="200" [height]="250"></jqxPanel>
+
+    </div>
+</div>

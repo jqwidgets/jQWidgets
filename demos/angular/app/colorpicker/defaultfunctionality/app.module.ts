@@ -1,16 +1,22 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { jqxDropDownButtonComponent } from 'components/angular_jqxdropdownbutton';
-import { jqxScrollViewComponent }     from 'components/angular_jqxscrollview';
-import { jqxColorPickerComponent }    from 'components/angular_jqxcolorpicker';
+import { ColorPickerModule } from '../../modules/colorpicker.module';
+import { DropDownButtonModule } from '../../modules/dropdownbutton.module';
+import { ScrollViewModule } from '../../modules/scrollview.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxDropDownButtonComponent, jqxScrollViewComponent, jqxColorPickerComponent],
-    bootstrap: [AppComponent]
+  declarations: [
+      AppComponent
+  ],
+  imports: [
+      BrowserModule, ColorPickerModule, DropDownButtonModule, ScrollViewModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
 

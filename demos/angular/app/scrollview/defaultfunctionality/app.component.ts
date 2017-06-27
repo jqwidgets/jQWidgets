@@ -1,26 +1,22 @@
-﻿ 
-import { Component, ViewChild } from '@angular/core';
+﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
 import { jqxScrollViewComponent } from '../../../../../jqwidgets-ts/angular_jqxscrollview';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: '../app/scrollview/defaultfunctionality/app.component.htm',
-    styleUrls: ['../app/scrollview/defaultfunctionality/app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent
-{
-    @ViewChild('scrollViewReference') scrollView: jqxScrollViewComponent;
+export class AppComponent {
+    @ViewChild('myScrollView') myScrollView: jqxScrollViewComponent;
 
-    onStartClicked(): void 
-    {
-        this.scrollView.slideShow(true);
-    }
+    onStartClicked(): void {
+        this.myScrollView.slideShow(true);
+    };
 
-    onStopClicked(): void 
-    {
-        this.scrollView.slideShow(false);
-    }
+    onStopClicked(): void {
+        this.myScrollView.slideShow(false);
+    };
 }

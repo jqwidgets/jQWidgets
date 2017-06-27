@@ -1,13 +1,13 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
+import { CommonModule }   from '@angular/common';
 
-import { AppComponent } from './app.component';
-
-import { jqxCheckBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcheckbox';
+import { AppComponent }   from './app.component';
+import { CheckBoxModule } from '../../modules/checkbox.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxCheckBoxComponent],
+    imports: [BrowserModule, CommonModule, CheckBoxModule],
+    declarations: [AppComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

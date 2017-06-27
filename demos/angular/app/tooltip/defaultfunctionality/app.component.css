@@ -1,7 +1,19 @@
-﻿#container {
-    width: 400px;
+﻿html, body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
-img {
-    margin: 8px;
+#container {
+  width: 400px;
 }
+
+jqxTooltip {
+  margin: 8px 8px 0 8px;
+  float: left;
+}
+
+  jqxTooltip div {
+    height: 162px;
+  }

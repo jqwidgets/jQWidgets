@@ -1,15 +1,18 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { jqxTextAreaComponent } from '../../../../../jqwidgets-ts/angular_jqxtextarea';
+import { TextAreaModule } from '../../modules/textarea.module';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule],
-    declarations: [AppComponent, jqxTextAreaComponent],
-    bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+  ],
+  imports: [
+      BrowserModule, TextAreaModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

@@ -1,0 +1,18 @@
+﻿<jqxChart #myChart
+    [width]="850" [height]="500"
+    [title]="'Fitness & exercise weekly scorecard'" [description]="'Time spent in vigorous exercise by activity'"
+    [enableAnimations]="false" [enableAxisTextAnimation]="true" [padding]="padding" 
+    [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis" [animationDuration]="1000"
+    [valueAxis]="valueAxis" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'" [showLegend]="true">
+</jqxChart>
+
+<div style="margin-top: 10px">
+    <div style="float: left">
+        <jqxCheckBox (onChange)="flipValueAxisOnChange($event)">
+            Invert value axis
+        </jqxCheckBox>
+        <jqxCheckBox style="margin-top: 5px" (onChange)="flipXAxisOnChange($event)">
+            Invert x-axis
+        </jqxCheckBox>
+    </div>
+</div>

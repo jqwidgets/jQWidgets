@@ -1,0 +1,97 @@
+﻿html, body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+#form {
+  height: 100px;
+  float: left;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.inputContainer {
+  width: 150px;
+}
+
+.formInput {
+  width: 150px;
+  outline: none;
+}
+
+#hintWrapper {
+  height: 130px;
+  float: right;
+}
+
+#hintSection {
+  float: left;
+  margin-top: 30px;
+  margin-right: 20px;
+  padding: 5px;
+  width: 225px;
+}
+
+#checkBoxWrapper {
+  float: left;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+#section {
+  margin: 5px;
+}
+
+#sectionButtonsWrapper {
+  float: right;
+  margin-top: 30px;
+  margin-right: 10px;
+  width: 115px;
+}
+
+#hintBasket {
+  margin-left: 20px;
+  margin-top: 7px;
+  float: left;
+  padding: 5px;
+}
+
+.basket div {
+  position: relative;
+}
+
+.nextButton {
+  float: right;
+  margin-left: 0px;
+}
+
+.backButton {
+  float: left;
+  margin-left: 10px;
+}
+
+#basketButtonsWrapper {
+  float: right;
+  margin-top: 30px;
+  margin-right: 10px;
+  width: 115px;
+}
+
+#selectedProductsHeader {
+  margin-left: 20px;
+  float: left;
+  width: 200px;
+}
+
+#selectedProductsButtonsWrapper {
+  float: right;
+  margin-right: 10px;
+  width: 115px;
+  margin-top: 160px;
+}
+
+#products {
+  border: none;
+}

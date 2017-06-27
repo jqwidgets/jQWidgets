@@ -1,0 +1,15 @@
+﻿<jqxChart #myChart
+    [width]="850" [height]="500"
+    [title]="'Line serie with missing points'"
+    [description]="'Sample line serie with missing and invalid values'"
+    [showLegend]="true" [padding]="padding"
+    [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis"
+    [seriesGroups]="seriesGroups" [colorScheme]="'scheme05'">
+</jqxChart>
+
+<p style="font-family: Verdana; font-size: 12px">Select missing points display mode:</p>
+
+<jqxDropDownList (onSelect)="dropDownOnSelect($event)"
+    [width]="220" [height]="25" [selectedIndex]="0"
+    [dropDownHeight]="77" [source]="['skip','zero','connect']">
+</jqxDropDownList>

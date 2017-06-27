@@ -1,0 +1,20 @@
+﻿<jqxScheduler #scheduler
+              [width]="850" [height]="600"
+              [date]="date"
+              [source]="dataAdapter"
+              [exportSettings]="exportSettings"
+              [showLegend]="true"
+              [resources]="resources"
+              [view]="'weekView'"
+              [views]="views"
+              [appointmentDataFields]="appointmentDataFields">
+</jqxScheduler>
+
+<div style='margin-top: 20px;'>
+  <div style='margin-left: 10px; float: left;'>
+    <jqxButton #excelExport
+               (onClick)="printClick()">
+      Print
+    </jqxButton>
+  </div>
+</div>

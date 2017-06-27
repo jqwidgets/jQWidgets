@@ -1,20 +1,4 @@
-/// <reference path="../../../jqwidgets-ts/jqwidgets.d.ts" /> 
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
-
-import { jqxDateTimeInputComponent } from '../../../../../jqwidgets-ts/angular_jqxdatetimeinput';
-
-@Component({
-    selector: 'my-app',
-    template: `<label>Date Input</label>
-               <jqxDateTimeInput #dateInput [auto-create]='false'></jqxDateTimeInput><br />
-               <label>Time Input</label>
-               <jqxDateTimeInput #timeInput [auto-create]='false'></jqxDateTimeInput><br />
-               <label>Date Time Input</label>
-               <jqxDateTimeInput #dateTimeInput [auto-create]='false'></jqxDateTimeInput>`
-}) 
-
-export class AppComponent implements AfterViewInit
-{ 
+﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';  import { jqxDateTimeInputComponent } from '../../../../../jqwidgets-ts/angular_jqxdatetimeinput';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent implements AfterViewInit { 
     @ViewChild('dateInput') myDateInput: jqxDateTimeInputComponent;
     @ViewChild('timeInput') myTimeInput: jqxDateTimeInputComponent;
     @ViewChild('dateTimeInput') myDateTimeInput: jqxDateTimeInputComponent;
@@ -34,5 +18,4 @@ export class AppComponent implements AfterViewInit
     }
     dateTimeInputSettings: jqwidgets.DateTimeInputOptions = {
         formatString: "F", showTimeButton: true, width: '300px', height: '25px'
-    } 
-}
+    }  }

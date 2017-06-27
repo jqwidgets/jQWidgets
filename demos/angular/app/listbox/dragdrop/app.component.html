@@ -1,0 +1,40 @@
+﻿<jqxListBox style="float: left;" #listBoxA
+            (onDragStart)="dragStartA($event)"
+            (onDragEnd)="dragEndA($event)"
+            [allowDrop]="true"
+            [allowDrag]="true"
+            [source]="source1"
+            [dragStart]="dragStart"
+            [renderer]="renderer1"
+            [width]="200"
+            [height]="250">
+</jqxListBox>
+
+<jqxListBox style="margin-left: 20px; float: left;" #listBoxB
+            (onDragStart)="dragStartB($event)"
+            (onDragEnd)="dragEndB($event)"
+            [allowDrop]="true"
+            [allowDrag]="true"
+            [source]="source2"
+            [dragEnd]="dragEnd"
+            [renderer]="renderer2"
+            [width]="200"
+            [height]="250">
+</jqxListBox>
+<div style="width: 200px; height: 200px; float: left; margin-left: 20px;">
+  <!--<textarea rows="5" id="textarea"></textarea>-->
+  <jqxTextArea #myTextArea [width]="200" [height]="100"></jqxTextArea>
+</div>
+<div style="font-size: 13px; font-family: Verdana; padding-top: 20px; clear: both;">
+  <b>Events Log:</b>
+  <div #dragStartLog>
+  </div>
+  <div #dragEndLog>
+  </div>
+  <br />
+  <b>Note:</b>
+  <br />
+  Dragging of "Breve" is disabled.
+  <br />
+  Dropping of "Frappuccino" is disabled.
+</div>

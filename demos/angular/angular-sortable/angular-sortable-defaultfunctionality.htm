@@ -1,44 +1,37 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <title id='Description'>jqxSortable plugin allows you to re-arrange html elements. Angular2 demo</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <head>
+        <title id='Description'>Angular Sortable DefaultFunctionality</title>
+        <meta name="description" content="This is an example of default functionalities in Angular Sortable." />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- jQWidgets -->
-    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/globalization/globalize.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxsortable.js"></script>
-    <script src="../../../scripts/demos.js"></script>
+        <!-- Styles -->
+        <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
 
+        <!-- jQWidgets -->
+        <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/globalization/globalize.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxsortable.js"></script>
+        <script src="../../../scripts/demos.js"></script>
     
-    <script src="../node_modules/typescript/lib/typescript.js"></script>
-    <script src="../node_modules/core-js/client/shim.min.js"></script>
-    <script src="../node_modules/zone.js/dist/zone.js"></script>
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+        <!-- Angular -->
+        <script src="../node_modules/core-js/client/shim.min.js"></script>
+        <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+        <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>
 
-    <!-- Configure SystemJS -->
-    <script src="../systemjs.config.js"></script>
-    <script>
-        System.import('../app/sortable/defaultfunctionality/main').catch( (err) => { console.error(err); });
-    </script>
+    </head>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <style>
-        body, html {
-            height: 100%; overflow: hidden;
-        }
-    </style>
+    <!-- Display the application -->
+    <body>
 
-</head>
+        <div class="example-description">
+            Angular Sortable Example.
+        </div>
 
-<!-- Display the application -->
-<body>
-    <div class="example-description">
-        Angular Sortable Example.
-    </div>
+        <app-root>Loading...</app-root>
 
-    <my-app></my-app>
-</body>
+        <script src="../aot/sortable_defaultfunctionality.bundle.js"></script>
+
+    </body>
 </html>

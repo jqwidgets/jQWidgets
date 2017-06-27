@@ -1,57 +1,18 @@
-﻿ 
-import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
+﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
 import { jqxKnobComponent } from '../../../../../jqwidgets-ts/angular_jqxknob';
 import { jqxNumberInputComponent } from '../../../../../jqwidgets-ts/angular_jqxnumberinput';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: `../app/knob/defaultfunctionality/app.component.htm`,
-    styleUrls: ['../app/knob/defaultfunctionality/app.component.css'],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
     encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent implements AfterViewInit
-{
-    @ViewChild('numberInputReference') numberInput: jqxNumberInputComponent;
-    @ViewChild('knobReference') myKnob: jqxKnobComponent;
-
-    ngAfterViewInit(): void
-    {
-        setTimeout(() =>
-        {
-            (<HTMLElement>(<HTMLElement>document.getElementsByTagName('angularNumberInput')[0]).children[1]).style.border = 'none';
-            (<HTMLElement>(<HTMLElement>document.getElementsByTagName('angularNumberInput')[0]).children[1]).style.backgroundColor = 'transparent';
-            (<HTMLElement>(<HTMLElement>(<HTMLElement>document.getElementsByTagName('angularNumberInput')[0]).children[1]).firstElementChild).style.color = 'grey';
-            (<HTMLElement>(<HTMLElement>(<HTMLElement>document.getElementsByTagName('angularNumberInput')[0]).children[1]).firstElementChild).style.fontSize = '20px';
-            (<HTMLElement>(<HTMLElement>(<HTMLElement>document.getElementsByTagName('angularNumberInput')[0]).children[1]).firstElementChild).style.backgroundColor = 'transparent';
-
-            this.numberInput.val(60);
-        });
-    }
-
-    onChange(event: any): void
-    {
-        if (event.args.changeSource == 'propertyChange' || event.args.changeSource == 'val') { return; }
-        this.numberInput.val(event.args.value);
-    }
-
-    onMouseDown(event: any): void
-    {
-        event.stopPropagation();
-    }
-
-    onKeyup(): void
-    {
-        let val = this.numberInput.val();
-        this.myKnob.val(val);
-    }
-
-    onValueChanged(): void
-    {
-        let val = this.numberInput.val();
-        this.myKnob.val(val);
-    }
+export class AppComponent {
+    @ViewChild('myKnob') myKnob: jqxKnobComponent;
+    @ViewChild('myNumberInput') myNumberInput: jqxNumberInputComponent;
 
     style: any =
     {
@@ -89,4 +50,23 @@ export class AppComponent implements AfterViewInit
         type: 'arrow', style: { fill: '#00a4e1', stroke: 'grey' },
         size: '59%', offset: '49%', thickness: 20
     };
+
+    onChange(event: any): void {
+        if (event.args.changeSource == 'propertyChange' || event.args.changeSource == 'val') { return; }
+        this.myNumberInput.val(event.args.value);
+    }
+
+    onMouseDown(event: any): void {
+        event.stopPropagation();
+    }
+
+    onKeyup(): void {
+        let val = this.myNumberInput.val();
+        this.myKnob.val(val);
+    }
+
+    onValueChanged(): void {
+        let val = this.myNumberInput.val();
+        this.myKnob.val(val);
+    }
 }

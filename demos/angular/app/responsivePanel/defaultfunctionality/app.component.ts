@@ -1,59 +1,65 @@
-﻿ 
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+﻿import { Component, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 
-import { jqxTreeComponent } from '../../../../../jqwidgets-ts/angular_jqxtree';
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
 import { jqxResponsivePanelComponent } from '../../../../../jqwidgets-ts/angular_jqxresponsivepanel';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
+import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: '../app/responsivePanel/defaultfunctionality/app.component.htm',
-    styleUrls: ['../app/responsivePanel/defaultfunctionality/app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 
-export class AppComponent implements AfterViewInit
-{
-    @ViewChild('panelReference') myPanel: jqxPanelComponent;
-    @ViewChild('responsivePanelReference') RespPanel: jqxResponsivePanelComponent;
+export class AppComponent {
+    @ViewChild('myResponsivePanel') myResponsivePanel: jqxResponsivePanelComponent;
+    @ViewChild('myPanel') myPanel: jqxPanelComponent; 
+    @ViewChild('container') container: ElementRef;
+    @ViewChild('toggleResponsivePanel') toggleResponsivePanel: ElementRef;
 
-    ngAfterViewInit(): void 
-    {
-        (<HTMLElement>document.getElementsByTagName("angularTree")[0].firstElementChild).style.visibility = "visible";
-        (<HTMLElement>document.getElementsByTagName("angularTree")[0].firstElementChild).style.border = "none";
+    flag: boolean = true;
+    responsivePanelEventsHandler(event: any): void {
+        if (event.args.element)
+            return;
+        let collapsed = this.myResponsivePanel.isCollapsed();
+        let opened = this.myResponsivePanel.isOpened();
+
+        if (this.flag) {
+            collapsed = false;
+            opened = false;
+        }
+        this.flag = false;
+  
+        if (!collapsed && !opened) {
+            this.myResponsivePanel.elementRef.nativeElement.firstChild.style.display = 'block';
+            this.toggleResponsivePanel.nativeElement.style.display = 'none';
+        }   
+        else if (collapsed && opened) {
+            this.myPanel.width('65%');
+        }
+        else if (collapsed && !opened) {
+            this.myPanel.width('100%');
+            this.myResponsivePanel.elementRef.nativeElement.firstChild.style.display = 'none';
+            this.toggleResponsivePanel.nativeElement.style.display = 'block';
+        }
+        else if (!collapsed && opened) {
+            this.myPanel.width('65%');
+            this.myResponsivePanel.elementRef.nativeElement.firstChild.style.display = 'block';
+            this.toggleResponsivePanel.nativeElement.style.display = 'block';
+        }    
     }
 
-    onOpen(): void 
-    {
-        this.RespPanel.width(150);
-        this.myPanel.width(340);
+    resizeSmallBtnOnClick(): void {
+        this.myResponsivePanel.elementRef.nativeElement.firstChild.style.display = 'none';
+        this.toggleResponsivePanel.nativeElement.style.display = 'block';
+        this.container.nativeElement.style.width = '500px';
+        this.myPanel.width('100%');
+    };
 
-        this.RespPanel.refresh();
-    }
-
-    onClickSmall(): void 
-    {
-        let ownerPanel = (<HTMLElement>document.getElementById("ownerPanel"));
-        ownerPanel.style.width = '500px';
-
-        (<HTMLElement>document.getElementsByTagName("angularResponsivePanel")[0].firstElementChild).style.display = "none";
-
-        this.RespPanel.width(0)
-        this.myPanel.width(490);
-
-        this.RespPanel.refresh();
-    }
-
-    onClickBig(): void 
-    {
-        let ownerPanel = (<HTMLElement>document.getElementById("ownerPanel"));
-        ownerPanel.style.width = '800px';
-
-        (<HTMLElement>document.getElementsByTagName("angularResponsivePanel")[0].firstElementChild).style.display = "block";
-
-        this.RespPanel.width(220);
-        this.myPanel.width(570);
-
-        this.RespPanel.refresh();
-    }
+    resizeBigBtnOnClick(): void {
+        this.myPanel.width('100%');
+        this.myResponsivePanel.elementRef.nativeElement.firstChild.style.display = 'block';
+        this.toggleResponsivePanel.nativeElement.style.display = 'none';
+        this.container.nativeElement.style.width = '800px';
+        this.myPanel.width('65%');
+    };
 }

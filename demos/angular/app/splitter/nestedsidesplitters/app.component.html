@@ -1,0 +1,28 @@
+﻿<jqxSplitter #splitContainer
+             [width]="850" [height]="850" [orientation]="'vertical'"
+             [panels]="[{ size: '50%' }, { size: '50%' }]">
+  <div>
+    <jqxSplitter #leftSplitter
+             [width]="'100%'" [height]="'100%'" [orientation]="'horizontal'"
+             [panels]="[{ size: '50%' }, { size: '50%' }]">
+      <div>
+        West - North
+      </div>
+      <div>
+        West - South
+      </div>
+    </jqxSplitter>
+  </div>
+  <div>
+    <jqxSplitter #rightSplitter
+             [width]="'100%'" [height]="'100%'" [orientation]="'horizontal'"
+             [panels]="[{ size: '50%' }, { size: '50%' }]">
+      <div>
+        East - North
+      </div>
+      <div>
+        East - South
+      </div>
+    </jqxSplitter>
+  </div>
+</jqxSplitter>

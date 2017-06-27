@@ -250,6 +250,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     *color: expression(this.parentNode.currentStyle['color']) !important;     
     outline: none;
     font-weight: normal !important;
+    line-height:14px;
 }
 .jqx-grid-menu-item-touch {
     padding-top: 6px !important;

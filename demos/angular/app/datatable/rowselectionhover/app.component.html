@@ -1,0 +1,38 @@
+﻿<jqxDataTable #myDataTable style="float: left"
+    (onRowSelect)="tableOnRowSelect($event)" (onRowUnselect)="tableOnRowUnselect($event)"
+    [width]="650" [source]="dataAdapter" [columns]="columns" [altRows]="true">
+</jqxDataTable>
+
+<div style="float: left; margin-top: 10px; margin-left: 10px">
+    <div><strong>Settings</strong></div>
+    Select Row:
+
+    <jqxInput #myInput
+        [width]="60" [height]="30" [value]='0'>
+    </jqxInput>
+
+    <br />
+    <br />
+
+    <jqxButton style="float: left" (onClick)="rowSelectBtnOnClick()"
+        [width]="105" [height]="30">
+        Select
+    </jqxButton>
+
+    <jqxButton style="float: left; margin-left: 5px" (onClick)="clearSelectionBtnOnClick()"
+        [width]="135" [height]="30">
+        Clear Selection
+    </jqxButton>
+
+    <div style="clear: both"></div>
+    <div style="margin-top:10px" #selectedRows></div>
+    <br />
+
+    <div>Selection Mode:</div>
+
+    <jqxDropDownList (onChange)="dropDownOnChange($event)"
+        [height]="30" [source]="['Single Row','Multiple Rows']"
+        [selectedIndex]="1" [autoDropDownHeight]="true">
+    </jqxDropDownList>
+
+</div>

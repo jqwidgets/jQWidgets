@@ -1,0 +1,22 @@
+﻿jqxInput > input {
+    width: 110px;
+    height: 70px;
+    position: absolute;
+    vertical-align: middle;
+    border: 0px;
+    font-weight: bold;
+    font-variant: normal;
+    font-stretch: normal;
+    font-size: 48px !important;
+    font-family: Arial !important;
+    text-align: center;
+    color: #00a644 !important;
+    padding: 0px !important;
+    background: none !important;
+    margin-top: -35px !important;
+    margin-left: -55px !important;
+    left: 210px;
+    top: 230px;
+    border: none !important;
+    box-shadow: none !important;
+}

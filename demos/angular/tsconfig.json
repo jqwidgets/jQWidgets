@@ -1,16 +1,25 @@
 {
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "compilerOptions": {
-    "target": "es5",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "sourceMap": true
-  },
-  "exclude": [
-    "node_modules"
-  ]
+    "compileOnSave": false,
+    "buildOnSave": false,
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es2015",
+        "moduleResolution": "node",
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "typeRoots": [ "./node_modules/@types" ],
+        "types": [
+            "core-js",
+            "node",
+            "jquery"
+        ],
+        "lib": [ "dom", "es2015" ]
+    },
+    "exclude": [
+        "node_modules",
+        "aot",
+        "temp"
+    ]
 }

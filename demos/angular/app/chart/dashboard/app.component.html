@@ -1,0 +1,53 @@
+﻿<table cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+      <jqxChart [width]="400" [height]="180"
+                [title]="'Cluster capacity'" [description]="''"
+                [showLegend]="false" [enableAnimations]="true" [padding]="padding"
+                [titlePadding]="titlePadding" [source]="data1" [showToolTips]="true"
+                [seriesGroups]="seriesGroups" [colorScheme]="'scheme05'"
+                [backgroundColor]="'#FAFAFA'" [drawBefore]="drawBefore">
+      </jqxChart>
+    </td>
+    <td>
+      <jqxChart [width]="400" [height]="180"
+                [title]="'Avg. CPU %'" [description]="''"
+                [showLegend]="false" [enableAnimations]="true" [padding]="padding"
+                [titlePadding]="titlePadding" [source]="data2" [showToolTips]="true"
+                [seriesGroups]="seriesGroups" [colorScheme]="'scheme05'"
+                [backgroundColor]="'#FAFAFA'" [drawBefore]="drawBefore">
+      </jqxChart>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <jqxChart [width]="400" [height]="180"
+                [title]="'Storage capacity [TB]'" [description]="''"
+                [showLegend]="false" [enableAnimations]="true" [padding]="padding"
+                [titlePadding]="titlePadding" [source]="data3" [showToolTips]="true"
+                [seriesGroups]="seriesGroups" [colorScheme]="'scheme05'"
+                [backgroundColor]="'#FAFAFA'" [drawBefore]="drawBefore">
+      </jqxChart>
+    </td>
+    <td>
+      <jqxChart [width]="400" [height]="180"
+                [title]="'Network utilization %'" [description]="''"
+                [showLegend]="false" [enableAnimations]="true" [padding]="padding"
+                [titlePadding]="titlePadding" [source]="data4" [showToolTips]="true"
+                [seriesGroups]="seriesGroups" [colorScheme]="'scheme05'"
+                [backgroundColor]="'#FAFAFA'" [drawBefore]="drawBefore">
+      </jqxChart>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <jqxChart [width]="800" [height]="300"
+                [title]="'Get request per second & response latencies'" [description]="''"
+                [showLegend]="false" [enableAnimations]="true" [padding]="padding"
+                [titlePadding]="titlePadding" [source]="data5" [showToolTips]="true"
+                [seriesGroups]="seriesGroups2" [colorScheme]="'scheme05'"
+                [backgroundColor]="'#FAFAFA'" [drawBefore]="drawBefore">
+      </jqxChart>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,8 @@
+﻿<jqxGrid #myGrid
+    [width]="850" [height]="300" [source]="dataAdapter" [columns]="columns">
+</jqxGrid>
+
+<div style="margin-top: 10px">
+  <jqxButton (onClick)="refreshBtnOnClick()">Refresh Data</jqxButton>
+  <jqxButton (onClick)="clearBtnOnClick()">Clear</jqxButton>
+</div>

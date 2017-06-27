@@ -1,0 +1,15 @@
+﻿<jqxPopover #popover
+            [offset]="{ left: 0, top: -125 }"
+            [arrowOffsetValue]="-240"
+            [position]="'left'"
+            [title]="'Employees'"
+            [showCloseButton]="true"
+            [selector]="'#container'">
+  <div #employees></div>
+</jqxPopover>
+<div>
+  <div class="jqx-widget-header" style="height: 800px; width: 140px; float: right; margin-top: 30px; border-width: 1px; border-style: solid; padding: 10px;" id="container">
+    <jqxButton style="float: right; margin-top: 10px; padding: 8px 0px; border-radius: 6px;"
+               [width]="140" [height]="35">View Employees</jqxButton>
+  </div>
+</div>

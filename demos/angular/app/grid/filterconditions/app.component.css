@@ -1,0 +1,7 @@
+﻿jqxCheckBox > div {
+  margin-top: 10px !important;
+}
+
+jqxPanel > div {
+  border: none !important;
+}

@@ -1,0 +1,18 @@
+﻿<div style="float: left">
+  <jqxSplitter #jqxSplitter
+               (onResize)="resize($event)"
+               (onExpanded)="expanded($event)"
+               (onCollapsed)="collapsed($event)"
+               [height]="480" [width]="850" [panels]="panels">
+    <div class="splitter-panel" style="background-color:#F5FFF2;"><span style="margin: 5px;">Panel 1</span></div>
+    <div class="splitter-panel" style="background-color:#F5FFF2;"><span style="margin: 5px;">Panel 2</span></div>
+  </jqxSplitter>
+  <br />
+  <div style="font-family: Verdana; font-size: 13px;">
+    Events:
+  </div>
+  <jqxPanel #events 
+            [height]="250" [width]="450"
+            style="border-width: 0px;">
+  </jqxPanel>
+</div>

@@ -1,0 +1,37 @@
+﻿<jqxSplitter #mainSplitter
+             [width]="850" [height]="850" [orientation]="'horizontal'"
+             [panels]="[{ size: '50%' }, { size: '50%' }]">
+  <div>
+    <jqxSplitter #firstNested class="jqx-splitter-nested"
+                 [width]="'100%'" [height]="'100%'" [orientation]="'vertical'"
+                 [panels]="[{ size: 300, collapsible: false }]">
+      <div>
+        <jqxSplitter #secondNested class="jqx-splitter-nested"
+                     [width]="'100%'" [height]="'100%'" [orientation]="'horizontal'"
+                     [panels]="[{ size: 150 }]">
+          <div>
+            <span>Panel 1</span>
+          </div>
+          <div>
+            <span>Panel 2</span>
+          </div>
+        </jqxSplitter>
+      </div>
+      <div>
+        <span>Panel 3</span>
+      </div>
+    </jqxSplitter>
+  </div>
+  <div>
+    <jqxSplitter #thirdNested class="jqx-splitter-nested"
+                     [width]="'100%'" [height]="'100%'" [orientation]="'horizontal'"
+                     [panels]="[{ size: 150, collapsible: false }]">
+      <div>
+        <span>Panel 4</span>
+      </div>
+      <div>
+        <span>Panel 5</span>
+      </div>
+    </jqxSplitter>
+  </div>
+</jqxSplitter>

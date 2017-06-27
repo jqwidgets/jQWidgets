@@ -1,25 +1,22 @@
-﻿/// <reference path="../../../jqwidgets-ts/jqwidgets.d.ts" /> 
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid';
+import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid'
 
 @Component({
-    selector: 'my-app',
-    template: `<jqxGrid #gridReference [auto-create]='false'></jqxGrid>`
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent implements AfterViewInit
-{
-    @ViewChild('gridReference') myGrid: jqxGridComponent;
+export class AppComponent implements AfterViewInit {
+    @ViewChild('myGrid') myGrid: jqxGridComponent;
 
-    ngAfterViewInit(): void
-    {
+    ngAfterViewInit(): void {
         this.myGrid.createComponent(this.settings);
     }
 
-    source =
+    source: any =
     {
-        datatype: "xml",
+        datatype: 'xml',
         datafields: [
             { name: 'ProductName', type: 'string' },
             { name: 'QuantityPerUnit', type: 'int' },
@@ -27,27 +24,25 @@ export class AppComponent implements AfterViewInit
             { name: 'UnitsInStock', type: 'float' },
             { name: 'Discontinued', type: 'bool' }
         ],
-        root: "Products",
-        record: "Product",
+        root: 'Products',
+        record: 'Product',
         id: 'ProductID',
-        url: "../../sampledata/products.xml"
+        url: '../sampledata/products.xml'
     };
 
-    dataAdapter = new $.jqx.dataAdapter(this.source);
+    dataAdapter: any = new jqx.dataAdapter(this.source);
 
-    cellsrenderer = (row, columnfield, value, defaulthtml, columnproperties, rowdata) =>
-    {
-        if (value < 20)
-        {
+    cellsrenderer = (row: number, columnfield: string, value: string | number, defaulthtml: string, columnproperties: any, rowdata: any): string => {
+        if (value < 20) {
             return '<span style="margin: 4px; float: ' + columnproperties.cellsalign + '; color: #ff0000;">' + value + '</span>';
         }
-        else
-        {
+        else {
             return '<span style="margin: 4px; float: ' + columnproperties.cellsalign + '; color: #008000;">' + value + '</span>';
         }
     };
 
-    settings: jqwidgets.GridOptions = {
+    settings: jqwidgets.GridOptions =
+    {
         width: 850,
         source: this.dataAdapter,
         pageable: true,
@@ -59,30 +54,15 @@ export class AppComponent implements AfterViewInit
         selectionmode: 'multiplecellsadvanced',
         columns:
         [
-            {
-                text: 'Product Name', columngroup: 'ProductDetails',
-                datafield: 'ProductName', width: 250
-            },
-            {
-                text: 'Quantity per Unit', columngroup: 'ProductDetails',
-                datafield: 'QuantityPerUnit', cellsalign: 'right', align: 'right', width: 200
-            },
-            {
-                text: 'Unit Price', columngroup: 'ProductDetails', datafield: 'UnitPrice', align: 'right', cellsalign: 'right', cellsformat: 'c2', width: 200
-            },
-            {
-                text: 'Units In Stock', datafield: 'UnitsInStock', cellsalign: 'right', cellsrenderer: this.cellsrenderer, width: 100
-            },
-            {
-                text: 'Discontinued', columntype: 'checkbox', datafield: 'Discontinued'
-            }
+            { text: 'Product Name', columngroup: 'ProductDetails', datafield: 'ProductName', width: 250 },
+            { text: 'Quantity per Unit', columngroup: 'ProductDetails', datafield: 'QuantityPerUnit', cellsalign: 'right', align: 'right' },
+            { text: 'Unit Price', columngroup: 'ProductDetails', datafield: 'UnitPrice', align: 'right', cellsalign: 'right', cellsformat: 'c2' },
+            { text: 'Units In Stock', datafield: 'UnitsInStock', cellsalign: 'right', cellsrenderer: this.cellsrenderer, width: 100 },
+            { text: 'Discontinued', columntype: 'checkbox', datafield: 'Discontinued', align: 'center' }
         ],
         columngroups:
         [
-            {
-                text: 'Product Details', align: 'center', name: 'ProductDetails'
-            }
+            { text: 'Product Details', align: 'center', name: 'ProductDetails' }
         ]
     };
-
 }

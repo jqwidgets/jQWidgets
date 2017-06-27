@@ -1,0 +1,10 @@
+﻿<div style="margin-bottom: 10px;" #VerticalDiv>Vertical</div>
+<jqxScrollBar (onValueChanged)="onValueChangedVertical($event)"
+              [width]="18" [height]="280"
+              [min]="0" [max]="1000" [vertical]="true">
+</jqxScrollBar>
+<div style="margin: 10px 0;" #HorizontalDiv>Horizontal</div>
+<jqxScrollBar (onValueChanged)="onValueChangedHorizontal($event)"
+              [width]="280" [height]="18"
+              [min]="0" [max]="1000">
+</jqxScrollBar>

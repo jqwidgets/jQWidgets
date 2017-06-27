@@ -1,0 +1,29 @@
+﻿<jqxTreeGrid [width]="850"
+             [source]="dataAdapter"
+             [sortable]="true"
+             [columns]="columns"
+             #TreeGrid>
+</jqxTreeGrid>
+
+<div style="font-size: 13px; font-family: Verdana; width: 600px; margin-top: 10px;">
+  <div style="float: left; width: 300px">
+    <h4>Column Alignment</h4>
+    <jqxDropDownList #columnAlignment
+                     (onChange)="columnAlignmentChange($event)"
+                     [height]="25"
+                     [selectedIndex]="0"
+                     [autoDropDownHeight]="true"
+                     [source]="['Left', 'Center' , 'Right' ]">
+    </jqxDropDownList>
+  </div>
+  <div style="float: left; width: 300px">
+    <h4>Cells Alignment</h4>
+    <jqxDropDownList #cellsAlignment
+                     (onChange)="cellsAlignmentChange($event)"
+                     [height]="25"
+                     [selectedIndex]="0"
+                     [autoDropDownHeight]="true"
+                     [source]="['Left', 'Center' , 'Right' ]">
+    </jqxDropDownList>
+  </div>
+</div>

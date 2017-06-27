@@ -1,63 +1,56 @@
-﻿ 
-import { Component } from '@angular/core';
-
-import { jqxRadioButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxradiobutton';
+﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: '../app/radiobutton/defaultfunctionality/app.component.htm'
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent
-{
-    onChangeFirst(event: any): void
-    {
-        this.clearLog();
-        let log = document.getElementById('events');
+export class AppComponent {
+    @ViewChild('events') eventsLog: ElementRef;
+
+    count = 0;
+    clearLog(): void {
+        this.count++;
+        let log = this.eventsLog.nativeElement;
+
+        if (this.count  >= 2) {
+            log.innerHTML = '';
+            this.count = 0;
+        }
+    }
+   
+    firstBtnOnChange(event: any): void {
+        this.clearLog(); 
+        let log = this.eventsLog.nativeElement;
         let checked = event.args.checked;
-        if (checked)
-        {
+        if (checked) {
             log.innerHTML += '<div><span>Checked: 12 Months Contract</span></div>';
-        } else
-        {
+        }
+        else {
             log.innerHTML += '<div><span>Unchecked: 12 Months Contract</span></div>';
         }
     }
 
-    onChangeSecond(event: any): void
-    {
+    secondBtnOnChange(event: any): void {
         this.clearLog();
-        let log = document.getElementById('events');
+        let log = this.eventsLog.nativeElement;
         let checked = event.args.checked;
-        if (checked)
-        {
+        if (checked) {
             log.innerHTML += '<div><span>Checked: 6 Months Contract</span></div>';
-        } else
-        {
+        } else {
             log.innerHTML += '<div><span>Unchecked: 6 Months Contract</span></div>';
         }
     }
 
-    onChangeThird(event: any): void
-    {
+    thirdBtnOnChange(event: any): void {
         this.clearLog();
-        let log = document.getElementById('events');
+        let log = this.eventsLog.nativeElement;
         let checked = event.args.checked;
-        if (checked)
-        {
+        if (checked) {
             log.innerHTML += '<div><span>Checked: 3 Months Contract</span></div>';
-        } else
-        {
+        } else {
             log.innerHTML += '<div><span>Unchecked: 3 Months Contract</span></div>';
         }
     }
 
-    clearLog(): void
-    {
-        let log = document.getElementById('events').getElementsByTagName('span');
-        if (log.length >= 2)
-        {
-            document.getElementById('events').innerHTML = '';
-        }
-    }
 }

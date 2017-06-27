@@ -1,53 +1,63 @@
-﻿ 
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+﻿import { Component, ViewChild } from '@angular/core';
 
 import { jqxPasswordInputComponent } from '../../../../../jqwidgets-ts/angular_jqxpasswordinput';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
+import { jqxExpanderComponent } from '../../../../../jqwidgets-ts/angular_jqxexpander';
 import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
+import { jqxValidatorComponent } from '../../../../../jqwidgets-ts/angular_jqxvalidator';
+import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
+import { jqxDateTimeInputComponent } from '../../../../../jqwidgets-ts/angular_jqxdatetimeinput';
 
 @Component({
-    selector: 'my-app',
-    templateUrl: '../app/passwordinput/defaultfunctionality/app.component.htm'
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 
-export class AppComponent implements AfterViewInit
-{
-    @ViewChild('userName') userNameInput: jqxInputComponent;
-    @ViewChild('password') passwordInput: jqxPasswordInputComponent;
-    @ViewChild('passwordConfirm') passwordConfirmInput: jqxPasswordInputComponent;
+export class AppComponent {
+    @ViewChild('createAccount') createAccount: jqxExpanderComponent;
+    @ViewChild('firstName') firstName: jqxInputComponent;
+    @ViewChild('lastName') lastName: jqxInputComponent;
+    @ViewChild('userName') userName: jqxInputComponent;
+    @ViewChild('password') password: jqxPasswordInputComponent;
+    @ViewChild('passwordConfirm') passwordConfirm: jqxPasswordInputComponent;
+    @ViewChild('validatorReference') myValidator: jqxValidatorComponent;
+    @ViewChild('gender') gender: jqxDropDownListComponent;
 
-    ngAfterViewInit(): void
-    {
-        setTimeout(() =>
+    genders: string[] = ["male", "female"];
+
+    rules: any[] = [
         {
-            (<HTMLElement>document.getElementsByTagName('angularButton')[0].firstChild).style.marginTop = '0.8em';
-            (<HTMLElement>document.getElementsByTagName('angularButton')[0].firstChild).style.marginLeft = '2em';
-        });
-    }
-
-    buttonClicked(): any 
-    {
-        let passwordValue = this.passwordInput.val();
-        let confirmValue = this.passwordConfirmInput.val();
-        let userNameValue = this.userNameInput.val();
-
-        if (userNameValue.length === 0 || confirmValue.length === 0 || passwordValue === 0)
+            input: "#firstName", message: "First name is required!", action: 'keyup, blur', rule: (input: any, commit: any): boolean => {
+                return this.firstName.val() != "" && this.firstName.val() != "First";
+            }
+        },
         {
-            alert("You have an empty field!");
-            this.userNameInput.val('');
-            return false;
+            input: "#lastName", message: "Last name is required!", action: 'keyup, blur', rule: (input: any, commit: any): boolean => {
+                return this.lastName.val() != "" && this.lastName.val() != "Last";
+            }
+        },
+        { input: "#userName", message: "Username is required!", action: 'keyup, blur', rule: 'required' },
+        { input: "#password", message: "Password is required!", action: 'keyup, blur', rule: 'required' },
+        { input: "#passwordConfirm", message: "Password is required!", action: 'keyup, blur', rule: 'required' },
+        {
+            input: "#passwordConfirm", message: "Passwords should match!", action: 'keyup, blur', rule: (input: any, commit: any): boolean => {
+                let firstPassword = this.password.val();
+                let secondPassword = this.passwordConfirm.val();
+                return firstPassword == secondPassword;
+            }
+        },
+        {
+            input: "#gender", message: "Gender is required!", action: 'blur', rule: (input: any, commit: any): boolean => {
+                let index = this.gender.getSelectedIndex();
+                return index != -1;
+            }
         }
+    ];
 
-        if (passwordValue === confirmValue)
-        {
-            alert("Submitting Data");
-        } else
-        {
-            alert("Passwords do not match!");
-        }
+    buttonClicked(): void {
+        this.myValidator.validate(document.getElementById('form'));
+    };
 
-        this.passwordInput.val('');
-        this.passwordConfirmInput.val('');
-        this.userNameInput.val('');
-    }
+    validationSuccess(event: any): void {
+        this.createAccount.setContent('<span style="margin: 10px;">Account created.</span>');
+    };
 }

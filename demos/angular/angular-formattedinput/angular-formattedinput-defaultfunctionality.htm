@@ -1,44 +1,38 @@
 ﻿<!DOCTYPE html>
 <html>
 
-<head>
-    <title id='Description'>Angular FormattedInput</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <style>
-        body, html {
-            height: 100%;
-            overflow: hidden;
-        }
-    </style>
+    <head>
+        <title id='Description'>Angular FormattedInput DefaultFunctionality</title>
+        <meta name="description" content="This example shows the default functionalities of Angular FormattedInput." />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- jQWidgets -->
-    
-    <script src="../../../jqwidgets/jqxcore.js"></script>
-    <script src="../../../jqwidgets/jqxformattedinput.js"></script>
-    <script src="../../../scripts/demos.js"></script>
+        <!-- Styles -->
+        <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
 
-    
-    <script src="../node_modules/typescript/lib/typescript.js"></script>
-    <script src="../node_modules/core-js/client/shim.min.js"></script>
-    <script src="../node_modules/zone.js/dist/zone.js"></script>
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+        <!-- jQWidgets -->
+        <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxformattedinput.js"></script>
+        <script type="text/javascript" src="../../../scripts/demos.js"></script>
+  
+        <!-- Angular -->
+        <script src="../node_modules/core-js/client/shim.min.js"></script>
+        <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+        <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>
 
-    <!-- Configure SystemJS -->
-    <script src="../systemjs.config.js"></script>
-    <script>
-        System.import('../app/formattedinput/defaultfunctionality/main').catch( (err) => { console.error(err); });
-    </script>
-</head>
+    </head>
 
-<!-- Display the application -->
-<body>
-    <div class="example-description">
-        Angular Formatted Input Example.
-    </div>
-    <my-app></my-app>
-</body>
+    <!-- Display the application -->
+    <body>
+
+        <div class="example-description">
+            This demo shows the default functionality of Angular FormattedInput. The numeral system of the displayed number can be changed by choosing an option from the dropdown.
+        </div>
+
+        <app-root>Loading...</app-root>
+
+        <script src="../aot/formattedinput_defaultfunctionality.bundle.js"></script>
+
+    </body>
 
 </html>

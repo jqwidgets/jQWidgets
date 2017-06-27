@@ -1,0 +1,25 @@
+﻿<jqxDataTable #myDataTable
+    [width]="850" [source]="dataAdapter" [columns]="columns"
+    [sortable]="true" [pageable]="true" [columnsResize]="true">
+</jqxDataTable>
+
+<div style="font-size: 13px; font-family: Verdana; width: 600px; margin-top: 10px">
+  <div style="float: left; width: 300px">
+    <h4>Column Alignment</h4>
+
+    <jqxDropDownList (onChange)="columnAlignment($event)"
+        [height]="25" [autoDropDownHeight]="true"
+        [selectedIndex]="0" [source]="dropDownsSource">
+    </jqxDropDownList>
+
+  </div>
+  <div style="float: left; width: 300px">
+    <h4>Cells Alignment</h4>
+
+    <jqxDropDownList (onChange)="cellsAlignment($event)"
+        [height]="25" [autoDropDownHeight]="true"
+        [selectedIndex]="0" [source]="dropDownsSource">
+    </jqxDropDownList>
+
+  </div>
+</div>

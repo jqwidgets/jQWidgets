@@ -1,0 +1,44 @@
+﻿<jqxComboBox #myComboBox style="float: left; margin-top: 10px"
+    [width]="200" height="25" [source]="comboBoxSource" [selectedIndex]="0">
+</jqxComboBox>
+
+<jqxExpander style="float: left; margin-left: 100px; margin-top: 10px"
+    [width]="220" [showArrow]="false" [toggleMode]="'none'">
+    <div>Settings</div>
+    <div style="padding: 10px;">
+      <span>Search Type:</span>
+  
+      <div style="margin-top: 10px"></div>
+      <jqxDropDownList (onSelect)="dropDownListOnSelect($event)"
+          [width]="200" [height]="25" [source]="dropDownListSource" [selectedIndex]="0">
+      </jqxDropDownList>
+
+      <div style="margin-top: 10px;">
+
+        <jqxButton style="float: left; margin-right: 0.5em" [width]="80"
+            (onClick)="btnOpenOnClick()">
+            Open
+        </jqxButton>
+
+        <jqxButton style="float: left" [width]="80"
+            (onClick)="btnCloseOnClick()">
+            Close
+        </jqxButton>
+
+      </div>
+
+      <div style="clear: both"></div>
+      <div style="clear: both; margin-top: 10px"></div>
+      <jqxCheckBox [width]="120"
+          (onChange)="checkBoxAutoCompleteOnChange($event)">
+          Auto Complete
+      </jqxCheckBox>
+
+      <div style="margin-top: 10px"></div>
+      <jqxCheckBox [width]="120" [checked]="true"
+          (onChange)="checkBoxEnabledOnChange($event)">
+          Enabled
+      </jqxCheckBox>
+
+    </div>
+</jqxExpander>

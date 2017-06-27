@@ -1,0 +1,12 @@
+﻿<jqxDataTable #myDataTable
+    [width]="850" [source]="dataAdapter" [columns]="columns"
+    [altRows]="true" [sortable]="true" [exportSettings]="{ fileName: null }">
+</jqxDataTable>
+
+<div style="margin-top: 20px">
+  <div style="margin-left: 10px; float: left">
+
+      <jqxButton (onClick)="printBtnOnClick()" [width]="80">Print</jqxButton>
+
+  </div>
+</div>

@@ -1,17 +1,25 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-
-import { jqxTreeComponent } from '../../../../../jqwidgets-ts/angular_jqxtree';
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
-import { jqxResponsivePanelComponent } from '../../../../../jqwidgets-ts/angular_jqxresponsivepanel';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
+import { ResponsivePanelModule } from '../../modules/responsivepanel.module';
+import { ButtonModule } from '../../modules/button.module';
+import { PanelModule } from '../../modules/panel.module';
+import { TreeModule } from '../../modules/tree.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxTreeComponent, jqxPanelComponent, jqxResponsivePanelComponent, jqxButtonComponent],
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule, CommonModule, ResponsivePanelModule,
+        ButtonModule, PanelModule, TreeModule
+    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
 

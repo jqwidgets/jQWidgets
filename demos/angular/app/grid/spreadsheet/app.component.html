@@ -1,0 +1,10 @@
+﻿<jqxGrid #myGrid
+    [width]="850" [source]="dataAdapter" [columns]="columns"
+    [columnsresize]="true" [editable]="true" [selectionmode]="'multiplecellsadvanced'">
+</jqxGrid>
+
+<div style="margin-top: 20px; float: left">
+
+    <jqxButton (onClick)="myBtnOnClick()">Export to Excel</jqxButton>
+
+</div>

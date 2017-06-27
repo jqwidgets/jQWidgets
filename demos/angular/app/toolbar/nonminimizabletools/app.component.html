@@ -1,0 +1,22 @@
+﻿<div>
+    Resize the window to minimize or restore tools. The <span style="color: #CC0000">combobox</span>
+    is non-minimizable and the <span style="color: #EE8D4D">input</span> does not appear
+    in the pop-up menu when minimized.
+</div>
+
+<jqxWindow [width]="700" [height]="250" [minWidth]="250" [position]="{ x: 5, y: 60 }">
+    <div>
+        Resizable jqxToolBar
+    </div>
+
+    <div style="overflow: hidden">
+
+      <jqxToolbar 
+          [width]="'100%'" [height]="35" [minimizeWidth]="200"
+          [initTools]="initTools" [tools]="tools">
+      </jqxToolbar>
+
+    </div>
+
+</jqxWindow>
+  

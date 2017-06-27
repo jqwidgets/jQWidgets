@@ -1,0 +1,73 @@
+﻿
+<jqxGrid #myGrid class="grid"
+    [width]="850" [source]="dataAdapter" [pageable]="true"
+    [autoheight]="true" [columns]="columns" >
+</jqxGrid>
+
+<jqxWindow #myWindow [width]="250" [height]="230" [resizable]="false" [isModal]="false" [autoOpen]="false" [modalOpacity]="'0.01'">
+    <div>Edit</div>
+    <div style="overflow: hidden;">
+        <table>
+            <tr>
+                <td align="right">First Name:</td>
+                <td align="left">
+
+                    <jqxInput #firstname [width]="150" [height]="23"></jqxInput>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Last Name:</td>
+                <td align="left">
+
+                    <jqxInput #lastname [width]="150" [height]="23"></jqxInput>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Product:</td>
+                <td align="left">
+
+                   <jqxInput #product [width]="150" [height]="23"></jqxInput>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Quantity:</td>
+                <td align="left">
+
+                    <jqxNumberInput #quantity
+                        [width]="150" [height]="23" [decimalDigits]="0" 
+                        [min]="0" [spinButtons]="true" [spinMode]="'simple'">
+                    </jqxNumberInput>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Price:</td>
+                <td align="left">
+
+                  <jqxNumberInput #price
+                      [width]="150" [height]="23" [symbol]="'$'"
+                      [min]="0" [spinButtons]="true" [spinMode]="'simple'">
+                  </jqxNumberInput>
+
+                </td>
+            </tr>
+            <tr>
+              <td align="right"></td>
+              <td style="padding-top: 10px;" align="right">
+
+                  <jqxButton style="margin-right: 5px;" (onClick)="saveBtn()">
+                      Save
+                  </jqxButton>
+
+                  <jqxButton style="margin-right: 5px;" (onClick)="cancelBtn()">
+                      Cancel
+                  </jqxButton>
+
+              </td>
+            </tr>
+        </table>
+    </div>
+</jqxWindow>

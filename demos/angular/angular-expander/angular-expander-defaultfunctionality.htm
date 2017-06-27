@@ -1,45 +1,39 @@
 ﻿<!DOCTYPE html>
 <html>
 
-<head>
-    <title id='Description'>Angular Expander</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <style>
-        body, html {
-            height: 100%;
-            overflow: hidden;
-        }
-    </style>
+    <head>
+        <title id='Description'>Angular Expander DefaultFunctionality</title>
+        <meta name="description" content="This is an example of the default functionalities of Angular Expander" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- jQWidgets -->
-    
-    <script src="../../../jqwidgets/jqxcore.js"></script>
-    <script src="../../../jqwidgets/jqxexpander.js"></script>
-    <script src="../../../scripts/demos.js"></script>
+        <!-- Styles -->
+        <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
 
-    
-    <script src="../node_modules/typescript/lib/typescript.js"></script>
-    <script src="../node_modules/core-js/client/shim.min.js"></script>
-    <script src="../node_modules/zone.js/dist/zone.js"></script>
-    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+        <!-- jQWidgets -->
+   
+        <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxexpander.js"></script>
+        <script type="text/javascript" src="../../../scripts/demos.js"></script>
+   
+        <!-- Angular -->
+        <script src="../node_modules/core-js/client/shim.min.js"></script>
+        <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+        <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>
 
-    <!-- Configure SystemJS -->
-    <script src="../systemjs.config.js"></script>
-    <script>
-        System.import('../app/expander/defaultfunctionality/main').catch( (err) => { console.error(err); });
-    </script>
+    </head>
 
-</head>
+    <!-- Display the application -->
+    <body>
 
-<!-- Display the application -->
-<body>
-    <div class="example-description">
-        Angular Expander Example.
-    </div>
-    <my-app></my-app>
-</body>
+        <div class="example-description">
+            Angular Expander is a simple and easy to use widget that shows/hides an element. It supports several built-in expand modes. You can set it up to show or hide an element after a click, double-click or mouse enter event on the expander's header. This widget also comes with customizable slide and fade animations.
+        </div>
+
+        <app-root>Loading...</app-root>
+
+        <script src="../aot/expander_defaultfunctionality.bundle.js"></script>
+
+    </body>
 
 </html>

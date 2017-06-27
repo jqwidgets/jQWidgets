@@ -1,17 +1,23 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { jqxWindowComponent } from '../../../../../jqwidgets-ts/angular_jqxwindow';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
-import { jqxCheckBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcheckbox';
-import { jqxTabsComponent } from '../../../../../jqwidgets-ts/angular_jqxtabs';
+import { ButtonModule } from '../../modules/button.module';
+import { WindowModule } from '../../modules/window.module';
+import { CheckBoxModule } from '../../modules/checkbox.module';
+import { TabsModule } from '../../modules/tabs.module';
 
 @NgModule({
-    imports: [BrowserModule],
-    declarations: [AppComponent, jqxWindowComponent, jqxButtonComponent, jqxCheckBoxComponent, jqxTabsComponent],
-    bootstrap: [AppComponent]
+  declarations: [
+      AppComponent
+  ],
+  imports: [
+      BrowserModule, ButtonModule, WindowModule, CheckBoxModule, TabsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
 

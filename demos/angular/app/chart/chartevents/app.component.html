@@ -1,0 +1,13 @@
+﻿<jqxChart #myChart
+    (onClick)="chartEvent($event)" (onToggle)="chartEvent($event)"
+    (mouseleave)="chartEvent($event)" (mouseenter)="chartEvent($event)" 
+    [width]="850" [height]="500"
+    [title]="'Fitness & exercise weekly scorecard'"
+    [description]="'Time spent in vigorous exercise'"
+    [showToolTips]="false" [enableAnimations]="true" [padding]="padding"
+    [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis"
+    [seriesGroups]="seriesGroups" [colorScheme]="'scheme04'">
+</jqxChart>
+
+<div #eventText style="width: 600px; height: 30px"></div>
+
