@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -36,14 +36,12 @@ export class jqxLinearGaugeComponent implements OnChanges
    @Input('ticksMinor') attrTicksMinor: any;
    @Input('ticksMajor') attrTicksMajor: any;
    @Input('value') attrValue: any;
-   @Input('disable') attrDisable: any;
-   @Input('enable') attrEnable: any;
    @Input('width') attrWidth: any;
    @Input('height') attrHeight: any;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width','disable','enable'];
+   properties: string[] = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxLinearGauge;
@@ -108,6 +106,18 @@ export class jqxLinearGaugeComponent implements OnChanges
       return options;
    }
 
+   moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let classes: any = parentEl.classList;
+      childEl.classList.add(...classes);
+      parentEl.className = '';
+   }
+
+   moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let style = parentEl.style.cssText;
+      childEl.style.cssText = style
+      parentEl.style.cssText = '';
+   }
+
    createComponent(options?: any): void {
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
@@ -116,6 +126,10 @@ export class jqxLinearGaugeComponent implements OnChanges
         options = this.manageAttributes();
       }
       this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+
+      this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+      this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxLinearGauge', options);
 
@@ -191,7 +205,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   labels(arg?: jqwidgets.LinearGaugeLabels) : any {
+   labels(arg?: Object) : any {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('labels', arg);
       } else {
@@ -327,27 +341,19 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   disable(arg?: boolean) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinearGauge('disable', arg);
-      } else {
-          return this.host.jqxLinearGauge('disable');
-      }
-   }
-
-   enable(arg?: boolean) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinearGauge('enable', arg);
-      } else {
-          return this.host.jqxLinearGauge('enable');
-      }
-   }
-
 
    // jqxLinearGaugeComponent functions
+   disable(): void {
+      this.host.jqxLinearGauge('disable');
+   }
+
+   enable(): void {
+      this.host.jqxLinearGauge('enable');
+   }
+
    val(value?: String | Number): any {
       if (value !== undefined) {
-         this.host.jqxLinearGauge("val", value);
+         return this.host.jqxLinearGauge("val", value);
       } else {
          return this.host.jqxLinearGauge("val");
       }

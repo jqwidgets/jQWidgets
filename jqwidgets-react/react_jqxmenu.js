@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -7,13 +7,15 @@ import React from 'react';
 
 const JQXLite = window.JQXLite;
 
+export const jqx = window.jqx;
+
 export default class JqxMenu extends React.Component {
     componentDidMount() {
         let options = this.manageAttributes();
         this.createComponent(options);
     };
     manageAttributes() {
-        let properties = ['animationShowDuration','animationHideDuration','animationHideDelay','animationShowDelay','autoCloseInterval','autoSizeMainItems','autoCloseOnClick','autoOpenPopup','autoOpen','clickToOpen','disabled','enableHover','easing','height','keyboardNavigation','minimizeWidth','mode','popupZIndex','rtl','showTopLevelArrows','source','theme','width'];
+        let properties = ['animationShowDuration','animationHideDuration','animationHideDelay','animationShowDelay','autoCloseInterval','autoSizeMainItems','autoCloseOnClick','autoOpenPopup','autoOpen','autoCloseOnMouseLeave','clickToOpen','disabled','enableHover','easing','height','keyboardNavigation','minimizeWidth','mode','popupZIndex','rtl','showTopLevelArrows','source','theme','width'];
         let options = {};
         for(let item in this.props) {
               if(item === 'settings') {
@@ -125,6 +127,13 @@ export default class JqxMenu extends React.Component {
             JQXLite(this.componentSelector).jqxMenu('autoOpen', arg)
         } else {
             return JQXLite(this.componentSelector).jqxMenu('autoOpen');
+        }
+    };
+    autoCloseOnMouseLeave(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxMenu('autoCloseOnMouseLeave', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxMenu('autoCloseOnMouseLeave');
         }
     };
     clickToOpen(arg) {

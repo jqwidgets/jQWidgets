@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -108,6 +108,18 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       return options;
    }
 
+   moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let classes: any = parentEl.classList;
+      childEl.classList.add(...classes);
+      parentEl.className = '';
+   }
+
+   moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let style = parentEl.style.cssText;
+      childEl.style.cssText = style
+      parentEl.style.cssText = '';
+   }
+
    createComponent(options?: any): void {
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
@@ -116,6 +128,10 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
         options = this.manageAttributes();
       }
       this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+
+      this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+      this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxComplexInput', options);
 
@@ -182,7 +198,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: jqwidgets.Size) : any {
+   height(arg?: String | Number) : any {
       if (arg !== undefined) {
           this.host.jqxComplexInput('height', arg);
       } else {
@@ -254,7 +270,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: jqwidgets.Size) : any {
+   width(arg?: String | Number) : any {
       if (arg !== undefined) {
           this.host.jqxComplexInput('width', arg);
       } else {
@@ -290,7 +306,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
 
    val(value?: any): any {
       if (value !== undefined) {
-         this.host.jqxComplexInput("val", value);
+         return this.host.jqxComplexInput("val", value);
       } else {
          return this.host.jqxComplexInput("val");
       }

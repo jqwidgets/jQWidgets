@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>DataTable Custom Element Localization</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var localizationobj = {};
+        localizationobj.pagerGoToPageString = "Gehe zu:";
+        localizationobj.pagerShowRowsString = "Zeige Zeile:";
+        localizationobj.pagerRangeString = " von ";
+        localizationobj.pagerNextButtonString = "voriger";
+        localizationobj.pagerFirstButtonString = "erste";
+        localizationobj.pagerLastButtonString = "letzte";
+        localizationobj.pagerPreviousButtonString = "nächster";
+        localizationobj.sortAscendingString = "Sortiere aufsteigend";
+        localizationobj.sortDescendingString = "Sortiere absteigend";
+        localizationobj.sortRemoveString = "Entferne Sortierung";
+        localizationobj.emptydatastring = "keine Daten angezeigt";
+        localizationobj.firstDay = 1;
+        localizationobj.percentSymbol = "%";
+        localizationobj.currencySymbol = "€";
+        localizationobj.currencySymbolPosition = "after";
+        localizationobj.decimalSeparator = ".";
+        localizationobj.thousandsSeparator = ",";
+        var days = {
+            // full day names
+            names: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+            // abbreviated day names
+            namesAbbr: ["Sonn", "Mon", "Dien", "Mitt", "Donn", "Fre", "Sams"],
+            // shortest day names
+            namesShort: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"]
+        };
+        localizationobj.days = days;
+        var months = {
+            // full month names (13 months for lunar calendards -- 13th month should be "" if not lunar)
+            names: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember", ""],
+            // abbreviated month names
+            namesAbbr: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dez", ""]
+        };
+        var patterns = {
+            d: "dd.MM.yyyy",
+            D: "dddd, d. MMMM yyyy",
+            t: "HH:mm",
+            T: "HH:mm:ss",
+            f: "dddd, d. MMMM yyyy HH:mm",
+            F: "dddd, d. MMMM yyyy HH:mm:ss",
+            M: "dd MMMM",
+            Y: "MMMM yyyy"
+        }
+        localizationobj.patterns = patterns;
+        localizationobj.months = months;
+        
+        JQXElements.settings["dataTableSettings"] =
+        {
+            width: 850,
+            pageable: true,
+            pagerButtonsCount: 10,
+            localization: localizationobj,
+            source: new jqx.dataAdapter({
+                dataType: "json",
+                dataFields: [
+                    { name: 'name', type: 'string' },
+                    { name: 'type', type: 'string' },
+                    { name: 'calories', type: 'int' },
+                    { name: 'totalfat', type: 'string' },
+                    { name: 'protein', type: 'string' }
+                ],
+                id: 'id',
+                url: "../../sampledata/beverages.txt"
+            }),
+
+            columnsResize: true,
+            columns: [
+                { text: 'Name', dataField: 'name', width: 300 },
+                { text: 'Beverage Type', dataField: 'type', width: 300 },
+                { text: 'Calories', dataField: 'calories', width: 180 },
+                { text: 'Total Fat', dataField: 'totalfat', width: 120 },
+                { text: 'Protein', dataField: 'protein' }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates how to localize the DataTable custom element.
+    </div>
+   <jqx-data-table settings="dataTableSettings"></jqx-data-table>
+</body>
+</html>

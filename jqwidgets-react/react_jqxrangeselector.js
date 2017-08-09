@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -7,13 +7,15 @@ import React from 'react';
 
 const JQXLite = window.JQXLite;
 
+export const jqx = window.jqx;
+
 export default class JqxRangeSelector extends React.Component {
     componentDidMount() {
         let options = this.manageAttributes();
         this.createComponent(options);
     };
     manageAttributes() {
-        let properties = ['disabled','height','labelsFormat','labelsFormatFunction','labelPrecision','moveOnClick','markerRenderer','markerPrecision','majorLabelRenderer','markersFormat','majorTicksInterval','minorTicksInterval','max','min','padding','range','resizable','rtl','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
+        let properties = ['disabled','showGroupLabels','labelsOnTicks','markersFormatFunction','height','labelsFormat','labelsFormatFunction','labelPrecision','moveOnClick','markerRenderer','markerPrecision','majorLabelRenderer','markersFormat','majorTicksInterval','minorTicksInterval','max','min','padding','range','resizable','rtl','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
         let options = {};
         for(let item in this.props) {
               if(item === 'settings') {
@@ -69,6 +71,27 @@ export default class JqxRangeSelector extends React.Component {
             JQXLite(this.componentSelector).jqxRangeSelector('disabled', arg)
         } else {
             return JQXLite(this.componentSelector).jqxRangeSelector('disabled');
+        }
+    };
+    showGroupLabels(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxRangeSelector('showGroupLabels', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxRangeSelector('showGroupLabels');
+        }
+    };
+    labelsOnTicks(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxRangeSelector('labelsOnTicks', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxRangeSelector('labelsOnTicks');
+        }
+    };
+    markersFormatFunction(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxRangeSelector('markersFormatFunction', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxRangeSelector('markersFormatFunction');
         }
     };
     height(arg) {

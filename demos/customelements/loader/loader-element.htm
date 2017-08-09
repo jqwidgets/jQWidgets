@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Loader Custom Element Overview</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxloader.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings["loaderSettings"] =
+        {
+
+        }
+	    window.onload = function() {
+		    document.querySelector("jqx-loader").open();
+	    }
+	    function openLoader() {
+	        var loader = document.querySelector('jqx-loader');
+	        loader.open();
+        }
+        function closeLoader() {
+	        var loader = document.querySelector('jqx-loader');
+	        loader.close();
+        }
+    </script>
+</head>
+<body>
+    <jqx-loader settings="loaderSettings"></jqx-loader>
+    <jqx-button type="button" onclick="openLoader()" value="Open Loader" id="openLoader">Open</jqx-button>
+    <jqx-button type="button" onclick="closeLoader()" value="Close" id="closeLoader">Close</jqx-button>
+</body>
+</html>

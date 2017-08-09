@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Validator Custom Element Overview</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxvalidator.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxpasswordinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <style type="text/css">
+        .text-input {
+            height: 21px;
+            width: 200px;
+        }
+
+        .register-table {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+            .register-table td,
+            .register-table tr {
+                margin: 0px;
+                padding: 2px;
+                border-spacing: 0px;
+                border-collapse: collapse;
+                font-family: Verdana;
+                font-size: 12px;
+            }
+
+        h3 {
+            display: inline-block;
+            margin: 0px;
+        }
+    </style>
+    <script>
+        JQXElements.settings["validatorSettings"] = {
+            hintType: 'label',
+            animationDuration: 0,
+            rules: [
+                    { input: '#userInput', message: 'Username is required!', action: 'keyup, blur', rule: 'required' },
+                    { input: '#userInput', message: 'Your username must be between 3 and 12 characters!', action: 'keyup, blur', rule: 'length=3,12' },
+                    { input: '#passwordInput', message: 'Password is required!', action: 'keyup, blur', rule: 'required' },
+                    { input: '#passwordInput', message: 'Your password must be between 4 and 12 characters!', action: 'keyup, blur', rule: 'length=4,12' },
+                    { input: '#passwordConfirmInput', message: 'Password is required!', action: 'keyup, blur', rule: 'required' },
+                    {
+                        input: '#passwordConfirmInput', message: 'Passwords doesn\'t match!', action: 'keyup, focus', rule: function (input, commit) {
+                            // call commit with false, when you are doing server validation and you want to display a validation error on this field. 
+                            if (document.getElementById("passwordConfirmInput").val() === document.getElementById("passwordInput").val()) {
+                                return true;
+                            }
+                            return false;
+                        }
+                    },
+                    { input: '#emailInput', message: 'E-mail is required!', action: 'keyup, blur', rule: 'required' },
+                    { input: '#emailInput', message: 'Invalid e-mail!', action: 'keyup', rule: 'email' },
+                    { input: '#acceptInput', message: 'You have to accept the terms', action: 'change', rule: 'required', position: 'right:0,0' }]
+        };
+        
+
+        function validate() {
+            document.querySelector('jqx-validator').validate();
+            return false;
+        }
+    </script>
+ 
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates the basic functionality of the Validator custom element.
+    </div>
+    <jqx-validator settings="validatorSettings">
+        <form id="testForm" action="./">
+            <table class="register-table">
+                <tr>
+                    <td valign="top">Username:</td>
+                    <td valign="top"><jqx-input type="text" id="userInput" class="text-input"></jqx-input></td>
+                </tr>
+                <tr>
+                    <td valign="top">Password:</td>
+                    <td valign="top"><jqx-password-input id="passwordInput" class="text-input"></jqx-password-input></td>
+                </tr>
+                <tr>
+                    <td valign="top">Confirm password:</td>
+                    <td valign="top"><jqx-password-input  type="password" id="passwordConfirmInput" class="text-input"></jqx-password-input></td>
+                </tr>
+                <tr>
+                    <td valign="top">E-mail:</td>
+                    <td valign="top"><jqx-input id="emailInput" placeholder="someone@mail.com" class="text-input"></jqx-input></td>
+                </tr>
+                <tr>
+                    <td valign="top" colspan="2" style="padding: 5px;"><jqx-check-box id="acceptInput" style="margin-left: 100px;">I accept terms</jqx-check-box></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;"><jqx-button type="button" onmousedown="validate()" id="sendButton">Send</jqx-button></td>
+                </tr>
+            </table>
+        </form>
+    </jqx-validator>
+</body>
+</html>

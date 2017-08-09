@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Toolbar Custom Element Overview</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxtoolbar.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings["toolbarSettings"] =
+        {
+            tools: 'toggleButton toggleButton toggleButton | dropdownlist combobox | input',
+            initTools: function (type, index, tool, menuToolIninitialization) {
+                if (type == "toggleButton") {
+                    var icon = document.createElement('div');
+                    icon.classList.add('jqx-editor-toolbar-icon');
+                    icon.classList.add('buttonIcon');
+                    tool[0].style.height = "27px";
+                }
+                switch (index) {
+                    case 0:
+                        icon.classList.add('jqx-editor-toolbar-icon-bold');
+                        icon.style.marginTop = '-2px';
+                        tool[0].appendChild(icon);
+                        break;
+                    case 1:
+                        icon.classList.add('jqx-editor-toolbar-icon-italic');
+                        icon.style.marginTop = '-2px';
+                        tool[0].appendChild(icon);
+                        break;
+                    case 2:
+                        icon.classList.add('jqx-editor-toolbar-icon-underline');
+                        icon.style.marginTop = '-2px';
+                        tool[0].appendChild(icon);
+                        break;
+                    case 3:
+                        new jqxDropDownList(tool, { width: 130, autoDropDownHeight: true, source: ["<span style='font-family: Courier New;'>Courier New</span>", "<span style='font-family: Times New Roman;'>Times New Roman</span>", "<span style='font-family: Verdana;'>Verdana</span>"], selectedIndex: 1 });
+                        break;
+                    case 4:
+                        new jqxComboBox(tool, { width: 50, autoDropDownHeight: true, source: [8, 9, 10, 11, 12, 14, 16, 18, 20], selectedIndex: 3 });
+                        break;
+                    case 5:
+                        new jqxInput(tool, { height: 25, width: 200, placeHolder: "Type here to search..." });
+                        break;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates the basic functionality of the Toolbar custom element.
+    </div>
+    <jqx-tool-bar settings="toolbarSettings"></jqx-tool-bar>
+</body>
+</html>

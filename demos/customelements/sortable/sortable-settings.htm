@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Sortable Custom Element</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxsortable.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script>
+        window.onload = function () {
+            var firstNames = ["Nancy", "Andrew", "Janet", "Margaret", "Steven"];
+            var lastNames = ["Davolio", "Fuller", "Leverling", "Peacock", "Buchanan"];
+            var titles = ["Sales Representative", "Vice President, Sales", "Sales Representative", "Sales Representative", "Sales Manager"];
+
+            var sortableList = '';
+            for (var i = 0; i < firstNames.length; i++) {
+                var imgurl = '../../../images/' + firstNames[i].toLowerCase() + '.png';
+                var img = '<img height="50" width="40" src="' + imgurl + '"/>';
+                var element = '<div><table style="min-width: 130px;"><tr><td style="width: 40px;" rowspan="2">' + img + '</td><td>' + firstNames[i] + " " + lastNames[i] + '</td></tr><tr><td>' + titles[i] + '</td></tr></table></div>';
+                sortableList = sortableList + element;
+            }
+
+            document.querySelector("jqx-sortable").innerHTML = sortableList;
+        }
+        JQXElements.settings["sortableSettings"] =
+        {
+
+        }
+    </script>
+    <style type="text/css">
+        jqx-sortable {
+            margin: 2px;
+            padding: 5px;
+            float: left;
+            width: 200px;
+            border: lightblue solid 1px;
+        }
+
+            jqx-sortable div {
+                border-radius: 5px;
+                padding: 5px;
+                cursor: pointer;
+                background-color: white;
+                color: black;
+                border: 1px solid transparent;
+            }
+
+                jqx-sortable div:hover {
+                    border: 1px solid #356AA0;
+    </style>
+</head>
+<body>
+    <jqx-sortable settings="sortableSettings"></jqx-sortable>
+</body>
+</html>

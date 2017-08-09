@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -115,6 +115,18 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       return options;
    }
 
+   moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let classes: any = parentEl.classList;
+      childEl.classList.add(...classes);
+      parentEl.className = '';
+   }
+
+   moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let style = parentEl.style.cssText;
+      childEl.style.cssText = style
+      parentEl.style.cssText = '';
+   }
+
    createComponent(options?: any): void {
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
@@ -123,13 +135,31 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
         options = this.manageAttributes();
       }
       this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+
+      this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+      this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+
+      if (this.attrRtl !== true) {
+          if (this.attrSpinButtons === false) {
+              this.host.children()[1].remove();
+          }
+          if (this.attrDropDown !== true) {
+              this.host.children()[1].remove();
+          }
+      } else if (this.attrRtl === true) {
+          this.host.children()[1].remove();
+          this.host.children()[1].remove();
+          if (this.attrSpinButtons !== false) {
+              this.host.prepend('<div></div>');
+          }
+          if (this.attrDropDown === true) {
+              this.host.prepend('<div></div>');
+          }
+      }
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxFormattedInput', options);
 
       this.__updateRect__();
-      setTimeout(_=> {
-         this.host.jqxFormattedInput('val', parseFloat(options.value));
-      });
    }
 
    createWidget(options?: any): void {
@@ -195,7 +225,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   dropDownWidth(arg?: any) : any {
+   dropDownWidth(arg?: Number | String) : any {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('dropDownWidth', arg);
       } else {
@@ -259,7 +289,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   radix(arg?: any) : any {
+   radix(arg?: Number | String) : any {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('radix', arg);
       } else {
@@ -363,7 +393,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
 
    val(value?: String | Number): any {
       if (value !== undefined) {
-         this.host.jqxFormattedInput("val", value);
+         return this.host.jqxFormattedInput("val", value);
       } else {
          return this.host.jqxFormattedInput("val");
       }

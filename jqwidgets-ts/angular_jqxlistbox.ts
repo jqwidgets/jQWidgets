@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -48,6 +48,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
    @Input('multiple') attrMultiple: any;
    @Input('multipleextended') attrMultipleextended: any;
    @Input('renderer') attrRenderer: any;
+   @Input('rendered') attrRendered: any;
    @Input('rtl') attrRtl: any;
    @Input('selectedIndex') attrSelectedIndex: any;
    @Input('selectedIndexes') attrSelectedIndexes: any;
@@ -61,7 +62,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['autoHeight','allowDrag','allowDrop','checkboxes','disabled','displayMember','dropAction','dragStart','dragEnd','enableHover','enableSelection','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','height','hasThreeStates','itemHeight','incrementalSearch','incrementalSearchDelay','multiple','multipleextended','renderer','rtl','selectedIndex','selectedIndexes','source','scrollBarSize','searchMode','theme','valueMember','width'];
+   properties: string[] = ['autoHeight','allowDrag','allowDrop','checkboxes','disabled','displayMember','dropAction','dragStart','dragEnd','enableHover','enableSelection','equalItemsWidth','filterable','filterHeight','filterDelay','filterPlaceHolder','height','hasThreeStates','itemHeight','incrementalSearch','incrementalSearchDelay','multiple','multipleextended','renderer','rendered','rtl','selectedIndex','selectedIndexes','source','scrollBarSize','searchMode','theme','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxListBox;
@@ -129,6 +130,18 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
       return options;
    }
 
+   moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let classes: any = parentEl.classList;
+      childEl.classList.add(...classes);
+      parentEl.className = '';
+   }
+
+   moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let style = parentEl.style.cssText;
+      childEl.style.cssText = style
+      parentEl.style.cssText = '';
+   }
+
    createComponent(options?: any): void {
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
@@ -137,6 +150,10 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
         options = this.manageAttributes();
       }
       this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+
+      this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+      this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxListBox', options);
 
@@ -359,6 +376,14 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
           this.host.jqxListBox('renderer', arg);
       } else {
           return this.host.jqxListBox('renderer');
+      }
+   }
+
+   rendered(arg?: () => any) : any {
+      if (arg !== undefined) {
+          this.host.jqxListBox('rendered', arg);
+      } else {
+          return this.host.jqxListBox('rendered');
       }
    }
 
@@ -602,7 +627,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
 
    val(value?: String | Number): any {
       if (value !== undefined) {
-         this.host.jqxListBox("val", value);
+         return this.host.jqxListBox("val", value);
       } else {
          return this.host.jqxListBox("val");
       }

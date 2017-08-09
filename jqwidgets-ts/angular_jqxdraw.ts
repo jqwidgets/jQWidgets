@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -85,6 +85,18 @@ export class jqxDrawComponent implements OnChanges
       return options;
    }
 
+   moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let classes: any = parentEl.classList;
+      childEl.classList.add(...classes);
+      parentEl.className = '';
+   }
+
+   moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let style = parentEl.style.cssText;
+      childEl.style.cssText = style
+      parentEl.style.cssText = '';
+   }
+
    createComponent(options?: any): void {
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
@@ -93,6 +105,10 @@ export class jqxDrawComponent implements OnChanges
         options = this.manageAttributes();
       }
       this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+
+      this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+      this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+
       this.host.append('div');
       this.host.css({ width: this.attrWidth, height: this.attrHeight });
       this.__wireEvents__();
@@ -172,7 +188,7 @@ export class jqxDrawComponent implements OnChanges
       this.host.jqxDraw('refresh');
    }
 
-   rect(x?: number, y?: number, width?: jqwidgets.Size, height?: jqwidgets.Size, attributes?: any): any {
+   rect(x?: number, y?: number, width?: String | Number, height?: String | Number, attributes?: any): any {
       return this.host.jqxDraw('rect', x, y, width, height, attributes);
    }
 
@@ -184,7 +200,7 @@ export class jqxDrawComponent implements OnChanges
       this.host.jqxDraw('saveAsPNG', image, url);
    }
 
-   text(text?: string, x?: number, y?: number, width?: jqwidgets.Size, height?: jqwidgets.Size, angle?: number, attributes?: any, clip?: boolean, halign?: string, valign?: string, rotateAround?: string): any {
+   text(text?: string, x?: number, y?: number, width?: String | Number, height?: String | Number, angle?: number, attributes?: any, clip?: boolean, halign?: string, valign?: string, rotateAround?: string): any {
       return this.host.jqxDraw('text', text, x, y, width, height, angle, attributes, clip, halign, valign, rotateAround);
    }
 

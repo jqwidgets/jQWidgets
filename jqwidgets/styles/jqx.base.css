@@ -5693,7 +5693,10 @@ ol li .jqx-listmenu-item-label:before
 {
     overflow: auto;
 }
-.jqx-responsive-panel, .jqx-responsive-panel-button
+.jqx-responsive-panel{
+    border-width:0px;
+}
+.jqx-responsive-panel-button
 {
     border-width: 1px;
     border-style: solid;
@@ -6768,14 +6771,14 @@ ol li .jqx-listmenu-item-label:before
 .jqx-element {
     overflow: hidden;
     border-style: solid;
-    border-width: 1px;
-    border-color: #c7c7c7;
+    border-width: 0px;
+    border-color: transparent;
+    box-sizing:border-box;
 }
 .jqx-element-no-border {
     border-width:0px;
 }
 .jqx-element-container {
-    border-width: 0px !important;
 }
 .jqx-resize-trigger, .jqx-resize-trigger-shrink {
     position: absolute; 
@@ -6800,4 +6803,206 @@ ol li .jqx-listmenu-item-label:before
     pointer-events: none; 
     z-index: -1;
     visibility:hidden;
+}
+
+/* jqxPivotGrid */
+.jqx-pivotgrid
+{
+    background-color: #DEDEDE;
+}
+
+.jqx-pivotgrid-item
+{
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    padding: 0px;
+    text-overflow: ellipsis;
+}
+
+.jqx-pivotgrid-content-wrapper
+{
+    align: left;
+    valign: top;
+    overflow: hidden;
+    border: solid 1px grey;
+}
+
+.jqx-pivotgrid-menu-button
+{
+    border: none;
+    background-image: url('images/icon-menu-small.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.jqx-pivotgrid-expand-button
+{
+    outline: none;
+    background-image: url('images/icon_expand.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    position: relative;
+    left: 5px;
+    float: left;
+    vertical-align: middle;
+}
+
+.jqx-pivotgrid-collapse-button
+{
+    outline: none;
+    background-image: url('images/icon_collapse.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    position: relative;
+    left: 5px;
+    float: left;
+    vertical-align: middle;    
+}
+
+
+.jqx-pivotgrid-sortasc-icon
+ {
+    background-image: url('images/icon-sort-asc.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-left: -4px;
+    margin-right: 4px;
+ }
+
+.jqx-pivotgrid-sortdesc-icon
+ {
+    background-image: url('images/icon-sort-desc.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-left: -4px;
+    margin-right: 4px;
+ }
+
+.jqx-pivotgrid-sortremove-icon
+ {
+    background-image: url('images/icon-sort-remove.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-left: -4px;
+    margin-right: 4px;
+ }
+
+.jqx-pivotgrid-settings-icon
+ {
+    background-image: url('images/icon-menu-small.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-left: -4px;
+    margin-right: 4px;
+ }
+
+jqx-bullet-chart{
+    width:800px;
+    height:80px;
+}
+jqx-scroll-view{
+    width:600px;
+}
+jqx-bar-gauge, jqx-draw {
+    width: 850px;
+    height: 600px;
+}
+jqx-menu {
+    width:600px;
+}
+jqx-data-table, jqx-pivotgrid, jqx-grid, jqx-scheduler, jqx-tree-grid, jqx-docking-layout, jqx-layout, jqx-tree-map, jqx-splitter, jqx-kanban {
+    width: 850px;
+}
+jqx-nav-bar {
+    height:50px;
+}
+jqx-chart{
+    width: 850px;
+    height: 400px;
+}
+jqx-docking-layout, jqx-layout {
+    width: 850px;
+    height: 600px;
+}
+jqx-ribbon, jqx-panel{
+    width: 450px;
+    height: 300px;
+}
+jqx-scheduler {
+    height: 600px;
+}
+jqx-list-box, jqx-text-area{
+    width: 200px;
+    height: 200px;
+}
+jqx-file-upload {
+    width: 300px;
+}
+jqx-complex-input, jqx-formatted-input, jqx-password-input, jqx-input, jqx-number-input, jqx-slider,
+jqx-masked-input, jqx-drop-down-list, jqx-combo-box, jqx-date-time-input, jqx-drop-down-button{
+    width: 300px;
+    height: 35px;
+}
+jqx-loader{
+    width:100px !important;
+    height:60px !important;
+}
+jqx-expander, jqx-navigation-bar {
+    width:350px;
+}
+jqx-navigation-bar{
+    height:450px;
+}
+jqx-range-selector{
+    width:600px;
+}
+jqx-tabs{
+    width:800px;
+}
+jqx-tool-bar {
+    width:800px;
+    height: 35px;
+}
+jqx-editor {
+    width: 600px;
+    height: 400px;
+}
+jqx-tree-map{
+    width: 850px;
+    height: 600px;
+}
+jqx-tree{
+    width:250px;
+}
+jqx-linear-gauge{
+    width:100px;
+}
+jqx-color-picker, jqx-calendar{
+    width: 200px;
+    height: 200px;
+}
+jqx-scroll-bar {
+    width:400px;
+    height:20px;
+}
+jqx-knob {
+     width:600px;
+     height:600px;
 }

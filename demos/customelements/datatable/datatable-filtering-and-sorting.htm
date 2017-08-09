@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>DataTable Custom Element Filtering and Sorting</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings["dataTableSettings"] =
+        {
+            width: 850,
+            pageable: true,
+            pagerButtonsCount: 10,
+            source: new jqx.dataAdapter({
+                dataType: "json",
+                dataFields: [
+                    { name: 'name', type: 'string' },
+                    { name: 'type', type: 'string' },
+                    { name: 'calories', type: 'int' },
+                    { name: 'totalfat', type: 'string' },
+                    { name: 'protein', type: 'string' }
+                ],
+                id: 'id',
+                url: "../../sampledata/beverages.txt"
+            }),
+            sortable: true,
+            filterable: true,
+            columnsResize: true,
+            columns: [
+                { text: 'Name', dataField: 'name', width: 300 },
+                { text: 'Beverage Type', dataField: 'type', width: 300 },
+                { text: 'Calories', dataField: 'calories', width: 180 },
+                { text: 'Total Fat', dataField: 'totalfat', width: 120 },
+                { text: 'Protein', dataField: 'protein' }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates the Sorting and Filtering functionality of the Datatable custom element.
+    </div>
+   <jqx-data-table settings="dataTableSettings"></jqx-data-table>
+</body>
+</html>

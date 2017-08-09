@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -91,6 +91,18 @@ export class jqxDockingLayoutComponent implements OnChanges
       return options;
    }
 
+   moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let classes: any = parentEl.classList;
+      childEl.classList.add(...classes);
+      parentEl.className = '';
+   }
+
+   moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let style = parentEl.style.cssText;
+      childEl.style.cssText = style
+      parentEl.style.cssText = '';
+   }
+
    createComponent(options?: any): void {
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
@@ -99,6 +111,10 @@ export class jqxDockingLayoutComponent implements OnChanges
         options = this.manageAttributes();
       }
       this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+
+      this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+      this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDockingLayout', options);
 
@@ -126,7 +142,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   height(arg?: jqwidgets.Size) : any {
+   height(arg?: String | Number) : any {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('height', arg);
       } else {
@@ -142,7 +158,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   minGroupHeight(arg?: jqwidgets.Size) : any {
+   minGroupHeight(arg?: String | Number) : any {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('minGroupHeight', arg);
       } else {
@@ -150,7 +166,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   minGroupWidth(arg?: jqwidgets.Size) : any {
+   minGroupWidth(arg?: String | Number) : any {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('minGroupWidth', arg);
       } else {
@@ -182,7 +198,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   width(arg?: jqwidgets.Size) : any {
+   width(arg?: String | Number) : any {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('width', arg);
       } else {
@@ -192,7 +208,7 @@ export class jqxDockingLayoutComponent implements OnChanges
 
 
    // jqxDockingLayoutComponent functions
-   addFloatGroup(width: jqwidgets.Size, height: jqwidgets.Size, position: jqwidgets.DockingLayoutLayoutPosition, panelType: string, title: string, content: string, initContent: any): void {
+   addFloatGroup(width: String | Number, height: String | Number, position: jqwidgets.DockingLayoutLayoutPosition, panelType: string, title: string, content: string, initContent: any): void {
       this.host.jqxDockingLayout('addFloatGroup', width, height, position, panelType, title, content, initContent);
    }
 

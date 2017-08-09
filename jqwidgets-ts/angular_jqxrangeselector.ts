@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -15,6 +15,9 @@ declare let JQXLite: any;
 export class jqxRangeSelectorComponent implements OnChanges
 {
    @Input('disabled') attrDisabled: any;
+   @Input('showGroupLabels') attrShowGroupLabels: any;
+   @Input('labelsOnTicks') attrLabelsOnTicks: any;
+   @Input('markersFormatFunction') attrMarkersFormatFunction: any;
    @Input('labelsFormat') attrLabelsFormat: any;
    @Input('labelsFormatFunction') attrLabelsFormatFunction: any;
    @Input('labelPrecision') attrLabelPrecision: any;
@@ -41,7 +44,7 @@ export class jqxRangeSelectorComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','height','labelsFormat','labelsFormatFunction','labelPrecision','moveOnClick','markerRenderer','markerPrecision','majorLabelRenderer','markersFormat','majorTicksInterval','minorTicksInterval','max','min','padding','range','resizable','rtl','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
+   properties: string[] = ['disabled','showGroupLabels','labelsOnTicks','markersFormatFunction','height','labelsFormat','labelsFormatFunction','labelPrecision','moveOnClick','markerRenderer','markerPrecision','majorLabelRenderer','markersFormat','majorTicksInterval','minorTicksInterval','max','min','padding','range','resizable','rtl','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxRangeSelector;
@@ -106,6 +109,18 @@ export class jqxRangeSelectorComponent implements OnChanges
       return options;
    }
 
+   moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let classes: any = parentEl.classList;
+      childEl.classList.add(...classes);
+      parentEl.className = '';
+   }
+
+   moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let style = parentEl.style.cssText;
+      childEl.style.cssText = style
+      parentEl.style.cssText = '';
+   }
+
    createComponent(options?: any): void {
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
@@ -114,6 +129,10 @@ export class jqxRangeSelectorComponent implements OnChanges
         options = this.manageAttributes();
       }
       this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+
+      this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+      this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxRangeSelector', options);
 
@@ -138,6 +157,30 @@ export class jqxRangeSelectorComponent implements OnChanges
           this.host.jqxRangeSelector('disabled', arg);
       } else {
           return this.host.jqxRangeSelector('disabled');
+      }
+   }
+
+   showGroupLabels(arg?: boolean) : any {
+      if (arg !== undefined) {
+          this.host.jqxRangeSelector('showGroupLabels', arg);
+      } else {
+          return this.host.jqxRangeSelector('showGroupLabels');
+      }
+   }
+
+   labelsOnTicks(arg?: boolean) : any {
+      if (arg !== undefined) {
+          this.host.jqxRangeSelector('labelsOnTicks', arg);
+      } else {
+          return this.host.jqxRangeSelector('labelsOnTicks');
+      }
+   }
+
+   markersFormatFunction(arg?: any) : any {
+      if (arg !== undefined) {
+          this.host.jqxRangeSelector('markersFormatFunction', arg);
+      } else {
+          return this.host.jqxRangeSelector('markersFormatFunction');
       }
    }
 

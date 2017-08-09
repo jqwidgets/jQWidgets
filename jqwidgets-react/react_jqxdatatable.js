@@ -1,11 +1,13 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
 import React from 'react';
 
 const JQXLite = window.JQXLite;
+
+export const jqx = window.jqx;
 
 export default class JqxDataTable extends React.Component {
     componentDidMount() {
@@ -432,7 +434,7 @@ export default class JqxDataTable extends React.Component {
         JQXLite(this.componentSelector).jqxDataTable('addRow', rowIndex, rowData, rowPosition);  
     };
     addFilter(dataField, filerGroup) {
-        return JQXLite(this.componentSelector).jqxDataTable('addFilter', dataField, filerGroup);  
+        JQXLite(this.componentSelector).jqxDataTable('addFilter', dataField, filerGroup);  
     };
     applyFilters() {
         JQXLite(this.componentSelector).jqxDataTable('applyFilters');  

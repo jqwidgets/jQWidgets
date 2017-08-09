@@ -1,26 +1,46 @@
 ﻿function getDemoTheme() {
-    var theme = document.body ? $.data(document.body, 'theme') : null
-    if (theme == null) {
-        theme = '';
-    }
-    else {
-        return theme;
-    }
-    var themestart = window.location.toString().indexOf('?');
-    if (themestart == -1) {
-        return '';
+    var theme = 'light';
+    if (window.localStorage["Theme"]) {
+        var selectedIndex = parseInt(window.localStorage["Theme"].substring(1));
+        var mobilethemes = [
+            { label: 'iOS', group: 'Themes', value: 'mobile' },
+            { label: 'Android', group: 'Themes', value: 'android' },
+            { label: 'Windows Phone', group: 'Themes', value: 'win8' },
+            { label: 'Blackberry', group: 'Themes', value: 'blackberry' }
+        ];
+
+        var themes = [
+            { label: 'Light', group: 'Themes', value: 'light' },
+            { label: 'Dark', group: 'Themes', value: 'dark' },
+            { label: 'Arctic', group: 'Themes', value: 'arctic' },
+            { label: 'Web', group: 'Themes', value: 'web' },
+            { label: 'Bootstrap', group: 'Themes', value: 'bootstrap' },
+            { label: 'Metro', group: 'Themes', value: 'metro' },
+            { label: 'Metro Dark', group: 'Themes', value: 'metrodark' },
+            { label: 'Office', group: 'Themes', value: 'office' },
+            { label: 'Orange', group: 'Themes', value: 'orange' },
+            { label: 'Fresh', group: 'Themes', value: 'fresh' },
+            { label: 'Energy Blue', group: 'Themes', value: 'energyblue' },
+            { label: 'Dark Blue', group: 'Themes', value: 'darkblue' },
+            { label: 'Black', group: 'Themes', value: 'black' },
+            { label: 'Shiny Black', group: 'Themes', value: 'shinyblack' },
+            { label: 'Classic', group: 'Themes', value: 'classic' },
+            { label: 'Summer', group: 'Themes', value: 'summer' },
+            { label: 'High Contrast', group: 'Themes', value: 'highcontrast' },
+            { label: 'Lightness', group: 'UI Compatible', value: 'ui-lightness' },
+            { label: 'Darkness', group: 'UI Compatible', value: 'ui-darkness' },
+            { label: 'Smoothness', group: 'UI Compatible', value: 'ui-smoothness' },
+            { label: 'Start', group: 'UI Compatible', value: 'ui-start' },
+            { label: 'Redmond', group: 'UI Compatible', value: 'ui-redmond' },
+            { label: 'Sunny', group: 'UI Compatible', value: 'ui-sunny' },
+            { label: 'Overcast', group: 'UI Compatible', value: 'ui-overcast' },
+            { label: 'Le Frog', group: 'UI Compatible', value: 'ui-le-frog' }
+        ];
+
+        theme = themes[selectedIndex].value;
     }
 
-    var theme = window.location.toString().substring(1 + themestart);
-    if (theme.indexOf('(') >= 0)
-    {
-        theme = theme.substring(1);
-    }
-    if (theme.indexOf(')') >= 0) {
-        theme = theme.substring(0, theme.indexOf(')'));
-    }
-
-    var url = "../../jqwidgets/styles/jqx." + theme + '.css';
+    var url = "../jqwidgets/styles/jqx." + theme + '.css';
     if (window.location.href.toString().indexOf("angularjs") >= 0) {
         var loc = window.location.href.toString();
         if (loc.indexOf('button') >= 0 ||
@@ -34,14 +54,17 @@
         loc.indexOf('calendar') >= 0 ||
         loc.indexOf('datetimeinput') >= 0 ||
         (loc.indexOf('chart') >= 0 && loc.indexOf('bulletchart') == -1)) {
-            url = "../../../jqwidgets/styles/jqx." + theme + '.css';
+            url = "../../jqwidgets/styles/jqx." + theme + '.css';
         }
     }
     if(window.location.href.toString().indexOf("typescript") >= 0)
     {
         url = "../../../jqwidgets/styles/jqx." + theme + '.css';
     }
-
+   if(window.location.href.toString().indexOf("angularjs2") >= 0)
+    {
+        url = "../jqwidgets/styles/jqx." + theme + '.css';
+    }
     if (document.createStyleSheet != undefined) {
         var hasStyle = false;
         $.each(document.styleSheets, function (index, value) {
@@ -81,7 +104,7 @@
 var theme = '';
 try
 {
-    if (jQuery) {
+    if ($) {
         $(document).ready(function () {
             $(".example-description").css('margin-bottom', 15);
         });

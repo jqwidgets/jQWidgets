@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -103,6 +103,18 @@ export class jqxBarGaugeComponent implements OnChanges
       return options;
    }
 
+   moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let classes: any = parentEl.classList;
+      childEl.classList.add(...classes);
+      parentEl.className = '';
+   }
+
+   moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let style = parentEl.style.cssText;
+      childEl.style.cssText = style
+      parentEl.style.cssText = '';
+   }
+
    createComponent(options?: any): void {
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
@@ -111,6 +123,10 @@ export class jqxBarGaugeComponent implements OnChanges
         options = this.manageAttributes();
       }
       this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+
+      this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+      this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+
       if (typeof options.width === 'string' && options.width.indexOf('%') !== -1) {
          options.width = parseInt(options.width, 10) / 100 * this.host.parent().parent().parent().width();
       }
@@ -200,7 +216,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   formatFunction(arg?: jqwidgets.BarGaugeFormatFunction) : any {
+   formatFunction(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxBarGauge('formatFunction', arg);
       } else {
@@ -208,7 +224,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   height(arg?: jqwidgets.Size) : any {
+   height(arg?: String | Number) : any {
       if (arg !== undefined) {
           this.host.jqxBarGauge('height', arg);
       } else {
@@ -240,7 +256,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   relativeInnerRadius(arg?: any) : any {
+   relativeInnerRadius(arg?: Number | String) : any {
       if (arg !== undefined) {
           this.host.jqxBarGauge('relativeInnerRadius', arg);
       } else {
@@ -296,7 +312,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   width(arg?: jqwidgets.Size) : any {
+   width(arg?: String | Number) : any {
       if (arg !== undefined) {
           this.host.jqxBarGauge('width', arg);
       } else {
@@ -316,7 +332,7 @@ export class jqxBarGaugeComponent implements OnChanges
 
    val(value?: Array<Number>): any {
       if (value !== undefined) {
-         this.host.jqxBarGauge("val", value);
+         return this.host.jqxBarGauge("val", value);
       } else {
          return this.host.jqxBarGauge("val");
       }

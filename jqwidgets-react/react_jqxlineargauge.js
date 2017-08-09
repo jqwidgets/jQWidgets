@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -7,13 +7,15 @@ import React from 'react';
 
 const JQXLite = window.JQXLite;
 
+export const jqx = window.jqx;
+
 export default class JqxLinearGauge extends React.Component {
     componentDidMount() {
         let options = this.manageAttributes();
         this.createComponent(options);
     };
     manageAttributes() {
-        let properties = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width','disable','enable'];
+        let properties = ['animationDuration','background','colorScheme','disabled','easing','height','int64','labels','min','max','orientation','pointer','rangesOffset','rangeSize','ranges','showRanges','scaleStyle','scaleLength','ticksOffset','ticksPosition','ticksMinor','ticksMajor','value','width'];
         let options = {};
         for(let item in this.props) {
               if(item === 'settings') {
@@ -232,19 +234,11 @@ export default class JqxLinearGauge extends React.Component {
             return JQXLite(this.componentSelector).jqxLinearGauge('width');
         }
     };
-    disable(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxLinearGauge('disable', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxLinearGauge('disable');
-        }
+    disable() {
+        JQXLite(this.componentSelector).jqxLinearGauge('disable');  
     };
-    enable(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxLinearGauge('enable', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxLinearGauge('enable');
-        }
+    enable() {
+        JQXLite(this.componentSelector).jqxLinearGauge('enable');  
     };
     val(value) {
         if (value !== undefined) {

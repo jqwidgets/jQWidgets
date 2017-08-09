@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element Filtering and Sorting</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.aggregates.js"></script>
+    <script type="text/javascript" src="../../sampledata/generatedata.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings["gridSettings"] =
+        {
+            source:  new jqx.dataAdapter({
+                localData: generatedata(500),
+                dataFields:
+                [
+                    { name: 'name', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'available', type: 'bool' },
+                    { name: 'date', type: 'date' },
+                    { name: 'quantity', type: 'number' }
+                ],
+                dataType: "array"
+            }),
+            editable: true,
+            selectionmode: 'multiplecellsextended',
+            columns: [
+                { text: 'Name', columnType: 'textbox', filterType: 'input', dataField: 'name', width: 215 },
+                {
+                    text: 'Product', filterType: 'checkedlist', dataField: 'productname', width: 220
+                },
+                { text: 'Available', dataField: 'available', columnType: 'checkbox', filterType: 'bool', width: 67 },
+                { text: 'Ship Date', dataField: 'date', filterType: 'range', width: 210, cellsAlign: 'right', cellsFormat: 'd' },
+                { text: 'Qty.', dataField: 'quantity', filterType: 'number', cellsAlign: 'right' }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates the Edit functionality of the Grid custom element.
+    </div>
+    <jqx-grid settings="gridSettings"></jqx-grid>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -7,13 +7,15 @@ import React from 'react';
 
 const JQXLite = window.JQXLite;
 
+export const jqx = window.jqx;
+
 export default class JqxTabs extends React.Component {
     componentDidMount() {
         let options = this.manageAttributes();
         this.createComponent(options);
     };
     manageAttributes() {
-        let properties = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','height','initTabContent','keyboardNavigation','next','previous','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
+        let properties = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','enableDropAnimation','height','initTabContent','keyboardNavigation','next','previous','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
         let options = {};
         for(let item in this.props) {
               if(item === 'settings') {
@@ -118,6 +120,13 @@ export default class JqxTabs extends React.Component {
             JQXLite(this.componentSelector).jqxTabs('enableScrollAnimation', arg)
         } else {
             return JQXLite(this.componentSelector).jqxTabs('enableScrollAnimation');
+        }
+    };
+    enableDropAnimation(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxTabs('enableDropAnimation', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxTabs('enableDropAnimation');
         }
     };
     height(arg) {

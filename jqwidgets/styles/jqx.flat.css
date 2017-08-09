@@ -110,6 +110,7 @@
     padding-bottom:0px !important;
     padding-left: 2px !important;
     padding-right: 0px !important;
+    box-sizing: border-box;
 }
 
 .jqx-icon-calendar-flat {
@@ -119,7 +120,7 @@
     position: relative;
     width: 16px !important;
     height: 21px !important;
-    margin-top: -10px !important;
+    margin-top: -12px !important;
 }
 
 .jqx-icon-calendar-pressed-flat {
@@ -129,7 +130,7 @@
     position: relative;
     width: 16px !important;
     height: 21px !important;
-    margin-top: -10px !important;
+    margin-top: -12px !important;
 }
 
 .jqx-datetimeinput-flat:hover .jqx-action-button-flat {

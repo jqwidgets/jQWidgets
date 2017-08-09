@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -23,6 +23,7 @@ export class jqxMenuComponent implements OnChanges
    @Input('autoCloseOnClick') attrAutoCloseOnClick: any;
    @Input('autoOpenPopup') attrAutoOpenPopup: any;
    @Input('autoOpen') attrAutoOpen: any;
+   @Input('autoCloseOnMouseLeave') attrAutoCloseOnMouseLeave: any;
    @Input('clickToOpen') attrClickToOpen: any;
    @Input('disabled') attrDisabled: any;
    @Input('enableHover') attrEnableHover: any;
@@ -40,7 +41,7 @@ export class jqxMenuComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationShowDuration','animationHideDuration','animationHideDelay','animationShowDelay','autoCloseInterval','autoSizeMainItems','autoCloseOnClick','autoOpenPopup','autoOpen','clickToOpen','disabled','enableHover','easing','height','keyboardNavigation','minimizeWidth','mode','popupZIndex','rtl','showTopLevelArrows','source','theme','width'];
+   properties: string[] = ['animationShowDuration','animationHideDuration','animationHideDelay','animationShowDelay','autoCloseInterval','autoSizeMainItems','autoCloseOnClick','autoOpenPopup','autoOpen','autoCloseOnMouseLeave','clickToOpen','disabled','enableHover','easing','height','keyboardNavigation','minimizeWidth','mode','popupZIndex','rtl','showTopLevelArrows','source','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxMenu;
@@ -105,6 +106,18 @@ export class jqxMenuComponent implements OnChanges
       return options;
    }
 
+   moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let classes: any = parentEl.classList;
+      childEl.classList.add(...classes);
+      parentEl.className = '';
+   }
+
+   moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let style = parentEl.style.cssText;
+      childEl.style.cssText = style
+      parentEl.style.cssText = '';
+   }
+
    createComponent(options?: any): void {
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
@@ -113,6 +126,10 @@ export class jqxMenuComponent implements OnChanges
         options = this.manageAttributes();
       }
       this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+
+      this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+      this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxMenu', options);
 
@@ -201,6 +218,14 @@ export class jqxMenuComponent implements OnChanges
           this.host.jqxMenu('autoOpen', arg);
       } else {
           return this.host.jqxMenu('autoOpen');
+      }
+   }
+
+   autoCloseOnMouseLeave(arg?: boolean) : any {
+      if (arg !== undefined) {
+          this.host.jqxMenu('autoCloseOnMouseLeave', arg);
+      } else {
+          return this.host.jqxMenu('autoCloseOnMouseLeave');
       }
    }
 

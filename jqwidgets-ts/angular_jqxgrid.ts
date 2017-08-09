@@ -1,5 +1,5 @@
 /*
-jQWidgets v4.5.4 (2017-June)
+jQWidgets v5.0.0 (2017-Aug)
 Copyright (c) 2011-2017 jQWidgets.
 License: http://jqwidgets.com/license/
 */
@@ -64,6 +64,8 @@ export class jqxGridComponent implements OnChanges
    @Input('statusbarheight') attrStatusbarheight: any;
    @Input('showtoolbar') attrShowtoolbar: any;
    @Input('selectionmode') attrSelectionmode: any;
+   @Input('updatefilterconditions') attrUpdatefilterconditions: any;
+   @Input('updatefilterpanel') attrUpdatefilterpanel: any;
    @Input('theme') attrTheme: any;
    @Input('toolbarheight') attrToolbarheight: any;
    @Input('autoheight') attrAutoheight: any;
@@ -123,7 +125,7 @@ export class jqxGridComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGrid;
@@ -188,6 +190,18 @@ export class jqxGridComponent implements OnChanges
       return options;
    }
 
+   moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let classes: any = parentEl.classList;
+      childEl.classList.add(...classes);
+      parentEl.className = '';
+   }
+
+   moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void {
+      let style = parentEl.style.cssText;
+      childEl.style.cssText = style
+      parentEl.style.cssText = '';
+   }
+
    createComponent(options?: any): void {
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
@@ -196,6 +210,10 @@ export class jqxGridComponent implements OnChanges
         options = this.manageAttributes();
       }
       this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+
+      this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+      this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxGrid', options);
 
@@ -615,6 +633,22 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
+   updatefilterconditions(arg?: (type?: string, defaultconditions?: any) => any) : any {
+      if (arg !== undefined) {
+          this.host.jqxGrid('updatefilterconditions', arg);
+      } else {
+          return this.host.jqxGrid('updatefilterconditions');
+      }
+   }
+
+   updatefilterpanel(arg?: (filtertypedropdown1?: any, filtertypedropdown2?: any, filteroperatordropdown?: any, filterinputfield1?: any, filterinputfield2?: any, filterbutton?: any, clearbutton?: any, columnfilter?: any, filtertype?: any, filterconditions?: any) => any) : any {
+      if (arg !== undefined) {
+          this.host.jqxGrid('updatefilterpanel', arg);
+      } else {
+          return this.host.jqxGrid('updatefilterpanel');
+      }
+   }
+
    theme(arg?: string) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('theme', arg);
@@ -823,7 +857,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   filter(arg?: (cellValue?: any, rowData?: any, dataField?: String, filterGroup?: any, defaultFilterResult?: Boolean) => Boolean | any) : any {
+   filter(arg?: (cellValue?: any, rowData?: any, dataField?: String, filterGroup?: any, defaultFilterResult?: Boolean) => any) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('filter', arg);
       } else {
@@ -903,7 +937,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   pagesizeoptions(arg?: Array<String | Number>) : any {
+   pagesizeoptions(arg?: Array<Number | String>) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('pagesizeoptions', arg);
       } else {
@@ -1015,7 +1049,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   source(arg?: jqwidgets.GridSource | any) : any {
+   source(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('source', arg);
       } else {
@@ -1349,7 +1383,7 @@ export class jqxGridComponent implements OnChanges
       this.host.jqxGrid('closemenu');
    }
 
-   deleterow(rowIds: String | Number | Array<String | Number>): void {
+   deleterow(rowIds: String | Number | Array<Number | String>): void {
       this.host.jqxGrid('deleterow', rowIds);
    }
 
@@ -1405,7 +1439,7 @@ export class jqxGridComponent implements OnChanges
       this.host.jqxGrid('showvalidationpopup', rowBoundIndex, dataField, validationMessage);
    }
 
-   updaterow(rowIds: String | Number | Array<String | Number>, data: any): void {
+   updaterow(rowIds: String | Number | Array<Number | String>, data: any): void {
       this.host.jqxGrid('updaterow', rowIds, data);
    }
 
@@ -1461,7 +1495,7 @@ export class jqxGridComponent implements OnChanges
       this.host.jqxGrid('renderaggregates');
    }
 
-   exportdata(dataType: string, fileName: string, exportHeader?: boolean, rows?: Array<Number>, exportHiddenColumns?: boolean, serverURL?: string, charSet?: string): String {
+   exportdata(dataType: string, fileName?: string, exportHeader?: boolean, rows?: Array<Number>, exportHiddenColumns?: boolean, serverURL?: string, charSet?: string): undefined {
       return this.host.jqxGrid('exportdata', dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet);
    }
 

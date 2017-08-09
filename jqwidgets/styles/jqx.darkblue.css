@@ -162,3 +162,41 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+/* jqxPivotGrid */
+.jqx-pivotgrid
+{
+    background-color: #DEDEDE;
+}
+
+.jqx-pivotgrid-menu-button-darkblue
+{
+    background-image: url('images/icon-menu-small-white.png');
+}
+.jqx-pivotgrid-expand-button-darkblue
+{
+}
+
+.jqx-pivotgrid-collapse-button-darkblue
+{
+}
+
+.jqx-pivotgrid-sortasc-icon-darkblue
+ {
+    background-image: url('images/icon-sort-asc-white.png');
+ }
+
+.jqx-pivotgrid-sortdesc-icon-darkblue
+ {
+    background-image: url('images/icon-sort-desc-white.png');
+ }
+
+.jqx-pivotgrid-sortremove-icon-darkblue
+ {
+    background-image: url('images/icon-sort-remove-white.png');
+ }
+
+.jqx-pivotgrid-settings-icon-darkblue
+ {
+    background-image: url('images/icon-menu-small-white.png');
+ }

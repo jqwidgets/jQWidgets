@@ -1,4 +1,22 @@
 ﻿*********************************************
+* jQWidgets v5.0.0 Release, Aug-08-2017     *
+*********************************************
+
+What's New:
+
+ - Custom Elements
+
+
+What's Fixed:
+
+- Fixed an issue in jqxTooltip regarding the open method in combination with refresh method. CSS classes were added multiple times.
+- Fixed an issue in jqxDataTable regarding the ensure row visible keys.
+- Fixed an issue in jqxButtonGroup regarding percentage sizing.
+- Fixed an issue in jqxButton regarding dynamically setting the value property, when image is defined.
+- Fixed an issue in jqxDropDownList regarding the initialization from UL list.
+- Fixed an issue in jqxMenu regarding the closeItem method behavior.
+
+*********************************************
 * jQWidgets v4.5.4 Release, June-27-2017    *
 *********************************************
 
