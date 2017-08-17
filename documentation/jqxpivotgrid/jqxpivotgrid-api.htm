@@ -1,0 +1,3834 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" href="../../styles/jqx.apireference.css" type="text/css" />
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.light.css" type="text/css" />
+  <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tabs").jqxTabs({ theme: "light" });
+
+            $(".documentation-option-type-click").click(function (event) {
+				$(event.target).parents("tr").next().find(".property-content").toggle();
+			});
+           });
+    </script>
+	<title>jqxPivotGrid API Reference</title>
+</head>
+<body>
+    <div id="tabs">
+        <ul>
+            <li style="margin-left:30px;">Pivot Grid</li>
+            <li>Pivot Designer</li>
+            <li>Pivot Cell</li>
+            <li>Pivot Cell Formatting</li>
+            <li>Pivot Cells</li>
+            <li>Pivot Columns</li>
+            <li>Pivot Field</li>
+            <li>Pivot Filter Field</li>
+            <li>Pivot Item</li>
+            <li>Pivot Rows</li>
+            <li>Pivot Settings</li>
+            <li>Pivot Value Field</li>
+            <li>Pivot Point</li>
+        </ul>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">source</span>
+                        </td>
+                        <td>
+                            <span>Object</span>
+                        </td>
+                        <td>
+                            null
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets pivot source adapter used to supply data to the pivot grid.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>var column1Values =
+[
+   'a', 'b', 'c', 'd'
+];
+var column2Values =
+[
+   'e', 'f', 'g', 'h'
+];
+var column3Values =
+[
+   'i', 'j', 'k', 'l'
+];
+var column4Values =
+[
+   '2.25', '1.5', '3.0', '3.3', '4.5'
+];
+var myData = [];
+for (var i = 0; i < 500; i++) {
+   var row = {};
+   row.column1 = column1Values[Math.floor(Math.random() * column1Values.length)];
+   row.column2 = column2Values[Math.floor(Math.random() * column2Values.length)];
+   row.column3 = column3Values[Math.floor(Math.random() * column3Values.length)];
+   row.column4 = parseFloat(column4Values[Math.floor(Math.random() * column4Values.length)]);
+   myData.push(row);
+}
+var source = {
+   localdata: myData,
+   datatype: 'array',
+   datafields:
+   [
+      { name: 'column1', type: 'string' },
+      { name: 'column2', type: 'string' },
+      { name: 'column3', type: 'string' },
+      { name: 'column4', type: 'number' }
+   ]
+};
+var dataAdapter = new $.jqx.dataAdapter(source);
+dataAdapter.dataBind();
+// create a pivotDataSource from the dataAdapter
+var pivotDataSource = new $.jqx.pivot(
+   dataAdapter,
+   {
+      pivotValuesOnRows: false,
+      rows: [{ dataField: 'column1' }, { dataField: 'column2'}],
+      columns: [{ dataField: 'column3'}],
+      values: [
+         { dataField: 'column4', text: 'Sum of column4', 'function': 'sum'},
+         { dataField: 'column4', text: 'Count of column4', 'function': 'count'}
+      ]
+   });
+// create a pivot grid
+$('#divPivotGrid').jqxPivotGrid({
+   source: pivotDataSource
+});
+</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">localization</span>
+                        </td>
+                        <td>
+                            <span>Object</span>
+                        </td>
+                        <td>
+                            null
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets the localization object used to localize the text elements of the pivot grid.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>var customLocalizationObj = {
+ sortascendingstring: 'Sortiere aufsteigend',
+ sortdescendingstring: 'Sortiere absteigend',
+ sortremovestring: 'Entferne Sortierung'
+};
+$('#myPivotGrid').jqxPivotGrid({localization: customLocalizationObj});</PRE></CODE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan2">scrollBarsEnabled</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets whether the scrollbars of the pivot grid are enabled or disabled.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').jqxPivotGrid({scrollBarsEnabled: false});</PRE></CODE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan3">selectionEnabled</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets whether selection in the pivot grid is enabled or disabled.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').jqxPivotGrid({multipleSelectionEnabled: false});</PRE></CODE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan4">multipleSelectionEnabled</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets whether the multiple selection in the pivot grid is enabled or disabled.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').jqxPivotGrid({multipleSelectionEnabled: false});</PRE></CODE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan5">treeStyleRows</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets the rows of the pivot grid are displayed as a tree structure or using classic OLAP style.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').jqxPivotGrid({treeStyleRows: false});</PRE></CODE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan6">autoResize</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets if the size of pivot grid adjusts automatically to display the entire content.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').jqxPivotGrid({treeStyleRows: true});</PRE></CODE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan7">itemsRenderer</span>
+                        </td>
+                        <td>
+                            <span>function</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Custom rendering function used to render the pivot rows and columns. The function should return a string which is valid HTML.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').jqxPivotGrid(
+{
+   source: pivotDataSource,
+   itemsRenderer: function (pivotItem) {
+      var backgroundColor = pivotItem.isColumn ? 'rgba(187, 232, 227, 255)' : 'rgba(203, 254, 187, 255)';
+      return "&lt;div style='background: " 
+         +  backgroundColor
+         + "; width: calc(100% - 8px); height: calc(100% - 8px); padding: 4px;'&gt;"
+         + pivotItem.text
+         + "&lt;/div&gt;";
+   },
+   cellsRenderer: function (pivotCell) {
+      var backgroundColor = 'rgba(253, 254, 207, 255)';
+      var cellText = pivotCell.value == 0 ? '' : pivotCell.formattedValue;
+      return "&lt;div style='background: " + backgroundColor + "; width: calc(100%-8px); height: 100%; padding: 4px; margin: 0px;'&gt;" + cellText + "&lt;/div&gt;";
+   }
+});
+</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan8">cellsRenderer</span>
+                        </td>
+                        <td>
+                            <span>function</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Custom rendering function used to render the pivot cells. The function should return a string which is valid HTML.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').jqxPivotGrid(
+{
+   source: pivotDataSource,
+   itemsRenderer: function (pivotItem) {
+      var backgroundColor = pivotItem.isColumn ? 'rgba(187, 232, 227, 255)' : 'rgba(203, 254, 187, 255)';
+      return "&lt;div style='background: " 
+         +  backgroundColor
+         + "; width: calc(100% - 8px); height: calc(100% - 8px); padding: 4px;'&gt;"
+         + pivotItem.text
+         + "&lt;/div&gt;";
+   },
+   cellsRenderer: function (pivotCell) {
+      var backgroundColor = 'rgba(253, 254, 207, 255)';
+      var cellText = pivotCell.value == 0 ? '' : pivotCell.formattedValue;
+      return "&lt;div style='background: " + backgroundColor + "; width: calc(100%-8px); height: 100%; padding: 4px; margin: 0px;'&gt;" + cellText + "&lt;/div&gt;";
+   }
+});
+</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Events
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan9">pivotitemexpanding</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered when a pivot item is expanding. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotitemexpanding event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotitemexpanding', function (event) {
+     alert('Pivot item expanding: ' + event.args.pivotItem.text);
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan10">pivotitemexpanded</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered after a pivot item is expanded.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotitemexpanded event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotitemexpanded', function (event) {
+     alert('Pivot item expanded: ' + event.args.pivotItem.text);
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan11">pivotitemcollapsing</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered when a pivot item is collapsing. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotitemcollapsing event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotitemcollapsing', function (event) {
+     alert('Pivot item collapsing: ' + event.args.pivotItem.text);
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan12">pivotitemcollapsed</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered after a pivot item is collapsed.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotitemcollapsed event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotitemcollapsed', function (event) {
+     alert('Pivot item collapsed: ' + event.args.pivotItem.text);
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan13">sortchanging</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered the sorting is about to change. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the sortchanging event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('sortchanging', function (event) {
+     alert('Sort changing triggered. Pivot item: ' + event.args.pivotItem.text + ' , Sort order:' + event.args.sortOrder );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan14">sortchanged</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered after the sorting order has changed.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the sortchanged event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('sortchanged', function (event) {
+     alert('Sort changed. Pivot item: ' + event.args.pivotItem.text + ' , Sort order:' + event.args.sortOrder );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan15">sortremoving</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered the sorting is about to be removed. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the sortremoving event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('sortremoving', function (event) {
+     alert('Sort removing triggered. Pivot item: ' + event.args.pivotItem.text + ' , Sort order:' + event.args.sortOrder );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan16">sortremoved</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered after the sorting has been sortremoved.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the sortremoved event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('sortremoved', function (event) {
+     alert('Sort removed. Pivot item: ' + event.args.pivotItem.text + ' , Sort order:' + event.args.sortOrder );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan17">pivotitemselectionchanged</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered after the selection of a pivot item has changed.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotitemselectionchanged event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotitemselectionchanged', function (event) {
+     alert('Pivot item: ' + event.args.pivotItem.text + ' , selected:' + event.args.selected );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan18">pivotcellmousedown</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered on mousedown over a pivot grid cell. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotcellmousedown event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotcellmousedown', function (event) {
+     alert('cell mousedown, row: ' + event.args.pivotRow.text + ' , column:' + event.args.pivotColumn.text + ' , mouse button:' + event.args.mousebutton );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan19">pivotcellmouseup</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered on mouseup over a pivot grid cell. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotcellmouseup event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotcellmouseup', function (event) {
+     alert('cell mouseup, row: ' + event.args.pivotRow.text + ' , column:' + event.args.pivotColumn.text + ' , mouse button:' + event.args.mousebutton );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan20">pivotcellclick</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered on click over a pivot grid cell. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotcellclick event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotcellclick', function (event) {
+     alert('cell click, row: ' + event.args.pivotRow.text + ' , column:' + event.args.pivotColumn.text + ' , mouse button:' + event.args.mousebutton );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan21">pivotcelldblclick</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered on double click over a pivot grid cell. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotcelldblclick event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotcelldblclick', function (event) {
+     alert('cell double click, row: ' + event.args.pivotRow.text + ' , column:' + event.args.pivotColumn.text + ' , mouse button:' + event.args.mousebutton );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan22">pivotitemmousedown</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered on mousedown over a pivot grid item. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotitemmousedown event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotitemmousedown', function (event) {
+     alert('Pivot item mousedown: ' + event.args.pivotItem.text + ' , mouse button:' + event.args.mousebutton );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan23">pivotitemmouseup</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered on mouseup over a pivot grid item. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotitemmouseup event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotitemmouseup', function (event) {
+     alert('Pivot item mouseup: ' + event.args.pivotItem.text + ' , mouse button:' + event.args.mousebutton );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan24">pivotitemclick</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered on click over a pivot grid item. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotitemclick event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotitemclick', function (event) {
+     alert('Pivot item click: ' + event.args.pivotItem.text + ' , mouse button:' + event.args.mousebutton );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan25">pivotitemdblclick</span>
+                        </td>
+                        <td>
+                            <span>Event</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>This event is triggered on double click over a pivot grid item. You may use the event's cancel flag to stop further processing.</p>
+                                <h4>Code example:</h4>
+                                <p>
+                                    Handling the pivotitemdblclick event:
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').on('pivotitemdblclick', function (event) {
+     alert('Pivot item double click: ' + event.args.pivotItem.text + ' , mouse button:' + event.args.mousebutton );
+});</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Methods
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan26">getInstance</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns the instance of the pivot grid component</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Object</em>
+                                </div>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>var myPivotGridInstance = $('#myPivotGrid').jqxPivotGrid('getInstance');</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan27">refresh</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Refreshes the content of the pivot grid component</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').jqxPivotGrid('refresh');</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan28">destroy</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Destroys the pivot grid component instance</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>$('#myPivotGrid').jqxPivotGrid('destroy');</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan29">getPivotRows</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Return the pivot rows of the pivot grid</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Object</em>
+                                </div>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>var myPivotGridRows = $('#myPivotGrid').jqxPivotGrid('getPivotRows');
+alert('The pivot grid has ' + myPivotGridRows.items.length + ' rows.');</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan30">getPivotColumns</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Return the pivot columns of the pivot grid</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Object</em>
+                                </div>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>var myPivotGridColumns = $('#myPivotGrid').jqxPivotGrid('getPivotColumns');
+alert('The pivot grid has ' + myPivotGridColumns.items.length + ' columns.');</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan31">getPivotCells</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Return the pivot cells of the pivot grid</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Object</em>
+                                </div>
+                                <h4>Code example:</h4>
+                                <p>
+                                </p>
+                                <p>
+<PRE><CODE>var myPivotGridCells = $('#myPivotGrid').jqxPivotGrid('getPivotCells');</CODE></PRE>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">type</span>
+                        </td>
+                        <td>
+                            <span>undefined</span>
+                        </td>
+                        <td>
+                            pivotGrid
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><p>Gets or sets the type of the pivot designer - pivotGrid or pivotChart.</p></p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">target</span>
+                        </td>
+                        <td>
+                            <span>Object</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><p>Gets or sets the instance of the widget component controlled by the pivot designer component.</p></p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Events
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Methods
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan2">refresh</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan3">destroy</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">pivotRow</span>
+                        </td>
+                        <td>
+                            <span>Object</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>The row of the pivot cell.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">pivotColumn</span>
+                        </td>
+                        <td>
+                            <span>Object</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>The column of the pivot cell.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">prefix</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Optional text that appears at the start of the formatted string</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">sufix</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Optional text that appears at the end of the formatted string</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan2">decimalSeparator</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td>
+                            .
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Separator for the decimal point in the cell's value</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan3">thousandsSeparator</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td>
+                            ,
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Separator for the thousands in the cell's value</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan4">decimalPlaces</span>
+                        </td>
+                        <td>
+                            <span>Number</span>
+                        </td>
+                        <td>
+                            2
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Number of decimal places for the cell's value</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan5">negativeWithBrackets</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Determines if negative numbers will be displayed in brackets or with a negative sign.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Methods
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">hitTest</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns the pivot cell at the corresponding position if exists</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>point</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The coordinate of the hit test point.</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Object</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">clear</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Clears all pivot cells</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan2">setCellValue</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Sets the value of a pivot cell</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotRow</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The row of the pivot cell.</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotColumn</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The column of the pivot cell.</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>value</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The value of the pivot cell.</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan3">getCellValue</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets the value of a pivot cell</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotRow</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The row of the pivot cell.</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotColumn</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The column of the pivot cell.</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Object</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan4">drillThroughCell</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Drills through a pivot cells and returns the respective source data records</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotRow</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The row of the pivot cell.</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotColumn</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The column of the pivot cell.</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Array</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan5">selectCell</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Selects a pivot cell</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotRow</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The row of the pivot cell.</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotColumn</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The column of the pivot cell.</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan6">unselectCell</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Unselects a pivot cell</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotRow</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The row of the pivot cell.</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotColumn</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The column of the pivot cell.</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan7">clearSelection</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Clears the selection of all selected pivot cells</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan8">isCellSelected</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Checks if a pivot cell is selected</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotRow</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The row of the pivot cell.</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotColumn</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The column of the pivot cell.</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Boolean</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan9">getSelectedCellsCount</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns the number of selected cells</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Number</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan10">getSelectedCells</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns an array of all selected cells</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Array</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan11">getNextCell</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns the cell left, right, above or below a specific pivot cell</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotCell</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em>The pivot cell</em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>position</em></td>
+                                                <td><em>String</em></td>
+                                                <td><em>Position relative to the cell: 'left', 'right', 'top', 'bottom'</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Object</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">resizable</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets if the collection of pivot items is resizable.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">sortable</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets if the collection of pivot items is sortable.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan2">showExpandCollapseButtons</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets if expand/collapse buttons are visible.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan3">parentPivotGrid</span>
+                        </td>
+                        <td>
+                            <span>Object</span>
+                        </td>
+                        <td>
+                            null
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns a reference to the parent pivot grid instance.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan4">items</span>
+                        </td>
+                        <td>
+                            <span>Array</span>
+                        </td>
+                        <td>
+                            []
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns an array of all child pivot items.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan5">valueItems</span>
+                        </td>
+                        <td>
+                            <span>Array</span>
+                        </td>
+                        <td>
+                            []
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns an array of all child pivot value items.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan6">isHidden</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns true if the pivot items collection is hidden.</p>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Methods
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan7">show</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Makes the pivot items collection visible</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan8">hide</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Hides the pivot items collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan9">refresh</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Refreshes the content of the pivot items collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan10">getHierarchyDepth</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns the depth of the collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Number</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan11">autoResize</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Auto resizes the pivot items collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>autoResizeMode</em></td>
+                                                <td><em>String</em></td>
+                                                <td><em></em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan12">getSortItem</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns the sort item of the collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Object</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan13">getSortOrder</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns the sort order of the collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Object</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan14">sortBy</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Sorts the items collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotItem</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em></em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>sortOrder</em></td>
+                                                <td><em>String</em></td>
+                                                <td><em>Sort order of the collection - 'asc' or 'desc'</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan15">removeSort</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Removes the sort order of the collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan16">selectItem</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Selects a pivot item</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotItem</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em></em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan17">unselectItem</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Clears the selection of a pivot item</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotItem</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em></em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan18">clearSelection</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Clears the selection of all items in the collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan19">getSelectedItems</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns all selected items in an array</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Array</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">dataField</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>The dataField in the data source used for this pivot field.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">text</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>The text which will appear in the pivot designer when using this field.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan2">align</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Text alignment when the value of this field is displayed on the pivot rows or pivot columns.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan3">className</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Name of style to use when displaying this field on the pivot rows or columns.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan4">classNameSelected</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Name of style to use when displaying this field on the pivot rows or columns and column or row is selected.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">dataField</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>The dataField in the data source used for this pivot filter field.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">text</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>The text which will appear in the pivot designer when using this field.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan2">filterFunction</span>
+                        </td>
+                        <td>
+                            <span>function</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Implementation of the filtering function used to skip/filter records from the data source. The function should return true if the record should be filtered, otherwise false.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">isExpanded</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns true if the pivot item is expanded.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">isHidden</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns true if the pivot item is hidden.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan2">isSelected</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns true if the pivot item is hidden.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan3">parentItem</span>
+                        </td>
+                        <td>
+                            <span>Object</span>
+                        </td>
+                        <td>
+                            null
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns a reference to the parent item.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan4">hierarchy</span>
+                        </td>
+                        <td>
+                            <span>Object</span>
+                        </td>
+                        <td>
+                            null
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns a reference to the parent rows or columns hierarchy.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan5">parentPivotGrid</span>
+                        </td>
+                        <td>
+                            <span>Object</span>
+                        </td>
+                        <td>
+                            null
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns a reference to the parent pivot grid instance.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan6">items</span>
+                        </td>
+                        <td>
+                            <span>Array</span>
+                        </td>
+                        <td>
+                            []
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns an array of all child pivot items.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan7">valueItems</span>
+                        </td>
+                        <td>
+                            <span>Array</span>
+                        </td>
+                        <td>
+                            []
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns an array of all child pivot value items.</p>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Methods
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan8">getWidth</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets the width of the pivot item</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Number</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan9">getDisplayWidth</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets the displayed width of the pivot item</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Number</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan10">autoResize</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Auto resizes the pivot item</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan11">getHeight</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets the height of the pivot item</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Number</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan12">getDisplayHeight</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets the displayed height of the pivot item</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Number</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan13">setHeight</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Sets the height of the pivot item</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>height</em></td>
+                                                <td><em>Number</em></td>
+                                                <td><em></em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan14">expand</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Expands the pivot item so all sub-items will be visible</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan15">collapse</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Collapses the pivot item so all sub-items will be invisible</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">resizable</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets if the collection of pivot items is resizable.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">sortable</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets if the collection of pivot items is sortable.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan2">showExpandCollapseButtons</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Gets or sets if expand/collapse buttons are visible.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan3">parentPivotGrid</span>
+                        </td>
+                        <td>
+                            <span>Object</span>
+                        </td>
+                        <td>
+                            null
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns a reference to the parent pivot grid instance.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan4">items</span>
+                        </td>
+                        <td>
+                            <span>Array</span>
+                        </td>
+                        <td>
+                            []
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns an array of all child pivot items.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan5">valueItems</span>
+                        </td>
+                        <td>
+                            <span>Array</span>
+                        </td>
+                        <td>
+                            []
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns an array of all child pivot value items.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan6">isHidden</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns true if the pivot items collection is hidden.</p>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Methods
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan7">show</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Makes the pivot items collection visible</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan8">hide</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Hides the pivot items collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan9">refresh</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Refreshes the content of the pivot items collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan10">getHierarchyDepth</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns the depth of the collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan11">autoResize</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Auto resizes the pivot items collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>autoResizeMode</em></td>
+                                                <td><em>String</em></td>
+                                                <td><em></em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan12">getSortItem</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns the sort item of the collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Object</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan13">getSortOrder</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns the sort order of the collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Object</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan14">sortBy</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Sorts the items collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotItem</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em></em></td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>sortOrder</em></td>
+                                                <td><em>String</em></td>
+                                                <td><em>Sort order of the collection - 'asc' or 'desc'</em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan15">removeSort</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Removes the sort order of the collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan16">selectItem</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Selects a pivot item</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotItem</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em></em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan17">unselectItem</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Clears the selection of a pivot item</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Type</td>
+                                                <td>Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>pivotItem</em></td>
+                                                <td><em>Object</em></td>
+                                                <td><em></em></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan18">clearSelection</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Clears the selection of all items in the collection</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>None</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan19">getSelectedItems</span>
+                        </td>
+                        <td>
+                            <span>Method</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Returns all selected items in an array</p>
+                                <div class="methodArgs">
+                                    <table class="arguments">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3"><strong>Parameters</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">None</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br /><strong>Return Value</strong><br />
+                                    <em>Array</em>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">pivotValuesOnRows</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Determines whether the pivot values will be displayed on rows or columns.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">rows</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            []
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>A list of data fields which will be used to build the pivot rows.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan2">columns</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            []
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>A list of data fields which will be used to build the pivot columns.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan3">values</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            []
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>A list of data fields which will be used to build the pivot values.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan4">filters</span>
+                        </td>
+                        <td>
+                            <span>Boolean</span>
+                        </td>
+                        <td>
+                            []
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>A list of filters to apply on the source records while building the pivot table.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">dataField</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>The dataField in the data source used for this pivot field.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">function</span>
+                        </td>
+                        <td>
+                            <span>String|function</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>The data aggregation function to use when calculating the cells values. You can either use the name of one of the built in functions like 'sum', 'count', 'min', 'max', 'product', 'average' or provide the implementation of your own function.</p></p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan2">text</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>The text which will appear in the pivot designer when using this field.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan3">align</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Text alignment when the value of this field is displayed on the pivot rows or pivot columns.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan4">className</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Name of style to use when displaying this field on the pivot rows or columns.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan5">classNameSelected</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Name of style to use when displaying this field on the pivot rows or columns and column or row is selected.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan6">cellsClassName</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Name of style to use when displaying the cells of this pivot value field.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan7">cellsClassNameSelected</span>
+                        </td>
+                        <td>
+                            <span>String</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Name of style to use when displaying this cells this pivot value field when the cells are selected.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan8">formatSettings</span>
+                        </td>
+                        <td>
+                            <span>Object</span>
+                        </td>
+                        <td>
+                            {}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="properties">
+            <table class="documentation-table">
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <h2 class="documentation-top-header">
+                                Properties
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan0">x</span>
+                        </td>
+                        <td>
+                            <span>Number</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>X coordinate</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="documentation-option-type-click">
+                            <span id="propertiesSpan1">y</span>
+                        </td>
+                        <td>
+                            <span>Number</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="width: 100%">
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>Y coordinate</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

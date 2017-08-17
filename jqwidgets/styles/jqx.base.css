@@ -296,9 +296,9 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     border-style: solid;
     border-width: 0px 0px 0px 1px;
     border-color: transparent;
-    background-image: url('images/menubutton.png');
+    background-image: url('images/icon-menu-small.png') !important;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center !important;
     cursor: pointer;
  }
 .jqx-grid-column-menubutton-rtl {
@@ -363,7 +363,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
   /*applied to the sort ascending menu item in the Grid's Context Menu*/
  .jqx-grid-sortasc-icon
  {
-    background-image: url('images/sortasc.png');
+    background-image: url('images/icon-sort-asc.png');
     background-repeat: no-repeat;
     background-position: left center;
     width: 16px;
@@ -375,7 +375,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
   /*applied to the sort ascending menu item in the Grid's Context Menu*/
  .jqx-grid-sortdesc-icon
  {
-    background-image: url('images/sortdesc.png');
+    background-image: url('images/icon-sort-desc.png');
     background-repeat: no-repeat;
     background-position: left center;
     width: 16px;
@@ -387,7 +387,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
   /*applied to the grid menu's sort remove item/*/
  .jqx-grid-sortremove-icon
  {
-    background-image: url('images/sortremove.png');
+    background-image: url('images/icon-sort-remove.png');
     background-repeat: no-repeat;
     background-position: left center;
     width: 16px;

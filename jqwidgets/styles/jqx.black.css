@@ -251,3 +251,49 @@ background: linear-gradient(top, #f87948 0%,#fb4e0b 4%,#f44501 11%,#e24000 19%,#
 .jqx-kanban-item-black {
     box-shadow:none;
 }
+
+
+ .jqx-grid-column-menubutton-black {
+    border-style: solid;
+    border-width: 0px 0px 0px 1px;
+    border-color: transparent;
+    background-image: url('images/icon-menu-small-white.png') !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+ }
+.jqx-item-black .jqx-grid-sortasc-icon
+ {
+    background-image: url('images/icon-sort-asc-white.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-left: -4px;
+    margin-right: 4px;
+ }
+  /*applied to the sort ascending menu item in the Grid's Context Menu*/
+.jqx-item-black .jqx-grid-sortdesc-icon
+ {
+    background-image: url('images/icon-sort-desc-white.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-left: -4px;
+    margin-right: 4px;
+ }
+  /*applied to the grid menu's sort remove item/*/
+.jqx-item-black .jqx-grid-sortremove-icon
+ {
+    background-image: url('images/icon-sort-remove-white.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-left: -4px;
+    margin-right: 4px;
+ }

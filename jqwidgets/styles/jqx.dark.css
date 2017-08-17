@@ -809,3 +809,49 @@ color: #fff !important;
     text-shadow: none !important;
     border-color:  #434857 !important;
 }
+
+
+ .jqx-grid-column-menubutton-dark {
+    border-style: solid;
+    border-width: 0px 0px 0px 1px;
+    border-color: transparent;
+    background-image: url('images/icon-menu-small-white.png') !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+ }
+.jqx-item-dark .jqx-grid-sortasc-icon
+ {
+    background-image: url('images/icon-sort-asc-white.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-left: -4px;
+    margin-right: 4px;
+ }
+  /*applied to the sort ascending menu item in the Grid's Context Menu*/
+.jqx-item-dark .jqx-grid-sortdesc-icon
+ {
+    background-image: url('images/icon-sort-desc-white.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-left: -4px;
+    margin-right: 4px;
+ }
+  /*applied to the grid menu's sort remove item/*/
+.jqx-item-dark .jqx-grid-sortremove-icon
+ {
+    background-image: url('images/icon-sort-remove-white.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-left: -4px;
+    margin-right: 4px;
+ }

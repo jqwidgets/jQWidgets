@@ -1,4 +1,21 @@
 ﻿*********************************************
+* jQWidgets v5.1.0 Release, Aug-15-2017     *
+*********************************************
+
+What's New:
+
+- Javascript Pivot Grid
+
+What's Updated:
+
+- Grid icons for settings menu and sorting.
+
+What's Fixed: 
+
+- Fixed an issue related to jqxDropDownButton Custom element.
+- Fixed an issue related to event handling in Custom elements.
+
+*********************************************
 * jQWidgets v5.0.0 Release, Aug-08-2017     *
 *********************************************
 
