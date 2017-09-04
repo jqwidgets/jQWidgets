@@ -1,4 +1,4 @@
-﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';  import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent implements AfterViewInit { 
+﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';  import { jqxPanelComponent } from '../../../jqwidgets-ts/angular_jqxpanel';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent implements AfterViewInit { 
     @ViewChild('myPanel') myPanel: jqxPanelComponent;
 
     ngAfterViewInit(): void {

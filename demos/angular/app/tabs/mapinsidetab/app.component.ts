@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 
-import { jqxTabsComponent } from '../../../../../jqwidgets-ts/angular_jqxtabs';
+import { jqxTabsComponent } from '../../../jqwidgets-ts/angular_jqxtabs';
 
 declare let google: any;
 

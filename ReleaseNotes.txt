@@ -1,4 +1,28 @@
 ﻿*********************************************
+* jQWidgets v5.2.0 Release, Sep-04-2017     *
+*********************************************
+
+What's New:
+
+- Angular Pivot Grid
+- React Pivot Grid
+- Pivot Grid Custom Element
+
+What's Improved:
+
+- jqxTabs and jqxRibbon light theme. 
+
+What's Fixed:
+
+- Fixed an issue in jqxListBox and jqxDropDownList regarding the enableSelection property when it is set dynamically.
+- Fixed an issue in jqxCheckBox and jqxRadioButton regarding the event.args.type member when the event is raised.
+- Fixed an issue in jqxPivotGrid regarding the mouse selection when the mouse is released over a scrollbar.
+- Fixed an issue in jqxPivotGrid regarding the hit test functionality.
+- Fixed an issue in jqxTabs regarding removing an event listener when the Tabs is within IFrame.
+- Fixed an issue in jqxToggleButton custom element regarding invoking methods inherited by jqxButton.
+- Fixed an issue in jqxGrid regarding the mouse selection when the area between the vertical and horizontal scrollbar is clicked.
+
+*********************************************
 * jQWidgets v5.1.0 Release, Aug-15-2017     *
 *********************************************
 

@@ -145,7 +145,7 @@
             color: #fff;
          }
         .icon {
-            background: url('../../../../images/ribbon-icons.png') no-repeat top left;
+            background: url('../images/ribbon-icons.png') no-repeat top left;
             width: 16px;
             height: 16px;
             display: inline-block;

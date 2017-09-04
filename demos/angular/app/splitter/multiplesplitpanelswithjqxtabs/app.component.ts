@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxTabsComponent } from '../../../../../jqwidgets-ts/angular_jqxtabs';
+import { jqxTabsComponent } from '../../../jqwidgets-ts/angular_jqxtabs';
 
 @Component({
     selector: 'app-root',

@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit, OnInit, ElementRef } from '@angular/core';
 
-import { jqxWindowComponent } from '../../../../../jqwidgets-ts/angular_jqxwindow';
+import { jqxWindowComponent } from '../../../jqwidgets-ts/angular_jqxwindow';
 
 @Component({
     selector: 'app-root',

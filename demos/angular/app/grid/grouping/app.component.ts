@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
 
-import { jqxGridComponent }  from '../../../../../jqwidgets-ts/angular_jqxgrid';
+import { jqxGridComponent }  from '../../../jqwidgets-ts/angular_jqxgrid';
 
 @Component({
     selector: 'app-root',

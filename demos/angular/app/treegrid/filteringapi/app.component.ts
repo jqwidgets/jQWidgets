@@ -1,8 +1,8 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxTreeGridComponent } from '../../../../../jqwidgets-ts/angular_jqxtreegrid';
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
-import { jqxListBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxlistbox';
+import { jqxTreeGridComponent } from '../../../jqwidgets-ts/angular_jqxtreegrid';
+import { jqxDropDownListComponent } from '../../../jqwidgets-ts/angular_jqxdropdownlist';
+import { jqxListBoxComponent } from '../../../jqwidgets-ts/angular_jqxlistbox';
 
 @Component({
     selector: 'app-root',

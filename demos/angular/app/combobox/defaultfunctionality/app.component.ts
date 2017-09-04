@@ -63,7 +63,7 @@ export class AppComponent {
                     break;
             }
             let html = "<div style='padding: 0px; margin: 0px; height: 95px; float: left;'><img width='60'" +
-                "style='float: left; margin-top: 4px; margin-right: 15px;' src='../../../../images/" + movie
+                "style='float: left; margin-top: 4px; margin-right: 15px;' src='../images/" + movie
                 + "'/><div style='margin-top: 10px; font-size: 13px;'>" + "<b>Title</b><div>" + title +
                 "</div><div style='margin-top: 10px;'><b>Year</b><div>" + year.toString() + "</div></div></div>";
             source[i] = { html: html, title: title };

@@ -1,8 +1,8 @@
 ﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxValidatorComponent } from '../../../../../jqwidgets-ts/angular_jqxvalidator';
-import { jqxPasswordInputComponent } from '../../../../../jqwidgets-ts/angular_jqxpasswordinput';
-import { jqxDateTimeInputComponent } from '../../../../../jqwidgets-ts/angular_jqxdatetimeinput';
+import { jqxValidatorComponent } from '../../../jqwidgets-ts/angular_jqxvalidator';
+import { jqxPasswordInputComponent } from '../../../jqwidgets-ts/angular_jqxpasswordinput';
+import { jqxDateTimeInputComponent } from '../../../jqwidgets-ts/angular_jqxdatetimeinput';
 
 @Component({
     selector: 'app-root',

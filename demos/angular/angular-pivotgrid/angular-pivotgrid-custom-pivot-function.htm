@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title id="Description">jQWidgets Angular PivotGrid - Custom pivot aggregation functions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <!-- jQWidgets -->
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpivot.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpivotgrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <!-- Angular -->
+    <script src="../node_modules/core-js/client/shim.min.js"></script>
+    <script src="../node_modules/zone.js/dist/zone.min.js"></script>
+    <script src="../node_modules/zone.js/dist/long-stack-trace-zone.min.js"></script>
+</head>
+<body>
+    <app-root>Loading...</app-root>
+    <div class="example-description">
+        <h2>Description</h2>
+        <div style="width: 800px;">
+            This is an example of the Angular Pivot Grid with custom a custom data aggregation function. The pivot grid component provides
+            several built-in functions: count, sum, min, max, average, product. In this example, we implement a custom
+            function that calculates the variance of the data points of the respective pivot grid cell. To add or modify existing
+            data aggregations, set the customAggregationFunctions property of the pivot data source. Each pivot
+            aggregation functions must have a unique name, take an array of values as a parameter and return a number.
+            For performance reasons, make sure that the function runs as quickly as possible. The Angular pivot grid will call the function
+            multiple times during the data pivoting operations.
+        </div>
+    </div>
+    <script src="../aot/pivotgrid_custompivotfunction.bundle.js"></script>
+</body>
+</html>

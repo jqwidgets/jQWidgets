@@ -1,9 +1,9 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid'
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
-import { jqxNumberInputComponent } from '../../../../../jqwidgets-ts/angular_jqxnumberinput';
-import { jqxWindowComponent } from '../../../../../jqwidgets-ts/angular_jqxwindow';
+import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid'
+import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
+import { jqxNumberInputComponent } from '../../../jqwidgets-ts/angular_jqxnumberinput';
+import { jqxWindowComponent } from '../../../jqwidgets-ts/angular_jqxwindow';
 
 import { generatedata } from '../../../sampledata/generatedata';
 

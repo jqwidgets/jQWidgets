@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
-import { jqxNotificationComponent } from '../../../../../jqwidgets-ts/angular_jqxnotification';
+import { jqxNotificationComponent } from '../../../jqwidgets-ts/angular_jqxnotification';
 
 @Component({
     selector: 'app-root',

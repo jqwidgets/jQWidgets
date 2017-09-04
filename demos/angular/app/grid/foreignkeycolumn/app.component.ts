@@ -16,6 +16,7 @@ export class AppComponent {
         root: 'Employees',
         record: 'Employee',
         id: 'EmployeeID',
+        async: false,
         url: '../sampledata/employees.xml'
     };
 

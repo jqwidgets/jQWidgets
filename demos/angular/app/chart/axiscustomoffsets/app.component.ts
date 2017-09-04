@@ -1,10 +1,10 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxChartComponent } from '../../../../../jqwidgets-ts/angular_jqxchart';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons'
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
-import { jqxListBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxlistbox';
+import { jqxChartComponent } from '../../../jqwidgets-ts/angular_jqxchart';
+import { jqxButtonComponent } from '../../../jqwidgets-ts/angular_jqxbuttons'
+import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
+import { jqxDropDownListComponent } from '../../../jqwidgets-ts/angular_jqxdropdownlist';
+import { jqxListBoxComponent } from '../../../jqwidgets-ts/angular_jqxlistbox';
 
 @Component({
     selector: 'app-root',

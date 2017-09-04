@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxComboBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcombobox';
+import { jqxComboBoxComponent } from '../../../jqwidgets-ts/angular_jqxcombobox';
 
 @Component({
     selector: 'app-root',

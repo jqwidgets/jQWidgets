@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid'
+import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid'
 
 @Component({
     selector: 'app-root',
@@ -139,7 +139,7 @@ export class AppComponent {
     columns: any[] =
     [
         {
-            text: 'Country', datafield: 'countryCode', displayfield: 'Country', columntype: 'combobox',
+            text: 'Country', datafield: 'countryCode', displayfield: 'Country', columntype: 'dropdownlist',
             createeditor: (row: number, value: any, editor: any): void => {
                 editor.jqxDropDownList({ width: '99%', height: 27, source: this.countriesAdapter, displayMember: 'label', valueMember: 'value' });
             }

@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid';
+import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
+import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid';
 
 @Component({
     selector: 'app-root',
@@ -69,5 +69,9 @@ export class AppComponent {
             Country: this.Country.val()
         };
         this.jqxgrid.updaterow(rowid, data);
-    }; 
+    };
+
+    expanded(event: any): void {
+        this.jqxgrid.refresh();
+    };
 }

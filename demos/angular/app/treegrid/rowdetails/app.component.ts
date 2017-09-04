@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxTreeGridComponent } from '../../../../../jqwidgets-ts/angular_jqxtreegrid';
+import { jqxTreeGridComponent } from '../../../jqwidgets-ts/angular_jqxtreegrid';
 
 @Component({
     selector: 'app-root',
@@ -58,7 +58,7 @@ export class AppComponent {
 
     rowDetailsRenderer(rowKey: number | string, row: any): string {
         let indent = (1 + row.level) * 20;
-        let details = "<table style='margin: 10px; min-height: 95px; height: 95px; margin-left: " + indent + "px;'><tr><td>" + "<img height='60' src='" + row.icon + "'/></td><td>" + row.notes + "</td></tr></table>";
+        let details = "<table style='margin: 10px; min-height: 95px; height: 95px; margin-left: " + indent + "px;'><tr><td>" + "<img style='max-width:60px;' height='60' src='" + row.icon + "'/></td><td>" + row.notes + "</td></tr></table>";
         return details;
     };
 

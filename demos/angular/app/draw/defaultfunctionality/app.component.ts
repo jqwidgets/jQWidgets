@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
 
-import { jqxDrawComponent } from '../../../../../jqwidgets-ts/angular_jqxdraw';
+import { jqxDrawComponent } from '../../../jqwidgets-ts/angular_jqxdraw';
 
 @Component({
     selector: 'app-root',

@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxTreeGridComponent } from '../../../../../jqwidgets-ts/angular_jqxtreegrid';
+import { jqxTreeGridComponent } from '../../../jqwidgets-ts/angular_jqxtreegrid';
 
 @Component({
     selector: 'app-root',
@@ -22,7 +22,7 @@ export class AppComponent {
                         { 'id': '3', 'name': 'Accounting Department', 'budget': '113000', 'location': 'San Antonio' },
                         {
                             'id': '4', 'name': 'Investment Department', 'budget': '310000', 'location': 'San Antonio',
-                            children:
+                            'children':
                             [
                                 { 'id': '5', 'name': 'Banking Office', 'budget': '240000', 'location': 'San Antonio' },
                                 { 'id': '6', 'name': 'Bonds Office', 'budget': '70000', 'location': 'San Antonio' },
@@ -45,39 +45,39 @@ export class AppComponent {
     ];
 
     source: any =
-      {
-          dataType: 'json',
-          dataFields: [
-              { name: 'name', type: 'string' },
-              { name: 'budget', type: 'number' },
-              { name: 'id', type: 'number' },
-              { name: 'children', type: 'array' },
-              { name: 'location', type: 'string' }
-          ],
-          hierarchy:
-          {
-              root: 'children'
-          },
-          localData: this.data,
-          id: 'id'
-      };
+    {
+        dataType: 'json',
+        dataFields: [
+            { name: 'name', type: 'string' },
+            { name: 'budget', type: 'number' },
+            { name: 'id', type: 'number' },
+            { name: 'children', type: 'array' },
+            { name: 'location', type: 'string' }
+        ],
+        hierarchy:
+        {
+            root: 'children'
+        },
+        localData: this.data,
+        id: 'id'
+    };
 
     dataAdapter: any = new jqx.dataAdapter(this.source);
 
     columns: any[] =
-     [
-         { text: 'ID', editable: false, dataField: 'id', width: 150 },
-         { text: 'Name', dataField: 'name', width: 250 },
-         { text: 'Budget', align: 'right', cellsAlign: 'right', cellsFormat: 'c2', dataField: 'budget', width: 150 },
-         { text: 'Location', dataField: 'location', width: 130 },
-         {
-             text: 'Edit', cellsAlign: 'center', align: 'center', columnType: 'none', editable: false, sortable: false, dataField: null,
-             cellsRenderer: (row: number, column: any, value: any): string => {
-                 return `<div data-row='` + row + `' class='editButton' style='margin-left: 4em; float: left'></div>
+    [
+        { text: 'ID', editable: false, dataField: 'id', width: 150 },
+        { text: 'Name', dataField: 'name', width: 250 },
+        { text: 'Budget', align: 'right', cellsAlign: 'right', cellsFormat: 'c2', dataField: 'budget', width: 150 },
+        { text: 'Location', dataField: 'location', width: 130 },
+        {
+            text: 'Edit', cellsAlign: 'center', align: 'center', columnType: 'none', editable: false, sortable: false, dataField: null,
+            cellsRenderer: (row: number, column: any, value: any): string => {
+                return `<div data-row='` + row + `' class='editButton' style='margin-left: 4em; float: left'></div>
                         <div data-row='` + row + `' class='cancelButton' style='display: none; float: left; margin-left: 1em'></div>`;
-             }
-         }
-     ];
+            }
+        }
+    ];
 
     editSettings: any =
     {
@@ -95,9 +95,9 @@ export class AppComponent {
 
         function flatten(arr: any[]): any[] {
             if (arr.length) {
-              return arr.reduce((flat: any[], toFlatten: any[]): any[] => {
-                  return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
-                  }, []);
+                return arr.reduce((flat: any[], toFlatten: any[]): any[] => {
+                    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+                }, []);
             }
         }
 
@@ -117,45 +117,43 @@ export class AppComponent {
                 });
             }
         }
-    }  
+    }
 
     ready = (): void => {
         this.myTreeGrid.expandAll();
     }
+
+    rowKey: number = -1;
+
+    rowClick(event: any): void {
+        this.rowKey = event.args.key;
+    };
 
     editClick(event: any): void {
         let editButtonsContainers = document.getElementsByClassName('editButton');
         let cancelButtonsContainers = document.getElementsByClassName('cancelButton');
 
         let value = event.target.innerText;
-        let rowKey;
-
-        if (event.target.nodeName === 'DIV') {         
-            rowKey = event.target.nextElementSibling.attributes[0].value;
-        } else {
-            rowKey = event.target.parentElement.nextElementSibling.attributes[0].value
-        }
-
         if (value === 'Edit') {
-            this.myTreeGrid.beginRowEdit(rowKey);
+            this.myTreeGrid.beginRowEdit(this.rowKey.toString());
 
             for (let i = 0; i < editButtonsContainers.length; i++) {
                 (<HTMLElement>editButtonsContainers[i]).style.marginLeft = '4em';
                 (<HTMLElement>cancelButtonsContainers[i]).style.display = 'none';
             }
 
-            (<HTMLElement>editButtonsContainers[rowKey - 1]).innerText = 'Save';
-            (<HTMLElement>editButtonsContainers[rowKey - 1]).style.marginLeft = '1em';
+            (<HTMLElement>editButtonsContainers[this.rowKey - 1]).innerText = 'Save';
+            (<HTMLElement>editButtonsContainers[this.rowKey - 1]).style.marginLeft = '1em';
 
-            (<HTMLElement>cancelButtonsContainers[rowKey - 1]).style.display = 'inline-block';
+            (<HTMLElement>cancelButtonsContainers[this.rowKey - 1]).style.display = 'inline-block';
 
         } else {
-            (<HTMLElement>editButtonsContainers[rowKey - 1]).innerText = 'Edit';
-            (<HTMLElement>editButtonsContainers[rowKey - 1]).style.marginLeft = '4em';
+            (<HTMLElement>editButtonsContainers[this.rowKey - 1]).innerText = 'Edit';
+            (<HTMLElement>editButtonsContainers[this.rowKey - 1]).style.marginLeft = '4em';
 
-            (<HTMLElement>cancelButtonsContainers[rowKey - 1]).style.display = 'none';
+            (<HTMLElement>cancelButtonsContainers[this.rowKey - 1]).style.display = 'none';
 
-            this.myTreeGrid.endRowEdit(rowKey);
+            this.myTreeGrid.endRowEdit(this.rowKey.toString());
         }
     }
 }

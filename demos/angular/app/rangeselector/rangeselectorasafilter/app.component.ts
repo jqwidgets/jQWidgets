@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxRangeSelectorComponent } from '../../../../../jqwidgets-ts/angular_jqxrangeselector';
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid';
+import { jqxRangeSelectorComponent } from '../../../jqwidgets-ts/angular_jqxrangeselector';
+import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid';
 
 @Component({
     selector: 'app-root',

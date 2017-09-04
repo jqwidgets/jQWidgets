@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxKanbanComponent } from '../../../../../jqwidgets-ts/angular_jqxkanban';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons'
+import { jqxKanbanComponent } from '../../../jqwidgets-ts/angular_jqxkanban';
+import { jqxButtonComponent } from '../../../jqwidgets-ts/angular_jqxbuttons'
 
 @Component({
     selector: 'app-root',

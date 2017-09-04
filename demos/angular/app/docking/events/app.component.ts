@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxDockingComponent } from '../../../../../jqwidgets-ts/angular_jqxdocking';
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
+import { jqxDockingComponent } from '../../../jqwidgets-ts/angular_jqxdocking';
+import { jqxPanelComponent } from '../../../jqwidgets-ts/angular_jqxpanel';
 
 @Component({
     selector: 'app-root',

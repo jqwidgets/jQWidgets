@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>ReactJS PivotGrid - pivot rows, columns and cells with custom HTML rendering</title>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>   
+    <script type="text/javascript" src="../jqwidgets/jqxpivot.js"></script> 
+    <script type="text/javascript" src="../jqwidgets/jqxpivotgrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+</head>
+<body class='default'>
+    <div id="app" style='width: 800px; height: 400px;'></div>
+    <script src="../build/pivotgrid_custom_rendering.bundle.js"></script>
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+		<div style="width: 800px;">
+        This is an example of a ReactJS Pivot Grid with custom style of the grid cells depending on their current value. You can change the
+        rendering of any cell, row or column and insert your own HTML content by implementing the itemsRenderer and cellsRenderer functions.
+        In this case, the custom code simply chooses among five predefined colors and sets the backgroundColor property of the
+        cell content. This color customization is applied only to the cells with 'Sum' aggregation function. You can change
+        the code of the itemsRenderer and cellsRenderer functions inside the React app.js and implement your own customization logic using standard HTML and CSS.
+		Make sure that the implementation of the custom rendering functions is as efficient as possible. The functions will be called multiple times due changes 
+		in the internal state of the pivot grid like scrolling, drill down or selection change. The pivot grid component is optimized to
+		cache the content of the pivot cells, rows and columns and the custom functions will be called only when needed.
+		</div>
+    </div>
+</body>
+</html>

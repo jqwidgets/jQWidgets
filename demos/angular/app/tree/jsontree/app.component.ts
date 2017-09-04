@@ -1,6 +1,6 @@
 ﻿import { Component } from '@angular/core';
 
-import { jqxTreeComponent } from '../../../../../jqwidgets-ts/angular_jqxtree';
+import { jqxTreeComponent } from '../../../jqwidgets-ts/angular_jqxtree';
 
 @Component({
     selector: 'app-root',

@@ -817,6 +817,19 @@ module.exports =
         validator_errorlabels: __dirname + '/app/validator/errorlabels/app.js',
         validator_righttoleftlayout: __dirname + '/app/validator/righttoleftlayout/app.js',
 
+	    pivotgrid_pivot_designer: __dirname + '/app/pivotgrid/pivot-designer/app.js',
+		pivotgrid_tree_olap_style_rows: __dirname + '/app/pivotgrid/olap-tree-style-rows/app.js',
+		pivotgrid_totals: __dirname + '/app/pivotgrid/totals/app.js',
+		pivotgrid_values_on_columns: __dirname + '/app/pivotgrid/values-on-columns/app.js',
+		pivotgrid_values_on_rows: __dirname + '/app/pivotgrid/values-on-rows/app.js',
+		pivotgrid_localization: __dirname + '/app/pivotgrid/localization/app.js',
+		pivotgrid_events: __dirname + '/app/pivotgrid/events/app.js',
+		pivotgrid_drill_through: __dirname + '/app/pivotgrid/drill-through/app.js',
+		pivotgrid_custom_rendering: __dirname + '/app/pivotgrid/custom-rendering/app.js',
+		pivotgrid_cell_values_alignment: __dirname + '/app/pivotgrid/cell-values-alignment/app.js',
+		pivotgrid_row_columns_cells_css_styling: __dirname + '/app/pivotgrid/row-columns-cells-css-styling/app.js',
+		pivotgrid_custom_pivot_function: __dirname + '/app/pivotgrid/custom-pivot-function/app.js'
+
         window_defaultfunctionality: __dirname + '/app/window/defaultfunctionality/app.js',
         window_multiplewindows: __dirname + '/app/window/multiplewindows/app.js',
         window_settings: __dirname + '/app/window/settings/app.js',

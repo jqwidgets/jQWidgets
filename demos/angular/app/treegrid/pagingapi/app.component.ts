@@ -1,8 +1,8 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxTreeGridComponent } from '../../../../../jqwidgets-ts/angular_jqxtreegrid';
-import { jqxInputComponent }    from '../../../../../jqwidgets-ts/angular_jqxinput';
-import { jqxPanelComponent }    from '../../../../../jqwidgets-ts/angular_jqxpanel';
+import { jqxTreeGridComponent } from '../../../jqwidgets-ts/angular_jqxtreegrid';
+import { jqxInputComponent }    from '../../../jqwidgets-ts/angular_jqxinput';
+import { jqxPanelComponent }    from '../../../jqwidgets-ts/angular_jqxpanel';
 
 import { generateordersdata } from '../../../sampledata/generatedata';
 

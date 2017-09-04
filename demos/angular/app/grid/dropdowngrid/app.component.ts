@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid'
-import { jqxDropDownButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownbutton';
+import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid'
+import { jqxDropDownButtonComponent } from '../../../jqwidgets-ts/angular_jqxdropdownbutton';
 
 import { generatedata } from '../../../sampledata/generatedata';
 

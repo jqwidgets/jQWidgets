@@ -1,5 +1,5 @@
-﻿import { Component, ViewChild } from '@angular/core';  import { jqxDataTableComponent } from '../../../../../jqwidgets-ts/angular_jqxdatatable';
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
+﻿import { Component, ViewChild } from '@angular/core';  import { jqxDataTableComponent } from '../../../jqwidgets-ts/angular_jqxdatatable';
+import { jqxDropDownListComponent } from '../../../jqwidgets-ts/angular_jqxdropdownlist';
 
 import { generatedata } from '../../../sampledata/generatedata';
 

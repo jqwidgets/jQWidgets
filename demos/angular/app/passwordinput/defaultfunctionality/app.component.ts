@@ -1,11 +1,11 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxPasswordInputComponent } from '../../../../../jqwidgets-ts/angular_jqxpasswordinput';
-import { jqxExpanderComponent } from '../../../../../jqwidgets-ts/angular_jqxexpander';
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
-import { jqxValidatorComponent } from '../../../../../jqwidgets-ts/angular_jqxvalidator';
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
-import { jqxDateTimeInputComponent } from '../../../../../jqwidgets-ts/angular_jqxdatetimeinput';
+import { jqxPasswordInputComponent } from '../../../jqwidgets-ts/angular_jqxpasswordinput';
+import { jqxExpanderComponent } from '../../../jqwidgets-ts/angular_jqxexpander';
+import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
+import { jqxValidatorComponent } from '../../../jqwidgets-ts/angular_jqxvalidator';
+import { jqxDropDownListComponent } from '../../../jqwidgets-ts/angular_jqxdropdownlist';
+import { jqxDateTimeInputComponent } from '../../../jqwidgets-ts/angular_jqxdatetimeinput';
 
 @Component({
     selector: 'app-root',

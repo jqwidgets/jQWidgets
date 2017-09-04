@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxMenuComponent } from '../../../../../jqwidgets-ts/angular_jqxmenu';
-import { jqxCheckBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcheckbox';
+import { jqxMenuComponent } from '../../../jqwidgets-ts/angular_jqxmenu';
+import { jqxCheckBoxComponent } from '../../../jqwidgets-ts/angular_jqxcheckbox';
 
 @Component({
     selector: 'app-root',

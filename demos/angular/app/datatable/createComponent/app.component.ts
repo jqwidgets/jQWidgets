@@ -2,7 +2,7 @@
 
 import { generatedata } from '../../../sampledata/generatedata';
 
-import { jqxDataTableComponent } from '../../../../../jqwidgets-ts/angular_jqxdatatable';
+import { jqxDataTableComponent } from '../../../jqwidgets-ts/angular_jqxdatatable';
 
 @Component({
     selector: 'app-root',

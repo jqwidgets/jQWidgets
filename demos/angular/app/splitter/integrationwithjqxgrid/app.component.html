@@ -1,4 +1,5 @@
 ﻿<jqxSplitter #mainSplitter
+             (onExpanded)="expanded($event)"
              [panels]="[{ min: 150, size: 330 }, { min: 250 }]"
              [height]="400" [width]="850">
   <div>

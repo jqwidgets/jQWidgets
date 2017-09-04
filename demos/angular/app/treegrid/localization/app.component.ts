@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxTreeGridComponent } from '../../../../../jqwidgets-ts/angular_jqxtreegrid';
+import { jqxTreeGridComponent } from '../../../jqwidgets-ts/angular_jqxtreegrid';
 
 import { getLocalization } from '../../../scripts/localization';
 import { generateordersdata } from '../../../sampledata/generatedata';

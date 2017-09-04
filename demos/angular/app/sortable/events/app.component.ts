@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, ViewEncapsulation, ElementRef, AfterViewInit } from '@angular/core';
 
-import { jqxSortableComponent } from '../../../../../jqwidgets-ts/angular_jqxsortable';
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
+import { jqxSortableComponent } from '../../../jqwidgets-ts/angular_jqxsortable';
+import { jqxPanelComponent } from '../../../jqwidgets-ts/angular_jqxpanel';
 
 @Component({
     selector: 'app-root',

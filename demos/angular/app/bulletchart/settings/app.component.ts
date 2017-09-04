@@ -1,12 +1,12 @@
 ﻿
 import { Component, ViewChild } from '@angular/core';
 
-import { jqxBulletChartComponent } from '../../../../../jqwidgets-ts/angular_jqxbulletchart';
-import { jqxCheckBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcheckbox';
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
-import { jqxExpanderComponent } from '../../../../../jqwidgets-ts/angular_jqxexpander';
-import { jqxRadioButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxradiobutton';
-import { jqxSliderComponent } from '../../../../../jqwidgets-ts/angular_jqxslider';
+import { jqxBulletChartComponent } from '../../../jqwidgets-ts/angular_jqxbulletchart';
+import { jqxCheckBoxComponent } from '../../../jqwidgets-ts/angular_jqxcheckbox';
+import { jqxDropDownListComponent } from '../../../jqwidgets-ts/angular_jqxdropdownlist';
+import { jqxExpanderComponent } from '../../../jqwidgets-ts/angular_jqxexpander';
+import { jqxRadioButtonComponent } from '../../../jqwidgets-ts/angular_jqxradiobutton';
+import { jqxSliderComponent } from '../../../jqwidgets-ts/angular_jqxslider';
 
 @Component({
     selector: 'app-root',

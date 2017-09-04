@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
 
-import { jqxKnobComponent } from '../../../../../jqwidgets-ts/angular_jqxknob';
+import { jqxKnobComponent } from '../../../jqwidgets-ts/angular_jqxknob';
 
 @Component({
     selector: 'app-root',

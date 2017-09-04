@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxListBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxlistbox';
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
+import { jqxListBoxComponent } from '../../../jqwidgets-ts/angular_jqxlistbox';
+import { jqxPanelComponent } from '../../../jqwidgets-ts/angular_jqxpanel';
 
 @Component({
     selector: 'app-root',

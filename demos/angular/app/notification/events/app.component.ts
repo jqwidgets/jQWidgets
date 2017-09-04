@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
-import { jqxNotificationComponent } from '../../../../../jqwidgets-ts/angular_jqxnotification';
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
+import { jqxNotificationComponent } from '../../../jqwidgets-ts/angular_jqxnotification';
+import { jqxPanelComponent } from '../../../jqwidgets-ts/angular_jqxpanel';
 
 @Component({
     selector: 'app-root',

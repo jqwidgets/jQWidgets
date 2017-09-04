@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxFormattedInputComponent } from '../../../../../jqwidgets-ts/angular_jqxformattedinput';
+import { jqxFormattedInputComponent } from '../../../jqwidgets-ts/angular_jqxformattedinput';
 
 @Component({
     selector: 'app-root',

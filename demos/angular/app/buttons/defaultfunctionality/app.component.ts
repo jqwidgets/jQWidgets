@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons'
+import { jqxButtonComponent } from '../../../jqwidgets-ts/angular_jqxbuttons'
 
 @Component({
     selector: 'app-root',

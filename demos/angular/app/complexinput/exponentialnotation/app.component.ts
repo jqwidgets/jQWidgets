@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxComplexInputComponent } from '../../../../../jqwidgets-ts/angular_jqxcomplexinput';
+import { jqxComplexInputComponent } from '../../../jqwidgets-ts/angular_jqxcomplexinput';
 
 @Component({
     selector: 'app-root',

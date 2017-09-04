@@ -14,7 +14,7 @@ export class AppComponent {
     dataAdapter: any = new jqx.dataAdapter(this.source);
 
     imagerenderer = (row: number, datafield: string, value: string): string => {
-        return '<img style="margin-left: 5px;" height="60" width="50" src="../../../../images/' + value + '"/>';
+        return '<img style="margin-left: 5px;" height="60" width="50" src="../images/' + value + '"/>';
     }
 
     columns: any[] =

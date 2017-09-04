@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxNumberInputComponent } from '../../../../../jqwidgets-ts/angular_jqxnumberinput';
+import { jqxNumberInputComponent } from '../../../jqwidgets-ts/angular_jqxnumberinput';
 
 @Component({
     selector: 'app-root',

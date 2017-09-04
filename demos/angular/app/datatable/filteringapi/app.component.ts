@@ -1,8 +1,8 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxDataTableComponent } from '../../../../../jqwidgets-ts/angular_jqxdatatable';
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
-import { jqxListBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxlistbox';
+import { jqxDataTableComponent } from '../../../jqwidgets-ts/angular_jqxdatatable';
+import { jqxDropDownListComponent } from '../../../jqwidgets-ts/angular_jqxdropdownlist';
+import { jqxListBoxComponent } from '../../../jqwidgets-ts/angular_jqxlistbox';
 
 import { generatedata } from '../../../sampledata/generatedata';
 

@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxTextAreaComponent } from '../../../../../jqwidgets-ts/angular_jqxtextarea';
+import { jqxTextAreaComponent } from '../../../jqwidgets-ts/angular_jqxtextarea';
 
 @Component({
     selector: 'app-root',

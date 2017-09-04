@@ -1,7 +1,7 @@
 ﻿
 import { Component } from '@angular/core';
 
-import { jqxBulletChartComponent } from '../../../../../jqwidgets-ts/angular_jqxbulletchart';
+import { jqxBulletChartComponent } from '../../../jqwidgets-ts/angular_jqxbulletchart';
 
 @Component({
     selector: 'app-root',

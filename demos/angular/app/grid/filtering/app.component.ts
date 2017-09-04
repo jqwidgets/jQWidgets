@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxGridComponent }  from '../../../../../jqwidgets-ts/angular_jqxgrid';
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
+import { jqxGridComponent }  from '../../../jqwidgets-ts/angular_jqxgrid';
+import { jqxPanelComponent } from '../../../jqwidgets-ts/angular_jqxpanel';
 
 import { generatedata } from '../../../sampledata/generatedata';
 

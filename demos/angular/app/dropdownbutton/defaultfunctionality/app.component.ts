@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
 
-import { jqxDropDownButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownbutton';
-import { jqxTreeComponent } from '../../../../../jqwidgets-ts/angular_jqxtree';
+import { jqxDropDownButtonComponent } from '../../../jqwidgets-ts/angular_jqxdropdownbutton';
+import { jqxTreeComponent } from '../../../jqwidgets-ts/angular_jqxtree';
 
 @Component({
     selector: 'app-root',

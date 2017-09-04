@@ -1,9 +1,9 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid'
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
-import { jqxWindowComponent } from '../../../../../jqwidgets-ts/angular_jqxwindow';
+import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid'
+import { jqxDropDownListComponent } from '../../../jqwidgets-ts/angular_jqxdropdownlist';
+import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
+import { jqxWindowComponent } from '../../../jqwidgets-ts/angular_jqxwindow';
 
 import { generatedata } from '../../../sampledata/generatedata';
 

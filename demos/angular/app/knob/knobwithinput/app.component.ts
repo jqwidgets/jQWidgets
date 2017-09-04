@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxKnobComponent } from '../../../../../jqwidgets-ts/angular_jqxknob';
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
+import { jqxKnobComponent } from '../../../jqwidgets-ts/angular_jqxknob';
+import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
 
 @Component({
     selector: 'app-root',

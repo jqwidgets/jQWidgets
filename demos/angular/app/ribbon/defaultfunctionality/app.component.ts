@@ -1,13 +1,13 @@
 ﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxRibbonComponent } from '../../../../../jqwidgets-ts/angular_jqxribbon';
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
-import { jqxTooltipComponent } from '../../../../../jqwidgets-ts/angular_jqxtooltip';
-import { jqxDropDownButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownbutton';
-import { jqxColorPickerComponent } from '../../../../../jqwidgets-ts/angular_jqxcolorpicker';
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
-import { jqxToggleButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxtogglebutton';
+import { jqxRibbonComponent } from '../../../jqwidgets-ts/angular_jqxribbon';
+import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid';
+import { jqxButtonComponent } from '../../../jqwidgets-ts/angular_jqxbuttons';
+import { jqxTooltipComponent } from '../../../jqwidgets-ts/angular_jqxtooltip';
+import { jqxDropDownButtonComponent } from '../../../jqwidgets-ts/angular_jqxdropdownbutton';
+import { jqxColorPickerComponent } from '../../../jqwidgets-ts/angular_jqxcolorpicker';
+import { jqxDropDownListComponent } from '../../../jqwidgets-ts/angular_jqxdropdownlist';
+import { jqxToggleButtonComponent } from '../../../jqwidgets-ts/angular_jqxtogglebutton';
 
 @Component({
     selector: 'app-root',
@@ -27,15 +27,13 @@ export class AppComponent {
     @ViewChild('subscript') subscriptToggleButton: jqxToggleButtonComponent;
 
     ngAfterViewInit(): void {
-        setTimeout(() => {
-            this.buttonsStyling();
-            this.ribbon.elementRef.nativeElement.firstElementChild.children[1].style.padding = '35px 0px 0px';
-            this.ribbon.disableAt(0);
-            this.fileItemButton.setContent('<span style="position: relative; line-height: 26px; margin-left:10px;">File</span>');
-            this.fontColorButton.setContent('<span style="position: relative; display:inline; top: 2px"><div class="icon FontDialogImage"></div><span id="fontColorPreview" style="display: block; position:absolute;  height: 3px; width: 16px; background:#000"></span></span><span style="position:relative; display: inline; top:3px">Font Color</span>');
-            this.bucketColorButton.setContent('<span style="position: relative; display:inline"><div class="icon paintcan"></div><span id="bucketColorPreview" style="display: block; position:absolute;  height: 3px; width: 16px; background:#000"></span></span><span style="position:relative; display: inline; top:3px"></span>');
-            this.highlightColorButton.setContent('<span style="position: relative; display:inline; top: 2px"><div class="icon pencil"></div><span id="highlightColorPreview" style="display: block; position:absolute;  height: 3px; width: 16px; background:#F00"></span></span><span style="position:relative; display: inline; top:3px">Highlight Color</span>');
-        });
+		this.buttonsStyling();
+		this.ribbon.elementRef.nativeElement.firstElementChild.children[1].style.padding = '35px 0px 0px';
+		this.ribbon.disableAt(0);
+		this.fileItemButton.setContent('<span style="position: relative; line-height: 26px; margin-left:10px;">File</span>');
+		this.fontColorButton.setContent('<span style="position: relative; display:inline; top: 2px"><div class="icon FontDialogImage"></div><span id="fontColorPreview" style="display: block; position:absolute;  height: 3px; width: 16px; background:#000"></span></span><span style="position:relative; display: inline; top:3px">Font Color</span>');
+		this.bucketColorButton.setContent('<span style="position: relative; display:inline"><div class="icon paintcan"></div><span id="bucketColorPreview" style="display: block; position:absolute;  height: 3px; width: 16px; background:#000"></span></span><span style="position:relative; display: inline; top:3px"></span>');
+		this.highlightColorButton.setContent('<span style="position: relative; display:inline; top: 2px"><div class="icon pencil"></div><span id="highlightColorPreview" style="display: block; position:absolute;  height: 3px; width: 16px; background:#F00"></span></span><span style="position:relative; display: inline; top:3px">Highlight Color</span>');
     }
 
     buttonsStyling(): void {
@@ -52,8 +50,8 @@ export class AppComponent {
             (<HTMLElement>document.getElementsByTagName('jqxdropdownlist')[i].firstElementChild).style.display = 'inline-block';
         }
 
-        (<HTMLElement>document.getElementById('fileItemButton').firstElementChild).style.color = 'white';
-        (<HTMLElement>document.getElementById('fileItemButton').firstElementChild).style.background = 'transparent';
+        this.fileItemButton.elementRef.nativeElement.firstElementChild.style.color = 'white';
+        this.fileItemButton.elementRef.nativeElement.firstElementChild.style.background = 'transparent';
     };
 
     onBucketColorPicker(event: any): void {
@@ -77,7 +75,7 @@ export class AppComponent {
     };
 
     onPasteButtonClick(event: any): void {
-        let text = (<HTMLElement>document.getElementsByClassName('pasteText')[0]).innerHTML;
+        let text = this.pasteButton.elementRef.nativeElement.getElementsByClassName('pasteText')[0].innerHTML;
         console.log(text + ' clicked');
     };
 
@@ -95,7 +93,7 @@ export class AppComponent {
             ];
         let index = event.args.index;
         let icon = '<span class="' + pasteData[index].imageClass + '" style="zoom: 1.5"></span>';
-        (<HTMLElement>document.getElementById('pasteButton').firstElementChild).innerHTML = (icon + '<span class="pasteText">' + pasteData[index].label + '</span>');
+        this.pasteButton.elementRef.nativeElement.firstElementChild.innerHTML = (icon + '<span class="pasteText">' + pasteData[index].label + '</span>');
         this.pasteButton.render();
     };
 

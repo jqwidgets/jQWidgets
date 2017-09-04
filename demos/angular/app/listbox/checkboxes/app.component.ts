@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
-import { jqxListBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxlistbox';
+import { jqxListBoxComponent } from '../../../jqwidgets-ts/angular_jqxlistbox';
 
 @Component({
     selector: 'app-root',

@@ -132,6 +132,192 @@ declare module jqwidgets {
         val(value: Array<Number>): Array<Number>;
     }// jqxBarGauge
 
+    export interface PivotDesignerOptions {
+        // PivotDesignerOptions properties
+        type?: string;
+        target: any;
+    }// PivotDesignerOptions
+
+    export interface jqxPivotDesigner extends widget, PivotDesignerOptions {
+
+        // jqxPivotDesigner functions
+        refresh(): void;
+        destroy(): void;
+    }// jqxPivotDesigner
+
+    export interface PivotGridField {
+        // PivotGridField properties
+        dataField: string;
+        text?: string;
+        align?: string;
+        className?: string;
+        classNameSelected?: string;
+    }// PivotGridField
+
+    export interface PivotGridFilterField {
+        // PivotGridFilterField properties
+        dataField: string;
+        text?: string;
+        filterFunction: (value: any) => Boolean;
+    }// PivotGridFilterField
+
+    export interface PivotGridCellFormatSettings {
+        // PivotGridCellFormatSettings properties
+        prefix?: string;
+        sufix?: string;
+        decimalSeparator?: string;
+        thousandsSeparator?: string;
+        decimalPlaces?: number;
+        negativeWithBrackets?: boolean;
+    }// PivotGridCellFormatSettings
+
+    export interface PivotGridValueField {
+        // PivotGridValueField properties
+        dataField: string;
+        function: any;
+        text?: string;
+        align?: string;
+        className?: string;
+        classNameSelected?: string;
+        cellsClassName?: string;
+        cellsClassNameSelected?: string;
+        formatSettings?: PivotGridCellFormatSettings;
+    }// PivotGridValueField
+
+    export interface PivotGridSettings {
+        // PivotGridSettings properties
+        pivotValuesOnRows?: boolean;
+        rows: Array<PivotGridField>;
+        columns: Array<PivotGridField>;
+        values: Array<PivotGridValueField>;
+        filters?: Array<PivotGridFilterField>;
+    }// PivotGridSettings
+
+    export interface PivotGridPoint {
+        // PivotGridPoint properties
+        x: number;
+        y: number;
+    }// PivotGridPoint
+
+    export interface PivotGridItem {
+        // PivotGridItem properties
+        isExpanded: boolean;
+        isHidden: boolean;
+        isSelected: boolean;
+        parentItem: PivotGridItem;
+        hierarchy: any;
+        parentPivotGrid: jqxPivotGrid;
+        items: Array<PivotGridItem>;
+        valueItems: Array<PivotGridItem>;
+        // PivotGridItem functions
+        getWidth(): number;
+        getDisplayWidth(): number;
+        autoResize(): void;
+        getHeight(): number;
+        getDisplayHeight(): number;
+        setHeight(height: number): void;
+        expand(): void;
+        collapse(): void;
+    }// PivotGridItem
+
+    export interface PivotGridRows {
+        // PivotGridRows properties
+        resizable: boolean;
+        sortable: boolean;
+        showExpandCollapseButtons: boolean;
+        parentPivotGrid: jqxPivotGrid;
+        items: Array<PivotGridItem>;
+        valueItems: Array<PivotGridItem>;
+        isHidden?: boolean;
+        // PivotGridRows functions
+        show(): void;
+        hide(): void;
+        refresh(): void;
+        getHierarchyDepth(): number;
+        autoResize(autoResizeMode: string): void;
+        getSortItem(): any;
+        getSortOrder(): any;
+        sortBy(pivotItem: PivotGridItem, sortOrder: string): void;
+        removeSort(): void;
+        selectItem(pivotItem: PivotGridItem): void;
+        unselectItem(pivotItem: PivotGridItem): void;
+        clearSelection(): void;
+        getSelectedItems(): Array<any>;
+    }// PivotGridRows
+
+    export interface PivotGridColumns {
+        // PivotGridColumns properties
+        resizable: boolean;
+        sortable: boolean;
+        showExpandCollapseButtons: boolean;
+        parentPivotGrid: jqxPivotGrid;
+        items: Array<PivotGridItem>;
+        valueItems: Array<PivotGridItem>;
+        isHidden: boolean;
+        // PivotGridColumns functions
+        show(): void;
+        hide(): void;
+        refresh(): void;
+        getHierarchyDepth(): number;
+        autoResize(autoResizeMode: string): void;
+        getSortItem(): any;
+        getSortOrder(): any;
+        sortBy(pivotItem: PivotGridItem, sortOrder: string): void;
+        removeSort(): void;
+        selectItem(pivotItem: PivotGridItem): void;
+        unselectItem(pivotItem: PivotGridItem): void;
+        clearSelection(): void;
+        getSelectedItems(): Array<any>;
+    }// PivotGridColumns
+
+    export interface PivotGridCell {
+        // PivotGridCell properties
+        pivotRow: PivotGridItem;
+        pivotColumn: PivotGridItem;
+    }// PivotGridCell
+
+    export interface PivotGridCells {
+        // PivotGridCells properties
+
+        // PivotGridCells functions
+        hitTest(point: PivotGridPoint): any;
+        clear(): void;
+        setCellValue(pivotRow: PivotGridItem, pivotColumn: PivotGridItem, value: any): void;
+        getCellValue(pivotRow: PivotGridItem, pivotColumn: PivotGridItem): any;
+        drillThroughCell(pivotRow: PivotGridItem, pivotColumn: PivotGridItem): Array<any>;
+        selectCell(pivotRow: PivotGridItem, pivotColumn: PivotGridItem): void;
+        unselectCell(pivotRow: PivotGridItem, pivotColumn: PivotGridItem): void;
+        clearSelection(): void;
+        isCellSelected(pivotRow: PivotGridItem, pivotColumn: PivotGridItem): Boolean;
+        getSelectedCellsCount(): Number;
+        getSelectedCells(): Array<PivotGridCell>;
+        getNextCell(pivotCell: PivotGridCell, position: string): any;
+    }// PivotGridCells
+
+    export interface PivotGridOptions {
+        // PivotGridOptions properties
+        source: any;
+        localization?: any;
+        scrollBarsEnabled?: boolean;
+        selectionEnabled?: boolean;
+        multipleSelectionEnabled?: boolean;
+        treeStyleRows?: boolean;
+        autoResize?: boolean;
+        itemsRenderer?: (pivotItem: any) => String;
+        cellsRenderer?: (pivotCell: any) => String;
+    }// PivotGridOptions
+
+    export interface jqxPivotGrid extends widget, PivotGridOptions {
+
+        // jqxPivotGrid functions
+        getInstance(): any;
+        refresh(): void;
+        destroy(): void;
+        getPivotRows(): PivotGridRows;
+        getPivotColumns(): PivotGridColumns;
+        getPivotCells(): PivotGridCells;
+    }// jqxPivotGrid
+
     export interface BulletChartPointer {
         // BulletChartPointer properties
         value?: number;
@@ -303,6 +489,32 @@ declare module jqwidgets {
         today(): void;
         val(value: any, value2: any): any;
     }// jqxCalendar
+
+    export interface DrawOptions {
+        // DrawOptions properties
+        renderEngine?: string;
+    }// DrawOptions
+
+    export interface jqxDraw extends widget, DrawOptions {
+
+        // jqxDraw functions
+        attr(element: any, attributes: any): void;
+        circle(cx: number, cy: number, r: number, attributes: any): any;
+        clear(): void;
+        getAttr(element: any, attributes: any): string;
+        getSize(): any;
+        line(x1: number, y1: number, x2: number, y2: number, attributes: any): any;
+        measureText(text: string, angle: number, attributes: any): any;
+        on(element: any, event: string, func: any): void;
+        off(element: any, event: string, func: any): void;
+        path(path: string, attributes: any): any;
+        pieslice(cx: number, xy: number, innerRadius: any, outerRadius: any, fromAngle: number, endAngle: number, centerOffset: number, attributes: any): any;
+        refresh(): void;
+        rect(x: number, y: number, width: String | Number, height: String | Number, attributes: any): any;
+        saveAsJPEG(image: string, url: string): void;
+        saveAsPNG(image: string, url: string): void;
+        text(text: string, x: number, y: number, width: String | Number, height: String | Number, angle: number, attributes: any, clip: boolean, halign: string, valign: string, rotateAround: string): any;
+    }// jqxDraw
 
     export interface ChartOffset {
         // ChartOffset properties
@@ -1253,32 +1465,6 @@ declare module jqwidgets {
         // jqxDragDrop functions
 
     }// jqxDragDrop
-
-    export interface DrawOptions {
-        // DrawOptions properties
-        renderEngine?: string;
-    }// DrawOptions
-
-    export interface jqxDraw extends widget, DrawOptions {
-
-        // jqxDraw functions
-        attr(element: any, attributes: any): void;
-        circle(cx: number, cy: number, r: number, attributes: any): any;
-        clear(): void;
-        getAttr(element: any, attributes: any): string;
-        getSize(): any;
-        line(x1: number, y1: number, x2: number, y2: number, attributes: any): any;
-        measureText(text: string, angle: number, attributes: any): any;
-        on(element: any, event: string, func: any): void;
-        off(element: any, event: string, func: any): void;
-        path(path: string, attributes: any): any;
-        pieslice(cx: number, xy: number, innerRadius: any, outerRadius: any, fromAngle: number, endAngle: number, centerOffset: number, attributes: any): any;
-        refresh(): void;
-        rect(x: number, y: number, width: String | Number, height: String | Number, attributes: any): any;
-        saveAsJPEG(image: string, url: string): void;
-        saveAsPNG(image: string, url: string): void;
-        text(text: string, x: number, y: number, width: String | Number, height: String | Number, angle: number, attributes: any, clip: boolean, halign: string, valign: string, rotateAround: string): any;
-    }// jqxDraw
 
     export interface DropDownButtonOptions {
         // DropDownButtonOptions properties

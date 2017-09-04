@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxTreeComponent } from '../../../../../jqwidgets-ts/angular_jqxtree';
-import { jqxDropDownButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownbutton';
+import { jqxTreeComponent } from '../../../jqwidgets-ts/angular_jqxtree';
+import { jqxDropDownButtonComponent } from '../../../jqwidgets-ts/angular_jqxdropdownbutton';
 
 @Component({
     selector: 'app-root',

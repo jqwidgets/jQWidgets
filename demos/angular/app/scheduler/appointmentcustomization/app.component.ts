@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxSchedulerComponent } from '../../../../../jqwidgets-ts/angular_jqxscheduler';
+import { jqxSchedulerComponent } from '../../../jqwidgets-ts/angular_jqxscheduler';
 
 @Component({
     selector: 'app-root',
@@ -136,18 +136,18 @@ export class AppComponent implements AfterViewInit {
         // cssClass - string
         // html - html string
         // view - string
-        let img = '<img style="top: 2px; position: relative;" src="../../../../images/person.png"/>';
+        let img = '<img style="top: 2px; position: relative;" src="../images/person.png"/>';
         if (data.appointment.subject == 'Nancy') {
-            img = '<img style="top: 2px; position: relative;" src="../../../../images/woman.png"/>';
+            img = '<img style="top: 2px; position: relative;" src="../images/woman.png"/>';
         }
         else if (data.appointment.subject == 'Peter') {
-            img = '<img style="top: 2px; position: relative;" src="../../../../images/boss.png"/>';
+            img = '<img style="top: 2px; position: relative;" src="../images/boss.png"/>';
         }
         else if (data.appointment.subject == 'Antony') {
-            img = '<img style="top: 2px; position: relative;" src="../../../../images/oldboss.png"/>';
+            img = '<img style="top: 2px; position: relative;" src="../images/oldboss.png"/>';
         }
         else if (data.appointment.subject == 'John') {
-            img = '<img style="top: 2px; position: relative;" src="../../../../images/asian.png"/>';
+            img = '<img style="top: 2px; position: relative;" src="../images/asian.png"/>';
         }
 
         if (data.view == 'weekView' || data.view == 'dayView' || data.view == 'monthView') {

@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
 
-import { jqxRangeSelectorComponent } from '../../../../../jqwidgets-ts/angular_jqxrangeselector';
+import { jqxRangeSelectorComponent } from '../../../jqwidgets-ts/angular_jqxrangeselector';
 
 @Component({
     selector: 'app-root',

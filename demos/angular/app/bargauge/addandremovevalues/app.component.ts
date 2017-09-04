@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxBarGaugeComponent } from '../../../../../jqwidgets-ts/angular_jqxbargauge';
-import { jqxListBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxlistbox';
+import { jqxBarGaugeComponent } from '../../../jqwidgets-ts/angular_jqxbargauge';
+import { jqxListBoxComponent } from '../../../jqwidgets-ts/angular_jqxlistbox';
 
 @Component({
     selector: 'app-root',

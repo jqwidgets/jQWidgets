@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, ViewEncapsulation, ElementRef, AfterViewInit } from '@angular/core';
 
-import { jqxGaugeComponent } from '../../../../../jqwidgets-ts/angular_jqxgauge';
-import { jqxLinearGaugeComponent } from '../../../../../jqwidgets-ts/angular_jqxlineargauge';
+import { jqxGaugeComponent } from '../../../jqwidgets-ts/angular_jqxgauge';
+import { jqxLinearGaugeComponent } from '../../../jqwidgets-ts/angular_jqxlineargauge';
 
 @Component({
     selector: 'app-root',

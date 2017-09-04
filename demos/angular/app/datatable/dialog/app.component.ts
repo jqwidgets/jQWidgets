@@ -1,10 +1,10 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxDataTableComponent } from '../../../../../jqwidgets-ts/angular_jqxdatatable';
-import { jqxDateTimeInputComponent } from '../../../../../jqwidgets-ts/angular_jqxdatetimeinput';
-import { jqxNumberInputComponent } from '../../../../../jqwidgets-ts/angular_jqxnumberinput';
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
-import { jqxWindowComponent } from '../../../../../jqwidgets-ts/angular_jqxwindow';
+import { jqxDataTableComponent } from '../../../jqwidgets-ts/angular_jqxdatatable';
+import { jqxDateTimeInputComponent } from '../../../jqwidgets-ts/angular_jqxdatetimeinput';
+import { jqxNumberInputComponent } from '../../../jqwidgets-ts/angular_jqxnumberinput';
+import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
+import { jqxWindowComponent } from '../../../jqwidgets-ts/angular_jqxwindow';
 
 @Component({
     selector: 'app-root',

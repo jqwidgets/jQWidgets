@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxTagCloudComponent } from '../../../../../jqwidgets-ts/angular_jqxtagcloud'; 
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
+import { jqxTagCloudComponent } from '../../../jqwidgets-ts/angular_jqxtagcloud'; 
+import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
 
 @Component({
     selector: 'app-root',

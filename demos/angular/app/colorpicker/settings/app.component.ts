@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
-import { jqxColorPickerComponent } from '../../../../../jqwidgets-ts/angular_jqxcolorpicker';
+import { jqxColorPickerComponent } from '../../../jqwidgets-ts/angular_jqxcolorpicker';
 
 @Component({
     selector: 'app-root',

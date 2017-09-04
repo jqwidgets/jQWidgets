@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 
-import { jqxCalendarComponent } from '../../../../../jqwidgets-ts/angular_jqxcalendar';
+import { jqxCalendarComponent } from '../../../jqwidgets-ts/angular_jqxcalendar';
 
 @Component({
     selector: 'app-root',

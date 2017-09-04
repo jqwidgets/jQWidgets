@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxSplitterComponent } from '../../../../../jqwidgets-ts/angular_jqxsplitter';
+import { jqxSplitterComponent } from '../../../jqwidgets-ts/angular_jqxsplitter';
 
 @Component({
     selector: 'app-root',

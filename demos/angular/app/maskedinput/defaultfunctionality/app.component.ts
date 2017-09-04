@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxMaskedInputComponent } from '../../../../../jqwidgets-ts/angular_jqxmaskedinput';
+import { jqxMaskedInputComponent } from '../../../jqwidgets-ts/angular_jqxmaskedinput';
 
 @Component({
     selector: 'app-root',

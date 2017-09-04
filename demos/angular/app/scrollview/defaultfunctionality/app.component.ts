@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxScrollViewComponent } from '../../../../../jqwidgets-ts/angular_jqxscrollview';
+import { jqxScrollViewComponent } from '../../../jqwidgets-ts/angular_jqxscrollview';
 
 @Component({
     selector: 'app-root',

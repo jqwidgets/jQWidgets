@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid'
+import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid'
 
 @Component({
     selector: 'app-root',
@@ -103,7 +103,7 @@ export class AppComponent {
 
             tabsdiv.className = 'angularTabs';
 
-            jqwidgets.createInstance('.angularTabs', 'jqxTabs', { width: 820, height: 170 })
+            jqwidgets.createInstance('.angularTabs', 'jqxTabs', { width: 780, height: 170 })
         }
     }
 

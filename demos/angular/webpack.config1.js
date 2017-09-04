@@ -4,7 +4,8 @@ let webpack = require('webpack');
 
 module.exports = {
     entry: {
-        bargauge_addandremovevalues: './app/bargauge/addandremovevalues/main.ts',
+      
+ 	    bargauge_addandremovevalues: './app/bargauge/addandremovevalues/main.ts',
         bargauge_autochangevalue: './app/bargauge/autochangevalue/main.ts',
         bargauge_customtooltips: './app/bargauge/customtooltips/main.ts',
         bargauge_defaultfunctionality: './app/bargauge/defaultfunctionality/main.ts',
@@ -57,8 +58,22 @@ module.exports = {
         calendar_righttoleftlayout: './app/calendar/righttoleftlayout/main.ts',
         calendar_showweekoftheyear: './app/calendar/showweekoftheyear/main.ts',
         calendar_specialdates: './app/calendar/specialdates/main.ts',
-        calendar_twowaydatabinding: './app/calendar/twowaydatabinding/main.ts'
-    },
+        calendar_twowaydatabinding: './app/calendar/twowaydatabinding/main.ts',
+	
+		pivotgrid_cellvaluesalignment: './app/pivotgrid/cell-values-alignment/main.ts',
+		pivotgrid_custompivotfunction: './app/pivotgrid/custom-pivot-function/main.ts',
+		pivotgrid_customrendering: './app/pivotgrid/custom-rendering/main.ts',
+		pivotgrid_designer: './app/pivotgrid/designer/main.ts',
+		pivotgrid_drillthrough: './app/pivotgrid/drill-through/main.ts',
+		pivotgrid_events: './app/pivotgrid/events/main.ts',
+		pivotgrid_localization: './app/pivotgrid/localization/main.ts',
+		pivotgrid_olaptreestylerows: './app/pivotgrid/olap-tree-style-rows/main.ts',
+		pivotgrid_rowscolumnscellscssstyling: './app/pivotgrid/rows-columns-cells-css-styling/main.ts',
+		pivotgrid_totals: './app/pivotgrid/totals/main.ts',
+		pivotgrid_valuesoncolumns: './app/pivotgrid/values-on-columns/main.ts',
+		pivotgrid_valuesonrows: './app/pivotgrid/values-on-rows/main.ts'
+	
+	},
 
     output: {
         path: path.resolve(__dirname + '/aot'),

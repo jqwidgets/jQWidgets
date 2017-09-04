@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxMenuComponent } from '../../../../../jqwidgets-ts/angular_jqxmenu';
+import { jqxMenuComponent } from '../../../jqwidgets-ts/angular_jqxmenu';
 
 @Component({
     selector: 'app-root',

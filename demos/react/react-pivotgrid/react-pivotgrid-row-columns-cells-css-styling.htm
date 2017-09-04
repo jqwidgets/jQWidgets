@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>React JS PivotGrid - Grid Cells Styling</title>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpivot.js"></script> 
+    <script type="text/javascript" src="../jqwidgets/jqxpivotgrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+   
+    <style>
+        .columnStyle {
+            background-color: rgba(254, 173, 117, 255);
+        }
+
+        .columnStyleSelected {
+            background-color: rgba(234, 153, 87, 255);
+        }
+
+        .rowStyle {
+            background-color: rgba(187, 232, 227, 255);
+        }
+
+        .rowStyleSelected {
+            background-color: rgba(167, 212, 207, 255);
+        }
+
+        .cellStyle {
+            background-color: rgba(255, 255, 255, 255);            
+        }
+
+        .cellStyleSelected {
+            background-color: rgba(239, 249, 136, 255);
+            color: rebeccapurple;
+        }
+
+    </style>
+</head>
+<body class='default'>
+    <div id="app" style='width: 800px; height: 400px;'></div>
+    <script src="../build/pivotgrid_row_columns_cells_css_styling.bundle.js"></script>
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+		<div style="width: 800px;">
+        This is an example of a React Pivot Grid with custom style of the grid cells depending on their current selection state. You can 
+        override the style of any cell, row or column using standard CSS. The custom styles can be applied during the data binding definitions
+        inside the React app.js file. You can use different styles for different pivot dataFields. The pivot grid also allows you to override
+        the style of individual rows and columns at runtime after the databinding step.
+		</div>
+    </div>
+
+</body>
+</html>

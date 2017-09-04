@@ -1,4 +1,4 @@
-﻿import { Component, ViewChild } from '@angular/core';  import { jqxDataTableComponent } from '../../../../../jqwidgets-ts/angular_jqxdatatable';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent { 
+﻿import { Component, ViewChild } from '@angular/core';  import { jqxDataTableComponent } from '../../../jqwidgets-ts/angular_jqxdatatable';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent { 
     @ViewChild('masterDataTable') masterDataTable: jqxDataTableComponent;
     @ViewChild('detailsDataTable') detailsDataTable: jqxDataTableComponent;
 

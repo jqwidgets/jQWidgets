@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxEditorComponent } from '../../../../../jqwidgets-ts/angular_jqxeditor';
+import { jqxEditorComponent } from '../../../jqwidgets-ts/angular_jqxeditor';
 
 @Component({
     selector: 'app-root',

@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxRepeatButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxrepeatbutton';
+import { jqxRepeatButtonComponent } from '../../../jqwidgets-ts/angular_jqxrepeatbutton';
 
 @Component({
     selector: 'app-root',

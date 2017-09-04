@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { jqxExpanderComponent } from '../../../../../jqwidgets-ts/angular_jqxexpander';
+import { jqxExpanderComponent } from '../../../jqwidgets-ts/angular_jqxexpander';
 
 @Component({
     selector: 'app-root',

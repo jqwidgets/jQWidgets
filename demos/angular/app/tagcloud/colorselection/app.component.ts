@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxTagCloudComponent } from '../../../../../jqwidgets-ts/angular_jqxtagcloud';
-import { jqxDropDownButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownbutton';
+import { jqxTagCloudComponent } from '../../../jqwidgets-ts/angular_jqxtagcloud';
+import { jqxDropDownButtonComponent } from '../../../jqwidgets-ts/angular_jqxdropdownbutton';
 
 @Component({
     selector: 'app-root',

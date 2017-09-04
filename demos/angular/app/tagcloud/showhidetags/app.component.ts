@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxTagCloudComponent } from '../../../../../jqwidgets-ts/angular_jqxtagcloud';
+import { jqxTagCloudComponent } from '../../../jqwidgets-ts/angular_jqxtagcloud';
 
 @Component({
     selector: 'app-root',

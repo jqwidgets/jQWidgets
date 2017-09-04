@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit,  AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxSortableComponent } from '../../../../../jqwidgets-ts/angular_jqxsortable';
+import { jqxSortableComponent } from '../../../jqwidgets-ts/angular_jqxsortable';
 
 @Component({
     selector: 'app-root',

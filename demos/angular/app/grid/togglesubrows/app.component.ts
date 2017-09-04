@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid'
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
+import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid'
+import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
 
 @Component({
     selector: 'app-root',

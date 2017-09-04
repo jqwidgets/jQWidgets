@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 
-import { jqxResponsivePanelComponent } from '../../../../../jqwidgets-ts/angular_jqxresponsivepanel';
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
+import { jqxResponsivePanelComponent } from '../../../jqwidgets-ts/angular_jqxresponsivepanel';
+import { jqxPanelComponent } from '../../../jqwidgets-ts/angular_jqxpanel';
 
 @Component({
     selector: 'app-root',

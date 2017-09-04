@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxKanbanComponent } from '../../../../../jqwidgets-ts/angular_jqxkanban';
+import { jqxKanbanComponent } from '../../../jqwidgets-ts/angular_jqxkanban';
 
 @Component({
     selector: 'app-root',

@@ -22,8 +22,9 @@
         "aot",
         "temp"
     ]
-    //    ,
-    //"include": [
-    //    "app/datatable/rowtemplate"
-    //]
+/*,
+    "include": [
+        "app/pivotgrid/cell-values-alignment"
+    ]
+	*/
 }

@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxDataTableComponent } from '../../../../../jqwidgets-ts/angular_jqxdatatable';
+import { jqxDataTableComponent } from '../../../jqwidgets-ts/angular_jqxdatatable';
 
 @Component({
     selector: 'app-root',

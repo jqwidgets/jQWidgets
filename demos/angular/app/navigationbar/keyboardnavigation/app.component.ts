@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxNavigationBarComponent } from '../../../../../jqwidgets-ts/angular_jqxnavigationbar';
+import { jqxNavigationBarComponent } from '../../../jqwidgets-ts/angular_jqxnavigationbar';
 
 @Component({
     selector: 'app-root',

@@ -1,4 +1,4 @@
-﻿import { Component, ViewChild, ElementRef } from '@angular/core';   import { jqxDataTableComponent } from '../../../../../jqwidgets-ts/angular_jqxdatatable';  import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
+﻿import { Component, ViewChild, ElementRef } from '@angular/core';   import { jqxDataTableComponent } from '../../../jqwidgets-ts/angular_jqxdatatable';  import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
 
 import { generatedata } from '../../../sampledata/generatedata';
 

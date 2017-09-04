@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxChartComponent } from '../../../../../jqwidgets-ts/angular_jqxchart';
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid'
+import { jqxChartComponent } from '../../../jqwidgets-ts/angular_jqxchart';
+import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid'
 
 @Component({
     selector: 'app-root',

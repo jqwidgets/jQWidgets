@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxCalendarComponent } from '../../../../../jqwidgets-ts/angular_jqxcalendar';
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
+import { jqxCalendarComponent } from '../../../jqwidgets-ts/angular_jqxcalendar';
+import { jqxPanelComponent } from '../../../jqwidgets-ts/angular_jqxpanel';
 
 @Component({
     selector: 'app-root',

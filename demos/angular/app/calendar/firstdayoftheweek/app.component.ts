@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxCalendarComponent } from '../../../../../jqwidgets-ts/angular_jqxcalendar';
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
+import { jqxCalendarComponent } from '../../../jqwidgets-ts/angular_jqxcalendar';
+import { jqxDropDownListComponent } from '../../../jqwidgets-ts/angular_jqxdropdownlist';
 
 @Component({
     selector: 'app-root',

@@ -1,8 +1,8 @@
 ﻿import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
-import { jqxNotificationComponent } from '../../../../../jqwidgets-ts/angular_jqxnotification';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
+import { jqxNotificationComponent } from '../../../jqwidgets-ts/angular_jqxnotification';
+import { jqxButtonComponent } from '../../../jqwidgets-ts/angular_jqxbuttons';
+import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
 
 @Component({
     selector: 'app-root',

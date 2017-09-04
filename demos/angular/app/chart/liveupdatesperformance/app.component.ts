@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 
-import { jqxChartComponent } from '../../../../../jqwidgets-ts/angular_jqxchart';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons'
+import { jqxChartComponent } from '../../../jqwidgets-ts/angular_jqxchart';
+import { jqxButtonComponent } from '../../../jqwidgets-ts/angular_jqxbuttons'
 
 @Component({
     selector: 'app-root',

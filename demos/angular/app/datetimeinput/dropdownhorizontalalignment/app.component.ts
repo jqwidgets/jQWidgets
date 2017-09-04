@@ -1,4 +1,4 @@
-﻿import { Component, ViewChild } from '@angular/core';  import { jqxDateTimeInputComponent } from '../../../../../jqwidgets-ts/angular_jqxdatetimeinput';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent { 
+﻿import { Component, ViewChild } from '@angular/core';  import { jqxDateTimeInputComponent } from '../../../jqwidgets-ts/angular_jqxdatetimeinput';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent { 
     @ViewChild('myDateTimeInput') myDateTimeInput: jqxDateTimeInputComponent;
 
     count: number = 0;

@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, ViewEncapsulation, AfterViewInit } from '@angular/core';
 
-import { jqxSliderComponent } from '../../../../../jqwidgets-ts/angular_jqxslider';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
+import { jqxSliderComponent } from '../../../jqwidgets-ts/angular_jqxslider';
+import { jqxButtonComponent } from '../../../jqwidgets-ts/angular_jqxbuttons';
 
 @Component({
     selector: 'app-root',
@@ -49,7 +49,7 @@ export class AppComponent implements AfterViewInit {
                     }
                     catalogue += '<td class="demo-laptop-cell jqx-rc-all" id="' + laptop + '">' +
                         '<div class="demo-laptop-cell-header"><div class="demo-laptop-cell-header-content">' + this.laptops[laptop].model + '</div></div>' +
-                        '<div class="demo-laptop-cell-content"><img src="../../../../images/' + laptop + '.jpg" alt="' + this.laptops[laptop].model + '" title="' + this.laptops[laptop].model + '" /></div>' +
+                        '<div class="demo-laptop-cell-content"><img src="../images/' + laptop + '.jpg" alt="' + this.laptops[laptop].model + '" title="' + this.laptops[laptop].model + '" /></div>' +
                         '<div class="demo-laptop-cell-price jqx-rc-all">$ ' + this.laptops[laptop].price + '</div>' +
                         '</td>';
                 }

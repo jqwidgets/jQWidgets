@@ -1,7 +1,7 @@
 ﻿import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 
-import { jqxLayoutComponent } from '../../../../../jqwidgets-ts/angular_jqxlayout';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons'
+import { jqxLayoutComponent } from '../../../jqwidgets-ts/angular_jqxlayout';
+import { jqxButtonComponent } from '../../../jqwidgets-ts/angular_jqxbuttons'
 
 @Component({
     selector: 'app-root',
@@ -28,38 +28,38 @@ export class AppComponent {
 
     source: any[] =
     [{
-        icon: '../../../../images/earth.png',
+        icon: '../images/earth.png',
         label: 'Project',
         expanded: true,
         items: [{
-            icon: '../../../../images/folder.png',
+            icon: '../images/folder.png',
             label: 'css',
             expanded: true,
             items: [{
-                icon: '../../../../images/nav1.png',
+                icon: '../images/nav1.png',
                 label: 'jqx.base.css'
             }, {
-                icon: '../../../../images/nav1.png',
+                icon: '../images/nav1.png',
                 label: 'jqx.energyblue.css'
             }, {
-                icon: '../../../../images/nav1.png',
+                icon: '../images/nav1.png',
                 label: 'jqx.orange.css'
             }]
         }, {
-            icon: '../../../../images/folder.png',
+            icon: '../images/folder.png',
             label: 'scripts',
             items: [{
-                icon: '../../../../images/nav1.png',
+                icon: '../images/nav1.png',
                 label: 'jqxcore.js'
             }, {
-                icon: '../../../../images/nav1.png',
+                icon: '../images/nav1.png',
                 label: 'jqxdata.js'
             }, {
-                icon: '../../../../images/nav1.png',
+                icon: '../images/nav1.png',
                 label: 'jqxgrid.js'
             }]
         }, {
-            icon: '../../../../images/nav1.png',
+            icon: '../images/nav1.png',
             label: 'index.htm'
         }]
     }];

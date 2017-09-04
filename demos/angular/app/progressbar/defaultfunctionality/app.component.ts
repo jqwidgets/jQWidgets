@@ -1,8 +1,8 @@
 ﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
-import { jqxProgressBarComponent } from '../../../../../jqwidgets-ts/angular_jqxprogressbar';
-import { jqxButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxbuttons';
-import { jqxInputComponent } from '../../../../../jqwidgets-ts/angular_jqxinput';
+import { jqxProgressBarComponent } from '../../../jqwidgets-ts/angular_jqxprogressbar';
+import { jqxButtonComponent } from '../../../jqwidgets-ts/angular_jqxbuttons';
+import { jqxInputComponent } from '../../../jqwidgets-ts/angular_jqxinput';
 
 @Component({
     selector: 'app-root',

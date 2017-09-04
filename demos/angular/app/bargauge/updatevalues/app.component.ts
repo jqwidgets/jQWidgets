@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxBarGaugeComponent } from '../../../../../jqwidgets-ts/angular_jqxbargauge';
-import { jqxSliderComponent }   from '../../../../../jqwidgets-ts/angular_jqxslider';
+import { jqxBarGaugeComponent } from '../../../jqwidgets-ts/angular_jqxbargauge';
+import { jqxSliderComponent }   from '../../../jqwidgets-ts/angular_jqxslider';
 
 @Component({
     selector: 'app-root',

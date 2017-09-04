@@ -2,10 +2,10 @@
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { jqxExpanderComponent } from '../../../../../jqwidgets-ts/angular_jqxexpander';
-import { jqxTreeComponent } from '../../../../../jqwidgets-ts/angular_jqxtree';
-import { jqxPanelComponent } from '../../../../../jqwidgets-ts/angular_jqxpanel';
-import { jqxListBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxlistbox';
+import { jqxExpanderComponent } from '../../../jqwidgets-ts/angular_jqxexpander';
+import { jqxTreeComponent } from '../../../jqwidgets-ts/angular_jqxtree';
+import { jqxPanelComponent } from '../../../jqwidgets-ts/angular_jqxpanel';
+import { jqxListBoxComponent } from '../../../jqwidgets-ts/angular_jqxlistbox';
 
 @Component({
     selector: 'app-root',

@@ -1,8 +1,8 @@
 ﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxToolBarComponent } from '../../../../../jqwidgets-ts/angular_jqxtoolbar';
-import { jqxDropDownListComponent } from '../../../../../jqwidgets-ts/angular_jqxdropdownlist';
-import { jqxNumberInputComponent } from '../../../../../jqwidgets-ts/angular_jqxnumberinput';
+import { jqxToolBarComponent } from '../../../jqwidgets-ts/angular_jqxtoolbar';
+import { jqxDropDownListComponent } from '../../../jqwidgets-ts/angular_jqxdropdownlist';
+import { jqxNumberInputComponent } from '../../../jqwidgets-ts/angular_jqxnumberinput';
 
 @Component({
     selector: 'app-root',
@@ -96,7 +96,7 @@ export class AppComponent  {
         let country = this.countries[Math.floor(Math.random() * this.countries.length)];
         this.myToolBar.addTool('custom', position, false, (type: string, tool: any, menuToolIninitialization: boolean): void => {
             let width;
-            tool.append('<img src="../../../../images/' + country + '.png" style="float: left; clear: both;" />');
+            tool.append('<img src="../images/' + country + '.png" style="float: left; clear: both;" />');
             if (menuToolIninitialization) {
                 // specific setting for minimized tool
                 tool.find('img').css('margin-right', '10px');

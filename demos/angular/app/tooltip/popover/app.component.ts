@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 
-import { jqxTooltipComponent } from '../../../../../jqwidgets-ts/angular_jqxtooltip';
+import { jqxTooltipComponent } from '../../../jqwidgets-ts/angular_jqxtooltip';
 
 @Component({
     selector: 'app-root',

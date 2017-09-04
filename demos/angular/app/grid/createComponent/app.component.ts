@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxGridComponent } from '../../../../../jqwidgets-ts/angular_jqxgrid'
+import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid'
 
 @Component({
     selector: 'app-root',
@@ -41,7 +41,7 @@ export class AppComponent implements AfterViewInit {
         }
     };
 
-    settings: jqwidgets.GridOptions =
+    settings: any =
     {
         width: 850,
         source: this.dataAdapter,

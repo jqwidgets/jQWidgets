@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxToggleButtonComponent } from '../../../../../jqwidgets-ts/angular_jqxtogglebutton';
+import { jqxToggleButtonComponent } from '../../../jqwidgets-ts/angular_jqxtogglebutton';
 
 @Component({
     selector: 'app-root',

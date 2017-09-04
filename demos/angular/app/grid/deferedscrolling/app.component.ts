@@ -73,7 +73,7 @@ export class AppComponent {
         {
             text: 'Image', datafield: 'pic', width: 115,
             cellsrenderer: (row: number, column: any, value: any): string => {
-                return '<img src="../../../../images/t-shirts/' + value + '"/>';
+                return '<img src="../images/t-shirts/' + value + '"/>';
             }
         },
         { text: 'Title', datafield: 'label', width: 250 },
@@ -81,6 +81,6 @@ export class AppComponent {
     ];
 
     scrollfeedback = (row: any): string => {
-        return '<table style="height: 150px;"><tr><td><img src="../../../../imagest-shirts/' + row.pic + '"/></td></tr><tr><td>' + row.label + '</td></tr></table>';
+        return '<table style="height: 150px;"><tr><td><img src="../../images/t-shirts/' + row.pic + '"/></td></tr><tr><td>' + row.label + '</td></tr></table>';
     };
 }

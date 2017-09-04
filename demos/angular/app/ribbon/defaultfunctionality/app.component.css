@@ -36,27 +36,28 @@
   float: left;
 }
 
-#jqxgrid {
+jqxGrid div:first-child {
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-#jqxRibbon, #jqxRibbon div, #jqxRibbon li {
+jqxRibbon, jqxRibbon div, jqxRibbon li {
   font-size: 11px;
 }
 
-  #jqxRibbon li {
+  jqxRibbon li {
     line-height: 16px;
   }
 
-#jqxRibbon, .jqx-ribbon-content-section-demoTheme {
+jqxRibbon, .jqx-ribbon-content-section-demoTheme {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
 .pasteText {
   font-size: 10px;
+  text-align: center;
 }
 
 div#pasteButton {
@@ -84,6 +85,7 @@ div#pasteButton {
 
 .jqx-button {
   background: transparent;
+  line-height: 15px !important;
 }
 
 .separator {
@@ -128,7 +130,7 @@ div#pasteButton {
   padding: 2px;
   border: 1px solid transparent;
   line-height: 24px;
-  text-align: left;
+  /*text-align: left;*/
 }
 
 #fileItem {

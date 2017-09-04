@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 
-import { jqxPopoverComponent } from '../../../../../jqwidgets-ts/angular_jqxpopover';
+import { jqxPopoverComponent } from '../../../jqwidgets-ts/angular_jqxpopover';
 
 @Component({
     selector: 'app-root',

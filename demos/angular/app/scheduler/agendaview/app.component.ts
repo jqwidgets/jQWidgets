@@ -1,7 +1,7 @@
 ﻿
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxSchedulerComponent } from '../../../../../jqwidgets-ts/angular_jqxscheduler';
+import { jqxSchedulerComponent } from '../../../jqwidgets-ts/angular_jqxscheduler';
 
 @Component({
     selector: 'app-root',

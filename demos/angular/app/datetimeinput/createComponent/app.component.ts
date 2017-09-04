@@ -1,4 +1,4 @@
-﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';  import { jqxDateTimeInputComponent } from '../../../../../jqwidgets-ts/angular_jqxdatetimeinput';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent implements AfterViewInit { 
+﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';  import { jqxDateTimeInputComponent } from '../../../jqwidgets-ts/angular_jqxdatetimeinput';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent implements AfterViewInit { 
     @ViewChild('dateInput') myDateInput: jqxDateTimeInputComponent;
     @ViewChild('timeInput') myTimeInput: jqxDateTimeInputComponent;
     @ViewChild('dateTimeInput') myDateTimeInput: jqxDateTimeInputComponent;

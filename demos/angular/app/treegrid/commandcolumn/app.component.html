@@ -1,4 +1,5 @@
 ﻿<jqxTreeGrid #myTreeGrid
-    [width]="850" [source]="dataAdapter" [columns]="columns" [rendered]="rendered"
-    [altRows]="true" [autoRowHeight]="true" [editSettings]="editSettings" [ready]="ready">
+             (onRowClick)="rowClick($event)"
+             [width]="850" [source]="dataAdapter" [columns]="columns" [rendered]="rendered"
+             [altRows]="true" [autoRowHeight]="true" [editSettings]="editSettings" [ready]="ready">
 </jqxTreeGrid>

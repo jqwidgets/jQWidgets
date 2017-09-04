@@ -1,8 +1,8 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
-import { jqxChartComponent } from '../../../../../jqwidgets-ts/angular_jqxchart';
-import { jqxSliderComponent } from '../../../../../jqwidgets-ts/angular_jqxslider';
-import { jqxCheckBoxComponent } from '../../../../../jqwidgets-ts/angular_jqxcheckbox';
+import { jqxChartComponent } from '../../../jqwidgets-ts/angular_jqxchart';
+import { jqxSliderComponent } from '../../../jqwidgets-ts/angular_jqxslider';
+import { jqxCheckBoxComponent } from '../../../jqwidgets-ts/angular_jqxcheckbox';
 
 @Component({
     selector: 'app-root',

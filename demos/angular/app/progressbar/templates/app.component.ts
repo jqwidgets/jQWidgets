@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
 
-import { jqxProgressBarComponent } from '../../../../../jqwidgets-ts/angular_jqxprogressbar';
+import { jqxProgressBarComponent } from '../../../jqwidgets-ts/angular_jqxprogressbar';
 
 @Component({
     selector: 'app-root',
