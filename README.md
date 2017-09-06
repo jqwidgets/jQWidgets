@@ -51,20 +51,20 @@ Do you want to use jQWidgets for a non-profit project? Then you can use jQWidget
 You are allowed to distribute jQWidgets with non-commercial packages given that you fulfill two conditions:
 
 * Emphasize to your users that jQWidgets is not free for commercial use. You can do this on your download page or when your users activate jQWidgets in your application.
-* Provide a link back to this web page in the same location: http://www.jqwidgets.com/license/.
+* Provide a link back to this web page in the same location: https://www.jqwidgets.com/license/.
 
 *Commercial License*
 
 The commercial license is suitable for commercial websites and projects or a corporate intranet. The license is perpetual and allows royalty free distribution with your websites and applications. Each license includes 1-year subscription for free product updates and platinum, premium or standard technical support plan. Subscription renewal is optional and costs 50% of the price of a new license. For subscription renewals, license upgrades, licenses with more than 1-year subscription or if you wish to license subsidiary or affiliate organizations, please contact us.
 
-For more information, please visit http://www.jqwidgets.com/license/.
+For more information, please visit https://www.jqwidgets.com/license/.
 
 More
 -
-* React Demos: http://www.jqwidgets.com/react/
-* Angular Demos: http://www.jqwidgets.com/angular/
-* ASP .NET Core Demos: http://www.jqwidgets.com/asp.net-core-mvc-tag-helpers/
-* Showcase Demos: http://www.jqwidgets.com/jquery-widgets-demo/showcasedemos/
-* Javascript/jQuery Demos: http://www.jqwidgets.com/jquery-widgets-demo/.
-* Services: http://www.jqwidgets.com/services/.
-* Community Forums: http://www.jqwidgets.com/community/.
+* React Demos: https://www.jqwidgets.com/react/
+* Angular Demos: https://www.jqwidgets.com/angular/
+* ASP .NET Core Demos: https://www.jqwidgets.com/asp.net-core-mvc-tag-helpers/
+* Showcase Demos: https://www.jqwidgets.com/jquery-widgets-demo/showcasedemos/
+* Javascript/jQuery Demos: https://www.jqwidgets.com/jquery-widgets-demo/.
+* Services: https://www.jqwidgets.com/services/.
+* Community Forums: https://www.jqwidgets.com/community/.
