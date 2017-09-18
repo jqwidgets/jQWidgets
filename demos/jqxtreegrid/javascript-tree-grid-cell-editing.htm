@@ -3,7 +3,9 @@
 <head>
     <title id='Description'>TreeGrid Cell Editing. Double-click on a cell to begin edit.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
@@ -63,9 +65,9 @@
             };
             var dataAdapter = new $.jqx.dataAdapter(source);
             // create Tree Grid
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
-                width: 850,
+               width:  getWidth("TreeGrid"),
                 source: dataAdapter,
                 editable: true,
                 editSettings: { saveOnPageChange: true, saveOnBlur: true, saveOnSelectionChange: true, cancelOnEsc: true, saveOnEnter: true, editSingleCell: true, editOnDoubleClick: true, editOnF2: true },
@@ -79,7 +81,7 @@
             });
 
             // Cell Begin Edit
-            $("#treeGrid").on('cellBeginEdit', function (event) {
+            $("#treegrid").on('cellBeginEdit', function (event) {
                 var args = event.args;
                 // row key
                 var rowKey = args.key;
@@ -97,7 +99,7 @@
              });
 
             // Cell End Edit
-            $("#treeGrid").on('cellEndEdit', function (event) {
+            $("#treegrid").on('cellEndEdit', function (event) {
                 var args = event.args;
                 // row key
                 var rowKey = args.key;
@@ -118,7 +120,7 @@
     </script>
 </head>
 <body class='default'>
-    <div id="treeGrid"></div>
+    <div id="treegrid"></div>
        <div style="font-size: 13px; font-family: Verdana; width: 800px; margin-top: 20px;">
         <h4>Event Log</h4>
         <div style="max-height: 300px; overflow: auto;" id="log"></div>

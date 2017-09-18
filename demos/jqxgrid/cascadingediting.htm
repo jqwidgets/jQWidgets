@@ -4,7 +4,9 @@
     <title id='Description'>This example shows how to implement cascading comboboxes in
         jqxGrid.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -34,7 +36,7 @@
             };
             var dataAdapter = new $.jqx.dataAdapter(source);
 
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
                 width: 300,
                 source: dataAdapter,
@@ -46,14 +48,14 @@
                         text: 'Country', datafield: 'Country', width: 150, columntype: 'combobox',
                         cellvaluechanging: function (row, datafield, columntype, oldvalue, newvalue) {
                             if (newvalue != oldvalue) {
-                                $("#jqxgrid").jqxGrid('setcellvalue', row, "City", "Select a city...");
+                                $("#grid").jqxGrid('setcellvalue', row, "City", "Select a city...");
                             };
                         }
                     },
                     {
                         text: 'City', datafield: 'City', width: 150, columntype: 'combobox',
                         initeditor: function (row, cellvalue, editor, celltext, cellwidth, cellheight) {
-                            var country = $('#jqxgrid').jqxGrid('getcellvalue', row, "Country");
+                            var country = $('#grid').jqxGrid('getcellvalue', row, "Country");
                             var city = editor.val();
 
                             var cities = new Array();
@@ -82,7 +84,7 @@
     </script>
 </head>
 <body class='default'>
-    <div id="jqxgrid">
+    <div id="grid">
     </div>
 </body>
 </html>

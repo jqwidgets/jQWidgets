@@ -1,13 +1,17 @@
 ﻿<!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title id='Description'>jqxChart x-Axis Color Bands</title>
+    <title id='Description'>JavaScript Chart x-Axis Color Bands example</title>
+    <meta name="description" content="This is an example of JavaScript chart x-axis color bands." />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var source =
@@ -42,7 +46,7 @@
                 bands.push({ minValue: recessions[i].from, maxValue: recessions[i].to, fillColor: 'red', opacity: 0.2 });
 
             var settings = {
-                title: "US Homeownership rate & recessions (1965-2014)",
+                title: "US Homeownership rate & recessions (1965-2018)",
                 description: "(sources: US Census bureau, Wikipedia)",
                 enableAnimations: true,
                 showLegend: true,
@@ -95,6 +99,12 @@
 </head>
 <body class='default'>
     <div id='chartContainer' style="width:850px; height:500px">
-    </div>    
+    </div>  
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of JavaScript chart x-axis color bands. You can see how to attach the color bands to the xAxis.  The x axis labels are rotated -90 degrees. 
+    </div>  
 </body>
 </html>

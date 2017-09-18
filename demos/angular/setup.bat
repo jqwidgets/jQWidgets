@@ -17,4 +17,5 @@ xcopy /S /I ..\..\styles styles
 xcopy /S /I ..\sampledata sampledata
 
 call npm install
+call increase-memory-limit
 call npm start

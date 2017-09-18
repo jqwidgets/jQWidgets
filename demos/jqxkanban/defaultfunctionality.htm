@@ -4,17 +4,18 @@
     <title id='Description'>JavaScript Kanban widget.</title>
     <meta name="description" content="JavaScript Kanban Widget built by jQWidgets" />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxsortable.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxkanban.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxsplitter.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../scripts/demos.js"></script>
-
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#mainSplitter').jqxSplitter({ width: 700, height: 600, panels: [{ size: 250, min: 100 }, { min: 250 }] });
+            $('#splitter').jqxSplitter({ width: getWidth("Splitter"), height: 600, panels: [{ size: 250, min: 100 }, { min: 250 }] });
             $('#rightSplitter').jqxSplitter({ width: '100%', height: '100%', orientation: 'horizontal', panels: [{ min: 200, size: 350, collapsible: false }, { min: 200 }] });
             var fields = [
                       { name: "status", map: "state", type: "string" },
@@ -155,7 +156,7 @@
     </script>
 </head>
 <body>
-    <div style="overflow: visible;" id="mainSplitter">
+    <div style="overflow: visible;" id="splitter">
         <div style="overflow: visible;">
             <div id="kanban1"></div>
         </div>

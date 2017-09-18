@@ -4,7 +4,9 @@
     <title id='Description'>This example shows how to integrate jqxGrid with knockout.js.
     </title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../scripts/knockout-3.0.0.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
@@ -63,7 +65,7 @@
             $('#updateButton').jqxButton({ theme: theme });
 
             // create jqxGrid.
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
                 source: source,
                 autoheight: true,
@@ -84,7 +86,7 @@
             <input id="removeButton" type="button" data-bind="click: removeItem" value="Remove Item"/>
             <input id="updateButton" type="button" data-bind="click: updateItem" value="Update Item"/>
        </div>
-        <div id="jqxgrid">
+        <div id="grid">
         </div>
     </div>
 </body>

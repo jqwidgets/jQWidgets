@@ -3,7 +3,9 @@
 <head>
     <title id='Description'>With jqxTreeGrid, you can export your data to Excel, XML, CSV, TSV, JSON, PDF and HTML.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
@@ -42,12 +44,12 @@
             };
             var dataAdapter = new $.jqx.dataAdapter(source);
             // create Tree Grid
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
-                width: 850,
+               width:  getWidth("TreeGrid"),
                 source: dataAdapter,
                 ready: function () {
-                    $("#treeGrid").jqxTreeGrid('expandRow', '2');
+                    $("#treegrid").jqxTreeGrid('expandRow', '2');
                 },
                 columns: [
                     { text: 'First Name', dataField: 'FirstName', width: 200 },
@@ -70,31 +72,31 @@
             $("#pdfExport").jqxButton();
 
             $("#excelExport").click(function () {
-                $("#treeGrid").jqxTreeGrid('exportData', 'xls');
+                $("#treegrid").jqxTreeGrid('exportData', 'xls');
             });
             $("#xmlExport").click(function () {
-                $("#treeGrid").jqxTreeGrid('exportData', 'xml');
+                $("#treegrid").jqxTreeGrid('exportData', 'xml');
             });
             $("#csvExport").click(function () {
-                $("#treeGrid").jqxTreeGrid('exportData', 'csv');
+                $("#treegrid").jqxTreeGrid('exportData', 'csv');
             });
             $("#tsvExport").click(function () {
-                $("#treeGrid").jqxTreeGrid('exportData', 'tsv');
+                $("#treegrid").jqxTreeGrid('exportData', 'tsv');
             });
             $("#htmlExport").click(function () {
-                $("#treeGrid").jqxTreeGrid('exportData', 'html');
+                $("#treegrid").jqxTreeGrid('exportData', 'html');
             });
             $("#jsonExport").click(function () {
-                $("#treeGrid").jqxTreeGrid('exportData', 'json');
+                $("#treegrid").jqxTreeGrid('exportData', 'json');
             });
             $("#pdfExport").click(function () {
-                $("#treeGrid").jqxTreeGrid('exportData', 'pdf');
+                $("#treegrid").jqxTreeGrid('exportData', 'pdf');
             });
         });
     </script>
 </head>
 <body class='default'>
-    <div id="treeGrid"></div>
+    <div id="treegrid"></div>
     <div style='margin-top: 20px;'>
         <div style='float: left;'>
             <input type="button" value="Export to Excel" id='excelExport' />

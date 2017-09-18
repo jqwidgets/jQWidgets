@@ -3,7 +3,9 @@
 <head>
     <title id='Description'>The sample shows how to customize fields in the ever present row. The first Text Field in the ever present row is disabled.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -63,9 +65,9 @@
                 return dataAdapter.records;
             }
 
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 filterable: true,
                 source: dataAdapter,
                 showeverpresentrow: true,
@@ -76,7 +78,7 @@
                   {
                       text: 'Name', columntype: 'textbox', filtertype: 'input', datafield: 'name', width: 215,
                       createEverPresentRowWidget: function (datafield, htmlElement, popup, addCallback) {
-                          var inputTag = $("<input style='border: none;'/>").appendTo(htmlElement);
+                          var inputTag = $("<input style='box-sizing: border-box; border: none;'/>").appendTo(htmlElement);
                           inputTag.jqxInput({ popupZIndex: 99999999, placeHolder: "Enter Name: ", source: getSourceAdapter("name"), displayMember: 'name', width: '100%', height: 30 });
                           $(document).on('keydown.name', function (event) {
                               if (event.keyCode == 13) {
@@ -201,16 +203,16 @@
             $("#top").jqxRadioButton({ checked: true });
             $("#bottom").jqxRadioButton();
             $("#top").on('checked', function () {
-                $("#jqxgrid").jqxGrid('everpresentrowactions', 'add reset');
+                $("#grid").jqxGrid('everpresentrowactions', 'add reset');
             });
             $("#bottom").on('checked', function () {
-                $("#jqxgrid").jqxGrid('everpresentrowactions', 'addBottom reset');
+                $("#grid").jqxGrid('everpresentrowactions', 'addBottom reset');
             });
         });
     </script>
 </head>
 <body>
-    <div id="jqxgrid">
+    <div id="grid">
     </div>
     <br />
     <div id="top">Add New Row to Top</div>

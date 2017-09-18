@@ -6,7 +6,9 @@
     in a specific range using pointer inside a radial gauge. In this demo " />
     <title id='Description'>In this sample is illustrated how to dynamically update the Gauge's value.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
@@ -28,7 +30,7 @@
                 pointer: { style: { fill: '#2e79bb' }, width: 5 },
                 animationDuration: 1500
             });
-            $('#slider').jqxSlider({ min: 0, max: 220, mode: 'fixed', ticksFrequency: 20, width: 150, value: 120,  showButtons: false });
+            $('#slider').jqxSlider({ min: 0, max: 220, mode: 'fixed', ticksFrequency: 20, width: 180, value: 120,  showButtons: false });
 
             $('#slider').mousedown(function () {
                 $('#gauge').jqxGauge('value', $('#slider').jqxSlider('value'));

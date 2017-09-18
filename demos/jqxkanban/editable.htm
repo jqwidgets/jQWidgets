@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="jqxKanban, jQuery Kanban, jQWidgets, Default Functionality" />
+    <meta name="description" content="jqxKanban can be used in
+combination with many widgets like jqxTree, jqxGrid, jqxListBox and etc." />
+    <title id='Description'>Kanban widget.</title>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <link rel="stylesheet" href="jqxkanban.css" type="text/css" />
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxsortable.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxkanban.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcolorpicker.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdropdownbutton.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
+    <style>
+        #kanbanBox1 {
+            width: 600px;
+            height: 300px;
+            float: left;
+            padding: 2px;
+        }
+
+        #kanbanBox2 {
+            width: 260px;
+            height: 300px;
+            float: left;
+            padding: 2px;
+        }
+
+        #outerBox1 {
+            float: left;
+            padding: 5px;
+            margin: 2px;
+        }
+
+        #outerBox2 {
+            float: left;
+            padding: 5px;
+            margin: 2px;
+        }
+
+        .clearing {
+            clear: both;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var selectedId = null;
+            var selectedColumn = null;
+
+            $('#kanban').jqxKanban({
+                    width: getWidth('kanban'),
+                    height: 300,
+                    source: kanbanSourceEditable,
+                    columns: kanbanColumns,
+                    template: template1
+            });
+
+            $("#jqxExpanderNew").jqxExpander({ width: '250px', expanded: true });
+            $("#jqxExpanderEdit").jqxExpander({ width: '250px', expanded: false });
+            $("#jqxExpanderDelete").jqxExpander({ width: '250px', expanded: false });
+            $("#jqxExpanderExport").jqxExpander({ width: '250px', expanded: false });
+
+            $('#jqxExpanderNew').on('expanding', function () {
+                $("#jqxExpanderEdit").jqxExpander('collapse');
+                $("#jqxExpanderDelete").jqxExpander('collapse');
+                $("#jqxExpanderExport").jqxExpander('collapse');
+            });
+              
+            $('#jqxExpanderEdit').on('expanding', function () {
+                $("#jqxExpanderNew").jqxExpander('collapse');
+                $("#jqxExpanderDelete").jqxExpander('collapse');
+                $("#jqxExpanderExport").jqxExpander('collapse');
+            });
+
+            $('#jqxExpanderDelete').on('expanding', function () {
+                $("#jqxExpanderNew").jqxExpander('collapse');
+                $("#jqxExpanderEdit").jqxExpander('collapse');
+                $("#jqxExpanderExport").jqxExpander('collapse');
+            });
+
+            $('#jqxExpanderExport').on('expanding', function () {
+                $("#jqxExpanderNew").jqxExpander('collapse');
+                $("#jqxExpanderEdit").jqxExpander('collapse');
+                $("#jqxExpanderDelete").jqxExpander('collapse');
+            });
+
+            $("#colorNewItem").jqxColorPicker({ color: "ffaabb", colorMode: 'hue', width: 200, height: 220 });
+            $("#contentNewItem").jqxInput({ placeHolder: " Please enter new content", height:20, width: 200, minLength: 1 });
+            $("#tagsNewItem").jqxInput({ placeHolder: " Please enter new tags", height: 20, width: 200, minLength: 1 });
+            $("#submitNewItem").jqxButton({ height: 22, width: 202, template: 'inverse', disabled: true });
+
+            $("#colorEditItem").jqxColorPicker({ color: "ffaabb", colorMode: 'hue', width: 200, height: 220 });
+            $("#contentEditItem").jqxInput({ placeHolder: " Enter content", height: 20, width: 200, minLength: 1, disabled: true });
+            $("#tagsEditItem").jqxInput({ placeHolder: " Enter tags", height: 20, width: 200, minLength: 1, disabled: true });
+            $("#submitEditItem").jqxButton({ height: 22, width: 202, template: 'inverse', disabled: true });
+
+            $("#submitDeleteItem").jqxButton({ height: 22, width: 202, template: 'inverse', disabled: true });
+
+            $("#submitExportItem").jqxButton({ height: 22, width: 202, template: 'inverse', disabled: true });
+            $("#submitExportColumn").jqxButton({ height: 22, width: 202, template: 'inverse', disabled: true });
+            $("#submitExportKanban").jqxButton({ height: 22, width: 202, template: 'inverse', disabled: false });
+
+            $("#kanban").on("itemSelected", function () {
+                var message = "";
+                selectedId = $('#kanban').jqxKanban("getSelectedId");
+                var item = $('#kanban').jqxKanban("getItem");
+
+                $("#contentEditItem").jqxInput({ value: item.text, disabled: false });
+                $("#tagsEditItem").jqxInput({ value: item.tags, disabled: false });
+                $("#submitEditItem").jqxButton({ disabled: true });
+                $('#colorEditItem').jqxColorPicker('setColor', item.color);
+                $("#submitEditItem").jqxButton({ disabled: true });
+                $("#submitDeleteItem").jqxButton({ disabled: false });
+                $("#submitExportItem").jqxButton({ disabled: false });
+                $("#submitExportColumn").jqxButton({ disabled: false });
+            });
+
+            $("#kanban").on("columnSelected", function (event) {
+                selectedColumn = event.args.selectedColumn;
+
+                $("#submitExportColumn").jqxButton({ disabled: false });
+               /* console.log(selectedColumn);
+
+                var columnExport = $("#kanban").jqxKanban("exportColumn", selectedColumn);
+                console.log(JSON.stringify(columnExport));*/
+            });
+
+            $("#contentNewItem, #tagsNewItem").on("blur, keypress", function () {
+                        var text = $("#contentNewItem").val();
+                        var tags = $("#tagsNewItem").val();
+
+                        if ((text.length > 0) && (tags.length > 0)) {
+                            $("#submitNewItem").jqxButton({ disabled: false });
+                        } else {
+                            $("#submitNewItem").jqxButton({ disabled: true });
+                        }
+            });
+
+            $('#colorEditItem').on('colorchange', function (event) {
+                var text = $("#contentEditItem").val();
+                var tags = $("#tagsEditItem").val();
+
+                if ((text.length > 0) && (tags.length > 0)) {
+                    $("#submitEditItem").jqxButton({ disabled: false });
+                } else {
+                    $("#submitEditItem").jqxButton({ disabled: true });
+                }
+            });
+
+            $("#contentEditItem, #tagsEditItem").on("keypress", function () {
+                var text = $("#contentEditItem").val();
+                var tags = $("#tagsEditItem").val();
+
+                if ((text.length > 0) && (tags.length > 0)) {
+                    $("#submitEditItem").jqxButton({ disabled: false });
+                } else {
+                    $("#submitEditItem").jqxButton({ disabled: true });
+                }
+            });
+
+            $("#submitNewItem").on("click", function () {
+                var newItem = {};
+                newItem.status = $("#statusNewItem").val();
+                newItem.color = $("#colorNewItem").jqxColorPicker('getColor').hex;
+                newItem.text = $("#contentNewItem").val();
+                newItem.tags = $("#tagsNewItem").val();
+
+                   $('#kanban').jqxKanban("addItem", newItem);
+                   $("#contentNewItem").jqxInput({ value: ''});
+                   $("#tagsNewItem").jqxInput({ value: '' });
+                   $("#submitNewItem").jqxButton({ disabled: true });
+            });
+
+            $("#submitEditItem").on("click", function () {
+                var updatedItem = {};
+                updatedItem.color = $("#colorEditItem").jqxColorPicker('getColor').hex;
+                updatedItem.text = $("#contentEditItem").val();
+                updatedItem.tags = $("#tagsEditItem").val();
+
+                $('#kanban').jqxKanban("updateItem", selectedId, updatedItem);
+                $("#submitEditItem").jqxButton({ disabled: true });
+            });
+
+             $("#submitDeleteItem").on("click", function () {
+                   var message = "";
+                   selectedId = $('#kanban').jqxKanban("getSelectedId");
+                   if (selectedId != null) {
+                       $('#kanban').jqxKanban("removeItem", selectedId);
+                       $("#contentEditItem").jqxInput({ value: '', disabled: true });
+                       $("#tagsEditItem").jqxInput({ value: '', disabled: true });
+                       $("#submitEditItem").jqxButton({ disabled: true });
+                       $("#submitDeleteItem").jqxButton({ disabled: true });
+                       $("#submitExportItem").jqxButton({ disabled: true });
+                       $("#submitExportColumn").jqxButton({ disabled: true });
+                       message = "Item was successfully removed!";
+                       alert(message);
+                   } else {
+                       message = "Please first select an item.";
+                       alert(message);
+                   }
+             });
+
+             $("#submitExportItem").on('click', function () {
+                 var message = "";
+                 var item = $('#kanban').jqxKanban("getItem");
+                 if (item != null) {
+                     message = "Content of the selected Kanban item: \n\nId: " + item.id
+                                     + "\nStatus: " + item.status
+                                     + "\nText: " + item.text
+                                     + "\nImage Path: " + item.image
+                                     + "\nTags: " + item.tags
+                                     + "\nColor: " + item.color;
+                     alert(message);
+                 } else {
+                     message = "Please first select an item.";
+                     alert(message);
+                 }
+             });
+
+             $("#submitExportColumn").on('click', function () {
+                 var message = "";
+                 var columnExport = $("#kanban").jqxKanban("exportColumn", selectedColumn);
+                 if (columnExport.length > 0) {
+                     message = "Column " + selectedColumn.toUpperCase() + " export: \n\n" + JSON.stringify(columnExport);
+                     alert(message);
+                 } else if (columnExport.length == 0) {
+                     message = "Column is empty.";
+                     alert(message);
+                 } else {
+                     message = "Please first select column.";
+                     alert(message);
+                 }
+             });
+
+             $("#submitExportKanban").on('click', function () {
+                 var message = "";
+                 var items = $('#kanban').jqxKanban("getItems");
+                 if (items.length > 0) {
+                     message = "Kanban export: \n\n" + JSON.stringify(items);
+                     alert(message);
+                 } else {
+                     message = "Empty Kanban";
+                     alert(message);
+                 }
+             });
+
+
+
+
+        });
+    </script>
+</head>
+<body>
+    <div id="outerBox1">
+            <div id="kanban"></div>
+    </div>
+    <div id="outerBox2">
+        <div id="kanbanBox2">
+            <div id='jqxExpanderNew'>
+                <div>Add new item</div>
+                <div style="padding:10px;">
+                    <input id="statusNewItem" type="hidden" value="new" />
+                    <input style="margin-top:10px;" id="contentNewItem" type="text" />
+                    <input style="margin-top: 5px; " id="tagsNewItem" type="text" />
+                    <div id="colorNewItem" style="margin-top: 5px; "></div>
+                    <button style="margin-top: 10px; " id="submitNewItem">Add New Item</button>
+                </div>
+            </div>
+            <div id='jqxExpanderEdit'>
+                <div>Edit item</div>
+                <div style="padding:10px;">
+                    <input style="margin-top:10px;" id="contentEditItem" type="text" />
+                    <input style="margin-top: 5px; " id="tagsEditItem" type="text" />
+                    <div id="colorEditItem" style="margin-top: 5px; "></div>
+                    <button style="margin-top: 5px; " id="submitEditItem">Update Selected Item</button>
+                </div>
+            </div>
+            <div id='jqxExpanderDelete'>
+                <div>Delete item</div>
+                <div style="padding:10px;">
+                    <button style="margin-top: 5px; " id="submitDeleteItem">Delete Selected Item</button>
+                </div>
+            </div>
+            <div id='jqxExpanderExport'>
+                <div>Get items</div>
+                <div style="padding:10px;">
+                    <button style="margin-top: 5px; " id="submitExportItem">Get Selected Item</button>
+                    <button style="margin-top: 5px; " id="submitExportColumn">Export Selected Column</button>
+                    <button style="margin-top: 5px; " id="submitExportKanban">Export Kanban</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearing"></div>
+</body>
+</html>

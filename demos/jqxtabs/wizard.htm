@@ -4,15 +4,17 @@
     <meta name="keywords" content="jQuery Tabs, Tabs Widget, TabView" />
     <meta name="description" content="jqxTabs enables you to simplify input tasks by creating a series of pages with validation." />
     <title id='Description'>jqxTabs enables you to simplify input tasks by creating a series of pages with validation. </title>
-    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../../scripts/demos.js"></script>
+     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxtabs.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>	
     <script type="text/javascript">
         $(document).ready(function () {
             //Creating wizard module
@@ -94,7 +96,7 @@
 
                     //Initializing the wizzard - creating all elements, adding event handlers and starting the validation
                     init: function () {
-                        $('#jqxTabs').jqxTabs({ height: 230, width: 500,  keyboardNavigation: false });
+                        $('#jqxTabs').jqxTabs({ height: 230, width: getWidth("Tabs"),  keyboardNavigation: false });
                         $('#acceptCheckBox').jqxCheckBox({ width: 250});
                         $('#nextButtonInfo').jqxButton({ width: 50});
                         $('#nextButtonBasket').jqxButton({ width: 50});

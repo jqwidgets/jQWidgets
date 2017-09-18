@@ -1,13 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title id='Description'>jqxChart Waterfall with multiple series</title>
+    <title id='Description'>JavaScript Chart Waterfall with multiple series</title>
+    <meta name="description" content="This is an example of Javascript Chart Waterfall with multiple series." />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.waterfall.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -25,7 +29,7 @@
                 { year: 2010, male: 75.0, female: 62.0 },
                 { year: 2011, male: 74.9, female: 62.2 },
                 { year: 2012, male: 74.5, female: 62.4 },
-                { year: 2013, male: 74.3, female: 62.6 },
+                { year: 2017, male: 74.3, female: 62.6 },
                 { year: 'Summary', male: 74.3, female: 62.6, summary: true }
             ];
 
@@ -115,6 +119,12 @@
 </head>
 <body class='default'>
     <div id='chartContainer' style="width:850px; height:500px">
+    </div>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of Javascript Chart Waterfall with multiple series.
     </div>
 </body>
 </html>

@@ -45,7 +45,7 @@
         row["total"] = price * quantity;
 
         var date = new Date();
-        date.setFullYear(2016, Math.floor(Math.random() * 12), Math.floor(Math.random() * 27));
+        date.setFullYear(date.getFullYear(), Math.floor(Math.random() * 12), Math.floor(Math.random() * 27));
         date.setHours(0, 0, 0, 0);
         row["date"] = date;
        

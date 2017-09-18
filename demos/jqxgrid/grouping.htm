@@ -5,7 +5,9 @@
         be customized via the 'Group By' header menu option or via drag and drop of grid
         column headers.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -40,9 +42,9 @@
             var dataAdapter = new $.jqx.dataAdapter(source);
 
             // Create jqxGrid
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: dataAdapter,
                 groupable: true,
                 columns: [
@@ -62,7 +64,7 @@
             $("#expand").on('click', function () {      
                 var groupnum = parseInt($("#groupnum").val());
                 if (!isNaN(groupnum)) {
-                    $("#jqxgrid").jqxGrid('expandgroup', groupnum);
+                    $("#grid").jqxGrid('expandgroup', groupnum);
                 }
             });
 
@@ -70,27 +72,27 @@
             $("#collapse").on('click', function () {
                 var groupnum = parseInt($("#groupnum").val());
                 if (!isNaN(groupnum)) {
-                    $("#jqxgrid").jqxGrid('collapsegroup', groupnum);
+                    $("#grid").jqxGrid('collapsegroup', groupnum);
                 }
             });
 
             // expand all groups.
             $("#expandall").on('click', function () {
-                $("#jqxgrid").jqxGrid('expandallgroups');
+                $("#grid").jqxGrid('expandallgroups');
             });
 
             // collapse all groups.
             $("#collapseall").on('click', function () {
-                $("#jqxgrid").jqxGrid('collapseallgroups');
+                $("#grid").jqxGrid('collapseallgroups');
             });
 
             // trigger expand and collapse events.
-            $("#jqxgrid").on('groupexpand', function (event) {
+            $("#grid").on('groupexpand', function (event) {
                 var args = event.args;
                 $("#expandedgroup").text("Group: " + args.group + ", Level: " + args.level);
             });
 
-            $("#jqxgrid").on('groupcollapse', function (event) {
+            $("#grid").on('groupcollapse', function (event) {
                 var args = event.args;
                 $("#collapsedgroup").text("Group: " + args.group + ", Level: " + args.level);
             });
@@ -98,8 +100,7 @@
     </script>
 </head>
 <body class='default'>
-    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
-        <div id="jqxgrid">
+        <div id="grid">
         </div>
         <div style="margin-top: 30px;">
             <div style="float: left; margin-left: 20px;">
@@ -129,6 +130,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </body>
 </html>

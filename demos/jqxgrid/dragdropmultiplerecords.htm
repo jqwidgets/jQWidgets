@@ -3,7 +3,9 @@
 <head>
     <title id='Description'>This example shows how to setup a one way drag and drop of multiple Grid rows to another HTML element.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -39,7 +41,7 @@
             // create data grids.
             $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: dataAdapter,
                 ready: function()
                 {
@@ -168,7 +170,7 @@
                 }
             });
 
-            $("#form").jqxExpander({  width: 850, toggleMode: 'none', showArrow: false });
+            $("#form").jqxExpander({  width: getWidth('Grid'), toggleMode: 'none', showArrow: false });
          });
     </script>
 </head>

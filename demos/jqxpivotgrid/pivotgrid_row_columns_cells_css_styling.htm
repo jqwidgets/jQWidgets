@@ -3,7 +3,10 @@
 <head>
     <title id='Description'>JavaScript PivotGrid - rows, columsn and cells styling with CSS</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.light.css" type="text/css" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -15,39 +18,30 @@
 
     <style>
         .columnStyle {
-            background-color: #293955;
-            color: #fff;
-            border-color: #293955;
+            background-color: rgba(254, 173, 117, 255);
         }
 
         .columnStyleSelected {
-            background-color: #FFF29D;
-            color: #333 !important;
-            border-color: #293955;
+            background-color: rgba(234, 153, 87, 255);
         }
 
         .rowStyle {
-            background-color: #293955;
-            color: #fff;
-            border-color: #293955;
+            background-color: rgba(187, 232, 227, 255);
         }
 
         .rowStyleSelected {
-            background-color: #FFF29D;
-            color: #333 !important;
-            border-color: #293955;
+            background-color: rgba(167, 212, 207, 255);
         }
 
         .cellStyle {
-            background-color: #E6E7E8;
-            color: #333;
+            background-color: rgba(255, 255, 255, 255);            
         }
 
         .cellStyleSelected {
-            background-color: #FFF29D;
-            color: #333 !important;
-            border-color: #D6DBE9 !important;
+            background-color: rgba(239, 249, 136, 255);
+            color: rebeccapurple;
         }
+
     </style>
 
 
@@ -144,6 +138,7 @@
             // create a pivot grid
             $('#divPivotGrid').jqxPivotGrid(
                 {
+					theme: 'classic',
                     source: pivotDataSource,
                     treeStyleRows: false,
                     autoResize: false,

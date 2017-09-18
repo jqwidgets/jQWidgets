@@ -4,7 +4,9 @@
     <title id="Description">Custom TreeGrid Aggregates.</title>
     <meta name="description" content="Custom Tree Grid Aggregates - JavaScript Tree Grid Demo | jQWidgets">     
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
@@ -74,16 +76,16 @@
                 }
             });
             // create jqxTreeGrid.
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
                 source: dataAdapter,
                 altRows: true,
-                width: 850,
+               width:  getWidth("TreeGrid"),
                 showSubAggregates: true,
                 columnsResize: true,
                 ready: function () {
-                    $("#treeGrid").jqxTreeGrid('expandRow', '1');
-                    $("#treeGrid").jqxTreeGrid('expandRow', '2');
+                    $("#treegrid").jqxTreeGrid('expandRow', '1');
+                    $("#treegrid").jqxTreeGrid('expandRow', '2');
                 },
                 columns: [
                   { text: "Name", align: "center", dataField: "name", width: 300 },
@@ -110,6 +112,6 @@
     </script>
 </head>
 <body class='default'>
-    <div id="treeGrid"></div>
+    <div id="treegrid"></div>
 </body>
 </html>

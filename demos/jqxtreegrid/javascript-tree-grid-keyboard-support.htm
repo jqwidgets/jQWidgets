@@ -4,7 +4,9 @@
     <title id='Description'>Keyboard Navigation in jqxTreeGrid.</title>
     <meta name="description" content="Keyboard Navigation - JavaScript Tree Grid Demo | jQWidgets">     
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -45,16 +47,16 @@
                 };
                 var dataAdapter = new $.jqx.dataAdapter(source);
                 // create Tree Grid
-                $("#treeGrid").jqxTreeGrid(
+                $("#treegrid").jqxTreeGrid(
                 {
-                    width: 850,
+                   width:  getWidth("TreeGrid"),
                     source: dataAdapter,
                     editable: true,
                     ready: function () {
-                        $("#treeGrid").jqxTreeGrid('expandRow', '2');
-                        $("#treeGrid").jqxTreeGrid('selectRow', '2');
+                        $("#treegrid").jqxTreeGrid('expandRow', '2');
+                        $("#treegrid").jqxTreeGrid('selectRow', '2');
                         // focus jqxTreeGrid.
-                        $("#treeGrid").jqxTreeGrid('focus');
+                        $("#treegrid").jqxTreeGrid('focus');
                     },
                     columns: [
                       { text: 'FirstName', columnGroup: 'Name', dataField: 'FirstName', width: 200 },
@@ -70,7 +72,7 @@
             });
         </script>
         <div id='jqxWidget' v>
-            <div id='treeGrid'>
+            <div id='treegrid'>
             </div>
             <div style="font-family: Verdana; font-size: 12px; width: 670px;">
                 <ul>

@@ -4,7 +4,9 @@
     <title id='Description'>Right-Click on a jqxGrid Row to open a Context Menu.</title>
 	<meta name="description" content="JavaScript Grid Context Menu" /> 	
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -74,9 +76,9 @@
             var editrow = -1;
 
             // initialize jqxGrid
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: dataAdapter,
                 pageable: true,
                 autoheight: true,
@@ -92,21 +94,21 @@
             // create context menu
             var contextMenu = $("#Menu").jqxMenu({ width: 200, height: 58, autoOpenPopup: false, mode: 'popup'});
 
-            $("#jqxgrid").on('contextmenu', function () {
+            $("#grid").on('contextmenu', function () {
                 return false;
             });
 
             // handle context menu clicks.
             $("#Menu").on('itemclick', function (event) {
                 var args = event.args;
-                var rowindex = $("#jqxgrid").jqxGrid('getselectedrowindex');
+                var rowindex = $("#grid").jqxGrid('getselectedrowindex');
                 if ($.trim($(args).text()) == "Edit Selected Row") {
                     editrow = rowindex;
-                    var offset = $("#jqxgrid").offset();
+                    var offset = $("#grid").offset();
                     $("#popupWindow").jqxWindow({ position: { x: parseInt(offset.left) + 60, y: parseInt(offset.top) + 60} });
 
                     // get the clicked row's data and initialize the input fields.
-                    var dataRecord = $("#jqxgrid").jqxGrid('getrowdata', editrow);
+                    var dataRecord = $("#grid").jqxGrid('getrowdata', editrow);
                     $("#firstName").val(dataRecord.firstname);
                     $("#lastName").val(dataRecord.lastname);
                     $("#product").val(dataRecord.productname);
@@ -117,14 +119,14 @@
                     $("#popupWindow").jqxWindow('show');
                 }
                 else {
-                    var rowid = $("#jqxgrid").jqxGrid('getrowid', rowindex);
-                    $("#jqxgrid").jqxGrid('deleterow', rowid);
+                    var rowid = $("#grid").jqxGrid('getrowid', rowindex);
+                    $("#grid").jqxGrid('deleterow', rowid);
                 }
             });
 
-            $("#jqxgrid").on('rowclick', function (event) {
+            $("#grid").on('rowclick', function (event) {
                 if (event.args.rightclick) {
-                    $("#jqxgrid").jqxGrid('selectrow', event.args.rowindex);
+                    $("#grid").jqxGrid('selectrow', event.args.rowindex);
                     var scrollTop = $(window).scrollTop();
                     var scrollLeft = $(window).scrollLeft();
                     contextMenu.jqxMenu('open', parseInt(event.args.originalEvent.clientX) + 5 + scrollLeft, parseInt(event.args.originalEvent.clientY) + 5 + scrollTop);
@@ -144,8 +146,8 @@
                     var row = { firstname: $("#firstName").val(), lastname: $("#lastName").val(), productname: $("#product").val(),
                         quantity: parseInt($("#quantity").jqxNumberInput('decimal')), price: parseFloat($("#price").jqxNumberInput('decimal'))
                     };
-                    var rowid = $("#jqxgrid").jqxGrid('getrowid', editrow);
-                    $('#jqxgrid').jqxGrid('updaterow', rowid, row);
+                    var rowid = $("#grid").jqxGrid('getrowid', editrow);
+                    $('#grid').jqxGrid('updaterow', rowid, row);
                     $("#popupWindow").jqxWindow('hide');
                 }
             });
@@ -154,7 +156,7 @@
 </head>
 <body class='default'>
     <div id='jqxWidget'>
-        <div id="jqxgrid"></div>
+        <div id="grid"></div>
         <div style="margin-top: 30px;">
             <div id="cellbegineditevent"></div>
             <div style="margin-top: 10px;" id="cellendeditevent"></div>

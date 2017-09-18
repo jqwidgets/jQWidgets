@@ -4,7 +4,9 @@
     <title id='Description'>This example illustrates the Grid's Date and Range Filters. The Range filter in the second column requires two clicks in the Calendar to select the range's start and end. The Date filter in the third column requires a single click to filter by the selected date.</title>
  	<meta name="description" content="JavaScript Grid Filtering by Date" />   
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -43,9 +45,9 @@
 
             var dataAdapter = new $.jqx.dataAdapter(source);
 
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: dataAdapter,
                 showfilterrow: true,
                 filterable: true,
@@ -58,13 +60,13 @@
             });
             $('#clearfilteringbutton').jqxButton({ height: 25});
             $('#clearfilteringbutton').click(function () {
-                $("#jqxgrid").jqxGrid('clearfilters');
+                $("#grid").jqxGrid('clearfilters');
             });
         });
     </script>
 </head>
 <body class='default'>
-    <div id="jqxgrid">
+    <div id="grid">
     </div>
     <input style="margin-top: 10px;" value="Remove Filter" id="clearfilteringbutton" type="button" />
 </body>

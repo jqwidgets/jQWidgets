@@ -4,7 +4,9 @@
     <title id="Description">Column Formatting in jqxTreeGrid.</title>
     <meta name="description" content="Column Formatting - JavaScript Tree Grid Demo | jQWidgets"> 
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -39,14 +41,14 @@
          };
             var dataAdapter = new $.jqx.dataAdapter(source);
             // create Tree Grid
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
-                width: 850,
+               width:  getWidth("TreeGrid"),
                 height: 350,
                 source: dataAdapter,
                 sortable: true,
                 ready: function () {
-                    $("#treeGrid").jqxTreeGrid('expandRow', '2');
+                    $("#treegrid").jqxTreeGrid('expandRow', '2');
                 },
                 columns: [
                   { text: 'Order Name', dataField: "name", align: 'center', width: 200 },
@@ -63,25 +65,25 @@
                 var index = event.args.index;
                 switch (index) {
                     case 0:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'd');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'd');
                         break;
                     case 1:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'D');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'D');
                         break;
                     case 2:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'f');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'f');
                         break;
                     case 3:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'F');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'F');
                         break;
                     case 4:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'Y');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'Y');
                         break;
                     case 5:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'M');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'M');
                         break;
                     case 6:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'yyyy-MM-dd HH:mm:ss');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'date', 'cellsFormat', 'yyyy-MM-dd HH:mm:ss');
                         break;
                 }
             });
@@ -90,34 +92,34 @@
                 var index = event.args.index;
                 switch (index) {
                     case 0:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'n');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'n');
                         break;
                     case 1:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'f1');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'f1');
                         break;
                     case 2:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'f2');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'f2');
                         break;
                     case 3:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'f3');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'f3');
                         break;
                     case 4:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'c1');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'c1');
                         break;
                     case 5:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'c2');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'c2');
                         break;
                     case 6:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'c3');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'c3');
                         break;
                     case 7:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'p');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'p');
                         break;
                     case 8:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'p2');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'p2');
                         break;
                     case 9:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'p3');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'price', 'cellsFormat', 'p3');
                         break;
                 }
             });
@@ -125,7 +127,7 @@
     </script>
 </head>
 <body class='default'>
-    <div id="treeGrid">
+    <div id="treegrid">
     </div>
     <div style="font-size: 13px; font-family: Verdana; width: 600px; margin-top: 10px;">
         <div style="float: left; width: 300px;">

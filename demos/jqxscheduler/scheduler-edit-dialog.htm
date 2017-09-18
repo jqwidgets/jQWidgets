@@ -3,9 +3,11 @@
 <head>
     <title id='Description'>jqxScheduler Edit Dialog example
     </title>
-    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../../scripts/demos.js"></script>
+     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
+
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
@@ -35,8 +37,8 @@
                 location: "",
                 subject: "Fashion Expo",
                 calendar: "East Coast Events",
-                start: new Date(2016, 10, 15, 9, 0, 0),
-                end: new Date(2016, 10, 18, 16, 0, 0)
+                start: new Date(2017, 10, 15, 9, 0, 0),
+                end: new Date(2017, 10, 18, 16, 0, 0)
             }
 
             var appointment2 = {
@@ -45,8 +47,8 @@
                 location: "",
                 subject: "Cloud Data Expo",
                 calendar: "Middle West Events",
-                start: new Date(2016, 10, 20, 10, 0, 0),
-                end: new Date(2016, 10, 22, 15, 0, 0)
+                start: new Date(2017, 10, 20, 10, 0, 0),
+                end: new Date(2017, 10, 22, 15, 0, 0)
             }
 
             var appointment3 = {
@@ -55,8 +57,8 @@
                 location: "",
                 subject: "Digital Media Conference",
                 calendar: "West Coast Events",
-                start: new Date(2016, 10, 23, 11, 0, 0),
-                end: new Date(2016, 10, 28, 13, 0, 0)
+                start: new Date(2017, 10, 23, 11, 0, 0),
+                end: new Date(2017, 10, 28, 13, 0, 0)
             }
 
             var appointment4 = {
@@ -65,8 +67,8 @@
                 location: "",
                 subject: "Modern Software Development Conference",
                 calendar: "West Coast Events",
-                start: new Date(2016, 10, 10, 16, 0, 0),
-                end: new Date(2016, 10, 12, 18, 0, 0)
+                start: new Date(2017, 10, 10, 16, 0, 0),
+                end: new Date(2017, 10, 12, 18, 0, 0)
             }
 
             var appointment5 = {
@@ -75,8 +77,8 @@
                 location: "",
                 subject: "Marketing Future Expo",
                 calendar: "Middle West Events",
-                start: new Date(2016, 10, 5, 15, 0, 0),
-                end: new Date(2016, 10, 6, 17, 0, 0)
+                start: new Date(2017, 10, 5, 15, 0, 0),
+                end: new Date(2017, 10, 6, 17, 0, 0)
             }
 
             var appointment6 = {
@@ -85,8 +87,8 @@
                 location: "",
                 subject: "Future Computing",
                 calendar: "East Coast Events",
-                start: new Date(2016, 10, 13, 14, 0, 0),
-                end: new Date(2016, 10, 20, 16, 0, 0)
+                start: new Date(2017, 10, 13, 14, 0, 0),
+                end: new Date(2017, 10, 20, 16, 0, 0)
             }
             appointments.push(appointment1);
             appointments.push(appointment2);
@@ -117,8 +119,8 @@
             var printButton = null;
 
             $("#scheduler").jqxScheduler({
-                date: new $.jqx.date(2016, 11, 23),
-                width: 850,
+                date: new $.jqx.date(2017, 11, 23),
+                width: getWidth("Scheduler"),
                 height: 600,
                 source: adapter,
                 showLegend: true,

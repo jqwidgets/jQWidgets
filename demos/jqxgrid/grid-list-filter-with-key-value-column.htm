@@ -3,7 +3,9 @@
 <head>
     <title id='Description'>In this sample is illustrated how to create a Grid with column which displays values from foreign data source. The DropDownList editor associated to the column is populated from the foreign data source.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -169,7 +171,7 @@
             };
             var gridAdapter = new $.jqx.dataAdapter(gridSource);
 
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
                 width: 600,
                 source: gridAdapter,
@@ -185,9 +187,9 @@
                 ]
             });
 
-            $("#jqxgrid").on('filter', function (event) {
+            $("#grid").on('filter', function (event) {
                 // get filter information.
-                var filterInformation = $("#jqxgrid").jqxGrid('getfilterinformation');
+                var filterInformation = $("#grid").jqxGrid('getfilterinformation');
                 var filterdata = {};
                 var filterslength = 0;
                 var data = {};
@@ -224,7 +226,7 @@
     </script>
 </head>
 <body class='default'>
-    <div id="jqxgrid">
+    <div id="grid">
     </div>
     <div style="font-size: 13px; width: 800px; max-width:800px; overflow: auto; margin-top: 20px; font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;" id="eventLog"></div>
 </body>

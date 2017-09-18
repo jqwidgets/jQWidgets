@@ -4,7 +4,9 @@
     <title id='Description'>JavaScript Kanban Header Template.</title>
     <meta name="description" content="JavaScript Kanban with custom Header Template" />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxsortable.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxkanban.js"></script>
@@ -110,7 +112,8 @@
                 return "jqx-icon-plus-alt";
             }
 
-            $('#kanban1').jqxKanban({
+            $('#kanban').jqxKanban({
+                width: getWidth('kanban'),
                 template: "<div class='jqx-kanban-item' id=''>"
                         + "<div class='jqx-kanban-item-color-status'></div>"
                         + "<div style='display: none;' class='jqx-kanban-item-avatar'></div>"
@@ -133,7 +136,7 @@
                 ],
                 // render column headers.
                 columnRenderer: function (element, collapsedElement, column) {
-                    var columnItems = $("#kanban1").jqxKanban('getColumnItems', column.dataField).length;
+                    var columnItems = $("#kanban").jqxKanban('getColumnItems', column.dataField).length;
                     // update header's status.
                     element.find(".jqx-kanban-column-header-status").html(" (" + columnItems + "/" + column.maxItems + ")");
                     // update collapsed header's status.
@@ -142,21 +145,21 @@
             });
             
             // handle item clicks.
-            $('#kanban1').on("itemAttrClicked", function (event) {
+            $('#kanban').on("itemAttrClicked", function (event) {
                 var args = event.args;
                 if (args.attribute == "template") {
-                    $('#kanban1').jqxKanban('removeItem', args.item.id);
+                    $('#kanban').jqxKanban('removeItem', args.item.id);
                 }
             });
             // handle column clicks.
             var itemIndex = 0;
-            $('#kanban1').on('columnAttrClicked', function (event) {
+            $('#kanban').on('columnAttrClicked', function (event) {
                 var args = event.args;
                 if (args.attribute == "button") {
                     args.cancelToggle = true;
                     if (!args.column.collapsed) {
                         var colors = ['#f19b60', '#5dc3f0', '#6bbd49', '#dddddd']
-                        $('#kanban1').jqxKanban('addItem', { status: args.column.dataField, text: "<input placeholder='(No Title)' style='width: 96%; margin-top:2px; border-radius: 3px; border-color: #ddd; line-height:20px; height: 20px;' class='jqx-input' id='newItem" + itemIndex + "' value=''/>", tags: "new task", color: colors[Math.floor(Math.random() * 4)], resourceId: Math.floor(Math.random() * 4) });
+                        $('#kanban').jqxKanban('addItem', { status: args.column.dataField, text: "<input placeholder='(No Title)' style='width: 96%; margin-top:2px; border-radius: 3px; border-color: #ddd; line-height:20px; height: 20px;' class='jqx-input' id='newItem" + itemIndex + "' value=''/>", tags: "new task", color: colors[Math.floor(Math.random() * 4)], resourceId: Math.floor(Math.random() * 4) });
                         var input =  $("#newItem" + itemIndex);
                         input.mousedown(function (event) {
                             event.stopPropagation();
@@ -180,6 +183,6 @@
     </script>
 </head>
 <body>
-      <div id="kanban1"></div>     
+      <div id="kanban"></div>     
 </body>
 </html>

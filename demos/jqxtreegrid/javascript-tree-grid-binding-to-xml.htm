@@ -4,7 +4,9 @@
     <title id="Description">Data Binding to XML data in jqxTreeGrid.</title>
     <meta name="description" content="This sample demonstrates how we can bind jQWidgets TreeGrid widget to XML Data by using jQWidgets DataAdapter plugin.">
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -44,16 +46,16 @@
 
             var dataAdapter = new $.jqx.dataAdapter(source);
             // create Tree Grid
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
-                width: 850,
+               width:  getWidth("TreeGrid"),
                 source: dataAdapter,
                 pageable: true,
                 columnsResize: true,
                 ready: function()
                 {
                     // expand row with 'EmployeeKey = 2'
-                    $("#treeGrid").jqxTreeGrid('expandRow', 2);
+                    $("#treegrid").jqxTreeGrid('expandRow', 2);
                 },
                 columns: [
                   { text: 'FirstName', dataField: 'FirstName', minWidth: 100, width: 200 },
@@ -69,7 +71,7 @@
     </script>
 </head>
 <body class='default'>
-    <div id="treeGrid">
+    <div id="treegrid">
     </div>
 </body>
 </html>

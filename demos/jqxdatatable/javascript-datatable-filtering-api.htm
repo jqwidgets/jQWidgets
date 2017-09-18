@@ -3,8 +3,10 @@
 <head>
     <title id="Description">JavaScript DataTable Filtering API</title>
     <meta name="description" content="This sample demonstrates the Filtering API of JavaScript DataTable">
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -36,7 +38,7 @@
             // create grid.
             $("#dataTable").jqxDataTable(
             {
-                width: 650,
+                width: getWidth("dataTable"),
                 pagerButtonsCount: 4,
                 pageable: true,
                 source: dataAdapter,
@@ -52,7 +54,7 @@
             // create buttons, listbox and the columns chooser dropdownlist.
             $("#applyFilter").jqxButton();
             $("#clearfilter").jqxButton();
-            $("#filterbox").jqxListBox({ checkboxes: true, width: 160, height: 250 });
+            $("#filterbox").jqxListBox({ checkboxes: true, width: 160, height: 150 });
             $("#columnchooser").jqxDropDownList({
                 autoDropDownHeight: true, selectedIndex: 0, width: 160, height: 25,
                 source: [{ label: 'First Name', value: 'firstname' },
@@ -171,17 +173,17 @@
     </script>
 </head>
 <body class='default'>
-    <div id='jqxWidget' style="float: left;">
-        <div style="float: left">
+    <div id="dataTable">
+    </div>
+     <div id='jqxWidget'>
+        <div style="margin-top: 30px;">
             <div>Filter By:</div>
             <div id="columnchooser"></div>
-            <div style="margin-top: 10px;" id="filterbox"></div>
-            <div style="margin-top: 10px;">
-                <input type="button" id="applyFilter" value="Apply Filter" />
-                <input type="button" id="clearfilter" value="Clear Filter" />
+            <div style="float: left;  margin-top: 10px;" id="filterbox"></div>
+            <div style="float: left; margin-left: 20px; margin-top: 10px;">
+                <input type="button" id="applyFilter" value="Apply Filter" /><br />
+                <input type="button" id="clearfilter" style="margin-top:20px;" value="Clear Filter" />
             </div>
-        </div>
-        <div style="margin-left: 20px; float: left" id="dataTable">
         </div>
     </div>
 </body>

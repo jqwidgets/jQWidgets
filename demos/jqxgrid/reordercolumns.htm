@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <title id='Description'>This sample demonstrates the Columns drag and drop operation in jqxGrid.</title>
-    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+ 	<link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -37,9 +39,9 @@
             };
             var dataAdapter = new $.jqx.dataAdapter(source);
 
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: dataAdapter,
                 columnsresize: true,
                 columnsreorder: true,
@@ -52,7 +54,7 @@
             });
 
             // trigger the columnreordered event.
-            $("#jqxgrid").on('columnreordered', function (event) {
+            $("#grid").on('columnreordered', function (event) {
                 var column = event.args.columntext;
                 var newindex = event.args.newindex
                 var oldindex = event.args.oldindex;
@@ -63,7 +65,7 @@
 </head>
 <body class='default'>
     <div id='jqxWidget'>
-        <div id="jqxgrid"></div>
+        <div id="grid"></div>
         <div style="margin-top: 30px;" id="eventlog"></div> 
     </div>
 </body>

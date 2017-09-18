@@ -5,7 +5,9 @@
     </title>
     <meta name="description" content="Property Editor - JavaScript Tree Grid Demo | jQWidgets">     
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -84,7 +86,7 @@
             });
 
 
-           $("#treeGrid").on('cellValueChanged', function (event) {
+           $("#treegrid").on('cellValueChanged', function (event) {
                // Update the Location and Size properties and their nested properties.
                var args = event.args;
                var row = args.row;
@@ -94,20 +96,20 @@
                    var values = args.value.split(',');
                    for (var i = 0; i < values.length; i++) {
                        var value = $.trim(values[i]);
-                       var rowKey = $("#treeGrid").jqxTreeGrid('getKey', records[i]);
-                       $("#treeGrid").jqxTreeGrid('setCellValue', rowKey, 'value', value);
+                       var rowKey = $("#treegrid").jqxTreeGrid('getKey', records[i]);
+                       $("#treegrid").jqxTreeGrid('setCellValue', rowKey, 'value', value);
                    }
                }
                // update the parent value when the user changes a nested property, 
                else if (row.level == 1) {
                    var parent = row.parent;
-                   var parentRowKey = $("#treeGrid").jqxTreeGrid('getKey', parent);
+                   var parentRowKey = $("#treegrid").jqxTreeGrid('getKey', parent);
                    var value = "";
                    var records = parent.records;
                    if (records.length > 0) {
                        for (var i = 0; i < records.length; i++) {
-                           var rowKey = $("#treeGrid").jqxTreeGrid('getKey', records[i]);
-                           var cellValue = $("#treeGrid").jqxTreeGrid('getCellValue', rowKey, 'value');
+                           var rowKey = $("#treegrid").jqxTreeGrid('getKey', records[i]);
+                           var cellValue = $("#treegrid").jqxTreeGrid('getCellValue', rowKey, 'value');
                            value += cellValue;
                            if (i < records.length - 1) {
                                value += ", ";
@@ -115,11 +117,11 @@
                        }
                    }
 
-                   $("#treeGrid").jqxTreeGrid('setCellValue', parentRowKey, 'value', value);
+                   $("#treegrid").jqxTreeGrid('setCellValue', parentRowKey, 'value', value);
                }
            });
 
-           $("#treeGrid").jqxTreeGrid(
+           $("#treegrid").jqxTreeGrid(
            {
               source: dataAdapter,
               altRows: true,
@@ -132,7 +134,7 @@
                    text: 'Value', dataField: 'value', width: 230, columnType: "custom",
                    // creates an editor depending on the "type" value.
                    createEditor: function (rowKey, cellvalue, editor, cellText, width, height) {
-                       var row = $("#treeGrid").jqxTreeGrid('getRow', rowKey);
+                       var row = $("#treegrid").jqxTreeGrid('getRow', rowKey);
                        switch (row["type"]) {
                            case "string":
                            case "number":
@@ -162,7 +164,7 @@
                    },
                    // updates the editor's value.
                    initEditor: function (rowKey, cellvalue, editor, celltext, width, height) {
-                       var row = $("#treeGrid").jqxTreeGrid('getRow', rowKey);
+                       var row = $("#treegrid").jqxTreeGrid('getRow', rowKey);
                        switch (row.type) {
                            case "string":
                            case "number":
@@ -181,7 +183,7 @@
                    },
                    // returns the value of the custom editor.
                    getEditorValue: function (rowKey , cellvalue, editor) {
-                       var row = $("#treeGrid").jqxTreeGrid('getRow', rowKey);
+                       var row = $("#treegrid").jqxTreeGrid('getRow', rowKey);
 
                        switch (row.type) {
                            case "string":
@@ -208,6 +210,6 @@
     </script>
 </head>
 <body class='default'>
-    <div id="treeGrid"></div>
+    <div id="treegrid"></div>
 </body>
 </html>

@@ -4,7 +4,9 @@
     <title id="Description">Show or Hide columns in jqxTreeGrid.</title>
     <meta name="description" content="This sample demonstrates how we can Show or Hide Columns in jQWidgets TreeGrid.">
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
@@ -74,14 +76,14 @@
                 }
             });
             // create jqxTreeGrid.
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
                 source: dataAdapter,
                 altRows: true,
                 showHeader: true,
                 ready: function () {
-                    $("#treeGrid").jqxTreeGrid('expandRow', '1');
-                    $("#treeGrid").jqxTreeGrid('expandRow', '2');
+                    $("#treegrid").jqxTreeGrid('expandRow', '1');
+                    $("#treegrid").jqxTreeGrid('expandRow', '2');
                 },
                 columns: [
                   { text: "Name",  align: "center", dataField: "name", width: 240 },
@@ -94,14 +96,14 @@
 
             $("#jqxlistbox").jqxListBox({ source: listSource, width: 120, height: 200,  checkboxes: true });
             $("#jqxlistbox").on('checkChange', function (event) {
-                $("#treeGrid").jqxTreeGrid('beginUpdate');
+                $("#treegrid").jqxTreeGrid('beginUpdate');
                 if (event.args.checked) {
-                    $("#treeGrid").jqxTreeGrid('showColumn', event.args.value);
+                    $("#treegrid").jqxTreeGrid('showColumn', event.args.value);
                 }
                 else {
-                    $("#treeGrid").jqxTreeGrid('hideColumn', event.args.value);
+                    $("#treegrid").jqxTreeGrid('hideColumn', event.args.value);
                 }
-                $("#treeGrid").jqxTreeGrid('endUpdate');
+                $("#treegrid").jqxTreeGrid('endUpdate');
             });
         });
     </script>
@@ -109,7 +111,7 @@
 <body class='default'>
     <div id='jqxWidget'>
         <div style="float: left;" id="jqxlistbox"></div>
-        <div style="margin-left: 20px; float: left;" id="treeGrid"></div>
+        <div style="margin-left: 20px; float: left;" id="treegrid"></div>
     </div>
 </body>
 </html>

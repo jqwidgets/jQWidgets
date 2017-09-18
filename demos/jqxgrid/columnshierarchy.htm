@@ -4,7 +4,9 @@
     <title id='Description'>This sample illustrates the Columns Hierarchy feature of jqxGrid.
     </title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -50,10 +52,10 @@
 
                 }
             });
-            // create jqxgrid.
-            $("#jqxgrid").jqxGrid(
+            // create grid.
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: dataAdapter,
                 pageable: true,
                 autorowheight: true,
@@ -81,7 +83,7 @@
     </script>
 </head>
 <body class='default'>
-    <div id="jqxgrid">
+    <div id="grid">
     </div>
 </body>
 </html>

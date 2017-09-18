@@ -1,13 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title id='Description'>jqxChart Line Series with Custom Colors Example</title>
+    <title id='Description'>JavaScript Chart Line Series with Custom Colors Example</title>
+    <meta name="description" content="This is an example of JavaScript Chart Line Series with Custom Colors." />			
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <style type="text/css">
         .jqx-chart-axis-text, .jqx-chart-label-text, .jqx-chart-legend-text, .jqx-chart-axis-description, .jqx-chart-title-text, .jqx-chart-title-description
         {
@@ -48,8 +52,8 @@
                     type: 'date',
                     baseUnit: 'month',
                     unitInterval: 1,
-                    minValue: '01-01-2014',
-                    maxValue: '01-01-2015',
+                    minValue: '01-01-2017',
+                    maxValue: '01-01-2018',
                     tickMarks: {
                         visible: true,
                         interval: 1,
@@ -104,6 +108,12 @@
 </head>
 <body class='default'>
     <div id='chartContainer' style="background-repeat: no-repeat; background-size:cover; width: 800px; height: 500px">
+    </div>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of JavaScript chart line series with custom colors.  You can see how to use the different settings in order to style the grid lines, line color and tick marks. 
     </div>
 </body>
 </html>

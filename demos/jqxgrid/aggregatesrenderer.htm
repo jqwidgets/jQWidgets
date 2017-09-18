@@ -4,7 +4,9 @@
     <title id='Description'>In this sample is demonstrated how to customize the rendering of the Grid's aggregates.</title>
 	<meta name="description" content="jQuery Grid Data Aggregates with customized rendering" /> 	
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -44,9 +46,9 @@
             var dataAdapter = new $.jqx.dataAdapter(source);
 
             // initialize jqxGrid
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: dataAdapter,                
                 showstatusbar: true,
                 statusbarheight: 50,
@@ -112,7 +114,7 @@
 </head>
 <body class='default'>
     <div id='jqxWidget'>
-        <div id="jqxgrid"></div>
+        <div id="grid"></div>
     </div>
 </body>
 </html>

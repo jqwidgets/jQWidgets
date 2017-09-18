@@ -1,9 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title id='Description'>jqxChart Axis settings</title>
+    <title id='Description'>JavaScript Chart Axis settings example</title>
+    <meta name="description" content="This is an example of JavaScript charts axis settings." />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
@@ -26,12 +29,12 @@
                 { year: 2010, price: 0.1766 },
                 { year: 2011, price: 0.1902 },
                 { year: 2012, price: 0.1978 },
-                { year: 2013, price: 0.2113 },
-                { year: 2014, price: 0.2178 }
+                { year: 2017, price: 0.2113 },
+                { year: 2018, price: 0.2178 }
                 ];
 
             var settings = {
-                title: "Electricity prices in Europe between 2004 and 2014",
+                title: "Electricity prices in Europe between 2004 and 2018",
                 description: "Source: Eurostat",
                 enableAnimations: true,
                 showLegend: true,
@@ -172,13 +175,13 @@
                     }
                 });
 
-            $("#btnValueAxisFlip").jqxCheckBox({ width: 120, height: 25, hasThreeStates: false, checked: false});
+            $("#btnValueAxisFlip").jqxCheckBox({  height: 25, hasThreeStates: false, checked: false});
             $("#btnValueAxisFlip").on('change', function (event) {
                     settings.valueAxis.flip = event.args.checked;
                     chartInstance.refresh();
                 });
 
-            $("#btnXAxisFlip").jqxCheckBox({ width: 120, height: 25, hasThreeStates: false, checked: false});
+            $("#btnXAxisFlip").jqxCheckBox({  height: 25, hasThreeStates: false, checked: false});
             $("#btnXAxisFlip").on('change', function (event) {
                     settings.xAxis.flip = event.args.checked;
                     chartInstance.refresh();
@@ -231,5 +234,11 @@
             </td>
         </tr>
     </table>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of JavaScript charts axis settings. You can see how to change the padding, labels angle, top padding, bottom padding and left and right position of the chart. 
+    </div>
 </body>
 </html>

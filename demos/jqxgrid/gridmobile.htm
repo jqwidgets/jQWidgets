@@ -3,7 +3,9 @@
 <head>
     <title id='Description'>In this demo is simulated the touch-device behavior of the jqxGrid</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -29,7 +31,7 @@
 
             var dataAdapter = new $.jqx.dataAdapter(source);
 
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
                 width: 454,
                 height: 273,
@@ -48,10 +50,8 @@
     </script>
 </head>
 <body class='default'>
-    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
         <img src="../../images/tablet.png" />
-        <div id='jqxgrid' style='top: 55px; left: 77px; position: absolute;'>
+        <div id='grid' style='top: 55px; left: 77px; position: absolute;'>
         </div>
-    </div>
 </body>
 </html>

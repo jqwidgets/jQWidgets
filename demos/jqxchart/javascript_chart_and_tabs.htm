@@ -1,15 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title id='Description'>This demo shows how to integrate jqxChart with jqxTabs.
-    </title>
+    <title id='Description'>JavaScript Chart with Tabs Example</title>
+    <meta name="description" content="This is an example of Javascript Chart with Tabs." />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../../scripts/demos.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxtabs.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -49,7 +51,7 @@
                 // prepare jqxChart settings
                 var settings = {
                     title: "S&P 500 Candlestick Chart",
-                    description: "(January 2014 - November 2014)",
+                    description: "(January 2017 - November 2018)",
                     enableAnimations: true,
                     animationDuration: 1500,
                     enableCrosshairs: true,
@@ -63,8 +65,8 @@
                         },
                         type: 'date',
                         valuesOnTicks: true,
-                        minValue: new Date(2014, 0, 1),
-                        maxValue: new Date(2014, 11, 1)
+                        minValue: new Date(2017, 0, 1),
+                        maxValue: new Date(2017, 11, 1)
                     },
                     colorScheme: 'scheme17',
                     seriesGroups:
@@ -140,7 +142,7 @@
 
                 // prepare jqxChart settings
                 var settings = {
-                    title: "U.S. Stock Market Index Performance (2014)",
+                    title: "U.S. Stock Market Index Performance (2018)",
                     description: "NASDAQ Composite compared to S&P 500",
                     enableAnimations: true,
                     showLegend: true,
@@ -230,6 +232,12 @@
             <div id='chart' style="width: 100%; height: 100%">
             </div>
         </div>
+    </div>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of Javascript Chart with Tabs. You can see how to integrate jqxChart with jqxTabs.  
     </div>
 </body>
 </html>

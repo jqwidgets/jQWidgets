@@ -1,13 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title id='Description'>jQuery Chart Background</title>
+    <title id='Description'>JavaScript Chart Custom Background Example</title>
+    <meta name="description" content="This is an example of JavaScript chart with custom background." />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <style>
         .jqx-chart-axis-text,
         .jqx-chart-label-text, 
@@ -86,8 +90,8 @@
                     type: 'date',
                     baseUnit: 'month',
                     valuesOnTicks: true,
-                    minValue: '01-01-2014',
-                    maxValue: '01-01-2015',
+                    minValue: '01-01-2017',
+                    maxValue: '01-01-2018',
                     tickMarks: {
                         visible: true,
                         interval: 1,
@@ -134,6 +138,12 @@
 </head>
 <body class='default'>
     <div id='chartContainer' style="width:850px; height:500px">
+    </div>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of JavaScript chart with custom background color. The background color is set from the toolTipCustomFormatFn function. 
     </div>
 </body>
 </html>

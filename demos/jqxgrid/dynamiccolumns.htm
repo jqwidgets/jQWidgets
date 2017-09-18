@@ -3,7 +3,9 @@
 <head>
     <title id='Description'>The Grid's columns and rows in this examples are retrieved from JSON file.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
@@ -40,27 +42,27 @@
                         localdata: rows
                     });
 
-                    $("#jqxgrid").jqxGrid('hideloadelement');
-                    $("#jqxgrid").jqxGrid('beginupdate', true);
-                    $("#jqxgrid").jqxGrid(
+                    $("#grid").jqxGrid('hideloadelement');
+                    $("#grid").jqxGrid('beginupdate', true);
+                    $("#grid").jqxGrid(
                       {
                           source: gridAdapter,
                           columns: columns
                       });
-                    $("#jqxgrid").jqxGrid('endupdate');
+                    $("#grid").jqxGrid('endupdate');
                 }
             }
             );
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
                    {
-                       width: 850,
+                       width: getWidth('Grid'),
                        columnsresize: true
                    });
-            $("#jqxgrid").jqxGrid('showloadelement');
+            $("#grid").jqxGrid('showloadelement');
         });
     </script>
 </head>
 <body class='default'>
-    <div id="jqxgrid"></div>
+    <div id="grid"></div>
 </body>
 </html>

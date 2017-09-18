@@ -1,13 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title id='Description'>jqxChart Axis Position Example</title>
+    <title id='Description'>JavaScript Chart Axis Position Example</title>
+    <meta name="description" content="This is an example of JavaScript Chart Axis Position." />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             // prepare the data
@@ -28,7 +32,7 @@
 
             // prepare jqxChart settings
             var settings = {
-                title: "U.S. Historical Home Prices (1950-2011)",
+                title: "U.S. Historical Home Prices (1950-2017)",
                 description: "Source: http://www.econ.yale.edu/~shiller/data.htm",
                 enableAnimations: true,
                 showLegend: true,
@@ -39,7 +43,7 @@
                     {
                         dataField: 'Year',
                         minValue: 1947,
-                        maxValue: 2012,
+                        maxValue: 2017,
                         unitInterval: 5,
                         tickMarks: {
                             visible: true,
@@ -119,6 +123,12 @@
 </head>
 <body class='default'>
     <div id='chartContainer' style="width:850px; height:500px">
+    </div>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of JavaScript chart axis position. You can see that each of the series is presented with its own value axis which is formatted accordingly. The x axis is common for all the series. 
     </div>
 </body>
 </html>

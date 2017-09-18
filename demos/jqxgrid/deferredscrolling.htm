@@ -4,7 +4,9 @@
     <title id='Description'>This example illustrates the jqxGrid's deferred scrolling feature. In order to enable the feature, set the "scrollmode" property to "deferred".
     </title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -83,8 +85,8 @@
             };
             var dataAdapter = new $.jqx.dataAdapter(source);
 
-            // create jqxgrid.
-            $("#jqxgrid").jqxGrid(
+            // create grid.
+            $("#grid").jqxGrid(
             {
                 width: 700,
                 height: 380,
@@ -117,7 +119,7 @@
 </head>
 <body class='default'>
     <div id='jqxWidget'>
-        <div id="jqxgrid">
+        <div id="grid">
         </div>
     </div>
 </body>

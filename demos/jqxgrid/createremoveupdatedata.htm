@@ -4,7 +4,9 @@
     <title id='Description'>This example demostrates how we can manipulate data at client side. The Grid plugin provides you callback functions when you add, remove or update a row.
     </title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -98,9 +100,9 @@
             var dataAdapter = new $.jqx.dataAdapter(source);
 
             // initialize jqxGrid
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 height: 350,
                 source: dataAdapter,
                 showtoolbar: true,
@@ -119,38 +121,38 @@
                     // update row.
                     $("#updaterowbutton").on('click', function () {
                         var datarow = generaterow();
-                        var selectedrowindex = $("#jqxgrid").jqxGrid('getselectedrowindex');
-                        var rowscount = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
+                        var selectedrowindex = $("#grid").jqxGrid('getselectedrowindex');
+                        var rowscount = $("#grid").jqxGrid('getdatainformation').rowscount;
                         if (selectedrowindex >= 0 && selectedrowindex < rowscount) {
-                            var id = $("#jqxgrid").jqxGrid('getrowid', selectedrowindex);
-                            var commit = $("#jqxgrid").jqxGrid('updaterow', id, datarow);
-                            $("#jqxgrid").jqxGrid('ensurerowvisible', selectedrowindex);
+                            var id = $("#grid").jqxGrid('getrowid', selectedrowindex);
+                            var commit = $("#grid").jqxGrid('updaterow', id, datarow);
+                            $("#grid").jqxGrid('ensurerowvisible', selectedrowindex);
                         }
                     });
 
                     // create new row.
                     $("#addrowbutton").on('click', function () {
                         var datarow = generaterow();
-                        var commit = $("#jqxgrid").jqxGrid('addrow', null, datarow);
+                        var commit = $("#grid").jqxGrid('addrow', null, datarow);
                     });
 
                     // create new rows.
                     $("#addmultiplerowsbutton").on('click', function () {
-                        $("#jqxgrid").jqxGrid('beginupdate');
+                        $("#grid").jqxGrid('beginupdate');
                         for (var i = 0; i < 10; i++) {
                             var datarow = generaterow();
-                            var commit = $("#jqxgrid").jqxGrid('addrow', null, datarow);
+                            var commit = $("#grid").jqxGrid('addrow', null, datarow);
                         }
-                        $("#jqxgrid").jqxGrid('endupdate');
+                        $("#grid").jqxGrid('endupdate');
                     });
 
                     // delete row.
                     $("#deleterowbutton").on('click', function () {
-                        var selectedrowindex = $("#jqxgrid").jqxGrid('getselectedrowindex');
-                        var rowscount = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
+                        var selectedrowindex = $("#grid").jqxGrid('getselectedrowindex');
+                        var rowscount = $("#grid").jqxGrid('getdatainformation').rowscount;
                         if (selectedrowindex >= 0 && selectedrowindex < rowscount) {
-                            var id = $("#jqxgrid").jqxGrid('getrowid', selectedrowindex);
-                            var commit = $("#jqxgrid").jqxGrid('deleterow', id);
+                            var id = $("#grid").jqxGrid('getrowid', selectedrowindex);
+                            var commit = $("#grid").jqxGrid('deleterow', id);
                         }
                     });
                 },
@@ -167,7 +169,7 @@
     </script>
 </head>
 <body class='default'>
-    <div id="jqxgrid">
+    <div id="grid">
     </div>
 </body>
 </html>

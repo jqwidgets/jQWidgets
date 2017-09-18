@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>jqxKnob - Test</title>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxknob.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxnumberinput.js"></script>
+
+    <style type="text/css">
+        #container {
+            position: relative;
+        }
+        .inputField {
+            left: 110px;
+            top: 323px;
+            position: absolute;
+            background: transparent;
+            border: none;
+        }
+        text.jqx-knob-label {
+            font-weight: bold;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 20px;
+        }
+        .inputField .jqx-input-content {
+            background: transparent;
+            font-size: 20px;
+            color: grey;
+
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#container').jqxKnob({
+                value: 60,
+                min: 0,
+                max: 100,
+                startAngle: 120,
+                endAngle: 420,
+                snapToStep: true,
+                rotation: 'clockwise',
+                background: { color: '#e5e5e5'},
+                marks: {
+                    colorRemaining: { color: 'grey', border: 'grey' },
+                    colorProgress: { color: 'blue', border: 'grey'},
+                    style: 'line',
+                    offset: '71%',
+                    thickness: 3,
+                    size: '6%',
+                    majorSize: '9%',
+                    majorInterval: 10,
+                    minorInterval: 2
+                },
+                labels: {
+                    offset: '88%',
+                    type: 'digits',
+                    step: 10,
+//                    style: 'font-size: ' + 30 + 'px; stroke: ' + 'blue' + '; fill: ' + 'red' + ';',
+                    visible: true
+                },
+                progressBar: {
+                    color: { color: '#99CDFF', border: 'grey' },
+                    size: '9%',
+                    offset: '60%',
+                    background: { color: 'grey', border: 'grey'}
+                },
+                dial: {
+                    startAngle: 0,
+                    endAngle: 360,
+                    innerRadius: '0%',
+                    size: '1',
+                    outerRadius: '49%',
+                    color: {color:  '#e5e5e5', border: 'grey' }
+                },
+
+                pointer: { style: 'arrow', color: { color: '#99CDFF', border: 'grey' }, size: '59%', offset: '49%', thickness: 20}
+            });
+            var input = $('<div class="inputField">');
+            $('#container').append(input);
+            var inputOptions = {
+                width: 180,
+                height: '40px',
+                decimal: 60, // starting value same as widget
+                min: 0,  // same as widget
+                max: 100, // same as widget
+                textAlign: 'center',
+                decimalDigits: 1,
+                inputMode: 'simple'
+
+            };
+            $(input).jqxNumberInput(inputOptions);
+            $(input).on('mousedown', function(event){
+                event.stopPropagation();
+            });
+            $(input).on('keyup', function () {
+                var val = $(this).val();
+                $('#container').val(val);
+            });
+            $(input).on('change', function () {
+                var val = $(this).val();
+                $('#container').val(val);
+            });
+
+            $('#container').on('change', function (event) {
+                if (event.args.changeSource == 'propertyChange' || event.args.changeSource == 'val') { return; }
+                $(input).val(event.args.value);
+            })
+        });
+    </script>
+</head>
+<body class='default'>
+<div id='container' style="width: 400px; height: 400px;">
+</div>
+</body>
+</html>

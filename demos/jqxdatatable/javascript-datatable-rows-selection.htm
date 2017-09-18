@@ -4,7 +4,9 @@
     <title id="Description">Rows Selection Modes in jqxDataTable. Select multiple rows by holding Shift or Ctrl and clicking on a row.</title>
     <meta name="description" content="This sample demonstrates how we can set up the DataTable plug-in with Single Row or Multiple Row selection modes and how to use the DataTable's Selection API." /> 
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -20,7 +22,7 @@
             // create jqxDataTable.
             $("#table").jqxDataTable(
             {
-                width: 650,
+                width: getWidth("dataTable"),
                 altRows: true,
                 columns: [
                   { text: 'First Name', dataField: 'First Name', width: 200 },

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>jqxKnob - Test</title>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxknob.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxnumberinput.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#container').jqxKnob({
+                value: 0,
+                min: 0,
+                max: 24,
+                startAngle: 270,
+                endAngle: 630,
+                snapToStep: false,
+                rotation: 'clockwise',
+                background: { color: {color: '#BBEBBC', gradientType: 'radial', gradientStops: [[0, 1], [50, 0.5], [100, 1]] }},
+                dial: {
+                    color: '#FF1E54',
+                    gradientType: 'radial',
+                    gradientStops: [[0, 1], [50, 0.5], [100, 1]],
+                    innerRadius: '68%',
+                    outerRadius: '92%',
+                    startAngle: 0,
+                    endAngle: 360
+                },
+                progressBar: {
+                    color: '#F5C465',
+                    size: '20%',
+                    offset: '70%',
+                    background: '#F0EE94'
+                },
+                pointer: { style: 'line', color: '#FA7642', size: '20%', offset: '70%', thickness: 20 }
+            });
+            var input = $('<div>');
+            $('#container').append(input);
+            var inputOptions = {
+                width: 100,
+                height: 20,
+                decimal: 0, // starting value same as widget
+                min: 0,  // same as widget
+                max: 20, // same as widget
+                textAlign: 'center',
+                digits: 2,
+                decimalDigits: 2,
+                inputMode: 'simple'
+
+            };
+            $(input).jqxNumberInput(inputOptions);
+            $(input).css('position', 'absolute');
+            $(input).css('left', 150); // knobWidth/2 - inputWidth
+            $(input).css('top', 190); // knobWidth/2 - inputHeight
+            $(input).on('mousedown', function(event){
+                event.stopPropagation();
+            });
+            $(input).on('keyup', function () {
+                var val = $(this).val();
+                $('#container').val(val);
+            });
+            $(input).on('change', function () {
+                var val = $(this).val();
+                $('#container').val(val);
+            });
+
+            $('#container').on('change', function (event) {
+                if (event.args.changeSource == 'propertyChange' || event.args.changeSource == 'val') { return; }
+                $(input).val(event.args.value);
+            })
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id='container' style="width: 400px; height: 400px">
+    </div>
+</body>
+</html>

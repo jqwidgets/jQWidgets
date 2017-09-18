@@ -3,9 +3,10 @@
 <head>
     <title id='Description'>This demo shows how to integrate jqxTabs with other widgets.
     </title>
-    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../../scripts/demos.js"></script>
+     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxtabs.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcheckbox.js"></script>
@@ -18,6 +19,7 @@
     <script type="text/javascript" src="../../jqwidgets/jqxdropdownlist.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>	
     <script type="text/javascript">
         $(document).ready(function () {
             var initGrid = function () {
@@ -128,7 +130,7 @@
                 }
             }
 
-            $('#jqxTabs').jqxTabs({ width: 600, height: 560,  initTabContent: initWidgets });
+            $('#jqxTabs').jqxTabs({ width: getWidth("Tabs"), height: 560,  initTabContent: initWidgets });
         });
     </script>
 </head>

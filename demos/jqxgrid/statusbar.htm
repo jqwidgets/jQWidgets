@@ -4,7 +4,9 @@
     <title id='Description'>In this sample is demonstrated how to display status bar in
         jqxGrid.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -51,9 +53,9 @@
             }
 
             // initialize jqxGrid
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: getAdapter(),               
                 showstatusbar: true,
                 renderstatusbar: function (statusbar) {
@@ -75,22 +77,22 @@
                     // add new row.
                     addButton.click(function (event) {
                         var datarow = generatedata(1);
-                        $("#jqxgrid").jqxGrid('addrow', null, datarow[0]);
+                        $("#grid").jqxGrid('addrow', null, datarow[0]);
                     });
                     // delete selected row.
                     deleteButton.click(function (event) {
-                        var selectedrowindex = $("#jqxgrid").jqxGrid('getselectedrowindex');
-                        var rowscount = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
-                        var id = $("#jqxgrid").jqxGrid('getrowid', selectedrowindex);
-                        $("#jqxgrid").jqxGrid('deleterow', id);
+                        var selectedrowindex = $("#grid").jqxGrid('getselectedrowindex');
+                        var rowscount = $("#grid").jqxGrid('getdatainformation').rowscount;
+                        var id = $("#grid").jqxGrid('getrowid', selectedrowindex);
+                        $("#grid").jqxGrid('deleterow', id);
                     });
                     // reload grid data.
                     reloadButton.click(function (event) {
-                        $("#jqxgrid").jqxGrid({ source: getAdapter() });
+                        $("#grid").jqxGrid({ source: getAdapter() });
                     });
                     // search for a record.
                     searchButton.click(function (event) {
-                        var offset = $("#jqxgrid").offset();
+                        var offset = $("#grid").offset();
                         $("#jqxwindow").jqxWindow('open');
                         $("#jqxwindow").jqxWindow('move', offset.left + 30, offset.top + 30);
                     });
@@ -123,12 +125,12 @@
 
             // clear filters.
             $("#clearButton").click(function () {
-                $("#jqxgrid").jqxGrid('clearfilters');
+                $("#grid").jqxGrid('clearfilters');
             });
 
             // find records that match a criteria.
             $("#findButton").click(function () {
-                $("#jqxgrid").jqxGrid('clearfilters');
+                $("#grid").jqxGrid('clearfilters');
                 var searchColumnIndex = $("#dropdownlist").jqxDropDownList('selectedIndex');
                 var datafield = "";
                 switch (searchColumnIndex) {
@@ -156,16 +158,16 @@
                 var filtercondition = 'contains';
                 var filter = filtergroup.createfilter('stringfilter', filtervalue, filtercondition);
                 filtergroup.addfilter(filter_or_operator, filter);
-                $("#jqxgrid").jqxGrid('addfilter', datafield, filtergroup);
+                $("#grid").jqxGrid('addfilter', datafield, filtergroup);
                 // apply the filters.
-                $("#jqxgrid").jqxGrid('applyfilters');
+                $("#grid").jqxGrid('applyfilters');
             });
         });
     </script>
 </head>
 <body class='default'>
     <div id='jqxWidget'>
-        <div id="jqxgrid">
+        <div id="grid">
         </div>
         <div id="jqxwindow">
             <div>

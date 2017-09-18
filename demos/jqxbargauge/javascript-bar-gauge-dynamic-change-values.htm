@@ -3,8 +3,9 @@
 <head>
     <title id='Description'>This demo demonstrates how to set dynamically values in jqxBarGauge from a list.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/demos.js"></script>
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	    
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
@@ -13,7 +14,7 @@
     <script type="text/javascript" src="../../jqwidgets/jqxlistbox.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
-
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript">
         $(document).ready(function ()
         {
@@ -88,9 +89,9 @@
                 return preparedArray;
             }
 
-            $('#jqxbargauge').jqxBarGauge({
-                width: 600,
-                height: 600,
+            $('#barGauge').jqxBarGauge({
+                width: getWidth('barGauge'),
+                height: getHeight('barGauge'),
                 title: 'Nutritional Values',
                 values: getValues(),
                 baseValue: 50,
@@ -135,14 +136,14 @@
                 var items = $("#jqxlistbox").jqxListBox('getCheckedItems');
                 var arrayOfItems = convertToArray(items);
                 $('#log').html('<strong>Summary calories: ' + getSum(arrayOfItems) + '</strong>');
-                $('#jqxbargauge').jqxBarGauge('val', arrayOfItems);
+                $('#barGauge').jqxBarGauge('val', arrayOfItems);
             });
 
         });
     </script>
 </head>
 <body class='default'>
-    <div id='jqxbargauge' style='float: left;'></div>
+    <div id='barGauge'></div>
     <div style="margin-left: 50px; margin-top: 150px; float: left;">
         <div id='jqxlistbox'></div>
         <br />

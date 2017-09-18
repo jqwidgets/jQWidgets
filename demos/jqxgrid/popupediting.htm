@@ -4,7 +4,9 @@
     <title id='Description'>In order to enter in edit mode, click any of the 'Edit' buttons. To save the changes, click the 'Save' button in the popup dialog. To cancel the changes
     click the 'Cancel' button in the popup dialog.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -64,9 +66,9 @@
             var editrow = -1;
 
             // initialize jqxGrid
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: dataAdapter,
                 pageable: true,
                 autoheight: true,
@@ -81,11 +83,11 @@
                   }, buttonclick: function (row) {
                      // open the popup window when the user clicks a button.
                      editrow = row;
-                     var offset = $("#jqxgrid").offset();
+                     var offset = $("#grid").offset();
                      $("#popupWindow").jqxWindow({ position: { x: parseInt(offset.left) + 60, y: parseInt(offset.top) + 60 } });
 
                      // get the clicked row's data and initialize the input fields.
-                     var dataRecord = $("#jqxgrid").jqxGrid('getrowdata', editrow);
+                     var dataRecord = $("#grid").jqxGrid('getrowdata', editrow);
                      $("#firstName").val(dataRecord.firstname);
                      $("#lastName").val(dataRecord.lastname);
                      $("#product").val(dataRecord.productname);
@@ -117,8 +119,8 @@
                     var row = { firstname: $("#firstName").val(), lastname: $("#lastName").val(), productname: $("#product").val(),
                         quantity: parseInt($("#quantity").jqxNumberInput('decimal')), price: parseFloat($("#price").jqxNumberInput('decimal'))
                     };
-                    var rowID = $('#jqxgrid').jqxGrid('getrowid', editrow);
-                    $('#jqxgrid').jqxGrid('updaterow', rowID, row);
+                    var rowID = $('#grid').jqxGrid('getrowid', editrow);
+                    $('#grid').jqxGrid('updaterow', rowID, row);
                     $("#popupWindow").jqxWindow('hide');
                 }
             });
@@ -127,7 +129,7 @@
 </head>
 <body class='default'>
     <div id='jqxWidget'>
-        <div id="jqxgrid"></div>
+        <div id="grid"></div>
         <div style="margin-top: 30px;">
             <div id="cellbegineditevent"></div>
             <div style="margin-top: 10px;" id="cellendeditevent"></div>

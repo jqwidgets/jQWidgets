@@ -8,12 +8,14 @@
         be achieved by setting the 'showCloseButtons' property to true. In this demo we
         demonstrate how to show close buttons in all tabs and add an additional button next
         to the tabs.</title>
-    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../../scripts/demos.js"></script>
+     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxtabs.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>	
     <script type="text/javascript">
         $(document).ready(function () {
             var addButton,
@@ -21,7 +23,7 @@
                 index = 0;
 
             // create jqxTabs.
-            $('#jqxTabs').jqxTabs({ height: 250, width: 500,  showCloseButtons: true });
+            $('#jqxTabs').jqxTabs({ height: 250, width: getWidth("Tabs"),  showCloseButtons: true });
             var index = 0;
             $('#jqxTabs').on('tabclick', function (event) {
                 if (event.args.item == $('#unorderedList').find('li').length - 1) {

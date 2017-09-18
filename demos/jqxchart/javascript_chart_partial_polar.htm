@@ -1,9 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title id='Description'>jqxChart Spider chart example</title>
+    <title id='Description'>JavaScript Partial Polar Chart example</title>
+    <meta name="description" content="This is an example of Javascript Partial Polar Chart series." />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
@@ -53,7 +56,7 @@
                 seriesGroups:
                     [
                         {
-                            spider: true,
+                            polar: true,
                             //startAngle: 90,
                             endAngle: 270,
                             radius: 120,
@@ -182,5 +185,11 @@
         
         </tr>
     </table>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of Javascript Partial Polar Chart series. The polar chart in this example has a 90 dgree segment missing.
+    </div>
 </body>
 </html>

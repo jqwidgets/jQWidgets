@@ -1,0 +1,189 @@
+﻿body {
+    font: 12px/18px Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.jqx-kanban-full-frame {
+    width:100vw;
+    height:100vh;
+}
+
+.jqx-kanban-in-frame {
+    width: 100%;
+    height: 100%;
+    box-sizing:border-box;
+}
+
+.jqx-kanban-rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.jqx-kanban-column {
+    box-sizing: border-box; 
+    border-color:black;
+    border-style:solid;
+    border-width:1px 1px 1px 0px; 
+    float:left;
+}
+
+.jqx-kanban-column-collapsed {
+    width:50px;
+}
+
+.jqx-kanban-column-first {
+    border-width:1px; 
+}
+
+.jqx-kanban-column:first-of-type {
+    border-width:1px 1px 1px 1px; 
+}
+
+.jqx-kanban-column-selected {
+  /*  background-color: blue;*/
+}
+
+.jqx-kanban-column-header-collapsed { /*vertical column invisible*/
+    display:none;
+    box-sizing: border-box;
+    height:0px;
+    width:0px;
+}
+
+.jqx-kanban-column-header-collapsed-show { /*vertical column visible*/
+    display:block !important;
+    height:100%;
+    box-sizing: border-box;
+    width:100%;
+    /*border:black solid 0px; */
+    background-color: orange; 
+    font-weight:bold;
+    /*margin:0px;*/  
+}
+
+.vertical-container { 
+    padding-top:0px;
+    padding-left:30px;
+    transform:rotate(90deg); 
+    -webkit-transform:rotate(90deg); 
+    -moz-transform:rotate(90deg); 
+    -o-transform:rotate(90deg); 
+    white-space: nowrap;
+}
+
+.vertical-container-ie8-fix { 
+    padding-bottom:15px;
+    padding-left:20px;
+    width:100px;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+
+.jqx-kanban-column-hide { /*colapsed*/
+    display:none !important;
+}
+
+.jqx-kanban-column-header {
+    border:black solid 1px; 
+    background-color: orange; 
+    font-weight:bold;
+    margin:1px;  
+    white-space: nowrap;
+}
+
+.jqx-kanban-column-container {
+    margin:1px; 
+    overflow-y: auto; 
+}
+
+.jqx-kanban-item-placeholder {
+    height: 100px;
+    border:gray dotted 1px;
+    border-radius:3px; 
+    margin:5px;
+}
+
+.jqx-kanban-item {
+   /* height:110px; */
+    margin:2px; 
+    border-radius:3px;
+    border-width:1px;
+    border-style:solid;
+    border-color:lightgray; 
+   /* background-color:transparent;*/
+}
+
+.jqx-kanban-item-selected {
+    border:gray dotted 1px;
+    box-shadow: 5px 5px 5px lightgray;
+}
+
+.jqx-kanban-item-status {
+    height:20px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color:red;
+}
+
+.jqx-kanban-item-header {
+    font-weight:bold;
+}
+
+.jqx-kanban-column-header-title {
+
+}
+
+.jqx-kanban-column-header-status {
+
+}
+
+.jqx-kanban-item-content {
+    color:black;
+  /*  height:25px;*/
+}
+
+.jqx-kanban-item-content-image {
+    width:100%;
+}
+
+.jqx-kanban-item-avatar {
+
+}
+
+.jqx-kanban-item-avatar-image {
+    width:20px;
+    width:20px;
+}
+
+.jqx-kanban-item-footer {
+    
+}
+
+.jqx-kanban-item-keyword {
+    padding:0px 4px 0px 4px;
+    background-color:lightgray;
+    margin:5px 0px 3px 3px;
+    color:white;
+    float:left;
+    border-radius:3px;
+    border:gray solid 1px;
+}
+
+.jqx-kanban-item-keyword-rtl {
+    float:right;
+    direction: rtl;
+    text-align: right;
+}
+
+.jqx-kanban-item-keyword:hover {
+    background-color:gray;
+    box-shadow: 0px 0px 3px black;
+}
+
+.jqx-kanban-item-avatar {
+    height:20px;
+}
+
+.jqx-kanban-handle {
+    cursor:move;
+}

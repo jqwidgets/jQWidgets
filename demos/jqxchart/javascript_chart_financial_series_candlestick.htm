@@ -1,13 +1,17 @@
 ﻿<!DOCTYPE html />
 <html lang="en">
 <head>
-    <title id='Description'>jqxChart Candlestick series</title>
+    <title id='Description'>JavaScript Chart Candlestick series</title>
+    <meta name="description" content="This is an example of Javascript Chart Candlestick series." />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.rangeselector.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -47,7 +51,7 @@
             // prepare jqxChart settings
             var settings = {
                 title: "S&P 500 Candlestick Chart",
-                description: "(June 2010 - November 2014)",
+                description: "(June 2017 - November 2018)",
                 enableAnimations: true,
                 animationDuration: 1500,
                 enableCrosshairs: true,
@@ -63,8 +67,8 @@
                     },
                     type: 'date',
                     valuesOnTicks: true,
-                    minValue: new Date(2014, 1, 1),
-                    maxValue: new Date(2014, 10, 1),
+                    minValue: new Date(2017, 1, 1),
+                    maxValue: new Date(2017, 10, 1),
                     rangeSelector: {
                         // Uncomment the line below to render the selector in a separate container 
                         renderTo: $('#selectorContainer'),
@@ -147,6 +151,12 @@
         <!-- you can optionally render the selecor in this container -->
         <div id='selectorContainer' style="width:800px; height:100px;">
         </div>
+    </div>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of Javascript Chart Candlestick series. The candlestick chart is used in finance and is a way to represent open, high, low and close volumes per period.  You can see how to define the range selector. The type of the seriesGroups is candlestick.  
     </div>
 </body>
 </html>

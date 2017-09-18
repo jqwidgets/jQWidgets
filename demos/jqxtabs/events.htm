@@ -4,14 +4,16 @@
     <meta name="keywords" content="jQuery Tabs, Tabs Widget, TabView" />
     <meta name="description" content="This demo demonstrates the basic jqxTabs events." />
     <title id='Description'>This demo demonstrates the basic jqxTabs events.</title>
-    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../../scripts/demos.js"></script>
+     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxtabs.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>	
     <script type="text/javascript">
         $(document).ready(function () {
             
@@ -67,12 +69,11 @@
                     title = null;
                 }
                 $('#events').jqxPanel('prepend', '<div style="margin-top: 5px;">' + eventData + '</div>');
-                $('#events').jqxPanel('value', 1000);
             }
 
             $('#events').jqxPanel({  height: '250px', width: '450px' });
             // create jqxTabs.
-            $('#jqxTabs').jqxTabs({ height: 200, width: 500,  reorder: true, enableDropAnimation: false });
+            $('#jqxTabs').jqxTabs({ height: 200, width: getWidth("Tabs"),  reorder: true, enableDropAnimation: false });
         });
     </script>
 </head>

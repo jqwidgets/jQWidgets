@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="jqxKanban, jQuery Kanban, jQWidgets, Default Functionality" />
+    <meta name="description" content="jqxKanban can be used in
+combination with many widgets like jqxTree, jqxGrid, jqxListBox and etc." />
+    <title id='Description'>Kanban widget.</title>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <link rel="stylesheet" href="jqxkanban.css" type="text/css" />
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxsortable.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxkanban.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
+
+
+    <style>
+        #kanbanBox1 {
+            width: 410px;
+            height: 300px;
+            float: left;
+            padding: 2px;
+            background-color: bisque;
+        }
+
+        #kanbanBox2 {
+            width: 450px;
+            height: 300px;
+            float: left;
+            padding: 2px;
+            background-color: beige;
+        }
+
+        #outerBox1 {
+            float: left;
+            padding: 5px;
+            margin: 2px;
+            background-color: bisque;
+        }
+
+        #outerBox2 {
+            float: left;
+            padding: 5px;
+            margin: 2px;
+            background-color: beige;
+        }
+
+        .clearing {
+            clear: both;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#kanban').jqxKanban({
+                    width: 410,
+                    height: 300,
+                    source: kanbanSource3,
+                    connectWith: "#kanban2",
+                    columns: kanbanColumns,
+                    template: template2
+            });
+
+            $('#kanban2').jqxKanban({
+                    width: 450,
+                    height: 300,
+                    source: kanbanSource4,
+                    connectWith: "#kanban",
+                    columns: kanbanColumns,
+                    template: template1
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="outerBox1">
+        <h2>Kanban 1</h2>
+        <div id="kanbanBox1">
+            <div id="kanban"></div>
+        </div>
+    </div>
+    <div id="outerBox2">
+        <h2>Kanban 2</h2>
+        <div id="kanbanBox2">
+            <div id="kanban2"></div>
+        </div>
+    </div>
+    <div class="clearing"></div>
+</body>
+</html>

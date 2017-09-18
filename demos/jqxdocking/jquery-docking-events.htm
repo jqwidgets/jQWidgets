@@ -8,17 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />  
     <title id='Description'>This demo illustrates how to handle the jqxDocking events. Drag a window and drop it anywhere to see the handled event.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../../scripts/demos.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxwindow.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdocking.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {            
-            $('#docking').jqxDocking({  orientation: 'horizontal', width: 650, mode: 'default' });
+            $('#docking').jqxDocking({ orientation: 'horizontal', width: getWidth('docking'), mode: 'default' });
             $('#docking').jqxDocking('hideAllCloseButtons');
             $('#events').jqxPanel({  height: '50px', width: '450px' });
 

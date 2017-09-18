@@ -5,8 +5,10 @@
         Additionaly, it showcases the tooltipFormatFunction callback function.</title>
     <meta name="keywords" content="bullet chart, bullet graph, BulletChart, chart, jQuery bullet graph, jQuery bullet chart, jQWidgets, jqxBulletChart, ranges, tooltip" />
     <meta name="description" content="This demo shows how to display a bullet chart with five ranges. Additionaly, it showcases the tooltipFormatFunction callback function." />
-    <link type="text/css" rel="Stylesheet" href="../../jqwidgets/styles/jqx.base.css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxtooltip.js"></script>
@@ -30,8 +32,8 @@
                 return grade;
             };
 
-            $("#jqxBulletChart").jqxBulletChart({
-                width: 700,
+            $("#bulletChart").jqxBulletChart({
+                width: getWidth('bulletChart'),
                 height: 100,
                 barSize: "50%",
                 title: "Student grade",
@@ -59,7 +61,7 @@
 <body>
     <label style="font-size: 13px; font-family: Verdana;">
         Hover over the pointer or target for more information.</label>
-    <div id="jqxBulletChart">
+    <div id="bulletChart">
     </div>
 </body>
 </html>

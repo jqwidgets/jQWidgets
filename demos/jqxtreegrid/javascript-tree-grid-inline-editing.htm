@@ -4,7 +4,9 @@
     <title id='Description'>Create, Remove and Update commands in jqxTreeGrid.</title>
     <meta name="description" content="Create, Remove and Update commands - JavaScript Tree Grid Demo | jQWidgets">     
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
@@ -65,9 +67,9 @@
                 }
             });
 
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
-                width: 850,
+               width:  getWidth("TreeGrid"),
                 source: dataAdapter, 
                 pageable: true,
                 editable: true,
@@ -156,30 +158,30 @@
                     }
 
                     var rowKey = null;
-                    $("#treeGrid").on('rowSelect', function (event) {
+                    $("#treegrid").on('rowSelect', function (event) {
                         var args = event.args;
                         rowKey = args.key;
                         updateButtons('Select');
                     });
-                    $("#treeGrid").on('rowUnselect', function (event) {
+                    $("#treegrid").on('rowUnselect', function (event) {
                         updateButtons('Unselect');
                     });
-                    $("#treeGrid").on('rowEndEdit', function (event) {
+                    $("#treegrid").on('rowEndEdit', function (event) {
                         updateButtons('End Edit');
                     });
-                    $("#treeGrid").on('rowBeginEdit', function (event) {
+                    $("#treegrid").on('rowBeginEdit', function (event) {
                         updateButtons('Edit');
                     });
                     addButton.click(function (event) {
                         if (!addButton.jqxButton('disabled')) {
-                            $("#treeGrid").jqxTreeGrid('expandRow', rowKey);
+                            $("#treegrid").jqxTreeGrid('expandRow', rowKey);
                             // add new empty row.
-                            $("#treeGrid").jqxTreeGrid('addRow', null, {}, 'first', rowKey);
+                            $("#treegrid").jqxTreeGrid('addRow', null, {}, 'first', rowKey);
                             // select the first row and clear the selection.
-                            $("#treeGrid").jqxTreeGrid('clearSelection');
-                            $("#treeGrid").jqxTreeGrid('selectRow', newRowID);
+                            $("#treegrid").jqxTreeGrid('clearSelection');
+                            $("#treegrid").jqxTreeGrid('selectRow', newRowID);
                             // edit the new row.
-                            $("#treeGrid").jqxTreeGrid('beginRowEdit', newRowID);
+                            $("#treegrid").jqxTreeGrid('beginRowEdit', newRowID);
                             updateButtons('add');
                         }
                     });
@@ -187,36 +189,36 @@
                     cancelButton.click(function (event) {
                         if (!cancelButton.jqxButton('disabled')) {
                             // cancel changes.
-                            $("#treeGrid").jqxTreeGrid('endRowEdit', rowKey, true);
+                            $("#treegrid").jqxTreeGrid('endRowEdit', rowKey, true);
                         }
                     });
 
                     updateButton.click(function (event) {
                         if (!updateButton.jqxButton('disabled')) {
                             // save changes.
-                            $("#treeGrid").jqxTreeGrid('endRowEdit', rowKey, false);
+                            $("#treegrid").jqxTreeGrid('endRowEdit', rowKey, false);
                         }
                     });
 
                     editButton.click(function () {
                         if (!editButton.jqxButton('disabled')) {
-                            $("#treeGrid").jqxTreeGrid('beginRowEdit', rowKey);
+                            $("#treegrid").jqxTreeGrid('beginRowEdit', rowKey);
                             updateButtons('edit');
 
                         }
                     });
                     deleteButton.click(function () {
                         if (!deleteButton.jqxButton('disabled')) {
-                            var selection = $("#treeGrid").jqxTreeGrid('getSelection');
+                            var selection = $("#treegrid").jqxTreeGrid('getSelection');
                             if (selection.length > 1) {
                                 var keys = new Array();
                                 for (var i = 0; i < selection.length; i++) {
-                                    keys.push($("#treeGrid").jqxTreeGrid('getKey', selection[i]));
+                                    keys.push($("#treegrid").jqxTreeGrid('getKey', selection[i]));
                                 }
-                                $("#treeGrid").jqxTreeGrid('deleteRow', keys);
+                                $("#treegrid").jqxTreeGrid('deleteRow', keys);
                             }
                             else {
-                                $("#treeGrid").jqxTreeGrid('deleteRow', rowKey);
+                                $("#treegrid").jqxTreeGrid('deleteRow', rowKey);
                             }
                             updateButtons('delete');
 
@@ -232,6 +234,6 @@
     </script>
 </head>
 <body class='default'>
-      <div id="treeGrid"></div>
+      <div id="treegrid"></div>
 </body>
 </html>

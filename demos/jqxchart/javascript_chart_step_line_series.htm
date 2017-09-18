@@ -1,12 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title id='Description'>jqxChart Step Line Series Example</title>
+    <title id='Description'>JavaScript Chart Step Line Series Example</title>
+    <meta name="description" content="This is an example of JavaScript Chart Step Line Series." />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -32,7 +36,7 @@
             // prepare jqxChart settings
             var settings = {
                 title: "Tesla Motors Stock Price",
-                description: "Closing price (June 2013 - March 2014)",
+                description: "Closing price (June 2013 - March 2017)",
                 enableAnimations: true,
                 enableCrosshairs: true,
                 crosshairsDashStyle: '1,1',
@@ -46,7 +50,7 @@
                         type: 'date',
                         baseUnit: 'month',
                         minValue: new Date(2013, 5, 1),
-                        maxValue: new Date(2014, 2, 1),
+                        maxValue: new Date(2017, 2, 1),
                         valuesOnTicks: true,
                         dataField: 'Date',
                         labels:
@@ -88,6 +92,12 @@
 </head>
 <body class='default'>
     <div id='chartContainer' style="width:850px; height:500px">
+    </div>
+    <div class="example-description">
+       <br />
+       <h2>Description</h2>
+       <br />
+       This is an example of JavaScript chart step line series. The chart is loaded from a csv file. You can see how to change the crosshairs dash style and color. The seriesGroups is set to stepline. You can also see how to format the labels setting.  
     </div>
 </body>
 </html>

@@ -4,7 +4,9 @@
     <title id='Description'>Command Column in jqxTreeGrid.</title>
     <meta name="description" content="Command Column - JavaScript Tree Grid Demo | jQWidgets">     
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
@@ -79,18 +81,18 @@
 
             this.editrow = -1;
          
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
-                width: 850,
+               width:  getWidth("TreeGrid"),
                 source: dataAdapter,
                 altRows: true,
                 autoRowHeight: false,
                 ready: function()
                 {
                     // Expand rows with ID = 1, 2 and 7
-                    $("#treeGrid").jqxTreeGrid('expandRow', 1);
-                    $("#treeGrid").jqxTreeGrid('expandRow', 2);
-                    $("#treeGrid").jqxTreeGrid('expandRow', 7);
+                    $("#treegrid").jqxTreeGrid('expandRow', 1);
+                    $("#treegrid").jqxTreeGrid('expandRow', 2);
+                    $("#treegrid").jqxTreeGrid('expandRow', 7);
                 },
                 editable: true,
                 editSettings: { saveOnPageChange: true, saveOnBlur: true, saveOnSelectionChange: false, cancelOnEsc: true, saveOnEnter: true, editOnDoubleClick: false, editOnF2: false },
@@ -120,7 +122,7 @@
 
                             if (value == "Edit") {
                                 // begin edit.
-                                $("#treeGrid").jqxTreeGrid('beginRowEdit', rowKey);
+                                $("#treegrid").jqxTreeGrid('beginRowEdit', rowKey);
                                 target.parent().find('.cancelButtons').show();
                                 target.val("Save");
                             }
@@ -128,7 +130,7 @@
                                 // end edit and save changes.
                                 target.parent().find('.cancelButtons').hide();
                                 target.val("Edit");
-                                $("#treeGrid").jqxTreeGrid('endRowEdit', rowKey);
+                                $("#treegrid").jqxTreeGrid('endRowEdit', rowKey);
                             }
                         }
 
@@ -139,7 +141,7 @@
                         $(".cancelButtons").click(function (event) {
                             // end edit and cancel changes.
                             var rowKey = event.target.getAttribute('data-row');
-                            $("#treeGrid").jqxTreeGrid('endRowEdit', rowKey, true);
+                            $("#treegrid").jqxTreeGrid('endRowEdit', rowKey, true);
                         });
                     }
                 },
@@ -162,7 +164,7 @@
     </script>
 </head>
 <body class='default'>
-    <div id="treeGrid">
+    <div id="treegrid">
     </div>
 </body>
 </html>

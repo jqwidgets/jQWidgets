@@ -3,14 +3,16 @@
 <head>
     <title id='Description'>Menu Keyboard Navigation</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxmenu.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             // Create a jqxMenu
-            $("#jqxMenu").jqxMenu({ width: 700, height: 30, showTopLevelArrows: true, keyboardNavigation: true });
+            $("#jqxMenu").jqxMenu({ width: 500, height: 30, showTopLevelArrows: true, keyboardNavigation: true });
             $("#jqxMenu").on('itemclick', function (event) {
                 $("#log").html("Clicked: " + $(event.args).text());
             });

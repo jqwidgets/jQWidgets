@@ -6,8 +6,10 @@
     <title id='Description'>The jqxMenu allows you to customize its items and their sub menus in order to display multiple columns. Click the 'Products' item to display a sub menu with 2 columns.
     </title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.darkblue.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxmenu.js"></script>
@@ -38,7 +40,7 @@
                 }
 
                 // Create a jqxMenu
-                $("#jqxMenu").jqxMenu({ width: '650', height: '30px', autoOpen: false, autoCloseOnMouseLeave: false, showTopLevelArrows: true});
+                $("#jqxMenu").jqxMenu({ width:500, height: '30px', autoOpen: false, autoCloseOnMouseLeave: false, showTopLevelArrows: true});
                 $("#jqxMenu").css('visibility', 'visible');
                 $(".buyonline").jqxLinkButton({ width: 150, height: 25});
                 $(".jqx-menu-search").jqxButton({ width: 60, height: 18});

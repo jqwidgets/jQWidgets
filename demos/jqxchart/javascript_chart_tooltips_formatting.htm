@@ -1,13 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title id='Description'>jqxChart Tooltips Formatting Example</title>
+    <title id='Description'>JavaScript Chart Tooltips Formatting Example</title>
+    <meta name="description" content="This is an example of JavaScript chart tooltips formatting." />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             // prepare the data
@@ -36,7 +40,7 @@
 
             // prepare jqxChart settings
             var settings = {
-                title: "U.S. Stock Market Index Performance (2014)",
+                title: "U.S. Stock Market Index Performance (2018)",
                 description: "NASDAQ Composite compared to S&P 500",
                 enableAnimations: true,
                 showLegend: true,
@@ -48,8 +52,8 @@
                 {
                     type: 'date',
                     baseUnit: 'month',
-                    minValue: '01-01-2014',
-                    maxValue: '01-01-2015',
+                    minValue: '01-01-2017',
+                    maxValue: '01-01-2018',
                     dataField: 'Date',
                     valuesOnTicks: true,
                     formatFunction: function (value) {
@@ -91,6 +95,12 @@
 </head>
 <body class='default'>
     <div id='chartContainer' style="width:850px; height:500px">
+    </div>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of JavaScript chart tooltips formatting. The formatting is done with the toolTipCustomFormatFn function.  
     </div>
 </body>
 </html>

@@ -5,8 +5,10 @@
         API.</title>
     <meta name="keywords" content="API, bullet chart, bullet graph, BulletChart, chart, event, jQuery bullet graph, jQuery bullet chart, jQWidgets, jqxBulletChart, method, options, properties, property, settings" />
     <meta name="description" content="This demo shows some of the functionalities available in jqxBulletChart's API." />
-    <link type="text/css" rel="Stylesheet" href="../../jqwidgets/styles/jqx.base.css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxtooltip.js"></script>
@@ -23,26 +25,26 @@
     <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#jqxBulletChart").jqxBulletChart({
-                width: 500,
+            $("#bulletChart").jqxBulletChart({
+                width: getWidth('bulletChart'),
                 height: 80,
                 barSize: "40%",
-                title: "Revenue 2014 YTD",
+                title: "Revenue 2018 YTD",
                 description: "(U.S. $ in thousands)",
                 ranges: [
                     { startValue: 0, endValue: 200, color: "#000000", opacity: 0.5 },
                     { startValue: 200, endValue: 250, color: "#000000", opacity: 0.3 },
                     { startValue: 250, endValue: 300, color: "#000000", opacity: 0.1 }
                 ],
-                pointer: { value: 270, label: "Revenue 2014 YTD", size: "25%", color: "" },
-                target: { value: 260, label: "Revenue 2013 YTD", size: 4, color: "" },
+                pointer: { value: 270, label: "Revenue 2018 YTD", size: "25%", color: "" },
+                target: { value: 260, label: "Revenue 2017 YTD", size: 4, color: "" },
                 ticks: { position: "both", interval: 50, size: 10 },
                 labelsFormat: "c",
                 animationDuration: 0,
                 showTooltip: true
             });
 
-            $("#settingsExpander").jqxExpander({ width: 230, height: 560, toggleMode: "none", showArrow: false });
+            $("#settingsExpander").jqxExpander({ width: 320, height: 600, toggleMode: "none", showArrow: false });
 
             $("#showLabelsCheckbox").jqxCheckBox({ checked: true });
             $("#nearRadio, #farRadio").jqxRadioButton({ checked: false, groupName: "position" });
@@ -60,49 +62,49 @@
                 if (checked) {
                     $("#nearRadio, #farRadio, #bothRadio").jqxRadioButton("enable");
                     if ($("#nearRadio").jqxRadioButton("checked") == true) {
-                        $("#jqxBulletChart").jqxBulletChart({ ticks: { position: "near"} });
+                        $("#bulletChart").jqxBulletChart({ ticks: { position: "near"} });
                     } else if ($("#farRadio").jqxRadioButton("checked") == true) {
-                        $("#jqxBulletChart").jqxBulletChart({ ticks: { position: "far"} });
+                        $("#bulletChart").jqxBulletChart({ ticks: { position: "far"} });
                     } else {
-                        $("#jqxBulletChart").jqxBulletChart({ ticks: { position: "both"} });
+                        $("#bulletChart").jqxBulletChart({ ticks: { position: "both"} });
                     }
                 } else {
-                    $("#jqxBulletChart").jqxBulletChart({ ticks: { position: "none"} });
+                    $("#bulletChart").jqxBulletChart({ ticks: { position: "none"} });
                     $("#nearRadio, #farRadio, #bothRadio").jqxRadioButton("disable");
                 }
             });
             $("#nearRadio").on("checked", function (event) {
-                $("#jqxBulletChart").jqxBulletChart({ ticks: { position: "near"} });
+                $("#bulletChart").jqxBulletChart({ ticks: { position: "near"} });
             });
             $("#farRadio").on("checked", function (event) {
-                $("#jqxBulletChart").jqxBulletChart({ ticks: { position: "far"} });
+                $("#bulletChart").jqxBulletChart({ ticks: { position: "far"} });
             });
             $("#bothRadio").on("checked", function (event) {
-                $("#jqxBulletChart").jqxBulletChart({ ticks: { position: "both"} });
+                $("#bulletChart").jqxBulletChart({ ticks: { position: "both"} });
             });
 
             $("#currencyRadio").on("checked", function (event) {
-                $("#jqxBulletChart").jqxBulletChart({ labelsFormat: "c" });
+                $("#bulletChart").jqxBulletChart({ labelsFormat: "c" });
             });
             $("#percentRadio").on("checked", function (event) {
-                $("#jqxBulletChart").jqxBulletChart({ labelsFormat: "p" });
+                $("#bulletChart").jqxBulletChart({ labelsFormat: "p" });
             });
             $("#noneRadio").on("checked", function (event) {
-                $("#jqxBulletChart").jqxBulletChart({ labelsFormat: null });
+                $("#bulletChart").jqxBulletChart({ labelsFormat: null });
             });
 
             $("#enableAnimationCheckbox").on("change", function (event) {
                 var checked = event.args.checked;
                 if (checked) {
-                    $("#jqxBulletChart").jqxBulletChart({ animationDuration: 400 });
+                    $("#bulletChart").jqxBulletChart({ animationDuration: 400 });
                 } else {
-                    $("#jqxBulletChart").jqxBulletChart({ animationDuration: 0 });
+                    $("#bulletChart").jqxBulletChart({ animationDuration: 0 });
                 }
             });
 
             $("#valueSlider").on("change", function (event) {
                 var value = event.args.value;
-                $("#jqxBulletChart").jqxBulletChart("val", value);
+                $("#bulletChart").jqxBulletChart("val", value);
             });
 
             $("#pointerDropDownList").on("change", function (event) {
@@ -113,7 +115,7 @@
                 } else {
                     newColor = "";
                 }
-                $("#jqxBulletChart").jqxBulletChart({ pointer: { color: newColor} });
+                $("#bulletChart").jqxBulletChart({ pointer: { color: newColor} });
             });
 
             $("#targetDropDownList").on("change", function (event) {
@@ -124,32 +126,32 @@
                 } else {
                     newColor = "";
                 }
-                $("#jqxBulletChart").jqxBulletChart({ target: { color: newColor} });
+                $("#bulletChart").jqxBulletChart({ target: { color: newColor} });
             });
 
             $("#disabledCheckbox").on("change", function (event) {
                 var checked = event.args.checked;
                 if (checked) {
-                    $("#jqxBulletChart").jqxBulletChart({ disabled: true });
+                    $("#bulletChart").jqxBulletChart({ disabled: true });
                 } else {
-                    $("#jqxBulletChart").jqxBulletChart({ disabled: false });
+                    $("#bulletChart").jqxBulletChart({ disabled: false });
                 }
             });
             $("#rtlCheckbox").on("change", function (event) {
                 var checked = event.args.checked;
                 if (checked) {
-                    $("#jqxBulletChart").jqxBulletChart({ rtl: true });
+                    $("#bulletChart").jqxBulletChart({ rtl: true });
                 } else {
-                    $("#jqxBulletChart").jqxBulletChart({ rtl: false });
+                    $("#bulletChart").jqxBulletChart({ rtl: false });
                 }
             });
         });
     </script>
 </head>
 <body>
-    <div id="jqxBulletChart" style="float: left; margin-left: 10px;">
+    <div id="bulletChart" style="margin-left: 10px;">
     </div>
-    <div id="settingsExpander" style="float: left; margin-left: 60px;">
+    <div id="settingsExpander" style="margin-top: 60px;">
         <div>
             jqxBulletChart settings</div>
         <div>

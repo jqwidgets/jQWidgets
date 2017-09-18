@@ -4,7 +4,9 @@
     <title id="Description">Column and Cells Alignment in jqxTreeGrid.</title>
     <meta name="description" content="Column and Cells Alignment - JavaScript Tree Grid Demo | jQWidgets"> 
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -62,9 +64,9 @@
             };
             var dataAdapter = new $.jqx.dataAdapter(source);
             // create Tree Grid
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
-                width: 850,
+               width:  getWidth("TreeGrid"),
                 source: dataAdapter,
                 sortable: true,
                 columns: [
@@ -80,22 +82,22 @@
                 var index = event.args.index;
                 switch (index) {
                     case 0:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'FirstName', 'align', 'left');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'LastName', 'align', 'left');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'Title', 'align', 'left');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'align', 'left');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'FirstName', 'align', 'left');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'LastName', 'align', 'left');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'Title', 'align', 'left');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'align', 'left');
                         break;
                     case 1:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'FirstName', 'align', 'center');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'LastName', 'align', 'center');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'Title', 'align', 'center');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'align', 'center');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'FirstName', 'align', 'center');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'LastName', 'align', 'center');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'Title', 'align', 'center');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'align', 'center');
                         break;
                     case 2:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'FirstName', 'align', 'right');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'LastName', 'align', 'right');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'Title', 'align', 'right');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'align', 'right');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'FirstName', 'align', 'right');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'LastName', 'align', 'right');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'Title', 'align', 'right');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'align', 'right');
                         break;
                 }
             });
@@ -104,19 +106,19 @@
                 var index = event.args.index;
                 switch (index) {
                     case 0:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'LastName', 'cellsAlign', 'left');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'Title', 'cellsAlign', 'left');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'cellsAlign', 'left');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'LastName', 'cellsAlign', 'left');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'Title', 'cellsAlign', 'left');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'cellsAlign', 'left');
                         break;
                     case 1:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'LastName', 'cellsAlign', 'center');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'Title', 'cellsAlign', 'center');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'cellsAlign', 'center');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'LastName', 'cellsAlign', 'center');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'Title', 'cellsAlign', 'center');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'cellsAlign', 'center');
                         break;
                     case 2:
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'LastName', 'cellsAlign', 'right');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'Title', 'cellsAlign', 'right');
-                        $("#treeGrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'cellsAlign', 'right');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'LastName', 'cellsAlign', 'right');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'Title', 'cellsAlign', 'right');
+                        $("#treegrid").jqxTreeGrid('setColumnProperty', 'BirthDate', 'cellsAlign', 'right');
                         break;
                 }
             });
@@ -124,7 +126,7 @@
     </script>
 </head>
 <body class='default'>
-    <div id="treeGrid">
+    <div id="treegrid">
     </div>
     <div style="font-size: 13px; font-family: Verdana; width: 600px; margin-top: 10px;">
         <div style="float: left; width: 300px;">

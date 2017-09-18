@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="jqxDragDrop, jQuery Draggable, jQWidgets, Default Functionality" />
+    <meta name="description" content="jqxDragDrop is a plugin which will make any DOM element draggable. It can be used in
+combination with many widgets like jqxTree, jqxGrid, jqxListBox and etc." />
+    <title id='Description'>Kanban widget.</title>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <link rel="stylesheet" href="jqxkanban.css" type="text/css" />
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxsortable.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxkanban.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
+
+    <style>
+        #kanbanBox1 {
+            width: 895px;
+            height: 500px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#kanban').jqxKanban({
+                width: getWidth('kanban'),
+                height: 500,
+                    source: kanbanSource,
+                    columns: kanbanColumns,
+                    template: "<div class='jqx-kanban-item' id='kanban-item_0'>"
+                                    + "<div class='jqx-kanban-item-status jqx-kanban-handle'></div>"
+                                    + "<div class='jqx-kanban-item-header'></div>"
+                                    + "<div class='jqx-kanban-item-footer'></div>"
+                            + "</div>"
+            });
+        });
+    </script>
+</head>
+<body>
+        <div id="kanbanBox1">
+            <div id="kanban"></div>
+        </div>
+</body>
+</html>

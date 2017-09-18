@@ -3,8 +3,10 @@
 <head>
     <title id="Description">Data Filtering API.</title>
     <meta name="description" content="Data Filtering API - JavaScript Tree Grid Demo | jQWidgets">     
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -47,13 +49,13 @@
 
             var dataAdapter = new $.jqx.dataAdapter(source);
             // create Tree Grid
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
                 width: 600,
                 source: dataAdapter,
                 ready: function () {
                     // expand row with 'EmployeeKey = 2'
-                    $("#treeGrid").jqxTreeGrid('expandRow', 2);
+                    $("#treegrid").jqxTreeGrid('expandRow', 2);
                 },
                 columns: [
                   { text: 'First Name', dataField: 'FirstName', minWidth: 100, width: 200 },
@@ -76,7 +78,7 @@
 
             // updates the listbox with unique records depending on the selected column.
             var updateFilterBox = function (dataField) {
-                $("#treeGrid").jqxTreeGrid('clearFilters');
+                $("#treegrid").jqxTreeGrid('clearFilters');
                 var filterBoxAdapter = new $.jqx.dataAdapter(source,
                 {
                     uniqueDataFields: [dataField],
@@ -134,7 +136,7 @@
 
             // builds and applies the filter.
             var applyFilter = function (dataField) {
-                $("#treeGrid").jqxTreeGrid('clearFilters');
+                $("#treegrid").jqxTreeGrid('clearFilters');
                 var filtertype = 'stringfilter';
          
                 // create a new group of filters.
@@ -163,14 +165,14 @@
                 }
 
                 // add the filters.
-                $("#treeGrid").jqxTreeGrid('addFilter', dataField, filtergroup);
+                $("#treegrid").jqxTreeGrid('addFilter', dataField, filtergroup);
                 // apply the filters.
-                $("#treeGrid").jqxTreeGrid('applyFilters');
+                $("#treegrid").jqxTreeGrid('applyFilters');
             }
 
             // clears the filter.
             $("#clearfilter").click(function () {
-                $("#treeGrid").jqxTreeGrid('clearFilters');
+                $("#treegrid").jqxTreeGrid('clearFilters');
             });
 
             // applies the filter.
@@ -192,7 +194,7 @@
                 <input type="button" id="clearfilter" value="Clear Filter" />
             </div>
         </div>
-        <div style="margin-left: 20px; float: left" id="treeGrid">
+        <div style="margin-left: 20px; float: left" id="treegrid">
         </div>
     </div>
 </body>

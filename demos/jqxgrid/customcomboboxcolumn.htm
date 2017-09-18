@@ -3,7 +3,9 @@
 <head>
     <title id='Description'>In this sample is illustrated how to create a Grid with column which displays values from foreign data source. The ComboBox editor associated to the column is populated from the foreign data source.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -147,7 +149,7 @@
             };
             var gridAdapter = new $.jqx.dataAdapter(gridSource);
 
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
                 width: 600,
                 source: gridAdapter,
@@ -164,16 +166,16 @@
                 ]
             });
 
-            $("#jqxgrid").on('cellselect', function (event) {
-                var column = $("#jqxgrid").jqxGrid('getcolumn', event.args.datafield);
-                var value = $("#jqxgrid").jqxGrid('getcellvalue', event.args.rowindex, column.datafield);
-                var displayValue = $("#jqxgrid").jqxGrid('getcellvalue', event.args.rowindex, column.displayfield);
+            $("#grid").on('cellselect', function (event) {
+                var column = $("#grid").jqxGrid('getcolumn', event.args.datafield);
+                var value = $("#grid").jqxGrid('getcellvalue', event.args.rowindex, column.datafield);
+                var displayValue = $("#grid").jqxGrid('getcellvalue', event.args.rowindex, column.displayfield);
 
                 $("#eventLog").html("<div>Selected Cell<br/>Row: " + event.args.rowindex + ", Column: " + column.text + ", Value: " + value + ", Label: " + displayValue + "</div>");
             });
 
-            $("#jqxgrid").on('cellendedit', function (event) {
-                var column = $("#jqxgrid").jqxGrid('getcolumn', event.args.datafield);
+            $("#grid").on('cellendedit', function (event) {
+                var column = $("#grid").jqxGrid('getcolumn', event.args.datafield);
                 if (column.displayfield != column.datafield) {
                     $("#eventLog").html("<div>Cell Edited:<br/>Index: " + event.args.rowindex + ", Column: " + column.text + "<br/>Value: " + event.args.value.value + ", Label: " + event.args.value.label
                         + "<br/>Old Value: " + event.args.oldvalue.value + ", Old Label: " + event.args.oldvalue.label + "</div>"
@@ -190,7 +192,7 @@
 </head>
 <body class='default'>
     <div id='jqxWidget'>
-        <div id="jqxgrid">
+        <div id="grid">
         </div>
         <div style="font-size: 13px; margin-top: 20px; font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;" id="eventLog"></div>
     </div>

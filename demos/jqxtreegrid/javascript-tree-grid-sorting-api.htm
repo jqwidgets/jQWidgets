@@ -3,8 +3,10 @@
 <head>
     <title id="Description">Data Sorting API.</title>
     <meta name="description" content="Data Sorting API - JavaScript Tree Grid Demo | jQWidgets">     
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -51,13 +53,13 @@
                   { text: 'Country', dataField: 'Country' }
             ];
 
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
                 width: 550,
                 source: dataAdapter,
                 sortable: true,
                 ready: function () {
-                    $("#treeGrid").jqxTreeGrid('expandRow', '2');
+                    $("#treegrid").jqxTreeGrid('expandRow', '2');
                 },
                 columns: columns
             });
@@ -68,16 +70,16 @@
             $("#sort").click(function () {
                 var columnIndex = $("#columnName").jqxDropDownList('selectedIndex');
                 var sortOrder = $("#sortOrder").jqxDropDownList('selectedIndex') == 0 ? 'asc' : 'desc';
-                $("#treeGrid").jqxTreeGrid('sortBy', columns[columnIndex].dataField, sortOrder);
+                $("#treegrid").jqxTreeGrid('sortBy', columns[columnIndex].dataField, sortOrder);
             });
             $("#clear").click(function () {
-                $("#treeGrid").jqxTreeGrid('sortBy', null);
+                $("#treegrid").jqxTreeGrid('sortBy', null);
             });
         });
     </script>
 </head>
 <body class='default'>
-    <div style="float: left;" id="treeGrid">
+    <div style="float: left;" id="treegrid">
     </div>
     <div style="float: left; margin-left: 10px;">
         <table>

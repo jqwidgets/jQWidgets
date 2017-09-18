@@ -4,7 +4,7 @@
     <title id='Description'>Server Paging with jqxDataTable</title>
     <meta name="description" content="This sample demonstrates how we can bind jQWidgets DataTable widget to JSONP data and implement Server Paging">
   <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -54,7 +54,7 @@
 
             $("#dataTable").jqxDataTable(
             {
-                width: 850,
+                width: getWidth("dataTable"),
                 pageable: true,
                 pagerButtonsCount: 10,
                 serverProcessing: true,

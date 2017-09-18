@@ -31,12 +31,13 @@
         }
     },
     "dependencies": {
-        "ngc-webpack": "3.2.2",
         "angular2-template-loader": "0.6.2",
         "awesome-typescript-loader": "3.2.2",
         "core-js": "2.4.1",
         "css-loader": "0.28.4",
         "img-loader": "^2.0.0",
+        "increase-memory-limit": "^1.0.3",
+        "ngc-webpack": "3.2.2",
         "raw-loader": "0.5.1",
         "rxjs": "^5.4.2",
         "style-loader": "0.18.2",

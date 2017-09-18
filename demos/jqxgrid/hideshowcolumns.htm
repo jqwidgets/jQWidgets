@@ -3,7 +3,9 @@
 <head>
     <title id='Description'>This example illustrates how to show and hide Grid columns.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
@@ -35,7 +37,7 @@
             };
             var dataAdapter = new $.jqx.dataAdapter(source);
 
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
                 width: 600,
                 source: dataAdapter, 
@@ -56,22 +58,20 @@
 
             $("#jqxlistbox").jqxListBox({ source: listSource, width: 200, height: 200,  checkboxes: true });
             $("#jqxlistbox").on('checkChange', function (event) {
-                $("#jqxgrid").jqxGrid('beginupdate');
+                $("#grid").jqxGrid('beginupdate');
                 if (event.args.checked) {
-                    $("#jqxgrid").jqxGrid('showcolumn', event.args.value);
+                    $("#grid").jqxGrid('showcolumn', event.args.value);
                 }
                 else {
-                    $("#jqxgrid").jqxGrid('hidecolumn', event.args.value);
+                    $("#grid").jqxGrid('hidecolumn', event.args.value);
                 }
-                $("#jqxgrid").jqxGrid('endupdate');
+                $("#grid").jqxGrid('endupdate');
             });
         });
     </script>
 </head>
-<body class='default'>
-    <div id='jqxWidget'>
-        <div style="float: left;" id="jqxlistbox"></div>
-        <div style="margin-left: 20px; float: left;" id="jqxgrid"></div>
-    </div>
+<body class='default'>	
+        <div id="grid"></div>
+        <div style="margin-top: 20px" id="jqxlistbox"></div>	
 </body>
 </html>

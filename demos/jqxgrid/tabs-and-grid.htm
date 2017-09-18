@@ -1,10 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title id='Description'>This demo shows how to display jqxGrid in jqxTabs.
+    <title id='Description'>This demo shows how to display grid in tabs.
     </title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxtabs.js"></script>
@@ -34,7 +36,7 @@
 
                 var dataAdapter = new $.jqx.dataAdapter(source, { async: false, loadError: function (xhr, status, error) { alert('Error loading "' + source.url + '" : ' + error); } });
 
-                $("#jqxGrid").jqxGrid(
+                $("#grid").grid(
                 {
                     width: '100%',
                     height: '100%',
@@ -66,7 +68,7 @@
                 };
                 var dataAdapter = new $.jqx.dataAdapter(source);
 
-                $("#jqxGrid2").jqxGrid(
+                $("#grid2").grid(
                 {
                     width: '100%',
                     height: '100%',
@@ -93,12 +95,12 @@
                 }
             }
 
-            $('#jqxTabs').jqxTabs({ width: 600, height: 560,  initTabContent: initWidgets });
+            $('#tabs').tabs({ width: getWidth('Tabs'), height: 560,  initTabContent: initWidgets });
         });
     </script>
 </head>
 <body class='default'>
-    <div id='jqxTabs'>
+    <div id='tabs'>
         <ul>
             <li style="margin-left: 30px;">
                 Grid 1
@@ -108,11 +110,11 @@
             </li>
         </ul>
         <div style="overflow: hidden;">
-            <div style="border:none;" id="jqxGrid">
+            <div style="border:none;" id="grid">
             </div>
         </div>
         <div style="overflow: hidden;">
-            <div style="border:none;" id="jqxGrid2"></div>
+            <div style="border:none;" id="grid2"></div>
         </div>
     </div>
 </body>

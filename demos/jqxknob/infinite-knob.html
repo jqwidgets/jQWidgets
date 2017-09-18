@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>jqxKnob - Test</title>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxknob.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxnumberinput.js"></script>
+
+    <style type="text/css">
+        #container {
+            position: relative;
+        }
+        .inputField {
+            left: 110px;
+            top: 163px;
+            position: absolute;
+            background: transparent;
+            border: none;
+        }
+        .inputField .jqx-input-content {
+            background: transparent;
+            font-size: 50px;
+
+        }
+    </style>
+    <script type="text/javascript">
+        var min = 0;
+        var max = 100;
+        $(document).ready(function () {
+            $('#container').jqxKnob({
+                value: 60,
+                min: 0,
+                max: 100,
+                startAngle: 150,
+                endAngle: 510,
+                snapToStep: true,
+                rotation: 'clockwise',
+                background: { color: '#D6E4F6'},
+                marks: {
+                    colorRemaining: { color: 'grey', border: 'grey' },
+                    colorProgress: { color: 'blue', border: 'grey'},
+                    style: 'line',
+                    offset: '71%',
+                    thickness: 3,
+                    size: '6%',
+                    majorSize: '9%',
+                    majorInterval: 10,
+                    minorInterval: 2
+                },
+                labels: {
+                    offset: '88%',
+                    type: 'digits',
+                    step: 10,
+                    style: 'font-size: ' + 20 + 'px; stroke: ' + 'blue' + ';',
+                    visible: true
+                },
+                progressBar: {
+                    color: { color: '#4080B0', border: '#6F9BB9' },
+                    size: '9%',
+                    offset: '60%',
+                    background: { color: '#FFC864', border: '#6F9BB9'}
+                },
+                spinner: {
+                    color: { color: '#96C3E1', border: '#96C3E1' },
+                    innerRadius: '50%', // specifies the inner Radius of the dial
+                    outerRadius: '60%', // specifies the outer Radius of the dial
+                    marks: {
+                        rotate: false,
+                        color: 'white',
+                        size: '8%',
+                        steps: 12,
+                        thickness: 2,
+                        offset: '51%'
+                    }
+                },
+                pointer: { style: 'circle', color: { color: '#99CDFF', border: 'grey' }, size: '5%', offset: '45%', thickness: 20}
+            });
+
+            var lastValue;
+            var newValue = 0;
+            $('#container').on('change', function (event){
+                lastValue = newValue;
+                newValue = event.args.value;
+                if (newValue >= min && newValue <= min + 10 && lastValue <= max && lastValue >= max - 10){
+                    min = max;
+                    max += 100;
+                    $('#container').jqxKnob({value: max, max: max, min: min});
+                } else if (newValue >= max - 10 && newValue <= max && lastValue >= min && lastValue <= min + 10){
+                    max = min;
+                    min -= 100;
+                    $('#container').jqxKnob({value: min, min: min, max: max});
+                }
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+<div id='container' style="width: 600px; height: 600px;">
+</div>
+</body>
+</html>

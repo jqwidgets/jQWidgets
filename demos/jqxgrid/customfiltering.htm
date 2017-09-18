@@ -5,7 +5,9 @@
     </title>
 	<meta name="description" content="jQuery Grid data filtering" /> 	
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -41,7 +43,7 @@
             var dataAdapter = new $.jqx.dataAdapter(source);
 
             // create grid.
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
                 width: 600,
                 source: dataAdapter,
@@ -127,7 +129,7 @@
 
             // builds and applies the filter.
             var applyFilter = function (datafield) {
-                $("#jqxgrid").jqxGrid('clearfilters');
+                $("#grid").jqxGrid('clearfilters');
                 var filtertype = 'stringfilter';
                 if (datafield == 'date') filtertype = 'datefilter';
                 if (datafield == 'price' || datafield == 'quantity') filtertype = 'numericfilter';
@@ -152,14 +154,14 @@
                 }
 
                 // add the filters.
-                $("#jqxgrid").jqxGrid('addfilter', datafield, filtergroup);
+                $("#grid").jqxGrid('addfilter', datafield, filtergroup);
                 // apply the filters.
-                $("#jqxgrid").jqxGrid('applyfilters');
+                $("#grid").jqxGrid('applyfilters');
             }
 
             // clears the filter.
             $("#clearfilter").click(function () {
-                $("#jqxgrid").jqxGrid('clearfilters');
+                $("#grid").jqxGrid('clearfilters');
             });
 
             // applies the filter.
@@ -171,8 +173,9 @@
     </script>
 </head>
 <body class='default'>
-    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
-        <div style="float: left">
+        <div  id="grid">
+        </div>
+	        <div style="margin-top: 20px;">
             <div>Choose Column:</div>
             <div id="columnchooser"></div>
             <div style="margin-top: 10px;" id="filterbox"></div>
@@ -180,9 +183,6 @@
                 <input type="button" id="applyfilter" value="Apply Filter" />
                 <input type="button" id="clearfilter" value="Clear Filter" />
             </div>
-        </div>
-        <div style="margin-left: 20px; float: left" id="jqxgrid">
-        </div>
-    </div>
+        </div>	
 </body>
 </html>

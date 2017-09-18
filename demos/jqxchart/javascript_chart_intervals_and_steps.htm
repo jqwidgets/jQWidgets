@@ -1,9 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title id='Description'>jqxChart unit intervals, grid lines, tick marks and label steps example</title>
+    <title id='Description'>JavaScript Chart unit intervals, grid lines, tick marks and label steps example</title>
+    <meta name="description" content="This is an example of javascript chart unit intervals, grid lines, tick marks and label steps." />
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
@@ -20,7 +23,7 @@
             // prepare jqxChart settings
             var settings = {
                 title: "jqxChart unit interval and steps example",
-                description: "Change the unitInterval and step properties to see their effect",
+                description: " ",
                 enableAnimations: false,
                 showLegend: true,
                 enableCrosshairs: false,
@@ -125,7 +128,7 @@
                 chartInstance.refresh();
             });
 
-            $("#btnValueAxisValuesBetweenTicks").jqxCheckBox({ width: 120, height: 25, hasThreeStates: false, checked: false });
+            $("#btnValueAxisValuesBetweenTicks").jqxCheckBox({ height: 25, hasThreeStates: false, checked: false });
             $("#btnValueAxisValuesBetweenTicks").on('change', function (event) {
                 chartInstance.valueAxis.valuesOnTicks = !event.args.checked;
                 chartInstance.refresh();
@@ -184,5 +187,11 @@
     </td>
     </tr>
     </table>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of javascript chart unit intervals, grid lines, tick marks and label steps. You have to change the unit interval and step properties to see their effect. 
+    </div>
 </body>
 </html>

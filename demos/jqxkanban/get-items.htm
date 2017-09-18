@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="jqxKanban, jQuery Kanban, jQWidgets, Default Functionality" />
+    <meta name="description" content="jqxKanban can be used in
+combination with many widgets like jqxTree, jqxGrid, jqxListBox and etc." />
+    <title id='Description'>Kanban widget.</title>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <link rel="stylesheet" href="jqxkanban.css" type="text/css" />
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxsortable.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxkanban.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#kanban').jqxKanban({
+                width: getWidth('kanban'),
+                height: 200,
+                source: kanbanSource,
+                columns: kanbanColumns,
+                template: template1
+            });
+
+            $("#getItem").jqxButton({ width: 222, height: 25 });
+            $("#getItems").jqxButton({ width: 222, height: 25 });
+
+            $("#getItem").on('click', function () {
+                var message = "";
+                var item = $('#kanban').jqxKanban("getItem");
+                if (item != null) {
+                    message = "Content of the selected Kanban item: \n\nId: " + item.id
+                                    + "\nStatus: " + item.status
+                                    + "\nText: " + item.text
+                                    + "\nImage Path: " + item.image
+                                    + "\nTags: " + item.tags
+                                    + "\nColor: " + item.color;
+                    alert(message);
+                } else {
+                    message = "Please first select an item.";
+                    alert(message);
+                }
+            });
+
+            $("#getItems").on('click', function () {
+                var message = "";
+                var items = $('#kanban').jqxKanban("getItems");
+                if (items.length > 0) {
+                    message = "Kanban export: \n\n" + JSON.stringify(items);
+                    alert(message);
+                } else {
+                    message = "Empty Kanban";
+                    alert(message);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="kanban"></div>
+    <button id="getItem">Get selected item</button>
+    <button id="getItems">Export Kanban</button>
+</body>
+</html>

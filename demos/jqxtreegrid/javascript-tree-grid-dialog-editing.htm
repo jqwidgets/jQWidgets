@@ -4,7 +4,9 @@
     <title id='Description'>Tree Grid with Edit Dialog. Double-Click on a Row to Open the Edit dialog.</title>
     <meta name="description" content="This sample demonstrates how we can create Edit Dialog for editing rows in jQWidgets Tree Grid widget.">
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
@@ -50,16 +52,16 @@
             };
             var dataAdapter = new $.jqx.dataAdapter(source);
 
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
-                width: 850,
+               width:  getWidth("TreeGrid"),
                 source: dataAdapter,
                 sortable: true,
                 altRows: true,
                 ready: function () {
                     // called when the jqxTreeGrid is loaded.  
-                    $("#treeGrid").jqxTreeGrid('expandRow', 2);
-                    $("#treeGrid").jqxTreeGrid('expandRow', 5);
+                    $("#treegrid").jqxTreeGrid('expandRow', 2);
+                    $("#treegrid").jqxTreeGrid('expandRow', 5);
                     $("#EmployeeID").jqxInput({ disabled: true, width: 150, height: 30 });
                     $("#Title").jqxInput({ width: 150, height: 30 });
                     var countries = new Array("Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic", "Congo, Republic of the", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Greenland", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Mongolia", "Morocco", "Monaco", "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Samoa", "San Marino", " Sao Tome", "Saudi Arabia", "Senegal", "Serbia and Montenegro", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe");
@@ -77,16 +79,16 @@
                             EmployeeID: $("#EmployeeID").val(), Title: $("#Title").val(),
                             Country: $("#Country").val(), BirthDate: $("#BirthDate").val()
                         };
-                        $("#treeGrid").jqxTreeGrid('updateRow', editRow, rowData);
+                        $("#treegrid").jqxTreeGrid('updateRow', editRow, rowData);
                     });
                     $("#dialog").on('close', function () {
                         // enable jqxTreeGrid.
-                        $("#treeGrid").jqxTreeGrid({ disabled: false });
+                        $("#treegrid").jqxTreeGrid({ disabled: false });
                     });
                     $("#dialog").jqxWindow({
                         resizable: false,
                         width: 270,
-                        position: { left: $("#treeGrid").offset().left + 75, top: $("#treeGrid").offset().top + 35 },
+                        position: { left: $("#treegrid").offset().left + 75, top: $("#treegrid").offset().top + 35 },
                         autoOpen: false
                     });
                     $("#dialog").css('visibility', 'visible');
@@ -98,7 +100,7 @@
                   { text: 'Bith Date', dataField: 'BirthDate', cellsAlign: 'right', align: 'right', cellsFormat: 'd' }
                 ]
             });
-            $("#treeGrid").on('rowDoubleClick', function (event) {
+            $("#treegrid").on('rowDoubleClick', function (event) {
                 var args = event.args;
                 var key = args.key;
                 var row = args.row;
@@ -112,13 +114,13 @@
                 $("#Country").val(row.Country);
                 $("#BirthDate").val(row.BirthDate);
                 // disable jqxTreeGrid.
-                $("#treeGrid").jqxTreeGrid({ disabled: true });
+                $("#treegrid").jqxTreeGrid({ disabled: true });
             });
         });
     </script>
 </head>
 <body class='default'>
-    <div id="treeGrid"></div>
+    <div id="treegrid"></div>
     <div style="visibility: hidden;" id="dialog">
         <div>Edit Dialog</div>
         <div style="overflow: hidden;">

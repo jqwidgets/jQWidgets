@@ -8,8 +8,9 @@
     <title id='Description'>With the jqxDocking API, you can expand, collapse, move, disable,
         pin or unpin a window.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../../scripts/demos.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxwindow.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdocking.js"></script>
@@ -20,9 +21,10 @@
     <script type="text/javascript" src="../../jqwidgets/jqxlistbox.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdropdownlist.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#docking').jqxDocking({  orientation: 'horizontal', width: 450, mode: 'default', windowsMode: { window0: 'floating'} });
+            $('#docking').jqxDocking({ orientation: 'horizontal', width: getWidth('docking'), mode: 'default', windowsMode: { window0: 'floating' } });
             $('#docking').jqxDocking('setWindowPosition', 'window0', 100, 100);
             $('#docking').jqxDocking('pinWindow', 'window1');
             $('#docking').jqxDocking('hideAllCloseButtons');

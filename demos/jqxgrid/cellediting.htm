@@ -7,7 +7,9 @@
     the changes press the "Enter" key or select another Grid cell. Pressing the 'Space' key when a checkbox cell is selected will toggle the check state.</title>
 	<meta name="description" content="jQuery Grid Cells editing. jQWidgets Grid supports multiple built-in cell editors like checkbox, dropdownlist, combobox, etc." /> 	
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -55,9 +57,9 @@
             var dataAdapter = new $.jqx.dataAdapter(source);
 
             // initialize jqxGrid
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: dataAdapter,
                 editable: true,
                 enabletooltips: true,
@@ -74,8 +76,8 @@
                              return true;
 
                           var year = value.getFullYear();
-                          if (year >= 2017) {
-                              return { result: false, message: "Ship Date should be before 1/1/2017" };
+                          if (year >= 2020) {
+                              return { result: false, message: "Ship Date should be before 1/1/2020" };
                           }
                           return true;
                       }
@@ -108,12 +110,12 @@
             });
 
             // events
-            $("#jqxgrid").on('cellbeginedit', function (event) {
+            $("#grid").on('cellbeginedit', function (event) {
                 var args = event.args;
                 $("#cellbegineditevent").text("Event Type: cellbeginedit, Column: " + args.datafield + ", Row: " + (1 + args.rowindex) + ", Value: " + args.value);
             });
 
-            $("#jqxgrid").on('cellendedit', function (event) {
+            $("#grid").on('cellendedit', function (event) {
                 var args = event.args;
                 $("#cellendeditevent").text("Event Type: cellendedit, Column: " + args.datafield + ", Row: " + (1 + args.rowindex) + ", Value: " + args.value);
             });
@@ -122,7 +124,7 @@
 </head>
 <body class='default'>
     <div id='jqxWidget'>
-        <div id="jqxgrid"></div>
+        <div id="grid"></div>
         <div style="font-size: 12px; font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif; margin-top: 30px;">
             <div id="cellbegineditevent"></div>
             <div style="margin-top: 10px;" id="cellendeditevent"></div>

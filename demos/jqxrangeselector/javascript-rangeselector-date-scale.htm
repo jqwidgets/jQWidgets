@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <title id="Description">RangeSelector - Date Scale</title>
-    <link type="text/css" rel="Stylesheet" href="../../jqwidgets/styles/jqx.base.css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxrangeselector.js"></script>
@@ -12,7 +14,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#rangeSelector").jqxRangeSelector({
-                width: 750, height: 100, min: new Date(2014, 0, 1), max: new Date(2014, 11, 31), labelsOnTicks: false, range: { from: new Date(2014, 3, 15), to: new Date(2014, 7, 29) },
+                width: getWidth('rangeSelector'), height: 100, min: new Date(2017, 0, 1), max: new Date(2017, 11, 31), labelsOnTicks: false, range: { from: new Date(2017, 3, 15), to: new Date(2017, 7, 29) },
                 majorTicksInterval: "month", minorTicksInterval: "day", labelsFormat: 'MMM', markersFormat: 'd'
             });
         });

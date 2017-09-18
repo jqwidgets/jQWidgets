@@ -4,7 +4,9 @@
     <title id='Description'>jqxDataTable - Data Paging API</title>
     <meta name="description" content="This sample demonstrates how to implement Data Paging with JavaScript DataTable">
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -38,7 +40,7 @@
 
             $("#table").jqxDataTable(
             {
-                width: 650,
+                width: getWidth("dataTable"),
                 source: dataAdapter,                
                 pagerPosition: 'both',
                 pageable: true,
@@ -49,7 +51,7 @@
                   { text: 'Product', editable: false, dataField: 'productname', width: 180 },
                   { text: 'Quantity', dataField: 'quantity', width: 80, cellsalign: 'right' },
                   { text: 'Unit Price', dataField: 'price', width: 80, cellsalign: 'right', cellsFormat: 'c2' },
-                  { text: 'Total', dataField: 'total', width: 80, cellsalign: 'right', cellsFormat: 'c2' }
+                  { text: 'Total', dataField: 'total', cellsalign: 'right', cellsFormat: 'c2' }
                 ]
             });
 
@@ -96,7 +98,7 @@
                 }
 
                 var args = event.args;
-                var eventData = "<div>Page:" + (1+args.pagenum) + ", Page Size: " + args.pagesize + "</div>";
+                var eventData = "<div>Page:" + (1 + args.pagenum) + ", Page Size: " + args.pageSize + "</div>";
                 $('#events').jqxPanel('prepend', '<div class="logged" style="margin-top: 5px;">' + eventData + '</div>');
             });
 
@@ -105,18 +107,18 @@
                 $("#events").jqxPanel('clearcontent');
 
                 var args = event.args;
-                var eventData = "<div>Page:" + (1+args.pagenum) + ", Page Size: " + args.pagesize + ", Old Page Size: " + args.oldpagesize + "</div>";
+                var eventData = "<div>Page:" + (1 + args.pagenum) + ", Page Size: " + args.pageSize + ", Old Page Size: " + args.oldPageSize + "</div>";
                 $('#events').jqxPanel('prepend', '<div style="margin-top: 5px;">' + eventData + '</div>');
             });
         });
     </script>
 </head>
 <body class='default'>
-    <div style="float: left;" id="table">
+    <div id="table">
     </div>
-    <div style="font-size: 13px; font-family: verdana; float: left; margin-left: 30px;">
+    <div style="font-size: 13px; font-family: verdana; margin-top: 30px;">
         <div><strong>Settings</strong></div>
-        <div style="margin-top: 10px;">
+        <div style="float: left; margin-top: 10px;">
             <div>Pager Mode:</div>
             <div id="pagerModeDropDownList" style="margin-top: 5px;"></div>
             <div  style="margin-top: 10px;">Pager Position:</div>
@@ -125,7 +127,7 @@
             <input id="gotopage" value="1" style="margin-top: 5px;"/>
             <button id="applyPage">Apply</button>
         </div>
-        <div style="margin-top: 10px;">
+        <div style="float:left; margin-left:50px; margin-top: 10px;">
             <div>Event Log:</div>
             <div id="events" style="margin-top: 5px;"></div>
         </div>    

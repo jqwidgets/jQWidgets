@@ -5,7 +5,9 @@
     </title>
 	<meta name="description" content="JavaScript Grid with Cells Selection" /> 	
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -42,9 +44,9 @@
             var dataAdapter = new $.jqx.dataAdapter(source);
 
             // initialize jqxGrid
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: dataAdapter,
                 selectionmode: 'singlecell',
                 columns: [
@@ -71,23 +73,23 @@
             $("#selectcellbutton").click(function () {
                 var index = parseInt($("#rowindexinput").val());
                 var columnindex = $("#columnchooser").jqxDropDownList('getSelectedIndex');
-                var columndatafield = $("#jqxgrid").jqxGrid('getcolumnat', columnindex).datafield;
+                var columndatafield = $("#grid").jqxGrid('getcolumnat', columnindex).datafield;
 
                 if (!isNaN(index)) {
-                    $("#jqxgrid").jqxGrid('selectcell', index, columndatafield);
+                    $("#grid").jqxGrid('selectcell', index, columndatafield);
                 }
             });
 
             // clears the selection.
             $("#clearselectionbutton").click(function () {
-                $("#jqxgrid").jqxGrid('clearselection');
+                $("#grid").jqxGrid('clearselection');
             });
 
             // scroll to a row.
             $("#scrolltobutton").click(function () {
                 var index = parseInt($("#rowindexinput2").val());
                 if (!isNaN(index)) {
-                    $("#jqxgrid").jqxGrid('ensurerowvisible', index);
+                    $("#grid").jqxGrid('ensurerowvisible', index);
                 }
             });
 
@@ -96,48 +98,47 @@
                 var index = event.args.index;
                 switch (index) {
                     case 0:
-                        $("#jqxgrid").jqxGrid('selectionmode', 'none');
+                        $("#grid").jqxGrid('selectionmode', 'none');
                         break;
                     case 1:
-                        $("#jqxgrid").jqxGrid('selectionmode', 'singlecell');
+                        $("#grid").jqxGrid('selectionmode', 'singlecell');
                         break;
                     case 2:
-                        $("#jqxgrid").jqxGrid('selectionmode', 'multiplecells');
+                        $("#grid").jqxGrid('selectionmode', 'multiplecells');
                         break;
                     case 3:
-                        $("#jqxgrid").jqxGrid('selectionmode', 'multiplecellsextended');
+                        $("#grid").jqxGrid('selectionmode', 'multiplecellsextended');
                         break;
                     case 4:
-                        $("#jqxgrid").jqxGrid('selectionmode', 'multiplecellsadvanced');
+                        $("#grid").jqxGrid('selectionmode', 'multiplecellsadvanced');
                         break;
                 }
             });
 
             // enable or disable the hover state.
             $("#enablehover").on('change', function (event) {
-                $("#jqxgrid").jqxGrid('enablehover', event.args.checked);
+                $("#grid").jqxGrid('enablehover', event.args.checked);
             });
 
             // display selected row index.
-            $("#jqxgrid").on('cellselect', function (event) {
-                var columnheader = $("#jqxgrid").jqxGrid('getcolumn', event.args.datafield).text;
+            $("#grid").on('cellselect', function (event) {
+                var columnheader = $("#grid").jqxGrid('getcolumn', event.args.datafield).text;
                 $("#selectedcell").text("Row: " + event.args.rowindex + ", Column: " + columnheader);
             });
 
             // display unselected row index.
-            $("#jqxgrid").on('cellunselect', function (event) {
-                var columnheader = $("#jqxgrid").jqxGrid('getcolumn', event.args.datafield).text;
+            $("#grid").on('cellunselect', function (event) {
+                var columnheader = $("#grid").jqxGrid('getcolumn', event.args.datafield).text;
                 $("#unselectedcell").text("Row: " + event.args.rowindex + ", Column: " + columnheader);
             });
 
             // select a cell in the second row in the 'Last Name' column.
-            $("#jqxgrid").jqxGrid('selectcell', 2, "lastname");
+            $("#grid").jqxGrid('selectcell', 2, "lastname");
         });
     </script>
 </head>
 <body class='default'>
-    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
-        <div id="jqxgrid">
+       <div id="grid">
         </div>
         <div style="margin-top: 20px;">
             <div style="float: left;">
@@ -196,6 +197,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </body>
 </html>

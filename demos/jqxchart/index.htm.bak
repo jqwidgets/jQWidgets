@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jqxChart - javascript chart widget powered by jQuery, HTML5, SVG</title>
+    <meta name="keywords" content="jQuery Chart, JavaScript Chart, Chart, Data Visualization, Mobile Chart, Android Chart, Charting, jQWidgets Chart, iOS Chart, SVG Chart, HTML5 Chart, HTML5 Charting, ASP .NET Chart, PHP Chart, Web Chart, Chart User Interface,
+        Windows Phone Chart, Blackberry Chart, Responsive Chart, Plot, jQuery Plot, Pie Chart, Line Chart, Spline Chart, Area Chart, Donut Chart, Bar Chart, Column Chart, Logarithmic Chart, Radar Chart, Bubble Chart, SplineArea Chart, Scatter Chart, Polar Chart,
+        Chart Live Updates, Chart Printing, Chart Color Bands, Stacked Chart, Stacked Column Chart, Stacked Line Chart, Flip Axis Chart, Chart Export, Chart PNG, jQWidgets Charting, ASP .NET Chart Control, PHP Chart Control, Web Chart, Chart User Interface, jQuery Mobile Chart,
+        jQuery UI Chart" />
+
+    <meta name="description" content="Advanced HTML5 chart widget powered by javascript, CSS &amp; jQuery. Touch enabled with cross-browser and cross-device support." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <!-- load custom fonts from google-->
+ 
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="../../resources/design/css/main.css" />
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" media="screen" />
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.arctic.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+
+    <!-- html5 support for old browsers -->
+    <!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <!-- fav_icons for different browsers -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../../resources/design/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../resources/design/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../resources/design/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../resources/design/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../../resources/design/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../../resources/design/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../../resources/design/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../resources/design/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../../resources/design/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../../resources/design/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../../resources/design/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../../resources/design/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../../resources/design/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <!-- background images stylesheets -->
+    <!--[if lt IE 9]>
+            <link rel="stylesheet" href="css/img_ie.css" />
+        <![endif]-->
+    <!--[if gt IE 8]>
+            <link rel="stylesheet" href="css/img.css" />
+        <![endif]-->
+    <!--[if !IE]><!-->
+    <link rel="stylesheet" href="../../resources/design/css/img.css" />
+    <!--<![endif]-->
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../../scripts/demofunctions.js"></script>
+
+    <!-- swipe plugin for slider -->
+    <script src="../../resources/design/js/vendor/swipe.js"></script>
+
+    <!-- svg to png for old browsers -->
+    <script src="../../resources/design/js/vendor/svgeezy.min.js"></script>
+    <script type="text/javascript">svgeezy.init(false, 'png');</script>
+
+    <!-- main functions -->
+    <script src="../../resources/design/js/main.js"></script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop">
+    </div>
+    <!-- DOCUMENTATION START -->
+    <div class="documentation cf" id="doc">
+
+
+        <div class="wrap">
+            <div class="doc_mask"></div>
+            <!-- LEFT COLUMN -->
+            <nav class="doc_menu doc_menu_normal">
+                <div class="jqx-chart-icon jqx-widget-title-icon"></div>
+                <p class="doc_menu_title">
+                    <span>jqxChart</span>
+                </p>
+                <ul>
+                     <li>
+                        <div class="search">
+                            <div class="wrap">
+                                <input id="searchField" type="text" value="" autocomplete="off" placeholder="Search...">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sub_menu"><a href='#line_series'><span>Line and Area Series</span></a>
+                        <ul>
+                            <li><a href='javascript_chart_line_series.htm'>Line Series</a></li>
+                            <li><a href='javascript_chart_stacked_line_series.htm'>Stacked Line Series</a> </li>
+                            <li><a href='javascript_chart_100percent_stacked_line_series.htm'>100% Stacked Line Series</a> </li>
+                            <li><a href='javascript_line_series_symbol_type.htm'>Line Series Markers</a></li>
+                            <li><a href='javascript_chart_missing_points_line_series.htm'>Line Serie with missing points</a></li>
+                            <li><a href='javascript_chart_series_conditional_colors.htm'>Line Serie with<br />
+                                conditional colors</a></li>
+                            <li><a href='javascript_chart_line_series_array.htm'>Line Serie with<br />
+                                multiple data sources</a></li>
+                            <li><a href='javascript_chart_step_line_series.htm'>Step line Series</a></li>
+                            <li><a href='javascript_chart_spline_series.htm'>Spline Series</a> </li>
+                            <li><a href='javascript_chart_area_series.htm'>Area Series</a></li>
+                            <li><a href='javascript_chart_stacked_area_series.htm'>Stacked Area Series</a> </li>
+                            <li><a href='javascript_chart_100percent_stacked_area_series.htm'>100% Stacked Area Series</a></li>
+                            <li><a href='javascript_chart_areaspline_series.htm'>Area Spline Series</a> </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#line_series'><span>Column and Bar Series</span></a>
+                        <ul>
+
+                            <li><a href='javascript_chart_column_series.htm'>Column Series</a> </li>
+                            <li><a href='javascript_chart_column_series_1.htm'>Column Series<br />
+                                with Local data</a> </li>
+                            <li><a href='javascript_chart_stacked_column_series.htm'>Stacked Column Series</a> </li>
+                            <li><a href='javascript_chart_stacked_series.htm'>Stacked and Grouped Column Series</a></li>
+                            <li><a href='javascript_chart_100percent_stacked_column_series.htm'>100% Stacked Columns</a></li>
+                            <li><a href='javascript_chart_series_conditional_colors.html'>Column Serie with<br />
+                                conditional colors</a></li>
+                            <li><a href='javascript_chart_column_range.htm'>Column Range</a></li>
+                            <li><a href='javascript_chart_bar_series.htm'>Bar Series</a></li>
+                            <li><a href='javascript_chart_column_series_spacing.htm'>Column series Spacing</a></li>
+
+                            <li><a href='javascript_chart_negative_values.htm'>Negative Values</a> </li>
+                            <li><a href='javascript_chart_negative_bar_series.htm'>Negative Bar Series</a></li>
+                            <li><a href='javascript_chart_custom_range.htm'>Columns series with<br />
+                                missing values</a></li>
+                            <li><a href='javascript_chart_column_series_labels.htm'>Column series with<br />
+                                labels</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#piedonut_series'><span>Pie & Donut Series</span></a>
+                        <ul>
+
+                            <li><a href='javascript_chart_pie_series.htm'>Pie Series</a></li>
+                            <li><a href='javascript_chart_pie_series_legend.htm'>Pie Series Legend</a> </li>
+                            <li><a href='javascript_chart_partial_pie.htm'>Partial Pie Series</a></li>
+                            <li><a href='javascript_chart_donut_series.htm'>Donut Series</a></li>
+                            <li><a href='javascript_chart_donut_labels.htm'>Donut Labels</a></li>
+                        </ul>
+
+                        <li class="sub_menu"><a href='#logarithmic_axis'><span>Logarithmic Axis</span></a>
+                            <ul>
+                                <li><a href='javascript_chart_logarithmic_axis.htm'>Columns with Logarithmic Axis</a></li>
+                                <li><a href='javascript_chart_logarithmic_axis_base10.htm'>Columns with base 10 Logarithmic Axis</a></li>
+                                <li><a href='javascript_chart_logarithmic_axis_baseline.htm'>Logarithmic Axis Base Line</a></li>
+                                <li><a href='javascript_chart_logarithmic_axis_percentage_stacked.htm'>Percentage Stacked Columns</a></li>
+                                <li><a href='javascript_chart_logarithmic_axis_stacked.htm'>Stacked Columns</a></li>
+                                <li><a href="javascript_chart_logarithmic_xaxis.htm">Logarithmic X Axis</a></li>
+                                <li><a href='javascript_chart_splinearea_range_logarithmic_axis.htm'>Spline Area</a></li>
+                                <li><a href='javascript_chart_column_range_logarithmic_axis.htm'>Columns Range</a></li>
+                                <li><a href='javascript_chart_waterfall_series_logarithmic_axis.htm'>Waterfall Series</a></li>
+                                <li><a href='javascript_chart_waterfall_series_stacked_logarithmic_axis.htm'>Stacked Waterfall Series</a></li>
+                            </ul>
+                        </li>
+                    <li class="sub_menu"><a href='#zooming'><span>Zooming</span></a>
+                        <ul>
+
+                            <li><a href='javascript_chart_range_selector.htm'>Date/time x-axis range selection</a></li>
+                            <li><a href='javascript_chart_range_selector_nondate.htm'>Non-date x-axis range selection </a></li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#waterfall'><span>Waterfall Series</span></a>
+                        <ul>
+
+                            <li><a href='javascript_chart_waterfall_series.htm'>Waterfall Series</a></li>
+                            <li><a href='javascript_chart_waterfall_multiple_series.htm'>Waterfall with multiple Series</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#financial'><span>OHLC and Candlestick</span></a>
+                        <ul>
+                            <li><a href='javascript_chart_financial_series_candlestick.htm'>Candlestick Chart</a></li>
+                            <li><a href='javascript_chart_financial_series_ohlc.htm'>OHLC Chart</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sub_menu"><a href='#piespider'><span>Polar and Spider Series</span></a>
+                        <ul>
+
+                            <li><a href='javascript_chart_polar_series.htm'>Polar Chart</a></li>
+                            <li><a href='javascript_chart_partial_polar.htm'>Partial Polar Chart</a></li>
+                            <li><a href='javascript_chart_polar_series_bands.htm'>Polar Series Bands</a></li>
+                            <li><a href='javascript_chart_spider_series.htm'>Spider Chart</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sub_menu"><a href='#funnel'><span>Funnel and Pyramid Series</span></a>
+                        <ul>
+
+                            <li><a href='javascript_chart_funnel_series.htm'>Funnel Chart</a></li>
+                            <li><a href='javascript_chart_stacked_funnel_series.htm'>Stacked Funnel Chart</a></li>
+                            <li><a href='javascript_chart_pyramid_series.htm'>Pyramid Chart</a></li>
+                            <li><a href='javascript_chart_stacked_pyramid_series.htm'>Stacked Pyramid Chart</a></li>
+                        </ul>
+                    </li>
+                    <li><a href='javascript_chart_bubbleSeries.htm'>Bubble Chart</a> </li>
+                    <li><a href='javascript_chart_scatterXY.htm'>Scatter Chart</a></li>
+                    <li><a href='javascript_chart_combination_series.htm'>Multiple Series Types</a></li>
+
+                    <li><a href='javascript_chart_live_updates.htm'>Live Updates</a></li>
+                    <li><a href='jqxchart_1second_updates.htm'>Live Updates every Second</a></li>
+                    <li><a href='javascript_chart_live_updates_perf.htm'>Live Updates performance</a></li>
+                    <li><a href='javascript_chart_color_bands.htm'>Color Bands</a></li>
+                    <li><a href='javascript_chart_color_bands_x_axis.htm'>Color Bands X Axis</a></li>
+                    <li><a href='javascript_chart_annotations.htm'>Chart Annotations</a></li>
+                    <li><a href='javascript_chart_dashboard_example.htm'>Dashboard</a></li>
+                    <li><a href='javascript_chart_datatable_sparklines.htm'>Sparklines</a></li>
+
+                    <li class="sub_menu"><a href='#styling'><span>Styling and Layout</span></a>
+                        <ul>
+
+                            <li><a href='javascript_chart_axis_position.htm'>Axis Position</a></li>
+                            <li><a href='javascript_chart_flip_axis.htm'>Axis Orientation</a></li>
+                            <li><a href='javascript_chart_axis_settings.htm'>Axis Settings</a></li>
+                            <li><a href='javascript_chart_axis_offset_to_value.htm'>Axis Offset to Value</a></li>
+                            <li><a href='javascript_chart_custom_offsets_and_color_band.htm'>Axis Custom Offsets and Color Bands</a></li>
+                            <li><a href='javascript_chart_custom_offsets.htm'>Axis Custom Offsets</a></li>
+                            <li><a href='javascript_chart_intervals_and_steps.htm'>Intervals and Steps</a></li>
+                            <li><a href='rtl.htm'>Right to Left Layout</a> </li>
+                            <li><a href='javascript_chart_textrotation.htm'>Text Rotation</a></li>
+                            <li><a href='javascript_chart_textwrap.htm'>Text Wrapping</a></li>
+                            <li><a href='javascript_chart_alternating_background_color.htm'>Alternating Background Color</a></li>
+                            <li><a href='javascript_chart_tooltips_formatting.htm'>Tooltip Formatting</a></li>
+                            <li><a href='javascript_chart_crosshairs.htm'>Chart Crosshairs</a></li>
+                            <li><a href='javascript_chart_dash_style.htm'>Grid Lines Dash Style</a></li>
+                            <li><a href='javascript_chart_grey_scale.htm'>Greyscale Series</a></li>
+                            <li><a href='javascript_chart_custom_style.htm'>Custom Styling</a></li>
+                            <li><a href='jquery-chart-background.htm'>Dark Background</a></li>
+                            <li><a href='javascript_chart_column_series_themes.htm'>Themes</a></li>
+                        </ul>
+                    </li>
+                    <li><a href='custom_drawing.htm'>Custom Drawing</a></li>
+                    <li><a href='javascript_chart_fluid_size.htm'>Fluid Size</a></li>
+                    <li><a href='javascript_chart_events.htm'>Chart Events</a></li>
+                    <li><a href='javascript_chart_events_range_selector.htm'>Chart RangeSelector Events</a></li>
+                    <li><a href='javascript_chart_export_jpeg.htm'>Export to Image</a></li>
+                    <li><a href='javascript_chart_print.htm'>Chart Printing</a></li>
+                    <li><a href='javascript_chart_and_grid.htm'>Chart with Grid</a></li>
+                    <li><a href='javascript_chart_and_tabs.htm'>Chart with Tabs</a></li>
+                </ul>
+            </nav>
+            <!-- RIGHT COLUMN -->
+            <div class="doc_content">
+                <div style="position: relative; left: -20px; visibility: hidden; float: right;" class="themeSelector" id="themeSelector">
+                    <div style="float: left; margin-top: 4px;">
+                        Theme:
+                    </div>
+                    <div id="themeComboBox" style="margin-bottom: 3px; margin-top: 4px; margin-left: 10px;  float: left;"></div>
+                </div>
+                <div id="tabs" class="demoTabs" style='width: 1000px; padding: 0px; margin: 0px; display: none;'>
+                    <ul style='margin-left: 30px;'>
+                        <li id='tab1'>Demo</li>
+                        <li id='tab2'>View Source</li>
+                        <li id='tab3'>API Reference</li>
+                    </ul>
+                    <div style="overflow: hidden;" id="tabs-1">
+                        <table border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
+                            <tr>
+                                <td>
+                                    <div id='divDescription'>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id='innerdemoContainer'>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="overflow-x: auto; overflow-y: hidden;" id="tabs-2">
+                    </div>
+                    <div style="overflow: auto;" id="tabs-3">
+                    </div>
+                </div>
+                <div id="introduction">
+                    <h2>Introduction</h2>
+                    jqxChart is an easy to use chart widget based on the popular jQuery library. It
+                                                                is written 100% in JavaScript and uses W3C standards like HTML5, CSS and SVG. jqxChart
+                                                                provides optimal chart rendering performance and high quality visualization across
+                                                                browsers and devices (PCs, Laptops, Tablets and Mobile phones). It automatically
+                                                                detects the browser capabilities and uses SVG or HTML5 rendering with hardware acceleration
+                                                                (when available) in modern browsers (IE9+, Firefox, Chrome, Opera) and VML rendering
+                                                                in IE8 and earlier browsers. The ability to render SVG, HTML5 and VML makes jqxChart
+                                                                an ideal choice for adding charting capabilities in your web sites and applications.
+                                                                No browser plug-ins are required. Try our <a target="_blank" href="https://www.jqwidgets.com/chartstudio/">Chart Studio</a> - cloud solution for visual editing and hosting of interactive charts!<br />
+                    <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart1.png"
+                        alt="jquery chart" title="jquery-chart" width="686" height="413" class="alignleft size-full wp-image-2033" /><br />
+                    <br />
+                    <h3>Highlights</h3>
+                    <ul>
+                        <li><a target="_blank" href="https://www.jqwidgets.com/chartstudio/">Chart Studio</a> - cloud solution for visual editing and hosting of interactive charts</li>
+                        <li>100% JavaScript HTML implementation</li>
+                        <li>Plug-in free</li>
+                        <li>Runs on mobile, touch devices and PCs</li>
+                        <li>Optimal rendering across browsers</li>
+                        <li>Web Standards Compliant</li>
+                        <li>Optimized for Performance</li>
+                        <li>Easy to use APIs</li>
+                        <li>Built-in color palettes</li>
+                        <li>Data binding to XML, CSV, TSV, JSON, JSONP</li>
+                    </ul>
+                    <h3>Unique features</h3>
+                    <p>
+                        jqxChart is part of the the jQWidgets UI Toolkit and delivers a combination of advanced
+                                                                    features and capabilities for the next-generation of cloud-enabled Web Apps and
+                                                                    modern Web sites. jqxChart works across platforms, devices and browsers and provides
+                                                                    high quality plug-in free data visualization.
+                    </p>
+                    <h3>Data Binding</h3>
+                    <p>
+                        jqxChart has a built-in data binding logic designed to support multiple data sources
+                                                                    and handle large datasets. The chart supports several data binding modes optimized
+                                                                    for the most common integration scenarios:
+                    </p>
+                    <p>
+                        Local Data - requires minimal effort to load data from local array.<br />
+                        Xml Data - jQuery Chart can be loaded from XML data using Ajax request.<br />
+                        JSON Data - jQuery Chart can be loaded from JSON data using Ajax request.<br />
+                        CSV Data - jQuery Chart can be loaded from Comma-Delimited data using Ajax
+                                                                    request.<br />
+                        Tab Data - jQuery Chart can be loaded from Tab-Delimited data using Ajax request.<br />
+                        Remote Data - You can populate the Chart using JSONP. JSONP (JSON with Padding) represents
+                                                                    a JSON data wrapped in a function call. JSONP is an effective cross-domain communication
+                                                                    technique used for bypassing the same-origin policy limitations.
+                    </p>
+                    <h3>Chart Types</h3>
+                    <p>
+                        jqxChart supports several common chart types. You can easily plot series of different
+                                                                    types on a common chart. A type must be specified for each series group. Currently
+                                                                    jqxChart supports the following series:
+                    </p>
+                    <ul>
+                        <li>column - simple column series</li>
+                        <li>stackedcolumn - stacked column series</li>
+                        <li>stackedcolumn100 - percentage stacked columns</li>
+                        <li>line - simple streight lines connecting the value points</li>
+                        <li>pie - circular chart divided into sectors, illustrating proportion</li>
+                        <li>donut - donut series</li>
+                        <li>bar - bar series</li>
+                        <li>candlestick - candlestick financial series</li>
+                        <li>ohlc - ohlc financial series</li>
+                        <li>bubble - data is displayed as a collection of bubbles</li>
+                        <li>scatter - data is displayed as a collection of points</li>
+                        <li>stackedline - stacked lines</li>
+                        <li>stackedline100 - percentage stacked lines</li>
+                        <li>spline - smooth lines connecting the value points</li>
+                        <li>stackedspline - smooth stacked lines</li>
+                        <li>stackedspline100 - percentage stacked smooth lines</li>
+                        <li>polarseries - polar series</li>
+                        <li>spiderseries - spider series</li>
+                        <li>area - area connecting the value points with streight lines</li>
+                        <li>stackedarea- stacked area with streight lines between the points</li>
+                        <li>stackedline100 - percentage stacked area</li>
+                        <li>areaspline - smooth area connecting the value points</li>
+                        <li>stackedareaspline - smooth stacked areas</li>
+                        <li>stackedareaspline100 - percentage stacked smooth area</li>
+                        <li>waterfall - waterfall chart</li>
+                    </ul>
+                    <h4>Column Series</h4>
+                    <p>
+                        <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart-column-series.png"
+                            alt="jquery chart column series" title="jquery-chart-column-series" width="689"
+                            height="410" />
+                    </p>
+                    <h4>Stacked Column Series</h4>
+                    <p>
+                        <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart-stacked-column-series.png"
+                            alt="jquery chart stacked column series" title="jquery-chart-stacked-column-series"
+                            width="687" height="409" class="alignleft size-full wp-image-2043" />
+                    </p>
+                    <h4>Percentage Stacked Column Series</h4>
+                    <p>
+                        <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart-percentage-stacked-column-series.png"
+                            alt="jquery chart percentage stacked column series" title="jquery-chart-percentage-stacked-column-series"
+                            width="685" height="407" />
+                    </p>
+                    <h4>Chart Line Series</h4>
+                    <p>
+                        <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart-line-series.png"
+                            alt="jquery chart line series" title="jquery-chart-line-series" width="685" height="406"
+                            class="alignleft size-full wp-image-2046" />
+                    </p>
+                    <h4>Chart Stacked Line Series</h4>
+                    <p>
+                        <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart-stacked-line-series.png"
+                            alt="jquery chart stacked line series" title="jquery chart stacked line series"
+                            width="688" height="410" class="alignleft size-full wp-image-2049" />
+                    </p>
+                    <h4>Chart Percentage Stacked Line Series</h4>
+                    <p>
+                        <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart-percentage-stacked-line-series.png"
+                            alt="jquery chart percentage stacked line series" title="jquery-chart-percentage-stacked-line-series"
+                            width="686" height="413" />
+                    </p>
+                    <h4>Spline Chart</h4>
+                    <p>
+                        <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart-spline.png"
+                            alt="jquery spline chart" title="jquery-chart-spline" width="688" height="407" />
+                    </p>
+                    <h4>Area Chart</h4>
+                    <p>
+                        <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-area-chart.png"
+                            alt="jquery area chart" title="jquery-area-chart" width="688" height="411" />
+                    </p>
+                    <h4>Stacked Area Chart</h4>
+                    <p>
+                        <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart-stacked-area.png"
+                            alt="jquery chart stacked area" title="jquery-chart-stacked-area" width="689"
+                            height="411" />
+                    </p>
+                    <h4>Area Spline Chart</h4>
+                    <p>
+                        <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart-area-spline.png"
+                            alt="jquery chart area spline" title="jquery-chart-area-spline" width="688" height="410" />
+                    </p>
+                    <h4>Multiple Chart Series</h4>
+                    <p>
+                        <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart-combination-series.png"
+                            alt="jquery chart combination series" title="jquery-chart-combination-series"
+                            width="689" height="413" />
+                    </p>
+                    <h4>jQuery Chart with Negative Values</h4>
+                    <img src="http://www.jqwidgets.com/wp-content/uploads/2012/02/jquery-chart-negative-values.png"
+                        alt="jquery chart negative values" title="jquery-chart-negative-values" width="692"
+                        height="410" class="alignleft size-full wp-image-2075" />
+                    <h3>Works across devices and browsers</h3>
+                    <p>
+                        jqxChart takes the JavaScript, HTML UI development to a new level. It
+                                                                    is platform independent, cross-browser compatible and works on PC and mobile devices.
+                    </p>
+                    <h3>Web Standards Compliant</h3>
+                    <p>
+                        Don't spend time testing on different devices and browsers. Use a reliable, CSS
+                                                                    compliant JavaScript Chart widget based on jQuery, HTML5 and CSS3.
+                    </p>
+                    <h3>Optimized for Performance. Premium Visualization Quality</h3>
+                    <p>
+                        Small footprint, highly responsive, carefully optimized to deliver outstanding data
+                                                                    visualization quality at optimal performance on a wide range of devices, operating
+                                                                    systems and browsers.
+                    </p>
+                    <h3>Customization and Styling</h3>
+                    <p>
+                        jqxChart ships with eleven built-in color schemes which are used to automatically
+                                                                    set colors for different series. The colors of the chart elements are 100% customizable,
+                                                                    you can optionally enable and disable gradients, and all text styles and fonts can
+                                                                    be change using standard CSS.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pageBottom">
+    </div>
+</body>
+</html>

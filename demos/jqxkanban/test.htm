@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="keywords" content="jqxDragDrop, jQuery Draggable, jQWidgets, Default Functionality" />
+<meta name="description" content="jqxDragDrop is a plugin which will make any DOM element draggable. It can be used in 
+combination with many widgets like jqxTree, jqxGrid, jqxListBox and etc."/>
+    <title id='Description'>Kanban widget.</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="jqxkanban.css" type="text/css" />
+    <link type="text/css" rel="Stylesheet" href="../jqxpopover/jqxpopover.css" />
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.columnsresize.js"></script> 
+    <script type="text/javascript" src="../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxnotification.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxpopover.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxkanban.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdragdrop.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
+    <script type="text/javascript" src="localization.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            /* START Context menu functions */
+            var contextMenuAddItem = function () { $('#button1').jqxButton({ width: '50px' }); };
+
+            var contextMenuRemoveSelectedItem = function () {
+                // var that = this;
+                $('#kanban #removeItemButton').jqxButton({ width: '100px' });
+                $('#kanban #declineRemoveItemButton').jqxButton({ width: '100px' });
+                $("#removeItemButton").on('click', function () {
+                    var selectedItem = $('#kanban').jqxKanban('getSelectedItem');
+                    alert(selectedItem);
+                    if ((selectedItem !== null) && (selectedItem !== undefined)) {
+                        $('#kanban').jqxKanban('removeItem', selectedItem);
+                    }
+                    $("#context-menu-window").jqxWindow('close');
+                });
+                $("#declineRemoveItemButton").on('click', function () {
+                    $("#context-menu-window").jqxWindow('close');
+                });
+            };
+
+            var contextMenuRemoveFilter = function () {
+                $('#kanban').jqxKanban('removeFilter');
+
+            };
+
+            var contextMenuExpandColumn = function () {
+                $("#jqxNumberInput").jqxNumberInput({
+                    width: '50px',
+                    inputMode: 'simple',
+                    spinButtons: true,
+                    min: 0,
+                    max: 3,
+                    decimalDigits: 0
+                });
+
+                var columnNumber = 0;
+                $("#jqxNumberInput").on("valueChanged", function () {
+                    columnNumber = $("#jqxNumberInput").val();
+                    $("[data-show-column-value]").text(columnNumber);
+                });
+
+                $("#showButton").jqxButton({ width: '100px' });
+                $("#showButton").on('click', function () {
+                    columnNumber = $("#jqxNumberInput").val();
+                    $('#kanban').jqxKanban('expandColumn', columnNumber);
+                    $("#context-menu-window").jqxWindow('close');
+                });
+            };
+
+            var contextMenuCollapseColumn = function () {
+                $("#jqxNumberInput").jqxNumberInput({
+                    width: '50px',
+                    inputMode: 'simple',
+                    spinButtons: true,
+                    min: 0,
+                    max: 3,
+                    decimalDigits: 0
+                });
+
+                var columnNumber = 0;
+                $("#jqxNumberInput").on("valueChanged", function () {
+                    columnNumber = $("#jqxNumberInput").val();
+                    $("[data-hide-column-value]").text(columnNumber);
+                });
+
+                $("#hideButton").jqxButton({ width: '100px' });
+                $("#hideButton").on('click', function () {
+                    columnNumber = $("#jqxNumberInput").val();
+                    $('#kanban').jqxKanban('collapseColumn', columnNumber);
+                    $("#context-menu-window").jqxWindow('close');
+                });
+            };
+
+            var contextMenuExportKanban = function () {
+                var kanbanExport = $('#kanban').jqxKanban('exportData');
+                alert(JSON.stringify(kanbanExport));
+            };
+            /* END Context menu functions */
+
+            var kanbanContextMenu = [
+                   { id: "01", name: "Add", title: "Add item", html: "<div id='button1'>Click</div>", menuItemsrenderer: contextMenuAddItem },
+                   {
+                       id: "02", name: "Delete", title: "Delete selected item", html: "<div>Delete selected item</div><div><input type='button' value='Delete' id='removeItemButton' /><input type='button' value='Decline' id='declineRemoveItemButton' style='float:right'/><div>", menuItemsrenderer: contextMenuRemoveSelectedItem
+                   },
+                   {
+                       id: "03", name: "Filter", items: [
+                                {
+                                    id: "04", name: "Add filter", title: "Add filter", html: "<div>Add filter</div>", menuItemsrenderer: {}
+                                },
+                                {
+                                    id: "05", name: "Remove filter", title: "Remove filter", menuItemsrenderer: contextMenuRemoveFilter
+                                }
+                       ]
+                   },
+                   {
+                       id: "06", name: "Show/Hide column", items: [
+                                {
+                                    id: "07", name: "Show column", title: "Show column", html: "<div>Show column <div id='jqxNumberInput'></div><div id='showButton'>Show <span data-show-column-value='0'>0</span></div></div>", menuItemsrenderer: contextMenuExpandColumn
+                                },
+                                {
+                                    id: "08", name: "Hide column", title: "Hide column", html: "<div>Hide column <div id='jqxNumberInput'></div><div id='hideButton'>Hide <span data-hide-column-value='0'>0</span></div></div>", menuItemsrenderer: contextMenuCollapseColumn
+                                }
+                       ]
+                   },
+                   {
+                       id: "09", name: "Export", menuItemsrenderer: contextMenuExportKanban
+                   }
+            ];
+
+            /* START Event Test */
+            //$('#kanban').on('expandColumn', function () {
+            //    alert("Expanded column.");
+            //});
+            //$('#kanban').on('collapseColumn', function () {
+            //    alert("Collapsed column.");
+            //});
+            //$('#kanban').on('openColumn', function () {
+            //    alert("Opened column.");
+            //});
+            //$('#kanban').on('closeColumn', function () {
+            //    alert("Closed column.");
+            //});
+            //$('#kanban').on('moveItem', function () {
+            //    alert("Item repositioned.");
+            //});
+            //$('#kanban').on('selectItem', function () {
+            //    alert("Item selected");
+            //});
+            //$('#kanban').on('filter', function () {
+            //    alert("Filtered");
+            //});
+            /* END Event Test */
+           
+            $('#kanban').jqxKanban({
+                source: kanbanSource,
+                disabled: false,
+                selectable: true,
+                editable: true,
+                rtl: false,
+                columns: [
+                    { name: "Backlog", maximumItems: 4, expanded: true},
+                    { name: "In Progress", maximumItems: 4, expanded: false},
+                    { name: "Testing", maximumItems: 4, expanded: true},
+                    { name: "Done", maximumItems: 4, expanded: false}
+                ],
+                avatars: kanbanAvatars,
+                contextMenu: kanbanContextMenu,
+                //template: kanbanItemTemplate,
+                localization: getLocalization('bg')
+            });
+
+         
+       });
+    </script>
+</head>
+<body class='default' style="margin:0px; padding:0px;">
+    <div id="kanban" style="width: 100vw; height: 100vh; min-height: 100%; margin-bottom: 0px; disabled:disabled;"></div>
+</body>
+</html>

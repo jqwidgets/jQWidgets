@@ -7,16 +7,18 @@
     <title id='Description'>jqxTabs comes with built-in scrolling capabilities. Scroll buttons
         are automatically displayed when there is not enough available space for all tabs,
         You can also change the scroll buttons position.</title>
-    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../../scripts/demos.js"></script>
+     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxtabs.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>	
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#jqxTabs').jqxTabs({ width: 450});
+            $('#jqxTabs').jqxTabs({ width: getWidth("Tabs")});
             $('#leftButton').jqxRadioButton({ height: 25, width: 100});
             $('#rightButton').jqxRadioButton({ height: 25, width: 100, checked: true});
             $('#bothButton').jqxRadioButton({ height: 25, width: 100});

@@ -7,7 +7,9 @@
     <title id='Description'>This demo demonstrates how to trigger the jqxCalendar's valuechanged
         and nextButtonClick and backButtonClick events.</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -20,12 +22,12 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxCalendar
-            $("#jqxCalendar").jqxCalendar({ width: '220px', height: '220px'});
+            $("#calendar").jqxCalendar({ width: '220px', height: '220px' });
 
             $('#Events').css('border', 'none');
             $('#Events').jqxPanel({  height: '250px', width: '600px' });
 
-            $('#jqxCalendar').on('change viewChange', function (event) {
+            $('#calendar').on('change viewChange', function (event) {
                 var date = event.args.date;
                 var view = event.args.view;
                 var viewFrom = view.from;
@@ -44,7 +46,7 @@
 <body class='default'>
     <div id='jqxWidget'>
         <div style='float: left;'>
-            <div style='margin-top: 3px;' id='jqxCalendar'>
+            <div style='margin-top: 3px;' id='calendar'>
             </div>
             <div style='margin-left: 0px; margin-top: 20px; float: left;'>
                 <div>

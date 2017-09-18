@@ -6,7 +6,9 @@
     </title>
 	<meta name="description" content="jQuery Grid custom editors" /> 	
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -65,7 +67,7 @@
                 else if (row == 2) {
                     var element = $('<div tabIndex=0 style="position: absolute; top: 50%; left: 50%; margin-top: -7px; margin-left: -10px;"></div>');
                     editor.append(element);
-                    element.jqxCheckBox({ animationShowDelay: 0, animationHideDelay: 0, width: 16, height: 16});
+                    element.jqxCheckBox({ animationShowDelay: 0, animationHideDelay: 0, width: 18, height: 18 });
                 }
             }
 
@@ -93,9 +95,9 @@
             }
 
             // initialize jqxGrid
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 autoheight: true,
                 source: dataAdapter,
                 editable: true,
@@ -123,6 +125,6 @@
     </script>
 </head>
 <body class='default'>
-    <div id="jqxgrid"></div>
+    <div id="grid"></div>
 </body>
 </html>

@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <script type="text/javascript" src="../../scripts/demos.js"></script>
-    <title id='Description'>jqxChart inverted x-axis and value axis example</title>
+    <meta name="description" content="This is an example of inverted JavaScript chart x-axis and value axis." />
+    <title id='Description'>JavaScript Chart inverted x-axis and value axis example</title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdraw.js"></script>
@@ -69,8 +72,8 @@
 
             // setup the chart
             $('#chartContainer').jqxChart(settings);
-            $("#FlipValueAxis").jqxCheckBox({ width: 120, checked: false });
-            $("#FlipXAxis").jqxCheckBox({ width: 120, checked: false });
+            $("#FlipValueAxis").jqxCheckBox({ checked: false });
+            $("#FlipXAxis").jqxCheckBox({  checked: false });
 
             var chartInstance = $('#chartContainer').jqxChart('getInstance');
 
@@ -95,6 +98,12 @@
             <div id='FlipValueAxis'>Invert value axis</div>
             <div style='margin-top: 5px;' id='FlipXAxis'>Invert x-axis</div>
         </div>
+    </div>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of inverted JavaScript chart x-axis and value axis. The axes are inverted with the flip setting. 
     </div>
 </body>
 </html>

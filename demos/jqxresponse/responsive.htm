@@ -3,7 +3,10 @@
 <head>
     <title id='Description'>Create Responsive Layouts using jqxResponse
     </title>
-    <script src="../../scripts/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script src="../../scripts/jquery-1.12.4.min.js"></script>
     <script src="../../jqwidgets/jqxcore.js"></script>
     <script src="../../jqwidgets/jqxresponse.js"></script>
     <style>
@@ -11,29 +14,37 @@
             background: #5cb85c;
             color: #fff;
         }
+
         .row .big {
             background: #5cb85c;
         }
+
         .row .medium {
             background: #293955;
         }
+
         .row .small {
             background: #00a0da;
         }
+
         .row .x-small {
             background: #f0ad4e;
         }
+
         .row {
             overflow: auto;
         }
+
         table {
             margin-top: 30px;
             margin-bottom: 30px;
         }
+
         td {
             padding: 5px;
             border: 1px solid #aaa;
         }
+
         #currentWidth {
             position: absolute;
             top: 10px;
@@ -68,6 +79,7 @@
                 right: 0,
                 bottom: 0
             };
+
             response.responsive({
                 container: $("#row"),
                 deviceTypes: "Desktop, Tablet, Phone",
@@ -163,6 +175,7 @@
             <td>3 rows, 2 columns</td>
             <td>6 rows, 1 column</td>
         </tr>
+
         <tr>
             <td>>=1170px</td>
             <td>>=970px</td>
@@ -183,6 +196,7 @@
             <td>1 row, 3 columns</td>
             <td>3 rows, 1 column</td>
         </tr>
+
         <tr>
             <td>>=970px</td>
             <td>>=0px</td>
@@ -198,6 +212,7 @@
             <td>1 row, 2 columns</td>
             <td>2 rows, 1 column</td>
         </tr>
+
         <tr>
             <td>>=750px</td>
             <td>>=0px</td>
@@ -212,6 +227,7 @@
             <td>1 row, 3 columns, 2 columns with Offset</td>
             <td>2 rows, 1 column</td>
         </tr>
+
         <tr>
             <td>>=970px</td>
             <td>>=0px</td>
@@ -229,6 +245,7 @@
             <td>3 rows, 2 columns, ".small" CSS class applied to all columns.</td>
             <td>6 rows, 1 column, ".x-small" CSS class applied to all columns.</td>
         </tr>
+
         <tr>
             <td>>=1170px</td>
             <td>>=970px</td>

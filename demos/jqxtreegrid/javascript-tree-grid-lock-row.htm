@@ -3,8 +3,10 @@
 <head>
     <title id='Description'>Tree Grid with Locked Rows. Rows with 'Employee ID' = 1, 2 and 3 are locked(non editable).</title>
     <meta name="description" content="Locked Rows - JavaScript Tree Grid Demo | jQWidgets">     
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -60,17 +62,17 @@
             };
             var dataAdapter = new $.jqx.dataAdapter(source);
             // create Tree Grid
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
-                width: 850,
+               width:  getWidth("TreeGrid"),
                 source: dataAdapter,
                 editable: true,
                 altRows: true,
                 ready: function()
                 {
-                    $("#treeGrid").jqxTreeGrid('lockRow', 2);
-                    $("#treeGrid").jqxTreeGrid('lockRow', 1);
-                    $("#treeGrid").jqxTreeGrid('lockRow', 3);
+                    $("#treegrid").jqxTreeGrid('lockRow', 2);
+                    $("#treegrid").jqxTreeGrid('lockRow', 1);
+                    $("#treegrid").jqxTreeGrid('lockRow', 3);
                 },
                 columns: [
                   { text: 'FirstName', dataField: 'FirstName', width: 200 },
@@ -87,7 +89,7 @@
     </script>
 </head>
 <body class='default'>
-    <div id="treeGrid">
+    <div id="treegrid">
     </div>
 </body>
 </html>

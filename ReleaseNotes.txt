@@ -1,4 +1,30 @@
 ﻿*********************************************
+* jQWidgets v5.3.0 Release, Sep-17-2017     *
+*********************************************
+
+What's Improved:
+
+- Widgets now use lower default z-index values.
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid regarding full row edit and tabbing.
+- Fixed an issue in jqxGrid ever present row when updatebounddata is called.
+- Fixed an issue in jqxGrid regarding the beginrowedit method when called after addrow method.
+- Fixed an issue in jqxGrid horizontal scrollbar appearance when the column widths are not set.
+- Fixed an issue in jqxGrid regarding the uid reset of rows when the column editor is ComboBox or DropDownList. 
+- Fixed an issue in jqxGrid about showing empty rows when virtual mode is turned on and display rows count is greater than the data rows count.
+- Fixed an issue in jqxGrid when grouping aggregates are enabled and a custom aggregate is implemented. The custom aggregate's results are not shown in the group's aggregate.
+- Fixed an issue in jqxScheduler regarding the context menu which opens the edit dialog. 
+- Fixed an issue in jqxListBox regarding the 'clear' method. After calling clear, developers were still able to get an item object by it's value.
+- Fixed an issue in jqxTabs regarding the keyboard navigation.
+- Fixed an issue in jqxTabs regarding hosting dropdown widgets and closing the dropdown when tab is selected and tab reorder is enabled.
+- Fixed an issue in jqxValidator regarding the validation error message display in the TextArea after adding the required value.
+- Fixed an issue in jqxTree regarding the ensureVisible method when the item is the first item, the tree was incorrectly scrolling down.
+- Fixed an issue in jqxComboBox multi select mode which was related to cross site scripting vulnerability.
+- Fixed an issue in jqxListBox and jqxDropDownList which was related to cross site scripting vulnerability.
+
+*********************************************
 * jQWidgets v5.2.0 Release, Sep-04-2017     *
 *********************************************
 

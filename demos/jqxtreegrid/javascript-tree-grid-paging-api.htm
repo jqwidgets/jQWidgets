@@ -4,7 +4,9 @@
     <title id='Description'>In this sample is illustrated the jqxTreeGrid Data Paging API</title>
     <meta name="description" content="Data Paging API - JavaScript Tree Grid Demo | jQWidgets">     
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -43,7 +45,7 @@
             };
             var dataAdapter = new $.jqx.dataAdapter(source);
             // create Tree Grid
-            $("#treeGrid").jqxTreeGrid(
+            $("#treegrid").jqxTreeGrid(
             {
                 width: 560,
                 source: dataAdapter,
@@ -53,7 +55,7 @@
                 pagerPosition: "both",
                 pagerMode: 'advanced',
                 ready: function () {
-                    $("#treeGrid").jqxTreeGrid('expandRow', '2');
+                    $("#treegrid").jqxTreeGrid('expandRow', '2');
                 },
                 columns: [
                   { text: 'Order Name', dataField: "name", align: 'center', width: 250 },
@@ -74,22 +76,22 @@
             $("#pagerModeDropDownList").jqxDropDownList({ height: 25,  width: 120, selectedIndex: 1, source: ["default", "advanced"], autoDropDownHeight: true });
             $("#pagerModeDropDownList").on('select', function (event) {
                 if (event.args.index == 0) {
-                    $("#treeGrid").jqxTreeGrid({ pagerMode: "default" });
+                    $("#treegrid").jqxTreeGrid({ pagerMode: "default" });
                 }
                 else {
-                    $("#treeGrid").jqxTreeGrid({ pagerMode: "advanced" });
+                    $("#treegrid").jqxTreeGrid({ pagerMode: "advanced" });
                 }
             });
             $("#pagerPositionDropDownList").jqxDropDownList({ height: 25,  width: 120, selectedIndex: 2, source: ["top", "bottom", "both"], autoDropDownHeight: true });
             $("#pagerPositionDropDownList").on('select', function (event) {
                 if (event.args.index == 0) {
-                    $("#treeGrid").jqxTreeGrid({ pagerPosition: "top" });
+                    $("#treegrid").jqxTreeGrid({ pagerPosition: "top" });
                 }
                 else if (event.args.index == 1) {
-                    $("#treeGrid").jqxTreeGrid({ pagerPosition: "bottom" });
+                    $("#treegrid").jqxTreeGrid({ pagerPosition: "bottom" });
                 }
                 else {
-                    $("#treeGrid").jqxTreeGrid({ pagerPosition: "both" });
+                    $("#treegrid").jqxTreeGrid({ pagerPosition: "both" });
                 }
             });
 
@@ -102,12 +104,12 @@
                 if (!isNaN(page)) {
                     page--;
                     if (page < 0) page = 0;
-                    $("#treeGrid").jqxTreeGrid('goToPage', page);
+                    $("#treegrid").jqxTreeGrid('goToPage', page);
                 }
             });
 
             // raised when a page is changed.
-            $("#treeGrid").on("pageChanged", function (event) {
+            $("#treegrid").on("pageChanged", function (event) {
                 $("#eventslog").css('display', 'block');
                 if ($("#events").find('.logged').length >= 5) {
                     $("#events").jqxPanel('clearcontent');
@@ -119,7 +121,7 @@
             });
 
             // raised when the size of a page is changed.
-            $("#treeGrid").on("pageSizeChanged", function (event) {
+            $("#treegrid").on("pageSizeChanged", function (event) {
                 $("#eventslog").css('display', 'block');
                 $("#events").jqxPanel('clearcontent');
 
@@ -131,7 +133,7 @@
     </script>
 </head>
 <body class='default'>
-    <div style="float: left;" id="treeGrid">
+    <div style="float: left;" id="treegrid">
     </div>
     <div style="font-size: 13px; font-family: verdana; float: left; margin-left: 30px;">
         <div><strong>Settings</strong></div>

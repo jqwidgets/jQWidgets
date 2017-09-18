@@ -5,7 +5,9 @@
         column is with CheckedList Filter. The "Order Date" column is with Date Filter. The "Price" and "Quantity" columns use the default TextBoxes Filter. 
     </title>
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -54,16 +56,16 @@
  
                 filtergroup.addfilter(filter_or_operator, filter1);
                 // add the filters.
-                $("#jqxgrid").jqxGrid('addfilter', 'firstname', filtergroup);
+                $("#grid").jqxGrid('addfilter', 'firstname', filtergroup);
                 // apply the filters.
-                $("#jqxgrid").jqxGrid('applyfilters');
+                $("#grid").jqxGrid('applyfilters');
             }
 
             var adapter = new $.jqx.dataAdapter(source);
  
-            $("#jqxgrid").jqxGrid(
+            $("#grid").jqxGrid(
             {
-                width: 850,
+                width: getWidth('Grid'),
                 source: adapter,
                 filterable: true,
                 sortable: true,
@@ -88,9 +90,9 @@
 
             $('#events').jqxPanel({ width: 300, height: 80 });
 
-            $("#jqxgrid").on("filter", function (event) {
+            $("#grid").on("filter", function (event) {
                 $("#events").jqxPanel('clearcontent');
-                var filterinfo = $("#jqxgrid").jqxGrid('getfilterinformation');
+                var filterinfo = $("#grid").jqxGrid('getfilterinformation');
 
                 var eventData = "Triggered 'filter' event";
                 for (i = 0; i < filterinfo.length; i++) {
@@ -104,22 +106,21 @@
             $('#filtericons').jqxCheckBox({ checked: false, height: 25 });
             // clear the filtering.
             $('#clearfilteringbutton').click(function () {
-                $("#jqxgrid").jqxGrid('clearfilters');
+                $("#grid").jqxGrid('clearfilters');
             });
             // show/hide filter background
             $('#filterbackground').on('change', function (event) {
-                $("#jqxgrid").jqxGrid({ showfiltercolumnbackground: event.args.checked });
+                $("#grid").jqxGrid({ showfiltercolumnbackground: event.args.checked });
             });
             // show/hide filter icons
             $('#filtericons').on('change', function (event) {
-                $("#jqxgrid").jqxGrid({ autoshowfiltericon: !event.args.checked });
+                $("#grid").jqxGrid({ autoshowfiltericon: !event.args.checked });
             });
         });
     </script>
 </head>
 <body class='default'>
-    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
-        <div id="jqxgrid">
+        <div id="grid">
         </div>
         <div id="eventslog" style="margin-top: 30px;">
             <div style="width: 200px; float: left; margin-right: 10px;">
@@ -133,6 +134,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
