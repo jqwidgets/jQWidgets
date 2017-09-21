@@ -3182,7 +3182,10 @@ of the horizontal scrollbar.*/
     margin-top: -7.5px !important;
 }
 /*applied to Inputs*/
-.jqx-input{overflow: hidden; background-color: inherit; border-color: #c7c7c7;}
+.jqx-input-widget{
+    box-sizing: border-box !important;
+}
+.jqx-input{ overflow: hidden; background-color: inherit; border-color: #c7c7c7;}
 .jqx-input-invalid {
     color: red !important;
 }

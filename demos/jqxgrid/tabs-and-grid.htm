@@ -36,7 +36,7 @@
 
                 var dataAdapter = new $.jqx.dataAdapter(source, { async: false, loadError: function (xhr, status, error) { alert('Error loading "' + source.url + '" : ' + error); } });
 
-                $("#grid").grid(
+                $("#grid").jqxGrid(
                 {
                     width: '100%',
                     height: '100%',
@@ -68,7 +68,7 @@
                 };
                 var dataAdapter = new $.jqx.dataAdapter(source);
 
-                $("#grid2").grid(
+                $("#grid2").jqxGrid(
                 {
                     width: '100%',
                     height: '100%',
@@ -95,7 +95,7 @@
                 }
             }
 
-            $('#tabs').tabs({ width: getWidth('Tabs'), height: 560,  initTabContent: initWidgets });
+            $('#tabs').jqxTabs({ width: getWidth('Tabs'), height: 560,  initTabContent: initWidgets });
         });
     </script>
 </head>
