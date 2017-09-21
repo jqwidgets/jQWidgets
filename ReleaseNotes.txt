@@ -1,5 +1,5 @@
 ﻿*********************************************
-* jQWidgets v5.3.1 Release, Sep-21-2017     *
+* jQWidgets v5.3.2 Release, Sep-21-2017     *
 *********************************************
 
 What's Fixed:
@@ -8,6 +8,7 @@ What's Fixed:
 - Fixed an issue in jqxListBox related to item's labels. 
 - Fixed an issue in jqxScheduler related to the getSelection method result when a single all day cell is selected in Day/Week view.
 - Fixed an issue in jqxWindow related to its z-index.
+- Fixed an issue in jqxScheduler related to its dialog z-index.
 
 *********************************************
 * jQWidgets v5.3.0 Release, Sep-17-2017     *
