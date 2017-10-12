@@ -1,9 +1,14 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxsortable.js';
+import '../jqwidgets/jqxsplitter.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxkanban.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,21 +19,21 @@ declare let JQXLite: any;
 
 export class jqxKanbanComponent implements OnChanges
 {
-   @Input('columnRenderer') attrColumnRenderer: any;
-   @Input('columns') attrColumns: any;
-   @Input('connectWith') attrConnectWith: any;
-   @Input('headerHeight') attrHeaderHeight: any;
-   @Input('headerWidth') attrHeaderWidth: any;
-   @Input('itemRenderer') attrItemRenderer: any;
-   @Input('ready') attrReady: any;
-   @Input('rtl') attrRtl: any;
-   @Input('source') attrSource: any;
-   @Input('resources') attrResources: any;
-   @Input('template') attrTemplate: any;
+   @Input('columnRenderer') attrColumnRenderer: (element?: any, collapsedElement?: any, column?: any) => void;
+   @Input('columns') attrColumns: Array<jqwidgets.KanbanColumns>;
+   @Input('connectWith') attrConnectWith: String;
+   @Input('headerHeight') attrHeaderHeight: String | Number;
+   @Input('headerWidth') attrHeaderWidth: Number;
+   @Input('itemRenderer') attrItemRenderer: (element?: Array<any>, item?: any, resource?: any) => void;
+   @Input('ready') attrReady: () => void;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('source') attrSource: Array<any>;
+   @Input('resources') attrResources: Array<any>;
+   @Input('template') attrTemplate: String;
    @Input('templateContent') attrTemplateContent: any;
-   @Input('theme') attrTheme: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('theme') attrTheme: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -99,7 +104,9 @@ export class jqxKanbanComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

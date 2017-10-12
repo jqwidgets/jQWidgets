@@ -3,6 +3,7 @@
     "description": "Angular AOT (Ahead Of Time) Compilation With Webpack",
     "version": "1.0.0",
     "scripts": {
+        "build0": "webpack --config webpack.config0.js --optimize-minimize",
         "build1": "webpack --config webpack.config1.js --optimize-minimize",
         "build2": "webpack --config webpack.config2.js --optimize-minimize",
         "build3": "webpack --config webpack.config3.js --optimize-minimize",
@@ -17,7 +18,8 @@
         "build11": "webpack --config webpack.config11.js --optimize-minimize",
         "build12": "webpack --config webpack.config12.js --optimize-minimize",
         "ngc": "ngc -p ./tsconfig.aot.json",
-        "start": "npm run ngc && npm run build1 && npm run build2 && npm run build3 && npm run build4 && npm run build5 && npm run build6 && npm run build6-1 && npm run build7 && npm run build8 && npm run build9 && npm run build10 && npm run build11 && npm run build12",
+        "start": "npm run ngc && npm run build0",
+        "startfull": "npm run ngc && npm run build1 && npm run build2 && npm run build3 && npm run build4 && npm run build5 && npm run build6 && npm run build6-1 && npm run build7 && npm run build8 && npm run build9 && npm run build10 && npm run build11 && npm run build12",
         "watch": "npm-watch",
         "watchCommand": "npm run ngc && npm run build12"
     },
@@ -36,7 +38,7 @@
         "core-js": "2.4.1",
         "css-loader": "0.28.4",
         "img-loader": "^2.0.0",
-        "increase-memory-limit": "^1.0.3",
+        "increase-memory-limit": "^1.0.4",
         "ngc-webpack": "3.2.2",
         "raw-loader": "0.5.1",
         "rxjs": "^5.4.2",
@@ -55,7 +57,7 @@
         "@angular/platform-browser-dynamic": "4.3.3",
         "@angular/platform-server": "4.3.3",
         "@ngtools/webpack": "1.5.5",
-        "@types/core-js": "0.9.42",
+        "@types/core-js": "^0.9.43",
         "@types/jquery": "3.2.10",
         "@types/node": "8.0.19",
         "webpack": "^3.4.1"

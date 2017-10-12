@@ -1,9 +1,11 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxexpander.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -16,18 +18,18 @@ export class jqxExpanderComponent implements OnChanges
 {
    @Input('animationType') attrAnimationType: any;
    @Input('arrowPosition') attrArrowPosition: any;
-   @Input('collapseAnimationDuration') attrCollapseAnimationDuration: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('expanded') attrExpanded: any;
-   @Input('expandAnimationDuration') attrExpandAnimationDuration: any;
+   @Input('collapseAnimationDuration') attrCollapseAnimationDuration: Number;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('expanded') attrExpanded: Boolean;
+   @Input('expandAnimationDuration') attrExpandAnimationDuration: Number;
    @Input('headerPosition') attrHeaderPosition: any;
-   @Input('initContent') attrInitContent: any;
-   @Input('rtl') attrRtl: any;
-   @Input('showArrow') attrShowArrow: any;
-   @Input('theme') attrTheme: any;
+   @Input('initContent') attrInitContent: () => void;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('showArrow') attrShowArrow: Boolean;
+   @Input('theme') attrTheme: String;
    @Input('toggleMode') attrToggleMode: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -98,7 +100,9 @@ export class jqxExpanderComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxdropdownbutton.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -15,22 +18,22 @@ declare let JQXLite: any;
 export class jqxDropDownButtonComponent implements OnChanges
 {
    @Input('animationType') attrAnimationType: any;
-   @Input('arrowSize') attrArrowSize: any;
-   @Input('autoOpen') attrAutoOpen: any;
-   @Input('closeDelay') attrCloseDelay: any;
-   @Input('disabled') attrDisabled: any;
+   @Input('arrowSize') attrArrowSize: Number;
+   @Input('autoOpen') attrAutoOpen: Boolean;
+   @Input('closeDelay') attrCloseDelay: Number;
+   @Input('disabled') attrDisabled: Boolean;
    @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: any;
    @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: any;
-   @Input('dropDownWidth') attrDropDownWidth: any;
-   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: any;
-   @Input('initContent') attrInitContent: any;
-   @Input('openDelay') attrOpenDelay: any;
-   @Input('popupZIndex') attrPopupZIndex: any;
-   @Input('rtl') attrRtl: any;
+   @Input('dropDownWidth') attrDropDownWidth: String | Number;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: Boolean;
+   @Input('initContent') attrInitContent: () => void;
+   @Input('openDelay') attrOpenDelay: Number;
+   @Input('popupZIndex') attrPopupZIndex: Number;
+   @Input('rtl') attrRtl: Boolean;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('theme') attrTheme: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -101,7 +104,9 @@ export class jqxDropDownButtonComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxwindow.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,41 +17,41 @@ declare let JQXLite: any;
 
 export class jqxWindowComponent implements OnChanges
 {
-   @Input('autoOpen') attrAutoOpen: any;
+   @Input('autoOpen') attrAutoOpen: Boolean;
    @Input('animationType') attrAnimationType: any;
-   @Input('collapsed') attrCollapsed: any;
-   @Input('collapseAnimationDuration') attrCollapseAnimationDuration: any;
-   @Input('content') attrContent: any;
-   @Input('closeAnimationDuration') attrCloseAnimationDuration: any;
-   @Input('closeButtonSize') attrCloseButtonSize: any;
+   @Input('collapsed') attrCollapsed: Boolean;
+   @Input('collapseAnimationDuration') attrCollapseAnimationDuration: Number;
+   @Input('content') attrContent: String;
+   @Input('closeAnimationDuration') attrCloseAnimationDuration: Number;
+   @Input('closeButtonSize') attrCloseButtonSize: Number;
    @Input('closeButtonAction') attrCloseButtonAction: any;
    @Input('cancelButton') attrCancelButton: any;
-   @Input('dragArea') attrDragArea: any;
-   @Input('draggable') attrDraggable: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('initContent') attrInitContent: any;
-   @Input('isModal') attrIsModal: any;
-   @Input('keyboardCloseKey') attrKeyboardCloseKey: any;
-   @Input('keyboardNavigation') attrKeyboardNavigation: any;
-   @Input('minHeight') attrMinHeight: any;
-   @Input('maxHeight') attrMaxHeight: any;
-   @Input('minWidth') attrMinWidth: any;
-   @Input('maxWidth') attrMaxWidth: any;
-   @Input('modalOpacity') attrModalOpacity: any;
-   @Input('modalZIndex') attrModalZIndex: any;
-   @Input('modalBackgroundZIndex') attrModalBackgroundZIndex: any;
+   @Input('dragArea') attrDragArea: jqwidgets.WindowDragArea;
+   @Input('draggable') attrDraggable: Boolean;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('initContent') attrInitContent: () => void;
+   @Input('isModal') attrIsModal: Boolean;
+   @Input('keyboardCloseKey') attrKeyboardCloseKey: String | Number;
+   @Input('keyboardNavigation') attrKeyboardNavigation: Boolean;
+   @Input('minHeight') attrMinHeight: String | Number;
+   @Input('maxHeight') attrMaxHeight: String | Number;
+   @Input('minWidth') attrMinWidth: String | Number;
+   @Input('maxWidth') attrMaxWidth: String | Number;
+   @Input('modalOpacity') attrModalOpacity: Number;
+   @Input('modalZIndex') attrModalZIndex: Number;
+   @Input('modalBackgroundZIndex') attrModalBackgroundZIndex: Number;
    @Input('okButton') attrOkButton: any;
-   @Input('position') attrPosition: any;
-   @Input('rtl') attrRtl: any;
-   @Input('resizable') attrResizable: any;
-   @Input('showAnimationDuration') attrShowAnimationDuration: any;
-   @Input('showCloseButton') attrShowCloseButton: any;
-   @Input('showCollapseButton') attrShowCollapseButton: any;
-   @Input('theme') attrTheme: any;
-   @Input('title') attrTitle: any;
-   @Input('zIndex') attrZIndex: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('position') attrPosition: String | any;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('resizable') attrResizable: Boolean;
+   @Input('showAnimationDuration') attrShowAnimationDuration: Number;
+   @Input('showCloseButton') attrShowCloseButton: Boolean;
+   @Input('showCollapseButton') attrShowCollapseButton: Boolean;
+   @Input('theme') attrTheme: String;
+   @Input('title') attrTitle: String;
+   @Input('zIndex') attrZIndex: Number;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -119,7 +122,9 @@ export class jqxWindowComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

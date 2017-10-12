@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxnumberinput.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -25,34 +28,34 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('allowNull') attrAllowNull: any;
-   @Input('decimal') attrDecimal: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('decimalDigits') attrDecimalDigits: any;
-   @Input('decimalSeparator') attrDecimalSeparator: any;
-   @Input('digits') attrDigits: any;
-   @Input('groupSeparator') attrGroupSeparator: any;
-   @Input('groupSize') attrGroupSize: any;
+   @Input('allowNull') attrAllowNull: Boolean;
+   @Input('decimal') attrDecimal: String | Number;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('decimalDigits') attrDecimalDigits: String | Number;
+   @Input('decimalSeparator') attrDecimalSeparator: String | Number;
+   @Input('digits') attrDigits: String | Number;
+   @Input('groupSeparator') attrGroupSeparator: String;
+   @Input('groupSize') attrGroupSize: String | Number;
    @Input('inputMode') attrInputMode: any;
-   @Input('min') attrMin: any;
-   @Input('max') attrMax: any;
-   @Input('negativeSymbol') attrNegativeSymbol: any;
-   @Input('placeHolder') attrPlaceHolder: any;
+   @Input('min') attrMin: String | Number;
+   @Input('max') attrMax: String | Number;
+   @Input('negativeSymbol') attrNegativeSymbol: String;
+   @Input('placeHolder') attrPlaceHolder: String | Number;
    @Input('promptChar') attrPromptChar: any;
-   @Input('rtl') attrRtl: any;
-   @Input('readOnly') attrReadOnly: any;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('readOnly') attrReadOnly: Boolean;
    @Input('spinMode') attrSpinMode: any;
-   @Input('spinButtons') attrSpinButtons: any;
-   @Input('spinButtonsWidth') attrSpinButtonsWidth: any;
-   @Input('spinButtonsStep') attrSpinButtonsStep: any;
-   @Input('symbol') attrSymbol: any;
+   @Input('spinButtons') attrSpinButtons: Boolean;
+   @Input('spinButtonsWidth') attrSpinButtonsWidth: Number;
+   @Input('spinButtonsStep') attrSpinButtonsStep: String | Number;
+   @Input('symbol') attrSymbol: String;
    @Input('symbolPosition') attrSymbolPosition: any;
    @Input('textAlign') attrTextAlign: any;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: any;
-   @Input('value') attrValue: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('theme') attrTheme: String;
+   @Input('value') attrValue: String | Number;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -126,7 +129,9 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

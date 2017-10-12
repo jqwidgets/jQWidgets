@@ -30,12 +30,13 @@ export class AppComponent {
                 x = touch.pageX;
                 y = touch.pageY;
             }
+            let rect = this.textarea.nativeElement.getBoundingClientRect();
             let width = this.textarea.nativeElement.clientWidth;
             let height = this.textarea.nativeElement.clientHeight;
-            let right = this.textarea.nativeElement.offsetLeft + width;
-            let bottom = this.textarea.nativeElement.offsetTop + height;
-            if (x >= this.textarea.nativeElement.offsetLeft && x <= right) {
-                if (y >= this.textarea.nativeElement.offsetTop && y <= bottom) {
+            let right = rect.left + width;
+            let bottom = rect.top + height;
+            if (x >= rect.left && x <= right) {
+                if (y >= rect.top && y <= bottom) {
                     this.textarea.nativeElement.value = event.args.label;
                 }
             }

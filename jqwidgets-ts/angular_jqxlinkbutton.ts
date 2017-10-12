@@ -1,9 +1,11 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,22 +16,22 @@ declare let JQXLite: any;
 
 export class jqxLinkButtonComponent implements OnChanges
 {
-   @Input('delay') attrDelay: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('imgSrc') attrImgSrc: any;
-   @Input('imgWidth') attrImgWidth: any;
-   @Input('imgHeight') attrImgHeight: any;
+   @Input('delay') attrDelay: Number;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('imgSrc') attrImgSrc: String;
+   @Input('imgWidth') attrImgWidth: String | Number;
+   @Input('imgHeight') attrImgHeight: String | Number;
    @Input('imgPosition') attrImgPosition: any;
    @Input('roundedCorners') attrRoundedCorners: any;
-   @Input('rtl') attrRtl: any;
+   @Input('rtl') attrRtl: Boolean;
    @Input('textPosition') attrTextPosition: any;
    @Input('textImageRelation') attrTextImageRelation: any;
-   @Input('theme') attrTheme: any;
+   @Input('theme') attrTheme: String;
    @Input('template') attrTemplate: any;
-   @Input('toggled') attrToggled: any;
-   @Input('value') attrValue: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('toggled') attrToggled: Boolean;
+   @Input('value') attrValue: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -100,7 +102,9 @@ export class jqxLinkButtonComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

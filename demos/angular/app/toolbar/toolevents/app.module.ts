@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core'; import { CommonModule } from '@angular
 
 import { AppComponent } from './app.component';
 import { ToolBarModule } from '../../modules/toolbar.module';
+import { ColorPickerModule } from '../../modules/colorpicker.module';
 
 @NgModule({
     declarations: [
         AppComponent
   ],
   imports: [
-      BrowserModule, CommonModule, ToolBarModule
+      BrowserModule, CommonModule, ToolBarModule, ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

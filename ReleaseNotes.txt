@@ -1,4 +1,21 @@
 ﻿*********************************************
+* jQWidgets v5.4.0 Release, Oct-11-2017     *
+*********************************************
+
+What's Improved:
+
+- Angular components scripts references are automatically added.
+- Angular @Input properties validation.
+- All Angular examples are updated.
+- jqxGrid keyboard navigation in filter row, filter and sort menu and pager.
+- jqxScheduler ICalendar export  support for X-WR-CALNAME and X-WR-DESC.
+
+What's Fixed: 
+
+- Fixed several issues with missing typescript property definitions.  
+- Fixed an issue in jqxPivotGrid regarding the drag and drop behavior.
+
+*********************************************
 * jQWidgets v5.3.2 Release, Sep-21-2017     *
 *********************************************
 

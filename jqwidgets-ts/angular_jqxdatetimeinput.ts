@@ -1,9 +1,15 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/globalization/globalize.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxtooltip.js';
+import '../jqwidgets/jqxdatetimeinput.js';
+import '../jqwidgets/jqxcalendar.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -26,38 +32,38 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChanges 
 {
    @Input('animationType') attrAnimationType: any;
-   @Input('allowNullDate') attrAllowNullDate: any;
-   @Input('allowKeyboardDelete') attrAllowKeyboardDelete: any;
-   @Input('clearString') attrClearString: any;
-   @Input('culture') attrCulture: any;
-   @Input('closeDelay') attrCloseDelay: any;
-   @Input('closeCalendarAfterSelection') attrCloseCalendarAfterSelection: any;
+   @Input('allowNullDate') attrAllowNullDate: Boolean;
+   @Input('allowKeyboardDelete') attrAllowKeyboardDelete: Boolean;
+   @Input('clearString') attrClearString: String;
+   @Input('culture') attrCulture: String;
+   @Input('closeDelay') attrCloseDelay: Number;
+   @Input('closeCalendarAfterSelection') attrCloseCalendarAfterSelection: Boolean;
    @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: any;
    @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: any;
-   @Input('enableAbsoluteSelection') attrEnableAbsoluteSelection: any;
-   @Input('firstDayOfWeek') attrFirstDayOfWeek: any;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: Boolean;
+   @Input('enableAbsoluteSelection') attrEnableAbsoluteSelection: Boolean;
+   @Input('firstDayOfWeek') attrFirstDayOfWeek: Number;
    @Input('formatString') attrFormatString: any;
-   @Input('min') attrMin: any;
-   @Input('max') attrMax: any;
-   @Input('openDelay') attrOpenDelay: any;
-   @Input('placeHolder') attrPlaceHolder: any;
-   @Input('popupZIndex') attrPopupZIndex: any;
-   @Input('rtl') attrRtl: any;
-   @Input('readonly') attrReadonly: any;
-   @Input('showFooter') attrShowFooter: any;
+   @Input('min') attrMin: Date;
+   @Input('max') attrMax: Date;
+   @Input('openDelay') attrOpenDelay: Number;
+   @Input('placeHolder') attrPlaceHolder: String;
+   @Input('popupZIndex') attrPopupZIndex: Number;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('readonly') attrReadonly: Boolean;
+   @Input('showFooter') attrShowFooter: Boolean;
    @Input('selectionMode') attrSelectionMode: any;
-   @Input('showWeekNumbers') attrShowWeekNumbers: any;
-   @Input('showTimeButton') attrShowTimeButton: any;
-   @Input('showCalendarButton') attrShowCalendarButton: any;
-   @Input('theme') attrTheme: any;
+   @Input('showWeekNumbers') attrShowWeekNumbers: Boolean;
+   @Input('showTimeButton') attrShowTimeButton: Boolean;
+   @Input('showCalendarButton') attrShowCalendarButton: Boolean;
+   @Input('theme') attrTheme: String;
    @Input('template') attrTemplate: any;
    @Input('textAlign') attrTextAlign: any;
-   @Input('todayString') attrTodayString: any;
-   @Input('value') attrValue: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('todayString') attrTodayString: String;
+   @Input('value') attrValue: Date;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -131,7 +137,9 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

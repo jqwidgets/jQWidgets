@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxtooltip.js';
+import '../jqwidgets/jqxpasswordinput.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -25,20 +28,20 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxPasswordInputComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('disabled') attrDisabled: any;
-   @Input('localization') attrLocalization: any;
-   @Input('maxLength') attrMaxLength: any;
-   @Input('placeHolder') attrPlaceHolder: any;
-   @Input('passwordStrength') attrPasswordStrength: any;
-   @Input('rtl') attrRtl: any;
-   @Input('strengthColors') attrStrengthColors: any;
-   @Input('showStrength') attrShowStrength: any;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('localization') attrLocalization: jqwidgets.PasswordInputLocalization;
+   @Input('maxLength') attrMaxLength: String | Number;
+   @Input('placeHolder') attrPlaceHolder: String | Number;
+   @Input('passwordStrength') attrPasswordStrength: (password:String | Number, characters:any, defaultStrength:String) => string;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('strengthColors') attrStrengthColors: jqwidgets.PasswordInputStrengthColors;
+   @Input('showStrength') attrShowStrength: Boolean;
    @Input('showStrengthPosition') attrShowStrengthPosition: any;
-   @Input('strengthTypeRenderer') attrStrengthTypeRenderer: any;
-   @Input('showPasswordIcon') attrShowPasswordIcon: any;
-   @Input('theme') attrTheme: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('strengthTypeRenderer') attrStrengthTypeRenderer: (password:String | Number, characters:any, defaultStrength:String) => string;
+   @Input('showPasswordIcon') attrShowPasswordIcon: Boolean;
+   @Input('theme') attrTheme: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -112,7 +115,9 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

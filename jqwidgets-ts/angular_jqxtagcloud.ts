@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxtagcloud.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -15,29 +18,29 @@ declare let JQXLite: any;
 export class jqxTagCloudComponent implements OnChanges
 {
    @Input('alterTextCase') attrAlterTextCase: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('displayLimit') attrDisplayLimit: any;
-   @Input('displayMember') attrDisplayMember: any;
-   @Input('displayValue') attrDisplayValue: any;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('displayLimit') attrDisplayLimit: Number;
+   @Input('displayMember') attrDisplayMember: String;
+   @Input('displayValue') attrDisplayValue: Boolean;
    @Input('fontSizeUnit') attrFontSizeUnit: any;
-   @Input('maxColor') attrMaxColor: any;
-   @Input('maxFontSize') attrMaxFontSize: any;
-   @Input('maxValueToDisplay') attrMaxValueToDisplay: any;
-   @Input('minColor') attrMinColor: any;
-   @Input('minFontSize') attrMinFontSize: any;
-   @Input('minValueToDisplay') attrMinValueToDisplay: any;
-   @Input('rtl') attrRtl: any;
+   @Input('maxColor') attrMaxColor: String;
+   @Input('maxFontSize') attrMaxFontSize: Number;
+   @Input('maxValueToDisplay') attrMaxValueToDisplay: Number;
+   @Input('minColor') attrMinColor: String;
+   @Input('minFontSize') attrMinFontSize: Number;
+   @Input('minValueToDisplay') attrMinValueToDisplay: Number;
+   @Input('rtl') attrRtl: Boolean;
    @Input('sortBy') attrSortBy: any;
    @Input('sortOrder') attrSortOrder: any;
-   @Input('source') attrSource: any;
-   @Input('tagRenderer') attrTagRenderer: any;
-   @Input('takeTopWeightedItems') attrTakeTopWeightedItems: any;
-   @Input('textColor') attrTextColor: any;
-   @Input('urlBase') attrUrlBase: any;
-   @Input('urlMember') attrUrlMember: any;
-   @Input('valueMember') attrValueMember: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('source') attrSource: jqwidgets.TagCloudSource;
+   @Input('tagRenderer') attrTagRenderer: (itemData: any, minValue: Number, valueRange: Number) => any;
+   @Input('takeTopWeightedItems') attrTakeTopWeightedItems: Boolean;
+   @Input('textColor') attrTextColor: String;
+   @Input('urlBase') attrUrlBase: String;
+   @Input('urlMember') attrUrlMember: String;
+   @Input('valueMember') attrValueMember: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -108,7 +111,9 @@ export class jqxTagCloudComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

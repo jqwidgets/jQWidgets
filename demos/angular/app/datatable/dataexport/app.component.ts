@@ -38,7 +38,7 @@ export class AppComponent {
         { text: 'Available', dataField: 'available', width: 67, cellsAlign: 'center', align: 'center' },
         { text: 'Ship Date', dataField: 'date', width: 90, align: 'right', cellsAlign: 'right', cellsFormat: 'd' },
         { text: 'Quantity', dataField: 'quantity', width: 70, align: 'right', cellsAlign: 'right' },
-        { text: 'Price', dataField: 'price', cellsAlign: 'right', align: 'right', cellsFormat: 'c2' }
+        { text: 'Price', dataField: 'price', cellsAlign: 'right', width:100, align: 'right', cellsFormat: 'c2' }
     ];
 
     excelExport(): void {

@@ -1,9 +1,15 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxscrollbar.js';
+import '../jqwidgets/jqxlistbox.js';
+import '../jqwidgets/jqxdragdrop.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -25,40 +31,40 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxListBoxComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('autoHeight') attrAutoHeight: any;
-   @Input('allowDrag') attrAllowDrag: any;
-   @Input('allowDrop') attrAllowDrop: any;
-   @Input('checkboxes') attrCheckboxes: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('displayMember') attrDisplayMember: any;
+   @Input('autoHeight') attrAutoHeight: Boolean;
+   @Input('allowDrag') attrAllowDrag: Boolean;
+   @Input('allowDrop') attrAllowDrop: Boolean;
+   @Input('checkboxes') attrCheckboxes: Boolean;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('displayMember') attrDisplayMember: String | Number;
    @Input('dropAction') attrDropAction: any;
-   @Input('dragStart') attrDragStart: any;
-   @Input('dragEnd') attrDragEnd: any;
-   @Input('enableHover') attrEnableHover: any;
-   @Input('enableSelection') attrEnableSelection: any;
-   @Input('equalItemsWidth') attrEqualItemsWidth: any;
-   @Input('filterable') attrFilterable: any;
-   @Input('filterHeight') attrFilterHeight: any;
-   @Input('filterDelay') attrFilterDelay: any;
-   @Input('filterPlaceHolder') attrFilterPlaceHolder: any;
-   @Input('hasThreeStates') attrHasThreeStates: any;
-   @Input('itemHeight') attrItemHeight: any;
-   @Input('incrementalSearch') attrIncrementalSearch: any;
-   @Input('incrementalSearchDelay') attrIncrementalSearchDelay: any;
-   @Input('multiple') attrMultiple: any;
-   @Input('multipleextended') attrMultipleextended: any;
-   @Input('renderer') attrRenderer: any;
-   @Input('rendered') attrRendered: any;
-   @Input('rtl') attrRtl: any;
-   @Input('selectedIndex') attrSelectedIndex: any;
+   @Input('dragStart') attrDragStart: (item:any) => Boolean;
+   @Input('dragEnd') attrDragEnd: (dragItem: any, dropItem: any) => Boolean;
+   @Input('enableHover') attrEnableHover: Boolean;
+   @Input('enableSelection') attrEnableSelection: Boolean;
+   @Input('equalItemsWidth') attrEqualItemsWidth: Boolean;
+   @Input('filterable') attrFilterable: Boolean;
+   @Input('filterHeight') attrFilterHeight: Number;
+   @Input('filterDelay') attrFilterDelay: String | Number;
+   @Input('filterPlaceHolder') attrFilterPlaceHolder: String | Number;
+   @Input('hasThreeStates') attrHasThreeStates: Boolean;
+   @Input('itemHeight') attrItemHeight: Number;
+   @Input('incrementalSearch') attrIncrementalSearch: Boolean;
+   @Input('incrementalSearchDelay') attrIncrementalSearchDelay: String | Number;
+   @Input('multiple') attrMultiple: Boolean;
+   @Input('multipleextended') attrMultipleextended: Boolean;
+   @Input('renderer') attrRenderer: (index: Number, label: String | Number, value: String | Number) => String;
+   @Input('rendered') attrRendered: () => any;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('selectedIndex') attrSelectedIndex: String | Number;
    @Input('selectedIndexes') attrSelectedIndexes: any;
-   @Input('source') attrSource: any;
-   @Input('scrollBarSize') attrScrollBarSize: any;
+   @Input('source') attrSource: Array<any>;
+   @Input('scrollBarSize') attrScrollBarSize: Number;
    @Input('searchMode') attrSearchMode: any;
-   @Input('theme') attrTheme: any;
-   @Input('valueMember') attrValueMember: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('theme') attrTheme: String;
+   @Input('valueMember') attrValueMember: String | Number;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -132,7 +138,9 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

@@ -17,7 +17,7 @@ export class AppComponent {
     @ViewChild('passwordInput') passwordInput: jqxPasswordInputComponent;
     @ViewChild('confirmPasswordInput') confirmPasswordInput: jqxPasswordInputComponent;
 
-    initialDate: Date = new Date(2014, 4, 1);
+    initialDate: Date = new Date(2017, 8, 1);
 
     sendButton(): void {
         this.myValidator.validate(document.getElementById('form'));
@@ -31,10 +31,10 @@ export class AppComponent {
         { input: '.realNameInput', message: 'Your real name must contain only letters!', action: 'keyup', rule: 'notNumber' },
         { input: '.realNameInput', message: 'Your real name must be between 3 and 12 characters!', action: 'keyup', rule: 'length=2,12' },
         {
-            input: '.birthInput', message: 'Your birth date must be between 1/1/1900 and 1/1/2014.', action: 'valueChanged',
+            input: '.birthInput', message: 'Your birth date must be between 1/1/1900 and 1/1/2020.', action: 'valueChanged',
             rule: (input: any, commit: any): any => {
                 let date = this.dateTimeInput.value();
-                let result = date.getFullYear() >= 1900 && date.getFullYear() <= 2014;
+                let result = date.getFullYear() >= 1900 && date.getFullYear() <= 2020;
                 return result;
             }
         },

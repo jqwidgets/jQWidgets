@@ -1,9 +1,15 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxtooltip.js';
+import '../jqwidgets/globalization/globalize.js';
+import '../jqwidgets/jqxdatetimeinput.js';
+import '../jqwidgets/jqxcalendar.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -25,42 +31,42 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxCalendarComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('backText') attrBackText: any;
-   @Input('columnHeaderHeight') attrColumnHeaderHeight: any;
-   @Input('clearString') attrClearString: any;
-   @Input('culture') attrCulture: any;
+   @Input('backText') attrBackText: String;
+   @Input('columnHeaderHeight') attrColumnHeaderHeight: Number;
+   @Input('clearString') attrClearString: String;
+   @Input('culture') attrCulture: String;
    @Input('dayNameFormat') attrDayNameFormat: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('enableWeekend') attrEnableWeekend: any;
-   @Input('enableViews') attrEnableViews: any;
-   @Input('enableOtherMonthDays') attrEnableOtherMonthDays: any;
-   @Input('enableFastNavigation') attrEnableFastNavigation: any;
-   @Input('enableHover') attrEnableHover: any;
-   @Input('enableAutoNavigation') attrEnableAutoNavigation: any;
-   @Input('enableTooltips') attrEnableTooltips: any;
-   @Input('forwardText') attrForwardText: any;
-   @Input('firstDayOfWeek') attrFirstDayOfWeek: any;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('enableWeekend') attrEnableWeekend: Boolean;
+   @Input('enableViews') attrEnableViews: Boolean;
+   @Input('enableOtherMonthDays') attrEnableOtherMonthDays: Boolean;
+   @Input('enableFastNavigation') attrEnableFastNavigation: Boolean;
+   @Input('enableHover') attrEnableHover: Boolean;
+   @Input('enableAutoNavigation') attrEnableAutoNavigation: Boolean;
+   @Input('enableTooltips') attrEnableTooltips: Boolean;
+   @Input('forwardText') attrForwardText: String;
+   @Input('firstDayOfWeek') attrFirstDayOfWeek: Number;
    @Input('min') attrMin: any;
    @Input('max') attrMax: any;
-   @Input('navigationDelay') attrNavigationDelay: any;
-   @Input('rowHeaderWidth') attrRowHeaderWidth: any;
-   @Input('readOnly') attrReadOnly: any;
-   @Input('restrictedDates') attrRestrictedDates: any;
-   @Input('rtl') attrRtl: any;
-   @Input('stepMonths') attrStepMonths: any;
-   @Input('showWeekNumbers') attrShowWeekNumbers: any;
-   @Input('showDayNames') attrShowDayNames: any;
-   @Input('showOtherMonthDays') attrShowOtherMonthDays: any;
-   @Input('showFooter') attrShowFooter: any;
+   @Input('navigationDelay') attrNavigationDelay: Number;
+   @Input('rowHeaderWidth') attrRowHeaderWidth: String | Number;
+   @Input('readOnly') attrReadOnly: Boolean;
+   @Input('restrictedDates') attrRestrictedDates: Array<Date>;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('stepMonths') attrStepMonths: Number;
+   @Input('showWeekNumbers') attrShowWeekNumbers: Boolean;
+   @Input('showDayNames') attrShowDayNames: Boolean;
+   @Input('showOtherMonthDays') attrShowOtherMonthDays: Boolean;
+   @Input('showFooter') attrShowFooter: Boolean;
    @Input('selectionMode') attrSelectionMode: any;
-   @Input('specialDates') attrSpecialDates: any;
-   @Input('theme') attrTheme: any;
-   @Input('titleHeight') attrTitleHeight: any;
+   @Input('specialDates') attrSpecialDates: Array<any>;
+   @Input('theme') attrTheme: String;
+   @Input('titleHeight') attrTitleHeight: Number;
    @Input('titleFormat') attrTitleFormat: any;
-   @Input('todayString') attrTodayString: any;
-   @Input('value') attrValue: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('todayString') attrTodayString: String;
+   @Input('value') attrValue: Date;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -134,7 +140,9 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

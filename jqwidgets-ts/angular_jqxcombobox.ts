@@ -1,9 +1,15 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxscrollbar.js';
+import '../jqwidgets/jqxlistbox.js';
+import '../jqwidgets/jqxcombobox.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -26,45 +32,45 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges 
 {
    @Input('animationType') attrAnimationType: any;
-   @Input('autoComplete') attrAutoComplete: any;
-   @Input('autoOpen') attrAutoOpen: any;
-   @Input('autoItemsHeight') attrAutoItemsHeight: any;
-   @Input('autoDropDownHeight') attrAutoDropDownHeight: any;
-   @Input('closeDelay') attrCloseDelay: any;
-   @Input('checkboxes') attrCheckboxes: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('displayMember') attrDisplayMember: any;
+   @Input('autoComplete') attrAutoComplete: Boolean;
+   @Input('autoOpen') attrAutoOpen: Boolean;
+   @Input('autoItemsHeight') attrAutoItemsHeight: Boolean;
+   @Input('autoDropDownHeight') attrAutoDropDownHeight: Boolean;
+   @Input('closeDelay') attrCloseDelay: Number;
+   @Input('checkboxes') attrCheckboxes: Boolean;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('displayMember') attrDisplayMember: String;
    @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: any;
    @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: any;
-   @Input('dropDownHeight') attrDropDownHeight: any;
-   @Input('dropDownWidth') attrDropDownWidth: any;
-   @Input('enableHover') attrEnableHover: any;
-   @Input('enableSelection') attrEnableSelection: any;
-   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: any;
-   @Input('itemHeight') attrItemHeight: any;
-   @Input('multiSelect') attrMultiSelect: any;
-   @Input('minLength') attrMinLength: any;
-   @Input('openDelay') attrOpenDelay: any;
-   @Input('popupZIndex') attrPopupZIndex: any;
-   @Input('placeHolder') attrPlaceHolder: any;
-   @Input('remoteAutoComplete') attrRemoteAutoComplete: any;
-   @Input('remoteAutoCompleteDelay') attrRemoteAutoCompleteDelay: any;
-   @Input('renderer') attrRenderer: any;
-   @Input('renderSelectedItem') attrRenderSelectedItem: any;
-   @Input('rtl') attrRtl: any;
-   @Input('selectedIndex') attrSelectedIndex: any;
-   @Input('showArrow') attrShowArrow: any;
-   @Input('showCloseButtons') attrShowCloseButtons: any;
+   @Input('dropDownHeight') attrDropDownHeight: String | Number;
+   @Input('dropDownWidth') attrDropDownWidth: String | Number;
+   @Input('enableHover') attrEnableHover: Boolean;
+   @Input('enableSelection') attrEnableSelection: Boolean;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: Boolean;
+   @Input('itemHeight') attrItemHeight: Number;
+   @Input('multiSelect') attrMultiSelect: Boolean;
+   @Input('minLength') attrMinLength: Number;
+   @Input('openDelay') attrOpenDelay: Number;
+   @Input('popupZIndex') attrPopupZIndex: Number;
+   @Input('placeHolder') attrPlaceHolder: String;
+   @Input('remoteAutoComplete') attrRemoteAutoComplete: Boolean;
+   @Input('remoteAutoCompleteDelay') attrRemoteAutoCompleteDelay: Number;
+   @Input('renderer') attrRenderer: (index:number, label?:string, value?:any) => string;
+   @Input('renderSelectedItem') attrRenderSelectedItem: (index:number, item?:any) => string;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('selectedIndex') attrSelectedIndex: Number;
+   @Input('showArrow') attrShowArrow: Boolean;
+   @Input('showCloseButtons') attrShowCloseButtons: Boolean;
    @Input('searchMode') attrSearchMode: any;
-   @Input('search') attrSearch: any;
-   @Input('source') attrSource: any;
-   @Input('scrollBarSize') attrScrollBarSize: any;
+   @Input('search') attrSearch: (searchString:string) => void;
+   @Input('source') attrSource: Array<any>;
+   @Input('scrollBarSize') attrScrollBarSize: String | Number;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: any;
-   @Input('validateSelection') attrValidateSelection: any;
-   @Input('valueMember') attrValueMember: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('theme') attrTheme: String;
+   @Input('validateSelection') attrValidateSelection: (itemValue:string) => boolean;
+   @Input('valueMember') attrValueMember: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -138,7 +144,9 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

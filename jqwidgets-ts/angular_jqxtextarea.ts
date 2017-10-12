@@ -1,9 +1,14 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxscrollbar.js';
+import '../jqwidgets/jqxtextarea.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -25,26 +30,26 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('disabled') attrDisabled: any;
-   @Input('displayMember') attrDisplayMember: any;
-   @Input('dropDownWidth') attrDropDownWidth: any;
-   @Input('items') attrItems: any;
-   @Input('maxLength') attrMaxLength: any;
-   @Input('minLength') attrMinLength: any;
-   @Input('opened') attrOpened: any;
-   @Input('placeHolder') attrPlaceHolder: any;
-   @Input('popupZIndex') attrPopupZIndex: any;
-   @Input('query') attrQuery: any;
-   @Input('renderer') attrRenderer: any;
-   @Input('roundedCorners') attrRoundedCorners: any;
-   @Input('rtl') attrRtl: any;
-   @Input('scrollBarSize') attrScrollBarSize: any;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('displayMember') attrDisplayMember: String;
+   @Input('dropDownWidth') attrDropDownWidth: String | Number;
+   @Input('items') attrItems: Number;
+   @Input('maxLength') attrMaxLength: Number;
+   @Input('minLength') attrMinLength: Number;
+   @Input('opened') attrOpened: Boolean;
+   @Input('placeHolder') attrPlaceHolder: String;
+   @Input('popupZIndex') attrPopupZIndex: Number;
+   @Input('query') attrQuery: String;
+   @Input('renderer') attrRenderer: (itemValue: any, inputValue: any) => any;
+   @Input('roundedCorners') attrRoundedCorners: Boolean;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('scrollBarSize') attrScrollBarSize: Number;
    @Input('searchMode') attrSearchMode: any;
-   @Input('source') attrSource: any;
-   @Input('theme') attrTheme: any;
-   @Input('valueMember') attrValueMember: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('source') attrSource: Array<any>;
+   @Input('theme') attrTheme: String;
+   @Input('valueMember') attrValueMember: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -118,7 +123,9 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

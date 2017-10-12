@@ -76,7 +76,7 @@ export class AppComponent implements AfterViewInit {
             };
         let myKnobThree = jqwidgets.createInstance('#myKnobThree', 'jqxKnob', knobThreeOptions);
 
-        knobTwoContainer.style.cssText = 'position: absolute !important; top: 50px; left: 50px;';
+        knobTwoContainer.style.cssText = 'position: absolute !important; top: 90px; left: 60px;';
         knobThreeContainer.style.cssText = 'position: absolute !important; top: 0px; left: 0px;';
 
         myKnobTwo.addEventHandler('change', (event: any): void => {

@@ -1,9 +1,13 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxtooltip.js';
+import '../jqwidgets/jqxbulletchart.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,23 +18,23 @@ declare let JQXLite: any;
 
 export class jqxBulletChartComponent implements OnChanges
 {
-   @Input('animationDuration') attrAnimationDuration: any;
-   @Input('barSize') attrBarSize: any;
-   @Input('description') attrDescription: any;
-   @Input('disabled') attrDisabled: any;
+   @Input('animationDuration') attrAnimationDuration: Number;
+   @Input('barSize') attrBarSize: String | Number;
+   @Input('description') attrDescription: String;
+   @Input('disabled') attrDisabled: Boolean;
    @Input('labelsFormat') attrLabelsFormat: any;
-   @Input('labelsFormatFunction') attrLabelsFormatFunction: any;
+   @Input('labelsFormatFunction') attrLabelsFormatFunction: (value?: number, position?:string ) => any;
    @Input('orientation') attrOrientation: any;
-   @Input('pointer') attrPointer: any;
-   @Input('rtl') attrRtl: any;
-   @Input('ranges') attrRanges: any;
-   @Input('showTooltip') attrShowTooltip: any;
-   @Input('target') attrTarget: any;
-   @Input('ticks') attrTicks: any;
-   @Input('title') attrTitle: any;
-   @Input('tooltipFormatFunction') attrTooltipFormatFunction: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('pointer') attrPointer: jqwidgets.BulletChartPointer;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('ranges') attrRanges: Array<jqwidgets.BulletChartRanges>;
+   @Input('showTooltip') attrShowTooltip: Boolean;
+   @Input('target') attrTarget: jqwidgets.BulletChartPointer;
+   @Input('ticks') attrTicks: jqwidgets.BulletChartTicks;
+   @Input('title') attrTitle: String;
+   @Input('tooltipFormatFunction') attrTooltipFormatFunction: (pointerValue:number , targetValue:number) => String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -101,7 +105,9 @@ export class jqxBulletChartComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

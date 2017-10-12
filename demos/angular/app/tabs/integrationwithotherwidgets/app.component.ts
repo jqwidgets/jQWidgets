@@ -29,17 +29,6 @@ export class AppComponent {
                 { text: 'NASDAQ', datafield: 'NASDAQ' }
             ]
         });
-
-        //let Grid = new jqxGrid('#jqxGrid', {
-        //    width: '100%',
-        //    height: '84%',
-        //    source: dataAdapter,
-        //    columns: [
-        //        { text: 'Date', datafield: 'Date', cellsformat: 'd', width: 250 },
-        //        { text: 'S&P 500', datafield: 'S&P 500', width: 150 },
-        //        { text: 'NASDAQ', datafield: 'NASDAQ' }
-        //    ]
-        //});
     }
 
     initChart = () => {
@@ -106,7 +95,6 @@ export class AppComponent {
         };
         // setup the chart
         let myChart: jqwidgets.jqxChart = jqwidgets.createInstance('#jqxChart', 'jqxChart', settings);
-        //let Chart = new jqxChart('#jqxChart', settings);
     }
 
     initWidgets = (tab) => {

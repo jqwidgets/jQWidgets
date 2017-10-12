@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core'; import { CommonModule } from '@angular
 
 import { AppComponent } from './app.component'; 
 import { MenuModule } from '../../modules/menu.module';
+import { ButtonModule } from '../../modules/button.module';
 
 @NgModule({
     declarations: [
         AppComponent
     ],
     imports: [
-        BrowserModule, CommonModule, MenuModule
+        BrowserModule, CommonModule, MenuModule, ButtonModule
     ],
     providers: [],
     bootstrap: [AppComponent]

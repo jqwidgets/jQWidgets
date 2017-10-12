@@ -529,6 +529,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     overflow: hidden; 
     position: absolute !important; 
     height: 100%; 
+    outline:none;
  }
 .jqx-grid-cell-locked {
     color: #aaa !important;

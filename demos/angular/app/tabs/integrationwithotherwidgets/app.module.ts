@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core'; import { CommonModule } from '@angular
 
 import { AppComponent } from './app.component';
 import { TabsModule } from '../../modules/tabs.module';
+import { GridModule } from '../../modules/grid.module';
+import { ChartModule } from '../../modules/chart.module';
 
 @NgModule({
     declarations: [
         AppComponent
   ],
   imports: [
-      BrowserModule, CommonModule, TabsModule
+      BrowserModule, CommonModule, TabsModule, GridModule, ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

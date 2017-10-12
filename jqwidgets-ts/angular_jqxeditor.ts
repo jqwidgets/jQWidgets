@@ -1,9 +1,21 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxscrollbar.js';
+import '../jqwidgets/jqxlistbox.js';
+import '../jqwidgets/jqxdropdownlist.js';
+import '../jqwidgets/jqxdropdownbutton.js';
+import '../jqwidgets/jqxwindow.js';
+import '../jqwidgets/jqxeditor.js';
+import '../jqwidgets/jqxcheckbox.js';
+import '../jqwidgets/jqxtooltip.js';
+import '../jqwidgets/jqxcolorpicker.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -25,19 +37,19 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxEditorComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('createCommand') attrCreateCommand: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('editable') attrEditable: any;
+   @Input('createCommand') attrCreateCommand: (name:any) => void;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('editable') attrEditable: Boolean;
    @Input('lineBreak') attrLineBreak: any;
-   @Input('localization') attrLocalization: any;
+   @Input('localization') attrLocalization: jqwidgets.EditorLocalization;
    @Input('pasteMode') attrPasteMode: any;
-   @Input('rtl') attrRtl: any;
-   @Input('stylesheets') attrStylesheets: any;
-   @Input('theme') attrTheme: any;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('stylesheets') attrStylesheets: Array<any>;
+   @Input('theme') attrTheme: String;
    @Input('toolbarPosition') attrToolbarPosition: any;
-   @Input('tools') attrTools: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('tools') attrTools: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -111,7 +123,9 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

@@ -9,7 +9,6 @@ import { jqxNotificationComponent } from '../../../jqwidgets-ts/angular_jqxnotif
 
 export class AppComponent {
     @ViewChild('jqxNotification') jqxNotification: jqxNotificationComponent;
-    @ViewChild('notificationContent') notificationContent: ElementRef;
 
     quotes: string[] =
     [
@@ -21,7 +20,7 @@ export class AppComponent {
     ];
 
     click(): void {
+        this.jqxNotification.elementRef.nativeElement.querySelector('.jqx-notification-content').innerHTML = this.quotes[Math.round(Math.random() * this.quotes.length - 1)];
         this.jqxNotification.open();
-        this.notificationContent.nativeElement.innerHTML = this.quotes[Math.round(Math.random() * this.quotes.length-1)];
     };
 }

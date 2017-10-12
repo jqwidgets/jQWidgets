@@ -4,7 +4,8 @@
     "compilerOptions": {
         "target": "es5",
         "module": "es2015",
-	    "moduleResolution": "node",
+	 //  	"allowJs": true,
+        "moduleResolution": "node",
         "removeComments": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
@@ -20,6 +21,10 @@
     "exclude": [
         "node_modules",
         "aot",
-        "temp"
+        "temp",
+		"sampledata",
+		"scripts",
+		"resources",
+		"jqwidgets"
     ]
 }

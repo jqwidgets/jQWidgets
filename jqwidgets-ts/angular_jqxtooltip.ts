@@ -1,9 +1,11 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxtooltip.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,28 +16,28 @@ declare let JQXLite: any;
 
 export class jqxTooltipComponent implements OnChanges
 {
-   @Input('absolutePositionX') attrAbsolutePositionX: any;
-   @Input('absolutePositionY') attrAbsolutePositionY: any;
-   @Input('autoHide') attrAutoHide: any;
-   @Input('autoHideDelay') attrAutoHideDelay: any;
-   @Input('animationShowDelay') attrAnimationShowDelay: any;
-   @Input('animationHideDelay') attrAnimationHideDelay: any;
-   @Input('content') attrContent: any;
-   @Input('closeOnClick') attrCloseOnClick: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: any;
-   @Input('left') attrLeft: any;
-   @Input('name') attrName: any;
-   @Input('opacity') attrOpacity: any;
+   @Input('absolutePositionX') attrAbsolutePositionX: Number;
+   @Input('absolutePositionY') attrAbsolutePositionY: Number;
+   @Input('autoHide') attrAutoHide: Boolean;
+   @Input('autoHideDelay') attrAutoHideDelay: Number;
+   @Input('animationShowDelay') attrAnimationShowDelay: String | Number;
+   @Input('animationHideDelay') attrAnimationHideDelay: String | Number;
+   @Input('content') attrContent: String;
+   @Input('closeOnClick') attrCloseOnClick: Boolean;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: Boolean;
+   @Input('left') attrLeft: Number;
+   @Input('name') attrName: String;
+   @Input('opacity') attrOpacity: Number;
    @Input('position') attrPosition: any;
-   @Input('rtl') attrRtl: any;
-   @Input('showDelay') attrShowDelay: any;
-   @Input('showArrow') attrShowArrow: any;
-   @Input('top') attrTop: any;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('showDelay') attrShowDelay: Number;
+   @Input('showArrow') attrShowArrow: Boolean;
+   @Input('top') attrTop: String | Number;
    @Input('trigger') attrTrigger: any;
-   @Input('theme') attrTheme: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('theme') attrTheme: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -106,7 +108,9 @@ export class jqxTooltipComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 
@@ -333,8 +337,8 @@ export class jqxTooltipComponent implements OnChanges
       this.host.jqxTooltip('destroy');
    }
 
-   open(): void {
-      this.host.jqxTooltip('open');
+   open(left?: number, top?: number): void {
+      this.host.jqxTooltip('open', left, top);
    }
 
    refresh(): void {

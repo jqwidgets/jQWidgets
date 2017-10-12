@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdraw.js';
+import '../jqwidgets/jqxbargauge.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,27 +17,27 @@ declare let JQXLite: any;
 
 export class jqxBarGaugeComponent implements OnChanges
 {
-   @Input('animationDuration') attrAnimationDuration: any;
-   @Input('backgroundColor') attrBackgroundColor: any;
-   @Input('barSpacing') attrBarSpacing: any;
-   @Input('baseValue') attrBaseValue: any;
-   @Input('colorScheme') attrColorScheme: any;
-   @Input('customColorScheme') attrCustomColorScheme: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('endAngle') attrEndAngle: any;
+   @Input('animationDuration') attrAnimationDuration: Number;
+   @Input('backgroundColor') attrBackgroundColor: String;
+   @Input('barSpacing') attrBarSpacing: Number;
+   @Input('baseValue') attrBaseValue: Number;
+   @Input('colorScheme') attrColorScheme: String;
+   @Input('customColorScheme') attrCustomColorScheme: jqwidgets.BarGaugeCustomColorScheme;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('endAngle') attrEndAngle: Number;
    @Input('formatFunction') attrFormatFunction: any;
-   @Input('labels') attrLabels: any;
-   @Input('max') attrMax: any;
-   @Input('min') attrMin: any;
-   @Input('relativeInnerRadius') attrRelativeInnerRadius: any;
-   @Input('rendered') attrRendered: any;
-   @Input('startAngle') attrStartAngle: any;
-   @Input('title') attrTitle: any;
-   @Input('tooltip') attrTooltip: any;
-   @Input('useGradient') attrUseGradient: any;
-   @Input('values') attrValues: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('labels') attrLabels: jqwidgets.BarGaugeLabels;
+   @Input('max') attrMax: Number | String;
+   @Input('min') attrMin: Number;
+   @Input('relativeInnerRadius') attrRelativeInnerRadius: Number | String;
+   @Input('rendered') attrRendered: () => void;
+   @Input('startAngle') attrStartAngle: Number;
+   @Input('title') attrTitle: jqwidgets.BarGaugeTitle;
+   @Input('tooltip') attrTooltip: jqwidgets.BarGaugeTooltip;
+   @Input('useGradient') attrUseGradient: Boolean;
+   @Input('values') attrValues: Array<Number>;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -105,7 +108,9 @@ export class jqxBarGaugeComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

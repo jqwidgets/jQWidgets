@@ -1,9 +1,22 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxdata.export.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxcheckbox.js';
+import '../jqwidgets/jqxtooltip.js';
+import '../jqwidgets/jqxscrollbar.js';
+import '../jqwidgets/jqxlistbox.js';
+import '../jqwidgets/jqxcombobox.js';
+import '../jqwidgets/jqxnumberinput.js';
+import '../jqwidgets/jqxdropdownlist.js';
+import '../jqwidgets/jqxdatatable.js';
+import '../jqwidgets/jqxtreegrid.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,62 +27,62 @@ declare let JQXLite: any;
 
 export class jqxTreeGridComponent implements OnChanges
 {
-   @Input('altRows') attrAltRows: any;
-   @Input('autoRowHeight') attrAutoRowHeight: any;
-   @Input('aggregatesHeight') attrAggregatesHeight: any;
-   @Input('autoShowLoadElement') attrAutoShowLoadElement: any;
-   @Input('checkboxes') attrCheckboxes: any;
-   @Input('columnsHeight') attrColumnsHeight: any;
-   @Input('columns') attrColumns: any;
-   @Input('columnGroups') attrColumnGroups: any;
-   @Input('columnsResize') attrColumnsResize: any;
-   @Input('columnsReorder') attrColumnsReorder: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('editable') attrEditable: any;
-   @Input('editSettings') attrEditSettings: any;
-   @Input('exportSettings') attrExportSettings: any;
-   @Input('enableHover') attrEnableHover: any;
-   @Input('enableBrowserSelection') attrEnableBrowserSelection: any;
-   @Input('filterable') attrFilterable: any;
-   @Input('filterHeight') attrFilterHeight: any;
+   @Input('altRows') attrAltRows: Boolean;
+   @Input('autoRowHeight') attrAutoRowHeight: Boolean;
+   @Input('aggregatesHeight') attrAggregatesHeight: Number;
+   @Input('autoShowLoadElement') attrAutoShowLoadElement: Boolean;
+   @Input('checkboxes') attrCheckboxes: Boolean;
+   @Input('columnsHeight') attrColumnsHeight: Number;
+   @Input('columns') attrColumns: Array<any>;
+   @Input('columnGroups') attrColumnGroups: Array<any>;
+   @Input('columnsResize') attrColumnsResize: Boolean;
+   @Input('columnsReorder') attrColumnsReorder: Boolean;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('editable') attrEditable: Boolean;
+   @Input('editSettings') attrEditSettings: jqwidgets.TreeGridEditSettings;
+   @Input('exportSettings') attrExportSettings: jqwidgets.TreeGridExportSettings;
+   @Input('enableHover') attrEnableHover: Boolean;
+   @Input('enableBrowserSelection') attrEnableBrowserSelection: Boolean;
+   @Input('filterable') attrFilterable: Boolean;
+   @Input('filterHeight') attrFilterHeight: Number;
    @Input('filterMode') attrFilterMode: any;
-   @Input('hierarchicalCheckboxes') attrHierarchicalCheckboxes: any;
-   @Input('icons') attrIcons: any;
-   @Input('incrementalSearch') attrIncrementalSearch: any;
+   @Input('hierarchicalCheckboxes') attrHierarchicalCheckboxes: Boolean;
+   @Input('icons') attrIcons: Boolean;
+   @Input('incrementalSearch') attrIncrementalSearch: Boolean;
    @Input('localization') attrLocalization: any;
-   @Input('pagerHeight') attrPagerHeight: any;
-   @Input('pageSize') attrPageSize: any;
-   @Input('pageSizeOptions') attrPageSizeOptions: any;
-   @Input('pageable') attrPageable: any;
+   @Input('pagerHeight') attrPagerHeight: Number;
+   @Input('pageSize') attrPageSize: Number;
+   @Input('pageSizeOptions') attrPageSizeOptions: Array<Number | String>;
+   @Input('pageable') attrPageable: Boolean;
    @Input('pagerPosition') attrPagerPosition: any;
    @Input('pagerMode') attrPagerMode: any;
    @Input('pageSizeMode') attrPageSizeMode: any;
-   @Input('pagerButtonsCount') attrPagerButtonsCount: any;
-   @Input('pagerRenderer') attrPagerRenderer: any;
-   @Input('ready') attrReady: any;
-   @Input('rowDetails') attrRowDetails: any;
-   @Input('rowDetailsRenderer') attrRowDetailsRenderer: any;
-   @Input('renderToolbar') attrRenderToolbar: any;
-   @Input('renderStatusbar') attrRenderStatusbar: any;
-   @Input('rendering') attrRendering: any;
-   @Input('rendered') attrRendered: any;
-   @Input('rtl') attrRtl: any;
+   @Input('pagerButtonsCount') attrPagerButtonsCount: Number;
+   @Input('pagerRenderer') attrPagerRenderer: () => any;
+   @Input('ready') attrReady: () => void;
+   @Input('rowDetails') attrRowDetails: Boolean;
+   @Input('rowDetailsRenderer') attrRowDetailsRenderer: (key: number, dataRow: number) => any;
+   @Input('renderToolbar') attrRenderToolbar: (toolBar?: any) => void;
+   @Input('renderStatusbar') attrRenderStatusbar: (statusBar?: any) => void;
+   @Input('rendering') attrRendering: () => void;
+   @Input('rendered') attrRendered: () => void;
+   @Input('rtl') attrRtl: Boolean;
    @Input('source') attrSource: any;
-   @Input('sortable') attrSortable: any;
-   @Input('showAggregates') attrShowAggregates: any;
-   @Input('showSubAggregates') attrShowSubAggregates: any;
-   @Input('showToolbar') attrShowToolbar: any;
-   @Input('showStatusbar') attrShowStatusbar: any;
-   @Input('statusBarHeight') attrStatusBarHeight: any;
-   @Input('scrollBarSize') attrScrollBarSize: any;
+   @Input('sortable') attrSortable: Boolean;
+   @Input('showAggregates') attrShowAggregates: Boolean;
+   @Input('showSubAggregates') attrShowSubAggregates: Boolean;
+   @Input('showToolbar') attrShowToolbar: Boolean;
+   @Input('showStatusbar') attrShowStatusbar: Boolean;
+   @Input('statusBarHeight') attrStatusBarHeight: Number;
+   @Input('scrollBarSize') attrScrollBarSize: Number;
    @Input('selectionMode') attrSelectionMode: any;
-   @Input('showHeader') attrShowHeader: any;
-   @Input('theme') attrTheme: any;
-   @Input('toolbarHeight') attrToolbarHeight: any;
-   @Input('virtualModeCreateRecords') attrVirtualModeCreateRecords: any;
-   @Input('virtualModeRecordCreating') attrVirtualModeRecordCreating: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('showHeader') attrShowHeader: Boolean;
+   @Input('theme') attrTheme: String;
+   @Input('toolbarHeight') attrToolbarHeight: Number;
+   @Input('virtualModeCreateRecords') attrVirtualModeCreateRecords: (expandedRecord?: any, done?: any) => void;
+   @Input('virtualModeRecordCreating') attrVirtualModeRecordCreating: (record?: any) => any;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -140,7 +153,9 @@ export class jqxTreeGridComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

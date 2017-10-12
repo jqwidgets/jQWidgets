@@ -1,9 +1,17 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxscrollbar.js';
+import '../jqwidgets/jqxlistbox.js';
+import '../jqwidgets/jqxdropdownlist.js';
+import '../jqwidgets/jqxcombobox.js';
+import '../jqwidgets/jqxinput.js';
+import '../jqwidgets/jqxtoolbar.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,16 +22,16 @@ declare let JQXLite: any;
 
 export class jqxToolBarComponent implements OnChanges
 {
-   @Input('disabled') attrDisabled: any;
-   @Input('initTools') attrInitTools: any;
-   @Input('minimizeWidth') attrMinimizeWidth: any;
-   @Input('minWidth') attrMinWidth: any;
-   @Input('maxWidth') attrMaxWidth: any;
-   @Input('rtl') attrRtl: any;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('initTools') attrInitTools: (type?: String, index?: Number, tool?: any, menuToolIninitialization?: Boolean) => void;
+   @Input('minimizeWidth') attrMinimizeWidth: Number;
+   @Input('minWidth') attrMinWidth: String | Number;
+   @Input('maxWidth') attrMaxWidth: String | Number;
+   @Input('rtl') attrRtl: Boolean;
    @Input('tools') attrTools: any;
-   @Input('theme') attrTheme: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('theme') attrTheme: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -94,7 +102,9 @@ export class jqxToolBarComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

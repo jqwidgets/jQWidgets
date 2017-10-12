@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxslider.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -26,36 +29,36 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxSliderComponent implements ControlValueAccessor, OnChanges 
 {
    @Input('buttonsPosition') attrButtonsPosition: any;
-   @Input('disabled') attrDisabled: any;
+   @Input('disabled') attrDisabled: Boolean;
    @Input('layout') attrLayout: any;
    @Input('mode') attrMode: any;
-   @Input('minorTicksFrequency') attrMinorTicksFrequency: any;
-   @Input('minorTickSize') attrMinorTickSize: any;
-   @Input('max') attrMax: any;
-   @Input('min') attrMin: any;
-   @Input('orientation') attrOrientation: any;
-   @Input('rangeSlider') attrRangeSlider: any;
-   @Input('rtl') attrRtl: any;
-   @Input('step') attrStep: any;
-   @Input('showTicks') attrShowTicks: any;
-   @Input('showMinorTicks') attrShowMinorTicks: any;
-   @Input('showTickLabels') attrShowTickLabels: any;
-   @Input('showButtons') attrShowButtons: any;
-   @Input('showRange') attrShowRange: any;
+   @Input('minorTicksFrequency') attrMinorTicksFrequency: Number;
+   @Input('minorTickSize') attrMinorTickSize: Number;
+   @Input('max') attrMax: Number;
+   @Input('min') attrMin: Number;
+   @Input('orientation') attrOrientation: String;
+   @Input('rangeSlider') attrRangeSlider: Boolean;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('step') attrStep: Number;
+   @Input('showTicks') attrShowTicks: Boolean;
+   @Input('showMinorTicks') attrShowMinorTicks: Boolean;
+   @Input('showTickLabels') attrShowTickLabels: Boolean;
+   @Input('showButtons') attrShowButtons: Boolean;
+   @Input('showRange') attrShowRange: Boolean;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: any;
+   @Input('theme') attrTheme: String;
    @Input('ticksPosition') attrTicksPosition: any;
-   @Input('ticksFrequency') attrTicksFrequency: any;
-   @Input('tickSize') attrTickSize: any;
-   @Input('tickLabelFormatFunction') attrTickLabelFormatFunction: any;
-   @Input('tooltip') attrTooltip: any;
-   @Input('tooltipHideDelay') attrTooltipHideDelay: any;
+   @Input('ticksFrequency') attrTicksFrequency: Number;
+   @Input('tickSize') attrTickSize: Number;
+   @Input('tickLabelFormatFunction') attrTickLabelFormatFunction: (value: any) => String;
+   @Input('tooltip') attrTooltip: Boolean;
+   @Input('tooltipHideDelay') attrTooltipHideDelay: Number;
    @Input('tooltipPosition') attrTooltipPosition: any;
-   @Input('tooltipFormatFunction') attrTooltipFormatFunction: any;
+   @Input('tooltipFormatFunction') attrTooltipFormatFunction: (value: any) => any;
    @Input('value') attrValue: any;
-   @Input('values') attrValues: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('values') attrValues: Array<Number>;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -129,7 +132,9 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

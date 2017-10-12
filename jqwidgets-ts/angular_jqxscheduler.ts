@@ -1,9 +1,31 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxdata.export.js';
+import '../jqwidgets/jqxdate.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxmenu.js';
+import '../jqwidgets/jqxtooltip.js';
+import '../jqwidgets/jqxscrollbar.js';
+import '../jqwidgets/jqxradiobutton.js';
+import '../jqwidgets/jqxcheckbox.js';
+import '../jqwidgets/jqxwindow.js';
+import '../jqwidgets/jqxlistbox.js';
+import '../jqwidgets/jqxcolorpicker.js';
+import '../jqwidgets/jqxcombobox.js';
+import '../jqwidgets/jqxdropdownlist.js';
+import '../jqwidgets/jqxnumberinput.js';
+import '../jqwidgets/jqxinput.js';
+import '../jqwidgets/globalization/globalize.js';
+import '../jqwidgets/jqxcalendar.js';
+import '../jqwidgets/jqxdatetimeinput.js';
+import '../jqwidgets/jqxscheduler.js';
+import '../jqwidgets/jqxscheduler.api.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,59 +36,59 @@ declare let JQXLite: any;
 
 export class jqxSchedulerComponent implements OnChanges
 {
-   @Input('appointmentOpacity') attrAppointmentOpacity: any;
-   @Input('appointmentsMinHeight') attrAppointmentsMinHeight: any;
-   @Input('appointmentDataFields') attrAppointmentDataFields: any;
-   @Input('appointmentTooltips') attrAppointmentTooltips: any;
-   @Input('columnsHeight') attrColumnsHeight: any;
-   @Input('contextMenu') attrContextMenu: any;
-   @Input('contextMenuOpen') attrContextMenuOpen: any;
-   @Input('contextMenuClose') attrContextMenuClose: any;
-   @Input('contextMenuItemClick') attrContextMenuItemClick: any;
-   @Input('contextMenuCreate') attrContextMenuCreate: any;
-   @Input('changedAppointments') attrChangedAppointments: any;
-   @Input('disabled') attrDisabled: any;
+   @Input('appointmentOpacity') attrAppointmentOpacity: Number;
+   @Input('appointmentsMinHeight') attrAppointmentsMinHeight: Number;
+   @Input('appointmentDataFields') attrAppointmentDataFields: jqwidgets.SchedulerAppointmentDataFields;
+   @Input('appointmentTooltips') attrAppointmentTooltips: Boolean;
+   @Input('columnsHeight') attrColumnsHeight: Number;
+   @Input('contextMenu') attrContextMenu: Boolean;
+   @Input('contextMenuOpen') attrContextMenuOpen: (menu: any, appointment: any, event: any) => void;
+   @Input('contextMenuClose') attrContextMenuClose: (menu: any, appointment: any, event: any) => void;
+   @Input('contextMenuItemClick') attrContextMenuItemClick: (menu: any, appointment: any, event: any) => Boolean;
+   @Input('contextMenuCreate') attrContextMenuCreate: (menu: any, appointment: any, event: any) => void;
+   @Input('changedAppointments') attrChangedAppointments: Array<jqwidgets.SchedulerChangedAppointments>;
+   @Input('disabled') attrDisabled: Boolean;
    @Input('date') attrDate: any;
-   @Input('dayNameFormat') attrDayNameFormat: any;
-   @Input('enableHover') attrEnableHover: any;
-   @Input('editDialog') attrEditDialog: any;
-   @Input('editDialogDateTimeFormatString') attrEditDialogDateTimeFormatString: any;
-   @Input('editDialogDateFormatString') attrEditDialogDateFormatString: any;
-   @Input('editDialogOpen') attrEditDialogOpen: any;
-   @Input('editDialogCreate') attrEditDialogCreate: any;
-   @Input('editDialogKeyDown') attrEditDialogKeyDown: any;
-   @Input('editDialogClose') attrEditDialogClose: any;
-   @Input('exportSettings') attrExportSettings: any;
-   @Input('legendPosition') attrLegendPosition: any;
-   @Input('legendHeight') attrLegendHeight: any;
+   @Input('dayNameFormat') attrDayNameFormat: String;
+   @Input('enableHover') attrEnableHover: Boolean;
+   @Input('editDialog') attrEditDialog: Boolean;
+   @Input('editDialogDateTimeFormatString') attrEditDialogDateTimeFormatString: String;
+   @Input('editDialogDateFormatString') attrEditDialogDateFormatString: String;
+   @Input('editDialogOpen') attrEditDialogOpen: (dialog?: any, fields?: any, editAppointment?: any) => void;
+   @Input('editDialogCreate') attrEditDialogCreate: (dialog?: any, fields?: any, editAppointment?: any) => void;
+   @Input('editDialogKeyDown') attrEditDialogKeyDown: (dialog?: any, fields?: any, editAppointment?: any, event?: any) => Boolean;
+   @Input('editDialogClose') attrEditDialogClose: (dialog?: any, fields?: any, editAppointment?: any) => void;
+   @Input('exportSettings') attrExportSettings: jqwidgets.SchedulerExportSettings;
+   @Input('legendPosition') attrLegendPosition: String;
+   @Input('legendHeight') attrLegendHeight: Number;
    @Input('localization') attrLocalization: any;
    @Input('min') attrMin: any;
    @Input('max') attrMax: any;
-   @Input('ready') attrReady: any;
-   @Input('renderAppointment') attrRenderAppointment: any;
-   @Input('rendering') attrRendering: any;
-   @Input('rendered') attrRendered: any;
-   @Input('rtl') attrRtl: any;
-   @Input('resources') attrResources: any;
-   @Input('rowsHeight') attrRowsHeight: any;
-   @Input('showToolbar') attrShowToolbar: any;
-   @Input('showLegend') attrShowLegend: any;
-   @Input('scrollBarSize') attrScrollBarSize: any;
+   @Input('ready') attrReady: () => void;
+   @Input('renderAppointment') attrRenderAppointment: (data: any) => any;
+   @Input('rendering') attrRendering: () => void;
+   @Input('rendered') attrRendered: () => void;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('resources') attrResources: jqwidgets.SchedulerResources;
+   @Input('rowsHeight') attrRowsHeight: Number;
+   @Input('showToolbar') attrShowToolbar: Boolean;
+   @Input('showLegend') attrShowLegend: Boolean;
+   @Input('scrollBarSize') attrScrollBarSize: Number;
    @Input('source') attrSource: any;
-   @Input('statuses') attrStatuses: any;
-   @Input('touchRowsHeight') attrTouchRowsHeight: any;
-   @Input('theme') attrTheme: any;
-   @Input('touchAppointmentsMinHeight') attrTouchAppointmentsMinHeight: any;
-   @Input('touchScrollBarSize') attrTouchScrollBarSize: any;
-   @Input('timeZone') attrTimeZone: any;
+   @Input('statuses') attrStatuses: jqwidgets.SchedulerStatuses;
+   @Input('touchRowsHeight') attrTouchRowsHeight: Number;
+   @Input('theme') attrTheme: String;
+   @Input('touchAppointmentsMinHeight') attrTouchAppointmentsMinHeight: Number;
+   @Input('touchScrollBarSize') attrTouchScrollBarSize: Number;
+   @Input('timeZone') attrTimeZone: String;
    @Input('touchDayNameFormat') attrTouchDayNameFormat: any;
-   @Input('toolBarRangeFormat') attrToolBarRangeFormat: any;
-   @Input('toolBarRangeFormatAbbr') attrToolBarRangeFormatAbbr: any;
-   @Input('toolbarHeight') attrToolbarHeight: any;
-   @Input('views') attrViews: any;
+   @Input('toolBarRangeFormat') attrToolBarRangeFormat: String;
+   @Input('toolBarRangeFormatAbbr') attrToolBarRangeFormatAbbr: String;
+   @Input('toolbarHeight') attrToolbarHeight: Number;
+   @Input('views') attrViews: Array<any>;
    @Input('view') attrView: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -137,7 +159,9 @@ export class jqxSchedulerComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

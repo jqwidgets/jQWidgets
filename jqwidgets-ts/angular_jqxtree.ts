@@ -1,9 +1,16 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxscrollbar.js';
+import '../jqwidgets/jqxpanel.js';
+import '../jqwidgets/jqxdragdrop.js';
+import '../jqwidgets/jqxtree.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,27 +21,27 @@ declare let JQXLite: any;
 
 export class jqxTreeComponent implements OnChanges
 {
-   @Input('animationShowDuration') attrAnimationShowDuration: any;
-   @Input('animationHideDuration') attrAnimationHideDuration: any;
-   @Input('allowDrag') attrAllowDrag: any;
-   @Input('allowDrop') attrAllowDrop: any;
-   @Input('checkboxes') attrCheckboxes: any;
-   @Input('dragStart') attrDragStart: any;
-   @Input('dragEnd') attrDragEnd: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('easing') attrEasing: any;
-   @Input('enableHover') attrEnableHover: any;
-   @Input('hasThreeStates') attrHasThreeStates: any;
-   @Input('incrementalSearch') attrIncrementalSearch: any;
-   @Input('keyboardNavigation') attrKeyboardNavigation: any;
-   @Input('rtl') attrRtl: any;
+   @Input('animationShowDuration') attrAnimationShowDuration: Number;
+   @Input('animationHideDuration') attrAnimationHideDuration: Number;
+   @Input('allowDrag') attrAllowDrag: Boolean;
+   @Input('allowDrop') attrAllowDrop: Boolean;
+   @Input('checkboxes') attrCheckboxes: Boolean;
+   @Input('dragStart') attrDragStart: (item: any) => Boolean;
+   @Input('dragEnd') attrDragEnd: (dragItem?: any, dropItem?: any, args?: any, dropPosition?: any, tree?: any) => Boolean;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('easing') attrEasing: String;
+   @Input('enableHover') attrEnableHover: Boolean;
+   @Input('hasThreeStates') attrHasThreeStates: Boolean;
+   @Input('incrementalSearch') attrIncrementalSearch: Boolean;
+   @Input('keyboardNavigation') attrKeyboardNavigation: Boolean;
+   @Input('rtl') attrRtl: Boolean;
    @Input('selectedItem') attrSelectedItem: any;
    @Input('source') attrSource: any;
-   @Input('toggleIndicatorSize') attrToggleIndicatorSize: any;
+   @Input('toggleIndicatorSize') attrToggleIndicatorSize: Number;
    @Input('toggleMode') attrToggleMode: any;
-   @Input('theme') attrTheme: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('theme') attrTheme: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -105,7 +112,9 @@ export class jqxTreeComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

@@ -1,9 +1,11 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxvalidator.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,19 +16,19 @@ declare let JQXLite: any;
 
 export class jqxValidatorComponent implements OnChanges
 {
-   @Input('arrow') attrArrow: any;
+   @Input('arrow') attrArrow: Boolean;
    @Input('animation') attrAnimation: any;
-   @Input('animationDuration') attrAnimationDuration: any;
-   @Input('closeOnClick') attrCloseOnClick: any;
-   @Input('focus') attrFocus: any;
+   @Input('animationDuration') attrAnimationDuration: Number;
+   @Input('closeOnClick') attrCloseOnClick: Boolean;
+   @Input('focus') attrFocus: Boolean;
    @Input('hintType') attrHintType: any;
-   @Input('onError') attrOnError: any;
-   @Input('onSuccess') attrOnSuccess: any;
-   @Input('position') attrPosition: any;
-   @Input('rules') attrRules: any;
-   @Input('rtl') attrRtl: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('onError') attrOnError: () => void;
+   @Input('onSuccess') attrOnSuccess: () => void;
+   @Input('position') attrPosition: String;
+   @Input('rules') attrRules: Array<jqwidgets.ValidatorRule>;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -97,7 +99,9 @@ export class jqxValidatorComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

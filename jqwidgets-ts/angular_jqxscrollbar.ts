@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxscrollbar.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,19 +17,19 @@ declare let JQXLite: any;
 
 export class jqxScrollBarComponent implements OnChanges
 {
-   @Input('disabled') attrDisabled: any;
-   @Input('largestep') attrLargestep: any;
-   @Input('min') attrMin: any;
-   @Input('max') attrMax: any;
-   @Input('rtl') attrRtl: any;
-   @Input('step') attrStep: any;
-   @Input('showButtons') attrShowButtons: any;
-   @Input('thumbMinSize') attrThumbMinSize: any;
-   @Input('theme') attrTheme: any;
-   @Input('vertical') attrVertical: any;
-   @Input('value') attrValue: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('largestep') attrLargestep: Number;
+   @Input('min') attrMin: Number;
+   @Input('max') attrMax: Number;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('step') attrStep: Number;
+   @Input('showButtons') attrShowButtons: Boolean;
+   @Input('thumbMinSize') attrThumbMinSize: Number;
+   @Input('theme') attrTheme: String;
+   @Input('vertical') attrVertical: Boolean;
+   @Input('value') attrValue: Number;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -97,7 +100,9 @@ export class jqxScrollBarComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

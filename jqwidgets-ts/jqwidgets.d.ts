@@ -191,6 +191,7 @@ declare module jqwidgets {
         columns: Array<PivotGridField>;
         values: Array<PivotGridValueField>;
         filters?: Array<PivotGridFilterField>;
+        theme?: string;
     }// PivotGridSettings
 
     export interface PivotGridPoint {
@@ -1533,7 +1534,7 @@ declare module jqwidgets {
         height?: Number | String;
         incrementalSearch?: boolean;
         incrementalSearchDelay?: number;
-        itemHeight?: Number | String;
+        itemHeight?: Number;
         openDelay?: number;
         placeHolder?: string;
         popupZIndex?: number;
@@ -1919,6 +1920,7 @@ declare module jqwidgets {
         destroyeverpresentrowwidget?: (htmlElement: any) => void;
         validateeverpresentrowwidgetvalue?: (datafield: String, value: any, rowValues: any) => Boolean;
         cellsformat?: string;
+        cellclassname?: String;
         aggregates?: any;
         align?: string;
         cellsalign?: string;
@@ -3978,7 +3980,7 @@ declare module jqwidgets {
         // jqxTooltip functions
         close(index: number): void;
         destroy(): void;
-        open(): void;
+        open(left: number, top: number): void;
         refresh(): void;
     }// jqxTooltip
 

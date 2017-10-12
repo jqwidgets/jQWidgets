@@ -115,20 +115,6 @@ export class AppComponent implements OnInit {
     }
 
     refreshTimeout(): number {
-        let timeout = 100;
-        let response = new jqx.response();
-        if (response && response.device) {
-            if (response.device.type == 'Tablet') {
-                timeout = 150;
-            }
-            else if (response.device.width < 800 ||
-                response.device.height < 500 ||
-                response.device.type == 'Phone' ||
-                (response.browser.svg == false && response.browser.canvas == false)
-            ) {
-                timeout = 1000;
-            }
-        }
-        return timeout;
+        return 100;
     }
 }

@@ -6,13 +6,19 @@
 })
 
 export class AppComponent {
-    shirtFileNames: string[] = ['2-sided-dodgers-bankrupt-t-shirt-ash', 'black-retro-rock-band-guitar-controller',
-        'bright-green-gettin-lucky-in-kentucky', 'brown-loading-bar-computer-geek', 'cool-story-bro',
-        'fear-the-beard', 'honey-badger-don-t-care', 'misfits-sf-giants-white', 'scott-pilgrim-red-rock-band'];
+    shirtFileNames: string[] =
+    [
+        "2-sided-dodgers-bankrupt-t-shirt-ash", "black-retro-rock-band-guitar-controller",
+        "bright-green-gettin-lucky-in-kentucky", "brown-loading-bar-computer-geek", "cool-story-bro",
+        "fear-the-beard", "honey-badger-don-t-care", "misfits-sf-giants-white", "scott-pilgrim-red-rock-band"
+    ];
 
-    shirts: string[] = ['2 sided dodgers<br>bankrupt<br>t shirt ash', 'black retro<br>rock band<br>guitar controller',
-        'bright green<br>gettin lucky<br>in kentucky', 'brown loading<br>bar computer geek', 'cool story bro',
-        'fear the beard', 'honey badger<br>don t care', 'misfits sf<br>giants white', 'scott pilgrim<br>red rock<br>band'];
+    shirts: string[] =
+    [
+        "2 sided dodgers\nbankrupt\nt shirt ash", "black retro\nrock band\nguitar controller",
+        "bright green\ngettin lucky\nin kentucky", "brown loading\nbar computer geek", "cool story bro",
+        "fear the beard", "honey badger\ndon t care", "misfits sf\ngiants white", "scott pilgrim\nred rock\nband"
+    ];
 
     renderer = (index: number, label: string, value: any): string => {
         let datarecord = this.shirtFileNames[index];
@@ -23,7 +29,7 @@ export class AppComponent {
     };
 
     selectionRenderer = (element: any, index: number, label: string, value: any): string => {
-        let text = label.replace(/<br>/g, ' ');
+        let text = label.replace(/\n/g, " ");
         return '<span style="left: 4px; top: 6px; position: relative;">' + text + '</span>';
     };
 }

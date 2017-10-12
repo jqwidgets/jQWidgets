@@ -81,6 +81,6 @@ export class AppComponent {
     ];
 
     scrollfeedback = (row: any): string => {
-        return '<table style="height: 150px;"><tr><td><img src="../../images/t-shirts/' + row.pic + '"/></td></tr><tr><td>' + row.label + '</td></tr></table>';
+        return '<table style="height: 150px;"><tr><td><img src="../images/t-shirts/' + row.pic + '"/></td></tr><tr><td>' + row.label + '</td></tr></table>';
     };
 }

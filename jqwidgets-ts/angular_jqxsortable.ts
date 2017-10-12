@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxsortable.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,33 +17,33 @@ declare let JQXLite: any;
 
 export class jqxSortableComponent implements OnChanges
 {
-   @Input('appendTo') attrAppendTo: any;
-   @Input('axis') attrAxis: any;
-   @Input('cancelProperty') attrCancelProperty: any;
-   @Input('connectWith') attrConnectWith: any;
-   @Input('containment') attrContainment: any;
-   @Input('cursor') attrCursor: any;
-   @Input('cursorAt') attrCursorAt: any;
-   @Input('delay') attrDelay: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('distance') attrDistance: any;
-   @Input('dropOnEmpty') attrDropOnEmpty: any;
-   @Input('forceHelperSize') attrForceHelperSize: any;
-   @Input('forcePlaceholderSize') attrForcePlaceholderSize: any;
-   @Input('grid') attrGrid: any;
-   @Input('handle') attrHandle: any;
+   @Input('appendTo') attrAppendTo: String;
+   @Input('axis') attrAxis: String | Number;
+   @Input('cancelProperty') attrCancelProperty: String;
+   @Input('connectWith') attrConnectWith: String | Boolean;
+   @Input('containment') attrContainment: String | Boolean;
+   @Input('cursor') attrCursor: String;
+   @Input('cursorAt') attrCursorAt: jqwidgets.SortableCursorAt;
+   @Input('delay') attrDelay: Number;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('distance') attrDistance: Number;
+   @Input('dropOnEmpty') attrDropOnEmpty: Boolean;
+   @Input('forceHelperSize') attrForceHelperSize: Boolean;
+   @Input('forcePlaceholderSize') attrForcePlaceholderSize: Boolean;
+   @Input('grid') attrGrid: Array<Number>;
+   @Input('handle') attrHandle: String | Boolean;
    @Input('helper') attrHelper: any;
-   @Input('items') attrItems: any;
-   @Input('opacity') attrOpacity: any;
-   @Input('placeholderShow') attrPlaceholderShow: any;
-   @Input('revert') attrRevert: any;
-   @Input('scroll') attrScroll: any;
-   @Input('scrollSensitivity') attrScrollSensitivity: any;
-   @Input('scrollSpeed') attrScrollSpeed: any;
+   @Input('items') attrItems: String;
+   @Input('opacity') attrOpacity: Number | Boolean;
+   @Input('placeholderShow') attrPlaceholderShow: String | Boolean;
+   @Input('revert') attrRevert: Number | Boolean;
+   @Input('scroll') attrScroll: Boolean;
+   @Input('scrollSensitivity') attrScrollSensitivity: Number;
+   @Input('scrollSpeed') attrScrollSpeed: Number;
    @Input('tolerance') attrTolerance: any;
-   @Input('zIndex') attrZIndex: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('zIndex') attrZIndex: Number;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -111,7 +114,9 @@ export class jqxSortableComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

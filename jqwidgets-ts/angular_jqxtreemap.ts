@@ -1,9 +1,13 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxtreemap.js';
+import '../jqwidgets/jqxtooltip.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,24 +18,24 @@ declare let JQXLite: any;
 
 export class jqxTreeMapComponent implements OnChanges
 {
-   @Input('baseColor') attrBaseColor: any;
-   @Input('colorRanges') attrColorRanges: any;
-   @Input('colorRange') attrColorRange: any;
+   @Input('baseColor') attrBaseColor: String;
+   @Input('colorRanges') attrColorRanges: Array<jqwidgets.TreeMapColorRanges>;
+   @Input('colorRange') attrColorRange: Number;
    @Input('colorMode') attrColorMode: any;
-   @Input('displayMember') attrDisplayMember: any;
-   @Input('hoverEnabled') attrHoverEnabled: any;
-   @Input('headerHeight') attrHeaderHeight: any;
-   @Input('legendLabel') attrLegendLabel: any;
-   @Input('legendPosition') attrLegendPosition: any;
+   @Input('displayMember') attrDisplayMember: String;
+   @Input('hoverEnabled') attrHoverEnabled: Boolean;
+   @Input('headerHeight') attrHeaderHeight: Number;
+   @Input('legendLabel') attrLegendLabel: String;
+   @Input('legendPosition') attrLegendPosition: jqwidgets.TreeMapLegendPosition;
    @Input('legendScaleCallback') attrLegendScaleCallback: any;
    @Input('renderCallbacks') attrRenderCallbacks: any;
-   @Input('selectionEnabled') attrSelectionEnabled: any;
-   @Input('showLegend') attrShowLegend: any;
+   @Input('selectionEnabled') attrSelectionEnabled: Boolean;
+   @Input('showLegend') attrShowLegend: Boolean;
    @Input('source') attrSource: any;
-   @Input('theme') attrTheme: any;
-   @Input('valueMember') attrValueMember: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('theme') attrTheme: String;
+   @Input('valueMember') attrValueMember: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -102,7 +106,9 @@ export class jqxTreeMapComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

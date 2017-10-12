@@ -1,9 +1,23 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxscrollbar.js';
+import '../jqwidgets/jqxmenu.js';
+import '../jqwidgets/jqxwindow.js';
+import '../jqwidgets/jqxdragdrop.js';
+import '../jqwidgets/jqxcheckbox.js';
+import '../jqwidgets/jqxinput.js';
+import '../jqwidgets/jqxlistbox.js';
+import '../jqwidgets/jqxdropdownlist.js';
+import '../jqwidgets/jqxpivot.js';
+import '../jqwidgets/jqxpivotgrid.js';
+import '../jqwidgets/jqxpivotdesigner.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -16,15 +30,15 @@ export class jqxPivotGridComponent implements OnChanges
 {
    @Input('source') attrSource: any;
    @Input('localization') attrLocalization: any;
-   @Input('scrollBarsEnabled') attrScrollBarsEnabled: any;
-   @Input('selectionEnabled') attrSelectionEnabled: any;
-   @Input('multipleSelectionEnabled') attrMultipleSelectionEnabled: any;
-   @Input('treeStyleRows') attrTreeStyleRows: any;
-   @Input('autoResize') attrAutoResize: any;
-   @Input('itemsRenderer') attrItemsRenderer: any;
-   @Input('cellsRenderer') attrCellsRenderer: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('scrollBarsEnabled') attrScrollBarsEnabled: Boolean;
+   @Input('selectionEnabled') attrSelectionEnabled: Boolean;
+   @Input('multipleSelectionEnabled') attrMultipleSelectionEnabled: Boolean;
+   @Input('treeStyleRows') attrTreeStyleRows: Boolean;
+   @Input('autoResize') attrAutoResize: Boolean;
+   @Input('itemsRenderer') attrItemsRenderer: (pivotItem: any) => String;
+   @Input('cellsRenderer') attrCellsRenderer: (pivotCell: any) => String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -95,7 +109,9 @@ export class jqxPivotGridComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

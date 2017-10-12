@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxtabs.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -15,32 +18,32 @@ declare let JQXLite: any;
 export class jqxTabsComponent implements OnChanges
 {
    @Input('animationType') attrAnimationType: any;
-   @Input('autoHeight') attrAutoHeight: any;
-   @Input('closeButtonSize') attrCloseButtonSize: any;
-   @Input('collapsible') attrCollapsible: any;
-   @Input('contentTransitionDuration') attrContentTransitionDuration: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('enabledHover') attrEnabledHover: any;
-   @Input('enableScrollAnimation') attrEnableScrollAnimation: any;
-   @Input('enableDropAnimation') attrEnableDropAnimation: any;
-   @Input('initTabContent') attrInitTabContent: any;
-   @Input('keyboardNavigation') attrKeyboardNavigation: any;
+   @Input('autoHeight') attrAutoHeight: Boolean;
+   @Input('closeButtonSize') attrCloseButtonSize: Number;
+   @Input('collapsible') attrCollapsible: Boolean;
+   @Input('contentTransitionDuration') attrContentTransitionDuration: Number;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('enabledHover') attrEnabledHover: Boolean;
+   @Input('enableScrollAnimation') attrEnableScrollAnimation: Boolean;
+   @Input('enableDropAnimation') attrEnableDropAnimation: Boolean;
+   @Input('initTabContent') attrInitTabContent: (tab?: Number) => void;
+   @Input('keyboardNavigation') attrKeyboardNavigation: Boolean;
    @Input('next') attrNext: any;
    @Input('previous') attrPrevious: any;
    @Input('position') attrPosition: any;
-   @Input('reorder') attrReorder: any;
-   @Input('rtl') attrRtl: any;
-   @Input('scrollAnimationDuration') attrScrollAnimationDuration: any;
-   @Input('selectedItem') attrSelectedItem: any;
-   @Input('selectionTracker') attrSelectionTracker: any;
-   @Input('scrollable') attrScrollable: any;
+   @Input('reorder') attrReorder: Boolean;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('scrollAnimationDuration') attrScrollAnimationDuration: Number;
+   @Input('selectedItem') attrSelectedItem: Number;
+   @Input('selectionTracker') attrSelectionTracker: Boolean;
+   @Input('scrollable') attrScrollable: Boolean;
    @Input('scrollPosition') attrScrollPosition: any;
-   @Input('scrollStep') attrScrollStep: any;
-   @Input('showCloseButtons') attrShowCloseButtons: any;
+   @Input('scrollStep') attrScrollStep: Number;
+   @Input('showCloseButtons') attrShowCloseButtons: Boolean;
    @Input('toggleMode') attrToggleMode: any;
-   @Input('theme') attrTheme: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('theme') attrTheme: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -111,7 +114,9 @@ export class jqxTabsComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

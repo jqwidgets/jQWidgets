@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxnotification.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,27 +17,27 @@ declare let JQXLite: any;
 
 export class jqxNotificationComponent implements OnChanges
 {
-   @Input('appendContainer') attrAppendContainer: any;
-   @Input('autoOpen') attrAutoOpen: any;
-   @Input('animationOpenDelay') attrAnimationOpenDelay: any;
-   @Input('animationCloseDelay') attrAnimationCloseDelay: any;
-   @Input('autoClose') attrAutoClose: any;
-   @Input('autoCloseDelay') attrAutoCloseDelay: any;
-   @Input('blink') attrBlink: any;
-   @Input('browserBoundsOffset') attrBrowserBoundsOffset: any;
-   @Input('closeOnClick') attrCloseOnClick: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('hoverOpacity') attrHoverOpacity: any;
-   @Input('icon') attrIcon: any;
-   @Input('notificationOffset') attrNotificationOffset: any;
-   @Input('opacity') attrOpacity: any;
+   @Input('appendContainer') attrAppendContainer: String;
+   @Input('autoOpen') attrAutoOpen: Boolean;
+   @Input('animationOpenDelay') attrAnimationOpenDelay: Number;
+   @Input('animationCloseDelay') attrAnimationCloseDelay: Number;
+   @Input('autoClose') attrAutoClose: Boolean;
+   @Input('autoCloseDelay') attrAutoCloseDelay: String | Number;
+   @Input('blink') attrBlink: Boolean;
+   @Input('browserBoundsOffset') attrBrowserBoundsOffset: Number;
+   @Input('closeOnClick') attrCloseOnClick: Boolean;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('hoverOpacity') attrHoverOpacity: Number;
+   @Input('icon') attrIcon: jqwidgets.NotificationIcon;
+   @Input('notificationOffset') attrNotificationOffset: Number;
+   @Input('opacity') attrOpacity: Number;
    @Input('position') attrPosition: any;
-   @Input('rtl') attrRtl: any;
-   @Input('showCloseButton') attrShowCloseButton: any;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('showCloseButton') attrShowCloseButton: Boolean;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('theme') attrTheme: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -105,7 +108,9 @@ export class jqxNotificationComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

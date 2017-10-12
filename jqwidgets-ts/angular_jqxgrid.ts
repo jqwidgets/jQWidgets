@@ -1,9 +1,37 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxdata.export.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxbuttongroup.js';
+import '../jqwidgets/jqxscrollbar.js'
+import '../jqwidgets/jqxmenu.js'
+import '../jqwidgets/jqxlistbox.js'
+import '../jqwidgets/jqxdropdownlist.js'
+import '../jqwidgets/jqxcombobox.js'
+import '../jqwidgets/jqxnumberinput.js'
+import '../jqwidgets/jqxcheckbox.js'
+import '../jqwidgets/globalization/globalize.js'
+import '../jqwidgets/jqxcalendar.js'
+import '../jqwidgets/jqxnumberinput.js'
+import '../jqwidgets/jqxdatetimeinput.js'
+import '../jqwidgets/jqxgrid.js'
+import '../jqwidgets/jqxgrid.edit.js'
+import '../jqwidgets/jqxgrid.pager.js'
+import '../jqwidgets/jqxgrid.selection.js'
+import '../jqwidgets/jqxgrid.filter.js'
+import '../jqwidgets/jqxgrid.sort.js'
+import '../jqwidgets/jqxgrid.storage.js'
+import '../jqwidgets/jqxgrid.grouping.js'
+import '../jqwidgets/jqxgrid.export.js'
+import '../jqwidgets/jqxgrid.columnsresize.js'
+import '../jqwidgets/jqxgrid.columnsreorder.js'
+import '../jqwidgets/jqxgrid.aggregates.js'
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,114 +42,114 @@ declare let JQXLite: any;
 
 export class jqxGridComponent implements OnChanges
 {
-   @Input('altrows') attrAltrows: any;
-   @Input('altstart') attrAltstart: any;
-   @Input('altstep') attrAltstep: any;
-   @Input('autoshowloadelement') attrAutoshowloadelement: any;
-   @Input('autoshowfiltericon') attrAutoshowfiltericon: any;
-   @Input('autoshowcolumnsmenubutton') attrAutoshowcolumnsmenubutton: any;
-   @Input('clipboard') attrClipboard: any;
-   @Input('closeablegroups') attrCloseablegroups: any;
-   @Input('columnsmenuwidth') attrColumnsmenuwidth: any;
-   @Input('columnmenuopening') attrColumnmenuopening: any;
-   @Input('columnmenuclosing') attrColumnmenuclosing: any;
-   @Input('cellhover') attrCellhover: any;
-   @Input('enablekeyboarddelete') attrEnablekeyboarddelete: any;
-   @Input('enableellipsis') attrEnableellipsis: any;
-   @Input('enablemousewheel') attrEnablemousewheel: any;
-   @Input('enableanimations') attrEnableanimations: any;
-   @Input('enabletooltips') attrEnabletooltips: any;
-   @Input('enablehover') attrEnablehover: any;
-   @Input('enablebrowserselection') attrEnablebrowserselection: any;
+   @Input('altrows') attrAltrows: Boolean;
+   @Input('altstart') attrAltstart: Number;
+   @Input('altstep') attrAltstep: Number;
+   @Input('autoshowloadelement') attrAutoshowloadelement: Boolean;
+   @Input('autoshowfiltericon') attrAutoshowfiltericon: Boolean;
+   @Input('autoshowcolumnsmenubutton') attrAutoshowcolumnsmenubutton: Boolean;
+   @Input('clipboard') attrClipboard: Boolean;
+   @Input('closeablegroups') attrCloseablegroups: Boolean;
+   @Input('columnsmenuwidth') attrColumnsmenuwidth: Number;
+   @Input('columnmenuopening') attrColumnmenuopening: (menu?: any, datafield?: String, height?: Number | String) => Boolean;
+   @Input('columnmenuclosing') attrColumnmenuclosing: (menu?: any, datafield?: String, height?: Number | String) => Boolean;
+   @Input('cellhover') attrCellhover: (cellhtmlElement?: any, x?: Number, y?: Number) => void;
+   @Input('enablekeyboarddelete') attrEnablekeyboarddelete: Boolean;
+   @Input('enableellipsis') attrEnableellipsis: Boolean;
+   @Input('enablemousewheel') attrEnablemousewheel: Boolean;
+   @Input('enableanimations') attrEnableanimations: Boolean;
+   @Input('enabletooltips') attrEnabletooltips: Boolean;
+   @Input('enablehover') attrEnablehover: Boolean;
+   @Input('enablebrowserselection') attrEnablebrowserselection: Boolean;
    @Input('everpresentrowposition') attrEverpresentrowposition: any;
-   @Input('everpresentrowheight') attrEverpresentrowheight: any;
-   @Input('everpresentrowactions') attrEverpresentrowactions: any;
+   @Input('everpresentrowheight') attrEverpresentrowheight: Number;
+   @Input('everpresentrowactions') attrEverpresentrowactions: String;
    @Input('everpresentrowactionsmode') attrEverpresentrowactionsmode: any;
-   @Input('filterrowheight') attrFilterrowheight: any;
+   @Input('filterrowheight') attrFilterrowheight: Number;
    @Input('filtermode') attrFiltermode: any;
-   @Input('groupsrenderer') attrGroupsrenderer: any;
-   @Input('groupcolumnrenderer') attrGroupcolumnrenderer: any;
-   @Input('groupsexpandedbydefault') attrGroupsexpandedbydefault: any;
-   @Input('handlekeyboardnavigation') attrHandlekeyboardnavigation: any;
-   @Input('pagerrenderer') attrPagerrenderer: any;
-   @Input('rtl') attrRtl: any;
-   @Input('showdefaultloadelement') attrShowdefaultloadelement: any;
-   @Input('showfiltercolumnbackground') attrShowfiltercolumnbackground: any;
-   @Input('showfiltermenuitems') attrShowfiltermenuitems: any;
-   @Input('showpinnedcolumnbackground') attrShowpinnedcolumnbackground: any;
-   @Input('showsortcolumnbackground') attrShowsortcolumnbackground: any;
-   @Input('showsortmenuitems') attrShowsortmenuitems: any;
-   @Input('showgroupmenuitems') attrShowgroupmenuitems: any;
-   @Input('showrowdetailscolumn') attrShowrowdetailscolumn: any;
-   @Input('showheader') attrShowheader: any;
-   @Input('showgroupsheader') attrShowgroupsheader: any;
-   @Input('showaggregates') attrShowaggregates: any;
-   @Input('showgroupaggregates') attrShowgroupaggregates: any;
-   @Input('showeverpresentrow') attrShoweverpresentrow: any;
-   @Input('showfilterrow') attrShowfilterrow: any;
-   @Input('showemptyrow') attrShowemptyrow: any;
-   @Input('showstatusbar') attrShowstatusbar: any;
-   @Input('statusbarheight') attrStatusbarheight: any;
-   @Input('showtoolbar') attrShowtoolbar: any;
+   @Input('groupsrenderer') attrGroupsrenderer: (text?: String, group?: Number, expanded?: Boolean, data?: any) => String;
+   @Input('groupcolumnrenderer') attrGroupcolumnrenderer: (text?: String, group?: Number, expanded?: Boolean, data?: any) => String;
+   @Input('groupsexpandedbydefault') attrGroupsexpandedbydefault: Boolean;
+   @Input('handlekeyboardnavigation') attrHandlekeyboardnavigation: (event: any) => Boolean;
+   @Input('pagerrenderer') attrPagerrenderer: () => any[];
+   @Input('rtl') attrRtl: Boolean;
+   @Input('showdefaultloadelement') attrShowdefaultloadelement: Boolean;
+   @Input('showfiltercolumnbackground') attrShowfiltercolumnbackground: Boolean;
+   @Input('showfiltermenuitems') attrShowfiltermenuitems: Boolean;
+   @Input('showpinnedcolumnbackground') attrShowpinnedcolumnbackground: Boolean;
+   @Input('showsortcolumnbackground') attrShowsortcolumnbackground: Boolean;
+   @Input('showsortmenuitems') attrShowsortmenuitems: Boolean;
+   @Input('showgroupmenuitems') attrShowgroupmenuitems: Boolean;
+   @Input('showrowdetailscolumn') attrShowrowdetailscolumn: Boolean;
+   @Input('showheader') attrShowheader: Boolean;
+   @Input('showgroupsheader') attrShowgroupsheader: Boolean;
+   @Input('showaggregates') attrShowaggregates: Boolean;
+   @Input('showgroupaggregates') attrShowgroupaggregates: Boolean;
+   @Input('showeverpresentrow') attrShoweverpresentrow: Boolean;
+   @Input('showfilterrow') attrShowfilterrow: Boolean;
+   @Input('showemptyrow') attrShowemptyrow: Boolean;
+   @Input('showstatusbar') attrShowstatusbar: Boolean;
+   @Input('statusbarheight') attrStatusbarheight: Number;
+   @Input('showtoolbar') attrShowtoolbar: Boolean;
    @Input('selectionmode') attrSelectionmode: any;
-   @Input('updatefilterconditions') attrUpdatefilterconditions: any;
-   @Input('updatefilterpanel') attrUpdatefilterpanel: any;
-   @Input('theme') attrTheme: any;
-   @Input('toolbarheight') attrToolbarheight: any;
-   @Input('autoheight') attrAutoheight: any;
-   @Input('autorowheight') attrAutorowheight: any;
-   @Input('columnsheight') attrColumnsheight: any;
-   @Input('deferreddatafields') attrDeferreddatafields: any;
-   @Input('groupsheaderheight') attrGroupsheaderheight: any;
-   @Input('groupindentwidth') attrGroupindentwidth: any;
-   @Input('pagerheight') attrPagerheight: any;
-   @Input('rowsheight') attrRowsheight: any;
-   @Input('scrollbarsize') attrScrollbarsize: any;
+   @Input('updatefilterconditions') attrUpdatefilterconditions: (type?: string, defaultconditions?: any) => any;
+   @Input('updatefilterpanel') attrUpdatefilterpanel: (filtertypedropdown1?: any, filtertypedropdown2?: any, filteroperatordropdown?: any, filterinputfield1?: any, filterinputfield2?: any, filterbutton?: any, clearbutton?: any, columnfilter?: any, filtertype?: any, filterconditions?: any) => any;
+   @Input('theme') attrTheme: String;
+   @Input('toolbarheight') attrToolbarheight: Number;
+   @Input('autoheight') attrAutoheight: Boolean;
+   @Input('autorowheight') attrAutorowheight: Boolean;
+   @Input('columnsheight') attrColumnsheight: Number;
+   @Input('deferreddatafields') attrDeferreddatafields: Array<String>;
+   @Input('groupsheaderheight') attrGroupsheaderheight: Number;
+   @Input('groupindentwidth') attrGroupindentwidth: Number;
+   @Input('pagerheight') attrPagerheight: String | Number;
+   @Input('rowsheight') attrRowsheight: Number;
+   @Input('scrollbarsize') attrScrollbarsize: String | Number;
    @Input('scrollmode') attrScrollmode: any;
-   @Input('scrollfeedback') attrScrollfeedback: any;
-   @Input('autosavestate') attrAutosavestate: any;
-   @Input('autoloadstate') attrAutoloadstate: any;
-   @Input('columns') attrColumns: any;
-   @Input('columngroups') attrColumngroups: any;
-   @Input('columnsmenu') attrColumnsmenu: any;
-   @Input('columnsresize') attrColumnsresize: any;
-   @Input('columnsautoresize') attrColumnsautoresize: any;
-   @Input('columnsreorder') attrColumnsreorder: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('editable') attrEditable: any;
+   @Input('scrollfeedback') attrScrollfeedback: (row: any) => String;
+   @Input('autosavestate') attrAutosavestate: Boolean;
+   @Input('autoloadstate') attrAutoloadstate: Boolean;
+   @Input('columns') attrColumns: Array<jqwidgets.GridColumn>;
+   @Input('columngroups') attrColumngroups: Array<any>;
+   @Input('columnsmenu') attrColumnsmenu: Boolean;
+   @Input('columnsresize') attrColumnsresize: Boolean;
+   @Input('columnsautoresize') attrColumnsautoresize: Boolean;
+   @Input('columnsreorder') attrColumnsreorder: Boolean;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('editable') attrEditable: Boolean;
    @Input('editmode') attrEditmode: any;
-   @Input('filter') attrFilter: any;
-   @Input('filterable') attrFilterable: any;
-   @Input('groupable') attrGroupable: any;
-   @Input('groups') attrGroups: any;
-   @Input('horizontalscrollbarstep') attrHorizontalscrollbarstep: any;
-   @Input('horizontalscrollbarlargestep') attrHorizontalscrollbarlargestep: any;
-   @Input('initrowdetails') attrInitrowdetails: any;
-   @Input('keyboardnavigation') attrKeyboardnavigation: any;
+   @Input('filter') attrFilter: (cellValue?: any, rowData?: any, dataField?: String, filterGroup?: any, defaultFilterResult?: Boolean) => any;
+   @Input('filterable') attrFilterable: Boolean;
+   @Input('groupable') attrGroupable: Boolean;
+   @Input('groups') attrGroups: Array<String>;
+   @Input('horizontalscrollbarstep') attrHorizontalscrollbarstep: Number;
+   @Input('horizontalscrollbarlargestep') attrHorizontalscrollbarlargestep: Number;
+   @Input('initrowdetails') attrInitrowdetails: (index?: Number, parentElement?: any, gridElement?: any, datarecord?: any) => void;
+   @Input('keyboardnavigation') attrKeyboardnavigation: Boolean;
    @Input('localization') attrLocalization: any;
-   @Input('pagesize') attrPagesize: any;
-   @Input('pagesizeoptions') attrPagesizeoptions: any;
+   @Input('pagesize') attrPagesize: Number;
+   @Input('pagesizeoptions') attrPagesizeoptions: Array<Number | String>;
    @Input('pagermode') attrPagermode: any;
-   @Input('pagerbuttonscount') attrPagerbuttonscount: any;
-   @Input('pageable') attrPageable: any;
-   @Input('rowdetails') attrRowdetails: any;
+   @Input('pagerbuttonscount') attrPagerbuttonscount: Number;
+   @Input('pageable') attrPageable: Boolean;
+   @Input('rowdetails') attrRowdetails: Boolean;
    @Input('rowdetailstemplate') attrRowdetailstemplate: any;
-   @Input('ready') attrReady: any;
-   @Input('rendered') attrRendered: any;
-   @Input('renderstatusbar') attrRenderstatusbar: any;
-   @Input('rendertoolbar') attrRendertoolbar: any;
-   @Input('rendergridrows') attrRendergridrows: any;
-   @Input('sortable') attrSortable: any;
-   @Input('selectedrowindex') attrSelectedrowindex: any;
-   @Input('selectedrowindexes') attrSelectedrowindexes: any;
+   @Input('ready') attrReady: () => void;
+   @Input('rendered') attrRendered: () => void;
+   @Input('renderstatusbar') attrRenderstatusbar: (statusbar?: any) => void;
+   @Input('rendertoolbar') attrRendertoolbar: (toolbar?: any) => void;
+   @Input('rendergridrows') attrRendergridrows: (params?: any) => any;
+   @Input('sortable') attrSortable: Boolean;
+   @Input('selectedrowindex') attrSelectedrowindex: Number;
+   @Input('selectedrowindexes') attrSelectedrowindexes: Array<Number>;
    @Input('source') attrSource: any;
    @Input('sorttogglestates') attrSorttogglestates: any;
-   @Input('updatedelay') attrUpdatedelay: any;
-   @Input('virtualmode') attrVirtualmode: any;
-   @Input('verticalscrollbarstep') attrVerticalscrollbarstep: any;
-   @Input('verticalscrollbarlargestep') attrVerticalscrollbarlargestep: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('updatedelay') attrUpdatedelay: Number;
+   @Input('virtualmode') attrVirtualmode: Boolean;
+   @Input('verticalscrollbarstep') attrVerticalscrollbarstep: Number;
+   @Input('verticalscrollbarlargestep') attrVerticalscrollbarlargestep: Number;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -192,7 +220,9 @@ export class jqxGridComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

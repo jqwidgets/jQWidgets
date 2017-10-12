@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxribbon.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -15,21 +18,21 @@ declare let JQXLite: any;
 export class jqxRibbonComponent implements OnChanges
 {
    @Input('animationType') attrAnimationType: any;
-   @Input('animationDelay') attrAnimationDelay: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('initContent') attrInitContent: any;
+   @Input('animationDelay') attrAnimationDelay: String | Number;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('initContent') attrInitContent: (index: any) => void;
    @Input('mode') attrMode: any;
    @Input('popupCloseMode') attrPopupCloseMode: any;
    @Input('position') attrPosition: any;
-   @Input('rtl') attrRtl: any;
-   @Input('selectedIndex') attrSelectedIndex: any;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('selectedIndex') attrSelectedIndex: Number;
    @Input('selectionMode') attrSelectionMode: any;
    @Input('scrollPosition') attrScrollPosition: any;
-   @Input('scrollStep') attrScrollStep: any;
-   @Input('scrollDelay') attrScrollDelay: any;
-   @Input('theme') attrTheme: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('scrollStep') attrScrollStep: Number;
+   @Input('scrollDelay') attrScrollDelay: Number;
+   @Input('theme') attrTheme: String;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -100,7 +103,9 @@ export class jqxRibbonComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

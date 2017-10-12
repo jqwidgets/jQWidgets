@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdraw.js';
+import '../jqwidgets/jqxknob.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,31 +17,31 @@ declare let JQXLite: any;
 
 export class jqxKnobComponent implements OnChanges
 {
-   @Input('allowValueChangeOnClick') attrAllowValueChangeOnClick: any;
-   @Input('allowValueChangeOnDrag') attrAllowValueChangeOnDrag: any;
-   @Input('allowValueChangeOnMouseWheel') attrAllowValueChangeOnMouseWheel: any;
-   @Input('changing') attrChanging: any;
-   @Input('dragEndAngle') attrDragEndAngle: any;
-   @Input('dragStartAngle') attrDragStartAngle: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('dial') attrDial: any;
-   @Input('endAngle') attrEndAngle: any;
-   @Input('labels') attrLabels: any;
-   @Input('marks') attrMarks: any;
-   @Input('min') attrMin: any;
-   @Input('max') attrMax: any;
-   @Input('progressBar') attrProgressBar: any;
-   @Input('pointer') attrPointer: any;
+   @Input('allowValueChangeOnClick') attrAllowValueChangeOnClick: Boolean;
+   @Input('allowValueChangeOnDrag') attrAllowValueChangeOnDrag: Boolean;
+   @Input('allowValueChangeOnMouseWheel') attrAllowValueChangeOnMouseWheel: Boolean;
+   @Input('changing') attrChanging: (oldValue: String | Number, newValue: String | Number) => Boolean;
+   @Input('dragEndAngle') attrDragEndAngle: Number;
+   @Input('dragStartAngle') attrDragStartAngle: Number;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('dial') attrDial: jqwidgets.KnobDial;
+   @Input('endAngle') attrEndAngle: Number;
+   @Input('labels') attrLabels: jqwidgets.KnobLabels;
+   @Input('marks') attrMarks: jqwidgets.KnobMarks;
+   @Input('min') attrMin: Number;
+   @Input('max') attrMax: Number;
+   @Input('progressBar') attrProgressBar: jqwidgets.KnobProgressBar;
+   @Input('pointer') attrPointer: jqwidgets.KnobPointer;
    @Input('pointerGrabAction') attrPointerGrabAction: any;
    @Input('rotation') attrRotation: any;
-   @Input('startAngle') attrStartAngle: any;
-   @Input('spinner') attrSpinner: any;
-   @Input('style') attrStyle: any;
-   @Input('step') attrStep: any;
-   @Input('snapToStep') attrSnapToStep: any;
-   @Input('value') attrValue: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('startAngle') attrStartAngle: Number;
+   @Input('spinner') attrSpinner: jqwidgets.KnobSpinner;
+   @Input('style') attrStyle: jqwidgets.KnobStyle;
+   @Input('step') attrStep: Number;
+   @Input('snapToStep') attrSnapToStep: Boolean;
+   @Input('value') attrValue: Number;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -112,7 +115,9 @@ export class jqxKnobComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

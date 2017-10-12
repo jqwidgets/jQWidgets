@@ -1,9 +1,13 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxwindow.js';
+import '../jqwidgets/jqxdocking.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,19 +18,19 @@ declare let JQXLite: any;
 
 export class jqxDockingComponent implements OnChanges
 {
-   @Input('cookies') attrCookies: any;
-   @Input('cookieOptions') attrCookieOptions: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('floatingWindowOpacity') attrFloatingWindowOpacity: any;
-   @Input('keyboardNavigation') attrKeyboardNavigation: any;
+   @Input('cookies') attrCookies: Boolean;
+   @Input('cookieOptions') attrCookieOptions: jqwidgets.DockingCookieOptions;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('floatingWindowOpacity') attrFloatingWindowOpacity: Number;
+   @Input('keyboardNavigation') attrKeyboardNavigation: Boolean;
    @Input('mode') attrMode: any;
    @Input('orientation') attrOrientation: any;
-   @Input('rtl') attrRtl: any;
-   @Input('theme') attrTheme: any;
-   @Input('windowsMode') attrWindowsMode: any;
-   @Input('windowsOffset') attrWindowsOffset: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('rtl') attrRtl: Boolean;
+   @Input('theme') attrTheme: String;
+   @Input('windowsMode') attrWindowsMode: jqwidgets.DockingWindowsMode;
+   @Input('windowsOffset') attrWindowsOffset: Number;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -97,7 +101,9 @@ export class jqxDockingComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

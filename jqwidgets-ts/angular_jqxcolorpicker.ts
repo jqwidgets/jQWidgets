@@ -1,9 +1,14 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxdropdownbutton.js';
+import '../jqwidgets/jqxradiobutton.js';
+import '../jqwidgets/jqxcolorpicker.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,12 +19,12 @@ declare let JQXLite: any;
 
 export class jqxColorPickerComponent implements OnChanges
 {
-   @Input('color') attrColor: any;
+   @Input('color') attrColor: String;
    @Input('colorMode') attrColorMode: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('showTransparent') attrShowTransparent: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('showTransparent') attrShowTransparent: Boolean;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -90,7 +95,9 @@ export class jqxColorPickerComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

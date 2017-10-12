@@ -1,9 +1,12 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdraw.js';
+import '../jqwidgets/jqxgauge.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,30 +17,30 @@ declare let JQXLite: any;
 
 export class jqxGaugeComponent implements OnChanges
 {
-   @Input('animationDuration') attrAnimationDuration: any;
-   @Input('border') attrBorder: any;
-   @Input('caption') attrCaption: any;
-   @Input('cap') attrCap: any;
-   @Input('colorScheme') attrColorScheme: any;
-   @Input('disabled') attrDisabled: any;
+   @Input('animationDuration') attrAnimationDuration: String | Number;
+   @Input('border') attrBorder: jqwidgets.GaugeBorder;
+   @Input('caption') attrCaption: jqwidgets.GaugeCaption;
+   @Input('cap') attrCap: jqwidgets.GaugeCap;
+   @Input('colorScheme') attrColorScheme: String;
+   @Input('disabled') attrDisabled: Boolean;
    @Input('easing') attrEasing: any;
-   @Input('endAngle') attrEndAngle: any;
-   @Input('int64') attrInt64: any;
-   @Input('labels') attrLabels: any;
-   @Input('min') attrMin: any;
-   @Input('max') attrMax: any;
-   @Input('pointer') attrPointer: any;
-   @Input('radius') attrRadius: any;
-   @Input('ranges') attrRanges: any;
-   @Input('startAngle') attrStartAngle: any;
-   @Input('showRanges') attrShowRanges: any;
-   @Input('style') attrStyle: any;
-   @Input('ticksMajor') attrTicksMajor: any;
-   @Input('ticksMinor') attrTicksMinor: any;
-   @Input('ticksDistance') attrTicksDistance: any;
-   @Input('value') attrValue: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('endAngle') attrEndAngle: String | Number;
+   @Input('int64') attrInt64: Boolean;
+   @Input('labels') attrLabels: jqwidgets.GaugeLabels;
+   @Input('min') attrMin: Number;
+   @Input('max') attrMax: String | Number;
+   @Input('pointer') attrPointer: jqwidgets.GaugePointer;
+   @Input('radius') attrRadius: String | Number;
+   @Input('ranges') attrRanges: Array<jqwidgets.GaugeRanges>;
+   @Input('startAngle') attrStartAngle: String | Number;
+   @Input('showRanges') attrShowRanges: Boolean;
+   @Input('style') attrStyle: jqwidgets.GaugeStyle;
+   @Input('ticksMajor') attrTicksMajor: jqwidgets.GaugeTicks;
+   @Input('ticksMinor') attrTicksMinor: jqwidgets.GaugeTicks;
+   @Input('ticksDistance') attrTicksDistance: String;
+   @Input('value') attrValue: Number;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -108,7 +111,9 @@ export class jqxGaugeComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 

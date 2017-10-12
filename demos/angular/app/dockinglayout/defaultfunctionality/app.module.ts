@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { DockingLayoutModule } from '../../modules/dockinglayout.module';
+import { TreeModule } from '../../modules/tree.module';
 
 @NgModule({
   declarations: [
       AppComponent
   ],
   imports: [
-      BrowserModule, CommonModule, DockingLayoutModule
+      BrowserModule, CommonModule, DockingLayoutModule, TreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -63,12 +63,12 @@ export class AppComponent {
     ];
 
     jpegButtonOnClick() {
-        this.myChart.saveAsJPEG('myChart.jpeg', 'http://www.jqwidgets.com/export_server/export.php');
+        this.myChart.saveAsJPEG('myChart.jpeg', 'https://www.jqwidgets.com/export_server/export.php');
     };
     pngButtonOnClick() {
-        this.myChart.saveAsPNG('myChart.png', 'http://www.jqwidgets.com/export_server/export.php');
+        this.myChart.saveAsPNG('myChart.png', 'https://www.jqwidgets.com/export_server/export.php');
     };
     pdfButtonOnClick() {
-        this.myChart.saveAsPDF('myChart.pdf', 'http://www.jqwidgets.com/export_server/export.php');
+        this.myChart.saveAsPDF('myChart.pdf', 'https://www.jqwidgets.com/export_server/export.php');
     };
 }

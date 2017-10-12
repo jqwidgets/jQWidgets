@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { GridModule } from '../../modules/grid.module';
+import { DragDropModule } from '../../modules/dragdrop.module';
 
 @NgModule({
   declarations: [
       AppComponent
   ],
   imports: [
-      BrowserModule, CommonModule, GridModule
+      BrowserModule, CommonModule, GridModule, DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

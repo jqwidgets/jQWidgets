@@ -1,9 +1,11 @@
 /*
-jQWidgets v5.3.2 (2017-Sep)
+jQWidgets v5.4.0 (2017-Oct)
 Copyright (c) 2011-2017 jQWidgets.
-License: http://jqwidgets.com/license/
+License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdragdrop.js';
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 declare let JQXLite: any;
 
@@ -14,28 +16,28 @@ declare let JQXLite: any;
 
 export class jqxDragDropComponent implements OnChanges
 {
-   @Input('appendTo') attrAppendTo: any;
-   @Input('disabled') attrDisabled: any;
-   @Input('distance') attrDistance: any;
+   @Input('appendTo') attrAppendTo: String;
+   @Input('disabled') attrDisabled: Boolean;
+   @Input('distance') attrDistance: Number;
    @Input('data') attrData: any;
    @Input('dropAction') attrDropAction: any;
    @Input('dropTarget') attrDropTarget: any;
-   @Input('dragZIndex') attrDragZIndex: any;
+   @Input('dragZIndex') attrDragZIndex: Number;
    @Input('feedback') attrFeedback: any;
-   @Input('initFeedback') attrInitFeedback: any;
-   @Input('opacity') attrOpacity: any;
-   @Input('onDragEnd') attrOnDragEnd: any;
-   @Input('onDrag') attrOnDrag: any;
-   @Input('onDragStart') attrOnDragStart: any;
-   @Input('onTargetDrop') attrOnTargetDrop: any;
-   @Input('onDropTargetEnter') attrOnDropTargetEnter: any;
-   @Input('onDropTargetLeave') attrOnDropTargetLeave: any;
+   @Input('initFeedback') attrInitFeedback: (feedback?:any) => void;
+   @Input('opacity') attrOpacity: Number;
+   @Input('onDragEnd') attrOnDragEnd: () => void;
+   @Input('onDrag') attrOnDrag: (data?: any, position?: any) => void;
+   @Input('onDragStart') attrOnDragStart: (position?: any) => void;
+   @Input('onTargetDrop') attrOnTargetDrop: (data?: any) => void;
+   @Input('onDropTargetEnter') attrOnDropTargetEnter: () => void;
+   @Input('onDropTargetLeave') attrOnDropTargetLeave: (data?: any) => void;
    @Input('restricter') attrRestricter: any;
-   @Input('revert') attrRevert: any;
-   @Input('revertDuration') attrRevertDuration: any;
+   @Input('revert') attrRevert: Boolean;
+   @Input('revertDuration') attrRevertDuration: Number;
    @Input('tolerance') attrTolerance: any;
-   @Input('width') attrWidth: any;
-   @Input('height') attrHeight: any;
+   @Input('width') attrWidth: String | Number;
+   @Input('height') attrHeight: String | Number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -106,7 +108,9 @@ export class jqxDragDropComponent implements OnChanges
 
    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void {
       let classes: any = parentEl.classList;
-      childEl.classList.add(...classes);
+      if (classes.length > 0) {
+        childEl.classList.add(...classes);
+      }
       parentEl.className = '';
    }
 
