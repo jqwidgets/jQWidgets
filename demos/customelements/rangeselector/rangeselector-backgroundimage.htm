@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>RangeSelector Custom Element BackgroundImage</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the background image in Custom Element RangeSelector." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxrangeselector.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        #backgroundImage {
+            width: 600px;
+            height: 100px;
+            background: url(../images/imageNature5.jpg) -100px -100px;
+        }
+    </style>
+    <script>
+        JQXElements.settings['RangeSelectorSettings'] = {
+            min: new Date(2017, 5, 1),
+            max: new Date(2017, 9, 1),
+            range: {
+                from: new Date(2017, 5, 1),
+                to: new Date(2017, 6, 29), min: { days: 7 }
+            },
+            majorTicksInterval: 'week',
+            minorTicksInterval: 'day',
+            labelsFormat: 'dd',
+            markersFormat: 'd',
+            showGroupLabels: true
+        };
+
+        window.onload = function() {
+            var myButton = document.querySelector('jqx-button');
+            var myRangeScale = document.querySelector('jqx-range-selector');
+            var myLog = document.querySelector('#result');
+
+            myButton.addEventListener('click', function() {
+                var months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+                var range = myRangeScale.getRange();
+                var fromDate = range.from.getDate();
+                var fromMonth = range.from.getMonth();
+                var toDate = range.to.getDate();
+                var toMonth = range.to.getMonth();
+                myLog.innerHTML  = 'Vacation period selected: from ' + months[fromMonth] + ' ' + fromDate + ' to ' + months[toMonth] + ' ' + toDate;
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This is an example of the background image in Custom Element RangeSelector.
+    </div>
+
+    <jqx-range-selector settings="RangeSelectorSettings">
+
+        <div id="jqxRangeSelectorContent">
+            <img id="backgroundImage" src="../images/transparent.png" />
+        </div>
+
+    </jqx-range-selector>
+
+    <jqx-button style="margin-left:80px; margin-top: 20px;">
+        Submit vacation
+    </jqx-button>
+
+    <div style="margin-left:80px; margin-top: 10px;" id="result">
+    </div>
+
+</body>
+</html>

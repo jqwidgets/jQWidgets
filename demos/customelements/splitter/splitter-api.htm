@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Splitter Custom Element API</title>
+    <meta name="description" content="This is an example of the Custom Element Splitter's API." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['splitterSettings'] =
+            {
+                panels: [{ size: 250 }]
+            };
+
+        window.onload = function() {
+            var mySplitter = document.querySelector('jqx-splitter');
+            var myButtons = document.querySelectorAll('jqx-button');
+
+            myButtons[0].addEventListener('click', _ => {
+                var currentOrientation = mySplitter.orientation;
+                if (currentOrientation === 'vertical') {
+                    mySplitter.orientation = 'horizontal';
+                } else {
+                    mySplitter.orientation = 'vertical';
+                }
+            });
+            myButtons[1].addEventListener('click', _ => {
+                var panels = mySplitter.panels;
+                panels[0].collapsible = true;
+                panels[1].collapsible = false;
+                mySplitter.panels = panels;
+                mySplitter.expand();
+            });
+            myButtons[2].addEventListener('click', _ => {
+                var panels = mySplitter.panels;
+                panels[0].collapsible = false;
+                panels[1].collapsible = true;
+                mySplitter.panels = panels;
+                mySplitter.expand();
+            });
+            myButtons[3].addEventListener('click', _ => {
+                var panels = mySplitter.panels;
+                panels[0].collapsible = true;
+                panels[1].collapsible = false;
+                mySplitter.panels = panels;
+                mySplitter.collapse();
+            });
+            myButtons[4].addEventListener('click', _ => {
+                var panels = mySplitter.panels;
+                panels[0].collapsible = false;
+                panels[1].collapsible = true;
+                mySplitter.panels = panels;
+                mySplitter.collapse();
+            });
+            myButtons[5].addEventListener('click', _ => {
+                mySplitter.enable();
+            });
+            myButtons[6].addEventListener('click', _ => {
+                mySplitter.disable();
+            });
+        };    
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        This demonstration shows how to use the Splitter Custom Element API.
+    </div>
+
+    <div style="float: left;">
+        <jqx-button>Orientation</jqx-button>
+        <jqx-button>Expand First</jqx-button>
+        <jqx-button>Expand Last</jqx-button>
+        <jqx-button>Collapse First</jqx-button>
+        <jqx-button>Collapse Last</jqx-button>
+        <jqx-button>Enable</jqx-button>
+        <jqx-button>Disable</jqx-button>
+
+        <br /><br />
+
+        <jqx-splitter settings="splitterSettings">
+            <div style="background-color:#F5FFF2;"></div>
+            <div style="background-color:#EBF1FF;"></div>
+        </jqx-splitter>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ComplexInput ExponentialNotation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example of Custom Elements ComplexInput the imaganary parts of the input can be displayed as diffrent ways." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcomplexinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['ComplexInput'] =
+            {
+                 decimalNotation: 'exponential',
+                 value: '330000 - 200i',
+                 spinButtons: true
+            }
+
+        JQXElements.settings['Expander'] =
+            {
+                toggleMode: 'none',
+                showArrow: false
+            }
+
+        JQXElements.settings['DropDownList'] =
+            {
+                source: ['decimal', 'exponential', 'scientific', 'engineering'],
+                selectedIndex: 1,
+                autoDropDownHeight: true
+            }
+
+        window.onload = function() {
+            var myComplexInput = document.querySelector('jqx-complex-input');
+            var myExpander = document.querySelector('jqx-expander');
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+            var myButtons = document.querySelectorAll('jqx-button');
+
+            myDropDownList.addEventListener('change', function(event) {
+                var args = event.args;
+                if (args) {
+                    var label = args.item.label;
+                    if (label === 'decimal') {
+                        label = 'default';
+                    }
+                    myComplexInput.decimalNotation = label;
+                }
+            });
+
+            myButtons[0].addEventListener('click', function() {
+                var decimalValue = myComplexInput.getReal();
+                alert('Decimal value: ' + decimalValue);
+            });
+
+            myButtons[1].addEventListener('click', function() {
+                var exponential = myComplexInput.getDecimalNotation('real', 'exponential');
+                alert('Decimal value: ' + exponential);
+            });
+
+            myButtons[2].addEventListener('click', function() {
+                var scientific = myComplexInput.getDecimalNotation('real', 'scientific');
+                alert('Decimal value: ' + scientific);
+            });
+
+            myButtons[3].addEventListener('click', function() {
+                var engineering = myComplexInput.getDecimalNotation('real', 'engineering');
+                alert('Decimal value: ' + engineering);
+            });
+
+            myButtons[4].addEventListener('click', function() {
+                var decimalValue  = myComplexInput.getImaginary();
+                alert('Decimal value: ' + decimalValue );
+            });
+
+            myButtons[5].addEventListener('click', function() {
+                var exponential = myComplexInput.getDecimalNotation('imaginary', 'exponential');
+                alert('Decimal value: ' + exponential);
+            });
+
+            myButtons[6].addEventListener('click', function() {
+                var scientific = myComplexInput.getDecimalNotation('imaginary', 'scientific');
+                alert('Decimal value: ' + scientific);
+            });
+
+            myButtons[7].addEventListener('click', function() {
+                var engineering = myComplexInput.getDecimalNotation('imaginary', 'engineering');
+                alert('Decimal value: ' + engineering);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In Custom elements ComplexInput, the real and imaginary parts of the complex number can also be displayed in the exponential, scientific and engineering notations.
+    </div>
+   <jqx-complex-input settings="ComplexInput" style="float: left;">
+       <input type="text" />
+       <div>
+       </div>
+
+   </jqx-complex-input>
+
+    <jqx-expander settings="Expander" style="float: left; margin-left: 50px;">
+    <div>
+        jqxComplexInput Notation Settings
+    </div>
+
+    <div style="padding-left: 15px;">
+        <h4>
+            Choose notation:
+        </h4>
+        <jqx-drop-down-list settings="DropDownList" style="margin-top: 20px;">
+        </jqx-drop-down-list>
+
+        <div style="margin-top: 20px;">
+            <h4>
+                Real part
+            </h4>
+
+            <jqx-button >
+                Get decimal value
+            </jqx-button>
+
+            <jqx-button style="margin-top: 5px;">
+                Get exponential notation
+            </jqx-button><br />
+            <br />
+
+            <jqx-button >
+                Get scientific notation
+            </jqx-button>
+
+            <jqx-button style="margin-top: 5px;">
+                Get engineering notation
+            </jqx-button>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <h4>
+                Imaginary part
+            </h4>
+
+            <jqx-button>
+                Get decimal value
+            </jqx-button>
+
+            <jqx-button style="margin-top: 5px;">
+                Get exponential notation
+            </jqx-button><br />
+            <br />
+
+            <jqx-button>
+                Get scientific notation
+            </jqx-button>
+
+            <jqx-button style="margin-top: 5px;">
+                Get engineering notation
+            </jqx-button>
+        </div>
+
+    </div>
+    </jqx-expander>
+</body>
+</html>

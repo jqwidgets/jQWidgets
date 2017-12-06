@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element DisableEditingOfRows</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Grid on how to disable the editing of specific rows." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript">
+        var data = generatedata(200);
+
+        var source =
+            {
+                localdata: data,
+                datatype: 'array',
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'available', type: 'bool' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'date', type: 'date' }
+                ]
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var cellBeginEdit = (row, datafield, columntype, value) => {
+            if (row == 0 || row == 2 || row == 5) return false;
+        }
+
+        var cellsRenderer = (row, column, value, defaultHtml) => {
+            if (row == 0 || row == 2 || row == 5) {
+                var element = defaultHtml.substring(0, 61) + "; color: #999" + defaultHtml.substring(61);
+                return element;
+            }
+            return defaultHtml;
+        }
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: dataAdapter,
+                editable: true,
+                selectionmode: 'singlecell',
+                columns: [
+                    { text: 'First Name', columntype: 'textbox', datafield: 'firstname', width: 80, cellbeginedit: cellBeginEdit, cellsrenderer: cellsRenderer },
+                    { text: 'Last Name', datafield: 'lastname', columntype: 'textbox', width: 80, cellbeginedit: cellBeginEdit, cellsrenderer: cellsRenderer },
+                    { text: 'Product', columntype: 'dropdownlist', datafield: 'productname', width: 190, cellbeginedit: cellBeginEdit, cellsrenderer: cellsRenderer },
+                    { text: 'Available', datafield: 'available', columntype: 'checkbox', width: 67, cellbeginedit: cellsRenderer },
+                    {
+                        text: 'Ship Date', datafield: 'date', columntype: 'datetimeinput', width: 110, cellsalign: 'right', cellsformat: 'd',               
+                        validation: (cell, value) => {
+                            var year = value.getFullYear();
+                            if (year >= 2015) {
+                                return { result: false, message: 'Ship Date should be before 1/1/2015' };
+                            }
+                            return true;
+                        },
+                        cellbeginedit: cellBeginEdit,
+                        cellsrenderer: cellsRenderer,
+                    },
+                    {
+                        text: 'Quantity', datafield: 'quantity', width: 70, cellsalign: 'right', columntype: 'numberinput',
+                        validation: (cell, value) => {
+                            if (value < 0 || value > 150) {
+                                return { result: false, message: 'Quantity should be in the 0-150 interval' };
+                            }
+                            return true;
+                        },
+                        initeditor: (row, cellvalue, editor) => {
+                            editor.jqxNumberInput({ decimalDigits: 0, digits: 3 });
+                        },
+                        cellbeginedit: cellBeginEdit,
+                        cellsrenderer: cellsRenderer
+                    },
+                    {
+                        text: 'Price', datafield: 'price', cellsalign: 'right', cellsformat: 'c2', columntype: 'numberinput',
+                        validation: (cell, value) => {
+                            if (value < 0 || value > 15) {
+                                return { result: false, message: 'Price should be in the 0-15 interval' };
+                            }
+                            return true;
+                        },
+                        initeditor: (row, cellvalue, editor) => {
+                            editor.jqxNumberInput({ digits: 3 });
+                        },
+                        cellbeginedit: cellBeginEdit,
+                        cellsrenderer: cellsRenderer
+                    }
+                ]
+            };
+
+        window.onload = function() {
+            var myGrid = document.querySelector('jqx-grid');
+
+            myGrid.addEventListener('cellbeginedit', function(event) {
+                var args = event.args;
+                var beginEditContainer = document.querySelector('#cellBeginEditEvent');
+                beginEditContainer.innerHTML = 'Event Type: cellbeginedit, Column: ' + args.datafield + ', Row: ' + (1 + args.rowindex) + ', Value: ' + args.value;
+            });
+
+            myGrid.addEventListener('cellendedit', function(event) {
+                var args = event.args;
+                var endEditContainer = document.querySelector('#cellEndEditEvent');
+                endEditContainer.innerHTML = 'Event Type: cellendedit, Column: ' + args.datafield + ', Row: ' + (1 + args.rowindex) + ', Value: ' + args.value;
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this sample is demonstrated how to disabled the editing of specific rows. The cells editing of the 1, 3 and 6 rows is disabled.
+    </div>
+ 
+    <jqx-grid settings="gridSettings"></jqx-grid>
+
+    <div style="font-size: 12px; font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif; margin-top: 30px;">
+        <div id="cellBeginEditEvent"></div>
+        <div style="margin-top: 10px;" id="cellEndEditEvent"></div>
+    </div>
+</body>
+</html>

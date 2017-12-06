@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart PartialPolarChart</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Chart Partial Polar Chart series." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var dataset =
+            [
+                { City: 'London', SalesCountJan: 210, SalesRevenueJan: 123 },
+                { City: 'Madrid', SalesCountJan: 190, SalesRevenueJan: 114 },
+                { City: 'Munich', SalesCountJan: 201, SalesRevenueJan: 112 },
+                { City: 'Amsterdam', SalesCountJan: 110, SalesRevenueJan: 98 },
+                { City: 'Paris', SalesCountJan: 105, SalesRevenueJan: 93 },
+                { City: 'Prague', SalesCountJan: 54, SalesRevenueJan: 100 }
+            ];
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'Sales volume and revenue by city',
+                description: '(revenue in thousands)',
+                enableAnimations: false,
+                showLegend: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 0, top: 0, right: 0, bottom: 5 },
+                colorScheme: 'scheme01',
+                source: dataset,
+                xAxis:
+                {
+                    dataField: 'City',
+                    valuesOnTicks: true,
+                    labels: { autoRotate: true }
+                },
+                valueAxis:
+                {
+                    labels: {
+                        formatSettings: { decimalPlaces: 0 },
+                        autoRotate: true
+                    }
+                },
+                seriesGroups:
+                [
+                    {
+                        polar: true,
+                        //startAngle: 90,
+                        endAngle: 270,
+                        radius: 120,
+                        type: 'line',
+                        series: [
+                            { dataField: 'SalesCountJan', displayText: 'Sales count', opacity: 0.7, lineWidth: 1, radius: 2, lineWidth: 2, symbolType: 'circle' },
+                            { dataField: 'SalesRevenueJan', displayText: 'Revenue', opacity: 0.7, lineWidth: 1, radius: 2, lineWidth: 2, symbolType: 'square' }
+                        ]
+                    }
+                ]
+            };
+
+        JQXElements.settings['SliderStartAngle'] =
+            {
+                min: 0, max: 360, step: 1, ticksFrequency: 20, mode: 'fixed'
+            };
+
+        JQXElements.settings['SliderEndAngle'] =
+            {
+                min: 0, max: 360, value: 360 - 270, step: 1, ticksFrequency: 20, mode: 'fixed'
+            };
+
+        JQXElements.settings['SliderRotate'] =
+            {
+                min: 0, max: 360, step: 1, ticksFrequency: 20, mode: 'fixed'
+            };
+
+        JQXElements.settings['SliderRadius'] =
+            {
+                min: 80, max: 140, value: 120, step: 1, ticksFrequency: 20, mode: 'fixed'
+            };
+
+        JQXElements.settings['CheckBoxTicksBetween'] =
+            {
+                hasThreeStates: false, checked: false 
+            };
+
+        JQXElements.settings['CheckBoxAutoRotate'] =
+            {
+                hasThreeStates: false, checked: true
+            };
+
+        window.onload = function() {
+            var myChart = document.querySelector('jqx-chart');
+            var mySlider = document.querySelectorAll('jqx-slider');
+            var myCheckBox = document.querySelectorAll('jqx-check-box');
+
+            var chart = myChart.getInstance();
+
+            mySlider[0].addEventListener('change', function(event) {
+
+                var value = event.args.value;
+                chart.seriesGroups[0].startAngle = value;
+                chart.update();
+            });
+
+            mySlider[1].addEventListener('change', function(event) {
+
+                var value = 360 - event.args.value;
+                chart.seriesGroups[0].endAngle = value;
+                chart.update();
+            });
+
+            mySlider[2].addEventListener('change', function(event) {
+
+                var value = event.args.value;
+                var endAngle = chart.seriesGroups[0].endAngle;
+                if (isNaN(endAngle))
+                    endAngle = 360;
+
+                var startAngle = chart.seriesGroups[0].startAngle;
+                if (isNaN(startAngle))
+                    startAngle = 0;
+
+                var diff = endAngle - startAngle;
+                chart.seriesGroups[0].startAngle = value;
+                chart.seriesGroups[0].endAngle = value + diff;
+                chart.update();
+            });
+
+            mySlider[3].addEventListener('change', function(event) {
+
+                var value = event.args.value; 
+                chart.seriesGroups[0].radius = value;
+                chart.update();
+            });
+
+            myCheckBox[0].addEventListener('change', function(event) {
+
+                chart.xAxis.valuesOnTicks = !event.args.checked;
+                chart.update();
+            });
+
+            myCheckBox[1].addEventListener('change', function(event) {
+
+                chart.xAxis.labels.autoRotate = event.args.checked;
+                chart.valueAxis.labels.autoRotate = event.args.checked;
+                chart.update();
+            });
+        }
+    </script>
+</head>
+<body>
+
+
+    <jqx-chart settings="chartSettings" ></jqx-chart>
+
+    <table style="width: 850px">
+        <tr>
+            <td style="padding-left:50px">
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Move the slider to change start angle:
+                </p>
+                <jqx-slider settings='SliderStartAngle'> /jqx-slider>
+            </td>
+            <td>
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Move the slider to change end angle:
+                </p>
+                <jqx-slider settings='SliderEndAngle'></jqx-slider>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:50px">
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Move the slider to rotate:
+                </p>
+                <jqx-slider settings='SliderRotate'></jqx-slider>
+            </td>
+            <td>
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Move the slider to change the radius:
+                </p>
+                <jqx-slider settings='SliderRadius'></jqx-slider>
+            </td>
+        </tr>
+        <tr style="height: 15px;"></tr>
+        <tr>
+            <td style="padding-left:50px">
+                <jqx-check-box settings='CheckBoxTicksBetween'>
+                    Tick marks between values
+                </jqx-check-box>
+            </td>
+            <td>
+                <jqx-check-box settings='CheckBoxAutoRotate'>
+                    Auto rotate axis text
+                </jqx-check-box>
+            </td>
+
+        </tr>
+    </table>
+
+    <div class="example-description">
+        This is an example of Custom element Chart Partial Polar series. The polar chart in this example has a 90 dgree segment missing.
+    </div>
+</body>
+</html>

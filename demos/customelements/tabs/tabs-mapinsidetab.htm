@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tabs Custom Element MapInsideTab</title>
+    <meta name="description" content="This is an example of a Google Map inside Tabs Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZLQsY5C43a1Fmrj6CIoVhHdiiuKZtE-E"></script>
+
+    <style type="text/css">
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+
+    <script type="text/javascript">
+        var initialize = function() {
+            var mapContainer = document.getElementById('map');
+            var mapOptions =
+                {
+                    center: new google.maps.LatLng(29.979234, 31.134202),
+                    zoom: 17,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+            var map = new google.maps.Map(mapContainer, mapOptions)
+        }
+
+        JQXElements.settings['tabsSettings'] =
+            {
+                height: 400,
+                initTabContent: function(tab){
+                    if (tab === 0) {
+                        google.maps.event.addDomListener(window, 'load', initialize);
+                    }
+                }
+            }
+
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows how to add a Google Map in Tabs Custom Element.
+    </div>
+
+    <p style="font-family: Verdana;">
+        Great Pyramid of Giza
+    </p>
+
+    <jqx-tabs settings="tabsSettings">
+        <ul style='margin-left: 20px;'>
+            <li>Map</li>
+            <li>Information</li>
+        </ul>
+        <div>
+            <div id="map"></div>
+        </div>
+        <div>
+            The Great Pyramid of Giza (also known as the Pyramid of Khufu or the Pyramid of
+            Cheops) is the oldest and largest of the three pyramids in the Giza Necropolis bordering
+            what is now El Giza, Egypt. It is the oldest of the Seven Wonders of the Ancient
+            World, and the only one to remain largely intact.
+        </div>
+    </jqx-tabs>
+
+</body>
+</html>

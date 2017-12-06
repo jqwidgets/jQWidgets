@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element DataGrouping</title>
+    <meta name="description" content="This is an example of grouping data in TreeGrid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var source =
+            {
+                datatype: 'xml',
+                datafields: [
+                    { name: 'CompanyName', map: 'm\\:properties>d\\:CompanyName' },
+                    { name: 'ContactName', map: 'm\\:properties>d\\:ContactName' },
+                    { name: 'ContactTitle', map: 'm\\:properties>d\\:ContactTitle' },
+                    { name: 'City', map: 'm\\:properties>d\\:City' },
+                    { name: 'PostalCode', map: 'm\\:properties>d\\:PostalCode' },
+                    { name: 'Country', map: 'm\\:properties>d\\:Country' }
+                ],
+                hierarchy:
+                {
+                    groupingDataFields:
+                    [
+                        {
+                            name: 'Country'
+                        }
+                    ]
+                },
+                root: 'entry',
+                record: 'content',
+                id: { name: 'CustomerID', map: 'm\\:properties>d\\:CustomerID' },
+                url: '../sampledata/customers.xml'    
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['treeGridSettings'] =
+            {
+                source: dataAdapter,
+                pageable: true,
+                columnsResize: true,
+                altRows: true,
+                icons: function (rowKey, rowData) {
+                    var level = rowData.level;
+                    if (level == 0) {
+                        var country = rowData.label;
+                        return '../../images/' + country.toLowerCase().trim() + '.png';
+                    }
+
+                    return false;
+                },
+                ready: function () {
+                    var myTreeGrid = document.querySelector('jqx-tree-grid');
+                    myTreeGrid.expandRow(0);
+                },
+                columns: [
+                    { text: 'City', dataField: 'City', width: 250 },
+                    { text: 'Company Name', dataField: 'CompanyName', minWidth: 100, width: 200 },
+                    { text: 'Contact Name', dataField: 'ContactName', width: 150 },
+                    { text: 'Contact Title', dataField: 'ContactTitle', width: 300 },
+                    { text: 'Postal Code', dataField: 'PostalCode', width: 120 }
+                ]
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Tree Grid Custom Element Data Grouping.  
+    </div>
+    <jqx-tree-grid settings="treeGridSettings"></jqx-tree-grid>
+</body>
+</html>

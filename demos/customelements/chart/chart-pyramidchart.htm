@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart StackedPyramidChart</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of stacked pyramid chart with horizontal orientation in Custom Element Chart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['chartSettings'] =
+            {
+                title: "Pyramid series",
+                description: "This example demonstrates pyramid chart series",
+                enableAnimations: false,
+                showLegend: true,
+                padding: { left: 15, top: 15, right: 15, bottom: 15 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: [{ Index: '1', SerieA: -30, SerieB: -10, SerieC: -25 },
+                { Index: '2', SerieA: -25, SerieB: -25, SerieC: 10 },
+                { Index: '3', SerieA: 30, SerieB: 0, SerieC: 25 },
+                { Index: '4', SerieA: 35, SerieB: 25, SerieC: 45 },
+                { Index: '5', SerieA: 0, SerieB: 20, SerieC: 25 }],
+                xAxis:
+                    {
+                        dataField: 'Index',
+                        tickMarks: {
+                            visible: true,
+                            interval: 1
+                        },
+                        gridLines: {
+                            visible: true,
+                            interval: 1
+                        }
+                    },
+                valueAxis:
+                {
+                    labels: { horizontalAlignment: 'right' }
+                },
+                colorScheme: 'scheme06',
+                seriesGroups:
+                    [
+                        {
+                            type: 'column',
+                            columnsGapPercent: 20,
+                            seriesGapPercent: 20,
+                            columnsTopWidthPercent: 0,
+                            columnsBottomWidthPercent: 100,
+                            series: [
+                                    { dataField: 'SerieA', displayText: 'Serie A' },
+                                    { dataField: 'SerieB', displayText: 'Serie B' },
+                                    { dataField: 'SerieC', displayText: 'Serie C' }
+                            ]
+                        }
+                    ]
+            }
+    </script>
+</head>
+<body>
+
+    <jqx-chart settings="chartSettings" style="width:850px; height:500px;"></jqx-chart>
+
+    <div class="example-description">
+        This is an example of Custom element stacked pyramid chart with horizontal orientation. In order to change the orientation you have to use the orientation setting. The labels are formatted with right horizontal alignment.
+    </div>
+
+</body>
+</html>

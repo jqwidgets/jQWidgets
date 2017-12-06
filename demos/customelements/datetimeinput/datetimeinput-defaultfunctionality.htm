@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>DateTimeInput Custom Element DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content= "This is an example of the default functionalities of Custom Elements DataTimeInput." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['TimeInput'] =
+            {
+                formatString: 'T',
+                showTimeButton: true,
+                showCalendarButton: false,
+            }
+
+        JQXElements.settings['DateTimeInput'] =
+            {
+                formatString: 'F',
+                showTimeButton: true,
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo demonstrates the Custom element DateTimeInput widget. Click the calendar button to open the popup and select a date from the calendar. You can also enter a date by typing into the Angular DateTimeInput text input field.
+    </div>
+   
+    <label>Date Input</label>
+    <jqx-date-time-input></jqx-date-time-input>
+    <br />
+
+    <label>Time Input</label>
+    <jqx-date-time-input settings="TimeInput"></jqx-date-time-input>
+    <br />
+
+    <label>Date Time Input</label>
+    <jqx-date-time-input settings="DateTimeInput"></jqx-date-time-input>
+</body>
+</html>

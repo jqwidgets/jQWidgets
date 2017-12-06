@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Editor ImportSyles</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example illustrates how to load external stylesheet into the Custom Elements Editor." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownbutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcolorpicker.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxeditor.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['EditorSettings'] =
+            {
+                stylesheets: ['editor.css'],
+                createCommand: (name) => {
+                    switch (name) {
+                        case 'font':
+                            return {
+                                init: (widget) => {
+                                    var source =
+                                        [{ label: 'Arial', value: 'Arial, Helvetica, sans-serif' },
+                                        { label: 'Comic Sans MS', value: '"Comic Sans MS", cursive, sans-serif' },
+                                        { label: 'Courier New', value: '"Courier New", Courier, monospace' },
+                                        { label: 'Georgia', value: 'Georgia,serif' },
+                                        { label: 'Helvetica', value: 'HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica' },
+                                        { label: 'Impact', value: 'Impact,Charcoal,sans-serif' },
+                                        { label: 'Lucida Console', value: '"Lucida Console",Monaco,monospace' },
+                                        { label: 'Tahoma', value: 'Tahoma,Geneva,sans-serif' },
+                                        { label: 'Times New Roman', value: '"Times New Roman",Times,serif' },
+                                        { label: 'Trebuchet MS', value: '"Trebuchet MS",Helvetica,sans-serif' },
+                                        { label: 'Verdana', value: 'Verdana,Geneva,sans-serif' }];
+                                    value = source;
+                                    widget.jqxDropDownList({
+                                        source: source
+                                    });
+                                }
+                            }
+                    }
+                }
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This example illustrates how to load external stylesheet into the Custom element Editor.
+    </div>
+
+    <jqx-editor settings="EditorSettings">
+        &lt;b&gt;jqxEditor&lt;/b&gt; is a HTML text editor designed to simplify web content creation. You can use it as a replacement of your Textarea or you can create it from a DIV element.
+        &lt;br /&gt;
+        &lt;br /&gt;
+        Features include:
+        &lt;br /&gt;
+        &lt;ul&gt;
+        &lt;li&gt;Text formatting&lt;/li&gt;
+        &lt;li&gt;Text alignment&lt;/li&gt;
+        &lt;li&gt;Hyperlink dialog&lt;/li&gt;
+        &lt;li&gt;Image dialog&lt;/li&gt;
+        &lt;li&gt;Bulleted list&lt;/li&gt;
+        &lt;li&gt;Numbered list&lt;/li&gt;
+        &lt;/ul&gt;
+    </jqx-editor>
+
+</body>
+</html>

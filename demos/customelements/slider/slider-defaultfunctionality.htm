@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Slider Custom Element DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionalities in Custom Element Slider." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        .colorBlock {
+            border: 1px solid #aaa;
+            width: 200px;
+            height: 200px;
+            float: right;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .colorLabel {
+            padding: 6px;
+        }
+    </style>
+    <script>
+
+        var fixHex = function (hex) {
+            return (hex.length < 2) ? '0' + hex : hex;
+        };
+
+        var getTextElement = function (color) {
+            var nThreshold = 105;
+            var bgDelta = (color.r * 0.299) + (color.g * 0.587) + (color.b * 0.114);
+            var foreColor = (255 - bgDelta < nThreshold) ? 'Black' : 'White';
+            return foreColor;
+        };
+
+        JQXElements.settings['SliderSettings'] =
+            {
+                showTickLabels: true,
+                tooltip: true,
+                mode: 'fixed',
+                min: 0,
+                max: 255,
+                ticksFrequency: 25.5,
+                value: 0,
+                step: 25.5,
+                tickLabelFormatFunction: function (value) {
+                    if (value == 0) return value;
+                    if (value == 255) return value;
+                    return '';
+                }
+            };
+
+        JQXElements.settings['SliderBlueSettings'] =
+            {
+                showTickLabels: true,
+                tooltip: true,
+                mode: 'fixed',
+                min: 0,
+                max: 255,
+                ticksFrequency: 25.5,
+                value: 255,
+                step: 25.5,
+                tickLabelFormatFunction: function (value) {
+                    if (value == 0) return value;
+                    if (value == 255) return value;
+                    return '';
+                }
+            };
+
+        JQXElements.settings['checkBoxSettings'] =
+            {
+                checked: false
+            };
+
+        window.onload = function () {
+            var mySliders = document.querySelectorAll('jqx-slider');
+            var myCheckBox = document.querySelector('jqx-check-box');
+            var myLabel = document.querySelector('#colorLabel');
+            var myBlock = document.querySelector('#colorBlock');
+
+            myLabel.style.color = '#ffffff';
+            myBlock.style.backgroundColor = '#0000FF';
+
+            var setColor = function () {
+                var red = fixHex(Math.round(mySliders[0].val()).toString(16));
+                var green = fixHex(Math.round(mySliders[1].val()).toString(16));
+                var blue = fixHex(Math.round(mySliders[2].val()).toString(16));
+                document.getElementById('colorBlock').style.backgroundColor = '#' + red + green + blue;
+                document.getElementById('colorLabel').innerHTML = ('#' + red + green + blue).toUpperCase();
+                var color = getTextElement({ r: parseInt(red, 16), g: parseInt(green, 16), b: parseInt(blue, 16) });
+                document.getElementById('colorLabel').style.color = color;
+            };
+
+            mySliders[0].addEventListener('change', function (event) {
+                setColor();
+            });
+
+            mySliders[1].addEventListener('change', function (event) {
+                setColor();
+            });
+
+            mySliders[2].addEventListener('change', function (event) {
+                setColor();
+            });
+
+            myCheckBox.addEventListener('change', function (event) {
+                var checked = event.args.checked;
+                var value = 'default';
+
+                if (!checked) {
+                    value = 'fixed';
+                }
+                mySliders[0].mode = value;
+                mySliders[1].mode = value;
+                mySliders[2].mode = value;
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element Slider represents a flexible Slider that lets the user select from a range of values by moving a thumb along a track. The widget is completely customizable in terms of appearance and offers numerous configuration options like mouse wheel and keyboard support, smooth or step-based slider and support for range sliders.
+    </div>
+
+    <div style="width: 550px">
+        <div style="height: 180px;">
+
+            <div style="float: left">
+                <span style="font-style: italic;">Red</span>
+                <jqx-slider settings='SliderSettings' id="redSlider"></jqx-slider>
+
+                <span style="font-style: italic;">Green</span>
+                <jqx-slider settings='SliderSettings'></jqx-slider>
+
+                <span style="font-style: italic;">Blue</span>
+                <jqx-slider settings='SliderBlueSettings'></jqx-slider>
+            </div>
+
+            <div class="colorBlock jqx-rc-all" id="colorBlock">
+                <div class="colorLabel" id="colorLabel">
+                    #0000FF
+                </div>
+            </div>
+
+        </div>
+        <jqx-check-box settings="checkBoxSettings">Smooth Thumb Drag</jqx-check-box>
+    </div>
+</body>
+</html>

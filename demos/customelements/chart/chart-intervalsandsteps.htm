@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart IntervalAndSteps</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom element Chart with changeable intervals and steps." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var data = [12, 3, 16, 12, 24, 15, 17, 9, 31, 25, 15, 5, 8, 19, 23, 15, 31, 26, 11, 19, 5, 1, 8, 18, 12, 3, 16, 12, 24, 15, 17, 9, 31, 25, 15, 5, 8, 19, 23, 15, 31, 26, 11, 19, 5, 1, 8, 18, 5, 12, 11];
+
+        JQXElements.settings['chartContainer'] =
+            {
+                title: 'jqxChart unit interval and steps example',
+                description: ' ',
+                enableAnimations: false,
+                showLegend: true,
+                enableCrosshairs: false,
+                padding: { left: 10, top: 5, right: 10, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: data,
+                xAxis:
+                {
+                    unitInterval: 1,
+                    gridLines: { step: 1 },
+                    tickMarks: { step: 1 },
+                    labels: { step: 2 }
+                },
+                valueAxis:
+                {
+                    title: { text: 'Value<br>' },
+                    unitInterval: 5,
+                    gridLines: { step: 1 },
+                    tickMarks: { step: 1 },
+                    labels: { step: 1 },
+                    minValue: 0
+                },
+                colorScheme: 'scheme05',
+                seriesGroups:
+                [
+                    {
+                        type: 'line',
+                        series:
+                        [
+                            { displayText: 'value', opacity: 0.7 }
+                        ]
+                    }
+                ]
+            };
+
+        JQXElements.settings['inputXAxisLabelsStep'] =
+            {
+                inputMode: 'simple',
+                min: 1,
+                max: 10,
+                value: 2,
+                decimalDigits: 0,
+                digits: 2,
+                spinButtons: true
+            };
+
+        JQXElements.settings['inputXAxisGridLinesStep'] =
+            {
+                inputMode: 'simple',
+                min: 1,
+                max: 10,
+                value: 1,
+                decimalDigits: 0,
+                digits: 2,
+                spinButtons: true 
+            };
+        JQXElements.settings['inputXAxisTickMarksStep'] =
+            {
+                inputMode: 'simple',
+                min: 1,
+                max: 10,
+                value: 1,
+                decimalDigits: 0,
+                digits: 2,
+                spinButtons: true
+            };
+
+        JQXElements.settings['inputXAxisUnitInterval'] =
+            {
+                inputMode: 'simple',
+                min: 1,
+                max: 10,
+                value: 5,
+                decimalDigits: 0,
+                digits: 2,
+                spinButtons: true 
+            };
+
+        JQXElements.settings['btnValuesBetweenTicks'] =
+            {
+                hasThreeStates: false,
+                checked: false
+            };
+
+        JQXElements.settings['inputValueAxisLabelsStep'] =
+            {
+                inputMode: 'simple',
+                min: 1,
+                max: 10,
+                value: 1,
+                decimalDigits: 0,
+                digits: 2,
+                spinButtons: true
+            };
+
+        JQXElements.settings['inputValueAxisGridLinesStep'] =
+            {
+                inputMode: 'simple',
+                min: 1,
+                max: 10,
+                value: 1,
+                decimalDigits: 0,
+                digits: 2,
+                spinButtons: true
+            };
+
+        JQXElements.settings['inputValueAxisTickMarksStep'] =
+            {
+                inputMode: 'simple',
+                min: 1,
+                max: 10,
+                value: 1,
+                decimalDigits: 0,
+                digits: 2,
+                spinButtons: true
+            };
+
+        JQXElements.settings['inputValueAxisUnitInterval'] =
+            {
+                inputMode: 'simple',
+                min: 1,
+                max: 10,
+                value: 5,
+                decimalDigits: 0,
+                digits: 2,
+                spinButtons: true
+            };
+
+        JQXElements.settings['btnValueAxisValuesBetweenTicks'] =
+            {
+                hasThreeStates: false,
+                checked: false 
+            };
+
+
+        window.onload = function() {
+            var myChart = document.querySelector('jqx-chart');
+            var myCheckBoxes = document.querySelectorAll('jqx-check-box');
+            var myInput = document.querySelectorAll('jqx-number-input');
+
+            var chartInstance = myChart.getInstance();
+
+            myInput[0].addEventListener('valueChanged', function(event) {
+
+                var value = event.args.value;
+                chartInstance.xAxis.unitInterval = parseInt(value);
+                chartInstance.refresh();
+            });
+
+            myInput[1].addEventListener('valueChanged', function(event) {
+
+                var value = event.args.value;
+                chartInstance.xAxis.labels.step = parseInt(value);
+                chartInstance.refresh();
+            });
+
+            myInput[2].addEventListener('valueChanged', function(event) {
+
+                var value = event.args.value;
+                chartInstance.xAxis.tickMarks.step = parseInt(value);
+                chartInstance.refresh();
+            });
+
+            myInput[3].addEventListener('valueChanged', function(event) {
+
+                var value = event.args.value;
+                chartInstance.xAxis.gridLines.step = parseInt(value);
+                chartInstance.refresh();
+            });
+
+            myCheckBoxes[0].addEventListener('change', function(event) {
+
+                chartInstance.xAxis.valuesOnTicks = !event.args.checked;
+                chartInstance.refresh();
+            });
+
+            myInput[4].addEventListener('valueChanged', function(event) {
+
+                var value = event.args.value;
+                chartInstance.valueAxis.unitInterval = parseInt(value);
+                chartInstance.refresh();
+            });
+
+            myInput[5].addEventListener('valueChanged', function(event) {
+
+                var value = event.args.value;
+                chartInstance.valueAxis.labels.step = parseInt(value);
+                chartInstance.refresh();
+            });
+
+            myInput[6].addEventListener('valueChanged', function(event) {
+
+                var value = event.args.value;
+                chartInstance.valueAxis.tickMarks.step = parseInt(value);
+                chartInstance.refresh();
+            });
+
+            myInput[7].addEventListener('valueChanged', function(event) {
+
+                var value = event.args.value;
+                chartInstance.valueAxis.gridLines.step = parseInt(value);
+                chartInstance.refresh();
+            });
+
+            myCheckBoxes[1].addEventListener('change', function(event) {
+
+                chartInstance.valueAxis.valuesOnTicks = !event.args.checked;
+                chartInstance.refresh();
+            });
+        }
+    </script>
+</head>
+<body>
+   
+    <jqx-chart settings='chartContainer' style="width:850px; height:500px"></jqx-chart>
+    
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr style="height: 50px"><td colspan="2"><b>xAxis settings:</b></td></tr>
+                    <tr>
+                        <td>Labels step</td>
+                        <td><jqx-number-input settings='inputXAxisLabelsStep'></jqx-number-input></td>
+                    </tr>
+                    <tr>
+                        <td>Grid lines step</td>
+                        <td><jqx-number-input settings='inputXAxisGridLinesStep'></jqx-number-input></td>
+                    </tr>
+                    <tr>
+                        <td>Tick marks step</td>
+                        <td><jqx-number-input settings='inputXAxisTickMarksStep'></jqx-number-input></td>
+                    </tr>
+                    <tr>
+                        <td>Unit interval</td>
+                        <td><jqx-number-input settings='inputXAxisUnitInterval'></jqx-number-input></td>
+                    </tr>
+                    <tr style="height: 40px">
+                        <td colspan="2"><jqx-check-box settings="btnValuesBetweenTicks">Values between ticks</jqx-check-box></td>
+                    </tr>
+                </table>
+
+            </td>
+            <td>
+                <table style="padding-left: 100px;">
+                    <tr style="height: 50px"><td colspan="2"><b>valueAxis settings:</b></td></tr>
+                    <tr>
+                        <td>Labels step</td>
+                        <td><jqx-number-input settings='inputValueAxisLabelsStep'></jqx-number-input></td>
+                    </tr>
+                    <tr>
+                        <td>Grid lines step</td>
+                        <td><jqx-number-input settings='inputValueAxisGridLinesStep'></jqx-number-input></td>
+                    </tr>
+                    <tr>
+                        <td>Tick marks step</td>
+                        <td><jqx-number-input settings='inputValueAxisTickMarksStep'></jqx-number-input></td>
+                    </tr>
+                    <tr>
+                        <td>Unit interval</td>
+                        <td><jqx-number-input settings='inputValueAxisUnitInterval'></jqx-number-input></td>
+                    </tr>
+                    <tr style="height: 40px">
+                        <td colspan="2"><jqx-check-box settings="btnValueAxisValuesBetweenTicks">Values between ticks</jqx-check-box></td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+  
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Custom element chart unit intervals, grid lines, tick marks and label steps. You have to change the unit interval and step properties to see their effect.
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable SortingAPI</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the sorting API in Custom Elements DataTable." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                localdata: generatedata(85),
+                datatype: 'array',
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'total', type: 'number' }
+                ],
+                sortcolumn: 'firstname',
+                sortdirection: 'asc'
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var columns = [
+            { text: 'Name', dataField: 'firstname', width: 200 },
+            { text: 'Last Name', dataField: 'lastname', width: 200 },
+            { text: 'Product', editable: false, dataField: 'productname', width: 180 },
+            { text: 'Quantity', dataField: 'quantity', width: 80, align: 'right', cellsalign: 'right' },
+            { text: 'Unit Price', dataField: 'price', width: 90, align: 'right', cellsalign: 'right', cellsFormat: 'c2' },
+            { text: 'Total', dataField: 'total', width: 100, align: 'right', cellsalign: 'right', cellsFormat: 'c2' }
+        ];
+
+        JQXElements.settings['dataTableSettings'] =
+        {
+            source: dataAdapter,
+            sortable: true,
+            pageable: true,
+            altRows: true,
+            columns: columns
+        }
+
+        JQXElements.settings['ColumnDropDownList'] =
+        {
+            selectedIndex: 0,
+            autoDropDownHeight: true,
+            source: ['Name', 'Last Name', 'Product', 'Quantity', 'Unit Price', 'Total']
+        }
+
+        JQXElements.settings['SortOrederDropDownList'] =
+        {
+            selectedIndex: 0,
+            autoDropDownHeight: true,
+            source: ['Ascending', 'Descending']
+        }
+
+        window.onload = function() {
+            var myDataTable = document.querySelector('jqx-data-table');
+            var myDropDownList = document.querySelectorAll('jqx-drop-down-list');
+            var myButtons = document.querySelectorAll('jqx-button');
+
+            myButtons[0].addEventListener('click', function() {
+                var columnIndex = myDropDownList[0].getSelectedIndex();
+                var sortOrder = myDropDownList[1].getSelectedIndex() == 0 ? 'asc' : 'desc';
+                myDataTable.sortBy(columns[columnIndex].dataField, sortOrder);
+            });
+            myButtons[1].addEventListener('click', function() {
+                myDataTable.sortBy(null);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element DataTable Sorting API.
+    </div>
+
+   <jqx-data-table settings="dataTableSettings" style="float: left;">
+   </jqx-data-table>
+
+    <div style="float: left; margin-left: 10px;">
+        <table>
+            <tr>
+                <td align="right"><div><strong>Settings</strong></div></td>
+                <td align="left"></td>
+            </tr>
+            <tr>
+                <td align="right">Column:</td>
+                <td align="left">
+                    <jqx-drop-down-list settings="ColumnDropDownList"></jqx-drop-down-list>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Sort Order:</td>
+                <td align="left">
+                    <jqx-drop-down-list settings="SortOrederDropDownList"></jqx-drop-down-list>
+                </td>
+            </tr>
+            <tr>
+                <td align="right"></td>
+                <td align="left">
+                    <jqx-button style="float: left;">Sort</jqx-button>
+                    <jqx-button style="float: left; margin-left: 5px;">Clear</jqx-button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

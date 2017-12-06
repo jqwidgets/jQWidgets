@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tree Custom Element ContexMenu</title>
+    <meta name="description" content="This is an example of ContextMenu in Tree Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['menuSettings'] =
+            {
+                width: 120, height: 56, autoOpenPopup: false, mode: 'popup'
+            };
+
+        window.onload = function() {
+            var myTree = document.querySelector('jqx-tree');
+            var myMenu = document.querySelector('jqx-menu');
+
+            myTree.selectItem(document.querySelector('#home'));
+            myTree.expandItem(document.querySelector('#solutions'));     
+
+            document.addEventListener('contextmenu', event => {
+                event.preventDefault();
+                if ((event.target).classList.contains('jqx-tree-item')) {
+                    myTree.selectItem(event.target);
+                    var scrollTop = window.scrollY;
+                    var scrollLeft = window.scrollX;
+                    myMenu.open(event.clientX + 5 + scrollLeft, event.clientY + 5 + scrollTop);
+                    return false;
+                } else {
+                    myMenu.close();
+                }
+            });        
+
+            myMenu.addEventListener('itemclick', event => {
+                var item = event.args.innerText;
+                var selectedItem = null;
+                switch (item) {
+                    case "Add Item":
+                        selectedItem = myTree.getSelectedItem();
+                        if (selectedItem != null) {
+                            myTree.addTo({ label: 'Item' }, selectedItem.element);
+                        }
+                        break;
+                    case "Remove Item":
+                        selectedItem = myTree.getSelectedItem();
+                        if (selectedItem != null) {
+                            myTree.removeItem(selectedItem.element);
+                        }
+                        break;
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+       Tree Custom Element with Context Menu.
+    </div> 
+
+    <jqx-tree>
+        <ul>
+            <li id='home'>Home</li>
+            <li id='solutions'>
+                Solutions
+                <ul>
+                    <li>Education</li>
+                    <li>Financial services</li>
+                    <li>Government</li>
+                    <li id='manufacturing'>Manufacturing</li>
+                    <li>
+                        Solutions
+                        <ul>
+                            <li>Consumer photo and video</li>
+                            <li>Mobile</li>
+                            <li>Rich Internet applications</li>
+                            <li>Technical communication</li>
+                            <li>Training and eLearning</li>
+                            <li>Web conferencing</li>
+                        </ul>
+                    </li>
+                    <li>All industries and solutions</li>
+                </ul>
+            </li>
+            <li>
+                Products
+                <ul>
+                    <li>PC products</li>
+                    <li>Mobile products</li>
+                    <li>All products</li>
+                </ul>
+            </li>
+            <li>
+                Support
+                <ul>
+                    <li>Support home</li>
+                    <li>Customer Service</li>
+                    <li>Knowledge base</li>
+                    <li>Books</li>
+                    <li>Training and certification</li>
+                    <li>Support programs</li>
+                    <li>Forums</li>
+                    <li>Documentation</li>
+                    <li>Updates</li>
+                </ul>
+            </li>
+            <li>
+                Communities
+                <ul>
+                    <li>Designers</li>
+                    <li>Developers</li>
+                    <li>Educators and students</li>
+                    <li>Partners</li>
+                    <li>
+                        By resource
+                        <ul>
+                            <li>Labs</li>
+                            <li>TV</li>
+                            <li>Forums</li>
+                            <li>Exchange</li>
+                            <li>Blogs</li>
+                            <li>Experience Design</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Company
+                <ul>
+                    <li>About Us</li>
+                    <li>Press</li>
+                    <li>Investor Relations</li>
+                    <li>Corporate Affairs</li>
+                    <li>Careers</li>
+                    <li>Showcase</li>
+                    <li>Events</li>
+                    <li>Contact Us</li>
+                    <li>Become an affiliate</li>
+                </ul>
+            </li>
+        </ul>
+    </jqx-tree>
+
+    <jqx-menu settings="menuSettings">
+        <ul>
+            <li>Add Item</li>
+            <li>Remove Item</li>
+        </ul>
+    </jqx-menu>
+
+</body>
+</html>

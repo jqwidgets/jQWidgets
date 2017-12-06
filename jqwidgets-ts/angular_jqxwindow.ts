@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,41 +17,41 @@ declare let JQXLite: any;
 
 export class jqxWindowComponent implements OnChanges
 {
-   @Input('autoOpen') attrAutoOpen: Boolean;
+   @Input('autoOpen') attrAutoOpen: boolean;
    @Input('animationType') attrAnimationType: any;
-   @Input('collapsed') attrCollapsed: Boolean;
-   @Input('collapseAnimationDuration') attrCollapseAnimationDuration: Number;
-   @Input('content') attrContent: String;
-   @Input('closeAnimationDuration') attrCloseAnimationDuration: Number;
-   @Input('closeButtonSize') attrCloseButtonSize: Number;
+   @Input('collapsed') attrCollapsed: boolean;
+   @Input('collapseAnimationDuration') attrCollapseAnimationDuration: number;
+   @Input('content') attrContent: string;
+   @Input('closeAnimationDuration') attrCloseAnimationDuration: number;
+   @Input('closeButtonSize') attrCloseButtonSize: number;
    @Input('closeButtonAction') attrCloseButtonAction: any;
    @Input('cancelButton') attrCancelButton: any;
    @Input('dragArea') attrDragArea: jqwidgets.WindowDragArea;
-   @Input('draggable') attrDraggable: Boolean;
-   @Input('disabled') attrDisabled: Boolean;
+   @Input('draggable') attrDraggable: boolean;
+   @Input('disabled') attrDisabled: boolean;
    @Input('initContent') attrInitContent: () => void;
-   @Input('isModal') attrIsModal: Boolean;
-   @Input('keyboardCloseKey') attrKeyboardCloseKey: String | Number;
-   @Input('keyboardNavigation') attrKeyboardNavigation: Boolean;
-   @Input('minHeight') attrMinHeight: String | Number;
-   @Input('maxHeight') attrMaxHeight: String | Number;
-   @Input('minWidth') attrMinWidth: String | Number;
-   @Input('maxWidth') attrMaxWidth: String | Number;
-   @Input('modalOpacity') attrModalOpacity: Number;
-   @Input('modalZIndex') attrModalZIndex: Number;
-   @Input('modalBackgroundZIndex') attrModalBackgroundZIndex: Number;
+   @Input('isModal') attrIsModal: boolean;
+   @Input('keyboardCloseKey') attrKeyboardCloseKey: number | string;
+   @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
+   @Input('minHeight') attrMinHeight: string | number;
+   @Input('maxHeight') attrMaxHeight: string | number;
+   @Input('minWidth') attrMinWidth: number | string;
+   @Input('maxWidth') attrMaxWidth: number | string;
+   @Input('modalOpacity') attrModalOpacity: number;
+   @Input('modalZIndex') attrModalZIndex: number;
+   @Input('modalBackgroundZIndex') attrModalBackgroundZIndex: number;
    @Input('okButton') attrOkButton: any;
-   @Input('position') attrPosition: String | any;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('resizable') attrResizable: Boolean;
-   @Input('showAnimationDuration') attrShowAnimationDuration: Number;
-   @Input('showCloseButton') attrShowCloseButton: Boolean;
-   @Input('showCollapseButton') attrShowCollapseButton: Boolean;
-   @Input('theme') attrTheme: String;
-   @Input('title') attrTitle: String;
-   @Input('zIndex') attrZIndex: Number;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('position') attrPosition: string | any;
+   @Input('rtl') attrRtl: boolean;
+   @Input('resizable') attrResizable: boolean;
+   @Input('showAnimationDuration') attrShowAnimationDuration: number;
+   @Input('showCloseButton') attrShowCloseButton: boolean;
+   @Input('showCollapseButton') attrShowCollapseButton: boolean;
+   @Input('theme') attrTheme: string;
+   @Input('title') attrTitle: string;
+   @Input('zIndex') attrZIndex: number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -74,7 +74,7 @@ export class jqxWindowComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -261,7 +261,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxWindow('height', arg);
       } else {
@@ -285,7 +285,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   keyboardCloseKey(arg?: String | Number) : any {
+   keyboardCloseKey(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxWindow('keyboardCloseKey', arg);
       } else {
@@ -301,7 +301,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   minHeight(arg?: String | Number) : any {
+   minHeight(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxWindow('minHeight', arg);
       } else {
@@ -309,7 +309,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   maxHeight(arg?: String | Number) : any {
+   maxHeight(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxWindow('maxHeight', arg);
       } else {
@@ -317,7 +317,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   minWidth(arg?: String | Number) : any {
+   minWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxWindow('minWidth', arg);
       } else {
@@ -325,7 +325,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   maxWidth(arg?: String | Number) : any {
+   maxWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxWindow('maxWidth', arg);
       } else {
@@ -365,7 +365,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   position(arg?: String | any) : any {
+   position(arg?: string | any) : any {
       if (arg !== undefined) {
           this.host.jqxWindow('position', arg);
       } else {
@@ -429,7 +429,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxWindow('width', arg);
       } else {

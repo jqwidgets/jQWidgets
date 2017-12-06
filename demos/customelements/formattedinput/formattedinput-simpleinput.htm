@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>FormattedInput Custom Element SimpleInput</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example shows an initialized HTML input in Custom Elements FormattedInput." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxformattedinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['formattedInputSettings'] =
+            {
+                radix: 'binary',
+                value: '100001'
+            }
+
+        window.onload = function() {
+            var myButton = document.querySelectorAll('jqx-button');
+            var myFormattedInput = document.querySelector('jqx-formatted-input');
+
+            myButton[0].addEventListener('click', function() {
+                var octalValue = myFormattedInput.val('octal');
+                alert('Octal value: ' + octalValue);
+            });
+
+            myButton[1].addEventListener('click', function() {
+                var decimalValue = myFormattedInput.val('decimal');
+                alert('Decimal value: ' + decimalValue);
+            });
+
+            myButton[2].addEventListener('click', function() {
+                var hexadecimalValue = myFormattedInput.val('hexadecimal');
+                alert('Hexadecimal value: ' + hexadecimalValue);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows a Custom element FormattedInput initialized from an HTML input.
+    </div>
+   <jqx-formatted-input settings="formattedInputSettings">
+   </jqx-formatted-input>
+
+    <div style="margin-top: 20px;">
+        <jqx-button>
+            Get octal value
+        </jqx-button>
+        <jqx-button style="margin-left: 5px;">
+            Get decimal value
+        </jqx-button>
+        <jqx-button style="margin-left: 5px;">
+            Get hexadecimal value
+        </jqx-button>
+    </div>
+</body>
+</html>

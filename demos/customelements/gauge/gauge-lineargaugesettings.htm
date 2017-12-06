@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Gauge LinearGauge</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of LinearGauge's settings in Custom Elements Gauge." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgauge.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        .demo-options {
+            list-style: none;
+            padding: 0px;
+            margin: 10px;
+        }
+
+        .demo-options li {
+            padding: 3px;
+            font-family: Verdana;
+            font-size: 12px;
+        }
+    </style>
+    <script type="text/javascript">
+
+        var   majorTicks = { size: '10%', interval: 10 },
+                minorTicks = { size: '5%', interval: 2.5, style: { 'stroke-width': 1, stroke: '#aaaaaa' } },
+                labels = { interval: 20 };
+
+        JQXElements.settings['GaugeSettings'] =
+            {
+                orientation: 'vertical',
+                labels: labels,
+                ticksMajor: majorTicks,
+                ticksMinor: minorTicks,
+                max: 60,
+                value: -60,
+                pointer: { size: '6%' },
+                colorScheme: 'scheme05',
+                ranges: [
+                    { startValue: -10, endValue: 10, style: { fill: '#FFF157', stroke: '#FFF157' } },
+                    { startValue: 10, endValue: 35, style: { fill: '#FFA200', stroke: '#FFA200' } },
+                    { startValue: 35, endValue: 60, style: { fill: '#FF4800', stroke: '#FF4800' } }]
+            }
+
+        JQXElements.settings['ExpanderSettings'] =
+            {
+                toggleMode: 'none',
+                showArrow: false
+            }
+
+        JQXElements.settings['isVerticalCheckbox'] =
+            {
+                checked: true
+            }
+
+        JQXElements.settings['labelsNearRadio'] =
+            {
+                groupName: 'labels-position'
+            }
+
+        JQXElements.settings['labelsFarRadio'] =
+            {
+                groupName: 'labels-position'
+            }
+
+        JQXElements.settings['labelsBothRadio'] =
+            {
+                checked: true,
+                groupName: 'labels-position'
+            }
+
+        JQXElements.settings['ticksNearRadio'] =
+            {
+                groupName: 'ticks-position'
+            }
+
+        JQXElements.settings['ticksFarRadio'] =
+            {
+                groupName: 'ticks-position'
+            }
+
+        JQXElements.settings['ticksBothRadio'] =
+            {
+                checked: true,
+                groupName: 'ticks-position'
+            }
+
+        JQXElements.settings['showTicksCheckbox'] =
+            {
+                checked: true
+            }
+
+        JQXElements.settings['showLabelsCheckbox'] =
+            {
+                checked: true
+            }
+
+        JQXElements.settings['showRangesCheckbox'] =
+            {
+                checked: true
+            }
+
+        JQXElements.settings['showBackgroundCheckbox'] =
+            {
+                checked: true
+            }
+
+        window.onload = function() {
+            var myGauge = document.querySelector('jqx-linear-gauge');
+            var myExpander = document.querySelector('jqx-expander');
+            var myCheckBoxes = document.querySelectorAll('jqx-check-box');
+            var myRadioButtons = document.querySelectorAll('jqx-radio-button');
+            var myButton = document.querySelector('jqx-button');
+
+            myGauge.value = 50;
+
+
+            myCheckBoxes[0].addEventListener('change', (e) => {
+
+                if (e.args.checked) {
+                    myGauge.width = '100px';
+                    myGauge.height = '300px';
+                    myGauge.orientation = 'vertical';
+                } else {
+
+                    myGauge.height = '100px';
+                    myGauge.width = '300px';
+                    myGauge.orientation = 'horizontal';
+                }
+            });
+
+
+            myCheckBoxes[1].addEventListener('change', (e) => {
+
+                if (e.args.checked) {
+                    majorTicks.visible = true;
+                    minorTicks.visible = true;
+                } else {
+                    majorTicks.visible = false;
+                    minorTicks.visible = false;
+                }
+
+                myGauge.ticksMajor = majorTicks;
+
+                myGauge.ticksMinor = minorTicks;
+            });
+
+            myCheckBoxes[2].addEventListener('change', (e) => {
+
+                if (e.args.checked) {
+                    labels.visible = true;
+                } else {
+
+                    labels.visible = false;
+                }
+
+                myGauge.labels = labels;
+            });
+
+            myCheckBoxes[3].addEventListener('change', (e) => {
+
+                if (e.args.checked) {
+
+                    myGauge.showRanges = true;
+                } else {
+
+                    myGauge.showRanges = false;
+                }
+            });
+
+            myCheckBoxes[4].addEventListener('change', (e) => {
+
+                if (e.args.checked) {
+
+                    myGauge.background = { visible: true };
+                } else {
+
+                    myGauge.background = { visible: false };
+                }
+            });
+
+            myRadioButtons[0].addEventListener('checked', function() {
+
+                labels.position = 'near';
+                myGauge.labels = labels;
+            });
+
+            myRadioButtons[1].addEventListener('checked', function() {
+
+                labels.position = 'far';
+                myGauge.labels = labels;
+            });
+
+            myRadioButtons[2].addEventListener('checked', function() {
+
+                labels.position = 'both';
+                myGauge.labels = labels;
+            });
+
+            myRadioButtons[3].addEventListener('checked', function() {
+
+                myGauge.ticksPosition = 'near';
+            });
+
+            myRadioButtons[4].addEventListener('checked', function() {
+
+                myGauge.ticksPosition = 'far';
+            });
+
+            myRadioButtons[5].addEventListener('checked', function() {
+
+                myGauge.ticksPosition = 'both';
+            });
+
+            myButton.addEventListener('click', function() {
+                myGauge.animationDuration = 0;
+                myGauge.value = -60;
+                myGauge.animationDuration = 1000;
+                myGauge.value = 50;
+            });
+        }
+    </script> 
+</head>
+<body>
+    <div class="example-description">
+        This sample demonstrates the basic settings of Linear Gauge.
+    </div>
+
+    <div class="demo-gauge">
+        <jqx-linear-gauge settings="GaugeSettings" style="margin-left: 20px; float: left;"></jqx-linear-gauge>
+
+        <jqx-expander settings="ExpanderSettings" style="margin-left: 330px;">
+
+            <div class="demo-options-header">
+                Options
+            </div>
+
+            <div>
+                <jqx-check-box settings="isVerticalCheckbox" style="margin-bottom: 4px; margin-left: 10px; margin-top: 10px;">Is vertical</jqx-check-box>
+                <br />
+
+                <div>
+                    <table style="float:left; margin-left: 10px;">
+
+                        <tr>
+                            <td>Labels position:</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <jqx-radio-button settings="labelsNearRadio">Near</jqx-radio-button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <jqx-radio-button settings="labelsFarRadio">Far</jqx-radio-button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <jqx-radio-button settings="labelsBothRadio">Both</jqx-radio-button>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <table style="float: right; margin-right: 10px;">
+                        <tr>
+                            <td>Ticks position:</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <jqx-radio-button settings="ticksNearRadio">Near</jqx-radio-button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <jqx-radio-button settings="ticksFarRadio">Far</jqx-radio-button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <jqx-radio-button settings="ticksBothRadio">Both</jqx-radio-button>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <div style="clear: both;"></div>
+                </div>
+
+                <br />
+                <jqx-check-box settings="showTicksCheckbox" style="margin-bottom: 4px; margin-left: 10px;">Show ticks</jqx-check-box>
+
+                <jqx-check-box settings="showLabelsCheckbox" style="margin-bottom: 4px; margin-left: 10px;">Show labels</jqx-check-box>
+
+                <jqx-check-box settings="showRangesCheckbox" style="margin-bottom: 4px; margin-left: 10px;">Show ranges</jqx-check-box>
+
+                <jqx-check-box settings="showBackgroundCheckbox" style="margin-bottom: 4px; margin-left: 10px;">Show background</jqx-check-box>
+
+                <br />
+                <jqx-button style="margin: auto; text-align: center;">Reset value</jqx-button>
+
+            </div>
+
+        </jqx-expander>
+
+    </div>
+   
+</body>
+</html>

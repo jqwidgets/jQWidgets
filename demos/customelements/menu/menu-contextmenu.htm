@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Menu ContextMenu</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of a context menu in Custom Element Menu." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['MenuSettings'] = 
+            {
+                autoOpenPopup: false, mode: 'popup', width: 300
+            };
+
+        window.onload = function() {
+            var myMenu = document.querySelector('jqx-menu');
+            var myContainer = document.querySelector('#menuContainer');
+
+            var isRightClick = function(event) {
+
+                var rightclick;
+                if (!event) event = window.event;
+                if (event.which) rightclick = (event.which == 3);
+                else if (event.button) rightclick = (event.button == 2);
+                return rightclick;
+            };
+
+            myContainer.addEventListener('contextmenu', event => {
+                event.preventDefault();
+            });
+
+            myContainer.addEventListener('mousedown', event => {
+                var rightClick = isRightClick(event) || jqx.mobile.isTouchDevice();
+                if (rightClick) {
+                    myMenu.open(parseInt(event.clientX), parseInt(event.clientY));
+                    return false;
+                }
+            });       
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo demonstrates how to use the Custom element Menu widget as a Context Menu. In order to display the Custom element Menu as Context Menu, you need to set the 'mode' property to 'popup'.
+    </div>
+    <jqx-menu settings='MenuSettings'>
+        <ul>
+            <li><a href="#Home">Home</a></li>
+            <li>
+                Solutions
+                <ul style='width: 250px;'>
+                    <li><a href="#Education">Education</a></li>
+                    <li><a href="#Financial">Financial services</a></li>
+                    <li><a href="#Government">Government</a></li>
+                    <li><a href="#Manufacturing">Manufacturing</a></li>
+                    <li type='separator'></li>
+                    <li>
+                        Software Solutions
+                        <ul style='width: 220px;'>
+                            <li><a href="#ConsumerPhoto">Consumer photo and video</a></li>
+                            <li><a href="#Mobile">Mobile</a></li>
+                            <li><a href="#RIA">Rich Internet applications</a></li>
+                            <li><a href="#TechnicalCommunication">Technical communication</a></li>
+                            <li><a href="#Training">Training and eLearning</a></li>
+                            <li><a href="#WebConferencing">Web conferencing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">All industries and solutions</a></li>
+                </ul>
+            </li>
+
+            <li>
+                Products
+                <ul>
+                    <li><a href="#PCProducts">PC products</a></li>
+                    <li><a href="#MobileProducts">Mobile products</a></li>
+                    <li><a href="#AllProducts">All products</a></li>
+                </ul>
+            </li>
+
+            <li>
+                Support
+                <ul style='width: 200px;'>
+                    <li><a href="#SupportHome">Support home</a></li>
+                    <li><a href="#CustomerService">Customer Service</a></li>
+                    <li><a href="#KB">Knowledge base</a></li>
+                    <li><a href="#Books">Books</a></li>
+                    <li><a href="#Training">Training and certification</a></li>
+                    <li><a href="#SupportPrograms">Support programs</a></li>
+                    <li><a href="#Forums">Forums</a></li>
+                    <li><a href="#Documentation">Documentation</a></li>
+                    <li><a href="#Updates">Updates</a></li>
+                </ul>
+            </li>
+
+            <li>
+                Communities
+                <ul style='width: 200px;'>
+                    <li><a href="#Designers">Designers</a></li>
+                    <li><a href="#Developers">Developers</a></li>
+                    <li><a href="#Educators">Educators and students</a></li>
+                    <li><a href="#Partners">Partners</a></li>
+                    <li type='separator'></li>
+                    <li>
+                        By resource
+                        <ul>
+                            <li><a href="#Labs">Labs</a></li>
+                            <li><a href="#TV">TV</a></li>
+                            <li><a href="#Forums">Forums</a></li>
+                            <li><a href="#Exchange">Exchange</a></li>
+                            <li><a href="#Blogs">Blogs</a></li>
+                            <li><a href="#Experience Design">Experience Design</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                Company
+                <ul style='width: 180px;'>
+                    <li><a href="#About">About Us</a></li>
+                    <li><a href="#Press">Press</a></li>
+                    <li><a href="#Investor">Investor Relations</a></li>
+                    <li><a href="#CorporateAffairs">Corporate Affairs</a></li>
+                    <li><a href="#Careers">Careers</a></li>
+                    <li><a href="#Showcase">Showcase</a></li>
+                    <li><a href="#Events">Events</a></li>
+                    <li><a href="#ContactUs">Contact Us</a></li>
+                    <li><a href="#Become an affiliate">Become an affiliate</a></li>
+                </ul>
+            </li>
+        </ul>
+    </jqx-menu>
+
+    <div id='menuContainer' style='vertical-align: middle; text-align: center; background: #eee; height: 400px; width: 400px;'>
+
+        <span style='font-size: 14px; position: relative; top: 180px; font-family: Verdana Arial;'>
+            Right-Click here to Open the Menu
+        </span>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Description">PivotGrid Custom Element Drill Through Pivot Cells</title>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpivot.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpivotgrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        // prepare sample data
+        var data = new Array();
+
+        var firstNames =
+        [
+            "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene"
+        ];
+
+        var lastNames =
+        [
+            "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier"
+        ];
+
+        var productNames =
+        [
+            "Black Tea", "Green Tea", "Caffe Espresso"
+        ];
+
+        var priceValues =
+        [
+            "2.25", "1.5", "3.0", "3.3", "4.5", "3.6", "3.8", "2.5", "5.0", "1.75", "3.25", "4.0"
+        ];
+
+        for (var i = 0; i < 500; i++) {
+            var row = {};
+            var productindex = Math.floor(Math.random() * productNames.length);
+            var price = parseFloat(priceValues[productindex]);
+            var quantity = 1 + Math.round(Math.random() * 10);
+
+            row["firstname"] = firstNames[Math.floor(Math.random() * firstNames.length)];
+            row["lastname"] = lastNames[Math.floor(Math.random() * lastNames.length)];
+            row["productname"] = productNames[productindex];
+            row["price"] = price;
+            row["quantity"] = quantity;
+            row["total"] = price * quantity;
+
+            data[i] = row;
+        }
+
+        // create a data source and data adapter
+        var source =
+        {
+            localdata: data,
+            datatype: "array",
+            datafields:
+            [
+                { name: 'firstname', type: 'string' },
+                { name: 'lastname', type: 'string' },
+                { name: 'productname', type: 'string' },
+                { name: 'quantity', type: 'number' },
+                { name: 'price', type: 'number' },
+                { name: 'total', type: 'number' }
+            ]
+        };
+
+        // create a pivot grid
+        JQXElements.settings["pivotSettings"] =
+        {
+            source:  new jqx.pivot(
+                new jqx.dataAdapter(source, {autoBind: true}),
+                {
+                    pivotValuesOnRows: false,
+                    totals: {rows: {subtotals: true, grandtotals: true}, columns: {subtotals: false, grandtotals: true}},
+                    rows: [{ dataField: 'firstname' }, { dataField: 'lastname'}],
+                    columns: [{ dataField: 'productname' }],
+                    values: [
+                        { dataField: 'price', 'function': 'sum', text: 'sum', width: NamedNodeMap, formatSettings: { prefix: '', decimalPlaces: 2 } },
+                        { dataField: 'price', 'function': 'count', text: 'count' },
+                        { dataField: 'price', 'function': 'average', text: 'average', formatSettings: { prefix: '', decimalPlaces: 2} }
+                    ]
+                }),
+            treeStyleRows: true,
+            autoResize: false,
+            multipleSelectionEnabled: true
+        };
+
+
+        // handle window open events
+        function drillThroughWindowOpen(e) {
+            var pivotGridInstance = document.querySelector('jqx-pivot-grid').getInstance();
+
+            pivotGridInstance.selectionEnabled = false;
+
+        }
+        function drillThroughWindowClose(e) {
+            var pivotGridInstance = document.querySelector('jqx-pivot-grid').getInstance();
+
+            pivotGridInstance.selectionEnabled = true;
+        }
+
+        function drillThrough(pivotRow, pivotColumn) {
+            var pivotGridInstance = document.querySelector('jqx-pivot-grid').getInstance();
+            var dataTable = document.querySelector('jqx-data-table');
+
+            var rows = pivotGridInstance.getPivotCells().drillThroughCell(pivotRow, pivotColumn);
+            var drillThroughRows = [];
+
+            for (var i = 0; i < rows.length; i++)
+                drillThroughRows[i] = data[rows[i]]
+
+            var drillThroughSrc =
+            {
+                localData: drillThroughRows,
+                dataType: "array",
+                dataFields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'total', type: 'number' }
+                ]
+            };
+
+            dataTable.createElement();
+            dataTable.source = new jqx.dataAdapter(drillThroughSrc);
+            dataTable.refresh();
+        }
+
+        JQXElements.settings["tableSettings"] =
+        {
+            pageable: true,
+            width: '100%',
+            height: '100%',
+            pagerButtonsCount: 10,
+            columnsResize: true,
+            columns: [
+              { text: 'First name', dataField: 'firstname', width: 200 },
+              { text: 'Last name', dataField: 'lastname', width: 200 },
+              { text: 'Product', editable: false, dataField: 'productname', width: 180 },
+              { text: 'Quantity', dataField: 'quantity', width: 80, cellsAlign: 'right', align: 'right' },
+              { text: 'Unit Price', dataField: 'price', width: 90, cellsAlign: 'right', align: 'right', cellsFormat: 'c2' },
+              { text: 'Total', dataField: 'total', cellsAlign: 'right', align: 'right', cellsFormat: 'c2' }
+            ]
+        }
+
+        JQXElements.settings["windowSettings"] = {
+            autoOpen: false,
+            showCollapseButton: true, maxHeight: 400, maxWidth: 700, minHeight: 200, minWidth: 200, height: 300, width: 500
+        }
+
+        window.onload = function() {
+            var pivotGridInstance = document.querySelector('jqx-pivot-grid').getInstance();
+            var myWindow = document.querySelector('jqx-window');
+
+            // get instance of the grid
+            myWindow.open();
+
+            document.querySelector('jqx-pivot-grid').addEventListener('pivotcelldblclick', function (e) {
+                var args = e.args;
+                drillThrough(args.pivotRow, args.pivotColumn);
+            });
+
+            drillThrough(pivotGridInstance.getPivotRows().items[0], pivotGridInstance.getPivotColumns().items[0].valueItems[0]);
+        }
+    </script>
+</head>
+<body class='default'>
+    <jqx-pivot-grid settings="pivotSettings" id="divPivotGrid" style="height: 400px; width: 800px; background-color: white;">
+    </jqx-pivot-grid>
+    <jqx-window on-open="drillThroughWindowOpen(event)" on-close="drillThroughWindowClose(event)" settings="windowSettings" id="drillThroughWindow" style="display:none;">
+        <div id="windowHeader">
+            Drillthrough records
+        </div>
+        <div style="overflow: hidden;" id="windowContent">
+            <jqx-data-table delayed-create settings="tableSettings" id="tableSrcRecords" style="width: 100%; height: 100%;"></jqx-data-table>
+        </div>
+    </jqx-window>
+
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <div style="width: 800px;">
+            This is an example of the pivot grid drill through functionality. It allows you to find the records in the data source which were
+            used to calculate the value of a particular cell in the pivot grid. To drill through a specific grid cell double click on it and
+            you will see a window displaying the source records. In addition to the pivot grid widget, this example uses the window and
+            data table widgets. The example also demonstrates how to handle open and close events of the window widgets and how to
+            enable or disable the selection functionality of the pivot grid component. This demo is implemented using jQuery. You can find
+            similar examples implemented in React JS and Angular inside the React and Angular components section of the website.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ComplexInput FluidSize</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example the width and height of Custom Elements ComplexInput are set in precentages." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcomplexinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['ComplexInput'] =
+            {
+                value: '1000 + 2i',
+                spinButtons: true,
+                width: '30%'
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom elements ComplexInput Fluid Size Example. The width of the complex input in this demo is in Percentages.
+    </div>
+   <jqx-complex-input settings="ComplexInput">
+
+       <input type="text" />
+       <div>
+       </div>
+
+   </jqx-complex-input>
+</body>
+</html>

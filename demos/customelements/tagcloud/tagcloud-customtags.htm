@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tag Cloud Custom Element CustomTags</title>
+    <meta name='description' content='TagCloud Custom Element custom tag rendering.' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtagcloud.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var data =
+            [
+                { countryName: 'Australia', technologyRating: 35, url: 'test' },
+                { countryName: 'United States', technologyRating: 60 },
+                { countryName: 'Germany', technologyRating: 55 },
+                { countryName: 'Brasil', technologyRating: 20 },
+                { countryName: 'United Kingdom', technologyRating: 50 },
+                { countryName: 'Japan', technologyRating: 80 }
+            ];
+
+        var source =
+            {
+                localdata: data,
+                datatype: 'array',
+                datafields: [
+                    { name: 'countryName' },
+                    { name: 'technologyRating' }
+                ]
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source, {});
+     
+        JQXElements.settings['tagCloudSettings'] =
+            {
+                tagRenderer: (record, minValue, range) => {
+                    var el = document.createElement('span');
+                    el.innerText = record.countryName;
+
+                    var img = document.createElement('img');
+                    img.setAttribute('style', 'width: auto; height: auto; vertical-align: middle;');
+                    img.src = '../jqwidgets/styles/images/close.png';
+
+                    img.addEventListener('click', function(event) {
+                        var myTagCloud = document.querySelector('jqx-tag-cloud');
+                        var liElements = myTagCloud.querySelectorAll('li');
+
+                        for (var i = 0; i < liElements.length; i++) {
+                            if (liElements[i].innerText === (event.target).parentElement.innerText) {
+                                myTagCloud.removeAt(i);
+                            }
+                        }
+
+                        event.preventDefault();
+                        event.stopPropagation();
+                    });
+
+                    el.appendChild(img);
+                    return el;
+                },
+                source: dataAdapter,
+                displayMember: 'countryName',
+                valueMember: 'technologyRating'
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Tag Cloud Custom Element custom tag rendering.
+    </div>
+    <jqx-tag-cloud settings="tagCloudSettings"></jqx-tag-cloud>
+</body>
+</html>

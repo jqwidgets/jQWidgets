@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element MaskedInput RightToLeft</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the right to left support of Custom Element MaskedInput." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmaskedinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['numericInput'] = 
+            {
+                rtl: true
+            };
+
+        JQXElements.settings['zipCodeInput'] = 
+            {
+                rtl: true,
+                mask: '#####-####'
+            };
+
+        JQXElements.settings['ssnInput'] =
+            {
+                rtl: true,
+                mask: '###-##-####'
+            };
+
+        JQXElements.settings['dateInput'] =
+            {
+                rtl: true,
+                mask: '##/##/####'
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        To switch an editor to a right-to-left representation, just enable a single property - "rtl". When this property is on, text flows from right to left in an editor and the editor itself is mirrored.
+    </div>
+
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana;">
+        <div style='margin-top: 10px;'>
+            Numeric
+        </div>
+        <jqx-masked-input style='margin-top: 3px;' settings='numericInput'></jqx-masked-input>
+
+        <div style='margin-top: 10px;'>
+            Zip Code
+        </div>
+        <jqx-masked-input style='margin-top: 3px;' settings='zipCodeInput'></jqx-masked-input>
+
+        <div style='margin-top: 10px;'>
+            SSN
+        </div>
+        <jqx-masked-input style='margin-top: 3px;' settings='ssnInput'></jqx-masked-input>
+
+        <div style='margin-top: 10px;'>
+            Date
+        </div>
+        <jqx-masked-input style='margin-top: 3px;' settings='dateInput'></jqx-masked-input>
+
+    </div>
+
+</body>
+</html>

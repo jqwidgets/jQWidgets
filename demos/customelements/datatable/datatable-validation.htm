@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable Validation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of validation in Custom Elements DataTable." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script> 
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                dataFields: [
+                    { name: 'OrderID', type: 'int' },
+                    { name: 'Freight', type: 'float' },
+                    { name: 'ShipName', type: 'string' },
+                    { name: 'ShipAddress', type: 'string' },
+                    { name: 'ShipCity', type: 'string' },
+                    { name: 'ShipCountry', type: 'string' },
+                    { name: 'ShippedDate', type: 'date' }
+                ],
+                root: 'Orders',
+                record: 'Order',
+                dataType: 'xml',
+                id: 'OrderID',
+                url: '../sampledata/orderdetails.xml'
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['dataTableSettings'] =
+            {source: dataAdapter,
+                pageable: true,
+                editable: true,
+                altRows: true,
+                ready: () =>
+                {
+                    // called when the DataTable is loaded.
+                },
+                pagerButtonsCount: 8,
+                columns:
+                    [
+                        { text: 'Order ID', editable: false, dataField: 'OrderID', width: 100 },
+                        {
+                            text: 'Freight', dataField: 'Freight', cellsFormat: 'f2', cellsAlign: 'right', align: 'right', width: 100,
+                            validation: (cell, value) => {
+                                if (value > 1000 || value < 0) return { message: 'Freight should be in the 0-1000 interval', result: false };
+                                return true;
+                            }
+                        },
+                        {
+                            text: 'Ship Country', dataField: 'ShipCountry', width: 150,
+                            validation: (cell, value) => {
+                                if (value.length < 5) return { message: 'Ship Country should be minimum 5 characters', result: false };
+                                return true;
+                            }
+                        },
+                        {
+                            text: 'Shipped Date', dataField: 'ShippedDate', cellsAlign: 'right', align: 'right', cellsFormat: 'dd/MM/yyyy',
+                            validation: (cell, value) => {
+                                var date = new Date(value);
+                                if (date.getFullYear() > 2020 || date.getFullYear() < 2017) {
+                                    return { message: 'Shipped Date should be in the 2017 - 2020 interval', result: false };
+                                }
+                                return true;
+                            }
+                        }
+                    ]
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom Elements DataTable with Validation. Double-Click on a Row to enter into edit mode. The editor of the "Ship Country" column passes the validation when minimum 5 characters are entered. "Freight" should be in the 0-1000 interval and "Shipped Date" should be in the 1990-2014 interval. "Order ID" is not editable.
+    </div>
+   <jqx-data-table settings="dataTableSettings"></jqx-data-table>
+</body>
+</html>

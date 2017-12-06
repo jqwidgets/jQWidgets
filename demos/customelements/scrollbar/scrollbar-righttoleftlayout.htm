@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>ScrollBar Custom Element RightToLeft</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the right to left support in Custom Element ScrollBar." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['scrollBarSettings'] =
+            {
+                min: 0,
+                max: 1000,
+                rtl: true,
+            };
+
+        window.onload = function() {
+            var myScrollBar = document.querySelector('jqx-scroll-bar');
+            var myLog = document.querySelector('#HorizontalDiv');
+
+            myScrollBar.addEventListener('valueChanged', function(event) {
+                myLog.innerHTML = 'Horizontal (' + parseInt(event.currentValue) + ')';
+            });
+        }
+    </script>
+</head >
+    <body>
+        <div class="example-description">
+            To switch the widget to a right-to-left representation, just enable a single property - "rtl". When this property is on, the horizontal scrollbar is mirrored.
+        </div>
+        
+        <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+
+            <div id='HorizontalDiv' style='margin-top: 10px;'>Horizontal</div>
+
+            <jqx-scroll-bar style='margin-top: 10px;' settings='scrollBarSettings'></jqx-scroll-bar>
+
+        </div>
+
+    </body>
+</html >

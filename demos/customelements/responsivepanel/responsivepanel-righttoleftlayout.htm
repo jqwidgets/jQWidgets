@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>ResponsivePanel Custom Element DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionalities of Custom Element ResponsivePanel." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxresponsivepanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        #ResponsivePanel, #Panel {
+            float: right;
+        }
+
+        #Tree {
+            border: none !important;
+        }
+
+        .jqx-rc-all {
+            border-radius: 0px;
+        }
+    </style>
+    <script>
+        JQXElements.settings['myResponsivePanel'] =
+            {
+                    collapseBreakpoint: 700,
+                    toggleButton: document.querySelector('#toggleResponsivePanel'),
+                    animationType: 'none',
+                    autoClose: false
+            };
+
+        window.onload = function() {
+            var myResponsivePanel = document.querySelector('jqx-responsive-panel');
+            var myPanel = document.querySelector('jqx-panel');
+            var myButtons = document.querySelectorAll('jqx-button');
+            var myContainer = document.querySelector('#container');
+            var myToggleResponsivePanel = document.querySelector('#toggleResponsivePanel');
+
+            document.querySelector('jqx-tree').style.visibility = 'visible';
+
+            flag = true;
+            myResponsivePanel.addEventListener('open expand close collapse', event => {
+                if (event.args.element)
+                    return;
+                var collapsed = myResponsivePanel.isCollapsed();
+                var opened = myResponsivePanel.isOpened();
+
+                if (flag) {
+                    collapsed = false;
+                    opened = false;
+                }
+                flag = false;
+
+                if (!collapsed && !opened) {
+                    myResponsivePanel.style.display = 'block';
+                    myToggleResponsivePanel.style.display = 'none';
+                }
+                else if (collapsed && opened) {
+                    myPanel.width = '65%';
+                }
+                else if (collapsed && !opened) {
+                    myPanel.width = '100%';
+                    myResponsivePanel.style.display = 'none';
+                    myToggleResponsivePanel.style.display = 'block';
+                }
+                else if (!collapsed && opened) {
+                    myPanel.width = '65%';
+                    myResponsivePanel.style.display = 'block';
+                    myToggleResponsivePanel.style.display = 'block';
+                }
+            });
+
+            myButtons[0].addEventListener('click', function() {
+                myResponsivePanel.style.display = 'none';
+                myToggleResponsivePanel.style.display = 'block';
+                myContainer.style.width = '500px';
+                myPanel.width = '100%';
+            });
+
+            myButtons[1].addEventListener('click', function() {
+                myPanel.width = '100%';
+                myResponsivePanel.style.display = 'block';
+                myToggleResponsivePanel.style.display = 'none';
+                myContainer.style.width = '800px';
+                myPanel.width = '65%';
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The Custom element Responsive Panel is collapsed when the owner's container width is less that the collapseBreakpoint property value and expanded when it is higher.
+    </div>
+
+    <div id="container" style="height: 300px; width:800px;">
+        <div style="box-sizing: border-box; margin-bottom: 2px; width: 100%; height: 50px; padding: 10px 0 0 10px;">
+            <div id="toggleResponsivePanel"></div>
+        </div>
+
+        <jqx-responsive-panel id="ResponsivePanel" settings="myResponsivePanel">
+            <jqx-tree id="Tree">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li>
+                        About Us
+                        <ul>
+                            <li><a href="#">History</a></li>
+                            <li><a href="#">Our Vision</a></li>
+                            <li>
+                                <a href="#">The Team</a>
+                                <ul>
+                                    <li><a href="#">Brigita</a></li>
+                                    <li><a href="#">John</a></li>
+                                    <li><a href="#">Michael</a></li>
+                                    <li><a href="#">Peter</a></li>
+                                    <li><a href="#">Sarah</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Clients</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        Services
+                        <ul>
+                            <li><a href="#">Product Development</a></li>
+                            <li><a href="#">Delivery</a></li>
+                            <li><a href="#">Shop Online</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">Training &amp; Consulting</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        Products
+                        <ul>
+                            <li>
+                                <a href="#">New</a>
+                                <ul>
+                                    <li><a href="#">Corporate Use</a></li>
+                                    <li><a href="#">Private Use</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Used</a>
+                                <ul>
+                                    <li><a href="#">Corporate Use</a></li>
+                                    <li><a href="#">Private Use</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Featured</a></li>
+                            <li><a href="#">Top Rated</a></li>
+                            <li><a href="#">Prices</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li>
+                        <a href="#">Contact Us</a>
+                        <ul>
+                            <li><a href="#">Enquiry Form</a></li>
+                            <li><a href="#">Map &amp; Driving Directions</a></li>
+                            <li><a href="#">Your Feedback</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </jqx-tree>
+        </jqx-responsive-panel>
+
+        <jqx-panel id="Panel">
+            <h4 style="text-align: center;">About Us</h4>
+            <p style="line-height: 1.5;">
+                <span style="float: left; font-size: 3.26em; line-height: 0.5; margin-top: 0.2em;">S</span><strong>
+                    tark
+                    Industries
+                </strong> is a multinational conglomerate with facilities in over
+                thirty different countries on all seven continents. The President and CEO of Stark
+                Industries is billionaire industrialist Anthony "Tony" Stark.
+            </p>
+            <p>
+                The company&#39;s origins date back to the mid-19 century when Isaac Stark, Sr. began
+                developing new electrical and engineering technology that helped to redefine innovative
+                security measures for the industrial age.
+            </p>
+            <p>
+                With growing prosperity, Stark Industries (then known as Stark Enterprises) was
+                quickly propelled into the modern era as a major global industrial superpower, due
+                in no small measure to Isaac Stark, Sr.&#39;s direct descendant Howard Stark. Under
+                Howard Stark&#39;s leadership, Stark Industries became the world leader in the development
+                of munitions with its corporate office located on Long Island, New York. Stark Industries
+                quickly branched out into other scientific fields including aeronautics, robotics,
+                micro-technology and fringe science. With increasing expansion, the company soon
+                became known as Stark Industries. When Howard Stark passed away, his sole heir Tony
+                Stark inherited all of his father&#39;s business assets and took full control of Stark
+                Industries.
+            </p>
+        </jqx-panel>
+    </div>
+
+    <div style="padding-top: 20px; clear:both;"></div>
+
+    <jqx-button id="resizeSmall">Resize Panel to 500px</jqx-button>
+
+    <jqx-button id="resizeBig">Resize Panel to 800px</jqx-button>
+
+</body>
+</html>

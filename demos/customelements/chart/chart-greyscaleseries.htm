@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Chart Custom Element GrayScale</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Chart gray scale rendering." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script>
+
+        var sampleData =
+            [
+                { Day: 'Monday', Running: 30, Swimming: 0, Cycling: 25, Goal: 40 },
+                { Day: 'Tuesday', Running: 25, Swimming: 25, Cycling: 0, Goal: 50 },
+                { Day: 'Wednesday', Running: 30, Swimming: 0, Cycling: 25, Goal: 60 },
+                { Day: 'Thursday', Running: 20, Swimming: 20, Cycling: 25, Goal: 40 },
+                { Day: 'Friday', Running: 0, Swimming: 20, Cycling: 25, Goal: 50 },
+                { Day: 'Saturday', Running: 30, Swimming: 0, Cycling: 30, Goal: 60 },
+                { Day: 'Sunday', Running: 20, Swimming: 40, Cycling: 0, Goal: 90 }
+            ];
+
+        JQXElements.settings['chartContainer'] =
+            {
+                title: 'Fitness & exercise weekly scorecard',
+                description: 'Time spent in vigorous exercise by activity',
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+                colorScheme: 'scheme05',
+                xAxis:
+                {
+                    dataField: 'Day',
+                    unitInterval: 1,
+                    tickMarks: {
+                        visible: true,
+                        interval: 1,
+                        color: '#CACACA'
+                    },
+                    gridLines: {
+                        visible: false,
+                        interval: 1,
+                        color: '#CACACA'
+                    }
+                },
+                valueAxis:
+                {
+                    minValue: 0,
+                    maxValue: 100,
+                    unitInterval: 10,
+                    title: { text: 'Time in minutes' },
+                    tickMarks: { color: '#CACACA' },
+                    gridLines: { color: '#CACACA' }
+                },
+                seriesGroups:
+                [
+                    {
+                        type: 'splinearea',
+                        series: [
+                            { greyScale: true, dataField: 'Goal', displayText: 'Personal Goal', opacity: 0.7 }
+                        ]
+                    },
+                    {
+                        type: 'stackedcolumn',
+                        columnsGapPercent: 50,
+                        seriesGapPercent: 5,
+                        series: [
+                            { greyScale: true, dataField: 'Running', displayText: 'Running' },
+                            { greyScale: true, dataField: 'Swimming', displayText: 'Swimming' },
+                            { greyScale: false, dataField: 'Cycling', displayText: 'Cycling' }
+                        ]
+                    }
+                ]
+            };
+
+        JQXElements.settings['Running'] =
+            {
+                checked: false
+            };
+
+        JQXElements.settings['Swimming'] =
+            {
+                checked: true 
+            };
+
+        JQXElements.settings['Cycling'] =
+            {
+                checked: false
+            };
+
+        JQXElements.settings['Goal'] =
+            {
+                checked: false 
+            };
+
+        window.onload = function() {
+            var myChart = document.querySelector('jqx-chart');
+            var myCheckBoxes = document.querySelectorAll('jqx-check-box');
+            var instance = myChart.getInstance();	
+            
+            var groups = instance.seriesGroups;
+
+            var refreshChart = function() {
+                myChart.enableAnimations = false;
+                myChart.refresh();
+            };
+
+            myCheckBoxes[0].addEventListener('change', function(event) {
+
+                groups[1].series[0].greyScale = !event.args.checked;
+                refreshChart();
+            });
+
+            myCheckBoxes[1].addEventListener('change', function(event) {
+
+                groups[1].series[2].greyScale = !event.args.checked;
+                refreshChart();
+            });
+
+            myCheckBoxes[2].addEventListener('change', function(event) {
+
+                groups[1].series[1].greyScale = !event.args.checked;
+                refreshChart();
+            });
+
+            myCheckBoxes[3].addEventListener('change', function(event) {
+
+                groups[0].series[0].greyScale = !event.args.checked;
+                refreshChart();
+            });
+        }
+
+    </script>
+</head>
+<body>
+   
+    <jqx-chart settings='chartContainer' style="width:850px; height:500px"></jqx-chart>
+    
+    <div style='margin-top: 10px;'>
+        <div style='float: left;'>
+            <jqx-check-box settings='Running'>Running</jqx-check-box>
+            <jqx-check-box style='margin-top: 5px;' settings='Swimming'>Swimming</jqx-check-box>
+        </div>
+        <div style='float: left;'>
+            <jqx-check-box settings='Cycling'>Cycling</jqx-check-box>
+            <jqx-check-box style='margin-top: 5px;' settings='Goal'>Personal Goal</jqx-check-box>
+        </div>
+    </div>
+
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Custom Element chart gray scale rendering. In order to enable gray scale you have to set the greyscale setting to true. 
+    </div>
+
+</body>
+</html>

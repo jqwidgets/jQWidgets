@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Description">JavaScript PivotGrid - pivot values on columns</title>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpivot.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpivotgrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        // prepare the data
+        var data = new Array();
+
+        var firstNames =
+        [
+            "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni"//, "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene"
+        ];
+
+        var lastNames =
+        [
+            "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra"//, "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier"
+        ];
+
+        var productNames =
+        [
+            "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte"//, "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist"
+        ];
+
+        var priceValues =
+        [
+            "2.25", "1.5", "3.0", "3.3", "4.5", "3.6", "3.8", "2.5", "5.0", "1.75", "3.25", "4.0"
+        ];
+
+        for (var i = 0; i < 100; i++) {
+            var row = {};
+            var productindex = Math.floor(Math.random() * productNames.length);
+            var price = parseFloat(priceValues[productindex]);
+            var quantity = 1 + Math.round(Math.random() * 10);
+
+            row["firstname"] = firstNames[Math.floor(Math.random() * firstNames.length)];
+            row["lastname"] = lastNames[Math.floor(Math.random() * lastNames.length)];
+            row["productname"] = productNames[productindex];
+            row["price"] = price;
+            row["quantity"] = quantity;
+            row["total"] = price * quantity;
+
+            data[i] = row;
+        }
+
+        var source =
+        {
+            localdata: data,
+            datatype: "array",
+            datafields:
+            [
+                { name: 'firstname', type: 'string' },
+                { name: 'lastname', type: 'string' },
+                { name: 'productname', type: 'string' },
+                { name: 'quantity', type: 'number' },
+                { name: 'price', type: 'number' },
+                { name: 'total', type: 'number' }
+            ]
+        };
+
+        // create a pivot data source
+        var pivotDataSource = new jqx.pivot(
+            new jqx.dataAdapter(source, {autoBind: true}),
+            {
+                pivotValuesOnRows: false,
+                rows: [{ dataField: 'firstname' }, { dataField: 'lastname'}],
+                columns: [{ dataField: 'productname'}],
+                values: [
+                    { dataField: 'price', 'function': 'sum', text: 'sum', formatSettings: { prefix: '', decimalPlaces: 2} },
+                    { dataField: 'price', 'function': 'count', text: 'count' },
+                    { dataField: 'price', 'function': 'average', text: 'average', formatSettings: { prefix: '', decimalPlaces: 2} }
+                ]
+            });
+
+        // create a pivot grid
+        JQXElements.settings["pivotSettings"] =
+        {
+            source: pivotDataSource,
+            treeStyleRows: false,
+            selectionEnabled: true
+        }
+
+        window.onload = function() {
+            // get the instance of the pivot grid and expand the first two rows
+            var pivotGrid = document.querySelector('jqx-pivot-grid');
+            var pivotRows = pivotGrid.getPivotRows();
+
+            pivotRows.items[0].expand();
+            pivotRows.items[1].expand();
+
+            pivotGrid.refresh();
+        }
+    </script>
+</head>
+<body class='default'>
+    <jqx-pivot-grid settings="pivotSettings" id="divPivotGrid" style="height: 400px; width: 800px; background-color: white;">
+    </jqx-pivot-grid>
+</body>
+</html>

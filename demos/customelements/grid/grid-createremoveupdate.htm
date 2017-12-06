@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element CreateRemoveUpdate</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the create, remove and update features of Custom Element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.aggregates.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var data = {};
+        var firstNames =
+            [
+                'Andrew', 'Nancy', 'Shelley', 'Regina', 'Yoshi', 'Antoni', 'Mayumi', 'Ian', 'Peter', 'Lars', 'Petra', 'Martin', 'Sven', 'Elio', 'Beate', 'Cheryl', 'Michael', 'Guylene'
+            ];
+        var lastNames =
+            [
+                'Fuller', 'Davolio', 'Burke', 'Murphy', 'Nagase', 'Saavedra', 'Ohno', 'Devling', 'Wilson', 'Peterson', 'Winkler', 'Bein', 'Petersen', 'Rossi', 'Vileid', 'Saylor', 'Bjorn', 'Nodier'
+            ];
+        var productNames =
+            [
+                'Black Tea', 'Green Tea', 'Caffe Espresso', 'Doubleshot Espresso', 'Caffe Latte', 'White Chocolate Mocha', 'Cramel Latte', 'Caffe Americano', 'Cappuccino', 'Espresso Truffle', 'Espresso con Panna', 'Peppermint Mocha Twist'
+            ];
+        var priceValues =
+            [
+                '2.25', '1.5', '3.0', '3.3', '4.5', '3.6', '3.8', '2.5', '5.0', '1.75', '3.25', '4.0'
+            ];
+        var generaterow = (i) =>
+            {
+            var row = {};
+            var productindex = Math.floor(Math.random() * productNames.length);
+            var price = parseFloat(priceValues[productindex]);
+            var quantity = 1 + Math.round(Math.random() * 10);
+                row['firstname'] = firstNames[Math.floor(Math.random() * firstNames.length)];
+                row['lastname'] = lastNames[Math.floor(Math.random() * lastNames.length)];
+                row['productname'] = productNames[productindex];
+                row['price'] = price;
+                row['quantity'] = quantity;
+                row['total'] = price * quantity;
+                return row;
+            }
+        for (var i = 0; i < 10; i++) {
+            var row = generaterow(i);
+            data[i] = row;
+        }
+        var source =
+            {
+                localdata: data,
+                datatype: 'local',
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'total', type: 'number' }
+                ]
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var addRowButton;
+        var addMultipleRowButton;
+        var deleteRowButton;
+        var updateRowButton;
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: dataAdapter,
+                showtoolbar: true,
+                rendertoolbar: (toolbar) => {
+                    var container = document.createElement('div');
+                    container.style.marginTop = '5px';
+
+                    addRowButton = document.createElement('jqx-button');
+                    addRowButton.innerHTML = 'Add New Row';
+
+                    addMultipleRowButton = document.createElement('jqx-button');
+                    addMultipleRowButton.innerHTML = 'Add Multiple New Rows';
+                    addMultipleRowButton.style.marginLeft = '5px';
+
+                    deleteRowButton = document.createElement('jqx-button');
+                    deleteRowButton.innerHTML = 'Delete Selected Row';
+                    deleteRowButton.style.marginLeft = '5px';
+
+                    updateRowButton = document.createElement('jqx-button');
+                    updateRowButton.innerHTML = 'Update Selected Row';
+                    updateRowButton.style.marginLeft = '5px';
+
+                    container.appendChild(addRowButton);
+                    container.appendChild(addMultipleRowButton);
+                    container.appendChild(deleteRowButton);
+                    container.appendChild(updateRowButton);   
+
+                    toolbar[0].append(container);
+                },
+                columns: [
+                    { text: 'First Name', datafield: 'firstname', width: 200 },
+                    { text: 'Last Name', datafield: 'lastname', width: 200 },
+                    { text: 'Product', datafield: 'productname', width: 180 },
+                    { text: 'Quantity', datafield: 'quantity', width: 80, cellsalign: 'right' },
+                    { text: 'Unit Price', datafield: 'price', width: 90, cellsalign: 'right', cellsformat: 'c2' },
+                    { text: 'Total', datafield: 'total', cellsalign: 'right', cellsformat: 'c2' }
+                ]
+            };
+
+        window.onload = function() {
+            var myButtons = document.querySelectorAll('jqx-button');
+            var myGrid = document.querySelector('jqx-grid');
+
+            // Add New Row
+            myButtons[0].addEventListener('click', function() {
+                var datarow = generaterow();
+                var commit = myGrid.addrow(null, datarow);
+            });
+
+            // Add Multiple New Rows
+            myButtons[1].addEventListener('click', function() {
+                myGrid.beginupdate();
+                for (var i = 0; i < 10; i++) {
+                    var datarow = generaterow();
+                    var commit = myGrid.addrow(null, datarow);
+                }
+                myGrid.endupdate();
+            });
+
+            // Delete Selected Row
+            myButtons[2].addEventListener('click', function() {
+                var selectedRowIndex = myGrid.getselectedrowindex();
+                var rowsCount = myGrid.getdatainformation().rowscount;
+                if (selectedRowIndex >= 0 && selectedRowIndex < rowsCount) {
+                    var id = myGrid.getrowid(selectedRowIndex);
+                    var commit = myGrid.deleterow(id);
+                }
+            });
+
+            // Update Selected Row
+            myButtons[3].addEventListener('click', function() {
+                var dataRow = generaterow();
+                var selectedRowIndex = myGrid.getselectedrowindex();
+                var rowsCount = myGrid.getdatainformation().rowscount;
+                if (selectedRowIndex >= 0 && selectedRowIndex < rowsCount) {
+                    var id = myGrid.getrowid(selectedRowIndex);
+                    var commit = myGrid.updaterow(id, dataRow);
+                    myGrid.ensurerowvisible(selectedRowIndex);
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This example demostrates how we can manipulate data at client side. The Custom element Grid plugin provides you callback functions when you add, remove or update a row.
+    </div>
+
+   <jqx-grid settings="gridSettings"></jqx-grid>
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable AdvancedFiltering</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example shows the advanced filtering in Custom Elements DataTable." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['dataTableSettings'] =
+        {
+            source: new jqx.dataAdapter({
+                dataType: 'xml',
+                dataFields: [
+                    { name: 'SupplierName', type: 'string' },
+                    { name: 'Quantity', type: 'number' },
+                    { name: 'OrderDate', type: 'date' },
+                    { name: 'OrderAddress', type: 'string' },
+                    { name: 'Freight', type: 'number' },
+                    { name: 'Price', type: 'number' },
+                    { name: 'City', type: 'string' },
+                    { name: 'ProductName', type: 'string' },
+                    { name: 'Address', type: 'string' }
+                ],
+                url: '../sampledata/orderdetailsextended.xml',
+                root: 'DATA',
+                record: 'ROW'
+            }),
+            pageable: true,
+            altRows: true,
+            filterable: true,
+            filterMode: 'advanced',
+            columns: [
+                { text: 'Supplier Name', cellsAlign: 'center', align: 'center', dataField: 'SupplierName', width: 200 },
+                { text: 'Name', cellsAlign: 'center', align: 'center', dataField: 'ProductName', width: 200 },
+                { text: 'Quantity', dataField: 'Quantity', cellsformat: 'd', cellsAlign: 'center', align: 'center', width: 100 },
+                { text: 'Price', dataField: 'Price', cellsformat: 'c2', align: 'center', cellsAlign: 'center', width: 70 },
+                { text: 'Address', cellsAlign: 'center', align: 'center', dataField: 'Address', width: 120 },
+                { text: 'City', cellsAlign: 'center', align: 'center', dataField: 'City' }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this sample, the Custom elements DataTable's filterMode property is set to 'advanced'.
+    </div>
+   <jqx-data-table settings="dataTableSettings">
+   </jqx-data-table>
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart LogarithmicAxisBaseLine</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Chart Column Series with Logarithmic Axis." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var sampleData =
+            [
+                { a: 0.35, b: 14.5 },
+                { a: 1, b: 2.5 },
+                { a: 10, b: 0.2 },
+                { a: 100, b: 205 },
+                { a: 1, b: 100 },
+                { a: 5.11, b: 10.13 },
+                { a: 20.13, b: 10.13 },
+                { a: 600, b: 300 }
+            ];
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'Logarithmic Scale Axis Example',
+                description: 'Sample logarithmic scale axis with base 2 and baseline 8',
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+                enableAnimations: true,
+                xAxis:
+                {
+                    dataField: ''
+                },
+                valueAxis: {
+                    logarithmicScale: true,
+                    logarithmicScaleBase: 2,
+                    baselineValue: 8,
+                    unitInterval: 1,
+                    title: { text: 'Value' },
+                    tickMarks: { interval: 1 },
+                    gridLines: { interval: 1 },
+                    labels: {
+                        formatSettings: { decimalPlaces: 3 },
+                        horizontalAlignment: 'right'
+                    }
+                },
+                seriesGroups:
+                [
+                    {
+                        type: 'column',
+                        series: [
+                            { dataField: 'a', displayText: 'A' },
+                            { dataField: 'b', displayText: 'B' }
+                        ]
+                    },
+                    {
+                        type: 'line',
+                        series: [
+                            { dataField: 'a', displayText: 'A2' },
+                            { dataField: 'b', displayText: 'B2' }
+                        ]
+                    }
+                ]
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This is an example of Custom element Chart Column Series with Logarithmic Axis and custom baseLine value. You can set the value of the base line via the baselineValue setting. 
+    </div>
+   <jqx-chart settings="chartSettings"></jqx-chart>
+</body>
+</html>

@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>SwitchButton Custom Element DefaultFunctionality</title>
+    <meta name="description" content="This example shows SwitchButton Custom Element with a behavior that is similar to the CheckBox Custom Element. It has two states - checked and unchecked (on/off)." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxswitchbutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var mySwitchButtons = document.querySelectorAll('jqx-switch-button');
+            var eventsLog = document.querySelector('#events');
+
+            var label =
+                [
+                    'New Mail',
+                    'Sent Mail',
+                    'Calendar Alerts',
+                    'Lock Sounds',
+                    'Keyboard clicks'
+                ];
+
+            for (var i = 0; i < mySwitchButtons.length; i++) {
+                var addListeners = function (mySwitchButton, label) {
+                    mySwitchButton.addEventListener('unchecked', function (event) {
+                        eventsLog.innerHTML = label + ': Unchecked';
+                    });
+
+                    mySwitchButton.addEventListener('checked', function (event) {
+                        eventsLog.innerHTML = label + ': Checked';
+                    });
+                }
+                addListeners(mySwitchButtons[i], label[i]);
+            }
+        };
+    </script>
+
+    <style type="text/css">
+        #settings-panel {
+            background-color: #fff;
+            padding: 20px;
+            display: inline-block;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .settings-section {
+            background-color: #f7f7f7;
+            height: 45px;
+            width: 500px;
+            border: 1px solid #b4b7bc;
+            border-bottom-width: 0px;
+        }
+
+        .settings-section-top {
+            border-bottom-width: 0px;
+            -moz-border-radius-topleft: 10px;
+            -webkit-border-top-left-radius: 10px;
+            border-top-left-radius: 10px;
+            -moz-border-radius-topright: 10px;
+            -webkit-border-top-right-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .sections-section-bottom {
+            border-bottom-width: 1px;
+            -moz-border-radius-bottomleft: 10px;
+            -webkit-border-bottom-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            -moz-border-radius-bottomright: 10px;
+            -webkit-border-bottom-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .sections-top-shadow {
+            width: 500px;
+            height: 1px;
+            position: absolute;
+            top: 21px;
+            left: 21px;
+            height: 30px;
+            border-top: 1px solid #e4e4e4;
+            -moz-border-radius-topleft: 10px;
+            -webkit-border-top-left-radius: 10px;
+            border-top-left-radius: 10px;
+            -moz-border-radius-topright: 10px;
+            -webkit-border-top-right-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .settings-label {
+            font-weight: bold;
+            font-family: Sans-Serif;
+            font-size: 14px;
+            margin-left: 14px;
+            margin-top: 15px;
+            float: left;
+        }
+
+        .settings-melody {
+            color: #385487;
+            font-family: Sans-Serif;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 7px;
+        }
+
+        .settings-setter {
+            float: right;
+            margin-right: 14px;
+            margin-top: 8px;
+        }
+
+        .events-container {
+            margin-left: 20px;
+        }
+
+        #theme {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="example-description">
+        SwitchButton Custom Element is a widget with behavior similar to the CheckBox Custom Element. 
+        It has two states - checked and unchecked (on/off).
+        The user can switch between the different states using mouse clicks or by drag and drop of the thumb.
+    </div>
+   
+    <div id="settings-panel">
+        <div class="sections-top-shadow"></div>
+        <div class="settings-section-top settings-section">
+            <div class="settings-label">Ringtone</div>
+            <div class="settings-setter">
+                <div class="settings-melody">Marimba</div>
+            </div>
+        </div>
+        <div class="settings-section">
+            <div class="settings-label">New Mail</div>
+            <div class="settings-setter">
+                <jqx-switch-button checked="true"></jqx-switch-button>
+            </div>
+        </div>
+        <div class="settings-section">
+            <div class="settings-label">Sent Mail</div>
+            <div class="settings-setter">
+                <jqx-switch-button checked="true"></jqx-switch-button>
+            </div>
+        </div>
+        <div class="settings-section">
+            <div class="settings-label">Calendar Alerts</div>
+            <div class="settings-setter">
+                <jqx-switch-button checked="true"></jqx-switch-button>
+            </div>
+        </div>
+        <div class="settings-section">
+            <div class="settings-label">Lock Sounds</div>
+            <div class="settings-setter">
+                <jqx-switch-button checked="true"></jqx-switch-button>
+            </div>
+        </div>
+        <div class="sections-section-bottom settings-section">
+            <div class="settings-label">Keyboard Clicks</div>
+            <div class="settings-setter">
+                <jqx-switch-button checked="false"></jqx-switch-button>
+            </div>
+        </div>
+    </div>
+    <div class="events-container">
+        <div>Events:</div>
+        <div id="events"></div>
+    </div>
+
+</body>
+</html>

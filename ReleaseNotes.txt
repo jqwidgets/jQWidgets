@@ -1,4 +1,24 @@
 ﻿*********************************************
+* jQWidgets v5.5.0 Release, Dec-05-2017     *
+*********************************************
+
+What's New:
+
+- 500+ Custom Elements demos.
+
+What's Improved:
+
+- jQWidgets Custom Elements behavior.
+- Angular 5 components integration.
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid regarding the custom filtering keyboard. When the filter menu is customized by the user, an error was raised when 'Enter' key is pressed.
+- Fixed an issue in jqxDraw regarding trying to set invalid NaN params. 
+- Fixed an issue in jqxButton custom element.
+- Fixed issues regarding the Angular components property types.
+
+*********************************************
 * jQWidgets v5.4.0 Release, Oct-11-2017     *
 *********************************************
 

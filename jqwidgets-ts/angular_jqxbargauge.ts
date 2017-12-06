@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,27 +17,27 @@ declare let JQXLite: any;
 
 export class jqxBarGaugeComponent implements OnChanges
 {
-   @Input('animationDuration') attrAnimationDuration: Number;
-   @Input('backgroundColor') attrBackgroundColor: String;
-   @Input('barSpacing') attrBarSpacing: Number;
-   @Input('baseValue') attrBaseValue: Number;
-   @Input('colorScheme') attrColorScheme: String;
+   @Input('animationDuration') attrAnimationDuration: number;
+   @Input('backgroundColor') attrBackgroundColor: string;
+   @Input('barSpacing') attrBarSpacing: number;
+   @Input('baseValue') attrBaseValue: number;
+   @Input('colorScheme') attrColorScheme: string;
    @Input('customColorScheme') attrCustomColorScheme: jqwidgets.BarGaugeCustomColorScheme;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('endAngle') attrEndAngle: Number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('endAngle') attrEndAngle: number;
    @Input('formatFunction') attrFormatFunction: any;
    @Input('labels') attrLabels: jqwidgets.BarGaugeLabels;
-   @Input('max') attrMax: Number | String;
-   @Input('min') attrMin: Number;
-   @Input('relativeInnerRadius') attrRelativeInnerRadius: Number | String;
+   @Input('max') attrMax: number | string;
+   @Input('min') attrMin: number;
+   @Input('relativeInnerRadius') attrRelativeInnerRadius: number | string;
    @Input('rendered') attrRendered: () => void;
-   @Input('startAngle') attrStartAngle: Number;
+   @Input('startAngle') attrStartAngle: number;
    @Input('title') attrTitle: jqwidgets.BarGaugeTitle;
    @Input('tooltip') attrTooltip: jqwidgets.BarGaugeTooltip;
-   @Input('useGradient') attrUseGradient: Boolean;
-   @Input('values') attrValues: Array<Number>;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('useGradient') attrUseGradient: boolean;
+   @Input('values') attrValues: Array<number>;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -60,7 +60,7 @@ export class jqxBarGaugeComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -229,7 +229,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxBarGauge('height', arg);
       } else {
@@ -245,7 +245,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   max(arg?: Number | String) : any {
+   max(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxBarGauge('max', arg);
       } else {
@@ -261,7 +261,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   relativeInnerRadius(arg?: Number | String) : any {
+   relativeInnerRadius(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxBarGauge('relativeInnerRadius', arg);
       } else {
@@ -309,7 +309,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   values(arg?: Array<Number>) : any {
+   values(arg?: Array<number>) : any {
       if (arg !== undefined) {
           this.host.jqxBarGauge('values', arg);
       } else {
@@ -317,7 +317,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxBarGauge('width', arg);
       } else {
@@ -335,7 +335,7 @@ export class jqxBarGaugeComponent implements OnChanges
       this.host.jqxBarGauge('render');
    }
 
-   val(value?: Array<Number>): any {
+   val(value?: Array<number>): any {
       if (value !== undefined) {
          return this.host.jqxBarGauge("val", value);
       } else {

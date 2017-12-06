@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable Dialog</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1"/>
+    <meta name="description" content="This is an example of Custom Elements DataTable's editing dialog window."/>
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var ordersSource =
+            {
+                dataFields:
+                    [
+                        { name: 'OrderID', type: 'int' },
+                        { name: 'Freight', type: 'float' },
+                        { name: 'ShipName', type: 'string' },
+                        { name: 'ShipAddress', type: 'string' },
+                        { name: 'ShipCity', type: 'string' },
+                        { name: 'ShipCountry', type: 'string' },
+                        { name: 'ShippedDate', type: 'date' }
+                    ],
+                root: 'Orders',
+                record: 'Order',
+                dataType: 'xml',
+                id: 'OrderID',
+                url: '../sampledata/orderdetails.xml',
+                addRow: (rowID, rowData, position, commit) => {
+                    // synchronize with the server - send insert command
+                    // call commit with parameter true if the synchronization with the server is successful 
+                    // and with parameter false if the synchronization failed.
+                    // you can pass additional argument to the commit callback which represents the new ID if it is generated from a DB.
+                    commit(true);
+                },
+                updateRow: (rowID, rowData, commit) => {
+                    // synchronize with the server - send update command
+                    // call commit with parameter true if the synchronization with the server is successful 
+                    // and with parameter false if the synchronization failed.
+                    commit(true);
+                },
+                deleteRow: (rowID, commit) => {
+                    // synchronize with the server - send delete command
+                    // call commit with parameter true if the synchronization with the server is successful 
+                    // and with parameter false if the synchronization failed.
+                    commit(true);
+                }
+            };
+
+        var dataAdapter = new jqx.dataAdapter(ordersSource);
+        var countries = new Array('Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antarctica', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burma', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Congo, Democratic Republic', 'Congo, Republic of the', 'Costa Rica', "Cote d'Ivoire", 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'East Timor', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Greenland', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Korea, North', 'Korea, South', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia', 'Moldova', 'Mongolia', 'Morocco', 'Monaco', 'Mozambique', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Norway', 'Oman', 'Pakistan', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar', 'Romania', 'Russia', 'Rwanda', 'Samoa', 'San Marino', ' Sao Tome', 'Saudi Arabia', 'Senegal', 'Serbia and Montenegro', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe');
+
+        JQXElements.settings['dataTableSettings'] =
+            {
+                source: dataAdapter,
+                pageable: true,
+                sortable: true,
+                altRows: true,      
+                pagerButtonsCount: 8,
+                columns:
+                    [
+                        { text: 'Order ID', editable: false, dataField: 'OrderID', width: 200 },
+                        { text: 'Freight', dataField: 'Freight', cellsFormat: 'f2', cellsAlign: 'right', align: 'right', width: 200 },
+                        { text: 'Ship Country', dataField: 'ShipCountry', width: 150 },
+                        { text: 'Shipped Date', dataField: 'ShippedDate', cellsAlign: 'right', align: 'right', cellsFormat: 'd' }
+                    ]
+            };
+        JQXElements.settings['windowSettings'] =
+            {
+                resizable: false, autoOpen: false, width: 400, position: { left: 85, top: 43 }                
+            };
+
+        JQXElements.settings['input1Settings'] =
+            {
+                disabled: true
+            };
+        JQXElements.settings['input2Settings'] =
+            {
+                source: countries
+            };
+        JQXElements.settings['numberInputSettings'] =
+            {
+                spinButtons: true, inputMode: 'simple'
+            };
+        JQXElements.settings['dateTimeInputSettings'] =
+            {
+                formatString: 'd'
+            };
+
+        window.onload = function() {
+            var myDataTable = document.querySelector('jqx-data-table');
+            var myWindow = document.querySelector('jqx-window');
+            var myNumberInput = document.querySelector('jqx-number-input');
+            var myDateTimeInput = document.querySelector('jqx-date-time-input');     
+            var myInputs = document.querySelectorAll('jqx-input');
+            var myButtons = document.querySelectorAll('jqx-button');   
+            var tempIndexHolder = 0;
+
+            myButtons[0].addEventListener('click', () => myWindow.close());
+            myButtons[1].addEventListener('click', function() {
+                myWindow.close();
+                // Update edited row.
+                var editRow = parseInt(tempIndexHolder);
+                var rowData = {
+                    OrderID: myInputs[0].val(),
+                    Freight: myNumberInput.val(),
+                    ShipCountry: myInputs[1].val(),
+                    ShippedDate: myDateTimeInput.val()
+                };
+                myDataTable.updateRow(editRow, rowData);
+            });
+            myWindow.addEventListener('close', () => myDataTable.disabled = false);
+
+            myDataTable.addEventListener('rowDoubleClick', event => {
+                var index = event.args.index;
+                var row = event.args.row;
+                // Update the widgets inside Window.
+                myWindow.setTitle('Edit Row: ' + row.OrderID);
+                tempIndexHolder = index;
+                myWindow.open();
+                myDataTable.disabled = true;
+                myInputs[0].val(row.OrderID);
+                myInputs[1].val(row.ShipCountry);
+                myNumberInput.val(row.Freight);
+                myDateTimeInput.val(row.ShippedDate);
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom elements DataTable with Edit Dialog. Double-Click on a Row to Open the Edit dialog
+    </div>
+
+   <jqx-data-table settings="dataTableSettings"></jqx-data-table>
+
+    <jqx-window settings="windowSettings">
+        <div>Edit Dialog</div>
+        <div style="overflow: hidden">
+            <table style="table-layout: fixed; border-style: none">
+                <tbody>
+                    <tr>
+                        <td align='right'>
+                            Order ID:
+                        </td>
+                        <td align='left'>
+                            <jqx-input settings="input1Settings"></jqx-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align='right'>
+                            Freight:
+                        </td>
+                        <td align='left'>
+                            <jqx-number-input settings="numberInputSettings"></jqx-number-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align='right'>
+                            Ship Country:
+                        </td>
+                        <td align='left'>
+                            <jqx-input settings="input2Settings"></jqx-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align='right'>
+                            Shipped Date:
+                        </td>
+                        <td align='left'>
+                            <jqx-date-time-input settings="dateTimeInputSettings"></jqx-date-time-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colSpan='2' align='right'>
+                            <br />
+                            <jqx-button style="margin-left: 5px; float: right">Cancel</jqx-button>
+                            <jqx-button style="float: right">Save</jqx-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </jqx-window>
+</body>
+</html>

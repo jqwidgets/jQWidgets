@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tabs Custom Element IntegrationWithOtherWidgets</title>
+    <meta name="description" content="This is an example of Tabs Custom Element integrated with other widgets." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+
+        var initGrid = _ => {
+            var source =
+                {
+                    datatype: 'csv',
+                    datafields: [
+                        { name: 'Date' },
+                        { name: 'S&P 500' },
+                        { name: 'NASDAQ' }
+                    ],
+                    url: '../sampledata/nasdaq_vs_sp500.txt'
+                };
+            var dataAdapter = new jqx.dataAdapter(source);
+
+            var myGrid = document.createElement('jqx-grid');
+
+            myGrid.settings =
+                {
+                    source: dataAdapter,
+                    columns:
+                    [
+                        { text: 'Date', datafield: 'Date', cellsformat: 'd', width: 250 },
+                        { text: 'S&P 500', datafield: 'S&P 500', width: 150 },
+                        { text: 'NASDAQ', datafield: 'NASDAQ' }
+                    ]
+                };
+
+            document.querySelector('#gridContainer').appendChild(myGrid);
+        };
+
+        var initChart = _ => {
+            var source =
+                {
+                    datatype: 'csv',
+                    datafields: [
+                        { name: 'Date' },
+                        { name: 'S&P 500' },
+                        { name: 'NASDAQ' }
+                    ],
+                    url: '../sampledata/nasdaq_vs_sp500.txt'
+                };
+            var dataAdapter = new jqx.dataAdapter(source);
+
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+            var myChart = document.createElement('jqx-chart');
+
+            myChart.settings =
+                {
+                    title: 'U.S. Stock Market Index Performance (2011)',
+                    description: 'NASDAQ Composite compared to S&P 500',
+                    enableAnimations: true,
+                    showLegend: true,
+                    padding: { left: 10, top: 5, right: 10, bottom: 5 },
+                    titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                    source: dataAdapter,
+                    categoryAxis:
+                    {
+                        dataField: 'Date',
+                        formatFunction: value => {
+                            return months[value.getMonth()];
+                        },
+                        toolTipFormatFunction: value => {
+                            return value.getDate() + '-' + months[value.getMonth()];
+                        },
+                        type: 'date',
+                        baseUnit: 'month',
+                        showTickMarks: true,
+                        tickMarksInterval: 1,
+                        tickMarksColor: '#888888',
+                        unitInterval: 1,
+                        showGridLines: true,
+                        gridLinesInterval: 3,
+                        gridLinesColor: '#888888',
+                        valuesOnTicks: false
+                    },
+                    colorScheme: 'scheme04',
+                    seriesGroups:
+                    [
+                        {
+                            type: 'line',
+                            valueAxis:
+                                {
+                                    displayValueAxis: true,
+                                    description: 'Daily Closing Price',
+                                    axisSize: 'auto',
+                                    tickMarksColor: '#888888'
+                                },
+                            series:
+                                [
+                                    { dataField: 'S&P 500', displayText: 'S&P 500' },
+                                    { dataField: 'NASDAQ', displayText: 'NASDAQ' }
+                                ]
+                        }
+                    ]
+                };
+
+                document.querySelector('#chartContainer').appendChild(myChart);
+            };
+
+        var initWidgets = tab => {
+            switch (tab) {
+                case 0:
+                    initGrid();
+                    break;
+                case 1:
+                    initChart();
+                    break;
+            }
+        };
+
+        JQXElements.settings['tabsSettings'] =
+            {
+                initTabContent: initWidgets
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows how to integrate Tabs Custom Element with other widgets.
+    </div>
+
+    <jqx-tabs settings="tabsSettings">
+        <ul>
+            <li style="margin-left: 30px;">
+                <div style="height: 20px; margin-top: 5px;">
+                    <div style="float: left;">
+                        <img width="16" height="16" src="../images/catalogicon.png" />
+                    </div>
+                    <div style="margin-left: 4px; vertical-align: middle; text-align: center; float: left;">
+                        US Indexes
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div style="height: 20px; margin-top: 5px;">
+                    <div style="float: left;">
+                        <img width="16" height="16" src="../images/pieicon.png" />
+                    </div>
+                    <div style="margin-left: 4px; vertical-align: middle; text-align: center; float: left;">
+                        NASDAQ compared to S&P 500
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div style="overflow: hidden;">
+            <div id="gridContainer"></div>
+            <div style="margin-top: 10px; height: 15%;">
+                The S&P 500 index finished 2011 less than a point away from where it ended 2010
+                -- 0.04 points down to be exact. That's the smallest annual change in history. At
+                its peak in April, the S&P had climbed more than 8%. But by October, at the lowest
+                levels of the year, it was down more than 12%. The Nasdaq, meanwhile, lost 1.8%
+                for the year.
+            </div>
+        </div>
+        <div style="overflow: hidden;">
+            <div id="chartContainer"></div>
+        </div>
+    </jqx-tabs>
+
+</body>
+</html>

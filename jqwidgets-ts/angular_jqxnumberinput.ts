@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -28,34 +28,34 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('allowNull') attrAllowNull: Boolean;
-   @Input('decimal') attrDecimal: String | Number;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('decimalDigits') attrDecimalDigits: String | Number;
-   @Input('decimalSeparator') attrDecimalSeparator: String | Number;
-   @Input('digits') attrDigits: String | Number;
-   @Input('groupSeparator') attrGroupSeparator: String;
-   @Input('groupSize') attrGroupSize: String | Number;
+   @Input('allowNull') attrAllowNull: boolean;
+   @Input('decimal') attrDecimal: number | string;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('decimalDigits') attrDecimalDigits: number | string;
+   @Input('decimalSeparator') attrDecimalSeparator: number | string;
+   @Input('digits') attrDigits: number | string;
+   @Input('groupSeparator') attrGroupSeparator: string;
+   @Input('groupSize') attrGroupSize: number | string;
    @Input('inputMode') attrInputMode: any;
-   @Input('min') attrMin: String | Number;
-   @Input('max') attrMax: String | Number;
-   @Input('negativeSymbol') attrNegativeSymbol: String;
-   @Input('placeHolder') attrPlaceHolder: String | Number;
+   @Input('min') attrMin: number | string;
+   @Input('max') attrMax: number | string;
+   @Input('negativeSymbol') attrNegativeSymbol: string;
+   @Input('placeHolder') attrPlaceHolder: number | string;
    @Input('promptChar') attrPromptChar: any;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('readOnly') attrReadOnly: Boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('readOnly') attrReadOnly: boolean;
    @Input('spinMode') attrSpinMode: any;
-   @Input('spinButtons') attrSpinButtons: Boolean;
-   @Input('spinButtonsWidth') attrSpinButtonsWidth: Number;
-   @Input('spinButtonsStep') attrSpinButtonsStep: String | Number;
-   @Input('symbol') attrSymbol: String;
+   @Input('spinButtons') attrSpinButtons: boolean;
+   @Input('spinButtonsWidth') attrSpinButtonsWidth: number;
+   @Input('spinButtonsStep') attrSpinButtonsStep: number | string;
+   @Input('symbol') attrSymbol: string;
    @Input('symbolPosition') attrSymbolPosition: any;
    @Input('textAlign') attrTextAlign: any;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: String;
-   @Input('value') attrValue: String | Number;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('value') attrValue: number | string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -81,7 +81,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -195,7 +195,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   decimal(arg?: String | Number) : any {
+   decimal(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('decimal', arg);
       } else {
@@ -211,7 +211,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   decimalDigits(arg?: String | Number) : any {
+   decimalDigits(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('decimalDigits', arg);
       } else {
@@ -219,7 +219,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   decimalSeparator(arg?: String | Number) : any {
+   decimalSeparator(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('decimalSeparator', arg);
       } else {
@@ -227,7 +227,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   digits(arg?: String | Number) : any {
+   digits(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('digits', arg);
       } else {
@@ -235,7 +235,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   groupSeparator(arg?: String) : any {
+   groupSeparator(arg?: string) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('groupSeparator', arg);
       } else {
@@ -243,7 +243,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   groupSize(arg?: String | Number) : any {
+   groupSize(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('groupSize', arg);
       } else {
@@ -251,7 +251,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('height', arg);
       } else {
@@ -267,7 +267,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   min(arg?: String | Number) : any {
+   min(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('min', arg);
       } else {
@@ -275,7 +275,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   max(arg?: String | Number) : any {
+   max(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('max', arg);
       } else {
@@ -291,7 +291,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   placeHolder(arg?: String | Number) : any {
+   placeHolder(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('placeHolder', arg);
       } else {
@@ -347,7 +347,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   spinButtonsStep(arg?: String | Number) : any {
+   spinButtonsStep(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('spinButtonsStep', arg);
       } else {
@@ -395,7 +395,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   value(arg?: String | Number) : any {
+   value(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('value', arg);
       } else {
@@ -403,7 +403,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxNumberInput('width', arg);
       } else {
@@ -429,11 +429,11 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       return this.host.jqxNumberInput('getDecimal');
    }
 
-   setDecimal(index: String | Number): void {
+   setDecimal(index: number | string): void {
       this.host.jqxNumberInput('setDecimal', index);
    }
 
-   val(value?: String | Number): any {
+   val(value?: number | string): any {
       if (value !== undefined) {
          return this.host.jqxNumberInput("val", value);
       } else {

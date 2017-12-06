@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Editor CustomTools</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of adding custom tools to your tool bar in Custom Elements Editor" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownbutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcolorpicker.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxeditor.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['EditorSettings'] =
+            {
+                tools: 'datetime | backcolor | font | bold italic underline',
+                createCommand: name => {
+                    switch (name) {
+                        case 'datetime':
+                            return {
+                                type: 'list',
+                                tooltip: 'Insert Date/Time',
+                                init: (widget) => {
+                                    widget.jqxDropDownList({ placeHolder: 'Insert Custom HTML', width: 170, source: ['Insert Time', 'Insert Date'], autoDropDownHeight: true });
+                                },
+                                refresh: (widget, style) => {
+                                    // do something here when the selection is changed.
+                                    widget.jqxDropDownList('clearSelection');
+                                },
+                                action: (widget, editor) => {
+                                    var widgetValue = widget.val();
+                                    var date = new Date();
+                                    // return object with command and value members.
+                                    return { command: 'inserthtml', value: widgetValue == 'Insert Time' ? date.getHours() + ':' + date.getMinutes() : date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear() };
+                                }
+                            }
+                        case 'backcolor':
+                            return {
+                                type: 'colorPicker',
+                                tooltip: 'Background',
+                                init: (widget) => {
+                                    widget.jqxDropDownButton({ width: 170 });
+                                    widget.jqxDropDownButton('setContent', '<span style="line-height: 24px;">Choose Background</span>');
+                                },
+                                refresh: (widget, style) => {
+                                    // do something here when the selection is changed.
+                                },
+                                action: (widget, editor) => {
+                                    // return nothing and perform a custom action.
+                                    var color = widget.val();
+                                    editor.css('background', color);
+                                }
+                            }
+                    }
+                }
+            }
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        Custom elements Editor's createCommand function enables you to add custom commands to the toolbar.
+    </div>
+
+    <jqx-editor settings="EditorSettings"></jqx-editor>
+</body>
+</html>

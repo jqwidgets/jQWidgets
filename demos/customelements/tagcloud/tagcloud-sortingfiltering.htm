@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tag Cloud Custom Element DefaultFunctionality</title>
+    <meta name='description' content='This demo demonstrates how to sort and filter the tags in TagCloud Custom Element.' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtagcloud.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var unemploymentRate =
+            [
+                { 'country': 'Namibia', 'rate': 37.6 },
+                { 'country': 'Macedonia, FYR', 'rate': 32.0 },
+                { 'country': 'Latvia', 'rate': 18.7 },
+                { 'country': 'Lithuania', 'rate': 17.8 },
+                { 'country': 'Estonia', 'rate': 16.9 },
+                { 'country': 'Serbia', 'rate': 16.6 },
+                { 'country': 'Georgia', 'rate': 16.5 },
+                { 'country': 'Yemen, Rep.', 'rate': 14.6 },
+                { 'country': 'Slovak Republic', 'rate': 14.4 },
+                { 'country': 'Dominican Republic', 'rate': 14.2 },
+                { 'country': 'Tunisia', 'rate': 14.2 },
+                { 'country': 'Armenia', 'rate': 28.6 },
+                { 'country': 'Bosnia and Herzegovina', 'rate': 27.2 },
+                { 'country': 'Lesotho', 'rate': 25.3 },
+                { 'country': 'South Africa', 'rate': 24.7 },
+                { 'country': 'Spain', 'rate': 20.1 },
+                { 'country': 'Albania', 'rate': 13.8 },
+                { 'country': 'Ireland', 'rate': 13.6 },
+                { 'country': 'Jordan', 'rate': 12.9 },
+                { 'country': 'Greece', 'rate': 12.5 }
+            ];
+
+        var source =
+            {
+                datatype: 'array',
+                localdata: unemploymentRate,
+                datafields: [
+                    { name: 'country' },
+                    { name: 'rate' }
+                ]
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+     
+        JQXElements.settings['tagCloudSettings'] =
+            {
+                source: dataAdapter,
+                fontSizeUnit: 'px',
+                minFontSize: 12,
+                maxFontSize: 20,
+                displayMember: 'country',
+                valueMember: 'rate',
+                urlBase: 'http://localhost/',
+                minColor: '#00AA99',
+                maxColor: '#FF0000'
+            };
+
+        JQXElements.settings['dropDownList1Settings'] =
+            {
+                selectedIndex: 0, source: ['none', 'label', 'value'], autoDropDownHeight: true
+
+            };
+        JQXElements.settings['dropDownList2Settings'] =
+            {
+                selectedIndex: 0, source: ['ascending', 'descending'], autoDropDownHeight: true
+
+            };
+        JQXElements.settings['dropDownList3Settings'] =
+            {
+                selectedIndex: 0, source: ['0', '5', '15', '25'], autoDropDownHeight: true
+
+            };
+        JQXElements.settings['dropDownList4Settings'] =
+            {
+                selectedIndex: 0, source: ['0', '10', '15', '20'], autoDropDownHeight: true
+            };
+
+        window.onload = function() {
+            var myTagCloud = document.querySelector('jqx-tag-cloud');
+            var myDropDownLists = document.querySelectorAll('jqx-drop-down-list');
+            var myCheckBoxes = document.querySelectorAll('jqx-check-box');
+
+            myDropDownLists[0].addEventListener('select', event => {
+                var args = event.args;
+                var item = myDropDownLists[0].getItem(args.index);
+                if (item != null) {
+                    myTagCloud.sortBy = item.label;
+                }
+            });
+            myDropDownLists[1].addEventListener('select', event => {
+                var args = event.args;
+                var item = myDropDownLists[1].getItem(args.index);
+                if (item != null) {
+                    myTagCloud.sortOrder = item.label;
+                }
+            });
+            myDropDownLists[2].addEventListener('select', event => {
+                var args = event.args;
+                var item = myDropDownLists[2].getItem(args.index);
+                if (item != null) {
+                    myTagCloud.minValueToDisplay = item.label;
+                }
+            });
+            myDropDownLists[3].addEventListener('select', event => {
+                var args = event.args;
+                var item = myDropDownLists[3].getItem(args.index);
+                if (item != null) {
+                    if (item.label == 0) {
+                        myTagCloud.displayLimit = null;
+                    } else {
+                        myTagCloud.displayLimit = item.label;
+                    }
+                }
+            });
+
+            myCheckBoxes[0].addEventListener('change', event => {
+                var checked = event.args.checked;
+                myTagCloud.displayValue = checked;
+            });
+            myCheckBoxes[1].addEventListener('change', event => {
+                var checked = event.args.checked;
+                myTagCloud.takeTopWeightedItems = checked;
+            });
+        };
+
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo demonstrates how to sort and filter the tags in Tag Cloud Custom Element.
+    </div>
+
+    <jqx-tag-cloud settings="tagCloudSettings"></jqx-tag-cloud>
+
+    Sort by:
+    <jqx-drop-down-list settings="dropDownList1Settings"></jqx-drop-down-list>
+
+    Sort Direction:
+    <jqx-drop-down-list settings="dropDownList2Settings"></jqx-drop-down-list>
+
+    Minimal Weight(value) Allowed:
+    <jqx-drop-down-list settings="dropDownList3Settings"></jqx-drop-down-list>
+
+    Max number of tags:
+    <jqx-drop-down-list settings="dropDownList4Settings"></jqx-drop-down-list>
+
+    <jqx-check-box>Display Tag Value</jqx-check-box>
+    <jqx-check-box>takeTopWeightedItems</jqx-check-box>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>NavBar Custom Element DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionalities of Custom Element NavBar." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnavbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script>
+        JQXElements.settings['NavBar1to4'] =
+            {
+                selectedItem: 0
+            };
+
+        JQXElements.settings['navBar5'] =
+            {
+                selectedItem: 0,
+                height: 200
+            };
+
+        JQXElements.settings['navBar6'] =
+            {
+                columns: ['30%', '50%', '20%'],
+                selectedItem: 0
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This is an example of the default functionalities of Custom Element NavBar.
+    </div>
+
+    NavBar with 2 Items. Each item is with 50% width.
+    <br />
+    <jqx-nav-bar settings="NavBar1to4">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+        </ul>
+    </jqx-nav-bar>
+    <br />
+    NavBar with 3 Items. Each item is with 33.33% width.
+    <br />
+    <jqx-nav-bar settings="NavBar1to4">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </jqx-nav-bar>
+    <br />
+    NavBar with 4 Items. Each item is with 25% width.
+    <br />
+    <jqx-nav-bar settings="NavBar1to4">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </jqx-nav-bar>
+    <br />
+    NavBar with 5 Items. Each item is with 20% width.
+    <br />
+    <jqx-nav-bar settings="NavBar1to4">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </jqx-nav-bar>
+    <br />
+    NavBar with more than 5 Items. Items are displayed in 2 columns and each item is with 50% width.
+    <br />
+    <jqx-nav-bar settings="navBar5">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+    </jqx-nav-bar>
+    <br />
+    NavBar with "columns" set to ['30%', '50%', '20%'].
+    <br />
+    <jqx-nav-bar settings="navBar6">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </jqx-nav-bar>      
+</body>
+</html>

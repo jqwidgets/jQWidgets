@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,31 +17,31 @@ declare let JQXLite: any;
 
 export class jqxKnobComponent implements OnChanges
 {
-   @Input('allowValueChangeOnClick') attrAllowValueChangeOnClick: Boolean;
-   @Input('allowValueChangeOnDrag') attrAllowValueChangeOnDrag: Boolean;
-   @Input('allowValueChangeOnMouseWheel') attrAllowValueChangeOnMouseWheel: Boolean;
-   @Input('changing') attrChanging: (oldValue: String | Number, newValue: String | Number) => Boolean;
-   @Input('dragEndAngle') attrDragEndAngle: Number;
-   @Input('dragStartAngle') attrDragStartAngle: Number;
-   @Input('disabled') attrDisabled: Boolean;
+   @Input('allowValueChangeOnClick') attrAllowValueChangeOnClick: boolean;
+   @Input('allowValueChangeOnDrag') attrAllowValueChangeOnDrag: boolean;
+   @Input('allowValueChangeOnMouseWheel') attrAllowValueChangeOnMouseWheel: boolean;
+   @Input('changing') attrChanging: (oldValue: string | number, newValue: string | number) => boolean;
+   @Input('dragEndAngle') attrDragEndAngle: number;
+   @Input('dragStartAngle') attrDragStartAngle: number;
+   @Input('disabled') attrDisabled: boolean;
    @Input('dial') attrDial: jqwidgets.KnobDial;
-   @Input('endAngle') attrEndAngle: Number;
+   @Input('endAngle') attrEndAngle: number;
    @Input('labels') attrLabels: jqwidgets.KnobLabels;
    @Input('marks') attrMarks: jqwidgets.KnobMarks;
-   @Input('min') attrMin: Number;
-   @Input('max') attrMax: Number;
+   @Input('min') attrMin: number;
+   @Input('max') attrMax: number;
    @Input('progressBar') attrProgressBar: jqwidgets.KnobProgressBar;
    @Input('pointer') attrPointer: jqwidgets.KnobPointer;
    @Input('pointerGrabAction') attrPointerGrabAction: any;
    @Input('rotation') attrRotation: any;
-   @Input('startAngle') attrStartAngle: Number;
+   @Input('startAngle') attrStartAngle: number;
    @Input('spinner') attrSpinner: jqwidgets.KnobSpinner;
    @Input('style') attrStyle: jqwidgets.KnobStyle;
-   @Input('step') attrStep: Number;
-   @Input('snapToStep') attrSnapToStep: Boolean;
-   @Input('value') attrValue: Number;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('step') attrStep: number;
+   @Input('snapToStep') attrSnapToStep: boolean;
+   @Input('value') attrValue: number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -67,7 +67,7 @@ export class jqxKnobComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -182,7 +182,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   changing(arg?: (oldValue: String | Number, newValue: String | Number) => Boolean) : any {
+   changing(arg?: (oldValue: string | number, newValue: string | number) => boolean) : any {
       if (arg !== undefined) {
           this.host.jqxKnob('changing', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxKnob('height', arg);
       } else {
@@ -350,7 +350,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxKnob('width', arg);
       } else {
@@ -364,7 +364,7 @@ export class jqxKnobComponent implements OnChanges
       this.host.jqxKnob('destroy');
    }
 
-   val(value?: String | Number): any {
+   val(value?: number | string): any {
       if (value !== undefined) {
          return this.host.jqxKnob("val", value);
       } else {

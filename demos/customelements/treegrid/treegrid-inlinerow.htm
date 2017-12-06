@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element InlineRow</title>
+    <meta name="description" content="This is an example of a command row in TreeGrid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var newRowID = null;
+
+        var source =
+            {
+                dataType: 'tab',
+                dataFields: [
+                    { name: 'Id', type: 'number' },
+                    { name: 'Name', type: 'string' },
+                    { name: 'ParentID', type: 'number' },
+                    { name: 'Population', type: 'number' }
+                ],
+                hierarchy:
+                {
+                    keyDataField: { name: 'Id' },
+                    parentDataField: { name: 'ParentID' }
+                },
+                id: 'Id',
+                url: '../sampledata/locations.tsv',
+                addRow: function (rowID, rowData, position, parentID, commit) {
+                    // synchronize with the server - send insert command
+                    // call commit with parameter true if the synchronization with the server is successful
+                    // and with parameter false if the synchronization failed.
+                    // you can pass additional argument to the commit callback which represents the new ID if it is generated from a DB.
+                    newRowID = rowID;
+                    commit(true);
+                },
+                updateRow: function (rowID, rowData, commit) {
+                    // synchronize with the server - send update command
+                    // call commit with parameter true if the synchronization with the server is successful
+                    // and with parameter false if the synchronization failed.
+                    commit(true);
+                },
+                deleteRow: function (rowID, commit) {
+                    // synchronize with the server - send delete command
+                    // call commit with parameter true if the synchronization with the server is successful
+                    // and with parameter false if the synchronization failed.
+                    commit(true);
+                }
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var updateButtons = function (action) {
+            var myButtons = document.querySelectorAll('jqx-button');
+            switch (action) {
+                case 'Select':
+                    myButtons[0].disabled = false;
+                    myButtons[1].disabled = false;
+                    myButtons[2].disabled = false;
+                    myButtons[3].disabled = true;
+                    myButtons[4].disabled = true;
+                    break;
+                case 'Unselect':
+                    myButtons[0].disabled = true;
+                    myButtons[1].disabled = true;
+                    myButtons[2].disabled = true;
+                    myButtons[3].disabled = true;
+                    myButtons[4].disabled = true;
+                    break;
+                case 'Edit':
+                    myButtons[0].disabled = true;
+                    myButtons[1].disabled = true;
+                    myButtons[2].disabled = true;
+                    myButtons[3].disabled = false;
+                    myButtons[4].disabled = false;
+                    break;
+                case 'End Edit':
+                    myButtons[0].disabled = false;
+                    myButtons[1].disabled = false;
+                    myButtons[2].disabled = false;
+                    myButtons[3].disabled = true;
+                    myButtons[4].disabled = true;
+                    break;
+            }
+        };
+
+        var renderToolbar = function (toolBar) {
+            var toTheme = function (className) {
+                if (theme == '') return className;
+
+                return className + ' ' + className + '-' + theme;
+            }
+
+            var container = document.createElement('div');
+            container.style.cssText = 'overflow: hidden; position: relative; height: 100%; width: 100%;';
+            toolBar[0].appendChild(container);
+
+            var myButtons = [];
+            var buttonExtras =
+                {
+                    'addButton': { className: 'jqx-icon-plus', toolTipContainer: 'Add' },
+                    'editButton': { className: 'jqx-icon-edit', toolTipContainer: 'Edit' },
+                    'deleteButton': { className: 'jqx-icon-delete', toolTipContainer: 'Delete' },
+                    'cancelButon': { className: 'jqx-icon-cancel', toolTipContainer: 'Cancel' },
+                    'updateButton': { className: 'jqx-icon-save', toolTipContainer: 'Save Changes' },
+                };
+            var buttonSettings = { enableDefault: false, height: 25, width: 25 };
+
+            for (var name in buttonExtras) {
+                var myTooltip = document.createElement('jqx-tool-tip');
+                myTooltip.style.cssText = 'float: left; padding: 3px; margin: 2px;';
+                myTooltip.settings = { position: 'bottom', content: buttonExtras[name].toolTipContainer };
+
+                var img = document.createElement('div');
+                img.className += toTheme(buttonExtras[name].className);
+                img.style.cssText = 'margin: 4px; width: 16px; height: 16px;';
+
+                this[buttonExtras[name]] = document.createElement('jqx-button');
+                this[buttonExtras[name]].settings = buttonSettings;
+                this[buttonExtras[name]].disabled = true;
+                this[buttonExtras[name]].appendChild(img);
+                myButtons.push(this[buttonExtras[name]]);
+
+                myTooltip.appendChild(this[buttonExtras[name]]);
+                container.appendChild(myTooltip);
+            }
+
+            var myTreeGrid = document.querySelector('jqx-tree-grid');
+            var rowKey = null;
+
+            myTreeGrid.addEventListener('rowSelect', function (event) {
+                rowKey = event.args.key;
+                updateButtons('Select');
+            });
+            myTreeGrid.addEventListener('rowUnselect', function () {
+                updateButtons('Unselect');
+            });
+            myTreeGrid.addEventListener('rowEndEdit', function () {
+                updateButtons('End Edit');
+            });
+            myTreeGrid.addEventListener('rowBeginEdit', function () {
+                updateButtons('Edit');
+            });
+
+            myButtons[0].addEventListener('click', function () {
+                if (!myButtons[0].disabled) {
+                    myTreeGrid.expandRow(rowKey);
+                    myTreeGrid.addRow(null, {}, 'first', rowKey);
+                    myTreeGrid.clearSelection();
+                    myTreeGrid.selectRow(newRowID);
+                    myTreeGrid.beginRowEdit(newRowID);
+                }
+            });
+            myButtons[1].addEventListener('click', function () {
+                if (!myButtons[1].disabled) {
+                    myTreeGrid.beginRowEdit(rowKey);
+                }
+            });
+            myButtons[2].addEventListener('click', function () {
+                if (!myButtons[2].disabled) {
+                    var selection = myTreeGrid.getSelection();
+                    if (selection.length > 1) {
+                        for (var i = 0; i < selection.length; i++) {
+                            var key = myTreeGrid.getKey(selection[i]);
+                            myTreeGrid.deleteRow(key);
+                        }
+                    }
+                    else {
+                        myTreeGrid.deleteRow(rowKey);
+                    }
+                }
+            });
+            myButtons[3].addEventListener('click', function () {
+                if (!myButtons[3].disabled) {
+                    myTreeGrid.endRowEdit(rowKey, true);
+                }
+            });
+            myButtons[4].addEventListener('click', function () {
+                if (!myButtons[4].disabled) {
+                    myTreeGrid.endRowEdit(rowKey, false);
+                }
+            });
+        };
+
+        JQXElements.settings['treeGridSettings'] =
+            {
+                source: dataAdapter,
+                pageable: true,
+                editable: true,
+                showToolbar: true,
+                altRows: true,
+                pagerButtonsCount: 8,
+                toolbarHeight: 35,
+                rendertoolbar: renderToolbar,
+                columns: [
+                    { text: 'Location Name', dataField: "Name", align: 'center', width: '50%' },
+                    { text: 'Population', dataField: "Population", align: 'right', cellsAlign: 'right', width: '50%' }
+                ]
+            };
+    </script>
+
+    <style>
+        .jqx-tooltip {
+            width: auto !important;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="example-description">
+        Create, Remove and Update commands in Tree Grid Custom Element.
+    </div>
+    <jqx-tree-grid settings="treeGridSettings"></jqx-tree-grid>
+</body>
+</html>

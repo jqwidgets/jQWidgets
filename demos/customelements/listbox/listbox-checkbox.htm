@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ListBox CheckBox</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example shows how to display checkboxes next to the items in Custom Element ListBox." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source = [
+                'Affogato',
+                'Americano',
+                'Bicerin',
+                'Breve',
+                'Café Bombón',
+                'Café au lait',
+                'Caffé Corretto',
+                'Café Crema',
+                'Caffé Latte',
+                'Caffé macchiato',
+                'Café mélange',
+                'Coffee milk',
+                'Cafe mocha',
+                'Cappuccino',
+                'Carajillo',
+                'Cortado',
+                'Cuban espresso',
+                'Espresso',
+                'Eiskaffee',
+                'The Flat White',
+                'Frappuccino',
+                'Galao',
+                'Greek frappé coffee',
+                'Iced Coffee﻿',
+                'Indian filter coffee',
+                'Instant coffee',
+                'Irish coffee',
+                'Liqueur coffee'
+            ];
+
+        JQXElements.settings['ListBoxSettings'] = 
+            {
+                source: source,
+                checkboxes: true
+            }
+
+        window.onload = function() {
+            var myListBox = document.querySelector('jqx-list-box');
+            var myEvents = document.querySelector('#Events');
+            var myCheckedItems = document.querySelector('#CheckedItems');
+
+            myListBox.checkIndex(0);
+            myListBox.checkIndex(1);
+            myListBox.checkIndex(2);
+            myListBox.checkIndex(5);
+
+            myListBox.addEventListener('checkChange', function(event) {
+                var args = event.args;
+                if (args.checked) {
+                    myEvents.innerHTML = 'Checked: ' + args.label;
+                }
+                else {
+                    myEvents.innerHTML = 'Unchecked: ' + args.label;
+                }
+
+                var items = myListBox.getCheckedItems();
+                var checkedItems = '';
+
+                for (var i = 0; i < items.length; i++) {
+                    if (i < items.length - 1) {
+                        checkedItems += items[i].label + ', ';
+                    }
+                    else checkedItems += items[i].label;
+                }
+                myCheckedItems.innerHTML = checkedItems;
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <div class="example-description">
+        The Custom element ListBox can display checkboxes next to its items. You can enable this feature by setting the 'checkboxes' property to true.
+    </div>
+
+   <jqx-list-box settings="ListBoxSettings"></jqx-list-box>
+
+    <div style="font-size: 13px; font-family: Verdana; margin-top: 20px;" id="Events"></div>
+
+    <div style="font-size: 13px; font-family: Verdana; margin-top: 10px;" id="CheckedItems"></div>
+
+</body>
+</html>

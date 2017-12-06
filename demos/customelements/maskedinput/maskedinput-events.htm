@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element MaskedInput Events</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the events that occur in Custom Element MaskedInput." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmaskedinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['numericInput'] = 
+            {
+                mask: '(###)###-####'
+            };
+
+        window.onload = function() {
+            var myMaskedInput = document.querySelector('jqx-masked-input');
+            var myPanel = document.querySelector('jqx-panel');
+
+            myMaskedInput.addEventListener('change', function(event) {
+                var value = myMaskedInput.val();
+                myPanel.prepend('<div style="margin-top: 5px;">Value: ' + value + '</div>');
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo demonstrates how to trigger the Custom element MaskedInput's valuechanged and textchanged events.
+    </div>
+
+    <div id='jqxWidget'>
+        <div style='margin-top: 10px;'>
+            Phone Number
+        </div>
+        <jqx-masked-input style='margin-top: 3px;' settings='numericInput'></jqx-masked-input>
+
+        <div style='margin-left: 0px; margin-top: 20px;'>
+            <div>
+                <span>
+                    Events:
+                </span>
+                <jqx-panel></jqx-panel>
+            </div>
+        </div>
+
+    </div>
+
+    
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable RowDetails</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="Data Rows with Details in Custom elements DataTable" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var data = new Array();
+        var firstNames = ['Nancy', 'Andrew', 'Janet', 'Margaret', 'Steven', 'Michael', 'Robert', 'Laura', 'Anne'];
+        var lastNames = ['Davolio', 'Fuller', 'Leverling', 'Peacock', 'Buchanan', 'Suyama', 'King', 'Callahan', 'Dodsworth'];
+        var titles = ['Sales Representative', 'Vice President, Sales', 'Sales Representative', 'Sales Representative', 'Sales Manager', 'Sales Representative', 'Sales Representative', 'Inside Sales Coordinator', 'Sales Representative'];
+        var titleofcourtesy = ['Ms.', 'Dr.', 'Ms.', 'Mrs.', 'Mr.', 'Mr.', 'Mr.', 'Ms.', 'Ms.'];
+        var birthdate = ['08-Dec-48', '19-Feb-52', '30-Aug-63', '19-Sep-37', '04-Mar-55', '02-Jul-63', '29-May-60', '09-Jan-58', '27-Jan-66'];
+        var hiredate = ['01-May-92', '14-Aug-92', '01-Apr-92', '03-May-93', '17-Oct-93', '17-Oct-93', '02-Jan-94', '05-Mar-94', '15-Nov-94'];
+        var address = ['507 - 20th Ave. E. Apt. 2A', '908 W. Capital Way', '722 Moss Bay Blvd.', '4110 Old Redmond Rd.', '14 Garrett Hill', 'Coventry House', 'Miner Rd.', 'Edgeham Hollow', 'Winchester Way', '4726 - 11th Ave. N.E.', '7 Houndstooth Rd.'];
+        var city = ['Seattle', 'Tacoma', 'Kirkland', 'Redmond', 'London', 'London', 'London', 'Seattle', 'London'];
+        var postalcode = ['98122', '98401', '98033', '98052', 'SW1 8JR', 'EC2 7JR', 'RG1 9SP', '98105', 'WG2 7LT'];
+        var country = ['USA', 'USA', 'USA', 'USA', 'UK', 'UK', 'UK', 'USA', 'UK'];
+        var homephone = ['(206) 555-9857', '(206) 555-9482', '(206) 555-3412', '(206) 555-8122', '(71) 555-4848', '(71) 555-7773', '(71) 555-5598', '(206) 555-1189', '(71) 555-4444'];
+        var notes = ["Education includes a BA in psychology from Colorado State University in 1970.  She also completed 'The Art of the Cold Call.'  Nancy is a member of Toastmasters International.",
+            "Andrew received his BTS commercial in 1974 and a Ph.D. in international marketing from the University of Dallas in 1981.  He is fluent in French and Italian and reads German.  He joined the company as a sales representative, was promoted to sales manager in January 1992 and to vice president of sales in March 1993.  Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.",
+            "Janet has a BS degree in chemistry from Boston College (1984).  She has also completed a certificate program in food retailing management.  Janet was hired as a sales associate in 1991 and promoted to sales representative in February 1992.",
+            "Margaret holds a BA in English literature from Concordia College (1958) and an MA from the American Institute of Culinary Arts (1966).  She was assigned to the London office temporarily from July through November 1992.",
+            "Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree in 1976.  Upon joining the company as a sales representative in 1992, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London.  He was promoted to sales manager in March 1993.  Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management.'  He is fluent in French.",
+            "Michael is a graduate of Sussex University (MA, economics, 1983) and the University of California at Los Angeles (MBA, marketing, 1986).  He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional.'  He is fluent in Japanese and can read and write French, Portuguese, and Spanish.",
+            "Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan in 1992, the year he joined the company.  After completing a course entitled 'Selling in Europe,' he was transferred to the London office in March 1993.",
+            "Laura received a BA in psychology from the University of Washington.  She has also completed a course in business French.  She reads and writes French.",
+            "Anne has a BA degree in English from St. Lawrence College.  She is fluent in French and German."];
+
+        var k = 0;
+        for (var i = 0; i < firstNames.length; i++) {
+            var row = {};
+            row["firstname"] = firstNames[k];
+            row["lastname"] = lastNames[k];
+            row["title"] = titles[k];
+            row["titleofcourtesy"] = titleofcourtesy[k];
+            row["birthdate"] = birthdate[k];
+            row["hiredate"] = hiredate[k];
+            row["address"] = address[k];
+            row["city"] = city[k];
+            row["postalcode"] = postalcode[k];
+            row["country"] = country[k];
+            row["homephone"] = homephone[k];
+            row["notes"] = notes[k];
+            data[i] = row;
+            k++;
+        }
+
+        var source =
+            {
+                localData: data,
+                dataType: "array"
+            };
+      
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        window.onload = function() {
+            var dataTable = document.createElement('jqx-data-table');
+
+            var initRowDetails = (id, row, element, rowinfo) => {
+                rowinfo.detailsHeight = 200;
+
+                var myTabs = document.createElement('jqx-tabs');
+                myTabs.style.margin = '10px';
+                myTabs.innerHTML = "<ul style='margin-left: 30px;'><li class='title'>Title</li><li>Notes</li></ul><div class='information'></div><div class='notes'></div>";
+        
+
+                var information = myTabs.querySelector('.information');
+                var notes = myTabs.querySelector('.notes');
+
+                var title = myTabs.querySelector('.title');
+                title.innerHTML = row.firstname;
+
+                var container = document.createElement('div');
+                container.style.margin = '5px';
+                information.appendChild(container);              
+
+                var photocolumn = document.createElement('div');
+                photocolumn.style.cssText = 'float: left; width: 15%';
+
+                var leftcolumn = document.createElement('div');
+                leftcolumn.style.cssText = 'float: left; width: 45%';
+
+                var rightcolumn = document.createElement('div');
+                rightcolumn.style.cssText = 'float: left; width: 40%';
+
+                container.appendChild(photocolumn);
+                container.appendChild(leftcolumn);
+                container.appendChild(rightcolumn);
+                
+
+                var photo = document.createElement('div');
+                photo.className = 'jqx-rc-all';
+                photo.style.margin = '10px';
+
+                var image = document.createElement('div');
+                image.style.marginTop = '10px';
+
+                var imgurl = '../../images/' + row.firstname.toLowerCase() + '.png';
+
+                var img = document.createElement('img');
+                img.src = imgurl;
+                img.style.height = 60;
+
+                image.appendChild(img);
+                photo.appendChild(image);
+                photocolumn.appendChild(photo);
+                
+                var firstname = document.createElement('div');
+                firstname.style.margin = '10px';
+                firstname.innerHTML = '<b>First Name:</b>' + row.firstname;
+
+                var lastname = document.createElement('div');
+                lastname.style.margin = '10px';
+                lastname.innerHTML = '<b>Last Name:</b>' + row.lastname;
+
+                var myTitle = document.createElement('div');
+                myTitle.style.margin = '10px';
+                myTitle.innerHTML = '<b>Title:</b>' + row.title;
+
+                var address = document.createElement('div');
+                address.style.margin = '10px';
+                address.innerHTML = '<b>Address:</b>' + row.address;
+
+                leftcolumn.appendChild(firstname);
+                leftcolumn.appendChild(lastname);
+                leftcolumn.appendChild(myTitle);
+                leftcolumn.appendChild(address);
+                
+                var postalcode = document.createElement('div');
+                postalcode.style.margin = '10px';
+                postalcode.innerHTML = '<b>Postal Code:</b>' + row.postalcode;
+
+                var city = document.createElement('div');
+                city.style.margin = '10px';
+                city.innerHTML = '<b>City:</b>' + row.city;
+
+                var phone = document.createElement('div');
+                phone.style.margin = '10px';
+                phone.innerHTML = '<b>Phone:</b>' + row.homephone;
+
+                var hiredate = document.createElement('div');
+                hiredate.style.margin = '10px';
+                hiredate.innerHTML = '<b>Hire Date:</b>' + row.hiredate;
+
+                rightcolumn.appendChild(postalcode);
+                rightcolumn.appendChild(city);
+                rightcolumn.appendChild(phone);
+                rightcolumn.appendChild(hiredate);
+                
+                var notescontainer = document.createElement('div');
+                notescontainer.style.cssText = 'white-space: normal; margin: 5px;';
+                notescontainer.innerHTML = '<span>' + row.notes + '</span>';
+                notes.appendChild(notescontainer);
+                    
+                element[0].appendChild(myTabs);             
+            }
+
+            dataTable.settings = {
+                source: dataAdapter,
+                pageable: true,
+                pageSize: 3,
+                rowDetails: true,
+                sortable: true,
+                ready: function() {
+                    dataTable.showDetails(0);
+                },
+                initRowDetails: initRowDetails,
+                columns: [
+                    { text: 'First Name', dataField: 'firstname', width: 200 },
+                    { text: 'Last Name', dataField: 'lastname', width: 200 },
+                    { text: 'Title', dataField: 'title', width: 200 },
+                    { text: 'City', dataField: 'city', width: 100 },
+                    { text: 'Country', dataField: 'country' }
+                ]
+            };
+
+            document.body.appendChild(dataTable);
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Data Rows with Details in Custom element DataTable.
+    </div>
+</body>
+</html>

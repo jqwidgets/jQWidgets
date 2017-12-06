@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -30,15 +30,15 @@ export class jqxPivotGridComponent implements OnChanges
 {
    @Input('source') attrSource: any;
    @Input('localization') attrLocalization: any;
-   @Input('scrollBarsEnabled') attrScrollBarsEnabled: Boolean;
-   @Input('selectionEnabled') attrSelectionEnabled: Boolean;
-   @Input('multipleSelectionEnabled') attrMultipleSelectionEnabled: Boolean;
-   @Input('treeStyleRows') attrTreeStyleRows: Boolean;
-   @Input('autoResize') attrAutoResize: Boolean;
-   @Input('itemsRenderer') attrItemsRenderer: (pivotItem: any) => String;
-   @Input('cellsRenderer') attrCellsRenderer: (pivotCell: any) => String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('scrollBarsEnabled') attrScrollBarsEnabled: boolean;
+   @Input('selectionEnabled') attrSelectionEnabled: boolean;
+   @Input('multipleSelectionEnabled') attrMultipleSelectionEnabled: boolean;
+   @Input('treeStyleRows') attrTreeStyleRows: boolean;
+   @Input('autoResize') attrAutoResize: boolean;
+   @Input('itemsRenderer') attrItemsRenderer: (pivotItem: any) => string;
+   @Input('cellsRenderer') attrCellsRenderer: (pivotCell: any) => string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -61,7 +61,7 @@ export class jqxPivotGridComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -209,7 +209,7 @@ export class jqxPivotGridComponent implements OnChanges
       }
    }
 
-   itemsRenderer(arg?: (pivotItem: any) => String) : any {
+   itemsRenderer(arg?: (pivotItem: any) => string) : any {
       if (arg !== undefined) {
           this.host.jqxPivotGrid('itemsRenderer', arg);
       } else {
@@ -217,7 +217,7 @@ export class jqxPivotGridComponent implements OnChanges
       }
    }
 
-   cellsRenderer(arg?: (pivotCell: any) => String) : any {
+   cellsRenderer(arg?: (pivotCell: any) => string) : any {
       if (arg !== undefined) {
           this.host.jqxPivotGrid('cellsRenderer', arg);
       } else {

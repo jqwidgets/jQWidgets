@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Input BindingToJSONData</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Input bound to JSON data." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+    var source =
+        {
+            datatype: 'json',
+            datafields: [
+                { name: 'CompanyName' },
+                { name: 'ContactName' }
+            ],
+            url: '../sampledata/customers.txt'
+        };
+
+    var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['inputSettings'] = {
+
+            source: dataAdapter,
+            placeHolder: 'Contact Name:',
+            displayMember: 'ContactName',
+            valueMember: 'CompanyName'
+        }
+
+        window.onload = function() {
+            var myInput = document.querySelector('jqx-input');
+
+            myInput.addEventListener('select', function(event) {
+
+                if (event.args) {
+                    var item = event.args.item;
+
+                    if (item) {
+                        var valueElement = document.createElement('div');
+                        valueElement.innerHTML = 'Value: ' + item.value;
+
+                        var labelElement = document.createElement('div');
+                        labelElement.innerHTML = 'Label: ' + item.label;
+
+                        var myLog = document.querySelector('#selectionlog');
+                        myLog.innerHTML = '';
+
+                        myLog.appendChild(labelElement);
+                        myLog.appendChild(valueElement);
+
+                        setTimeout(_ => myInput.val(item.label));
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this demo the Custom element Input is bound to JSON data.
+    </div>
+
+    <jqx-input settings="inputSettings"></jqx-input>
+
+    <br />
+
+    <label style="font-family: Verdana; font-size: 10px;">ex: Ana</label>
+
+    <div style="font-family: Verdana; font-size: 13px;" id='selectionlog'>
+    </div>
+
+</body>
+</html>

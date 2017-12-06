@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ComboBox CascadingComboBoxes</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of cascading Custom Element ComboBoxes" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script> 
+    <script>
+        var customersSource =
+            {
+                dataType: 'json',
+                dataFields: [
+                    { name: 'CompanyName' },
+                    { name: 'CustomerID' }
+                ],
+                url: '../sampledata/customers.txt'
+            };
+
+        var ordersSource =
+            {
+                dataType: 'json',
+                dataFields: [
+                    { name: 'CustomerID' },
+                    { name: 'OrderID' },
+                    { name: 'ShipCity' },
+                    { name: 'OrderDate' },
+                    { name: 'ShipName' },
+                    { name: 'ShipCountry' },
+                    { name: 'ShipAddress' }
+                ],
+                url: '../sampledata/orders.txt'
+            };
+
+        var ordersAdapter = new jqx.dataAdapter(ordersSource);
+        var customersAdapter = new jqx.dataAdapter(customersSource);
+
+        JQXElements.settings['ComboBoxCustomers'] =
+            {
+                source: customersAdapter,
+                promptText: 'Select customer...',
+                displayMember: 'CompanyName',
+                valueMember: 'CustomerID'
+            };
+
+        JQXElements.settings['ComboBoxOrders'] =
+            {
+                disabled: true,
+                promptText: 'Select order...',
+                displayMember: 'OrderID',
+                valueMember: 'CustomerID'
+            }
+
+        window.onload = function() {
+            var myComboBox = document.querySelectorAll('jqx-combo-box');
+
+            myComboBox[0].addEventListener('select', function(event) {
+                if (event.args) {
+                    myComboBox[1].disabled = false, selectedIndex = -1;
+                    var value = event.args.item.value;
+                    ordersSource.data = { CustomerID: value };
+
+                    ordersAdapter = new jqx.dataAdapter(ordersSource, {
+                        beforeLoadComplete: (records) => {
+                            var filteredRecords = new Array();
+                            for (var i = 0; i < records.length; i++) {
+                                if (records[i].CustomerID == value)
+                                    filteredRecords.push(records[i]);
+                            }
+                            return filteredRecords;
+                        }
+                    });
+                    myComboBox[1].source = ordersAdapter, autoDropDownHeight = ordersAdapter.records.length > 10 ? false : true;
+                }
+            });
+
+            myComboBox[1].addEventListener('select', function(event) {
+
+                if (event.args) {
+                    var index = myComboBox[1].getSelectedIndex();
+
+                    if (index != -1) {
+                        var record = ordersAdapter.records[index];
+                        var detailsSource =
+                            {
+                                dataType: 'json',
+                                dataFields: [
+                                    { name: 'CustomerID' },
+                                    { name: 'OrderID' },
+                                    { name: 'ShipCity' },
+                                    { name: 'OrderDate' },
+                                    { name: 'ShipName' },
+                                    { name: 'ShipCountry' },
+                                    { name: 'ShipAddress' }
+                                ],
+                                localData: record
+                            };
+
+                        var detailsAdapter = new jqx.dataAdapter(detailsSource);
+                        var myDataTable = document.createElement('jqx-data-table');
+                        myDataTable.settings = {
+                            source: detailsAdapter,
+                                    columns: [{ text: 'Order Date', dataField: 'OrderDate', cellsFormat: 'd' }, { text: 'Ship Country', dataField: 'ShipCountry' },
+                                    { text: 'Ship Address', dataField: 'ShipAddress' }, { text: 'Ship Name', dataField: 'ShipName' }]
+                        };
+                        document.querySelector('#orderInfo').appendChild(myDataTable);
+
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this example is demonstrated how to create cascading Custom element ComboBox. The data source of the "Orders" Combobox is updated dynamically depending on the selected Customer.
+    </div>
+   
+    <div>
+        <span style="margin-top: 6px; font-size: 12px; font-family: verdana; float: left;">Customers:</span>
+        <jqx-combo-box style="margin-left: 5px; float: left;" settings="ComboBoxCustomers"></jqx-combo-box>
+
+        <div style='clear: both;'></div>
+        <div style='margin-top: 20px;'>
+
+            <span style="margin-top: 6px; font-size: 12px; font-family: verdana; float: left;">Orders:</span>
+            <jqx-combo-box style="margin-left: 5px; float: left;" settings="ComboBoxOrders"></jqx-combo-box>
+
+            <br />
+            <div style="margin-top: 25px; font-size: 12px;" id="orderInfo"></div>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Progressbar Custom Element Templates</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the templates in Custom Element ProgressBar." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxprogressbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var renderText = (text, value) => {
+            if (value < 55) {
+                return "<span style='color: #333;'>" + text + "</span>";
+            }
+            return "<span style='color: #fff;'>" + text + "</span>";
+        }
+
+        JQXElements.settings['jqxProgressBar2'] =
+            {
+                animationDuration: 0,
+                showText: true,
+                renderText: renderText,
+                template: 'primary',
+                width: 250,
+                height: 30,
+                value: 0
+            };
+
+        JQXElements.settings['jqxProgressBar3'] =
+            {
+                animationDuration: 0,
+                showText: true,
+                renderText: renderText,
+                template: 'success',
+                width: 250,
+                height: 30,
+                value: 0
+            };
+
+        JQXElements.settings['jqxProgressBar4'] =
+            {
+                animationDuration: 0,
+                showText: true,
+                renderText: renderText,
+                template: 'info',
+                width: 250,
+                height: 30,
+                value: 0
+            };
+
+        JQXElements.settings['jqxProgressBar5'] =
+            {
+                animationDuration: 0,
+                showText: true,
+                renderText: renderText,
+                template: 'warning',
+                width: 250,
+                height: 30,
+                value: 0
+            };
+
+        JQXElements.settings['jqxProgressBar6'] =
+            {
+                animationDuration: 0,
+                showText: true,
+                renderText: renderText,
+                template: 'danger',
+                width: 250,
+                height: 30,
+                value: 0
+            };
+
+        window.onload = function() {
+            var myProgressBar = document.querySelector('jqx-progress-bar');
+
+            var values = {};
+            var addInterval = (id, intervalStep) => {
+                values[id] = { value: 0 };
+                values[id].interval = setInterval( function() {
+                    values[id].value++;
+                    if (values[id].value == 100) {
+                        clearInterval(values[id].interval);
+                    }
+                    $('#' + id).val(values[id].value);
+                }, intervalStep);
+            }
+            addInterval('jqxProgressBar2', 20);
+            addInterval('jqxProgressBar3', 30);
+            addInterval('jqxProgressBar4', 40);
+            addInterval('jqxProgressBar5', 50);
+            addInterval('jqxProgressBar6', 60);
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element Progress Bar Templates.
+    </div>
+
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+
+        <div style='margin-top: 10px;'>Primary</div>
+        <jqx-progress-bar style='margin-top: 10px;' id="jqxProgressBar2" settings='jqxProgressBar2'></jqx-progress-bar>
+
+        <div style='margin-top: 10px;'>Success</div>
+        <jqx-progress-bar style='margin-top: 10px;' id="jqxProgressBar3" settings='jqxProgressBar3'></jqx-progress-bar>
+
+        <div style='margin-top: 10px;'>Info</div>
+        <jqx-progress-bar style='margin-top: 10px;' id="jqxProgressBar4" settings='jqxProgressBar4'></jqx-progress-bar>
+
+        <div style='margin-top: 10px;'>Warning</div>
+        <jqx-progress-bar style='margin-top: 10px;' id="jqxProgressBar5" settings='jqxProgressBar5'></jqx-progress-bar>
+
+        <div style='margin-top: 10px;'>Danger</div>
+        <jqx-progress-bar style='margin-top: 10px;' id="jqxProgressBar6" settings='jqxProgressBar6'></jqx-progress-bar>
+    </div>
+</body>
+</html>

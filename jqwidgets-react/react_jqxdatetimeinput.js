@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -16,7 +16,7 @@ export default class JqxDateTimeInput extends React.Component {
         this.createComponent(options);
     };
     manageAttributes() {
-        let properties = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
+        let properties = ['animationType','allowNullDate','allowKeyboardDelete','clearstring','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatstring','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeeknumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todaystring','value','width'];
         let options = {};
         for(let item in this.props) {
               if(item === 'settings') {
@@ -88,11 +88,11 @@ export default class JqxDateTimeInput extends React.Component {
             return JQXLite(this.componentSelector).jqxDateTimeInput('allowKeyboardDelete');
         }
     };
-    clearString(arg) {
+    clearstring(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxDateTimeInput('clearString', arg)
+            JQXLite(this.componentSelector).jqxDateTimeInput('clearstring', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxDateTimeInput('clearString');
+            return JQXLite(this.componentSelector).jqxDateTimeInput('clearstring');
         }
     };
     culture(arg) {
@@ -158,11 +158,11 @@ export default class JqxDateTimeInput extends React.Component {
             return JQXLite(this.componentSelector).jqxDateTimeInput('firstDayOfWeek');
         }
     };
-    formatString(arg) {
+    formatstring(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxDateTimeInput('formatString', arg)
+            JQXLite(this.componentSelector).jqxDateTimeInput('formatstring', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxDateTimeInput('formatString');
+            return JQXLite(this.componentSelector).jqxDateTimeInput('formatstring');
         }
     };
     height(arg) {
@@ -235,11 +235,11 @@ export default class JqxDateTimeInput extends React.Component {
             return JQXLite(this.componentSelector).jqxDateTimeInput('selectionMode');
         }
     };
-    showWeekNumbers(arg) {
+    showWeeknumbers(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxDateTimeInput('showWeekNumbers', arg)
+            JQXLite(this.componentSelector).jqxDateTimeInput('showWeeknumbers', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxDateTimeInput('showWeekNumbers');
+            return JQXLite(this.componentSelector).jqxDateTimeInput('showWeeknumbers');
         }
     };
     showTimeButton(arg) {
@@ -277,11 +277,11 @@ export default class JqxDateTimeInput extends React.Component {
             return JQXLite(this.componentSelector).jqxDateTimeInput('textAlign');
         }
     };
-    todayString(arg) {
+    todaystring(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxDateTimeInput('todayString', arg)
+            JQXLite(this.componentSelector).jqxDateTimeInput('todaystring', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxDateTimeInput('todayString');
+            return JQXLite(this.componentSelector).jqxDateTimeInput('todaystring');
         }
     };
     value(arg) {

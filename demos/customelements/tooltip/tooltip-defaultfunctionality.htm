@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tooltip Custom Element DefaultFunctionality</title>
+    <meta name="description" content="This is an example of the default functionalities in Tooltip Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['tooltip1Settings'] =
+            {
+                content: '<b>Title:</b> <i>The Amazing Spider-man</i><br /><b>Year:</b> 2012',
+                position: 'mouse',
+                selector: 'filmPicture1',
+                autoHideDelay: 6000
+            };
+        JQXElements.settings['tooltip2Settings'] =
+            {
+                content: '<b>Title:</b> <i>The Avengers</i><br /><b>Year:</b> 2012',
+                position: 'mouse',
+                selector: 'filmPicture2',
+                autoHideDelay: 6000
+            };
+        JQXElements.settings['tooltip3Settings'] =
+            {
+            content: '<b>Title:</b> <i>The Dark Knight Rises</i> <br /><b>Year:</b> 2012',
+                position: 'mouse',
+                selector: 'filmPicture3',
+                autoHideDelay: 6000
+            };
+        JQXElements.settings['tooltip4Settings'] =
+            {
+            content: '<b>Title:</b> <i>Harry Potter and the Deathly Hallows - Part 1</i><br /><b>Year:</b> 2010',
+                position: 'mouse',
+                selector: 'filmPicture4',
+                autoHideDelay: 6000
+            };
+        JQXElements.settings['tooltip5Settings'] =
+            {
+            content: '<b>Title:</b> <i>Harry Potter and the Deathly Hallows - Part 2</i><br /><b>Year:</b> 2011',
+                position: 'mouse',
+                selector: 'filmPicture5',
+                autoHideDelay: 6000
+            };
+        JQXElements.settings['tooltip6Settings'] =
+            {
+            content: '<b>Title:</b> <i>Inception</i><br /><b>Year:</b> 2010',
+                position: 'mouse',
+                selector: 'filmPicture6',
+                autoHideDelay: 6000
+            };
+        JQXElements.settings['tooltip7Settings'] =
+            {
+                content: '<b>Title:</b> <i>Star Trek</i><br /><b>Year:</b> 2009',
+                position: 'mouse',
+                selector: 'filmPicture7',
+                autoHideDelay: 6000
+            };
+        JQXElements.settings['tooltip8Settings'] =
+            {
+                content: '<b>Title:</b> <i>Star Wars</i> Episode III: <i>Revenge of the Sith</i><br /><b>Year:</b> 2005',
+                position: 'mouse',
+                selector: 'filmPicture8',
+                autoHideDelay: 6000
+            };
+        JQXElements.settings['tooltip9Settings'] =
+            {
+                content: '<b>Title:</b> <i>Thor</i><br /><b>Year:</b> 2011',
+                position: 'mouse',
+                selector: 'filmPicture9',
+                autoHideDelay: 6000
+            };
+    </script>
+
+    <style>
+        #container {
+            width: 400px;
+        }
+
+        jqx-tool-tip {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates the basic functionality of the Tooltip Custom Element.
+    </div>
+    
+    <div id="container">
+        <img style="margin: 8px;" src="../images/The_Amazng_Spider_Man.jpeg" id="filmPicture1" />
+        <jqx-tool-tip settings="tooltip1Settings"></jqx-tool-tip>
+
+        <img style="margin: 8px;" src="../images/The_Avengers.jpg" id="filmPicture2" />
+        <jqx-tool-tip settings="tooltip2Settings"></jqx-tool-tip>
+
+        <img style="margin: 8px;" src="../images/The_Dark_Knight_Rises.jpg" id="filmPicture3" />
+        <jqx-tool-tip settings="tooltip3Settings"></jqx-tool-tip>
+
+        <img style="margin: 8px;" src="../images/Harry_Potter_7_Part_1.jpg" id="filmPicture4" />
+        <jqx-tool-tip settings="tooltip4Settings"></jqx-tool-tip>
+
+        <img style="margin: 8px;" src="../images/Harry_Potter_7_Part_2.jpg" id="filmPicture5" />
+        <jqx-tool-tip settings="tooltip5Settings"></jqx-tool-tip>
+
+        <img style="margin: 8px;" src="../images/Inception.jpg" id="filmPicture6" />
+        <jqx-tool-tip settings="tooltip6Settings"></jqx-tool-tip>
+
+        <img style="margin: 8px;" src="../images/Star_Trek.jpg" id="filmPicture7" />
+        <jqx-tool-tip settings="tooltip7Settings"></jqx-tool-tip>
+
+        <img style="margin: 8px;" src="../images/Star_Wars_Episode_III.jpg" id="filmPicture8" />
+        <jqx-tool-tip settings="tooltip8Settings"></jqx-tool-tip>
+
+        <img style="margin: 8px;" src="../images/Thor.jpg" id="filmPicture9" />
+        <jqx-tool-tip settings="tooltip9Settings"></jqx-tool-tip>
+    </div>
+</body>
+</html>

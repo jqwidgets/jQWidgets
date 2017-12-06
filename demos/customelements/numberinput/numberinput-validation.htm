@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element NumberInput Validation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the validation in Custom Element Calendar." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['numericInput'] =
+            {
+                min: 0,
+                max: 1000
+            };
+
+        JQXElements.settings['currencyInput'] =
+            {
+                min: 0,
+                max: 1000,
+                symbol: '$'
+            };
+
+        JQXElements.settings['validation'] =
+            {
+                min: 0,
+                max: 1000,
+                value: 0
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element NumberInput the input is restricted from 0 to 1000. When the user enters a value which is not from 0 to 1000, the Custom element NumberInput automatically updates the value to 0 or 1000 depending on the whether the value is below 0 or above 1000. That happens on blur event.
+    </div>
+
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+
+        <div>The input is restricted from 0 to 1000</div>
+        <div style='margin-top: 10px;'>
+            Number
+        </div>
+
+        <jqx-number-input style='margin-top: 3px;' settings='numericInput'>
+        </jqx-number-input>
+
+        <div style='margin-top: 10px;'>
+            Currency
+        </div>
+
+        <jqx-number-input style='margin-top: 3px;' settings='currencyInput'>
+        </jqx-number-input>
+
+        <div style='margin-top: 10px;'>
+            Custom Validation Message
+        </div>
+
+        <jqx-number-input style='margin-top: 3px;' settings='validation'>
+        </jqx-number-input>
+
+    </div>
+
+</body>
+</html>

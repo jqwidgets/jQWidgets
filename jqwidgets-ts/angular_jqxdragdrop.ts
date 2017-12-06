@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -16,16 +16,16 @@ declare let JQXLite: any;
 
 export class jqxDragDropComponent implements OnChanges
 {
-   @Input('appendTo') attrAppendTo: String;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('distance') attrDistance: Number;
+   @Input('appendTo') attrAppendTo: string;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('distance') attrDistance: number;
    @Input('data') attrData: any;
    @Input('dropAction') attrDropAction: any;
    @Input('dropTarget') attrDropTarget: any;
-   @Input('dragZIndex') attrDragZIndex: Number;
+   @Input('dragZIndex') attrDragZIndex: number;
    @Input('feedback') attrFeedback: any;
    @Input('initFeedback') attrInitFeedback: (feedback?:any) => void;
-   @Input('opacity') attrOpacity: Number;
+   @Input('opacity') attrOpacity: number;
    @Input('onDragEnd') attrOnDragEnd: () => void;
    @Input('onDrag') attrOnDrag: (data?: any, position?: any) => void;
    @Input('onDragStart') attrOnDragStart: (position?: any) => void;
@@ -33,11 +33,11 @@ export class jqxDragDropComponent implements OnChanges
    @Input('onDropTargetEnter') attrOnDropTargetEnter: () => void;
    @Input('onDropTargetLeave') attrOnDropTargetLeave: (data?: any) => void;
    @Input('restricter') attrRestricter: any;
-   @Input('revert') attrRevert: Boolean;
-   @Input('revertDuration') attrRevertDuration: Number;
+   @Input('revert') attrRevert: boolean;
+   @Input('revertDuration') attrRevertDuration: number;
    @Input('tolerance') attrTolerance: any;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -60,7 +60,7 @@ export class jqxDragDropComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {

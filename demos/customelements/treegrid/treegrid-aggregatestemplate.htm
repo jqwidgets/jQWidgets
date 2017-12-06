@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element AggregatesTemplate</title>
+    <meta name="description" content="This is an example of aggregat templates in TreeGrid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var data =
+            [
+                {
+                    'id': '1', 'name': 'Corporate Headquarters', 'budget': '1230000', 'location': 'Las Vegas',
+                    'children':
+                    [
+                        {
+                            'id': '2', 'name': 'Finance Division', 'budget': '423000', 'location': 'San Antonio',
+                            'children':
+                            [
+                                {
+                                    'id': '4', 'name': 'Investment Department', 'budget': '310000', 'location': 'San Antonio',
+                                    'children':
+                                    [
+                                        { 'id': '5', 'name': 'Banking Office', 'budget': '240000', 'location': 'San Antonio' },
+                                        { 'id': '6', 'name': 'Bonds Office', 'budget': '70000', 'location': 'San Antonio' },
+                                    ]
+                                },
+                                { 'id': '3', 'name': 'Accounting Department', 'budget': '113000', 'location': 'San Antonio' }
+                            ]
+                        },
+                        {
+                            'id': '7', 'name': 'Operations Division', 'budget': '600000', 'location': 'Miami',
+                            'children':
+                            [
+                                { 'id': '8', 'name': 'Manufacturing Department', 'budget': '300000', 'location': 'Miami' },
+                                { 'id': '9', 'name': 'Public Relations Department', 'budget': '200000', 'location': 'Miami' },
+                                { 'id': '10', 'name': 'Sales Department', 'budget': '100000', 'location': 'Miami' }
+                            ]
+                        },
+                        { 'id': '11', 'name': 'Research Division', 'budget': '200000', 'location': 'Boston' }
+                    ]
+                }
+            ];
+
+        var source =
+            {
+                dataType: 'json',
+                dataFields: [
+                    { name: 'name', type: 'string' },
+                    { name: 'budget', type: 'number' },
+                    { name: 'id', type: 'number' },
+                    { name: 'children', type: 'array' },
+                    { name: 'location', type: 'string' }
+                ],
+                hierarchy:
+                {
+                    root: 'children'
+                },
+                localData: data,
+                id: 'id'      
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['treeGridSettings'] =
+            {
+                source: dataAdapter,
+                altRows: true,
+                showSubAggregates: true,
+                columnsResize: true,
+                ready: function () {
+                    var myTreeGrid = document.querySelector('jqx-tree-grid');
+                    myTreeGrid.expandRow(1);
+                    setTimeout(function () {
+                        myTreeGrid.expandRow(2);
+                    }, 100);
+                },
+                columns: [
+                    { text: 'Name', align: 'center', dataField: 'name', width: 300 },
+                    { text: 'Location', dataField: 'location', cellsAlign: 'center', align: 'center', width: 250 },
+                    {
+                        text: 'Budget', cellsAlign: 'center', align: 'center', dataField: 'budget', cellsFormat: 'c2',
+                        aggregates: ['sum'],
+                        aggregatesRenderer: function (aggregatesText, column, element, aggregates, type) {
+                            var renderString;
+                            if (type == 'aggregates') {
+                                renderString = '<div style="margin: 4px; float: right;  height: 100%;">';
+                            }
+                            else {
+                                renderString = '<div style="float: right;  height: 100%;">';
+                            }
+
+                            var euro = dataAdapter.formatNumber(0.74 * aggregates.sum, 'f2');;
+                            var usd = dataAdapter.formatNumber(aggregates.sum, 'f2');;
+                            renderString += '<table><tr><td rowspan="2"><strong>Total: </strong></td><td>' + usd + ' USD</td><tr><td>' + euro + ' EUR</td></tr></table>';
+
+                            return renderString;
+                        }
+                    }
+                ]       
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom Tree Grid Custom Element Aggregates.
+    </div>
+    <jqx-tree-grid settings="treeGridSettings"></jqx-tree-grid>
+</body>
+</html>

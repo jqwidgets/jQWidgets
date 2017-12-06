@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -18,21 +18,21 @@ declare let JQXLite: any;
 export class jqxRibbonComponent implements OnChanges
 {
    @Input('animationType') attrAnimationType: any;
-   @Input('animationDelay') attrAnimationDelay: String | Number;
-   @Input('disabled') attrDisabled: Boolean;
+   @Input('animationDelay') attrAnimationDelay: number | string;
+   @Input('disabled') attrDisabled: boolean;
    @Input('initContent') attrInitContent: (index: any) => void;
    @Input('mode') attrMode: any;
    @Input('popupCloseMode') attrPopupCloseMode: any;
    @Input('position') attrPosition: any;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('selectedIndex') attrSelectedIndex: Number;
+   @Input('rtl') attrRtl: boolean;
+   @Input('selectedIndex') attrSelectedIndex: number;
    @Input('selectionMode') attrSelectionMode: any;
    @Input('scrollPosition') attrScrollPosition: any;
-   @Input('scrollStep') attrScrollStep: Number;
-   @Input('scrollDelay') attrScrollDelay: Number;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('scrollStep') attrScrollStep: number;
+   @Input('scrollDelay') attrScrollDelay: number;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -55,7 +55,7 @@ export class jqxRibbonComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -154,7 +154,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   animationDelay(arg?: String | Number) : any {
+   animationDelay(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxRibbon('animationDelay', arg);
       } else {
@@ -170,7 +170,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxRibbon('height', arg);
       } else {
@@ -266,7 +266,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxRibbon('width', arg);
       } else {
@@ -320,7 +320,7 @@ export class jqxRibbonComponent implements OnChanges
       this.host.jqxRibbon('showAt', index);
    }
 
-   setPopupLayout(index: number, layout: any, width: String | Number, height: String | Number): void {
+   setPopupLayout(index: number, layout: any, width: number | string, height: number | string): void {
       this.host.jqxRibbon('setPopupLayout', index, layout, width, height);
    }
 

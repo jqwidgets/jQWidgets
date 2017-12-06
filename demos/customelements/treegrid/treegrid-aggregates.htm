@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element Aggregates</title>
+    <meta name="description" content="This is an example of the aggregates in TreeGrid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var source =
+            {
+                dataType: 'tab',
+                dataFields: [
+                    { name: 'Id', type: 'number' },
+                    { name: 'Name', type: 'string' },
+                    { name: 'ParentID', type: 'number' },
+                    { name: 'Population', type: 'number' }
+                ],
+                hierarchy:
+                {
+                    keyDataField: { name: 'Id' },
+                    parentDataField: { name: 'ParentID' }
+                },
+                id: 'Id',
+                url: '../sampledata/locations.tsv'              
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['treeGridSettings'] =
+            {
+                pageable: true,
+                pageSize: 25,
+                source: dataAdapter,
+                showAggregates: true,
+                showSubAggregates: true,
+                aggregatesHeight: 70,
+                sortable: true,
+                ready: function () {
+                    var myTreeGrid = document.querySelector('jqx-tree-grid');
+                    myTreeGrid.expandRow(34);
+                },
+                columns:
+                [
+                    { text: 'Location Name', dataField: "Name", align: 'center', width: '50%' },
+                    { text: 'Population', dataField: "Population", align: 'center', width: '50%', aggregates: ['min', 'max', 'count'] }
+                ]
+               
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Tree Grid Custom Element provides the possibility to display aggregates. 
+        The aggregates are displayed in the last record at the end of each level.
+    </div>
+    <jqx-tree-grid settings="treeGridSettings"></jqx-tree-grid>
+</body>
+</html>

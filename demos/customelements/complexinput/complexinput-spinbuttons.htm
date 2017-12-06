@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ComplexInput SpiningButtons</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example of Custom Elements ComplexInput shows how to change the real or imaginary part of the complex number." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcomplexinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['ComplexInput'] =
+            {
+                value: '15 + 7.2i',
+                spinButtons: true,
+                spinButtonsStep: 1
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In Custom element ComplexInput spin buttons can be used to increment and decrement the real or imaginary parts of the complex number. Which part will be changed depends on the caret position. If the input is not focused, the spin buttons change the real part.
+    </div>
+    <jqx-complex-input settings="ComplexInput">   
+    </jqx-complex-input>
+</body>
+</html>

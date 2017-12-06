@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Splitter Custom Element NestedSideSplitters</title>
+    <meta name="description" content="This is an example of nested splitter in Splitter Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['splitter1Settings'] =
+            {
+                orientation: 'vertical', panels: [{ size: '50%' }, { size: '50%' }]  
+            }; 
+        JQXElements.settings['splitter2Settings'] =
+            {
+                width: '100%', height: '100%',
+                orientation: 'horizontal', panels: [{ size: '50%' }, { size: '50%' }]
+            };  
+        JQXElements.settings['splitter3Settings'] =
+            {
+                width: '100%', height: '100%',
+                orientation: 'horizontal', panels: [{ size: '50%' }, { size: '50%' }]
+            };     
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        This sample illustrates how to create a Splitter Custom Element with Nested Side Splitters.
+    </div>
+
+    <jqx-splitter settings="splitter1Settings">
+        <div>
+            <jqx-splitter settings="splitter2Settings">
+                <div>
+                    West - North
+                </div>
+                <div>
+                    West - South
+                </div>
+            </jqx-splitter>
+        </div>
+        <div>
+            <jqx-splitter settings="splitter3Settings">
+                <div>
+                    East - North
+                </div>
+                <div>
+                    East - South
+                </div>
+            </jqx-splitter>
+        </div>
+    </jqx-splitter>
+
+</body>
+</html>

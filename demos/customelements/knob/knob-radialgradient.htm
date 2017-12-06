@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Knob RadialGradient</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Knob with a radial gradient." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxknob.js"></script>
+    <script type="text/javascript" src="..//jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        #knob {
+            position: relative;
+        }
+        #numberInput {
+            position: absolute;
+            width: 155px;
+            height: 115px;
+            left: 135px;
+            top: 200px;
+            border: 0px;
+        }
+        #numberInput div input {
+            background: transparent;
+            font-size: 45px;
+        }
+        .jqx-input {
+            border-style: none;
+        }
+    </style>
+
+    <script>
+        JQXElements.settings['KnobSettings'] =
+            {
+                value: 10,
+                min: 0,
+                max: 100,
+                startAngle: 90,
+                endAngle: 450,
+                snapToStep: true,
+                pointerGrabAction: 'progressBar',
+                rotation: 'clockwise',
+                style: { fill: 'transparent' },
+                progressBar: {
+                    style: { fill: { color: '#00a4e1', gradientType: 'radial', gradientStops: [[0, 0.5], [100, 1]] } },
+                    size: '50%',
+                    offset: '50%',
+                    background: { fill: { color: '#FFFFFF', gradientType: 'linear', gradientStops: [[0, 0.5], [100, 1]] } }
+                },
+                pointer: { type: 'line', style: { fill: '#00a4e1' }, size: '50%', offset: '50%', thickness: 0 }
+            }
+
+        JQXElements.settings['numberInputSettings'] =
+            {
+                decimal: 0,
+                min: 0,
+                max: 100,
+                textAlign: 'center',
+                decimalDigits: 1,
+                symbol: '%',
+                symbolPosition: 'right',
+                inputMode: 'simple'
+            }
+
+        window.onload = function() {
+            var myKnob = document.querySelector('jqx-knob');
+            var myNumberInput = document.querySelector('jqx-number-input');
+
+            myNumberInput.addEventListener('change', event => {
+                myKnob.val(event.args.value);
+            });
+
+            myKnob.addEventListener('change', event => {
+                myNumberInput.val(event.args.value);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element Knob with Radial Gradient.
+    </div>
+
+    <jqx-knob id='knob' settings="KnobSettings" style="width: 400px; height: 400px;"></jqx-knob>
+
+    <jqx-number-input settings="numberInputSettings" id="numberInput"></jqx-number-input>
+
+</body>
+</html>

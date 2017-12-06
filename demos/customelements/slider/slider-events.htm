@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Slider Custom Element Events</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the events that occur in Custom Element Slider." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style>
+        jqx-panel > div {
+            border: none !important;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var  mySlider = document.querySelector('jqx-slider');
+            var  myLog = document.querySelector('jqx-panel');
+            
+            var displayEvent = function (event) {
+                var eventData = event.type;
+                eventData += ': ' + event.args.value;
+                events.clearcontent();
+                events.prepend('<div class="item" style="margin-top: 5px;">' + eventData + '</div>');
+            };
+
+            mySlider.style.margin = '5px';
+
+            mySlider.mode = 'fixed';
+            mySlider.addEventListener('change', function (event) {
+                displayEvent(event);
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates the basic functionality of the Slider custom element.
+    </div>
+   
+    <br /><br />
+
+    <div id='jqxWidget'>
+        <div id="container" style="float: left">
+
+            <jqx-slider></jqx-slider>
+            <br />
+
+            <div style="font-family: Verdana; font-size: 12px;">
+                Events:
+            </div>
+
+            <jqx-panel id="events" style="border-width: 0px;"></jqx-panel>
+
+        </div>
+    </div>
+</body>
+</html>

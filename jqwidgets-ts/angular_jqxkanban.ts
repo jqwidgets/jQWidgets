@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -21,19 +21,19 @@ export class jqxKanbanComponent implements OnChanges
 {
    @Input('columnRenderer') attrColumnRenderer: (element?: any, collapsedElement?: any, column?: any) => void;
    @Input('columns') attrColumns: Array<jqwidgets.KanbanColumns>;
-   @Input('connectWith') attrConnectWith: String;
-   @Input('headerHeight') attrHeaderHeight: String | Number;
-   @Input('headerWidth') attrHeaderWidth: Number;
+   @Input('connectWith') attrConnectWith: string;
+   @Input('headerHeight') attrHeaderHeight: number | string;
+   @Input('headerWidth') attrHeaderWidth: number;
    @Input('itemRenderer') attrItemRenderer: (element?: Array<any>, item?: any, resource?: any) => void;
    @Input('ready') attrReady: () => void;
-   @Input('rtl') attrRtl: Boolean;
+   @Input('rtl') attrRtl: boolean;
    @Input('source') attrSource: Array<any>;
    @Input('resources') attrResources: Array<any>;
-   @Input('template') attrTemplate: String;
+   @Input('template') attrTemplate: string;
    @Input('templateContent') attrTemplateContent: any;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -56,7 +56,7 @@ export class jqxKanbanComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -171,7 +171,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   headerHeight(arg?: String | Number) : any {
+   headerHeight(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxKanban('headerHeight', arg);
       } else {
@@ -187,7 +187,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxKanban('height', arg);
       } else {
@@ -259,7 +259,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxKanban('width', arg);
       } else {

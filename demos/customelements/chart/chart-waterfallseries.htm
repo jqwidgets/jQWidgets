@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart LogarithmicWaterfallSeries</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Chart waterfall series with logarithmic axis." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.waterfall.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var sampleData = 
+            [
+                { a: 3, b: 9 },
+                { a: 5, b: 7 },
+                { a: 2, b: 9 },
+                { a: 10, b: 15 },
+                { a: 9, b: 7 },
+                { a: 15, b: 10 },
+                { a: 7, b: 5 },
+                { total: true }
+            ];
+
+            JQXElements.settings["chartSettings"] = 
+            {
+                    title: "Waterfall series with logarithmic axis",
+                    description: "Logarithmic base 2",
+                    padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                    titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+                    source: sampleData,
+                    xAxis:
+                    {
+                        gridLines: { visible: true },
+                        tickMarks: { visible: true }
+                    },
+                    valueAxis: {
+                        logarithmicScale: true,
+                        logarithmicScaleBase: 2,
+                        title: { text: 'Value<br>' },
+                        labels:
+                        {
+                            formatSettings: { decimalPlaces: 2 },
+                            horizontalAlignment: 'right'
+                        }
+                    },
+                    seriesGroups:
+                    [
+                        {
+                            type: 'waterfall',
+                            columnsMaxWidth: 50,
+                            series:
+                            [
+                                { dataField: 'a', displayText: 'A' },
+                                { dataField: 'b', displayText: 'B', summary: 'total' }
+                            ]
+                        }
+                    ]
+                }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This is an example of Custom element Chart waterfall series with logarithmic axis. The type of the seriesGroups is waterfall.
+    </div>
+
+   <jqx-chart settings="chartSettings"></jqx-chart>
+</body>
+</html>

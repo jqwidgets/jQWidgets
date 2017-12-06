@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element RefreshData</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Grid's dynamicllly updaiting and clearing source." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdragdrop.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                localdata: generatedata(500),
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'total', type: 'number' }
+                ],
+                datatype: "array"
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings["gridSettings"] =
+            {
+                source: dataAdapter,
+                columns: [
+                    { text: 'First Name', dataField: 'firstname', width: 130 },
+                    { text: 'Last Name', dataField: 'lastname', width: 130 },
+                    { text: 'Product', dataField: 'productname', width: 180 },
+                    { text: 'Quantity', dataField: 'quantity', width: 80, cellsalign: 'right' },
+                    { text: 'Unit Price', dataField: 'price', width: 90, cellsalign: 'right', cellsformat: 'c2' },
+                    { text: 'Total', dataField: 'total', cellsalign: 'right', minwidth: 100, cellsformat: 'c2' }
+                ]
+            };
+
+        window.onload = function() {
+            var myGrid = document.querySelector('jqx-grid');
+            var myButtons = document.querySelectorAll('jqx-button');
+
+            myButtons[0].addEventListener('click', function() {
+                source.localdata = generatedata(500);
+                myGrid.updatebounddata('cells');
+            });
+
+            myButtons[1].addEventListener('click', function() {
+                myGrid.clear();
+            });
+        };  
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This example illustrates how to dynamically update and clear the Custom element Grid's source.
+    </div>
+
+    <jqx-grid settings="gridSettings"></jqx-grid>
+
+    <div style="margin-top: 10px;">
+        <jqx-button>Refresh Data</jqx-button>
+        <jqx-button>Clear</jqx-button>
+    </div>
+</body>
+</html>

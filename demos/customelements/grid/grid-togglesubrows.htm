@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element ToggleSubRows</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of sub groups in Custom Element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.grouping.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                datatype: 'xml',
+                datafields: [
+                    { name: 'CompanyName', map: 'm\\:properties>d\\:CompanyName', type: 'string' },
+                    { name: 'ContactName', map: 'm\\:properties>d\\:ContactName', type: 'string' },
+                    { name: 'ContactTitle', map: 'm\\:properties>d\\:ContactTitle', type: 'string' },
+                    { name: 'City', map: 'm\\:properties>d\\:City', type: 'string' },
+                    { name: 'PostalCode', map: 'm\\:properties>d\\:PostalCode', type: 'string' },
+                    { name: 'Country', map: 'm\\:properties>d\\:Country', type: 'string' }
+                ],
+                root: 'entry',
+                record: 'content',
+                id: 'm\\:properties>d\\:CustomerID',
+                url: '../sampledata/customers.xml'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: dataAdapter,
+                groupable: true,
+                columns: [
+                    { text: 'Company Name', datafield: 'CompanyName', width: 250 },
+                    { text: 'City', datafield: 'City', width: 120 },
+                    { text: 'Country', datafield: 'Country' }
+                ],
+                groups: ['Country', 'City']
+            }
+
+        window.onload = function() {
+            var myGrid = document.querySelector('jqx-grid');
+            var myInput = document.querySelector('input');
+            var myButtons = document.querySelectorAll('jqx-button');
+
+            myButtons[0].addEventListener('click', function() {
+                var groupNum = myInput.value;
+                myGrid.expandgroup(groupNum);
+            });
+
+            myButtons[1].addEventListener('click', function() {
+                var groupNum = myInput.value;
+                myGrid.collapsegroup(groupNum);
+            });
+
+            myButtons[2].addEventListener('click', function() {
+                myGrid.expandallgroups();
+            });
+
+            myButtons[3].addEventListener('click', function() {
+                myGrid.collapseallgroups();
+            });
+
+            myGrid.addEventListener('groupexpand', function(event) {
+                var expandedGroupContainer = document.querySelector('#expandedGroup');
+                expandedGroupContainer.innerHTML = 'Group: ' + event.args.group + ', Level: ' + event.args.level;
+            });
+
+            myGrid.addEventListener('groupcollapse', function(event) {
+                var collapsedGroupContainer = document.querySelector('#collapsedGroup');
+                collapsedGroupContainer.innerHTML = 'Group: ' + event.args.group + ', Level: ' + event.args.level
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The sample shows how to toggle sub groups in Custom element Grid.
+    </div>
+
+    <div style="font-size: 13px; font-family: Verdana; float: left;">
+
+        <jqx-grid settings="gridSettings"></jqx-grid>
+
+        <div style="margin-top: 30px;">
+            <div style="float: left; margin-left: 20px;">
+                <jqx-button>Expand Group</jqx-button>
+                <br /><br />
+                <jqx-button>Collapse Group</jqx-button>
+                <br /><br />
+                <span style="margin-top: 10px;">Group:</span>
+                <input value="1" style="margin-top: 10px; width: 20px;" type="text" />
+            </div>
+            <div style="float: left; margin-left: 20px;">
+                <jqx-button>Expand All Group</jqx-button>
+                <br /><br />
+                <jqx-button>Collapse All Group</jqx-button>
+                <br /><br />
+            </div>
+            <div style="float: left; margin-left: 20px;">
+                <div style="font-weight: bold;">
+                    <span>Event Log:</span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <span>Expanded Group:</span>
+                    <span id="expandedGroup"></span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <span>Collapsed Group:</span>
+                    <span id="collapsedGroup"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

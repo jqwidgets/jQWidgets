@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Notification Custom Element DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionalities in Custom Element Notification." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnotification.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['NotificationSettings'] =
+            {
+                position: 'top-right',
+                opacity: 0.9,
+                autoOpen: false,
+                animationOpenDelay: 800,
+                autoClose: true,
+                autoCloseDelay: 3000,
+                template: 'info',
+                width: 300
+            };
+
+        JQXElements.settings['timeNotification'] =
+            {
+                position: 'top-right',
+                opacity: 0.9,
+                autoOpen: false,
+                animationOpenDelay: 800,
+                autoClose: true,
+                autoCloseDelay: 3000,
+                template: 'time',
+                width: 300
+            };
+                
+        window.onload = function() {
+            var myNotification = document.querySelectorAll('jqx-notification');
+            var myButon = document.querySelectorAll('jqx-button');
+
+            myButon[0].addEventListener('click', function() {
+                myNotification[0].open();
+            });
+
+            myButon[1].addEventListener('click', function() {
+                var date = new Date();
+                var minutes = date.getMinutes();
+
+                if (minutes < 10) {
+                    minutes = '0' + minutes;
+                }
+
+                var seconds = date.getSeconds();
+                if (seconds < 10) {
+                    seconds = '0' + seconds;
+                }
+
+                document.querySelector('#currentTime').innerHTML = date.getHours() + ":" + minutes + ":" + seconds;
+                myNotification[1].open();
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This is an example of the default functionalities in Custom Element Notification.
+    </div>
+
+    <jqx-notification settings="NotificationSettings">
+
+        <div>
+            Welcome to our website.
+        </div>
+
+    </jqx-notification>
+
+    <jqx-notification settings="timeNotification">
+        <div>Current time: <span id="currentTime" style="font-weight: bold;"></span>.</div>
+    </jqx-notification>
+
+    <jqx-button>
+        Open a message notification
+    </jqx-button>
+
+    <br />
+
+    <jqx-button style="margin-top: 10px;">
+        Open a current time notification
+    </jqx-button>
+</body>
+</html>

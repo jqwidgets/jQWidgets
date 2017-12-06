@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -29,17 +29,17 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges 
 {
    @Input('decimalNotation') attrDecimalNotation: any;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('placeHolder') attrPlaceHolder: String;
-   @Input('roundedCorners') attrRoundedCorners: Boolean;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('spinButtons') attrSpinButtons: Boolean;
-   @Input('spinButtonsStep') attrSpinButtonsStep: Number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('placeHolder') attrPlaceHolder: string;
+   @Input('roundedCorners') attrRoundedCorners: boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('spinButtons') attrSpinButtons: boolean;
+   @Input('spinButtonsStep') attrSpinButtonsStep: number;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: String;
-   @Input('value') attrValue: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('value') attrValue: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -65,7 +65,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -156,8 +156,10 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
    }
 
    get ngValue(): any {
-       if (this.widgetObject)
-           return this.host.val();
+       if (this.widgetObject) {
+           const value = this.host.val();
+           return value;
+       }
        return '';
    }
 
@@ -203,7 +205,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxComplexInput('height', arg);
       } else {
@@ -275,7 +277,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxComplexInput('width', arg);
       } else {
@@ -289,12 +291,12 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       this.host.jqxComplexInput('destroy');
    }
 
-   getReal(complexNumber?: number): number {
-      return this.host.jqxComplexInput('getReal', complexNumber);
+   getReal(complexnumber?: number): number {
+      return this.host.jqxComplexInput('getReal', complexnumber);
    }
 
-   getImaginary(complexNumber?: number): number {
-      return this.host.jqxComplexInput('getImaginary', complexNumber);
+   getImaginary(complexnumber?: number): number {
+      return this.host.jqxComplexInput('getImaginary', complexnumber);
    }
 
    getDecimalNotation(part?: string, type?: string): string {

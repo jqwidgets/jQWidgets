@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Layout Custom Element Save/LoadLayout</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of how to save and load the current Custom Element Layout." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxribbon.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlayout.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        .jqx-layout-group-auto-hide-content-vertical {
+            width: 200px;
+        }
+    </style>
+    <script>
+        var source = [{
+            icon: '../../images/earth.png',
+            label: 'Project',
+            expanded: true,
+            items: [{
+                icon: '../../images/folder.png',
+                label: 'css',
+                expanded: true,
+                items: [{
+                    icon: '../../images/nav1.png',
+                    label: 'jqx.base.css'
+                }, {
+                    icon: '../../images/nav1.png',
+                    label: 'jqx.energyblue.css'
+                }, {
+                    icon: '../../images/nav1.png',
+                    label: 'jqx.orange.css'
+                }]
+            }, {
+                icon: '../../images/folder.png',
+                label: 'scripts',
+                items: [{
+                    icon: '../../images/nav1.png',
+                    label: 'jqxcore.js'
+                }, {
+                    icon: '../../images/nav1.png',
+                    label: 'jqxdata.js'
+                }, {
+                    icon: '../../images/nav1.png',
+                    label: 'jqxgrid.js'
+                }]
+            }, {
+                icon: '../../images/nav1.png',
+                label: 'index.htm'
+            }]
+        }];
+
+        var layout = [{
+            type: 'layoutGroup',
+            orientation: 'horizontal',
+            items: [{
+                type: 'autoHideGroup',
+                alignment: 'left',
+                width: '10%',
+                unpinnedWidth: '20%',
+                items: [{
+                    type: 'layoutPanel',
+                    title: 'Toolbox',
+                    contentContainer: 'ToolboxPanel'
+                }, {
+                    type: 'layoutPanel',
+                    title: 'Help',
+                    contentContainer: 'HelpPanel'
+                }]
+            }, {
+                type: 'layoutGroup',
+                orientation: 'vertical',
+                width: '60%',
+                items: [{
+                    type: 'documentGroup',
+                    height: '50%',
+                    minHeight: 200,
+                    items: [{
+                        type: 'documentPanel',
+                        title: 'Document 1',
+                        contentContainer: 'Document1Panel'
+                    }, {
+                        type: 'documentPanel',
+                        title: 'Document 2',
+                        contentContainer: 'Document2Panel'
+                    }]
+                }, {
+                    type: 'tabbedGroup',
+                    height: '50%',
+                    pinnedHeight: 30,
+                    items: [{
+                        type: 'layoutPanel',
+                        title: 'Error List',
+                        contentContainer: 'ErrorListPanel'
+                    }, {
+                        type: 'layoutPanel',
+                        title: 'Output',
+                        contentContainer: 'OutputPanel',
+                        selected: true
+                    }]
+                }]
+            }, {
+                type: 'tabbedGroup',
+                width: '30%',
+                minWidth: 200,
+                items: [{
+                    type: 'layoutPanel',
+                    title: 'Solution Explorer',
+                    contentContainer: 'SolutionExplorerPanel'
+                }, {
+                    type: 'layoutPanel',
+                    title: 'Properties',
+                    contentContainer: 'PropertiesPanel'
+                }]
+            }]
+        }];
+        JQXElements.settings['solutionExplorerTree'] =
+            {
+                source: source
+            }
+
+        JQXElements.settings['layoutSettings'] =
+            {
+                layout: layout,
+                contextMenu: true
+            }
+
+        JQXElements.settings['loadLayoutButton'] =
+            {
+                disabled: true
+            }
+
+        window.onload = function() {
+            var myLayout = document.querySelector('jqx-layout');
+            var myButtons = document.querySelectorAll('jqx-button');
+
+            var savedLayout;
+
+            myButtons[0].addEventListener('click', function() {
+                savedLayout = myLayout.saveLayout();
+                myButtons[1].disabled = false;
+            });
+
+            myButtons[1].addEventListener('click', function() {
+                myLayout.loadLayout(savedLayout);
+                myButtons[1].disabled = true;
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows how to save/load the current layout..
+    </div>
+
+    <jqx-layout settings="layoutSettings">
+        <!--The panel content divs can have a flat structure-->
+        <!--autoHideGroup-->
+        <div data-container="ToolboxPanel">
+            List of tools
+        </div>
+        <div data-container="HelpPanel">
+            Help topics
+        </div>
+        <!--documentGroup-->
+        <div data-container="Document1Panel">
+            Document 1 content
+        </div>
+        <div data-container="Document2Panel">
+            Document 2 content
+        </div>
+        <!--bottom tabbedGroup-->
+        <div data-container="ErrorListPanel">
+            List of errors
+        </div>
+        <div data-container="OutputPanel">
+            Output
+        </div>
+        <!--right tabbedGroup-->
+        <div data-container="SolutionExplorerPanel">
+            <jqx-tree id="solutionExplorerTree" settings="solutionExplorerTree" style="border: none;">
+            </jqx-tree>
+        </div>
+        <div data-container="PropertiesPanel">
+            List of properties
+        </div>
+    </jqx-layout>
+
+    <div style="margin-top: 25px;">
+        <jqx-button style="float: left; margin-right: 10px;">
+            Save layout
+        </jqx-button>
+        <jqx-button settings="loadLayoutButton" style="float: left;">
+            Load layout
+        </jqx-button>
+    </div>
+</body>
+</html>

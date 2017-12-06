@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>FormattedInput Custom Element ExponentialNotation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of exponential notation in Custom Elements FormattedInput." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxformattedinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['formattedInputSettings'] =
+            {
+                radix: 'decimal',
+                decimalNotation: 'exponential',
+                value: '330000'
+            }
+
+        window.onload = function() {
+            var myButtons = document.querySelectorAll('jqx-button');
+            var myFormattedInput = document.querySelector('jqx-formatted-input');
+
+            myButtons[0].addEventListener('click', function() {
+                var decimalValue = myFormattedInput.val('decimal');
+                alert('Decimal value: ' + decimalValue);
+            });
+
+            myButtons[1].addEventListener('click', function() {
+                var exponentialValue = myFormattedInput.val('exponential');
+                alert('Exponential value: ' + exponentialValue);
+            });
+
+            myButtons[2].addEventListener('click', function() {
+                var scientificValue = myFormattedInput.val('scientific');
+                alert('Scientific value: ' + scientificValue);
+            });
+
+            myButtons[3].addEventListener('click', function() {
+                var engineeringValue = myFormattedInput.val('engineering');
+                alert('Engineering value: ' + engineeringValue);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In Custom element FormattedInput, decimal numbers can be displayed in exponential notation. Furthermore, the val method can get the scientific and engineering notations of the decimal number.
+    </div>
+
+   <jqx-formatted-input settings="formattedInputSettings" type="text">
+   </jqx-formatted-input>
+
+    <div style="margin-top: 20px;">
+        <jqx-button settings="buttonSettings">
+            Get decimal value
+        </jqx-button>
+        <jqx-button settings="buttonSettings" style="margin-left: 5px;">
+            Get exponential notation
+        </jqx-button><br />
+        <br />
+        <jqx-button settings="buttonSettings">
+            Get scientific notation
+        </jqx-button>
+        <jqx-button style="margin-left: 5px;">
+            Get engineering notation
+        </jqx-button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element PagingAPI</title>
+    <meta name="description" content="This is an example of the paging API in TreeGrid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var source =
+            {
+                dataType: 'array',
+                dataFields: [
+                    { name: 'name', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'id', type: 'number' },
+                    { name: 'parentid', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'date', type: 'date' },
+                    { name: 'customer', type: 'string' }
+                ],
+                hierarchy:
+                {
+                    keyDataField: { name: 'id' },
+                    parentDataField: { name: 'parentid' }
+                },
+                id: 'id',
+                localData: generateordersdata(10)             
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['treeGridSettings'] =
+            {
+                source: dataAdapter,
+                sortable: true,
+                pageable: true,
+                autoRowHeight: false,
+                pagerPosition: 'both',
+                pagerMode: 'advanced',
+                ready: function () {
+                    var myTreeGrid = document.querySelector('jqx-tree-grid');
+                    myTreeGrid.expandRow(2);
+                },
+                columns: [
+                    { text: 'Order Name', dataField: 'name', align: 'center', width: 250 },
+                    { text: 'Customer', dataField: 'customer', align: 'center', width: 250 },
+                    { text: 'Price', dataField: 'price', cellsFormat: 'c2', align: 'center', cellsAlign: 'right', width: 80 },
+                    {
+                        text: 'Order Date', dataField: 'date', align: 'center', cellsFormat: 'dd-MMMM-yyyy hh:mm',
+                        cellsRenderer: function (rowKey, column, cellValue, rowData, cellText) {
+                            if (rowData.level === 0) {
+                                return dataAdapter.formatDate(cellValue, 'dd-MMMM-yyyy');
+                            }
+
+                            return cellText;
+                        }
+                    }
+                ]
+            };
+
+        JQXElements.settings['pagerModeDropDownListSettings'] =
+            {
+                selectedIndex: 1, 
+                autoDropDownHeight: true,
+                source: ['default', 'advanced']
+            };
+        JQXElements.settings['pagerPositionDropDownListSettings'] =
+            {
+                selectedIndex: 2,
+                autoDropDownHeight: true, 
+                source: ['top', 'bottom', 'both']
+            };
+
+        window.onload = function() {
+            var myTreeGrid = document.querySelector('jqx-tree-grid');
+            var myInput = document.querySelector('jqx-input');
+            var myPanel = document.querySelector('jqx-panel');
+            var myButton = document.querySelector('jqx-button');
+            var myDropDownLists = document.querySelectorAll('jqx-drop-down-list');
+
+            myDropDownLists[0].addEventListener('select', function (event) {
+                if(event.args.index == 0) {
+                    myTreeGrid.pagerMode = 'default';
+                } else {
+                    myTreeGrid.pagerMode = 'advanced';
+                }
+            });
+
+            myDropDownLists[1].addEventListener('select', function (event) {
+                if(event.args.index == 0) {
+                    myTreeGrid.pagerPosition = 'top';
+                } else if (event.args.index == 1) {
+                    myTreeGrid.pagerPosition = 'bottom';
+                } else {
+                    myTreeGrid.pagerPosition = 'both';
+                }
+            });
+
+            myButton.addEventListener('click', function (event) {
+                var page = parseInt(myInput.val());
+                if (!isNaN(page)) {
+                    page--;
+                    if (page < 0) page = 0;
+                        myTreeGrid.goToPage(page);
+                }
+            });
+
+            var loop = 0;
+
+            myTreeGrid.addEventListener('pageChanged', function (event) {
+                if(loop >= 5) {
+                    myPanel.clearcontent();
+                    loop = 0;
+                }
+
+                loop++;
+                var args = event.args;
+                var eventData = "<div>Page:" + (1 + args.pagenum) + ", Page Size: " + args.pageSize + "</div>";
+                myPanel.prepend('<div class="logged" style="margin-top: 5px;">' + eventData + '</div>');
+            });
+
+            myTreeGrid.addEventListener('pageSizeChanged', function (event) {
+                myPanel.clearcontent();
+                var args = event.args;
+                var eventData = "<div>Page: " + (1 + args.pagenum) + ", Page Size: " + args.pageSize + ", Old Page Size: " + args.oldpageSize + "</div>";
+                myPanel.prepend('<div style="margin-top: 5px;">' + eventData + '</div>');
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this sample is illustrated the Tree Grid Custom Element Data Paging API.
+    </div>
+
+    <jqx-tree-grid style="float: left" settings="treeGridSettings"></jqx-tree-grid>
+
+    <div style="float: left; font-size: 13px; font-family: Verdana; margin-left: 30px">
+        <div><strong>Settings</strong></div>
+        <div style="margin-top: 10px">
+            <div>Pager Mode:</div>
+
+            <jqx-drop-down-list settings="pagerModeDropDownListSettings"></jqx-drop-down-list>
+
+            <div style="margin-top: 10px">Pager Position:</div>
+
+            <jqx-drop-down-list settings="pagerPositionDropDownListSettings"></jqx-drop-down-list>
+
+            <div style="margin-top: 10px">Go to Page:</div>
+
+            <jqx-input></jqx-input>
+            <jqx-button>Apply</jqx-button>
+
+        </div>
+        <div style="margin-top: 10px; display: inline-block">
+            <div>Event Log:</div>
+            <jqx-panel style="margin-top: 5px"></jqx-panel>
+        </div>
+    </div>
+</body>
+</html>

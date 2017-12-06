@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart Scatter Chart</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Scatter Chart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var sampleData = 
+            [
+                { City: 'New York', SalesQ1: 330500, SalesQ2: 210500, YoYGrowth: 1.05 },
+                { City: 'London', SalesQ1: 120000, SalesQ2: 169000, YoYGrowth: 1.15 },
+                { City: 'Paris', SalesQ1: 205000, SalesQ2: 275500, YoYGrowth: 1.45 },
+                { City: 'Tokyo', SalesQ1: 187000, SalesQ2: 130100, YoYGrowth: 0.45 },
+                { City: 'Berlin', SalesQ1: 187000, SalesQ2: 113000, YoYGrowth: 1.65 },
+                { City: 'San Francisco', SalesQ1: 142000, SalesQ2: 102000, YoYGrowth: 1.25 },
+                { City: 'Chicago', SalesQ1: 171000, SalesQ2: 124000, YoYGrowth: 0.75 }
+            ];
+
+        var symbolsList = ['circle', 'diamond', 'square', 'triangle_up', 'triangle_down', 'triangle_left', 'triangle_right'];
+
+        JQXElements.settings['chartSettings'] = 
+            {
+                title: 'Sales by City in Q1 & Q2',
+                description: '',
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+                colorScheme: 'scheme01',
+                xAxis:
+                {
+                    dataField: 'City',
+                    valuesOnTicks: false
+                },
+                valueAxis:
+                {
+                    minValue: 50000,
+                    maxValue: 350000,
+                    unitInterval: 50000,
+                    title: { text: 'Sales ($)<br>' },
+                    labels: {
+                        formatSettings: { prefix: '$', thousandsSeparator: ',' },
+                        horizontalAlignment: 'right'
+                    }
+                },
+                seriesGroups:
+                [
+                    {
+                        type: 'scatter',
+                        series: [
+                            { dataField: 'SalesQ1', symbolSize: 20, symbolType: 'circle', displayText: 'Sales in Q1' },
+                            { dataField: 'SalesQ2', symbolSize: 20, symbolType: 'diamond', displayText: 'Sales in Q2' }
+                        ]
+                    }
+                ]
+            };
+
+        JQXElements.settings['DropDownSerie1Symbol'] = 
+            {
+                source: symbolsList,
+                selectedIndex: 2,
+                dropDownHeight: 100
+            };
+
+        JQXElements.settings['DropDownSerie2Symbol'] = 
+            {
+                source: symbolsList,
+                selectedIndex: 1,
+                dropDownHeight: 100
+            };
+
+        window.onload = function() {
+            var myChart = document.querySelector('jqx-chart');
+            var myDropDownList = document.querySelectorAll('jqx-drop-down-list');
+
+            var chart = myChart.getInstance();
+
+            myDropDownList[0].addEventListener('change', function(event) {
+                var value = event.args.item.value;
+                chart.seriesGroups[0].series[0].symbolType = value;
+                chart.update();
+            });
+
+            myDropDownList[1].addEventListener('change', function(event) {
+                var value = event.args.item.value;
+                chart.seriesGroups[0].series[1].symbolType = value;
+                chart.update();
+            });
+        };
+    </script>
+</head>
+<body>
+   
+   <jqx-chart settings="chartSettings" style="width:850px; height:500px;"></jqx-chart>
+
+    <table style="width: 550px">
+        <tr>
+            <td>
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Select Serie 1 Symbol:
+                </p>
+                <jqx-drop-down-list settings='DropDownSerie1Symbol'>
+                </jqx-drop-down-list>
+            </td>
+            <td>
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Select Serie 2 Symbol:
+                </p>
+                <jqx-drop-down-list settings='DropDownSerie2Symbol'>
+                </jqx-drop-down-list>
+            </td>
+        </tr>
+    </table>
+
+    <div class="example-description">
+        This is an example of Custom element Scatter Chart. The scatter chart is use to display values for two variables of a series through their coordinates. The values are represented as a collection of points. You can show more than two series by using different shapes for the values representation.
+    </div>
+
+</body>
+</html>

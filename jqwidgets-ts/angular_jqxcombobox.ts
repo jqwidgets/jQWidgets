@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -32,45 +32,45 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges 
 {
    @Input('animationType') attrAnimationType: any;
-   @Input('autoComplete') attrAutoComplete: Boolean;
-   @Input('autoOpen') attrAutoOpen: Boolean;
-   @Input('autoItemsHeight') attrAutoItemsHeight: Boolean;
-   @Input('autoDropDownHeight') attrAutoDropDownHeight: Boolean;
-   @Input('closeDelay') attrCloseDelay: Number;
-   @Input('checkboxes') attrCheckboxes: Boolean;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('displayMember') attrDisplayMember: String;
+   @Input('autoComplete') attrAutoComplete: boolean;
+   @Input('autoOpen') attrAutoOpen: boolean;
+   @Input('autoItemsHeight') attrAutoItemsHeight: boolean;
+   @Input('autoDropDownHeight') attrAutoDropDownHeight: boolean;
+   @Input('closeDelay') attrCloseDelay: number;
+   @Input('checkboxes') attrCheckboxes: boolean;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('displayMember') attrDisplayMember: string;
    @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: any;
    @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: any;
-   @Input('dropDownHeight') attrDropDownHeight: String | Number;
-   @Input('dropDownWidth') attrDropDownWidth: String | Number;
-   @Input('enableHover') attrEnableHover: Boolean;
-   @Input('enableSelection') attrEnableSelection: Boolean;
-   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: Boolean;
-   @Input('itemHeight') attrItemHeight: Number;
-   @Input('multiSelect') attrMultiSelect: Boolean;
-   @Input('minLength') attrMinLength: Number;
-   @Input('openDelay') attrOpenDelay: Number;
-   @Input('popupZIndex') attrPopupZIndex: Number;
-   @Input('placeHolder') attrPlaceHolder: String;
-   @Input('remoteAutoComplete') attrRemoteAutoComplete: Boolean;
-   @Input('remoteAutoCompleteDelay') attrRemoteAutoCompleteDelay: Number;
+   @Input('dropDownHeight') attrDropDownHeight: number | string;
+   @Input('dropDownWidth') attrDropDownWidth: number | string;
+   @Input('enableHover') attrEnableHover: boolean;
+   @Input('enableSelection') attrEnableSelection: boolean;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
+   @Input('itemHeight') attrItemHeight: number;
+   @Input('multiSelect') attrMultiSelect: boolean;
+   @Input('minLength') attrMinLength: number;
+   @Input('openDelay') attrOpenDelay: number;
+   @Input('popupZIndex') attrPopupZIndex: number;
+   @Input('placeHolder') attrPlaceHolder: string;
+   @Input('remoteAutoComplete') attrRemoteAutoComplete: boolean;
+   @Input('remoteAutoCompleteDelay') attrRemoteAutoCompleteDelay: number;
    @Input('renderer') attrRenderer: (index:number, label?:string, value?:any) => string;
    @Input('renderSelectedItem') attrRenderSelectedItem: (index:number, item?:any) => string;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('selectedIndex') attrSelectedIndex: Number;
-   @Input('showArrow') attrShowArrow: Boolean;
-   @Input('showCloseButtons') attrShowCloseButtons: Boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('selectedIndex') attrSelectedIndex: number;
+   @Input('showArrow') attrShowArrow: boolean;
+   @Input('showCloseButtons') attrShowCloseButtons: boolean;
    @Input('searchMode') attrSearchMode: any;
-   @Input('search') attrSearch: (searchString:string) => void;
+   @Input('search') attrSearch: (searchstring:string) => void;
    @Input('source') attrSource: Array<any>;
-   @Input('scrollBarSize') attrScrollBarSize: String | Number;
+   @Input('scrollBarSize') attrScrollBarSize: number | string;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: String;
+   @Input('theme') attrTheme: string;
    @Input('validateSelection') attrValidateSelection: (itemValue:string) => boolean;
-   @Input('valueMember') attrValueMember: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('valueMember') attrValueMember: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -96,7 +96,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -289,7 +289,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownHeight(arg?: String | Number) : any {
+   dropDownHeight(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxComboBox('dropDownHeight', arg);
       } else {
@@ -297,7 +297,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownWidth(arg?: String | Number) : any {
+   dropDownWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxComboBox('dropDownWidth', arg);
       } else {
@@ -329,7 +329,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxComboBox('height', arg);
       } else {
@@ -457,7 +457,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   search(arg?: (searchString:string) => void) : any {
+   search(arg?: (searchstring:string) => void) : any {
       if (arg !== undefined) {
           this.host.jqxComboBox('search', arg);
       } else {
@@ -473,7 +473,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   scrollBarSize(arg?: String | Number) : any {
+   scrollBarSize(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxComboBox('scrollBarSize', arg);
       } else {
@@ -513,7 +513,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxComboBox('width', arg);
       } else {
@@ -651,8 +651,8 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
       this.host.jqxComboBox('selectItem', item);
    }
 
-   searchString(): undefined {
-      return this.host.jqxComboBox('searchString');
+   searchstring(): string {
+      return this.host.jqxComboBox('searchstring');
    }
 
    updateItem(item: any, itemValue: string): void {

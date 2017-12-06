@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tag Cloud Custom Element ColorSelection</title>
+    <meta name='description' content='This demo demonstrates how to change the color of a TagCloud Custom Element.' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtagcloud.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcolorpicker.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownbutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var unemploymentRate =
+            [
+                { 'country': 'Namibia', 'rate': 37.6 },
+                { 'country': 'Macedonia, FYR', 'rate': 32.0 },
+                { 'country': 'Latvia', 'rate': 18.7 },
+                { 'country': 'Lithuania', 'rate': 17.8 },
+                { 'country': 'Estonia', 'rate': 16.9 },
+                { 'country': 'Serbia', 'rate': 16.6 },
+                { 'country': 'Georgia', 'rate': 16.5 },
+                { 'country': 'Yemen, Rep.', 'rate': 14.6 },
+                { 'country': 'Slovak Republic', 'rate': 14.4 },
+                { 'country': 'Dominican Republic', 'rate': 14.2 },
+                { 'country': 'Tunisia', 'rate': 14.2 },
+                { 'country': 'Armenia', 'rate': 28.6 },
+                { 'country': 'Bosnia and Herzegovina', 'rate': 27.2 },
+                { 'country': 'Lesotho', 'rate': 25.3 },
+                { 'country': 'South Africa', 'rate': 24.7 },
+                { 'country': 'Spain', 'rate': 20.1 },
+                { 'country': 'Albania', 'rate': 13.8 },
+                { 'country': 'Ireland', 'rate': 13.6 },
+                { 'country': 'Jordan', 'rate': 12.9 },
+                { 'country': 'Greece', 'rate': 12.5 }
+            ];
+
+        var source =
+            {
+                datatype: 'array',
+                localdata: unemploymentRate,
+                datafields: [
+                    { name: 'country' },
+                    { name: 'rate' }
+                ]
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source, {});
+     
+        JQXElements.settings['tagCloudSettings'] =
+            {
+                source: dataAdapter,
+                fontSizeUnit: 'px',
+                minFontSize: 12,
+                maxFontSize: 20,
+                displayMember: 'country',
+                valueMember: 'rate',
+                urlBase: 'http://localhost/',
+                minColor: '#00AA99',
+                maxColor: '#FF0000'
+     
+            };
+
+        JQXElements.settings['colorPicker1Settings'] =
+            {
+                color: '00AA99', colorMode: 'hue'
+            };
+        JQXElements.settings['colorPicker2Settings'] =
+            {
+                color: 'FF0000', colorMode: 'hue'
+            };
+
+        var getTextElementByColor = function (color) {
+            var colorContainer = document.createElement('div');
+            colorContainer.setAttribute('style', 'text-shadow: none; position: relative; padding-bottom: 2px; margin-top: 2px;');
+            if (color == 'transparent' || color.hex == '') {
+                return colorContainer.innerText = 'transparent';
+            }
+
+            colorContainer.innerText = '#' + color.hex;
+            var nThreshold = 105;
+            var bgDelta = (color.r * 0.299) + (color.g * 0.587) + (color.b * 0.114);
+            var foreColor = (255 - bgDelta < nThreshold) ? 'Black' : 'White';
+
+            colorContainer.style.color = foreColor;
+            colorContainer.style.backgroundColor = '#' + color.hex;
+            colorContainer.className += ' jqx-rc-all';
+            return colorContainer;
+        };
+
+        window.onload = function () {
+            var myTagCloud = document.querySelector('jqx-tag-cloud');
+            var myDropDownButtons = document.querySelectorAll('jqx-drop-down-button');
+            var myColorPickers = document.querySelectorAll('jqx-color-picker');
+
+            myDropDownButtons[0].setContent(getTextElementByColor(new jqx.color({ hex: '00AA99' })));
+            myDropDownButtons[1].setContent(getTextElementByColor(new jqx.color({ hex: 'FF0000' })));
+
+            myColorPickers[0].addEventListener('colorchange', function (event) {
+                myDropDownButtons[0].setContent(getTextElementByColor(event.args.color));
+                myTagCloud.minColor = '#' + event.args.color.hex;
+            });
+
+            myColorPickers[1].addEventListener('colorchange', function (event) {
+                myDropDownButtons[1].setContent(getTextElementByColor(event.args.color));
+                myTagCloud.maxColor = '#' + event.args.color.hex;
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo demonstrates how to change the color of a TagCloud Custom Element.
+    </div>
+
+    <jqx-tag-cloud settings="tagCloudSettings"></jqx-tag-cloud>
+
+    <div>
+
+        <label style="margin-left: 5px; font-size: 12px; font-family: Verdana">Select Min Color</label>
+        <br />
+        <jqx-drop-down-button>
+            <div style="padding: 3px">
+                <jqx-color-picker settings="colorPicker1Settings"></jqx-color-picker>
+            </div>
+        </jqx-drop-down-button>
+
+        <br />
+
+        <label style="margin-left: 5px; font-size: 12px; font-family: Verdana">Select Max Color</label>
+        <br />
+
+        <jqx-drop-down-button>
+            <div style="padding: 3px">
+                <jqx-color-picker settings="colorPicker2Settings"></jqx-color-picker>
+            </div>
+        </jqx-drop-down-button>
+  
+    </div>
+</body>
+</html>

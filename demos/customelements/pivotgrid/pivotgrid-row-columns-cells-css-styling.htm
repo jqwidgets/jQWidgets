@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Description">PivotGrid Custom Element - rows, columsn and cells styling with CSS</title>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpivot.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpivotgrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <style>
+        .columnStyle {
+            background-color: #293955;
+            color: #fff;
+            border-color: #293955;
+        }
+
+        .columnStyleSelected {
+            background-color: #FFF29D;
+            color: #333 !important;
+            border-color: #293955;
+        }
+
+        .rowStyle {
+            background-color: #293955;
+            color: #fff;
+            border-color: #293955;
+        }
+
+        .rowStyleSelected {
+            background-color: #FFF29D;
+            color: #333 !important;
+            border-color: #293955;
+        }
+
+        .cellStyle {
+            background-color: #E6E7E8;
+            color: #333;
+        }
+
+        .cellStyleSelected {
+            background-color: #FFF29D;
+            color: #333 !important;
+            border-color: #D6DBE9 !important;
+        }
+    </style>
+
+
+    <script type="text/javascript">
+             // prepare sample data
+            var data = new Array();
+
+            var firstNames =
+            [
+                "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene"
+            ];
+
+            var lastNames =
+            [
+                "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier"
+            ];
+
+            var productNames =
+            [
+                "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist"
+            ];
+
+            var priceValues =
+            [
+                "2.25", "1.5", "3.0", "3.3", "4.5", "3.6", "3.8", "2.5", "5.0", "1.75", "3.25", "4.0"
+            ];
+
+            for (var i = 0; i < 500; i++) {
+                var row = {};
+                var productindex = Math.floor(Math.random() * productNames.length);
+                var price = parseFloat(priceValues[productindex]);
+                var quantity = 1 + Math.round(Math.random() * 10);
+
+                row["firstname"] = firstNames[Math.floor(Math.random() * firstNames.length)];
+                row["lastname"] = lastNames[Math.floor(Math.random() * lastNames.length)];
+                row["productname"] = productNames[productindex];
+                row["price"] = price;
+                row["quantity"] = quantity;
+                row["total"] = price * quantity;
+
+                data[i] = row;
+            }
+
+            // create a data source and data adapter
+            var source =
+            {
+                localdata: data,
+                datatype: "array",
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'total', type: 'number' }
+                ]
+            };
+
+            // create a pivot data source from the dataAdapter
+            var pivotDataSource = new jqx.pivot(
+                new jqx.dataAdapter(source, {autoBind: true}),
+                {
+                    pivotValuesOnRows: false,
+                    rows: [
+                        { dataField: 'firstname', className: 'rowStyle', classNameSelected: 'rowStyleSelected' },
+                        { dataField: 'lastname', className: 'rowStyle', classNameSelected: 'rowStyleSelected' }
+                    ],
+                    columns: [
+                        { dataField: 'productname', className: 'columnStyle', classNameSelected: 'columnStyleSelected' }
+                    ],
+                    filters: [
+                        {
+                            dataField: 'productname',
+                            filterFunction: function (value) {
+                                if (value == "Black Tea" || value == "Green Tea")
+                                    return true;
+
+                                return false;
+                            }
+                        }
+                    ],
+                    values: [
+                        { dataField: 'price', 'function': 'sum', text: 'Sum', formatSettings: { prefix: '', decimalPlaces: 2 }, className: 'columnStyle', classNameSelected: 'columnStyleSelected', cellsClassName: 'cellStyle', cellsClassNameSelected: 'cellStyleSelected' },
+                        { dataField: 'price', 'function': 'count', text: 'Count', className: 'columnStyle', classNameSelected: 'columnStyleSelected', cellsClassName: 'cellStyle', cellsClassNameSelected: 'cellStyleSelected' },
+                        { dataField: 'price', 'function': 'average', text: 'Average', formatSettings: { prefix: '', decimalPlaces: 2 }, className: 'columnStyle', classNameSelected: 'columnStyleSelected', cellsClassName: 'cellStyle', cellsClassNameSelected: 'cellStyleSelected' },
+                    ]
+                });
+
+            // create a pivot grid
+            JQXElements.settings["pivotSettings"] =            
+                {
+                    source: pivotDataSource,
+                    treeStyleRows: false,
+                    autoResize: false,
+                    multipleSelectionEnabled: true
+                };
+
+    </script>
+</head>
+<body class='default'>
+    <jqx-pivot-grid settings="pivotSettings" id="divPivotGrid" style="height: 400px; width: 800px; background-color: white;">
+    </jqx-pivot-grid>
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <div style="width: 800px;">
+            This is an example of Pivot Grid with custom style of the grid cells depending on their current selection state.
+            You can override the style of any cell, row or column using standard CSS. The custom styles can be applied during
+            the data binding definitions and you can use different styles for different pivot dataFields. The pivot grid also
+            allows you to override the style of individual rows and columns at runtime after the databinding step.
+        </div>
+    </div>
+
+</body>
+</html>

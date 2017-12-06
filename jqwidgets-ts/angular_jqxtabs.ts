@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -18,32 +18,32 @@ declare let JQXLite: any;
 export class jqxTabsComponent implements OnChanges
 {
    @Input('animationType') attrAnimationType: any;
-   @Input('autoHeight') attrAutoHeight: Boolean;
-   @Input('closeButtonSize') attrCloseButtonSize: Number;
-   @Input('collapsible') attrCollapsible: Boolean;
-   @Input('contentTransitionDuration') attrContentTransitionDuration: Number;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('enabledHover') attrEnabledHover: Boolean;
-   @Input('enableScrollAnimation') attrEnableScrollAnimation: Boolean;
-   @Input('enableDropAnimation') attrEnableDropAnimation: Boolean;
-   @Input('initTabContent') attrInitTabContent: (tab?: Number) => void;
-   @Input('keyboardNavigation') attrKeyboardNavigation: Boolean;
+   @Input('autoHeight') attrAutoHeight: boolean;
+   @Input('closeButtonSize') attrCloseButtonSize: number;
+   @Input('collapsible') attrCollapsible: boolean;
+   @Input('contentTransitionDuration') attrContentTransitionDuration: number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('enabledHover') attrEnabledHover: boolean;
+   @Input('enableScrollAnimation') attrEnableScrollAnimation: boolean;
+   @Input('enableDropAnimation') attrEnableDropAnimation: boolean;
+   @Input('initTabContent') attrInitTabContent: (tab?: number) => void;
+   @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
    @Input('next') attrNext: any;
    @Input('previous') attrPrevious: any;
    @Input('position') attrPosition: any;
-   @Input('reorder') attrReorder: Boolean;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('scrollAnimationDuration') attrScrollAnimationDuration: Number;
-   @Input('selectedItem') attrSelectedItem: Number;
-   @Input('selectionTracker') attrSelectionTracker: Boolean;
-   @Input('scrollable') attrScrollable: Boolean;
+   @Input('reorder') attrReorder: boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('scrollAnimationDuration') attrScrollAnimationDuration: number;
+   @Input('selectedItem') attrSelectedItem: number;
+   @Input('selectionTracker') attrSelectionTracker: boolean;
+   @Input('scrollable') attrScrollable: boolean;
    @Input('scrollPosition') attrScrollPosition: any;
-   @Input('scrollStep') attrScrollStep: Number;
-   @Input('showCloseButtons') attrShowCloseButtons: Boolean;
+   @Input('scrollStep') attrScrollStep: number;
+   @Input('showCloseButtons') attrShowCloseButtons: boolean;
    @Input('toggleMode') attrToggleMode: any;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -66,7 +66,7 @@ export class jqxTabsComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -229,7 +229,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxTabs('height', arg);
       } else {
@@ -237,7 +237,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   initTabContent(arg?: (tab?: Number) => void) : any {
+   initTabContent(arg?: (tab?: number) => void) : any {
       if (arg !== undefined) {
           this.host.jqxTabs('initTabContent', arg);
       } else {
@@ -365,7 +365,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxTabs('width', arg);
       } else {

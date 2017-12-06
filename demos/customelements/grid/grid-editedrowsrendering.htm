@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element EditRowsRendering</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="The demo illustrates how to style the edited rows and keep their values in an Array." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            var myGrid = document.createElement('jqx-grid');
+            var editedRows = new Array();
+            var data = generatedata(200);
+
+            var source =
+                {
+                    localdata: data,
+                    datatype: 'array',
+                    updaterow: (rowid, rowdata, commit) => {
+                        var rowindex = myGrid.getrowboundindexbyid(rowid);
+                        editedRows.push({ index: rowindex, data: rowdata });
+                        commit(true);
+                    },
+                    datafields:
+                    [
+                        { name: 'firstname', type: 'string' },
+                        { name: 'lastname', type: 'string' },
+                        { name: 'productname', type: 'string' },
+                        { name: 'available', type: 'bool' },
+                        { name: 'quantity', type: 'number' },
+                        { name: 'price', type: 'number' },
+                        { name: 'date', type: 'date' }
+                    ]
+                };
+
+            var dataAdapter = new jqx.dataAdapter(source);
+
+            var cellclass = (row, datafield, value, rowdata) => {
+                for (var i = 0; i < editedRows.length; i++) {
+                    if (editedRows[i].index == row) {
+                        return 'editedRow';
+                    }
+                }
+            };
+
+            myGrid.settings =
+                {
+                    source: dataAdapter,
+                    editable: true,
+                    selectionmode: 'multiplecellsadvanced',
+                    columns: [
+                        { text: 'First Name', columntype: 'textbox', cellclassname: cellclass, datafield: 'firstname', width: 120 },
+                        { text: 'Last Name', datafield: 'lastname', cellclassname: cellclass, columntype: 'textbox', width: 120 },
+                        { text: 'Product', columntype: 'dropdownlist', cellclassname: cellclass, datafield: 'productname', width: 195 },
+                        { text: 'Available', datafield: 'available', cellclassname: cellclass, columntype: 'checkbox', width: 67 },
+                        {
+                            text: 'Ship Date', datafield: 'date', cellclassname: cellclass, columntype: 'datetimeinput', width: 110, align: 'right', cellsalign: 'right', cellsformat: 'd',
+                            validation: (cell, value) => {
+                                if (value == '')
+                                    return true;
+                                var year = value.getFullYear();
+                                if (year >= 2015) {
+                                    return { result: false, message: 'Ship Date should be before 1/1/2015' };
+                                }
+                                return true;
+                            }
+                        },
+                        {
+                            text: 'Quantity', datafield: 'quantity', cellclassname: cellclass, width: 70, align: 'right', cellsalign: 'right', columntype: 'numberinput',
+                            validation: (cell, value) => {
+                                if (value < 0 || value > 150) {
+                                    return { result: false, message: 'Quantity should be in the 0-150 interval' };
+                                }
+                                return true;
+                            },
+                            createeditor: (row, cellvalue, editor) => {
+                                editor.jqxNumberInput({ decimalDigits: 0, digits: 3 });
+                            }
+                        },
+                        {
+                            text: 'Price', datafield: 'price', cellclassname: cellclass, align: 'right', cellsalign: 'right', cellsformat: 'c2', columntype: 'numberinput',
+                            validation: (cell, value) => {
+                                if (value < 0 || value > 15) {
+                                    return { result: false, message: 'Price should be in the 0-15 interval' };
+                                }
+                                return true;
+                            },
+                            createeditor: (row, cellvalue, editor) => {
+                                editor.jqxNumberInput({ digits: 3 });
+                            }
+                        }
+                    ]
+                };
+
+            document.body.appendChild(myGrid);
+        };   
+    </script>
+    <style type="text/css">
+        .editedRow {
+            color: #b90f0f !important;
+            font-style: italic;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="example-description">
+        The sample illustrates how to style the edited rows and keep their values in an Array.
+    </div>
+</body>
+</html>

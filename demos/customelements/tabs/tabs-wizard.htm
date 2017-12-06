@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tabs Custom Element Wizard</title>
+    <meta name="description" content="This is an example of Wizard in Tabs Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <style>
+        #form {
+            height: 100px;
+            float: left;
+            margin-top: 30px;
+            margin-left: 20px;
+        }
+
+        .inputContainer {
+            width: 150px;
+        }
+
+        #checkBoxContainer {
+            margin-top: 15px;
+        }
+
+        #hintWrapper {
+            height: 130px;
+        }
+
+        #hintSection {
+            float: left;
+            margin-top: 30px;
+            margin-right: 20px;
+            padding: 5px;
+            width: 225px;
+        }
+
+        #section {
+            margin: 5px;
+        }
+
+        #sectionButtonsWrapper {
+            float: right;
+            margin-top: 30px;
+            margin-right: 10px;
+            width: 115px;
+        }
+
+        #hintBasket {
+            margin-left: 20px;
+            margin-top: 7px;
+            float: left;
+            padding: 5px;
+        }
+
+        .basket div {
+            position: relative;
+        }
+
+        .nextButton {
+            float: right;
+            margin-left: 0px;
+        }
+
+        .backButton {
+            float: left;
+            margin-right: 10px;
+        }
+
+        #basketButtonsWrapper {
+            float: right;
+            margin-top: 30px;
+            margin-right: 10px;
+        }
+
+        #selectedProductsHeader {
+            margin-left: 20px;
+            float: left;
+            width: 200px;
+        }
+
+        #selectedProductsButtonsWrapper {
+            float: right;
+            margin-right: 10px;
+            width: 115px;
+            margin-top: 160px;
+        }
+
+        #products {
+            border: none;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var listBoxSource =
+            [
+                { html: `<div style='height: 20px; float: left;'><img style='float: left; margin-top: 2px; margin-right: 5px;' src='../../images/numberinput.png'/><span style='float: left; font-size: 13px; font-family: Verdana Arial;'>jqxNumberInput</span></div>`, title: 'jqxNumberInput' },
+                { html: `<div style='height: 20px; float: left;'><img style='float: left; margin-top: 2px; margin-right: 5px;' src='../../images/progressbar.png'/><span style='float: left; font-size: 13px; font-family: Verdana Arial;'>jqxProgressBar</span></div>`, title: 'jqxProgressBar' },
+                { html: `<div style='height: 20px; float: left;'><img style='float: left; margin-top: 2px; margin-right: 5px;' src='../../images/calendar.png'/><span style='float: left; font-size: 13px; font-family: Verdana Arial;'>jqxCalendar</span></div>`, title: 'jqxCalendar' },
+                { html: `<div style='height: 20px; float: left;'><img style='float: left; margin-top: 2px; margin-right: 5px;' src='../../images/button.png'/><span style='float: left; font-size: 13px; font-family: Verdana Arial;'>jqxButton</span></div>`, title: 'jqxButton' },
+                { html: `<div style='height: 20px; float: left;'><img style='float: left; margin-top: 2px; margin-right: 5px;' src='../../images/dropdownlist.png'/><span style='float: left; font-size: 13px; font-family: Verdana Arial;'>jqxDropDownList</span></div>`, title: 'jqxDropDownList' },
+                { html: `<div style='height: 20px; float: left;'><img style='float: left; margin-top: 2px; margin-right: 5px;' src='../../images/listbox.png'/><span style='float: left; font-size: 13px; font-family: Verdana Arial;'>jqxListBox</span></div>`, title: 'jqxListBox' },
+                { html: `<div style='height: 20px; float: left;'><img style='float: left; margin-top: 2px; margin-right: 5px;' src='../../images/tooltip.png'/><span style='float: left; font-size: 13px; font-family: Verdana Arial;'>jqxTooltip</span></div>`, title: 'jqxTooltip' }
+            ];
+
+        // Displaying message to the user
+        var showHint = (message, selector) => {
+            if (typeof selector === 'undefined') {
+                selector = '.hint';
+            }
+
+            if (message === '') {
+                message = 'You can continue.';
+            }
+
+            // Check is a class or not
+            if (selector.indexOf('.') == 0) {
+                document.getElementsByClassName(selector.slice(1))[0].innerHTML = '<strong>' + message + '</strong>';
+            } else {
+                document.getElementById(selector.slice(1)).innerHTML = '<strong>' + message + '</strong>';
+            }
+        }
+
+        // Validating the first tab
+        var firstTab = notify => {
+            var myCheckBox = document.querySelector('jqx-check-box');
+
+            var username = document.querySelector('#usernameInput').value;
+            var password = document.querySelector('#passwordInput').value;
+            var message = '';
+
+            if (username.length < 3) {
+                message += 'You have to enter valid username. <br />';
+            }
+
+            if (password.length < 3) {
+                message += 'You have to enter valid password. <br />';
+            }
+
+            if (!myCheckBox.val()) {
+                message += 'You have to accept the terms. <br />';
+            }
+
+            if (message !== '') {
+                if (notify) {
+                    showHint(message, '#hintSection');
+                }
+
+                return false;
+            }
+
+            showHint('You can continue.', '#hintSection');
+            return true;
+        }
+
+        // Validating the second tab
+        var secondTab = notify => {
+            var myListBox = document.querySelector('jqx-list-box');
+            var selectedIndex = myListBox.getSelectedIndex();
+            if (selectedIndex === -1) {
+                showHint('You have to select at least one item.', '#hintBasket');
+                return false;
+            } else {
+                showHint('You can continue.', '#hintBasket');
+            }
+            return true;
+        }
+
+        // Validating all wizard tabs
+        var validate = notify => {
+            var myTabs = document.querySelector('jqx-tabs')
+            if (!firstTab(notify)) {
+                myTabs.disableAt(1);
+                myTabs.disableAt(2);
+                return;
+            } else {
+                myTabs.enableAt(1);
+            }
+
+            if (!secondTab(notify)) {
+                myTabs.disableAt(2);
+                return;
+            } else {
+                myTabs.enableAt(2);
+            }
+        }
+
+        JQXElements.settings['tabsSettings'] =
+            {
+                keyboardNavigation: false
+            }
+        JQXElements.settings['listBoxSettings'] =
+            {
+                source: listBoxSource, multiple: true
+            }
+
+        window.onload = function() {
+            var myTabs = document.querySelector('jqx-tabs');
+            var myCheckBox = document.querySelector('jqx-check-box');
+            var myListBox = document.querySelector('jqx-list-box');
+            var myButtons = document.querySelectorAll('jqx-button');
+            var myUsernameInput = document.querySelector('#usernameInput');
+            var myPasswordInput = document.querySelector('#passwordInput');
+
+            validate(true);
+
+            myUsernameInput.addEventListener('keyup', _ => validate(true));
+            myPasswordInput.addEventListener('keyup', _ => validate(true));
+            myUsernameInput.addEventListener('change', _ => validate(true));
+            myPasswordInput.addEventListener('change', _ => validate(true));
+            myCheckBox.addEventListener('change', _ => validate(true));
+            myListBox.addEventListener('unselect', _ => validate(true));
+
+            myListBox.addEventListener('change', _ => {
+                validate(true);
+                var selectedItems = myListBox.getSelectedItems();
+                var count = selectedItems.length;
+
+                var parent  = document.querySelector('#orderContainer');
+
+                while (parent .firstChild) {
+                    parent .removeChild(parent.firstChild);
+                }
+ 
+                while (count) {
+                    count--;
+                    if (typeof selectedItems[count] !== 'undefined' && selectedItems[count] !== -1) {
+                        var currentHtmlContent = parent.innerHTML;
+                        parent.innerHTML = currentHtmlContent + '<div style="width: 190px; height: 20px;">' + listBoxSource[selectedItems[count].index].html + '</div>';
+                    }
+                }
+            });
+
+
+            // Next Buttons
+            myButtons[0].addEventListener('click', _ => {
+                validate(true);
+                myTabs.next();
+            });
+            myButtons[2].addEventListener('click', _ => {
+                validate(true);
+                myTabs.next();
+            });
+            // Back Buttons
+            myButtons[1].addEventListener('click', _ => {
+                validate(true);
+                myTabs.previous();
+            });
+            myButtons[3].addEventListener('click', _ => {
+                validate(true);
+                myTabs.previous();
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Tabs Custom Element Wizard Example.
+    </div>
+
+    <jqx-tabs settings="tabsSettings">
+        <ul>
+            <li style="margin-left: 30px;">Personal info</li>
+            <li>Shopping basket</li>
+            <li>Review order</li>
+        </ul>
+        <div class="section">
+            <div id="form">
+                <div class="inputContainer">
+                    Username:
+                    <input class="formInput" type="text" id="usernameInput" />
+                </div>
+                <div class="inputContainer">
+                    Password:
+                    <input class="formInput" type="password" id="passwordInput" />
+                </div>
+                <div id="checkBoxContainer">
+                    <jqx-check-box>I accept the terms and conditions</jqx-check-box>
+                </div>
+            </div>
+            <div id="hintWrapper">
+                <div id="hintSection" class="hint"></div>
+            </div>
+            <div id="sectionButtonsWrapper">
+                <jqx-button class="nextButton">Next</jqx-button>
+            </div>
+        </div>
+        <div class="section">
+            <jqx-list-box settings="listBoxSettings"></jqx-list-box>
+            <div class="hint" id="hintBasket"></div>
+            <div id="basketButtonsWrapper">
+                <jqx-button class="backButton">Back</jqx-button>
+                <jqx-button class="nextButton">Next</jqx-button>
+            </div>
+        </div>
+        <div class="section">
+            <div id="selectedProductsHeader">
+                <h4>Selected products</h4>
+                <div id="orderContainer"></div>
+            </div>
+            <div id="selectedProductsButtonsWrapper">
+                <jqx-button class="backButton">Back</jqx-button>
+            </div>
+        </div>
+    </jqx-tabs>
+
+</body>
+</html>

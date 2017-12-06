@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -18,33 +18,33 @@ declare let JQXLite: any;
 
 export class jqxRangeSelectorComponent implements OnChanges
 {
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('showGroupLabels') attrShowGroupLabels: Boolean;
-   @Input('labelsOnTicks') attrLabelsOnTicks: Boolean;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('showGroupLabels') attrShowGroupLabels: boolean;
+   @Input('labelsOnTicks') attrLabelsOnTicks: boolean;
    @Input('markersFormatFunction') attrMarkersFormatFunction: any;
    @Input('labelsFormat') attrLabelsFormat: any;
    @Input('labelsFormatFunction') attrLabelsFormatFunction: any;
-   @Input('labelPrecision') attrLabelPrecision: Number;
-   @Input('moveOnClick') attrMoveOnClick: Boolean;
+   @Input('labelPrecision') attrLabelPrecision: number;
+   @Input('moveOnClick') attrMoveOnClick: boolean;
    @Input('markerRenderer') attrMarkerRenderer: any;
-   @Input('markerPrecision') attrMarkerPrecision: Number;
+   @Input('markerPrecision') attrMarkerPrecision: number;
    @Input('majorLabelRenderer') attrMajorLabelRenderer: any;
    @Input('markersFormat') attrMarkersFormat: any;
-   @Input('majorTicksInterval') attrMajorTicksInterval: String | Number;
-   @Input('minorTicksInterval') attrMinorTicksInterval: Number;
-   @Input('max') attrMax: String | Number;
-   @Input('min') attrMin: String | Number;
-   @Input('padding') attrPadding: String | Number;
+   @Input('majorTicksInterval') attrMajorTicksInterval: string | number;
+   @Input('minorTicksInterval') attrMinorTicksInterval: number;
+   @Input('max') attrMax: string | number;
+   @Input('min') attrMin: string | number;
+   @Input('padding') attrPadding: number | string;
    @Input('range') attrRange: jqwidgets.RangeSelectorRange;
-   @Input('resizable') attrResizable: Boolean;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('showMinorTicks') attrShowMinorTicks: Boolean;
-   @Input('snapToTicks') attrSnapToTicks: Boolean;
-   @Input('showMajorLabels') attrShowMajorLabels: Boolean;
-   @Input('showMarkers') attrShowMarkers: Boolean;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('resizable') attrResizable: boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('showMinorTicks') attrShowMinorTicks: boolean;
+   @Input('snapToTicks') attrSnapToTicks: boolean;
+   @Input('showMajorLabels') attrShowMajorLabels: boolean;
+   @Input('showMarkers') attrShowMarkers: boolean;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -67,7 +67,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -190,7 +190,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('height', arg);
       } else {
@@ -262,7 +262,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   majorTicksInterval(arg?: String | Number) : any {
+   majorTicksInterval(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('majorTicksInterval', arg);
       } else {
@@ -278,7 +278,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   max(arg?: String | Number) : any {
+   max(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('max', arg);
       } else {
@@ -286,7 +286,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   min(arg?: String | Number) : any {
+   min(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('min', arg);
       } else {
@@ -294,7 +294,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   padding(arg?: String | Number) : any {
+   padding(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('padding', arg);
       } else {
@@ -366,7 +366,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('width', arg);
       } else {

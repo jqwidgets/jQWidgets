@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable FilteringAPI</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the filtering API in Custom Elements DataTable." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                localData: generatedata(200),
+                dataFields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' }
+                ],
+                dataType: 'array'
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['dataTableSettings'] =
+            {
+                pagerButtonsCount: 4,
+                pageable: true,
+                source: dataAdapter,
+                sortable: true,
+                columns: [
+                    { text: 'First Name', dataField: 'firstname', width: 190 },
+                    { text: 'Last Name', dataField: 'lastname', width: 190 },
+                    { text: 'Product', dataField: 'productname', width: 170 },
+                    { text: 'Quantity', dataField: 'quantity', cellsAlign: 'right' }
+                ]
+            };
+
+        JQXElements.settings['DropDownList'] =
+            {
+                autoDropDownHeight: true,
+                selectedIndex: 0,
+                source: [
+                    { label: 'First Name', value: 'firstname' },
+                    { label: 'Last Name', value: 'lastname' },
+                    { label: 'Product', value: 'productname' },
+                    { label: 'Quantity', value: 'quantity' }
+                ]
+            };
+
+        JQXElements.settings['FilterListBox'] =
+            {
+                checkboxes: true
+            };
+
+        window.onload = function() {
+            var myDataTable = document.querySelector('jqx-data-table');
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+            var myButtons = document.querySelectorAll('jqx-button');
+            var myListBox = document.querySelector('jqx-list-box');
+
+            var updateFilterBox = function(dataField) {
+                myDataTable.clearFilters();
+
+                var filterBoxAdapter = new jqx.dataAdapter(source,
+                    {
+                        uniqueDataFields: [dataField],
+                        autoBind: true
+                    });
+
+                var uniqueRecords = filterBoxAdapter.records;
+                uniqueRecords.splice(0, 0, '(Select All)');
+                myListBox.source = uniqueRecords;
+                myListBox.displayMember = dataField;
+                myListBox.checkAll();
+            };
+
+            var handleCheckChange = true;
+
+            updateFilterBox('firstname');
+
+            myListBox.addEventListener('checkChange', event => {
+
+                if (!handleCheckChange)
+                    return;
+
+                if (event.args.label != '(Select All)') {
+                    // update the state of the 'Select All' listbox item.
+
+                    handleCheckChange = false;
+                    myListBox.checkIndex(0);
+
+                    var checkedItems = myListBox.getCheckedItems();
+
+                    var items = myListBox.getItems();
+
+                    if (checkedItems.length == 1) {
+                        myListBox.uncheckIndex(0);
+                    }
+                    else if (items.length != checkedItems.length) {
+                        myListBox.indeterminateIndex(0);
+                    }
+                    handleCheckChange = true;
+                } else {
+
+                    // check/uncheck all items if 'Select All' is clicked.
+                    handleCheckChange = false;
+
+                    if (event.args.checked) {
+                        myListBox.checkAll();
+                    }
+                    else {
+                        myListBox.uncheckAll();
+                    }
+                    handleCheckChange = true;
+                }
+            });
+
+            myDropDownList.addEventListener('select', function(event) {
+                updateFilterBox(event.args.item.value);
+            });
+
+
+            // builds and applies the filter.
+            var applyFilter = function(dataField) {
+                myDataTable.clearFilters();
+
+                var filtertype = 'stringfilter';
+
+                if (dataField == 'date') filtertype = 'datefilter';
+                if (dataField == 'price' || dataField == 'quantity') filtertype = 'numericfilter';
+
+                // create a new group of filters.
+                var filtergroup = new jqx.filter();
+
+                // get listbox's checked items.
+                var checkedItems = myListBox.getCheckedItems();
+
+                if (checkedItems.length == 0) {
+                    var filter_or_operator = 1;
+                    var filtervalue = 'Empty';
+                    var filtercondition = 'equal';
+                    var filter = filtergroup.createfilter(filtertype, filtervalue, filtercondition);
+                    filtergroup.addfilter(filter_or_operator, filter);
+                }
+                else {
+                    for (var i = 0; i < checkedItems.length; i++) {
+                        var filter_or_operator = 1;
+                        // set filter's value.
+                        var filtervalue = checkedItems[i].label;
+                        // set filter's condition.
+                        var filtercondition = 'equal';
+                        // create new filter.
+                        var filter = filtergroup.createfilter(filtertype, filtervalue, filtercondition);
+                        // add the filter to the filter group.
+                        filtergroup.addfilter(filter_or_operator, filter);
+                    }
+                }
+
+                // add the filters.
+                myDataTable.addFilter(dataField, filtergroup);
+
+                // apply the filters.
+                myDataTable.applyFilters();
+            }
+
+            // clears the filter.
+            myButtons[1].addEventListener('click', function() {
+                myDataTable.clearFilters();
+            });
+
+            // applies the filter.
+            myButtons[0].addEventListener('click', function() {
+                var dataField = myDropDownList.getSelectedItem().value;
+                applyFilter(dataField);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element DataTable Filtering API.
+    </div>
+
+    <div id='jqxWidget' style="float: left;">
+        <div style="float: left">
+            <div>Filter By:</div>
+            <jqx-drop-down-list settings="DropDownList"></jqx-drop-down-list>
+            <jqx-list-box style="margin-top: 10px;" settings="FilterListBox"></jqx-list-box>
+            <div style="margin-top: 10px;">
+                <jqx-button>Apply Filter</jqx-button>
+                <jqx-button>Clear Filter</jqx-button>
+            </div>
+        </div>
+
+        <jqx-data-table settings="dataTableSettings" style="margin-left: 20px; float: left"></jqx-data-table>
+    </div>
+</body>
+</html>

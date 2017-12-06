@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DropDownList Events</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example are shown the events in Custom Elements DropDownList." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style>
+        .event {
+            border: none;
+        }
+    </style>
+    <script > 
+        var source =
+            [
+                'Affogato',
+                'Americano',
+                'Bicerin',
+                'Breve',
+                'Café Bombón',
+                'Café au lait',
+                'Caffé Corretto',
+                'Café Crema',
+                'Caffé Latte',
+                'Caffé macchiato',
+                'Café mélange',
+                'Coffee milk',
+                'Cafe mocha',
+                'Cappuccino',
+                'Carajillo',
+                'Cortado',
+                'Cuban espresso',
+                'Espresso',
+                'Eiskaffee',
+                'The Flat White',
+                'Frappuccino',
+                'Galao',
+                'Greek frappé coffee',
+                'Iced Coffee﻿',
+                'Indian filter coffee',
+                'Instant coffee',
+                'Irish coffee',
+                'Liqueur coffee'
+            ];
+
+        JQXElements.settings['DropDownList'] =
+            {
+                source: source,
+                selectedIndex: 0
+            }
+
+        window.onload = function() {
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+            var myLog = document.querySelector('jqx-panel');
+
+            myDropDownList.addEventListener('select', function(event) {
+                var args = event.args;
+                var item = myDropDownList.getItem(args.index);
+                if (item != null) {
+                    var myPrepend = document.createElement('div');
+                    myPrepend.style.marginTop = '5px';
+                    myPrepend.innerHTML = 'Selected: ' + item.label;
+                    myLog.prepend(myPrepend);
+                }
+            });
+
+            myDropDownList.addEventListener('unselect', function(event) {
+                var args = event.args;
+                var item = myDropDownList.getItem(args.index);
+                if (item != null) {
+                    var myPrepend = document.createElement('div');
+                    myPrepend.style.marginTop = '5px';
+                    myPrepend.innerHTML = 'Unselected: ' + item.label;
+                    myLog.prepend(myPrepend);
+                }
+            });
+        }
+        </script >
+    </head > 
+<body >
+    <div class="example-description" >
+        The Custom element DropDownList comes with several useful events. When the user selects an item, the 'select' and 'unselect' events are triggered.
+    </div >
+    <jqx-drop-down-list settings="DropDownList"></jqx-drop-down-list > 
+
+    <div style='margin-left: 20px; margin-top: 10px; float: left;'>
+        <div>
+
+            <span>
+                Events:
+            </span>
+
+            <jqx-panel id='Events'>
+            </jqx-panel>
+        </div>
+    </div>
+    </body >
+ </html >
+        

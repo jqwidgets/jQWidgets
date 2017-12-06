@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Chart Custom Element CustomDrawing</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Angular 4 Chart line series with custom colors." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script>
+
+        transformPath = function (path, wScale, hScale, xOffset, yOffset) {
+            var output = '';
+
+            for (var i = 0; i < path.length; i++) {
+                if (path[i] == 'C' || path[i] == 'M' || path[i] == 'L') {
+                    output += path[i];
+                    i++;
+
+                    var j = i;
+                    while (j + 1 < path.length && !(path[j + 1] == 'C' || path[j + 1] == 'M' || path[j + 1] == 'L' || path[j + 1] == 'z'))
+                        j++;
+
+                    var value = path.substring(i, j);
+                    var pointsString = value.split(' ');
+
+                    for (var s = 0; s < pointsString.length; s++) {
+                        if (pointsString[s].length == 0)
+                            continue;
+
+                        var pointString = pointsString[s].split(',');
+                        var point = { x: pointString[0], y: pointString[1] };
+                        point.x = point.x * wScale + xOffset;
+                        point.y = point.y * hScale + yOffset;
+                        output += ' ' + point.x + ',' + point.y + ' ';
+                    }
+                    i = j - 1;
+
+                }
+                else {
+                    output += path[i];
+                }
+            }
+
+            return output;
+        };
+
+        var adapterSettings =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'id' },
+                    { name: 'path' },
+                    { name: 'europe' },
+                    { name: 'eu' }
+                ],
+                /* EU map definitions in JSON derived from  http://commons.wikimedia.org/wiki/File:116_000_map_of_Europe.svg */
+                url: '../sampledata/europe.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(adapterSettings);
+
+        JQXElements.settings['chartContainer'] =
+            {
+                title: 'Map of the European Union',
+                description: '',
+                padding: { left: 10, top: 5, right: 10, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                drawBefore: function (renderer, rect) {
+                    renderer.rect(rect.x, rect.y, rect.width, rect.height, { fill: 'lightblue' });
+                },
+                draw: function (renderer, rect) {
+                    var records = this.source.records;
+
+                    var wScale = rect.width / 13000;
+                    var hScale = (rect.height) / 8500;
+
+                    for (var i = 0; i < records.length; i++) {
+                        var path = transformPath(records[i].path, wScale, hScale, 62, 22);
+                        var pathElement = renderer.path(path, { stroke: 'black' });
+
+                        if (records[i].eu == 'true') {
+                            renderer.attr(pathElement, { fill: 'blue' });
+                        }
+                        else
+                            renderer.attr(pathElement, { fill: '#DEDEDE' });
+                    }
+                }
+            };
+        
+    </script>
+</head>
+<body>
+
+    <jqx-chart settings='chartContainer' style="width:850px; height:500px"></jqx-chart>
+
+    <br />
+    Themes:
+    <jqx-drop-down-list settings="themes"></jqx-drop-down-list>
+
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Custom element chart themes.  You can see how to define different color schemes and change them with the colorScheme setting.
+    </div>
+
+</body>
+</html>

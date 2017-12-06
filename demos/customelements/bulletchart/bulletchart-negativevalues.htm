@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>BulletChart Custom Element NegativeValues</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example Custom Element BulletChart shows its support of negative values." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbargauge.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbulletchart.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>      
+        JQXElements.settings['bulletChartSettings'] =
+            {
+                barSize: '40%',
+                title: 'Profit',
+                description: '(1000s)',
+                ranges: [
+                    { startValue: -50, endValue: 150, color: '#000000', opacity: 0.5 },
+                    { startValue: 150, endValue: 200, color: '#000000', opacity: 0.3 },
+                    { startValue: 200, endValue: 250, color: '#000000', opacity: 0.1 }
+                ],
+                pointer: { value: -20, label: 'Profit', size: '25%', color: 'Black' },
+                target: { value: 200, label: 'Target profit', size: 4, color: 'Black' },
+                ticks: { position: 'far', interval: 50, size: 10 },
+                showTooltip: true
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this example Custom Element BulletChart shows its support of negative values.
+    </div>
+
+    <jqx-bullet-chart settings="bulletChartSettings"></jqx-bullet-chart>
+</body>
+</html>

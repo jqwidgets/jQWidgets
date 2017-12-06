@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Calendar Custom Element Events</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example its demonstrated how to trigger the Custom Element Calendar's valuechanged, nextButtonClick and backButtonClick events" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        
+        window.onload = function() {
+            var myCalendar = document.querySelector('jqx-calendar');
+            var myPanel = document.querySelector('jqx-panel');
+
+            myCalendar.addEventListener('change viewChange', function(event) {
+                var date = event.args.date;
+                var view = event.args.view;
+                var viewFrom = view.from;
+                var viewTo = view.to;
+                myPanel.clearcontent();
+
+                if (event.type == 'viewChange') {
+                        myPanel.innerHTML = '<div style="margin-top: 5px;">Event Type: viewChange<br/>Date: ' + date + '<br/>View: ' + viewFrom + ' - ' + viewTo + '</div>';
+                    } else {
+                        myPanel.innerHTML = '<div style="margin-top: 5px;">Event Type: change<br/>Date: ' + date + '</div>';
+                    }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo demonstrates how to trigger the Custom element Calendar valuechanged, nextButtonClick and backButtonClick events.
+    </div>
+
+   <jqx-calendar></jqx-calendar>
+
+    <div style='margin-left: 0px; margin-top: 20px; float: left;'>
+        <div>
+
+            <span>Events:</span>
+           <jqx-panel></jqx-panel>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>RangeSelector Custom Element RangeSelectorAsAFilter</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of filtered value in Custom Element RangeSelector." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxrangeselector.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'discovery', type: 'string' },
+                    { name: 'scientist', type: 'string' },
+                    { name: 'year', type: 'date' }
+                ],
+                id: 'id',
+                url: '../sampledata/discoveries.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source); 
+
+        JQXElements.settings['RangeSelectorSettings'] =
+            {
+                min: 'January 01, 1800',
+                max: 'January 01, 1900',
+                majorTicksInterval: { years: 10 },
+                minorTicksInterval: 'year',
+                labelsFormat: 'yyyy',
+                markersFormat: 'yyyy'
+            };
+
+        JQXElements.settings['jqxGrid'] =
+            {
+                theme: theme,
+                source: dataAdapter,
+                filterable: true,
+                columns: [
+                    { text: 'Discovery', columngroup: 'header', datafield: 'discovery'},
+                    { text: 'Scientist', columngroup: 'header', datafield: 'scientist'},
+                    { text: 'Year', columngroup: 'header', datafield: 'year', cellsformat: 'yyyy' }
+                ],
+                columngroups: [
+                    { text: 'Major scientific discoveries in the 19th century', align: 'center', name: 'header' }
+                ]
+            };
+
+        window.onload = function() {
+            var myRangeSelector = document.querySelector('jqx-range-selector');
+            var myGrid = document.querySelector('jqx-grid');
+
+            var applyFilter = (from, to) => {
+                myGrid.clearfilters();
+                filtertype = 'datefilter';
+
+                var filtergroup = new jqx.filter();
+                var filter_or_operator = 0;
+                var filtervalueFrom = from;
+                var filterconditionFrom = 'GREATER_THAN_OR_EQUAL';
+
+                var filterFrom = filtergroup.createfilter(filtertype, filtervalueFrom, filterconditionFrom);
+                filtergroup.addfilter(filter_or_operator, filterFrom);
+
+                var filtervalueTo = to;
+                var filterconditionTo = 'LESS_THAN_OR_EQUAL';
+                var filterTo = filtergroup.createfilter(filtertype, filtervalueTo, filterconditionTo);
+
+                filtergroup.addfilter(filter_or_operator, filterTo);
+                myGrid.addfilter('year', filtergroup);
+                myGrid.applyfilters();
+            };
+
+            myRangeSelector.addEventListener('change', function(event) {
+                var range = event.args;
+                var min = myRangeSelector.min;
+                var max = myRangeSelector.max;
+
+                min = new Date(min);
+                max = new Date(max);
+
+                if (range.from.getTime() == min.getTime() && range.to.getTime() == max.getTime()) {
+                    myGrid.clearfilters();
+                } else {
+                    applyFilter(range.from, range.to);
+                };
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows how to filter values depending on the selection of the Custom element RangeSelector.
+    </div>
+
+    <label style="font-size: 13px; font-family: Verdana;">
+        Major scientific discoveries in selected period:
+    </label>
+
+    <jqx-grid settings="jqxGrid" style="margin-top: 10px;"></jqx-grid>
+    <br />
+
+    <label style="font-size: 13px; margin-top: 10px; font-family: Verdana;">Select period: </label>
+    <br />
+
+    <jqx-range-selector settings="RangeSelectorSettings">
+
+        <div id="jqxRangeSelectorContent"></div>
+
+    </jqx-range-selector>
+</body>
+</html>

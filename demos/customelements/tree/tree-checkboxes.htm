@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tree Custom Element CheckBoxes</title>
+    <meta name="description" content="This is an example of checkboxes in Tree Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['treeSettings'] =
+            {
+               hasThreeStates: true, checkboxes: true, height: 400
+            };
+
+        window.onload = function() {
+            var myTree = document.querySelector('jqx-tree');
+            var myCheckBox = document.querySelector('jqx-check-box');
+
+            myTree.selectItem(document.querySelector('#home'));
+            myTree.expandItem(document.querySelector('#solutions'));
+            myTree.checkItem(document.querySelector('#solutions'), true);
+            myTree.uncheckItem(document.querySelector('#manufacturing'));
+
+            myCheckBox.addEventListener('change', event => myTree.hasThreeStates = event.args.checked);
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The Tree Custom Element can display a checkboxes next to its items. You can also enable three-state checkboxes.
+            In this mode, when the user checks an item, its sub items also become checked.
+            When there is an unchecked item, the parent item is in indeterminate state.
+    </div> 
+
+    <jqx-tree settings="treeSettings" style="margin-left: 20px; float: left">
+        <ul>
+            <li id='home'>Home</li>
+            <li id='solutions'>
+                Solutions
+                <ul>
+                    <li>Education</li>
+                    <li>Financial services</li>
+                    <li>Government</li>
+                    <li id='manufacturing'>Manufacturing</li>
+                    <li>
+                        Solutions
+                        <ul>
+                            <li>Consumer photo and video</li>
+                            <li>Mobile</li>
+                            <li>Rich Internet applications</li>
+                            <li>Technical communication</li>
+                            <li>Training and eLearning</li>
+                            <li>Web conferencing</li>
+                        </ul>
+                    </li>
+                    <li>All industries and solutions</li>
+                </ul>
+            </li>
+            <li>
+                Products
+                <ul>
+                    <li>PC products</li>
+                    <li>Mobile products</li>
+                    <li>All products</li>
+                </ul>
+            </li>
+            <li>
+                Support
+                <ul>
+                    <li>Support home</li>
+                    <li>Customer Service</li>
+                    <li>Knowledge base</li>
+                    <li>Books</li>
+                    <li>Training and certification</li>
+                    <li>Support programs</li>
+                    <li>Forums</li>
+                    <li>Documentation</li>
+                    <li>Updates</li>
+                </ul>
+            </li>
+            <li>
+                Communities
+                <ul>
+                    <li>Designers</li>
+                    <li>Developers</li>
+                    <li>Educators and students</li>
+                    <li>Partners</li>
+                    <li>
+                        By resource
+                        <ul>
+                            <li>Labs</li>
+                            <li>TV</li>
+                            <li>Forums</li>
+                            <li>Exchange</li>
+                            <li>Blogs</li>
+                            <li>Experience Design</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Company
+                <ul>
+                    <li>About Us</li>
+                    <li>Press</li>
+                    <li>Investor Relations</li>
+                    <li>Corporate Affairs</li>
+                    <li>Careers</li>
+                    <li>Showcase</li>
+                    <li>Events</li>
+                    <li>Contact Us</li>
+                    <li>Become an affiliate</li>
+                </ul>
+            </li>
+        </ul>
+    </jqx-tree>
+
+    <div style="margin-top: 10px; margin-left: 60px; float: left">
+        <jqx-check-box checked="true">Three Check States</jqx-check-box>
+    </div>
+
+</body>
+</html>

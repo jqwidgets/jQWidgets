@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element CascadingComboBoxes</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of cascading comboboxes in Custom Element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var data = '[{ "Country": "Belgium", "City": "Brussels"}, {"Country": "France", "City": "Paris"}, {"Country": "USA", "City": "Washington"}]';
+
+        var source =
+            {
+                datatype: "json",
+                datafields: [
+                    { name: 'Country', type: 'string' },
+                    { name: 'City', type: 'string' }
+                ],
+                localdata: data
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        window.onload = function() {
+            var myGrid = document.createElement('jqx-grid');
+
+            myGrid.settings =
+                {
+                    source: dataAdapter,
+                    selectionmode: 'singlecell',
+                    editable: true,
+                    autoheight: true,
+                    width: 300,
+                    columns: [
+                        {
+                            text: 'Country', datafield: 'Country', width: 150, columntype: 'combobox',
+                            cellvaluechanging: (row, datafield, columntype, oldvalue, newvalue) => {
+                                if (newvalue != oldvalue) {
+                                    myGrid.setcellvalue(row, 'City', 'Select a city...');
+                                };
+                            }
+                        },
+                        {
+                            text: 'City', datafield: 'City', width: 150, columntype: 'combobox',
+                            initeditor: (row, cellvalue, editor, celltext, cellwidth, cellheight) => {
+                                var country = myGrid.getcellvalue(row, 'Country');
+                                var city = editor.val();
+                                var cities = new Array();
+                                switch (country) {
+                                    case 'Belgium':
+                                        cities = ['Bruges', 'Brussels', 'Ghent'];
+                                        break;
+                                    case 'France':
+                                        cities = ['Bordeaux', 'Lille', 'Paris'];
+                                        break;
+                                    case 'USA':
+                                        cities = ['Los Angeles', 'Minneapolis', 'Washington'];
+                                        break;
+                                };
+                                editor.jqxComboBox({ autoDropDownHeight: true, source: cities });
+                                if (city != 'Select a city...') {
+                                    var index = cities.indexOf(city);
+                                    editor.jqxComboBox('selectIndex', index);
+                                }
+                            }
+                        }
+                    ]
+                };
+            document.body.appendChild(myGrid);
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This example shows how to implement cascading comboboxes in Custom element Grid.
+    </div>
+</body>
+</html>

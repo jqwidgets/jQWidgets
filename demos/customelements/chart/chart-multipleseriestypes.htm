@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart MultipleSeries</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of a Stacked Column Series in combination with Spline Area Series in Custom Element Chart" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var sampleData =
+            [
+                { Day: 'Monday', Running: 30, Swimming: 0, Cycling: 25, Goal: 40 },
+                { Day: 'Tuesday', Running: 25, Swimming: 25, Cycling: 0, Goal: 50 },
+                { Day: 'Wednesday', Running: 30, Swimming: 0, Cycling: 25, Goal: 60 },
+                { Day: 'Thursday', Running: 20, Swimming: 20, Cycling: 25, Goal: 40 },
+                { Day: 'Friday', Running: 0, Swimming: 20, Cycling: 25, Goal: 50 },
+                { Day: 'Saturday', Running: 30, Swimming: 0, Cycling: 30, Goal: 60 },
+                { Day: 'Sunday', Running: 20, Swimming: 40, Cycling: 0, Goal: 90 }
+            ];
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'Fitness & exercise weekly scorecard',
+                description: 'Time spent in vigorous exercise by activity',
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+                colorScheme: 'scheme05',
+                borderLineColor: '#888888',
+                xAxis:
+                {
+                    dataField: 'Day',
+                    unitInterval: 1,
+                    tickMarks:
+                    {
+                        visible: true,
+                        interval: 1,
+                        color: '#888888'
+                    },
+                    gridLines: {
+                        visible: false,
+                        interval: 1,
+                        color: '#888888'
+                    },
+                    axisSize: 'auto'
+                },
+                valueAxis:
+                {
+                    visible: true,
+                    unitInterval: 10,
+                    minValue: 0,
+                    maxValue: 100,
+                    title: { text: 'Time in minutes' },
+                    tickMarks: { color: '#888888' },
+                    gridLines: { color: '#888888' },
+                    axisSize: 'auto'
+                },
+                seriesGroups:
+                [
+                    {
+                        type: 'splinearea',
+                        series: [
+                            { dataField: 'Goal', displayText: 'Personal Goal', opacity: 0.7 }
+                        ]
+                    },
+                    {
+                        type: 'stackedcolumn',
+                        columnsGapPercent: 50,
+                        seriesGapPercent: 5,
+                        series: [
+                            { dataField: 'Running', displayText: 'Running' },
+                            { dataField: 'Swimming', displayText: 'Swimming' },
+                            { dataField: 'Cycling', displayText: 'Cycling' }
+                        ]
+                    }
+                ]
+            };
+
+    </script>
+</head>
+<body>
+   
+   <jqx-chart settings="chartSettings" style="width:850px; height:500px;"></jqx-chart>
+
+    <div class="example-description">
+        This is an example of Custom Element Chart Stacked Column Series in combination with Spline Area Series. 
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element GroupsRenedrer</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this sample is demonstrated how to override the built-in rendering of the Groups headers. The Grouping of Product and Ship Date columns is disabled." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.grouping.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.aggregates.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type='text/javascript'>
+    var data = generatedata(200);
+
+    var source =
+        {
+            localdata: data,
+            datafields:
+            [
+                { name: 'firstname', type: 'string' },
+                { name: 'lastname', type: 'string' },
+                { name: 'productname', type: 'string' },
+                { name: 'date', type: 'date' },
+                { name: 'quantity', type: 'number' },
+                { name: 'price', type: 'number' }
+            ],
+            datatype: 'array'
+        };
+
+    var dataAdapter = new jqx.dataAdapter(source);
+
+    var toThemeProperty = function(className) {
+        return className + ' ' + className + '-' + theme;
+    }
+
+    window.onload = function() {
+        var myGrid = document.createElement('jqx-grid');
+
+        var groupsrenderer = function (text, group, expanded, data) {
+            if (data.groupcolumn.datafield == 'price' || data.groupcolumn.datafield == 'quantity') {
+                var number = dataAdapter.formatNumber(group, data.groupcolumn.cellsformat);
+                var text = data.groupcolumn.text + ': ' + number;
+                if (data.subItems.length > 0) {
+                    var aggregate = this.getcolumnaggregateddata(data.groupcolumn.datafield, ['sum'], true, data.subItems);
+                }
+                else {
+                    var rows = new Array();
+                    var getRows = function (group, rows) {
+                        if (group.subGroups.length > 0) {
+                            for (var i = 0; i < group.subGroups.length; i++) {
+                                getRows(group.subGroups[i], rows);
+                            }
+                        }
+                        else {
+                            for (var i = 0; i < group.subItems.length; i++) {
+                                rows.push(group.subItems[i]);
+                            }
+                        }
+                    }
+                    getRows(data, rows);
+                    var aggregate = this.getcolumnaggregateddata(data.groupcolumn.datafield, ['sum'], true, rows);
+                }
+                if (!aggregate) {
+                    return '<div class="' + toThemeProperty('jqx-grid-groups-row') + '" style="position: absolute;"><span>' + text + '</span>';
+                }
+                return '<div class="' + toThemeProperty('jqx-grid-groups-row') + '" style="position: absolute;"><span>' + text + ', </span>' + '<span class="' + toThemeProperty('jqx-grid-groups-row-details') + '">' + "Total" + ' (' + aggregate.sum + ')' + '</span></div>';
+            }
+            else {
+                return '<div class="' + toThemeProperty('jqx-grid-groups-row') + '" style="position: absolute;"><span>' + text + '</span>';
+            }
+        }.bind(myGrid);
+
+        myGrid.settings = {
+            source: dataAdapter,
+            groupable: true,
+            groupsrenderer: groupsrenderer,
+            selectionmode: 'singlecell',
+            groups: ['price'],
+            ready: function () {
+                myGrid.expandgroup(0);
+            },
+            columns: [
+                { text: 'First Name', groupable: true, datafield: 'firstname', width: 90 },
+                { text: 'Last Name', groupable: true, datafield: 'lastname', width: 90 },
+                { text: 'Product', groupable: false, columntype: 'dropdownlist', datafield: 'productname', width: 180 },
+                { text: 'Ship Date', groupable: false, datafield: 'date', width: 90, cellsalign: 'right' },
+                { text: 'Quantity', datafield: 'quantity', width: 70, cellsalign: 'right' },
+                { text: 'Price', datafield: 'price', cellsalign: 'right', cellsformat: 'c2' }
+            ]
+        };
+
+        document.body.appendChild(myGrid);
+
+       
+    };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this sample is demonstrated how to override the built-in rendering of the Groups headers. The Grouping of Product and Ship Date columns is disabled. 
+    </div>
+</body>
+</html>

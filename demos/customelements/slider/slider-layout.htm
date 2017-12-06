@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Slider Custom Element Layout</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the layouts in Custom Element Slider." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        .colorBlock {
+            border: 1px solid #aaa;
+            width: 200px;
+            height: 200px;
+            float: right;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+        .colorLabel {
+            padding: 6px;
+        }
+    </style>
+    <script>
+        JQXElements.settings['mirrorHorizontalSlider'] =
+            {
+                layout: 'reverse'
+            };
+
+        JQXElements.settings['verticalSlider'] =
+            {
+                orientation: 'vertical',
+                height: 300,
+                width: 60
+            };
+
+        JQXElements.settings['mirrorVerticalSlider'] =
+            {
+                orientation: 'vertical',
+                layout: 'reverse',
+                height: 300,
+                width: 60
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element Slider can be displayed either horizontally or vertically. By setting its "layout" property to "reverse", the layout of the widget's UI elements will be reversed.
+    </div>
+
+    <div id='jqxWidget'>
+
+        <div id="container" style="font-family: Verdana; font-size: 12px; float: left">
+            <b>Default Layout</b>
+            <jqx-slider></jqx-slider>
+            <jqx-slider style="margin-top: 10px;" settings='verticalSlider'></jqx-slider>
+        </div>
+
+        <div style="float: right; font-family: Verdana; font-size: 12px;" id="rightContainer">
+            <b>Reversed Layout</b>
+            <jqx-slider settings='mirrorHorizontalSlider'></jqx-slider>
+            <jqx-slider style="margin-top: 10px; float: right;" settings='mirrorVerticalSlider'></jqx-slider>
+        </div>
+
+    </div>
+</body>
+</html>

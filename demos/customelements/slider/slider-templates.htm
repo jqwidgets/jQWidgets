@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Slider Custom Element Templates</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the templates in Custom Element Slider." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        .colorBlock {
+            border: 1px solid #aaa;
+            width: 200px;
+            height: 200px;
+            float: right;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .colorLabel {
+            padding: 6px;
+        }
+    </style>
+    <script>
+        JQXElements.settings['SliderSettings'] =
+            {
+                tooltip: true,
+                mode: 'fixed' 
+            };
+
+        JQXElements.settings['PrimarySliderSettings'] =
+            {
+                template: "primary",
+                tooltip: true,
+                mode: 'fixed'
+            };
+
+        JQXElements.settings['SuccessSliderSettings'] =
+            {
+                template: "success",
+                tooltip: true,
+                mode: 'fixed'
+            };
+
+        JQXElements.settings['InfoSliderSettings'] =
+            {
+                template: "info",
+                tooltip: true,
+                mode: 'fixed'
+            };
+
+        JQXElements.settings['WarningSliderSettings'] =
+            {
+                template: "warning",
+                tooltip: true,
+                mode: 'fixed'
+            };
+
+        JQXElements.settings['DangerSliderSettings'] =
+            {
+                template: "danger",
+                tooltip: true,
+                mode: 'fixed'
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo demonstrates the Custom element Slider's Templates.
+    </div>
+
+    <div style='margin-top: 10px;'>Default</div>
+    <jqx-slider settings="SliderSettings" style='margin-top: 10px;'></jqx-slider>
+
+    <div style='margin-top: 10px;'>Primary</div>
+    <jqx-slider style='margin-top: 10px;' settings='PrimarySliderSettings'></jqx-slider>
+
+    <div style='margin-top: 10px;'>Success</div>
+    <jqx-slider style='margin-top: 10px;' settings='SuccessSliderSettings'></jqx-slider>
+
+    <div style='margin-top: 10px;'>Info</div>
+    <jqx-slider style='margin-top: 10px;' settings='InfoSliderSettings'></jqx-slider>
+
+    <div style='margin-top: 10px;'>Warning</div>
+    <jqx-slider style='margin-top: 10px;' settings='WarningSliderSettings'></jqx-slider>
+
+    <div style='margin-top: 10px;'>Danger</div>
+    <jqx-slider style='margin-top: 10px;' settings='DangerSliderSettings'></jqx-slider>
+
+</body>
+</html>

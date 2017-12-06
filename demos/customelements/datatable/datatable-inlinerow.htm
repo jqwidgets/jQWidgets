@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable InlineRow</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Elements DataTable with some comands." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var ordersSource =
+            {
+                dataFields: [
+                    { name: 'OrderID', type: 'int' },
+                    { name: 'Freight', type: 'float' },
+                    { name: 'ShipName', type: 'string' },
+                    { name: 'ShipAddress', type: 'string' },
+                    { name: 'ShipCity', type: 'string' },
+                    { name: 'ShipCountry', type: 'string' },
+                    { name: 'ShippedDate', type: 'date' }
+                ],
+                root: 'Orders',
+                record: 'Order',
+                dataType: 'xml',
+                id: 'OrderID',
+                url: '../sampledata/orderdetails.xml',
+                addRow: (rowID, rowData, position, commit) => {
+                    // synchronize with the server - send insert command
+                    // call commit with parameter true if the synchronization with the server is successful
+                    // and with parameter false if the synchronization failed.
+                    // you can pass additional argument to the commit callback which represents the new ID if it is generated from a DB.
+                    commit(true);
+                },
+                updateRow: (rowID, rowData, commit) => {
+                    // synchronize with the server - send update command
+                    // call commit with parameter true if the synchronization with the server is successful
+                    // and with parameter false if the synchronization failed.
+                    commit(true);
+                },
+                deleteRow: (rowID, commit) => {
+                    // synchronize with the server - send delete command
+                    // call commit with parameter true if the synchronization with the server is successful
+                    // and with parameter false if the synchronization failed.
+                    commit(true);
+                }
+            };
+        var dataAdapter = new jqx.dataAdapter(ordersSource);
+
+        var updateButtons = action => {
+            var myButtons = document.querySelectorAll('jqx-button');
+            switch (action) {
+                case 'Select':
+                    myButtons[0].disabled = false;
+                    myButtons[1].disabled = false;
+                    myButtons[2].disabled = false;
+                    myButtons[3].disabled = true;
+                    myButtons[4].disabled = true;
+                    break;
+                case 'Unselect':
+                    myButtons[0].disabled = true;
+                    myButtons[1].disabled = true;
+                    myButtons[2].disabled = true;
+                    myButtons[3].disabled = true;
+                    myButtons[4].disabled = true;
+                    break;
+                case 'Edit':
+                    myButtons[0].disabled = true;
+                    myButtons[1].disabled = true;
+                    myButtons[2].disabled = true;
+                    myButtons[3].disabled = false;
+                    myButtons[4].disabled = false;
+                    break;
+                case 'End Edit':
+                    myButtons[0].disabled = false;
+                    myButtons[1].disabled = false;
+                    myButtons[2].disabled = false;
+                    myButtons[3].disabled = true;
+                    myButtons[4].disabled = true;
+                    break;
+            }
+        };
+
+        window.onload = function() {
+            var myDataTable = document.createElement('jqx-data-table');
+
+            myDataTable.settings =
+                {
+                    source: dataAdapter,
+                    pageable: true,
+                    editable: true,
+                    showToolbar: true,
+                    altRows: true,
+                    pagerButtonsCount: 8,
+                    toolbarHeight: 35,
+                    renderToolbar: toolBar => {
+                        var toTheme = className => {
+                            if (theme == '') return className;
+                            return [className, className + '-' + theme];
+                        }
+
+                        var container = document.createElement('div');
+                        container.style.cssText = 'overflow: hidden; position: relative; height: 100%; width: 100%;';
+                        toolBar[0].appendChild(container);
+
+                        var myButtons = [];
+                        var buttonExtras =
+                            {
+                                'addButton': { className: 'jqx-icon-plus', toolTipContainer: 'Add' },
+                                'editButton': { className: 'jqx-icon-edit', toolTipContainer: 'Edit' },
+                                'deleteButton': { className: 'jqx-icon-delete', toolTipContainer: 'Delete' },
+                                'cancelButon': { className: 'jqx-icon-cancel', toolTipContainer: 'Cancel' },
+                                'updateButton': { className: 'jqx-icon-save', toolTipContainer: 'Save Changes' },
+                            };
+                        var buttonSettings = { enableDefault: false, height: 25, width: 25 };
+
+                        for (var name in buttonExtras) {
+                            var myTooltip = document.createElement('jqx-tool-tip');
+                            myTooltip.style.cssText = 'float: left; padding: 3px; margin: 2px;';
+                            myTooltip.settings = { position: 'bottom', content: buttonExtras[name].toolTipContainer };
+
+                            var img = document.createElement('div');
+                            img.classList.add(...toTheme(buttonExtras[name].className));
+                            img.style.cssText = 'margin: 4px; width: 16px; height: 16px;';
+
+                            buttonExtras[name] = document.createElement('jqx-button');
+                            buttonExtras[name].settings = buttonSettings;
+                            buttonExtras[name].disabled = true;
+                            buttonExtras[name].appendChild(img);
+                            myButtons.push(buttonExtras[name]);
+
+                            myTooltip.appendChild(buttonExtras[name]);
+                            container.appendChild(myTooltip);
+                        }
+
+                        var myDataTable = document.querySelector('jqx-data-table');
+                        var rowIndex = null;
+
+                        myDataTable.addEventListener('rowSelect', event => {    
+                            rowIndex = event.args.index;
+                            updateButtons('Select');
+                        });
+                        myDataTable.addEventListener('rowUnselect', _ => {
+                            updateButtons('Unselect');
+                        });
+                        myDataTable.addEventListener('rowEndEdit', _ => {
+                            updateButtons('End Edit');
+                        });
+                        myDataTable.addEventListener('rowBeginEdit', _ => {
+                            updateButtons('Edit');
+                        });
+
+                        myButtons[0].addEventListener('click', _ => {
+                            if (!myButtons[0].disabled) {
+                                myDataTable.addRow(null, {}, 'first');
+                                myDataTable.clearSelection();
+                                myDataTable.selectRow(0);
+                                myDataTable.beginRowEdit(0);
+                            }
+                        });
+                        myButtons[1].addEventListener('click', _ => {
+                            if (!myButtons[1].disabled) {
+                                myDataTable.beginRowEdit(rowIndex, false);
+                            }
+                        });
+                        myButtons[2].addEventListener('click', _ => {
+                            if (!myButtons[2].disabled) {
+                                myDataTable.deleteRow(rowIndex);                              
+                            }
+                        });
+                        myButtons[3].addEventListener('click', _ => {
+                            if (!myButtons[3].disabled) {
+                                myDataTable.endRowEdit(rowIndex, true);
+                            }
+                        });
+                        myButtons[4].addEventListener('click', _ => {
+                            if (!myButtons[4].disabled) {
+                                myDataTable.endRowEdit(rowIndex, false);
+                            }
+                        });
+                    },
+                    columns:
+                        [
+                            { text: 'Order ID', editable: false, dataField: 'OrderID', width: 200 },
+                            { text: 'Freight', dataField: 'Freight', cellsFormat: 'f', cellsAlign: 'right', align: 'right', width: 200 },
+                            {
+                                text: 'Ship Country', dataField: 'ShipCountry', width: 250, columnType: 'custom',
+                                createEditor: (row, cellValue, editor, width, height) => {
+                                    var myInput = document.createElement('jqx-input');
+                                    myInput.className = 'shipCountry';
+                                    myInput.style.cssText = 'border: none; box-sizing: border-box; padding-left: 4px;';                         
+
+                                    var countries = ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antarctica', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burma', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Congo, Democratic Republic', 'Congo, Republic of the', 'Costa Rica', 'Cote d`Ivoire', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'East Timor', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Greenland', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Korea, North', 'Korea, South', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia', 'Moldova', 'Mongolia', 'Morocco', 'Monaco', 'Mozambique', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Norway', 'Oman', 'Pakistan', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar', 'Romania', 'Russia', 'Rwanda', 'Samoa', 'San Marino', ' Sao Tome', 'Saudi Arabia', 'Senegal', 'Serbia and Montenegro', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'];
+                                    myInput.settings = { source: countries };
+                                    editor[0].appendChild(myInput);
+
+                                    myInput.val(cellValue);                    
+                                },
+                                initEditor: (row, cellvalue, editor, celltext, width, height) => {        
+                                    if (!cellvalue) cellvalue = '';
+                                    var inputField = editor.find('input');
+                                    inputField.val(cellvalue);
+                                },
+                                getEditorValue: (row, cellvalue, editor) => {
+                                    return editor.find('input').val();
+                                }
+                            },
+                            { text: 'Shipped Date', dataField: 'ShippedDate', cellsAlign: 'right', align: 'right', cellsFormat: 'dd/MM/yyyy' }
+                        ]
+                };
+            document.body.appendChild(myDataTable);
+        };
+    </script>
+
+    <style>
+        .jqx-tooltip {
+            width: auto !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="example-description">
+        Custom element DataTable with Create, Remove and Update commands.
+    </div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,43 +23,43 @@ declare let JQXLite: any;
 
 export class jqxChartComponent implements OnChanges
 {
-   @Input('title') attrTitle: String;
-   @Input('description') attrDescription: String;
+   @Input('title') attrTitle: string;
+   @Input('description') attrDescription: string;
    @Input('source') attrSource: any;
-   @Input('showBorderLine') attrShowBorderLine: Boolean;
-   @Input('borderLineColor') attrBorderLineColor: String;
-   @Input('borderLineWidth') attrBorderLineWidth: Number;
-   @Input('backgroundColor') attrBackgroundColor: String;
-   @Input('backgroundImage') attrBackgroundImage: String;
-   @Input('showLegend') attrShowLegend: Boolean;
+   @Input('showBorderLine') attrShowBorderLine: boolean;
+   @Input('borderLineColor') attrBorderLineColor: string;
+   @Input('borderLineWidth') attrBorderLineWidth: number;
+   @Input('backgroundColor') attrBackgroundColor: string;
+   @Input('backgroundImage') attrBackgroundImage: string;
+   @Input('showLegend') attrShowLegend: boolean;
    @Input('legendLayout') attrLegendLayout: jqwidgets.ChartLegendLayout;
    @Input('categoryAxis') attrCategoryAxis: any;
    @Input('padding') attrPadding: jqwidgets.ChartPadding;
    @Input('titlePadding') attrTitlePadding: jqwidgets.ChartPadding;
-   @Input('colorScheme') attrColorScheme: String;
-   @Input('greyScale') attrGreyScale: Boolean;
-   @Input('showToolTips') attrShowToolTips: Boolean;
-   @Input('toolTipShowDelay') attrToolTipShowDelay: Number;
-   @Input('toolTipHideDelay') attrToolTipHideDelay: Number;
-   @Input('toolTipMoveDuration') attrToolTipMoveDuration: Number;
+   @Input('colorScheme') attrColorScheme: string;
+   @Input('greyScale') attrGreyScale: boolean;
+   @Input('showToolTips') attrShowToolTips: boolean;
+   @Input('toolTipShowDelay') attrToolTipShowDelay: number;
+   @Input('toolTipHideDelay') attrToolTipHideDelay: number;
+   @Input('toolTipMoveDuration') attrToolTipMoveDuration: number;
    @Input('drawBefore') attrDrawBefore: (renderer: any, rect: any) => { };
    @Input('draw') attrDraw: (renderer: any, rect: any) => { };
-   @Input('rtl') attrRtl: Boolean;
-   @Input('enableCrosshairs') attrEnableCrosshairs: Boolean;
-   @Input('crosshairsColor') attrCrosshairsColor: String;
-   @Input('crosshairsDashStyle') attrCrosshairsDashStyle: String;
-   @Input('crosshairsLineWidth') attrCrosshairsLineWidth: Number;
-   @Input('columnSeriesOverlap') attrColumnSeriesOverlap: Boolean;
-   @Input('enabled') attrEnabled: Boolean;
-   @Input('enableAnimations') attrEnableAnimations: Boolean;
-   @Input('animationDuration') attrAnimationDuration: Number;
-   @Input('enableAxisTextAnimation') attrEnableAxisTextAnimation: Boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('enableCrosshairs') attrEnableCrosshairs: boolean;
+   @Input('crosshairsColor') attrCrosshairsColor: string;
+   @Input('crosshairsDashStyle') attrCrosshairsDashStyle: string;
+   @Input('crosshairsLineWidth') attrCrosshairsLineWidth: number;
+   @Input('columnSeriesOverlap') attrColumnSeriesOverlap: boolean;
+   @Input('enabled') attrEnabled: boolean;
+   @Input('enableAnimations') attrEnableAnimations: boolean;
+   @Input('animationDuration') attrAnimationDuration: number;
+   @Input('enableAxisTextAnimation') attrEnableAxisTextAnimation: boolean;
    @Input('renderEngine') attrRenderEngine: any;
    @Input('xAxis') attrXAxis: jqwidgets.ChartXAxis;
    @Input('valueAxis') attrValueAxis: jqwidgets.ChartValueAxis;
    @Input('seriesGroups') attrSeriesGroups: Array<jqwidgets.ChartSeriesGroup>;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -88,7 +88,7 @@ export class jqxChartComponent implements OnChanges
          }
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -478,7 +478,7 @@ export class jqxChartComponent implements OnChanges
       this.host.jqxChart('destroy');
    }
 
-   addColorScheme(schemeName: string, colors: Array<String>): void {
+   addColorScheme(schemeName: string, colors: Array<string>): void {
       this.host.jqxChart('addColorScheme', schemeName, colors);
    }
 
@@ -510,7 +510,7 @@ export class jqxChartComponent implements OnChanges
       return this.host.jqxChart('getValueAxisLabels', groupIndex);
    }
 
-   getColorScheme(colorScheme: string): Array<String> {
+   getColorScheme(colorScheme: string): Array<string> {
       return this.host.jqxChart('getColorScheme', colorScheme);
    }
 

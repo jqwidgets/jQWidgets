@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable Sorting</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of sort or changeing columns order in Custom Elements DataTable." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                localdata: generatedata(85),
+                datatype: 'array',
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'total', type: 'number' }
+                ],
+                sortcolumn: 'firstname',
+                sortdirection: 'asc'
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['dataTableSettings'] =
+        {
+            source: dataAdapter,
+            sortable: true,
+            pageable: true,
+            altRows: true,
+            columns: [
+                { text: 'Name', dataField: 'firstname', width: 200 },
+                { text: 'Last Name', dataField: 'lastname', width: 200 },
+                { text: 'Product', editable: false, dataField: 'productname', width: 180 },
+                { text: 'Quantity', dataField: 'quantity', width: 80, align: 'right', cellsalign: 'right' },
+                { text: 'Unit Price', dataField: 'price', width: 90, align: 'right', cellsalign: 'right', cellsFormat: 'c2' },
+                { text: 'Total', dataField: 'total', width: 100, align: 'right', cellsalign: 'right', cellsFormat: 'c2' }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        To sort data against a Custom element DataTable column or to change the column's sort order, click a column header.
+    </div>
+
+   <jqx-data-table settings="dataTableSettings">
+   </jqx-data-table>
+</body>
+</html>

@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart ColorBands X-Axis</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Chart X-axis color bands." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            {
+                datatype: 'tsv',
+                datafields: [
+                    { name: 'Year' },
+                    { name: 'Northeast' },
+                    { name: 'South' },
+                    { name: 'Midwest' },
+                    { name: 'West' },
+                    { name: 'UnitedStates' }
+                ],
+                url: '../sampledata/us_homeownership_rate.csv'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var recessions =
+            [
+                { from: 1969.91, to: 1970.83 },
+                { from: 1973.83, to: 1975.25 },
+                { from: 1980.00, to: 1980.58 },
+                { from: 1981.58, to: 1982.83 },
+                { from: 1990.58, to: 1991.25 },
+                { from: 2001.25, to: 2001.83 },
+                { from: 2007.91, to: 2009.50 }
+            ];
+
+        var bands = [];
+
+        for (var i = 0; i < recessions.length; i++)
+            bands.push({ minValue: recessions[i].from, maxValue: recessions[i].to, fillColor: 'red', opacity: 0.2 });
+        
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'US Homeownership rate & recessions (1965-2018)',
+                description: '(sources: US Census bureau, Wikipedia)',
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 5, top: 5, right: 10, bottom: 5 },
+                titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                xAxis:
+                {
+                    dataField: 'Year',
+                    tickMarks: {
+                        visible: true,
+                        interval: 1,
+                        color: '#BCBCBC'
+                    },
+                    labels: { angle: -90 },
+                    unitInterval: 1,
+                    //maxValue: '1970',
+                    flip: false,
+                    bands: bands // attach the color bands to the xAxis
+                },
+                valueAxis:
+                {
+                    title: { text: 'Homeownership rate<br>' },
+                    labels: {
+                        formatSettings: { sufix: '%' }
+                    },
+                    bands: [
+                        //  { minValue: 60, maxValue: 63 }
+                    ],
+                    flip: false
+                },
+                colorScheme: 'scheme03',
+                seriesGroups:
+                [
+                    {
+                        type: 'line',
+                        series: [
+                            { dataField: 'Northeast', displayText: 'NorthEast' },
+                            { dataField: 'South' },
+                            { dataField: 'Midwest', displayText: 'MidWest' },
+                            { dataField: 'West' },
+                            { dataField: 'UnitedStates', displayText: 'United States' },
+                        ]
+                    }
+                ]
+        };
+
+    </script>
+</head>
+<body>
+   
+        <jqx-chart settings='chartSettings' style="width: 850px; height: 500px;"><jqx-chart>
+  
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Custom Element chart x-axis color bands. You can see how to attach the color bands to the xAxis. The x axis labels are rotated -90 degrees.   
+    </div>
+
+</body>
+</html>

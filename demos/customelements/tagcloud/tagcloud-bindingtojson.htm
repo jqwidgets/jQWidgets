@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tag Cloud Custom Element BindingToJSON</title>
+    <meta name='description' content='In this demo the TagCloud Custom Element data is populated from JSON.' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtagcloud.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var source =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'calories' },
+                    { name: 'name' }
+                ],
+                url: '../sampledata/beverages.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source, {});
+     
+        JQXElements.settings['tagCloudSettings'] =
+            {
+                source: dataAdapter,
+                displayMember: 'name',
+                height: 300,
+                valueMember: 'calories'    
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this exmaple we see how to populate Tag Cloud Custom Element with JSON data.
+    </div>
+    <jqx-tag-cloud settings="tagCloudSettings"></jqx-tag-cloud>
+</body>
+</html>

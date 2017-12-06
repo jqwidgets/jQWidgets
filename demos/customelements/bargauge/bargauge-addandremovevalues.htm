@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>BarGauge Custom Element AddAndRemoveValues</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example we set the values of the Custom Element BarGauge dynamiclly by clicking on checkboxes in a list" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbargauge.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var data =
+            [{
+                'id': '1',
+                'name': 'Hot Chocolate',
+                'calories': '370'
+            }, {
+                'id': '2',
+                'name': 'Peppermint Hot Chocolate',
+                'calories': '440'
+            }, {
+                'id': '3',
+                'name': 'Salted Caramel Hot Chocolate',
+                'calories': '450'
+            }, {
+                'id': '4',
+                'name': 'White Hot Chocolate',
+                'calories': '420'
+            }, {
+                'id': '5',
+                'name': 'Caffe Americano',
+                'calories': '15'
+            }, {
+                'id': '6',
+                'name': 'Caffe Latte',
+                'calories': '190'
+            }, {
+                'id': '7',
+                'name': 'Caffe Mocha',
+                'calories': '330'
+            }];
+
+        var source =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'name' },
+                    { name: 'calories', type: 'int' }
+                ],
+                id: 'id',
+                localdata: data
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['listBoxSettings'] =
+            {
+                source: dataAdapter,
+                displayMember: 'name',
+                valueMember: 'calories',
+                checkboxes: true
+            }
+
+        window.onload = function() {
+            var myListBox = document.querySelector('jqx-list-box');
+            var myLog = document.querySelector('#log');
+            myLog.innerHTML = '<strong>Summary calories: ' + 970 + '</strong>';
+
+            myListBox.checkIndex(2);
+            myListBox.checkIndex(5);
+            myListBox.checkIndex(6);
+
+            var getValues = function() {
+                var items = myListBox.getCheckedItems();
+                var array = convertToArray(items);
+                return array;
+            };
+
+            var convertToArray = (items) => {
+                var preparedArray = new Array(items.length);
+                for (var i = 0; i < items.length; i += 1) {
+                    preparedArray[i] = items[i].value;
+                }
+                return preparedArray;
+            }
+
+            var myBarGauge = document.createElement('jqx-bar-gauge');
+            myBarGauge.settings = {
+                title: 'Nutritional Values',
+                values: getValues(),
+                baseValue: 50,
+                max: 500,
+                barSpacing: 9,
+                animationDuration: 0,
+                relativeInnerRadius: 0.2,
+                startAngle: 0,
+                endAngle: 360,
+                colorScheme: 'scheme05',
+                tooltip: {
+                    visible: true,
+                    formatFunction: (value, index) => {
+                        var items = myListBox.getCheckedItems();
+                        var item = items[index];
+                        return item.label + ': ' + value + ' cal.';
+                    }
+                },
+                labels: { formatFunction: (value) => { return value + ' cal.'; }, precision: 0, indent: 15, connectorWidth: 1 }
+            };
+           
+            var getSum = (array) => {
+                array = array || [];
+                var sum = 0;
+                if (!!array.length) {
+                    for (var i = 0; i < array.length; i += 1) {
+                        sum += array[i];
+                    }
+                }
+                return sum;
+            };
+
+            myListBox.addEventListener('checkChange', function(event) {
+                var items = myListBox.getCheckedItems();
+                var arrayOfItems = convertToArray(items);
+                myLog.innerHTML = '<strong>Summary calories: ' + getSum(arrayOfItems) + '</strong>';
+                myBarGauge.val(arrayOfItems);
+            });
+            
+            BarGauge.appendChild(myBarGauge);
+        }
+
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this example we set the values of the Custom Element BarGauge dynamiclly by clicking on checkboxes in a list
+    </div>
+
+    <div id="BarGauge" style="width: 100%;"></div>
+
+    <div style="margin-left: 150px; margin-top: 10px;">
+        <jqx-list-box settings='listBoxSettings'></jqx-list-box>
+        <br />
+        <br />
+        <div id='log'></div>
+    </div>
+
+</body>
+</html>

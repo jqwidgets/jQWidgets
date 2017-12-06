@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ComboBox Templates</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example shows the available templates in Custom Element ComboBox." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            [
+                'Affogato',
+                'Americano',
+                'Bicerin',
+                'Breve',
+                'Café Bombón',
+                'Café au lait',
+                'Caffé Corretto',
+                'Café Crema',
+                'Caffé Latte',
+                'Caffé macchiato',
+                'Café mélange',
+                'Coffee milk',
+                'Cafe mocha',
+                'Cappuccino',
+                'Carajillo',
+                'Cortado',
+                'Cuban espresso',
+                'Espresso',
+                'Eiskaffee',
+                'The Flat White',
+                'Frappuccino',
+                'Galao',
+                'Greek frappé coffee',
+                'Iced Coffee﻿',
+                'Indian filter coffee',
+                'Instant coffee',
+                'Irish coffee',
+                'Liqueur coffee'
+            ];
+
+        JQXElements.settings['ComboBoxDefault'] =
+            {
+                selectedIndex: 1,
+                source: source
+            }
+
+        JQXElements.settings['ComboBoxPrimary'] =
+            {
+                selectedIndex: 1,
+                template: 'primary',
+                source: source
+            }
+
+        JQXElements.settings['ComboBoxSuccess'] =
+            {
+                selectedIndex: 1,
+                template: 'success',
+                source: source
+            }
+
+        JQXElements.settings['ComboBoxInfo'] =
+            {
+                selectedIndex: 1,
+                template: 'info',
+                source: source
+            }
+
+        JQXElements.settings['ComboBoxWarning'] =
+            {
+                selectedIndex: 1,
+                template: 'warning',
+                source: source
+            }
+
+        JQXElements.settings['ComboBoxDanger'] =
+            {
+                selectedIndex: 1,
+                template: 'danger',
+                source: source
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The Custom element ComboBox comes with several useful events. When the user selects an item, the 'select' and 'unselect' events are triggered.
+    </div>
+
+    <div></div>
+   <jqx-combo-box settings="ComboBoxDefault"></jqx-combo-box><br />
+
+    <div></div>
+    <jqx-combo-box settings="ComboBoxPrimary"></jqx-combo-box><br />
+
+    <div></div>
+    <jqx-combo-box settings="ComboBoxSuccess"></jqx-combo-box><br />
+
+    <div></div>
+    <jqx-combo-box settings="ComboBoxInfo"></jqx-combo-box><br />
+
+    <div></div>
+    <jqx-combo-box settings="ComboBoxWarning"></jqx-combo-box><br />
+
+    <div></div>
+    <jqx-combo-box settings="ComboBoxDanger"></jqx-combo-box><br />
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tooltip Custom Element ToltipPosition</title>
+    <meta name="description" content="This is an example of the position of the Tooltip Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['tooltip1Settings'] =
+            {
+                content: 'The Amazing Spider-man',
+                position: 'left',
+                width: 150,
+                selector: 'filmPicture1',
+                autoHideDelay: 6000
+            };
+        JQXElements.settings['tooltip2Settings'] =
+            {
+                content: 'Harry Potter and the Deathly Hallows',
+                position: 'right',
+                selector: 'filmPicture2',
+                width: 150,
+                autoHideDelay: 6000
+            };
+        JQXElements.settings['tooltip3Settings'] =
+            {
+                content: 'The Avengers',
+                position: 'bottom',
+                width: 150,
+                selector: 'filmPicture3',
+                autoHideDelay: 6000
+            };
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        Tooltip Custom Element supports 12 built-in position modes: "top, bottom, left, right, top-left, bottom-left, top-right, bottom-right, absolute, mouse, mouseenter, default".
+        In this demo, the tooltip for the first movie will be displayed from its 'left' side.
+        The tooltip for the second movie will be displayed below the picture and the tooltip for the third movie will be displayed on its 'right' side.
+    </div>
+    
+    <div style="margin-left: 200px; width: 400px;" id="container">
+        <img style="margin: 8px;" src="../images/The_Amazng_Spider_Man.jpeg" id="filmPicture1" />
+        <jqx-tool-tip settings="tooltip1Settings"></jqx-tool-tip>
+
+        <img style="margin: 8px;" src="../images/Harry_Potter_7_Part_1.jpg" id="filmPicture2" />
+        <jqx-tool-tip settings="tooltip2Settings"></jqx-tool-tip>
+
+        <img style="margin: 8px;" src="../images/The_Avengers.jpg" id="filmPicture3" />
+        <jqx-tool-tip settings="tooltip3Settings"></jqx-tool-tip>
+    </div>
+
+</body>
+</html>

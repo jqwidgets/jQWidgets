@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DropDownList DropDownVerticalAlignment</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of how to change the vertical alignment in Custom Elements DropDownList." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'CompanyName' },
+                    { name: 'ContactName' }
+                ],
+                id: 'id',
+                url: '../sampledata/customers.txt'
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['DropDownList'] =
+            {
+                selectedIndex: 0,
+                source: dataAdapter,
+                dropDownVerticalAlignment: 'top',
+                displayMember: 'ContactName',
+                valueMember: 'CompanyName',
+                dropDownWidth: 200
+            }
+
+        JQXElements.settings['RadioButtonTop'] =
+            {
+                checked: true
+            }
+
+        JQXElements.settings['RadioButtonBottom'] =
+            {
+                checked: false
+            }
+
+        window.onload = function() {
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+            var myRadioButton = document.querySelectorAll('jqx-radio-button');
+
+            myRadioButton[0].addEventListener('checked', function() {
+                myDropDownList.dropDownVerticalAlignment = 'top';
+            });
+
+            myRadioButton[1].addEventListener('checked', function() {
+                myDropDownList.dropDownVerticalAlignment = 'bottom';
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this demo is demonstrated how to change the Custom element DropDown's vertical alignment.
+    </div>
+   <jqx-drop-down-list settings="DropDownList" style='float: left; margin-top: 270px;'></jqx-drop-down-list>
+    <div style="float: left; margin-left: 100px; margin-top:270px; font-size: 13px; font-family: Verdana;" id="selectionlog">
+        <h3>
+            Alignment
+        </h3>
+        <jqx-radio-button settings='RadioButtonTop'>Top</jqx-radio-button><br />
+        <jqx-radio-button settings="RadioButtonBottom">Bottom</jqx-radio-button>
+    </div>
+</body>
+</html>

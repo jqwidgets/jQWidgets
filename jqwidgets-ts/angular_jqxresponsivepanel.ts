@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,18 +17,18 @@ declare let JQXLite: any;
 export class jqxResponsivePanelComponent implements OnChanges
 {
    @Input('animationDirection') attrAnimationDirection: any;
-   @Input('animationHideDelay') attrAnimationHideDelay: String | Number;
-   @Input('animationShowDelay') attrAnimationShowDelay: String | Number;
+   @Input('animationHideDelay') attrAnimationHideDelay: number | string;
+   @Input('animationShowDelay') attrAnimationShowDelay: number | string;
    @Input('animationType') attrAnimationType: any;
-   @Input('autoClose') attrAutoClose: Boolean;
-   @Input('collapseBreakpoint') attrCollapseBreakpoint: Number;
-   @Input('collapseWidth') attrCollapseWidth: Number;
+   @Input('autoClose') attrAutoClose: boolean;
+   @Input('collapseBreakpoint') attrCollapseBreakpoint: number;
+   @Input('collapseWidth') attrCollapseWidth: number;
    @Input('initContent') attrInitContent: () => void;
-   @Input('theme') attrTheme: String;
-   @Input('toggleButton') attrToggleButton: String | any;
-   @Input('toggleButtonSize') attrToggleButtonSize: String | Number;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('toggleButton') attrToggleButton: string | any;
+   @Input('toggleButtonSize') attrToggleButtonSize: number | string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -51,7 +51,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -150,7 +150,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   animationHideDelay(arg?: String | Number) : any {
+   animationHideDelay(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('animationHideDelay', arg);
       } else {
@@ -158,7 +158,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   animationShowDelay(arg?: String | Number) : any {
+   animationShowDelay(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('animationShowDelay', arg);
       } else {
@@ -198,7 +198,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('height', arg);
       } else {
@@ -222,7 +222,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   toggleButton(arg?: String | any) : any {
+   toggleButton(arg?: string | any) : any {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('toggleButton', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   toggleButtonSize(arg?: String | Number) : any {
+   toggleButtonSize(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('toggleButtonSize', arg);
       } else {
@@ -238,7 +238,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('width', arg);
       } else {

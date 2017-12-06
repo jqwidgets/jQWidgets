@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -21,15 +21,15 @@ declare let JQXLite: any;
 
 export class jqxDockingLayoutComponent implements OnChanges
 {
-   @Input('contextMenu') attrContextMenu: Boolean;
+   @Input('contextMenu') attrContextMenu: boolean;
    @Input('layout') attrLayout: Array<jqwidgets.DockingLayoutLayout>;
-   @Input('minGroupHeight') attrMinGroupHeight: String | Number;
-   @Input('minGroupWidth') attrMinGroupWidth: String | Number;
-   @Input('resizable') attrResizable: Boolean;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('minGroupHeight') attrMinGroupHeight: number | string;
+   @Input('minGroupWidth') attrMinGroupWidth: number | string;
+   @Input('resizable') attrResizable: boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -52,7 +52,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -151,7 +151,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('height', arg);
       } else {
@@ -167,7 +167,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   minGroupHeight(arg?: String | Number) : any {
+   minGroupHeight(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('minGroupHeight', arg);
       } else {
@@ -175,7 +175,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   minGroupWidth(arg?: String | Number) : any {
+   minGroupWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('minGroupWidth', arg);
       } else {
@@ -207,7 +207,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('width', arg);
       } else {
@@ -217,7 +217,7 @@ export class jqxDockingLayoutComponent implements OnChanges
 
 
    // jqxDockingLayoutComponent functions
-   addFloatGroup(width: String | Number, height: String | Number, position: jqwidgets.DockingLayoutLayoutPosition, panelType: string, title: string, content: string, initContent: any): void {
+   addFloatGroup(width: number | string, height: number | string, position: jqwidgets.DockingLayoutLayoutPosition, panelType: string, title: string, content: string, initContent: any): void {
       this.host.jqxDockingLayout('addFloatGroup', width, height, position, panelType, title, content, initContent);
    }
 

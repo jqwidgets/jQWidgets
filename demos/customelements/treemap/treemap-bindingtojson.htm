@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeMap Custom Element BindingToJSON</title>
+    <meta name="description" content="This is an example of TreeMap Custom Element bound to JSON." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreemap.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var data = [
+            {
+                'id': '2',
+                'parentid': '1',
+                'text': 'Hot Chocolate',
+                'value': '$5.2'
+            }, {
+                'id': '3',
+                'parentid': '1',
+                'text': 'Peppermint Hot Chocolate',
+                'value': '$4.0'
+            }, {
+                'id': '4',
+                'parentid': '1',
+                'text': 'Salted Caramel Hot Chocolate',
+                'value': '$2.4'
+            }, {
+                'id': '5',
+                'parentid': '1',
+                'text': 'White Hot Chocolate',
+                'value': '$2.5'
+            }, {
+                'text': 'Chocolate Beverage',
+                'id': '1',
+                'parentid': '-1',
+                'value': '$1.1'
+            }, {
+                'id': '6',
+                'text': 'Espresso Beverage',
+                'parentid': '-1',
+                'value': '$0.9'
+            }, {
+                'id': '7',
+                'parentid': '6',
+                'text': 'Caffe Americano',
+                'value': '$1.2'
+            }, {
+                'id': '8',
+                'text': 'Caffe Latte',
+                'parentid': '6',
+                'value': '$3.3'
+            }, {
+                'id': '9',
+                'text': 'Caffe Mocha',
+                'parentid': '6',
+                'value': '$2.5'
+            }, {
+                'id': '10',
+                'text': 'Cappuccino',
+                'parentid': '6',
+                'value': '$1.5'
+            }, {
+                'id': '11',
+                'text': 'Pumpkin Spice Latte',
+                'parentid': '6',
+                'value': '$1.6'
+            }, {
+                'id': '12',
+                'text': 'Frappuccino',
+                'parentid': '-1'
+            }, {
+                'id': '13',
+                'text': 'Caffe Vanilla Frappuccino',
+                'parentid': '12',
+                'value': '$1.2'
+            }
+        ];
+
+        var source =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'id' },
+                    { name: 'parentid' },
+                    { name: 'text' },
+                    { name: 'value' }
+                ],
+                id: 'id',
+                localdata: data
+            };
+    
+        var dataAdapter = new jqx.dataAdapter(source, { autoBind: true });
+
+        var records = dataAdapter.getRecordsHierarchy('id', 'parentid', 'items', [{ name: 'text', map: 'label' }]);
+        
+        JQXElements.settings['treeMapSettings'] =
+            {
+                source: records,
+                baseColor: '#0afaaa',
+                renderCallbacks: {
+                    '*': function (element, data) {
+                        if (!data.parent) {
+                            element[0].style.backgroundColor = '#fff';
+                            element[0].style.border = '1px solid #aaa';
+                        }
+                        else {
+                            var nThreshold = 105;
+                            var bgDelta = (data.rgb.r * 0.299) + (data.rgb.g * 0.587) + (data.rgb.b * 0.114);
+                            var foreColor = (255 - bgDelta < nThreshold) ? 'Black' : 'White';
+                            element[0].style.color = foreColor;
+                        }
+                    }
+                }
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this demo the TreeMap Custom Element is built from JSON data.
+    </div>
+    <jqx-tree-map settings="treeMapSettings"></jqx-tree-map>
+</body>
+</html>

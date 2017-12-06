@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Notification Custom Element NotificationContainer</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Notification in custom container." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnotification.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var quotes = ["I'm gonna make him an offer he can't refuse.", "Toto, I've got a feeling we're not in Kansas anymore.", "You talkin' to me?", "Bond. James Bond.", "I'll be back.", "Round up the usual suspects.", "I'm the king of the world!", "A martini. Shaken, not stirred.", "May the Force be with you.", "Well, nobody's perfect."];
+
+        JQXElements.settings['NotificationSettings'] =
+            {
+                appendContainer: '#container',
+                opacity: 0.9,
+                autoClose: true,
+                width: 300,
+                template: 'info'
+            };
+        
+        window.onload = function () {
+            var myNotification = document.querySelector('jqx-notification');
+            var myButton = document.querySelector('jqx-button');
+
+            myButton.addEventListener('click', function() {
+                document.querySelector('#notificationContent').innerHTML = quotes[Math.round(Math.random() * quotes.length)];
+                myNotification.open();
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows how to display notifications in a custom container.
+    </div>
+
+    <jqx-notification settings="NotificationSettings">
+        <div id="notificationContent">
+        </div>
+    </jqx-notification>
+
+    <jqx-button id="openNotification">
+        Open notification
+    </jqx-button>
+
+    <div id="container" style="width: 300px; height: 400px; margin-top: 15px; background-color: #F2F2F2;
+        border: 1px dashed #AAAAAA; overflow: auto;">
+    </div>
+
+</body>
+</html>

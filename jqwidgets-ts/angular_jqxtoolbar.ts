@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -22,16 +22,16 @@ declare let JQXLite: any;
 
 export class jqxToolBarComponent implements OnChanges
 {
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('initTools') attrInitTools: (type?: String, index?: Number, tool?: any, menuToolIninitialization?: Boolean) => void;
-   @Input('minimizeWidth') attrMinimizeWidth: Number;
-   @Input('minWidth') attrMinWidth: String | Number;
-   @Input('maxWidth') attrMaxWidth: String | Number;
-   @Input('rtl') attrRtl: Boolean;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('initTools') attrInitTools: (type?: string, index?: number, tool?: any, menuToolIninitialization?: boolean) => void;
+   @Input('minimizeWidth') attrMinimizeWidth: number;
+   @Input('minWidth') attrMinWidth: number | string;
+   @Input('maxWidth') attrMaxWidth: number | string;
+   @Input('rtl') attrRtl: boolean;
    @Input('tools') attrTools: any;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -54,7 +54,7 @@ export class jqxToolBarComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -153,7 +153,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxToolBar('height', arg);
       } else {
@@ -161,7 +161,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   initTools(arg?: (type?: String, index?: Number, tool?: any, menuToolIninitialization?: Boolean) => void) : any {
+   initTools(arg?: (type?: string, index?: number, tool?: any, menuToolIninitialization?: boolean) => void) : any {
       if (arg !== undefined) {
           this.host.jqxToolBar('initTools', arg);
       } else {
@@ -177,7 +177,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   minWidth(arg?: String | Number) : any {
+   minWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxToolBar('minWidth', arg);
       } else {
@@ -185,7 +185,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   maxWidth(arg?: String | Number) : any {
+   maxWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxToolBar('maxWidth', arg);
       } else {
@@ -217,7 +217,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxToolBar('width', arg);
       } else {
@@ -227,7 +227,7 @@ export class jqxToolBarComponent implements OnChanges
 
 
    // jqxToolBarComponent functions
-   addTool(type: string, position: string, separator: boolean, menuToolIninitialization: (type?: String, tool?: any, menuToolIninitialization?: Boolean) => void): void {
+   addTool(type: string, position: string, separator: boolean, menuToolIninitialization: (type?: string, tool?: any, menuToolIninitialization?: boolean) => void): void {
       this.host.jqxToolBar('addTool', type, position, separator, menuToolIninitialization);
    }
 

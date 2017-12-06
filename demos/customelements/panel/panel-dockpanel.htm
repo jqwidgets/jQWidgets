@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Panel DockPanel</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Panel." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdockpanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        window.onload = function () {
+            // Create jqxDockPanel
+            var dockPanel1 = document.getElementById('jqxDockPanel');
+            var dockPanel2 = document.getElementById('jqxDockPanel2');
+            var layout = document.getElementById('layout');
+            // Apply custom layout depending on the user's choice.
+            var first = document.getElementById('first');
+            var second = document.getElementById('second');
+            var third = document.getElementById('third');
+            var fourth = document.getElementById('fourth');
+
+            layout.onclick = function (event) {
+                var position = parseInt(event.clientX) - parseInt(event.target.offsetLeft);
+
+                first.style.width = '100px';
+                first.style.height = '100px';
+                second.style.width = '100px';
+                second.style.height = '100px';
+                third.style.width = '100px';
+                third.style.height = '100px';
+                fourth.style.width = '100px';
+                fourth.style.height = '100px';
+
+                if (position < 50) {
+                    first.setAttribute('dock', 'bottom');
+                    second.setAttribute('dock', 'left');            
+                    second.setAttribute('dock', 'left'); 
+                    third.setAttribute('dock', 'left');
+                    fourth.setAttribute('dock', 'left');
+                    first.style.height = '105px';
+                    second.style.width = '100px';
+                    third.style.width = '100px';
+                    fourth.style.width = '100px';
+                } else
+                    if (position < 115) {
+                        first.setAttribute('dock', 'left');
+                        second.setAttribute('dock', 'right');
+                        third.setAttribute('dock', 'bottom');
+                        fourth.setAttribute('dock', 'top');
+                        third.style.height = '140px';
+                        fourth.style.height = '70px';
+                    } else if (position < 175) {
+                        first.setAttribute('dock', 'left');
+                        second.setAttribute('dock', 'left');
+                        third.setAttribute('dock', 'left');
+                        fourth.setAttribute('dock', 'left');
+                    } else if (position < 235) {
+                        first.setAttribute('dock', 'top');
+                        second.setAttribute('dock', 'top');
+                        third.setAttribute('dock', 'top');
+                        fourth.setAttribute('dock', 'top');
+                    }
+                    else {
+                        first.setAttribute('dock', 'left');
+                        second.setAttribute('dock', 'left');
+                        third.setAttribute('dock', 'left');
+                        fourth.setAttribute('dock', 'left');
+                    }
+                dockPanel1.render();
+            }
+        }
+    </script>
+    <style>
+        jqx-dock-panel{
+            width: 400px;
+            height:400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="example-description">
+        The Custom element Panel widget represents a container for other widgets or elements. It arranges its inner elements depending on the value of the 'dock' attribute.
+    </div>
+
+    <div id='jqxWidget' style="width: 300px; height: 600px; font-size: 13px; font-family: Verdana;">
+
+        <jqx-dock-panel id='jqxDockPanel'>
+            <div id='first' dock='left' style='background: #486974;'>
+                First Div
+            </div>
+
+            <div id='second' dock='top' style='height: 100px; background: #368ba7;'>
+                Second Div
+            </div>
+
+            <div id='third' dock='right' style='background: #df7169;'>
+                Third Div
+            </div>
+
+            <div id='fourth' style='background: #a73654;'>
+                Fourth Div
+            </div>
+        </jqx-dock-panel>
+        <br />
+
+        <div>Layout Types:</div>
+        <div id='layout'>
+            <img title='click to apply a new layout' alt='layout types' src='../../images/LayoutTypes.png' />
+        </div>
+        <br />
+
+        <div>Spiral:</div>
+        <jqx-dock-panel style="width:200px; height:200px;" lastchildfill="false" id='jqxDockPanel2'>
+
+            <div id='Div1' dock='left' style='width: 30px; background: #486974;'>
+                1
+            </div>
+
+            <div id='Div2' dock='top' style='height: 30px; background: #368ba7;'>
+                2
+            </div>
+
+            <div id='Div3' dock='right' style='width: 30px; background: #df7169;'>
+                3
+            </div>
+
+            <div id='Div4' dock='bottom' style='height: 30px; background: #a73654;'>
+                4
+            </div>
+        </jqx-dock-panel>
+    </div>
+</body>
+</html>

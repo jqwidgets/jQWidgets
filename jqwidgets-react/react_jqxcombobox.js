@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -443,8 +443,8 @@ export default class JqxComboBox extends React.Component {
     selectItem(item) {
         JQXLite(this.componentSelector).jqxComboBox('selectItem', item);  
     };
-    searchString() {
-        return JQXLite(this.componentSelector).jqxComboBox('searchString');  
+    searchstring() {
+        return JQXLite(this.componentSelector).jqxComboBox('searchstring');  
     };
     updateItem(item, itemValue) {
         JQXLite(this.componentSelector).jqxComboBox('updateItem', item, itemValue);  

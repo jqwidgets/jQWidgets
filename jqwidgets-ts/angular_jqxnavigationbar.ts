@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -18,18 +18,18 @@ export class jqxNavigationBarComponent implements OnChanges
 {
    @Input('animationType') attrAnimationType: any;
    @Input('arrowPosition') attrArrowPosition: any;
-   @Input('collapseAnimationDuration') attrCollapseAnimationDuration: Number;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('expandAnimationDuration') attrExpandAnimationDuration: Number;
+   @Input('collapseAnimationDuration') attrCollapseAnimationDuration: number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('expandAnimationDuration') attrExpandAnimationDuration: number;
    @Input('expandMode') attrExpandMode: any;
-   @Input('expandedIndexes') attrExpandedIndexes: Array<Number>;
+   @Input('expandedIndexes') attrExpandedIndexes: Array<number>;
    @Input('initContent') attrInitContent: (index:number) => void;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('showArrow') attrShowArrow: Boolean;
-   @Input('theme') attrTheme: String;
+   @Input('rtl') attrRtl: boolean;
+   @Input('showArrow') attrShowArrow: boolean;
+   @Input('theme') attrTheme: string;
    @Input('toggleMode') attrToggleMode: any;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -52,7 +52,7 @@ export class jqxNavigationBarComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -191,7 +191,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   expandedIndexes(arg?: Array<Number>) : any {
+   expandedIndexes(arg?: Array<number>) : any {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('expandedIndexes', arg);
       } else {
@@ -199,7 +199,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('height', arg);
       } else {
@@ -247,7 +247,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('width', arg);
       } else {
@@ -257,15 +257,15 @@ export class jqxNavigationBarComponent implements OnChanges
 
 
    // jqxNavigationBarComponent functions
-   add(header: String | Number, content: String | Number): void {
+   add(header: number | string, content: number | string): void {
       this.host.jqxNavigationBar('add', header, content);
    }
 
-   collapseAt(index: String | Number): void {
+   collapseAt(index: number | string): void {
       this.host.jqxNavigationBar('collapseAt', index);
    }
 
-   disableAt(index: String | Number): void {
+   disableAt(index: number | string): void {
       this.host.jqxNavigationBar('disableAt', index);
    }
 
@@ -277,11 +277,11 @@ export class jqxNavigationBarComponent implements OnChanges
       this.host.jqxNavigationBar('destroy');
    }
 
-   expandAt(index: String | Number): void {
+   expandAt(index: number | string): void {
       this.host.jqxNavigationBar('expandAt', index);
    }
 
-   enableAt(index: String | Number): void {
+   enableAt(index: number | string): void {
       this.host.jqxNavigationBar('enableAt', index);
    }
 
@@ -293,15 +293,15 @@ export class jqxNavigationBarComponent implements OnChanges
       this.host.jqxNavigationBar('focus');
    }
 
-   getHeaderContentAt(index: String | Number): string {
+   getHeaderContentAt(index: number | string): string {
       return this.host.jqxNavigationBar('getHeaderContentAt', index);
    }
 
-   getContentAt(index: String | Number): string {
+   getContentAt(index: number | string): string {
       return this.host.jqxNavigationBar('getContentAt', index);
    }
 
-   hideArrowAt(index: String | Number): void {
+   hideArrowAt(index: number | string): void {
       this.host.jqxNavigationBar('hideArrowAt', index);
    }
 
@@ -309,7 +309,7 @@ export class jqxNavigationBarComponent implements OnChanges
       this.host.jqxNavigationBar('invalidate');
    }
 
-   insert(Index: number, header: String | Number, content: String | Number): void {
+   insert(Index: number, header: number | string, content: number | string): void {
       this.host.jqxNavigationBar('insert', Index, header, content);
    }
 
@@ -321,27 +321,27 @@ export class jqxNavigationBarComponent implements OnChanges
       this.host.jqxNavigationBar('render');
    }
 
-   remove(index: String | Number): void {
+   remove(index: number | string): void {
       this.host.jqxNavigationBar('remove', index);
    }
 
-   setContentAt(index: number, item: String | Number): void {
+   setContentAt(index: number, item: number | string): void {
       this.host.jqxNavigationBar('setContentAt', index, item);
    }
 
-   setHeaderContentAt(index: number, item: String | Number): void {
+   setHeaderContentAt(index: number, item: number | string): void {
       this.host.jqxNavigationBar('setHeaderContentAt', index, item);
    }
 
-   showArrowAt(index: String | Number): void {
+   showArrowAt(index: number | string): void {
       this.host.jqxNavigationBar('showArrowAt', index);
    }
 
-   update(index: number, header: String | Number, content: String | Number): void {
+   update(index: number, header: number | string, content: number | string): void {
       this.host.jqxNavigationBar('update', index, header, content);
    }
 
-   val(value?: String | Number): any {
+   val(value?: number | string): any {
       if (value !== undefined) {
          return this.host.jqxNavigationBar("val", value);
       } else {

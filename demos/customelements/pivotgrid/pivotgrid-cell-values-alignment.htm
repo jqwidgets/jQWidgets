@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Description">PivotGrid Custom Element - cell values alignment and number settings</title>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>   
+    <script type="text/javascript" src="../jqwidgets/jqxpivot.js"></script> 
+    <script type="text/javascript" src="../jqwidgets/jqxpivotgrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>  
+    <script type="text/javascript">
+        // prepare sample data
+        var data = new Array();
+
+        var countries =
+        [
+            "Germany", "France", "United States", "Italy", "Spain", "Finland", "Canada", "Japan", "Brazil", "United Kingdom", "China", "India", "South Korea", "Romania", "Greece"
+        ];
+
+        var dataPoints =
+        [
+            "2.25", "1.5", "3.0", "3.3", "4.5", "3.6", "3.8", "2.5", "5.0", "1.75", "3.25", "4.0"
+        ];
+
+        for (var i = 0; i < countries.length * 2; i++) {
+            var row = {};
+            var value = parseFloat(dataPoints[Math.round((Math.random() * 100)) % dataPoints.length]);
+
+            row["country"] = countries[i % countries.length];
+            row["value"] = value;
+
+            data[i] = row;
+        }
+
+        // create a data source and data adapter
+        var source =
+        {
+            localdata: data,
+            datatype: "array",
+            datafields:
+            [
+                { name: 'country', type: 'string' },
+                { name: 'value', type: 'number' }
+            ]
+        };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+        dataAdapter.dataBind();
+
+        // create a pivot data source from the dataAdapter
+        var pivotDataSource = new jqx.pivot(
+            dataAdapter,
+            {
+                pivotValuesOnRows: false,
+                rows: [{ dataField: 'country', width: 190 }],
+                columns: [],
+                values: [
+                    { dataField: 'value', width: 200, 'function': 'min', text: 'cells left alignment', formatSettings: { align: 'left', prefix: '', decimalPlaces: 2 } },
+                    { dataField: 'value', width: 200, 'function': 'max', text: 'cells center alignment', formatSettings: { align: 'center', prefix: '', decimalPlaces: 2 } },
+                    { dataField: 'value', width: 200, 'function': 'average', text: 'cells right alignment', formatSettings: { align: 'right', prefix: '', decimalPlaces: 2 } }
+                ]
+            });
+
+        JQXElements.settings["pivotSettings"] =
+        {
+            source: pivotDataSource,
+            treeStyleRows: true,
+            autoResize: false,
+            multipleSelectionEnabled: true
+        }
+    </script>
+</head>
+<body class='default'>
+    <jqx-pivot-grid settings="pivotSettings" id="divPivotGrid" style="height: 400px; width: 800px; background-color: white;">
+    </jqx-pivot-grid>
+    <div class="example-description">
+        <h2>Description</h2>
+        <div style="width: 800px;">
+            This pivot grid example demonstrates how to change the alignment of the values displayed in the pivot grid cells.
+            The default behavior is to align the values to the right side of the grid cells. To change the default cells alignment,
+            use the formatSettings align property during the definition of the value fields of the pivot grid. In addition to
+            cells content alignment, the formatSettings object allows you to specify how to format the numbers displayed in the pivot
+            grid cells. For example, you may change the number of digits after the decimal point, the thousands separator, whether
+            negative numbers will be displayed in brackets or with a minus sign, as well as custom prefix and sufix text.
+        </div>
+    </div>
+</body>
+</html>

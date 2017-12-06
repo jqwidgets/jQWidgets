@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element VirtualMode</title>
+    <meta name="description" content="This is an example of virtual mode in TreeGrid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var tasks =
+            [
+                'Shopping', 'Housewares', 'Kitchen supplies', 'Groceries', 'Cleaning supplies', 'Office supplies', 'Remodeling', 'Paint bedroom', 'Paint wall', 'Fitness', 'Decorate living room', 'Fix lights', 'Fix front door', 'Clean kitchen'
+            ];
+        var firstNames =
+            [
+                'Andrew', 'Nancy', 'Shelley', 'Regina', 'Yoshi', 'Antoni', 'Mayumi', 'Ian', 'Peter', 'Lars', 'Petra', 'Martin', 'Sven', 'Elio', 'Beate', 'Cheryl', 'Michael', 'Guylene'
+            ];
+        var lastNames =
+            [
+                'Fuller', 'Davolio', 'Burke', 'Murphy', 'Nagase', 'Saavedra', 'Ohno', 'Devling', 'Wilson', 'Peterson', 'Winkler', 'Bein', 'Petersen', 'Rossi', 'Vileid', 'Saylor', 'Bjorn', 'Nodier'
+            ];
+
+        var generateTasks = function (rowsCounts) {
+            var rowsCount = !rowsCounts ? 1 + Math.floor(Math.random() * 5) : rowsCounts;
+            var data = new Array();
+            var generatekey = function () {
+                var S4 = function () {
+                    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+                };
+                return (S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4());
+            };
+            for (var i = 0; i < rowsCount; i++) {
+                var row = {};
+                var taskindex = Math.floor(Math.random() * tasks.length);
+                row['id'] = generatekey();
+                row['firstname'] = firstNames[Math.floor(Math.random() * firstNames.length)];
+                row['lastname'] = lastNames[Math.floor(Math.random() * lastNames.length)];
+                row['name'] = row['firstname'] + ' ' + row['lastname'];
+                row['task'] = tasks[taskindex];
+                row['duration'] = 1 + Math.floor(Math.random() * 10);
+                data.push(row);
+            }
+            return data;
+        };
+
+        var virtualModeCreateRecords = function (expandedRecord, done) {
+            var source =
+                {
+                    datatype: 'array',
+                    datafields: [
+                        { name: 'id', type: 'string' },
+                        { name: 'name', type: 'string' },
+                        { name: 'duration', type: 'number' },
+                        { name: 'task', type: 'number' }
+                    ],
+                    localdata: expandedRecord === null ? generateTasks(3000) : generateTasks(),
+                    id: 'id'
+                };
+
+            var dataAdapter = new jqx.dataAdapter(source, {
+                loadComplete: function() {
+                    done(dataAdapter.records);
+                }
+            });
+
+            dataAdapter.dataBind();
+        };
+
+        var virtualModeRecordCreating = function (record) {
+            if(record.level == 2) {
+                record.leaf = true;
+            }
+        };
+
+        JQXElements.settings['treeGridSettings'] =
+            {
+                pageable: true,
+                altRows: true,
+                virtualModeCreateRecords: virtualModeCreateRecords,
+                virtualModeRecordCreating: virtualModeRecordCreating,
+                columns: [
+                    { text: 'Task', dataField: 'task', align: 'center', width: 300 },
+                    { text: 'Person Name', dataField: 'name', cellsAlign: 'center', align: 'center', width: 300 },
+                    {
+                        text: 'Duration', aggregates: ['sum'], dataField: 'duration', cellsAlign: 'center', align: 'center',
+                        cellsRenderer: function (row, column, value) {
+                            var hour = value > 1 ? ' hours' : ' hour';
+                            return value + hour;
+                        }
+                    }
+                ]
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In virtual mode, the Tree Grid Custom Element is created on demand. In this case, child records are created and initialized when the parent record is expanded.
+    </div>
+    <jqx-tree-grid settings="treeGridSettings"></jqx-tree-grid>
+</body>
+</html>

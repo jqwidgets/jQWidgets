@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeMap Custom Element RangesRendering</title>
+    <meta name="description" content="This is an example of the ranges rendering in TreeMap Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreemap.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var data = [
+            {
+                label: 'China',
+                value: 1354040000
+            },
+            {
+                label: 'India',
+                value: 1210193422
+            },
+            {
+                label: 'United States',
+                value: 315498000
+            },
+            {
+                label: 'Indonesia',
+                value: 237641326
+            },
+            {
+                label: 'Brazil',
+                value: 193946886
+            },
+            {
+                label: 'Pakistan',
+                value: 182228000
+            },
+            {
+                label: 'Nigeria',
+                value: 166629000
+            },
+            {
+                label: 'Bangladesh',
+                value: 152518015
+            },
+            {
+                label: 'Russia',
+                value: 143369806
+            },
+            {
+                label: 'Japan',
+                value: 127460000
+            },
+            {
+                label: 'Mexico',
+                value: 112336538
+            },
+            {
+                label: 'Philippines',
+                value: 92337852
+            },
+            {
+                label: 'Vietnam',
+                value: 87840000
+            },
+            {
+                label: 'Ethiopia',
+                value: 84320987
+            },
+            {
+                label: 'Egypt',
+                value: 84320987
+            },
+            {
+                label: 'Germany',
+                value: 81946000
+            }
+        ];
+
+
+        JQXElements.settings['treeMapSettings'] =
+            {
+                source: data,
+                colorMode: 'rangeColors',
+                colorRanges: [
+                    { min: 1254040000, max: 1454040000, color: '#de290b' },
+                    { min: 1054040000, max: 1254039999, color: '#de440c' },
+                    { min: 300000000, max: 1054040000, color: '#ea7707' },
+                    { min: 210000000, max: 460000000, color: '#ee8a06' },
+                    { min: 190000000, max: 209999999, color: '#f19505' },
+                    { min: 180000000, max: 189999999, color: '#f6a903' },
+                    { min: 160000000, max: 179999999, color: '#f8b203' },
+                    { min: 140000000, max: 159999999, color: '#fabb02' },
+                    { min: 100000000, max: 139999999, color: '#fbbf01' },
+                    { min: 90000000, max: 99999999, color: '#fbcd01' },
+                    { min: 10000000, max: 89999999, color: '#fbde33' }
+                ],
+                baseColor: '#52CBFF',
+                legendScaleCallback: function (v) {
+                    v /= 1000000000;
+                    v = v.toFixed(2);
+
+                    return v;
+                },
+                legendLabel: 'Population (in billions)'
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This example demonstrates the Range rendering capabilities of TreeMap Custom Element. It is configured with 10 colors, each corresponding to a certain range of values in the data.
+    </div>
+    <jqx-tree-map settings="treeMapSettings"></jqx-tree-map>
+</body>
+</html>

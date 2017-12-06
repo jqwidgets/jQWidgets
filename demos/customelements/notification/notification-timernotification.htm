@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Notification Custom Element TimerNotification</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This demo shows how to create a Custom Element Timer Notification. It also showcases a variety of notification templates." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnotification.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['timerNotification'] = {
+            position: 'top-right',
+            width: 300,
+            autoOpen: true,
+            closeOnClick: false,
+            autoClose: false,
+            showCloseButton: false,
+            template: 'time'
+        };
+
+        JQXElements.settings['timeOutNotification'] = {
+            position: 'top-right',
+            width: 300,
+            autoOpen: false,
+            closeOnClick: true,
+            autoClose: false,
+            template: 'time'
+        };
+
+        JQXElements.settings['correctNotification'] = {
+            position: 'top-right',
+            width: 300,
+            autoOpen: false,
+            closeOnClick: true,
+            autoClose: true,
+            template: 'success'
+        };
+
+        JQXElements.settings['wrongNotification'] = {
+            position: 'top-right',
+            width: 300,
+            autoOpen: false,
+            closeOnClick: true,
+            autoClose: true,
+            template: 'error'
+        };
+
+        JQXElements.settings['errorTimeOutNotification'] = {
+            position: 'top-right',
+            width: 300,
+            autoOpen: false,
+            closeOnClick: true,
+            autoClose: true,
+            template: 'error'
+        };
+
+        window.onload = function() {
+            var myNotifications = document.querySelectorAll('jqx-notification');
+            var myButton = document.querySelector('jqx-button');
+            var myInput = document.querySelector('jqx-input');
+
+            myNotifications[0].addEventListener('close', function() {
+                if (myInput.val() != 8) {
+                    myNotifications[1].open();
+                }
+            });
+
+            myButton.addEventListener('click', function() {
+                if (seconds > 1) {
+                    if (myInput.val() == 8) {
+                        myNotifications[2].open();
+                        clearInterval(interval);
+                        myNotifications[0].closeLast();
+                    } else {
+                        myNotifications[3].open();
+                    }
+                } else {
+                    myNotifications[4].open();
+                }
+            });
+
+            var seconds = 30;
+            var interval = setInterval( function() {
+                if (seconds > 1) {
+                    seconds--;
+                    document.querySelectorAll('.timer')[1].innerHTML = seconds;
+            
+                } else {
+                    clearInterval(interval);
+                    myNotifications[0].closeLast();
+                }
+            }, 1000);
+        };
+    </script>
+</head>
+<body>
+
+    <div class="example-description">
+        This demo shows how to create a timer notification. It also showcases a variety of notification templates.
+    </div>
+
+    <jqx-notification settings="timerNotification">
+        <div>
+            Hurry, you have <span class="timer">30</span> seconds left!
+        </div>
+    </jqx-notification>
+
+    <jqx-notification settings="timeOutNotification">
+        <div>Time is up!</div>
+    </jqx-notification>
+
+    <jqx-notification settings="correctNotification">
+        <div>Your answer is correct.</div>
+    </jqx-notification>
+
+    <jqx-notification settings="wrongNotification">
+        <div>Your answer is incorrect.</div>
+    </jqx-notification>
+
+    <jqx-notification settings="errorTimeOutNotification">
+        <div>Time is up!</div>
+    </jqx-notification>
+
+
+    <div>
+        Solve the equasion in 30 seconds:
+    </div>
+
+    <div>
+        <span>20 - 3 × 4 =</span>
+        <jqx-input></jqx-input>
+    </div>
+
+    <br />
+    <jqx-button id="submitAnswer">
+        Submit answer
+    </jqx-button>
+
+</body>
+</html>

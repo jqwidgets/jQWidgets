@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Slider Custom Element KeyboardNavigation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the keyboard navigation in Custom Element Slider." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['SliderSettings'] =
+            {
+                ticksFrequency: 1,
+                mode: 'fixed'
+            };
+
+        window.onload = function() {
+            var mySlider = document.querySelector('jqx-slider');
+
+            mySlider.focus();
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The Custom element Slider provides keyboard navigation once it gains focus(either programmatically or as a result of a user click). When the widget is focused, you can use the keyboard to change its value.
+    </div>
+
+    <div id='jqxWidget'>
+        <jqx-slider settings='SliderSettings'></jqx-slider>
+
+        <div style="font-family: Verdana; font-size: 12px; width: 400px; margin-left: 20px; float: left;">
+            <ul>
+                <li><b>Tab</b> - Like other widgets, the jqxSlider widget receives focus by tabbing into it. Once focus is received, users will be able to use the keyboard to change the slider's value. A second tab will take the user out of the widget.</li>
+                <li><b>Shift+Tab</b> - reverses the direction of the tab order. Once in the widget, a Shift+Tab will take the user to the previous focusable element in the tab order.</li>
+                <li><b>Right Arrow</b> and <b>Up Arrow</b> - increase the value of the slider.</li>
+                <li><b>Left Arrow</b> and <b>Down Arrow</b> - decrease the value of the slider.</li>
+                <li><b>Home</b> - move to the minimum value of the slider.</li>
+                <li><b>End</b> - move to the maximum value of the slider.</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

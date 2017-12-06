@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ListBox LoadDataFromSelect</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element ListBox's data that was selected from another existing element." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var updating = false;
+
+        window.onload = function() {
+            var myListBox = document.querySelector('jqx-list-box');
+            var mySelect = document.querySelector('#select');
+
+            myListBox.loadFromSelect('select');
+
+            myListBox.addEventListener('select', function(event) {
+                if (event.args && !updating) {
+                    // select the item in the 'select' tag.
+                    var index = event.args.item.index;
+                    select.selectedIndex = index;
+                }
+            });
+
+            mySelect.addEventListener('change', function(event) {
+                updating = true;
+                var index = select.selectedIndex;
+                myListBox.selectIndex(index);
+                myListBox.ensureVisible(index);
+                updating = false;
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The Custom element ListBox can be populated with data from an existing select element making it easier to upgrade your pages using Custom element ListBox.
+    </div>
+
+    <div style='float: left; width: 500px;' id='jqxWidget'>
+
+        <jqx-list-box style='float: left;'></jqx-list-box>
+
+        <div style='float: left;' id='Select'>
+            <select style='height: 250px; width: 200px; margin-left: 30px;' size='2' id='select'>
+                <option>Affogato</option>
+                <option>Americano</option>
+                <option>Bicerin</option>
+                <option>Breve</option>
+                <option>Café Bombón</option>
+                <option>Caffé Corretto</option>
+                <option>Café Crema</option>
+                <option>Caffé Latte</option>
+                <option>Caffé macchiato</option>
+                <option>Café mélange</option>
+                <option>Coffee milk</option>
+                <option>Cafe mocha</option>
+                <option>Cappuccino</option>
+                <option>Carajillo</option>
+                <option>Cuban espresso</option>
+                <option>Espresso</option>
+                <option selected="true">The Flat White</option>
+                <option>Frappuccino</option>
+                <option>Galao</option>
+                <option>Greek frappé coffee</option>
+                <option>Iced Coffee﻿</option>
+                <option>Indian filter coffee</option>
+                <option>Instant coffee</option>
+                <option>Irish coffee</option>
+                <option>Liqueur coffee</option>
+            </select>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -28,25 +28,25 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxInputComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('dropDownWidth') attrDropDownWidth: String | Number;
-   @Input('displayMember') attrDisplayMember: String;
-   @Input('items') attrItems: Number;
-   @Input('minLength') attrMinLength: Number;
-   @Input('maxLength') attrMaxLength: Number;
-   @Input('opened') attrOpened: Boolean;
-   @Input('placeHolder') attrPlaceHolder: String;
-   @Input('popupZIndex') attrPopupZIndex: Number;
-   @Input('query') attrQuery: String;
-   @Input('renderer') attrRenderer: (itemValue?: String, inputValue?: String) => String;
-   @Input('rtl') attrRtl: Boolean;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('dropDownWidth') attrDropDownWidth: number | string;
+   @Input('displayMember') attrDisplayMember: string;
+   @Input('items') attrItems: number;
+   @Input('minLength') attrMinLength: number;
+   @Input('maxLength') attrMaxLength: number;
+   @Input('opened') attrOpened: boolean;
+   @Input('placeHolder') attrPlaceHolder: string;
+   @Input('popupZIndex') attrPopupZIndex: number;
+   @Input('query') attrQuery: string;
+   @Input('renderer') attrRenderer: (itemValue?: string, inputValue?: string) => string;
+   @Input('rtl') attrRtl: boolean;
    @Input('searchMode') attrSearchMode: any;
-   @Input('source') attrSource: Array<any>;
-   @Input('theme') attrTheme: String;
-   @Input('valueMember') attrValueMember: String;
-   @Input('value') attrValue: String | Number;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('source') attrSource: any;
+   @Input('theme') attrTheme: string;
+   @Input('valueMember') attrValueMember: string;
+   @Input('value') attrValue: number | string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -54,6 +54,8 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxInput;
+
+   initialLoad: boolean = true;
 
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
@@ -72,7 +74,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -159,8 +161,12 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
    }
 
    get ngValue(): any {
-       if (this.widgetObject)
-           return this.host.val();
+       if (this.widgetObject) {
+           const value = this.host.val();
+           if(typeof value === 'object')
+               return value.label;
+           return value;
+       }
        return '';
    }
 
@@ -171,7 +177,11 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
-       if(this.widgetObject) {
+       if(this.widgetObject && value) {
+           if(this.initialLoad){
+               setTimeout(_ => this.host.jqxInput('val', value));
+               this.initialLoad = false;
+           }
            this.host.jqxInput('val', value);
        }
    }
@@ -197,7 +207,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownWidth(arg?: String | Number) : any {
+   dropDownWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxInput('dropDownWidth', arg);
       } else {
@@ -213,7 +223,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxInput('height', arg);
       } else {
@@ -277,7 +287,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   renderer(arg?: (itemValue?: String, inputValue?: String) => String) : any {
+   renderer(arg?: (itemValue?: string, inputValue?: string) => string) : any {
       if (arg !== undefined) {
           this.host.jqxInput('renderer', arg);
       } else {
@@ -301,7 +311,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   source(arg?: Array<any>) : any {
+   source(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxInput('source', arg);
       } else {
@@ -325,7 +335,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxInput('width', arg);
       } else {
@@ -333,7 +343,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   value(arg?: String | Number) : any {
+   value(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxInput('value', arg);
       } else {
@@ -355,7 +365,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       this.host.jqxInput('selectAll');
    }
 
-   val(value?: String | Number): any {
+   val(value?: number | string): any {
       if (value !== undefined) {
          return this.host.jqxInput("val", value);
       } else {

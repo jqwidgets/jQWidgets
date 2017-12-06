@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -31,46 +31,46 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxCalendarComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('backText') attrBackText: String;
-   @Input('columnHeaderHeight') attrColumnHeaderHeight: Number;
-   @Input('clearString') attrClearString: String;
-   @Input('culture') attrCulture: String;
+   @Input('backText') attrBackText: string;
+   @Input('columnHeaderHeight') attrColumnHeaderHeight: number;
+   @Input('clearstring') attrClearstring: string;
+   @Input('culture') attrCulture: string;
    @Input('dayNameFormat') attrDayNameFormat: any;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('enableWeekend') attrEnableWeekend: Boolean;
-   @Input('enableViews') attrEnableViews: Boolean;
-   @Input('enableOtherMonthDays') attrEnableOtherMonthDays: Boolean;
-   @Input('enableFastNavigation') attrEnableFastNavigation: Boolean;
-   @Input('enableHover') attrEnableHover: Boolean;
-   @Input('enableAutoNavigation') attrEnableAutoNavigation: Boolean;
-   @Input('enableTooltips') attrEnableTooltips: Boolean;
-   @Input('forwardText') attrForwardText: String;
-   @Input('firstDayOfWeek') attrFirstDayOfWeek: Number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('enableWeekend') attrEnableWeekend: boolean;
+   @Input('enableViews') attrEnableViews: boolean;
+   @Input('enableOtherMonthDays') attrEnableOtherMonthDays: boolean;
+   @Input('enableFastNavigation') attrEnableFastNavigation: boolean;
+   @Input('enableHover') attrEnableHover: boolean;
+   @Input('enableAutoNavigation') attrEnableAutoNavigation: boolean;
+   @Input('enableTooltips') attrEnableTooltips: boolean;
+   @Input('forwardText') attrForwardText: string;
+   @Input('firstDayOfWeek') attrFirstDayOfWeek: number;
    @Input('min') attrMin: any;
    @Input('max') attrMax: any;
-   @Input('navigationDelay') attrNavigationDelay: Number;
-   @Input('rowHeaderWidth') attrRowHeaderWidth: String | Number;
-   @Input('readOnly') attrReadOnly: Boolean;
+   @Input('navigationDelay') attrNavigationDelay: number;
+   @Input('rowHeaderWidth') attrRowHeaderWidth: number | string;
+   @Input('readOnly') attrReadOnly: boolean;
    @Input('restrictedDates') attrRestrictedDates: Array<Date>;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('stepMonths') attrStepMonths: Number;
-   @Input('showWeekNumbers') attrShowWeekNumbers: Boolean;
-   @Input('showDayNames') attrShowDayNames: Boolean;
-   @Input('showOtherMonthDays') attrShowOtherMonthDays: Boolean;
-   @Input('showFooter') attrShowFooter: Boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('stepMonths') attrStepMonths: number;
+   @Input('showWeeknumbers') attrShowWeeknumbers: boolean;
+   @Input('showDayNames') attrShowDayNames: boolean;
+   @Input('showOtherMonthDays') attrShowOtherMonthDays: boolean;
+   @Input('showFooter') attrShowFooter: boolean;
    @Input('selectionMode') attrSelectionMode: any;
    @Input('specialDates') attrSpecialDates: Array<any>;
-   @Input('theme') attrTheme: String;
-   @Input('titleHeight') attrTitleHeight: Number;
+   @Input('theme') attrTheme: string;
+   @Input('titleHeight') attrTitleHeight: number;
    @Input('titleFormat') attrTitleFormat: any;
-   @Input('todayString') attrTodayString: String;
+   @Input('todaystring') attrTodaystring: string;
    @Input('value') attrValue: Date;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['backText','columnHeaderHeight','clearString','culture','dayNameFormat','disabled','enableWeekend','enableViews','enableOtherMonthDays','enableFastNavigation','enableHover','enableAutoNavigation','enableTooltips','forwardText','firstDayOfWeek','height','min','max','navigationDelay','rowHeaderWidth','readOnly','restrictedDates','rtl','stepMonths','showWeekNumbers','showDayNames','showOtherMonthDays','showFooter','selectionMode','specialDates','theme','titleHeight','titleFormat','todayString','value','width'];
+   properties: string[] = ['backText','columnHeaderHeight','clearstring','culture','dayNameFormat','disabled','enableWeekend','enableViews','enableOtherMonthDays','enableFastNavigation','enableHover','enableAutoNavigation','enableTooltips','forwardText','firstDayOfWeek','height','min','max','navigationDelay','rowHeaderWidth','readOnly','restrictedDates','rtl','stepMonths','showWeeknumbers','showDayNames','showOtherMonthDays','showFooter','selectionMode','specialDates','theme','titleHeight','titleFormat','todaystring','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxCalendar;
@@ -92,7 +92,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -213,11 +213,11 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   clearString(arg?: string) : any {
+   clearstring(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxCalendar('clearString', arg);
+          this.host.jqxCalendar('clearstring', arg);
       } else {
-          return this.host.jqxCalendar('clearString');
+          return this.host.jqxCalendar('clearstring');
       }
    }
 
@@ -317,7 +317,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxCalendar('height', arg);
       } else {
@@ -349,7 +349,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rowHeaderWidth(arg?: String | Number) : any {
+   rowHeaderWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxCalendar('rowHeaderWidth', arg);
       } else {
@@ -389,11 +389,11 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   showWeekNumbers(arg?: boolean) : any {
+   showWeeknumbers(arg?: boolean) : any {
       if (arg !== undefined) {
-          this.host.jqxCalendar('showWeekNumbers', arg);
+          this.host.jqxCalendar('showWeeknumbers', arg);
       } else {
-          return this.host.jqxCalendar('showWeekNumbers');
+          return this.host.jqxCalendar('showWeeknumbers');
       }
    }
 
@@ -461,11 +461,11 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   todayString(arg?: string) : any {
+   todaystring(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxCalendar('todayString', arg);
+          this.host.jqxCalendar('todaystring', arg);
       } else {
-          return this.host.jqxCalendar('todayString');
+          return this.host.jqxCalendar('todaystring');
       }
    }
 
@@ -477,7 +477,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxCalendar('width', arg);
       } else {

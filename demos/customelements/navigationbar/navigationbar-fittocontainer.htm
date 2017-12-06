@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>NavigationBar Custom Element FitToContainer</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element NavigationBar fitted to its container." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.light.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnavigationbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        .bookContainer {
+            width: 500px;
+        }
+        .book {
+            width: 105px;
+            height: 215px;
+            float: left;
+            margin-left: 5px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var Tolkien = '<div class="bookContainer"><div class="book"><img style="float: left" src="../images/books/The Hobbit.JPG" /><i>The Hobbit</i></div><div class="book"><img src="../images/books/The Lord of the Rings.jpg" /><i>The Lord of the Rings</i></div><div class="book"><img src="../images/books/The Silmarillion.JPG" /><i>The Silmarillion</i></div></div>';
+            var Brooks = '<div class="bookContainer"><div class="book"><img src="../images/books/The Sword of Shannara.jpg" /><i>The Sword of Shannara</i></div><div class="book"><img src="../images/books/The Elfstones of Shannara.jpg" /><i>The Elfstones of Shannara</i></div><div class="book"><img src="../images/books/The Wishsong of Shannara.jpg" /><i>The Wishsong of Shannara</i></div><div class="book"><img src="../images/books/Running with the Demon.jpg" /><i>Running with the Demon</i></div><div class="book"><img src="../images/books/A Knight of the Word.jpg" /><i>A Knight of the Word</i></div><div class="book"><img src="../images/books/Angel Fire East.jpg" /><i>Angel Fire East</i></div></div>';
+            var Rowling = '<div class="bookContainer"><div class="book"><img src="../images/books/Harry Potter and the Philosopher&apos;s Stone.jpg" /><i>Harry Potter and the Philosopher&apos;s Stone</i></div><div class="book"><img src="../images/books/Harry Potter and the Chamber of Secrets.jpg" /><i>Harry Potter and the Chamber of Secrets</i></div><div class="book"><img src="../images/books/Harry Potter and the Prisoner of Azkaban.jpg" /><i>Harry Potter and the Prisoner of Azkaban</i></div><div class="book"><img src="../images/books/Harry Potter and the Goblet of Fire.jpg" /><i>Harry Potter and the Goblet of Fire</i></div><div class="book"><img src="../images/books/Harry Potter and the Order of the Phoenix.jpg" /><i>Harry Potter and the Order of the Phoenix</i></div><div class="book"><img src="../images/books/Harry Potter and the Half-Blood Prince.jpg" /><i>Harry Potter and the Half-Blood Prince</i></div><div class="book"><img src="../images/books/Harry Potter and the Deathly Hallows.jpg" /><i>Harry Potter and the Deathly Hallows</i></div></div>';
+            var Wells = '<div class="bookContainer"><div class="book"><img src="../images/books/The Time Machine.JPG" /><i>The Time Machine</i></div><div class="book"><img src="../images/books/The War of the Worlds.jpg" /><i>The War of the Worlds</i></div></div>';
+            var Green = '<div class="bookContainer"><div class="book"><img src="../images/books/Deathstalker.jpg" /><i>Deathstalker</i></div><div class="book"><img src="../images/books/Deathstalker Rebellion.jpg" /><i>Deathstalker Rebellion</i></div><div class="book"><img src="../images/books/Deathstalker War.jpg" /><i>Deathstalker War</i></div><div class="book"><img src="../images/books/Deathstalker Honor.jpg" /><i>Deathstalker Honor</i></div><div class="book"><img src="../images/books/Deathstalker Destiny.jpg" /><i>Deathstalker Destiny</i></div></div>';
+            var Lovecraft = '<div class="bookContainer"><div class="book"><img src="../images/books/The Call of Cthulhu.jpg" /><i>The Call of Cthulhu</i></div><div class="book"><img src="../images/books/At the Mountains of Madness.jpg" /><i>At the Mountains of Madness</i></div></div>';
+            var King = '<div class="bookContainer"><div class="book"><img src="../images/books/Carrie.jpg" /><i>Carrie</i></div><div class="book"><img src="../images/books/Night Shift.jpg" /><i>Night Shift</i></div><div class="book"><img src="../images/books/It.jpg" /><i>It</i></div><div class="book"><img src="../images/books/The Dark Half.jpg" /><i>The Dark Half</i></div></div>';
+
+            var liTags = document.getElementsByTagName('LI');
+
+            document.getElementById('bookShelf').innerHTML = Tolkien;
+
+            var booksNum = 0;
+            var addToShoppingCart = function () {
+                booksNum += 1;
+                document.getElementById('text').innerHTML = 'Added ' + booksNum + (booksNum == 1 ? ' book' : ' books') + ' to shopping cart.'
+            };
+
+            for (var i = 0; i < liTags.length; i++) {
+                liTags[i].addEventListener('click', function () {
+                    var bookShelf = document.getElementById('bookShelf');
+                    switch (i) {
+                        case 0:
+                            bookShelf.innerHTML = Tolkien;
+                            break;
+                        case 1:
+                            bookShelf.innerHTML = Brooks;
+                            break;
+                        case 2:
+                            bookShelf.innerHTML = Rowling;
+                            break;
+                        case 3:
+                            bookShelf.innerHTML = Wells;
+                            break;
+                        case 4:
+                            bookShelf.innerHTML = Green;
+                            break;
+                        case 5:
+                            bookShelf.innerHTML = Lovecraft;
+                            break;
+                        case 6:
+                            bookShelf.innerHTML = King;
+                            break;
+                    };
+                });
+            }
+
+        }
+
+        JQXElements.settings['NavigationBarSettings'] =
+            {
+                expandMode: 'singleFitHeight'
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This is an example of Custom Element NavigationBar fitted to its container.
+    </div>
+
+    <div style="width: 680px; height: 450px; border: none;">
+        <div id="leftPanel" style="width: 225px; height: 100%; float: left;">
+            <jqx-navigation-bar settings="NavigationBarSettings">
+
+                    <div>
+                        Fantasy
+                    </div>
+                    <div>
+                        <ul>
+                            <li>J. R. R. Tolkien</li>
+                            <li>Terry Brooks</li>
+                            <li>J. K. Rowling</li>
+                        </ul>
+                    </div>
+                    <div>
+                        Science Fiction
+                    </div>
+                    <div>
+                        <ul>
+                            <li>H. G. Wells</li>
+                            <li>Simon R. Green</li>
+                        </ul>
+                    </div>
+                    <div>
+                        Horror
+                    </div>
+                    <div>
+                        <ul>
+                            <li>H. P. Lovecraft</li>
+                            <li>Stephen King</li>
+                        </ul>
+                    </div>
+        </jqx-navigation-bar>
+
+        <div style="width: 450px;  height: 100%; float: left;" id="rightPanel">
+            <div id="rightPanelContent" class="jqx-widget-content">
+                <div id="bookShelf" style="margin: 5px; width: 444px; height: 425px;"></div>
+                <div id="shoppingCart" style="float: left; margin-left: 5px;">
+
+                    <img style="float: left;" width="16" height="16" src="../images/shopping_cart.png" />
+                    <div id="text">
+                        Shopping cart is empty.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+</html>

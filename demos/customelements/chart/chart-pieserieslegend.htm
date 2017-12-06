@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart Pie Series with Legend</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Chart Pie Series with Legend. In order to show the legend you have to set the showLegend setting to true." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            {
+                datatype: 'csv',
+                datafields: [
+                    { name: 'Browser' },
+                    { name: 'Share' }
+                ],
+                url: '../sampledata/mobile_browsers_share_dec2011.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['chartSettings'] = {
+            title: 'Mobile browsers share',
+            description: '(source: wikipedia.org)',
+            enableAnimations: true,
+            showLegend: true,
+            showBorderLine: true,
+            legendLayout: { left: 700, top: 160, width: 300, height: 200, flow: 'vertical' },
+            padding: { left: 5, top: 5, right: 5, bottom: 5 },
+            titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+            source: dataAdapter,
+            colorScheme: 'scheme03',
+            seriesGroups:
+            [
+                {
+                    type: 'pie',
+                    showLabels: true,
+                    series:
+                    [
+                        {
+                            dataField: 'Share',
+                            displayText: 'Browser',
+                            labelRadius: 170,
+                            initialAngle: 15,
+                            radius: 145,
+                            centerOffset: 0,
+                            formatFunction: (value) => {
+                                if (isNaN(value))
+                                    return value;
+                                return parseFloat(value) + '%';
+                            },
+                        }
+                    ]
+                }
+            ]
+        };
+    </script>
+</head>
+<body>
+
+   <jqx-chart settings="chartSettings" style="width:850px; height:500px"></jqx-chart>
+
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Custom element Chart Pie Series with Legend. In order to show the legend you have to set the showLegend setting to true. You can also see how to format the layout of the legend via the legendLayout setting.
+    </div>
+    
+    </body>
+</html>

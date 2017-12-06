@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Radio Button Custom Element</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content=" " />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollview.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <style type="text/css">
+        .photo {
+            width: 600px;
+            height: 450px;
+            background-color: #000;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+    <script>
+        JQXElements.settings['ScrollViewSettings'] = {
+            buttonsOffset: [0, 0]
+        };
+
+        window.onload = function() {
+            var myScrollView = document.querySelector('jqx-scroll-view');
+            var myButton = document.querySelectorAll('jqx-button');
+
+            myButton[0].addEventListener('click', function() {
+                myScrollView.slideShow = true;
+            });
+
+            myButton[1].addEventListener('click', function() {
+                myScrollView.slideShow = false;
+            });
+        };
+
+    </script>
+
+</head>
+<body>
+    <jqx-scroll-view settings="ScrollViewSettings">
+        <div><div class="photo" style="background-image: url(../../images/imageNature1.jpg)"></div></div>
+        <div><div class="photo" style="background-image: url(../../images/imageNature2.jpg)"></div></div>
+        <div><div class="photo" style="background-image: url(../../images/imageNature3.jpg)"></div></div>
+        <div><div class="photo" style="background-image: url(../../images/imageNature4.jpg)"></div></div>
+        <div><div class="photo" style="background-image: url(../../images/imageNature5.jpg)"></div></div>
+    </jqx-scroll-view>
+
+    <div style='margin-top: 20px;'>
+        <br />
+        <div>
+            <jqx-button id="StartBtn">Start Slideshow</jqx-button>
+
+            <jqx-button id="StopBtn">Stop Slideshow</jqx-button>
+        </div>
+    </div>
+</body>
+</html>

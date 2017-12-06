@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart Polar Series</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Polar Chart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            {
+                datatype: 'tab',
+                datafields: [
+                    { name: 'Year' },
+                    { name: 'HPI' },
+                    { name: 'BuildCost' },
+                    { name: 'Population' },
+                    { name: 'Rate' }
+                ],
+                url: '../sampledata/homeprices.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var colorsSchemesList = ['scheme01', 'scheme02', 'scheme03', 'scheme04', 'scheme05', 'scheme06', 'scheme07', 'scheme08'];
+
+        var seriesList = ['splinearea', 'spline', 'column', 'scatter', 'stackedcolumn', 'stackedsplinearea', 'stackedspline'];
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'U.S. Real Home Price vs Building Cost Indeces (1950-2010)',
+                description: 'Source: http://www.econ.yale.edu/~shiller/data.htm',
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 0, top: 0, right: 0, bottom: 5 },
+                source: dataAdapter,
+                xAxis:
+                {
+                    dataField: 'Year',
+                    unitInterval: 10,
+                    maxValue: 2010,
+                    valuesOnTicks: true,
+                    labels: { autoRotate: true }
+                },
+                colorScheme: 'scheme01',
+                seriesGroups:
+                [
+                    {
+                        polar: true,
+                        radius: 120,
+                        type: 'spline',
+                        enableSeriesToggle: false,
+                        valueAxis:
+                        {
+                            labels: {
+                                formatSettings: { decimalPlaces: 0 },
+                                autoRotate: true
+                            }
+                        },
+                        series: [
+                            { dataField: 'HPI', displayText: 'Real Home Price Index', opacity: 0.9, lineWidth: 3 },
+                            { dataField: 'BuildCost', displayText: 'Building Cost Index', opacity: 0.9, lineWidth: 3 }
+                        ]
+                    }
+                ]
+            };
+
+        JQXElements.settings['SliderStartAngle'] =
+            {
+                min: 0, max: 360, step: 1, ticksFrequency: 20, mode: 'fixed'
+            };
+
+        JQXElements.settings['DropDownSeries'] =
+            {
+                source: seriesList, selectedIndex: 0, dropDownHeight: 100
+            };
+
+        JQXElements.settings['SliderRadius'] =
+            {
+                min: 80, max: 140, value: 120, step: 1, ticksFrequency: 20, mode: 'fixed'
+            };
+
+        JQXElements.settings['DropDownColors'] =
+            {
+                source: colorsSchemesList, selectedIndex: 2, dropDownHeight: 100
+            };
+
+        window.onload = function() {
+            var myChart = document.querySelector('jqx-chart');
+            var mySlider = document.querySelectorAll('jqx-slider');
+            var myDropDownList = document.querySelectorAll('jqx-drop-down-list');
+
+            var chart = myChart.getInstance();
+
+            mySlider[0].addEventListener('change',function(event) {
+                var value = event.args.value;
+
+                chart.seriesGroups[0].startAngle = value;
+                chart.seriesGroups[0].endAngle = value + 360;
+                chart.update();
+            });
+
+            mySlider[1].addEventListener('change',function(event) {                
+                var value = event.args.value;
+
+                chart.seriesGroups[0].radius = value;
+                chart.update();
+            });
+
+            myDropDownList[1].addEventListener('select',function(event) {
+                var value = event.args.item.value;
+
+                chart.colorScheme = value;
+                chart.update();
+            });
+
+            myDropDownList[0].addEventListener('change',function(event) {
+                var args = event.args;
+
+                if (args) {
+                    var value = args.item.value;
+                    chart.seriesGroups[0].type = value;
+                    chart.update();
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <jqx-chart settings="chartSettings" ></jqx-chart>
+
+    <table style="width: 850px">
+        <tr>
+            <td style="padding-left:50px">
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Move the slider to rotate:
+                </p>
+                <jqx-slider settings='SliderStartAngle'></jqx-slider>
+            </td>
+            <td>
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Select the series type:
+                </p>
+                <jqx-drop-down-list settings='DropDownSeries'></jqx-drop-down-list>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:50px">
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Move the slider to change the radius:
+                </p>
+                <jqx-slider settings='SliderRadius'></jqx-slider>
+            </td>
+            <td>
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Select color scheme:
+                </p>
+                <jqx-drop-down-list settings='DropDownColors'></jqx-drop-down-list>
+            </td>
+        </tr>
+    </table>
+
+
+    <div class="example-description">
+        This is an example of Custom element Polar Chart. The polar chart is used to represent data consisting of multiple variables on a two dimensional circular area using two or more shapes. You can see how to set a radius and an angle slider. The polar setting is set to true and the initial shapes are splinearea.
+    </div>
+</body>
+</html>

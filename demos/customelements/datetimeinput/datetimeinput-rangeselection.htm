@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>DateTimeInput Custom Element RangeSelecion</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="his is an example of range selectrion in Custom Element DataTimeInput." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['DateTimeInput'] =
+            {
+                selectionMode: 'range'
+            }
+
+        window.onload = function() {
+            var myDateTimeInput = document.querySelector('jqx-date-time-input');
+
+            myDateTimeInput.addEventListener('change', function(event) {
+                var selection = myDateTimeInput.getRange();
+                if (selection.from != null) {
+                    document.querySelector('#selection').innerHTML = '<div>From: ' + selection.from.toLocaleDateString() + ' <br/>To: ' + selection.to.toLocaleDateString() + '</div>';
+                }
+            });
+
+            var date1 = new Date();
+            date1.setFullYear(2017, 7, 7);
+            var date2 = new Date();
+            date2.setFullYear(2017, 7, 15);
+            myDateTimeInput.setRange(date1, date2);
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo demonstrates the Custom element DateTimeInput's range selection mode. Click on a date to select the start date and then click on another cell to select the end date.
+    </div>
+        <jqx-date-time-input settings="DateTimeInput"></jqx-date-time-input>
+
+    <div style='margin-top: 10px; font-size: 13px; font-family: Verdana;' id='selection'></div>
+</body>
+</html>

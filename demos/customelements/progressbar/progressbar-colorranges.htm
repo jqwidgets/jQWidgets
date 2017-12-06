@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Progressbar Custom Element ColorRanges</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the color ranges available in Custom Element ProgressBar." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxprogressbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script>
+        JQXElements.settings['colorRanges'] =
+            {
+                showText: true,
+                renderText:  function(text, value) {
+                    if (value < 60) {
+                        return "<span class='jqx-rc-all' style='color: #333;'>" + text + "</span>";
+                    }
+
+                    return "<span class='jqx-rc-all' style='color: #fff;'>" + text + "</span>";
+                },
+                colorRanges: [{ stop: 20, color: "#33b5e5" }, { stop: 50, color: "#98ca00" }, { stop: 80, color: "#ff4444" }, { stop: 100, color: "#aa66cc" }],
+                value: 0,
+                width: 300,
+                height: 50
+            };
+
+        JQXElements.settings['verticalColorRanges'] =
+            {
+                value: 0,
+                orientation: 'vertical',
+                height: 300,
+                width: 50,
+                showText: true, renderText: function(text, value) {
+                    if (value < 60) {
+                        return "<span class='jqx-rc-all' style='color: #333;'>" + text + "</span>";
+                    }
+                    return "<span class='jqx-rc-all' style='color: #fff;'>" + text + "</span>";
+                },
+                colorRanges: [{ stop: 40, color: "#f0ad4e" }, { stop: 59, color: "#5bc0de" }, { stop: 70, color: "#5cb85c" }, { stop: 100, color: "#d9534f" }]
+            };
+
+            window.onload = function() {
+                var myProgressBar = document.querySelectorAll('jqx-progress-bar');
+
+                var value = 0;
+                var interval = setInterval( function() {
+                    value++;
+                    if (value == 100) clearInterval(interval);
+                    myProgressBar[0].val(value);
+                    myProgressBar[1].val(value);
+                }, 20);
+            };
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        Custom element Progress Bar Ranges.
+    </div>
+
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+        <div style='margin-top: 10px;'>Horizontal</div>
+        <jqx-progress-bar style='margin-top: 10px; overflow: hidden;' settings='colorRanges'></jqx-progress-bar>
+
+        <div style='margin-top: 10px;'>Vertical</div>
+        <jqx-progress-bar style='margin-top: 10px; overflow: hidden;' settings='verticalColorRanges'></jqx-progress-bar>
+    </div>
+
+</body>
+</html>

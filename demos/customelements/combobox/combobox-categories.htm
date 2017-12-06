@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ComboBox Categories</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example shows how to set item's group property's in Custom Element ComboBox." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            [
+                // Business & Investing
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>Title: Do the Work</div><div>Author: Steven Pressfield</div></div>', label: 'Do the Work', group: 'Business & Investing' },
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>Title: Think and Grow Rich</div><div>Author: Napoleon Hill</div></div>', label: 'Think and Grow Rich', group: 'Business & Investing' },
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>Title: The Toyota Way to Continuous...</div><div>Author: Jeffrey K. Liker</div></div>', label: 'The Toyota Way to Continuous...', group: 'Business & Investing' },
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>Title: Redesigning Leadership </div><div>Author: John Maeda</div></div>', label: 'Redesigning Leadership ', group: 'Business & Investing' },
+                // Computer & Internet Books
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>Title: MacBook Pro Portable Genius</div><div>Author: Brad Miser</div></div>', label: 'MacBook Pro Portable Genius', group: 'Computer & Internet Books' },
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>Title: Social Media Metrics Secrets</div><div>Author: John Lovett</div></div>', label: 'Social Media Metrics Secrets', group: 'Computer & Internet Books' },
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>Title: iPad 2: The Missing Manual</div><div>Author: J D Biersdorfer J.D</div></div>', label: 'iPad 2: The Missing Manual', group: 'Computer & Internet Books' },
+                // History
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>Lincoln and His Admirals</div><div>Author:Craig L. Symonds</div></div>', label: 'Lincoln and His Admirals', group: 'History' },
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>The Dogs of War: 1861</div><div>Author:Emory M. Thomas</div></div>', label: 'The Dogs of War: 1861', group: 'History' },
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>Cleopatra: A Life</div><div>Author:Stacy Schiff</div></div>', label: 'Cleopatra: A Life', group: 'History' },
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>Mother Teresa: A Biography</div><div>Author:Meg Greene</div></div>', label: 'Mother Teresa: A Biography', group: 'History' },
+                { html: '<div tabIndex=0 style="padding: 1px;"><div>The Federalist Papers</div><div>Author:John Jay</div></div>', label: 'The Federalist Papers', group: 'History' },
+            ];
+
+        JQXElements.settings['ComboBox'] =
+            {
+                source: source,
+                selectedIndex: 0
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows how to display items in groups by setting each Custom element ComboBox item's group property.
+    </div>
+
+   <jqx-combo-box settings="ComboBox"></jqx-combo-box>
+</body>
+</html>

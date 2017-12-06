@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Splitter Custom Element Events</title>
+    <meta name="description" content="This is an example of the events that occur in Splitter Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['splitterSettings'] =
+            {
+                panels: [{ size: 200 }]
+            };    
+
+        window.onload = function() {
+            var mySplitter = document.querySelector('jqx-splitter');
+            var myPanel = document.querySelector('jqx-panel');
+
+            var capitaliseFirstLetter = string => {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            };
+
+            var displayEvent = event => {
+                var eventData = 'Event:' + capitaliseFirstLetter(event.type);
+                eventData += ', Panel 1: ' + event.args.panels[0].size;
+                eventData += ', Panel 2: ' + event.args.panels[1].size;
+                myPanel.prepend('<div class="item" style="margin-top: 5px;">' + eventData + '</div>');
+            };
+
+            var events = ['resize', 'expanded', 'collapsed'];
+            events.map(eventName => mySplitter.addEventListener(eventName, event => displayEvent(event)));
+        };
+    </script>
+
+    <style>
+        jqx-panel div {
+            border: none !important;
+        }
+        .events {
+            font-family: Verdana;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="example-description">
+        This demonstration shows how to trigger the Splitter Custom Element events.
+    </div>
+
+    <jqx-splitter settings="splitterSettings">
+        <div class="splitter-panel" style="background-color:#F5FFF2;"><span style="margin: 5px;">Panel 1</span></div>
+        <div class="splitter-panel" style="background-color:#F5FFF2;"><span style="margin: 5px;">Panel 2</span></div>
+    </jqx-splitter>
+
+    <div class="events">Events:</div>
+
+    <jqx-panel></jqx-panel>
+
+</body>
+</html>

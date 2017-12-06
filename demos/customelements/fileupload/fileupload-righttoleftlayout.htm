@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element FileUpload RightToLeft</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example of Custom Elements FileUpload is set from right to left." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxfileupload.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['FileUploadSettings'] =
+            {
+                rtl: true,
+                uploadUrl: 'upload.php',
+                fileInputName: 'fileToUpload'
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows the Right to Left layout of Custom element FileUpload. For uploading files, you should set the "uploadUrl" property to point to a Web Server file that will handle the actual Upload proces.
+    </div>
+
+   <jqx-file-upload upload-url='imageUpload.php' file-input-name="fileToUpload" settings="FileUploadSettings"></jqx-file-upload>
+</body>
+</html>

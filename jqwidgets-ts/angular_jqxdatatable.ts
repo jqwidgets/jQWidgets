@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -26,58 +26,58 @@ declare let JQXLite: any;
 
 export class jqxDataTableComponent implements OnChanges
 {
-   @Input('altRows') attrAltRows: Boolean;
-   @Input('autoRowHeight') attrAutoRowHeight: Boolean;
-   @Input('aggregatesHeight') attrAggregatesHeight: Number;
-   @Input('autoShowLoadElement') attrAutoShowLoadElement: Boolean;
-   @Input('columnsHeight') attrColumnsHeight: Number;
+   @Input('altRows') attrAltRows: boolean;
+   @Input('autoRowHeight') attrAutoRowHeight: boolean;
+   @Input('aggregatesHeight') attrAggregatesHeight: number;
+   @Input('autoShowLoadElement') attrAutoShowLoadElement: boolean;
+   @Input('columnsHeight') attrColumnsHeight: number;
    @Input('columns') attrColumns: Array<jqwidgets.DataTableColumns>;
    @Input('columnGroups') attrColumnGroups: Array<jqwidgets.DataTableColumnGroups>;
-   @Input('columnsResize') attrColumnsResize: Boolean;
-   @Input('columnsReorder') attrColumnsReorder: Boolean;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('editable') attrEditable: Boolean;
+   @Input('columnsResize') attrColumnsResize: boolean;
+   @Input('columnsReorder') attrColumnsReorder: boolean;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('editable') attrEditable: boolean;
    @Input('editSettings') attrEditSettings: jqwidgets.DataTableEditSettings;
    @Input('exportSettings') attrExportSettings: jqwidgets.DataTableExportSettings;
-   @Input('enableHover') attrEnableHover: Boolean;
-   @Input('enableBrowserSelection') attrEnableBrowserSelection: Boolean;
-   @Input('filterable') attrFilterable: Boolean;
-   @Input('filterHeight') attrFilterHeight: Number;
+   @Input('enableHover') attrEnableHover: boolean;
+   @Input('enableBrowserSelection') attrEnableBrowserSelection: boolean;
+   @Input('filterable') attrFilterable: boolean;
+   @Input('filterHeight') attrFilterHeight: number;
    @Input('filterMode') attrFilterMode: any;
    @Input('groups') attrGroups: Array<any>;
    @Input('groupsRenderer') attrGroupsRenderer: (value:any, rowData?:any, level?:number) => string;
    @Input('initRowDetails') attrInitRowDetails: (id:number, row?:any, element?:any, rowInfo?:any) => void;
-   @Input('incrementalSearch') attrIncrementalSearch: Boolean;
+   @Input('incrementalSearch') attrIncrementalSearch: boolean;
    @Input('localization') attrLocalization: any;
-   @Input('pagerHeight') attrPagerHeight: Number;
-   @Input('pageSize') attrPageSize: Number;
-   @Input('pageSizeOptions') attrPageSizeOptions: Array<String | Number>;
-   @Input('pageable') attrPageable: Boolean;
+   @Input('pagerHeight') attrPagerHeight: number;
+   @Input('pageSize') attrPageSize: number;
+   @Input('pageSizeOptions') attrPageSizeOptions: Array<string | number>;
+   @Input('pageable') attrPageable: boolean;
    @Input('pagerPosition') attrPagerPosition: any;
    @Input('pagerMode') attrPagerMode: any;
-   @Input('pagerButtonsCount') attrPagerButtonsCount: Number;
+   @Input('pagerButtonsCount') attrPagerButtonsCount: number;
    @Input('pagerRenderer') attrPagerRenderer: () => any;
    @Input('ready') attrReady: () => void;
-   @Input('rowDetails') attrRowDetails: Boolean;
+   @Input('rowDetails') attrRowDetails: boolean;
    @Input('renderToolbar') attrRenderToolbar: (toolbar:any) => void;
    @Input('renderStatusbar') attrRenderStatusbar: (statusbar:any) => void;
    @Input('rendering') attrRendering: () => void;
    @Input('rendered') attrRendered: () => void;
-   @Input('rtl') attrRtl: Boolean;
+   @Input('rtl') attrRtl: boolean;
    @Input('source') attrSource: any;
-   @Input('sortable') attrSortable: Boolean;
-   @Input('showAggregates') attrShowAggregates: Boolean;
-   @Input('showToolbar') attrShowToolbar: Boolean;
-   @Input('showStatusbar') attrShowStatusbar: Boolean;
-   @Input('statusBarHeight') attrStatusBarHeight: Number;
-   @Input('scrollBarSize') attrScrollBarSize: String | Number;
+   @Input('sortable') attrSortable: boolean;
+   @Input('showAggregates') attrShowAggregates: boolean;
+   @Input('showToolbar') attrShowToolbar: boolean;
+   @Input('showStatusbar') attrShowStatusbar: boolean;
+   @Input('statusBarHeight') attrStatusBarHeight: number;
+   @Input('scrollBarSize') attrScrollBarSize: number | string;
    @Input('selectionMode') attrSelectionMode: any;
-   @Input('serverProcessing') attrServerProcessing: Boolean;
-   @Input('showHeader') attrShowHeader: Boolean;
-   @Input('theme') attrTheme: String;
-   @Input('toolbarHeight') attrToolbarHeight: Number;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('serverProcessing') attrServerProcessing: boolean;
+   @Input('showHeader') attrShowHeader: boolean;
+   @Input('theme') attrTheme: string;
+   @Input('toolbarHeight') attrToolbarHeight: number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -100,7 +100,7 @@ export class jqxDataTableComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -351,7 +351,7 @@ export class jqxDataTableComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxDataTable('height', arg);
       } else {
@@ -399,7 +399,7 @@ export class jqxDataTableComponent implements OnChanges
       }
    }
 
-   pageSizeOptions(arg?: Array<String | Number>) : any {
+   pageSizeOptions(arg?: Array<string | number>) : any {
       if (arg !== undefined) {
           this.host.jqxDataTable('pageSizeOptions', arg);
       } else {
@@ -551,7 +551,7 @@ export class jqxDataTableComponent implements OnChanges
       }
    }
 
-   scrollBarSize(arg?: String | Number) : any {
+   scrollBarSize(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxDataTable('scrollBarSize', arg);
       } else {
@@ -599,7 +599,7 @@ export class jqxDataTableComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxDataTable('width', arg);
       } else {

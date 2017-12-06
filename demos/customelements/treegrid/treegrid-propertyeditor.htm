@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element PropertyEditor</title>
+    <meta name="description" content=" TreeGrid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcolorpicker.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownbutton.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var data =
+            [
+                {
+                    'property': 'Name', 'value': 'jqxTreeGrid', type: 'string'
+                },
+                {
+                    'property': 'Location', 'value': '0, 0', type: 'string', 'children': [{ 'property': 'X', 'value': '0', type: 'number' }, { 'property': 'Y', 'value': '0', type: 'number' }]
+                },
+                {
+                    'property': 'Size', 'value': '200, 200', type: 'string', 'children': [{ 'property': 'Width', 'value': '200', type: 'number' }, { 'property': 'Height', 'value': '200', type: 'number' }]
+                },
+                {
+                    'property': 'Background', 'value': '#4621BC', type: 'color'
+                },
+                {
+                    'property': 'Color', 'value': '#B1B11B', type: 'color'
+                },
+                {
+                    'property': 'Alignment', 'value': 'Left', type: 'align'
+                },
+                {
+                    'property': 'Enabled', 'value': 'true', type: 'bool'
+                }
+            ];
+
+        var source =
+            {
+                dataType: 'json',
+                dataFields: [
+                    { name: 'property', type: 'string' },
+                    { name: 'value', type: 'string' },
+                    { name: 'type', type: 'string' },
+                    { name: 'children', type: 'array' }
+                ],
+                hierarchy:
+                {
+                    root: 'children'
+                },
+                localData: data    
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var getTextElementByColor = function (color) {
+            if (color == 'transparent' || color.hex == '') {
+                return '<div style="text-shadow: none; position: relative; padding-bottom: 4px; margin-top: 4px;">transparent</div>';
+            }
+
+            var nThreshold = 105;
+            var bgDelta = (color.r * 0.299) + (color.g * 0.587) + (color.b * 0.114);
+            var foreColor = (255 - bgDelta < nThreshold) ? 'Black' : 'White';
+            var element = '<div style="text-shadow: none; position: relative; padding-bottom: 4px; margin-top: 4px;color:' + foreColor + '; background: #' + color.hex + '">#' + color.hex + '</div>';
+
+            return element;
+        }
+
+        window.onload = function() {
+            var myTreeGrid = document.createElement('jqx-tree-grid');
+
+            var myInput, myDropDownList, myColorPicker1, myColorPicker2, myCheckBox;
+
+            myTreeGrid.settings =
+                {
+                    width: 430,
+                    source: dataAdapter,
+                    altRows: true,
+                    autoRowHeight: false,
+                    editSettings: { saveOnPageChange: true, saveOnBlur: false, saveOnSelectionChange: true, cancelOnEsc: true, saveOnEnter: true, editOnDoubleClick: true, editOnF2: true },
+                    editable: true,
+                    columns:
+                    [
+                        { text: 'Property Name', editable: false, columnType: 'none', dataField: 'property', width: 200 },
+                        {
+                            text: 'Value', dataField: 'value', width: 230, columnType: 'custom',
+                            createEditor: function (rowKey, cellvalue, editor, cellText, width, height) {
+                                var row = myTreeGrid.getRow(rowKey);
+                                switch (row['type']) {
+                                    case 'string':
+                                    case 'number':
+                                        myInput = document.createElement('jqx-input');
+                                        myInput.settings = { width: '100%', height: '100%' };
+                                        editor[0].appendChild(myInput);
+                                        break;
+                                    case 'align':
+                                        myDropDownList = document.createElement('jqx-drop-down-list');
+                                        myDropDownList.settings = { width: '100%', height: '100%', autoDropDownHeight: true, source: ['Left', 'Center', 'Right'] };
+                                        editor[0].appendChild(myDropDownList);
+                                        break;
+                                    case 'color':
+                                        if (rowKey === '3') {
+                                            var myDropDownButton = document.createElement('jqx-drop-down-button');
+                                            myDropDownButton.innerHTML = '<div style="padding: 5px;"><div class="myColorPicker1"></div></div>';
+                                            myDropDownButton.settings = { width: '100%', height: '100%' };
+                                            editor[0].appendChild(myDropDownButton);
+
+                                            myColorPicker1 = document.createElement('jqx-color-picker');
+                                            myColorPicker1.settings = { width: 220, height: 220 };
+                                            document.querySelector('.myColorPicker1').appendChild(myColorPicker1);
+
+                                            myColorPicker1.addEventListener('colorchange', function (event) {
+                                                myDropDownButton.setContent(getTextElementByColor(event.args.color));
+                                            });
+                                        } else {
+                                            var myDropDownButton = document.createElement('jqx-drop-down-button');
+                                            myDropDownButton.innerHTML = '<div style="padding: 5px;"><div class="myColorPicker2"></div></div>';
+                                            myDropDownButton.settings = { width: '100%', height: '100%' };
+                                            editor[0].appendChild(myDropDownButton);
+
+                                            myColorPicker2 = document.createElement('jqx-color-picker');
+                                            myColorPicker2.settings = { width: 220, height: 220 };
+                                            document.querySelector('.myColorPicker2').appendChild(myColorPicker2);
+
+                                            myColorPicker2.addEventListener('colorchange', function (event) {
+                                                myDropDownButton.setContent(getTextElementByColor(event.args.color));
+                                            });
+                                        }
+                                        break;
+                                    case 'bool':
+                                        myCheckBox = document.createElement('jqx-check-box');
+                                        myCheckBox.style.cssText = 'margin-top: 6px; margin-left: -8px; left: 50%; position: relative';
+                                        myCheckBox.settings = { checked: cellvalue };
+                                        editor[0].appendChild(myCheckBox);
+                                        break;
+                                }
+                            },
+                            initEditor: function (rowKey, cellvalue, editor, cellText, width, height) {
+                                var row = myTreeGrid.getRow(rowKey);
+                                switch (row.type) {
+                                    case 'string':
+                                    case 'number':
+                                        myInput.val(cellvalue);
+                                        break;
+                                    case 'align':
+                                        myDropDownList.val(cellvalue);
+                                        break;
+                                    case 'color':
+                                        if (rowKey === '3') {
+                                            myColorPicker1.setColor(cellvalue);
+                                        } else {
+                                            myColorPicker2.setColor(cellvalue);
+                                        }
+                                        break;
+                                    case 'bool':
+                                        myCheckBox.val(cellvalue);
+                                        break;
+                                }
+                            },
+                            getEditorValue: function (rowKey, cellvalue, editor) {
+                                var row = myTreeGrid.getRow(rowKey);
+                                switch (row.type) {
+                                    case 'string':
+                                        return myInput.val();
+                                    case 'number':
+                                        var number = parseFloat(myInput.val());
+                                        if (isNaN(number)) {
+                                            return 0;
+                                        }
+                                        else return number;
+                                    case 'align':
+                                        return myDropDownList.val();
+                                    case 'color':
+                                        if (rowKey === '3') {
+                                            var color = myColorPicker1.getColor();
+                                            return '#' + color.hex;
+                                        } else {
+                                            var color = myColorPicker2.getColor();
+                                            return '#' + color.hex;
+                                        }
+                                    case 'bool':
+                                        return myCheckBox.val();
+                                }
+                                return '';
+                            }
+                        }
+                    ]
+                };
+
+            document.body.appendChild(myTreeGrid);
+
+            myTreeGrid.addEventListener('rowClick', function (event) {
+                var popups = document.querySelectorAll('.jqx-popup');
+                if (popups && popups.length > 0)
+                {
+                    for (var i = 0; i < popups.length; i++) {
+                        popups[i].style.visibility = 'hidden';
+                    }
+                }
+            });
+
+            myTreeGrid.addEventListener('cellValueChanged', function (event) {
+                var args = event.args;
+                var row = args.row;
+                var records = row.records;
+
+                if(records.length > 0) {
+                    var values = args.value.split(',');
+
+                    for (var i = 0; i < values.length; i++) {
+                        var value = values[i].trim();
+                        var rowKey = myTreeGrid.getKey(records[i]);
+                        myTreeGrid.setCellValue(rowKey, 'value', value);
+                    }
+
+                } else if (row.level == 1) {
+                    var parent = row.parent;
+                    var parentRowKey = myTreeGrid.getKey(parent);
+                    var value = '';
+                    records = parent.records;
+
+                    if (records.length > 0) {
+                        for (var i = 0; i < records.length; i++) {
+                            var rowKey = myTreeGrid.getKey(records[i]);
+                            var cellValue = myTreeGrid.getCellValue(rowKey, 'value');
+                            value += cellValue;
+                            if (i < records.length - 1) {
+                                value += ', ';
+                            }
+                        }
+                    }
+
+                    myTreeGrid.setCellValue(parentRowKey, 'value', value);
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this sample is illustrated how to create a custom editor for each Tree Grid Custom Element cell.
+    </div>
+</body>
+</html>

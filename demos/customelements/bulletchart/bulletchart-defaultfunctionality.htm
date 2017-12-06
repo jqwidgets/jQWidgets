@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>BulletChart Custom Element DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionalities in Custom Element BulletChart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbulletchart.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script>      
+        JQXElements.settings['bulletChartSettings'] =
+            {
+                barSize: '40%',
+                title: 'Revenue 2014 YTD',
+                description: '(U.S. $ in thousands)',
+                ranges: [
+                    { startValue: 0, endValue: 200, color: '#000000', opacity: 0.5 },
+                    { startValue: 200, endValue: 250, color: '#000000', opacity: 0.3 },
+                    { startValue: 250, endValue: 300, color: '#000000', opacity: 0.1 }
+                ],
+                pointer: { value: 270, label: 'Revenue 2014 YTD', size: '25%', color: 'Black' },
+                target: { value: 260, label: 'Revenue 2013 YTD', size: 4, color: 'Black' },
+                ticks: { position: 'both', interval: 50, size: 10 },
+                labelsFormat: 'c',
+                showTooltip: true,
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows the default functionality of the BulletChart Custom element. It displays two measures - a featured one (the pointer) and a comparative one (the target) over a number of differently styled ranges.
+    </div>
+
+    <jqx-bullet-chart settings="bulletChartSettings"></jqx-bullet-chart>
+</body>
+</html>

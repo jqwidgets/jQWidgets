@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>DateTimeInput Custom Element FormatDate</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example the width and height of Custom Elements DataTimeInput are in precentages." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var availableFormats = ['short date pattern', 'long date pattern', 'short time pattern', 'long time pattern', 'long date, short time pattern', 'long date, long time pattern', 'month/day pattern', 'month/year pattern', 'custom'];
+
+        JQXElements.settings['DateTimeInput'] =
+            {
+                formatString: 'd'
+            }
+
+        JQXElements.settings['DropDownList'] =
+            {
+                source: availableFormats,
+                selectedIndex: 0,
+            }
+
+        window.onload = function() {
+            var myDateTimeInput = document.querySelector('jqx-date-time-input');
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+
+            myDropDownList.addEventListener('select', event => {
+                var index = event.args.index;
+                switch (index) {
+                    case 0:
+                        myDateTimeInput.formatString = 'd';
+                        break;
+                    case 1:
+                        myDateTimeInput.formatString = 'D';
+                        break;
+                    case 2:
+                        myDateTimeInput.formatString = 'y';
+                        break;
+                    case 3:
+                        myDateTimeInput.formatString = 'T';
+                        break;
+                    case 4:
+                        myDateTimeInput.formatString = 'f';
+                        break;
+                    case 5:
+                        myDateTimeInput.formatString = 'F';
+                        break;
+                    case 6:
+                        myDateTimeInput.formatString = 'M';
+                        break;
+                    case 7:
+                        myDateTimeInput.formatString = 'Y';
+                        break;
+                    case 8:
+                        myDateTimeInput.formatString = 'dddd-MMMM-yyyy';
+                        break;
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom elements DateTimeInput has built-in date parsing functionality that allows you to display date feedback in a variety of ways. Choose a date format from the dropdown to apply it to the Custom element DateTimeInput.
+    </div>
+    <jqx-date-time-input settings="DateTimeInput"></jqx-date-time-input>
+    <br />
+
+    <div>
+        <div style='font-family: "Verdana", "sans-serif"; font-size: 13px;'>
+            Choose Format:
+        </div>
+        <br />
+
+        <jqx-drop-down-list settings='DropDownList'></jqx-drop-down-list>
+    </div>
+</body>
+</html>

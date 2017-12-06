@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -16,28 +16,28 @@ declare let JQXLite: any;
 
 export class jqxTooltipComponent implements OnChanges
 {
-   @Input('absolutePositionX') attrAbsolutePositionX: Number;
-   @Input('absolutePositionY') attrAbsolutePositionY: Number;
-   @Input('autoHide') attrAutoHide: Boolean;
-   @Input('autoHideDelay') attrAutoHideDelay: Number;
-   @Input('animationShowDelay') attrAnimationShowDelay: String | Number;
-   @Input('animationHideDelay') attrAnimationHideDelay: String | Number;
-   @Input('content') attrContent: String;
-   @Input('closeOnClick') attrCloseOnClick: Boolean;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: Boolean;
-   @Input('left') attrLeft: Number;
-   @Input('name') attrName: String;
-   @Input('opacity') attrOpacity: Number;
+   @Input('absolutePositionX') attrAbsolutePositionX: number;
+   @Input('absolutePositionY') attrAbsolutePositionY: number;
+   @Input('autoHide') attrAutoHide: boolean;
+   @Input('autoHideDelay') attrAutoHideDelay: number;
+   @Input('animationShowDelay') attrAnimationShowDelay: number | string;
+   @Input('animationHideDelay') attrAnimationHideDelay: number | string;
+   @Input('content') attrContent: string;
+   @Input('closeOnClick') attrCloseOnClick: boolean;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
+   @Input('left') attrLeft: number;
+   @Input('name') attrName: string;
+   @Input('opacity') attrOpacity: number;
    @Input('position') attrPosition: any;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('showDelay') attrShowDelay: Number;
-   @Input('showArrow') attrShowArrow: Boolean;
-   @Input('top') attrTop: String | Number;
+   @Input('rtl') attrRtl: boolean;
+   @Input('showDelay') attrShowDelay: number;
+   @Input('showArrow') attrShowArrow: boolean;
+   @Input('top') attrTop: number | string;
    @Input('trigger') attrTrigger: any;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -60,7 +60,7 @@ export class jqxTooltipComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -183,7 +183,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   animationShowDelay(arg?: String | Number) : any {
+   animationShowDelay(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxTooltip('animationShowDelay', arg);
       } else {
@@ -191,7 +191,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   animationHideDelay(arg?: String | Number) : any {
+   animationHideDelay(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxTooltip('animationHideDelay', arg);
       } else {
@@ -231,7 +231,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxTooltip('height', arg);
       } else {
@@ -295,7 +295,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   top(arg?: String | Number) : any {
+   top(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxTooltip('top', arg);
       } else {
@@ -319,7 +319,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxTooltip('width', arg);
       } else {

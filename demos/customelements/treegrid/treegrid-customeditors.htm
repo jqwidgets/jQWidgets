@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element CustomEditors</title>
+    <meta name="description" content="This is an example of custom edtiors in TreeGrid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var data =
+            [
+                {
+                    'id': '1', 'name': 'Corporate Headquarters', 'budget': '1230000', 'location': 'Las Vegas',
+                    'children':
+                    [
+                        {
+                            'id': '2', 'name': 'Finance Division', 'budget': '423000', 'location': 'San Antonio',
+                            'children':
+                            [
+                                { 'id': '3', 'name': 'Accounting Department', 'budget': '113000', 'location': 'San Antonio' },
+                                {
+                                    'id': '4', 'name': 'Investment Department', 'budget': '310000', 'location': 'San Antonio',
+                                    'children':
+                                    [
+                                        { 'id': '5', 'name': 'Banking Office', 'budget': '240000', 'location': 'San Antonio' },
+                                        { 'id': '6', 'name': 'Bonds Office', 'budget': '70000', 'location': 'San Antonio' },
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            'id': '7', 'name': 'Operations Division', 'budget': '600000', 'location': 'Miami',
+                            'children':
+                            [
+                                { 'id': '8', 'name': 'Manufacturing Department', 'budget': '300000', 'location': 'Miami' },
+                                { 'id': '9', 'name': 'Public Relations Department', 'budget': '200000', 'location': 'Miami' },
+                                { 'id': '10', 'name': 'Sales Department', 'budget': '100000', 'location': 'Miami' }
+                            ]
+                        },
+                        { 'id': '11', 'name': 'Research Division', 'budget': '200000', 'location': 'Boston' }
+                    ]
+                }
+            ];
+
+        var source =
+            {
+                dataType: 'json',
+                dataFields: [
+                    { name: 'name', type: 'string' },
+                    { name: 'budget', type: 'number' },
+                    { name: 'id', type: 'number' },
+                    { name: 'children', type: 'array' },
+                    { name: 'location', type: 'string' }
+                ],
+                hierarchy:
+                {
+                    root: 'children'
+                },
+                localData: data,
+                id: 'id'
+                
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['treeGridSettings'] =
+            {
+                source: dataAdapter,
+                altRows: true,
+                autoRowHeight: false,
+                ready: function () {
+                    var myTreeGrid = document.querySelector('jqx-tree-grid');
+                    myTreeGrid.expandRow(1);
+                    setTimeout(function () {
+                        myTreeGrid.expandRow(2);
+                        myTreeGrid.expandRow(7);
+                    }, 100);
+                },
+                editable: true,
+                columns:
+                    [
+                        { text: 'ID', editable: false, dataField: 'id', width: 150 },
+                        {
+                            text: 'Name', dataField: 'name', width: 250, columnType: 'template',
+                            createEditor: function (row, cellvalue, editor, cellText, width, height) {
+                                var source = ['Corporate Headquarters', 'Finance Division', 'Accounting Department', 'Investment Department', 'Banking Office', 'Bonds Office', 'Operations Division', 'Manufacturing Department', 'Public Relations Department', 'Sales Department', 'Research Division'];
+                                editor.jqxDropDownList({ autoDropDownHeight: true, source: source, width: '100%', height: '100%' });
+                            },
+                            initEditor: function (row, cellvalue, editor, celltext, width, height) {
+                                editor.jqxDropDownList('selectItem', cellvalue);
+                            },
+                            getEditorValue: function (row, cellvalue, editor) {
+                                return editor.val();
+                            }
+                        },
+                        {
+                            text: 'Budget', align: 'right', cellsAlign: 'right', cellsFormat: 'c2', columnType: 'template', dataField: 'budget', width: 200,
+                            createEditor: function (row, cellvalue, editor, cellText, width, height) {
+                                editor.jqxSlider({
+                                    showTicks: false, min: 0, max: 1250000, width: width, height: height, tooltip: true,
+                                    tooltipFormatFunction: function (value) {
+                                        return jqx.formatNumber(value, 'c2');
+                                    }
+                                });
+                            },
+                            initEditor: function (row, cellvalue, editor, celltext, width, height) {
+                                var value = parseInt(cellvalue);
+                                if (isNaN(value)) value = 0;
+                                editor.jqxSlider('setValue', value);
+                            },
+                            getEditorValue: function (row, cellvalue, editor) {
+                                return editor.val();
+                            }
+                        },
+                        { text: 'Location', dataField: 'location' }
+                    ]
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this sample is illustrated how to create custom editors for Tree Grid Custom Element.
+        The "Name" and "Budget" columns use the DropDownList and Slider widgets as a cell editors. 
+    </div>
+    <jqx-tree-grid settings="treeGridSettings"></jqx-tree-grid>
+</body>
+</html>

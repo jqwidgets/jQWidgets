@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -29,36 +29,36 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxSliderComponent implements ControlValueAccessor, OnChanges 
 {
    @Input('buttonsPosition') attrButtonsPosition: any;
-   @Input('disabled') attrDisabled: Boolean;
+   @Input('disabled') attrDisabled: boolean;
    @Input('layout') attrLayout: any;
    @Input('mode') attrMode: any;
-   @Input('minorTicksFrequency') attrMinorTicksFrequency: Number;
-   @Input('minorTickSize') attrMinorTickSize: Number;
-   @Input('max') attrMax: Number;
-   @Input('min') attrMin: Number;
-   @Input('orientation') attrOrientation: String;
-   @Input('rangeSlider') attrRangeSlider: Boolean;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('step') attrStep: Number;
-   @Input('showTicks') attrShowTicks: Boolean;
-   @Input('showMinorTicks') attrShowMinorTicks: Boolean;
-   @Input('showTickLabels') attrShowTickLabels: Boolean;
-   @Input('showButtons') attrShowButtons: Boolean;
-   @Input('showRange') attrShowRange: Boolean;
+   @Input('minorTicksFrequency') attrMinorTicksFrequency: number;
+   @Input('minorTickSize') attrMinorTickSize: number;
+   @Input('max') attrMax: number;
+   @Input('min') attrMin: number;
+   @Input('orientation') attrOrientation: string;
+   @Input('rangeSlider') attrRangeSlider: boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('step') attrStep: number;
+   @Input('showTicks') attrShowTicks: boolean;
+   @Input('showMinorTicks') attrShowMinorTicks: boolean;
+   @Input('showTickLabels') attrShowTickLabels: boolean;
+   @Input('showButtons') attrShowButtons: boolean;
+   @Input('showRange') attrShowRange: boolean;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: String;
+   @Input('theme') attrTheme: string;
    @Input('ticksPosition') attrTicksPosition: any;
-   @Input('ticksFrequency') attrTicksFrequency: Number;
-   @Input('tickSize') attrTickSize: Number;
-   @Input('tickLabelFormatFunction') attrTickLabelFormatFunction: (value: any) => String;
-   @Input('tooltip') attrTooltip: Boolean;
-   @Input('tooltipHideDelay') attrTooltipHideDelay: Number;
+   @Input('ticksFrequency') attrTicksFrequency: number;
+   @Input('tickSize') attrTickSize: number;
+   @Input('tickLabelFormatFunction') attrTickLabelFormatFunction: (value: any) => string;
+   @Input('tooltip') attrTooltip: boolean;
+   @Input('tooltipHideDelay') attrTooltipHideDelay: number;
    @Input('tooltipPosition') attrTooltipPosition: any;
    @Input('tooltipFormatFunction') attrTooltipFormatFunction: (value: any) => any;
    @Input('value') attrValue: any;
-   @Input('values') attrValues: Array<Number>;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('values') attrValues: Array<number>;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -84,7 +84,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -171,8 +171,10 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
    }
 
    get ngValue(): any {
-       if (this.widgetObject)
-           return this.host.val();
+       if (this.widgetObject) {
+           const value = this.host.val();
+           return value;
+       }
        return '';
    }
 
@@ -217,7 +219,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxSlider('height', arg);
       } else {
@@ -385,7 +387,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   tickLabelFormatFunction(arg?: (value: any) => String) : any {
+   tickLabelFormatFunction(arg?: (value: any) => string) : any {
       if (arg !== undefined) {
           this.host.jqxSlider('tickLabelFormatFunction', arg);
       } else {
@@ -433,7 +435,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   values(arg?: Array<Number>) : any {
+   values(arg?: Array<number>) : any {
       if (arg !== undefined) {
           this.host.jqxSlider('values', arg);
       } else {
@@ -441,7 +443,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxSlider('width', arg);
       } else {
@@ -479,7 +481,7 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
       this.host.jqxSlider('incrementValue');
    }
 
-   setValue(index: Number | Number[]): void {
+   setValue(index: number | number[]): void {
       this.host.jqxSlider('setValue', index);
    }
 

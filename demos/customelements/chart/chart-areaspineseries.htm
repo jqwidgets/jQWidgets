@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart AreaSplineSeries</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Chart Area Spline Series, the chart includes splinearea and spline series" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+
+        var source =
+            {
+                datatype: "tab",
+                datafields: [
+                    { name: 'Year' },
+                    { name: 'HPI' },
+                    { name: 'BuildCost' },
+                    { name: 'Population' },
+                    { name: 'Rate' }
+                ],
+                url: '../sampledata/homeprices.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: "U.S. History Home Prices (1950-2010)",
+                description: "Source: http://www.econ.yale.edu/~shiller/data.htm",
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 15, top: 5, right: 20, bottom: 5 },
+                titlePadding: { left: 10, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                xAxis:
+                {
+                    dataField: 'Year',
+                    minValue: 1950,
+                    maxValue: 2010,
+                    unitInterval: 5,
+                    valuesOnTicks: true
+                },
+                colorScheme: 'scheme05',
+                seriesGroups:
+                [
+                    {
+                        alignEndPointsWithIntervals: false,
+                        type: 'splinearea',
+                        valueAxis:
+                        {
+                            visible: true,
+                            unitInterval: 20,
+                            title: { text: 'Index Value' },
+                            labels: {
+                                horizontalAlignment: 'right',
+                                formatSettings: { decimalPlaces: 0 }
+                            }
+                        },
+                        series: [
+                            { dataField: 'HPI', displayText: 'Real Home Price Index', opacity: 0.7 },
+                            { dataField: 'BuildCost', displayText: 'Building Cost Index', opacity: 0.9 }
+                        ]
+                    },
+                    {
+                        type: 'spline',
+                        alignEndPointsWithIntervals: false,
+                        valueAxis:
+                        {
+                            title: { text: 'Interest Rate' },
+                            position: 'right',
+                            unitInterval: 0.01,
+                            maxValue: 0.2,
+                            labels: { formatSettings: { decimalPlaces: 2 } },
+                            tickMarks: {
+                                visible: true,
+                                interval: 0.005,
+                            },
+                            gridLines: {
+                                visible: false,
+                                interval: 0.01
+                            }
+                        },
+                        series: [
+                            { dataField: 'Rate', displayText: 'Interest Rate', opacity: 1.0, lineWidth: 4, dashStyle: '4,4' }
+                        ]
+                    }
+                ]
+            }
+    </script>
+</head>
+<body>
+
+   <jqx-chart settings="chartSettings" style="width:850px; height:500px"></jqx-chart>
+
+        <div class="example-description">
+            <br />
+            <h2>Description</h2>
+
+            <br />
+                This is an example of Custom Element Chart Area Spline Series. The chart shows data for the US History Home prices and is loaded from a tab delimited text file. The chart includes splinearea and spline series. You can see how to use the alignEndPointsWithIntervals setting.
+        </div>
+    </body>
+</html>

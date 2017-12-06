@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable CommandColumn</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This sample demonstrates how we can create Command Column in Custom Elements DataTable." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var ordersSource =
+            {
+                dataFields: [
+                    { name: 'OrderID', type: 'int' },
+                    { name: 'Freight', type: 'float' },
+                    { name: 'ShipName', type: 'string' },
+                    { name: 'ShipAddress', type: 'string' },
+                    { name: 'ShipCity', type: 'string' },
+                    { name: 'ShipCountry', type: 'string' },
+                    { name: 'ShippedDate', type: 'date' }
+                ],
+                root: "Orders",
+                record: "Order",
+                dataType: "xml",
+                id: 'OrderID',
+                url: '../sampledata/orderdetails.xml',
+                addRow: (rowID, rowData, position, commit) => {
+                    // synchronize with the server - send insert command
+                    // call commit with parameter true if the synchronization with the server is successful
+                    // and with parameter false if the synchronization failed.
+                    // you can pass additional argument to the commit callback which represents the new ID if it is generated from a DB.
+                    commit(true);
+                },
+                updateRow: (rowID, rowData, commit) => {
+                    // synchronize with the server - send update command
+                    // call commit with parameter true if the synchronization with the server is successful
+                    // and with parameter false if the synchronization failed.
+                    commit(true);
+                },
+                deleteRow: (rowID, commit) => {
+                    // synchronize with the server - send delete command
+                    // call commit with parameter true if the synchronization with the server is successful
+                    // and with parameter false if the synchronization failed.
+                    commit(true);
+                }
+            };
+
+        var dataAdapter = new jqx.dataAdapter(ordersSource, {
+            loadComplete: function() {
+                // data is loaded.
+            }
+        });
+
+        var rendered = function () {
+            var myDataTable = document.querySelector('jqx-data-table');
+            var editButtons = document.querySelectorAll('.edit');
+            var saveButtons = document.querySelectorAll('.save');
+            var cancelButtons = document.querySelectorAll('.cancel');
+
+            var rowIndex = -1;
+
+            myDataTable.addEventListener('rowClick', function (event) {
+                rowIndex = event.args.index;
+            });
+
+            var toggle = function () {
+                editButtons[rowIndex].classList.toggle('buttonHidden');
+                saveButtons[rowIndex].classList.toggle('buttonHidden');
+                cancelButtons[rowIndex].classList.toggle('buttonHidden');
+            }
+
+            for (var i = 0; i < editButtons.length; i++) {
+                editButtons[i].addEventListener('click', function (event) {
+                    toggle();
+                    myDataTable.beginRowEdit(rowIndex);
+                });
+                saveButtons[i].addEventListener('click', function (event) {
+                    toggle();
+                    myDataTable.endRowEdit(rowIndex);
+                });
+                cancelButtons[i].addEventListener('click', function (event) {
+                    toggle();
+                    myDataTable.endRowEdit(rowIndex, true);
+                });
+            }
+        };
+
+        JQXElements.settings['dataTableSettings'] =
+        {
+            source: dataAdapter,
+            pageable: true,
+            altRows: true,
+            editable: true,
+            editSettings: { saveOnPageChange: true, saveOnBlur: true, saveOnSelectionChange: false, cancelOnEsc: true, saveOnEnter: true, editOnDoubleClick: false, editOnF2: false },
+            rendered: rendered,
+            pagerButtonsCount: 8,
+            columns: [
+                { text: 'Order ID', editable: false, dataField: 'OrderID', width: 200 },
+                { text: 'Freight', dataField: 'Freight', cellsFormat: 'f2', cellsAlign: 'right', align: 'right', width: 200 },
+                {
+                    text: 'Ship Country', dataField: 'ShipCountry', width: 150                 
+                },
+                { text: 'Shipped Date', dataField: 'ShippedDate', cellsAlign: 'right', align: 'right', cellsFormat: 'd', width: 170 },
+                {
+                    text: 'Edit', cellsAlign: 'center', align: "center", columnType: 'none', editable: false, sortable: false, dataField: null,
+                    cellsRenderer: function (row, column, value) {
+                        return `<jqx-button class='edit'>Edit</jqx-button>
+                                    <jqx-button class='save buttonHidden'>Save</jqx-button>
+                                    <jqx-button class='cancel buttonHidden' style='margin-left: 5px;'>Cancel</jqx-button>`;
+                    }
+                }
+            ]
+        }
+    </script>
+
+    <style>
+        .buttonHidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="example-description">
+        This sample demonstrates how we can create Command Column in Custom Elements DataTable.
+    </div>
+
+    <jqx-data-table settings="dataTableSettings"></jqx-data-table>
+</body>
+</html>

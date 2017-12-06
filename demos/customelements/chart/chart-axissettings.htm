@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart AxisSettings</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the axis settings available to the Custom element Chart ." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+
+        var data =
+            [
+                { year: 2004, price: 0.1437 },
+                { year: 2005, price: 0.1470 },
+                { year: 2006, price: 0.1510 },
+                { year: 2007, price: 0.1605 },
+                { year: 2008, price: 0.1647 },
+                { year: 2009, price: 0.1736 },
+                { year: 2010, price: 0.1766 },
+                { year: 2011, price: 0.1902 },
+                { year: 2012, price: 0.1978 },
+                { year: 2013, price: 0.2113 },
+                { year: 2014, price: 0.2178 }
+            ];
+
+        JQXElements.settings['sliderValueAxisLeftPadding'] =
+            {
+                min: 0, max: 50, ticksFrequency: 5, value: 0, step: 1, mode: 'fixed',
+            };
+
+        JQXElements.settings['sliderXAxisTopPadding'] =
+            {
+                min: 0, max: 50, ticksFrequency: 5, value: 0, step: 1, mode: 'fixed',
+            };
+
+        JQXElements.settings['sliderValueAxisRightPadding'] =
+            {
+                min: 0, max: 50, ticksFrequency: 5, value: 0, step: 1, mode: 'fixed'
+            };
+
+        JQXElements.settings['sliderXAxisBottomPadding'] =
+            {
+                min: 0, max: 50, ticksFrequency: 5, value: 0, step: 1, mode: 'fixed',
+            };
+
+        JQXElements.settings['sliderValueAxisAngle'] =
+            {
+                min: 0, max: 360, ticksFrequency: 30, value: 0, step: 1, mode: 'fixed',
+            };
+
+        JQXElements.settings['sliderXAxisAngle'] =
+            {
+                min: 0, max: 360, ticksFrequency: 30, value: 0, step: 1, mode: 'fixed',
+            };
+
+        JQXElements.settings['btnLeft'] =
+            {
+                checked: false, groupName: 'valueAxis'
+            };
+
+        JQXElements.settings['btnRight'] =
+            {
+                checked: true, groupName: 'valueAxis'
+            };
+
+        JQXElements.settings['btnTop'] =
+            {
+                checked: false, groupName: 'xAxis'
+            };
+
+        JQXElements.settings['btnBottom'] =
+            {
+                checked: true, groupName: 'xAxis'
+            };
+
+        JQXElements.settings['btnValueAxisFlip'] =
+            {
+                hasThreeStates: false, checked: false
+            };
+
+        JQXElements.settings['btnXAxisFlip'] =
+            {
+                hasThreeStates: false, checked: false
+            };
+
+        window.onload = function() {
+            var myCheckboxes = document.querySelectorAll('jqx-check-box');
+            var myRadioButtons = document.querySelectorAll('jqx-radio-button');
+            var mySlider = document.querySelectorAll('jqx-slider');
+            var myChart = document.createElement('jqx-chart');
+
+            myChart.settings =
+                {
+                    title: "Electricity prices in Europe between 2004 and 2014",
+                    description: "Source: Eurostat",
+                    enableAnimations: true,
+                    showLegend: true,
+                    padding: { left: 5, top: 5, right: 15, bottom: 5 },
+                    titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                    source: data,
+                    xAxis:
+                    {
+                        padding: { top: 0, bottom: 0 },
+                        labels: { angle: 0 },
+                        dataField: 'year',
+                        displayText: 'Year',
+                        valuesOnTicks: false,
+                        gridLines: { color: '#CDCDCD' },
+                        tickMarks: { color: '#CDCDCD' }
+                    },
+                    colorScheme: 'scheme04',
+                    valueAxis:
+                    {
+                        position: 'right',
+                        padding: { left: 0, right: 0 },
+                        title: { text: '<br><br>Price EUR / kWh' },
+                        labels: {
+                            visible: true,
+                            angle: 0,
+                            formatSettings: { decimalPlaces: 4, sufix: ' €' }
+                        },
+                        tickMarks: {
+                            visible: true,
+                            //dashStyle: '2,2',
+                            color: '#CDCDCD',
+                            size: 5
+                        },
+                        gridLines: {
+                            visible: true,
+                            color: '#CDCDCD',
+                            //dashStyle: '2,2' 
+                        },
+                        alternatingBackgroundColor: '#EFEFEF',
+                        alternatingBackgroundColor2: '#CECECE',
+                        alternatingBackgroundOpacity: 0.2
+                    },
+                    seriesGroups:
+                    [
+                        {
+                            type: 'stepline',
+                            series: [
+                                { formatSettings: { decimalPlaces: 4 }, dataField: 'price', displayText: 'Price per kWh', showLabels: true, symbolType: 'circle' }
+                            ]
+                        }
+                    ]
+                };
+
+            document.querySelector('#chartPlace').appendChild(myChart);
+            var chartInstance = myChart.getInstance();
+            //var chartInstance = null
+            //setTimeout(function () {
+            //    console.log(20202020);
+            //    chartInstance = myChart.getInstance();
+            //}, 200);
+            //console.log(1001, chartInstance, document.querySelector("jqx-chart").getInstance());
+
+            // 1st Solution - create all settings in once in 'settings' and get the Instance before that as in the "chart-axisoffsettovalue" demo
+
+            chartInstance.enableAnimations = false;
+
+            mySlider[0].addEventListener('change', function(event) {
+                chartInstance.valueAxis.padding.left = event.args.value;
+                chartInstance.refresh();
+            });
+
+            mySlider[2].addEventListener('change', function(event) {
+                chartInstance.valueAxis.padding.right = event.args.value;
+                chartInstance.refresh();
+            });
+
+            mySlider[4].addEventListener('change', function(event) {
+                chartInstance.valueAxis.labels.angle = event.args.value;
+                chartInstance.refresh();
+            });
+
+            mySlider[1].addEventListener('change', function(event) {
+                chartInstance.xAxis.padding.top = event.args.value;
+                chartInstance.refresh();
+            });
+
+            mySlider[3].addEventListener('change', function(event) {
+                chartInstance.xAxis.padding.bottom = event.args.value;
+                chartInstance.refresh();
+            });
+
+            mySlider[5].addEventListener('change', function(event) {
+                chartInstance.xAxis.labels.angle = event.args.value;
+                chartInstance.refresh();
+            });
+
+            myRadioButtons[0].addEventListener('change', function(event) {
+                if (event.args.checked) {
+                    chartInstance.valueAxis.position = 'left';
+                    chartInstance.refresh();
+                }
+            });
+
+            myRadioButtons[1].addEventListener('change', function(event) {
+                if (event.args.checked) {
+                    chartInstance.valueAxis.position = 'right';
+                    chartInstance.refresh();
+                }
+            });
+
+            myRadioButtons[2].addEventListener('change', function(event) {
+                if (event.args.checked) {
+                    chartInstance.xAxis.position = 'top';
+                    chartInstance.refresh();
+                }
+            });
+
+            myRadioButtons[3].addEventListener('change', function(event) {
+                if (event.args.checked) {
+                    chartInstance.xAxis.position = 'bottom';
+                    chartInstance.refresh();
+                }
+            });
+
+            myCheckboxes[0].addEventListener('change', function(event) {
+                chartInstance.valueAxis.flip = event.args.checked;
+                chartInstance.refresh();
+            });
+
+            myCheckboxes[1].addEventListener('change', function(event) {
+                chartInstance.xAxis.flip = event.args.checked;
+                chartInstance.refresh();
+            });
+        }
+
+    </script>
+</head>
+<body>
+   
+    <div id="chartPlace" style="width: 850px; height: 500px"></div>
+
+    <table style="padding-left: 30px; padding-top: 10px;">
+        <tr style="height:50px;">
+            <td style="width:300px"><b>Value axis properties:</b></td>
+            <td><b>xAxis properties:</b></td>
+        </tr>
+        <tr>
+            <td>Left padding:<jqx-slider settings="sliderValueAxisLeftPadding"></jqx-slider></td>
+            <td>Top padding:<jqx-slider settings="sliderXAxisTopPadding"></jqx-slider></td>
+        </tr>
+        <tr>
+            <td>Right padding:<jqx-slider settings="sliderValueAxisRightPadding"></jqx-slider></td>
+            <td>Bottom padding:<jqx-slider settings="sliderXAxisBottomPadding"></jqx-slider></td>
+        </tr>
+        <tr>
+            <td>Labels angle:<jqx-slider settings="sliderValueAxisAngle"></jqx-slider></td>
+            <td>Labels angle:<jqx-slider settings="sliderXAxisAngle"></jqx-slider></td>
+        </tr>
+        <tr>
+            <td>
+                Position:
+                <table>
+                    <tr>
+                        <td><jqx-radio-button style='margin-left: 10px;' settings="btnLeft">Left</jqx-radio-button></td>
+                        <td><jqx-radio-button style='margin-left: 10px;' settings="btnRight">Right</jqx-radio-button></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                Position:
+                <table>
+                    <tr>
+                        <td><jqx-radio-button style='margin-left: 10px;' settings="btnTop">Top</jqx-radio-button></td>
+                        <td><jqx-radio-button style='margin-left: 10px;' settings="btnBottom">Bottom</jqx-radio-button></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <jqx-check-box settings="btnValueAxisFlip">Flip valueAxis positions</jqx-check-box>
+            </td>
+            <td>
+                <jqx-check-box settings="btnXAxisFlip">Flip xAxis positions</jqx-check-box>
+            </td>
+        </tr>
+    </table>
+  
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+            This is an example of Custom element Charts axis settings. You can see how to change the padding, labels angle, top padding, bottom padding and left and right position of the chart.
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ComboBox Events</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example shows the events of Custom Element ComboBox." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source = [
+            'Affogato',
+            'Americano',
+            'Bicerin',
+            'Breve',
+            'Café Bombón',
+            'Café au lait',
+            'Caffé Corretto',
+            'Café Crema',
+            'Caffé Latte',
+            'Caffé macchiato',
+            'Café mélange',
+            'Coffee milk',
+            'Cafe mocha',
+            'Cappuccino',
+            'Carajillo',
+            'Cortado',
+            'Cuban espresso',
+            'Espresso',
+            'Eiskaffee',
+            'The Flat White',
+            'Frappuccino',
+            'Galao',
+            'Greek frappé coffee',
+            'Iced Coffee﻿',
+            'Indian filter coffee',
+            'Instant coffee',
+            'Irish coffee',
+            'Liqueur coffee'
+        ];
+
+        JQXElements.settings['ComboBox'] =
+            {
+                source: source
+            }
+
+        window.onload = function() {
+            var myComboBox = document.querySelector('jqx-combo-box');
+            var myPanel = document.querySelector('jqx-panel');
+
+            myPanel.style.border = 'none';
+
+            myComboBox.addEventListener('select', function(event) {
+
+                var args = event.args;
+                if (args != undefined) {
+
+                    var item = event.args.item;
+                    if (item != null) {
+
+                        var myDiv = document.createElement('div');
+                        myDiv.style.marginTop = '5px';
+                        myDiv.innerHTML = 'Selected: ' + item.label;
+                        myPanel.prepend(myDiv);
+                    }
+                }
+            });
+
+            myComboBox.addEventListener('unselect', function(event) {
+
+                var args = event.args;
+                if (args != undefined) {
+                    var item = event.args.item; if (item != null) {
+
+                        var myDiv = document.createElement('div');
+                        myDiv.style.marginTop = '5px';
+                        myDiv.innerHTML = 'Unselected: ' + item.label;
+                        myPanel.prepend(myDiv);
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The Custom element ComboBox comes with several useful events. When the user selects an item, the 'select' and 'unselect' events are triggered.
+    </div>
+
+   <jqx-combo-box settings="ComboBox" style='float: left; margin-top: 10px;'></jqx-combo-box>
+
+    <div style='font-size: 12px; font-family: Verdana; margin-left: 20px; margin-top: 10px; float: left;'>
+        <div>
+
+            <span>
+                Events:
+            </span>
+
+            <jqx-panel></jqx-panel>
+        </div>
+    </div>
+</body>
+</html>

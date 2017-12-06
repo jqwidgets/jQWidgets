@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element ColumnsReorder</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of drag and drop in Custom Element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsreorder.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                datatype: "json",
+                datafields: [
+                    { name: 'name' },
+                    { name: 'type' },
+                    { name: 'calories', type: 'int' },
+                    { name: 'totalfat' },
+                    { name: 'protein' }
+                ],
+                id: 'id',
+                url: "../sampledata/beverages.txt"
+            };
+        var dataAdapter = new $.jqx.dataAdapter(source);
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: dataAdapter,
+                columnsresize: true,
+                columnsreorder: true,
+                columns: [
+                    { text: 'Name', datafield: 'name', width: 200 },
+                    { text: 'Beverage Type', datafield: 'type', width: 200 },
+                    { text: 'Calories', datafield: 'calories', width: 100 },
+                    { text: 'Total Fat', datafield: 'totalfat' }
+                ]
+            };
+        window.onload = function() {
+            var myGrid = document.querySelector('jqx-grid');
+
+            myGrid.addEventListener('columnreordered', function(event) {
+                var column = event.args.columntext;
+                var newindex = event.args.newindex
+                var oldindex = event.args.oldindex;
+                var eventLog = document.querySelector('#eventLog');
+                eventLog.innerHTML = 'Column: ' + column + ', ' + 'New Index: ' + newindex + ', Old Index: ' + oldindex;
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This sample demonstrates the Columns drag and drop operation in Custom element Grid.
+    </div>
+
+    <jqx-grid settings="gridSettings"></jqx-grid>
+
+    <div style="margin-top: 30px;" id="eventLog"></div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Splitter Custom Element IntegratedWithjqxTree</title>
+    <meta name="description" content="This is an example of Splitter Custom Element integrated with Tree Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['splitterSettings'] =
+            {
+                panels: [{ size: 250 }]
+            }; 
+
+        window.onload = function() {
+            var myTree = document.querySelector('jqx-tree');
+            var contentPanel = document.querySelector('#contentPanel');
+
+            myTree.addEventListener('select', event => contentPanel.innerHTML = '<div style="margin: 10px;">' + event.args.element.id + '</div>');            
+        };   
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        In this sample is demonstrated how to create a basic navigation with Tree and Splitter Custom Elements.
+    </div>
+
+    <jqx-splitter settings="splitterSettings">
+        <div>
+            <jqx-tree>
+                <ul>
+                    <li id="Mail" item-expanded='true'>
+                        <img style='float: left; margin-right: 5px;' src='../images/mailIcon.png' /><span item-title="true">Mail</span>
+                        <ul>
+                            <li id="Calendar" item-expanded='true'>
+                                <img style='float: left; margin-right: 5px;' src='../images/calendarIcon.png' /><span item-title="true">Calendar</span>
+                            </li>
+                            <li id="Contacts">
+                                <img style='float: left; margin-right: 5px;' src='../images/contactsIcon.png' /><span item-title="true">Contacts</span>
+                            </li>
+                            <li id="Inbox">
+                                <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span item-title="true"><span>Inbox</span><span style='color: Blue;'> (3)</span></span>
+                                <ul>
+                                    <li id="jQWidgets">
+                                        <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span item-title="true">jQWidgets</span>
+                                        <ul>
+                                            <li id="Admin">
+                                                <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span item-title="true">Admin</span>
+                                            </li>
+                                            <li id="Corporate">
+                                                <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span item-title="true">Corporate</span>
+                                            </li>
+                                            <li id="Finance">
+                                                <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span item-title="true">Finance</span>
+                                            </li>
+                                            <li id="Other">
+                                                <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span item-title="true">Other</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="Personal">
+                                        <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span item-title="true">Personal</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="Deleted Items" item-expanded='true'>
+                                <img style='float: left; margin-right: 5px;' src='../images/recycle.png' /><span item-title="true"><span>Deleted Items</span><span style='color: Blue;'> (10)</span></span>
+                                <ul>
+                                    <li id="Today">
+                                        <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span item-title="true">Today</span>
+                                    </li>
+                                    <li id="Last Week">
+                                        <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span item-title="true">Last Week</span>
+                                    </li>
+                                    <li id="Last Month">
+                                        <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span item-title="true">Last Month</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="Notes">
+                                <img style='float: left; margin-right: 5px;' src='../images/notesIcon.png' /><span item-title="true">Notes</span>
+                            </li>
+                            <li id="Settings">
+                                <img style='float: left; margin-right: 5px;' src='../images/settings.png' /><span item-title="true">Settings</span>
+                            </li>
+                            <li id="Favorites">
+                                <img style='float: left; margin-right: 5px;' src='../images/favorites.png' /><span item-title="true">Favorites</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </jqx-tree>
+        </div>
+        <div id="contentPanel"></div>
+    </jqx-splitter>
+
+</body>
+</html>

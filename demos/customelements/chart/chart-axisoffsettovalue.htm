@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Chart Custom Element AxisOffsetToValue</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom element chart demonstrating how to add labels, tick marks and grid lines at custom offsets." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script>
+
+        var sampleData =
+            [
+                { a: 1.1535, b: 0.5 },
+                { a: 4.48, b: 20.5 },
+                { a: 10, b: 60 },
+                { a: 100, b: 80 },
+                { a: 200, b: 90 },
+                { a: 245.11, b: 100.13 },
+                { a: 300.13, b: 150.13 },
+                { a: 340, b: 200 }
+            ];
+
+        JQXElements.settings['chartContainer'] =
+            {
+                title: 'Logarithmic Scale Offset to Value Mappying',
+                description: 'Move the mouse to see the respective x and y values',
+                padding: { left: 15, top: 5, right: 15, bottom: 5 },
+                titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+                enableAnimations: true,
+
+                xAxis:
+                {
+                    dataField: 'a',
+                    logarithmicScale: true,
+                    logarithmicScaleBase: 2,
+                    valuesOnTicks: true
+                },
+
+                valueAxis: {
+                    padding: { right: 0 },
+                    flip: false,
+                    logarithmicScale: true,
+                    logarithmicScaleBase: 2,
+                    title: { text: 'Value' },
+                    labels: {
+                        horizontalAlignment: 'right'
+                    }
+                },
+
+                seriesGroups:
+                [
+                    {
+                        type: 'line',
+                        radius: 200,
+                        series: [
+                            { dataField: 'a', displayText: 'A', symbolType: 'square', symbolSize: 6, dashStyle: '4,4', lineWidth: 1 },
+                            { dataField: 'b', displayText: 'B', symbolType: 'circle', symbolSize: 6, lineWidth: 1 }
+                        ]
+                    }
+                ]
+            };
+
+        window.onload = function() {
+            var myChart = document.querySelector('jqx-chart');
+            var myEvent = document.querySelector('#eventText');
+            var result = document.querySelector("jqx-chart").getInstance();            
+
+            var cursorPositionRelativeToChart = function (event) {
+                var x = event.pageX || event.clientX || event.screenX;
+                var y = event.pageY || event.clientY || event.screenY;
+                x -= myChart.offsetLeft;
+                y -= myChart.offsetTop;
+
+                return { x: x, y: y };
+            };
+
+            var cursorRedDotElement = null;
+            myChart.addEventListener('mousemove', function (event) {
+                var position = cursorPositionRelativeToChart(event);
+                var xvalue = result.getXAxisValue(position.x, 0);
+                var yvalue = result.getValueAxisValue(position.y, 0);
+                var eventData = 'x: ' + position.x + '; y: ' + position.y + '; xValue: ' + xvalue + '; yValue: ' + yvalue;
+                myEvent.innerHTML = eventData;
+                var renderer = result.renderer;
+                if (!!cursorRedDotElement) {
+                    cursorRedDotElement.setAttribute("cx", position.x);
+                    cursorRedDotElement.setAttribute("cy", position.y);
+                } else {
+                    cursorRedDotElement = renderer.circle(position.x, position.y, 1, { fill: 'red', stroke: 'red' });
+                }
+            });
+
+            myChart.addEventListener('click', function (event) {
+                var position = cursorPositionRelativeToChart(event);
+                var xvalue = result.getXAxisValue(position.x, 0);
+                var yvalue = result.getValueAxisValue(position.y, 0);
+                var eventData = 'x: ' + position.x + '; y: ' + position.y + '; xValue: ' + xvalue + '; yValue: ' + yvalue;
+                alert(eventData);
+            });
+        }
+
+    </script>
+</head>
+<body>
+   
+    <jqx-chart settings='chartContainer' style="width:800px; height: 500px;"></jqx-chart>
+    <br />
+
+    <div id='eventText' style="width:600px; height: 30px"></div>
+  
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of inverted JavaScript chart x-axis and value axis. The axes are inverted with the flip setting. 
+    </div>
+
+</body>
+</html>

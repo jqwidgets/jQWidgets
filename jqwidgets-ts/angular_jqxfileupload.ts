@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,21 +17,21 @@ declare let JQXLite: any;
 
 export class jqxFileUploadComponent implements OnChanges
 {
-   @Input('autoUpload') attrAutoUpload: Boolean;
-   @Input('accept') attrAccept: String;
+   @Input('autoUpload') attrAutoUpload: boolean;
+   @Input('accept') attrAccept: string;
    @Input('browseTemplate') attrBrowseTemplate: any;
    @Input('cancelTemplate') attrCancelTemplate: any;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('fileInputName') attrFileInputName: String;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('fileInputName') attrFileInputName: string;
    @Input('localization') attrLocalization: jqwidgets.FileUploadLocalization;
-   @Input('multipleFilesUpload') attrMultipleFilesUpload: Boolean;
+   @Input('multipleFilesUpload') attrMultipleFilesUpload: boolean;
    @Input('renderFiles') attrRenderFiles: (filename:any) => void;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('theme') attrTheme: String;
-   @Input('uploadUrl') attrUploadUrl: String;
+   @Input('rtl') attrRtl: boolean;
+   @Input('theme') attrTheme: string;
+   @Input('uploadUrl') attrUploadUrl: string;
    @Input('uploadTemplate') attrUploadTemplate: any;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -54,7 +54,7 @@ export class jqxFileUploadComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -193,7 +193,7 @@ export class jqxFileUploadComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxFileUpload('height', arg);
       } else {
@@ -257,7 +257,7 @@ export class jqxFileUploadComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxFileUpload('width', arg);
       } else {

@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Ribbon Custom element PopupLayout</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom element Ribbon's layouts." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxribbon.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        table {
+            margin-left: 5px;
+            border-collapse: separate;
+            border-spacing: 0px 3px;
+            vertical-align: middle;
+        }
+
+        hr {
+            width: 75%;
+            float: left;
+        }
+    </style>
+    <script>
+        JQXElements.settings['RibbonSettings'] =
+            {
+                width: 410, height: 30, mode: 'popup', position: 'top', selectionMode: 'click', animationType: 'none'
+            };
+
+        window.onload = function() {
+            var myRibbon = document.querySelector('jqx-ribbon');
+
+            myRibbon.setPopupLayout(0, 'near', 130, 205);
+            myRibbon.setPopupLayout(1, 'center', 130, 200);
+            myRibbon.setPopupLayout(2, 'center', 130, 260);
+            myRibbon.setPopupLayout(3, 'far', 130, 350);
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows how to set different layouts to the pop-up content sections in Custom element Ribbon.
+    </div>
+
+    <jqx-ribbon id="jqxRibbon" settings="RibbonSettings">
+        <ul>
+            <li>TV and Players</li>
+            <li>Cell phones</li>
+            <li>Cameras</li>
+            <li>Computers</li>
+        </ul>
+        <div>
+            <div>
+                <table>
+                    <tr>
+                        <td class="list">
+                            <b><a href="#">TV</a></b>
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">LED</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">LCD</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">Plasma</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <b><a href="#">PLAYERS</a></b>
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">DVD</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">Blu-Ray</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">CD</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td class="list">
+                            <b><a href="#">PHONES</a></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By Brand</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By Display size</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <b><a href="#">SMARTPHONES</a></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By Brand</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By OS</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By Display size</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By CPU</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td class="list">
+                            <b>
+                                <a href="#">
+                                    DIGITAL<br />
+                                    CAMERAS
+                                </a>
+                            </b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">Hybrid</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">Compact</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">Digital SLR</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <b><a href="#">CAMCORDERS</a></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">FLASH</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">HDD</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">HD Flash</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">HD HDD</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">HD Extreme</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td class="list">
+                            <b><a href="#">LAPTOPS</a></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By Processor Type</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By RAM Capacity</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By HDD Capacity</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By Display Size</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By Brand</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <b><a href="#">DESKTOPS</a></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By Processor Type</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By RAM Capacity</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By HDD Capacity</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By Brand</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <b><a href="#">ALL-IN-ONE</a></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="list">
+                            <a href="#">By Brand</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </jqx-ribbon>
+</body>
+</html>

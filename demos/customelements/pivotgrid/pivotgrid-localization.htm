@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Description">PivotGrid Custom Element - Localization Strings</title>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpivot.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpivotgrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="localization.js"></script>
+    <script type="text/javascript">
+        // prepare sample data
+        var data = new Array();
+
+        var firstNames =
+        [
+            "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene"
+        ];
+
+        var lastNames =
+        [
+            "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier"
+        ];
+
+        var productNames =
+        [
+            "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist"
+        ];
+
+        var priceValues =
+        [
+            "2.25", "1.5", "3.0", "3.3", "4.5", "3.6", "3.8", "2.5", "5.0", "1.75", "3.25", "4.0"
+        ];
+
+        for (var i = 0; i < 500; i++) {
+            var row = {};
+            var productindex = Math.floor(Math.random() * productNames.length);
+            var price = parseFloat(priceValues[productindex]);
+            var quantity = 1 + Math.round(Math.random() * 10);
+
+            row["firstname"] = firstNames[Math.floor(Math.random() * firstNames.length)];
+            row["lastname"] = lastNames[Math.floor(Math.random() * lastNames.length)];
+            row["productname"] = productNames[productindex];
+            row["price"] = price;
+            row["quantity"] = quantity;
+            row["total"] = price * quantity;
+
+            data[i] = row;
+        }
+
+        // create a data source and data adapter
+        var source =
+        {
+            localdata: data,
+            datatype: "array",
+            datafields:
+            [
+                { name: 'firstname', type: 'string' },
+                { name: 'lastname', type: 'string' },
+                { name: 'productname', type: 'string' },
+                { name: 'quantity', type: 'number' },
+                { name: 'price', type: 'number' },
+                { name: 'total', type: 'number' }
+            ]
+        };
+
+        // create a pivot data source from the dataAdapter
+        var pivotDataSource = new jqx.pivot(
+            new jqx.dataAdapter(source, { autoBind: true }),
+            {
+                pivotValuesOnRows: false,
+                rows: [{ dataField: 'firstname' }, { dataField: 'lastname' }],
+                columns: [{ dataField: 'productname' }],
+                filters: [
+                    {
+                        dataField: 'productname',
+                        filterFunction: function (value) {
+                            if (value == "Black Tea" || value == "Green Tea")
+                                return true;
+
+                            return false;
+                        }
+                    }
+                ],
+                values: [
+                    { dataField: 'price', 'function': 'sum', text: 'sum', formatSettings: { prefix: '', decimalPlaces: 2 } },
+                    { dataField: 'price', 'function': 'count', text: 'count' },
+                    { dataField: 'price', 'function': 'average', text: 'average', formatSettings: { prefix: '', decimalPlaces: 2 } }
+                ]
+            });
+
+        // create a string localization object for German language
+        // for more detailscheck 'localization.js'
+        var localization = getLocalization('de');
+
+        // create a pivot grid
+        JQXElements.settings["pivotSettings"] =
+        {
+            source: pivotDataSource,
+            treeStyleRows: true,
+            autoResize: false,
+            multipleSelectionEnabled: true,
+            localization: localization
+        };
+    </script>
+</head>
+<body class='default'>
+    <jqx-pivot-grid settings="pivotSettings" id="divPivotGrid" style="height: 400px; width: 800px; background-color: white;">
+    </jqx-pivot-grid>
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Pivot Grid language localization. The pivot grid uses multiple properties to display various messages and texts.<br /> All of them are customizable and you can adapt them to any language by defining your custom localization object.<br /> For more information check the code inside localization.js to learn how to construct a localization object.
+    </div>
+</body>
+</html>

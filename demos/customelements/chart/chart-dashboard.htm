@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Chart Custom Element Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example dashboard is set as the Custom Element Chart" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+
+    <style type="text/css">
+        .chart-inner-text {
+            fill: #00BAFF;
+            color: #00BAFF;
+            font-size: 30px;
+            font-family: Verdana;
+        }    
+    </style>
+
+    <script>
+        window.onload = function() {
+            var displayClusterMetrics = function() {
+                var metrics =
+                    [
+                        {
+                            name: 'Cluster capacity',
+                            value: 55,
+                            max: 64
+                        },
+                        {
+                            name: 'Avg. CPU %',
+                            value: 37,
+                            max: 100
+                        },
+                        {
+                            name: 'Storage capacity [TB]',
+                            value: 89.3,
+                            max: 256
+                        },
+                        {
+                            name: 'Network utilization %',
+                            value: 47,
+                            max: 100
+                        }
+                    ];
+
+                for (var i = 0; i < metrics.length; i++) {
+                    var data = [];
+                    data.push({ text: 'Used', value: metrics[i].value }); // current
+                    data.push({ text: 'Available', value: metrics[i].max - metrics[i].value }); // remaining
+
+                    var settings = {
+                            title: metrics[i].name,
+                            description: '',
+                            enableAnimations: true,
+                            showLegend: false,
+                            showBorderLine: true,
+                            backgroundColor: '#FAFAFA',
+                            padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                            titlePadding: { left: 5, top: 5, right: 5, bottom: 5 },
+                            source: data,
+                            showToolTips: true,
+                            seriesGroups:
+                            [
+                                {
+                                    type: 'donut',
+                                    useGradientColors: false,
+                                    series:
+                                    [
+                                        {
+                                            showLabels: false,
+                                            enableSelection: true,
+                                            displayText: 'text',
+                                            dataField: 'value',
+                                            labelRadius: 120,
+                                            initialAngle: 90,
+                                            radius: 60,
+                                            innerRadius: 50,
+                                            centerOffset: 0
+                                        }
+                                    ]
+                                }
+                            ]
+                    };
+
+                    var selector = '#chartContainer' + (i + 1).toString();
+                    var valueText = metrics[i].value.toString();
+                    settings.drawBefore = function (renderer, rect) {
+                        sz = renderer.measureText(valueText, 0, { 'class': 'chart-inner-text' });
+                        renderer.text(
+                            valueText,
+                            rect.x + (rect.width - sz.width) / 2,
+                            rect.y + rect.height / 2,
+                            0,
+                            0,
+                            0,
+                            { 'class': 'chart-inner-text' }
+                        );
+                    };
+
+                    //currentChart.style.display = 'inline';
+                    document.querySelector(selector).style.display = 'inline';
+                    var currentChart = document.querySelector(selector);
+
+                    currentChart.settings = settings;
+                    currentChart.createElement();
+                    currentChart.addColorScheme('customColorScheme', ['#00BAFF', '#EDE6E7']);
+                    currentChart.colorScheme = 'customColorScheme';
+                }
+            };
+
+            var displayServerResponseMetrics = function () {
+                var data =
+                    [
+                        { hour: 0, latency: 235, requests: 3500 },
+                        { hour: 1, latency: 231, requests: 3400 },
+                        { hour: 2, latency: 217, requests: 3350 },
+                        { hour: 3, latency: 215, requests: 3260 },
+                        { hour: 4, latency: 225, requests: 3320 },
+                        { hour: 5, latency: 235, requests: 3400 },
+                        { hour: 6, latency: 239, requests: 3550 },
+                        { hour: 7, latency: 255, requests: 4100 },
+                        { hour: 8, latency: 251, requests: 4200 },
+                        { hour: 9, latency: 259, requests: 4500 },
+                        { hour: 10, latency: 265, requests: 4560 },
+                        { hour: 11, latency: 257, requests: 4500 },
+                        { hour: 12, latency: 265, requests: 4490 },
+                        { hour: 13, latency: 261, requests: 4400 },
+                        { hour: 14, latency: 258, requests: 4350 },
+                        { hour: 15, latency: 257, requests: 4340 },
+                        { hour: 16, latency: 255, requests: 4200 },
+                        { hour: 17, latency: 245, requests: 4050 },
+                        { hour: 18, latency: 241, requests: 4020 },
+                        { hour: 19, latency: 239, requests: 3900 },
+                        { hour: 20, latency: 237, requests: 3810 },
+                        { hour: 21, latency: 236, requests: 3720 },
+                        { hour: 22, latency: 235, requests: 3610 },
+                        { hour: 23, latency: 239, requests: 3550 },
+                    ];
+                var latencyThreshold = 260;
+
+                var settings = {
+                    title: 'Get request per second & response latencies',
+                    description: '(Aggregated values for the last 24h)',
+                    enableAnimations: true,
+                    showLegend: false,
+                    showBorderLine: true,
+                    backgroundColor: '#FAFAFA',
+                    padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                    titlePadding: { left: 5, top: 5, right: 5, bottom: 5 },
+                    source: data,
+                    xAxis:
+                    {
+                        dataField: 'hour',
+                        displayText: 'Hour',
+                    },
+                    seriesGroups:
+                    [
+                        {
+                            type: 'column',
+                            valueAxis:
+                            {
+                                title: { text: 'Request Latency [ms]<br>' },
+                                position: 'left'
+                            },
+                            toolTipFormatSettings: { sufix: ' ms' },
+                            series:
+                            [
+                                {
+                                    dataField: 'latency',
+                                    displayText: 'Request latency',
+                                    colorFunction: function (value, itemIndex, serie, group) {
+                                        return (value > latencyThreshold) ? '#CC1133' : '#55CC55';
+                                    }
+                                }
+                            ],
+                            bands:
+                            [
+                                {
+                                    minValue: latencyThreshold,
+                                    maxValue: latencyThreshold,
+                                    lineWidth: 1,
+                                    color: 'red'
+                                }
+                            ]
+                        },
+                        {
+                            type: 'spline',
+                            valueAxis:
+                            {
+                                title: { text: 'Get Requests per second' },
+                                position: 'right'
+                            },
+                            toolTipFormatSettings: { sufix: ' req/s' },
+                            series:
+                            [
+                                {
+                                    dataField: 'requests',
+                                    displayText: 'Get requests',
+                                    lineColor: '#343F9B',
+                                    lineWidth: 2
+                                }
+                            ]
+                        },
+                    ]
+                };
+
+                document.querySelector('#chartContainer5').settings = settings;
+                document.querySelector('#chartContainer5').createElement();
+            };
+
+            displayClusterMetrics();
+            displayServerResponseMetrics();
+        };
+
+    </script>
+</head>
+<body>
+   
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <td><jqx-chart delayed-create id="chartContainer1" style="width: 200px; height: 180px;"></jqx-chart></td>
+            <!--<td><div id="chartContainer1" style="width: 400px; height: 180px;"></div></td>-->
+            <td><jqx-chart delayed-create id="chartContainer2" style="width: 200px; height: 180px;"></jqx-chart></td>
+        </tr>
+        <tr>
+            <td><jqx-chart delayed-create id="chartContainer3" style="width: 200px; height: 180px;"></jqx-chart></td>
+            <td><jqx-chart delayed-create id="chartContainer4" style="width: 200px; height: 180px;"></jqx-chart></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <jqx-chart delayed-create id="chartContainer5" style="width: 400px; height: 300px;"></jqx-chart>
+            </td>
+        </tr>
+    </table>
+  
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Dashboard with multiple Custom element Charts. The dashboard is represented by four donut charts. The data series is represented by a column chart and a spline chart. 
+    </div>
+
+</body>
+</html>

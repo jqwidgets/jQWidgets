@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart Sparklines</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example the Custom Element Chart is in the form of a sparkline that is loaded by an array." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var data = 
+            [
+                { city: 'London', count: 24, monthlySales: 1128430, dailyTrend: [12, 8, 9, 3, 4, 5, 6, 2, 3, 4, 5, 6, 12, 4, 11, 4, 13, 9, 10, 12, 12, 8, 13, 7, 15, 9, 11, 12, 9, 8] },
+                { city: 'New York', count: 35, monthlySales: 1434650, dailyTrend: [11, 7, 3, 8, 6, 2, 2, 4, 3, 8, 5, 11, 7, 11, 11, 4, 5, 6, 5, 9, 9, 5, 11, 2, 8, 9, 14, 12, 9, 8] },
+                { city: 'Berlin', count: 11, monthlySales: 498430, dailyTrend: [11, 7, 3, 8, 6, 2, 2, 4, 3, 8, 5, 11, 7, 11, 11, 4, 5, 6, 5, 9, 9, 5, 11, 2, 8, 9, 14, 12, 9, 8] },
+                { city: 'Madrid', count: 4, monthlySales: 181760, dailyTrend: [11, 7, 3, 8, 6, 2, 2, 4, 3, 8, 5, 11, 7, 11, 11, 4, 5, 6, 5, 9, 9, 5, 11, 2, 8, 9, 14, 12, 9, 8] },
+                { city: 'Paris', count: 9, monthlySales: 381760, dailyTrend: [11, 7, 3, 8, 6, 2, 2, 4, 3, 8, 5, 11, 7, 11, 11, 4, 5, 6, 5, 9, 9, 5, 11, 2, 8, 9, 14, 12, 9, 8] },
+            ];
+
+        var source =
+            {
+                localData: data,
+                dataType: 'array'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        createSparkline = (selector, data, type) => {
+            var settings = {
+                title: '',
+                description: '',
+                showLegend: false,
+                enableAnimations: false,
+                showBorderLine: false,
+                showToolTips: false,
+                backgroundColor: 'transparent',
+                padding: { left: 0, top: 0, right: 0, bottom: 0 },
+                titlePadding: { left: 0, top: 0, right: 0, bottom: 0 },
+                source: data,
+                xAxis:
+                {
+                    visible: false,
+                    valuesOnTicks: false
+                },
+                colorScheme: 'scheme01',
+                seriesGroups:
+                [
+                    {
+                        type: type,
+                        columnsGapPercent: 0,
+                        columnsMaxWidth: 2,
+                        valueAxis:
+                        {
+                            minValue: 0,
+                            visible: false
+                        },
+                        series: [
+                            {
+                                linesUnselectMode: 'click',
+                                //lineWidth: 1,
+                                colorFunction: function (value, itemIndex, serie, group) {
+                                    return (value < 10) ? '#307DD7' : '#AA4643';
+                                }
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            $(selector).jqxChart(settings);
+        } // createSparkline
+
+        JQXElements.settings['DataTable'] =
+            {
+                source: dataAdapter,
+                selectionMode: 'none',
+                enableHover: false,
+                sortable: true,
+                columns: [
+                    {
+                        text: 'City', align: 'center', dataField: 'city', width: 250,
+                    },
+                    {
+                        text: 'Store locations', align: 'center', dataField: 'count', width: 200
+                    },
+                    {
+                        text: 'Monthly sales', align: 'center', dataField: 'monthlySales'
+                    },
+                    {
+                        text: 'Daily sales trend', align: 'center', dataField: 'dailyTrend',
+                        
+                        cellsRenderer: (row, column, value, rowData) => {
+                            var div = '<div id=sparklineContainer' + row + ' style="margin: 0px; margin-bottom: 0px; width: 100%; height: 40px;"></div>';
+                            return div;
+                        }
+                    }
+                ],
+                rendering: function() {
+                    if ($('.jqx-chart').length > 0) {
+                        $('.jqx-chart').jqxChart('destroy');
+                    }
+                },
+                rendered: function() {
+                    for (var i = 0; i < data.length; i++) {
+                        createSparkline('#sparklineContainer' + i, data[i].dailyTrend, i % 2 == 0 ? 'column' : 'line');
+                    }
+                }
+            };
+
+    </script>
+</head>
+<body>
+   
+    <jqx-data-table settings="DataTable"></jqx-data-table>
+  
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Custom element Chart Sparklines series. The data is loaded from an array. The type of the sparklines series is line or column depending on the trend data.	 
+    </div>
+
+</body>
+</html>

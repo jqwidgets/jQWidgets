@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Chart Custom Element LineSeriesWithConditionalColors</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom element Chart line series. The data is loaded in the chart from a csv file using JavaScript. The type of the seriesGroups setting is set to line. Setting the valuesOnTicks option enables the data to be shown for each date. You can also see how to set the xAxis labels under 45 degrees angle. In order to change the color scheme you have to set the colorScheme setting. The animation is enabled with the enableAnimations option" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script>
+
+        var source =
+            {
+                datatype: 'csv',
+                datafields: [
+                    { name: 'Quarter' },
+                    { name: 'Change' }
+                ],
+                url: '../sampledata/us_gdp_2008-2013.csv'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(
+            source,
+            {
+                async: false,
+                autoBind: true,
+                loadError: function (xhr, status, error)
+                {
+                    alert('Error loading ' + source.url + ' : ' + error);
+                }
+            }
+        );
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'U.S. GDP Percentage Change',
+                borderLineWidth: 1,
+                showBorderLine: true,
+                enableAnimations: true,
+                description: '(source: Bureau of Economic Analysis)',
+                showLegend: false,
+                padding: { left: 5, top: 5, right: 10, bottom: 5 },
+                titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                categoryAxis:
+                {
+                    //description: 'Year and quarter',
+                    dataField: 'Quarter',
+                    unitInterval: 1,
+                    textRotationAngle: -75,
+                    formatFunction: function (value, itemIndex, serie, group) {
+                        return value;
+                    },
+                    valuesOnTicks: false
+                },
+                colorScheme: 'scheme05',
+                seriesGroups:
+                [
+                    {
+                        type: 'line',
+                        valueAxis:
+                        {
+                            description: 'Percentage Change',
+                            formatFunction: function(value) {
+                                return value + '%';
+                            }
+                        },
+                        series:
+                        [
+                            {
+                                dataField: 'Change',
+                                displayText: 'Change',
+                                // Modify this function to return desired colors.
+                                // jqxChart will call the function for each data point.
+                                // Sequential points that have the same color will be
+                                // grouped automatically in a line segment
+                                colorFunction: function (value, itemIndex, serie, group) {
+                                    return (value < 0) ? '#FF0000' : '#00FF00';
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+    </script>
+</head>
+<body>
+
+   <jqx-chart settings="chartSettings" style="width:850px; height:500px"></jqx-chart>
+
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of chart line series. The data is loaded in the chart from a csv file using Custom element. The type of the seriesGroups setting is set to line. Setting the valuesOnTicks option enables the data to be shown for each date. You can also see how to set the xAxis labels under 45 degrees angle. In order to change the color scheme you have to set the colorScheme setting. The animation is enabled with the enableAnimations option.
+    </div>
+</body>
+</html>

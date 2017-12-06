@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -27,25 +27,25 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxFormattedInputComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('disabled') attrDisabled: Boolean;
+   @Input('disabled') attrDisabled: boolean;
    @Input('decimalNotation') attrDecimalNotation: any;
-   @Input('dropDown') attrDropDown: Boolean;
-   @Input('dropDownWidth') attrDropDownWidth: Number | String;
-   @Input('min') attrMin: Number | String;
-   @Input('max') attrMax: Number | String;
-   @Input('placeHolder') attrPlaceHolder: String;
-   @Input('popupZIndex') attrPopupZIndex: Number;
-   @Input('roundedCorners') attrRoundedCorners: Boolean;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('radix') attrRadix: Number | String;
-   @Input('spinButtons') attrSpinButtons: Boolean;
-   @Input('spinButtonsStep') attrSpinButtonsStep: Number;
+   @Input('dropDown') attrDropDown: boolean;
+   @Input('dropDownWidth') attrDropDownWidth: number | string;
+   @Input('min') attrMin: number | string;
+   @Input('max') attrMax: number | string;
+   @Input('placeHolder') attrPlaceHolder: string;
+   @Input('popupZIndex') attrPopupZIndex: number;
+   @Input('roundedCorners') attrRoundedCorners: boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('radix') attrRadix: number | string;
+   @Input('spinButtons') attrSpinButtons: boolean;
+   @Input('spinButtonsStep') attrSpinButtonsStep: number;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: String;
-   @Input('upperCase') attrUpperCase: Boolean;
-   @Input('value') attrValue: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('upperCase') attrUpperCase: boolean;
+   @Input('value') attrValue: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -71,7 +71,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -175,8 +175,10 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
    }
 
    get ngValue(): any {
-       if (this.widgetObject)
-           return this.host.val();
+       if (this.widgetObject) {
+           const value = this.host.val();
+           return value;
+       }
        return '';
    }
 
@@ -229,7 +231,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   dropDownWidth(arg?: Number | String) : any {
+   dropDownWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('dropDownWidth', arg);
       } else {
@@ -237,7 +239,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   height(arg?: Number | String) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('height', arg);
       } else {
@@ -245,7 +247,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   min(arg?: Number | String) : any {
+   min(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('min', arg);
       } else {
@@ -253,7 +255,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   max(arg?: Number | String) : any {
+   max(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('max', arg);
       } else {
@@ -293,7 +295,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   radix(arg?: Number | String) : any {
+   radix(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('radix', arg);
       } else {
@@ -349,7 +351,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   width(arg?: Number | String) : any {
+   width(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('width', arg);
       } else {
@@ -395,7 +397,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       this.host.jqxFormattedInput('selectLast');
    }
 
-   val(value?: String | Number): any {
+   val(value?: number | string): any {
       if (value !== undefined) {
          return this.host.jqxFormattedInput("val", value);
       } else {

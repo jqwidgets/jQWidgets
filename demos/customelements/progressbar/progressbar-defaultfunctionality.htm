@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Progressbar Custom Element DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionalities in Custom Element ProgressBar." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxprogressbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['jqxProgressBar'] =
+            {
+                value: 50,
+                height: 50,
+                width: 300
+            };
+
+        JQXElements.settings['jqxVerticalProgressBar'] =
+            {
+                value: 50,
+                height: 300,
+                width: 50,
+                orientation: 'vertical'
+            };
+
+        window.onload = function() {
+            var myProgressBar = document.querySelectorAll('jqx-progress-bar');
+            var myButton = document.querySelector('jqx-button');
+            var myCheckBox = document.querySelectorAll('jqx-check-box');
+            var myInput = document.querySelector('jqx-input');
+
+            myButton.addEventListener('click', function() {
+                var value = myInput.val();
+                console.log(value);
+                myProgressBar[0].value = value;
+                myProgressBar[1].value = value;
+            });
+
+            myCheckBox[0].addEventListener('change', function(event) {
+                myProgressBar[0].showText = event.args.checked;
+                myProgressBar[1].showText = event.args.checked;
+            });
+
+            var renderText = (text) => {
+                return "<span class='jqx-rc-all' style='background: #ffe8a6; color: #e53d37; font-style: italic;'>" + text + "</span>";
+            };
+
+            myCheckBox[1].addEventListener('change', function(event) {
+                if (event.args.checked) {
+                    myProgressBar[0].renderText = renderText
+                    myProgressBar[1].renderText = renderText
+                }
+                else {
+                    myProgressBar[0].renderText = null;
+                    myProgressBar[1].renderText = null;
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The Custom element ProgressBar widget visually indicates the progress of a lengthy operation.
+    </div>
+
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+
+        <div style='margin-top: 10px;'>Horizontal</div>
+        <jqx-progress-bar style='margin-top: 10px; overflow: hidden;' settings='jqxProgressBar'>
+
+        </jqx-progress-bar>
+        <div style='margin-top: 10px;'>Vertical</div>
+        <jqx-progress-bar style='margin-top: 10px; overflow: hidden;' settings='jqxVerticalProgressBar'>
+
+        </jqx-progress-bar>
+        <br />
+
+        <div>Enter a value between 0 and 100</div>
+        <jqx-input style='margin-top: 5px;'></jqx-input>
+        <jqx-button style='padding: 3px; margin-top: 5px;'>Update</jqx-button><br />
+
+        <jqx-check-box style="margin-top: 20px;">Show Progress Text</jqx-check-box><br />
+        <jqx-check-box style="margin-top: 20px;">Custom Progress Text</jqx-check-box>
+
+    </div>
+</body>
+</html>

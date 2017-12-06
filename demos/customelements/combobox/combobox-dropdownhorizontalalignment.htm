@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ComboBox DropDownHorizontalAlignment</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example show how to change the alignment of the Custom Element ComboBox." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'CompanyName' },
+                    { name: 'ContactName' }
+                ],
+                id: 'id',
+                url: '../sampledata/customers.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['ComboBox'] =
+            {
+                selectedIndex: 0,
+                source: dataAdapter,
+                dropDownHorizontalAlignment: 'right',
+                displayMember: 'ContactName',
+                valueMember: 'CompanyName',
+                dropDownWidth: 200
+            }
+
+        JQXElements.settings['RadioButtonLeft'] =
+            {
+                checked: false 
+            }
+
+        JQXElements.settings['RadioButtonRight'] =
+            {
+                checked: true
+            }
+
+        window.onload = function() {
+            var myComboBox = document.querySelector('jqx-combo-box');
+            var myRadioButtons = document.querySelectorAll('jqx-radio-button');
+
+            myRadioButtons[1].addEventListener('checked', function() {
+                myComboBox.dropDownHorizontalAlignment = 'right';
+            });
+            myRadioButtons[0].addEventListener('checked', function() {
+                myComboBox.dropDownHorizontalAlignment = 'left';
+            });
+        }
+
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this demo is demonstrated how to change the Custom element DropDown's alignment.
+    </div>
+
+    <div style="float: left; font-size: 13px; font-family: Verdana;" settings='ListBox'>
+
+        <h3>
+            Alignment
+        </h3>
+
+        <jqx-radio-button settings='RadioButtonLeft'>
+            Left
+        </jqx-radio-button>
+
+        <br />
+
+        <jqx-radio-button style='margin-top: 10px;' settings='RadioButtonRight'>
+            Right
+        </jqx-radio-button>
+
+    </div>
+
+   <jqx-combo-box settings="ComboBox" style='float: left; margin-top: 20px; margin-left: 100px;'></jqx-combo-box>
+</body>
+</html>

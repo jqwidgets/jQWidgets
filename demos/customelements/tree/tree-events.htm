@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tree Custom Element Events</title>
+    <meta name="description" content="This is an example of the events that occur in Tree Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxexpander.js"></script>
+    <script src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var data =
+            [
+                {
+                    icon: '../images/mailIcon.png', label: 'Mail', expanded: true,
+                    items:
+                    [
+                        { icon: '../images/calendarIcon.png', label: 'Calendar' },
+                        { icon: '../images/contactsIcon.png', label: 'Contacts', selected: true }
+                    ]
+                },
+                {
+                    icon: '../images/folder.png', label: 'Inbox', expanded: true,
+                    items:
+                    [
+                        { icon: '../images/folder.png', label: 'Admin' },
+                        { icon: '../images/folder.png', label: 'Corporate' },
+                        { icon: '../images/folder.png', label: 'Finance' },
+                        { icon: '../images/folder.png', label: 'Other' },
+                    ]
+                },
+                { icon: '../images/recycle.png', label: 'Deleted Items' },
+                { icon: '../images/notesIcon.png', label: 'Notes' },
+                { iconsize: 14, icon: '../images/settings.png', label: 'Settings' },
+                { icon: '../images/favorites.png', label: 'Favorites' }
+            ];
+
+        JQXElements.settings['treeSettings'] =
+            {
+               source: data
+            };
+
+        window.onload = function() {
+            var myTree = document.querySelector('jqx-tree');
+            var myPanel = document.querySelector('jqx-panel');
+
+            myTree.addEventListener('select', event => {
+                var args = event.args;
+                var item = myTree.getItem(args.element);
+                myPanel.prepend('<div style="margin-top: 5px;">Selected: ' + item.label + '</div>');
+            });
+            myTree.addEventListener('expand', event => {
+                var args = event.args;
+                var item = myTree.getItem(args.element);
+                myPanel.prepend('<div style="margin-top: 5px;">Expanded: ' + item.label + '</div>');
+            });
+            myTree.addEventListener('collapse', event => {
+                var args = event.args;
+                var item = myTree.getItem(args.element);
+                myPanel.prepend('<div style="margin-top: 5px;">Collapsed: ' + item.label + '</div>');
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The Tree Custom Element provides several built-in events triggered when the user selects, expands, collapses, adds, removes or checks an item.
+    </div> 
+
+    <div style="margin-left: 60px; float: left">
+
+        <jqx-tree settings="treeSettings">
+            <ul>
+                <li item-selected='true'>Home</li>
+                <li item-expanded='true'>
+                    Solutions
+                    <ul>
+                        <li>Education</li>
+                        <li>Financial services</li>
+                        <li>Government</li>
+                        <li>Manufacturing</li>
+                        <li>
+                            Solutions
+                            <ul>
+                                <li>eLearning</li>
+                                <li>Mobile</li>
+                                <li>RIA</li>
+                                <li>Training</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Products
+                    <ul>
+                        <li>PC products</li>
+                        <li>Mobile products</li>
+                        <li>All products</li>
+                    </ul>
+                </li>
+            </ul>
+        </jqx-tree>
+
+    </div>
+
+    <div style="margin-left: 20px; float: left; border: none !important">
+        <div>
+            <span>Events:</span>
+
+            <jqx-panel></jqx-panel>
+
+        </div>
+    </div>
+
+</body>
+</html>

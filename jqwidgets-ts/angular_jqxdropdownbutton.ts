@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -18,22 +18,22 @@ declare let JQXLite: any;
 export class jqxDropDownButtonComponent implements OnChanges
 {
    @Input('animationType') attrAnimationType: any;
-   @Input('arrowSize') attrArrowSize: Number;
-   @Input('autoOpen') attrAutoOpen: Boolean;
-   @Input('closeDelay') attrCloseDelay: Number;
-   @Input('disabled') attrDisabled: Boolean;
+   @Input('arrowSize') attrArrowSize: number;
+   @Input('autoOpen') attrAutoOpen: boolean;
+   @Input('closeDelay') attrCloseDelay: number;
+   @Input('disabled') attrDisabled: boolean;
    @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: any;
    @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: any;
-   @Input('dropDownWidth') attrDropDownWidth: String | Number;
-   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: Boolean;
+   @Input('dropDownWidth') attrDropDownWidth: number | string;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
    @Input('initContent') attrInitContent: () => void;
-   @Input('openDelay') attrOpenDelay: Number;
-   @Input('popupZIndex') attrPopupZIndex: Number;
-   @Input('rtl') attrRtl: Boolean;
+   @Input('openDelay') attrOpenDelay: number;
+   @Input('popupZIndex') attrPopupZIndex: number;
+   @Input('rtl') attrRtl: boolean;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -56,7 +56,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -203,7 +203,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   dropDownWidth(arg?: String | Number) : any {
+   dropDownWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('dropDownWidth', arg);
       } else {
@@ -219,7 +219,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('height', arg);
       } else {
@@ -275,7 +275,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('width', arg);
       } else {

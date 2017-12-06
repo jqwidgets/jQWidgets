@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element MaskedInput DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionalities in Custom Element MaskedInput." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmaskedinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['zipCodeInput'] = 
+            {
+                mask: '#####-####'
+            };
+
+        JQXElements.settings['ssnInput'] = 
+            {
+                mask: '###-##-####'
+            };
+
+        JQXElements.settings['phoneInput'] = 
+            {
+                mask: '(###)###-####'
+            };
+
+        JQXElements.settings['regexInput'] = 
+            {
+                mask: '[0-2][0-5][0-5].[0-2][0-5][0-5].[0-2][0-5][0-5].[0-2][0-5][0-5]'
+            };
+
+        JQXElements.settings['disabledInput'] =
+            {
+                disabled: true
+            };
+
+        window.onload = function() {
+            var myMaskedInput = document.querySelectorAll('jqx-masked-input');
+            var myButton = document.querySelector('jqx-button');
+
+            myButton.addEventListener('click', function() {
+                myMaskedInput[0].clearValue();
+                myMaskedInput[1].clearValue();
+                myMaskedInput[2].clearValue();
+                myMaskedInput[3].clearValue();
+                myMaskedInput[4].clearValue();
+                myMaskedInput[5].clearValue();
+            });
+        };
+    </script>
+
+</head>
+<body>
+
+    <div class="example-description">
+        The Custom element MaskedInput widget uses a mask to distinguish between proper and improper user input. You can define phone number, ssn, zip code, dates, etc. masks by setting the MaskedInput mask property.
+    </div>
+
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana;">
+        <div style='margin-top: 10px;'>
+            Numeric
+        </div>
+        <jqx-masked-input style='margin-top: 3px;'></jqx-masked-input>
+        <div style='margin-top: 10px;'>
+            Zip Code
+        </div>
+        <jqx-masked-input style='margin-top: 3px;' settings='zipCodeInput'></jqx-masked-input>
+        <div style='margin-top: 10px;'>
+            SSN
+        </div>
+        <jqx-masked-input style='margin-top: 3px;' settings='ssnInput'></jqx-masked-input>
+        <div style='margin-top: 10px;'>
+            Phone Number
+        </div>
+        <jqx-masked-input style='margin-top: 3px;' settings='phoneInput'></jqx-masked-input>
+        <div style='margin-top: 10px;'>
+            IP Address (ex: 255.255.255.255)
+        </div>
+        <jqx-masked-input style='margin-top: 3px;' settings='regexInput'></jqx-masked-input>
+        <div style='margin-top: 10px;'>
+            Disabled
+        </div>
+        <jqx-masked-input style='margin-top: 3px;' settings='disabledInput'></jqx-masked-input>
+    </div>
+    <jqx-button style="margin-top: 10px;" type="button" >Clear Values</jqx-button>
+</body>
+</html>

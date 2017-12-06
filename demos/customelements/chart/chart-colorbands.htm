@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Chart Custom Element ColorBands</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of horizontal layout, range columns and color bands in Custom Element Chart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script>
+
+        var data =
+            [
+                { Person: 'Planning', M1_From: 2, M1_To: 5, M2_From: 5, M2_To: 10 },
+                { Person: 'Dev 1', M1_From: 5, M1_To: 7, M2_From: 9, M2_To: 17 },
+                { Person: 'Dev 2', M1_From: 5, M1_To: 12, M2_From: 14, M2_To: 22 },
+                { Person: 'QA 1', M1_From: 7, M1_To: 14, M2_From: 14, M2_To: 25 }
+            ];
+
+        var toolTipCustomFormatFn = function (value, itemIndex, serie, group, categoryValue, categoryAxis) {
+            var dataItem = data[itemIndex];
+            return '<DIV style="text-align: left;"><b>Team: ' + categoryValue +
+                '</b><br />Start day: ' + value.from +
+                '<br />End day: ' + value.to;
+        };
+
+        var colorsSchemesList = ['scheme01', 'scheme02', 'scheme03', 'scheme04', 'scheme05', 'scheme06', 'scheme07', 'scheme08'];
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'Monthly Project Schedule',
+                description: 'Website update plan',
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 5, top: 5, right: 10, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: data,
+                xAxis:
+                {
+                    dataField: 'Person',
+                    unitInterval: 1,
+                    tickMarks: {
+                        visible: true,
+                        interval: 1,
+                        color: '#BCBCBC'
+                    }
+                },
+                colorScheme: 'scheme03',
+                seriesGroups:
+                [
+                    {
+                        orientation: 'horizontal',
+                        type: 'rangecolumn',
+                        columnsGapPercent: 100,
+                        toolTipFormatFunction: toolTipCustomFormatFn,
+                        valueAxis:
+                        {
+                            flip: true,
+                            minValue: 1,
+                            maxValue: 30,
+                            unitInterval: 1,
+                            title: { text: 'Day' },
+                            tickMarks: { color: '#BCBCBC' }
+                        },
+                        series: [
+                            { dataFieldFrom: 'M1_From', dataFieldTo: 'M1_To', displayText: 'Sprint 1', opacity: 1 },
+                            { dataFieldFrom: 'M2_From', dataFieldTo: 'M2_To', displayText: 'Sprint 2', opacity: 1 }
+                        ],
+                        bands:
+                        [
+                            { minValue: 13, maxValue: 16, color: '#00FF00', opacity: 0.15 },
+                            { minValue: 24, maxValue: 27, color: '#0000FF', opacity: 0.20 },
+                            { minValue: 29, maxValue: 29, color: '#FF0000', opacity: 0.5, lineWidth: 3 }
+                        ]
+                    }
+                ]
+            };
+
+    </script>
+</head>
+<body>
+   
+        <jqx-chart settings='chartSettings' style="width: 850px; height: 500px;"><jqx-chart>
+  
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Custom Element Chart horizontal layout, range columns and color bands. The type of the seriesGroups is rangecolumn. You can see how to set the minimum value, the maximum value and the color of the bands.  
+    </div>
+
+</body>
+</html>

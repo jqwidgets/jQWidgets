@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,33 +17,33 @@ declare let JQXLite: any;
 
 export class jqxSortableComponent implements OnChanges
 {
-   @Input('appendTo') attrAppendTo: String;
-   @Input('axis') attrAxis: String | Number;
-   @Input('cancelProperty') attrCancelProperty: String;
-   @Input('connectWith') attrConnectWith: String | Boolean;
-   @Input('containment') attrContainment: String | Boolean;
-   @Input('cursor') attrCursor: String;
+   @Input('appendTo') attrAppendTo: string;
+   @Input('axis') attrAxis: number | string;
+   @Input('cancelProperty') attrCancelProperty: string;
+   @Input('connectWith') attrConnectWith: string | boolean;
+   @Input('containment') attrContainment: string | boolean;
+   @Input('cursor') attrCursor: string;
    @Input('cursorAt') attrCursorAt: jqwidgets.SortableCursorAt;
-   @Input('delay') attrDelay: Number;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('distance') attrDistance: Number;
-   @Input('dropOnEmpty') attrDropOnEmpty: Boolean;
-   @Input('forceHelperSize') attrForceHelperSize: Boolean;
-   @Input('forcePlaceholderSize') attrForcePlaceholderSize: Boolean;
-   @Input('grid') attrGrid: Array<Number>;
-   @Input('handle') attrHandle: String | Boolean;
+   @Input('delay') attrDelay: number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('distance') attrDistance: number;
+   @Input('dropOnEmpty') attrDropOnEmpty: boolean;
+   @Input('forceHelperSize') attrForceHelperSize: boolean;
+   @Input('forcePlaceholderSize') attrForcePlaceholderSize: boolean;
+   @Input('grid') attrGrid: Array<number>;
+   @Input('handle') attrHandle: string | boolean;
    @Input('helper') attrHelper: any;
-   @Input('items') attrItems: String;
-   @Input('opacity') attrOpacity: Number | Boolean;
-   @Input('placeholderShow') attrPlaceholderShow: String | Boolean;
-   @Input('revert') attrRevert: Number | Boolean;
-   @Input('scroll') attrScroll: Boolean;
-   @Input('scrollSensitivity') attrScrollSensitivity: Number;
-   @Input('scrollSpeed') attrScrollSpeed: Number;
+   @Input('items') attrItems: string;
+   @Input('opacity') attrOpacity: number | boolean;
+   @Input('placeholderShow') attrPlaceholderShow: string | boolean;
+   @Input('revert') attrRevert: number | boolean;
+   @Input('scroll') attrScroll: boolean;
+   @Input('scrollSensitivity') attrScrollSensitivity: number;
+   @Input('scrollSpeed') attrScrollSpeed: number;
    @Input('tolerance') attrTolerance: any;
-   @Input('zIndex') attrZIndex: Number;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('zIndex') attrZIndex: number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -66,7 +66,7 @@ export class jqxSortableComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -165,7 +165,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   axis(arg?: String | Number) : any {
+   axis(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxSortable('axis', arg);
       } else {
@@ -181,7 +181,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   connectWith(arg?: String | Boolean) : any {
+   connectWith(arg?: string | boolean) : any {
       if (arg !== undefined) {
           this.host.jqxSortable('connectWith', arg);
       } else {
@@ -189,7 +189,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   containment(arg?: String | Boolean) : any {
+   containment(arg?: string | boolean) : any {
       if (arg !== undefined) {
           this.host.jqxSortable('containment', arg);
       } else {
@@ -261,7 +261,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   grid(arg?: Array<Number>) : any {
+   grid(arg?: Array<number>) : any {
       if (arg !== undefined) {
           this.host.jqxSortable('grid', arg);
       } else {
@@ -269,7 +269,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   handle(arg?: String | Boolean) : any {
+   handle(arg?: string | boolean) : any {
       if (arg !== undefined) {
           this.host.jqxSortable('handle', arg);
       } else {
@@ -293,7 +293,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   opacity(arg?: Number | Boolean) : any {
+   opacity(arg?: number | boolean) : any {
       if (arg !== undefined) {
           this.host.jqxSortable('opacity', arg);
       } else {
@@ -301,7 +301,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   placeholderShow(arg?: String | Boolean) : any {
+   placeholderShow(arg?: string | boolean) : any {
       if (arg !== undefined) {
           this.host.jqxSortable('placeholderShow', arg);
       } else {
@@ -309,7 +309,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   revert(arg?: Number | Boolean) : any {
+   revert(arg?: number | boolean) : any {
       if (arg !== undefined) {
           this.host.jqxSortable('revert', arg);
       } else {

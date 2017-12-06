@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tag Cloud Custom Element ShowHideTags</title>
+    <meta name='description' content='In this demo is demonstrated how to show/hide tags in TagCloud Custom Element.' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtagcloud.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var data =
+            [
+                { countryName: "Australia", technologyRating: 35 },
+                { countryName: "United States", technologyRating: 60 },
+                { countryName: "Germany", technologyRating: 55 },
+                { countryName: "Brasil", technologyRating: 20 },
+                { countryName: "United Kingdom", technologyRating: 50 },
+                { countryName: "Japan", technologyRating: 80 }
+            ];
+
+        var source =
+            {
+                localdata: data,
+                datatype: "array",
+                datafields: [
+                    { name: 'countryName' },
+                    { name: 'technologyRating' }
+                ]
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source, {});
+     
+        JQXElements.settings['tagCloudSettings'] =
+            {
+                source: dataAdapter,
+                displayMember: 'countryName',
+                valueMember: 'technologyRating'
+            };
+
+        window.onload = function() {
+            var myTagCloud = document.querySelector('jqx-tag-cloud');
+            var myButtons = document.querySelectorAll('jqx-button');
+
+            myButtons[0].addEventListener('click', _ => {
+                var records = myTagCloud.getTagsList();
+                var hiddenTagsList = myTagCloud.getHiddenTagsList();
+                for (var i = 0; i < records.length; i++) {
+                    if (hiddenTagsList.indexOf(records[i].index) == -1) {
+                        myTagCloud.hideItem(records[i].index);
+                        return;
+                    }
+                }
+            });
+
+            myButtons[1].addEventListener('click', _ => {
+                var hiddenTagsList = myTagCloud.getHiddenTagsList();
+                if (hiddenTagsList[0] !== undefined) {
+                    var tagId = hiddenTagsList[0];
+                    myTagCloud.showItem(tagId);
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Tag Cloud Custom Element Show/Hide Tags.
+    </div>
+
+    <jqx-tag-cloud settings="tagCloudSettings"></jqx-tag-cloud>
+    <br />
+    <br />
+    <jqx-button>Hide Item</jqx-button>
+    <jqx-button>Show Item</jqx-button>
+</body>
+</html>

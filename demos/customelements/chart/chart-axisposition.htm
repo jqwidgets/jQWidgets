@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart AxisPosition</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom element Chart axis position." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+
+        var source =
+            {
+                datatype: 'tab',
+                datafields: [
+                    { name: 'Year' },
+                    { name: 'HPI' },
+                    { name: 'BuildCost' },
+                    { name: 'Population' },
+                    { name: 'Rate' }
+                ],
+                url: '../sampledata/homeprices.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'U.S. Historical Home Prices (1950-2011)',
+                description: 'Source: http://www.econ.yale.edu/~shiller/data.htm',
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 20, top: 5, right: 20, bottom: 5 },
+                titlePadding: { left: 10, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                xAxis:
+                {
+                    dataField: 'Year',
+                    minValue: 1947,
+                    maxValue: 2012,
+                    unitInterval: 5,
+                    tickMarks: {
+                        visible: true,
+                        interval: 1,
+                        dashStyle: '1,2'
+                    },
+                    gridLines: {
+                        visible: true,
+                        interval: 5,
+                        dashStyle: '1,3'
+                    }
+                },
+                colorScheme: 'scheme04',
+                seriesGroups:
+                [
+                    {
+                        type: 'line',
+                        valueAxis:
+                        {
+                            unitInterval: 20,
+                            maxValue: 400,
+                            title: { text: 'U.S. Population (millions)' },
+                            gridLines: { visible: false }
+                        },
+                        series: [
+                            { dataField: 'Population', displayText: 'Population' }
+                        ]
+                    },
+                    {
+                        type: 'spline',
+                        valueAxis:
+                        {
+                            title: { text: 'Interest rate' },
+                            position: 'right',
+                            unitInterval: 0.01,
+                            maxValue: 0.2,
+                            visible: true,
+                            gridLines: { visible: false },
+                            labels: {
+                                horizontalAlignment: 'left'
+                            }
+                        },
+                        series: [
+                            { dataField: 'Rate', displayText: 'Interest Rate' }
+                        ]
+                    },
+                    {
+                        type: 'spline',
+                        valueAxis:
+                        {
+                            title: { text: 'Index Value' },
+                            position: 'right',
+                            unitInterval: 20,
+                            maxValue: 200,
+                            gridLines: { visible: false },
+                            labels: {
+                                formatSettings:
+                                {
+                                    decimalPlaces: 0
+                                },
+                                horizontalAlignment: 'left'
+                            }
+                        },
+                        series: [
+                            { dataField: 'HPI', displayText: 'Real Home Price Index' },
+                            { dataField: 'BuildCost', displayText: 'Building Cost Index' }
+                        ]
+                    }
+                ]
+            };
+
+    </script>
+</head>
+<body>
+   
+    <jqx-chart settings="chartSettings"></jqx-chart>
+  
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+            This is an example of inverted Custom element Chart x-axis and value axis. The axes are inverted with the flip setting.
+    </div>
+
+</body>
+</html>

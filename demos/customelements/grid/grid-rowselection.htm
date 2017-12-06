@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element RowSelection</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Grid Selection API." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript">
+        var source = 
+            {
+                localdata: generatedata(200),
+                datafields:
+                [
+                    { name: 'id', type: 'number' },
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'total', type: 'number' }
+                ],
+                datatype: "array"
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: dataAdapter,
+                columns: [
+                    { text: 'First Name', datafield: 'firstname', width: 200 },
+                    { text: 'Last Name', datafield: 'lastname', width: 200 },
+                    { text: 'Product', datafield: 'productname', width: 180 },
+                    { text: 'Quantity', datafield: 'quantity', width: 80, cellsalign: 'right' },
+                    { text: 'Unit Price', datafield: 'price', cellsalign: 'right', cellsformat: 'c2' }
+                ]
+            };
+
+        JQXElements.settings['checkBoxSettings'] =
+            {
+                checked: true
+            };
+
+        JQXElements.settings['dropDownListSettings'] =
+            {
+                dropDownWidth: 230, selectedIndex: 1, autoDropDownHeight: true,
+                source: ['none', 'single row', 'multiple rows', 'multiple rows extended', 'multiple rows advanced']
+            };
+
+        window.onload = function() {
+            var myGrid = document.querySelector('jqx-grid');
+            var myCheckBox = document.querySelector('jqx-check-box');
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+            var myButtons = document.querySelectorAll('jqx-button');
+
+            myGrid.selectrow(2);
+
+            myButtons[0].addEventListener('click', function() {
+                var inputItemValue = document.querySelector('#scrollToInput').value;
+                myGrid.ensurerowvisible(inputItemValue); 
+            });
+
+            myButtons[1].addEventListener('click', function() {
+                var inputItemValue = document.querySelector('#selectRowInput').value;
+                myGrid.selectrow(inputItemValue);
+            });
+
+            myButtons[2].addEventListener('click', function() {
+                myGrid.clearselection();
+            });
+
+            myDropDownList.addEventListener('select', function(event) {
+                var index = event.args.index;
+                myButtons[1].disabled = false;
+                switch (index) {
+                    case 0:
+                        myGrid.selectionmode = 'none';
+                        myButtons[1].disabled = true;
+                        break;
+                    case 1:
+                        myGrid.selectionmode = 'singlerow';
+                        break;
+                    case 2:
+                        myGrid.selectionmode = 'multiplerows';
+                        break;
+                    case 3:
+                        myGrid.selectionmode = 'multiplerowsextended';
+                        break;
+                    case 4:
+                        myGrid.selectionmode = 'multiplerowsadvanced';
+                        break;
+                }
+            });
+
+            myCheckBox.addEventListener('change', function(event) {
+                myGrid.enablehover = event.args.checked;
+            });
+
+            myGrid.addEventListener('rowselect', function(event) {
+                var selectRowIndexLog = document.querySelector('#selectrowindex');
+                selectRowIndexLog.innerHTML = event.args.rowindex;
+            });
+
+            myGrid.addEventListener('rowunselect', function(event) {
+                var unsSelectRowIndexLog = document.querySelector('#unselectrowindex');
+                unsSelectRowIndexLog.innerHTML = event.args.rowindex;
+            });          
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This example shows how to use the Custom element Grid Row Selection API.
+    </div>
+
+    <jqx-grid settings="gridSettings"></jqx-grid>
+
+    <div style="margin-top: 20px;">
+        <div style="clear: both; font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif; font-size: 12px;">
+            <div style="float: left;">
+                <div>
+                    <input value="100" style="width: 50px; float: left; margin-right: 0.5em" maxlength="4" id="scrollToInput" type="text" />
+                    <jqx-button>Scroll to Row</jqx-button>
+                </div>
+                <div style="margin-top: 10px;">
+                    <input value="0" style="width: 50px; float: left; margin-right: 0.5em" maxlength="4" id="selectRowInput" type="text" />
+                    <jqx-button>Select Row</jqx-button>
+                    <jqx-button>Clear Selection</jqx-button>
+                </div>
+                <div style="margin-top: 10px"></div>
+                <jqx-check-box settings="checkBoxSettings">Enable Hover</jqx-check-box>
+                <div style="margin-top: 10px;">
+                    Selection Mode:
+                    <div style="margin-top: 5px"></div>
+                    <jqx-drop-down-list settings="dropDownListSettings"></jqx-drop-down-list>
+                    <div style="margin-top: 10px; font-size: 12px; font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;">
+                        Selection Modes:
+                        <ul>
+                            <li>"none" - disables the selection. Selection is possible only through the API.</li>
+                            <li>"singlerow" - full row selection. Each click changes the selected row.</li>
+                            <li>"multiplerows" - each click selects a new row. Click on a selected row unselects it.</li>
+                            <li>"multiplerowsextended" - users can select multiple rows with drag and drop or<br /> by clicking on rows while holding Ctrl or Shift.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both; font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif; font-size: 12px;">
+            <span>Selection Log:</span>
+            <div style="margin-top: 10px;">
+                <span>Selected Row Index:</span> 
+                <span id="selectrowindex"></span>
+                <br />
+                <span>Unselected Row Index:</span> 
+                <span id="unselectrowindex"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

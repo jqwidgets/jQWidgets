@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>DateTimeInput Custom Element Evets</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the events in Custom Elements DataTimeInput." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style>
+        .Events {
+            border: none
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var myDateTImeInput = document.querySelector('jqx-date-time-input');
+            var myPanel = document.querySelector('jqx-panel');
+
+            myDateTImeInput.addEventListener('valueChanged', function(event) {
+                myPanel.clearcontent();
+                var date = event.args.date;
+                document.querySelector('#Events').prepend('<div style="margin-top: 5px;">New Value: ' + date + '</div>');
+            });
+
+            myDateTImeInput.addEventListener('open', function(event) {
+                var date = event.args.date;
+                document.querySelector('#Events').prepend('<div style="margin-top: 5px;">Popup Opened</div>');
+            });
+
+            myDateTImeInput.addEventListener('close', function(event) {
+                var date = event.args.date;
+                document.querySelector('#Events').prepend('<div style="margin-top: 5px;">Popup Closed</div>');
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo demonstrates how to trigger the Custom element DateTimeInput's valueChanged event.
+    </div>
+
+    <div style='float: left;'>
+        <jqx-date-time-input style='float: left; margin-top: 3px;'></jqx-date-time-input>
+
+        <div style='margin-left: 20px; float: left;'>
+
+            <div>
+                <span>Events:</span>
+                <jqx-panel id='Events'>
+                </jqx-panel>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

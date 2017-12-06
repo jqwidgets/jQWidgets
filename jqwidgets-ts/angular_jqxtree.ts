@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -21,27 +21,27 @@ declare let JQXLite: any;
 
 export class jqxTreeComponent implements OnChanges
 {
-   @Input('animationShowDuration') attrAnimationShowDuration: Number;
-   @Input('animationHideDuration') attrAnimationHideDuration: Number;
-   @Input('allowDrag') attrAllowDrag: Boolean;
-   @Input('allowDrop') attrAllowDrop: Boolean;
-   @Input('checkboxes') attrCheckboxes: Boolean;
-   @Input('dragStart') attrDragStart: (item: any) => Boolean;
-   @Input('dragEnd') attrDragEnd: (dragItem?: any, dropItem?: any, args?: any, dropPosition?: any, tree?: any) => Boolean;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('easing') attrEasing: String;
-   @Input('enableHover') attrEnableHover: Boolean;
-   @Input('hasThreeStates') attrHasThreeStates: Boolean;
-   @Input('incrementalSearch') attrIncrementalSearch: Boolean;
-   @Input('keyboardNavigation') attrKeyboardNavigation: Boolean;
-   @Input('rtl') attrRtl: Boolean;
+   @Input('animationShowDuration') attrAnimationShowDuration: number;
+   @Input('animationHideDuration') attrAnimationHideDuration: number;
+   @Input('allowDrag') attrAllowDrag: boolean;
+   @Input('allowDrop') attrAllowDrop: boolean;
+   @Input('checkboxes') attrCheckboxes: boolean;
+   @Input('dragStart') attrDragStart: (item: any) => boolean;
+   @Input('dragEnd') attrDragEnd: (dragItem?: any, dropItem?: any, args?: any, dropPosition?: any, tree?: any) => boolean;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('easing') attrEasing: string;
+   @Input('enableHover') attrEnableHover: boolean;
+   @Input('hasThreeStates') attrHasThreeStates: boolean;
+   @Input('incrementalSearch') attrIncrementalSearch: boolean;
+   @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
+   @Input('rtl') attrRtl: boolean;
    @Input('selectedItem') attrSelectedItem: any;
    @Input('source') attrSource: any;
-   @Input('toggleIndicatorSize') attrToggleIndicatorSize: Number;
+   @Input('toggleIndicatorSize') attrToggleIndicatorSize: number;
    @Input('toggleMode') attrToggleMode: any;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -64,7 +64,7 @@ export class jqxTreeComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -195,7 +195,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   dragStart(arg?: (item: any) => Boolean) : any {
+   dragStart(arg?: (item: any) => boolean) : any {
       if (arg !== undefined) {
           this.host.jqxTree('dragStart', arg);
       } else {
@@ -203,7 +203,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   dragEnd(arg?: (dragItem?: any, dropItem?: any, args?: any, dropPosition?: any, tree?: any) => Boolean) : any {
+   dragEnd(arg?: (dragItem?: any, dropItem?: any, args?: any, dropPosition?: any, tree?: any) => boolean) : any {
       if (arg !== undefined) {
           this.host.jqxTree('dragEnd', arg);
       } else {
@@ -235,7 +235,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxTree('height', arg);
       } else {
@@ -315,7 +315,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxTree('width', arg);
       } else {
@@ -365,7 +365,7 @@ export class jqxTreeComponent implements OnChanges
       this.host.jqxTree('disableItem', item);
    }
 
-   ensureVisible(item: Object): void {
+   ensureVisible(item: object): void {
       this.host.jqxTree('ensureVisible', item);
    }
 

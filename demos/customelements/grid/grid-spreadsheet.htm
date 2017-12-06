@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element SpreadSheet </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Grid's unbound mode feature for creating a spreadsheet." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.export.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.export.js"></script> 
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var numberrenderer = (row, column, value) => {
+            return '<div style="text-align: center; margin-top: 5px;">' + (1 + value) + '</div>';
+        }
+
+        var datafields = [];
+        var columns = [];
+
+        for (var i = 0; i < 26; i++) {
+            var text = String.fromCharCode(65 + i);
+            if (i == 0) {
+                var cssclass = 'jqx-widget-header';
+                if (theme != '') cssclass += ' jqx-widget-header-' + theme;
+                columns[columns.length] = { pinned: true, exportable: false, text: '', columntype: 'number', cellclassname: cssclass, cellsrenderer: numberrenderer };
+            }
+            datafields[datafields.length] = { name: text };
+            columns[columns.length] = { text: text, datafield: text, width: 60, align: 'center' };
+        }
+
+        var source =
+            {
+                unboundmode: true,
+                totalrecords: 100,
+                datafields: datafields,
+                updaterow: (rowid, rowdata) => {
+                    // synchronize with the server - send update command   
+                }
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: dataAdapter,
+                editable: true,
+                columnsresize: true,
+                selectionmode: 'multiplecellsadvanced',
+                columns: columns
+            }
+
+        window.onload = function() {
+            var myButton = document.querySelector('jqx-button');
+            var myGrid = document.querySelector('jqx-grid');
+
+            myButton.addEventListener('click', function() {
+                myGrid.exportdata('xls', 'jqxGrid', false);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This is an example of jQWidgets grid for Custom element unbound mode feature for creating a spreadsheet. The spreadsheet resembles Excel and offers numbering on the rows and lettering on the columns. It also has an export to Excel functionality. You can format the colors of the row and column header.
+    </div>
+
+    <jqx-grid settings="gridSettings"></jqx-grid>
+    <div style='margin-top: 20px;'>
+        <div style='float: left;'>
+            <jqx-button>Export to Excel</jqx-button>
+        </div>
+    </div>
+</body>
+</html>

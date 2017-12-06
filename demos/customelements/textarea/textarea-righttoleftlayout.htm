@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title id='Description'>TextArea Custom Element RightToLeftLayout</title>
+    <meta name='description' content='This is an example of the right to left support of Tree Custom Element.' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+    <meta name='viewport' content='width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1' />
+
+    <link rel='stylesheet' href='../jqwidgets/styles/jqx.base.css' type='text/css' />
+    <link rel='stylesheet' href='../styles/demos.css' type='text/css' />
+
+    <script type='text/javascript' src='../scripts/webcomponents-lite.min.js'></script>
+    <script type='text/javascript' src='../jqwidgets/jqxcore.js'></script>
+    <script type='text/javascript' src='../jqwidgets/jqxcore.elements.js'></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtextarea.js"></script>
+    <script type='text/javascript' src='../scripts/demos.js'></script>
+
+    <script type='text/javascript'>
+        JQXElements.settings['textAreaSettings'] =
+            {
+                rtl: true
+            };
+
+        window.onload = function() {
+            var myTextArea = document.querySelector('jqx-text-area');
+
+            var text = 'jQWidgets is a comprehensive and innovative widget library built on top of the jQuery JavaScript Library. It empowers developers to deliver professional, cross-browser compatible web applications, while significantly minimizing their development time. jQWidgets contains more than 60 UI widgets and is one of the fastest growing JavaScript UI frameworks on the Web.';
+       
+            myTextArea.val(text);
+        };
+    </script>
+</head>
+<body>
+    <div class='example-description'>
+        To switch the Text Area Custom Element to a right-to-left representation, just enable a single property - "rtl".
+        When this property is on, text flows from right to left in an editor and the editor itself is mirrored (the layout of its UI elements is reversed).
+    </div>
+    <jqx-text-area settings='textAreaSettings'></jqx-text-area>
+</body>
+</html>

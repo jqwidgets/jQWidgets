@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ListBox Categories</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of how to display items in groups in Custom Element ListBox." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source = [
+            // Business & Investing
+            { html: '<div><div>Title: Do the Work</div><div>Author: Steven Pressfield</div></div>', title: 'Do the Work', group: 'Business & Investing' },
+            { html: '<div><div>Title: Think and Grow Rich</div><div>Author: Napoleon Hill</div></div>', title: 'Think and Grow Rich', group: 'Business & Investing' },
+            { html: '<div><div>Title: The Toyota Way to Continuous...</div><div>Author: Jeffrey K. Liker</div></div>', title: 'The Toyota Way to Continuous...', group: 'Business & Investing' },
+            { html: '<div><div>Title: Redesigning Leadership </div><div>Author: John Maeda</div></div>', title: 'Redesigning Leadership ', group: 'Business & Investing' },
+            // Computer & Internet Books
+            { html: '<div><div>Title: MacBook Pro Portable Genius</div><div>Author: Brad Miser</div></div>', title: 'MacBook Pro Portable Genius', group: 'Computer & Internet Books' },
+            { html: '<div><div>Title: Social Media Metrics Secrets</div><div>Author: John Lovett</div></div>', title: 'Social Media Metrics Secrets', group: 'Computer & Internet Books' },
+            { html: '<div><div>Title: iPad 2: The Missing Manual</div><div>Author: J D Biersdorfer J.D</div></div>', title: 'iPad 2: The Missing Manual', group: 'Computer & Internet Books' },
+            // History
+            { html: '<div><div>Lincoln and His Admirals</div><div>Author:Craig L. Symonds</div></div>', title: 'Lincoln and His Admirals', group: 'History' },
+            { html: '<div><div>The Dogs of War: 1861</div><div>Author:Emory M. Thomas</div></div>', title: 'The Dogs of War: 1861', group: 'History' },
+            { html: '<div><div>Cleopatra: A Life</div><div>Author:Stacy Schiff</div></div>', title: 'Cleopatra: A Life', group: 'History' },
+            { html: '<div><div>Mother Teresa: A Biography</div><div>Author:Meg Greene</div></div>', title: 'Mother Teresa: A Biography', group: 'History' },
+            { html: '<div><div>The Federalist Papers</div><div>Author:John Jay</div></div>', title: 'The Federalist Papers', group: 'History' },
+        ];
+
+        JQXElements.settings['ListBoxSettings'] = 
+            {
+                source: source
+            }
+    </script>
+</head>
+<body>
+
+    <div class="example-description">
+        This demo shows how to display items in groups by setting each Custom element ListBox item's group property.
+    </div>
+
+   <jqx-list-box settings="ListBoxSettings"></jqx-list-box>
+
+</body>
+</html>

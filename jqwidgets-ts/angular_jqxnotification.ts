@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,27 +17,27 @@ declare let JQXLite: any;
 
 export class jqxNotificationComponent implements OnChanges
 {
-   @Input('appendContainer') attrAppendContainer: String;
-   @Input('autoOpen') attrAutoOpen: Boolean;
-   @Input('animationOpenDelay') attrAnimationOpenDelay: Number;
-   @Input('animationCloseDelay') attrAnimationCloseDelay: Number;
-   @Input('autoClose') attrAutoClose: Boolean;
-   @Input('autoCloseDelay') attrAutoCloseDelay: String | Number;
-   @Input('blink') attrBlink: Boolean;
-   @Input('browserBoundsOffset') attrBrowserBoundsOffset: Number;
-   @Input('closeOnClick') attrCloseOnClick: Boolean;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('hoverOpacity') attrHoverOpacity: Number;
+   @Input('appendContainer') attrAppendContainer: string;
+   @Input('autoOpen') attrAutoOpen: boolean;
+   @Input('animationOpenDelay') attrAnimationOpenDelay: number;
+   @Input('animationCloseDelay') attrAnimationCloseDelay: number;
+   @Input('autoClose') attrAutoClose: boolean;
+   @Input('autoCloseDelay') attrAutoCloseDelay: number | string;
+   @Input('blink') attrBlink: boolean;
+   @Input('browserBoundsOffset') attrBrowserBoundsOffset: number;
+   @Input('closeOnClick') attrCloseOnClick: boolean;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('hoverOpacity') attrHoverOpacity: number;
    @Input('icon') attrIcon: jqwidgets.NotificationIcon;
-   @Input('notificationOffset') attrNotificationOffset: Number;
-   @Input('opacity') attrOpacity: Number;
+   @Input('notificationOffset') attrNotificationOffset: number;
+   @Input('opacity') attrOpacity: number;
    @Input('position') attrPosition: any;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('showCloseButton') attrShowCloseButton: Boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('showCloseButton') attrShowCloseButton: boolean;
    @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -60,7 +60,7 @@ export class jqxNotificationComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -191,7 +191,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   autoCloseDelay(arg?: String | Number) : any {
+   autoCloseDelay(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNotification('autoCloseDelay', arg);
       } else {
@@ -231,7 +231,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNotification('height', arg);
       } else {
@@ -311,7 +311,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxNotification('width', arg);
       } else {

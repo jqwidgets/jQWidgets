@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -16,19 +16,19 @@ declare let JQXLite: any;
 
 export class jqxValidatorComponent implements OnChanges
 {
-   @Input('arrow') attrArrow: Boolean;
+   @Input('arrow') attrArrow: boolean;
    @Input('animation') attrAnimation: any;
-   @Input('animationDuration') attrAnimationDuration: Number;
-   @Input('closeOnClick') attrCloseOnClick: Boolean;
-   @Input('focus') attrFocus: Boolean;
+   @Input('animationDuration') attrAnimationDuration: number;
+   @Input('closeOnClick') attrCloseOnClick: boolean;
+   @Input('focus') attrFocus: boolean;
    @Input('hintType') attrHintType: any;
    @Input('onError') attrOnError: () => void;
    @Input('onSuccess') attrOnSuccess: () => void;
-   @Input('position') attrPosition: String;
+   @Input('position') attrPosition: string;
    @Input('rules') attrRules: Array<jqwidgets.ValidatorRule>;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('rtl') attrRtl: boolean;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -51,7 +51,7 @@ export class jqxValidatorComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {

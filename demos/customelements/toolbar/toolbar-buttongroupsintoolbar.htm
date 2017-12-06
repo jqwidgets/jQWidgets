@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Toolbar Custom Element ButtonGroupsInToolbar</title>
+    <meta name="description" content="Тhis is an example of button groups in Toolbar Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtoolbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['toolbarSettings'] =
+            {
+            tools: 'toggleButton toggleButton toggleButton | button button button | button button | button',
+                initTools: (type, index, tool, menuToolIninitialization) => {
+                    var icon = document.createElement('div');
+                    if (type == 'toggleButton') {
+                        icon.className = 'jqx-editor-toolbar-icon jqx-editor-toolbar-icon-arctic buttonIcon ';
+                    }
+                    switch (index) {
+                        case 0:
+                            icon.className += 'jqx-editor-toolbar-icon-bold jqx-editor-toolbar-icon-bold-' + this.theme;
+                            icon.setAttribute('title', 'Bold');
+                            tool[0].appendChild(icon);
+                            break;
+                        case 1:
+                            icon.className += 'jqx-editor-toolbar-icon-italic jqx-editor-toolbar-icon-italic-' + this.theme;
+                            icon.setAttribute('title', 'Italic');
+                            tool[0].appendChild(icon);
+                            break;
+                        case 2:
+                            icon.className += 'jqx-editor-toolbar-icon-underline jqx-editor-toolbar-icon-underline-' + this.theme;
+                            icon.setAttribute('title', 'Underline');
+                            tool[0].appendChild(icon);
+                            break;
+                        case 3:
+                            icon.className += 'jqx-editor-toolbar-icon-justifyleft jqx-editor-toolbar-icon-justifyleft-' + this.theme;
+                            icon.setAttribute('title', 'Align Text Left');
+                            tool[0].appendChild(icon);
+                            break;
+                        case 4:
+                            icon.className += 'jqx-editor-toolbar-icon-justifycenter jqx-editor-toolbar-icon-justifycenter-' + this.theme;
+                            icon.setAttribute('title', 'Center');
+                            tool[0].appendChild(icon);
+                            break;
+                        case 5:
+                            icon.className += 'jqx-editor-toolbar-icon-justifyright jqx-editor-toolbar-icon-justifyright-' + this.theme;
+                            icon.setAttribute('title', 'Align Text Right');
+                            tool[0].appendChild(icon);
+                            break;
+                        case 6:
+                            icon.className += 'jqx-editor-toolbar-icon-outdent jqx-editor-toolbar-icon-outdent-' + this.theme;
+                            icon.setAttribute('title', 'Decrease Indent');
+                            tool[0].appendChild(icon);
+                            break;
+                        case 7:
+                            icon.className += 'jqx-editor-toolbar-icon-indent jqx-editor-toolbar-icon-indent-' + this.theme;
+                            icon.setAttribute('title', 'Increase Indent');
+                            tool[0].appendChild(icon);
+                            break;
+                        case 8:
+                            icon.className += 'jqx-editor-toolbar-icon-insertimage jqx-editor-toolbar-icon-insertimage-' + this.theme;
+                            icon.setAttribute('title', 'Insert Image');
+                            tool[0].appendChild(icon);
+                            break;
+                    }
+                }
+            };
+    </script>
+
+    <style type="text/css">
+        .buttonIcon {
+            margin: -5px 0 0 -2px;
+            width: 18px;
+            height: 17px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="example-description">
+        Toolbar Custom Element automatically separates buttons in groups, which are specified by inserting separators ("|") in the tools definition.
+    </div>
+    <jqx-tool-bar settings="toolbarSettings"></jqx-tool-bar>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>BarGauge Custom Element FluidSize</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example the width and height of the Custom Element BarGauge are set in percentages" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbargauge.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style>
+        html, body {
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            float: left;
+        }
+    </style>
+    <script type='text/javascript'>
+        JQXElements.settings['barGaugeSettings'] =
+        {
+            width: '75%',
+            height: '75%',
+            colorScheme: 'scheme11',
+            values: [32, 11, 100, 49, 69, 20],
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this example the width and height of the custom element BarGauge are set in percentages.
+    </div>
+
+    <jqx-bar-gauge  settings="barGaugeSettings"></jqx-bar-gauge>
+</body>
+</html>

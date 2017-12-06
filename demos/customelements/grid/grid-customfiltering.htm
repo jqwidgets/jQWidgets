@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element CustomFiltering</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example illustrates how to create and apply a custom filter to Custom element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                localdata: generatedata(200),
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'date', type: 'date' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' }
+                ],
+                datatype: 'array'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: dataAdapter,
+                filterable: false,
+                width: 500,
+                sortable: true,
+                autoshowfiltericon: false,
+                columns: [
+                  { text: 'First Name', datafield: 'firstname', width: 100 },
+                  { text: 'Last Name', datafield: 'lastname', width: 100 },
+                  { text: 'Product', datafield: 'productname', width: 180 },
+                  { text: 'Order Date', datafield: 'date', width: 100, cellsformat: 'd' },
+                  { text: 'Quantity', datafield: 'quantity', width: 80, cellsalign: 'right' },
+                  { text: 'Unit Price', datafield: 'price', cellsalign: 'right', cellsformat: 'c2' }
+                ]
+            };
+
+        JQXElements.settings['dropDownListSettings'] =
+            {
+                selectedIndex: 0, autoDropDownHeight: true, 
+                source: [
+                    { label: 'First Name', value: 'firstname' },
+                    { label: 'Last Name', value: 'lastname' },
+                    { label: 'Product', value: 'productname' },
+                    { label: 'Order Date', value: 'date' },
+                    { label: 'Quantity', value: 'quantity' },
+                    { label: 'Unit Price', value: 'price' }
+                ]
+            };
+
+        JQXElements.settings['listBoxSettings'] =
+            {
+               checkboxes: true 
+            };
+
+        window.onload = function() {
+            var myGrid = document.querySelector('jqx-grid');
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+            var myListBox = document.querySelector('jqx-list-box');
+            var myButtons = document.querySelectorAll('jqx-button');   
+
+            var updateFilterBox = datafield => {
+                var filterBoxAdapter = new jqx.dataAdapter(source,
+                {
+                    uniqueDataFields: [datafield],
+                    autoBind: true
+                });
+                var uniqueRecords = filterBoxAdapter.records;
+                uniqueRecords.splice(0, 0, '(Select All)');
+                myListBox.source = uniqueRecords;
+                myListBox.displayMember = datafield;
+                myListBox.checkAll();
+            }
+            updateFilterBox('firstname');
+
+            var handleCheckChange = true;
+            myListBox.addEventListener('checkChange', event => {
+                if (!handleCheckChange)
+                    return;
+                if (event.args.label != '(Select All)') {
+                    handleCheckChange = false;
+                    myListBox.checkIndex(0);
+                    var checkedItems = myListBox.getCheckedItems();
+                    var items = myListBox.getItems();
+                    if (checkedItems.length == 1) {
+                        myListBox.uncheckIndex(0);
+                    }
+                    else if (items.length != checkedItems.length) {
+                        myListBox.indeterminateIndex(0);
+                    }
+                    handleCheckChange = true;
+                }
+                else {
+                    handleCheckChange = false;
+                    if (event.args.checked) {
+                        myListBox.checkAll();
+                    }
+                    else {
+                        myListBox.uncheckAll();
+                    }
+                    handleCheckChange = true;
+                }
+            });
+
+            myDropDownList.addEventListener('select', event => {
+                updateFilterBox(event.args.item.value);
+            });
+
+            var applyFilter = datafield => {
+                myGrid.clearfilters();
+
+                var filtertype = 'stringfilter';
+                if (datafield == 'date') filtertype = 'datefilter';
+                if (datafield == 'price' || datafield == 'quantity') filtertype = 'numericfilter';
+
+                var filtergroup = new $.jqx.filter();
+                var checkedItems = myListBox.getCheckedItems();
+
+                if (checkedItems.length == 0) {
+                    var filter_or_operator = 1;
+                    var filtervalue = 'Empty';
+                    var filtercondition = 'equal';
+                    var filter = filtergroup.createfilter(filtertype, filtervalue, filtercondition);
+                    filtergroup.addfilter(filter_or_operator, filter);
+                }
+                else {
+                    for (var i = 0; i < checkedItems.length; i++) {
+                        var filter_or_operator = 1;
+                        var filtervalue = checkedItems[i].label;
+                        var filtercondition = 'equal';
+                        var filter = filtergroup.createfilter(filtertype, filtervalue, filtercondition);
+                        filtergroup.addfilter(filter_or_operator, filter);
+                    }
+                }
+
+                myGrid.addfilter(datafield, filtergroup);      
+                myGrid.applyfilters();
+            }
+
+            myButtons[0].addEventListener('click', function() {
+                var dataField = myDropDownList.getSelectedItem().value;
+                applyFilter(dataField);
+            });
+
+            myButtons[1].addEventListener('click', function() {
+                myGrid.clearfilters();
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This example illustrates how to create and apply a custom filter to Custom element Grid.
+    </div>
+
+    <div style="float: left">
+        <div>Choose Column:</div>
+        <jqx-drop-down-list settings="dropDownListSettings"></jqx-drop-down-list>
+        <jqx-list-box style="margin-top: 10px;" settings="listBoxSettings"></jqx-list-box>
+        <div style="margin-top: 10px;">
+            <jqx-button>Apply Filter</jqx-button>
+            <jqx-button>Clear Filter</jqx-button>
+        </div>
+    </div>
+
+    <div style="float: left; margin-left: 20px;">   
+        <jqx-grid settings="gridSettings"></jqx-grid>
+    </div>
+
+</body>
+</html>

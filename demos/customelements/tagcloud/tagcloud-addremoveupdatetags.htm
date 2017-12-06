@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tag Cloud Custom Element AddRemoveUpdateTags</title>
+    <meta name='description' content='This demo demonstrates the add/remove/update functionalities of the TagCloud Custom Element.' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtagcloud.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var source =
+            {
+                datatype: 'array',
+                localdata: generatedata(50),
+                datafields: [
+                    { name: 'productname' },
+                    { name: 'price' }
+                ]
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source, {});
+     
+        JQXElements.settings['tagCloudSettings'] =
+            {
+                source: dataAdapter,
+                fontSizeUnit: 'px',
+                minFontSize: 12,
+                maxFontSize: 20,
+                displayMember: 'productname',
+                valueMember: 'price',
+                urlBase: 'http://localhost/',
+                minColor: '#00AA99',
+                maxColor: '#FF0000'
+     
+            };
+
+        window.onload = function() {
+            var myTagCloud = document.querySelector('jqx-tag-cloud');
+            var myButtons = document.querySelectorAll('jqx-button');
+
+            myButtons[0].addEventListener('click', _ => {
+                var row = generatedata(1)[0];
+                myTagCloud.insertAt(0, row);
+            });
+
+            myButtons[1].addEventListener('click', _ => {
+                myTagCloud.removeAt(0);
+            });
+
+            myButtons[2].addEventListener('click', _ => {
+                var row = generatedata(1)[0];
+                myTagCloud.updateAt(0, row);
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo demonstrates how to add a tag in first position or update/remove the tag in first position in Tag Cloud Custom Element.
+    </div>
+
+    <jqx-tag-cloud settings="tagCloudSettings"></jqx-tag-cloud>
+
+    <br />
+    <br />
+
+    <jqx-button>Add Item</jqx-button>
+    <jqx-button>Delete First Item</jqx-button>
+    <jqx-button>Update First Item</jqx-button>
+
+    <br />
+    <div id="log"></div>
+</body>
+</html>

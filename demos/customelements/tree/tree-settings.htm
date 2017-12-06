@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tree Custom Element Settings</title>
+    <meta name="description" content="This is an example of the setting in Tree Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var myTree = document.querySelector('jqx-tree');
+            var myButtons = document.querySelectorAll('jqx-button');
+
+            myTree.selectItem(document.querySelector('#home'));
+            myTree.expandItem(document.querySelector('#solutions'));
+
+            myButtons[0].addEventListener('click', function () {
+                var selectedItem = myTree.getSelectedItem();
+                if (selectedItem != null) {
+                    myTree.addTo({ label: 'Item' }, selectedItem.element);
+                    myTree.render();
+                }
+                else {
+                    myTree.addTo({ label: 'Item' }, null);
+                    myTree.render();
+                }
+            });
+            myButtons[1].addEventListener('click', function (event) {
+                var selectedItem = myTree.getSelectedItem();
+                if (selectedItem != null) {
+                    myTree.addAfter({ label: 'Item' }, selectedItem.element);
+                    myTree.render();
+                }
+            });
+            myButtons[2].addEventListener('click', function (event) {
+                var selectedItem = myTree.getSelectedItem();
+                if (selectedItem != null) {
+                    myTree.addBefore({ label: 'Item' }, selectedItem.element);
+                    myTree.render();
+                }
+            });
+            myButtons[3].addEventListener('click', function (event) {
+                var selectedItem = myTree.getSelectedItem();
+                if (selectedItem != null) {
+                    myTree.updateItem({ label: 'Item' }, selectedItem.element);
+                    myTree.render();
+                }
+            });
+            myButtons[4].addEventListener('click', function (event) {
+                var selectedItem = myTree.getSelectedItem();
+                if (selectedItem != null) {
+                    myTree.removeItem(selectedItem.element);
+                    myTree.render();
+                }
+            });
+            myButtons[5].addEventListener('click', function (event) {
+                var selectedItem = myTree.getSelectedItem();
+                if (selectedItem != null) {
+                    myTree.disableItem(selectedItem.element);
+                }
+            });
+            myButtons[6].addEventListener('click', function (event) {
+                var selectedItem = myTree.getSelectedItem();
+                if (selectedItem != null) {
+                    myTree.expandItem(selectedItem.element);
+                }
+            });
+            myButtons[7].addEventListener('click', function (event) {
+                var selectedItem = myTree.getSelectedItem();
+                if (selectedItem != null) {
+                    myTree.collapseItem(selectedItem.element);
+                }
+            });
+            myButtons[8].addEventListener('click', function (event) {
+                myTree.expandAll();
+            });
+            myButtons[9].addEventListener('click', function (event) {
+                myTree.collapseAll();
+            });
+            myButtons[10].addEventListener('click', function (event) {
+                myTree.enableAll();
+            });
+            myButtons[11].addEventListener('click', function (event) {
+                var selectedItem = myTree.getSelectedItem();
+                var nextItem = selectedItem.element.nextElementSibling;
+                if (nextItem != null) {
+                    myTree.selectItem(nextItem);
+                    myTree.ensureVisible(nextItem);
+                }
+            });
+            myButtons[12].addEventListener('click', function (event) {
+                var selectedItem = myTree.getSelectedItem();
+                var prevItem = selectedItem.element.previousElementSibling;
+                if (prevItem != null) {
+                    myTree.selectItem(prevItem);
+                    myTree.ensureVisible(prevItem);
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+       The Tree Custom Element displays a hierarchical collection of items. You can populate it from 'UL' or by using its 'source' property.
+    </div> 
+
+    <jqx-tree style="margin-left: 20px; float: left">
+        <ul>
+            <li id="home">Home</li>
+            <li id="solutions">
+                Solutions
+                <ul>
+                    <li>Education</li>
+                    <li>Financial services</li>
+                    <li>Government</li>
+                    <li>Manufacturing</li>
+                    <li>
+                        Solutions
+                        <ul>
+                            <li>Consumer photo and video</li>
+                            <li>Mobile</li>
+                            <li>Rich Internet applications</li>
+                            <li>Technical communication</li>
+                            <li>Training and eLearning</li>
+                            <li>Web conferencing</li>
+                        </ul>
+                    </li>
+                    <li>All industries and solutions</li>
+                </ul>
+            </li>
+            <li>
+                Products
+                <ul>
+                    <li>PC products</li>
+                    <li>Mobile products</li>
+                    <li>All products</li>
+                </ul>
+            </li>
+            <li>
+                Support
+                <ul>
+                    <li>Support home</li>
+                    <li>Customer Service</li>
+                    <li>Knowledge base</li>
+                    <li>Books</li>
+                    <li>Training and certification</li>
+                    <li>Support programs</li>
+                    <li>Forums</li>
+                    <li>Documentation</li>
+                    <li>Updates</li>
+                </ul>
+            </li>
+            <li>
+                Communities
+                <ul>
+                    <li>Designers</li>
+                    <li>Developers</li>
+                    <li>Educators and students</li>
+                    <li>Partners</li>
+                    <li>
+                        By resource
+                        <ul>
+                            <li>Labs</li>
+                            <li>TV</li>
+                            <li>Forums</li>
+                            <li>Exchange</li>
+                            <li>Blogs</li>
+                            <li>Experience Design</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Company
+                <ul>
+                    <li>About Us</li>
+                    <li>Press</li>
+                    <li>Investor Relations</li>
+                    <li>Corporate Affairs</li>
+                    <li>Careers</li>
+                    <li>Showcase</li>
+                    <li>Events</li>
+                    <li>Contact Us</li>
+                    <li>Become an affiliate</li>
+                </ul>
+            </li>
+        </ul>
+    </jqx-tree>
+
+    <div style="margin-left: 60px; float: left; width: 130px;">
+        <jqx-button>Add</jqx-button>
+        <jqx-button style="margin-top: 7px">Add After</jqx-button>
+        <jqx-button style="margin-top: 7px">Add Before</jqx-button>
+        <jqx-button style="margin-top: 7px">Update</jqx-button>
+        <jqx-button style="margin-top: 7px">Remove</jqx-button>
+        <jqx-button style="margin-top: 7px">Disable</jqx-button>
+        <jqx-button style="margin-top: 7px">Expand</jqx-button>
+        <jqx-button style="margin-top: 7px">Collapse</jqx-button>
+        <jqx-button style="margin-top: 7px">Expand All</jqx-button>
+        <jqx-button style="margin-top: 7px">Collapse All</jqx-button>
+        <jqx-button style="margin-top: 7px">Enable All</jqx-button>
+        <jqx-button style="margin-top: 7px">Next Item</jqx-button>
+        <jqx-button style="margin-top: 7px">Previous Item</jqx-button>
+    </div>
+
+</body>
+</html>

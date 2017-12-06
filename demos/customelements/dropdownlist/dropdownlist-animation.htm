@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DropDownList Animation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the animations available in Custom Elements DropDownList." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'CompanyName' },
+                    { name: 'ContactName' }
+                ],
+                id: 'id',
+                url: '../sampledata/customers.txt'
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['DropDownList'] =
+            {
+                selectedIndex: 0,
+                source: dataAdapter,
+                animationType: 'fade',
+                dropDownHorizontalAlignment: 'right',
+                displayMember: 'ContactName',
+                valueMember: 'CompanyName',
+                dropDownWidth: 200,
+            }
+
+        JQXElements.settings['RadioButtonFalse'] =
+            {
+                checked: false
+            }
+
+        JQXElements.settings['RadioButtonTrue'] =
+            {
+                checked: true
+            }
+
+        window.onload = function() {
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+            var myRadioButton = document.querySelectorAll('jqx-radio-button');
+
+            myRadioButton[0].addEventListener('checked', function() {
+                myDropDownList.animationType = 'none';
+            });
+            myRadioButton[1].addEventListener('checked', function() {
+                myDropDownList.animationType = 'slide';
+            });
+            myRadioButton[2].addEventListener('checked', function() {
+                myDropDownList.animationType = 'fade';
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this demo is demonstrated how to change the Custom element DropDown's Animation.
+    </div>
+    <div style="float: left; font-size: 13px; font-family: Verdana;" id="selectionlog">
+        <h3>
+            Animation Type
+        </h3>
+        <jqx-radio-button settings='RadioButtonFalse'>
+            None
+        </jqx-radio-button><br />
+        <jqx-radio-button style='margin-top: 10px;' settings='RadioButtonFalse'>
+            Slide
+        </jqx-radio-button><br />
+        <jqx-radio-button style='margin-top: 10px;' settings='RadioButtonTrue'>
+            Fade
+        </jqx-radio-button>
+    </div>
+   <jqx-drop-down-list settings="DropDownList" style='float: left; margin-top: 20px; margin-left: 100px;'></jqx-drop-down-list>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -16,22 +16,22 @@ declare let JQXLite: any;
 
 export class jqxRepeatButtonComponent implements OnChanges
 {
-   @Input('delay') attrDelay: Number;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('imgSrc') attrImgSrc: String;
-   @Input('imgWidth') attrImgWidth: String | Number;
-   @Input('imgHeight') attrImgHeight: String | Number;
+   @Input('delay') attrDelay: number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('imgSrc') attrImgSrc: string;
+   @Input('imgWidth') attrImgWidth: number | string;
+   @Input('imgHeight') attrImgHeight: number | string;
    @Input('imgPosition') attrImgPosition: any;
    @Input('roundedCorners') attrRoundedCorners: any;
-   @Input('rtl') attrRtl: Boolean;
+   @Input('rtl') attrRtl: boolean;
    @Input('textPosition') attrTextPosition: any;
    @Input('textImageRelation') attrTextImageRelation: any;
-   @Input('theme') attrTheme: String;
+   @Input('theme') attrTheme: string;
    @Input('template') attrTemplate: any;
-   @Input('toggled') attrToggled: Boolean;
-   @Input('value') attrValue: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('toggled') attrToggled: boolean;
+   @Input('value') attrValue: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -54,7 +54,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -161,7 +161,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('height', arg);
       } else {
@@ -177,7 +177,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   imgWidth(arg?: String | Number) : any {
+   imgWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('imgWidth', arg);
       } else {
@@ -185,7 +185,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   imgHeight(arg?: String | Number) : any {
+   imgHeight(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('imgHeight', arg);
       } else {
@@ -257,7 +257,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('width', arg);
       } else {

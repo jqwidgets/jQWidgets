@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeMap Custom Element FluidSize</title>
+    <meta name="description" content="In this example the width and height of TreeMap Custom Element are set in precentages." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreemap.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var data = [
+            {
+                label: 'USA',
+                value: 104
+            },
+            {
+                label: 'People\'s Republic of China',
+                value: 88
+            },
+            {
+                label: 'Great Britain',
+                value: 65
+            },
+            {
+                label: 'Russian Federation',
+                value: 82
+            },
+            {
+                label: 'Germany',
+                value: 44
+            },
+            {
+                label: 'Republic of Korea',
+                value: 28
+            },
+            {
+                label: 'France',
+                value: 34
+            },
+            {
+                label: 'Italy',
+                value: 28
+            },
+            {
+                label: 'Hungary',
+                value: 17
+            },
+            {
+                label: 'Australia',
+                value: 35
+            },
+            {
+                label: 'Japan',
+                value: 38
+            },
+            {
+                label: 'Kazakhstan',
+                value: 13
+            },
+            {
+                label: 'Netherlands',
+                value: 20
+            },
+            {
+                label: 'Ukraine',
+                value: 20
+            },
+            {
+                label: 'New Zealand',
+                value: 13
+            },
+            {
+                label: 'Cuba',
+                value: 14
+            }
+        ];
+
+
+        JQXElements.settings['treeMapSettings'] =
+            {
+                source: data,
+                colorRange: 100,
+                colorMode: 'autoColors',
+                baseColor: '#52CBFF',
+                legendScaleCallback: function (v) {
+                    v = v.toFixed(1);
+
+                    return v;
+                },
+                legendLabel: 'Olympic medal count - London 2012'
+            };
+    </script>
+
+    <style>
+        html, body {
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .jqx-treemap-legend {
+            width: 75%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="example-description">
+        The width and height of the TreeMap Custom Element in this demo are in Percentages.
+    </div>
+    <jqx-tree-map settings="treeMapSettings"></jqx-tree-map>
+</body>
+</html>

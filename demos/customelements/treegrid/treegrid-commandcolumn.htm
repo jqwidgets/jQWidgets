@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element CommandColumn</title>
+    <meta name="description" content="This is an example of the command column in TreeGrid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var data =
+            [
+                {
+                    'id': '1', 'name': 'Corporate Headquarters', 'budget': '1230000', 'location': 'Las Vegas',
+                    'children':
+                    [
+                        {
+                            'id': '2', 'name': 'Finance Division', 'budget': '423000', 'location': 'San Antonio',
+                            'children':
+                            [
+                                { 'id': '3', 'name': 'Accounting Department', 'budget': '113000', 'location': 'San Antonio' },
+                                {
+                                    'id': '4', 'name': 'Investment Department', 'budget': '310000', 'location': 'San Antonio',
+                                    'children':
+                                    [
+                                        { 'id': '5', 'name': 'Banking Office', 'budget': '240000', 'location': 'San Antonio' },
+                                        { 'id': '6', 'name': 'Bonds Office', 'budget': '70000', 'location': 'San Antonio' },
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            'id': '7', 'name': 'Operations Division', 'budget': '600000', 'location': 'Miami',
+                            'children':
+                            [
+                                { 'id': '8', 'name': 'Manufacturing Department', 'budget': '300000', 'location': 'Miami' },
+                                { 'id': '9', 'name': 'Public Relations Department', 'budget': '200000', 'location': 'Miami' },
+                                { 'id': '10', 'name': 'Sales Department', 'budget': '100000', 'location': 'Miami' }
+                            ]
+                        },
+                        { 'id': '11', 'name': 'Research Division', 'budget': '200000', 'location': 'Boston' }
+                    ]
+                }
+            ];
+
+        var source =
+            {
+                dataType: 'json',
+                dataFields: [
+                    { name: 'name', type: 'string' },
+                    { name: 'budget', type: 'number' },
+                    { name: 'id', type: 'number' },
+                    { name: 'children', type: 'array' },
+                    { name: 'location', type: 'string' }
+                ],
+                hierarchy:
+                {
+                    root: 'children'
+                },
+                localData: data,
+                id: 'id'
+                
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var rendering = function () {
+            // destroys all buttons.
+            var editButtons = document.querySelectorAll('.edit');
+            var cancelButtons = document.querySelectorAll('.cancel');
+            function removeButtons(buttons) {
+                for (var i = 0; i < buttons.length; i++) {
+                    var button = buttons[i];
+                    button.parentNode.removeChild(button);
+                }
+            }
+
+            if (editButtons.length > 0) {
+                removeButtons(editButtons);
+            }
+
+            if (cancelButtons.length > 0) {
+                removeButtons(cancelButtons);
+            }
+        };
+
+        var rendered = function () {
+            var myTreeGrid = document.querySelector('jqx-tree-grid');
+            var editButtons = document.querySelectorAll('.edit');
+            var cancelButtons = document.querySelectorAll('.cancel');
+            var rowKey = -1;
+
+            if (editButtons.length) {
+                var editClick = function (event) {
+                    var target = event.target;
+                    // get button's value.
+                    var value = target.innerText;
+                    var currentCancelButton = target.parentNode.parentNode.childNodes[1];
+                    if (value == "Edit") {
+                        myTreeGrid.beginRowEdit(rowKey);
+                        
+                        var innerClasses = currentCancelButton.className;
+                        var newInnerClasses = innerClasses.replace('buttonHidden ', '');
+                        currentCancelButton.className = newInnerClasses;
+                        target.innerText = "Save";
+                    }
+                    else {
+                        // end edit and save changes.
+                        var innerClasses = currentCancelButton.className;
+                        var newInnerClasses = innerClasses.replace('cancel ', 'cancel buttonHidden ');
+                        currentCancelButton.className = newInnerClasses;
+                        target.innerText = "Edit";
+
+                        myTreeGrid.endRowEdit(rowKey);
+                    }
+                }
+
+                for (var i = 0; i < editButtons.length; i++) {
+                    editButtons[i].addEventListener('click', function (event) {
+                        editClick(event);
+                    });
+
+                    cancelButtons[i].addEventListener('click', function (event) {
+                        // end edit and cancel changes.
+                        myTreeGrid.endRowEdit(rowKey, true);
+                    });
+                }
+
+            }
+
+            myTreeGrid.addEventListener('rowClick', function (event) {
+                rowKey = (event.args.key).toString();
+            });            
+        };
+
+        JQXElements.settings['treeGridSettings'] =
+            {
+                source: dataAdapter,
+                altRows: true,
+                autoRowHeight: false,
+                ready: function () {
+                    var myTreeGrid = document.querySelector('jqx-tree-grid');
+                    myTreeGrid.expandAll();
+                },
+                editable: true,
+                editSettings: { saveOnPageChange: true, saveOnBlur: true, saveOnSelectionChange: false, cancelOnEsc: true, saveOnEnter: true, editOnDoubleClick: false, editOnF2: false },
+                rendering: rendering,
+                rendered: rendered,
+                columns: [
+                    { text: 'ID', editable: false, dataField: 'id', width: 150 },
+                    { text: 'Name', dataField: 'name', width: 250 },
+                    { text: 'Budget', align: 'right', cellsAlign: 'right', cellsFormat: 'c2', dataField: 'budget', width: 150 },
+                    { text: 'Location', dataField: 'location', width: 130 },
+                    {
+                        text: 'Edit', cellsAlign: 'center', align: 'center', columnType: 'none', editable: false, sortable: false, dataField: null,
+                        cellsRenderer: function (row, column, value) {
+                            // render custom column.
+                            return "<jqx-button class='edit'>Edit</jqx-button>" +
+                                    "<jqx-button class='cancel buttonHidden' style='margin-left: 5px;'>Cancel</jqx-button>";
+                        }
+                    }
+                ]               
+            };
+    </script>
+
+    <style>
+        .buttonHidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="example-description">
+        Command Column in Tree Grid Custom Element.
+    </div>
+    <jqx-tree-grid settings="treeGridSettings"></jqx-tree-grid>
+</body>
+</html>

@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element NestedGrid</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the nested grid feature in Custom Element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                datafields: [
+                    { name: 'FirstName' },
+                    { name: 'LastName' },
+                    { name: 'Title' },
+                    { name: 'Address' },
+                    { name: 'City' }
+                ],
+                root: 'Employees',
+                record: 'Employee',
+                id: 'EmployeeID',
+                datatype: 'xml',
+                url: '../sampledata/employees.xml'
+            };
+        var employeesAdapter = new jqx.dataAdapter(source);
+
+        var ordersSource =
+        {
+            datafields: [
+                { name: 'EmployeeID', type: 'string' },
+                { name: 'ShipName', type: 'string' },
+                { name: 'ShipAddress', type: 'string' },
+                { name: 'ShipCity', type: 'string' },
+                { name: 'ShipCountry', type: 'string' },
+                { name: 'ShippedDate', type: 'date' }
+            ],
+            root: 'Orders',
+            async: false,
+            record: 'Order',
+            datatype: 'xml',
+            url: '../sampledata/orderdetails.xml'
+        };
+        var ordersDataAdapter = new jqx.dataAdapter(ordersSource, { autoBind: true });     
+
+        window.onload = function() {
+            var myGrid = document.createElement('jqx-grid');
+
+            var orders = ordersDataAdapter.records;
+
+            var initRowDetails = function(index, parentElement, gridElement, record) {
+                var id = record.uid.toString();
+                var filtergroup = new jqx.filter();
+                var filter_or_operator = 1;
+                var filtervalue = id;
+                var filtercondition = 'equal';
+                var filter = filtergroup.createfilter('stringfilter', filtervalue, filtercondition);
+                var ordersbyid = [];
+
+                for (var m = 0; m < orders.length; m++) {
+                    var result = filter.evaluate(orders[m]['EmployeeID']);
+                    if (result)
+                        ordersbyid.push(orders[m]);
+                }
+
+                var ordersSource = {
+                    datafields: [
+                        { name: 'EmployeeID', type: 'string' },
+                        { name: 'ShipName', type: 'string' },
+                        { name: 'ShipAddress', type: 'string' },
+                        { name: 'ShipCity', type: 'string' },
+                        { name: 'ShipCountry', type: 'string' },
+                        { name: 'ShippedDate', type: 'date' }
+                    ],
+                    id: 'OrderID',
+                    localdata: ordersbyid
+                }
+
+                var nestedGridAdapter = new jqx.dataAdapter(ordersSource);
+
+                var myNestedGrid = document.createElement('jqx-grid');
+                myNestedGrid.style.margin = '10px';
+
+                myNestedGrid.settings = {
+                    source: nestedGridAdapter,
+                    width: 770,
+                    height: 200,
+                    columns: [
+                        { text: 'Ship Name', datafield: 'ShipName', width: 200 },
+                        { text: 'Ship Address', datafield: 'ShipAddress', width: 200 },
+                        { text: 'Ship City', datafield: 'ShipCity', width: 150 },
+                        { text: 'Ship Country', datafield: 'ShipCountry', width: 150 },
+                        { text: 'Shipped Date', datafield: 'ShippedDate', width: 200 }
+                    ]
+                };
+
+                parentElement.appendChild(myNestedGrid);
+            }
+
+            var photoRenderer = function(row, column, value) {
+                var name = myGrid.getrowdata(row).FirstName;
+                var imgurl = '../images/' + name.toLowerCase() + '.png';
+                var img = '<div style="background: white;"><img style="margin:2px; margin-left: 10px;" width="32" height="32" src="' + imgurl + '"></div>';
+                return img;
+            }
+
+            var renderer = function(row, column, value) {
+                return '<span style="margin-left: 4px; margin-top: 9px; float: left;">' + value + '</span>';
+            }
+
+            myGrid.settings = {
+                source: source,
+                rowdetails: true,
+                rowsheight: 35,
+                initrowdetails: initRowDetails,
+                rowdetailstemplate: { rowdetails: '<div></div>', rowdetailsheight: 220, rowdetailshidden: true },
+                ready: function() {
+                    myGrid.showrowdetails(1);
+                },
+                columns: [
+                    { text: 'Photo', width: 50, cellsrenderer: photoRenderer },
+                    { text: 'First Name', datafield: 'FirstName', width: 100, cellsrenderer: renderer },
+                    { text: 'Last Name', datafield: 'LastName', width: 100, cellsrenderer: renderer },
+                    { text: 'Title', datafield: 'Title', width: 180, cellsrenderer: renderer },
+                    { text: 'Address', datafield: 'Address', width: 300, cellsrenderer: renderer },
+                    { text: 'City', datafield: 'City', width: 170, cellsrenderer: renderer }
+                ]
+            };
+            document.body.appendChild(myGrid);
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This is an example of the nested grid feature in Custom element Grid. The nested grid is a second grid which appears when a row selector is clicked in the first grid. The nested grid is usually used to show relevant information to the row in the first grid.
+    </div>
+</body>
+</html>

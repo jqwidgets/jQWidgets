@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title id='Description'>TextArea Custom Element BindingToJSON</title>
+    <meta name='description' content='This is an example of Tree Custom Element bound to JSON.' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+    <meta name='viewport' content='width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1' />
+
+    <link rel='stylesheet' href='../jqwidgets/styles/jqx.base.css' type='text/css' />
+    <link rel='stylesheet' href='../styles/demos.css' type='text/css' />
+
+    <script type='text/javascript' src='../scripts/webcomponents-lite.min.js'></script>
+    <script type='text/javascript' src='../jqwidgets/jqxcore.js'></script>
+    <script type='text/javascript' src='../jqwidgets/jqxcore.elements.js'></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtextarea.js"></script>
+    <script type='text/javascript' src='../scripts/demos.js'></script>
+
+    <script type='text/javascript'>
+        var source =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'CompanyName' },
+                    { name: 'ContactName' }
+                ],
+                url: '../sampledata/customers.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['textAreaSettings'] =
+            {
+                source: dataAdapter, placeHolder: 'Contact Name:', displayMember: 'ContactName', valueMember: 'CompanyName'
+            };
+
+        window.onload = function() {
+            var myTextArea = document.querySelector('jqx-text-area');
+            var myLog = document.querySelector('#selectionLog');
+
+            myTextArea.addEventListener('select', event => {
+                if (event.args) {
+                    var item = event.args.item;
+                    if (item) {
+                        myLog.innerHTML = '<div>Value: ' + item.value + '</div><div>Label: ' + item.label + '</div>';
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class='example-description'>
+        In this demo the Text Area Custom Element is bound to JSON data.
+    </div>
+
+    <jqx-text-area settings='textAreaSettings'></jqx-text-area>
+
+    <label style="font-family: Verdana; font-size: 10px;">
+        ex: Ana
+    </label>
+    <div id="selectionLog" style="font-family: Verdana; font-size: 13px;"></div>
+</body>
+</html>

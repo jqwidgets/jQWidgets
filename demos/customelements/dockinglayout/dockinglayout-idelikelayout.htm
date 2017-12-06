@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DockingLayout IDE-LikeLayout</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example shows how to combine other Custom Element into Custom Elements DockingLayout and create an IDE-Like layout." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxribbon.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlayout.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdockinglayout.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtextarea.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source = [{
+            icon: '../../images/earth.png',
+            label: 'Project',
+            expanded: true,
+            items: [{
+                icon: '../../images/folder.png',
+                label: 'css',
+                expanded: true,
+                items: [{
+                    icon: '../../images/nav1.png',
+                    label: 'jqx.base.css'
+                }, {
+                    icon: '../../images/nav1.png',
+                    label: 'jqx.energyblue.css'
+                }, {
+                    icon: '../../images/nav1.png',
+                    label: 'jqx.orange.css'
+                }]
+            }, {
+                icon: '../../images/folder.png',
+                label: 'scripts',
+                items: [{
+                    icon: '../../images/nav1.png',
+                    label: 'jqxcore.js'
+                }, {
+                    icon: '../../images/nav1.png',
+                    label: 'jqxdata.js'
+                }, {
+                    icon: '../../images/nav1.png',
+                    label: 'jqxgrid.js'
+                }]
+            }, {
+                icon: '../../images/nav1.png',
+                label: 'index.htm',
+                selected: true
+            }]
+        }];
+
+        var layout = [{
+            type: 'layoutGroup',
+            orientation: 'horizontal',
+            items: [{
+                type: 'autoHideGroup',
+                alignment: 'left',
+                width: '20%',
+                unpinnedWidth: '20%',
+                items: [{
+                    type: 'layoutPanel',
+                    title: 'Toolbox',
+                    contentContainer: 'ToolboxPanel'
+                }, {
+                    type: 'layoutPanel',
+                    title: 'Help',
+                    contentContainer: 'HelpPanel'
+                }]
+            }, {
+                type: 'layoutGroup',
+                orientation: 'vertical',
+                width: '50%',
+                items: [{
+                    type: 'documentGroup',
+                    height: '50%',
+                    minHeight: 200,
+                    items: [{
+                        type: 'documentPanel',
+                        title: 'index.htm',
+                        contentContainer: 'Document1Panel',
+                        initContent: function () {
+                            document.querySelector('#Document1TextArea').settings = { width: '100%', height: 400 };
+                        }
+                    }, {
+                        type: 'documentPanel',
+                        title: 'New Document',
+                        contentContainer: 'Document2Panel',
+                        initContent: function () {
+                            document.querySelector('#Document2TextArea').settings = { width: '100%', height: 400, placeHolder: 'Blank document' };
+                        }
+                    }]
+                }, {
+                    type: 'tabbedGroup',
+                    height: '50%',
+                    minHeight: 200,
+                    pinnedHeight: 30,
+                    items: [{
+                        type: 'layoutPanel',
+                        title: 'Error List',
+                        contentContainer: 'ErrorListPanel'
+                    }, {
+                        type: 'layoutPanel',
+                        title: 'Performance',
+                        contentContainer: 'PerformancePanel',
+                        selected: true
+                    }]
+                }]
+            }, {
+                type: 'tabbedGroup',
+                width: '30%',
+                minWidth: 200,
+                items: [{
+                    type: 'layoutPanel',
+                    title: 'Solution Explorer',
+                    contentContainer: 'SolutionExplorerPanel'
+                }, {
+                    type: 'layoutPanel',
+                    title: 'Properties',
+                    contentContainer: 'PropertiesPanel'
+                }]
+            }]
+        }];
+
+        JQXElements.settings['solutionExplorerTree'] =
+            {
+                source: source, width: '100%', height: '100%'
+            }
+
+        var data = [1, 5, 12, 5, 33, 38, 40, 42, 18, 18, 70, 76, 75, 99, 100, 88, 64, 13, 19, 15];
+
+        JQXElements.settings['cpuUsage'] =
+            {
+                title: 'CPU Usage',
+                description: '',
+                showLegend: false,
+                enableAnimations: false,
+                showBorderLine: false,
+                showToolTips: false,
+                backgroundColor: 'transparent',
+                padding: {
+                    left: 0,
+                    top: 10,
+                    right: 0,
+                    bottom: 0
+                },
+                titlePadding: {
+                    left: 0,
+                    top: 0,
+                    right: 0,
+                    bottom: 0
+                },
+                source: data,
+                xAxis: {
+                    visible: false,
+                    valuesOnTicks: false
+                },
+                colorScheme: 'scheme01',
+                seriesGroups: [{
+                    type: 'line',
+                    columnsGapPercent: 0,
+                    columnsMaxWidth: 2,
+                    valueAxis: {
+                        minValue: 0,
+                        visible: false
+                    },
+                    series: [{
+                        linesUnselectMode: 'click',
+                        colorFunction: function (value, itemIndex, serie, group) {
+                            if (value <= 33) {
+                                return '#32CD32';
+                            } else if (value <= 66) {
+                                return '#FFD700';
+                            } else {
+                                return '#AA4643';
+                            }
+                        }
+                    }]
+                }]
+            }
+
+        JQXElements.settings['layoutSettings'] =
+            {
+                layout: layout, contextMenu: true
+            }
+
+        window.onload = function () {
+            var myDockingLayout = document.querySelector('jqx-docking-layout');
+            var myButton = document.querySelector('jqx-button');
+
+            myButton.addEventListener('click', function () {
+                myDockingLayout.addFloatGroup(300, 200, { x: 500, y: 200 }, 'layoutPanel', 'Server Explorer', '<div id="serverExplorerTree" />',
+                    function() {
+                        var source = [{
+                            icon: '../images/dataadapter.png',
+                            label: 'Data Connections',
+                            expanded: true,
+                            items: [{
+                                icon: '../images/validator.png',
+                                label: 'northwinddatabase.mdf'
+                            }]
+                        }, {
+                            icon: '../images/nav1.png',
+                            label: 'Servers',
+                            items: [{
+                                icon: '../images/nav1.png',
+                                label: 'WorkStation3-PC'
+                            }, {
+                                icon: '../images/dragdrop.png',
+                                label: 'SharePoint Connections'
+                            }]
+                        }];
+                        jqwidgets.createInstance('#serverExplorerTree', 'jqxTree', { width: '99%', height: '99%', source: source });
+                    }
+                );
+                    document.querySelector('#viewServerExplorer').disabled = true;
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows how to integrate other jQWidgets controls in Custom element DockingLayout to create an IDE-like layout.
+    </div>
+   <jqx-docking-layout settings="layoutSettings">
+       <!--The panel content divs can have a flat structure-->
+       <!--documentGroup-->
+       <div data-container="ToolboxPanel">
+           List of tools
+       </div>
+       <div data-container="HelpPanel">
+           Help topics
+       </div>
+       <!--documentGroup-->
+       <div data-container="Document1Panel">
+           <div style="padding: 5px;">
+               <jqx-text-area id="Document1TextArea" style="margin: 5px;"></jqx-text-area>
+           </div>
+       </div>
+       <div data-container="Document2Panel">
+           <div style="padding: 5px;">
+               <jqx-text-area id="Document2TextArea" style="margin: 5px;"></jqx-text-area>
+           </div>
+       </div>
+       <!--bottom tabbedGroup-->
+       <div data-container="ErrorListPanel">
+           No errors.
+       </div>
+       <div data-container="PerformancePanel">
+           <jqx-chart id="cpuUsage" settings="cpuUsage" style="width: 99%; height: 100px;">
+           </jqx-chart>
+       </div>
+       <!--right tabbedGroup-->
+       <div data-container="SolutionExplorerPanel">
+           <jqx-tree settings="solutionExplorerTree" id="solutionExplorerTree" style="border: none;">
+           </jqx-tree>
+       </div>
+       <div data-container="PropertiesPanel">
+           List of properties
+       </div>
+   </jqx-docking-layout>
+
+    <br />
+    <jqx-button id="viewServerExplorer">
+        View Server Explorer
+    </jqx-button>
+</body>
+</html>

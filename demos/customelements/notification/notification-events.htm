@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Notification Custom Element Events</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the events that occur in Custom Element Notification." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnotification.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['NotificationSettings'] =
+            {
+                position: 'top-right',
+                opacity: 0.9,
+                closeOnClick: true,
+                width: 300,
+                autoClose: false,
+                showCloseButton: true,
+                template: 'mail',
+                blink: true
+            };
+        
+        window.onload = function() {
+            var myNotification = document.querySelector('jqx-notification');
+            var myPanel = document.querySelector('jqx-panel');
+            var myButton = document.querySelector('jqx-button');
+
+            var writeEventType = function (event) {
+                myPanel.append(event.type + '<br />');
+            };
+
+            myNotification.addEventListener('open', function (event) {
+                writeEventType(event);
+            });
+
+            myNotification.addEventListener('close', function (event) {
+                writeEventType(event);
+            });
+            myNotification.addEventListener('click', function (event) {
+                document.getElementById('messagePanel').style.display = 'block';
+            });
+            myButton.addEventListener('click', function (event) {
+                myNotification.open();
+                writeEventType(event);
+                myPanel.style.display = 'inline-block';
+            });
+
+    
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo showcases the Custom element Notification's events.
+    </div>
+
+    <jqx-notification settings="NotificationSettings">
+
+        <div>
+            You have <b>2</b> new messages.
+        </div>
+
+        <div style="font-size: smaller; text-align: center;">
+            Click to view.
+        </div>
+    </jqx-notification>
+
+    <jqx-button>Check mail</jqx-button>
+
+    <div style="margin-top: 15px;">
+        Events log:
+    </div>
+
+    <jqx-panel></jqx-panel>
+
+    <div id="messagePanel" style="width: 400px; display: none;">
+        <p>
+            <b>From:</b> Ken
+        </p>
+        <p>
+            <b>About</b>: Appointment
+        </p>
+        <p>
+            Hi,<br />
+            I just wanted to remind you dinner is at 8pm tonight at Carl's.
+        </p>
+        <hr style="width: 300px; text-align: right;" />
+        <p>
+            <b>From:</b> Sue
+        </p>
+        <p>
+            <b>About</b>: Shopping
+        </p>
+        <p>
+            Here's the shopping list for tommorow's party:
+        </p>
+        <ul>
+            <li>Wine</li>
+            <li>Tomatoes</li>
+            <li>Cheese</li>
+            <li>Popcorn</li>
+        </ul>
+    </div>
+</body>
+</html>

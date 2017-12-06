@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Scheduler Custom Element EditDialog</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of edit dialog in Custom Element Scheduler." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdate.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscheduler.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscheduler.api.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script>
+        var appointments = new Array();
+
+        var appointment1 = {
+            id: 'id1',
+            description: 'George brings projector for presentations.',
+            location: '',
+            subject: 'Fashion Expo',
+            calendar: 'East Coast Events',
+            start: new Date(2016, 10, 15, 9, 0, 0),
+            end: new Date(2016, 10, 18, 16, 0, 0)
+        }
+        var appointment2 = {
+            id: 'id2',
+            description: '',
+            location: '',
+            subject: 'Cloud Data Expo',
+            calendar: 'Middle West Events',
+            start: new Date(2016, 10, 20, 10, 0, 0),
+            end: new Date(2016, 10, 22, 15, 0, 0)
+        }
+        var appointment3 = {
+            id: 'id3',
+            description: '',
+            location: '',
+            subject: 'Digital Media Conference',
+            calendar: 'West Coast Events',
+            start: new Date(2016, 10, 23, 11, 0, 0),
+            end: new Date(2016, 10, 28, 13, 0, 0)
+        }
+        var appointment4 = {
+            id: 'id4',
+            description: '',
+            location: '',
+            subject: 'Modern Software Development Conference',
+            calendar: 'West Coast Events',
+            start: new Date(2016, 10, 10, 16, 0, 0),
+            end: new Date(2016, 10, 12, 18, 0, 0)
+        }
+        var appointment5 = {
+            id: 'id5',
+            description: '',
+            location: '',
+            subject: 'Marketing Future Expo',
+            calendar: 'Middle West Events',
+            start: new Date(2016, 10, 5, 15, 0, 0),
+            end: new Date(2016, 10, 6, 17, 0, 0)
+        }
+        var appointment6 = {
+            id: 'id6',
+            description: '',
+            location: '',
+            subject: 'Future Computing',
+            calendar: 'East Coast Events',
+            start: new Date(2016, 10, 13, 14, 0, 0),
+            end: new Date(2016, 10, 20, 16, 0, 0)
+        }
+        appointments.push(appointment1);
+        appointments.push(appointment2);
+        appointments.push(appointment3);
+        appointments.push(appointment4);
+        appointments.push(appointment5);
+        appointments.push(appointment6);
+
+        var source =
+            {
+                dataType: 'array',
+                dataFields: [
+                    { name: 'id', type: 'string' },
+                    { name: 'description', type: 'string' },
+                    { name: 'location', type: 'string' },
+                    { name: 'subject', type: 'string' },
+                    { name: 'calendar', type: 'string' },
+                    { name: 'start', type: 'date' },
+                    { name: 'end', type: 'date' }
+                ],
+                id: 'id',
+                localData: appointments
+            };
+
+        var printButton = null;
+        JQXElements.settings['schedulerSettings'] =
+            {
+                date: new jqx.date(2016, 11, 23),
+                width: 850,
+                height: 600,
+                source: new jqx.dataAdapter(source),
+                showLegend: true,
+                // called when the dialog is craeted.
+                editDialogCreate: function (dialog, fields, editAppointment) {
+                    // hide repeat option
+                    fields.repeatContainer.hide();
+                    // hide status option
+                    fields.statusContainer.hide();
+                    // hide timeZone option
+                    fields.timeZoneContainer.hide();
+                    // hide color option
+                    fields.colorContainer.hide();
+                    fields.subjectLabel.html('Title');
+                    fields.locationLabel.html('Where');
+                    fields.fromLabel.html('Start');
+                    fields.toLabel.html('End');
+                    fields.resourceLabel.html('Calendar');
+                    // add custom print button.
+                    printButton = document.createElement('jqx-button');
+                    printButton.style.cssText = 'margin-left: 5px; float:right;';
+                    printButton.innerHTML = 'Print';
+
+                    fields.buttons.append(printButton);
+
+                    printButton.addEventListener('click', function () {
+                        var appointment = editAppointment;
+                        if (!appointment)
+                            return;
+                        var appointmentContent =
+                            '<table class="printTable">' +
+                            '<tr>' +
+                            '<td class="label">Title</td>' +
+                            '<td>' + fields.subject.val() + '</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td class="label">Start</td>' +
+                            '<td>' + fields.from.val() + '</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td class="label">End</td>' +
+                            '<td>' + fields.to.val() + '</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td class="label">Where</td>' +
+                            '<td>' + fields.location.val() + '</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td class="label">Calendar</td>' +
+                            '<td>' + fields.resource.val() + '</td>' +
+                            '</tr>'
+                            + '</table>';
+                        var newWindow = window.open('', '', 'width=800, height=500'),
+                            document = newWindow.document.open(),
+                            pageContent =
+                                '<!DOCTYPE html>\n' +
+                                '<html>\n' +
+                                '<head>\n' +
+                                '<meta charset="utf-8" />\n' +
+                                '<title>jQWidgets Scheduler</title>\n' +
+                                '<style>\n' +
+                                '.printTable {\n' +
+                                'border-color: #aaa;\n' +
+                                '}\n' +
+                                '.printTable .label {\n' +
+                                'font-weight: bold;\n' +
+                                '}\n' +
+                                '.printTable td{\n' +
+                                'padding: 4px 3px;\n' +
+                                'border: 1px solid #DDD;\n' +
+                                'vertical-align: top;\n' +
+                                '}\n' +
+                                '</style>' +
+                                '</head>\n' +
+                                '<body>\n' + appointmentContent + '\n</body>\n</html>';
+                        try {
+                            document.write(pageContent);
+                            document.close();
+                        }
+                        catch (error) {
+                        }
+                        newWindow.print();
+                    });
+                },
+                editDialogOpen: function (dialog, fields, editAppointment) {
+                    if (!editAppointment && printButton) {
+                        printButton.disabled = true;
+                    }
+                    else if (editAppointment && printButton) {
+                        printButton.disabled = false;
+                    }
+                },
+                editDialogClose: function (dialog, fields, editAppointment) { },
+                editDialogKeyDown: function (dialog, fields, editAppointment, event) { },
+                resources:
+                {
+                    colorScheme: 'scheme01',
+                    dataField: 'calendar',
+                    source: new jqx.dataAdapter(source)
+                },
+                appointmentDataFields:
+                {
+                    from: 'start',
+                    to: 'end',
+                    id: 'id',
+                    description: 'description',
+                    location: 'place',
+                    subject: 'subject',
+                    resourceId: 'calendar'
+                },
+                view: 'monthView',
+                views:
+                [
+                    'dayView',
+                    'weekView',
+                    'monthView'
+                ]
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element Scheduler Edit Dialog example
+    </div>
+
+    <jqx-scheduler settings="schedulerSettings"></jqx-scheduler>
+</body>
+</html>

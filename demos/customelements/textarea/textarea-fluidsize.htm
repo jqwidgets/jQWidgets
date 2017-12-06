@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title id='Description'>TextArea Custom Element FluidSize</title>
+    <meta name='description' content='In this example the width of the Tree Custom Element is set in precetages.' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+    <meta name='viewport' content='width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1' />
+
+    <link rel='stylesheet' href='../jqwidgets/styles/jqx.base.css' type='text/css' />
+    <link rel='stylesheet' href='../styles/demos.css' type='text/css' />
+
+    <script type='text/javascript' src='../scripts/webcomponents-lite.min.js'></script>
+    <script type='text/javascript' src='../jqwidgets/jqxcore.js'></script>
+    <script type='text/javascript' src='../jqwidgets/jqxcore.elements.js'></script>
+    <script type='text/javascript' src='../jqwidgets/jqxdata.js'></script>
+    <script type='text/javascript' src='../jqwidgets/jqxbuttons.js'></script>
+    <script type='text/javascript' src='../jqwidgets/jqxscrollbar.js'></script>
+    <script type='text/javascript' src='../jqwidgets/jqxtextarea.js'></script>
+    <script type='text/javascript' src='../scripts/demos.js'></script>
+
+    <script type='text/javascript'>
+        var source =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'CompanyName' },
+                    { name: 'ContactName' }
+                ],
+                url: '../sampledata/customers.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['textAreaSettings'] =
+            {
+                width: '30%', source: dataAdapter, placeHolder: 'Contact Name:',
+                displayMember: 'ContactName', valueMember: 'CompanyName'
+            };
+    </script>
+</head>
+<body>
+    <div class='example-description'>
+        Text Area Custom Element TextArea Fluid Size Example. The width in this demo is in Percentages.
+    </div>
+    <jqx-text-area settings='textAreaSettings'></jqx-text-area>
+    <label style="font-family: Verdana; font-size: 10px;">
+        ex: Ana
+    </label>
+</body>
+</html>

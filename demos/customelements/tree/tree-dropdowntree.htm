@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tree Custom Element DropDownTree</title>
+    <meta name="description" content="This is an example of the DropDown Tree Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownbutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var myTree = document.querySelector('jqx-tree');
+            var myDropDownButton = document.querySelector('jqx-drop-down-button');
+
+            myDropDownButton.setContent('<div style="position: relative; margin-left: 3px; margin-top: 9px;">Home</div>');
+
+            myTree.addEventListener('select', event => {
+                var item = myTree.getItem(event.args.element);
+                var dropDownContent = '<div style="position: relative; margin-left: 3px; margin-top: 9px;">' + item.label + '</div>';
+                myDropDownButton.setContent(dropDownContent);
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        With the DropDownButton Custom Element, you can display the Tree Custom Element in a popup.
+    </div> 
+
+    <jqx-drop-down-button>
+
+        <jqx-tree>
+            <ul>
+                <li item-selected='true'>Home</li>
+                <li item-expanded='true'>
+                    Solutions
+                    <ul>
+                        <li>Education</li>
+                        <li>Financial services</li>
+                        <li>Government</li>
+                        <li>Manufacturing</li>
+                        <li>
+                            Solutions
+                            <ul>
+                                <li>eLearning</li>
+                                <li>Mobile</li>
+                                <li>RIA</li>
+                                <li>Training</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Products
+                    <ul>
+                        <li>PC products</li>
+                        <li>Mobile products</li>
+                        <li>All products</li>
+                    </ul>
+                </li>
+            </ul>
+        </jqx-tree>
+
+    </jqx-drop-down-button>
+
+</body>
+</html>

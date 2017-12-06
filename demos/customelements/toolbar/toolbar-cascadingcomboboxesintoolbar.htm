@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Toolbar Custom Element CascadingComboboxesInToolbar</title>
+    <meta name="description" content="This is an example of comboboxes in Toolbar Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtoolbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var countries = ['Japan', 'UK', 'USA'];
+        var JapaneseCities = ['Kobe', 'Kyoto', 'Tokyo'];
+        var UKCities = ['Brighton', 'Glasgow', 'London'];
+        var USACities = ['Boston', 'Los Angeles', 'Minneapolis'];
+
+        var myComboBox1, myComboBox2;
+
+        JQXElements.settings['toolbarSettings'] =
+            {
+                tools: 'combobox | combobox',
+                initTools: (type, index, tool, menuToolIninitialization) => {
+                    switch (index) {
+                        case 0:
+                            myComboBox1 = tool;
+                            myComboBox1.jqxComboBox({
+                                source: countries,
+                                selectedIndex: 0,
+                                promptText: 'Select a country...'
+                            });
+
+
+                            myComboBox1.on('select', function(event) {
+                                var country = event.args.item.label;
+                                var source;
+
+                                if (country === 'Japan') {
+                                    source = JapaneseCities;
+                                } else if (country === 'UK') {
+                                    source = UKCities;
+                                } else {
+                                    source = USACities;
+                                }
+                                myComboBox2.jqxComboBox('clear');
+                                myComboBox2.jqxComboBox({ source: USACities });
+                            });
+
+                            break;
+                        case 1:
+                            myComboBox2 = tool;
+                            myComboBox2.jqxComboBox({
+                                source: JapaneseCities,
+                                selectedIndex: 0,
+                                promptText: 'Select a city...'
+                            });
+                            break;
+                    }
+                    return { minimizable: false };
+
+                }
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows how to implement cascading comboboxes in  Toolbar Custom Element.
+    </div>
+    <jqx-tool-bar settings="toolbarSettings"></jqx-tool-bar>
+</body>
+</html>

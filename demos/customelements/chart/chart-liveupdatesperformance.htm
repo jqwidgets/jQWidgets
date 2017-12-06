@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Chart Custom Element LiveUpdatesEverySecond</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Chart that updates every second" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var refreshTimeout = 100;
+        var colorsSchemesList = ["scheme01", "scheme02", "scheme03", "scheme04", "scheme05", "scheme06", "scheme07", "scheme08"];
+        var data = [];
+        var max = 200;
+        for (var i = 0; i < 20; i++) {
+            data.push({
+                key: i,
+                value1: (Math.random() * 200) % 200 + 200,
+                value2: (Math.random() * 200) % 200 + 500,
+                value3: (Math.random() * 200) % 200,
+            });
+        }
+        JQXElements.settings['chartSettings'] =
+            {
+                title: "Live updates performance",
+                description: "Data changes every " + refreshTimeout + " milliseconds",
+                enableAnimations: false,
+                showLegend: true,
+                padding: { left: 10, top: 10, right: 10, bottom: 10 },
+                titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+                source: data,
+                xAxis:
+                {
+                    dataField: 'key',
+                    unitInterval: 1,
+                    valuesOnTicks: true,
+                    gridLines: { visible: false }
+                },
+                valueAxis:
+                {
+                    minValue: 0,
+                    maxValue: 750,
+                    title: { text: 'Index Value<br>' },
+                },
+                colorScheme: 'scheme01',
+                seriesGroups:
+                    [
+                        {
+                            type: 'line',
+                            useGradientColors: false,
+                            series: [
+                                    { dataField: 'value1', displayText: 'value1', lineWidth: 2, symbolType: 'circle' }
+                            ]
+                        },
+                        {
+                            type: 'spline',
+                            useGradientColors: false,
+                            columnsGapPercent: 50,
+                            alignEndPointsWithIntervals: true,
+                            series: [
+                                    { dataField: 'value2', displayText: 'value2' }
+                            ]
+                        },
+                        {
+                            type: 'column',
+                            useGradientColors: false,
+                            columnsGapPercent: 50,
+                            alignEndPointsWithIntervals: true,
+                            series: [
+                                    { dataField: 'value3', displayText: 'value3' }
+                            ]
+                        }
+                    ]
+            };
+
+        JQXElements.settings['DropDownColors'] =
+            {
+                source: colorsSchemesList,
+                selectedIndex: 2,
+                dropDownHeight: 100
+            };
+
+        window.onload = function () {
+            var myChart = document.querySelector('jqx-chart');
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+            var button = document.querySelector('jqx-button');
+
+            var chart = myChart.getInstance();
+
+            var timerFunction = function () {
+                data.splice(0, 1);
+                data.push({
+                    key: data[data.length - 1].key + 1,
+                    value1: (Math.random() * 200) % 200 + 200,
+                    value2: (Math.random() * 200) % 200 + 500,
+                    value3: (Math.random() * 200) % 200,
+                });
+                chart.update();
+            };
+
+            button.addEventListener('click', function () {
+                if (ttimer) {
+                    clearInterval(ttimer);
+                    button.val('Resume');
+                    ttimer = undefined;
+                }
+                else {
+                    ttimer = setInterval(timerFunction, refreshTimeout);
+                    button.val('Pause');
+                }
+            });
+
+            myDropDownList.addEventListener('change', function (event) {
+                var value = event.args.item.value;
+                chart.colorScheme = value;
+                chart.update();
+            });
+
+            var ttimer = setInterval(timerFunction, refreshTimeout);
+        };
+
+    </script>
+</head>
+<body>
+
+    <jqx-chart settings="chartSettings" style="width:850px; height:500px;"></jqx-chart>
+
+    <table style="width: 680px">
+        <tr>
+            <td style="padding-left: 50px;">
+                <p style="font-family: Verdana; font-size: 12px; width:170px;">
+                    Pause / Resume updates:
+                </p>
+                <jqx-button type="button" id="btnPauseResume">Pause</jqx-button>
+            </td>
+            <td>
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Select color scheme:
+                </p>
+                <jqx-drop-down-list settings='DropDownColors'>
+                </jqx-drop-down-list>
+            </td>
+        </tr>
+    </table>
+
+    <div class="example-description">
+        This is an example of Custom Element Chart with Live updates
+    </div>
+
+</body>
+</html>

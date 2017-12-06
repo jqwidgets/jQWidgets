@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart Spider Chart</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Spider Chart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var data = [
+            {
+                type: 'Organic Search',
+                month1: 1725090,
+                month2: 3136190
+            },
+            {
+                type: 'Paid Search',
+                month1: 925090,
+                month2: 2136190
+            },
+            {
+                type: 'Direct',
+                month1: 425090,
+                month2: 936190
+            },
+            {
+                type: 'Referral',
+                month1: 1250900,
+                month2: 2536190
+            },
+            {
+                type: 'Twitter',
+                month1: 350900,
+                month2: 681900
+            },
+            {
+                type: 'Facebook',
+                month1: 381900,
+                month2: 831500
+            }
+        ];
+
+        var colorsSchemesList = ['scheme01', 'scheme02', 'scheme03', 'scheme04', 'scheme05', 'scheme06', 'scheme07', 'scheme08'];
+
+        var seriesList = ['splinearea', 'spline', 'column', 'scatter', 'stackedcolumn', 'stackedsplinearea', 'stackedspline'];
+
+            JQXElements.settings['chartSettings'] = 
+                {
+                    title: 'Website audience acquision by source',
+                    description: 'Month over month comparison',
+                    enableAnimations: false,
+                    showLegend: true,
+                    padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                    titlePadding: { left: 0, top: 0, right: 0, bottom: 5 },
+                    source: data,
+                    colorScheme: 'scheme05',
+                    xAxis:
+                    {
+                        dataField: 'type',
+                        displayText: 'Traffic source',
+                        valuesOnTicks: true,
+                        labels: { autoRotate: false }
+                    },
+                    valueAxis:
+                    {
+                        unitInterval: 1000000,
+                        labels: {
+                            formatSettings: { decimalPlaces: 0 },
+                            formatFunction: (value, itemIndex, serieIndex, groupIndex) => {
+                                return Math.round(value / 1000) + ' K';
+                            }
+                        }
+                    },
+                    seriesGroups:
+                    [
+                        {
+                            spider: true,
+                            startAngle: 0,
+                            endAngle: 360,
+                            radius: 120,
+                            type: 'spline',
+                            series: [
+                                { dataField: 'month1', displayText: 'January 2014', opacity: 0.7, radius: 2, lineWidth: 2, symbolType: 'circle' },
+                                { dataField: 'month2', displayText: 'February 2014', opacity: 0.7, radius: 2, lineWidth: 2, symbolType: 'square' }
+                            ]
+                        }
+                    ]
+                }
+
+            JQXElements.settings['SliderStartAngle'] =
+                {
+                    min: 0,
+                    max: 360,
+                    step: 1,
+                    ticksFrequency: 20,
+                    mode: 'fixed'
+                };
+
+            JQXElements.settings['SliderRadius'] = 
+                {
+                    min: 80,
+                    max: 140,
+                    value: 120,
+                    step: 1,
+                    ticksFrequency: 20,
+                    mode: 'fixed'
+                };
+
+            JQXElements.settings['DropDownSeries'] = 
+                {
+                    source: seriesList,
+                    selectedIndex: 1,
+                    dropDownHeight: 100
+                };
+
+            JQXElements.settings['DropDownColors'] = 
+                {
+                    source: colorsSchemesList,
+                    selectedIndex: 4,
+                    dropDownHeight: 100 
+                };
+
+            JQXElements.settings['CehckBoxAutoRotateLabels'] =
+                {
+                    hasThreeStates: false,
+                    checked: false 
+                };
+
+            JQXElements.settings['CheckBoxTicksBetween'] = 
+                {
+                    hasThreeStates: false,
+                    checked: false 
+                };
+
+            window.onload = function() {
+                var myChart = document.querySelector('jqx-chart');
+                var mySlider = document.querySelectorAll('jqx-slider');
+                var myDropDownList = document.querySelectorAll('jqx-drop-down-list');
+                var myCheckBoxes = document.querySelectorAll('jqx-check-box');
+
+                var chart = myChart.getInstance();
+
+                mySlider[0].addEventListener('change', function(event) {
+
+                    var value = event.args.value;
+                    chart.seriesGroups[0].startAngle = value;
+                    chart.seriesGroups[0].endAngle = value + 360;
+                    chart.update();
+                });
+
+                mySlider[1].addEventListener('change', function(event) {
+
+                    var value = event.args.value;
+                    chart.seriesGroups[0].radius = value;
+                    chart.update();
+                });
+
+                myDropDownList[1].addEventListener('change', function(event) {
+
+                    var value = event.args.item.value;
+                    chart.colorScheme = value;
+                    chart.update();
+                });
+
+                myDropDownList[0].addEventListener('change', function(event) {
+
+                    var args = event.args;
+                    if (args) {
+                        var value = args.item.value;
+                        chart.seriesGroups[0].type = value;
+                        chart.update();
+                    }
+                });
+
+                myCheckBoxes[0].addEventListener('change', function(event) {
+
+                    chart.xAxis.labels.autoRotate = event.args.checked;
+                    chart.valueAxis.labels.autoRotate = event.args.checked;
+
+                    chart.update();
+                });
+
+                myCheckBoxes[1].addEventListener('change', function(event) {
+
+                    chart.xAxis.valuesOnTicks = !event.args.checked;
+
+                    chart.update();
+                });
+            };
+    </script>
+</head>
+<body>
+
+   <jqx-chart settings="chartSettings" style="width: 850px; height: 500px"></jqx-chart>
+
+    <table style="width: 850px">
+        <tr>
+            <td style="padding-left:50px">
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Move the slider to rotate:
+                </p>
+                <jqx-slider settings="SliderStartAngle" id='SliderStartAngle'>
+                </jqx-slider>
+            </td>
+            <td>
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Select the series type:
+                </p>
+                <jqx-drop-down-list settings="DropDownSeries" id='DropDownSeries'>
+                </jqx-drop-down-list>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:50px">
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Move the slider to change the radius:
+                </p>
+                <jqx-slider settings="SliderRadius" id='SliderRadius'>
+                </jqx-slider>
+            </td>
+            <td>
+                <p style="font-family: Verdana; font-size: 12px;">
+                    Select color scheme:
+                </p>
+                <jqx-drop-down-list settings="DropDownColors" id='DropDownColors'>
+                </jqx-drop-down-list>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:50px">
+                <jqx-check-box settings="CehckBoxAutoRotateLabels" id="CehckBoxAutoRotateLabels" style="padding-top:15px">Auto-rotate labels</jqx-check-box>
+            </td>
+            <td>
+                <jqx-check-box settings="CheckBoxTicksBetween" id="CheckBoxTicksBetween" style="padding-top:15px">Ticks between values</jqx-check-box>
+            </td>
+        </tr>
+    </table>
+
+    <div class="example-description">
+        This is an exmaple of Custom Element Spider Chart series. The difference with the Polar chart is that the data is represented on a two dimensional spider web. The spider setting of the seriesGroups is set to true. 
+    </div>
+
+</body>
+</html>

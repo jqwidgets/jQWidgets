@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable RowSelection&Hover</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of multiple row selection in Custom Elements DataTable.." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                localData: generatedata(15, false),
+                datatype: 'array',
+                dataFields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' }
+                ]
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['dataTableSettings'] =
+            {
+                source: dataAdapter,
+                altRows: true,
+                columns:
+                [
+                    { text: 'First Name', dataField: 'firstname', width: 200 },
+                    { text: 'Last Name', dataField: 'lastname', width: 200 },
+                    { text: 'Product', dataField: 'productname', width: 180 },
+                    { text: 'Unit Price', dataField: 'price', width: 90, align: 'right', cellsAlign: 'right', cellsFormat: 'c2' },
+                    { text: 'Quantity', dataField: 'quantity', align: 'right', cellsAlign: 'right' }
+                ]
+            };
+
+        JQXElements.settings['inputSettings'] =
+            {
+                value: 0
+            };
+
+        JQXElements.settings['dropDownListSettings'] =
+            {
+                autoDropDownHeight: true,
+                selectedIndex: 1,
+                source: ['Single Row', 'Multiple Rows']
+            };
+
+        window.onload = function() {
+            var myDataTable = document.querySelector('jqx-data-table');
+            var myInput = document.querySelector('jqx-input');
+            var myButtons = document.querySelectorAll('jqx-button');
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+            var selectedRows = document.querySelector('#selectedRows');
+
+            var selectionInfo = _ => {
+                var selection = myDataTable.getSelection();
+                var selectedRowsText = '<br/>Selected Row Indexes:<br/>';
+                if (selection && selection.length > 0) {
+                    var rows = myDataTable.getRows();
+                    for (var i = 0; i < selection.length; i++) {
+                        var rowData = selection[i];
+                        selectedRowsText += rows.indexOf(rowData);
+                        if (i < selection.length - 1) {
+                            selectedRowsText += ', ';
+                        }
+                        if (i > 1 && i % 8 === 0) {
+                            selectedRowsText += '<br/>';
+                        }
+                    }
+                }
+                selectedRows.innerHTML = selectedRowsText;
+            };
+
+            myDropDownList.addEventListener('change', event => {
+                switch (event.args.index) {
+                    case 0:
+                        myDataTable.selectionMode = 'singleRow';
+                        break;
+                    case 1:
+                        myDataTable.selectionMode = 'multipleRows';
+                        break;
+                }
+            });
+
+            myButtons[0].addEventListener('click', _ => myDataTable.selectRow(parseInt(myInput.val())));
+            myButtons[1].addEventListener('click', _ => myDataTable.clearSelection());
+
+            myDataTable.addEventListener('rowSelect', _ => selectionInfo());
+            myDataTable.addEventListener('rowUnselect', _ => selectionInfo());
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Rows Selection Modes in Custom Elements DataTable. Select multiple rows by holding Shift or Ctrl and clicking on a row.
+    </div>
+    
+    <jqx-data-table settings="dataTableSettings"></jqx-data-table>
+ 
+    <div style="margin-top: 20px;">
+        <div><strong>Settings</strong></div>
+        Select Row:<br />
+        <jqx-input settings="inputSettings"></jqx-input>
+        <br />
+        <br />
+        <jqx-button>Select</jqx-button>
+        <jqx-button>Clear Selection</jqx-button>
+        <div id="selectedRows"></div>
+        <br />
+        Selection Mode:
+        <jqx-drop-down-list settings="dropDownListSettings"></jqx-drop-down-list>
+    </div>
+</body>
+</html>

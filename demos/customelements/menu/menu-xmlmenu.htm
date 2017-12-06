@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Menu XMLData</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Menu build from XML data." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            {
+                datatype: 'xml',
+                datafields: [
+                    { name: 'CompanyName', map: 'm\\:properties>d\\:CompanyName' },
+                    { name: 'ContactName', map: 'm\\:properties>d\\:ContactName' },
+                    { name: 'ContactTitle', map: 'm\\:properties>d\\:ContactTitle' },
+                    { name: 'City', map: 'm\\:properties>d\\:City' },
+                    { name: 'PostalCode', map: 'm\\:properties>d\\:PostalCode' },
+                    { name: 'Country', map: 'm\\:properties>d\\:Country' }
+                ],
+                root: 'entry',
+                record: 'content',
+                id: 'm\\:properties>d\\:CustomerID',
+                url: '../sampledata/customers.xml',
+                async: false
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        dataAdapter.dataBind();
+
+        var records = dataAdapter.getGroupedRecords(['ContactTitle', 'ContactName'], 'items', 'label', [{ name: 'ContactName', map: 'label' }]);
+
+        JQXElements.settings['MenuSettings'] =
+            {
+                source: records,
+                width: 300,
+                mode: 'vertical'
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this demo the Custom element Menu is built from XML data.
+    </div>
+
+    <jqx-menu settings='MenuSettings'></jqx-menu>
+</body>
+</html>

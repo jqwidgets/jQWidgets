@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Splitter Custom Element IntegrationWithjqxGrid</title>
+    <meta name="description" content="This is an example of Splitter Custom Element integrated with Grid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var data = '[{ "CompanyName": "Alfreds Futterkiste", "ContactName": "Maria Anders", "ContactTitle": "Sales Representative", "Address": "Obere Str. 57", "City": "Berlin", "Country": "Germany" }, { "CompanyName": "Ana Trujillo Emparedados y helados", "ContactName": "Ana Trujillo", "ContactTitle": "Owner", "Address": "Avda. de la Constitucin 2222", "City": "Mxico D.F.", "Country": "Mexico" }, { "CompanyName": "Antonio Moreno Taquera", "ContactName": "Antonio Moreno", "ContactTitle": "Owner", "Address": "Mataderos 2312", "City": "Mxico D.F.", "Country": "Mexico" }, { "CompanyName": "Around the Horn", "ContactName": "Thomas Hardy", "ContactTitle": "Sales Representative", "Address": "120 Hanover Sq.", "City": "London", "Country": "UK" }, { "CompanyName": "Berglunds snabbkp", "ContactName": "Christina Berglund", "ContactTitle": "Order Administrator", "Address": "Berguvsvgen 8", "City": "Lule", "Country": "Sweden" }, { "CompanyName": "Blauer See Delikatessen", "ContactName": "Hanna Moos", "ContactTitle": "Sales Representative", "Address": "Forsterstr. 57", "City": "Mannheim", "Country": "Germany" }, { "CompanyName": "Blondesddsl pre et fils", "ContactName": "Frdrique Citeaux", "ContactTitle": "Marketing Manager", "Address": "24, place Klber", "City": "Strasbourg", "Country": "France" }, { "CompanyName": "Blido Comidas preparadas", "ContactName": "Martn Sommer", "ContactTitle": "Owner", "Address": "C\/ Araquil, 67", "City": "Madrid", "Country": "Spain" }, { "CompanyName": "Bon app\'", "ContactName": "Laurence Lebihan", "ContactTitle": "Owner", "Address": "12, rue des Bouchers", "City": "Marseille", "Country": "France" }, { "CompanyName": "Bottom-Dollar Markets", "ContactName": "Elizabeth Lincoln", "ContactTitle": "Accounting Manager", "Address": "23 Tsawassen Blvd.", "City": "Tsawassen", "Country": "Canada" }, { "CompanyName": "B\'s Beverages", "ContactName": "Victoria Ashworth", "ContactTitle": "Sales Representative", "Address": "Fauntleroy Circus", "City": "London", "Country": "UK" }, { "CompanyName": "Cactus Comidas para llevar", "ContactName": "Patricio Simpson", "ContactTitle": "Sales Agent", "Address": "Cerrito 333", "City": "Buenos Aires", "Country": "Argentina" }, { "CompanyName": "Centro comercial Moctezuma", "ContactName": "Francisco Chang", "ContactTitle": "Marketing Manager", "Address": "Sierras de Granada 9993", "City": "Mxico D.F.", "Country": "Mexico" }, { "CompanyName": "Chop-suey Chinese", "ContactName": "Yang Wang", "ContactTitle": "Owner", "Address": "Hauptstr. 29", "City": "Bern", "Country": "Switzerland" }, { "CompanyName": "Comrcio Mineiro", "ContactName": "Pedro Afonso", "ContactTitle": "Sales Associate", "Address": "Av. dos Lusadas, 23", "City": "Sao Paulo", "Country": "Brazil" }, { "CompanyName": "Consolidated Holdings", "ContactName": "Elizabeth Brown", "ContactTitle": "Sales Representative", "Address": "Berkeley Gardens 12 Brewery", "City": "London", "Country": "UK" }, { "CompanyName": "Drachenblut Delikatessen", "ContactName": "Sven Ottlieb", "ContactTitle": "Order Administrator", "Address": "Walserweg 21", "City": "Aachen", "Country": "Germany" }, { "CompanyName": "Du monde entier", "ContactName": "Janine Labrune", "ContactTitle": "Owner", "Address": "67, rue des Cinquante Otages", "City": "Nantes", "Country": "France" }, { "CompanyName": "Eastern Connection", "ContactName": "Ann Devon", "ContactTitle": "Sales Agent", "Address": "35 King George", "City": "London", "Country": "UK" }, { "CompanyName": "Ernst Handel", "ContactName": "Roland Mendel", "ContactTitle": "Sales Manager", "Address": "Kirchgasse 6", "City": "Graz", "Country": "Austria"}]';
+
+        var source =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'CompanyName', type: 'string' },
+                    { name: 'ContactName', type: 'string' },
+                    { name: 'ContactTitle', type: 'string' },
+                    { name: 'Address', type: 'string' },
+                    { name: 'City', type: 'string' },
+                    { name: 'Country', type: 'string' }
+                ],
+                localdata: data
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['splitterSettings'] =
+            {
+                width: 850, height: 400, panels: [{ min: 150, size: 330 }, { min: 250 }]
+            };  
+        JQXElements.settings['gridSettings'] =
+            {
+                source: dataAdapter,
+                columnsresize: true,
+                columns: [
+                    { text: 'Company Name', datafield: 'CompanyName', width: 250 },
+                    { text: 'Contact Name', datafield: 'ContactName', width: 150 },
+                    { text: 'Contact Title', datafield: 'ContactTitle', width: 180 },
+                    { text: 'City', datafield: 'City', width: 120 },
+                    { text: 'Country', datafield: 'Country' }
+                ]
+            };  
+
+        window.onload = function() {
+            var myGrid = document.querySelector('jqx-grid');
+            var myButton = document.querySelector('jqx-button');
+            var myInputs = document.querySelectorAll('jqx-input');
+
+            myGrid.addEventListener('rowselect', event => {
+                var row = event.args.row;
+                myInputs[0].val(row.CompanyName);
+                myInputs[1].val(row.ContactName);
+                myInputs[2].val(row.ContactTitle);
+                myInputs[3].val(row.City);
+                myInputs[4].val(row.Country);
+            });
+
+            myButton.addEventListener('click', _ => {
+                var row = myGrid.getselectedrowindex();
+                var rowid = myGrid.getrowid(row);
+                var data =
+                    {
+                        CompanyName: myInputs[0].val(),
+                        ContactName: myInputs[1].val(),
+                        ContactTitle: myInputs[2].val(),
+                        City: myInputs[3].val(),
+                        Country: myInputs[4].val()
+                    };
+                myGrid.updaterow(rowid, data);
+            });
+        };
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        In this sample is demonstrated how to integrate Grid Custom Element with Splitter Custom Element.
+    </div>
+
+    <jqx-splitter settings="splitterSettings">
+        <div>
+            <jqx-grid settings="gridSettings"></jqx-grid>
+        </div>
+        <div>
+            <form>
+                <table style="margin-top: 20px; width: 100%;">
+                    <tr>
+                        <td style="text-align: right;">Company Name:</td>
+                        <td style="text-align: left;"><jqx-input></jqx-input></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">Contact Name:</td>
+                        <td style="text-align: left;"><jqx-input></jqx-input></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">Contact Title:</td>
+                        <td style="text-align: left;"><jqx-input></jqx-input></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">City:</td>
+                        <td style="text-align: left;"><jqx-input></jqx-input></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">Country:</td>
+                        <td style="text-align: left;"><jqx-input></jqx-input></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="padding-left: 35px; text-align: left;">
+                            <jqx-button>Save</jqx-button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </jqx-splitter>
+
+</body>
+</html>

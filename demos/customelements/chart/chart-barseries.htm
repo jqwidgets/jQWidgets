@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart BarSeries</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Bar Chart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+
+        var sampleData =
+            [
+                { Country: 'China', Population: 1347350000, Percent: 19.18 },
+                { Country: 'India', Population: 1210193422, Percent: 17.22 },
+                { Country: 'USA', Population: 313912000, Percent: 4.47 },
+                { Country: 'Indonesia', Population: 237641326, Percent: 3.38 },
+                { Country: 'Brazil', Population: 192376496, Percent: 2.74 }
+            ];
+
+        var toolTipCustomFormatFn = function(value, itemIndex, serie, group, categoryValue, categoryAxis) {
+                var dataItem = data[itemIndex];
+                return '<DIV style="text-align:left"><b>Month: ' +
+                    categoryValue + '</b><br />Min: ' +
+                    dataItem.min + '°<br />Max: ' +
+                    dataItem.max + '°<br />Average: ' +
+                    dataItem.avg + '°</DIV>';
+            };
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: "Top 5 most populated countries",
+                description: "Statistics for 2011",
+                showLegend: true,
+                enableAnimations: true,
+                padding: { left: 20, top: 5, right: 20, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+                xAxis:
+                {
+                    dataField: 'Country',
+                    gridLines: { visible: true },
+                    flip: false
+                },
+                valueAxis:
+                {
+                    flip: true,
+                    labels: {
+                        visible: true,
+                        formatFunction: function(value) {
+                            return parseInt(value / 1000000);
+                        }
+                    }
+                },
+                colorScheme: 'scheme01',
+                seriesGroups:
+                [
+                    {
+                        type: 'column',
+                        orientation: 'horizontal',
+                        columnsGapPercent: 50,
+                        toolTipFormatSettings: { thousandsSeparator: ',' },
+                        series: [
+                            { dataField: 'Population', displayText: 'Population (millions)' }
+                        ]
+                    }
+                ]
+            }
+    </script>
+</head>
+<body>
+
+   <jqx-chart settings="chartSettings" style="width:850px; height:500px"></jqx-chart>
+
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Custom element chart Bubble series. The type of the series is column. The valueAxis flip setting is set to true and the series orientation is seto to horizontal.
+    </div>
+    </body>
+</html>

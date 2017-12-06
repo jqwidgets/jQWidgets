@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element InitialFilter</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Grid's initial filter." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript">
+        var data = generatedata(500);
+
+        var source =
+            {
+                localdata: data,
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'date', type: 'date' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' }
+                ],
+                datatype: 'array'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var firstNameColumnFilter = function() {
+            var filtergroup = new jqx.filter();
+            var filter_or_operator = 1;
+            var filtervalue = 'Nancy';
+            var filtercondition = 'contains';
+            var filter = filtergroup.createfilter('stringfilter', filtervalue, filtercondition);
+            filtergroup.addfilter(filter_or_operator, filter);
+            return filtergroup;
+        };
+
+        JQXElements.settings['gridSettings'] =
+            {
+            source: dataAdapter,
+            filterable: true,
+            sortable: true,
+            columns: [
+                {
+                    text: 'First Name', datafield: 'firstname',
+                    filter: firstNameColumnFilter(),
+                },
+                { text: 'Last Name', datafield: 'lastname', width: 160 },
+                { text: 'Product', datafield: 'productname', width: 170 },
+                { text: 'Order Date', datafield: 'date', filtertype: 'date', width: 160, cellsformat: 'dd-MMMM-yyyy' },
+                { text: 'Quantity', datafield: 'quantity', width: 80, cellsalign: 'right' },
+                { text: 'Unit Price', datafield: 'price', cellsalign: 'right', cellsformat: 'c2' }
+            ]
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The demo shows how to apply a filter during the Custom element Grid's initialization.
+    </div>
+
+   <jqx-grid settings="gridSettings"></jqx-grid>
+</body>
+</html>

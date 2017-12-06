@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Chart Custom Element RangeSelectorEvents</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Chart range selector events." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.rangeselector.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+
+        var source =
+            {
+                datatype: 'tsv',
+                datafields: [
+                    { name: 'Date' },
+                    { name: 'SPOpen' },
+                    { name: 'SPHigh' },
+                    { name: 'SPLow' },
+                    { name: 'SPClose' },
+                    { name: 'SPVolume' },
+                    { name: 'SPAdjClose' }
+                ],
+                url: '../sampledata/nasdaq_vs_sp500_detailed.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source, { async: false, autoBind: true, loadError: function (xhr, status, error) { alert('Error loading "' + source.url + '" : ' + error); } });
+
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        var toolTipCustomFormatFn = function (value, itemIndex, serie, group, categoryValue, categoryAxis) {
+            var dataItem = dataAdapter.records[itemIndex];
+            var volume = dataItem.SPVolume;
+
+            return '<DIV style="text-align:left"><b>Date: ' +
+                categoryValue.getDate() + '-' + months[categoryValue.getMonth()] + '-' + categoryValue.getFullYear() +
+                '</b><br />Index value: ' + value +
+                '</b><br />Daily volume: ' + volume + '</DIV>';
+        }
+
+        JQXElements.settings['chartContainer'] =
+            {
+                title: 'S&P 500 Index value and daily volume',
+                description: '(June 2010 - November 2019)',
+                enableAnimations: true,
+                animationDuration: 1500,
+                enableCrosshairs: true,
+                padding: { left: 20, top: 5, right: 20, bottom: 5 },
+                colorScheme: 'scheme17',
+                source: dataAdapter,
+                xAxis:
+                {
+                    dataField: 'Date',
+                    type: 'date',
+                    valuesOnTicks: true,
+                    labels:
+                    {
+                        formatFunction: function(value) {
+                            return value.getDate() + '-' + months[value.getMonth()] + '<br>' + value.getFullYear().toString();
+                        }
+                    },
+                    gridLines: { visible: false },
+                    rangeSelector: {
+                        size: 100,
+                        renderTo: document.getElementById('rangeSelector'),
+                        padding: { top: 10, bottom: 0 },
+                        backgroundColor: 'white',
+                        dataField: 'SPClose',
+                        baseUnit: 'month',
+                        showGridLines: false,
+                        formatFunction: function(value) {
+                            return months[value.getMonth()] + '\'' + value.getFullYear().toString().substring(2);
+                        }
+                    }
+                },
+                seriesGroups:
+                [
+                    {
+                        type: 'line',
+                        linesUnselectMode: 'click',
+                        toolTipFormatFunction: toolTipCustomFormatFn,
+                        valueAxis:
+                        {
+                            title: { text: 'S&P 500<br>' },
+                            gridLines: { visible: false },
+                        },
+                        series: [
+                            {
+                                dataField: 'SPClose',
+                                displayText: 'S&P Index Value',
+                                lineWidth: 1
+                            }
+                        ]
+                    },
+                    {
+                        type: 'area',
+                        toolTipFormatFunction: toolTipCustomFormatFn,
+                        linesUnselectMode: 'click',
+                        valueAxis:
+                        {
+                            position: 'right',
+                            title: { text: '<br>Daily Volume' },
+                            gridLines: { visible: false },
+                            labels:
+                            {
+                                formatFunction: function(value) {
+                                    return value / 1000000 + 'M';
+                                }
+                            }
+                        },
+                        series: [
+                            {
+                                dataField: 'SPVolume',
+                                displayText: 'S&P Index Volume',
+                                lineWidth: 1,
+                                opacity: 0.2
+                            }
+                        ]
+                    }
+                ]
+            };
+
+        window.onload = function() {
+            var myChart = document.querySelector('jqx-chart');
+            var myLog = document.querySelector('#eventsTextArea');
+
+           var dumpEventInfo = function(event) {
+               return;
+                var args = event.args;
+                if (event.type.indexOf('refresh') != -1) {
+                    if (myChart.getInstance() != args.instance)
+                        return;
+                }
+
+                var date = new Date();
+                var line = 'Time: ' + (date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()) + ', event: ' + event.type;
+
+                if (args.elementIndex)
+                    line += ', element index: ' + args.elementIndex;
+                if (args.elementValue) {
+                    line += ', value: ' + args.elementValue;
+                }
+
+                if (event.type == 'toggle') {
+                    line += ', series group index: ' + myChart.seriesGroups.indexOf(args.seriesGroup);
+                    line += ', visible: ' + args.state;
+                }
+
+                if (event.type.indexOf('rangeSelection') != -1) {
+                    line += ', minValue: ' + args.minValue.getFullYear() + '-' + (args.minValue.getMonth() + 1) + '-' + args.minValue.getDate();
+                    line += ', maxValue: ' + args.maxValue.getFullYear() + '-' + (args.maxValue.getMonth() + 1) + '-' + args.maxValue.getDate();
+                }
+
+                //myLog.innerHTML = line + '<br />' + myLog.innerHTML;
+            }
+
+            myChart.addEventListener('click mouseover mouseout toggle rangeSelectionChanging rangeSelectionChanged refreshBegin refreshEnd', function(event) {
+
+                if (event.args)
+                    dumpEventInfo(event);
+            });
+
+
+        }
+    </script>
+</head>
+<body>
+       
+    <div>
+        <jqx-chart settings='chartContainer' style="width:800px; height:500px;"></jqx-chart>
+        <div style="height:200px;" id="rangeSelector"></div>
+        <br />
+        <div id="eventsTextArea" style="width:800px; height: 200px"></div>
+    </div>
+        <div class="example-description">
+            <br />
+            <h2>Description</h2>
+            <br />
+            This is an example of Custom Element Chart Fluid Size. The width and height of the chart in this demo are in percentages.
+        </div>
+</body>
+</html>

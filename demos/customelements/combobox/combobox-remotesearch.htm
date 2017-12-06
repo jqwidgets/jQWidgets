@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>ComboBox Custom Element</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content=" " />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+
+        var source =
+            {
+                datatype: 'jsonp',
+                datafields: [
+                    { name: 'countryName' },
+                    { name: 'name' },
+                    { name: 'population', type: 'float' },
+                    { name: 'continentCode' },
+                    { name: 'adminName1' }
+                ],
+                url: 'http://api.geonames.org/searchJSON',
+                data: {
+                    featureClass: 'P',
+                    style: 'full',
+                    maxRows: 12,
+                    username: 'jqwidgets'
+                }
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source,
+            {
+                formatData: (data) => {
+                    if (myComboBox.searchString() != undefined) {
+                        data.name_startsWith = myComboBox.searchString();
+                        return data;
+                    }
+                }
+            }
+        );
+
+        window.onload = function() {
+            var myComboBox = document.createElement('jqx-combo-box');
+            myComboBox.settings = {
+
+                source: dataAdapter,
+                remoteAutoComplete: true,
+                autoDropDownHeight: true,
+                selectedIndex: 0,
+                displayMember: 'name',
+                valueMember: 'countryName',
+                renderer: (index, label, value) => {
+
+                    var item = dataAdapter.records[index];
+                    if (item != null) {
+                        var label = item.name + '(' + item.countryName + ', ' + item.adminName1 + ')';
+                        return label;
+                    }
+                    return '';
+                },
+
+                renderSelectedItem: (index, item) => {
+                    item = dataAdapter.records[index];
+
+                    if (item != null) {
+                        var label = item.name;
+                        return label;
+                    }
+                    return "";
+                },
+
+                search: (searchString) => {
+                    dataAdapter.dataBind();
+                }
+            }
+
+            document.querySelector('#jqxcombobox').appendChild(myComboBox);
+        }
+
+    </script>
+</head>
+<body>
+
+    <div class="example-description">
+        This demo illustrates the basic functionality of the ComboBox custom element.
+    </div>
+
+    <div style="font-size: 13px; font-family: Verdana; float: left;">
+
+        <span>Search for a City:</span>
+        <div style="margin-top: 7px; margin-bottom: 5px;" id="jqxcombobox"></div>
+        <span>ex: be</span>
+
+    </div>
+
+</body>
+</html>

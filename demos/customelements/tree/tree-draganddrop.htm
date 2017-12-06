@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tree Custom Element DragAndDrop</title>
+    <meta name="description" content="This is an example of the drag and drop function in Tree Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdragdrop.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['tree1Settings'] =
+            {
+                allowDrag: true, allowDrop: true,
+                dragStart: item => {
+                    if (item.label == 'Community') return false;
+                }
+            };
+
+        JQXElements.settings['tree2Settings'] =
+            {
+                allowDrag: true, allowDrop: true,
+                dragEnd: (item, dropItem, args, dropPosition, tree) => {
+                    if (item.label == 'Forum') return false;
+                }
+            };
+
+        var onDragStart = event => {
+            document.querySelector('#dragStartLog').innerHTML = 'Drag Start: ' + event.args.label;
+            document.querySelector('#dragEndLog').innerHTML = '';
+        };
+
+        var onDragEnd = event => {
+            document.querySelector('#dragEndLog').innerHTML = 'Drag End';
+            if (event.args.label) {
+                var ev = event.args.originalEvent;
+                var x = ev.pageX;
+                var y = ev.pageY;
+                if (event.args.originalEvent && event.args.originalEvent.originalEvent && event.args.originalEvent.originalEvent.touches) {
+                    var touch = event.args.originalEvent.originalEvent.changedTouches[0];
+                    x = touch.pageX;
+                    y = touch.pageY;
+                }
+                var myTextArea = document.querySelector('#textArea');
+                var width = myTextArea.clientWidth;
+                var height = myTextArea.clientHeight;
+                var right = myTextArea.offsetLeft + width;
+                var bottom = myTextArea.offsetTop + height;
+                if (x >= myTextArea.offsetLeft && x <= right) {
+                    if (y >= myTextArea.offsetTop && y <= bottom) {
+                        myTextArea.value = event.args.label;
+                    }
+                }
+            }
+        };
+
+        window.onload = function() {
+            var myTrees = document.querySelectorAll('jqx-tree');
+
+            myTrees[0].addEventListener('dragStart', event => onDragStart(event));
+            myTrees[1].addEventListener('dragStart', event => onDragStart(event));
+            myTrees[0].addEventListener('dragEnd', event => onDragEnd(event));
+            myTrees[1].addEventListener('dragEnd', event => onDragEnd(event));
+           
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The sample demonstrates the Tree Custom Element drag and drop functionality.
+    </div> 
+
+    <div style='float: left;'>
+        <jqx-tree settings="tree1Settings" style='float: left; margin-left: 0px;'>
+            <ul>
+                <li item-selected='true'>Home</li>
+                <li item-expanded='true'>
+                    Solutions
+                    <ul>
+                        <li>Education</li>
+                    </ul>
+                </li>
+                <li>Financial services</li>
+                <li>Community</li>
+            </ul>
+        </jqx-tree>
+
+        <jqx-tree settings="tree2Settings" style='float: left; margin-left: 20px;'>
+            <ul>
+                <li>
+                    Products
+                </li>
+                <li item-expanded='true'>
+                    Support
+                    <ul>
+                        <li>Support home</li>
+                        <li>Customer Service</li>
+                    </ul>
+                </li>
+                <li>Knowledge base</li>
+                <li>Forum</li>
+            </ul>
+        </jqx-tree>
+
+        <div style="width: 200px; height: 200px; float: left; margin-left: 20px;">
+            <textarea rows="5" id="textArea"></textarea>
+        </div>
+    </div>
+
+    <div style="font-size: 13px; font-family: Verdana; padding-top: 20px; clear: both;">
+        <b>Events Log:</b>
+        <div id="dragStartLog"></div>
+        <div id="dragEndLog"></div>
+        <br />
+        <b>Note:</b>
+        <br />
+        Dragging of "Community" is disabled.
+        <br />
+        Dropping of "Forum" is disabled.
+    </div>
+</body>
+</html>

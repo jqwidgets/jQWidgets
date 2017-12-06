@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Splitter Custom Element DefaultFunctionality</title>
+    <meta name="description" content="This is an example of default functionalities in Splitter Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['splitter1Settings'] =
+            {
+                panels: [{ size: 200, min: 100 }, { min: 200, size: 400 }],
+                height: 600
+            };
+        JQXElements.settings['splitter2Settings'] =
+            {
+                orientation: 'horizontal',
+                width: '100%',
+                height: '100%',
+                panels: [{ size: 400, min: 100, collapsible: false }, { min: 100, collapsible: true }],
+            };
+        JQXElements.settings['expandersSettings'] =
+            {
+                toggleMode: 'none',
+                width: '100%',
+                height: '100%',
+                showArrow: false
+            };
+        JQXElements.settings['listBoxSettings'] =
+            {
+                source: ['1'],
+                width: '100%',
+                height: '100%'
+            };
+
+        window.onload = function() {
+            var mySplitters = document.querySelectorAll('jqx-splitter');
+            var myExpanders = document.querySelectorAll('jqx-expander');
+            var myTree = document.querySelector('jqx-tree');
+            var myListBox = document.querySelector('jqx-list-box');
+            var myPanel = document.querySelector('jqx-panel');
+
+            config =
+                {
+                    feeds: { 'CNN.com': 'cnn', 'Geek.com': 'geek', 'ScienceDaily': 'sciencedaily' },
+                    format: 'txt',
+                    dataDir: '../sampledata',
+                    selectedIndex: -1,
+                    currentFeed: '',
+                    currentFeedContent: {}
+                };      
+
+            var selectFirst = _ => {
+                myListBox.selectIndex(0);
+                loadContent(0);
+            };
+
+            var getFeed = feed => {
+                config['currentFeed'] = feed;
+                if (feed !== undefined) {
+                    feed = config['dataDir'] + '/' + feed + '.' + config['format'];
+                    loadFeed(feed);
+                }
+            };
+
+            var loadFeed = (feed, callback) => {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = _ => {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        var data = JSON.parse(xhttp.responseText);
+                        var channel = data.rss.channel;
+                        config['currentFeedContent'] = channel.item;
+                        displayFeedList(config['currentFeedContent']);
+                        displayFeedHeader(channel.title);
+                        selectFirst();
+                    }
+                };
+                xhttp.open('GET', feed, true);
+                xhttp.send();
+            };
+
+            var getHeaders = items => {
+                var headers = [], header;
+                for (var i = 0; i < items.length; i += 1) {
+                    header = items[i].title;
+                    headers.push(header);
+                }
+                return headers;
+            };
+
+            var displayFeedHeader = header => {
+                myExpanders[1].setHeaderContent(header);
+            };
+
+            var displayFeedList = items => {
+                var headers = getHeaders(items);
+                myListBox.source = headers;
+            };
+
+            var loadContent = index => {
+                var item = config['currentFeedContent'][index];
+                if (item != null) {
+                    myPanel.clearcontent();
+                    myPanel.prepend('<div style="padding: 1px;"><span>' + item.description + '</span></div>');
+                    addContentHeaderData(item);
+                    config['selectedIndex'] = index;
+                }
+            };
+
+            var addContentHeaderData = item => {
+                var text = document.createTextNode('Source');
+
+                var link = document.createElement('a');
+                link.style.whiteSpace = 'nowrap';
+                link.style.marginLeft = '15px';
+                link.target = '_blank';
+                link.href = item.link;             
+                link.appendChild(text);
+
+                var date = document.createElement('div');
+                date.style.whiteSpace = 'nowrap';
+                date.style.marginLeft = '30px';
+                date.appendChild(document.createTextNode(item.pubDate));
+
+                var container = document.createElement('table');
+                container.style.height = '100%';
+                container.appendChild(document.createElement('tr'));
+                container.appendChild(document.createElement('td'));
+                container.appendChild(document.createElement('td'));
+
+                document.querySelector('#feedItemHeader').innerHTML = null;
+                document.querySelector('#feedItemHeader').appendChild(container);
+                container.querySelectorAll('td')[0].appendChild(link);
+                container.querySelector('td:last-child').appendChild(date);
+                myExpanders[2].setHeaderContent(container.outerHTML);
+            };
+
+            getFeed('sciencedaily');
+
+            myTree.addEventListener('select', event => {
+                var item = myTree.getItem(event.args.element);
+                getFeed(config['feeds'][item.label]);
+            });
+
+            myListBox.addEventListener('select', event => {
+                loadContent(event.args.index);
+            });
+        };
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates the basic functionality of the Splitter Custom Element.
+    </div>
+
+    <jqx-splitter settings="splitter1Settings">
+        <div>
+            <jqx-expander settings="expandersSettings" style="border: none;">
+                <div class="jqx-hideborder">
+                    Feeds
+                </div>
+                <div class="jqx-hideborder jqx-hidescrollbars">
+                    <jqx-tree>
+                        <ul>
+                            <li item-expanded="true" id="t1">
+                                <img src="../images/contactsIcon.png" /><span item-title="true">News and Blogs</span>
+                                <ul>
+                                    <li>
+                                        <img src="../images/favorites.png" /><span item-title="true">Favorites</span>
+                                        <ul>
+                                            <li>
+                                                <img src="../images/folder.png" /><span item-title="true">ScienceDaily</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <img src="../images/folder.png" /><span item-title="true">Geek.com</span>
+                                    </li>
+                                    <li>
+                                        <img src="../images/folder.png" /><span item-title="true">CNN.com</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </jqx-tree>
+                </div>
+            </jqx-expander>
+        </div>
+        <div>
+            <jqx-splitter settings="splitter2Settings">
+                <div class="feed-item-list-container" id="feedUpperPanel">
+                    <jqx-expander settings="expandersSettings" class="jqx-hideborder">
+                        <div class="jqx-hideborder" id="feedHeader">
+                        </div>
+                        <div class="jqx-hideborder jqx-hidescrollbars">
+                            <jqx-list-box settings="listBoxSettings" class="jqx-hideborder"></jqx-list-box>
+                        </div>
+                    </jqx-expander>
+                </div>
+                <div id="feedContentArea">
+                    <jqx-expander settings="expandersSettings" class="jqx-hideborder">
+                        <div class="jqx-hideborder" id="feedItemHeader"></div>
+                        <div class="jqx-hideborder jqx-hidescrollbars">
+                            <jqx-panel style="width:100%;" class="jqx-hideborder">
+                                Select a news item to see it"s content
+                            </jqx-panel>
+                        </div>
+                    </jqx-expander>
+                </div>
+            </jqx-splitter>
+        </div>
+    </jqx-splitter>
+
+</body>
+</html>

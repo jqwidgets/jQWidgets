@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element CellsStyling</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of adding custom CSS styles in Custom Element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                datatype: 'xml',
+                datafields: [
+                    { name: 'ProductName', type: 'string' },
+                    { name: 'QuantityPerUnit', type: 'int' },
+                    { name: 'UnitPrice', type: 'float' },
+                    { name: 'UnitsInStock', type: 'float' },
+                    { name: 'Discontinued', type: 'bool' }
+                ],
+                root: 'Products',
+                record: 'Product',
+                id: 'ProductID',
+                url: '../sampledata/products.xml'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var cellClass = (row, columnfield, value) => {
+            if (value < 20) {
+                return 'red';
+            }
+            else if (value >= 20 && value < 50) {
+                return 'yellow';
+            }
+            else return 'green';
+        }
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: dataAdapter,
+                pageable: true,
+                autoheight: true,
+                sortable: true,
+                altrows: true,
+                enabletooltips: true,
+                editable: true,
+                selectionmode: 'multiplecellsadvanced',
+                columns: [
+                    { text: 'Product Name', datafield: 'ProductName', width: 250 },
+                    { text: 'Quantity per Unit', datafield: 'QuantityPerUnit', cellsalign: 'right', align: 'right', width: 120 },
+                    { text: 'Unit Price', datafield: 'UnitPrice', align: 'right', cellsalign: 'right', cellsformat: 'c2', width: 100 },
+                    { text: 'Units In Stock', datafield: 'UnitsInStock', cellsalign: 'right', cellclassname: cellClass, width: 100 },
+                    { text: 'Discontinued', columntype: 'checkbox', datafield: 'Discontinued' },
+                ]
+            };
+    </script>
+    <style>
+        .green {
+            color: black\9;
+            background-color: #b6ff00\9;
+        }
+
+        .yellow {
+            color: black\9;
+            background-color: yellow\9;
+        }
+
+        .red {
+            color: black\9;
+            background-color: #e83636\9;
+        }
+
+        .green:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected), .jqx-widget .green:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected) {
+            color: black;
+            background-color: #b6ff00;
+        }
+
+        .yellow:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected), .jqx-widget .yellow:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected) {
+            color: black;
+            background-color: yellow;
+        }
+
+        .red:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected), .jqx-widget .red:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected) {
+            color: black;
+            background-color: #e83636;
+        }
+    </style>
+</head>
+<body>
+    <div class="example-description">
+        The sample illustrates how to add custom CSS styles to Custom element Grid cells under specific conditions.
+    </div>
+
+    <jqx-grid settings="gridSettings"></jqx-grid>
+</body>
+</html>

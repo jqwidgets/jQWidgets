@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Description">PivotGrid Custom Element - olap and tree style rows display</title>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>   
+    <script type="text/javascript" src="../jqwidgets/jqxpivot.js"></script> 
+    <script type="text/javascript" src="../jqwidgets/jqxpivotgrid.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+            // prepare sample data
+            var data = new Array();
+
+            var firstNames =
+            [
+                "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter"
+            ];
+
+            var lastNames =
+            [
+                "Fuller", "Davolio", "Burke", "Murphy", "Nagase"
+            ];
+
+            var productNames =
+            [
+                "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist"
+            ];
+
+            var priceValues =
+            [
+                "2.25", "1.5", "3.0", "3.3", "4.5", "3.6", "3.8", "2.5", "5.0", "1.75", "3.25", "4.0"
+            ];
+
+            for (var i = 0; i < 500; i++) {
+                var row = {};
+                var productindex = Math.floor(Math.random() * productNames.length);
+                var price = parseFloat(priceValues[productindex]);
+                var quantity = 1 + Math.round(Math.random() * 10);
+
+                row["firstname"] = firstNames[Math.floor(Math.random() * firstNames.length)];
+                row["lastname"] = lastNames[Math.floor(Math.random() * lastNames.length)];
+                row["productname"] = productNames[productindex];
+                row["price"] = price;
+                row["quantity"] = quantity;
+                row["total"] = price * quantity;
+
+                data[i] = row;
+            }
+
+            // create a data source and data adapter
+            var source =
+            {
+                localdata: data,
+                datatype: "array",
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'total', type: 'number' }
+                ]
+            };
+
+            // create a pivot data source from the dataAdapter
+            var pivotDataSource = new jqx.pivot(
+                 new jqx.dataAdapter(source, {autoBind: true}),
+                {
+                    pivotValuesOnRows: false,
+                    rows: [{ dataField: 'firstname' }, { dataField: 'lastname'}],
+                    columns: [{ dataField: 'productname'}],
+                    filters: [
+                        {
+                            dataField: 'productname',
+                            filterFunction: function (value) {
+                                if (value == "Black Tea" || value == "Green Tea")
+                                    return true;
+
+                                return false;
+                            }
+                        }
+                    ],
+                    values: [
+                        { dataField: 'price', 'function': 'sum', text: 'sum', formatSettings: { prefix: '', decimalPlaces: 2} },
+                        { dataField: 'price', 'function': 'count', text: 'count' },
+                        { dataField: 'price', 'function': 'average', text: 'average', formatSettings: { prefix: '', decimalPlaces: 2} }
+                    ]
+                });
+
+            // create a pivot grid
+            JQXElements.settings["pivotSettings"] =            
+            {
+                source: pivotDataSource,
+                treeStyleRows: false,
+                autoResize: false,
+                multipleSelectionEnabled: true
+            };
+
+            window.onload = function () {
+                // get the pivot grid instance
+                var pivotGridInstance = document.querySelector('jqx-pivot-grid').getInstance();
+                var button = document.querySelector('jqx-toggle-button');
+
+                pivotGridInstance.getPivotRows().items[0].expand();
+                pivotGridInstance.refresh();
+
+                button.addEventListener('click', function () {
+                    if (pivotGridInstance.treeStyleRows) {
+                        button.val('Change to Tree style display');
+                        pivotGridInstance.treeStyleRows = false;
+                    }
+                    else {
+                        button.val('Change to OLAP style display');
+                        pivotGridInstance.treeStyleRows = true;
+                    }
+
+                    pivotGridInstance.refresh();
+                });
+            } 
+    </script>
+</head>
+<body class='default'>
+    <jqx-pivot-grid settings="pivotSettings" id="divPivotGrid" style="height: 400px; width: 800px; background-color: white;">
+    </jqx-pivot-grid>
+    <br />
+    <jqx-toggle-button id="btnCheckRowsDisplayStyle">Change to Tree style display</jqx-toggle-button>
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        <div style="width: 800px;">
+            This is an example of Pivot Grid with rows rendered in a tree structure where the parent row appears above the descending rows.
+            The pivot grid also supports a rendering mode where the parent rows appear on the left side relative to their descending rows.
+            Click the buttom below the pivot grid to switch the pivot rows display style between OLAP and compact tree-style display.
+        </div>
+    </div>
+
+</body>
+</html>

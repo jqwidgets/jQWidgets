@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Toolbar Custom Element RightToLeft</title>
+    <meta name="description" content="This is an example of the right to left support of Toolbar Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtoolbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['toolbarSettings'] =
+            {
+                rtl: true,
+                width: '50%',
+                tools: 'toggleButton toggleButton toggleButton | toggleButton | dropdownlist combobox | input',
+                initTools: (type, index, tool, menuToolIninitialization) => {
+                    var icon = document.createElement('div');
+                    if (type == 'toggleButton') {
+                        icon.className = 'jqx-editor-toolbar-icon jqx-editor-toolbar-icon-arctic buttonIcon ';
+                    }
+                    switch (index) {
+                        case 0:
+                            icon.className += 'jqx-editor-toolbar-icon-bold jqx-editor-toolbar-icon-bold-arctic';
+                            icon.setAttribute('title', 'Bold');
+                            tool[0].appendChild(icon);
+                            break;
+                        case 1:
+                            icon.className += 'jqx-editor-toolbar-icon-italic jqx-editor-toolbar-icon-italic-arctic';
+                            icon.setAttribute('title', 'Italic');
+                            tool[0].appendChild(icon);
+                            break;
+                        case 2:
+                            icon.className += 'jqx-editor-toolbar-icon-underline jqx-editor-toolbar-icon-underline-arctic';
+                            icon.setAttribute('title', 'Underline');
+                            tool[0].appendChild(icon);
+                            break;
+                        case 3:
+                            tool.jqxToggleButton({ toggled: true });
+                            tool.text('Enabled');
+                            tool.on('click', function() {
+                                var toggled = tool.jqxToggleButton('toggled');
+                                if (toggled) {
+                                    tool.text('Enabled');
+                                } else {
+                                    tool.text('Disabled');
+                                }
+                            });
+                            break;
+                        case 4:
+                            tool.jqxDropDownList({ source: ['<span style="font-family: Courier New;">Courier New</span>', '<span style="font-family: Times New Roman;">Times New Roman</span>', '<span style="font-family: Verdana;">Verdana</span>'], selectedIndex: 1 });
+                            break;
+                        case 5:
+                            tool.jqxComboBox({ source: [8, 9, 10, 11, 12, 14, 16, 18, 20], selectedIndex: 3 });
+                            break;
+                        case 6:
+                            tool.jqxInput({ placeHolder: 'Type here to search...' });
+                            break;
+                    }
+                }
+            };
+    </script>
+
+    <style type="text/css">
+        .buttonIcon {
+            margin: -5px 0 0 -3px;
+            width: 16px;
+            height: 17px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="example-description">
+        This demo showcases Toolbar Custom Element right-to-left support.
+    </div>
+    <jqx-tool-bar settings="toolbarSettings"></jqx-tool-bar>
+</body>
+</html>

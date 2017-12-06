@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Scheduler Custom Element AppointmentCustomization</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of appointment customization in Custom Element Scheduler." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdate.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscheduler.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscheduler.api.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.culture.de-DE.js"></script>
+    <script>
+        var appointments = new Array();
+
+        var appointment1 = {
+            id: 'id1',
+            description: 'Quarterly Project Review Meeting',
+            location: '',
+            subject: 'Nancy',
+            calendar: 'Room 1',
+            start: new Date(2016, 10, 23, 9, 0, 0),
+            end: new Date(2016, 10, 23, 16, 0, 0)
+        }
+        var appointment2 = {
+            id: 'id2',
+            description: 'IT Group Mtg.',
+            location: '',
+            subject: 'John',
+            calendar: 'Room 2',
+            start: new Date(2016, 10, 24, 10, 0, 0),
+            end: new Date(2016, 10, 24, 15, 0, 0)
+        }
+        var appointment3 = {
+            id: 'id3',
+            description: 'Course Social Media',
+            location: '',
+            subject: 'Antony',
+            calendar: 'Room 3',
+            start: new Date(2016, 10, 27, 11, 0, 0),
+            end: new Date(2016, 10, 27, 13, 0, 0)
+        }
+        var appointment4 = {
+            id: 'id4',
+            description: 'New Projects Planning',
+            location: '',
+            subject: 'Michael',
+            calendar: 'Room 2',
+            start: new Date(2016, 10, 23, 16, 0, 0),
+            end: new Date(2016, 10, 23, 18, 0, 0)
+        }
+        var appointment5 = {
+            id: 'id5',
+            description: 'Interview with James',
+            location: '',
+            subject: 'Peter',
+            calendar: 'Room 1',
+            start: new Date(2016, 10, 25, 15, 0, 0),
+            end: new Date(2016, 10, 25, 17, 0, 0)
+        }
+        var appointment6 = {
+            id: 'id6',
+            description: 'Interview with Nancy',
+            location: '',
+            subject: 'George',
+            calendar: 'Room 4',
+            start: new Date(2016, 10, 26, 14, 0, 0),
+            end: new Date(2016, 10, 26, 16, 0, 0)
+        }
+        appointments.push(appointment1);
+        appointments.push(appointment2);
+        appointments.push(appointment3);
+        appointments.push(appointment4);
+        appointments.push(appointment5);
+        appointments.push(appointment6);
+
+        var source =
+            {
+                dataType: 'array',
+                dataFields: [
+                    { name: 'id', type: 'string' },
+                    { name: 'description', type: 'string' },
+                    { name: 'location', type: 'string' },
+                    { name: 'subject', type: 'string' },
+                    { name: 'calendar', type: 'string' },
+                    { name: 'style', type: 'string' },
+                    { name: 'color', type: 'string' },
+                    { name: 'background', type: 'string' },
+                    { name: 'borderColor', type: 'string' },
+                    { name: 'start', type: 'date' },
+                    { name: 'end', type: 'date' }
+                ],
+                id: 'id',
+                localData: appointments
+            };
+
+        JQXElements.settings['schedulerSettings'] =
+            {
+                date: new jqx.date(2016, 11, 23),
+                width: 850,
+                height: 600,
+                source: new jqx.dataAdapter(source),
+                renderAppointment: function (data) {
+                    var img = '<img style="top: 2px; position: relative;" src="../images/person.png"/>';
+
+                    if (data.appointment.subject == 'Nancy') {
+                        img = '<img style="top: 2px; position: relative;" src="../images/woman.png"/>';
+                    }
+                    else if (data.appointment.subject == 'Peter') {
+                        img = '<img style="top: 2px; position: relative;" src="../images/boss.png"/>';
+                    }
+                    else if (data.appointment.subject == 'Antony') {
+                        img = '<img style="top: 2px; position: relative;" src="../images/oldboss.png"/>';
+                    }
+                    else if (data.appointment.subject == 'John') {
+                        img = '<img style="top: 2px; position: relative;" src="../images/asian.png"/>';
+                    }
+
+                    if (data.view == 'weekView' || data.view == 'dayView' || data.view == 'monthView') {
+                        data.html =  img + '<i>' + data.appointment.subject + '</i>';
+                        if (data.appointment.id == 'id1') {
+                            data.style = '#AA4643';
+                        }
+                        else if (data.appointment.id == 'id2' || data.appointment.id == 'id6') {
+                            data.style = '#309B46';
+                        }
+                        else if (data.appointment.id == 'id3') {
+                            data.style = '#447F6E';
+                        }
+                    }
+                    return data;
+                },
+                ready: function() {
+                    var myScheduler = document.querySelector('jqx-scheduler');
+                    myScheduler.ensureAppointmentVisible('id1');
+                },
+                appointmentDataFields:
+                {
+                    from: 'start',
+                    to: 'end',
+                    id: 'id',
+                    description: 'description',
+                    location: 'location',
+                    subject: 'subject',
+                    style: 'style',
+                    color: 'color',
+                    background: 'background',
+                    borderColor: 'borderColor'
+                },
+                view: 'weekView',
+                appointmentsMinHeight: 20,
+                views:
+                [
+                    'dayView',
+                    'weekView',
+                    'monthView'
+                ]
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This example demonstrates how to customize the appearance of Custom element Schedulers' appointments
+    </div>
+
+    <jqx-scheduler settings="schedulerSettings"></jqx-scheduler>
+</body>
+</html>

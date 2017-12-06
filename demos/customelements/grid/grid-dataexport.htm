@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element DataExport</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the type of data Custom Element Grid can export to." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.export.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.export.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript">
+        var data = generatedata(100);
+
+        var source =
+            {
+                localdata: data,
+                datatype: 'array',
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'available', type: 'bool' },
+                    { name: 'date', type: 'date' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' }
+                ]
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: dataAdapter,
+                altrows: true,
+                sortable: true,
+                selectionmode: 'multiplecellsextended',
+                columns: [
+                    { text: 'First Name', datafield: 'firstname', width: 130 },
+                    { text: 'Last Name', datafield: 'lastname', width: 130 },
+                    { text: 'Product', datafield: 'productname', width: 200 },
+                    { text: 'Available', datafield: 'available', columntype: 'checkbox', width: 67, cellsalign: 'center', align: 'center' },
+                    { text: 'Ship Date', datafield: 'date', width: 120, align: 'right', cellsalign: 'right', cellsformat: 'd' },
+                    { text: 'Quantity', datafield: 'quantity', width: 70, align: 'right', cellsalign: 'right' },
+                    { text: 'Price', datafield: 'price', cellsalign: 'right', align: 'right', cellsformat: 'c2' }
+                ]
+            }
+
+        window.onload = function() {
+            var myButtons = document.querySelectorAll('jqx-button');
+            var myGrid = document.querySelector('jqx-grid');
+
+            myButtons[0].addEventListener('click', function() {
+                myGrid.exportdata('xls', 'jqxGrid');
+            });
+            myButtons[1].addEventListener('click', function() {
+                myGrid.exportdata('xml', 'jqxGrid');
+            });
+            myButtons[2].addEventListener('click', function() {
+                myGrid.exportdata('csv', 'jqxGrid');
+            });
+            myButtons[3].addEventListener('click', function() {
+                myGrid.exportdata('tsv', 'jqxGrid');
+            });
+            myButtons[4].addEventListener('click', function() {
+                myGrid.exportdata('html', 'jqxGrid');
+            });
+            myButtons[5].addEventListener('click', function() {
+                myGrid.exportdata('json', 'jqxGrid');
+            });
+            myButtons[6].addEventListener('click', function() {
+                myGrid.exportdata('pdf', 'jqxGrid');
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        With Custom element Grid, you can export your data to Excel, XML, CSV, TSV, JSON, PDF and HTML.
+    </div>
+
+   <jqx-grid settings="gridSettings"></jqx-grid>
+
+    <div style='margin-top: 20px;'>
+        <div style='float: left;'>
+            <jqx-button>Export to Excel</jqx-button>
+            <br /><br />
+            <jqx-button>Export to XML</jqx-button>
+        </div>
+        <div style='margin-left: 10px; float: left;'>
+            <jqx-button>Export to CSV</jqx-button>
+            <br /><br />
+            <jqx-button>Export to TSV</jqx-button>
+        </div>
+        <div style='margin-left: 10px; float: left;'>
+            <jqx-button>Export to HTML</jqx-button>
+            <br /><br />
+            <jqx-button>Export to JSON</jqx-button>
+        </div>
+        <div style='margin-left: 10px; float: left;'>
+            <jqx-button>Export to PDF</jqx-button>
+        </div>
+    </div>
+</body>
+</html>

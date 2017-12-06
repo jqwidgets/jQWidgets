@@ -29,48 +29,48 @@ declare module jqwidgets {
 
     export interface BarGaugeLabelsFont {
         // BarGaugeLabelsFont properties
-        color?: string;
-        size?: Number | String;
-        family?: string;
+        color?: undefined;
+        size?: number | string;
+        family?: undefined;
     }// BarGaugeLabelsFont
 
     export interface BarGaugeLabels {
         // BarGaugeLabels properties
-        connectorColor?: string;
-        connectorWidth?: number;
+        connectorColor?: undefined;
+        connectorWidth?: undefined;
         font?: BarGaugeLabelsFont;
         formatFunction?: (value?: number, index?: number) => string;
-        indent?: number;
-        precision?: number;
-        visible?: boolean;
+        indent?: undefined;
+        precision?: undefined;
+        visible?: undefined;
     }// BarGaugeLabels
 
     export interface BarGaugeTextFont {
         // BarGaugeTextFont properties
-        color?: string;
-        family?: string;
-        opacity?: number;
-        size?: Number | String;
-        weight?: number;
+        color?: undefined;
+        family?: undefined;
+        opacity?: undefined;
+        size?: number | string;
+        weight?: undefined;
     }// BarGaugeTextFont
 
     export interface BarGaugeTitleMargin {
         // BarGaugeTitleMargin properties
-        bottom?: number;
-        left?: number;
-        right?: number;
-        top?: number;
+        bottom?: undefined;
+        left?: undefined;
+        right?: undefined;
+        top?: undefined;
     }// BarGaugeTitleMargin
 
     export interface BarGaugeTitleSubtitle {
         // BarGaugeTitleSubtitle properties
-        text?: string;
+        text?: undefined;
         font?: BarGaugeTextFont;
     }// BarGaugeTitleSubtitle
 
     export interface BarGaugeTitle {
         // BarGaugeTitle properties
-        text?: string;
+        text?: undefined;
         font?: BarGaugeTextFont;
         horizontalAlignment?: string;
         margin?: BarGaugeTitleMargin;
@@ -80,48 +80,48 @@ declare module jqwidgets {
 
     export interface BarGaugeFormatFunction {
         // BarGaugeFormatFunction properties
-        value?: number;
-        index?: number;
-        color?: string;
+        value?: undefined;
+        index?: undefined;
+        color?: undefined;
     }// BarGaugeFormatFunction
 
     export interface BarGaugeTooltip {
         // BarGaugeTooltip properties
-        classname?: string;
+        classname?: undefined;
         formatFunction?: (value?: any, index?: number) => string;
-        visible?: boolean;
-        precision?: number;
+        visible?: undefined;
+        precision?: undefined;
     }// BarGaugeTooltip
 
     export interface BarGaugeCustomColorScheme {
         // BarGaugeCustomColorScheme properties
-        name: string;
-        colors: Array<String>;
+        name: undefined;
+        colors: Array<string>;
     }// BarGaugeCustomColorScheme
 
     export interface BarGaugeOptions {
         // BarGaugeOptions properties
-        animationDuration?: number;
-        backgroundColor?: string;
-        barSpacing?: number;
-        baseValue?: number;
-        colorScheme?: string;
+        animationDuration?: undefined;
+        backgroundColor?: undefined;
+        barSpacing?: undefined;
+        baseValue?: undefined;
+        colorScheme?: undefined;
         customColorScheme?: BarGaugeCustomColorScheme;
-        disabled?: boolean;
-        endAngle?: number;
+        disabled?: undefined;
+        endAngle?: undefined;
         formatFunction?: any;
-        height?: String | Number;
+        height?: string | number;
         labels?: BarGaugeLabels;
-        max?: Number | String;
-        min?: number;
-        relativeInnerRadius?: Number | String;
+        max?: number | string;
+        min?: undefined;
+        relativeInnerRadius?: number | string;
         rendered?: () => void;
-        startAngle?: number;
+        startAngle?: undefined;
         title?: BarGaugeTitle;
         tooltip?: BarGaugeTooltip;
-        useGradient?: boolean;
-        values?: Array<Number>;
-        width?: String | Number;
+        useGradient?: undefined;
+        values?: Array<number>;
+        width?: string | number;
     }// BarGaugeOptions
 
     export interface jqxBarGauge extends widget, BarGaugeOptions {
@@ -129,12 +129,12 @@ declare module jqwidgets {
         // jqxBarGauge functions
         refresh(): void;
         render(): void;
-        val(value: Array<Number>): Array<Number>;
+        val(value: Array<number>): Array<number>;
     }// jqxBarGauge
 
     export interface PivotDesignerOptions {
         // PivotDesignerOptions properties
-        type?: string;
+        type?: undefined;
         target: any;
     }// PivotDesignerOptions
 
@@ -147,98 +147,98 @@ declare module jqwidgets {
 
     export interface PivotGridField {
         // PivotGridField properties
-        dataField: string;
-        text?: string;
-        align?: string;
-        className?: string;
-        classNameSelected?: string;
+        dataField: undefined;
+        text?: undefined;
+        align?: undefined;
+        className?: undefined;
+        classNameSelected?: undefined;
     }// PivotGridField
 
     export interface PivotGridFilterField {
         // PivotGridFilterField properties
-        dataField: string;
-        text?: string;
-        filterFunction: (value: any) => Boolean;
+        dataField: undefined;
+        text?: undefined;
+        filterFunction: (value: any) => boolean;
     }// PivotGridFilterField
 
     export interface PivotGridCellFormatSettings {
         // PivotGridCellFormatSettings properties
-        prefix?: string;
-        sufix?: string;
-        decimalSeparator?: string;
-        thousandsSeparator?: string;
-        decimalPlaces?: number;
-        negativeWithBrackets?: boolean;
+        prefix?: undefined;
+        sufix?: undefined;
+        decimalSeparator?: undefined;
+        thousandsSeparator?: undefined;
+        decimalPlaces?: undefined;
+        negativeWithBrackets?: undefined;
     }// PivotGridCellFormatSettings
 
     export interface PivotGridValueField {
         // PivotGridValueField properties
-        dataField: string;
+        dataField: undefined;
         function: any;
-        text?: string;
-        align?: string;
-        className?: string;
-        classNameSelected?: string;
-        cellsClassName?: string;
-        cellsClassNameSelected?: string;
+        text?: undefined;
+        align?: undefined;
+        className?: undefined;
+        classNameSelected?: undefined;
+        cellsClassName?: undefined;
+        cellsClassNameSelected?: undefined;
         formatSettings?: PivotGridCellFormatSettings;
     }// PivotGridValueField
 
     export interface PivotGridSettings {
         // PivotGridSettings properties
-        pivotValuesOnRows?: boolean;
+        pivotValuesOnRows?: undefined;
         rows: Array<PivotGridField>;
         columns: Array<PivotGridField>;
         values: Array<PivotGridValueField>;
         filters?: Array<PivotGridFilterField>;
-        theme?: string;
+        theme?: undefined;
     }// PivotGridSettings
 
     export interface PivotGridPoint {
         // PivotGridPoint properties
-        x: number;
-        y: number;
+        x: undefined;
+        y: undefined;
     }// PivotGridPoint
 
     export interface PivotGridItem {
         // PivotGridItem properties
-        isExpanded: boolean;
-        isHidden: boolean;
-        isSelected: boolean;
+        isExpanded: undefined;
+        isHidden: undefined;
+        isSelected: undefined;
         parentItem: PivotGridItem;
         hierarchy: any;
         parentPivotGrid: jqxPivotGrid;
         items: Array<PivotGridItem>;
         valueItems: Array<PivotGridItem>;
         // PivotGridItem functions
-        getWidth(): number;
-        getDisplayWidth(): number;
+        getWidth(): undefined;
+        getDisplayWidth(): undefined;
         autoResize(): void;
-        getHeight(): number;
-        getDisplayHeight(): number;
-        setHeight(height: number): void;
+        getHeight(): undefined;
+        getDisplayHeight(): undefined;
+        setHeight(height: undefined): void;
         expand(): void;
         collapse(): void;
     }// PivotGridItem
 
     export interface PivotGridRows {
         // PivotGridRows properties
-        resizable: boolean;
-        sortable: boolean;
-        showExpandCollapseButtons: boolean;
+        resizable: undefined;
+        sortable: undefined;
+        showExpandCollapseButtons: undefined;
         parentPivotGrid: jqxPivotGrid;
         items: Array<PivotGridItem>;
         valueItems: Array<PivotGridItem>;
-        isHidden?: boolean;
+        isHidden?: undefined;
         // PivotGridRows functions
         show(): void;
         hide(): void;
         refresh(): void;
         getHierarchyDepth(): number;
-        autoResize(autoResizeMode: string): void;
+        autoResize(autoResizeMode: undefined): void;
         getSortItem(): any;
         getSortOrder(): any;
-        sortBy(pivotItem: PivotGridItem, sortOrder: string): void;
+        sortBy(pivotItem: PivotGridItem, sortOrder: undefined): void;
         removeSort(): void;
         selectItem(pivotItem: PivotGridItem): void;
         unselectItem(pivotItem: PivotGridItem): void;
@@ -248,22 +248,22 @@ declare module jqwidgets {
 
     export interface PivotGridColumns {
         // PivotGridColumns properties
-        resizable: boolean;
-        sortable: boolean;
-        showExpandCollapseButtons: boolean;
+        resizable: undefined;
+        sortable: undefined;
+        showExpandCollapseButtons: undefined;
         parentPivotGrid: jqxPivotGrid;
         items: Array<PivotGridItem>;
         valueItems: Array<PivotGridItem>;
-        isHidden: boolean;
+        isHidden: undefined;
         // PivotGridColumns functions
         show(): void;
         hide(): void;
         refresh(): void;
-        getHierarchyDepth(): number;
-        autoResize(autoResizeMode: string): void;
+        getHierarchyDepth(): undefined;
+        autoResize(autoResizeMode: undefined): void;
         getSortItem(): any;
         getSortOrder(): any;
-        sortBy(pivotItem: PivotGridItem, sortOrder: string): void;
+        sortBy(pivotItem: PivotGridItem, sortOrder: undefined): void;
         removeSort(): void;
         selectItem(pivotItem: PivotGridItem): void;
         unselectItem(pivotItem: PivotGridItem): void;
@@ -289,23 +289,23 @@ declare module jqwidgets {
         selectCell(pivotRow: PivotGridItem, pivotColumn: PivotGridItem): void;
         unselectCell(pivotRow: PivotGridItem, pivotColumn: PivotGridItem): void;
         clearSelection(): void;
-        isCellSelected(pivotRow: PivotGridItem, pivotColumn: PivotGridItem): Boolean;
-        getSelectedCellsCount(): Number;
+        isCellSelected(pivotRow: PivotGridItem, pivotColumn: PivotGridItem): boolean;
+        getSelectedCellsCount(): number;
         getSelectedCells(): Array<PivotGridCell>;
-        getNextCell(pivotCell: PivotGridCell, position: string): any;
+        getNextCell(pivotCell: PivotGridCell, position: undefined): any;
     }// PivotGridCells
 
     export interface PivotGridOptions {
         // PivotGridOptions properties
         source: any;
         localization?: any;
-        scrollBarsEnabled?: boolean;
-        selectionEnabled?: boolean;
-        multipleSelectionEnabled?: boolean;
-        treeStyleRows?: boolean;
-        autoResize?: boolean;
-        itemsRenderer?: (pivotItem: any) => String;
-        cellsRenderer?: (pivotCell: any) => String;
+        scrollBarsEnabled?: undefined;
+        selectionEnabled?: undefined;
+        multipleSelectionEnabled?: undefined;
+        treeStyleRows?: undefined;
+        autoResize?: undefined;
+        itemsRenderer?: (pivotItem: any) => string;
+        cellsRenderer?: (pivotCell: any) => string;
     }// PivotGridOptions
 
     export interface jqxPivotGrid extends widget, PivotGridOptions {
@@ -321,46 +321,46 @@ declare module jqwidgets {
 
     export interface BulletChartPointer {
         // BulletChartPointer properties
-        value?: number;
-        label?: string;
-        size?: String | Number;
-        color?: string;
+        value?: undefined;
+        label?: undefined;
+        size?: number | string;
+        color?: undefined;
     }// BulletChartPointer
 
     export interface BulletChartRanges {
         // BulletChartRanges properties
-        startValue: number;
-        endValue: number;
-        opacity?: number;
-        color?: string;
+        startValue: undefined;
+        endValue: undefined;
+        opacity?: undefined;
+        color?: undefined;
     }// BulletChartRanges
 
     export interface BulletChartTicks {
         // BulletChartTicks properties
         position?: string;
-        interval?: number;
-        size?: Number | String;
+        interval?: undefined;
+        size?: number | string;
     }// BulletChartTicks
 
     export interface BulletChartOptions {
         // BulletChartOptions properties
-        animationDuration?: number;
-        barSize?: String | Number;
-        description?: string;
-        disabled?: boolean;
-        height?: String | Number;
+        animationDuration?: undefined;
+        barSize?: number | string;
+        description?: undefined;
+        disabled?: undefined;
+        height?: string | number;
         labelsFormat?: string;
         labelsFormatFunction?: (value?: number, position?:string ) => any;
         orientation?: string;
         pointer?: BulletChartPointer;
-        rtl?: boolean;
+        rtl?: undefined;
         ranges?: Array<BulletChartRanges>;
-        showTooltip?: boolean;
+        showTooltip?: undefined;
         target?: BulletChartPointer;
         ticks?: BulletChartTicks;
-        title?: string;
-        tooltipFormatFunction?: (pointerValue:number , targetValue:number) => String;
-        width?: String | Number;
+        title?: undefined;
+        tooltipFormatFunction?: (pointerValue:number , targetValue:number) => string;
+        width?: string | number;
     }// BulletChartOptions
 
     export interface jqxBulletChart extends widget, BulletChartOptions {
@@ -369,27 +369,27 @@ declare module jqwidgets {
         destroy(): void;
         render(): void;
         refresh(): void;
-        val(value: number): number;
+        val(value: undefined): undefined;
     }// jqxBulletChart
 
     export interface ButtonOptions {
         // ButtonOptions properties
-        delay?: number;
-        disabled?: boolean;
-        height?: String | Number;
-        imgSrc?: string;
-        imgWidth?: String | Number;
-        imgHeight?: String | Number;
+        delay?: undefined;
+        disabled?: undefined;
+        height?: number | string;
+        imgSrc?: undefined;
+        imgWidth?: number | string;
+        imgHeight?: number | string;
         imgPosition?: string;
         roundedCorners?: string;
-        rtl?: boolean;
+        rtl?: undefined;
         textPosition?: string;
         textImageRelation?: string;
-        theme?: string;
+        theme?: undefined;
         template?: string;
-        toggled?: boolean;
-        width?: String | Number;
-        value?: string;
+        toggled?: undefined;
+        width?: number | string;
+        value?: undefined;
     }// ButtonOptions
 
     export interface jqxButton extends widget, ButtonOptions {
@@ -401,71 +401,71 @@ declare module jqwidgets {
         render(): void;
         toggle(): void;
         unCheck(): void;
-        val(value: string): string;
+        val(value: undefined): undefined;
     }// jqxButton
 
     export interface ButtonGroupOptions {
         // ButtonGroupOptions properties
-        disabled?: boolean;
-        enableHover?: boolean;
+        disabled?: undefined;
+        enableHover?: undefined;
         mode?: string;
-        rtl?: boolean;
+        rtl?: undefined;
         template?: string;
-        theme?: string;
+        theme?: undefined;
     }// ButtonGroupOptions
 
     export interface jqxButtonGroup extends widget, ButtonGroupOptions {
 
         // jqxButtonGroup functions
-        disableAt(index: number): void;
+        disableAt(index: undefined): void;
         disable(): void;
         destroy(): void;
         enable(): void;
-        enableAt(index: number): void;
+        enableAt(index: undefined): void;
         focus(): void;
         getSelection(): any;
         render(): void;
-        setSelection(index: number): void;
+        setSelection(index: undefined): void;
     }// jqxButtonGroup
 
     export interface CalendarOptions {
         // CalendarOptions properties
-        backText?: string;
-        columnHeaderHeight?: number;
-        clearString?: string;
-        culture?: string;
+        backText?: undefined;
+        columnHeaderHeight?: undefined;
+        clearstring?: undefined;
+        culture?: undefined;
         dayNameFormat?: string;
-        disabled?: boolean;
-        enableWeekend?: boolean;
-        enableViews?: boolean;
-        enableOtherMonthDays?: boolean;
-        enableFastNavigation?: boolean;
-        enableHover?: boolean;
-        enableAutoNavigation?: boolean;
-        enableTooltips?: boolean;
-        forwardText?: string;
-        firstDayOfWeek?: number;
-        height?: String | Number;
+        disabled?: undefined;
+        enableWeekend?: undefined;
+        enableViews?: undefined;
+        enableOtherMonthDays?: undefined;
+        enableFastNavigation?: undefined;
+        enableHover?: undefined;
+        enableAutoNavigation?: undefined;
+        enableTooltips?: undefined;
+        forwardText?: undefined;
+        firstDayOfWeek?: undefined;
+        height?: string | number;
         min?: any;
         max?: any;
-        navigationDelay?: number;
-        rowHeaderWidth?: String | Number;
-        readOnly?: boolean;
+        navigationDelay?: undefined;
+        rowHeaderWidth?: number | string;
+        readOnly?: undefined;
         restrictedDates?: Array<Date>;
-        rtl?: boolean;
-        stepMonths?: number;
-        showWeekNumbers?: boolean;
-        showDayNames?: boolean;
-        showOtherMonthDays?: boolean;
-        showFooter?: boolean;
+        rtl?: undefined;
+        stepMonths?: undefined;
+        showWeeknumbers?: undefined;
+        showDayNames?: undefined;
+        showOtherMonthDays?: undefined;
+        showFooter?: undefined;
         selectionMode?: string;
         specialDates?: Array<any>;
-        theme?: string;
-        titleHeight?: number;
+        theme?: undefined;
+        titleHeight?: undefined;
         titleFormat?: string;
-        todayString?: string;
+        todaystring?: undefined;
         value?: Date;
-        width?: String | Number;
+        width?: string | number;
     }// CalendarOptions
 
     export interface jqxCalendar extends widget, CalendarOptions {
@@ -479,8 +479,8 @@ declare module jqwidgets {
         getMaxDate(): any;
         getDate(): any;
         getRange(): any;
-        navigateForward(months: number): void;
-        navigateBackward(months: number): void;
+        navigateForward(months: undefined): void;
+        navigateBackward(months: undefined): void;
         render(): void;
         refresh(): void;
         setMinDate(date: any): void;
@@ -500,53 +500,53 @@ declare module jqwidgets {
 
         // jqxDraw functions
         attr(element: any, attributes: any): void;
-        circle(cx: number, cy: number, r: number, attributes: any): any;
+        circle(cx: undefined, cy: undefined, r: undefined, attributes: any): any;
         clear(): void;
-        getAttr(element: any, attributes: any): string;
+        getAttr(element: any, attributes: any): undefined;
         getSize(): any;
-        line(x1: number, y1: number, x2: number, y2: number, attributes: any): any;
-        measureText(text: string, angle: number, attributes: any): any;
-        on(element: any, event: string, func: any): void;
-        off(element: any, event: string, func: any): void;
-        path(path: string, attributes: any): any;
-        pieslice(cx: number, xy: number, innerRadius: any, outerRadius: any, fromAngle: number, endAngle: number, centerOffset: number, attributes: any): any;
+        line(x1: undefined, y1: undefined, x2: undefined, y2: undefined, attributes: any): any;
+        measureText(text: undefined, angle: undefined, attributes: any): any;
+        on(element: any, event: undefined, func: any): void;
+        off(element: any, event: undefined, func: any): void;
+        path(path: undefined, attributes: any): any;
+        pieslice(cx: undefined, xy: undefined, innerRadius: any, outerRadius: any, fromAngle: undefined, endAngle: undefined, centerOffset: undefined, attributes: any): any;
         refresh(): void;
-        rect(x: number, y: number, width: String | Number, height: String | Number, attributes: any): any;
-        saveAsJPEG(image: string, url: string): void;
-        saveAsPNG(image: string, url: string): void;
-        text(text: string, x: number, y: number, width: String | Number, height: String | Number, angle: number, attributes: any, clip: boolean, halign: string, valign: string, rotateAround: string): any;
+        rect(x: undefined, y: undefined, width: number | string, height: number | string, attributes: any): any;
+        saveAsJPEG(image: undefined, url: undefined): void;
+        saveAsPNG(image: undefined, url: undefined): void;
+        text(text: undefined, x: undefined, y: undefined, width: number | string, height: number | string, angle: undefined, attributes: any, clip: undefined, halign: undefined, valign: undefined, rotateAround: undefined): any;
     }// jqxDraw
 
     export interface ChartOffset {
         // ChartOffset properties
-        x: number;
-        y: number;
+        x: undefined;
+        y: undefined;
     }// ChartOffset
 
     export interface ChartRect {
         // ChartRect properties
-        x: number;
-        y: number;
-        width: Number | String;
-        height: Number | String;
+        x: undefined;
+        y: undefined;
+        width: number | string;
+        height: number | string;
     }// ChartRect
 
     export interface ChartPadding {
         // ChartPadding properties
-        left: number;
-        right: number;
-        top: number;
-        bottom: number;
+        left: undefined;
+        right: undefined;
+        top: undefined;
+        bottom: undefined;
     }// ChartPadding
 
     export interface ChartTickMarks {
         // ChartTickMarks properties
         visible?: any;
-        color?: string;
-        step?: number;
-        dashStyle?: string;
-        lineWidth?: number;
-        size?: Number | String;
+        color?: undefined;
+        step?: undefined;
+        dashStyle?: undefined;
+        lineWidth?: undefined;
+        size?: number | string;
         interval?: any;
         custom?: Array<ChartCustomOffset>;
     }// ChartTickMarks
@@ -554,10 +554,10 @@ declare module jqwidgets {
     export interface ChartGridLines {
         // ChartGridLines properties
         visible?: any;
-        color?: string;
-        step?: number;
-        dashStyle?: string;
-        lineWidth?: number;
+        color?: undefined;
+        step?: undefined;
+        dashStyle?: undefined;
+        lineWidth?: undefined;
         interval?: any;
         custom?: Array<ChartCustomOffset>;
     }// ChartGridLines
@@ -565,9 +565,9 @@ declare module jqwidgets {
     export interface ChartAxisLine {
         // ChartAxisLine properties
         visible?: any;
-        color?: string;
-        dashStyle?: string;
-        lineWidth?: number;
+        color?: undefined;
+        dashStyle?: undefined;
+        lineWidth?: undefined;
     }// ChartAxisLine
 
     export interface ChartCustomOffset {
@@ -579,9 +579,9 @@ declare module jqwidgets {
     export interface ChartAxisLabels {
         // ChartAxisLabels properties
         visible?: any;
-        class?: string;
-        step?: number;
-        angle?: number;
+        class?: undefined;
+        step?: undefined;
+        angle?: undefined;
         rotationPoint?: string;
         horizontalAlignment?: string;
         verticalAlignment?: string;
@@ -589,74 +589,74 @@ declare module jqwidgets {
         custom?: Array<ChartCustomOffset>;
         formatSettings?: ChartFormatSettings;
         formatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: ChartXAxis) => string;
-        autoRotate?: Boolean;
+        autoRotate?: boolean;
     }// ChartAxisLabels
 
     export interface ChartFormatSettings {
         // ChartFormatSettings properties
-        prefix?: string;
-        sufix?: string;
-        decimalSeparator?: string;
-        thousandsSeparator?: string;
-        decimalPlaces?: number;
-        negativeWithBrackets?: boolean;
-        dateFormat?: string;
+        prefix?: undefined;
+        sufix?: undefined;
+        decimalSeparator?: undefined;
+        thousandsSeparator?: undefined;
+        decimalPlaces?: undefined;
+        negativeWithBrackets?: undefined;
+        dateFormat?: undefined;
     }// ChartFormatSettings
 
     export interface ChartSeriesLabels {
         // ChartSeriesLabels properties
-        visible?: boolean;
-        class?: string;
-        angle?: number;
+        visible?: undefined;
+        class?: undefined;
+        angle?: undefined;
         horizontalAlignment?: string;
         verticalAlignment?: string;
         offset?: ChartOffset;
-        backgroundColor?: string;
-        backgroundOpacity?: number;
-        borderColor?: string;
-        borderOpacity?: number;
+        backgroundColor?: undefined;
+        backgroundOpacity?: undefined;
+        borderColor?: undefined;
+        borderOpacity?: undefined;
         padding?: ChartPadding;
-        linesEnabled?: boolean;
-        linesAngles?: boolean;
-        autoRotate?: boolean;
+        linesEnabled?: undefined;
+        linesAngles?: undefined;
+        autoRotate?: undefined;
         radius?: any;
     }// ChartSeriesLabels
 
     export interface ChartAxisTitle {
         // ChartAxisTitle properties
-        visible?: boolean;
-        text?: string;
-        class?: string;
+        visible?: undefined;
+        text?: undefined;
+        class?: undefined;
         horizontalAlignment?: string;
         verticalAlignment?: string;
-        angle?: number;
+        angle?: undefined;
         rotationPoint?: string;
         offset?: ChartOffset;
     }// ChartAxisTitle
 
     export interface ChartColorBand {
         // ChartColorBand properties
-        minValue?: number;
-        maxValue?: number;
-        fillColor?: string;
-        opacity?: string;
-        lineColor?: string;
-        lineWidth?: number;
-        dashStyle?: string;
+        minValue?: undefined;
+        maxValue?: undefined;
+        fillColor?: undefined;
+        opacity?: undefined;
+        lineColor?: undefined;
+        lineWidth?: undefined;
+        dashStyle?: undefined;
     }// ChartColorBand
 
     export interface ChartXAxis {
         // ChartXAxis properties
-        visible?: boolean;
-        unitInterval?: number;
-        dataField?: string;
+        visible?: undefined;
+        unitInterval?: undefined;
+        dataField?: undefined;
         type?: string;
         baseUnit?: string;
-        valuesOnTicks?: boolean;
-        dateFormat?: string;
-        axisSize?: String | Number;
-        customDraw?: boolean;
-        flip?: boolean;
+        valuesOnTicks?: undefined;
+        dateFormat?: undefined;
+        axisSize?: number | string;
+        customDraw?: undefined;
+        flip?: undefined;
         position?: string;
         padding?: ChartPadding;
         title?: ChartAxisTitle;
@@ -664,14 +664,14 @@ declare module jqwidgets {
         gridLines?: ChartGridLines;
         line?: ChartAxisLine;
         labels?: ChartAxisLabels;
-        logarithmicScale?: boolean;
-        logarithmicScaleBase?: number;
+        logarithmicScale?: undefined;
+        logarithmicScaleBase?: undefined;
         minValue?: any;
         maxValue?: any;
         bands?: Array<ChartColorBand>;
-        alternatingBackgroundColor?: string;
-        alternatingBackgroundColor2?: string;
-        alternatingBackgroundOpacity?: number;
+        alternatingBackgroundColor?: undefined;
+        alternatingBackgroundColor2?: undefined;
+        alternatingBackgroundOpacity?: undefined;
         formatSettings?: any;
         formatFunction?: any;
         toolTipFormatSettings?: ChartFormatSettings;
@@ -681,93 +681,93 @@ declare module jqwidgets {
 
     export interface ChartSerie {
         // ChartSerie properties
-        dataField?: string;
-        displayText?: string;
-        dataFieldFrom?: string;
-        displayTextFrom?: string;
-        dataFieldTo?: string;
-        displayTextTo?: string;
-        dataFieldOpen?: string;
-        displayTextOpen?: string;
-        dataFieldLow?: string;
-        displayTextLow?: string;
-        dataFieldHigh?: string;
-        displayTextHigh?: string;
-        dataFieldClose?: string;
-        displayTextClose?: string;
-        lineWidth?: number;
-        dashStyle?: string;
+        dataField?: undefined;
+        displayText?: undefined;
+        dataFieldFrom?: undefined;
+        displayTextFrom?: undefined;
+        dataFieldTo?: undefined;
+        displayTextTo?: undefined;
+        dataFieldOpen?: undefined;
+        displayTextOpen?: undefined;
+        dataFieldLow?: undefined;
+        displayTextLow?: undefined;
+        dataFieldHigh?: undefined;
+        displayTextHigh?: undefined;
+        dataFieldClose?: undefined;
+        displayTextClose?: undefined;
+        lineWidth?: undefined;
+        dashStyle?: undefined;
         symbolType?: string;
-        symbolSize?: number;
-        symbolSizeSelected?: number;
+        symbolSize?: undefined;
+        symbolSizeSelected?: undefined;
         emptyPointsDisplay?: string;
         linesUnselectMode?: string;
-        opacity?: number;
-        useGradientColors?: boolean;
-        greyScale?: boolean;
-        lineColor?: string;
-        lineColorSelected?: string;
-        fillColor?: string;
-        fillColorSelected?: string;
-        lineColorSymbol?: string;
-        lineColorSymbolSelected?: string;
-        fillColorSymbol?: string;
-        fillColorSymbolSelected?: string;
-        fillColorAlt?: string;
-        fillColorAltSelected?: string;
+        opacity?: undefined;
+        useGradientColors?: undefined;
+        greyScale?: undefined;
+        lineColor?: undefined;
+        lineColorSelected?: undefined;
+        fillColor?: undefined;
+        fillColorSelected?: undefined;
+        lineColorSymbol?: undefined;
+        lineColorSymbolSelected?: undefined;
+        fillColorSymbol?: undefined;
+        fillColorSymbolSelected?: undefined;
+        fillColorAlt?: undefined;
+        fillColorAltSelected?: undefined;
         colorFunction?: (dataValue: any, itemIndex?: number, serie?: any, group?: any) => any;
         labels?: ChartSeriesLabels;
         formatSettings?: ChartFormatSettings;
         formatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: ChartXAxis) => string;
         legendFormatSettings?: ChartFormatSettings;
         legendFormatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: ChartXAxis) => string;
-        legendLineColor?: string;
-        legnedFillColor?: string;
+        legendLineColor?: undefined;
+        legnedFillColor?: undefined;
         toolTipFormatSettings?: ChartFormatSettings;
         toolTipFormatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: ChartXAxis) => string;
-        toolTipLineColor?: string;
-        toolTipBackground?: string;
-        toolTipClass?: string;
+        toolTipLineColor?: undefined;
+        toolTipBackground?: undefined;
+        toolTipClass?: undefined;
         radius?: any;
         innerRadius?: any;
-        startAngle?: number;
-        endAngle?: number;
-        offsetX?: number;
-        offsetY?: number;
-        hiddenPointsDisplay?: boolean;
-        enableSeriesToggle?: boolean;
-        enableSelection?: boolean;
-        radiusDataField?: string;
+        startAngle?: undefined;
+        endAngle?: undefined;
+        offsetX?: undefined;
+        offsetY?: undefined;
+        hiddenPointsDisplay?: undefined;
+        enableSeriesToggle?: undefined;
+        enableSelection?: undefined;
+        radiusDataField?: undefined;
         minRadius?: any;
         maxRadius?: any;
-        summary?: string;
+        summary?: undefined;
         labelRadius?: any;
-        initialAngle?: number;
-        centerOffset?: number;
+        initialAngle?: undefined;
+        centerOffset?: undefined;
     }// ChartSerie
 
     export interface ChartValueAxis {
         // ChartValueAxis properties
-        visible?: boolean;
-        flip?: boolean;
+        visible?: undefined;
+        flip?: undefined;
         position?: string;
-        axisSize?: number;
-        minValue?: number;
-        maxValue?: number;
-        baselineValue?: number;
-        logarithmicScale?: boolean;
-        logarithmicScaleBase?: number;
-        valuesOnTicks?: boolean;
-        unitInterval?: number;
+        axisSize?: undefined;
+        minValue?: undefined;
+        maxValue?: undefined;
+        baselineValue?: undefined;
+        logarithmicScale?: undefined;
+        logarithmicScaleBase?: undefined;
+        valuesOnTicks?: undefined;
+        unitInterval?: undefined;
         title?: ChartAxisTitle;
         labels?: ChartAxisLabels;
         gridLines?: ChartGridLines;
         tickMarks?: ChartTickMarks;
         padding?: ChartPadding;
         bands?: Array<ChartColorBand>;
-        alternatingBackgroundColor?: string;
-        alternatingBackgroundColor2?: string;
-        alternatingBackgroundOpacity?: number;
+        alternatingBackgroundColor?: undefined;
+        alternatingBackgroundColor2?: undefined;
+        alternatingBackgroundOpacity?: undefined;
         toolTipFormatSettings?: ChartFormatSettings;
     }// ChartValueAxis
 
@@ -778,68 +778,68 @@ declare module jqwidgets {
         valueAxis?: ChartValueAxis;
         series: Array<ChartSerie>;
         formatSettings?: ChartFormatSettings;
-        columnsGapPercent?: number;
-        seriesGapPercent?: number;
-        columnsMinWidth?: number;
-        columnsMaxWidth?: number;
-        columnsTopWidthPercent?: number;
-        columnsBottomWidthPercent?: number;
-        skipOverlappingPoints?: boolean;
-        polar?: boolean;
-        spider?: boolean;
+        columnsGapPercent?: undefined;
+        seriesGapPercent?: undefined;
+        columnsMinWidth?: undefined;
+        columnsMaxWidth?: undefined;
+        columnsTopWidthPercent?: undefined;
+        columnsBottomWidthPercent?: undefined;
+        skipOverlappingPoints?: undefined;
+        polar?: undefined;
+        spider?: undefined;
         radius?: any;
-        startAngle?: number;
-        endAngle?: number;
-        offsetX?: number;
-        offsetY?: number;
+        startAngle?: undefined;
+        endAngle?: undefined;
+        offsetX?: undefined;
+        offsetY?: undefined;
         source?: any;
         xAxis?: ChartXAxis;
-        colorScheme?: string;
-        showLabels?: boolean;
+        colorScheme?: undefined;
+        showLabels?: undefined;
     }// ChartSeriesGroup
 
     export interface ChartLegendLayout {
         // ChartLegendLayout properties
-        left: number;
-        top: number;
-        width: String | Number;
-        height: String | Number;
+        left: undefined;
+        top: undefined;
+        width: number | string;
+        height: number | string;
         flow: string;
     }// ChartLegendLayout
 
     export interface ChartOptions {
         // ChartOptions properties
-        title?: string;
-        description?: string;
+        title?: undefined;
+        description?: undefined;
         source?: any;
-        showBorderLine?: boolean;
-        borderLineColor?: string;
-        borderLineWidth?: number;
-        backgroundColor?: string;
-        backgroundImage?: string;
-        showLegend?: boolean;
+        showBorderLine?: undefined;
+        borderLineColor?: undefined;
+        borderLineWidth?: undefined;
+        backgroundColor?: undefined;
+        backgroundImage?: undefined;
+        showLegend?: undefined;
         legendLayout?: ChartLegendLayout;
         categoryAxis?: any;
         padding?: ChartPadding;
         titlePadding?: ChartPadding;
-        colorScheme?: string;
-        greyScale?: boolean;
-        showToolTips?: boolean;
-        toolTipShowDelay?: number;
-        toolTipHideDelay?: number;
-        toolTipMoveDuration?: number;
+        colorScheme?: undefined;
+        greyScale?: undefined;
+        showToolTips?: undefined;
+        toolTipShowDelay?: undefined;
+        toolTipHideDelay?: undefined;
+        toolTipMoveDuration?: undefined;
         drawBefore?: (renderer: any, rect: any) => { };
         draw?: (renderer: any, rect: any) => { };
-        rtl?: boolean;
-        enableCrosshairs?: boolean;
-        crosshairsColor?: string;
-        crosshairsDashStyle?: string;
-        crosshairsLineWidth?: number;
-        columnSeriesOverlap?: boolean;
-        enabled?: boolean;
-        enableAnimations?: boolean;
-        animationDuration?: number;
-        enableAxisTextAnimation?: boolean;
+        rtl?: undefined;
+        enableCrosshairs?: undefined;
+        crosshairsColor?: undefined;
+        crosshairsDashStyle?: undefined;
+        crosshairsLineWidth?: undefined;
+        columnSeriesOverlap?: undefined;
+        enabled?: undefined;
+        enableAnimations?: undefined;
+        animationDuration?: undefined;
+        enableAxisTextAnimation?: undefined;
         renderEngine?: string;
         xAxis?: ChartXAxis;
         valueAxis?: ChartValueAxis;
@@ -853,41 +853,41 @@ declare module jqwidgets {
         refresh(): void;
         update(): void;
         destroy(): void;
-        addColorScheme(schemeName: string, colors: Array<String>): void;
-        removeColorScheme(schemeName: string): void;
-        getItemsCount(groupIndex: number, serieIndex: number): number;
-        getItemCoord(groupIndex: number, serieIndex: number, itemIndex: number): any;
-        getXAxisRect(groupIndex: number): ChartRect;
-        getXAxisLabels(groupIndex: number): Array<any>;
-        getValueAxisRect(groupIndex: number): ChartRect;
-        getValueAxisLabels(groupIndex: number): Array<any>;
-        getColorScheme(colorScheme: string): Array<String>;
-        hideSerie(groupIndex: number, serieIndex: number, itemIndex?: number): void;
-        showSerie(groupIndex: number, serieIndex: number, itemIndex?: number): void;
-        hideToolTip(hideDelay: number): void;
-        showToolTip(groupIndex: number, serieIndex: number, itemIndex: number, showDelay?: number, hideDelay?: number): void;
-        saveAsJPEG(fileName: string, exportServerUrl?: string): void;
-        saveAsPNG(fileName: string, exportServerUrl?: string): void;
-        saveAsPDF(fileName: string, exportServerUrl?: string): void;
-        getXAxisValue(offset: number, groupIndex: number): any;
-        getValueAxisValue(offset: number, groupIndex: number): any;
+        addColorScheme(schemeName: undefined, colors: Array<string>): void;
+        removeColorScheme(schemeName: undefined): void;
+        getItemsCount(groupIndex: undefined, serieIndex: undefined): number;
+        getItemCoord(groupIndex: undefined, serieIndex: undefined, itemIndex: undefined): any;
+        getXAxisRect(groupIndex: undefined): ChartRect;
+        getXAxisLabels(groupIndex: undefined): Array<any>;
+        getValueAxisRect(groupIndex: undefined): ChartRect;
+        getValueAxisLabels(groupIndex: undefined): Array<any>;
+        getColorScheme(colorScheme: undefined): Array<string>;
+        hideSerie(groupIndex: undefined, serieIndex: undefined, itemIndex?: undefined): void;
+        showSerie(groupIndex: undefined, serieIndex: undefined, itemIndex?: undefined): void;
+        hideToolTip(hideDelay: undefined): void;
+        showToolTip(groupIndex: undefined, serieIndex: undefined, itemIndex: undefined, showDelay?: undefined, hideDelay?: undefined): void;
+        saveAsJPEG(fileName: undefined, exportServerUrl?: undefined): void;
+        saveAsPNG(fileName: undefined, exportServerUrl?: undefined): void;
+        saveAsPDF(fileName: undefined, exportServerUrl?: undefined): void;
+        getXAxisValue(offset: undefined, groupIndex: undefined): any;
+        getValueAxisValue(offset: undefined, groupIndex: undefined): any;
     }// jqxChart
 
     export interface CheckBoxOptions {
         // CheckBoxOptions properties
-        animationShowDelay?: number;
-        animationHideDelay?: number;
-        boxSize?: String | Number;
-        checked?: boolean;
-        disabled?: boolean;
-        enableContainerClick?: boolean;
-        groupName?: string;
-        height?: String | Number;
-        hasThreeStates?: boolean;
-        locked?: boolean;
-        rtl?: boolean;
-        theme?: string;
-        width?: String | Number;
+        animationShowDelay?: undefined;
+        animationHideDelay?: undefined;
+        boxSize?: number | string;
+        checked?: undefined;
+        disabled?: undefined;
+        enableContainerClick?: undefined;
+        groupName?: undefined;
+        height?: number | string;
+        hasThreeStates?: undefined;
+        locked?: undefined;
+        rtl?: undefined;
+        theme?: undefined;
+        width?: number | string;
     }// CheckBoxOptions
 
     export interface jqxCheckBox extends widget, CheckBoxOptions {
@@ -902,68 +902,68 @@ declare module jqwidgets {
         render(): void;
         toggle(): void;
         uncheck(): void;
-        val(value: boolean): boolean;
+        val(value: undefined): undefined;
     }// jqxCheckBox
 
     export interface ColorPickerOptions {
         // ColorPickerOptions properties
-        color?: string;
+        color?: undefined;
         colorMode?: string;
-        disabled?: boolean;
-        height?: String | Number;
-        showTransparent?: boolean;
-        width?: String | Number;
+        disabled?: undefined;
+        height?: string | number;
+        showTransparent?: undefined;
+        width?: string | number;
     }// ColorPickerOptions
 
     export interface jqxColorPicker extends widget, ColorPickerOptions {
 
         // jqxColorPicker functions
-        getColor(): Object;
+        getColor(): undefined;
         setColor(color: any): void;
     }// jqxColorPicker
 
     export interface ComboBoxOptions {
         // ComboBoxOptions properties
         animationType?: string;
-        autoComplete?: boolean;
-        autoOpen?: boolean;
-        autoItemsHeight?: boolean;
-        autoDropDownHeight?: boolean;
-        closeDelay?: number;
-        checkboxes?: boolean;
-        disabled?: boolean;
-        displayMember?: string;
+        autoComplete?: undefined;
+        autoOpen?: undefined;
+        autoItemsHeight?: undefined;
+        autoDropDownHeight?: undefined;
+        closeDelay?: undefined;
+        checkboxes?: undefined;
+        disabled?: undefined;
+        displayMember?: undefined;
         dropDownHorizontalAlignment?: string;
         dropDownVerticalAlignment?: string;
-        dropDownHeight?: String | Number;
-        dropDownWidth?: String | Number;
-        enableHover?: boolean;
-        enableSelection?: boolean;
-        enableBrowserBoundsDetection?: boolean;
-        height?: String | Number;
-        itemHeight?: number;
-        multiSelect?: boolean;
-        minLength?: number;
-        openDelay?: number;
-        popupZIndex?: number;
-        placeHolder?: string;
-        remoteAutoComplete?: boolean;
-        remoteAutoCompleteDelay?: number;
+        dropDownHeight?: number | string;
+        dropDownWidth?: number | string;
+        enableHover?: undefined;
+        enableSelection?: undefined;
+        enableBrowserBoundsDetection?: undefined;
+        height?: string | number;
+        itemHeight?: undefined;
+        multiSelect?: undefined;
+        minLength?: undefined;
+        openDelay?: undefined;
+        popupZIndex?: undefined;
+        placeHolder?: undefined;
+        remoteAutoComplete?: undefined;
+        remoteAutoCompleteDelay?: undefined;
         renderer?: (index:number, label?:string, value?:any) => string;
         renderSelectedItem?: (index:number, item?:any) => string;
-        rtl?: boolean;
-        selectedIndex?: number;
-        showArrow?: boolean;
-        showCloseButtons?: boolean;
+        rtl?: undefined;
+        selectedIndex?: undefined;
+        showArrow?: undefined;
+        showCloseButtons?: undefined;
         searchMode?: string;
-        search?: (searchString:string) => void;
+        search?: (searchstring:string) => void;
         source?: Array<any>;
-        scrollBarSize?: String | Number;
+        scrollBarSize?: number | string;
         template?: string;
-        theme?: string;
+        theme?: undefined;
         validateSelection?: (itemValue:string) => boolean;
-        valueMember?: string;
-        width?: String | Number;
+        valueMember?: undefined;
+        width?: string | number;
     }// ComboBoxOptions
 
     export interface jqxComboBox extends widget, ComboBoxOptions {
@@ -973,277 +973,277 @@ declare module jqwidgets {
         clearSelection(): void;
         clear(): void;
         close(): void;
-        checkIndex(index: number): void;
+        checkIndex(index: undefined): void;
         checkItem(item: any): void;
         checkAll(): void;
         destroy(): void;
         disableItem(item: any): void;
-        disableAt(index: number): void;
+        disableAt(index: undefined): void;
         enableItem(item: any): void;
-        enableAt(index: number): void;
-        ensureVisible(index: number): void;
+        enableAt(index: undefined): void;
+        ensureVisible(index: undefined): void;
         focus(): void;
-        getItem(index: number): any;
-        getItemByValue(value: string): any;
+        getItem(index: undefined): any;
+        getItemByValue(value: undefined): any;
         getVisibleItems(): Array<any>;
         getItems(): Array<any>;
         getCheckedItems(): Array<any>;
         getSelectedItem(): any;
         getSelectedItems(): Array<any>;
-        getSelectedIndex(): number;
-        insertAt(item: any, index: number): boolean;
-        isOpened(): boolean;
-        indeterminateIndex(index: number): void;
+        getSelectedIndex(): undefined;
+        insertAt(item: any, index: undefined): boolean;
+        isOpened(): undefined;
+        indeterminateIndex(index: undefined): void;
         indeterminateItem(item: any): void;
-        loadFromSelect(selectTagId: string): void;
+        loadFromSelect(selectTagId: undefined): void;
         open(): void;
-        removeItem(item: any): boolean;
-        removeAt(index: number): boolean;
-        selectIndex(index: number): void;
+        removeItem(item: any): undefined;
+        removeAt(index: undefined): undefined;
+        selectIndex(index: undefined): void;
         selectItem(item: any): void;
-        searchString(): undefined;
-        updateItem(item: any, itemValue: string): void;
+        searchstring(): undefined;
+        updateItem(item: any, itemValue: undefined): void;
         updateAt(item: any, index: any): void;
-        unselectIndex(index: number): void;
+        unselectIndex(index: undefined): void;
         unselectItem(item: any): void;
-        uncheckIndex(index: number): void;
+        uncheckIndex(index: undefined): void;
         uncheckItem(item: any): void;
         uncheckAll(): void;
-        val(value: string): string;
+        val(value: undefined): undefined;
     }// jqxComboBox
 
     export interface ComplexInputOptions {
         // ComplexInputOptions properties
         decimalNotation?: string;
-        disabled?: boolean;
-        height?: String | Number;
-        placeHolder?: string;
-        roundedCorners?: boolean;
-        rtl?: boolean;
-        spinButtons?: boolean;
-        spinButtonsStep?: number;
+        disabled?: undefined;
+        height?: string | number;
+        placeHolder?: undefined;
+        roundedCorners?: undefined;
+        rtl?: undefined;
+        spinButtons?: undefined;
+        spinButtonsStep?: undefined;
         template?: string;
-        theme?: string;
-        value?: string;
-        width?: String | Number;
+        theme?: undefined;
+        value?: undefined;
+        width?: string | number;
     }// ComplexInputOptions
 
     export interface jqxComplexInput extends widget, ComplexInputOptions {
 
         // jqxComplexInput functions
         destroy(): void;
-        getReal(complexNumber: number): number;
-        getImaginary(complexNumber: number): number;
-        getDecimalNotation(part: string, type: string): string;
+        getReal(complexnumber: undefined): undefined;
+        getImaginary(complexnumber: undefined): undefined;
+        getDecimalNotation(part: undefined, type: undefined): undefined;
         render(): void;
         refresh(): void;
-        val(value: any): string;
+        val(value: any): undefined;
     }// jqxComplexInput
 
     export interface DataTableColumns {
         // DataTableColumns properties
-        text: string;
-        dataField: string;
-        displayField?: string;
-        sortable?: boolean;
-        filterable?: boolean;
-        hidden?: boolean;
-        columnGroup ?: string;
-        autoCellHeight?: boolean;
-        renderer?: (text:String, align?:string, height?: String | Number) => string;
-        rendered?: (element:any, align?:string, height?: String | Number) => boolean;
+        text: undefined;
+        dataField: undefined;
+        displayField?: undefined;
+        sortable?: undefined;
+        filterable?: undefined;
+        hidden?: undefined;
+        columnGroup ?: undefined;
+        autoCellHeight?: undefined;
+        renderer?: (text:string, align?:string, height?: string | number) => string;
+        rendered?: (element:any, align?:string, height?: string | number) => boolean;
         cellsRenderer?: (row:number, column?:any, value?: any, rowData?:any) => string;
-        columnType?: string;
+        columnType?: undefined;
         validation?: (cell:number, value?:any) => any;
-        initEditor?: (row:number, cellValue?:any, editor?:any, cellText?:String, width?:String | Number, height?:String | Number) => void;
-        createEditor?: (row:number, cellValue?:any, editor?:any, cellText?:String, width?:String | Number, height?:String | Number) => void;
+        initEditor?: (row:number, cellValue?:any, editor?:any, cellText?:string, width?:string | number, height?:string | number) => void;
+        createEditor?: (row:number, cellValue?:any, editor?:any, cellText?:string, width?:string | number, height?:string | number) => void;
         getEditorValue?: (row:number, cellValue?:any, editor?:any) => void;
         cellsFormat?: string;
-        aggregates?: Array<String>;
+        aggregates?: Array<string>;
         aggregatesRenderer?: (aggregates:Array<any>) => string;
         align?: string;
         cellsAlign?: string;
-        width?: String | Number;
-        minWidth?: String | Number;
-        maxWidth?: String | Number;
-        resizable?: boolean;
-        draggable?: boolean;
-        editable?: boolean;
-        className?: string;
+        width?: number | string;
+        minWidth?: number | string;
+        maxWidth?: number | string;
+        resizable?: undefined;
+        draggable?: undefined;
+        editable?: undefined;
+        className?: undefined;
         cellClassName?: any;
-        pinned?: boolean;
+        pinned?: undefined;
     }// DataTableColumns
 
     export interface DataTableColumnGroups {
         // DataTableColumnGroups properties
-        text?: string;
-        parentGroup?: string;
-        align?: string;
-        name?: string;
+        text?: undefined;
+        parentGroup?: undefined;
+        align?: undefined;
+        name?: undefined;
     }// DataTableColumnGroups
 
     export interface DataTableEditSettings {
         // DataTableEditSettings properties
-        saveOnPageChange?: boolean;
-        saveOnBlur?: boolean;
-        saveOnSelectionChange?: boolean;
-        cancelOnEsc?: boolean;
-        saveOnEnter?: boolean;
-        editSingleCell?: boolean;
-        editOnDoubleClick?: boolean;
-        editOnF2?: boolean;
+        saveOnPageChange?: undefined;
+        saveOnBlur?: undefined;
+        saveOnSelectionChange?: undefined;
+        cancelOnEsc?: undefined;
+        saveOnEnter?: undefined;
+        editSingleCell?: undefined;
+        editOnDoubleClick?: undefined;
+        editOnF2?: undefined;
     }// DataTableEditSettings
 
     export interface DataTableExportSettings {
         // DataTableExportSettings properties
-        columnsHeader?: boolean;
-        hiddenColumns?: boolean;
+        columnsHeader?: undefined;
+        hiddenColumns?: undefined;
         serverURL?: any;
         characterSet?: any;
-        recordsInView?: boolean;
-        fileName?: string;
+        recordsInView?: undefined;
+        fileName?: undefined;
     }// DataTableExportSettings
 
     export interface DataTableOptions {
         // DataTableOptions properties
-        altRows?: boolean;
-        autoRowHeight?: boolean;
-        aggregatesHeight?: number;
-        autoShowLoadElement?: boolean;
-        columnsHeight?: number;
+        altRows?: undefined;
+        autoRowHeight?: undefined;
+        aggregatesHeight?: undefined;
+        autoShowLoadElement?: undefined;
+        columnsHeight?: undefined;
         columns?: Array<DataTableColumns>;
         columnGroups?: Array<DataTableColumnGroups>;
-        columnsResize?: boolean;
-        columnsReorder?: boolean;
-        disabled?: boolean;
-        editable?: boolean;
+        columnsResize?: undefined;
+        columnsReorder?: undefined;
+        disabled?: undefined;
+        editable?: undefined;
         editSettings?: DataTableEditSettings;
         exportSettings?: DataTableExportSettings;
-        enableHover?: boolean;
-        enableBrowserSelection?: boolean;
-        filterable?: boolean;
-        filterHeight?: number;
+        enableHover?: undefined;
+        enableBrowserSelection?: undefined;
+        filterable?: undefined;
+        filterHeight?: undefined;
         filterMode?: string;
         groups?: Array<any>;
         groupsRenderer?: (value:any, rowData?:any, level?:number) => string;
-        height?: String | Number;
+        height?: number | string;
         initRowDetails?: (id:number, row?:any, element?:any, rowInfo?:any) => void;
-        incrementalSearch?: boolean;
+        incrementalSearch?: undefined;
         localization?: any;
-        pagerHeight?: number;
-        pageSize?: number;
-        pageSizeOptions?: Array<String | Number>;
-        pageable?: boolean;
+        pagerHeight?: undefined;
+        pageSize?: undefined;
+        pageSizeOptions?: Array<string | number>;
+        pageable?: undefined;
         pagerPosition?: string;
         pagerMode?: string;
-        pagerButtonsCount?: number;
+        pagerButtonsCount?: undefined;
         pagerRenderer?: () => any;
         ready?: () => void;
-        rowDetails?: boolean;
+        rowDetails?: undefined;
         renderToolbar?: (toolbar:any) => void;
         renderStatusbar?: (statusbar:any) => void;
         rendering?: () => void;
         rendered?: () => void;
-        rtl?: boolean;
+        rtl?: undefined;
         source?: any;
-        sortable?: boolean;
-        showAggregates?: boolean;
-        showToolbar?: boolean;
-        showStatusbar?: boolean;
-        statusBarHeight?: number;
-        scrollBarSize?: String | Number;
+        sortable?: undefined;
+        showAggregates?: undefined;
+        showToolbar?: undefined;
+        showStatusbar?: undefined;
+        statusBarHeight?: undefined;
+        scrollBarSize?: number | string;
         selectionMode?: string;
-        serverProcessing?: boolean;
-        showHeader?: boolean;
-        theme?: string;
-        toolbarHeight?: number;
-        width?: String | Number;
+        serverProcessing?: undefined;
+        showHeader?: undefined;
+        theme?: undefined;
+        toolbarHeight?: undefined;
+        width?: string | number;
     }// DataTableOptions
 
     export interface jqxDataTable extends widget, DataTableOptions {
 
         // jqxDataTable functions
-        addRow(rowIndex: number, rowData: any, rowPosition: any): void;
-        addFilter(dataField: string, filerGroup: any): void;
+        addRow(rowIndex: undefined, rowData: any, rowPosition: any): void;
+        addFilter(dataField: undefined, filerGroup: any): void;
         applyFilters(): void;
         beginUpdate(): void;
-        beginRowEdit(rowIndex: number): void;
-        beginCellEdit(rowIndex: number, dataField: string): void;
+        beginRowEdit(rowIndex: undefined): void;
+        beginCellEdit(rowIndex: undefined, dataField: undefined): void;
         clearSelection(): void;
         clearFilters(): void;
         clear(): void;
         destroy(): void;
-        deleteRow(rowIndex: number): void;
+        deleteRow(rowIndex: undefined): void;
         endUpdate(): void;
-        ensureRowVisible(rowIndex: number): void;
-        endRowEdit(rowIndex: number, cancelChanges: boolean): void;
-        endCellEdit(rowIndex: number, dataField: string): void;
+        ensureRowVisible(rowIndex: undefined): void;
+        endRowEdit(rowIndex: undefined, cancelChanges: undefined): void;
+        endCellEdit(rowIndex: undefined, dataField: undefined): void;
         exportData(exportDataType: any): any;
         focus(): void;
-        getColumnProperty(dataField: string, propertyName: string): any;
-        goToPage(pageIndex: number): void;
+        getColumnProperty(dataField: undefined, propertyName: undefined): any;
+        goToPage(pageIndex: undefined): void;
         goToPrevPage(): void;
         goToNextPage(): void;
         getSelection(): Array<any>;
         getRows(): Array<any>;
         getView(): Array<any>;
-        getCellValue(rowIndex: number, dataField: string): any;
-        hideColumn(dataField: string): void;
-        hideDetails(rowIndex: boolean): void;
-        isBindingCompleted(): boolean;
-        lockRow(rowIndex: number): void;
+        getCellValue(rowIndex: undefined, dataField: undefined): any;
+        hideColumn(dataField: undefined): void;
+        hideDetails(rowIndex: undefined): void;
+        isBindingCompleted(): undefined;
+        lockRow(rowIndex: undefined): void;
         refresh(): void;
         render(): void;
-        removeFilter(dataField: string): void;
-        scrollOffset(top: number, left: number): any;
-        setColumnProperty(dataField: string, propertyName: string, propertyValue: any): void;
-        showColumn(dataField: string): void;
-        selectRow(rowIndex: number): void;
-        showDetails(rowIndex: number): void;
-        setCellValue(rowIndex: number, dataField: string, value: any): void;
-        sortBy(dataField: string, sortOrder: any): void;
-        updating(): boolean;
+        removeFilter(dataField: undefined): void;
+        scrollOffset(top: undefined, left: undefined): any;
+        setColumnProperty(dataField: undefined, propertyName: undefined, propertyValue: any): void;
+        showColumn(dataField: undefined): void;
+        selectRow(rowIndex: undefined): void;
+        showDetails(rowIndex: undefined): void;
+        setCellValue(rowIndex: undefined, dataField: undefined, value: any): void;
+        sortBy(dataField: undefined, sortOrder: any): void;
+        updating(): undefined;
         updateBoundData(): void;
-        unselectRow(rowIndex: number): void;
-        updateRow(rowIndex: number, rowData: any): void;
-        unlockRow(rowIndex: number): void;
+        unselectRow(rowIndex: undefined): void;
+        updateRow(rowIndex: undefined, rowData: any): void;
+        unlockRow(rowIndex: undefined): void;
     }// jqxDataTable
 
     export interface DateTimeInputOptions {
         // DateTimeInputOptions properties
         animationType?: string;
-        allowNullDate?: boolean;
-        allowKeyboardDelete?: boolean;
-        clearString?: string;
-        culture?: string;
-        closeDelay?: number;
-        closeCalendarAfterSelection?: boolean;
+        allowNullDate?: undefined;
+        allowKeyboardDelete?: undefined;
+        clearstring?: undefined;
+        culture?: undefined;
+        closeDelay?: undefined;
+        closeCalendarAfterSelection?: undefined;
         dropDownHorizontalAlignment?: string;
         dropDownVerticalAlignment?: string;
-        disabled?: boolean;
-        enableBrowserBoundsDetection?: boolean;
-        enableAbsoluteSelection?: boolean;
-        firstDayOfWeek?: number;
-        formatString?: string;
-        height?: String | Number;
+        disabled?: undefined;
+        enableBrowserBoundsDetection?: undefined;
+        enableAbsoluteSelection?: undefined;
+        firstDayOfWeek?: undefined;
+        formatstring?: string;
+        height?: string | number;
         min?: Date;
         max?: Date;
-        openDelay?: number;
-        placeHolder?: string;
-        popupZIndex?: number;
-        rtl?: boolean;
-        readonly?: boolean;
-        showFooter?: boolean;
+        openDelay?: undefined;
+        placeHolder?: undefined;
+        popupZIndex?: undefined;
+        rtl?: undefined;
+        readonly?: undefined;
+        showFooter?: undefined;
         selectionMode?: string;
-        showWeekNumbers?: boolean;
-        showTimeButton?: boolean;
-        showCalendarButton?: boolean;
-        theme?: string;
+        showWeeknumbers?: undefined;
+        showTimeButton?: undefined;
+        showCalendarButton?: undefined;
+        theme?: undefined;
         template?: string;
         textAlign?: string;
-        todayString?: string;
+        todaystring?: undefined;
         value?: Date;
-        width?: String | Number;
+        width?: string | number;
     }// DateTimeInputOptions
 
     export interface jqxDateTimeInput extends widget, DateTimeInputOptions {
@@ -1253,7 +1253,7 @@ declare module jqwidgets {
         destroy(): void;
         focus(): void;
         getRange(date: any): any;
-        getText(): string;
+        getText(): undefined;
         getDate(): any;
         getMaxDate(): any;
         getMinDate(): any;
@@ -1269,36 +1269,36 @@ declare module jqwidgets {
         // LayoutLayout properties
         type: string;
         alignment?: string;
-        allowClose?: boolean;
-        allowPin?: boolean;
-        allowUnpin?: boolean;
-        contentContainer?: string;
-        height?: String | Number;
+        allowClose?: undefined;
+        allowPin?: undefined;
+        allowUnpin?: undefined;
+        contentContainer?: undefined;
+        height?: number | string;
         initContent?: () => void;
-        minHeight?: String | Number;
-        minWidth?: String | Number;
+        minHeight?: number | string;
+        minWidth?: number | string;
         orientation?: string;
-        pinnedHeight?: String | Number;
-        pinnedWidth?: String | Number;
-        selected?: boolean;
-        title?: String | Number;
-        unpinnedHeight?: String | Number;
-        unpinnedWidth?: String | Number;
-        width?: String | Number;
+        pinnedHeight?: number | string;
+        pinnedWidth?: number | string;
+        selected?: undefined;
+        title?: number | string;
+        unpinnedHeight?: number | string;
+        unpinnedWidth?: number | string;
+        width?: number | string;
         items?: Array<LayoutLayout>;
     }// LayoutLayout
 
     export interface LayoutOptions {
         // LayoutOptions properties
-        contextMenu?: boolean;
-        height?: String | Number;
+        contextMenu?: undefined;
+        height?: string | number;
         layout?: Array<LayoutLayout>;
-        minGroupHeight?: String | Number;
-        minGroupWidth?: String | Number;
-        resizable?: boolean;
-        rtl?: boolean;
-        theme?: string;
-        width?: String | Number;
+        minGroupHeight?: number | string;
+        minGroupWidth?: number | string;
+        resizable?: undefined;
+        rtl?: undefined;
+        theme?: undefined;
+        width?: string | number;
     }// LayoutOptions
 
     export interface jqxLayout extends widget, LayoutOptions {
@@ -1315,49 +1315,49 @@ declare module jqwidgets {
         // DockingLayoutLayout properties
         type: string;
         alignment?: string;
-        allowClose?: boolean;
-        allowPin?: boolean;
-        allowUnpin?: boolean;
-        contentContainer?: string;
-        height?: String | Number;
+        allowClose?: undefined;
+        allowPin?: undefined;
+        allowUnpin?: undefined;
+        contentContainer?: undefined;
+        height?: number | string;
         initContent?: () => void;
-        minHeight?: String | Number;
-        minWidth?: String | Number;
+        minHeight?: number | string;
+        minWidth?: number | string;
         orientation?: string;
-        pinnedHeight?: String | Number;
-        pinnedWidth?: String | Number;
+        pinnedHeight?: number | string;
+        pinnedWidth?: number | string;
         position?: DockingLayoutLayoutPosition;
-        selected?: boolean;
-        title?: string;
-        unpinnedHeight?: String | Number;
-        unpinnedWidth?: String | Number;
-        width?: String | Number;
+        selected?: undefined;
+        title?: undefined;
+        unpinnedHeight?: number | string;
+        unpinnedWidth?: number | string;
+        width?: number | string;
         items?: Array<DockingLayoutLayout>;
     }// DockingLayoutLayout
 
     export interface DockingLayoutLayoutPosition {
         // DockingLayoutLayoutPosition properties
-        x: number;
-        y: number;
+        x: undefined;
+        y: undefined;
     }// DockingLayoutLayoutPosition
 
     export interface DockingLayoutOptions {
         // DockingLayoutOptions properties
-        contextMenu?: boolean;
-        height?: String | Number;
+        contextMenu?: undefined;
+        height?: string | number;
         layout?: Array<DockingLayoutLayout>;
-        minGroupHeight?: String | Number;
-        minGroupWidth?: String | Number;
-        resizable?: boolean;
-        rtl?: boolean;
-        theme?: string;
-        width?: String | Number;
+        minGroupHeight?: number | string;
+        minGroupWidth?: number | string;
+        resizable?: undefined;
+        rtl?: undefined;
+        theme?: undefined;
+        width?: string | number;
     }// DockingLayoutOptions
 
     export interface jqxDockingLayout extends widget, DockingLayoutOptions {
 
         // jqxDockingLayout functions
-        addFloatGroup(width: String | Number, height: String | Number, position: DockingLayoutLayoutPosition, panelType: string, title: string, content: string, initContent: any): void;
+        addFloatGroup(width: number | string, height: number | string, position: DockingLayoutLayoutPosition, panelType: undefined, title: undefined, content: undefined, initContent: any): void;
         destroy(): void;
         loadLayout(layout: any): void;
         refresh(): void;
@@ -1367,10 +1367,10 @@ declare module jqwidgets {
 
     export interface DockPanelOptions {
         // DockPanelOptions properties
-        disabled?: boolean;
-        height?: String | Number;
-        lastchildfill?: boolean;
-        width?: String | Number;
+        disabled?: undefined;
+        height?: string | number;
+        lastchildfill?: undefined;
+        width?: string | number;
     }// DockPanelOptions
 
     export interface jqxDockPanel extends widget, DockPanelOptions {
@@ -1381,8 +1381,8 @@ declare module jqwidgets {
 
     export interface DockingCookieOptions {
         // DockingCookieOptions properties
-        domain?: string;
-        expires?: number;
+        domain?: undefined;
+        expires?: undefined;
     }// DockingCookieOptions
 
     export interface DockingWindowsMode {
@@ -1392,63 +1392,63 @@ declare module jqwidgets {
 
     export interface DockingOptions {
         // DockingOptions properties
-        cookies?: boolean;
+        cookies?: undefined;
         cookieOptions?: DockingCookieOptions;
-        disabled?: boolean;
-        floatingWindowOpacity?: number;
-        height?: String | Number;
-        keyboardNavigation?: boolean;
+        disabled?: undefined;
+        floatingWindowOpacity?: undefined;
+        height?: number | string;
+        keyboardNavigation?: undefined;
         mode?: string;
         orientation?: string;
-        rtl?: boolean;
-        theme?: string;
-        width?: String | Number;
+        rtl?: undefined;
+        theme?: undefined;
+        width?: number | string;
         windowsMode?: DockingWindowsMode;
-        windowsOffset?: number;
+        windowsOffset?: undefined;
     }// DockingOptions
 
     export interface jqxDocking extends widget, DockingOptions {
 
         // jqxDocking functions
-        addWindow(windowId: string, mode: any, panel: number, position: any): void;
-        closeWindow(windowId: string): void;
-        collapseWindow(windowId: string): void;
+        addWindow(windowId: undefined, mode: any, panel: undefined, position: any): void;
+        closeWindow(windowId: undefined): void;
+        collapseWindow(windowId: undefined): void;
         destroy(): void;
-        disableWindowResize(windowId: string): void;
+        disableWindowResize(windowId: undefined): void;
         disable(): void;
-        exportLayout(): string;
+        exportLayout(): undefined;
         enable(): void;
-        expandWindow(windowId: string): void;
-        enableWindowResize(windowId: string): void;
+        expandWindow(windowId: undefined): void;
+        enableWindowResize(windowId: undefined): void;
         focus(): void;
         hideAllCloseButtons(): void;
         hideAllCollapseButtons(): void;
-        hideCollapseButton(windowId: string): void;
-        hideCloseButton(windowId: string): void;
-        importLayout(Json: string): void;
-        move(windowId: string, panel: number, position: number): void;
-        pinWindow(windowId: string): void;
-        setWindowMode(windowId: string, mode: any): void;
-        showCloseButton(windowId: string): void;
-        showCollapseButton(windowId: string): void;
-        setWindowPosition(windowId: string, top: any, left: number): void;
+        hideCollapseButton(windowId: undefined): void;
+        hideCloseButton(windowId: undefined): void;
+        importLayout(Json: undefined): void;
+        move(windowId: undefined, panel: undefined, position: undefined): void;
+        pinWindow(windowId: undefined): void;
+        setWindowMode(windowId: undefined, mode: any): void;
+        showCloseButton(windowId: undefined): void;
+        showCollapseButton(windowId: undefined): void;
+        setWindowPosition(windowId: undefined, top: any, left: undefined): void;
         showAllCloseButtons(): void;
         showAllCollapseButtons(): void;
-        unpinWindow(windowId: string): void;
+        unpinWindow(windowId: undefined): void;
     }// jqxDocking
 
     export interface DragDropOptions {
         // DragDropOptions properties
-        appendTo?: string;
-        disabled?: boolean;
-        distance?: number;
+        appendTo?: undefined;
+        disabled?: undefined;
+        distance?: undefined;
         data?: any;
         dropAction?: string;
         dropTarget?: any;
-        dragZIndex?: number;
+        dragZIndex?: undefined;
         feedback?: string;
         initFeedback?: (feedback?:any) => void;
-        opacity?: number;
+        opacity?: undefined;
         onDragEnd?: () => void;
         onDrag?: (data?: any, position?: any) => void;
         onDragStart?: (position?: any) => void;
@@ -1456,8 +1456,8 @@ declare module jqwidgets {
         onDropTargetEnter?: () => void;
         onDropTargetLeave?: (data?: any) => void;
         restricter?: string;
-        revert?: boolean;
-        revertDuration?: number;
+        revert?: undefined;
+        revertDuration?: undefined;
         tolerance?: string;
     }// DragDropOptions
 
@@ -1470,22 +1470,22 @@ declare module jqwidgets {
     export interface DropDownButtonOptions {
         // DropDownButtonOptions properties
         animationType?: string;
-        arrowSize?: number;
-        autoOpen?: boolean;
-        closeDelay?: number;
-        disabled?: boolean;
+        arrowSize?: undefined;
+        autoOpen?: undefined;
+        closeDelay?: undefined;
+        disabled?: undefined;
         dropDownHorizontalAlignment?: string;
         dropDownVerticalAlignment?: string;
-        dropDownWidth?: String | Number;
-        enableBrowserBoundsDetection?: boolean;
-        height?: String | Number;
+        dropDownWidth?: number | string;
+        enableBrowserBoundsDetection?: undefined;
+        height?: string | number;
         initContent?: () => void;
-        openDelay?: number;
-        popupZIndex?: number;
-        rtl?: boolean;
+        openDelay?: undefined;
+        popupZIndex?: undefined;
+        rtl?: undefined;
         template?: string;
-        theme?: string;
-        width?: String | Number;
+        theme?: undefined;
+        width?: string | number;
     }// DropDownButtonOptions
 
     export interface jqxDropDownButton extends widget, DropDownButtonOptions {
@@ -1495,60 +1495,60 @@ declare module jqwidgets {
         destroy(): void;
         focus(): void;
         getContent(): any;
-        isOpened(): boolean;
+        isOpened(): undefined;
         open(): void;
-        setContent(content: string): void;
+        setContent(content: undefined): void;
     }// jqxDropDownButton
 
     export interface DropDownListItem {
         // DropDownListItem properties
-        label?: string;
+        label?: undefined;
         value?: any;
-        disabled?: boolean;
+        disabled?: undefined;
         checked?: any;
-        hasThreeStates?: boolean;
-        html?: string;
-        group?: string;
+        hasThreeStates?: undefined;
+        html?: undefined;
+        group?: undefined;
     }// DropDownListItem
 
     export interface DropDownListOptions {
         // DropDownListOptions properties
-        autoOpen?: boolean;
-        autoDropDownHeight?: boolean;
+        autoOpen?: undefined;
+        autoDropDownHeight?: undefined;
         animationType?: string;
-        checkboxes?: boolean;
-        closeDelay?: number;
-        disabled?: boolean;
-        displayMember?: string;
+        checkboxes?: undefined;
+        closeDelay?: undefined;
+        disabled?: undefined;
+        displayMember?: undefined;
         dropDownHorizontalAlignment?: string;
         dropDownVerticalAlignment?: string;
-        dropDownHeight?: Number | String;
-        dropDownWidth?: Number | String;
-        enableSelection?: boolean;
-        enableBrowserBoundsDetection?: boolean;
-        enableHover?: boolean;
-        filterable?: boolean;
-        filterHeight?: number;
-        filterDelay?: number;
-        filterPlaceHolder?: string;
-        height?: Number | String;
-        incrementalSearch?: boolean;
-        incrementalSearchDelay?: number;
-        itemHeight?: Number;
-        openDelay?: number;
-        placeHolder?: string;
-        popupZIndex?: number;
-        rtl?: boolean;
-        renderer?: (index: Number, label?: String, value?: any) => String;
-        selectionRenderer?: (object?: any, index?: Number, label?: String) => String;
+        dropDownHeight?: number | string;
+        dropDownWidth?: number | string;
+        enableSelection?: undefined;
+        enableBrowserBoundsDetection?: undefined;
+        enableHover?: undefined;
+        filterable?: undefined;
+        filterHeight?: undefined;
+        filterDelay?: undefined;
+        filterPlaceHolder?: undefined;
+        height?: number | string;
+        incrementalSearch?: undefined;
+        incrementalSearchDelay?: undefined;
+        itemHeight?: number;
+        openDelay?: undefined;
+        placeHolder?: undefined;
+        popupZIndex?: undefined;
+        rtl?: undefined;
+        renderer?: (index: number, label?: string, value?: any) => string;
+        selectionRenderer?: (object?: any, index?: number, label?: string) => string;
         searchMode?: string;
-        scrollBarSize?: Number | String;
+        scrollBarSize?: number | string;
         source?: Array<any>;
-        selectedIndex?: number;
-        theme?: string;
-        template?: string;
-        valueMember?: string;
-        width?: Number | String;
+        selectedIndex?: undefined;
+        theme?: undefined;
+        template?: undefined;
+        valueMember?: undefined;
+        width?: number | string;
     }// DropDownListOptions
 
     export interface jqxDropDownList extends widget, DropDownListOptions {
@@ -1558,81 +1558,81 @@ declare module jqwidgets {
         clearSelection(): void;
         clear(): void;
         close(): void;
-        checkIndex(index: number): void;
+        checkIndex(index: undefined): void;
         checkItem(item: any): void;
         checkAll(): void;
         clearFilter(): void;
         destroy(): void;
         disableItem(item: any): void;
-        disableAt(index: number): void;
+        disableAt(index: undefined): void;
         enableItem(item: any): void;
-        enableAt(index: number): void;
-        ensureVisible(index: number): void;
+        enableAt(index: undefined): void;
+        ensureVisible(index: undefined): void;
         focus(): void;
-        getItem(index: number): DropDownListItem;
-        getItemByValue(itemValue: string): DropDownListItem;
+        getItem(index: undefined): DropDownListItem;
+        getItemByValue(itemValue: undefined): DropDownListItem;
         getItems(): Array<DropDownListItem>;
         getCheckedItems(): Array<DropDownListItem>;
         getSelectedItem(): DropDownListItem;
-        getSelectedIndex(): number;
-        insertAt(item: DropDownListItem, index: number): void;
-        isOpened(): boolean;
-        indeterminateIndex(index: number): void;
+        getSelectedIndex(): undefined;
+        insertAt(item: DropDownListItem, index: undefined): void;
+        isOpened(): undefined;
+        indeterminateIndex(index: undefined): void;
         indeterminateItem(item: any): void;
-        loadFromSelect(arg: string): void;
+        loadFromSelect(arg: undefined): void;
         open(): void;
         removeItem(item: any): void;
-        removeAt(index: number): void;
-        selectIndex(index: number): void;
+        removeAt(index: undefined): void;
+        selectIndex(index: undefined): void;
         selectItem(item: DropDownListItem): void;
-        setContent(content: string): void;
+        setContent(content: undefined): void;
         updateItem(newItem: DropDownListItem, item: any): void;
-        updateAt(item: DropDownListItem, index: number): void;
-        unselectIndex(index: number): void;
+        updateAt(item: DropDownListItem, index: undefined): void;
+        unselectIndex(index: undefined): void;
         unselectItem(item: any): void;
-        uncheckIndex(index: number): void;
+        uncheckIndex(index: undefined): void;
         uncheckItem(item: any): void;
         uncheckAll(): void;
-        val(value: string): string;
+        val(value: undefined): undefined;
     }// jqxDropDownList
 
     export interface EditorLocalization {
         // EditorLocalization properties
-        bold?: string;
-        italic?: string;
-        underline?: string;
-        format?: string;
-        size?: Number | String;
-        font?: string;
-        color?: string;
-        background?: string;
-        left?: string;
-        center?: string;
-        right?: string;
-        outdent?: string;
-        indent?: string;
-        ul?: string;
-        ol?: string;
-        image?: string;
-        link?: string;
-        clean?: string;
+        bold?: undefined;
+        italic?: undefined;
+        underline?: undefined;
+        format?: undefined;
+        size?: number | string;
+        font?: undefined;
+        color?: undefined;
+        background?: undefined;
+        left?: undefined;
+        center?: undefined;
+        right?: undefined;
+        outdent?: undefined;
+        indent?: undefined;
+        ul?: undefined;
+        ol?: undefined;
+        image?: undefined;
+        link?: undefined;
+        clean?: undefined;
     }// EditorLocalization
 
     export interface EditorOptions {
         // EditorOptions properties
         createCommand?: (name:any) => void;
-        disabled?: boolean;
-        editable?: boolean;
-        height?: String  | Number;
+        disabled?: undefined;
+        editable?: undefined;
+        height?: string  | number;
         lineBreak?: string;
         localization?: EditorLocalization;
         pasteMode?: string;
-        rtl?: boolean;
+        rtl?: undefined;
         stylesheets?: Array<any>;
-        theme?: string;
+        theme?: undefined;
         toolbarPosition?: string;
-        tools?: string;
-        width?: String | Number;
+        tools?: undefined;
+        width?: string | number;
     }// EditorOptions
 
     export interface jqxEditor extends widget, EditorOptions {
@@ -1641,26 +1641,26 @@ declare module jqwidgets {
         destroy(): void;
         focus(): void;
         print(): void;
-        setMode(mode: boolean): void;
-        val(value: string): string;
+        setMode(mode: undefined): void;
+        val(value: undefined): undefined;
     }// jqxEditor
 
     export interface ExpanderOptions {
         // ExpanderOptions properties
         animationType?: string;
         arrowPosition?: string;
-        collapseAnimationDuration?: number;
-        disabled?: boolean;
-        expanded?: boolean;
-        expandAnimationDuration?: number;
-        height?: String | Number;
+        collapseAnimationDuration?: undefined;
+        disabled?: undefined;
+        expanded?: undefined;
+        expandAnimationDuration?: undefined;
+        height?: number | string;
         headerPosition?: string;
         initContent?: () => void;
-        rtl?: boolean;
-        showArrow?: boolean;
-        theme?: string;
+        rtl?: undefined;
+        showArrow?: undefined;
+        theme?: undefined;
         toggleMode?: string;
-        width?: String | Number;
+        width?: number | string;
     }// ExpanderOptions
 
     export interface jqxExpander extends widget, ExpanderOptions {
@@ -1672,41 +1672,41 @@ declare module jqwidgets {
         enable(): void;
         expand(): void;
         focus(): void;
-        getContent(): string;
-        getHeaderContent(): string;
+        getContent(): undefined;
+        getHeaderContent(): undefined;
         invalidate(): void;
         refresh(): void;
         render(): void;
-        setHeaderContent(headerContent: string): void;
-        setContent(content: string): void;
+        setHeaderContent(headerContent: undefined): void;
+        setContent(content: undefined): void;
     }// jqxExpander
 
     export interface FileUploadLocalization {
         // FileUploadLocalization properties
-        browseButton?: string;
-        uploadButton?: string;
-        cancelButton?: string;
-        uploadFileTooltip?: string;
-        cancelFileTooltip?: string;
+        browseButton?: undefined;
+        uploadButton?: undefined;
+        cancelButton?: undefined;
+        uploadFileTooltip?: undefined;
+        cancelFileTooltip?: undefined;
     }// FileUploadLocalization
 
     export interface FileUploadOptions {
         // FileUploadOptions properties
-        autoUpload?: boolean;
-        accept?: string;
+        autoUpload?: undefined;
+        accept?: undefined;
         browseTemplate?: string;
         cancelTemplate?: string;
-        disabled?: boolean;
-        fileInputName?: string;
-        height?: String | Number;
+        disabled?: undefined;
+        fileInputName?: undefined;
+        height?: number | string;
         localization?: FileUploadLocalization;
-        multipleFilesUpload?: boolean;
+        multipleFilesUpload?: undefined;
         renderFiles?: (filename:any) => void;
-        rtl?: boolean;
-        theme?: string;
-        uploadUrl?: string;
+        rtl?: undefined;
+        theme?: undefined;
+        uploadUrl?: undefined;
         uploadTemplate?: string;
-        width?: String | Number;
+        width?: string | number;
     }// FileUploadOptions
 
     export interface jqxFileUpload extends widget, FileUploadOptions {
@@ -1718,31 +1718,31 @@ declare module jqwidgets {
         destroy(): void;
         render(): void;
         refresh(): void;
-        uploadFile(fileIndex: number): void;
+        uploadFile(fileIndex: undefined): void;
         uploadAll(): void;
     }// jqxFileUpload
 
     export interface FormattedInputOptions {
         // FormattedInputOptions properties
-        disabled?: boolean;
+        disabled?: undefined;
         decimalNotation?: string;
-        dropDown?: boolean;
-        dropDownWidth?: Number | String;
-        height?: Number | String;
-        min?: Number | String;
-        max?: Number | String;
-        placeHolder?: string;
-        popupZIndex?: number;
-        roundedCorners?: boolean;
-        rtl?: boolean;
-        radix?: Number | String;
-        spinButtons?: boolean;
-        spinButtonsStep?: number;
+        dropDown?: undefined;
+        dropDownWidth?: number | string;
+        height?: number | string;
+        min?: number | string;
+        max?: number | string;
+        placeHolder?: undefined;
+        popupZIndex?: undefined;
+        roundedCorners?: undefined;
+        rtl?: undefined;
+        radix?: number | string;
+        spinButtons?: undefined;
+        spinButtonsStep?: undefined;
         template?: string;
-        theme?: string;
-        upperCase?: boolean;
-        value?: string;
-        width?: Number | String;
+        theme?: undefined;
+        upperCase?: undefined;
+        value?: undefined;
+        width?: number | string;
     }// FormattedInputOptions
 
     export interface jqxFormattedInput extends widget, FormattedInputOptions {
@@ -1757,102 +1757,102 @@ declare module jqwidgets {
         selectAll(): void;
         selectFirst(): void;
         selectLast(): void;
-        val(value: String | Number): any;
+        val(value: number | string): any;
     }// jqxFormattedInput
 
     export interface GaugeStyle {
         // GaugeStyle properties
-        fill?: string;
-        stroke?: string;
+        fill?: undefined;
+        stroke?: undefined;
     }// GaugeStyle
 
     export interface GaugeBorder {
         // GaugeBorder properties
-        size?: String | Number;
-        visible?: boolean;
+        size?: number | string;
+        visible?: undefined;
         style?: GaugeStyle;
-        showGradient?: boolean;
+        showGradient?: undefined;
     }// GaugeBorder
 
     export interface GaugeCaption {
         // GaugeCaption properties
-        value?: string;
+        value?: undefined;
         position?: string;
-        offset?: Array<Number>;
-        visible?: boolean;
+        offset?: Array<number>;
+        visible?: undefined;
     }// GaugeCaption
 
     export interface GaugeCap {
         // GaugeCap properties
-        size?: String | Number;
-        visible?: Boolean;
+        size?: number | string;
+        visible?: boolean;
         style?: GaugeStyle;
     }// GaugeCap
 
     export interface GaugeLabels {
         // GaugeLabels properties
-        distance?: string;
+        distance?: undefined;
         position?: string;
-        interval?: String | Number;
-        offset?: Array<Number>;
-        visible?: boolean;
+        interval?: number | string;
+        offset?: Array<number>;
+        visible?: undefined;
         formatValue?: (value?: number) => string;
     }// GaugeLabels
 
     export interface GaugePointer {
         // GaugePointer properties
-        pointerType?: string;
+        pointerType?: undefined;
         style?: GaugeStyle;
-        width?: String | Number;
-        length?: String | Number;
-        visible?: boolean;
+        width?: number | string;
+        length?: number | string;
+        visible?: undefined;
     }// GaugePointer
 
     export interface GaugeRanges {
         // GaugeRanges properties
-        startValue: String | Number;
-        endValue: String | Number;
-        startWidth: String | Number;
-        endWidth: String | Number;
-        startDistance?: String | Number;
-        endDistance?: String | Number;
+        startValue: number | string;
+        endValue: number | string;
+        startWidth: number | string;
+        endWidth: number | string;
+        startDistance?: number | string;
+        endDistance?: number | string;
         style: GaugeStyle;
     }// GaugeRanges
 
     export interface GaugeTicks {
         // GaugeTicks properties
-        size: String | Number;
-        interval: String | Number;
-        visible?: boolean;
+        size: number | string;
+        interval: number | string;
+        visible?: undefined;
         style?: GaugeStyle;
     }// GaugeTicks
 
     export interface GaugeOptions {
         // GaugeOptions properties
-        animationDuration?: String | Number;
+        animationDuration?: string | number;
         border?: GaugeBorder;
         caption?: GaugeCaption;
         cap?: GaugeCap;
-        colorScheme?: string;
-        disabled?: boolean;
+        colorScheme?: undefined;
+        disabled?: undefined;
         easing?: string;
-        endAngle?: String | Number;
-        height?: String | Number;
-        int64?: boolean;
+        endAngle?: number | string;
+        height?: number | string;
+        int64?: undefined;
         labels?: GaugeLabels;
-        min?: number;
-        max?: String | Number;
+        min?: undefined;
+        max?: number | string;
         pointer?: GaugePointer;
-        radius?: String | Number;
+        radius?: number | string;
         ranges?: Array<GaugeRanges>;
-        startAngle?: String | Number;
-        showRanges?: boolean;
+        startAngle?: number | string;
+        showRanges?: undefined;
         style?: GaugeStyle;
         ticksMajor?: GaugeTicks;
         ticksMinor?: GaugeTicks;
-        ticksDistance?: string;
-        value?: number;
-        width?: String | Number;
+        ticksDistance?: undefined;
+        value?: undefined;
+        width?: number | string;
     }// GaugeOptions
 
     export interface jqxGauge extends widget, GaugeOptions {
@@ -1860,143 +1860,143 @@ declare module jqwidgets {
         // jqxGauge functions
         disable(): void;
         enable(): void;
-        val(value: number): number;
+        val(value: undefined): undefined;
     }// jqxGauge
 
     export interface GridColumnType {
         // GridColumnType properties
-        Number?: string;
-        checkbox?: String;
-        numberinput?: string;
-        dropdownlist?: string;
-        combobox?: string;
-        datetimeinput?: string;
-        textbox?: string;
-        template?: string;
-        custom?: string;
+        number?: undefined;
+        checkbox?: string;
+        numberinput?: undefined;
+        dropdownlist?: undefined;
+        combobox?: undefined;
+        datetimeinput?: undefined;
+        textbox?: undefined;
+        template?: undefined;
+        custom?: undefined;
     }// GridColumnType
 
     export interface ValidationResult {
         // ValidationResult properties
-        result: boolean;
-        message?: string;
+        result: undefined;
+        message?: undefined;
     }// ValidationResult
 
     export interface GridColumn {
         // GridColumn properties
-        text?: string;
-        datafield?: string;
-        displayfield?: string;
-        sortable?: boolean;
-        filterable?: boolean;
-        filter?: (cellValue?: any, rowData?: any, dataField?: String, filterGroup?: any, defaultFilterResult?: any) => any;
-        hideable?: boolean;
-        hidden?: boolean;
-        groupable?: boolean;
-        menu?: boolean;
-        exportable?: boolean;
-        columngroup?: string;
-        enabletooltips?: boolean;
-        renderer?: (defaultText?: String, alignment?: String, height?: Number) => String;
+        text?: undefined;
+        datafield?: undefined;
+        displayfield?: undefined;
+        sortable?: undefined;
+        filterable?: undefined;
+        filter?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: any) => any;
+        hideable?: undefined;
+        hidden?: undefined;
+        groupable?: undefined;
+        menu?: undefined;
+        exportable?: undefined;
+        columngroup?: undefined;
+        enabletooltips?: undefined;
+        renderer?: (defaultText?: string, alignment?: string, height?: number) => string;
         rendered?: (columnHeaderElement?: any) => void;
-        cellsrenderer?: (row?: Number, columnfield?: String, value?: any, defaulthtml?: String, columnproperties?: any, rowdata?: any) => String;
+        cellsrenderer?: (row?: number, columnfield?: string, value?: any, defaulthtml?: string, columnproperties?: any, rowdata?: any) => string;
         columntype?: GridColumnType;
-        validation?: (cell?: any, value?: Number) => any;
-        createwidget?: (row: any, column: any, value: String, cellElement: any) => void;
-        initwidget?: (row: Number, column: String, value: String, cellElement: any) => void;
+        validation?: (cell?: any, value?: number) => any;
+        createwidget?: (row: any, column: any, value: string, cellElement: any) => void;
+        initwidget?: (row: number, column: string, value: string, cellElement: any) => void;
         createfilterwidget?: (column: any, htmlElement: any, editor: any) => void;
-        createfilterpanel?: (datafield: String, filterPanel: any) => void;
-        initeditor?: (row: Number, cellvalue: any, editor: any, celltext: any, pressedChar: String, callback: any) => void;
-        createeditor?: (row: Number, cellvalue: any, editor: any, celltext: any, cellwidth: any, cellheight: any) => void;
-        destroyeditor?: (row: Number, callback: any) => void;
-        geteditorvalue?: (row: Number, cellvalue:any, editor:any) => any;
-        cellbeginedit?: (row: Number, datafield: String, columntype: String) => Boolean;
-        cellendedit?: (row: Number, datafield: String, columntype: String, oldvalue: any, newvalue: any) => Boolean;
-        cellvaluechanging?: (row: Number, datafield: String, columntype: String, oldvalue: any, newvalue: any) => String;
-        createeverpresentrowwidget?: (datafield: String, htmlElement: any, popup: any, addRowCallback: any) => any;
-        initeverpresentrowwidget?: (datafield: String, htmlElement: any, popup: any) => void;
+        createfilterpanel?: (datafield: string, filterPanel: any) => void;
+        initeditor?: (row: number, cellvalue: any, editor: any, celltext: any, pressedChar: string, callback: any) => void;
+        createeditor?: (row: number, cellvalue: any, editor: any, celltext: any, cellwidth: any, cellheight: any) => void;
+        destroyeditor?: (row: number, callback: any) => void;
+        geteditorvalue?: (row: number, cellvalue:any, editor:any) => any;
+        cellbeginedit?: (row: number, datafield: string, columntype: string) => boolean;
+        cellendedit?: (row: number, datafield: string, columntype: string, oldvalue: any, newvalue: any) => boolean;
+        cellvaluechanging?: (row: number, datafield: string, columntype: string, oldvalue: any, newvalue: any) => string;
+        createeverpresentrowwidget?: (datafield: string, htmlElement: any, popup: any, addRowCallback: any) => any;
+        initeverpresentrowwidget?: (datafield: string, htmlElement: any, popup: any) => void;
         reseteverpresentrowwidgetvalue?: (htmlElement: any) => void;
-        geteverpresentrowwidgetvalue?: (datafield: String, htmlElement: any) => any;
+        geteverpresentrowwidgetvalue?: (datafield: string, htmlElement: any) => any;
         destroyeverpresentrowwidget?: (htmlElement: any) => void;
-        validateeverpresentrowwidgetvalue?: (datafield: String, value: any, rowValues: any) => Boolean;
+        validateeverpresentrowwidgetvalue?: (datafield: string, value: any, rowValues: any) => boolean;
         cellsformat?: string;
-        cellclassname?: String;
+        cellclassname?: string;
         aggregates?: any;
         align?: string;
         cellsalign?: string;
-        width?: Number | String;
+        width?: number | string;
         minwidth?: any;
         maxwidth?: any;
-        resizable?: boolean;
-        draggable?: boolean;
-        editable?: boolean;
-        classname?: string;
-        pinned?: boolean;
-        nullable?: boolean;
+        resizable?: undefined;
+        draggable?: undefined;
+        editable?: undefined;
+        classname?: undefined;
+        pinned?: undefined;
+        nullable?: undefined;
         filteritems?: any;
-        filterdelay?: number;
+        filterdelay?: undefined;
         filtertype?: string;
         filtercondition?: string;
     }// GridColumn
 
     export interface GridSourceDataFields {
         // GridSourceDataFields properties
-        name: string;
+        name: undefined;
         type?: string;
-        format?: string;
-        map?: string;
-        id?: string;
-        text?: string;
+        format?: undefined;
+        map?: undefined;
+        id?: undefined;
+        text?: undefined;
         source?: Array<any>;
     }// GridSourceDataFields
 
     export interface GridSource {
         // GridSource properties
-        url?: string;
+        url?: undefined;
         data?: any;
         localdata?: any;
         datatype?: string;
         type?: string;
-        id?: string;
-        root?: string;
-        record?: string;
+        id?: undefined;
+        root?: undefined;
+        record?: undefined;
         datafields?: Array<GridSourceDataFields>;
-        pagenum?: number;
-        pagesize?: number;
-        pager?: (pagenum?: Number, pagesize?: Number, oldpagenum?: Number) => any;
-        sortcolumn?: string;
+        pagenum?: undefined;
+        pagesize?: undefined;
+        pager?: (pagenum?: number, pagesize?: number, oldpagenum?: number) => any;
+        sortcolumn?: undefined;
         sortdirection?: string;
         sort?: (column?: any, direction?: any) => void;
         filter?: (filters?: any, recordsArray?: any) => void;
-        addrow?: (rowid?: any, rowdata?: any, position?: any, commit?: Boolean) => void;
-        deleterow?: (rowid?: any, commit?: Boolean) => void;
+        addrow?: (rowid?: any, rowdata?: any, position?: any, commit?: boolean) => void;
+        deleterow?: (rowid?: any, commit?: boolean) => void;
         updaterow?: (rowid?: any, newdata?: any, commit? : any) => void;
         processdata?: (data: any) => void;
         formatdata?: (data: any) => any;
-        async?: boolean;
+        async?: undefined;
     }// GridSource
 
     export interface GridGetColumn {
         // GridGetColumn properties
-        datafield?: string;
-        displayfield?: string;
-        text?: string;
-        sortable?: boolean;
-        filterable?: boolean;
-        exportable?: boolean;
-        editable?: boolean;
-        groupable?: boolean;
-        resizable?: boolean;
-        draggable?: boolean;
-        classname?: string;
-        cellclassname?: string;
-        width?: Number | String;
-        menu?: boolean;
+        datafield?: undefined;
+        displayfield?: undefined;
+        text?: undefined;
+        sortable?: undefined;
+        filterable?: undefined;
+        exportable?: undefined;
+        editable?: undefined;
+        groupable?: undefined;
+        resizable?: undefined;
+        draggable?: undefined;
+        classname?: undefined;
+        cellclassname?: undefined;
+        width?: number | string;
+        menu?: undefined;
     }// GridGetColumn
 
     export interface GridGetDataInformation {
         // GridGetDataInformation properties
-        rowscount?: string;
+        rowscount?: undefined;
         sortinformation?: any;
         sortcolumn?: any;
         sortdirection?: any;
@@ -2008,97 +2008,97 @@ declare module jqwidgets {
 
     export interface GridGetSortInformation {
         // GridGetSortInformation properties
-        sortcolumn?: string;
+        sortcolumn?: undefined;
         sortdirection?: any;
     }// GridGetSortInformation
 
     export interface GridGetPagingInformation {
         // GridGetPagingInformation properties
-        pagenum?: string;
+        pagenum?: undefined;
         pagesize?: any;
         pagescount?: any;
     }// GridGetPagingInformation
 
     export interface GridDateNaming {
         // GridDateNaming properties
-        names?: Array<String>;
-        namesAbbr?: Array<String>;
-        namesShort?: Array<String>;
+        names?: Array<string>;
+        namesAbbr?: Array<string>;
+        namesShort?: Array<string>;
     }// GridDateNaming
 
-    export interface GridLocalizationObject {
-        // GridLocalizationObject properties
+    export interface GridLocalizationobject {
+        // GridLocalizationobject properties
         filterstringcomparisonoperators?: any;
         filternumericcomparisonoperators?: any;
         filterdatecomparisonoperators?: any;
         filterbooleancomparisonoperators?: any;
-        pagergotopagestring?: string;
-        pagershowrowsstring?: string;
-        pagerrangestring?: string;
-        pagernextbuttonstring?: string;
-        pagerpreviousbuttonstring?: string;
-        sortascendingstring?: string;
-        sortdescendingstring?: string;
-        sortremovestring?: string;
-        firstDay?: number;
-        percentsymbol?: string;
-        currencysymbol?: string;
-        currencysymbolposition?: string;
-        decimalseparator?: string;
-        thousandsseparator?: string;
+        pagergotopagestring?: undefined;
+        pagershowrowsstring?: undefined;
+        pagerrangestring?: undefined;
+        pagernextbuttonstring?: undefined;
+        pagerpreviousbuttonstring?: undefined;
+        sortascendingstring?: undefined;
+        sortdescendingstring?: undefined;
+        sortremovestring?: undefined;
+        firstDay?: undefined;
+        percentsymbol?: undefined;
+        currencysymbol?: undefined;
+        currencysymbolposition?: undefined;
+        decimalseparator?: undefined;
+        thousandsseparator?: undefined;
         days?: GridDateNaming;
         months?: GridDateNaming;
-    }// GridLocalizationObject
+    }// GridLocalizationobject
 
     export interface GridScrollPosition {
         // GridScrollPosition properties
-        top?: number;
-        left?: number;
+        top?: undefined;
+        left?: undefined;
     }// GridScrollPosition
 
     export interface GridGetGroup {
         // GridGetGroup properties
-        group?: number;
-        level?: number;
-        expanded?: number;
-        subgroups?: number;
-        subrows?: number;
+        group?: undefined;
+        level?: undefined;
+        expanded?: undefined;
+        subgroups?: undefined;
+        subrows?: undefined;
     }// GridGetGroup
 
     export interface GridGetCell {
         // GridGetCell properties
-        value?: number;
-        row?: number;
-        column?: number;
+        value?: undefined;
+        row?: undefined;
+        column?: undefined;
     }// GridGetCell
 
     export interface GridGetSelectedCell {
         // GridGetSelectedCell properties
-        rowindex?: number;
-        datafield?: string;
+        rowindex?: undefined;
+        datafield?: undefined;
     }// GridGetSelectedCell
 
     export interface GridGetStateColumns {
         // GridGetStateColumns properties
-        width?: String | Number;
-        hidden?: boolean;
-        index?: number;
-        pinned?: boolean;
-        groupable?: boolean;
-        resizable?: boolean;
-        draggable?: boolean;
-        text?: string;
-        align?: string;
-        cellsalign?: string;
+        width?: number | string;
+        hidden?: undefined;
+        index?: undefined;
+        pinned?: undefined;
+        groupable?: undefined;
+        resizable?: undefined;
+        draggable?: undefined;
+        text?: undefined;
+        align?: undefined;
+        cellsalign?: undefined;
     }// GridGetStateColumns
 
     export interface GridGetState {
         // GridGetState properties
-        width?: String | Number;
-        height?: String | Number;
-        pagenum?: number;
-        pagesize?: number;
-        pagesizeoptions?: Array<String>;
+        width?: number | string;
+        height?: number | string;
+        pagenum?: undefined;
+        pagesize?: undefined;
+        pagesizeoptions?: Array<string>;
         sortcolumn?: any;
         sortdirection?: any;
         filters?: any;
@@ -2108,245 +2108,245 @@ declare module jqwidgets {
 
     export interface GridOptions {
         // GridOptions properties
-        altrows?: boolean;
-        altstart?: number;
-        altstep?: number;
-        autoshowloadelement?: boolean;
-        autoshowfiltericon?: boolean;
-        autoshowcolumnsmenubutton?: boolean;
-        clipboard?: boolean;
-        closeablegroups?: boolean;
-        columnsmenuwidth?: number;
-        columnmenuopening?: (menu?: any, datafield?: String, height?: Number | String) => Boolean;
-        columnmenuclosing?: (menu?: any, datafield?: String, height?: Number | String) => Boolean;
-        cellhover?: (cellhtmlElement?: any, x?: Number, y?: Number) => void;
-        enablekeyboarddelete?: boolean;
-        enableellipsis?: boolean;
-        enablemousewheel?: boolean;
-        enableanimations?: boolean;
-        enabletooltips?: boolean;
-        enablehover?: boolean;
-        enablebrowserselection?: boolean;
+        altrows?: undefined;
+        altstart?: undefined;
+        altstep?: undefined;
+        autoshowloadelement?: undefined;
+        autoshowfiltericon?: undefined;
+        autoshowcolumnsmenubutton?: undefined;
+        clipboard?: undefined;
+        closeablegroups?: undefined;
+        columnsmenuwidth?: undefined;
+        columnmenuopening?: (menu?: any, datafield?: string, height?: number | string) => boolean;
+        columnmenuclosing?: (menu?: any, datafield?: string, height?: number | string) => boolean;
+        cellhover?: (cellhtmlElement?: any, x?: number, y?: number) => void;
+        enablekeyboarddelete?: undefined;
+        enableellipsis?: undefined;
+        enablemousewheel?: undefined;
+        enableanimations?: undefined;
+        enabletooltips?: undefined;
+        enablehover?: undefined;
+        enablebrowserselection?: undefined;
         everpresentrowposition?: string;
-        everpresentrowheight?: number;
-        everpresentrowactions?: string;
+        everpresentrowheight?: undefined;
+        everpresentrowactions?: undefined;
         everpresentrowactionsmode?: string;
-        filterrowheight?: number;
+        filterrowheight?: undefined;
         filtermode?: string;
-        groupsrenderer?: (text?: String, group?: Number, expanded?: Boolean, data?: any) => String;
-        groupcolumnrenderer?: (text?: String, group?: Number, expanded?: Boolean, data?: any) => String;
-        groupsexpandedbydefault?: boolean;
-        handlekeyboardnavigation?: (event: any) => Boolean;
+        groupsrenderer?: (text?: string, group?: number, expanded?: boolean, data?: any) => string;
+        groupcolumnrenderer?: (text?: string, group?: number, expanded?: boolean, data?: any) => string;
+        groupsexpandedbydefault?: undefined;
+        handlekeyboardnavigation?: (event: any) => boolean;
         pagerrenderer?: () => any[];
-        rtl?: boolean;
-        showdefaultloadelement?: boolean;
-        showfiltercolumnbackground?: boolean;
-        showfiltermenuitems?: boolean;
-        showpinnedcolumnbackground?: boolean;
-        showsortcolumnbackground?: boolean;
-        showsortmenuitems?: boolean;
-        showgroupmenuitems?: boolean;
-        showrowdetailscolumn?: boolean;
-        showheader?: boolean;
-        showgroupsheader?: boolean;
-        showaggregates?: boolean;
-        showgroupaggregates?: boolean;
-        showeverpresentrow?: boolean;
-        showfilterrow?: boolean;
-        showemptyrow?: boolean;
-        showstatusbar?: boolean;
-        statusbarheight?: number;
-        showtoolbar?: boolean;
+        rtl?: undefined;
+        showdefaultloadelement?: undefined;
+        showfiltercolumnbackground?: undefined;
+        showfiltermenuitems?: undefined;
+        showpinnedcolumnbackground?: undefined;
+        showsortcolumnbackground?: undefined;
+        showsortmenuitems?: undefined;
+        showgroupmenuitems?: undefined;
+        showrowdetailscolumn?: undefined;
+        showheader?: undefined;
+        showgroupsheader?: undefined;
+        showaggregates?: undefined;
+        showgroupaggregates?: undefined;
+        showeverpresentrow?: undefined;
+        showfilterrow?: undefined;
+        showemptyrow?: undefined;
+        showstatusbar?: undefined;
+        statusbarheight?: undefined;
+        showtoolbar?: undefined;
         selectionmode?: string;
         updatefilterconditions?: (type?: string, defaultconditions?: any) => any;
         updatefilterpanel?: (filtertypedropdown1?: any, filtertypedropdown2?: any, filteroperatordropdown?: any, filterinputfield1?: any, filterinputfield2?: any, filterbutton?: any, clearbutton?: any, columnfilter?: any, filtertype?: any, filterconditions?: any) => any;
-        theme?: string;
-        toolbarheight?: number;
-        autoheight?: boolean;
-        autorowheight?: boolean;
-        columnsheight?: number;
-        deferreddatafields?: Array<String>;
-        groupsheaderheight?: number;
-        groupindentwidth?: number;
-        height?: String | Number;
-        pagerheight?: String | Number;
-        rowsheight?: number;
-        scrollbarsize?: String | Number;
+        theme?: undefined;
+        toolbarheight?: undefined;
+        autoheight?: undefined;
+        autorowheight?: undefined;
+        columnsheight?: undefined;
+        deferreddatafields?: Array<string>;
+        groupsheaderheight?: undefined;
+        groupindentwidth?: undefined;
+        height?: number | string;
+        pagerheight?: number | string;
+        rowsheight?: undefined;
+        scrollbarsize?: number | string;
         scrollmode?: string;
-        scrollfeedback?: (row: any) => String;
-        width?: String | Number;
-        autosavestate?: boolean;
-        autoloadstate?: boolean;
+        scrollfeedback?: (row: any) => string;
+        width?: string | number;
+        autosavestate?: undefined;
+        autoloadstate?: undefined;
         columns?: Array<GridColumn>;
         columngroups?: Array<any>;
-        columnsmenu?: boolean;
-        columnsresize?: boolean;
-        columnsautoresize?: boolean;
-        columnsreorder?: boolean;
-        disabled?: boolean;
-        editable?: boolean;
+        columnsmenu?: undefined;
+        columnsresize?: undefined;
+        columnsautoresize?: undefined;
+        columnsreorder?: undefined;
+        disabled?: undefined;
+        editable?: undefined;
         editmode?: string;
-        filter?: (cellValue?: any, rowData?: any, dataField?: String, filterGroup?: any, defaultFilterResult?: Boolean) => any;
-        filterable?: boolean;
-        groupable?: boolean;
-        groups?: Array<String>;
-        horizontalscrollbarstep?: number;
-        horizontalscrollbarlargestep?: number;
-        initrowdetails?: (index?: Number, parentElement?: any, gridElement?: any, datarecord?: any) => void;
-        keyboardnavigation?: boolean;
+        filter?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: boolean) => any;
+        filterable?: undefined;
+        groupable?: undefined;
+        groups?: Array<string>;
+        horizontalscrollbarstep?: undefined;
+        horizontalscrollbarlargestep?: undefined;
+        initrowdetails?: (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void;
+        keyboardnavigation?: undefined;
         localization?: any;
-        pagesize?: number;
-        pagesizeoptions?: Array<Number | String>;
+        pagesize?: undefined;
+        pagesizeoptions?: Array<number | string>;
         pagermode?: string;
-        pagerbuttonscount?: number;
-        pageable?: boolean;
-        rowdetails?: boolean;
+        pagerbuttonscount?: undefined;
+        pageable?: undefined;
+        rowdetails?: undefined;
         rowdetailstemplate?: any;
         ready?: () => void;
         rendered?: () => void;
         renderstatusbar?: (statusbar?: any) => void;
         rendertoolbar?: (toolbar?: any) => void;
         rendergridrows?: (params?: any) => any;
-        sortable?: boolean;
-        selectedrowindex?: number;
-        selectedrowindexes?: Array<Number>;
+        sortable?: undefined;
+        selectedrowindex?: undefined;
+        selectedrowindexes?: Array<number>;
         source?: any;
         sorttogglestates?: string;
-        updatedelay?: number;
-        virtualmode?: boolean;
-        verticalscrollbarstep?: number;
-        verticalscrollbarlargestep?: number;
+        updatedelay?: undefined;
+        virtualmode?: undefined;
+        verticalscrollbarstep?: undefined;
+        verticalscrollbarlargestep?: undefined;
     }// GridOptions
 
     export interface jqxGrid extends widget, GridOptions {
 
         // jqxGrid functions
-        autoresizecolumns(type: string): void;
-        autoresizecolumn(dataField: string, type: string): void;
+        autoresizecolumns(type: undefined): void;
+        autoresizecolumn(dataField: undefined, type: undefined): void;
         beginupdate(): void;
         clear(): void;
         destroy(): void;
         endupdate(): void;
-        ensurerowvisible(rowBoundIndex: number): void;
+        ensurerowvisible(rowBoundIndex: undefined): void;
         focus(): void;
-        getcolumnindex(dataField: string): number;
-        getcolumn(dataField: string): GridGetColumn;
-        getcolumnproperty(dataField: string, propertyName: string): any;
-        getrowid(rowBoundIndex: number): string;
-        getrowdata(rowBoundIndex: number): any;
-        getrowdatabyid(rowID: string): any;
-        getrowboundindexbyid(rowID: string): number;
-        getrowboundindex(rowDisplayIndex: number): number;
+        getcolumnindex(dataField: undefined): undefined;
+        getcolumn(dataField: undefined): GridGetColumn;
+        getcolumnproperty(dataField: undefined, propertyName: undefined): any;
+        getrowid(rowBoundIndex: undefined): undefined;
+        getrowdata(rowBoundIndex: undefined): any;
+        getrowdatabyid(rowID: undefined): any;
+        getrowboundindexbyid(rowID: undefined): undefined;
+        getrowboundindex(rowDisplayIndex: undefined): undefined;
         getrows(): Array<any>;
         getboundrows(): Array<any>;
         getdisplayrows(): Array<any>;
         getdatainformation(): GridGetDataInformation;
         getsortinformation(): GridGetSortInformation;
         getpaginginformation(): GridGetPagingInformation;
-        hidecolumn(dataField: string): void;
+        hidecolumn(dataField: undefined): void;
         hideloadelement(): void;
-        hiderowdetails(rowBoundIndex: number): void;
-        iscolumnvisible(dataField: string): boolean;
-        iscolumnpinned(dataField: string): boolean;
-        localizestrings(localizationObject: GridLocalizationObject): void;
-        pincolumn(dataField: string): void;
+        hiderowdetails(rowBoundIndex: undefined): void;
+        iscolumnvisible(dataField: undefined): undefined;
+        iscolumnpinned(dataField: undefined): undefined;
+        localizestrings(localizationobject: GridLocalizationobject): void;
+        pincolumn(dataField: undefined): void;
         refreshdata(): void;
         refresh(): void;
         render(): void;
-        scrolloffset(top: number, left: number): void;
+        scrolloffset(top: undefined, left: undefined): void;
         scrollposition(): GridScrollPosition;
         showloadelement(): void;
-        showrowdetails(rowBoundIndex: number): void;
-        setcolumnindex(dataField: string, index: number): void;
-        setcolumnproperty(dataField: string, propertyName: any, propertyValue: any): void;
-        showcolumn(dataField: string): void;
-        unpincolumn(dataField: string): void;
+        showrowdetails(rowBoundIndex: undefined): void;
+        setcolumnindex(dataField: undefined, index: undefined): void;
+        setcolumnproperty(dataField: undefined, propertyName: any, propertyValue: any): void;
+        showcolumn(dataField: undefined): void;
+        unpincolumn(dataField: undefined): void;
         updatebounddata(type: any): void;
-        updating(): boolean;
-        getsortcolumn(): string;
+        updating(): undefined;
+        getsortcolumn(): undefined;
         removesort(): void;
-        sortby(dataField: string, sortOrder: string): void;
-        addgroup(dataField: string): void;
+        sortby(dataField: undefined, sortOrder: undefined): void;
+        addgroup(dataField: undefined): void;
         cleargroups(): void;
-        collapsegroup(group: String | Number): void;
+        collapsegroup(group: number | string): void;
         collapseallgroups(): void;
         expandallgroups(): void;
-        expandgroup(group: String | Number): void;
-        getrootgroupscount(): number;
-        getgroup(groupIndex: number): GridGetGroup;
-        insertgroup(groupIndex: number, dataField: string): void;
-        iscolumngroupable(): boolean;
-        removegroupat(groupIndex: number): void;
-        removegroup(dataField: string): void;
-        addfilter(dataField: string, filterGroup: any, refreshGrid: boolean): void;
+        expandgroup(group: number | string): void;
+        getrootgroupscount(): undefined;
+        getgroup(groupIndex: undefined): GridGetGroup;
+        insertgroup(groupIndex: undefined, dataField: undefined): void;
+        iscolumngroupable(): undefined;
+        removegroupat(groupIndex: undefined): void;
+        removegroup(dataField: undefined): void;
+        addfilter(dataField: undefined, filterGroup: any, refreshGrid: undefined): void;
         applyfilters(): void;
         clearfilters(): void;
         getfilterinformation(): any;
-        getcolumnat(index: number): any;
-        removefilter(dataField: string, refreshGrid: boolean): void;
+        getcolumnat(index: undefined): any;
+        removefilter(dataField: undefined, refreshGrid: undefined): void;
         refreshfilterrow(): void;
-        gotopage(pageNumber: number): void;
+        gotopage(pagenumber: undefined): void;
         gotoprevpage(): void;
         gotonextpage(): void;
         addrow(rowIds: any, data: any, rowPosition: any): void;
-        begincelledit(rowBoundIndex: number, dataField: string): void;
-        beginrowedit(rowBoundIndex: number): void;
+        begincelledit(rowBoundIndex: undefined, dataField: undefined): void;
+        beginrowedit(rowBoundIndex: undefined): void;
         closemenu(): void;
-        deleterow(rowIds: String | Number | Array<Number | String>): void;
-        endcelledit(rowBoundIndex: number, dataField: string, confirmChanges: boolean): void;
-        endrowedit(rowBoundIndex: number, confirmChanges: boolean): void;
-        getcell(rowBoundIndex: number, datafield: string): GridGetCell;
-        getcellatposition(left: number, top: number): GridGetCell;
-        getcelltext(rowBoundIndex: number, dataField: string): string;
-        getcelltextbyid(rowID: string, dataField: string): string;
-        getcellvaluebyid(rowID: string, dataField: string): any;
-        getcellvalue(rowBoundIndex: number, dataField: string): any;
-        isBindingCompleted(): boolean;
-        openmenu(dataField: string): void;
-        setcellvalue(rowBoundIndex: number, dataField: string, value: any): void;
-        setcellvaluebyid(rowID: string, dataField: string, value: any): void;
-        showvalidationpopup(rowBoundIndex: number, dataField: string, validationMessage: string): void;
-        updaterow(rowIds: String | Number | Array<Number | String>, data: any): void;
+        deleterow(rowIds: string | number | Array<number | string>): void;
+        endcelledit(rowBoundIndex: undefined, dataField: undefined, confirmChanges: undefined): void;
+        endrowedit(rowBoundIndex: undefined, confirmChanges: undefined): void;
+        getcell(rowBoundIndex: undefined, datafield: undefined): GridGetCell;
+        getcellatposition(left: undefined, top: undefined): GridGetCell;
+        getcelltext(rowBoundIndex: undefined, dataField: undefined): undefined;
+        getcelltextbyid(rowID: undefined, dataField: undefined): undefined;
+        getcellvaluebyid(rowID: undefined, dataField: undefined): any;
+        getcellvalue(rowBoundIndex: undefined, dataField: undefined): any;
+        isBindingCompleted(): undefined;
+        openmenu(dataField: undefined): void;
+        setcellvalue(rowBoundIndex: undefined, dataField: undefined, value: any): void;
+        setcellvaluebyid(rowID: undefined, dataField: undefined, value: any): void;
+        showvalidationpopup(rowBoundIndex: undefined, dataField: undefined, validationMessage: undefined): void;
+        updaterow(rowIds: string | number | Array<number | string>, data: any): void;
         clearselection(): void;
-        getselectedrowindex(): number;
-        getselectedrowindexes(): Array<Number>;
+        getselectedrowindex(): undefined;
+        getselectedrowindexes(): Array<number>;
         getselectedcell(): GridGetSelectedCell;
         getselectedcells(): Array<GridGetSelectedCell>;
-        selectcell(rowBoundIndex: number, dataField: string): void;
+        selectcell(rowBoundIndex: undefined, dataField: undefined): void;
         selectallrows(): void;
-        selectrow(rowBoundIndex: number): void;
-        unselectrow(rowBoundIndex: number): void;
-        unselectcell(rowBoundIndex: number, dataField: string): void;
-        getcolumnaggregateddata(dataField: string, aggregates: Array<any>): string;
+        selectrow(rowBoundIndex: undefined): void;
+        unselectrow(rowBoundIndex: undefined): void;
+        unselectcell(rowBoundIndex: undefined, dataField: undefined): void;
+        getcolumnaggregateddata(dataField: undefined, aggregates: Array<any>): undefined;
         refreshaggregates(): void;
         renderaggregates(): void;
-        exportdata(dataType: string, fileName: string, exportHeader: boolean, rows: Array<Number>, exportHiddenColumns: boolean, serverURL: string, charSet: string): undefined;
+        exportdata(dataType: undefined, fileName: undefined, exportHeader: undefined, rows: Array<number>, exportHiddenColumns: undefined, serverURL: undefined, charSet: undefined): undefined;
         getstate(): GridGetState;
-        loadstate(stateObject: any): void;
+        loadstate(stateobject: any): void;
         savestate(): GridGetState;
     }// jqxGrid
 
     export interface InputOptions {
         // InputOptions properties
-        disabled?: boolean;
-        dropDownWidth?: String | Number;
-        displayMember?: string;
-        height?: String | Number;
-        items?: number;
-        minLength?: number;
-        maxLength?: number;
-        opened?: boolean;
-        placeHolder?: string;
-        popupZIndex?: number;
-        query?: string;
-        renderer?: (itemValue?: String, inputValue?: String) => String;
-        rtl?: boolean;
+        disabled?: undefined;
+        dropDownWidth?: number | string;
+        displayMember?: undefined;
+        height?: string | number;
+        items?: undefined;
+        minLength?: undefined;
+        maxLength?: undefined;
+        opened?: undefined;
+        placeHolder?: undefined;
+        popupZIndex?: undefined;
+        query?: undefined;
+        renderer?: (itemValue?: string, inputValue?: string) => string;
+        rtl?: undefined;
         searchMode?: string;
-        source?: Array<any>;
-        theme?: string;
-        valueMember?: string;
-        width?: String | Number;
-        value?: String | Number;
+        source?: any;
+        theme?: undefined;
+        valueMember?: undefined;
+        width?: string | number;
+        value?: number | string;
     }// InputOptions
 
     export interface jqxInput extends widget, InputOptions {
@@ -2355,61 +2355,61 @@ declare module jqwidgets {
         destroy(): void;
         focus(): void;
         selectAll(): void;
-        val(value: String | Number): string;
+        val(value: number | string): undefined;
     }// jqxInput
 
     export interface KanbanColumns {
         // KanbanColumns properties
-        text?: string;
-        dataField?: string;
-        maxItems?: number;
-        collapsible?: boolean;
+        text?: undefined;
+        dataField?: undefined;
+        maxItems?: undefined;
+        collapsible?: undefined;
         collapseDirection?: string;
         headerElement?: any;
         collapsedHeaderElement?: any;
-        iconClassName?: string;
+        iconClassName?: undefined;
     }// KanbanColumns
 
     export interface KanbanSource {
         // KanbanSource properties
-        id?: number;
-        status?: string;
-        text?: string;
+        id?: undefined;
+        status?: undefined;
+        text?: undefined;
         content?: any;
-        tags?: string;
-        color?: string;
+        tags?: undefined;
+        color?: undefined;
         resourceId?: any;
-        className?: string;
+        className?: undefined;
     }// KanbanSource
 
     export interface KanbanUpdateItem {
         // KanbanUpdateItem properties
-        status?: string;
-        text?: string;
+        status?: undefined;
+        text?: undefined;
         content?: any;
-        tags?: string;
-        color?: string;
+        tags?: undefined;
+        color?: undefined;
         resourceId?: any;
-        className?: string;
+        className?: undefined;
     }// KanbanUpdateItem
 
     export interface KanbanOptions {
         // KanbanOptions properties
         columnRenderer?: (element?: any, collapsedElement?: any, column?: any) => void;
         columns?: Array<KanbanColumns>;
-        connectWith?: string;
-        headerHeight?: String | Number;
-        headerWidth?: number;
-        height?: String | Number;
+        connectWith?: undefined;
+        headerHeight?: number | string;
+        headerWidth?: undefined;
+        height?: string | number;
         itemRenderer?: (element?: Array<any>, item?: any, resource?: any) => void;
         ready?: () => void;
-        rtl?: boolean;
+        rtl?: undefined;
         source?: Array<any>;
         resources?: Array<any>;
-        template?: string;
+        template?: undefined;
         templateContent?: any;
-        theme?: string;
-        width?: String | Number;
+        theme?: undefined;
+        width?: string | number;
     }// KanbanOptions
 
     export interface jqxKanban extends widget, KanbanOptions {
@@ -2417,32 +2417,32 @@ declare module jqwidgets {
         // jqxKanban functions
         addItem(newItem: any): void;
         destroy(): void;
-        getColumn(dataField: string): KanbanColumns;
-        getColumnItems(dataField: string): Array<KanbanSource>;
+        getColumn(dataField: undefined): KanbanColumns;
+        getColumnItems(dataField: undefined): Array<KanbanSource>;
         getItems(): KanbanSource;
-        removeItem(itemId: string): void;
-        updateItem(itemId: string, newContent: KanbanUpdateItem): void;
+        removeItem(itemId: undefined): void;
+        updateItem(itemId: undefined, newContent: KanbanUpdateItem): void;
     }// jqxKanban
 
     export interface KnobLabelsFormatFunction {
         // KnobLabelsFormatFunction properties
-        formatFunction?: (label: String | Number) => String | Number;
+        formatFunction?: (label: string | number) => string | number;
     }// KnobLabelsFormatFunction
 
     export interface KnobMarks {
         // KnobMarks properties
         colorProgress?: any;
         colorRemaining?: any;
-        drawAboveProgressBar?: boolean;
-        minorInterval?: number;
-        majorInterval?: number;
-        majorSize?: String | Number;
-        offset?: string;
-        rotate?: boolean;
-        size?: String | Number;
+        drawAboveProgressBar?: undefined;
+        minorInterval?: undefined;
+        majorInterval?: undefined;
+        majorSize?: number | string;
+        offset?: undefined;
+        rotate?: undefined;
+        size?: number | string;
         type?: string;
-        thickness?: number;
-        visible?: boolean;
+        thickness?: undefined;
+        visible?: undefined;
     }// KnobMarks
 
     export interface KnobDial {
@@ -2450,37 +2450,37 @@ declare module jqwidgets {
         innerRadius?: any;
         outerRadius?: any;
         style?: any;
-        startAngle?: number;
-        endAngle?: number;
+        startAngle?: undefined;
+        endAngle?: undefined;
     }// KnobDial
 
     export interface KnobLabels {
         // KnobLabels properties
         rotate?: any;
-        offset?: String | Number;
-        visible?: boolean;
-        step?: number;
+        offset?: number | string;
+        visible?: undefined;
+        step?: undefined;
         style?: any;
-        formatFunction?: (label: String | Number) => String | Number;
+        formatFunction?: (label: string | number) => string | number;
     }// KnobLabels
 
     export interface KnobProgressBar {
         // KnobProgressBar properties
-        offset?: String | Number;
+        offset?: number | string;
         style?: any;
-        size?: String | Number;
+        size?: number | string;
         background?: any;
         ranges?: Array<any>;
     }// KnobProgressBar
 
     export interface KnobPointer {
         // KnobPointer properties
-        offset?: String | Number;
-        type?: string;
+        offset?: number | string;
+        type?: undefined;
         style?: any;
-        size?: Number | String;
-        thickness?: number;
-        visible?: boolean;
+        size?: number | string;
+        thickness?: undefined;
+        visible?: undefined;
     }// KnobPointer
 
     export interface KnobSpinner {
@@ -2494,50 +2494,50 @@ declare module jqwidgets {
     export interface KnobStyle {
         // KnobStyle properties
         fill?: any;
-        stroke?: string;
-        strokeWidth?: number;
+        stroke?: undefined;
+        strokeWidth?: undefined;
     }// KnobStyle
 
     export interface KnobOptions {
         // KnobOptions properties
-        allowValueChangeOnClick?: boolean;
-        allowValueChangeOnDrag?: boolean;
-        allowValueChangeOnMouseWheel?: boolean;
-        changing?: (oldValue: String | Number, newValue: String | Number) => Boolean;
-        dragEndAngle?: number;
-        dragStartAngle?: number;
-        disabled?: boolean;
+        allowValueChangeOnClick?: undefined;
+        allowValueChangeOnDrag?: undefined;
+        allowValueChangeOnMouseWheel?: undefined;
+        changing?: (oldValue: string | number, newValue: string | number) => boolean;
+        dragEndAngle?: undefined;
+        dragStartAngle?: undefined;
+        disabled?: undefined;
         dial?: KnobDial;
-        endAngle?: number;
-        height?: String | Number;
+        endAngle?: undefined;
+        height?: number | string;
         labels?: KnobLabels;
         marks?: KnobMarks;
-        min?: number;
-        max?: number;
+        min?: undefined;
+        max?: undefined;
         progressBar?: KnobProgressBar;
         pointer?: KnobPointer;
         pointerGrabAction?: string;
         rotation?: string;
-        startAngle?: number;
+        startAngle?: undefined;
         spinner?: KnobSpinner;
         style?: KnobStyle;
-        step?: number;
-        snapToStep?: boolean;
-        value?: number;
-        width?: String | Number;
+        step?: undefined;
+        snapToStep?: undefined;
+        value?: undefined;
+        width?: number | string;
     }// KnobOptions
 
     export interface jqxKnob extends widget, KnobOptions {
 
         // jqxKnob functions
         destroy(): void;
-        val(value: String | Number): number;
+        val(value: number | string): undefined;
     }// jqxKnob
 
     export interface LinearGaugeRanges {
         // LinearGaugeRanges properties
-        startValue?: number;
-        endValue?: number;
+        startValue?: undefined;
+        endValue?: undefined;
         style?: any;
     }// LinearGaugeRanges
 
@@ -2545,64 +2545,64 @@ declare module jqwidgets {
         // LinearGaugeBackground properties
         borderType?: string;
         borderRadius?: any;
-        visible?: boolean;
+        visible?: undefined;
         style?: any;
-        showGradient?: boolean;
+        showGradient?: undefined;
     }// LinearGaugeBackground
 
     export interface LinearGaugeLabels {
         // LinearGaugeLabels properties
         position?: string;
         style?: any;
-        interval?: number;
-        offset?: number;
+        interval?: undefined;
+        offset?: undefined;
         formatValue?: (value:any, position:string) => any;
-        visible?: boolean;
+        visible?: undefined;
     }// LinearGaugeLabels
 
     export interface LinearGaugePointer {
         // LinearGaugePointer properties
         pointerType?: string;
         style?: any;
-        size?: String | Number;
-        offset?: number;
-        visible?: boolean;
+        size?: number | string;
+        offset?: undefined;
+        visible?: undefined;
     }// LinearGaugePointer
 
     export interface LinearGaugeTicks {
         // LinearGaugeTicks properties
-        size?: String | Number;
-        interval?: number;
-        visible?: boolean;
+        size?: number | string;
+        interval?: undefined;
+        visible?: undefined;
         style?: any;
     }// LinearGaugeTicks
 
     export interface LinearGaugeOptions {
         // LinearGaugeOptions properties
-        animationDuration?: number;
+        animationDuration?: undefined;
         background?: LinearGaugeBackground;
-        colorScheme?: string;
-        disabled?: boolean;
+        colorScheme?: undefined;
+        disabled?: undefined;
         easing?: string;
-        height?: String | Number;
-        int64?: boolean;
-        labels?: Object;
-        min?: number;
-        max?: number;
+        height?: number | string;
+        int64?: undefined;
+        labels?: undefined;
+        min?: undefined;
+        max?: undefined;
         orientation?: string;
         pointer?: LinearGaugePointer;
-        rangesOffset?: number;
-        rangeSize?: String | Number;
+        rangesOffset?: undefined;
+        rangeSize?: number | string;
         ranges?: Array<LinearGaugeRanges>;
-        showRanges?: boolean;
+        showRanges?: undefined;
         scaleStyle?: any;
-        scaleLength?: String | Number;
-        ticksOffset?: Array<Number | String>;
+        scaleLength?: number | string;
+        ticksOffset?: Array<number | string>;
         ticksPosition?: string;
         ticksMinor?: LinearGaugeTicks;
         ticksMajor?: LinearGaugeTicks;
-        value?: number;
-        width?: String | Number;
+        value?: undefined;
+        width?: number | string;
     }// LinearGaugeOptions
 
     export interface jqxLinearGauge extends widget, LinearGaugeOptions {
@@ -2610,27 +2610,27 @@ declare module jqwidgets {
         // jqxLinearGauge functions
         disable(): void;
         enable(): void;
-        val(value: String | Number): number;
+        val(value: number | string): undefined;
     }// jqxLinearGauge
 
     export interface LinkButtonOptions {
         // LinkButtonOptions properties
-        delay?: number;
-        disabled?: boolean;
-        height?: String | Number;
-        imgSrc?: string;
-        imgWidth?: String | Number;
-        imgHeight?: String | Number;
+        delay?: undefined;
+        disabled?: undefined;
+        height?: string | number;
+        imgSrc?: undefined;
+        imgWidth?: string | number;
+        imgHeight?: string | number;
         imgPosition?: string;
         roundedCorners?: string;
-        rtl?: boolean;
+        rtl?: undefined;
         textPosition?: string;
         textImageRelation?: string;
-        theme?: string;
+        theme?: undefined;
         template?: string;
-        toggled?: boolean;
-        width?: String | Number;
-        value?: string;
+        toggled?: undefined;
+        width?: string | number;
+        value?: undefined;
     }// LinkButtonOptions
 
     export interface jqxLinkButton extends widget, LinkButtonOptions {
@@ -2642,45 +2642,45 @@ declare module jqwidgets {
         render(): void;
         toggle(): void;
         unCheck(): void;
-        val(value: string): string;
+        val(value: undefined): undefined;
     }// jqxLinkButton
 
     export interface ListBoxOptions {
         // ListBoxOptions properties
-        autoHeight?: boolean;
-        allowDrag?: boolean;
-        allowDrop?: boolean;
-        checkboxes?: boolean;
-        disabled?: boolean;
-        displayMember?: String | Number;
+        autoHeight?: undefined;
+        allowDrag?: undefined;
+        allowDrop?: undefined;
+        checkboxes?: undefined;
+        disabled?: undefined;
+        displayMember?: number | string;
         dropAction?: string;
-        dragStart?: (item:any) => Boolean;
-        dragEnd?: (dragItem: any, dropItem: any) => Boolean;
-        enableHover?: boolean;
-        enableSelection?: boolean;
-        equalItemsWidth?: boolean;
-        filterable?: boolean;
-        filterHeight?: number;
-        filterDelay?: String | Number;
-        filterPlaceHolder?: String | Number;
-        height?: String | Number;
-        hasThreeStates?: boolean;
-        itemHeight?: number;
-        incrementalSearch?: boolean;
-        incrementalSearchDelay?: String | Number;
-        multiple?: boolean;
-        multipleextended?: boolean;
-        renderer?: (index: Number, label: String | Number, value: String | Number) => String;
+        dragStart?: (item:any) => boolean;
+        dragEnd?: (dragItem: any, dropItem: any) => boolean;
+        enableHover?: undefined;
+        enableSelection?: undefined;
+        equalItemsWidth?: undefined;
+        filterable?: undefined;
+        filterHeight?: undefined;
+        filterDelay?: number | string;
+        filterPlaceHolder?: number | string;
+        height?: string | number;
+        hasThreeStates?: undefined;
+        itemHeight?: undefined;
+        incrementalSearch?: undefined;
+        incrementalSearchDelay?: number | string;
+        multiple?: undefined;
+        multipleextended?: undefined;
+        renderer?: (index: number, label: string | number, value: string | number) => string;
         rendered?: () => any;
-        rtl?: boolean;
-        selectedIndex?: String | Number;
+        rtl?: undefined;
+        selectedIndex?: number | string;
         selectedIndexes?: any;
         source?: Array<any>;
-        scrollBarSize?: number;
+        scrollBarSize?: undefined;
         searchMode?: string;
-        theme?: string;
-        valueMember?: String | Number;
-        width?: String | Number;
+        theme?: undefined;
+        valueMember?: number | string;
+        width?: string | number;
     }// ListBoxOptions
 
     export interface jqxListBox extends widget, ListBoxOptions {
@@ -2690,68 +2690,68 @@ declare module jqwidgets {
         beginUpdate(): void;
         clear(): void;
         clearSelection(): void;
-        checkIndex(Index: number): void;
+        checkIndex(Index: undefined): void;
         checkItem(Item: any): void;
         checkAll(): void;
         clearFilter(): void;
         destroy(): void;
         disableItem(Item: any): void;
-        disableAt(Index: number): void;
+        disableAt(Index: undefined): void;
         enableItem(Item: any): void;
-        enableAt(Index: String | Number): void;
+        enableAt(Index: number | string): void;
         ensureVisible(item: any): void;
         endUpdate(): void;
         focus(): void;
         getItems(): Array<any>;
         getSelectedItems(): Array<any>;
         getCheckedItems(): Array<any>;
-        getItem(Index: number): any;
+        getItem(Index: undefined): any;
         getItemByValue(Item: any): any;
         getSelectedItem(): any;
-        getSelectedIndex(): number;
-        insertAt(Item: any, Index: String | Number): void;
+        getSelectedIndex(): undefined;
+        insertAt(Item: any, Index: number | string): void;
         invalidate(): void;
         indeterminateItem(Item: any): void;
-        indeterminateIndex(Index: number): void;
-        loadFromSelect(selector: string): void;
+        indeterminateIndex(Index: undefined): void;
+        loadFromSelect(selector: undefined): void;
         removeItem(Item: any): void;
-        removeAt(Index: String | Number): void;
+        removeAt(Index: number | string): void;
         render(): void;
         refresh(): void;
         selectItem(Item: any): void;
-        selectIndex(Index: String | Number): void;
-        updateItem(Item: any, Value: String | Number): void;
-        updateAt(item: any, index: String | Number): void;
-        unselectIndex(index: String | Number): void;
+        selectIndex(Index: number | string): void;
+        updateItem(Item: any, Value: number | string): void;
+        updateAt(item: any, index: number | string): void;
+        unselectIndex(index: number | string): void;
         unselectItem(item: any): void;
-        uncheckIndex(index: String | Number): void;
+        uncheckIndex(index: number | string): void;
         uncheckItem(item: any): void;
         uncheckAll(): void;
-        val(value: String | Number): string;
+        val(value: number | string): undefined;
     }// jqxListBox
 
     export interface ListMenuOptions {
         // ListMenuOptions properties
-        alwaysShowNavigationArrows?: boolean;
+        alwaysShowNavigationArrows?: undefined;
         animationType?: string;
-        animationDuration?: String | Number;
-        autoSeparators?: boolean;
-        backLabel?: String | Number;
-        disabled?: boolean;
-        enableScrolling?: boolean;
-        filterCallback?: (text:string, seachValue:String | Number) => boolean;
-        height?: String | Number;
-        headerAnimationDuration?: String | Number;
-        placeHolder?: String | Number;
-        readOnly?: boolean;
-        rtl?: boolean;
-        roundedCorners?: boolean;
-        showNavigationArrows?: boolean;
-        showFilter?: boolean;
-        showHeader?: boolean;
-        showBackButton?: boolean;
-        theme?: string;
-        width?: String | Number;
+        animationDuration?: number | string;
+        autoSeparators?: undefined;
+        backLabel?: number | string;
+        disabled?: undefined;
+        enableScrolling?: undefined;
+        filterCallback?: (text:string, seachValue:string | number) => boolean;
+        height?: number | string;
+        headerAnimationDuration?: number | string;
+        placeHolder?: number | string;
+        readOnly?: undefined;
+        rtl?: undefined;
+        roundedCorners?: undefined;
+        showNavigationArrows?: undefined;
+        showFilter?: undefined;
+        showHeader?: undefined;
+        showBackButton?: undefined;
+        theme?: undefined;
+        width?: string | number;
     }// ListMenuOptions
 
     export interface jqxListMenu extends widget, ListMenuOptions {
@@ -2764,16 +2764,16 @@ declare module jqwidgets {
 
     export interface LoaderOptions {
         // LoaderOptions properties
-        autoOpen?: boolean;
-        height?: String | Number;
-        html?: string;
-        isModal?: boolean;
+        autoOpen?: undefined;
+        height?: string | number;
+        html?: undefined;
+        isModal?: undefined;
         imagePosition?: string;
-        rtl?: boolean;
-        text?: String | Number;
+        rtl?: undefined;
+        text?: number | string;
         textPosition?: string;
-        theme?: string;
-        width?: String | Number;
+        theme?: undefined;
+        width?: string | number;
     }// LoaderOptions
 
     export interface jqxLoader extends widget, LoaderOptions {
@@ -2785,16 +2785,16 @@ declare module jqwidgets {
 
     export interface MaskedInputOptions {
         // MaskedInputOptions properties
-        disabled?: boolean;
-        height?: String | Number;
-        mask?: string;
-        promptChar?: String | Number;
-        readOnly?: boolean;
-        rtl?: boolean;
-        theme?: string;
+        disabled?: undefined;
+        height?: string | number;
+        mask?: undefined;
+        promptChar?: number | string;
+        readOnly?: undefined;
+        rtl?: undefined;
+        theme?: undefined;
         textAlign?: string;
-        value?: String | Number;
-        width?: String | Number;
+        value?: number | string;
+        width?: string | number;
     }// MaskedInputOptions
 
     export interface jqxMaskedInput extends widget, MaskedInputOptions {
@@ -2803,68 +2803,68 @@ declare module jqwidgets {
         clear(): void;
         destroy(): void;
         focus(): void;
-        val(value: String | Number): string;
+        val(value: number | string): undefined;
     }// jqxMaskedInput
 
     export interface MenuOptions {
         // MenuOptions properties
-        animationShowDuration?: number;
-        animationHideDuration?: number;
-        animationHideDelay?: number;
-        animationShowDelay?: number;
-        autoCloseInterval?: number;
-        autoSizeMainItems?: boolean;
-        autoCloseOnClick?: boolean;
-        autoOpenPopup?: boolean;
-        autoOpen?: boolean;
-        autoCloseOnMouseLeave?: boolean;
-        clickToOpen?: boolean;
-        disabled?: boolean;
-        enableHover?: boolean;
-        easing?: string;
-        height?: String | Number;
-        keyboardNavigation?: boolean;
-        minimizeWidth?: String | Number;
+        animationShowDuration?: undefined;
+        animationHideDuration?: undefined;
+        animationHideDelay?: undefined;
+        animationShowDelay?: undefined;
+        autoCloseInterval?: undefined;
+        autoSizeMainItems?: undefined;
+        autoCloseOnClick?: undefined;
+        autoOpenPopup?: undefined;
+        autoOpen?: undefined;
+        autoCloseOnMouseLeave?: undefined;
+        clickToOpen?: undefined;
+        disabled?: undefined;
+        enableHover?: undefined;
+        easing?: undefined;
+        height?: string | number;
+        keyboardNavigation?: undefined;
+        minimizeWidth?: number | string;
         mode?: string;
-        popupZIndex?: String | Number;
-        rtl?: boolean;
-        showTopLevelArrows?: boolean;
+        popupZIndex?: number | string;
+        rtl?: undefined;
+        showTopLevelArrows?: undefined;
         source?: any;
-        theme?: string;
-        width?: String | Number;
+        theme?: undefined;
+        width?: string | number;
     }// MenuOptions
 
     export interface jqxMenu extends widget, MenuOptions {
 
         // jqxMenu functions
-        closeItem(itemID: String | Number): void;
+        closeItem(itemID: number | string): void;
         close(): void;
-        disable(itemID: String | Number, value: boolean): void;
+        disable(itemID: number | string, value: undefined): void;
         destroy(): void;
         focus(): void;
         minimize(): void;
-        open(left: number, top: number): void;
-        openItem(itemID: String | Number): void;
+        open(left: undefined, top: undefined): void;
+        openItem(itemID: number | string): void;
         restore(): void;
-        setItemOpenDirection(item: String | Number, horizontaldirection: string, verticaldirection: string): void;
+        setItemOpenDirection(item: number | string, horizontaldirection: undefined, verticaldirection: undefined): void;
     }// jqxMenu
 
     export interface NavBarOptions {
         // NavBarOptions properties
-        columns?: Array<String>;
-        disabled?: boolean;
-        height?: String | Number;
-        minimized?: boolean;
+        columns?: Array<string>;
+        disabled?: undefined;
+        height?: string | number;
+        minimized?: undefined;
         minimizeButtonPosition?: string;
-        minimizedHeight?: String | Number;
-        minimizedTitle?: String | Number;
+        minimizedHeight?: number | string;
+        minimizedTitle?: number | string;
         orientation?: string;
-        popupAnimationDelay?: number;
-        rtl?: boolean;
-        selection?: boolean;
-        selectedItem?: String | Number;
-        theme?: string;
-        width?: String | Number;
+        popupAnimationDelay?: undefined;
+        rtl?: undefined;
+        selection?: undefined;
+        selectedItem?: number | string;
+        theme?: undefined;
+        width?: string | number;
     }// NavBarOptions
 
     export interface jqxNavBar extends widget, NavBarOptions {
@@ -2872,87 +2872,87 @@ declare module jqwidgets {
         // jqxNavBar functions
         close(): void;
         destroy(): void;
-        getSelectedIndex(): number;
+        getSelectedIndex(): undefined;
         open(): void;
-        selectAt(index: String | Number): void;
+        selectAt(index: number | string): void;
     }// jqxNavBar
 
     export interface NavigationBarOptions {
         // NavigationBarOptions properties
         animationType?: string;
         arrowPosition?: string;
-        collapseAnimationDuration?: number;
-        disabled?: boolean;
-        expandAnimationDuration?: number;
+        collapseAnimationDuration?: undefined;
+        disabled?: undefined;
+        expandAnimationDuration?: undefined;
         expandMode?: string;
-        expandedIndexes?: Array<Number>;
-        height?: String | Number;
+        expandedIndexes?: Array<number>;
+        height?: string | number;
         initContent?: (index:number) => void;
-        rtl?: boolean;
-        showArrow?: boolean;
-        theme?: string;
+        rtl?: undefined;
+        showArrow?: undefined;
+        theme?: undefined;
         toggleMode?: string;
-        width?: String | Number;
+        width?: string | number;
     }// NavigationBarOptions
 
     export interface jqxNavigationBar extends widget, NavigationBarOptions {
 
         // jqxNavigationBar functions
-        add(header: String | Number, content: String | Number): void;
-        collapseAt(index: String | Number): void;
-        disableAt(index: String | Number): void;
+        add(header: number | string, content: number | string): void;
+        collapseAt(index: number | string): void;
+        disableAt(index: number | string): void;
         disable(): void;
         destroy(): void;
-        expandAt(index: String | Number): void;
-        enableAt(index: String | Number): void;
+        expandAt(index: number | string): void;
+        enableAt(index: number | string): void;
         enable(): void;
         focus(): void;
-        getHeaderContentAt(index: String | Number): string;
-        getContentAt(index: String | Number): string;
-        hideArrowAt(index: String | Number): void;
+        getHeaderContentAt(index: number | string): undefined;
+        getContentAt(index: number | string): undefined;
+        hideArrowAt(index: number | string): void;
         invalidate(): void;
-        insert(Index: number, header: String | Number, content: String | Number): void;
+        insert(Index: undefined, header: number | string, content: number | string): void;
         refresh(): void;
         render(): void;
-        remove(index: String | Number): void;
-        setContentAt(index: number, item: String | Number): void;
-        setHeaderContentAt(index: number, item: String | Number): void;
-        showArrowAt(index: String | Number): void;
-        update(index: number, header: String | Number, content: String | Number): void;
-        val(value: String | Number): String | Number;
+        remove(index: number | string): void;
+        setContentAt(index: undefined, item: number | string): void;
+        setHeaderContentAt(index: undefined, item: number | string): void;
+        showArrowAt(index: number | string): void;
+        update(index: undefined, header: number | string, content: number | string): void;
+        val(value: number | string): string | number;
     }// jqxNavigationBar
 
     export interface NotificationIcon {
         // NotificationIcon properties
-        width?: String | Number;
-        height?: String | Number;
-        url?: string;
-        padding?: String | Number;
+        width?: number | string;
+        height?: number | string;
+        url?: undefined;
+        padding?: number | string;
     }// NotificationIcon
 
     export interface NotificationOptions {
         // NotificationOptions properties
-        appendContainer?: string;
-        autoOpen?: boolean;
-        animationOpenDelay?: number;
-        animationCloseDelay?: number;
-        autoClose?: boolean;
-        autoCloseDelay?: String | Number;
-        blink?: boolean;
-        browserBoundsOffset?: number;
-        closeOnClick?: boolean;
-        disabled?: boolean;
-        height?: String | Number;
-        hoverOpacity?: number;
+        appendContainer?: undefined;
+        autoOpen?: undefined;
+        animationOpenDelay?: undefined;
+        animationCloseDelay?: undefined;
+        autoClose?: undefined;
+        autoCloseDelay?: number | string;
+        blink?: undefined;
+        browserBoundsOffset?: undefined;
+        closeOnClick?: undefined;
+        disabled?: undefined;
+        height?: number | string;
+        hoverOpacity?: undefined;
         icon?: NotificationIcon;
-        notificationOffset?: number;
-        opacity?: number;
+        notificationOffset?: undefined;
+        opacity?: undefined;
         position?: string;
-        rtl?: boolean;
-        showCloseButton?: boolean;
+        rtl?: undefined;
+        showCloseButton?: undefined;
         template?: string;
-        theme?: string;
-        width?: String | Number;
+        theme?: undefined;
+        width?: string | number;
     }// NotificationOptions
 
     export interface jqxNotification extends widget, NotificationOptions {
@@ -2968,34 +2968,34 @@ declare module jqwidgets {
 
     export interface NumberInputOptions {
         // NumberInputOptions properties
-        allowNull?: boolean;
-        decimal?: String | Number;
-        disabled?: boolean;
-        decimalDigits?: String | Number;
-        decimalSeparator?: String | Number;
-        digits?: String | Number;
-        groupSeparator?: String;
-        groupSize?: String | Number;
-        height?: String | Number;
+        allowNull?: undefined;
+        decimal?: number | string;
+        disabled?: undefined;
+        decimalDigits?: number | string;
+        decimalSeparator?: number | string;
+        digits?: number | string;
+        groupSeparator?: string;
+        groupSize?: number | string;
+        height?: string | number;
         inputMode?: string;
-        min?: String | Number;
-        max?: String | Number;
-        negativeSymbol?: string;
-        placeHolder?: String | Number;
+        min?: number | string;
+        max?: number | string;
+        negativeSymbol?: undefined;
+        placeHolder?: number | string;
         promptChar?: string;
-        rtl?: boolean;
-        readOnly?: boolean;
+        rtl?: undefined;
+        readOnly?: undefined;
         spinMode?: string;
-        spinButtons?: boolean;
-        spinButtonsWidth?: number;
-        spinButtonsStep?: String | Number;
-        symbol?: string;
+        spinButtons?: undefined;
+        spinButtonsWidth?: undefined;
+        spinButtonsStep?: number | string;
+        symbol?: undefined;
         symbolPosition?: string;
         textAlign?: string;
         template?: string;
-        theme?: string;
-        value?: String | Number;
-        width?: String | Number;
+        theme?: undefined;
+        value?: number | string;
+        width?: string | number;
     }// NumberInputOptions
 
     export interface jqxNumberInput extends widget, NumberInputOptions {
@@ -3004,21 +3004,21 @@ declare module jqwidgets {
         clear(): void;
         destroy(): void;
         focus(): void;
-        getDecimal(): number;
-        setDecimal(index: String | Number): void;
-        val(value: String | Number): number;
+        getDecimal(): undefined;
+        setDecimal(index: number | string): void;
+        val(value: number | string): undefined;
     }// jqxNumberInput
 
     export interface PanelOptions {
         // PanelOptions properties
-        autoUpdate?: boolean;
-        disabled?: boolean;
-        height?: String | Number;
-        rtl?: boolean;
+        autoUpdate?: undefined;
+        disabled?: undefined;
+        height?: string | number;
+        rtl?: undefined;
         sizeMode?: string;
-        scrollBarSize?: String | Number;
-        theme?: string;
-        width?: String | Number;
+        scrollBarSize?: number | string;
+        theme?: undefined;
+        width?: string | number;
     }// PanelOptions
 
     export interface jqxPanel extends widget, PanelOptions {
@@ -3028,50 +3028,50 @@ declare module jqwidgets {
         clearcontent(): void;
         destroy(): void;
         focus(): void;
-        getScrollHeight(): number;
-        getVScrollPosition(): number;
-        getScrollWidth(): number;
-        getHScrollPosition(): number;
+        getScrollHeight(): undefined;
+        getVScrollPosition(): undefined;
+        getScrollWidth(): undefined;
+        getHScrollPosition(): undefined;
         prepend(HTMLElement: any): void;
         remove(HTMLElement: any): void;
-        scrollTo(top: String | Number, left: String | Number): void;
+        scrollTo(top: number | string, left: number | string): void;
     }// jqxPanel
 
     export interface PasswordInputLocalization {
         // PasswordInputLocalization properties
-        passwordStrengthString?: string;
-        tooShort?: string;
-        weak?: string;
-        fair?: string;
-        good?: string;
-        strong?: string;
+        passwordStrengthstring?: undefined;
+        tooShort?: undefined;
+        weak?: undefined;
+        fair?: undefined;
+        good?: undefined;
+        strong?: undefined;
     }// PasswordInputLocalization
 
     export interface PasswordInputStrengthColors {
         // PasswordInputStrengthColors properties
-        tooShort?: string;
-        weak?: string;
-        fair?: string;
-        good?: string;
-        strong?: string;
+        tooShort?: undefined;
+        weak?: undefined;
+        fair?: undefined;
+        good?: undefined;
+        strong?: undefined;
     }// PasswordInputStrengthColors
 
     export interface PasswordInputOptions {
         // PasswordInputOptions properties
-        disabled?: boolean;
-        height?: String | Number;
+        disabled?: undefined;
+        height?: string | number;
         localization?: PasswordInputLocalization;
-        maxLength?: String | Number;
-        placeHolder?: String | Number;
-        passwordStrength?: (password:String | Number, characters:any, defaultStrength:String) => string;
-        rtl?: boolean;
+        maxLength?: number | string;
+        placeHolder?: number | string;
+        passwordStrength?: (password:string | number, characters:any, defaultStrength:string) => string;
+        rtl?: undefined;
         strengthColors?: PasswordInputStrengthColors;
-        showStrength?: boolean;
+        showStrength?: undefined;
         showStrengthPosition?: string;
-        strengthTypeRenderer?: (password:String | Number, characters:any, defaultStrength:String) => string;
-        showPasswordIcon?: boolean;
-        theme?: string;
-        width?: String | Number;
+        strengthTypeRenderer?: (password:string | number, characters:any, defaultStrength:string) => string;
+        showPasswordIcon?: undefined;
+        theme?: undefined;
+        width?: string | number;
     }// PasswordInputOptions
 
     export interface jqxPasswordInput extends widget, PasswordInputOptions {
@@ -3079,28 +3079,28 @@ declare module jqwidgets {
         // jqxPasswordInput functions
         render(): void;
         refresh(): void;
-        val(value: string): string;
+        val(value: undefined): undefined;
     }// jqxPasswordInput
 
     export interface PopoverOptions {
         // PopoverOptions properties
-        arrowOffsetValue?: number;
-        animationOpenDelay?: String | Number;
-        animationCloseDelay?: String | Number;
-        autoClose?: boolean;
+        arrowOffsetValue?: undefined;
+        animationOpenDelay?: number | string;
+        animationCloseDelay?: number | string;
+        autoClose?: undefined;
         animationType?: string;
-        height?: String | Number;
+        height?: number | string;
         initContent?: () => void;
-        isModal?: boolean;
+        isModal?: undefined;
         offset?: any;
         position?: string;
-        rtl?: boolean;
-        selector?: string;
-        showArrow?: boolean;
-        showCloseButton?: boolean;
-        width?: String | Number;
-        title?: String | Number;
-        theme?: string;
+        rtl?: undefined;
+        selector?: undefined;
+        showArrow?: undefined;
+        showCloseButton?: undefined;
+        width?: number | string;
+        title?: string | number;
+        theme?: undefined;
     }// PopoverOptions
 
     export interface jqxPopover extends widget, PopoverOptions {
@@ -3113,51 +3113,51 @@ declare module jqwidgets {
 
     export interface ProgressBarColorRanges {
         // ProgressBarColorRanges properties
-        stop: String | Number;
-        color: string;
+        stop: number | string;
+        color: undefined;
     }// ProgressBarColorRanges
 
     export interface ProgressBarOptions {
         // ProgressBarOptions properties
-        animationDuration?: number;
+        animationDuration?: undefined;
         colorRanges?: Array<ProgressBarColorRanges>;
-        disabled?: boolean;
-        height?: String  | Number;
+        disabled?: undefined;
+        height?: string  | number;
         layout?: string;
-        max?: String  | Number;
-        min?: String | Number;
+        max?: string  | number;
+        min?: number | string;
         orientation?: string;
-        rtl?: boolean;
+        rtl?: undefined;
         renderText?: any;
-        showText?: boolean;
+        showText?: undefined;
         template?: string;
-        theme?: string;
-        value?: String | Number;
-        width?: String | Number;
+        theme?: undefined;
+        value?: string | number;
+        width?: string | number;
     }// ProgressBarOptions
 
     export interface jqxProgressBar extends widget, ProgressBarOptions {
 
         // jqxProgressBar functions
-        actualValue(value: String | Number): void;
+        actualValue(value: number | string): void;
         destroy(): void;
-        val(value: String | Number): number;
+        val(value: number | string): undefined;
     }// jqxProgressBar
 
     export interface RadioButtonOptions {
         // RadioButtonOptions properties
-        animationShowDelay?: number;
-        animationHideDelay?: number;
-        boxSize?: String | Number;
-        checked?: boolean;
-        disabled?: boolean;
-        enableContainerClick?: boolean;
-        groupName?: string;
-        hasThreeStates?: boolean;
-        height?: String | Number;
-        rtl?: boolean;
-        theme?: string;
-        width?: String | Number;
+        animationShowDelay?: undefined;
+        animationHideDelay?: undefined;
+        boxSize?: number | string;
+        checked?: undefined;
+        disabled?: undefined;
+        enableContainerClick?: undefined;
+        groupName?: undefined;
+        hasThreeStates?: undefined;
+        height?: string | number;
+        rtl?: undefined;
+        theme?: undefined;
+        width?: string | number;
     }// RadioButtonOptions
 
     export interface jqxRadioButton extends widget, RadioButtonOptions {
@@ -3170,52 +3170,52 @@ declare module jqwidgets {
         focus(): void;
         render(): void;
         uncheck(): void;
-        val(value: boolean): boolean;
+        val(value: undefined): undefined;
     }// jqxRadioButton
 
     export interface RangeSelectorRange {
         // RangeSelectorRange properties
-        from?: String | Number;
-        to?: String | Number;
-        min?: String | Number;
-        max?: String | Number;
+        from?: number | string;
+        to?: number | string;
+        min?: number | string;
+        max?: number | string;
     }// RangeSelectorRange
 
     export interface RangeSelectorGetRange {
         // RangeSelectorGetRange properties
-        from?: String | Number;
-        to?: String | Number;
+        from?: number | string;
+        to?: number | string;
     }// RangeSelectorGetRange
 
     export interface RangeSelectorOptions {
         // RangeSelectorOptions properties
-        disabled?: boolean;
-        showGroupLabels?: boolean;
-        labelsOnTicks?: boolean;
+        disabled?: undefined;
+        showGroupLabels?: undefined;
+        labelsOnTicks?: undefined;
         markersFormatFunction?: any;
-        height?: String | Number;
+        height?: string | number;
         labelsFormat?: string;
         labelsFormatFunction?: any;
-        labelPrecision?: number;
-        moveOnClick?: boolean;
+        labelPrecision?: undefined;
+        moveOnClick?: undefined;
         markerRenderer?: any;
-        markerPrecision?: number;
+        markerPrecision?: undefined;
         majorLabelRenderer?: any;
         markersFormat?: string;
-        majorTicksInterval?: String | Number;
-        minorTicksInterval?: number;
-        max?: String | Number;
-        min?: String | Number;
-        padding?: String | Number;
+        majorTicksInterval?: string | number;
+        minorTicksInterval?: undefined;
+        max?: string | number;
+        min?: string | number;
+        padding?: number | string;
         range?: RangeSelectorRange;
-        resizable?: boolean;
-        rtl?: boolean;
-        showMinorTicks?: boolean;
-        snapToTicks?: boolean;
-        showMajorLabels?: boolean;
-        showMarkers?: boolean;
-        theme?: string;
-        width?: String | Number;
+        resizable?: undefined;
+        rtl?: undefined;
+        showMinorTicks?: undefined;
+        snapToTicks?: undefined;
+        showMajorLabels?: undefined;
+        showMarkers?: undefined;
+        theme?: undefined;
+        width?: string | number;
     }// RangeSelectorOptions
 
     export interface jqxRangeSelector extends widget, RangeSelectorOptions {
@@ -3230,15 +3230,15 @@ declare module jqwidgets {
 
     export interface RatingOptions {
         // RatingOptions properties
-        count?: number;
-        disabled?: boolean;
-        height?: String | Number;
-        itemHeight?: number;
-        itemWidth?: number;
-        precision?: number;
-        singleVote?: boolean;
-        value?: number;
-        width?: String | Number;
+        count?: undefined;
+        disabled?: undefined;
+        height?: string | number;
+        itemHeight?: undefined;
+        itemWidth?: undefined;
+        precision?: undefined;
+        singleVote?: undefined;
+        value?: undefined;
+        width?: string | number;
     }// RatingOptions
 
     export interface jqxRating extends widget, RatingOptions {
@@ -3246,29 +3246,29 @@ declare module jqwidgets {
         // jqxRating functions
         disable(): void;
         enable(): void;
-        getValue(): number;
-        setValue(value: number): void;
-        val(value: number): number;
+        getValue(): undefined;
+        setValue(value: undefined): void;
+        val(value: undefined): undefined;
     }// jqxRating
 
     export interface RepeatButtonOptions {
         // RepeatButtonOptions properties
-        delay?: number;
-        disabled?: boolean;
-        height?: String | Number;
-        imgSrc?: string;
-        imgWidth?: String | Number;
-        imgHeight?: String | Number;
+        delay?: undefined;
+        disabled?: undefined;
+        height?: number | string;
+        imgSrc?: undefined;
+        imgWidth?: number | string;
+        imgHeight?: number | string;
         imgPosition?: string;
         roundedCorners?: string;
-        rtl?: boolean;
+        rtl?: undefined;
         textPosition?: string;
         textImageRelation?: string;
-        theme?: string;
+        theme?: undefined;
         template?: string;
-        toggled?: boolean;
-        width?: String | Number;
-        value?: string;
+        toggled?: undefined;
+        width?: string | number;
+        value?: undefined;
     }// RepeatButtonOptions
 
     export interface jqxRepeatButton extends widget, RepeatButtonOptions {
@@ -3280,24 +3280,24 @@ declare module jqwidgets {
         render(): void;
         toggle(): void;
         unCheck(): void;
-        val(value: string): string;
+        val(value: undefined): undefined;
     }// jqxRepeatButton
 
     export interface ResponsivePanelOptions {
         // ResponsivePanelOptions properties
         animationDirection?: string;
-        animationHideDelay?: String | Number;
-        animationShowDelay?: String | Number;
+        animationHideDelay?: number | string;
+        animationShowDelay?: number | string;
         animationType?: string;
-        autoClose?: boolean;
-        collapseBreakpoint?: number;
-        collapseWidth?: number;
-        height?: String | Number;
+        autoClose?: undefined;
+        collapseBreakpoint?: undefined;
+        collapseWidth?: undefined;
+        height?: string | number;
         initContent?: () => void;
-        theme?: string;
-        toggleButton?: String | any;
-        toggleButtonSize?: String | Number;
-        width?: String | Number;
+        theme?: undefined;
+        toggleButton?: string | any;
+        toggleButtonSize?: number | string;
+        width?: string | number;
     }// ResponsivePanelOptions
 
     export interface jqxResponsivePanel extends widget, ResponsivePanelOptions {
@@ -3305,8 +3305,8 @@ declare module jqwidgets {
         // jqxResponsivePanel functions
         close(): void;
         destroy(): void;
-        isCollapsed(): boolean;
-        isOpened(): boolean;
+        isCollapsed(): undefined;
+        isOpened(): undefined;
         open(): void;
         refresh(): void;
         render(): void;
@@ -3319,76 +3319,76 @@ declare module jqwidgets {
     export interface RibbonOptions {
         // RibbonOptions properties
         animationType?: string;
-        animationDelay?: String | Number;
-        disabled?: boolean;
-        height?: String | Number;
+        animationDelay?: number | string;
+        disabled?: undefined;
+        height?: number | string;
         initContent?: (index: any) => void;
         mode?: string;
         popupCloseMode?: string;
         position?: string;
-        rtl?: boolean;
-        selectedIndex?: number;
+        rtl?: undefined;
+        selectedIndex?: undefined;
         selectionMode?: string;
         scrollPosition?: string;
-        scrollStep?: number;
-        scrollDelay?: number;
-        theme?: string;
-        width?: String | Number;
+        scrollStep?: undefined;
+        scrollDelay?: undefined;
+        theme?: undefined;
+        width?: string | number;
     }// RibbonOptions
 
     export interface jqxRibbon extends widget, RibbonOptions {
 
         // jqxRibbon functions
-        addAt(index: number, item: RibbonItem): void;
+        addAt(index: undefined, item: RibbonItem): void;
         clearSelection(): void;
-        disableAt(index: number): void;
+        disableAt(index: undefined): void;
         destroy(): void;
-        enableAt(index: number): void;
-        hideAt(index: number): void;
-        removeAt(index: number): void;
+        enableAt(index: undefined): void;
+        hideAt(index: undefined): void;
+        removeAt(index: undefined): void;
         render(): void;
         refresh(): void;
-        selectAt(index: number): void;
-        showAt(index: number): void;
-        setPopupLayout(index: number, layout: any, width: String | Number, height: String | Number): void;
-        updateAt(index: number, item: RibbonItem): void;
-        val(value: string): string;
+        selectAt(index: undefined): void;
+        showAt(index: undefined): void;
+        setPopupLayout(index: undefined, layout: any, width: number | string, height: number | string): void;
+        updateAt(index: undefined, item: RibbonItem): void;
+        val(value: undefined): undefined;
     }// jqxRibbon
 
     export interface SchedulerAppointmentDataFields {
         // SchedulerAppointmentDataFields properties
-        allDay?: boolean;
-        background?: string;
-        borderColor?: string;
-        color?: string;
-        description?: string;
-        draggable?: boolean;
-        from?: string;
-        hidden?: boolean;
-        id?: String | Number;
-        location?: string;
+        allDay?: undefined;
+        background?: undefined;
+        borderColor?: undefined;
+        color?: undefined;
+        description?: undefined;
+        draggable?: undefined;
+        from?: undefined;
+        hidden?: undefined;
+        id?: number | string;
+        location?: undefined;
         recurrencePattern?: SchedulerRecurrencePattern;
-        recurrenceException?: string;
-        resizable?: boolean;
-        resourceId?: String | Number;
-        readOnly?: boolean;
-        subject?: string;
-        style?: string;
-        status?: string;
-        to?: string;
-        tooltip?: string;
-        timeZone?: string;
+        recurrenceException?: undefined;
+        resizable?: undefined;
+        resourceId?: number | string;
+        readOnly?: undefined;
+        subject?: undefined;
+        style?: undefined;
+        status?: undefined;
+        to?: undefined;
+        tooltip?: undefined;
+        timeZone?: undefined;
     }// SchedulerAppointmentDataFields
 
     export interface SchedulerRecurrencePattern {
         // SchedulerRecurrencePattern properties
         FREQ?: string;
-        COUNT?: number;
-        UNTIL?: string;
-        BYDAY?: string;
-        BYMONTHDAY?: string;
-        BYMONTH?: number;
-        INTERVAL?: number;
+        COUNT?: undefined;
+        UNTIL?: undefined;
+        BYDAY?: undefined;
+        BYMONTHDAY?: undefined;
+        BYMONTH?: undefined;
+        INTERVAL?: undefined;
     }// SchedulerRecurrencePattern
 
     export interface SchedulerChangedAppointments {
@@ -3399,30 +3399,30 @@ declare module jqwidgets {
 
     export interface SchedulerExportSettings {
         // SchedulerExportSettings properties
-        serverURL?: string;
-        characterSet?: string;
-        fileName?: string;
-        dateTimeFormatString?: string;
-        resourcesInMultipleICSFiles?: boolean;
+        serverURL?: undefined;
+        characterSet?: undefined;
+        fileName?: undefined;
+        dateTimeFormatstring?: undefined;
+        resourcesInMultipleICSFiles?: undefined;
     }// SchedulerExportSettings
 
     export interface SchedulerResources {
         // SchedulerResources properties
-        source?: string;
-        colorScheme?: string;
+        source?: undefined;
+        colorScheme?: undefined;
         orientation?: string;
-        dataField?: string;
-        resourceColumnWidth?: number;
-        resourceRowHeight?: number;
+        dataField?: undefined;
+        resourceColumnWidth?: undefined;
+        resourceRowHeight?: undefined;
     }// SchedulerResources
 
     export interface SchedulerStatuses {
         // SchedulerStatuses properties
-        free?: string;
-        tentative?: string;
-        busy?: string;
-        doNotDisturb?: string;
-        outOfOffice?: string;
+        free?: undefined;
+        tentative?: undefined;
+        busy?: undefined;
+        doNotDisturb?: undefined;
+        outOfOffice?: undefined;
     }// SchedulerStatuses
 
     export interface SchedulerGetSelection {
@@ -3434,32 +3434,32 @@ declare module jqwidgets {
 
     export interface SchedulerOptions {
         // SchedulerOptions properties
-        appointmentOpacity?: number;
-        appointmentsMinHeight?: number;
+        appointmentOpacity?: undefined;
+        appointmentsMinHeight?: undefined;
         appointmentDataFields?: SchedulerAppointmentDataFields;
-        appointmentTooltips?: boolean;
-        columnsHeight?: number;
-        contextMenu?: boolean;
+        appointmentTooltips?: undefined;
+        columnsHeight?: undefined;
+        contextMenu?: undefined;
         contextMenuOpen?: (menu: any, appointment: any, event: any) => void;
         contextMenuClose?: (menu: any, appointment: any, event: any) => void;
-        contextMenuItemClick?: (menu: any, appointment: any, event: any) => Boolean;
+        contextMenuItemClick?: (menu: any, appointment: any, event: any) => boolean;
         contextMenuCreate?: (menu: any, appointment: any, event: any) => void;
         changedAppointments?: Array<SchedulerChangedAppointments>;
-        disabled?: boolean;
+        disabled?: undefined;
         date?: any;
-        dayNameFormat?: string;
-        enableHover?: boolean;
-        editDialog?: boolean;
-        editDialogDateTimeFormatString?: string;
-        editDialogDateFormatString?: string;
+        dayNameFormat?: undefined;
+        enableHover?: undefined;
+        editDialog?: undefined;
+        editDialogDateTimeFormatstring?: undefined;
+        editDialogDateFormatstring?: undefined;
         editDialogOpen?: (dialog?: any, fields?: any, editAppointment?: any) => void;
         editDialogCreate?: (dialog?: any, fields?: any, editAppointment?: any) => void;
-        editDialogKeyDown?: (dialog?: any, fields?: any, editAppointment?: any, event?: any) => Boolean;
+        editDialogKeyDown?: (dialog?: any, fields?: any, editAppointment?: any, event?: any) => boolean;
         editDialogClose?: (dialog?: any, fields?: any, editAppointment?: any) => void;
         exportSettings?: SchedulerExportSettings;
-        height?: String | Number;
-        legendPosition?: string;
-        legendHeight?: number;
+        height?: number | string;
+        legendPosition?: undefined;
+        legendHeight?: undefined;
         localization?: any;
         min?: any;
         max?: any;
@@ -3467,26 +3467,26 @@ declare module jqwidgets {
         renderAppointment?: (data: any) => any;
         rendering?: () => void;
         rendered?: () => void;
-        rtl?: boolean;
+        rtl?: undefined;
         resources?: SchedulerResources;
-        rowsHeight?: number;
-        showToolbar?: boolean;
-        showLegend?: boolean;
-        scrollBarSize?: number;
+        rowsHeight?: undefined;
+        showToolbar?: undefined;
+        showLegend?: undefined;
+        scrollBarSize?: undefined;
         source?: any;
         statuses?: SchedulerStatuses;
-        touchRowsHeight?: number;
-        theme?: string;
-        touchAppointmentsMinHeight?: number;
-        touchScrollBarSize?: number;
-        timeZone?: string;
+        touchRowsHeight?: undefined;
+        theme?: undefined;
+        touchAppointmentsMinHeight?: undefined;
+        touchScrollBarSize?: undefined;
+        timeZone?: undefined;
         touchDayNameFormat?: string;
-        toolBarRangeFormat?: string;
-        toolBarRangeFormatAbbr?: string;
-        toolbarHeight?: number;
+        toolBarRangeFormat?: undefined;
+        toolBarRangeFormatAbbr?: undefined;
+        toolbarHeight?: undefined;
         views?: Array<any>;
         view?: string;
-        width?: String | Number;
+        width?: number | string;
     }// SchedulerOptions
 
     export interface jqxScheduler extends widget, SchedulerOptions {
@@ -3498,76 +3498,76 @@ declare module jqwidgets {
         clearSelection(): void;
         closeMenu(): void;
         closeDialog(): void;
-        deleteAppointment(appointmenId: string): void;
+        deleteAppointment(appointmenId: undefined): void;
         destroy(): void;
         endAppointmentsUpdate(): void;
-        ensureAppointmentVisible(id: string): void;
-        ensureVisible(item: any, resourceId: string): void;
-        exportData(format: string): any;
+        ensureAppointmentVisible(id: undefined): void;
+        ensureVisible(item: any, resourceId: undefined): void;
+        exportData(format: undefined): any;
         focus(): void;
-        getAppointmentProperty(appointmentId: string, name: string): any;
+        getAppointmentProperty(appointmentId: undefined, name: undefined): any;
         getSelection(): SchedulerGetSelection;
         getAppointments(): Array<SchedulerAppointmentDataFields>;
         getDataAppointments(): Array<any>;
-        hideAppointmentsByResource(resourcesId: string): void;
-        openMenu(left: number, top: number): void;
-        openDialog(left: number, top: number): void;
-        selectAppointment(appointmentId: string): void;
-        setAppointmentProperty(appointmentId: string, name: string, value: any): void;
-        selectCell(date: any, allday: boolean, resourceId: string): void;
-        showAppointmentsByResource(resourceId: string): void;
-        scrollWidth(): number;
-        scrollHeight(): number;
-        scrollLeft(left: number): void;
-        scrollTop(top: number): void;
+        hideAppointmentsByResource(resourcesId: undefined): void;
+        openMenu(left: undefined, top: undefined): void;
+        openDialog(left: undefined, top: undefined): void;
+        selectAppointment(appointmentId: undefined): void;
+        setAppointmentProperty(appointmentId: undefined, name: undefined, value: any): void;
+        selectCell(date: any, allday: undefined, resourceId: undefined): void;
+        showAppointmentsByResource(resourceId: undefined): void;
+        scrollWidth(): undefined;
+        scrollHeight(): undefined;
+        scrollLeft(left: undefined): void;
+        scrollTop(top: undefined): void;
     }// jqxScheduler
 
     export interface ScrollBarOptions {
         // ScrollBarOptions properties
-        disabled?: boolean;
-        height?: String | Number;
-        largestep?: number;
-        min?: number;
-        max?: number;
-        rtl?: boolean;
-        step?: number;
-        showButtons?: boolean;
-        thumbMinSize?: number;
-        theme?: string;
-        vertical?: boolean;
-        value?: number;
-        width?: String | Number;
+        disabled?: undefined;
+        height?: string | number;
+        largestep?: undefined;
+        min?: undefined;
+        max?: undefined;
+        rtl?: undefined;
+        step?: undefined;
+        showButtons?: undefined;
+        thumbMinSize?: undefined;
+        theme?: undefined;
+        vertical?: undefined;
+        value?: undefined;
+        width?: string | number;
     }// ScrollBarOptions
 
     export interface jqxScrollBar extends widget, ScrollBarOptions {
 
         // jqxScrollBar functions
         destroy(): void;
-        isScrolling(): boolean;
-        setPosition(index: number): void;
+        isScrolling(): undefined;
+        setPosition(index: undefined): void;
     }// jqxScrollBar
 
     export interface ScrollViewOptions {
         // ScrollViewOptions properties
-        animationDuration?: number;
-        bounceEnabled?: boolean;
-        buttonsOffset?: Array<Number>;
-        currentPage?: number;
-        disabled?: boolean;
-        height?: String | Number;
-        moveThreshold?: number;
-        showButtons?: boolean;
-        slideShow?: boolean;
-        slideDuration?: number;
-        theme?: string;
-        width?: String | Number;
+        animationDuration?: undefined;
+        bounceEnabled?: undefined;
+        buttonsOffset?: Array<number>;
+        currentPage?: undefined;
+        disabled?: undefined;
+        height?: string | number;
+        moveThreshold?: undefined;
+        showButtons?: undefined;
+        slideShow?: undefined;
+        slideDuration?: undefined;
+        theme?: undefined;
+        width?: string | number;
     }// ScrollViewOptions
 
     export interface jqxScrollView extends widget, ScrollViewOptions {
 
         // jqxScrollView functions
         back(): void;
-        changePage(index: number): void;
+        changePage(index: undefined): void;
         forward(): void;
         refresh(): void;
     }// jqxScrollView
@@ -3575,36 +3575,36 @@ declare module jqwidgets {
     export interface SliderOptions {
         // SliderOptions properties
         buttonsPosition?: string;
-        disabled?: boolean;
-        height?: String | Number;
+        disabled?: undefined;
+        height?: string | number;
         layout?: string;
         mode?: string;
-        minorTicksFrequency?: number;
-        minorTickSize?: number;
-        max?: number;
-        min?: number;
-        orientation?: string;
-        rangeSlider?: boolean;
-        rtl?: boolean;
-        step?: number;
-        showTicks?: boolean;
-        showMinorTicks?: boolean;
-        showTickLabels?: boolean;
-        showButtons?: boolean;
-        showRange?: boolean;
+        minorTicksFrequency?: undefined;
+        minorTickSize?: undefined;
+        max?: undefined;
+        min?: undefined;
+        orientation?: undefined;
+        rangeSlider?: undefined;
+        rtl?: undefined;
+        step?: undefined;
+        showTicks?: undefined;
+        showMinorTicks?: undefined;
+        showTickLabels?: undefined;
+        showButtons?: undefined;
+        showRange?: undefined;
         template?: string;
-        theme?: string;
+        theme?: undefined;
         ticksPosition?: string;
-        ticksFrequency?: number;
-        tickSize?: number;
-        tickLabelFormatFunction?: (value: any) => String;
-        tooltip?: boolean;
-        tooltipHideDelay?: number;
+        ticksFrequency?: undefined;
+        tickSize?: undefined;
+        tickLabelFormatFunction?: (value: any) => string;
+        tooltip?: undefined;
+        tooltipHideDelay?: undefined;
         tooltipPosition?: string;
         tooltipFormatFunction?: (value: any) => any;
         value?: any;
-        values?: Array<Number>;
-        width?: String | Number;
+        values?: Array<number>;
+        width?: number | string;
     }// SliderOptions
 
     export interface jqxSlider extends widget, SliderOptions {
@@ -3615,47 +3615,47 @@ declare module jqwidgets {
         disable(): void;
         enable(): void;
         focus(): void;
-        getValue(): number;
+        getValue(): undefined;
         incrementValue(): void;
-        setValue(index: Number | Number[]): void;
-        val(value: string): string;
+        setValue(index: number | number[]): void;
+        val(value: undefined): undefined;
     }// jqxSlider
 
     export interface SortableCursorAt {
         // SortableCursorAt properties
-        left?: number;
-        top?: number;
-        right?: number;
-        bottom?: number;
+        left?: undefined;
+        top?: undefined;
+        right?: undefined;
+        bottom?: undefined;
     }// SortableCursorAt
 
     export interface SortableOptions {
         // SortableOptions properties
-        appendTo?: string;
-        axis?: String | Number;
-        cancelProperty?: string;
-        connectWith?: String | Boolean;
-        containment?: String | Boolean;
-        cursor?: string;
+        appendTo?: undefined;
+        axis?: number | string;
+        cancelProperty?: undefined;
+        connectWith?: string | boolean;
+        containment?: string | boolean;
+        cursor?: undefined;
         cursorAt?: SortableCursorAt;
-        delay?: number;
-        disabled?: boolean;
-        distance?: number;
-        dropOnEmpty?: boolean;
-        forceHelperSize?: boolean;
-        forcePlaceholderSize?: boolean;
-        grid?: Array<Number>;
-        handle?: String | Boolean;
+        delay?: undefined;
+        disabled?: undefined;
+        distance?: undefined;
+        dropOnEmpty?: undefined;
+        forceHelperSize?: undefined;
+        forcePlaceholderSize?: undefined;
+        grid?: Array<number>;
+        handle?: string | boolean;
         helper?: string;
-        items?: string;
-        opacity?: Number | Boolean;
-        placeholderShow?: String | Boolean;
-        revert?: Number | Boolean;
-        scroll?: boolean;
-        scrollSensitivity?: number;
-        scrollSpeed?: number;
+        items?: undefined;
+        opacity?: number | boolean;
+        placeholderShow?: string | boolean;
+        revert?: number | boolean;
+        scroll?: undefined;
+        scrollSensitivity?: undefined;
+        scrollSpeed?: undefined;
         tolerance?: string;
-        zIndex?: number;
+        zIndex?: undefined;
     }// SortableOptions
 
     export interface jqxSortable extends widget, SortableOptions {
@@ -3673,23 +3673,23 @@ declare module jqwidgets {
 
     export interface SplitterPanel {
         // SplitterPanel properties
-        size?: Number | String;
-        min?: Number | String;
-        collapsible?: boolean;
-        collapsed?: boolean;
+        size?: number | string;
+        min?: number | string;
+        collapsible?: undefined;
+        collapsed?: undefined;
     }// SplitterPanel
 
     export interface SplitterOptions {
         // SplitterOptions properties
-        disabled?: boolean;
-        height?: String | Number;
+        disabled?: undefined;
+        height?: string | number;
         orientation?: string;
         panels?: Array<SplitterPanel>;
-        resizable?: boolean;
-        splitBarSize?: number;
-        showSplitBar?: boolean;
-        theme?: string;
-        width?: String | Number;
+        resizable?: undefined;
+        splitBarSize?: undefined;
+        showSplitBar?: undefined;
+        theme?: undefined;
+        width?: string | number;
     }// SplitterOptions
 
     export interface jqxSplitter extends widget, SplitterOptions {
@@ -3706,15 +3706,15 @@ declare module jqwidgets {
 
     export interface SwitchButtonOptions {
         // SwitchButtonOptions properties
-        checked?: boolean;
-        disabled?: boolean;
-        height?: String | Number;
+        checked?: undefined;
+        disabled?: undefined;
+        height?: string | number;
         orientation?: string;
-        onLabel?: string;
-        offLabel?: string;
-        thumbSize?: string;
-        rtl?: boolean;
-        width?: String | Number;
+        onLabel?: undefined;
+        offLabel?: undefined;
+        thumbSize?: undefined;
+        rtl?: undefined;
+        width?: string | number;
     }// SwitchButtonOptions
 
     export interface jqxSwitchButton extends widget, SwitchButtonOptions {
@@ -3725,144 +3725,144 @@ declare module jqwidgets {
         enable(): void;
         toggle(): void;
         uncheck(): void;
-        val(value: boolean): boolean;
+        val(value: undefined): undefined;
     }// jqxSwitchButton
 
     export interface TabsOptions {
         // TabsOptions properties
         animationType?: string;
-        autoHeight?: boolean;
-        closeButtonSize?: number;
-        collapsible?: boolean;
-        contentTransitionDuration?: number;
-        disabled?: boolean;
-        enabledHover?: boolean;
-        enableScrollAnimation?: boolean;
-        enableDropAnimation?: boolean;
-        height?: String | Number;
-        initTabContent?: (tab?: Number) => void;
-        keyboardNavigation?: boolean;
+        autoHeight?: undefined;
+        closeButtonSize?: undefined;
+        collapsible?: undefined;
+        contentTransitionDuration?: undefined;
+        disabled?: undefined;
+        enabledHover?: undefined;
+        enableScrollAnimation?: undefined;
+        enableDropAnimation?: undefined;
+        height?: string | number;
+        initTabContent?: (tab?: number) => void;
+        keyboardNavigation?: undefined;
         next?: any;
         previous?: any;
         position?: string;
-        reorder?: boolean;
-        rtl?: boolean;
-        scrollAnimationDuration?: number;
-        selectedItem?: number;
-        selectionTracker?: boolean;
-        scrollable?: boolean;
+        reorder?: undefined;
+        rtl?: undefined;
+        scrollAnimationDuration?: undefined;
+        selectedItem?: undefined;
+        selectionTracker?: undefined;
+        scrollable?: undefined;
         scrollPosition?: string;
-        scrollStep?: number;
-        showCloseButtons?: boolean;
+        scrollStep?: undefined;
+        showCloseButtons?: undefined;
         toggleMode?: string;
-        theme?: string;
-        width?: String | Number;
+        theme?: undefined;
+        width?: string | number;
     }// TabsOptions
 
     export interface jqxTabs extends widget, TabsOptions {
 
         // jqxTabs functions
-        addAt(index: number, title: string, content: string): void;
+        addAt(index: undefined, title: undefined, content: undefined): void;
         addFirst(htmlElement: any): void;
         addLast(htmlElement1: any, htmlElemen2t: any): void;
         collapse(): void;
         disable(): void;
-        disableAt(index: number): void;
+        disableAt(index: undefined): void;
         destroy(): void;
-        ensureVisible(index: number): void;
-        enableAt(index: number): void;
+        ensureVisible(index: undefined): void;
+        enableAt(index: undefined): void;
         expand(): void;
         enable(): void;
         focus(): void;
-        getTitleAt(index: number): string;
-        getContentAt(index: number): any;
+        getTitleAt(index: undefined): undefined;
+        getContentAt(index: undefined): any;
         getDisabledTabsCount(): any;
-        hideCloseButtonAt(index: number): void;
+        hideCloseButtonAt(index: undefined): void;
         hideAllCloseButtons(): void;
-        length(): number;
-        removeAt(index: number): void;
+        length(): undefined;
+        removeAt(index: undefined): void;
         removeFirst(): void;
         removeLast(): void;
-        select(index: number): void;
-        setContentAt(index: number, htmlElement: string): void;
-        setTitleAt(index: number, htmlElement: string): void;
-        showCloseButtonAt(index: number): void;
+        select(index: undefined): void;
+        setContentAt(index: undefined, htmlElement: undefined): void;
+        setTitleAt(index: undefined, htmlElement: undefined): void;
+        showCloseButtonAt(index: undefined): void;
         showAllCloseButtons(): void;
-        val(value: string): string;
+        val(value: undefined): undefined;
     }// jqxTabs
 
     export interface TagCloudSource {
         // TagCloudSource properties
-        url?: string;
+        url?: undefined;
         data?: any;
-        localdata?: string;
+        localdata?: undefined;
         datatype?: string;
-        type?: string;
-        id?: string;
-        root?: string;
-        record?: string;
+        type?: undefined;
+        id?: undefined;
+        root?: undefined;
+        record?: undefined;
     }// TagCloudSource
 
     export interface TagCloudOptions {
         // TagCloudOptions properties
         alterTextCase?: string;
-        disabled?: boolean;
-        displayLimit?: number;
-        displayMember?: string;
-        displayValue?: boolean;
+        disabled?: undefined;
+        displayLimit?: undefined;
+        displayMember?: undefined;
+        displayValue?: undefined;
         fontSizeUnit?: string;
-        height?: String | Number;
-        maxColor?: string;
-        maxFontSize?: number;
-        maxValueToDisplay?: number;
-        minColor?: string;
-        minFontSize?: number;
-        minValueToDisplay?: number;
-        rtl?: boolean;
+        height?: number | string;
+        maxColor?: undefined;
+        maxFontSize?: undefined;
+        maxValueToDisplay?: undefined;
+        minColor?: undefined;
+        minFontSize?: undefined;
+        minValueToDisplay?: undefined;
+        rtl?: undefined;
         sortBy?: string;
         sortOrder?: string;
         source?: TagCloudSource;
-        tagRenderer?: (itemData: any, minValue: Number, valueRange: Number) => any;
-        takeTopWeightedItems?: boolean;
-        textColor?: string;
-        urlBase?: string;
-        urlMember?: string;
-        valueMember?: string;
-        width?: String | Number;
+        tagRenderer?: (itemData: any, minValue: number, valueRange: number) => any;
+        takeTopWeightedItems?: undefined;
+        textColor?: undefined;
+        urlBase?: undefined;
+        urlMember?: undefined;
+        valueMember?: undefined;
+        width?: string | number;
     }// TagCloudOptions
 
     export interface jqxTagCloud extends widget, TagCloudOptions {
 
         // jqxTagCloud functions
         destroy(): void;
-        findTagIndex(tag: string): number;
+        findTagIndex(tag: undefined): undefined;
         getHiddenTagsList(): Array<any>;
         getRenderedTags(): Array<any>;
         getTagsList(): Array<any>;
-        hideItem(index: number): void;
-        insertAt(index: number, item: any): void;
-        removeAt(index: number): void;
-        updateAt(index: number, item: any): void;
-        showItem(index: number): void;
+        hideItem(index: undefined): void;
+        insertAt(index: undefined, item: any): void;
+        removeAt(index: undefined): void;
+        updateAt(index: undefined, item: any): void;
+        showItem(index: undefined): void;
     }// jqxTagCloud
 
     export interface ToggleButtonOptions {
         // ToggleButtonOptions properties
-        disabled?: boolean;
-        height?: String | Number;
-        imgSrc?: string;
-        imgWidth?: String | Number;
-        imgHeight?: String | Number;
+        disabled?: undefined;
+        height?: number | string;
+        imgSrc?: undefined;
+        imgWidth?: number | string;
+        imgHeight?: number | string;
         imgPosition?: string;
         roundedCorners?: string;
-        rtl?: boolean;
+        rtl?: undefined;
         textPosition?: string;
         textImageRelation?: string;
-        theme?: string;
+        theme?: undefined;
         template?: string;
-        toggled?: boolean;
-        width?: String | Number;
-        value?: string;
+        toggled?: undefined;
+        width?: string | number;
+        value?: undefined;
     }// ToggleButtonOptions
 
     export interface jqxToggleButton extends widget, ToggleButtonOptions {
@@ -3874,31 +3874,31 @@ declare module jqwidgets {
         render(): void;
         toggle(): void;
         unCheck(): void;
-        val(value: string): string;
+        val(value: undefined): undefined;
     }// jqxToggleButton
 
     export interface TextAreaOptions {
         // TextAreaOptions properties
-        disabled?: boolean;
-        displayMember?: string;
-        dropDownWidth?: String | Number;
-        height?: String | Number;
-        items?: number;
-        maxLength?: number;
-        minLength?: number;
-        opened?: boolean;
-        placeHolder?: string;
-        popupZIndex?: number;
-        query?: string;
+        disabled?: undefined;
+        displayMember?: undefined;
+        dropDownWidth?: number | string;
+        height?: string | number;
+        items?: undefined;
+        maxLength?: undefined;
+        minLength?: undefined;
+        opened?: undefined;
+        placeHolder?: undefined;
+        popupZIndex?: undefined;
+        query?: undefined;
         renderer?: (itemValue: any, inputValue: any) => any;
-        roundedCorners?: boolean;
-        rtl?: boolean;
-        scrollBarSize?: number;
+        roundedCorners?: undefined;
+        rtl?: undefined;
+        scrollBarSize?: undefined;
         searchMode?: string;
         source?: Array<any>;
-        theme?: string;
-        valueMember?: string;
-        width?: String | Number;
+        theme?: undefined;
+        valueMember?: undefined;
+        width?: string | number;
     }// TextAreaOptions
 
     export interface jqxTextArea extends widget, TextAreaOptions {
@@ -3909,41 +3909,41 @@ declare module jqwidgets {
         refresh(): void;
         render(): void;
         selectAll(): void;
-        val(value: string): string;
+        val(value: undefined): undefined;
     }// jqxTextArea
 
     export interface ToolBarToolItem {
         // ToolBarToolItem properties
-        type?: string;
+        type?: undefined;
         tool?: any;
-        separatorAfterWidget?: boolean;
-        minimizable?: boolean;
-        minimized?: boolean;
+        separatorAfterWidget?: undefined;
+        minimizable?: undefined;
+        minimized?: undefined;
         menuTool?: any;
         menuSeparator?: any;
     }// ToolBarToolItem
 
     export interface ToolBarOptions {
         // ToolBarOptions properties
-        disabled?: boolean;
-        height?: String | Number;
-        initTools?: (type?: String, index?: Number, tool?: any, menuToolIninitialization?: Boolean) => void;
-        minimizeWidth?: number;
-        minWidth?: String | Number;
-        maxWidth?: String | Number;
-        rtl?: boolean;
+        disabled?: undefined;
+        height?: string | number;
+        initTools?: (type?: string, index?: number, tool?: any, menuToolIninitialization?: boolean) => void;
+        minimizeWidth?: undefined;
+        minWidth?: number | string;
+        maxWidth?: number | string;
+        rtl?: undefined;
         tools?: string;
-        theme?: string;
-        width?: String | Number;
+        theme?: undefined;
+        width?: string | number;
     }// ToolBarOptions
 
     export interface jqxToolBar extends widget, ToolBarOptions {
 
         // jqxToolBar functions
-        addTool(type: string, position: string, separator: boolean, menuToolIninitialization: (type?: String, tool?: any, menuToolIninitialization?: Boolean) => void): void;
-        disableTool(index: number, disable: boolean): void;
+        addTool(type: undefined, position: undefined, separator: undefined, menuToolIninitialization: (type?: string, tool?: any, menuToolIninitialization?: boolean) => void): void;
+        disableTool(index: undefined, disable: undefined): void;
         destroy(): void;
-        destroyTool(index: number): void;
+        destroyTool(index: undefined): void;
         getTools(): Array<ToolBarToolItem>;
         render(): void;
         refresh(): void;
@@ -3951,96 +3951,96 @@ declare module jqwidgets {
 
     export interface TooltipOptions {
         // TooltipOptions properties
-        absolutePositionX?: number;
-        absolutePositionY?: number;
-        autoHide?: boolean;
-        autoHideDelay?: number;
-        animationShowDelay?: String | Number;
-        animationHideDelay?: String | Number;
-        content?: string;
-        closeOnClick?: boolean;
-        disabled?: boolean;
-        enableBrowserBoundsDetection?: boolean;
-        height?: String | Number;
-        left?: number;
-        name?: string;
-        opacity?: number;
+        absolutePositionX?: undefined;
+        absolutePositionY?: undefined;
+        autoHide?: undefined;
+        autoHideDelay?: undefined;
+        animationShowDelay?: number | string;
+        animationHideDelay?: number | string;
+        content?: undefined;
+        closeOnClick?: undefined;
+        disabled?: undefined;
+        enableBrowserBoundsDetection?: undefined;
+        height?: number | string;
+        left?: undefined;
+        name?: undefined;
+        opacity?: undefined;
         position?: string;
-        rtl?: boolean;
-        showDelay?: number;
-        showArrow?: boolean;
-        top?: String | Number;
+        rtl?: undefined;
+        showDelay?: undefined;
+        showArrow?: undefined;
+        top?: number | string;
         trigger?: string;
-        theme?: string;
-        width?: String | Number;
+        theme?: undefined;
+        width?: number | string;
     }// TooltipOptions
 
     export interface jqxTooltip extends widget, TooltipOptions {
 
         // jqxTooltip functions
-        close(index: number): void;
+        close(index: undefined): void;
         destroy(): void;
-        open(left: number, top: number): void;
+        open(left: undefined, top: undefined): void;
         refresh(): void;
     }// jqxTooltip
 
     export interface TreeItem {
         // TreeItem properties
-        label?: string;
-        value?: string;
-        disabled?: boolean;
-        checked?: boolean;
+        label?: undefined;
+        value?: undefined;
+        disabled?: undefined;
+        checked?: undefined;
         element?: any;
         parentElement?: any;
-        isExpanded?: boolean;
-        selected?: boolean;
+        isExpanded?: undefined;
+        selected?: undefined;
     }// TreeItem
 
     export interface TreeOffset {
         // TreeOffset properties
-        top?: number;
-        left?: number;
+        top?: undefined;
+        left?: undefined;
     }// TreeOffset
 
     export interface TreeOptions {
         // TreeOptions properties
-        animationShowDuration?: number;
-        animationHideDuration?: number;
-        allowDrag?: boolean;
-        allowDrop?: boolean;
-        checkboxes?: boolean;
-        dragStart?: (item: any) => Boolean;
-        dragEnd?: (dragItem?: any, dropItem?: any, args?: any, dropPosition?: any, tree?: any) => Boolean;
-        disabled?: boolean;
-        easing?: string;
-        enableHover?: boolean;
-        height?: String | Number;
-        hasThreeStates?: boolean;
-        incrementalSearch?: boolean;
-        keyboardNavigation?: boolean;
-        rtl?: boolean;
+        animationShowDuration?: undefined;
+        animationHideDuration?: undefined;
+        allowDrag?: undefined;
+        allowDrop?: undefined;
+        checkboxes?: undefined;
+        dragStart?: (item: any) => boolean;
+        dragEnd?: (dragItem?: any, dropItem?: any, args?: any, dropPosition?: any, tree?: any) => boolean;
+        disabled?: undefined;
+        easing?: undefined;
+        enableHover?: undefined;
+        height?: number | string;
+        hasThreeStates?: undefined;
+        incrementalSearch?: undefined;
+        keyboardNavigation?: undefined;
+        rtl?: undefined;
         selectedItem?: any;
         source?: any;
-        toggleIndicatorSize?: number;
+        toggleIndicatorSize?: undefined;
         toggleMode?: string;
-        theme?: string;
-        width?: String | Number;
+        theme?: undefined;
+        width?: string | number;
     }// TreeOptions
 
     export interface jqxTree extends widget, TreeOptions {
 
         // jqxTree functions
-        addBefore(item: any, id: string): void;
-        addAfter(item: any, id: string): void;
-        addTo(item: any, id: string): void;
+        addBefore(item: any, id: undefined): void;
+        addAfter(item: any, id: undefined): void;
+        addTo(item: any, id: undefined): void;
         clear(): void;
         checkAll(): void;
-        checkItem(item: any, checked: boolean): void;
+        checkItem(item: any, checked: undefined): void;
         collapseAll(): void;
         collapseItem(item: any): void;
         destroy(): void;
         disableItem(item: any): void;
-        ensureVisible(item: Object): void;
+        ensureVisible(item: undefined): void;
         enableItem(item: any): void;
         enableAll(): void;
         expandAll(): void;
@@ -4053,7 +4053,7 @@ declare module jqwidgets {
         getSelectedItem(): TreeItem;
         getPrevItem(): TreeItem;
         getNextItem(): TreeItem;
-        hitTest(left: number, top: number): any;
+        hitTest(left: undefined, top: undefined): any;
         removeItem(item: any): void;
         render(): void;
         refresh(): void;
@@ -4061,107 +4061,107 @@ declare module jqwidgets {
         uncheckAll(): void;
         uncheckItem(item: any): void;
         updateItem(item: any, newItem: any): void;
-        val(value: string): string;
+        val(value: undefined): undefined;
     }// jqxTree
 
     export interface TreeGridEditSettings {
         // TreeGridEditSettings properties
-        saveOnPageChange?: boolean;
-        saveOnBlur?: boolean;
-        saveOnSelectionChange?: boolean;
-        cancelOnEsc?: boolean;
-        editSingleCell?: boolean;
-        editOnDoubleClick?: boolean;
-        editOnF2?: boolean;
+        saveOnPageChange?: undefined;
+        saveOnBlur?: undefined;
+        saveOnSelectionChange?: undefined;
+        cancelOnEsc?: undefined;
+        editSingleCell?: undefined;
+        editOnDoubleClick?: undefined;
+        editOnF2?: undefined;
     }// TreeGridEditSettings
 
     export interface TreeGridExportSettings {
         // TreeGridExportSettings properties
-        columnsHeader?: boolean;
-        hiddenColumns?: boolean;
-        serverURL?: String | any;
-        characterSet?: string;
-        collapsedRecords?: boolean;
-        recordsInView?: boolean;
-        fileName?: string;
+        columnsHeader?: undefined;
+        hiddenColumns?: undefined;
+        serverURL?: string | any;
+        characterSet?: undefined;
+        collapsedRecords?: undefined;
+        recordsInView?: undefined;
+        fileName?: undefined;
     }// TreeGridExportSettings
 
     export interface TreeGridGetRow {
         // TreeGridGetRow properties
-        type?: string;
-        checked?: boolean;
-        expanded?: boolean;
-        icon?: string;
-        leaf?: boolean;
-        level?: number;
+        type?: undefined;
+        checked?: undefined;
+        expanded?: undefined;
+        icon?: undefined;
+        leaf?: undefined;
+        level?: undefined;
         parent?: any;
         records?: Array<any>;
-        selected?: boolean;
-        uid?: String | Number;
+        selected?: undefined;
+        uid?: number | string;
     }// TreeGridGetRow
 
     export interface TreeGridScrollOffset {
         // TreeGridScrollOffset properties
-        top?: number;
-        left?: number;
+        top?: undefined;
+        left?: undefined;
     }// TreeGridScrollOffset
 
     export interface TreeGridOptions {
         // TreeGridOptions properties
-        altRows?: boolean;
-        autoRowHeight?: boolean;
-        aggregatesHeight?: number;
-        autoShowLoadElement?: boolean;
-        checkboxes?: boolean;
-        columnsHeight?: number;
+        altRows?: undefined;
+        autoRowHeight?: undefined;
+        aggregatesHeight?: undefined;
+        autoShowLoadElement?: undefined;
+        checkboxes?: undefined;
+        columnsHeight?: undefined;
         columns?: Array<any>;
         columnGroups?: Array<any>;
-        columnsResize?: boolean;
-        columnsReorder?: boolean;
-        disabled?: boolean;
-        editable?: boolean;
+        columnsResize?: undefined;
+        columnsReorder?: undefined;
+        disabled?: undefined;
+        editable?: undefined;
         editSettings?: TreeGridEditSettings;
         exportSettings?: TreeGridExportSettings;
-        enableHover?: boolean;
-        enableBrowserSelection?: boolean;
-        filterable?: boolean;
-        filterHeight?: number;
+        enableHover?: undefined;
+        enableBrowserSelection?: undefined;
+        filterable?: undefined;
+        filterHeight?: undefined;
         filterMode?: string;
-        height?: String | Number;
-        hierarchicalCheckboxes?: boolean;
-        icons?: boolean;
-        incrementalSearch?: boolean;
+        height?: number | string;
+        hierarchicalCheckboxes?: undefined;
+        icons?: undefined;
+        incrementalSearch?: undefined;
         localization?: any;
-        pagerHeight?: number;
-        pageSize?: number;
-        pageSizeOptions?: Array<Number | String>;
-        pageable?: boolean;
+        pagerHeight?: undefined;
+        pageSize?: undefined;
+        pageSizeOptions?: Array<number | string>;
+        pageable?: undefined;
         pagerPosition?: string;
         pagerMode?: string;
         pageSizeMode?: string;
-        pagerButtonsCount?: number;
+        pagerButtonsCount?: undefined;
         pagerRenderer?: () => any;
         ready?: () => void;
-        rowDetails?: boolean;
+        rowDetails?: undefined;
         rowDetailsRenderer?: (key: number, dataRow: number) => any;
         renderToolbar?: (toolBar?: any) => void;
         renderStatusbar?: (statusBar?: any) => void;
         rendering?: () => void;
         rendered?: () => void;
-        rtl?: boolean;
+        rtl?: undefined;
         source?: any;
-        sortable?: boolean;
-        showAggregates?: boolean;
-        showSubAggregates?: boolean;
-        showToolbar?: boolean;
-        showStatusbar?: boolean;
-        statusBarHeight?: number;
-        scrollBarSize?: number;
+        sortable?: undefined;
+        showAggregates?: undefined;
+        showSubAggregates?: undefined;
+        showToolbar?: undefined;
+        showStatusbar?: undefined;
+        statusBarHeight?: undefined;
+        scrollBarSize?: undefined;
         selectionMode?: string;
-        showHeader?: boolean;
-        theme?: string;
-        toolbarHeight?: number;
-        width?: String | Number;
+        showHeader?: undefined;
+        theme?: undefined;
+        toolbarHeight?: undefined;
+        width?: string | number;
         virtualModeCreateRecords?: (expandedRecord?: any, done?: any) => void;
         virtualModeRecordCreating?: (record?: any) => any;
     }// TreeGridOptions
@@ -4169,92 +4169,92 @@ declare module jqwidgets {
     export interface jqxTreeGrid extends widget, TreeGridOptions {
 
         // jqxTreeGrid functions
-        addRow(rowKey: string, rowData: any, rowPosition: string, parent: string): void;
-        addFilter(dataField: string, filerGroup: any): void;
+        addRow(rowKey: undefined, rowData: any, rowPosition: undefined, parent: undefined): void;
+        addFilter(dataField: undefined, filerGroup: any): void;
         applyFilters(): void;
         beginUpdate(): void;
-        beginRowEdit(rowKey: string): void;
-        beginCellEdit(rowKey: string, dataField: string): void;
+        beginRowEdit(rowKey: undefined): void;
+        beginCellEdit(rowKey: undefined, dataField: undefined): void;
         clearSelection(): void;
         clearFilters(): void;
         clear(): void;
-        checkRow(rowKey: string): void;
-        collapseRow(rowKey: string): void;
+        checkRow(rowKey: undefined): void;
+        collapseRow(rowKey: undefined): void;
         collapseAll(): void;
         destroy(): void;
-        deleteRow(rowKey: Array<String> | String): void;
-        expandRow(rowKey: Array<Number | String> | String | Number): void;
+        deleteRow(rowKey: Array<string> | string): void;
+        expandRow(rowKey: Array<number | string> | string | number): void;
         expandAll(): void;
         endUpdate(): void;
-        ensureRowVisible(rowKey: string): void;
-        endRowEdit(rowKey: string, cancelChanges: boolean): void;
-        endCellEdit(rowKey: string, dataField: string, cancelChanges: boolean): void;
+        ensureRowVisible(rowKey: undefined): void;
+        endRowEdit(rowKey: undefined, cancelChanges: undefined): void;
+        endCellEdit(rowKey: undefined, dataField: undefined, cancelChanges: undefined): void;
         exportData(exportDataType: any): any;
         focus(): void;
-        getColumnProperty(dataField: string, propertyName: string): any;
-        goToPage(pageIndex: number): void;
+        getColumnProperty(dataField: undefined, propertyName: undefined): any;
+        goToPage(pageIndex: undefined): void;
         goToPrevPage(): void;
         goToNextPage(): void;
         getSelection(): Array<any>;
-        getKey(row: any): string;
-        getRow(rowKey: string): TreeGridGetRow;
+        getKey(row: any): undefined;
+        getRow(rowKey: undefined): TreeGridGetRow;
         getRows(): Array<TreeGridGetRow>;
         getCheckedRows(): Array<TreeGridGetRow>;
         getView(): Array<TreeGridGetRow>;
-        getCellValue(rowKey: string, dataField: string): any;
-        hideColumn(dataField: string): void;
-        isBindingCompleted(): boolean;
-        lockRow(rowKey: String | Number | Array<Number | String>): void;
+        getCellValue(rowKey: undefined, dataField: undefined): any;
+        hideColumn(dataField: undefined): void;
+        isBindingCompleted(): undefined;
+        lockRow(rowKey: string | number | Array<number | string>): void;
         refresh(): void;
         render(): void;
-        removeFilter(dataField: string): void;
-        scrollOffset(top: number, left: number): TreeGridScrollOffset;
-        setColumnProperty(dataField: string, propertyName: string, propertyValue: any): void;
-        showColumn(dataField: string): void;
-        selectRow(rowId: String | Number | Array<Number | String>): void;
-        setCellValue(rowId: string, dataField: string, cellValue: any): void;
-        sortBy(dataField: String | Number, sortOrder: string): void;
-        updating(): boolean;
+        removeFilter(dataField: undefined): void;
+        scrollOffset(top: undefined, left: undefined): TreeGridScrollOffset;
+        setColumnProperty(dataField: undefined, propertyName: undefined, propertyValue: any): void;
+        showColumn(dataField: undefined): void;
+        selectRow(rowId: string | number | Array<number | string>): void;
+        setCellValue(rowId: undefined, dataField: undefined, cellValue: any): void;
+        sortBy(dataField: number | string, sortOrder: undefined): void;
+        updating(): undefined;
         updateBoundData(): void;
-        unselectRow(rowId: String | Number | Array<Number | String>): void;
-        uncheckRow(rowId: string): void;
-        updateRow(rowId: Number | String, data: any): void;
-        unlockRow(rowId: String | Number | Array<Number | String>): void;
+        unselectRow(rowId: string | number | Array<number | string>): void;
+        uncheckRow(rowId: undefined): void;
+        updateRow(rowId: number | string, data: any): void;
+        unlockRow(rowId: string | number | Array<number | string>): void;
     }// jqxTreeGrid
 
     export interface TreeMapColorRanges {
         // TreeMapColorRanges properties
-        color?: string;
-        min?: number;
-        max?: number;
+        color?: undefined;
+        min?: undefined;
+        max?: undefined;
     }// TreeMapColorRanges
 
     export interface TreeMapLegendPosition {
         // TreeMapLegendPosition properties
-        x?: String | Number;
-        y?: String | Number;
+        x?: number | string;
+        y?: number | string;
     }// TreeMapLegendPosition
 
     export interface TreeMapOptions {
         // TreeMapOptions properties
-        baseColor?: string;
+        baseColor?: undefined;
         colorRanges?: Array<TreeMapColorRanges>;
-        colorRange?: number;
+        colorRange?: undefined;
         colorMode?: string;
-        displayMember?: string;
-        height?: String | Number;
-        hoverEnabled?: boolean;
-        headerHeight?: number;
-        legendLabel?: string;
+        displayMember?: undefined;
+        height?: string | number;
+        hoverEnabled?: undefined;
+        headerHeight?: undefined;
+        legendLabel?: undefined;
         legendPosition?: TreeMapLegendPosition;
         legendScaleCallback?: any;
         renderCallbacks?: any;
-        selectionEnabled?: boolean;
-        showLegend?: boolean;
+        selectionEnabled?: undefined;
+        showLegend?: undefined;
         source?: any;
-        theme?: string;
-        valueMember?: string;
-        width?: String | Number;
+        theme?: undefined;
+        valueMember?: undefined;
+        width?: string | number;
     }// TreeMapOptions
 
     export interface jqxTreeMap extends widget, TreeMapOptions {
@@ -4266,84 +4266,84 @@ declare module jqwidgets {
 
     export interface ValidatorRule {
         // ValidatorRule properties
-        input?: string;
-        message?: string;
-        action?: string;
-        rule?: String | any;
-        position?: string;
+        input?: undefined;
+        message?: undefined;
+        action?: undefined;
+        rule?: string | any;
+        position?: undefined;
         hintRender?: any;
     }// ValidatorRule
 
     export interface ValidatorOptions {
         // ValidatorOptions properties
-        arrow?: boolean;
+        arrow?: undefined;
         animation?: string;
-        animationDuration?: number;
-        closeOnClick?: boolean;
-        focus?: boolean;
+        animationDuration?: undefined;
+        closeOnClick?: undefined;
+        focus?: undefined;
         hintType?: string;
         onError?: () => void;
         onSuccess?: () => void;
-        position?: string;
+        position?: undefined;
         rules?: Array<ValidatorRule>;
-        rtl?: boolean;
+        rtl?: undefined;
     }// ValidatorOptions
 
     export interface jqxValidator extends widget, ValidatorOptions {
 
         // jqxValidator functions
-        hideHint(id: string): void;
+        hideHint(id: undefined): void;
         hide(): void;
         updatePosition(): void;
         validate(htmlElement: any): void;
-        validateInput(id: string): void;
+        validateInput(id: undefined): void;
     }// jqxValidator
 
     export interface WindowDragArea {
         // WindowDragArea properties
-        left: number;
-        top: number;
-        width: Number | String;
-        height: Number | String;
+        left: undefined;
+        top: undefined;
+        width: number | string;
+        height: number | string;
     }// WindowDragArea
 
     export interface WindowOptions {
         // WindowOptions properties
-        autoOpen?: boolean;
+        autoOpen?: undefined;
         animationType?: string;
-        collapsed?: boolean;
-        collapseAnimationDuration?: number;
-        content?: string;
-        closeAnimationDuration?: number;
-        closeButtonSize?: number;
+        collapsed?: undefined;
+        collapseAnimationDuration?: undefined;
+        content?: undefined;
+        closeAnimationDuration?: undefined;
+        closeButtonSize?: undefined;
         closeButtonAction?: string;
         cancelButton?: any;
         dragArea?: WindowDragArea;
-        draggable?: boolean;
-        disabled?: boolean;
-        height?: String | Number;
+        draggable?: undefined;
+        disabled?: undefined;
+        height?: string | number;
         initContent?: () => void;
-        isModal?: boolean;
-        keyboardCloseKey?: String | Number;
-        keyboardNavigation?: boolean;
-        minHeight?: String | Number;
-        maxHeight?: String | Number;
-        minWidth?: String | Number;
-        maxWidth?: String | Number;
-        modalOpacity?: number;
-        modalZIndex?: number;
-        modalBackgroundZIndex?: number;
+        isModal?: undefined;
+        keyboardCloseKey?: number | string;
+        keyboardNavigation?: undefined;
+        minHeight?: string | number;
+        maxHeight?: string | number;
+        minWidth?: number | string;
+        maxWidth?: number | string;
+        modalOpacity?: undefined;
+        modalZIndex?: undefined;
+        modalBackgroundZIndex?: undefined;
         okButton?: any;
-        position?: String | any;
-        rtl?: boolean;
-        resizable?: boolean;
-        showAnimationDuration?: number;
-        showCloseButton?: boolean;
-        showCollapseButton?: boolean;
-        theme?: string;
-        title?: string;
-        width?: String | Number;
-        zIndex?: number;
+        position?: string | any;
+        rtl?: undefined;
+        resizable?: undefined;
+        showAnimationDuration?: undefined;
+        showCloseButton?: undefined;
+        showCollapseButton?: undefined;
+        theme?: undefined;
+        title?: undefined;
+        width?: string | number;
+        zIndex?: undefined;
     }// WindowOptions
 
     export interface jqxWindow extends widget, WindowOptions {
@@ -4358,13 +4358,13 @@ declare module jqwidgets {
         enable(): void;
         expand(): void;
         focus(): void;
-        isOpen(): boolean;
-        move(top: number, left: number): void;
+        isOpen(): undefined;
+        move(top: undefined, left: undefined): void;
         open(): void;
         hide(): void;
-        resize(top: number, left: number): void;
-        setTitle(title: string): void;
-        setContent(content: string): void;
+        resize(top: undefined, left: undefined): void;
+        setTitle(title: undefined): void;
+        setContent(content: undefined): void;
     }// jqxWindow
 
 

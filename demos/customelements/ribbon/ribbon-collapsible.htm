@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Ribbon Custom element Collapsible</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the collapsible property in Custom element Ribbon." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxribbon.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        jqx-ribbon {
+            width: 700px;
+            height: 580px;
+        }
+      
+    </style>
+    <script>
+        var data = [
+            {
+                laptops:
+                [
+                    { img: '../../images/l-16.jpg', ram: '4GB DD3', cpu: 'Intel Core i5-3317U', price: 1899, display: 13.3, hdd: '128GB SSD', model: 'ASUS TAICHI31-CX009H' },
+                    { img: '../../images/l-17.jpg', ram: '4GB DD3', cpu: 'Intel Core i7-3517U', price: 1799, display: 13.3, hdd: '628GB', model: 'Asus TX300CA-C4024H' },
+                    { img: '../../images/l-26.gif', ram: '4GB DD3', cpu: 'Intel Core i7-3667U', price: 2699, display: 14.0, hdd: '256GB SSD', model: 'Lenovo Thinkpad X1 Carbon' },
+                    { img: '../../images/l-29.jpg', ram: '4GB DD3', cpu: 'Intel Core i5-3317U ', price: 1299, display: 11.6, hdd: '128GB SSD', model: 'Sony Vaio Duo' },
+                    { img: '../../images/l-30.jpg', ram: '4GB DD3', cpu: 'Intel Core i5-3230M', price: 999, display: 15.5, hdd: '256GB SSD', model: 'Sony VAIO' },
+                    { img: '../../images/l-13.jpg', ram: '4GB DD3', cpu: 'Intel Core i7-3720QM', price: 2999, display: 15.4, hdd: '512GB SSD', model: 'Apple MacBook Pro' }
+                ]
+            },
+            {
+                laptops:
+                [
+                    { img: '../../images/l-14.jpg', ram: '8GB DD3', cpu: 'Intel Core i7-3667U', price: 1299, display: 13.3, hdd: '256GB SSD', model: 'Apple MacBook Air' },
+                    { img: '../../images/l-15.jpg', ram: '8GB DD3', cpu: 'Intel Core i7-3632QM', price: 2199, display: 15.4, hdd: '256GB SSD', model: 'Asus ZenBook UX51VZ' },
+                    { img: '../../images/l-19.jpg', ram: '8GB DD3', cpu: 'Intel Core i5-3210M', price: 1499, display: 15.6, hdd: '750GB', model: 'Samsung Series 7 Chronos' },
+                    { img: '../../images/l-20.jpg', ram: '8GB DD3', cpu: 'Intel Core i7-3720QM', price: 1499, display: 17.3, hdd: '256GB SSD', model: 'HP EliteBook 8770w' },
+                    { img: '../../images/l-21.jpg', ram: '8GB DD3', cpu: 'Intel Core i7-3517U', price: 1499, display: 14.0, hdd: '512GB', model: 'Dell XPS 14' },
+                    { img: '../../images/l-23.jpg', ram: '8GB DD3', cpu: 'Intel Core i7-3537U', price: 1699, display: 15.6, hdd: '1TB', model: 'Acer Aspire R7-571G' },
+                ]
+            },
+            {
+                laptops:
+                [
+                    { img: '../../images/l-27.jpg', ram: '16GB DD3', cpu: 'Intel Core i5-3317U ', price: 1699, display: 12.5, hdd: '128GB SSD', model: 'Dell XPS Duo 12' },
+                    { img: '../../images/l-24.jpg', ram: '16GB DD3', cpu: 'Intel Core i7-4500U', price: 1599, display: 15.6, hdd: '256GB SSD', model: 'Acer Aspire V5-573G' },
+                    { img: '../../images/l-28.png', ram: '16GB DD3', cpu: 'Intel Core i7-3537U', price: 1799, display: 12.5, hdd: '256GB SSD', model: 'Lenovo ThinkPad Twist S230u' },
+                    { img: '../../images/l-25.jpg', ram: '32GB DD3', cpu: 'Intel Core i7-4700MQ', price: 2199, display: 17.3, hdd: '1TB', model: 'Toshiba Qosmio X70-A-114' },
+                    { img: '../../images/l-18.gif', ram: '16GB DD3', cpu: 'Intel Core i7-3820QM', price: 2499, display: 15.6, hdd: '1TB', model: 'Lenovo ThinkPad T530' },
+                    { img: '../../images/l-22.jpg', ram: '32GB DD3', cpu: 'Intel Core i7-4800MQ', price: 3499, display: 17.3, hdd: '750GB', model: 'Dell Alienware 17' }
+                ]
+            }
+        ];
+
+        var source =
+            {
+                localData: data,
+                dataType: "array"
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+        dataAdapter.dataBind();
+        var records = dataAdapter.records;
+
+        window.onload = function() {
+            for (var j = 0; j < records.length; j++) {
+                var rowData = records[j];
+                var laptops = rowData.laptops;
+                var container = "<div style='padding-left: 15px;'>";
+                for (var i = 0; i < laptops.length; i++) {
+                    var laptop = laptops[i];
+                    var item = "<div style='float: left; width: 220px; overflow: hidden; white-space: nowrap; height: 265px;'>";
+                    var image = "<div style='margin: 5px; margin-bottom: 3px;'>";
+                    var imgurl = laptop.img;
+                    var img = '<img width=160 height=120 style="display: block;" src="' + imgurl + '"/>';
+                    image += img;
+                    image += "</div>";
+                    var info = "<div style='margin: 5px; margin-left: 20px; margin-bottom: 3px;'>";
+                    info += "<div><i>" + laptop.model + "</i></div>";
+                    info += "<div>Price: $" + laptop.price + "</div>";
+                    info += "<div>RAM: " + laptop.ram + "</div>";
+                    info += "<div>HDD: " + laptop.hdd + "</div>";
+                    info += "<div>CPU: " + laptop.cpu + "</div>";
+                    info += "<div>Display: " + laptop.display + "</div>";
+                    info += "</div>";
+                    item += image;
+                    item += info;
+                    item += "</div>";
+                    container += item;
+                }
+                container += "</div>";
+                document.getElementById("content").innerHTML += container;
+            }
+            document.querySelector('jqx-ribbon').createElement();
+
+        };
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        This is an example of the collapsible property in Custom element Ribbon.
+    </div>
+
+    <div style="float:left;">
+        <br /><br /><br />
+        <jqx-ribbon delayed-create>
+            <ul>
+                <li style="margin-left:20px;">Business</li>
+                <li>Games</li>
+                <li>Internet and Movies</li>
+            </ul>
+            <div id="content">
+            </div>
+        </jqx-ribbon>
+
+    </div>
+</body>
+</html>

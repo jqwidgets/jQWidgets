@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Knob KnobWithInput</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Knob with an input field." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxknob.js"></script>
+    <script type="text/javascript" src="..//jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style>
+        #knob {
+            position: relative;
+        }
+
+        #input {
+            position: absolute;
+            top: 260px;
+            left: 220px;
+            width: 110px;
+            height: 70px;
+            vertical-align: middle;
+            border: 0px;
+            margin-top: -35px;
+            margin-left: -55px;
+        }
+
+        #input input {
+            border-width: 0px;
+            font-weight: bold;
+            font-style: normal;
+            font-variant: normal;
+            font-stretch: normal;
+            font-size: 48px;
+            line-height: normal;
+            font-family: Arial;
+            text-align: center;
+            color: #00a644;
+            padding: 0px;
+            -webkit-appearance: none;
+            background: none;
+        }
+    </style>
+    <script>
+        JQXElements.settings['KnobSettings'] = 
+            {
+                value: 30,
+                min: 0,
+                max: 100,
+                startAngle: 270,
+                endAngle: 630,
+                rotation: 'clockwise',
+                style: { fill: "#fff" },
+                dial: {
+                    style: {
+                        fill: "#fff"
+                    },
+                    innerRadius: '68%',
+                    outerRadius: '92%',
+                    startAngle: 0,
+                    endAngle: 360
+                },
+                progressBar: {
+                    style: { fill: '#00a644' },
+                    background: { fill: '#eeeeee' },
+                    size: '30%',
+                    offset: '70%'
+                },
+                pointer:
+                {
+                    type: 'line',
+                    style: { fill: '#00a644' },
+                    size: '30%',
+                    offset: '70%',
+                    thickness: 20
+                }
+            };
+
+        window.onload = function() {
+            var myKnob = document.querySelector('jqx-knob');
+            var myInput = document.querySelector('jqx-input');
+
+            myKnob.addEventListener('change', event => {
+                if(event.target.nodeName === 'INPUT')
+                return;
+                myInput.val(event.args.value);
+            });
+
+            myInput.addEventListener('change', function() {
+                myKnob.val(myInput.val());
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Click on the middle of the widget to input a value.
+    </div>
+
+    <jqx-knob settings='KnobSettings' id="knob"></jqx-knob>
+
+    <jqx-input id="input" value="30"></jqx-input>
+
+</body>
+</html>

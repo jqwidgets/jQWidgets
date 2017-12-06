@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Knob Custom Element MultipleSemiKnobs</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="Multiple Custom Element Knob widgets with marks" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxknob.js"></script>
+    <script type="text/javascript" src="..//jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        #KnobId {
+            position: relative !important;
+        }
+        .inputField {
+            position: absolute;
+            left: 160px;
+            top: 100px;
+            width: 100px;
+            height: 40px;
+            position: absolute;
+        }
+        .inputField2 {
+            position: absolute;
+            left: 100px;
+            top: 90px;
+            width: 100px;
+            height: 80px;
+        }
+        .inputField3 {
+            position: absolute;
+            left: 75px;
+            top: 120px;
+            width: 150px;
+            height: 40px;
+        }
+        #knob2 {
+            position: absolute !important;
+            top: 100px;
+            left: 100px;
+        }
+        #knob3 {
+            position: absolute !important;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+    <script>
+        var startValue1, startValue2, startValue3;
+        startValue1 = startValue2 = startValue3 = 60;
+
+        JQXElements.settings['KnobSettings'] =
+            {
+                value: startValue1,
+                min: 0,
+                max: 100,
+                startAngle: 180,
+                endAngle: 360,
+                snapToStep: true,
+                rotation: 'clockwise',
+                style: { fill: '#FFFFFF' },
+                marks: {
+                    drawAboveProgressBar: true,
+                    colorRemaining: 'white',
+                    colorProgress: 'white',
+                    type: 'line',
+                    offset: '78%',
+                    thickness: 2,
+                    size: '18%',
+                    minorInterval: 5
+                },
+                progressBar: {
+                    style: { fill: '#407ec3', stroke: '#407ec3' },
+                    size: '18%',
+                    offset: '78%',
+                    background: { fill: '#cfd0d4', stroke: '#cfd0d4' }
+                },
+                pointer: { type: 'arrow', visible: true, style: { fill: '#ef6100' }, size: '92%', offset: '98%', thickness: 15 }
+            };
+
+        window.onload = function() {
+            var myKnob = document.querySelector('jqx-knob');
+
+            var myInput = document.createElement('div');
+            myInput.className = 'inputField';
+
+            var myInput2 = document.createElement('div');
+            myInput2.className = 'inputField2';
+
+            var myInput3 = document.createElement('div');
+            myInput3.className = 'inputField3';
+
+            var myKnob2 = document.createElement('jqx-knob');
+            myKnob2.className = 'knob2';
+
+            var myKnob3 = document.createElement('jqx-knob');
+            myKnob3.className = 'knob3';
+
+            myKnob2.settings = {
+                value: startValue2,
+                min: 0,
+                max: 100,
+                width: 300,
+                height: 300,
+                startAngle: 180,
+                endAngle: 260,
+                snapToStep: true,
+                pointerGrabAction: 'progressBar',
+                rotation: 'clockwise',
+                style: { fill: 'transparent' },
+                marks: {
+                    drawAboveProgressBar: true,
+                    colorRemaining: 'white',
+                    colorProgress: 'white',
+                    type: 'line',
+                    offset: '78%',
+                    thickness: 2,
+                    size: '18%',
+                    minorInterval: 5
+                },
+                progressBar: {
+                    style: { fill: '#ef6100', stroke: '#ef6100' },
+                    size: '18%',
+                    offset: '78%',
+                    background: { fill: '#cfd0d4', stroke: '#cfd0d4' }
+                },
+                pointer: { type: 'line', visible: false, style: { fill: '#33AADD' }, size: '18%', offset: '78%', thickness: 0 }
+            }
+
+            myKnob3.settings = {
+                value: startValue3,
+                min: 0,
+                max: 100,
+                width: 300,
+                height: 300,
+                startAngle: 280,
+                endAngle: 360,
+                snapToStep: true,
+                pointerGrabAction: 'progressBar',
+                rotation: 'clockwise',
+                style: { fill: 'transparent' },
+                marks: {
+                    drawAboveProgressBar: true,
+                    colorRemaining: 'white',
+                    colorProgress: 'white',
+                    type: 'line',
+                    offset: '78%',
+                    thickness: 2,
+                    size: '18%',
+                    minorInterval: 5
+                },
+                progressBar: {
+                    style: { fill: '#18a25e', stroke: '#18a25e' },
+                    size: '18%',
+                    offset: '78%',
+                    background: { fill: '#cfd0d4', stroke: '#cfd0d4' }
+                },
+                pointer: { type: 'line', visible: false, style: { fill: '#00a4e1' }, size: '18%', offset: '78%', thickness: 0 }
+            }
+
+            var getKnobSpan = (color, value, info) => {
+                return '<span style="font-size: 9px; width: 33%; display:inline-block; color: ' + color + ';">' + info[0] + '</span><span style="font-size: 11px; width:33%; color: ' + color + '; display:inline-block;">' + value + '</span><span style="width:33%; font-size: 9px; color: ' + color + '; display:inline-block;">' + info[1] + '</span>';
+            }
+
+            myKnob.addEventListener('change', event => {
+                var html = getKnobSpan("#407ec3", event.args.value, ['All', 'Calls']);
+                myInput.innerHTML = html;
+                event.stopPropagation();
+            });
+
+            myKnob2.addEventListener('change', event => {
+                var html = getKnobSpan("#ef6100", event.args.value, ['Pending', 'Tickets']);
+                myInput2.innerHTML = html;
+                event.stopPropagation();
+            });
+
+            myKnob3.addEventListener('change', event => {
+                var html = getKnobSpan("#18a25e", event.args.value, ['Resolved', 'Tickets']);
+                myKnob3.innerHTML  = html;
+                event.stopPropagation();
+            });
+
+            var html = getKnobSpan("#407ec3", startValue1, ['All', 'Calls']);
+            myInput.innerHTML = html;
+
+            var html1 = getKnobSpan("#ef6100", startValue2, ['Pending', 'Tickets']);
+            myInput2.innerHTML = html1;
+
+            var html2 = getKnobSpan("#18a25e", startValue3, ['Answered', 'Tickets']);
+            myInput3.innerHTML = html2;
+
+            myKnob.appendChild(myInput);
+            myInput.appendChild(myInput2);
+            myInput.appendChild(myInput3);
+
+            myKnob.appendChild(myKnob2);
+            myKnob.appendChild(myKnob3);
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows multiple Custom element semi Knobs.
+    </div>
+
+    <jqx-knob id="KnobId" settings='KnobSettings'></jqx-knob>
+
+</body>
+</html>

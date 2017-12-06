@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Splitter Custom Element MoutipleSplitPanelsWithTabs</title>
+    <meta name="description" content="his is an example of multiplied Splitter Custom Element panels with Tabs Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['splitter1Settings'] =
+            {
+                orientation: 'horizontal', panels: [{ collapsible: false, size: '50%' }, { size: '50%' }]
+            };    
+        JQXElements.settings['splitter2Settings'] =
+            {
+                height: '100%',
+                panels: [{ size: "50%" }]
+            };  
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        The sample shows how to divide a split panel into multiple tabs.
+    </div>
+
+    <jqx-splitter settings="splitter1Settings">
+        <div>
+            <jqx-tabs style="width: 100%; height: 100%;" class="jqx-hideborder jqx-hidescrollbars">
+                <ul>
+                    <li style="margin-left: 30px;">Tab 1</li>
+                    <li>Tab 2</li>
+                </ul>
+                <div>
+                    Content 1
+                </div>
+                <div>
+                    Content 2
+                </div>
+            </jqx-tabs>
+        </div>
+        <div>
+            <jqx-splitter settings="splitter2Settings">
+                <div>
+                    <jqx-tabs style="width: 100%; height: 100%;" class="jqx-hideborder jqx-hidescrollbars">
+                        <ul>
+                            <li style="margin-left: 30px;">Tab 1</li>
+                            <li>Tab 2</li>
+                        </ul>
+                        <div>
+                            Content 1
+                        </div>
+                        <div>
+                            Content 2
+                        </div>
+                    </jqx-tabs>
+                </div>
+                <div>
+                    <jqx-tabs style="width: 100%; height: 100%;" class="jqx-hideborder jqx-hidescrollbars">
+                        <ul>
+                            <li style="margin-left: 30px;">Tab 1</li>
+                            <li>Tab 2</li>
+                        </ul>
+                        <div>
+                            Content 1
+                        </div>
+                        <div>
+                            Content 2
+                        </div>
+                    </jqx-tabs>
+                </div>
+            </jqx-splitter>
+        </div>
+    </jqx-splitter>
+
+</body>
+</html>

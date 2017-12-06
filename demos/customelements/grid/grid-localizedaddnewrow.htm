@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element LocalizedAddNewRow</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example shows how to modify ever present string in Custom Element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                localdata: generatedata(10),
+                datafields:
+                [
+                    { name: 'name', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'available', type: 'bool' },
+                    { name: 'date', type: 'date' },
+                    { name: 'quantity', type: 'number' }
+                ],
+                datatype: 'array'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['gridSettings'] =
+            {
+                filterable: true,
+                source: dataAdapter,
+                showeverpresentrow: true,
+                everpresentrowposition: 'top',
+                editable: true,
+                localization: {
+                    addrowstring: 'Apply',
+                    udpaterowstring: 'Update',
+                    deleterowstring: 'Delete',
+                    resetrowstring: 'Clear',
+                    everpresentrowplaceholder: 'Type: '
+                },
+                selectionmode: 'multiplecellsadvanced',
+                columns: [
+                    {
+                        text: 'Name', columntype: 'textbox', filtertype: 'input', datafield: 'name', width: 215,
+                        validateEverPresentRowWidgetValue: (displayField, value, rowData) => {
+                            if (value.length < 5) {
+                                return { message: 'Entered value should be more than 5 characters', result: false };
+                            }
+                            return true;
+                        }
+                    },
+                    { text: 'Product', filtertype: 'checkedlist', datafield: 'productname', width: 220 },
+                    { text: 'Ship Date', datafield: 'date', filtertype: 'range', width: 210, cellsalign: 'right', cellsformat: 'd' },
+                    { text: 'Qty.', datafield: 'quantity', filtertype: 'number', cellsalign: 'right' }
+                ]
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The sample shows how to modify the ever present row strings.
+    </div>
+
+    <jqx-grid settings="gridSettings"></jqx-grid>
+</body>
+</html>

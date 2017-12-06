@@ -1,67 +1,86 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title id='Description'>Chart Custom Element Column Series</title>
+    <title id='Description'>Custom Element Chart ColumnSeries</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
-    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
-    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
-    <script type="text/javascript" src="../../../scripts/demos.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxdraw.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxchart.core.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <meta name="description" content="This is an example of Custom Element Column Chart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
     <script>
-        JQXElements.settings["chartSettings"] = {
-            title: "Top 5 most populated countries",
-            description: "Statistics for 2017",
+        // prepare jqxChart settings
+        JQXElements.settings['chartSettings'] = {
+            title: "Economic comparison",
+            description: "GDP and Debt in 2010",
             showLegend: true,
             enableAnimations: true,
-            padding: { left: 20, top: 5, right: 20, bottom: 5 },
+            padding: { left: 5, top: 5, right: 5, bottom: 5 },
             titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
-            source: [
-                { Country: 'China', Population: 1347350000, Percent: 19.18 },
-                { Country: 'India', Population: 1210193422, Percent: 17.22 },
-                { Country: 'USA', Population: 313912000, Percent: 4.47 },
-                { Country: 'Indonesia', Population: 237641326, Percent: 3.38 },
-                { Country: 'Brazil', Population: 192376496, Percent: 2.74 }
-            ],
+            source: new $.jqx.dataAdapter( {
+                datatype: "csv",
+                datafields: [
+                    { name: 'Country' },
+                    { name: 'GDP' },
+                    { name: 'DebtPercent' },
+                    { name: 'Debt' }
+                ],
+                url: '../sampledata/gdp_dept_2010.txt'},
+                { async: false, autoBind: true, loadError: function (xhr, status, error) { alert('Error loading "' + source.url + '" : ' + error); } }),
             xAxis:
-            {
-                dataField: 'Country',
-                gridLines: { visible: true },
-                flip: false
-            },
-            valueAxis:
-            {
-                labels: {
-                    visible: true,
-                    formatFunction: function (value) {
-                        return parseInt(value / 1000000);
-                    }
-                }
-            },
-            colorScheme: 'scheme02',
-            seriesGroups:
-            [
                 {
-                    type: 'column',
-                    columnsGapPercent: 50,
-                    toolTipFormatSettings: { thousandsSeparator: ',' },
-                    series: [
-                        { dataField: 'Population', displayText: 'Population (millions)' }
-                    ]
-                }
-            ]
-        }
+                    dataField: 'Country',
+                    gridLines: { visible: true },
+                    valuesOnTicks: false
+                },
+            colorScheme: 'scheme01',
+            columnSeriesOverlap: false,
+            seriesGroups:
+                [
+                    {
+                        type: 'column',
+                        valueAxis:
+                        {
+                            visible: true,
+                            unitInterval: 5000,
+                            title: { text: 'GDP & Debt per Capita($)<br>' }
+                        },
+                        series: [
+                                { dataField: 'GDP', displayText: 'GDP per Capita' },
+                                { dataField: 'Debt', displayText: 'Debt per Capita' }
+                        ]
+                    },
+                    {
+                        type: 'line',
+                        valueAxis:
+                        {
+                            visible: true,
+                            position: 'right',
+                            unitInterval: 10,
+                            title: { text: 'Debt (% of GDP)' },
+                            gridLines: { visible: false },
+                            labels: { horizontalAlignment: 'left' }
+                        },
+                        series: [
+                                { dataField: 'DebtPercent', displayText: 'Debt (% of GDP)' }
+                        ]
+                    }
+                ]
+        };
     </script>
 </head>
 <body>
     <div class="example-description">
-        This demo illustrates the Column Series Chart.
+        This is an example of Custom element Column Chart. The column series is useful when you want to show the size of the measured data. The data of the chart is prepared as an array from a text file. The type of the series is column. The columnSeriesOverlap option is set to false. You can see a second line series linked to the DebtPercent data field. You can also see how to enable the animation and how to set the title padding.
     </div>
 
    <jqx-chart settings="chartSettings"></jqx-chart>

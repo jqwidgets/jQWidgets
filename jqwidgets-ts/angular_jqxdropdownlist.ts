@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -31,42 +31,42 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('autoOpen') attrAutoOpen: Boolean;
-   @Input('autoDropDownHeight') attrAutoDropDownHeight: Boolean;
+   @Input('autoOpen') attrAutoOpen: boolean;
+   @Input('autoDropDownHeight') attrAutoDropDownHeight: boolean;
    @Input('animationType') attrAnimationType: any;
-   @Input('checkboxes') attrCheckboxes: Boolean;
-   @Input('closeDelay') attrCloseDelay: Number;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('displayMember') attrDisplayMember: String;
+   @Input('checkboxes') attrCheckboxes: boolean;
+   @Input('closeDelay') attrCloseDelay: number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('displayMember') attrDisplayMember: string;
    @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: any;
    @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: any;
-   @Input('dropDownHeight') attrDropDownHeight: Number | String;
-   @Input('dropDownWidth') attrDropDownWidth: Number | String;
-   @Input('enableSelection') attrEnableSelection: Boolean;
-   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: Boolean;
-   @Input('enableHover') attrEnableHover: Boolean;
-   @Input('filterable') attrFilterable: Boolean;
-   @Input('filterHeight') attrFilterHeight: Number;
-   @Input('filterDelay') attrFilterDelay: Number;
-   @Input('filterPlaceHolder') attrFilterPlaceHolder: String;
-   @Input('incrementalSearch') attrIncrementalSearch: Boolean;
-   @Input('incrementalSearchDelay') attrIncrementalSearchDelay: Number;
-   @Input('itemHeight') attrItemHeight: Number;
-   @Input('openDelay') attrOpenDelay: Number;
-   @Input('placeHolder') attrPlaceHolder: String;
-   @Input('popupZIndex') attrPopupZIndex: Number;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('renderer') attrRenderer: (index: Number, label?: String, value?: any) => String;
-   @Input('selectionRenderer') attrSelectionRenderer: (object?: any, index?: Number, label?: String) => String;
+   @Input('dropDownHeight') attrDropDownHeight: number | string;
+   @Input('dropDownWidth') attrDropDownWidth: number | string;
+   @Input('enableSelection') attrEnableSelection: boolean;
+   @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
+   @Input('enableHover') attrEnableHover: boolean;
+   @Input('filterable') attrFilterable: boolean;
+   @Input('filterHeight') attrFilterHeight: number;
+   @Input('filterDelay') attrFilterDelay: number;
+   @Input('filterPlaceHolder') attrFilterPlaceHolder: string;
+   @Input('incrementalSearch') attrIncrementalSearch: boolean;
+   @Input('incrementalSearchDelay') attrIncrementalSearchDelay: number;
+   @Input('itemHeight') attrItemHeight: number;
+   @Input('openDelay') attrOpenDelay: number;
+   @Input('placeHolder') attrPlaceHolder: string;
+   @Input('popupZIndex') attrPopupZIndex: number;
+   @Input('rtl') attrRtl: boolean;
+   @Input('renderer') attrRenderer: (index: number, label?: string, value?: any) => string;
+   @Input('selectionRenderer') attrSelectionRenderer: (object?: any, index?: number, label?: string) => string;
    @Input('searchMode') attrSearchMode: any;
-   @Input('scrollBarSize') attrScrollBarSize: Number | String;
+   @Input('scrollBarSize') attrScrollBarSize: number | string;
    @Input('source') attrSource: Array<any>;
-   @Input('selectedIndex') attrSelectedIndex: Number;
-   @Input('theme') attrTheme: String;
-   @Input('template') attrTemplate: String;
-   @Input('valueMember') attrValueMember: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('selectedIndex') attrSelectedIndex: number;
+   @Input('theme') attrTheme: string;
+   @Input('template') attrTemplate: string;
+   @Input('valueMember') attrValueMember: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -92,7 +92,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -269,7 +269,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownHeight(arg?: Number | String) : any {
+   dropDownHeight(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownList('dropDownHeight', arg);
       } else {
@@ -277,7 +277,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownWidth(arg?: Number | String) : any {
+   dropDownWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownList('dropDownWidth', arg);
       } else {
@@ -341,7 +341,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: Number | String) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownList('height', arg);
       } else {
@@ -365,7 +365,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   itemHeight(arg?: Number) : any {
+   itemHeight(arg?: number) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownList('itemHeight', arg);
       } else {
@@ -405,7 +405,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   renderer(arg?: (index: Number, label?: String, value?: any) => String) : any {
+   renderer(arg?: (index: number, label?: string, value?: any) => string) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownList('renderer', arg);
       } else {
@@ -413,7 +413,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   selectionRenderer(arg?: (object?: any, index?: Number, label?: String) => String) : any {
+   selectionRenderer(arg?: (object?: any, index?: number, label?: string) => string) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownList('selectionRenderer', arg);
       } else {
@@ -429,7 +429,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   scrollBarSize(arg?: Number | String) : any {
+   scrollBarSize(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownList('scrollBarSize', arg);
       } else {
@@ -477,7 +477,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: Number | String) : any {
+   width(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxDropDownList('width', arg);
       } else {

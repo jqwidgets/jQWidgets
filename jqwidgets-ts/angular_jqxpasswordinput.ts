@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -28,20 +28,20 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxPasswordInputComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('disabled') attrDisabled: Boolean;
+   @Input('disabled') attrDisabled: boolean;
    @Input('localization') attrLocalization: jqwidgets.PasswordInputLocalization;
-   @Input('maxLength') attrMaxLength: String | Number;
-   @Input('placeHolder') attrPlaceHolder: String | Number;
-   @Input('passwordStrength') attrPasswordStrength: (password:String | Number, characters:any, defaultStrength:String) => string;
-   @Input('rtl') attrRtl: Boolean;
+   @Input('maxLength') attrMaxLength: number | string;
+   @Input('placeHolder') attrPlaceHolder: number | string;
+   @Input('passwordStrength') attrPasswordStrength: (password:string | number, characters:any, defaultStrength:string) => string;
+   @Input('rtl') attrRtl: boolean;
    @Input('strengthColors') attrStrengthColors: jqwidgets.PasswordInputStrengthColors;
-   @Input('showStrength') attrShowStrength: Boolean;
+   @Input('showStrength') attrShowStrength: boolean;
    @Input('showStrengthPosition') attrShowStrengthPosition: any;
-   @Input('strengthTypeRenderer') attrStrengthTypeRenderer: (password:String | Number, characters:any, defaultStrength:String) => string;
-   @Input('showPasswordIcon') attrShowPasswordIcon: Boolean;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('strengthTypeRenderer') attrStrengthTypeRenderer: (password:string | number, characters:any, defaultStrength:string) => string;
+   @Input('showPasswordIcon') attrShowPasswordIcon: boolean;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -67,7 +67,7 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -154,8 +154,10 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
    }
 
    get ngValue(): any {
-       if (this.widgetObject)
-           return this.host.val();
+       if (this.widgetObject) {
+           const value = this.host.val();
+           return value;
+       }
        return '';
    }
 
@@ -192,7 +194,7 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxPasswordInput('height', arg);
       } else {
@@ -208,7 +210,7 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
-   maxLength(arg?: String | Number) : any {
+   maxLength(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxPasswordInput('maxLength', arg);
       } else {
@@ -216,7 +218,7 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
-   placeHolder(arg?: String | Number) : any {
+   placeHolder(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxPasswordInput('placeHolder', arg);
       } else {
@@ -224,7 +226,7 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
-   passwordStrength(arg?: (password:String | Number, characters:any, defaultStrength:String) => string) : any {
+   passwordStrength(arg?: (password:string | number, characters:any, defaultStrength:string) => string) : any {
       if (arg !== undefined) {
           this.host.jqxPasswordInput('passwordStrength', arg);
       } else {
@@ -264,7 +266,7 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
-   strengthTypeRenderer(arg?: (password:String | Number, characters:any, defaultStrength:String) => string) : any {
+   strengthTypeRenderer(arg?: (password:string | number, characters:any, defaultStrength:string) => string) : any {
       if (arg !== undefined) {
           this.host.jqxPasswordInput('strengthTypeRenderer', arg);
       } else {
@@ -288,7 +290,7 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxPasswordInput('width', arg);
       } else {

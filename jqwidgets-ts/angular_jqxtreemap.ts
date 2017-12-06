@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -18,24 +18,24 @@ declare let JQXLite: any;
 
 export class jqxTreeMapComponent implements OnChanges
 {
-   @Input('baseColor') attrBaseColor: String;
+   @Input('baseColor') attrBaseColor: string;
    @Input('colorRanges') attrColorRanges: Array<jqwidgets.TreeMapColorRanges>;
-   @Input('colorRange') attrColorRange: Number;
+   @Input('colorRange') attrColorRange: number;
    @Input('colorMode') attrColorMode: any;
-   @Input('displayMember') attrDisplayMember: String;
-   @Input('hoverEnabled') attrHoverEnabled: Boolean;
-   @Input('headerHeight') attrHeaderHeight: Number;
-   @Input('legendLabel') attrLegendLabel: String;
+   @Input('displayMember') attrDisplayMember: string;
+   @Input('hoverEnabled') attrHoverEnabled: boolean;
+   @Input('headerHeight') attrHeaderHeight: number;
+   @Input('legendLabel') attrLegendLabel: string;
    @Input('legendPosition') attrLegendPosition: jqwidgets.TreeMapLegendPosition;
    @Input('legendScaleCallback') attrLegendScaleCallback: any;
    @Input('renderCallbacks') attrRenderCallbacks: any;
-   @Input('selectionEnabled') attrSelectionEnabled: Boolean;
-   @Input('showLegend') attrShowLegend: Boolean;
+   @Input('selectionEnabled') attrSelectionEnabled: boolean;
+   @Input('showLegend') attrShowLegend: boolean;
    @Input('source') attrSource: any;
-   @Input('theme') attrTheme: String;
-   @Input('valueMember') attrValueMember: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('valueMember') attrValueMember: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -58,7 +58,7 @@ export class jqxTreeMapComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -190,7 +190,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxTreeMap('height', arg);
       } else {
@@ -286,7 +286,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxTreeMap('width', arg);
       } else {

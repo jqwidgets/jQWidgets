@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element List Menu NestedLists</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element ListMenu's support of nested lists." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistmenu.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['ListMenuSettings'] = 
+            {
+                enableScrolling: false,
+                showHeader: true,
+                showBackButton: true,
+                showFilter: false
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element ListMenu supports nested lists. To create nested lists, add unordered or ordered lists inside list items. After that, set the data-role atribute of the unordered/ordered list to 'listmenu'.
+    </div>
+
+    <jqx-list-menu settings="ListMenuSettings">
+        <ul id="list" data-role="listmenu">
+            <li>
+                OSI
+                <ul data-role="listmenu">
+                    <li>
+                        Application Layer
+                        <ul data-role="listmenu">
+                            <li>SIP</li>
+                            <li>DNS</li>
+                            <li>FTP</li>
+                            <li>RTP</li>
+                            <li>DHCP</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Presentation Layer
+                        <ul data-role="listmenu">
+                            <li>SSL</li>
+                            <li>TLS</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Session Layer
+                        <ul data-role="listmenu">
+                            <li>NetBIOS</li>
+                            <li>SPDY</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Transport Layer
+                        <ul data-role="listmenu">
+                            <li>TCP</li>
+                            <li>UDP</li>
+                            <li>SCTP</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Network Layer
+                        <ul data-role="listmenu">
+                            <li>IP</li>
+                            <li>ARP</li>
+                            <li>ICMP</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Data Link Layer
+                        <ul data-role="listmenu">
+                            <li>ATM</li>
+                            <li>SDLS</li>
+                            <li>LLC</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Physical Layer
+                        <ul data-role="listmenu">
+                            <li>EIA/TIA-232</li>
+                            <li>ITU-T V-Series</li>
+                            <li>DSL</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                TCP/IP
+                <ul data-role="listmenu">
+                    <li>
+                        Application layer
+                        <ul data-role="listmenu">
+                            <li>DHCP</li>
+                            <li>DNS</li>
+                            <li>FTP</li>
+                            <li>HTTP</li>
+                            <li>IMAP</li>
+                            <li>LDAP</li>
+                            <li>XMPP</li>
+                            <li>SSH</li>
+                            <li>RIP</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Transport layer
+                        <ul data-role="listmenu">
+                            <li>TCP</li>
+                            <li>UDP</li>
+                            <li>SCTP</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Internet layer
+                        <ul data-role="listmenu">
+                            <li>IP</li>
+                            <li>ICMP</li>
+                            <li>ECN</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Link layer
+                        <ul data-role="listmenu">
+                            <li>ARP</li>
+                            <li>NDP</li>
+                            <li>DSL</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </jqx-list-menu>
+</body>
+</html>

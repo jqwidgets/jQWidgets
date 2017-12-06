@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -18,23 +18,23 @@ declare let JQXLite: any;
 
 export class jqxBulletChartComponent implements OnChanges
 {
-   @Input('animationDuration') attrAnimationDuration: Number;
-   @Input('barSize') attrBarSize: String | Number;
-   @Input('description') attrDescription: String;
-   @Input('disabled') attrDisabled: Boolean;
+   @Input('animationDuration') attrAnimationDuration: number;
+   @Input('barSize') attrBarSize: number | string;
+   @Input('description') attrDescription: string;
+   @Input('disabled') attrDisabled: boolean;
    @Input('labelsFormat') attrLabelsFormat: any;
    @Input('labelsFormatFunction') attrLabelsFormatFunction: (value?: number, position?:string ) => any;
    @Input('orientation') attrOrientation: any;
    @Input('pointer') attrPointer: jqwidgets.BulletChartPointer;
-   @Input('rtl') attrRtl: Boolean;
+   @Input('rtl') attrRtl: boolean;
    @Input('ranges') attrRanges: Array<jqwidgets.BulletChartRanges>;
-   @Input('showTooltip') attrShowTooltip: Boolean;
+   @Input('showTooltip') attrShowTooltip: boolean;
    @Input('target') attrTarget: jqwidgets.BulletChartPointer;
    @Input('ticks') attrTicks: jqwidgets.BulletChartTicks;
-   @Input('title') attrTitle: String;
-   @Input('tooltipFormatFunction') attrTooltipFormatFunction: (pointerValue:number , targetValue:number) => String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('title') attrTitle: string;
+   @Input('tooltipFormatFunction') attrTooltipFormatFunction: (pointerValue:number , targetValue:number) => string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -57,7 +57,7 @@ export class jqxBulletChartComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -156,7 +156,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   barSize(arg?: String | Number) : any {
+   barSize(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxBulletChart('barSize', arg);
       } else {
@@ -180,7 +180,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxBulletChart('height', arg);
       } else {
@@ -268,7 +268,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   tooltipFormatFunction(arg?: (pointerValue:number , targetValue:number) => String) : any {
+   tooltipFormatFunction(arg?: (pointerValue:number , targetValue:number) => string) : any {
       if (arg !== undefined) {
           this.host.jqxBulletChart('tooltipFormatFunction', arg);
       } else {
@@ -276,7 +276,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxBulletChart('width', arg);
       } else {

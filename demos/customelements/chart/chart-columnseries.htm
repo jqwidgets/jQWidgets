@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart Column Series</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Column Chart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            {
+                datatype: 'csv',
+                datafields: [
+                    { name: 'Country' },
+                    { name: 'GDP' },
+                    { name: 'DebtPercent' },
+                    { name: 'Debt' }
+                ],
+                url: '../sampledata/gdp_dept_2010.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'Economic comparison',
+                description: 'GDP and Debt in 2010',
+                showLegend: true,
+                enableAnimations: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                xAxis:
+                {
+                    dataField: 'Country',
+                    gridLines: { visible: true },
+                    valuesOnTicks: false
+                },
+                colorScheme: 'scheme01',
+                columnSeriesOverlap: false,
+                seriesGroups:
+                [
+                    {
+                        type: 'column',
+                        valueAxis:
+                        {
+                            visible: true,
+                            unitInterval: 5000,
+                            title: { text: 'GDP & Debt per Capita($)<br>' }
+                        },
+                        series: [
+                            { dataField: 'GDP', displayText: 'GDP per Capita' },
+                            { dataField: 'Debt', displayText: 'Debt per Capita' }
+                        ]
+                    },
+                    {
+                        type: 'line',
+                        valueAxis:
+                        {
+                            visible: true,
+                            position: 'right',
+                            unitInterval: 10,
+                            title: { text: 'Debt (% of GDP)' },
+                            gridLines: { visible: false },
+                            labels: { horizontalAlignment: 'left' }
+                        },
+                        series: [
+                            { dataField: 'DebtPercent', displayText: 'Debt (% of GDP)' }
+                        ]
+                    }
+                ]
+            }
+    </script>
+</head>
+<body>
+
+   <jqx-chart settings="chartSettings" style="width:850px; height:500px"></jqx-chart>
+
+        <div class="example-description">
+            <br />
+            <h2>Description</h2>
+            <br />
+            This is an example of Custom element Chart Column Series. The column series is useful when you want to show the size of the measured data. The data of the chart is prepared as an array from a text file. The type of the series is column. The columnSeriesOverlap option is set to false. You can see a second line series linked to the DebtPercent data field. You can also see how to enable the animation and how to set the title padding.
+        </div>
+    </body>
+</html>

@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ListBox DragDrop</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the drag and drop function in Custom Element ListBox." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdragdrop.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var data1 = [
+                'Affogato',
+                'Americano',
+                'Bicerin',
+                'Breve',
+                'Café Bombón',
+                'Café au lait',
+                'Caffé Corretto',
+                'Café Crema',
+                'Caffé Latte',
+                'Caffé macchiato',
+                'Café mélange',
+                'Coffee milk',
+                'Cafe mocha'
+            ];
+
+        var data2 = [
+                'Cappuccino',
+                'Carajillo',
+                'Cortado',
+                'Cuban espresso',
+                'Espresso',
+                'Eiskaffee',
+                'The Flat White',
+                'Frappuccino',
+                'Galao',
+                'Greek frappé coffee',
+                'Iced Coffee﻿',
+                'Indian filter coffee',
+                'Instant coffee',
+                'Irish coffee',
+                'Liqueur coffee'
+            ];
+
+        JQXElements.settings['ListBoxSettingsOne'] = 
+            {
+                allowDrop: true,
+                allowDrag: true,
+                source: data1,
+                dragStart: (item) => {
+
+                    if (item.label == 'Breve')
+                        return false;
+                },
+
+                renderer: (index, label, value) => {
+
+                    if (label == 'Breve') {
+                        return '<span style="color: red;">' + label + '</span>';
+                    }
+                    return label;
+                }
+            };
+
+        JQXElements.settings['ListBoxSettingsTwo'] = 
+            {
+                allowDrop: true,
+                allowDrag: true,
+                source: data2,
+                dragStart: (item) => {
+
+                    if (item.label == 'Frappuccino')
+                        return false;
+                },
+
+                renderer: (index, label, value) => {
+
+                    if (label == 'Frappuccino') {
+                        return '<span style="color: red;">' + label + '</span>';
+                    }
+                    return label;
+                }
+            };
+
+        window.onload = function() {
+            var myListBoxes = document.querySelectorAll('jqx-list-box');
+            var myTextArea = document.querySelector('#textarea');
+
+            myListBoxes[0].addEventListener('dragStart', function(event) {
+                dragStartLog.innerHTML = 'Drag Start: ' + event.args.label;
+                dragEndLog.innerHTML = '';
+            });
+
+            myListBoxes[1].addEventListener('dragStart', function(event) {
+                dragStartLog.innerHTML = 'Drag Start: ' + event.args.label;
+                dragEndLog.innerHTML = '';
+            });
+
+            myListBoxes[0].addEventListener('dragEnd', function(event) {
+                dragEndLog.innerHTML = 'Drag End';
+                if (event.args.label) {
+                    var ev = event.args.originalEvent;
+                    var x = ev.pageX;
+                    var y = ev.pageY;
+
+                    if (event.args.originalEvent && event.args.originalEvent.originalEvent && event.args.originalEvent.originalEvent.touches) {
+                        var touch = event.args.originalEvent.originalEvent.changedTouches[0];
+                        x = touch.pageX;
+                        y = touch.pageY;
+                    }
+                    var width = myTextArea.offsetWidth;
+                    var height = myTextArea.offsetHeight;
+                    var right = parseInt(myTextArea.offsetLeft) + width;
+                    var bottom = parseInt(myTextArea.offsetTop) + height;
+
+                    if (x >= parseInt(myTextArea.offsetLeft) && x <= right) {
+                        if (y >= parseInt(myTextArea.offsetTop) && y <= bottom) {
+                            myTextArea.value = event.args.label;
+                        }
+                    }
+                }
+            });
+
+            myListBoxes[1].addEventListener('dragEnd', function(event) {
+                dragEndLog.innerHTML = 'Drag End';
+                if (event.args.label) {
+                    var ev = event.args.originalEvent;
+                    var x = ev.pageX;
+                    var y = ev.pageY;
+
+                    if (event.args.originalEvent && event.args.originalEvent.originalEvent && event.args.originalEvent.originalEvent.touches) {
+                        var touch = event.args.originalEvent.originalEvent.changedTouches[0];
+                        x = touch.pageX;
+                        y = touch.pageY;
+                    }
+
+                    var width = myTextArea.offsetWidth;
+                    var height = myTextArea.offsetHeight;
+                    var right = parseInt(myTextArea.offsetLeft) + width;
+                    var bottom = parseInt(myTextArea.offsetTop) + height;
+
+                    if (x >= parseInt(myTextArea.offsetLeft) && x <= right) {
+                        if (y >= parseInt(myTextArea.offsetTop) && y <= bottom) {
+                            myTextArea.value = event.args.label;
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+
+    <div class="example-description">
+        This demo demonstrates the Custom element ListBox Drag and Drop capabilities. With the ListBox's Drag and Drop, you can reorder items, move items from one ListBox to another or just drop an item anywhere and get its data.
+    </div>
+
+   <jqx-list-box settings="ListBoxSettingsOne" style="float: left;"></jqx-list-box>
+
+    <jqx-list-box settings="ListBoxSettingsTwo" style="margin-left: 20px; float: left;"></jqx-list-box>
+
+    <div style="width: 200px; height: 200px; float: left; margin-left: 20px;">
+        <textarea rows="5" id="textarea"></textarea>
+    </div>
+
+    <div style="font-size: 13px; font-family: Verdana; padding-top: 20px; clear: both;">
+        <b>Events Log:</b>
+        <div id="dragStartLog">
+        </div>
+        <div id="dragEndLog">
+        </div>
+        <br />
+        <b>Note:</b>
+        <br />
+        Dragging of "Breve" is disabled.
+        <br />
+        Dropping of "Frappuccino" is disabled.
+    </div>
+
+</body>
+</html>

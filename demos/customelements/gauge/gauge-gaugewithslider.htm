@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Gauge GaugeWithSlider</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of how to dynamiclly update Custom Elements Gauge's values." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgauge.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var labels = { visible: true, position: 'inside' };
+
+        JQXElements.settings['GaugeSettings'] =
+            {
+            ranges:
+                [
+                    { startValue: 0, endValue: 130, style: { fill: '#4cb848', stroke: '#4cb848' }, startDistance: 0, endDistance: 0 },
+                    { startValue: 130, endValue: 180, style: { fill: '#fad00b', stroke: '#fad00b' }, startDistance: 0, endDistance: 0 },
+                    { startValue: 180, endValue: 220, style: { fill: '#e53d37', stroke: '#e53d37' }, startDistance: 0, endDistance: 0 }
+                ],
+
+                cap: { size: '5%', style: { fill: '#2e79bb', stroke: '#2e79bb' } },
+                border: { style: { fill: '#8e9495', stroke: '#7b8384', 'stroke-width': 1 } },
+                ticksMinor: { interval: 5, size: '5%' },
+                ticksMajor: { interval: 20, size: '10%' },
+                labels: { position: 'outside', interval: 20 },
+                pointer: { style: { fill: '#2e79bb' }, width: 5 },
+                animationDuration: 1500
+            }
+
+        JQXElements.settings['SliderSettings'] =
+            {
+                min: 0,
+                max: 220,
+                width: 200,
+                mode: 'fixed',
+                ticksFrequency: 20,
+                showButtons: false
+            }
+
+
+        window.onload = function() {
+            var myGauge = document.querySelector('jqx-gauge');
+            var mySlider = document.querySelector('jqx-slider');
+
+            mySlider.addEventListener('mousedown', function() {
+                myGauge.value = mySlider.value();
+            });
+
+            mySlider.addEventListener('slideEnd', function(e) {
+                myGauge.value = e.args.value;
+            });
+
+            mySlider.addEventListener('mousewheel', function() {
+                myGauge.value = mySlider.value();
+            });
+
+            myGauge.value = 120;
+        }
+    </script> 
+</head>
+<body>
+    <div class="example-description">
+        In this sample it is illustrated how to dynamically update the Custom elements Gauge's value.
+    </div>
+
+    <div class="demo-gauge" style="position: relative; height: 380px;">
+
+        <jqx-gauge settings="GaugeSettings" style="float: left; margin-right: 40px;">
+        </jqx-gauge>
+
+        <jqx-slider settings='SliderSettings' style="position: absolute; top: 250px; left: 93px">
+        </jqx-slider>
+
+    </div>
+
+
+</body>
+</html>

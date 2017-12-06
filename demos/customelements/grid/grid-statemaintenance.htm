@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element StateMaintenance</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of save/load the current grid state of Custom Element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.storage.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsreorder.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                datatype: 'xml',
+                datafields: [
+                    { name: 'ShipName', map: 'm\\:properties>d\\:ShipName' },
+                    { name: 'ShipCity', map: 'm\\:properties>d\\:ShipCity' },
+                    { name: 'ShipCountry', map: 'm\\:properties>d\\:ShipCountry' }
+                ],
+                root: 'entry',
+                record: 'content',
+                id: 'm\\:properties>d\\:OrderID',
+                url: '../sampledata/orders.xml',
+                pager: (pagenum, pagesize, oldpagenum) => {
+                    // callback called when a page or page size is changed.
+                }
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: source,
+                selectionmode: 'multiplerowsextended',
+                sortable: true,
+                pageable: true,
+                autoheight: true,
+                autoloadstate: false,
+                autosavestate: false,
+                columnsresize: true,
+                columnsreorder: true,
+                showfilterrow: true,
+                filterable: true,
+                columns: [
+                    { text: 'Ship Name', filtercondition: 'starts_with', datafield: 'ShipName', width: 250 },
+                    { text: 'Ship City', datafield: 'ShipCity', width: 200 },
+                    { text: 'Ship Country', datafield: 'ShipCountry' }
+                ]
+            };
+
+        window.onload = function() {
+            var state = null;
+
+            var myButtons = document.querySelectorAll('jqx-button');
+            var myGrid = document.querySelector('jqx-grid');
+
+            myButtons[0].addEventListener('click', function() {
+                state = myGrid.savestate();
+            });
+
+            myButtons[1].addEventListener('click', function() {
+                if (state) {
+                    myGrid.loadstate(state);
+                }
+                else {
+                    myGrid.loadstate();
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This example shows how to Save/Load the Custom element Grid's state.
+    </div>
+
+   <jqx-grid settings="gridSettings"></jqx-grid>
+
+    <div style="margin-top: 30px;">
+        <jqx-button>Save State</jqx-button>
+        <jqx-button>Load State</jqx-button>
+    </div>
+</body>
+</html>

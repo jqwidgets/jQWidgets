@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,30 +17,30 @@ declare let JQXLite: any;
 
 export class jqxGaugeComponent implements OnChanges
 {
-   @Input('animationDuration') attrAnimationDuration: String | Number;
+   @Input('animationDuration') attrAnimationDuration: string | number;
    @Input('border') attrBorder: jqwidgets.GaugeBorder;
    @Input('caption') attrCaption: jqwidgets.GaugeCaption;
    @Input('cap') attrCap: jqwidgets.GaugeCap;
-   @Input('colorScheme') attrColorScheme: String;
-   @Input('disabled') attrDisabled: Boolean;
+   @Input('colorScheme') attrColorScheme: string;
+   @Input('disabled') attrDisabled: boolean;
    @Input('easing') attrEasing: any;
-   @Input('endAngle') attrEndAngle: String | Number;
-   @Input('int64') attrInt64: Boolean;
+   @Input('endAngle') attrEndAngle: number | string;
+   @Input('int64') attrInt64: boolean;
    @Input('labels') attrLabels: jqwidgets.GaugeLabels;
-   @Input('min') attrMin: Number;
-   @Input('max') attrMax: String | Number;
+   @Input('min') attrMin: number;
+   @Input('max') attrMax: number | string;
    @Input('pointer') attrPointer: jqwidgets.GaugePointer;
-   @Input('radius') attrRadius: String | Number;
+   @Input('radius') attrRadius: number | string;
    @Input('ranges') attrRanges: Array<jqwidgets.GaugeRanges>;
-   @Input('startAngle') attrStartAngle: String | Number;
-   @Input('showRanges') attrShowRanges: Boolean;
+   @Input('startAngle') attrStartAngle: number | string;
+   @Input('showRanges') attrShowRanges: boolean;
    @Input('style') attrStyle: jqwidgets.GaugeStyle;
    @Input('ticksMajor') attrTicksMajor: jqwidgets.GaugeTicks;
    @Input('ticksMinor') attrTicksMinor: jqwidgets.GaugeTicks;
-   @Input('ticksDistance') attrTicksDistance: String;
-   @Input('value') attrValue: Number;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('ticksDistance') attrTicksDistance: string;
+   @Input('value') attrValue: number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -63,7 +63,7 @@ export class jqxGaugeComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -154,7 +154,7 @@ export class jqxGaugeComponent implements OnChanges
    }
 
    // jqxGaugeComponent properties
-   animationDuration(arg?: String | Number) : any {
+   animationDuration(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxGauge('animationDuration', arg);
       } else {
@@ -210,7 +210,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   endAngle(arg?: String | Number) : any {
+   endAngle(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxGauge('endAngle', arg);
       } else {
@@ -218,7 +218,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxGauge('height', arg);
       } else {
@@ -250,7 +250,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   max(arg?: String | Number) : any {
+   max(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxGauge('max', arg);
       } else {
@@ -266,7 +266,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   radius(arg?: String | Number) : any {
+   radius(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxGauge('radius', arg);
       } else {
@@ -282,7 +282,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   startAngle(arg?: String | Number) : any {
+   startAngle(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxGauge('startAngle', arg);
       } else {
@@ -338,7 +338,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxGauge('width', arg);
       } else {

@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart NegativeValues</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example with negative values in Custom element Chart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            {
+                datatype: 'json',
+                datafields: [
+                    { name: 'month' },
+                    { name: 'min' },
+                    { name: 'max' },
+                ],
+                url: '../sampledata/weather_geneva.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'Weather in Geneva, Switzerland',
+                description: 'Climatological Information about Geneva',
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                colorScheme: 'scheme05',
+                xAxis:
+                {
+                    dataField: 'month',
+                    displayText: 'Month',
+                    unitInterval: 1,
+                    gridLines: { interval: 3 }
+                },
+                valueAxis:
+                {
+                    unitInterval: 5,
+                    title: {
+                        visible: true,
+                        text: 'Temperature [C]<br>'
+                    },
+                    labels: {
+                        formatSettings: {
+                            decimalPlaces: 1,
+                            negativeWithBrackets: false
+                        },
+                        horizontalAlignment: 'right'
+                    }
+                },
+                seriesGroups:
+                [
+                    {
+                        type: 'column',
+                        //useGradient: false,
+                        series: [
+                            { dataField: 'max', displayText: 'Max Temperature' },
+                            { dataField: 'min', displayText: 'Min Temperature' }
+                        ]
+                    }
+                ]
+            };
+    </script>
+</head>
+<body>
+
+   <jqx-chart settings="chartSettings" style="width:850px; height:500px"></jqx-chart>
+
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Custom Element chart with columns series and negative values. 
+    </div>
+
+    </body>
+</html>

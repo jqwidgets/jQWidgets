@@ -4,16 +4,16 @@
     <title id='Description'>Chart Custom Element with Javascript</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
-    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
-    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
-    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
-    <script type="text/javascript" src="../../../scripts/demos.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxdraw.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxchart.core.js"></script>
-    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
     <script>
         window.onload = function () {
             var chart = document.createElement('jqx-chart');
@@ -26,6 +26,15 @@
                 { Day: 'Friday' },
                 { Day: 'Saturday' },
                 { Day: 'Sunday' }
+            ];
+            var weeks = [
+                { Week: 'week1' },
+                { Week: 'week2' },
+                { Week: 'week3' },
+                { Week: 'week4' },
+                { Week: 'week5' },
+                { Week: 'week6' },
+                { Week: 'week7' },
             ];
 
             var Keith = [
@@ -69,7 +78,7 @@
                 source: days,
                 xAxis:
                 {
-                    dataField: 'Day',
+                    dataField: 'day',
                     gridLines: { visible: true }
                 },
                 colorScheme: 'scheme02',

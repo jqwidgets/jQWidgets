@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable DataExport</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the data exports available in Custom Elements DataTable." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.export.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript">
+        var data = generatedata(100);
+        var source =
+            {
+                localData: data,
+                dataType: 'array',
+                dataFields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'available', type: 'bool' },
+                    { name: 'date', type: 'date' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' }
+                ]
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['dataTableSettings'] =
+        {
+            pageable: true,
+            source: dataAdapter,
+            altRows: true,
+            sortable: true,
+            columns: [
+                { text: 'First Name', dataField: 'firstname', width: 190 },
+                { text: 'Last Name', dataField: 'lastname', width: 190 },
+                { text: 'Product', dataField: 'productname', width: 177 },
+                { text: 'Available', dataField: 'available', width: 67, cellsAlign: 'center', align: 'center' },
+                { text: 'Ship Date', dataField: 'date', width: 90, align: 'right', cellsAlign: 'right', cellsFormat: 'd' },
+                { text: 'Quantity', dataField: 'quantity', width: 70, align: 'right', cellsAlign: 'right' },
+                { text: 'Price', dataField: 'price', cellsAlign: 'right', align: 'right', cellsFormat: 'c2' }
+            ]
+        }
+
+        window.onload = function() {
+            var myButtons = document.querySelectorAll('jqx-button');
+            var myDataTable = document.querySelector('jqx-data-table');
+
+            myButtons[0].addEventListener('click', function() {
+                myDataTable.exportData('xls');
+            });
+
+            myButtons[1].addEventListener('click', function() {
+                myDataTable.exportData('xml');
+            });
+
+            myButtons[2].addEventListener('click', function() {
+                myDataTable.exportData('csv');
+            });
+
+            myButtons[3].addEventListener('click', function() {
+                myDataTable.exportData('tsv');
+            });
+
+            myButtons[4].addEventListener('click', function() {
+                myDataTable.exportData('html');
+            });
+
+            myButtons[5].addEventListener('click', function() {
+                myDataTable.exportData('json');
+            });
+
+            myButtons[6].addEventListener('click', function() {
+                myDataTable.exportData('pdf');
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        With Custom elements DataTable, you can export your data to Excel, XML, CSV, TSV, JSON, PDF and HTML.
+    </div>
+
+   <jqx-data-table settings="dataTableSettings">
+   </jqx-data-table>
+    <div style='margin-top: 20px;'>
+        <div style='float: left;'>
+            <jqx-button>Export to Excel</jqx-button>
+            <br />
+            <br />
+            <jqx-button>Export to XML</jqx-button>
+        </div>
+        <div style='margin-left: 10px; float: left;'>
+            <jqx-button>Export to CSV</jqx-button>
+            <br />
+            <br />
+            <jqx-button>Export to TSV</jqx-button>
+        </div>
+        <div style='margin-left: 10px; float: left;'>
+            <jqx-button>Export to HTML</jqx-button>
+            <br />
+            <br />
+            <jqx-button>Export to JSON</jqx-button>
+        </div>
+        <div style='margin-left: 10px; float: left;'>
+            <jqx-button>Export to PDF</jqx-button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -30,26 +30,26 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('displayMember') attrDisplayMember: String;
-   @Input('dropDownWidth') attrDropDownWidth: String | Number;
-   @Input('items') attrItems: Number;
-   @Input('maxLength') attrMaxLength: Number;
-   @Input('minLength') attrMinLength: Number;
-   @Input('opened') attrOpened: Boolean;
-   @Input('placeHolder') attrPlaceHolder: String;
-   @Input('popupZIndex') attrPopupZIndex: Number;
-   @Input('query') attrQuery: String;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('displayMember') attrDisplayMember: string;
+   @Input('dropDownWidth') attrDropDownWidth: number | string;
+   @Input('items') attrItems: number;
+   @Input('maxLength') attrMaxLength: number;
+   @Input('minLength') attrMinLength: number;
+   @Input('opened') attrOpened: boolean;
+   @Input('placeHolder') attrPlaceHolder: string;
+   @Input('popupZIndex') attrPopupZIndex: number;
+   @Input('query') attrQuery: string;
    @Input('renderer') attrRenderer: (itemValue: any, inputValue: any) => any;
-   @Input('roundedCorners') attrRoundedCorners: Boolean;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('scrollBarSize') attrScrollBarSize: Number;
+   @Input('roundedCorners') attrRoundedCorners: boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('scrollBarSize') attrScrollBarSize: number;
    @Input('searchMode') attrSearchMode: any;
    @Input('source') attrSource: Array<any>;
-   @Input('theme') attrTheme: String;
-   @Input('valueMember') attrValueMember: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('valueMember') attrValueMember: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -75,7 +75,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -163,6 +163,8 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
 
    writeValue(value: any): void {
        if(this.widgetObject) {
+           if (value !== null && value !== undefined)
+               this.host.jqxTextArea('val', value);
        }
    }
 
@@ -195,7 +197,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownWidth(arg?: String | Number) : any {
+   dropDownWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxTextArea('dropDownWidth', arg);
       } else {
@@ -203,7 +205,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxTextArea('height', arg);
       } else {
@@ -331,7 +333,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxTextArea('width', arg);
       } else {

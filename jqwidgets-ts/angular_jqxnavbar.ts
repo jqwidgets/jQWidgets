@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -16,20 +16,20 @@ declare let JQXLite: any;
 
 export class jqxNavBarComponent implements OnChanges
 {
-   @Input('columns') attrColumns: Array<String>;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('minimized') attrMinimized: Boolean;
+   @Input('columns') attrColumns: Array<string>;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('minimized') attrMinimized: boolean;
    @Input('minimizeButtonPosition') attrMinimizeButtonPosition: any;
-   @Input('minimizedHeight') attrMinimizedHeight: String | Number;
-   @Input('minimizedTitle') attrMinimizedTitle: String | Number;
+   @Input('minimizedHeight') attrMinimizedHeight: number | string;
+   @Input('minimizedTitle') attrMinimizedTitle: number | string;
    @Input('orientation') attrOrientation: any;
-   @Input('popupAnimationDelay') attrPopupAnimationDelay: Number;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('selection') attrSelection: Boolean;
-   @Input('selectedItem') attrSelectedItem: String | Number;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('popupAnimationDelay') attrPopupAnimationDelay: number;
+   @Input('rtl') attrRtl: boolean;
+   @Input('selection') attrSelection: boolean;
+   @Input('selectedItem') attrSelectedItem: number | string;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -52,7 +52,7 @@ export class jqxNavBarComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -143,7 +143,7 @@ export class jqxNavBarComponent implements OnChanges
    }
 
    // jqxNavBarComponent properties
-   columns(arg?: Array<String>) : any {
+   columns(arg?: Array<string>) : any {
       if (arg !== undefined) {
           this.host.jqxNavBar('columns', arg);
       } else {
@@ -159,7 +159,7 @@ export class jqxNavBarComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxNavBar('height', arg);
       } else {
@@ -183,7 +183,7 @@ export class jqxNavBarComponent implements OnChanges
       }
    }
 
-   minimizedHeight(arg?: String | Number) : any {
+   minimizedHeight(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNavBar('minimizedHeight', arg);
       } else {
@@ -191,7 +191,7 @@ export class jqxNavBarComponent implements OnChanges
       }
    }
 
-   minimizedTitle(arg?: String | Number) : any {
+   minimizedTitle(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNavBar('minimizedTitle', arg);
       } else {
@@ -231,7 +231,7 @@ export class jqxNavBarComponent implements OnChanges
       }
    }
 
-   selectedItem(arg?: String | Number) : any {
+   selectedItem(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxNavBar('selectedItem', arg);
       } else {
@@ -247,7 +247,7 @@ export class jqxNavBarComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxNavBar('width', arg);
       } else {
@@ -273,7 +273,7 @@ export class jqxNavBarComponent implements OnChanges
       this.host.jqxNavBar('open');
    }
 
-   selectAt(index: String | Number): void {
+   selectAt(index: number | string): void {
       this.host.jqxNavBar('selectAt', index);
    }
 

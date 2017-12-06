@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>ScrollBar Custom Element DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionalities in Custom Element ScrollBar." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['ScrollBarSettings'] =
+            {
+                min: 0,
+                max: 1000,
+                width: 300,
+                height: 15
+            };
+
+        JQXElements.settings['VerticalScrollBarSettings'] =
+            {
+                min: 0,
+                max: 1000,
+                height: 300,
+                width: 15,
+                vertical: true
+            };
+
+        window.onload = function() {
+            var myScrollBars = document.querySelectorAll('jqx-scroll-bar');
+            var myLogVertical = document.querySelector('#VerticalDiv');
+            var myLogHorizontal = document.querySelector('#HorizontalDiv');
+
+            myScrollBars[0].addEventListener('valueChanged', function(event) {
+                myLogVertical.innerHTML = 'Horizontal (' + parseInt(event.currentValue) + ')';
+            });
+
+            myScrollBars[1].addEventListener('valueChanged', function(event) {
+                myLogHorizontal.innerHTML = 'Horizontal (' + parseInt(event.currentValue) + ')';
+            });
+        };
+    </script>
+</head >
+    <body>
+        <div class="example-description">
+            The Custom element ScrollBar represents a widget that provides a scroll bar that has a sliding thumb whose position corresponds to a value.
+        </div>
+
+        <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+            <div id='VerticalDiv' style='margin-top: 10px;'>Vertical</div>
+            <jqx-scroll-bar style='margin-top: 10px;' settings='VerticalScrollBarSettings'>
+
+            </jqx-scroll-bar>
+            <div id='HorizontalDiv' style='margin-top: 10px;'>Horizontal</div>
+            <jqx-scroll-bar style='margin-top: 10px;' settings='ScrollBarSettings'></jqx-scroll-bar>
+        </div>
+    </body>
+</html >

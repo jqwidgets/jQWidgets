@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element ContextMenu</title>
+    <meta name="description" content="This is an example of context menu in TreeGrid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var source =
+            {
+                dataType: 'csv',
+                dataFields: [
+                    { name: 'EmployeeKey', type: 'number' },
+                    { name: 'ParentEmployeeKey', type: 'number' },
+                    { name: 'FirstName', type: 'string' },
+                    { name: 'LastName', type: 'string' },
+                    { name: 'Title', type: 'string' },
+                    { name: 'HireDate', type: 'date' },
+                    { name: 'BirthDate', type: 'date' },
+                    { name: 'Phone', type: 'string' },
+                    { name: 'Gender', type: 'string' },
+                    { name: 'DepartmentName', type: 'string' }
+                ],
+                hierarchy:
+                {
+                    keyDataField: { name: 'EmployeeKey' },
+                    parentDataField: { name: 'ParentEmployeeKey' }
+                },
+                id: 'EmployeeKey',
+                url: '../sampledata/employeesadv.csv'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['treeGridSettings'] =
+            {
+                source: dataAdapter,
+                columnsResize: true,
+                ready: function () {
+                    var myTreeGrid = document.querySelector('jqx-tree-grid');
+                    myTreeGrid.expandRow(32);
+                },
+                columns: [
+                    { text: 'FirstName', dataField: 'FirstName', minWidth: 100, width: 200 },
+                    { text: 'LastName', dataField: 'LastName', width: 200 },
+                    { text: 'Department Name', dataField: 'DepartmentName', width: 200 },
+                    { text: 'Title', dataField: 'Title', width: 300 },
+                    { text: 'Birth Date', dataField: 'BirthDate', cellsFormat: 'd', width: 120 },
+                    { text: 'Hire Date', dataField: 'HireDate', cellsFormat: 'd', width: 120 },
+                    { text: 'Phone', dataField: 'Phone', cellsFormat: 'd', width: 120 }
+                ]
+            };
+
+        JQXElements.settings['menuSettings'] =
+            {
+                width: 200, height: 58,
+                autoOpenPopup: false,
+                mode: 'popup'
+            };
+
+        window.onload = function() {
+            var myTreeGrid = document.querySelector('jqx-tree-grid');
+            var myMenu = document.querySelector('jqx-menu');
+
+            myTreeGrid.addEventListener('contextmenu', function () { return false; });
+
+            myTreeGrid.addEventListener('rowClick', function (event) {
+                var args = event.args;
+                if (args.originalEvent.button == 2) {
+                    var scrollTop = window.screenLeft;
+                    var scrollLeft = window.screenTop;
+                    myMenu.open(parseInt(event.args.originalEvent.clientX) - 80 + scrollLeft, parseInt(event.args.originalEvent.clientY) - 25 + scrollTop);
+
+                    return false;
+                }
+            });
+
+            myMenu.addEventListener('itemclick', function (event) {
+                var args = event.args;
+                var selection = myTreeGrid.getSelection();
+                var rowid = selection[0].uid;
+                if (args.innerHTML == 'Edit Selected Row') {
+                    myTreeGrid.beginRowEdit(rowid);
+                } else {
+                    myTreeGrid.deleteRow(rowid);
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Right-Click on Tree Grid Custom Element to display a Context Menu.  
+    </div>
+
+    <jqx-tree-grid settings="treeGridSettings"></jqx-tree-grid>
+
+    <jqx-menu settings="menuSettings">
+        <ul>
+            <li>Edit Selected Row</li>
+            <li>Delete Selected Row</li>
+        </ul>
+    </jqx-menu>
+</body>
+</html>

@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element CustomColumnEditor</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of custom editors in Custom Element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript">
+        var data = generatedata(200);
+
+        var source =
+        {
+            localdata: data,
+            datatype: 'array',
+            datafields:
+            [
+                { name: 'firstname', type: 'string' },
+                { name: 'lastname', type: 'string' },
+                { name: 'productname', type: 'string' },
+                { name: 'available', type: 'bool' },
+                { name: 'quantity', type: 'number' },
+                { name: 'price', type: 'number' },
+                { name: 'date', type: 'date' }
+            ]
+        };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var getEditorDataAdapter = (datafield) => {
+            var source =
+                {
+                    localdata: data,
+                    datatype: 'array',
+                    datafields:
+                    [
+                        { name: 'firstname', type: 'string' },
+                        { name: 'lastname', type: 'string' },
+                        { name: 'productname', type: 'string' },
+                        { name: 'available', type: 'bool' },
+                        { name: 'quantity', type: 'number' },
+                        { name: 'price', type: 'number' },
+                        { name: 'date', type: 'date' }
+                    ]
+                };
+
+            var dataAdapter = new jqx.dataAdapter(source, { uniqueDataFields: [datafield] });
+
+            return dataAdapter;
+        }
+
+        var firstNameInput;
+        var lastNameInput;
+        var productsDropDownList;
+        var quantitySlider;
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: dataAdapter,
+                editable: true,
+                selectionmode: 'singlecell',
+                columns: [
+                    {
+                        text: 'First Name', columntype: 'template', datafield: 'firstname', width: 80,
+                        createeditor: (row, cellvalue, editor, cellText, width, height) => {           
+                            firstNameInput = document.createElement('jqx-input');    
+                            firstNameInput.settings =
+                                {
+                                    width: width, height: height,
+                                    source: getEditorDataAdapter('firstname'),
+                                    displayMember: 'firstname'
+                                };
+                            editor[0].prepend(firstNameInput);
+                        },
+                        initeditor: (row, cellvalue, editor, celltext, pressedkey) => {
+                            if (pressedkey) {
+                                firstNameInput.val(pressedkey);
+                                firstNameInput.selectLast();
+                            }
+                            else {
+                                firstNameInput.val(cellvalue);
+                                firstNameInput.selectAll();
+                            }
+                        },
+                        geteditorvalue: (row, cellvalue, editor) => { 
+                            return firstNameInput.val();
+                        }
+                    },
+                    {
+                        text: 'Last Name', datafield: 'lastname', columntype: 'template', width: 80,
+                        createeditor: (row, cellvalue, editor, cellText, width, height) => {
+                            lastNameInput = document.createElement('jqx-input');
+                            lastNameInput.settings =
+                                {
+                                    width: width, height: height,
+                                    source: getEditorDataAdapter('lastname'),
+                                    displayMember: 'lastname'
+                                };
+                            editor[0].prepend(lastNameInput);
+                        },
+                        initeditor: (row, cellvalue, editor, celltext, pressedkey) => {
+                            if (pressedkey) {
+                                lastNameInput.val(pressedkey);
+                                lastNameInput.selectLast();
+                            }
+                            else {
+                                lastNameInput.val(cellvalue);
+                                lastNameInput.selectAll();
+                            }
+                        },
+                        geteditorvalue: (row, cellvalue, editor) => {
+                            return lastNameInput.val();
+                        }
+                    },
+                    {
+                        text: 'Products', columntype: 'template', datafield: 'productname',
+                        createeditor: (row, cellvalue, editor, cellText, width, height) => {
+                            productsDropDownList = document.createElement('jqx-drop-down-list');
+                            productsDropDownList.settings =
+                                {
+                                    width: width, height: height, checkboxes: true,
+                                    source: getEditorDataAdapter('productname'),
+                                    displayMember: 'productname', valueMember: 'productname',
+                                    selectionRenderer: function() {
+                                        return '<span style="top:4px; position: relative;">Please Choose:</span>';
+                                    }
+                                };
+                            editor[0].appendChild(productsDropDownList);
+                        },
+                        initeditor: (row, cellvalue, editor, celltext, pressedkey) => {
+                            var items = productsDropDownList.getItems();
+                            productsDropDownList.uncheckAll();
+                            var values = cellvalue.split(/,\s*/);
+                            for (var j = 0; j < values.length; j++) {
+                                for (var i = 0; i < items.length; i++) {
+                                    if (items[i].label === values[j]) {
+                                        productsDropDownList.checkIndex(i);
+                                    }
+                                }
+                            }
+                        },
+                        geteditorvalue: (row, cellvalue, editor) => {
+                            return productsDropDownList.val();
+                        }
+                    },
+                    {
+                        text: 'Quantity', width: 200, columntype: 'custom', datafield: 'quantity',
+                        createeditor: (row, cellvalue, editor, cellText, width, height) => {
+                            quantitySlider = document.createElement('jqx-slider');
+                            quantitySlider.style.marginTop = '2px';
+                            quantitySlider.settings =
+                                {
+                                    width: width, height: height,
+                                    step: 1, min: 0, max: 30,
+                                    mode: 'fixed', showTicks: false
+                                };
+                            editor[0].appendChild(quantitySlider);
+                        },
+                        initeditor: (row, cellvalue, editor, celltext, pressedkey) => {
+                            var value = parseInt(cellvalue);
+                            if (isNaN(value)) value = 0;
+                            quantitySlider.setValue(value);
+                        },
+                        geteditorvalue: (row, cellvalue, editor) => {
+                            return quantitySlider.val();
+                        }
+                    }
+                ]
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this sample is illustrated how to create custom editors for Custom element Grid. The "First Name" and "Last Name" columns use the Input widget as a cell editor. The "Products" column use a DropDownList widget with enabled Checkboxes as an editor. The "Quantity" column's editor is Slider.
+    </div>
+
+   <jqx-grid settings="gridSettings"></jqx-grid>
+</body>
+</html>

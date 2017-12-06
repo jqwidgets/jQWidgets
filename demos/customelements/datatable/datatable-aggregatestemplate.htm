@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable AggregatesTemplate</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an examplame of customized aggregates in Custom Element DataTable." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var data = generatedata(200);
+        var source =
+            {
+                localData: data,
+                dataType: 'array',
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' }
+                ],
+                updateRow: (rowid, rowdata, commit) => {
+                    // synchronize with the server - send update command   
+                    commit(true);
+                }
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['dataTableSettings'] =
+        {
+            source: dataAdapter,
+            altRows: true,
+            pageable: true,
+            pagerButtonsCount: 10,
+            aggregatesHeight: 25,
+            showAggregates: true,
+            columns: [
+                { text: 'First Name', columntype: 'textbox', datafield: 'firstname', width: 90 },
+                { text: 'Last Name', datafield: 'lastname', columntype: 'textbox', width: 90 },
+                { text: 'Product', datafield: 'productname', width: 170 },
+                { text: 'Quantity', datafield: 'quantity', width: 100, align: 'right', cellsAlign: 'right', cellsFormat: 'n2' },
+                {
+                    text: 'Price', datafield: 'price', cellsAlign: 'right', align: 'right', cellsFormat: 'c2', aggregates: [{
+                        'Total': (aggregatedValue, currentValue, column, record) => {
+                            var total = currentValue * parseInt(record['quantity']);
+                            return aggregatedValue + total;
+                        }
+                    }],
+                    aggregatesRenderer: (aggregates, column, element) => {
+                        var renderString = "<div style='margin: 4px; float: right;  height: 100%;'>";
+                        renderString += "<strong>Total: </strong>" + aggregates.Total + "</div>";
+                        return renderString;
+                    }
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Customized Aggregates in Custome elements DataTable.
+    </div>
+   <jqx-data-table settings="dataTableSettings">
+   </jqx-data-table>
+</body>
+</html>

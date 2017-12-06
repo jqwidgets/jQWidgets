@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Splitter Custom Element DefaultFunctionality</title>
+    <meta name="description" content="In this demo the panels of the Splitter Custom Element are populated with an AJAX call." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['splitterSettings'] =
+            {
+                panels: [{ size: '50%' }, { size: '50%' }]
+            };    
+
+        var loadPage = (url, tabIndex) => {
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = _ => {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    var view = document.querySelector(`#content${tabIndex}`);
+                    view.innerHTML = '<div style="overflow: auto; width: 100%; height: 100%;">' + xhttp.responseText + '</div>'
+                }
+            };
+
+            xhttp.open('GET', url, true);
+            xhttp.send();
+        };
+
+        loadPage('pages/ajax1.htm', 1);
+        loadPage('pages/ajax2.htm', 2);
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        In this sample, Split Panels are dynamically loaded with Ajax.
+    </div>
+
+    <jqx-splitter settings="splitterSettings">
+        <div id="content1">
+            <img src='../../images/ajax-loader.gif' />
+        </div>
+        <div id="content2">
+            <img src='../../images/ajax-loader.gif' />
+        </div>
+    </jqx-splitter>
+
+</body>
+</html>

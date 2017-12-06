@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable RemoteData</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="Data Binding to JSON data in Custom elements DataTable" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                dataType: 'jsonp',
+                dataFields: [
+                    { name: 'countryName', type: 'string' },
+                    { name: 'name', type: 'string' },
+                    { name: 'population', type: 'float' },
+                    { name: 'continentCode', type: 'string' }
+                ],
+                url: 'http://api.geonames.org/searchJSON'
+            };
+        var dataAdapter = new jqx.dataAdapter(source,
+            {
+                formatData: (data) => {
+                    $.extend(data, {
+                        featureClass: 'P',
+                        style: 'full',
+                        username: 'jqwidgets',
+                        maxRows: 50
+                    });
+                    return data;
+                }
+            }
+        );
+
+        JQXElements.settings['dataTableSettings'] =
+        {
+            pageable: true,
+            pagerButtonsCount: 10,
+            source: dataAdapter,
+            columnsResize: true,
+            columns: [
+                { text: 'Country Name', dataField: 'countryName', width: 200 },
+                { text: 'City', dataField: 'name', width: 250 },
+                { text: 'Population', dataField: 'population', cellsFormat: 'f', width: 250 },
+                { text: 'Continent Code', dataField: 'continentCode' }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Data Binding to JSON data in Custom element DataTable.
+    </div>
+
+   <jqx-data-table settings="dataTableSettings"></jqx-data-table>
+</body>
+</html>

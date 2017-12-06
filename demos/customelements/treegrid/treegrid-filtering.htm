@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element Filtering</title>
+    <meta name="description" content="This is an example of filtering in TreeGrid Custom Element." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        var source =
+            {
+                dataType: 'csv',
+                dataFields: [
+                    { name: 'EmployeeKey', type: 'number' },
+                    { name: 'ParentEmployeeKey', type: 'number' },
+                    { name: 'FirstName', type: 'string' },
+                    { name: 'LastName', type: 'string' },
+                    { name: 'Title', type: 'string' },
+                    { name: 'HireDate', type: 'date' },
+                    { name: 'BirthDate', type: 'date' },
+                    { name: 'Phone', type: 'string' },
+                    { name: 'Gender', type: 'string' },
+                    { name: 'DepartmentName', type: 'string' }
+                ],
+                hierarchy:
+                {
+                    keyDataField: { name: 'EmployeeKey' },
+                    parentDataField: { name: 'ParentEmployeeKey' }
+                },
+                id: 'EmployeeKey',
+                url: '../sampledata/employeesadv.csv'
+                
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['treeGridSettings'] =
+            {
+                source: dataAdapter,
+                pageable: true,
+                columnsResize: true,
+                sortable: true,
+                filterable: true,
+                ready: function () {
+                    var myTreeGrid = document.querySelector('jqx-tree-grid');
+                    myTreeGrid.expandRow(32);
+                    setTimeout(function () {
+                        myTreeGrid.expandRow(112);
+                    }, 100);
+                },
+                columns: [
+                    { text: 'FirstName', dataField: 'FirstName', minWidth: 100, width: 200 },
+                    { text: 'LastName', dataField: 'LastName', width: 200 },
+                    { text: 'Department Name', dataField: 'DepartmentName', width: 150 },
+                    { text: 'Title', dataField: 'Title', width: 300 },
+                    { text: 'Birth Date', dataField: 'BirthDate', cellsFormat: 'd', width: 120 },
+                    { text: 'Hire Date', dataField: 'HireDate', cellsFormat: 'd', width: 120 },
+                    { text: 'Phone', dataField: 'Phone', cellsFormat: 'd', width: 120 }
+                ]
+               
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Data Filtering in Tree Grid Custom Element.
+    </div>
+    <jqx-tree-grid settings="treeGridSettings"></jqx-tree-grid>
+</body>
+</html>

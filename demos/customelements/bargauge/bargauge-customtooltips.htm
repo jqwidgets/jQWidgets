@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>BarGauge Custom Element CustomTooltip</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of customizable Custom Element BarGauge ToolTips." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbargauge.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style>
+        .myTooltip {
+            padding: 10px;
+            font-size: 1.2em;
+            border-style: dashed;
+            border-width: 3px;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+
+        var players = [25, 46, 6, 55, 14, 22, 57, 40, 87, 20];
+        var boundary = 33;
+
+        JQXElements.settings['barGaugeSettings'] =
+            {
+                colorScheme: 'scheme04',
+                max: 90,
+                title: { text: 'Ranking', subtitle: '(boundary - ' + boundary + ' points)' },
+                values: players,
+                baseValue: boundary,
+                labels: {
+                    formatFunction: (value) => {
+                        var realVal = parseInt(value);
+                        return realVal + ' pts';
+                    },
+                    font: { size: 12 },
+                    indent: 10
+                },
+                tooltip: {
+                    classname: 'myTooltip',
+                    formatFunction: (value) => {
+                        var realVal = parseInt(value);
+                        var player = players.indexOf(realVal) + 1;
+                        return ('Player ' + player + ': ' + realVal + ' points');
+                    },
+                    visible: true
+                },
+                startAngle: 180,
+                endAngle: -65
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This is an example of customizable ToolTips in Custom elements.
+    </div>
+
+    <jqx-bar-gauge settings="barGaugeSettings"></jqx-bar-gauge>
+</body>
+</html>

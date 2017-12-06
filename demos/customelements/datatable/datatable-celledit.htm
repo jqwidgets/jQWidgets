@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable CellEdit</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of cell editing in Custom Elements DataTable." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var orderdetailsurl = "../sampledata/orderdetails.xml";
+        var ordersSource =
+            {
+                dataFields: [
+                    { name: 'OrderID', type: 'int' },
+                    { name: 'Freight', type: 'float' },
+                    { name: 'ShipName', type: 'string' },
+                    { name: 'ShipAddress', type: 'string' },
+                    { name: 'ShipCity', type: 'string' },
+                    { name: 'ShipCountry', type: 'string' },
+                    { name: 'ShippedDate', type: 'date' }
+                ],
+                root: "Orders",
+                record: "Order",
+                dataType: "xml",
+                id: 'OrderID',
+                url: orderdetailsurl,
+                addRow: (rowID, rowData, position, commit) => {
+                    // synchronize with the server - send insert command
+                    // call commit with parameter true if the synchronization with the server is successful 
+                    // and with parameter false if the synchronization failed.
+                    // you can pass additional argument to the commit callback which represents the new ID if it is generated from a DB.
+                    commit(true);
+                },
+                updateRow: (rowID, rowData, commit) => {
+                    // synchronize with the server - send update command
+                    // call commit with parameter true if the synchronization with the server is successful 
+                    // and with parameter false if the synchronization failed.
+                    commit(true);
+                },
+                deleteRow: (rowID, commit) => {
+                    // synchronize with the server - send delete command
+                    // call commit with parameter true if the synchronization with the server is successful 
+                    // and with parameter false if the synchronization failed.
+                    commit(true);
+                }
+            };
+        var dataAdapter = new jqx.dataAdapter(ordersSource, {
+            loadComplete: function() {
+                // data is loaded.
+            }
+        });
+        this.editrow = -1;
+
+        JQXElements.settings['dataTableSettings'] =
+        {
+            source: dataAdapter,
+            pageable: true,
+            editable: true,
+            altRows: true,
+            editSettings: { saveOnPageChange: true, saveOnBlur: true, saveOnSelectionChange: true, cancelOnEsc: true, saveOnEnter: true, editSingleCell: true, editOnDoubleClick: true, editOnF2: true },
+            pagerButtonsCount: 8,
+            columns: [
+                { text: 'Freight', dataField: 'Freight', cellsFormat: 'f', cellsAlign: 'right', align: 'right', width: 250 },
+                {
+                    text: 'Ship Country', dataField: 'ShipCountry', width: 250
+                },
+                { text: 'Shipped Date', dataField: 'ShippedDate', cellsAlign: 'right', align: 'right', cellsFormat: 'dd/MM/yyyy' }
+            ]
+        };
+
+        window.onload = function() {
+            var myDataTable = document.querySelector('jqx-data-table');
+            var myLog = document.querySelector('#log');
+
+            myDataTable.addEventListener('cellBeginEdit', function(event) {
+
+                var args = event.args;
+
+                // row key
+                var rowKey = args.key;
+
+                // row's index.
+                var rowIndex = args.index;
+
+                // row's data.
+                var rowData = args.row;
+
+                // row's index in the data source.
+                var rowBoundIndex = args.boundIndex;
+
+                // column's data field.
+                var columnDataField = args.dataField;
+
+                // column's display field.
+                var columnDisplayField = args.displayField;
+
+                // cell's value.
+                var value = args.value;
+                if (columnDataField == "ShippedDate")
+                    value = dataAdapter.formatDate(value, 'dd/MM/yyyy');
+
+                myLog.innerHTML = "cellBeginEdit - Row: " + rowIndex + ", Column: " + columnDataField + ", Value: " + value + "<br/>" + myLog.innerHTML;
+            });
+
+
+            myDataTable.addEventListener('cellEndEdit', function(event) {
+
+                var args = event.args;
+
+                // row key
+                var rowKey = args.key;
+
+                // row's index.
+                var rowIndex = args.index;
+
+                // row's data.
+                var rowData = args.row;
+
+                // row's index in the data source.
+                var rowBoundIndex = args.boundIndex;
+
+                // column's data field.
+                var columnDataField = args.dataField;
+
+                // column's display field.
+                var columnDisplayField = args.displayField;
+
+                // cell's value.
+                var value = args.value;
+                if (columnDataField == "ShippedDate")
+                    value = dataAdapter.formatDate(value, 'dd/MM/yyyy');
+
+                myLog.innerHTML = "<br/>cellEndEdit - Row: " + rowIndex + ", Column: " + columnDataField + ", Value: " + value + "<br/>" + myLog.innerHTML;
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom Element DataTable Cell Editing. Double-click on a cell to begin edit.
+    </div>
+
+   <jqx-data-table settings="dataTableSettings"></jqx-data-table>
+
+    <div style="font-size: 13px; font-family: Verdana; width: 800px; margin-top: 20px;">
+        <h4>Event Log</h4>
+        <div style="max-height: 300px; overflow: auto;" id="log"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart PercentageStackedColumns</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Percentage Stacked Columns with Logarithmic Axis in Custom Element Chart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var sampleData =
+            [
+                { a: 0.35, b: 14.5 },
+                { a: 1, b: 2.5 },
+                { a: 10, b: 0.2 },
+                { a: 100, b: 205 },
+                { a: 1, b: 100 },
+                { a: 5.11, b: 10.13 },
+                { a: 20.13, b: 10.13 },
+                { a: 600, b: 300 }
+            ];
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'Logarithmic Scale Axis Example',
+                description: 'Percentage Stacked Columns with logarithmic scale axis (base 2)',
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+                enableAnimations: false,
+                xAxis:
+                {
+                    dataField: ''
+                },
+                valueAxis: {
+                    logarithmicScale: true,
+                    logarithmicScaleBase: 2,
+                    unitInterval: 1,
+                    tickMarks: { interval: 1 },
+                    gridLines: { interval: 1 },
+                    title: { text: 'Value' },
+                    labels: {
+                        formatSettings: { decimalPlaces: 3, sufix: '' },
+                        horizontalAlignment: 'right'
+                    }
+                },
+                seriesGroups:
+                [
+                    {
+                        type: 'stackedcolumn100',
+                        columnsGapPercent: 50,
+                        series: [
+                            { dataField: 'a', displayText: 'A' },
+                            { dataField: 'b', displayText: 'B' }
+                        ]
+                    },
+                    {
+                        type: 'stackedline100',
+                        series: [
+                            { dataField: 'a', displayText: 'A' },
+                            { dataField: 'b', displayText: 'B' }
+                        ]
+                    }
+                ]
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This is an example of Custom element Chart Percentage Stacked Columns with Logarithmic Axis. The type of the seriesGroup is stackedcolumn100. You can see how to set the gap between the columns with the columnsGapPercent setting.
+    </div>
+
+   <jqx-chart settings="chartSettings"></jqx-chart>
+</body>
+</html>

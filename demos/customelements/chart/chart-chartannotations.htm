@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Chart Custom Element Chart Annotations</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of annotations and conditional labels and colors in Custom element Chart." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.annotations.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.api.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+
+    <style type="text/css">
+        .redLabel {
+            fill: #FF0000;
+            color: #FF0000;
+            font-size: 11px;
+            font-family: Verdana;
+        }
+
+        .greenLabel {
+            fill: #89A54E;
+            color: #89A54E;
+            font-size: 11px;
+            font-family: Verdana;
+        }
+    </style>
+
+    <script>
+        var source =
+            {
+                datatype: "csv",
+                datafields: [
+                    { name: 'Country' },
+                    { name: 'GDP' },
+                    { name: 'DebtPercent' },
+                    { name: 'Debt' }
+                ],
+                url: '../sampledata/gdp_dept_2010.txt'
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        fnLabelsClass = function (value, itemIndex, serie, group) {
+            if (value > 100)
+                return 'redLabel';
+            return 'greenLabel';
+        },
+
+            fnLabelsBorderColor = function (value, itemIndex, serie, group) {
+                if (value > 100)
+                    return '#FF0000';
+                return '#89A54E';
+            }
+
+        fnFormatLabel = function (value, itemIndex, serie, group) {
+            return value;
+        }
+
+        JQXElements.settings["chartSettings"] =
+            {
+                title: "Country economic comparison",
+                description: "Per capita GDP and Debt in 2010",
+                showLegend: true,
+                enableAnimations: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                xAxis:
+                {
+                    dataField: 'Country',
+                    flip: false,
+                    gridLines: { visible: false }
+                },
+                colorScheme: 'scheme01',
+                seriesGroups:
+                [
+                    {
+                        type: 'column',
+                        columnsGapPercent: 50,
+                        toolTipFormatSettings: { sufix: ' USD', thousandsSeparator: ',' },
+                        valueAxis:
+                        {
+                            title: {
+                                text: 'GDP & Debt per Capita (USD)<br>'
+                            },
+                            gridLines: { visible: false }
+                        },
+                        series:
+                        [
+                            { dataField: 'GDP', displayText: 'GDP per Capita' },
+                            { dataField: 'Debt', displayText: 'Debt per Capita' }
+                        ]
+                    },
+                    {
+                        type: 'line',
+                        valueAxis:
+                        {
+                            unitInterval: 10,
+                            visible: true,
+                            position: 'right',
+                            title: { text: 'Debt (% of GDP)' },
+                            gridLines: { visible: false },
+                            labels: {
+                                horizontalAlignment: 'left',
+                                formatSettings: { sufix: '%' }
+                            }
+                        },
+                        series:
+                        [
+                            {
+                                linesUnselectMode: 'click',
+                                dataField: 'DebtPercent',
+                                displayText: 'Debt (% of GDP)',
+                                labels:
+                                {
+                                    visible: true,
+                                    'class': fnLabelsClass,
+                                    backgroundColor: 'white',
+                                    padding: { left: 5, right: 5, top: 1, bottom: 1 },
+                                    borderColor: fnLabelsBorderColor,
+                                    backgroundOpacity: 0.7,
+                                    borderOpacity: 0.7
+                                }
+                            }
+                        ],
+                        bands: [
+                            {
+                                minValue: 90, maxValue: 90, fillColor: 'red', lineWidth: 2, dashStyle: '2,2'
+                            }
+                        ],
+                        annotations: [
+                            {
+                                type: 'rect',
+                                yValue: 90,
+                                xValue: 6,
+                                offset: { x: -45, y: -25 },
+                                fillColor: '#EFEFEF',
+                                lineColor: 'red',
+                                text: {
+                                    value: 'Debt threshold',
+                                    offset: {
+                                        x: 2,
+                                        y: 2
+                                    },
+                                    'class': 'redLabel',
+                                    angle: 0
+                                }
+                            }
+                        ],
+                    }
+                ]
+            };
+
+    </script>
+</head>
+<body>
+
+    <jqx-chart settings='chartSettings' style="width: 850px; height: 500px;"></jqx-chart>
+
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Custom element Chart annotations and conditional labels and colors. You can see how to set the type, the values, the color and the offset of the annotation. You can also see how to change the color and the border of the labels above a threshold value.
+    </div>
+
+</body>
+</html>

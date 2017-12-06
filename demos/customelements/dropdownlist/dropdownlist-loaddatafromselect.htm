@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DropDownList LoadFromDataSelect</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of using external data in Custom Elements DropDownList." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var updating = false;
+
+        JQXElements.settings['DropDownList'] =
+            {
+                selectedIndex: 0
+            }
+
+        window.onload = function() {
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+            myDropDownList.loadFromSelect('select');
+
+            var selectElement = document.querySelector('select');
+
+            selectElement.addEventListener('change', event => {
+                updating = true;
+                var index = selectElement.selectedIndex;
+                myDropDownList.selectIndex(index);
+                myDropDownList.ensureVisible(index);
+                updating = false;
+            });
+
+            myDropDownList.addEventListener('select', event => {
+                if (event.args && !updating) {
+                    var index = event.args.item.index;
+                    selectElement.selectedIndex = index;
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The Custom element DropDownList can be populated with data from an existing select element making it easier to upgrade your pages using Custom element DropDownList.
+    </div>
+
+    <jqx-drop-down-list settings="DropDownList" style='float: left;'></jqx-drop-down-list>
+
+    <div style='float: left;'>
+        <select style='height: 25px; width: 200px; margin-left: 30px;' id='select'>
+            <option>Affogato</option>
+            <option>Americano</option>
+            <option>Bicerin</option>
+            <option>Breve</option>
+            <option>Café Bombón</option>
+            <option>Caffé Corretto</option>
+            <option>Café Crema</option>
+            <option>Caffé Latte</option>
+            <option>Caffé macchiato</option>
+            <option>Café mélange</option>
+            <option>Coffee milk</option>
+            <option>Cafe mocha</option>
+            <option>Cappuccino</option>
+            <option>Carajillo</option>
+            <option>Cuban espresso</option>
+            <option>Espresso</option>
+            <option>The Flat White</option>
+            <option>Frappuccino</option>
+            <option>Galao</option>
+            <option>Greek frappé coffee</option>
+            <option>Iced Coffee﻿</option>
+            <option>Indian filter coffee</option>
+            <option>Instant coffee</option>
+            <option>Irish coffee</option>
+            <option>Liqueur coffee</option>
+        </select>
+    </div>
+</body>
+</html>

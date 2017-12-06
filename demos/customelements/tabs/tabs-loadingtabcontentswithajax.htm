@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tabs Custom Element DefaultFunctionality</title>
+    <meta name="description" content="In this sample, the Tabs Custom Element Contents will be loaded with Ajax when a Tab is selected. ." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var myTabs = document.querySelector('jqx-tabs');
+
+            var loadPage = (url, tabIndex) => {
+                var xhttp = new XMLHttpRequest();
+
+                xhttp.onreadystatechange = _ => {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        myTabs.setContentAt(tabIndex, xhttp.responseText);
+                    }
+                };
+
+                xhttp.open('GET', url, true);
+                xhttp.send();
+            };
+
+            loadPage('pages/ajax0.htm', 0);
+
+            myTabs.addEventListener('selected', event => {
+                var pageIndex = event.args.item;
+                loadPage(`pages/ajax${pageIndex}.htm`, pageIndex);
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this sample, Tabs are dynamically loaded with Ajax when a tab is selected.
+    </div>
+
+    <jqx-tabs>
+        <ul>
+            <li style="margin-left: 30px;">Node.js</li>
+            <li>JavaServer Pages</li>
+            <li>Active Server Pages</li>
+        </ul>
+        <div>
+            <img src='../../images/ajax-loader.gif' />
+        </div>
+        <div>
+            <img src='../../images/ajax-loader.gif' />
+        </div>
+        <div>
+            <img src='../../images/ajax-loader.gif' />
+        </div>
+    </jqx-tabs>
+
+</body>
+</html>

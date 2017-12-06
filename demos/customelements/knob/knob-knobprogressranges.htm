@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Knob KnobProgressRanges</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the progress range of Custom Element Knob." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxknob.js"></script>
+    <script type="text/javascript" src="..//jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['KnobSettings'] =
+            {
+                value: 0,
+                min: 0,
+                max: 100,
+                startAngle: 120,
+                endAngle: 480,
+                dragStartAngle: 120,
+                dragEndAngle: 420,
+                rotation: 'clockwise',
+                style: { stroke: '#dfe3e9', strokeWidth: 3, fill: { color: '#fefefe', gradientType: 'linear', gradientStops: [[0, 1], [50, 0.9], [100, 1]] } },
+                dial: {
+                    style: {
+                        fill: '#eee'
+                    },
+                    innerRadius: '68%',
+                    outerRadius: '92%',
+                    startAngle: 0,
+                    endAngle: 360
+                },
+                spinner: {
+                    style: {
+                        fill: '#666'
+                    },
+                    innerRadius: '0%',
+                    outerRadius: '3%',
+                    startAngle: 0,
+                    endAngle: 360
+                },
+                marks: {
+                    colorRemaining: '#333',
+                    colorProgress: '#16a15d',
+                    type: 'circle',
+                    offset: '68%',
+                    drawAboveProgressBar: true,
+                    thickness: 1,
+                    size: '2%',
+                    majorSize: '2%',
+                    majorInterval: 20,
+                    minorInterval: 20
+                },
+                step: 20,
+                labels: {
+                    step: 20,
+                    offset: '80%',
+                    formatFunction: (label) => {
+                        if (label == 0)
+                            return 'Low';
+                        if (label == 20)
+                            return 'Defrost';
+                        if (label == 40)
+                            return 'M.Low';
+                        if (label == 60)
+                            return 'Med';
+                        if (label == 80)
+                            return 'M.High';
+                        if (label == 100)
+                            return 'High';
+                    }
+                },
+                progressBar: {
+                    background: { fill: '#eeeeee' },
+                    style: { fill: '#16a15d', opacity: 0.4 },
+                    ranges:
+                    [
+                        { startValue: 0, endValue: 20, fill: '#12b24e' },
+                        { startValue: 20, endValue: 40, fill: '#2ec544' },
+                        { startValue: 40, endValue: 60, fill: '#ffff3b' },
+                        { startValue: 60, endValue: 80, fill: '#f4a620' },
+                        { startValue: 80, endValue: 100, fill: '#f2121c' }
+                    ],
+                    size: '7%',
+                    offset: '56%'
+                },
+                pointer:
+                {
+                    type: 'arrow',
+                    style: { fill: '#666' },
+                    size: '63%',
+                    offset: '0%',
+                    thickness: 7
+                }
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element Knob Progress Ranges.
+    </div>
+
+    <jqx-knob settings='KnobSettings'>
+    </jqx-knob>
+
+</body>
+</html>

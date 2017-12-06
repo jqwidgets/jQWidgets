@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Menu Images</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of images in Custom Element Menu." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['MenuSettings'] = 
+            {
+                mode: 'vertical',
+                width: 300
+            };
+
+        JQXElements.settings['checkboxChecked'] =
+            {
+                checked: true
+            };
+
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this demo is illustrated how to add images to the Custom element Menu items.
+    </div>
+
+    <div id='jqxWidget' style='height: 300px;'>
+        <jqx-menu settings='MenuSettings'>
+            <ul>
+                <li>
+                    <img style='float: left; margin-right: 5px;' src='../images/mailIcon.png' /><span>Mail</span>
+                </li>
+                <li>
+                    <img style='float: left; margin-right: 5px;' src='../images/calendarIcon.png' /><span>Calendar</span>
+                </li>
+                <li>
+                    <img style='float: left; margin-right: 5px;' src='../images/contactsIcon.png' /><span>Contacts</span>
+                </li>
+                <li>
+                    <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span>
+                        <span>Inbox</span>
+                    </span>
+                    <ul>
+                        <li>
+                            <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span>jQWidgets</span>
+                            <ul>
+                                <li>
+                                    <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span>Admin</span>
+                                </li>
+                                <li>
+                                    <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span>Corporate</span>
+                                </li>
+                                <li>
+                                    <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span>Finance</span>
+                                </li>
+                                <li>
+                                    <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span>Other</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span>Personal</span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <img style='float: left; margin-right: 5px;' src='../images/recycle.png' />
+                    <span>Deleted Items</span>
+                    <ul>
+                        <li>
+                            <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span>Today</span>
+                        </li>
+                        <li>
+                            <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span>
+                                Last
+                                Week
+                            </span>
+                        </li>
+                        <li>
+                            <img style='float: left; margin-right: 5px;' src='../images/folder.png' /><span>
+                                Last
+                                Month
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <img style='float: left; margin-right: 5px;' src='../images/settings.png' /><span>Settings</span>
+                    <ul style="width: 230px;">
+                        <li>
+                            <jqx-check-box style='float: left; margin-right: 5px;' settings='checkboxChecked'>
+                            </jqx-check-box>
+                            Enable Auto-Save
+                        </li>
+                        <li>
+                            <jqx-check-box style='float: left; margin-right: 5px;' id='checkbox2'>
+                            </jqx-check-box>
+                            Send email as anonymous
+                        </li>
+                        <li>
+                            <jqx-check-box style='float: left; margin-right: 5px;' id='checkbox3'>
+                            </jqx-check-box>
+                            Save sent emails
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <img style='float: left; margin-right: 5px;' src='../images/notesIcon.png' /><span>Notes</span>
+                </li>
+                <li>
+                    <img style='float: left; margin-right: 5px;' src='../images/favorites.png' /><span>Favorites</span>
+                </li>
+            </ul>
+        </jqx-menu>
+    </div>
+</body>
+</html>

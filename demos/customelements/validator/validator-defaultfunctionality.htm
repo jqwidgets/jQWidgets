@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Validator Custom Element DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionalities in Validator Custom Element." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxvalidator.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmaskedinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpasswordinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script src="../scripts/demos.js"></script>
+
+    <style type="text/css">
+        .register-table {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .register-table td,
+        .register-table tr {
+            margin: 0px;
+            padding: 2px;
+            border-spacing: 0px;
+            border-collapse: collapse;
+            font-family: Verdana;
+            font-size: 12px;
+        }
+
+        h3 {
+            display: inline-block;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+
+    <script>
+        JQXElements.settings["expanderSettings"] =
+            {
+                showArrow: false,
+                width: 500,
+                height: 550,
+                toggleMode: 'none'
+            };  
+        JQXElements.settings["dateTimeInputSettings"] =
+            {
+               value: new Date(2018, 4, 1)
+            };
+        JQXElements.settings["emailInputSettings"] =
+            {
+               placeHolder: 'someone@mail.com'
+            };
+        JQXElements.settings["MaskedInputSettings1"] =
+            {
+               mask: '###-##-####'
+            };
+        JQXElements.settings["MaskedInputSettings2"] =
+            {
+                mask: '(###)###-####'
+            };
+        JQXElements.settings["MaskedInputSettings3"] =
+            {
+               mask: '###-##-####'
+            };  
+        JQXElements.settings["validatorSettings"] =
+            {
+                rules:
+                [
+                    { input: '.userInput', message: 'Username is required!', action: 'keyup, blur', rule: 'required' },
+                    { input: '.userInput', message: 'Your username must be between 3 and 12 characters!', action: 'keyup, blur', rule: 'length=3,12' },
+                    { input: '.realNameInput', message: 'Real Name is required!', action: 'keyup, blur', rule: 'required' },
+                    { input: '.realNameInput', message: 'Your real name must contain only letters!', action: 'keyup', rule: 'notNumber' },
+                    { input: '.realNameInput', message: 'Your real name must be between 3 and 12 characters!', action: 'keyup', rule: 'length=2,12' },
+                    {
+                        input: '.birthInput', message: 'Your birth date must be between 1/1/1900 and 1/1/2018.', action: 'valueChanged',
+                        rule: function (input, commit) {
+                            var myDateTimeInput = document.querySelector('jqx-date-time-input');
+                            var date = new Date(myDateTimeInput.val());
+                            var result = date.getFullYear() >= 1900 && date.getFullYear() <= 2018;
+                            return result;
+                        }
+                    },
+                    { input: '.passwordInput', message: 'Password is required!', action: 'keyup, blur', rule: 'required' },
+                    { input: '.passwordInput', message: 'Your password must be between 4 and 12 characters!', action: 'keyup, blur', rule: 'length=4,12' },
+                    { input: '.passwordConfirmInput', message: 'Password is required!', action: 'keyup, blur', rule: 'required' },
+                    {
+                        input: '.passwordConfirmInput', message: 'Passwords doesn\'t match!', action: 'keyup, focus',
+                        rule: function (input, commit) {
+                            var myPasswordInputs = document.querySelectorAll('jqx-password-input');
+                            if (myPasswordInputs[0].val() === myPasswordInputs[1].val()) {
+                                return true;
+                            }
+
+                            return false;
+                        }
+                    },
+                    { input: '.emailInput', message: 'E-mail is required!', action: 'keyup, blur', rule: 'required' },
+                    { input: '.emailInput', message: 'Invalid e-mail!', action: 'keyup', rule: 'email' },
+                    { input: '.ssnInput', message: 'Invalid SSN!', action: 'valuechanged, blur', rule: 'ssn' },
+                    { input: '.phoneInput', message: 'Invalid phone number!', action: 'valuechanged, blur', rule: 'phone' },
+                    { input: '.zipInput', message: 'Invalid zip code!', action: 'valuechanged, blur', rule: 'zipCode' },
+                    { input: '.acceptCheckBox', message: 'You have to accept the terms', action: 'change', rule: 'required', position: 'right:0,0' }
+                ]
+            };   
+
+        window.onload = function() {
+            var myValidator = document.querySelector('jqx-validator');
+            var myButton = document.querySelector('jqx-button');
+
+            myButton.addEventListener('click', function () {
+                myValidator.validate(document.getElementById('form'))
+            });
+        };
+    </script>  
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates the basic functionality of the Validator custom element.
+    </div>
+
+    <jqx-expander settings="expanderSettings">
+        <div><h3 style="padding: 0; margin: 0;">Register</h3></div>
+        <div style="padding: 5px;">
+            <jqx-validator settings="validatorSettings">
+                <form id='form' action="./">
+                    <table class="register-table">
+                        <tbody>
+                            <tr>
+                                <td>Username:</td>
+                                <td><jqx-input class="userInput" width="300" height="35"></jqx-input></td>
+                            </tr>
+                            <tr>
+                                <td>Password:</td>
+                                <td><jqx-password-input class="passwordInput" width="300" height="35"></jqx-password-input></td>
+                            </tr>
+                            <tr>
+                                <td>Confirm password:</td>
+                                <td><jqx-password-input class="passwordConfirmInput" width="300" height="35"></jqx-password-input></td>
+                            </tr>
+                            <tr>
+                                <td>Real name:</td>
+                                <td><jqx-input class="realNameInput" width="300" height="35"></jqx-input></td>
+                            </tr>
+                            <tr>
+                                <td>Birth date:</td>
+                                <td><jqx-date-time-input class="birthInput" settings="dateTimeInputSettings"></jqx-date-time-input></td>
+                            </tr>
+                            <tr>
+                                <td>E-mail:</td>
+                                <td><jqx-input class="emailInput" settings="emailInputSettings"></jqx-input></td>
+                            </tr>
+                            <tr>
+                                <td>SSN:</td>
+                                <td><jqx-masked-input class="ssnInput" settings="MaskedInputSettings1"></jqx-masked-input></td>
+                            </tr>
+                            <tr>
+                                <td>Phone:</td>
+                                <td><jqx-masked-input class="phoneInput" settings="MaskedInputSettings2"></jqx-masked-input></td>
+                            </tr>
+                            <tr>
+                                <td>Zip code:</td>
+                                <td><jqx-masked-input class="zipInput" settings="MaskedInputSettings3"></jqx-masked-input></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: center; padding-top: 10px; padding-bottom: 10px;">
+                                    <jqx-check-box class="acceptCheckBox">I accept terms</jqx-check-box>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: center">
+                                    <jqx-button>Send</jqx-button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </jqx-validator>
+        </div>
+    </jqx-expander>
+</body>
+</html>

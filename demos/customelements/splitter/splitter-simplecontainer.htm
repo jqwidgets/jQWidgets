@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Splitter Custom Element SimpleContainer</title>
+    <meta name="description" content="This is an example of Splitter Custom Element with simple container." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxsplitter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        JQXElements.settings['splitter1Settings'] =
+            {
+               orientation: 'horizontal', panels: [{ size: '20%' }, { size: '80%' }]
+            };    
+        JQXElements.settings['splitter2Settings'] =
+            {
+                panels: [{ size: '30%' }, { size: '60%' }]
+            };  
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        In this sample is demonstrated how to add a Vertical Splitter Custom Element inside a split panel of a Horizontal Splitter Custom Element.
+    </div>
+
+    <jqx-splitter settings="splitter1Settings">
+        <div>
+            North
+        </div>
+        <div>
+            <jqx-splitter settings="splitter2Settings">
+                <div>
+                    West
+                </div>
+                <div>
+                    East
+                </div>
+            </jqx-splitter>
+        </div>
+    </jqx-splitter>
+
+</body>
+</html>

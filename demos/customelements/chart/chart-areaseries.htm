@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart Area Series</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Chart's Area series." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+
+        var source =
+            {
+                datatype: 'csv',
+                datafields: [
+                    { name: 'Date' },
+                    { name: 'S&P 500' },
+                    { name: 'NASDAQ' }
+                ],
+                url: '../sampledata/nasdaq_vs_sp500.txt'
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        JQXElements.settings['chartSettings'] =
+            {
+                title: 'U.S. Stock Market Index Performance',
+                description: 'NASDAQ Composite compared to S&P 500',
+                enableAnimations: true,
+                showLegend: true,
+                enableCrosshairs: true,
+                padding: { left: 10, top: 5, right: 10, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                xAxis:
+                {
+                    dataField: 'Date',
+                    type: 'date',
+                    baseUnit: 'month',
+                    minValue: new Date(2017, 0, 1),
+                    maxValue: new Date(2017, 11, 1),
+                    valuesOnTicks: true,
+                    labels: {
+                        angle: -45,
+                        rotationPoint: 'topright',
+                        offset: { x: 0, y: -15 },
+                        formatFunction: function (value) {
+                            return months[value.getMonth()] + '\'' + value.getFullYear().toString().substring(2);
+                        },
+                    },
+                    toolTipFormatFunction: function (value) {
+                        return value.getDate() + '-' + months[value.getMonth()] + '-' + value.getFullYear();
+                    }
+                },
+                valueAxis:
+                {
+                    title: { text: 'Daily Closing Price<br>' }
+                },
+                colorScheme: 'scheme05',
+                seriesGroups:
+                [
+                    {
+                        type: 'area',
+                        alignEndPointsWithIntervals: true,
+                        series: [
+                            { dataField: 'NASDAQ', displayText: 'NASDAQ', opacity: 0.7 },
+                            { dataField: 'S&P 500', displayText: 'S&P 500', opacity: 0.8 }
+                        ]
+                    }
+                ]
+            }
+    </script>
+</head>
+<body>
+
+   <jqx-chart settings="chartSettings" style="width: 850px; height: 500px;"></jqx-chart>
+
+        <div class="example-description">
+            <br />
+            <h2>Description</h2>
+
+            <br />
+            This is an example of Custom Element Area Chart. The chart data is loaded from a csv file. The type of the chart is set to area. The labels of the xAxis are formatted with the formatFunction. You can see how to align the end points with intervals through the alignEndPointsWithIntervals setting. The labels on the xAxis are rotated to 45 degrees. You can also see how to do a toolTip formatting.       
+        </div>
+    </body>
+</html>

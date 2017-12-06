@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Knob DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionalities of Custom Element Knob." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxknob.js"></script>
+    <script type="text/javascript" src="..//jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        #Input {
+            position: relative;
+            height: 33px;
+            width: 90px;
+            bottom: 70px;
+            left: 150px;
+            border: none;
+            z-index: 99999;
+            background: transparent;
+        }
+
+            #Input div, #Input div input {
+                background-color: transparent;
+                border: none;
+            }
+
+        text.jqx-knob-label {
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        JQXElements.settings['KnobSettings'] =
+            {
+                value: 60,
+                min: 0,
+                max: 100,
+                startAngle: 120,
+                endAngle: 420,
+                width: 400,
+                height: 400,
+                snapToStep: true,
+                rotation: 'clockwise',
+                style: { stroke: '#dfe3e9', strokeWidth: 3, fill: { color: '#fefefe', gradientType: "linear", gradientStops: [[0, 1], [50, 0.9], [100, 1]] } },
+                marks: {
+                    colorRemaining: { color: 'grey', border: 'grey' },
+                    colorProgress: { color: '#00a4e1', border: '#00a4e1' },
+                    type: 'line',
+                    offset: '71%',
+                    thickness: 3,
+                    size: '6%',
+                    majorSize: '9%',
+                    majorInterval: 10,
+                    minorInterval: 2
+                },
+                labels: {
+                    offset: '88%',
+                    step: 10,
+                    visible: true
+                },
+                progressBar: {
+                    style: { fill: '#00a4e1', stroke: 'grey' },
+                    size: '9%',
+                    offset: '60%',
+                    background: { fill: 'grey', stroke: 'grey' }
+                },
+                pointer: { type: 'arrow', style: { fill: '#00a4e1', stroke: 'grey' }, size: '59%', offset: '49%', thickness: 20 }
+            };
+
+        JQXElements.settings['NumberInputSettings'] =
+            {
+                decimal: 60,
+                min: 0,
+                max: 100,
+                textAlign: 'center',
+                decimalDigits: 1,
+                inputMode: 'simple'
+            };
+
+        window.onload = function() {
+            var myKnob = document.querySelector('jqx-knob');
+            var myNumberInput = document.querySelector('jqx-number-input');
+
+            myNumberInput.addEventListener('mousedown', function() {
+                event.stopPropagation();
+            });
+
+            myNumberInput.addEventListener('keyup', function() {
+                var val = myNumberInput.val();
+                myKnob.val(val);
+            });
+
+            myNumberInput.addEventListener('change', function() {
+                var val = myNumberInput.val();
+                myKnob.val(val);
+            });
+
+            myKnob.addEventListener('change', function(event) {
+                if (event.args.changeSource == 'propertyChange' || event.args.changeSource == 'val') { return; }
+                myNumberInput.val(event.args.value);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element Knob default functionalities.
+    </div>
+
+    <jqx-knob settings="KnobSettings"></jqx-knob>
+
+    <jqx-number-input settings="NumberInputSettings" id="Input"></jqx-number-input>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -16,10 +16,10 @@ declare let JQXLite: any;
 
 export class jqxDockPanelComponent implements OnChanges
 {
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('lastchildfill') attrLastchildfill: Boolean;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('lastchildfill') attrLastchildfill: boolean;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -42,7 +42,7 @@ export class jqxDockPanelComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -141,7 +141,7 @@ export class jqxDockPanelComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxDockPanel('height', arg);
       } else {
@@ -157,7 +157,7 @@ export class jqxDockPanelComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxDockPanel('width', arg);
       } else {

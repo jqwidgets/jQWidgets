@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ListBox DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionalities in Angular ListBox." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+    
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source = [
+                'Affogato',
+                'Americano',
+                'Bicerin',
+                'Breve',
+                'Café Bombón',
+                'Café au lait',
+                'Caffé Corretto',
+                'Café Crema',
+                'Caffé Latte',
+                'Caffé macchiato',
+                'Café mélange',
+                'Coffee milk',
+                'Cafe mocha',
+                'Cappuccino',
+                'Carajillo',
+                'Cortado',
+                'Cuban espresso',
+                'Espresso',
+                'Eiskaffee',
+                'The Flat White',
+                'Frappuccino',
+                'Galao',
+                'Greek frappé coffee',
+                'Iced Coffee﻿',
+                'Indian filter coffee',
+                'Instant coffee',
+                'Irish coffee',
+                'Liqueur coffee'
+            ];
+
+        JQXElements.settings['ListBoxSettings'] =
+            {
+                selectedIndex: 3,
+                source: source
+            }
+    </script>
+</head>
+<body>
+
+    <div class="example-description">
+        The Custom element ListBox represents a widget that contains a list of selectable items.
+    </div>
+
+   <jqx-list-box settings="ListBoxSettings"></jqx-list-box>
+
+</body>
+</html>

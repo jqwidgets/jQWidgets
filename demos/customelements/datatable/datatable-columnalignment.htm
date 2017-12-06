@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element DataTable ColumnAlignment</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of column and cell alignment in Custom Elements DataTable." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source =
+            {
+                datatype: 'xml',
+                datafields: [
+                    { name: 'ShippedDate', map: 'm\\:properties>d\\:ShippedDate', type: 'date' },
+                    { name: 'Freight', map: 'm\\:properties>d\\:Freight', type: 'float' },
+                    { name: 'ShipName', map: 'm\\:properties>d\\:ShipName' },
+                    { name: 'ShipAddress', map: 'm\\:properties>d\\:ShipAddress' },
+                    { name: 'ShipCity', map: 'm\\:properties>d\\:ShipCity' },
+                    { name: 'ShipCountry', map: 'm\\:properties>d\\:ShipCountry' }
+                ],
+                root: 'entry',
+                record: 'content',
+                id: 'm\\:properties>d\\:OrderID',
+                url: '../sampledata/orders.xml',
+                pager: (pagenum, pagesize, oldpagenum) => {
+                    // callback called when a page or page size is changed.
+                }
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['dataTableSettings'] =
+            {
+                source: dataAdapter,
+                sortable: true,
+                pageable: true,
+                columnsResize: true,
+                columns: [
+                    { text: 'Shipped Date', datafield: 'ShippedDate', width: '50%', cellsFormat: 'D' },
+                    { text: 'Freight', datafield: 'Freight', width: '50%', cellsFormat: 'F2' }
+                ]
+            }
+        JQXElements.settings['LeftDropDownList'] =
+            {
+                selectedIndex: 0,
+                autoDropDownHeight:
+                true, source: ['Left', 'Center', 'Right'],
+            }
+        JQXElements.settings['RightDropDownList'] =
+            {
+                selectedIndex: 0,
+                autoDropDownHeight: true,
+                source: ['Left', 'Center', 'Right'],
+            }
+
+        window.onload = function() {
+            var myDataTable = document.querySelector('jqx-data-table');
+            var myDropDownList = document.querySelectorAll('jqx-drop-down-list');
+
+            myDropDownList[0].addEventListener('change', function(event) {
+                var index = event.args.index;
+                switch (index) {
+                    case 0:
+                        myDataTable.setColumnProperty('ShippedDate', 'align', 'left');
+                        myDataTable.setColumnProperty('Freight', 'align', 'left');
+                        break;
+                    case 1:
+                        myDataTable.setColumnProperty('ShippedDate', 'align', 'center');
+                        myDataTable.setColumnProperty('Freight', 'align', 'center');
+                        break;
+                    case 2:
+                        myDataTable.setColumnProperty('ShippedDate', 'align', 'right');
+                        myDataTable.setColumnProperty('Freight', 'align', 'right');
+                        break;
+                }
+            });
+            myDropDownList[1].addEventListener('change', function(event) {
+                var index = event.args.index;
+                switch (index) {
+                    case 0:
+                        myDataTable.setColumnProperty('ShippedDate', 'cellsAlign', 'left');
+                        myDataTable.setColumnProperty('Freight', 'cellsAlign', 'left');
+                        break;
+                    case 1:
+                        myDataTable.setColumnProperty('ShippedDate', 'cellsAlign', 'center');
+                        myDataTable.setColumnProperty('Freight', 'cellsAlign', 'center');
+                        break;
+                    case 2:
+                        myDataTable.setColumnProperty('ShippedDate', 'cellsAlign', 'right');
+                        myDataTable.setColumnProperty('Freight', 'cellsAlign', 'right');
+                        break;
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Column and Cells Custom Elements in Angular DataTable
+    </div>
+
+   <jqx-data-table settings="dataTableSettings">
+
+   </jqx-data-table>
+
+    <div style="font-size: 13px; font-family: Verdana; width: 600px; margin-top: 10px;">
+        <div style="float: left; width: 300px;">
+            <h4>Shipped Date</h4>
+            <jqx-drop-down-list settings="LeftDropDownList"></jqx-drop-down-list>
+        </div>
+        <div style="float: left; width: 300px;">
+            <h4>Freight</h4>
+            <jqx-drop-down-list settings="RightDropDownList"></jqx-drop-down-list>
+        </div>
+    </div>
+
+</body>
+</html>

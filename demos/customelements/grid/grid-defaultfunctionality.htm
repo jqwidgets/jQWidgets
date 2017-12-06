@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element DefaultFunctionality</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the default functionality of Custom Element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.aggregates.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['gridSettings'] =
+            {
+                source: new jqx.dataAdapter({
+                    dataType: 'xml',
+                    dataFields: [
+                        { name: 'ProductName', type: 'string' },
+                        { name: 'QuantityPerUnit', type: 'int' },
+                        { name: 'UnitPrice', type: 'float' },
+                        { name: 'UnitsInStock', type: 'float' },
+                        { name: 'Discontinued', type: 'bool' }
+                    ],
+                    root: 'Products',
+                    record: 'Product',
+                    id: 'ProductID',
+                    url: '../sampledata/products.xml'
+                }),
+                pageable: true,
+                autoHeight: true,
+                sortable: true,
+                altRows: true,
+                enableTooltips: true,
+                editable: true,
+                selectionMode: 'multiplecellsadvanced',
+                columns: [
+                    { text: 'Product Name', columnGroup: 'ProductDetails', dataField: 'ProductName', width: 250 },
+                    { text: 'Quantity per Unit', columnGroup: 'ProductDetails', dataField: 'QuantityPerUnit', cellsAlign: 'right', align: 'right', width: 200 },
+                    { text: 'Unit Price', columnGroup: 'ProductDetails', dataField: 'UnitPrice', align: 'right', cellsAlign: 'right', cellsFormat: 'c2', width: 200 },
+                    {
+                        text: 'Units In Stock', dataField: 'UnitsInStock', cellsAlign: 'right', cellsrenderer: (row, columnField, value, defaultHtml, columnProperties, rowData) => {
+                            if (value < 20) {
+                                return '<span style="margin: 4px; float: ' + columnProperties.cellsalign + '; color: #ff0000;">' + value + '</span>';
+                            }
+                            else {
+                                return '<span style="margin: 4px; float: ' + columnProperties.cellsalign + '; color: #008000;">' + value + '</span>';
+                            }
+                        }, width: 100
+                    },
+                    { text: 'Discontinued', columntype: 'checkbox', dataField: 'Discontinued' }
+                ],
+                columnGroups: [
+                    { text: 'Product Details', align: 'center', name: 'ProductDetails' }
+                ]
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates the basic functionality of the Custom element Grid plugin. The jQWidgets Grid plugin offers rich support for interacting with data, including paging, grouping and sorting.
+    </div>
+
+   <jqx-grid settings="gridSettings"></jqx-grid>
+</body>
+</html>

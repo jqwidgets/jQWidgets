@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element NumberInput Templates</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the templates available in Angular NumberInput." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['numericInput'] =
+            {
+                spinButtons: true 
+            };
+
+        JQXElements.settings['numericInput2'] =
+            {
+                template: 'primary',
+                spinButtons: true
+            };
+
+        JQXElements.settings['numericInput3'] =
+            {
+                template: 'success',
+                spinButtons: true 
+            };
+
+        JQXElements.settings['numericInput4'] =
+            {
+                template: 'info',
+                spinButtons: true 
+            };
+
+        JQXElements.settings['numericInput5'] =
+            {
+                template: 'warning',
+                spinButtons: true
+            };
+
+        JQXElements.settings['numericInput6'] =
+            {
+                template: 'danger',
+                spinButtons: true
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element NumberInput Templates.
+    </div>
+
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+        <div style='margin-top: 10px;'>Default</div>
+        <jqx-number-input style='margin-top: 3px;' settings='numericInput'></jqx-number-input>
+
+        <div style='margin-top: 10px;'>Primary</div>
+        <jqx-number-input style='margin-top: 3px;' settings='numericInput2'></jqx-number-input>
+
+        <div style='margin-top: 10px;'>Success</div>
+        <jqx-number-input style='margin-top: 3px;' settings='numericInput3'></jqx-number-input>
+
+        <div style='margin-top: 10px;'>Info</div>
+        <jqx-number-input style='margin-top: 3px;' settings='numericInput4'></jqx-number-input>
+
+        <div style='margin-top: 10px;'>Warning</div>
+        <jqx-number-input style='margin-top: 3px;' settings='numericInput5'></jqx-number-input>
+        
+        <div style='margin-top: 10px;'>Danger</div>
+        <jqx-number-input style='margin-top: 3px;' settings='numericInput6'></jqx-number-input>
+    </div>
+</body>
+</html>

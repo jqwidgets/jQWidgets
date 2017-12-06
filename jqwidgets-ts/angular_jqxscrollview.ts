@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,18 +17,18 @@ declare let JQXLite: any;
 
 export class jqxScrollViewComponent implements OnChanges
 {
-   @Input('animationDuration') attrAnimationDuration: Number;
-   @Input('bounceEnabled') attrBounceEnabled: Boolean;
-   @Input('buttonsOffset') attrButtonsOffset: Array<Number>;
-   @Input('currentPage') attrCurrentPage: Number;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('moveThreshold') attrMoveThreshold: Number;
-   @Input('showButtons') attrShowButtons: Boolean;
-   @Input('slideShow') attrSlideShow: Boolean;
-   @Input('slideDuration') attrSlideDuration: Number;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('animationDuration') attrAnimationDuration: number;
+   @Input('bounceEnabled') attrBounceEnabled: boolean;
+   @Input('buttonsOffset') attrButtonsOffset: Array<number>;
+   @Input('currentPage') attrCurrentPage: number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('moveThreshold') attrMoveThreshold: number;
+   @Input('showButtons') attrShowButtons: boolean;
+   @Input('slideShow') attrSlideShow: boolean;
+   @Input('slideDuration') attrSlideDuration: number;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -51,7 +51,7 @@ export class jqxScrollViewComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -158,7 +158,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   buttonsOffset(arg?: Array<Number>) : any {
+   buttonsOffset(arg?: Array<number>) : any {
       if (arg !== undefined) {
           this.host.jqxScrollView('buttonsOffset', arg);
       } else {
@@ -182,7 +182,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxScrollView('height', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxScrollView('width', arg);
       } else {

@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,8 +17,8 @@ declare let JQXLite: any;
 export class jqxDrawComponent implements OnChanges
 {
    @Input('renderEngine') attrRenderEngine: any;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -41,7 +41,7 @@ export class jqxDrawComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -192,7 +192,7 @@ export class jqxDrawComponent implements OnChanges
       this.host.jqxDraw('refresh');
    }
 
-   rect(x?: number, y?: number, width?: String | Number, height?: String | Number, attributes?: any): any {
+   rect(x?: number, y?: number, width?: number | string, height?: number | string, attributes?: any): any {
       return this.host.jqxDraw('rect', x, y, width, height, attributes);
    }
 
@@ -204,7 +204,7 @@ export class jqxDrawComponent implements OnChanges
       this.host.jqxDraw('saveAsPNG', image, url);
    }
 
-   text(text?: string, x?: number, y?: number, width?: String | Number, height?: String | Number, angle?: number, attributes?: any, clip?: boolean, halign?: string, valign?: string, rotateAround?: string): any {
+   text(text?: string, x?: number, y?: number, width?: number | string, height?: number | string, angle?: number, attributes?: any, clip?: boolean, halign?: string, valign?: string, rotateAround?: string): any {
       return this.host.jqxDraw('text', text, x, y, width, height, angle, attributes, clip, halign, valign, rotateAround);
    }
 

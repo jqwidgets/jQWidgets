@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -42,114 +42,114 @@ declare let JQXLite: any;
 
 export class jqxGridComponent implements OnChanges
 {
-   @Input('altrows') attrAltrows: Boolean;
-   @Input('altstart') attrAltstart: Number;
-   @Input('altstep') attrAltstep: Number;
-   @Input('autoshowloadelement') attrAutoshowloadelement: Boolean;
-   @Input('autoshowfiltericon') attrAutoshowfiltericon: Boolean;
-   @Input('autoshowcolumnsmenubutton') attrAutoshowcolumnsmenubutton: Boolean;
-   @Input('clipboard') attrClipboard: Boolean;
-   @Input('closeablegroups') attrCloseablegroups: Boolean;
-   @Input('columnsmenuwidth') attrColumnsmenuwidth: Number;
-   @Input('columnmenuopening') attrColumnmenuopening: (menu?: any, datafield?: String, height?: Number | String) => Boolean;
-   @Input('columnmenuclosing') attrColumnmenuclosing: (menu?: any, datafield?: String, height?: Number | String) => Boolean;
-   @Input('cellhover') attrCellhover: (cellhtmlElement?: any, x?: Number, y?: Number) => void;
-   @Input('enablekeyboarddelete') attrEnablekeyboarddelete: Boolean;
-   @Input('enableellipsis') attrEnableellipsis: Boolean;
-   @Input('enablemousewheel') attrEnablemousewheel: Boolean;
-   @Input('enableanimations') attrEnableanimations: Boolean;
-   @Input('enabletooltips') attrEnabletooltips: Boolean;
-   @Input('enablehover') attrEnablehover: Boolean;
-   @Input('enablebrowserselection') attrEnablebrowserselection: Boolean;
+   @Input('altrows') attrAltrows: boolean;
+   @Input('altstart') attrAltstart: number;
+   @Input('altstep') attrAltstep: number;
+   @Input('autoshowloadelement') attrAutoshowloadelement: boolean;
+   @Input('autoshowfiltericon') attrAutoshowfiltericon: boolean;
+   @Input('autoshowcolumnsmenubutton') attrAutoshowcolumnsmenubutton: boolean;
+   @Input('clipboard') attrClipboard: boolean;
+   @Input('closeablegroups') attrCloseablegroups: boolean;
+   @Input('columnsmenuwidth') attrColumnsmenuwidth: number;
+   @Input('columnmenuopening') attrColumnmenuopening: (menu?: any, datafield?: string, height?: number | string) => boolean;
+   @Input('columnmenuclosing') attrColumnmenuclosing: (menu?: any, datafield?: string, height?: number | string) => boolean;
+   @Input('cellhover') attrCellhover: (cellhtmlElement?: any, x?: number, y?: number) => void;
+   @Input('enablekeyboarddelete') attrEnablekeyboarddelete: boolean;
+   @Input('enableellipsis') attrEnableellipsis: boolean;
+   @Input('enablemousewheel') attrEnablemousewheel: boolean;
+   @Input('enableanimations') attrEnableanimations: boolean;
+   @Input('enabletooltips') attrEnabletooltips: boolean;
+   @Input('enablehover') attrEnablehover: boolean;
+   @Input('enablebrowserselection') attrEnablebrowserselection: boolean;
    @Input('everpresentrowposition') attrEverpresentrowposition: any;
-   @Input('everpresentrowheight') attrEverpresentrowheight: Number;
-   @Input('everpresentrowactions') attrEverpresentrowactions: String;
+   @Input('everpresentrowheight') attrEverpresentrowheight: number;
+   @Input('everpresentrowactions') attrEverpresentrowactions: string;
    @Input('everpresentrowactionsmode') attrEverpresentrowactionsmode: any;
-   @Input('filterrowheight') attrFilterrowheight: Number;
+   @Input('filterrowheight') attrFilterrowheight: number;
    @Input('filtermode') attrFiltermode: any;
-   @Input('groupsrenderer') attrGroupsrenderer: (text?: String, group?: Number, expanded?: Boolean, data?: any) => String;
-   @Input('groupcolumnrenderer') attrGroupcolumnrenderer: (text?: String, group?: Number, expanded?: Boolean, data?: any) => String;
-   @Input('groupsexpandedbydefault') attrGroupsexpandedbydefault: Boolean;
-   @Input('handlekeyboardnavigation') attrHandlekeyboardnavigation: (event: any) => Boolean;
+   @Input('groupsrenderer') attrGroupsrenderer: (text?: string, group?: number, expanded?: boolean, data?: any) => string;
+   @Input('groupcolumnrenderer') attrGroupcolumnrenderer: (text?: string, group?: number, expanded?: boolean, data?: any) => string;
+   @Input('groupsexpandedbydefault') attrGroupsexpandedbydefault: boolean;
+   @Input('handlekeyboardnavigation') attrHandlekeyboardnavigation: (event: any) => boolean;
    @Input('pagerrenderer') attrPagerrenderer: () => any[];
-   @Input('rtl') attrRtl: Boolean;
-   @Input('showdefaultloadelement') attrShowdefaultloadelement: Boolean;
-   @Input('showfiltercolumnbackground') attrShowfiltercolumnbackground: Boolean;
-   @Input('showfiltermenuitems') attrShowfiltermenuitems: Boolean;
-   @Input('showpinnedcolumnbackground') attrShowpinnedcolumnbackground: Boolean;
-   @Input('showsortcolumnbackground') attrShowsortcolumnbackground: Boolean;
-   @Input('showsortmenuitems') attrShowsortmenuitems: Boolean;
-   @Input('showgroupmenuitems') attrShowgroupmenuitems: Boolean;
-   @Input('showrowdetailscolumn') attrShowrowdetailscolumn: Boolean;
-   @Input('showheader') attrShowheader: Boolean;
-   @Input('showgroupsheader') attrShowgroupsheader: Boolean;
-   @Input('showaggregates') attrShowaggregates: Boolean;
-   @Input('showgroupaggregates') attrShowgroupaggregates: Boolean;
-   @Input('showeverpresentrow') attrShoweverpresentrow: Boolean;
-   @Input('showfilterrow') attrShowfilterrow: Boolean;
-   @Input('showemptyrow') attrShowemptyrow: Boolean;
-   @Input('showstatusbar') attrShowstatusbar: Boolean;
-   @Input('statusbarheight') attrStatusbarheight: Number;
-   @Input('showtoolbar') attrShowtoolbar: Boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('showdefaultloadelement') attrShowdefaultloadelement: boolean;
+   @Input('showfiltercolumnbackground') attrShowfiltercolumnbackground: boolean;
+   @Input('showfiltermenuitems') attrShowfiltermenuitems: boolean;
+   @Input('showpinnedcolumnbackground') attrShowpinnedcolumnbackground: boolean;
+   @Input('showsortcolumnbackground') attrShowsortcolumnbackground: boolean;
+   @Input('showsortmenuitems') attrShowsortmenuitems: boolean;
+   @Input('showgroupmenuitems') attrShowgroupmenuitems: boolean;
+   @Input('showrowdetailscolumn') attrShowrowdetailscolumn: boolean;
+   @Input('showheader') attrShowheader: boolean;
+   @Input('showgroupsheader') attrShowgroupsheader: boolean;
+   @Input('showaggregates') attrShowaggregates: boolean;
+   @Input('showgroupaggregates') attrShowgroupaggregates: boolean;
+   @Input('showeverpresentrow') attrShoweverpresentrow: boolean;
+   @Input('showfilterrow') attrShowfilterrow: boolean;
+   @Input('showemptyrow') attrShowemptyrow: boolean;
+   @Input('showstatusbar') attrShowstatusbar: boolean;
+   @Input('statusbarheight') attrStatusbarheight: number;
+   @Input('showtoolbar') attrShowtoolbar: boolean;
    @Input('selectionmode') attrSelectionmode: any;
    @Input('updatefilterconditions') attrUpdatefilterconditions: (type?: string, defaultconditions?: any) => any;
    @Input('updatefilterpanel') attrUpdatefilterpanel: (filtertypedropdown1?: any, filtertypedropdown2?: any, filteroperatordropdown?: any, filterinputfield1?: any, filterinputfield2?: any, filterbutton?: any, clearbutton?: any, columnfilter?: any, filtertype?: any, filterconditions?: any) => any;
-   @Input('theme') attrTheme: String;
-   @Input('toolbarheight') attrToolbarheight: Number;
-   @Input('autoheight') attrAutoheight: Boolean;
-   @Input('autorowheight') attrAutorowheight: Boolean;
-   @Input('columnsheight') attrColumnsheight: Number;
-   @Input('deferreddatafields') attrDeferreddatafields: Array<String>;
-   @Input('groupsheaderheight') attrGroupsheaderheight: Number;
-   @Input('groupindentwidth') attrGroupindentwidth: Number;
-   @Input('pagerheight') attrPagerheight: String | Number;
-   @Input('rowsheight') attrRowsheight: Number;
-   @Input('scrollbarsize') attrScrollbarsize: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('toolbarheight') attrToolbarheight: number;
+   @Input('autoheight') attrAutoheight: boolean;
+   @Input('autorowheight') attrAutorowheight: boolean;
+   @Input('columnsheight') attrColumnsheight: number;
+   @Input('deferreddatafields') attrDeferreddatafields: Array<string>;
+   @Input('groupsheaderheight') attrGroupsheaderheight: number;
+   @Input('groupindentwidth') attrGroupindentwidth: number;
+   @Input('pagerheight') attrPagerheight: number | string;
+   @Input('rowsheight') attrRowsheight: number;
+   @Input('scrollbarsize') attrScrollbarsize: number | string;
    @Input('scrollmode') attrScrollmode: any;
-   @Input('scrollfeedback') attrScrollfeedback: (row: any) => String;
-   @Input('autosavestate') attrAutosavestate: Boolean;
-   @Input('autoloadstate') attrAutoloadstate: Boolean;
+   @Input('scrollfeedback') attrScrollfeedback: (row: any) => string;
+   @Input('autosavestate') attrAutosavestate: boolean;
+   @Input('autoloadstate') attrAutoloadstate: boolean;
    @Input('columns') attrColumns: Array<jqwidgets.GridColumn>;
    @Input('columngroups') attrColumngroups: Array<any>;
-   @Input('columnsmenu') attrColumnsmenu: Boolean;
-   @Input('columnsresize') attrColumnsresize: Boolean;
-   @Input('columnsautoresize') attrColumnsautoresize: Boolean;
-   @Input('columnsreorder') attrColumnsreorder: Boolean;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('editable') attrEditable: Boolean;
+   @Input('columnsmenu') attrColumnsmenu: boolean;
+   @Input('columnsresize') attrColumnsresize: boolean;
+   @Input('columnsautoresize') attrColumnsautoresize: boolean;
+   @Input('columnsreorder') attrColumnsreorder: boolean;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('editable') attrEditable: boolean;
    @Input('editmode') attrEditmode: any;
-   @Input('filter') attrFilter: (cellValue?: any, rowData?: any, dataField?: String, filterGroup?: any, defaultFilterResult?: Boolean) => any;
-   @Input('filterable') attrFilterable: Boolean;
-   @Input('groupable') attrGroupable: Boolean;
-   @Input('groups') attrGroups: Array<String>;
-   @Input('horizontalscrollbarstep') attrHorizontalscrollbarstep: Number;
-   @Input('horizontalscrollbarlargestep') attrHorizontalscrollbarlargestep: Number;
-   @Input('initrowdetails') attrInitrowdetails: (index?: Number, parentElement?: any, gridElement?: any, datarecord?: any) => void;
-   @Input('keyboardnavigation') attrKeyboardnavigation: Boolean;
+   @Input('filter') attrFilter: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: boolean) => any;
+   @Input('filterable') attrFilterable: boolean;
+   @Input('groupable') attrGroupable: boolean;
+   @Input('groups') attrGroups: Array<string>;
+   @Input('horizontalscrollbarstep') attrHorizontalscrollbarstep: number;
+   @Input('horizontalscrollbarlargestep') attrHorizontalscrollbarlargestep: number;
+   @Input('initrowdetails') attrInitrowdetails: (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void;
+   @Input('keyboardnavigation') attrKeyboardnavigation: boolean;
    @Input('localization') attrLocalization: any;
-   @Input('pagesize') attrPagesize: Number;
-   @Input('pagesizeoptions') attrPagesizeoptions: Array<Number | String>;
+   @Input('pagesize') attrPagesize: number;
+   @Input('pagesizeoptions') attrPagesizeoptions: Array<number | string>;
    @Input('pagermode') attrPagermode: any;
-   @Input('pagerbuttonscount') attrPagerbuttonscount: Number;
-   @Input('pageable') attrPageable: Boolean;
-   @Input('rowdetails') attrRowdetails: Boolean;
+   @Input('pagerbuttonscount') attrPagerbuttonscount: number;
+   @Input('pageable') attrPageable: boolean;
+   @Input('rowdetails') attrRowdetails: boolean;
    @Input('rowdetailstemplate') attrRowdetailstemplate: any;
    @Input('ready') attrReady: () => void;
    @Input('rendered') attrRendered: () => void;
    @Input('renderstatusbar') attrRenderstatusbar: (statusbar?: any) => void;
    @Input('rendertoolbar') attrRendertoolbar: (toolbar?: any) => void;
    @Input('rendergridrows') attrRendergridrows: (params?: any) => any;
-   @Input('sortable') attrSortable: Boolean;
-   @Input('selectedrowindex') attrSelectedrowindex: Number;
-   @Input('selectedrowindexes') attrSelectedrowindexes: Array<Number>;
+   @Input('sortable') attrSortable: boolean;
+   @Input('selectedrowindex') attrSelectedrowindex: number;
+   @Input('selectedrowindexes') attrSelectedrowindexes: Array<number>;
    @Input('source') attrSource: any;
    @Input('sorttogglestates') attrSorttogglestates: any;
-   @Input('updatedelay') attrUpdatedelay: Number;
-   @Input('virtualmode') attrVirtualmode: Boolean;
-   @Input('verticalscrollbarstep') attrVerticalscrollbarstep: Number;
-   @Input('verticalscrollbarlargestep') attrVerticalscrollbarlargestep: Number;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('updatedelay') attrUpdatedelay: number;
+   @Input('virtualmode') attrVirtualmode: boolean;
+   @Input('verticalscrollbarstep') attrVerticalscrollbarstep: number;
+   @Input('verticalscrollbarlargestep') attrVerticalscrollbarlargestep: number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -172,7 +172,7 @@ export class jqxGridComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -335,7 +335,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   columnmenuopening(arg?: (menu?: any, datafield?: String, height?: Number | String) => Boolean) : any {
+   columnmenuopening(arg?: (menu?: any, datafield?: string, height?: number | string) => boolean) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('columnmenuopening', arg);
       } else {
@@ -343,7 +343,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   columnmenuclosing(arg?: (menu?: any, datafield?: String, height?: Number | String) => Boolean) : any {
+   columnmenuclosing(arg?: (menu?: any, datafield?: string, height?: number | string) => boolean) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('columnmenuclosing', arg);
       } else {
@@ -351,7 +351,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   cellhover(arg?: (cellhtmlElement?: any, x?: Number, y?: Number) => void) : any {
+   cellhover(arg?: (cellhtmlElement?: any, x?: number, y?: number) => void) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('cellhover', arg);
       } else {
@@ -463,7 +463,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   groupsrenderer(arg?: (text?: String, group?: Number, expanded?: Boolean, data?: any) => String) : any {
+   groupsrenderer(arg?: (text?: string, group?: number, expanded?: boolean, data?: any) => string) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('groupsrenderer', arg);
       } else {
@@ -471,7 +471,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   groupcolumnrenderer(arg?: (text?: String, group?: Number, expanded?: Boolean, data?: any) => String) : any {
+   groupcolumnrenderer(arg?: (text?: string, group?: number, expanded?: boolean, data?: any) => string) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('groupcolumnrenderer', arg);
       } else {
@@ -487,7 +487,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   handlekeyboardnavigation(arg?: (event: any) => Boolean) : any {
+   handlekeyboardnavigation(arg?: (event: any) => boolean) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('handlekeyboardnavigation', arg);
       } else {
@@ -719,7 +719,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   deferreddatafields(arg?: Array<String>) : any {
+   deferreddatafields(arg?: Array<string>) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('deferreddatafields', arg);
       } else {
@@ -743,7 +743,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('height', arg);
       } else {
@@ -751,7 +751,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   pagerheight(arg?: String | Number) : any {
+   pagerheight(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('pagerheight', arg);
       } else {
@@ -767,7 +767,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   scrollbarsize(arg?: String | Number) : any {
+   scrollbarsize(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('scrollbarsize', arg);
       } else {
@@ -783,7 +783,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   scrollfeedback(arg?: (row: any) => String) : any {
+   scrollfeedback(arg?: (row: any) => string) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('scrollfeedback', arg);
       } else {
@@ -791,7 +791,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('width', arg);
       } else {
@@ -887,7 +887,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   filter(arg?: (cellValue?: any, rowData?: any, dataField?: String, filterGroup?: any, defaultFilterResult?: Boolean) => any) : any {
+   filter(arg?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: boolean) => any) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('filter', arg);
       } else {
@@ -911,7 +911,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   groups(arg?: Array<String>) : any {
+   groups(arg?: Array<string>) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('groups', arg);
       } else {
@@ -935,7 +935,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   initrowdetails(arg?: (index?: Number, parentElement?: any, gridElement?: any, datarecord?: any) => void) : any {
+   initrowdetails(arg?: (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('initrowdetails', arg);
       } else {
@@ -967,7 +967,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   pagesizeoptions(arg?: Array<Number | String>) : any {
+   pagesizeoptions(arg?: Array<number | string>) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('pagesizeoptions', arg);
       } else {
@@ -1071,7 +1071,7 @@ export class jqxGridComponent implements OnChanges
       }
    }
 
-   selectedrowindexes(arg?: Array<Number>) : any {
+   selectedrowindexes(arg?: Array<number>) : any {
       if (arg !== undefined) {
           this.host.jqxGrid('selectedrowindexes', arg);
       } else {
@@ -1237,8 +1237,8 @@ export class jqxGridComponent implements OnChanges
       return this.host.jqxGrid('iscolumnpinned', dataField);
    }
 
-   localizestrings(localizationObject: jqwidgets.GridLocalizationObject): void {
-      this.host.jqxGrid('localizestrings', localizationObject);
+   localizestrings(localizationobject: jqwidgets.GridLocalizationobject): void {
+      this.host.jqxGrid('localizestrings', localizationobject);
    }
 
    pincolumn(dataField: string): void {
@@ -1317,7 +1317,7 @@ export class jqxGridComponent implements OnChanges
       this.host.jqxGrid('cleargroups');
    }
 
-   collapsegroup(group: String | Number): void {
+   collapsegroup(group: number | string): void {
       this.host.jqxGrid('collapsegroup', group);
    }
 
@@ -1329,7 +1329,7 @@ export class jqxGridComponent implements OnChanges
       this.host.jqxGrid('expandallgroups');
    }
 
-   expandgroup(group: String | Number): void {
+   expandgroup(group: number | string): void {
       this.host.jqxGrid('expandgroup', group);
    }
 
@@ -1385,8 +1385,8 @@ export class jqxGridComponent implements OnChanges
       this.host.jqxGrid('refreshfilterrow');
    }
 
-   gotopage(pageNumber: number): void {
-      this.host.jqxGrid('gotopage', pageNumber);
+   gotopage(pagenumber: number): void {
+      this.host.jqxGrid('gotopage', pagenumber);
    }
 
    gotoprevpage(): void {
@@ -1413,7 +1413,7 @@ export class jqxGridComponent implements OnChanges
       this.host.jqxGrid('closemenu');
    }
 
-   deleterow(rowIds: String | Number | Array<Number | String>): void {
+   deleterow(rowIds: string | number | Array<number | string>): void {
       this.host.jqxGrid('deleterow', rowIds);
    }
 
@@ -1469,7 +1469,7 @@ export class jqxGridComponent implements OnChanges
       this.host.jqxGrid('showvalidationpopup', rowBoundIndex, dataField, validationMessage);
    }
 
-   updaterow(rowIds: String | Number | Array<Number | String>, data: any): void {
+   updaterow(rowIds: string | number | Array<number | string>, data: any): void {
       this.host.jqxGrid('updaterow', rowIds, data);
    }
 
@@ -1481,7 +1481,7 @@ export class jqxGridComponent implements OnChanges
       return this.host.jqxGrid('getselectedrowindex');
    }
 
-   getselectedrowindexes(): Array<Number> {
+   getselectedrowindexes(): Array<number> {
       return this.host.jqxGrid('getselectedrowindexes');
    }
 
@@ -1525,7 +1525,7 @@ export class jqxGridComponent implements OnChanges
       this.host.jqxGrid('renderaggregates');
    }
 
-   exportdata(dataType: string, fileName?: string, exportHeader?: boolean, rows?: Array<Number>, exportHiddenColumns?: boolean, serverURL?: string, charSet?: string): undefined {
+   exportdata(dataType: string, fileName?: string, exportHeader?: boolean, rows?: Array<number>, exportHiddenColumns?: boolean, serverURL?: string, charSet?: string): undefined {
       return this.host.jqxGrid('exportdata', dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet);
    }
 
@@ -1533,8 +1533,8 @@ export class jqxGridComponent implements OnChanges
       return this.host.jqxGrid('getstate');
    }
 
-   loadstate(stateObject: any): void {
-      this.host.jqxGrid('loadstate', stateObject);
+   loadstate(stateobject: any): void {
+      this.host.jqxGrid('loadstate', stateobject);
    }
 
    savestate(): jqwidgets.GridGetState {

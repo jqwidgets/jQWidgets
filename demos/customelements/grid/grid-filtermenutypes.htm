@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element FilteringMenuTypes</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of build-in filtering menus in Custom Element Grid." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript">
+        var data = generatedata(500);
+
+        var source =
+            {
+                localdata: data,
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'date', type: 'date' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' }
+                ],
+                datatype: 'array'
+            };
+
+        var adapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['gridSettings'] =
+            {
+                source: adapter,
+                filterable: true,
+                sortable: true,
+                autoshowfiltericon: true,
+                columns: [
+                    { text: 'First Name', datafield: 'firstname', filtertype: 'list', width: 160 },
+                    { text: 'Last Name', datafield: 'lastname', filtertype: 'list', width: 160 },
+                    { text: 'Product', datafield: 'productname', filtertype: 'checkedlist', width: 170 },
+                    { text: 'Order Date', datafield: 'date', filtertype: 'date', width: 160, cellsformat: 'dd-MMMM-yyyy' },
+                    { text: 'Quantity', datafield: 'quantity', width: 80, cellsalign: 'right' },
+                    { text: 'Unit Price', datafield: 'price', cellsalign: 'right', cellsformat: 'c2' }
+                ]
+            }
+
+        JQXElements.settings['filterCheckBoxSettings'] =
+            {
+                checked: true
+            }
+
+        JQXElements.settings['showAllBoxSettings'] =
+            {
+                checked: false
+            }
+
+        window.onload = function() {
+            var myGrid = document.querySelector('jqx-grid');
+            var myPanel = document.querySelector('jqx-panel');
+            var myButton = document.querySelector('jqx-button');
+            var myCheckBoxes = document.querySelectorAll('jqx-check-box');
+
+            myGrid.addEventListener('filter', function(event) {
+                myPanel.clearcontent();
+
+
+                var filterinfo = myGrid.getfilterinformation();
+
+                var eventData = 'Triggered "Filter" event';
+
+                for (i = 0; i < filterinfo.length; i++) {
+                    var eventData = 'Filter Column: ' + filterinfo[i].filtercolumntext;
+                    myPanel.prepend('<div style="margin-top: 5px;">' + eventData + '</div>');
+                }
+            });
+
+            myButton.addEventListener('click', function() {
+                myGrid.clearfilters();
+            });
+
+            myCheckBoxes[0].addEventListener('change', function(event) {
+                myGrid.showfiltercolumnbackground = event.args.checked;
+            });
+
+            myCheckBoxes[1].addEventListener('change', function(event) {
+                myGrid.autoshowfiltericon = !event.args.checked;
+            });
+
+            (() => {
+                var filtergroup = new jqx.filter();
+                var filter_or_operator = 1;
+                var filtervalue = 'Andrew';
+                var filtercondition = 'equal';
+                var filter1 = filtergroup.createfilter('stringfilter', filtervalue, filtercondition);
+
+                filtergroup.addfilter(filter_or_operator, filter1);
+
+                myGrid.addfilter('firstname', filtergroup);
+                myGrid.applyfilters();
+            })();
+        };
+    </script>
+    <style>
+        jqx-panel > div {
+            border: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="example-description">
+        In this sample is shown how to use several types of built-in filtering menus in Custom element Grid. The "First Name" and "Last Name" columns are with List Filters. The "Product" column is with CheckedList Filter. The "Order Date" column is with Date Filter. The "Price" and "Quantity" columns use the default TextBoxes Filter.
+    </div>
+   
+    <div style="font-size: 13px; font-family: Verdana; float: left;">
+
+        <jqx-grid settings="gridSettings"></jqx-grid>
+
+        <div style="margin-top: 30px;">
+            <div style="float: left; margin-right: 10px;">
+                <jqx-button>Remove Sort</jqx-button>
+                <div style="margin-top: 10px"></div>
+                <jqx-check-box settings="filterCheckBoxSettings">Filter  Background</jqx-check-box>
+                <div style="margin-top: 10px"></div>
+                <jqx-check-box settings="showAllBoxSettings">Show All Filter Icons</jqx-check-box>
+            </div>
+
+            <div style="margin-left: 100px; float: left;">
+                Event Log:
+                <jqx-panel></jqx-panel>
+            </div>
+        </div>
+
+    </div>
+        
+</body>
+</html>

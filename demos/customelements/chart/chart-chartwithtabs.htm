@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Chart Custom Element With Tabs</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom element Chart line series. The data is loaded in the chart from a csv file using JavaScript. The type of the seriesGroups setting is set to line. Setting the valuesOnTicks option enables the data to be shown for each date. You can also see how to set the xAxis labels under 45 degrees angle. In order to change the color scheme you have to set the colorScheme setting. The animation is enabled with the enableAnimations option" />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script>
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        JQXElements.settings['financialChart'] =
+            {
+                title: "S&P 500 Candlestick Chart",
+                description: "(January 2014 - November 2014)",
+                enableAnimations: true,
+                animationDuration: 1500,
+                enableCrosshairs: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                source: new jqx.dataAdapter({
+                    datatype: "tsv",
+                    datafields: [
+                        { name: 'Date' },
+                        { name: 'SPOpen' },
+                        { name: 'SPHigh' },
+                        { name: 'SPLow' },
+                        { name: 'SPClose' },
+                        { name: 'SPVolume' },
+                        { name: 'SPAdjClose' }
+                    ],
+                    url: '../sampledata/nasdaq_vs_sp500_detailed.txt'
+                }),
+                xAxis:
+                {
+                    dataField: 'Date',
+                    formatFunction: function (value) {
+                        return value.getDate() + '-' + months[value.getMonth()] + '\'' + value.getFullYear().toString().substring(2);
+                    },
+                    type: 'date',
+                    valuesOnTicks: true,
+                    minValue: new Date(2014, 0, 1),
+                    maxValue: new Date(2014, 11, 1)
+                },
+                colorScheme: 'scheme17',
+                seriesGroups:
+                [
+                    {
+                        type: 'candlestick',
+                        columnsMinWidth: 4,
+                        //skipOverlappingPoints: false,
+                        toolTipFormatFunction: function (value, itemIndex, serie, group, categoryValue, categoryAxis) {
+
+                            var dataItem = dataAdapter.records[itemIndex];
+                            var volume = dataItem.SPVolume;
+
+                            return '<DIV style="text-align:left"><b>Date: ' +
+                                categoryValue.getDate() + '-' + months[categoryValue.getMonth()] + '-' + categoryValue.getFullYear() +
+                                '</b><br />Open price: $' + value.open +
+                                '</b><br />Close price: $' + value.close +
+                                '</b><br />Low price: $' + value.low +
+                                '</b><br />High price: $' + value.high +
+                                '</b><br />Daily volume: ' + volume + '</DIV>';
+                        },
+                        valueAxis:
+                        {
+                            title: { text: 'S&P 500<br>' },
+                            minValue: 1500
+                        },
+                        series: [
+                            {
+                                dataFieldClose: 'SPClose',
+                                displayTextClose: 'S&P Close price',
+                                dataFieldOpen: 'SPOpen',
+                                displayTextOpen: 'S&P Open price',
+                                dataFieldHigh: 'SPHigh',
+                                displayTextHigh: 'S&P High price',
+                                dataFieldLow: 'SPLow',
+                                displayTextLow: 'S&P Low price',
+                                displayText: 'S&P 500',
+                                lineWidth: 1
+                            }
+                        ]
+                    },
+                    {
+                        type: 'line',
+                        valueAxis:
+                        {
+                            position: 'right',
+                            title: { text: '<br>Daily Volume' },
+                            gridLines: { visible: false },
+                            tickMarks: { visible: false },
+                            labels: {
+                                formatFunction: function (value) {
+                                    return value / 1000000 + 'M';
+                                }
+                            }
+                        },
+                        series: [
+                            {
+                                dataField: 'SPVolume',
+                                displayText: 'Volume',
+                                lineWidth: 1
+                            }
+                        ]
+                    }
+                ]
+            }
+
+
+
+        // prepare jqxChart settings
+        JQXElements.settings['initChart'] =
+    {
+        title: "U.S. Stock Market Index Performance (2014)",
+        description: "NASDAQ Composite compared to S&P 500",
+        enableAnimations: true,
+        showLegend: true,
+        padding: { left: 10, top: 5, right: 10, bottom: 5 },
+        titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+        source: new jqx.dataAdapter({
+            datatype: "csv",
+            datafields: [
+                { name: 'Date' },
+                { name: 'S&P 500' },
+                { name: 'NASDAQ' }
+            ],
+            url: '../sampledata/nasdaq_vs_sp500.txt'
+        }),
+        xAxis:
+    {
+        dataField: 'Date',
+        type: 'date',
+        baseUnit: 'month',
+        unitInterval: 1,
+        valuesOnTicks: true,
+        labels: {
+            formatFunction: function (value) {
+                return months[value.getMonth()];
+            }
+        },
+        toolTipFormatFunction: function (value) {
+            return value.getDate() + '-' + months[value.getMonth()] + '-' + value.getFullYear();
+        },
+        tickMarks: { visible: true, unitInterval: 1 },
+        gridLines: { visible: true, unitInterval: 3 }
+    },
+        colorScheme: 'scheme04',
+        seriesGroups:
+    [
+        {
+            type: 'line',
+            valueAxis:
+            {
+                unitInterval: 500,
+                visible: true,
+                title: { text: 'Daily Closing Price' }
+            },
+            series: [
+                { dataField: 'S&P 500', displayText: 'S&P 500' },
+                { dataField: 'NASDAQ', displayText: 'NASDAQ' }
+            ]
+        }
+    ]
+    };
+
+        JQXElements.settings['tabsSettings'] = {
+            initTabContent: function (tab) {
+                var charts = document.querySelectorAll('jqx-chart');
+                charts[tab].createElement();
+            }
+        }
+    </script>
+    <style>
+        jqx-tabs {
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <jqx-tabs settings="tabsSettings" id='jqxTabs'>
+        <ul>
+            <li style="margin-left: 30px;">
+                <div style="height: 20px; margin-top: 5px;">
+                    <div style="margin-left: 4px; vertical-align: middle; text-align: center; float: left;">
+                        Candlestick Chart
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div style="height: 20px; margin-top: 5px;">
+                    <div style="margin-left: 4px; vertical-align: middle; text-align: center; float: left;">
+                        Line Chart
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div style="overflow: hidden;">
+            <jqx-chart delayed-create settings='financialChart' style="width: 100%; height: 100%;">
+            </jqx-chart>
+        </div>
+        <div style="overflow: hidden;">
+            <jqx-chart delayed-create settings='initChart' style="width: 100%; height: 100%;">
+            </jqx-chart>
+        </div>
+    </jqx-tabs>
+
+    <div class="example-description">
+        <br />
+        <h2>Description</h2>
+        <br />
+        This is an example of Custom element chart column series. The type of the series is column. The valueAxis flip setting is set to true and the series orientation is seto to horizontal.
+    </div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -18,18 +18,18 @@ export class jqxExpanderComponent implements OnChanges
 {
    @Input('animationType') attrAnimationType: any;
    @Input('arrowPosition') attrArrowPosition: any;
-   @Input('collapseAnimationDuration') attrCollapseAnimationDuration: Number;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('expanded') attrExpanded: Boolean;
-   @Input('expandAnimationDuration') attrExpandAnimationDuration: Number;
+   @Input('collapseAnimationDuration') attrCollapseAnimationDuration: number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('expanded') attrExpanded: boolean;
+   @Input('expandAnimationDuration') attrExpandAnimationDuration: number;
    @Input('headerPosition') attrHeaderPosition: any;
    @Input('initContent') attrInitContent: () => void;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('showArrow') attrShowArrow: Boolean;
-   @Input('theme') attrTheme: String;
+   @Input('rtl') attrRtl: boolean;
+   @Input('showArrow') attrShowArrow: boolean;
+   @Input('theme') attrTheme: string;
    @Input('toggleMode') attrToggleMode: any;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -52,7 +52,7 @@ export class jqxExpanderComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -191,7 +191,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxExpander('height', arg);
       } else {
@@ -247,7 +247,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxExpander('width', arg);
       } else {

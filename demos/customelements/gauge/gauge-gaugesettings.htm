@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Gauge GaugeSettings</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example shows the basic settings in Custom Elements Gauge." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgauge.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var labels = { visible: true, position: 'inside' };
+
+        JQXElements.settings['GaugeSettings'] =
+            {
+                ranges: [{ startValue: 0, endValue: 90, style: { fill: '#e2e2e2', stroke: '#e2e2e2' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 },
+                    { startValue: 90, endValue: 140, style: { fill: '#f6de54', stroke: '#f6de54' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 },
+                    { startValue: 140, endValue: 180, style: { fill: '#db5016', stroke: '#db5016' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 },
+                    { startValue: 180, endValue: 220, style: { fill: '#d02841', stroke: '#d02841' }, startDistance: '5%', endDistance: '5%', endWidth: 13, startWidth: 13 }
+                ],
+                cap: { radius: 0.04 },
+                caption: { offset: [0, -25], value: 'jQWidgets', position: 'bottom' },
+                value: 0,
+                style: { stroke: '#ffffff', 'stroke-width': '1px', fill: '#ffffff' },
+                animationDuration: 1500,
+                colorScheme: 'scheme04',
+                labels: labels,
+                ticksMinor: { interval: 5, size: '5%' },
+                ticksMajor: { interval: 10, size: '10%' }
+            }
+
+        JQXElements.settings['ExpanderSettings'] =
+            {
+                toggleMode: 'none',
+                showArrow: false
+            }
+
+        JQXElements.settings['showLabelsCheckbox'] =
+            {
+                checked: true
+            }
+
+        JQXElements.settings['InsideTheGauge'] =
+            {
+                checked: true
+            }
+
+        JQXElements.settings['showRangesCheckbox'] =
+            {
+                checked: true
+            }
+
+        JQXElements.settings['showBorderCheckbox'] =
+            {
+                checked: true
+            }
+
+        window.onload = function() {
+            var myGauge = document.querySelector('jqx-gauge');
+            var myExpander = document.querySelector('jqx-expander');
+            var myCheckBoxes = document.querySelectorAll('jqx-check-box');
+            var myRadioButtons = document.querySelectorAll('jqx-radio-button');
+
+            myCheckBoxes[0].addEventListener('change', (e) => {
+
+                labels.visible = e.args.checked;
+                myGauge.labels = labels;
+            });
+
+            myCheckBoxes[1].addEventListener('change', (e) => {
+
+                myGauge.showRanges = e.args.checked;
+            });
+
+            myCheckBoxes[2].addEventListener('change', (e) => {
+
+                myGauge.border = { visible: e.args.checked };
+            });
+
+
+            myRadioButtons[0].addEventListener('change', (e) => {
+
+                if (e.args.checked) {
+                    labels.position = 'inside';
+                    myGauge.labels = labels;
+                }
+            });
+
+            myRadioButtons[1].addEventListener('change', (e) => {
+
+                if (e.args.checked) {
+                    
+                    labels.position = 'outside';
+                    myGauge.labels = labels;
+                }
+            });
+
+            myGauge.value = 220;
+        }
+    </script> 
+</head>
+<body>
+    <div class="example-description">
+        This sample demonstrates the basic Custom elements Gauge settings.
+    </div>
+
+    <div class="demo-gauge" style="width: 600px;">
+
+        <div id="demoWidget" style="float: left;">
+
+            <jqx-gauge settings="GaugeSettings" style="float: left; margin-right: 40px;"></jqx-gauge>
+
+            <jqx-expander settings="ExpanderSettings" style="float: right; height: 190px;">
+
+                <div>
+                    Options
+                </div>
+
+                <div>
+                    <ul style="list-style: none; padding: 0px; margin: 10px;">
+
+                        <li style="padding: 3px; font-family: Verdana; font-size: 12px;">
+
+                            <jqx-check-box settings="showLabelsCheckbox">Show labels</jqx-check-box>
+
+                            <ul style="list-style: none; padding: 0px; margin-top: 10px; margin-left: 20px; font-family: Verdana; font-size: 12px;">
+
+                                <li>
+                                    <jqx-radio-button settings="InsideTheGauge">Inside the gauge</jqx-radio-button>
+                                </li>
+
+                                <li>
+                                    <jqx-radio-button style="margin-top: 5px;">Outside the gauge</jqx-radio-button>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li style="padding: 3px; font-family: Verdana; font-size: 12px;">
+                            <jqx-check-box settings="showRangesCheckbox">Show ranges</jqx-check-box>
+                        </li>
+
+                        <li style="padding: 3px; font-family: Verdana; font-size: 12px;">
+                            <jqx-check-box settings="showBorderCheckbox">Show border</jqx-check-box>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </jqx-expander>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

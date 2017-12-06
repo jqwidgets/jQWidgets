@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -27,15 +27,15 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('checked') attrChecked: Boolean;
-   @Input('disabled') attrDisabled: Boolean;
+   @Input('checked') attrChecked: boolean;
+   @Input('disabled') attrDisabled: boolean;
    @Input('orientation') attrOrientation: any;
-   @Input('onLabel') attrOnLabel: String;
-   @Input('offLabel') attrOffLabel: String;
-   @Input('thumbSize') attrThumbSize: String;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('onLabel') attrOnLabel: string;
+   @Input('offLabel') attrOffLabel: string;
+   @Input('thumbSize') attrThumbSize: string;
+   @Input('rtl') attrRtl: boolean;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -61,7 +61,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -182,7 +182,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('height', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('width', arg);
       } else {

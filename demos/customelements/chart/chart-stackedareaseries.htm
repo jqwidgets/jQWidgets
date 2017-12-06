@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Chart StackedAreaSeries</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Chart stacked area series." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var source =
+            {
+                datatype: 'tab',
+                datafields: [
+                    { name: 'Date' },
+                    { name: 'Referral' },
+                    { name: 'SearchPaid' },
+                    { name: 'SearchNonPaid' }
+                ],
+                url: '../sampledata/website_analytics.txt'
+            };
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        JQXElements.settings['chartSettings'] = 
+            {
+                title: 'Website traffic analysis',
+                description: 'Unique daily visitors (stacked)',
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 10, top: 5, right: 10, bottom: 5 },
+                titlePadding: { left: 10, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                xAxis:
+                {
+                    dataField: 'Date',
+                    type: 'date',
+                    baseUnit: 'day',
+                    valuesOnTicks: true,
+                    labels:
+                    {
+                        formatFunction: (value) => {
+                            return value.getDate();
+                        }
+                    },
+                    toolTipFormatFunction: (value) => {
+                        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                        return value.getDate() + '-' + months[value.getMonth()] + '-' + value.getFullYear();
+                    },
+                },
+                valueAxis:
+                {
+                    unitInterval: 500,
+                    minValue: 0,
+                    maxValue: 4500,
+                    title: { text: 'Daily visitors by source<br>' }
+                },
+                colorScheme: 'scheme03',
+                seriesGroups:
+                [
+                    {
+                        type: 'stackedarea',
+                        series: [
+                            { dataField: 'SearchNonPaid', displayText: 'Desktop Search' },
+                            { dataField: 'SearchPaid', displayText: 'Mobile Search' },
+                            { dataField: 'Referral', displayText: 'Social media' }
+                        ]
+                    }
+                ]
+            }
+    </script>
+</head>
+<body>
+
+   <jqx-chart settings="chartSettings" style="width:850px; height:500px"></jqx-chart>
+
+        <div class="example-description">
+            <br />
+            <h2>Description</h2>
+            <br />
+            This is an example of Custom element Chart stacked area series. The type of the series is stackedarea.
+        </div>
+    </body>
+</html>

@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Grid Custom Element CustomRowEditor</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Grid with custom row editors." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../sampledata/generatedata.js"></script>
+    <script type="text/javascript">
+        var data =
+            [
+                { 'Name': 'Population', 'Berlin': '3560154', 'Boston': '3406829', 'London': '8174100' },
+                { 'Name': 'Country', 'Berlin': 'Germany', 'Boston': 'United States', 'London': 'United Kingdom' },
+                { 'Name': 'Capital', 'Berlin': 'true', 'Boston': 'false', 'London': 'true' }
+            ];
+
+        var source =
+            {
+                localdata: data,
+                datatype: 'array',
+                datafields:
+                [
+                    { name: 'Name', type: 'string' },
+                    { name: 'Berlin', type: 'string' },
+                    { name: 'Boston', type: 'string' },
+                    { name: 'London', type: 'string' }
+                ]
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        window.onload = function() {
+            var myGrid = document.createElement('jqx-grid');
+
+            var createGridEditor = (row, cellValue, editor, cellText, width, height) => {             
+                if (row == 0) {
+                    var myNumberInput = document.createElement('jqx-number-input');
+
+                    myNumberInput.settings =
+                        {
+                            width: '100%', height: '100%', spinButtons: true,
+                            decimalDigits: 0, inputMode: 'simple'
+                        };
+
+                    myNumberInput.height = height;
+                    myNumberInput.width = width;
+                    editor[0].appendChild(myNumberInput);
+                }
+                else if (row == 1) {
+                    var myDropDownList = document.createElement('jqx-drop-down-list');
+
+                    myDropDownList.settings =
+                        {
+                            width: '100%', height: '100%', autoDropDownHeight: true,
+                            source: ['United States', 'Germany', 'United Kingdom']
+                        };
+
+                    editor[0].appendChild(myDropDownList);
+                }
+                else if (row == 2) {
+                    var myCheckBox = document.createElement('jqx-check-box');
+
+                    myCheckBox.settings =
+                        {
+                            width: 20, height: 20,
+                            animationShowDelay: 0, animationHideDelay: 0
+                        };
+
+                    myCheckBox.style.cssText = 'position: absolute; top: 50%; left: 50%; margin-top: -7px; margin-left: -10px;';
+                    editor[0].appendChild(myCheckBox);
+                }
+            }
+
+            var initGridEditor = (row, cellValue, editor, cellText, width, height) => {
+                if (row == 0) {
+                    editor[0].children[0].decimal = parseInt(cellValue);
+                }
+                else if (row == 1) {
+                    editor[0].children[0].selectItem(cellValue);
+                }
+                else if (row == 2) {
+                    var currentCheckBox = editor[0].children[0];
+                    currentCheckBox.checked = cellValue.toString() == 'true';
+                }
+            }
+
+            var gridEditorValue = (row, cellValue, editor) => {
+                if (row == 2) {
+                    var currentCheckBox = editor[0].children[0];
+                    return currentCheckBox.val();
+                }
+                if (editor[0].children[0]) {
+                    return editor[0].children[0].val();
+                }
+
+                return '';
+            }
+
+            myGrid.settings =
+                {
+                    source: dataAdapter,
+                    editable: true,
+                    autoheight: true,
+                    selectionmode: 'singlecell',
+                    columns: [
+                        {
+                            text: 'Name', pinned: true, editable: false, datafield: 'Name', width: 150
+                        },
+                        {
+                            text: 'Boston', columntype: 'custom', datafield: 'Boston', width: 150,
+                            createeditor: createGridEditor, initeditor: initGridEditor, geteditorvalue: gridEditorValue
+                        },
+                        {
+                            text: 'Berlin', columntype: 'custom', datafield: 'Berlin', width: 150,
+                            createeditor: createGridEditor, initeditor: initGridEditor, geteditorvalue: gridEditorValue
+                        },
+                        {
+                            text: 'London', columntype: 'custom', datafield: 'London',
+                            createeditor: createGridEditor, initeditor: initGridEditor, geteditorvalue: gridEditorValue
+                        }
+                    ]
+                };
+            document.body.appendChild(myGrid);
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        The example shows how to assign custom editors to cells depending on the row's index.
+    </div>
+</body>
+</html>

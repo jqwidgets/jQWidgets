@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element Gauge AnalogClock</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example you can see how to build an Analog clock with Custom Element Gauge." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgauge.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+
+        var hours = new Date().getHours(),
+            minutes = new Date().getMinutes(),
+            seconds = new Date().getSeconds(),
+            digits =
+                {
+                    1: 'I',
+                    2: 'II',
+                    3: 'III',
+                    4: 'IV',
+                    5: 'V',
+                    6: 'VI',
+                    7: 'VII',
+                    8: 'VIII',
+                    9: 'IX',
+                    10: 'X',
+                    11: 'XI',
+                    12: 'XII'
+                };
+
+        JQXElements.settings['GaugeSecounds'] =
+            {
+                ticksMinor: {
+                    interval: 0.2,
+                    size: '3%',
+                    style: {
+                        fill: '#aaaaaa',
+                        stroke: '#aaaaaa',
+                        'stroke-width': '2px'
+                    }
+                },
+                ticksMajor: {
+                    interval: 1,
+                    size: '8%',
+                    style: {
+                        fill: '#aaaaaa',
+                        stroke: '#aaaaaa',
+                        'stroke-width': '2px'
+                    }
+                },
+                ticksDistance: '10%',
+                startAngle: -90,
+                endAngle: 270,
+                labels: {
+                    distance: '28%',
+                    interval: 1,
+                    formatValue: (val) => {
+                        if (val == 0) {
+                            return '';
+                        }
+                        return digits[val];
+                    }
+                },
+                pointer: { length: '80%', width: '1.7%' },
+                ranges: [],
+                caption: { value: 'jQWidgets', offset: [0, -30] },
+                animationDuration: 0, min: 0, max: 12,
+                border: { fill: 'none', stroke: 'none' },
+                colorScheme: 'scheme05',
+                style: { fill: '#ffffff', stroke: '#cccccc' },
+                value: (seconds / 60) * 12
+            }
+
+        JQXElements.settings['GaugeHours'] =
+            {
+                ticksMinor: { visible: false },
+                ticksMajor: { visible: false },
+                labels: { visible: false },
+                animationDuration: 0,
+                min: 0,
+                max: 12,
+                caption: { value: '' },
+                border: { style: { fill: 'none', stroke: 'none' }, showGradient: false },
+                colorScheme: 'scheme05',
+                pointer: { length: '50%', width: '3%' },
+                style: { fill: 'none', stroke: 'none' },
+                value: hours % 12 + (minutes / 60 * 11) / 12,
+                startAngle: -90,
+                endAngle: 270
+            }
+
+        JQXElements.settings['GaugeMinutes'] =
+            {
+                ticksMinor: { visible: false },
+                ticksMajor: { visible: false },
+                labels: { visible: false },
+                animationDuration: 0,
+                min: 0, max: 12,
+                border: { style: { fill: 'none', stroke: 'none' }, showGradient: false },
+                caption: { value: '' },
+                colorScheme: 'scheme05',
+                style: { fill: 'none', stroke: 'none' },
+                pointer: { length: '70%', width: '2%' },
+                cap: { style: { fill: '#249dd6', stroke: '#249dd6' } },
+                startAngle: -90,
+                endAngle: 270,
+                value: (minutes / 60) * 12
+            }
+
+        window.onload = function() {
+            var mySecounds = document.querySelector('#seconds');
+            var myMinutes = document.querySelector('#minutes');
+            var myHours = document.querySelector('#hours');
+
+            setInterval(() => {
+                var secounds = mySecounds.value;
+                var minutes = myMinutes.value;
+                var hours = myHours.value;
+                ratio = 12 / 60;
+
+                secounds += ratio;
+
+                if (secounds > 12) {
+                    secounds = ratio;
+                }
+
+                mySecounds.value = secounds;
+                if (secounds === ratio) {
+                    minutes += ratio;
+                    if (minutes >= 12) {
+                        minutes = ratio;
+                    }
+                }
+
+                myMinutes.value = minutes;
+                hours += 1 / 60;
+                if (hours > 12) {
+                    hours = 1 / 60;
+                }
+
+                myHours.value = hours;
+
+            }, 1000);
+        };
+    </script> 
+</head>
+<body>
+    <div class="example-description">
+        This example demonstrates how to build your own Analog Clock using Custom Elements Gauge.
+    </div>
+
+    <div style="position: relative; height: 370px;">
+        <jqx-gauge style="position: absolute; left: 0px; top: 0px;" settings="GaugeSecounds" id='seconds'></jqx-gauge>
+        <jqx-gauge style="position: absolute; left: 0px; top: 0px;" settings="GaugeHours" id='hours'></jqx-gauge>
+        <jqx-gauge style="position: absolute; left: 0px; top: 0px;" settings="GaugeMinutes" id='minutes'></jqx-gauge>
+    </div>
+
+
+</body>
+</html>

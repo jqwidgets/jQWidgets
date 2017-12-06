@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,30 +17,30 @@ declare let JQXLite: any;
 
 export class jqxMenuComponent implements OnChanges
 {
-   @Input('animationShowDuration') attrAnimationShowDuration: Number;
-   @Input('animationHideDuration') attrAnimationHideDuration: Number;
-   @Input('animationHideDelay') attrAnimationHideDelay: Number;
-   @Input('animationShowDelay') attrAnimationShowDelay: Number;
-   @Input('autoCloseInterval') attrAutoCloseInterval: Number;
-   @Input('autoSizeMainItems') attrAutoSizeMainItems: Boolean;
-   @Input('autoCloseOnClick') attrAutoCloseOnClick: Boolean;
-   @Input('autoOpenPopup') attrAutoOpenPopup: Boolean;
-   @Input('autoOpen') attrAutoOpen: Boolean;
-   @Input('autoCloseOnMouseLeave') attrAutoCloseOnMouseLeave: Boolean;
-   @Input('clickToOpen') attrClickToOpen: Boolean;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('enableHover') attrEnableHover: Boolean;
-   @Input('easing') attrEasing: String;
-   @Input('keyboardNavigation') attrKeyboardNavigation: Boolean;
-   @Input('minimizeWidth') attrMinimizeWidth: String | Number;
+   @Input('animationShowDuration') attrAnimationShowDuration: number;
+   @Input('animationHideDuration') attrAnimationHideDuration: number;
+   @Input('animationHideDelay') attrAnimationHideDelay: number;
+   @Input('animationShowDelay') attrAnimationShowDelay: number;
+   @Input('autoCloseInterval') attrAutoCloseInterval: number;
+   @Input('autoSizeMainItems') attrAutoSizeMainItems: boolean;
+   @Input('autoCloseOnClick') attrAutoCloseOnClick: boolean;
+   @Input('autoOpenPopup') attrAutoOpenPopup: boolean;
+   @Input('autoOpen') attrAutoOpen: boolean;
+   @Input('autoCloseOnMouseLeave') attrAutoCloseOnMouseLeave: boolean;
+   @Input('clickToOpen') attrClickToOpen: boolean;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('enableHover') attrEnableHover: boolean;
+   @Input('easing') attrEasing: string;
+   @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
+   @Input('minimizeWidth') attrMinimizeWidth: number | string;
    @Input('mode') attrMode: any;
-   @Input('popupZIndex') attrPopupZIndex: String | Number;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('showTopLevelArrows') attrShowTopLevelArrows: Boolean;
+   @Input('popupZIndex') attrPopupZIndex: number | string;
+   @Input('rtl') attrRtl: boolean;
+   @Input('showTopLevelArrows') attrShowTopLevelArrows: boolean;
    @Input('source') attrSource: any;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -63,7 +63,7 @@ export class jqxMenuComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -266,7 +266,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxMenu('height', arg);
       } else {
@@ -282,7 +282,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   minimizeWidth(arg?: String | Number) : any {
+   minimizeWidth(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxMenu('minimizeWidth', arg);
       } else {
@@ -298,7 +298,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   popupZIndex(arg?: String | Number) : any {
+   popupZIndex(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxMenu('popupZIndex', arg);
       } else {
@@ -338,7 +338,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxMenu('width', arg);
       } else {
@@ -348,7 +348,7 @@ export class jqxMenuComponent implements OnChanges
 
 
    // jqxMenuComponent functions
-   closeItem(itemID: String | Number): void {
+   closeItem(itemID: number | string): void {
       this.host.jqxMenu('closeItem', itemID);
    }
 
@@ -356,7 +356,7 @@ export class jqxMenuComponent implements OnChanges
       this.host.jqxMenu('close');
    }
 
-   disable(itemID: String | Number, value: boolean): void {
+   disable(itemID: number | string, value: boolean): void {
       this.host.jqxMenu('disable', itemID, value);
    }
 
@@ -376,7 +376,7 @@ export class jqxMenuComponent implements OnChanges
       this.host.jqxMenu('open', left, top);
    }
 
-   openItem(itemID: String | Number): void {
+   openItem(itemID: number | string): void {
       this.host.jqxMenu('openItem', itemID);
    }
 
@@ -384,7 +384,7 @@ export class jqxMenuComponent implements OnChanges
       this.host.jqxMenu('restore');
    }
 
-   setItemOpenDirection(item: String | Number, horizontaldirection: string, verticaldirection: string): void {
+   setItemOpenDirection(item: number | string, horizontaldirection: string, verticaldirection: string): void {
       this.host.jqxMenu('setItemOpenDirection', item, horizontaldirection, verticaldirection);
    }
 

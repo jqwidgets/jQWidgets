@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,19 +17,19 @@ declare let JQXLite: any;
 
 export class jqxScrollBarComponent implements OnChanges
 {
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('largestep') attrLargestep: Number;
-   @Input('min') attrMin: Number;
-   @Input('max') attrMax: Number;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('step') attrStep: Number;
-   @Input('showButtons') attrShowButtons: Boolean;
-   @Input('thumbMinSize') attrThumbMinSize: Number;
-   @Input('theme') attrTheme: String;
-   @Input('vertical') attrVertical: Boolean;
-   @Input('value') attrValue: Number;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('largestep') attrLargestep: number;
+   @Input('min') attrMin: number;
+   @Input('max') attrMax: number;
+   @Input('rtl') attrRtl: boolean;
+   @Input('step') attrStep: number;
+   @Input('showButtons') attrShowButtons: boolean;
+   @Input('thumbMinSize') attrThumbMinSize: number;
+   @Input('theme') attrTheme: string;
+   @Input('vertical') attrVertical: boolean;
+   @Input('value') attrValue: number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -52,7 +52,7 @@ export class jqxScrollBarComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -151,7 +151,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxScrollBar('height', arg);
       } else {
@@ -239,7 +239,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxScrollBar('width', arg);
       } else {

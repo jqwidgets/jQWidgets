@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Ribbon Custom element IntegrationWithOtherWidgets</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom element Ribbon's integration with other widgets." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxribbon.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <style type="text/css">
+        html, body {
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 15px 5px;
+        }
+    </style>
+    <script>
+        JQXElements.settings['RibbonSettings'] =
+            {
+                width:800,
+                position: 'top', selectionMode: 'click', animationType: 'none',
+                initContent: (index) => {
+                    switch (index) {
+                        case 0:
+                            initiMainGrid();
+                            break;
+                        case 1:
+                            initiSocialGrid();
+                            break;
+                        case 2:
+                            document.querySelector('jqx-button').settings = { width: 25, height: 25 };
+                            break;
+                    }
+                }
+            };
+
+        initiMainGrid = function() {
+            var mainMessages = [{ from: 'Anthony', subject: 'Visit to the zoo', time: '09/10/2014 12:35' }, { from: 'Peter', subject: 'Job application', time: '08/23/2014 18:13' }, { from: 'Sarah', subject: 'The roses...', time: '08/05/2014 15:01' }];
+            var mainSource =
+                {
+                    datatype: 'json',
+                    datafields: [
+                        { name: 'from', type: 'string' },
+                        { name: 'subject', type: 'string' },
+                        { name: 'time', type: 'date' }
+                    ],
+                    localdata: mainMessages
+                };
+            var mainDataAdapter = new jqx.dataAdapter(mainSource);
+
+            var mainGrid = jqwidgets.createInstance('#mainGrid', 'jqxGrid', {
+                width: '100%', autoheight: true, source: mainDataAdapter, selectionmode: 'checkbox',
+                columns: [
+                    { text: 'From', datafield: 'from', width: 100 },
+                    { text: 'Subject', datafield: 'subject', width: 200 },
+                    { text: 'Time', datafield: 'time', cellsformat: 'MMM d h:mm tt' }
+                ]
+            });
+        };
+
+            initiSocialGrid = function() {
+                var socialMessages = [{ from: 'PhotoPics.com', subject: 'Join us today!', time: '09/08/2014 11:00' }, { from: 'CookMaster', subject: 'Welcome to the CookMaster forum.', time: '08/29/2014 22:33' }];
+                var socialSource =
+                    {
+                        datatype: 'json',
+                        datafields: [
+                            { name: 'from', type: 'string' },
+                            { name: 'subject', type: 'string' },
+                            { name: 'time', type: 'date' }
+                        ],
+                        localdata: socialMessages
+                    };
+                var socialDataAdapter = new jqx.dataAdapter(socialSource);
+
+                var socialGrid = jqwidgets.createInstance('#socialGrid', 'jqxGrid', {
+                    width: '100%',
+                    autoheight: true,
+                    source: socialDataAdapter,
+                    selectionmode: 'checkbox',
+                    columns: [
+                        { text: 'From', datafield: 'from', width: 100 },
+                        { text: 'Subject', datafield: 'subject', width: 240 },
+                        { text: 'Time', datafield: 'time', cellsformat: 'MMM d h:mm tt' }
+                    ]
+                });
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This is an example of Custom element Ribbon's integration with other widgets.
+    </div>
+
+    <div style="box-sizing: border-box; width: 800px; border-top-left-radius: 5px; border-top-right-radius: 5px;
+        padding-left: 10px; background-color: #1C3672; color: White; font-size: large;">
+        <img src="../../jqwidgets/styles/images/mail.png" style="margin-right: 10px; display: inline-block;
+            vertical-align: bottom;" /><div style="display: inline-block; font-weight: bold;">
+            Inbox
+        </div>
+    </div>
+
+    <jqx-ribbon settings="RibbonSettings">
+        <ul style="border-top-left-radius: 0; border-top-right-radius: 0;">
+            <li style="margin-left: 30px;">Main</li>
+            <li>Social</li>
+            <li>Promotions</li>
+        </ul>
+        <div>
+            <div>
+                <div id="mainGrid" style="margin-top: 5px; border-bottom: none; border-left: none;
+                    border-right: none;">
+                </div>
+            </div>
+            <div>
+                <div id="socialGrid" style="margin-top: 5px; border-bottom: none; border-left: none;
+                    border-right: none;">
+                </div>
+            </div>
+            <div>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: center;">
+                            No new mail under <em>Promotions</em>.<br />
+                            <jqx-button id="refreshButton" title="Refresh">
+                                <img src="../../images/refresh.png" />
+                            </jqx-button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </jqx-ribbon>
+</body>
+</html>

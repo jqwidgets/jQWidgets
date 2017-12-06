@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>BarGauge Custom Element AutoChangeValue</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example demonstrates auto changing values and related background colors of the Custom Element BarGauge." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbargauge.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var values = [];
+        var barGaugePalette = ['#307DD7', '#AA4643', '#89A54E', '#71588F', '#4198AF'];
+
+        JQXElements.settings['barGaugeSettings'] =
+            {
+                values: [25],
+                relativeInnerRadius: 0.6,
+                formatFunction:  (value, index, color) => {
+                    if (value < 20) {
+                        return barGaugePalette[0];
+                    }
+                    if (value < 40) {
+                        return barGaugePalette[1];
+                    }
+                    if (value < 60) {
+                        return barGaugePalette[2];
+                    }
+                    if (value < 80) {
+                        return barGaugePalette[3];
+                    }
+                    if (value <= 100) {
+                        return barGaugePalette[4];
+                    }
+                }
+           }
+
+        var loop = 0;
+
+        window.onload = function() {
+            var barGauge = document.querySelector('jqx-bar-gauge');
+            barGauge.addEventListener('drawEnd', function(event) {
+                values[0] = getRandomInt(1, 99);
+                setTimeout(() => {
+                    barGauge.val(values);
+                }, 1000);
+            })
+        };
+        var getRandomInt = (min, max) => {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This example demonstrates auto changing values and related background colors of the Custom Element BarGauge.
+    </div>
+
+    <jqx-bar-gauge settings="barGaugeSettings"></jqx-bar-gauge>
+</body>
+</html>

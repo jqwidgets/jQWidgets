@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ComplexInput Validation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the validator in Custom Elements ComplexInput." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcomplexinput.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">
+        JQXElements.settings['ComplexInput'] =
+            {
+                 value: '15 + 7.2i',
+                 spinButtons: false,
+            }
+
+        window.onload = function() {
+            var myComplexInput = document.querySelector('jqx-complex-input');
+            var myButton = document.querySelector('jqx-button');
+
+            myButton.addEventListener('click', function() {
+                myComplexInput.val('11 - 2ii');
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element ComplexInput validates the entered complex number on the keydown and change events. Spaces are also automatically added if necessary.
+    </div>
+    
+   <jqx-complex-input settings="ComplexInput"></jqx-complex-input>
+
+    <div style="margin-top: 20px;">
+        <jqx-button>Set wrong value: "11- 2ii"</jqx-button>
+    </div>
+</body>
+</html>

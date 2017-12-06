@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>RangeSelector Custom Element NumericScale</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of numeric scale in Custom Element RangeSelector." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxrangeselector.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        JQXElements.settings['RangeSelectorSettings'] =
+            {
+                min: 1000,
+                max: 10000,
+                minorTicksInterval: 100,
+                majorTicksInterval: 1500,
+                labelsFormat: 'c0',
+                markersFormat: 'c0',
+                range: { from: 3000, to: 5000 }
+            };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element RangeSelector Numeric Scale
+    </div>
+
+    <jqx-range-selector settings="RangeSelectorSettings"></jqx-range-selector>
+</body>
+</html>

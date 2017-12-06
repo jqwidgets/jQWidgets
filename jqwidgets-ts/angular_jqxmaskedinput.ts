@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -27,16 +27,16 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('mask') attrMask: String;
-   @Input('promptChar') attrPromptChar: String | Number;
-   @Input('readOnly') attrReadOnly: Boolean;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('theme') attrTheme: String;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('mask') attrMask: string;
+   @Input('promptChar') attrPromptChar: number | string;
+   @Input('readOnly') attrReadOnly: boolean;
+   @Input('rtl') attrRtl: boolean;
+   @Input('theme') attrTheme: string;
    @Input('textAlign') attrTextAlign: any;
-   @Input('value') attrValue: String | Number;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('value') attrValue: number | string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -62,7 +62,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -175,7 +175,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('height', arg);
       } else {
@@ -191,7 +191,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   promptChar(arg?: String | Number) : any {
+   promptChar(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('promptChar', arg);
       } else {
@@ -231,7 +231,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   value(arg?: String | Number) : any {
+   value(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('value', arg);
       } else {
@@ -239,7 +239,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('width', arg);
       } else {
@@ -261,7 +261,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       this.host.jqxMaskedInput('focus');
    }
 
-   val(value?: String | Number): any {
+   val(value?: number | string): any {
       if (value !== undefined) {
          return this.host.jqxMaskedInput("val", value);
       } else {

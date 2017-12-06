@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -27,62 +27,62 @@ declare let JQXLite: any;
 
 export class jqxTreeGridComponent implements OnChanges
 {
-   @Input('altRows') attrAltRows: Boolean;
-   @Input('autoRowHeight') attrAutoRowHeight: Boolean;
-   @Input('aggregatesHeight') attrAggregatesHeight: Number;
-   @Input('autoShowLoadElement') attrAutoShowLoadElement: Boolean;
-   @Input('checkboxes') attrCheckboxes: Boolean;
-   @Input('columnsHeight') attrColumnsHeight: Number;
+   @Input('altRows') attrAltRows: boolean;
+   @Input('autoRowHeight') attrAutoRowHeight: boolean;
+   @Input('aggregatesHeight') attrAggregatesHeight: number;
+   @Input('autoShowLoadElement') attrAutoShowLoadElement: boolean;
+   @Input('checkboxes') attrCheckboxes: boolean;
+   @Input('columnsHeight') attrColumnsHeight: number;
    @Input('columns') attrColumns: Array<any>;
    @Input('columnGroups') attrColumnGroups: Array<any>;
-   @Input('columnsResize') attrColumnsResize: Boolean;
-   @Input('columnsReorder') attrColumnsReorder: Boolean;
-   @Input('disabled') attrDisabled: Boolean;
-   @Input('editable') attrEditable: Boolean;
+   @Input('columnsResize') attrColumnsResize: boolean;
+   @Input('columnsReorder') attrColumnsReorder: boolean;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('editable') attrEditable: boolean;
    @Input('editSettings') attrEditSettings: jqwidgets.TreeGridEditSettings;
    @Input('exportSettings') attrExportSettings: jqwidgets.TreeGridExportSettings;
-   @Input('enableHover') attrEnableHover: Boolean;
-   @Input('enableBrowserSelection') attrEnableBrowserSelection: Boolean;
-   @Input('filterable') attrFilterable: Boolean;
-   @Input('filterHeight') attrFilterHeight: Number;
+   @Input('enableHover') attrEnableHover: boolean;
+   @Input('enableBrowserSelection') attrEnableBrowserSelection: boolean;
+   @Input('filterable') attrFilterable: boolean;
+   @Input('filterHeight') attrFilterHeight: number;
    @Input('filterMode') attrFilterMode: any;
-   @Input('hierarchicalCheckboxes') attrHierarchicalCheckboxes: Boolean;
-   @Input('icons') attrIcons: Boolean;
-   @Input('incrementalSearch') attrIncrementalSearch: Boolean;
+   @Input('hierarchicalCheckboxes') attrHierarchicalCheckboxes: boolean;
+   @Input('icons') attrIcons: boolean;
+   @Input('incrementalSearch') attrIncrementalSearch: boolean;
    @Input('localization') attrLocalization: any;
-   @Input('pagerHeight') attrPagerHeight: Number;
-   @Input('pageSize') attrPageSize: Number;
-   @Input('pageSizeOptions') attrPageSizeOptions: Array<Number | String>;
-   @Input('pageable') attrPageable: Boolean;
+   @Input('pagerHeight') attrPagerHeight: number;
+   @Input('pageSize') attrPageSize: number;
+   @Input('pageSizeOptions') attrPageSizeOptions: Array<number | string>;
+   @Input('pageable') attrPageable: boolean;
    @Input('pagerPosition') attrPagerPosition: any;
    @Input('pagerMode') attrPagerMode: any;
    @Input('pageSizeMode') attrPageSizeMode: any;
-   @Input('pagerButtonsCount') attrPagerButtonsCount: Number;
+   @Input('pagerButtonsCount') attrPagerButtonsCount: number;
    @Input('pagerRenderer') attrPagerRenderer: () => any;
    @Input('ready') attrReady: () => void;
-   @Input('rowDetails') attrRowDetails: Boolean;
+   @Input('rowDetails') attrRowDetails: boolean;
    @Input('rowDetailsRenderer') attrRowDetailsRenderer: (key: number, dataRow: number) => any;
    @Input('renderToolbar') attrRenderToolbar: (toolBar?: any) => void;
    @Input('renderStatusbar') attrRenderStatusbar: (statusBar?: any) => void;
    @Input('rendering') attrRendering: () => void;
    @Input('rendered') attrRendered: () => void;
-   @Input('rtl') attrRtl: Boolean;
+   @Input('rtl') attrRtl: boolean;
    @Input('source') attrSource: any;
-   @Input('sortable') attrSortable: Boolean;
-   @Input('showAggregates') attrShowAggregates: Boolean;
-   @Input('showSubAggregates') attrShowSubAggregates: Boolean;
-   @Input('showToolbar') attrShowToolbar: Boolean;
-   @Input('showStatusbar') attrShowStatusbar: Boolean;
-   @Input('statusBarHeight') attrStatusBarHeight: Number;
-   @Input('scrollBarSize') attrScrollBarSize: Number;
+   @Input('sortable') attrSortable: boolean;
+   @Input('showAggregates') attrShowAggregates: boolean;
+   @Input('showSubAggregates') attrShowSubAggregates: boolean;
+   @Input('showToolbar') attrShowToolbar: boolean;
+   @Input('showStatusbar') attrShowStatusbar: boolean;
+   @Input('statusBarHeight') attrStatusBarHeight: number;
+   @Input('scrollBarSize') attrScrollBarSize: number;
    @Input('selectionMode') attrSelectionMode: any;
-   @Input('showHeader') attrShowHeader: Boolean;
-   @Input('theme') attrTheme: String;
-   @Input('toolbarHeight') attrToolbarHeight: Number;
+   @Input('showHeader') attrShowHeader: boolean;
+   @Input('theme') attrTheme: string;
+   @Input('toolbarHeight') attrToolbarHeight: number;
    @Input('virtualModeCreateRecords') attrVirtualModeCreateRecords: (expandedRecord?: any, done?: any) => void;
    @Input('virtualModeRecordCreating') attrVirtualModeRecordCreating: (record?: any) => any;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -105,7 +105,7 @@ export class jqxTreeGridComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -348,7 +348,7 @@ export class jqxTreeGridComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxTreeGrid('height', arg);
       } else {
@@ -404,7 +404,7 @@ export class jqxTreeGridComponent implements OnChanges
       }
    }
 
-   pageSizeOptions(arg?: Array<Number | String>) : any {
+   pageSizeOptions(arg?: Array<number | string>) : any {
       if (arg !== undefined) {
           this.host.jqxTreeGrid('pageSizeOptions', arg);
       } else {
@@ -620,7 +620,7 @@ export class jqxTreeGridComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxTreeGrid('width', arg);
       } else {
@@ -698,11 +698,11 @@ export class jqxTreeGridComponent implements OnChanges
       this.host.jqxTreeGrid('destroy');
    }
 
-   deleteRow(rowKey: Array<String> | String): void {
+   deleteRow(rowKey: Array<string> | string): void {
       this.host.jqxTreeGrid('deleteRow', rowKey);
    }
 
-   expandRow(rowKey: Array<Number | String> | String | Number): void {
+   expandRow(rowKey: Array<number | string> | string | number): void {
       this.host.jqxTreeGrid('expandRow', rowKey);
    }
 
@@ -786,7 +786,7 @@ export class jqxTreeGridComponent implements OnChanges
       return this.host.jqxTreeGrid('isBindingCompleted');
    }
 
-   lockRow(rowKey: String | Number | Array<Number | String>): void {
+   lockRow(rowKey: string | number | Array<number | string>): void {
       this.host.jqxTreeGrid('lockRow', rowKey);
    }
 
@@ -814,7 +814,7 @@ export class jqxTreeGridComponent implements OnChanges
       this.host.jqxTreeGrid('showColumn', dataField);
    }
 
-   selectRow(rowId: String | Number | Array<Number | String>): void {
+   selectRow(rowId: string | number | Array<number | string>): void {
       this.host.jqxTreeGrid('selectRow', rowId);
    }
 
@@ -822,7 +822,7 @@ export class jqxTreeGridComponent implements OnChanges
       this.host.jqxTreeGrid('setCellValue', rowId, dataField, cellValue);
    }
 
-   sortBy(dataField: String | Number, sortOrder?: string): void {
+   sortBy(dataField: number | string, sortOrder?: string): void {
       this.host.jqxTreeGrid('sortBy', dataField, sortOrder);
    }
 
@@ -834,7 +834,7 @@ export class jqxTreeGridComponent implements OnChanges
       this.host.jqxTreeGrid('updateBoundData');
    }
 
-   unselectRow(rowId: String | Number | Array<Number | String>): void {
+   unselectRow(rowId: string | number | Array<number | string>): void {
       this.host.jqxTreeGrid('unselectRow', rowId);
    }
 
@@ -842,11 +842,11 @@ export class jqxTreeGridComponent implements OnChanges
       this.host.jqxTreeGrid('uncheckRow', rowId);
    }
 
-   updateRow(rowId: Number | String, data: any): void {
+   updateRow(rowId: number | string, data: any): void {
       this.host.jqxTreeGrid('updateRow', rowId, data);
    }
 
-   unlockRow(rowId: String | Number | Array<Number | String>): void {
+   unlockRow(rowId: string | number | Array<number | string>): void {
       this.host.jqxTreeGrid('unlockRow', rowId);
    }
 

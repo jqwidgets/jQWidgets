@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>BulletChart Custom Element LabelsFormatting</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This demo shows how to conditionally format the Custom Element BulletChart's labels and tooltip." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbulletchart.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript">      
+        JQXElements.settings['bulletChartSettings'] =
+            {
+                barSize: '35%',            
+                title: 'Temperature in Boston, Mass.',
+                description: 'on 28 May',
+                ranges: [
+                    { startValue: 0, endValue: 10, color: '#0099FF', opacity: 1 },
+                    { startValue: 10, endValue: 15, color: '#006600', opacity: 1 },
+                    { startValue: 15, endValue: 20, color: '#FF6600', opacity: 1 },
+                    { startValue: 20, endValue: 25, color: '#FF4526', opacity: 1 }
+                ],
+                pointer: { value: 11, size: '25%', color: '#181818' },
+                target: { value: 15, size: 4, color: '#181818' },
+                ticks: { position: 'both', interval: 5, size: 10 },
+                labelsFormatFunction: (value, position) => {
+                    var labelsColor;
+                    if (value < 10) {
+                        labelsColor = '#0099FF';
+                    } else if (value < 15) {
+                        labelsColor = '#006600';
+                    } else if (value < 20) {
+                        labelsColor = '#FF6600';
+                    } else {
+                        labelsColor = '#FF4526';
+                    }
+                    if (position == 'near') {
+                        return '<span style="color: ' + labelsColor + ';">' + (value * 1.8 + 32) + '°F</span>';
+                    } else {
+                        return value + '°C';
+                    }
+                },
+                showTooltip: true,
+                tooltipFormatFunction: (value, target) => {
+                    return '<div>Temperature on May 28: <strong>' + (value * 1.8 + 32) + '°F</strong> (' + value + '°C)</div><div>Average temperature in May: <strong>' + (target * 1.8 + 32) + '°F</strong> (' + target + '°C)</div>'
+                }
+            }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo shows how to conditionally format Custom element BulletChart's labels and tooltips.
+    </div>
+
+    <jqx-bullet-chart settings="bulletChartSettings"></jqx-bullet-chart>
+</body>
+</html>

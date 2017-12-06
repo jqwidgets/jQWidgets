@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>BulletChart Custom Element Settings</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="In this example are displayed some of the available functionalities for Custom Element BulletChart's APIs." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbulletchart.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxslider.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript"> 
+        
+        var colorChoices =
+            [
+                'Black',
+                'Red',
+                'Green',
+                'Blue',
+                'From theme'
+            ];
+
+        JQXElements.settings['bulletChartSettings'] =
+            {
+                barSize: '40%',
+                title: 'Revenue 2017 YTD',
+                description: '(U.S. $ in thousands)',
+                ranges: [
+                    { startValue: 0, endValue: 200, color: '#000000', opacity: 0.5 },
+                    { startValue: 200, endValue: 250, color: '#000000', opacity: 0.3 },
+                    { startValue: 250, endValue: 300, color: '#000000', opacity: 0.1 }
+                ],
+                pointer: { value: 270, label: 'Revenue 2017 YTD', size: '25%', color: '' },
+                target: { value: 260, label: 'Revenue 2016 YTD', size: 4, color: '' },
+                ticks: { position: 'both', interval: 50, size: 10 },
+                labelsFormat: 'c',
+                animationDuration: 0,
+                showTooltip: true
+            };
+
+        JQXElements.settings['expanderSettings'] =
+            {
+                toggleMode: 'none',
+                showArrow: false
+            }
+
+        JQXElements.settings['ShowLabelsCheckBox'] =
+            {
+                checked: true
+            }
+
+        JQXElements.settings['ButtonsShowLabelsCheckBox'] =
+            {
+                checked: true,
+                groupName: 'position'
+            }
+
+        JQXElements.settings['ButtonsShowLabelsCheckBoxFalse'] =
+            {
+                checked: false,
+                groupName: 'position'
+            }
+
+        JQXElements.settings['RadioButtonsLabelsFormat'] =
+            {
+                checked: true,
+                groupName: 'format'
+            }
+
+        JQXElements.settings['RadioButtonsLabelsFormatFalse'] =
+            {
+                checked: false,
+                groupName: 'format'
+            }
+
+        JQXElements.settings['EnableAnimationCheckBox'] =
+            {
+                checked: false
+            }
+
+        JQXElements.settings['sliderSettings'] =
+            {
+                min: 0,
+                max: 300,
+                step: 10,
+                showTicks: false,
+                showButtons: false,
+                mode: 'fixed',
+                value: 270
+            }
+
+        JQXElements.settings['dropDownSettings'] =
+            {
+                source: colorChoices,
+                selectedIndex: 4,
+                autoDropDownHeight: true
+            }
+
+        JQXElements.settings['DisabledCheckBox'] =
+            {
+                    checked: false
+            }
+
+        JQXElements.settings['RighttoLeftCheckBox'] =
+            {
+                    checked:false
+            }
+
+        window.onload = function() {
+            var myCheckBoxes = document.querySelectorAll('jqx-check-box');
+            var myRadioButtons = document.querySelectorAll('jqx-radio-button');
+            var myDropDownLists = document.querySelectorAll('jqx-drop-down-list');
+            var mySlider = document.querySelector('jqx-slider');
+            var myBulletChart = document.querySelector('jqx-bullet-chart');
+
+            myCheckBoxes[0].addEventListener('change', function(event) {
+                var checked = event.args.checked;
+                var value0 = myRadioButtons[0].val();
+                var value1 = myRadioButtons[1].val();
+
+                if (checked) {
+                    myRadioButtons[0].enable();
+                    myRadioButtons[1].enable();
+                    myRadioButtons[2].enable();
+                    if (value0 === true) {
+                        myBulletChart.ticks = { position: 'near' }
+                    } else if (value1 === true) {
+                        myBulletChart.ticks = { position: 'far' }
+                    } else {
+                        myBulletChart.ticks = { position: 'both' }
+                    }
+                } else {
+                    myBulletChart.ticks = { position: 'none' };
+                    myRadioButtons[0].disable();
+                    myRadioButtons[1].disable();
+                    myRadioButtons[2].disable();
+                }
+            });
+
+            myRadioButtons[0].addEventListener('checked', function(event) {
+                myBulletChart.ticks = { position: 'near' };
+            });
+
+            myRadioButtons[1].addEventListener('checked', function(event) {
+                myBulletChart.ticks = { position: 'far' };
+            });
+
+            myRadioButtons[2].addEventListener('checked', function(event) {
+                myBulletChart.ticks = { position: 'both' };
+            });
+
+            myRadioButtons[3].addEventListener('checked', function(event) {
+                myBulletChart.labelsFormat = 'c';
+            });
+
+            myRadioButtons[4].addEventListener('checked', function(event) {
+                myBulletChart.labelsFormat = 'p';
+            });
+
+            myRadioButtons[5].addEventListener('checked', function(event) {
+                myBulletChart.labelsFormat = 'null';
+            });
+
+            myCheckBoxes[1].addEventListener('change', function(event) {
+                var checked = event.args.checked;
+                if (checked) {
+                    myBulletChart.animationDuration = 400;
+                } else {
+                    myBulletChart.animationDuration = 0;
+                }
+            });
+
+            mySlider.addEventListener('change', function(event) {
+                var value = event.args.value;
+                myBulletChart.val(value);
+            });
+
+            myDropDownLists[0].addEventListener('change', function(event) {
+                var choice = event.args.item.label;
+                var newColor;
+                if (choice != 'From theme') {
+                    newColor = choice;
+                } else {
+                    newColor = '';
+                }
+                myBulletChart.pointer = { color: newColor };
+            });
+
+            myDropDownLists[1].addEventListener('change', function(event) {
+                var choice = event.args.item.label;
+                var newColor;
+                if (choice != 'From theme') {
+                    newColor = choice;
+                } else {
+                    newColor = '';
+                }
+                myBulletChart.target = { color: newColor };
+            });
+
+            myCheckBoxes[2].addEventListener('change', function(event) {
+                var checked = event.args.checked;
+                if (checked) {
+                    myBulletChart.disabled = true;
+                } else {
+                    myBulletChart.disabled = false;
+                }
+            });
+
+            myCheckBoxes[3].addEventListener('change', function(event) {
+                var checked = event.args.checked;
+                if (checked) {
+                    myBulletChart.rtl = true;
+                } else {
+                    myBulletChart.rtl = false;
+                }
+            })
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this example are displayed some of the available functionalities for Custom Element BulletChart's APIs.
+    </div>
+
+    <jqx-bullet-chart settings="bulletChartSettings" style="float: left; margin-left: 10px;"></jqx-bullet-chart>
+
+    <jqx-expander settings="expanderSettings" style="float: left; margin-top: 60px;">
+
+        <div>
+            jqxBulletChart settings
+        </div>
+
+        <div style="padding-left: 5px;">
+            <jqx-check-box style="margin-top:5px;" settings="ShowLabelsCheckBox"> Show labels</jqx-check-box>
+            <ul style="list-style: none; padding: 0px; margin-top: 10px; margin-left: 20px; font-family: Verdana; font-size: 12px;">
+                <li>
+                    <jqx-radio-button settings="ButtonsShowLabelsCheckBoxFalse">Near</jqx-radio-button>
+                </li>
+                <li>
+                    <jqx-radio-button settings="ButtonsShowLabelsCheckBoxFalse">Far</jqx-radio-button>
+                </li>
+                <li>
+                    <jqx-radio-button settings="ButtonsShowLabelsCheckBox">Both</jqx-radio-button>
+                </li>
+            </ul>
+            <br />
+            <div>Labels format:</div>
+            <ul style="list-style: none; padding: 0px; margin-top: 10px; margin-left: 20px; font-family: Verdana; font-size: 12px;">
+                <li>
+                    <jqx-radio-button settings="RadioButtonsLabelsFormat">Currency</jqx-radio-button>
+                </li>
+                <li>
+                    <jqx-radio-button settings="RadioButtonsLabelsFormatFalse">Percent</jqx-radio-button>
+                </li>
+                <li>
+                    <jqx-radio-button settings="RadioButtonsLabelsFormatFalse">None</jqx-radio-button>
+                </li>
+            </ul>
+            <br />
+            <jqx-check-box settings="EnableAnimationCheckBox"> Enable Animation</jqx-check-box>
+            <br />
+            <div>Pointer value:</div>
+            <jqx-slider settings="sliderSettings" style="padding-left: 5px;"></jqx-slider>
+            <br />
+            <div>Pointer color:</div>
+            <jqx-drop-down-list settings="dropDownSettings"></jqx-drop-down-list>
+            <br />
+            <div>Target color:</div>
+            <jqx-drop-down-list settings="dropDownSettings"></jqx-drop-down-list>
+            <br />
+            <jqx-check-box settings="DisabledCheckBox" style="margin-bottom: 5px;">Disabled</jqx-check-box>
+            <br>
+            <jqx-check-box settings="RighttoLeftCheckBox">Right-to-left</jqx-check-box>
+       </div>
+    </jqx-expander>
+</body>
+</html>

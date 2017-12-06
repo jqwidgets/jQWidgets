@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element JSON Menu</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of Custom Element Menu build from JSON data." />
+
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script>
+        var data = [
+                {
+                    "id": "12",
+                    "text": "Frappuccino",
+                    "parentid": "-1",
+                    "subMenuWidth": '250px'
+                },
+                {
+                    "text": "Chocolate Beverage",
+                    "id": "1",
+                    "parentid": "-1",
+                    "subMenuWidth": '250px'
+                }, {
+                    "id": "2",
+                    "parentid": "1",
+                    "text": "Hot Chocolate"
+                }, {
+                    "id": "3",
+                    "parentid": "1",
+                    "text": "Peppermint Hot Chocolate"
+                }, {
+                    "id": "4",
+                    "parentid": "1",
+                    "text": "Salted Caramel Hot Chocolate"
+                }, {
+                    "id": "5",
+                    "parentid": "1",
+                    "text": "White Hot Chocolate"
+                }, {
+                    "id": "6",
+                    "text": "Espresso Beverage",
+                    "parentid": "-1",
+                    "subMenuWidth": '200px'
+                }, {
+                    "id": "7",
+                    "parentid": "6",
+                    "text": "Caffe Americano"
+                }, {
+                    "id": "8",
+                    "text": "Caffe Latte",
+                    "parentid": "6"
+                }, {
+                    "id": "9",
+                    "text": "Caffe Mocha",
+                    "parentid": "6"
+                }, {
+                    "id": "10",
+                    "text": "Cappuccino",
+                    "parentid": "6"
+                }, {
+                    "id": "11",
+                    "text": "Pumpkin Spice Latte",
+                    "parentid": "6"
+                }, {
+                    "id": "13",
+                    "text": "Caffe Vanilla Frappuccino",
+                    "parentid": "12"
+                }, {
+                    "id": "15",
+                    "text": "450 calories",
+                    "parentid": "13"
+                }, {
+                    "id": "16",
+                    "text": "16g fat",
+                    "parentid": "13"
+                }, {
+                    "id": "17",
+                    "text": "13g protein",
+                    "parentid": "13"
+                }, {
+                    "id": "14",
+                    "text": "Caffe Vanilla Frappuccino Light",
+                    "parentid": "12"
+                }];
+
+        var source =
+            {
+                datatype: "json",
+                datafields: [
+                    { name: 'id' },
+                    { name: 'parentid' },
+                    { name: 'text' },
+                    { name: 'subMenuWidth' }
+                ],
+                id: 'id',
+                localdata: data
+            };
+
+        var dataAdapter = new jqx.dataAdapter(source);
+
+        dataAdapter.dataBind();
+                // get the menu items. The first parameter is the item's id. The second parameter is the parent item's id. The 'items' parameter represents 
+                // the sub items collection name. Each jqxTree item has a 'label' property, but in the JSON data, we have a 'text' field. The last parameter 
+        var records = dataAdapter.getRecordsHierarchy('id', 'parentid', 'items', [{ name: 'text', map: 'label' }]);
+
+        JQXElements.settings['MenuSettings'] = 
+            {
+                source: records
+            };
+
+        window.onload = function() {
+            var myMenu = document.querySelector('jqx-menu');
+            var myLog = document.querySelector('#eventLog');
+
+            myMenu.addEventListener('itemclick', function(event) {
+                myLog.innerHTML = 'Id: ' + event.args.id + ', Text: ' + event.args.innerHTML;
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        In this demo the Custom element Menu is built from JSON data.
+    </div>
+
+    <jqx-menu settings='MenuSettings'></jqx-menu>
+
+    <div style="margin-top: 50px; font-size: 13px; font-family: Verdana;" id="eventLog"></div>
+</body>
+</html>

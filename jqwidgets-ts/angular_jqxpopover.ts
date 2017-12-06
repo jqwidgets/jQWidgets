@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.4.0 (2017-Oct)
+jQWidgets v5.5.0 (2017-Dec)
 Copyright (c) 2011-2017 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -16,23 +16,23 @@ declare let JQXLite: any;
 
 export class jqxPopoverComponent implements OnChanges
 {
-   @Input('arrowOffsetValue') attrArrowOffsetValue: Number;
-   @Input('animationOpenDelay') attrAnimationOpenDelay: String | Number;
-   @Input('animationCloseDelay') attrAnimationCloseDelay: String | Number;
-   @Input('autoClose') attrAutoClose: Boolean;
+   @Input('arrowOffsetValue') attrArrowOffsetValue: number;
+   @Input('animationOpenDelay') attrAnimationOpenDelay: number | string;
+   @Input('animationCloseDelay') attrAnimationCloseDelay: number | string;
+   @Input('autoClose') attrAutoClose: boolean;
    @Input('animationType') attrAnimationType: any;
    @Input('initContent') attrInitContent: () => void;
-   @Input('isModal') attrIsModal: Boolean;
+   @Input('isModal') attrIsModal: boolean;
    @Input('offset') attrOffset: any;
    @Input('position') attrPosition: any;
-   @Input('rtl') attrRtl: Boolean;
-   @Input('selector') attrSelector: String;
-   @Input('showArrow') attrShowArrow: Boolean;
-   @Input('showCloseButton') attrShowCloseButton: Boolean;
-   @Input('title') attrTitle: String | Number;
-   @Input('theme') attrTheme: String;
-   @Input('width') attrWidth: String | Number;
-   @Input('height') attrHeight: String | Number;
+   @Input('rtl') attrRtl: boolean;
+   @Input('selector') attrSelector: string;
+   @Input('showArrow') attrShowArrow: boolean;
+   @Input('showCloseButton') attrShowCloseButton: boolean;
+   @Input('title') attrTitle: string | number;
+   @Input('theme') attrTheme: string;
+   @Input('width') attrWidth: string | number;
+   @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
@@ -55,7 +55,7 @@ export class jqxPopoverComponent implements OnChanges
       if (this.host) {
          for (let i = 0; i < this.properties.length; i++) {
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-            let areEqual: boolean;
+            let areEqual: boolean = false;
 
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
@@ -155,7 +155,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   animationOpenDelay(arg?: String | Number) : any {
+   animationOpenDelay(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxPopover('animationOpenDelay', arg);
       } else {
@@ -163,7 +163,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   animationCloseDelay(arg?: String | Number) : any {
+   animationCloseDelay(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxPopover('animationCloseDelay', arg);
       } else {
@@ -187,7 +187,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   height(arg?: String | Number) : any {
+   height(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxPopover('height', arg);
       } else {
@@ -259,7 +259,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   width(arg?: String | Number) : any {
+   width(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxPopover('width', arg);
       } else {
@@ -267,7 +267,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   title(arg?: String | Number) : any {
+   title(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxPopover('title', arg);
       } else {
