@@ -10,7 +10,7 @@ interface JQueryStatic {
 }
 
 declare var generatedata: any;
-declare var jqx;
+declare var jqx: any;
 
 declare module jqwidgets {
     export function createInstance(selector: string, widgetName: string, params?: any): any;

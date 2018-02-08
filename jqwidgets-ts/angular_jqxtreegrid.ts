@@ -17,7 +17,7 @@ import '../jqwidgets/jqxnumberinput.js';
 import '../jqwidgets/jqxdropdownlist.js';
 import '../jqwidgets/jqxdatatable.js';
 import '../jqwidgets/jqxtreegrid.js';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
 @Component({
