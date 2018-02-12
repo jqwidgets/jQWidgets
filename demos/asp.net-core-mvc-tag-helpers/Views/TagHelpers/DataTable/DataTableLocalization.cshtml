@@ -1,3 +1,10 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxdatatable.js"></script>
+<script src="~/jqwidgets/jqxmenu.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
+
 @model IEnumerable<jQWidgets.AspNet.Core.Models.Employee>
 
 @{
@@ -64,15 +71,14 @@
         return localizationobj;
     }();
 </script>
-<label>ASP .NET Core MVC DataTable Localization Example</label><br/><br/>
-<jqx-datatable localization="{{localization}}" sortable=true pageable=true pagerMode="advanced" ready="datatableReady()" sourceId="@(employee.EmployeeID)" instance="getInstance()" theme="@ViewData["Theme"]" width="850" source="Model"> 
-    <jqx-datatable-columns>
-        <jqx-datatable-column dataField-for="@(employee.FirstName)" width="100" text="Vorname"></jqx-datatable-column>
-        <jqx-datatable-column dataField-for="@(employee.LastName)" width="100" text="Familienname"></jqx-datatable-column>
-        <jqx-datatable-column dataField-for="@(employee.Title)" text="Titel" width="150"></jqx-datatable-column>
-        <jqx-datatable-column dataField-for="@(employee.Address)" text="Adresse" width="200"></jqx-datatable-column>
-        <jqx-datatable-column dataField-for="@(employee.City)" text="Stadt" width="150"></jqx-datatable-column>
-        <jqx-datatable-column dataField-for="@(employee.Country)" text="Land"></jqx-datatable-column>
-    </jqx-datatable-columns>
-</jqx-datatable>
+<jqx-data-table localization="{{localization}}" sortable=true pageable=true pager-mode="advanced" ready="datatableReady()" source-id-for="@(employee.EmployeeID)" instance="getInstance()" theme="@ViewData["Theme"]" width="850" source="Model"> 
+    <jqx-data-table-columns>
+        <jqx-data-table-column datafield-for="@(employee.FirstName)" width="100" text="Vorname"></jqx-data-table-column>
+        <jqx-data-table-column datafield-for="@(employee.LastName)" width="100" text="Familienname"></jqx-data-table-column>
+        <jqx-data-table-column datafield-for="@(employee.Title)" text="Titel" width="150"></jqx-data-table-column>
+        <jqx-data-table-column datafield-for="@(employee.Address)" text="Adresse" width="200"></jqx-data-table-column>
+        <jqx-data-table-column datafield-for="@(employee.City)" text="Stadt" width="150"></jqx-data-table-column>
+        <jqx-data-table-column datafield-for="@(employee.Country)" text="Land"></jqx-data-table-column>
+    </jqx-data-table-columns>
+</jqx-data-table>
 

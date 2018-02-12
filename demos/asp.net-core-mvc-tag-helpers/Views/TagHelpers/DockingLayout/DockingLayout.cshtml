@@ -1,3 +1,12 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxpanel.js"></script>
+<script src="~/jqwidgets/jqxribbon.js"></script>
+<script src="~/jqwidgets/jqxlayout.js"></script>
+<script src="~/jqwidgets/jqxtree.js"></script>
+<script src="~/jqwidgets/jqxwindow.js"></script>
+<script src="~/jqwidgets/jqxdockinglayout.js"></script>
+
 @model IEnumerable<jQWidgets.AspNet.Core.Models.TreeItem>
 @using jQWidgets.AspNetCore.Mvc.TagHelpers
 
@@ -18,7 +27,7 @@
                   Type = LayoutItemType.AutoHideGroup,
                   Alignment = Alignment.Left,
                   Width = "80",
-                  UnpinnedWidth = "200",
+                  Unpinned-width = "200",
                   Items = new List<LayoutItem>()
                   {
                       new LayoutItem()
@@ -135,10 +144,9 @@
     }
 
 </script>
-<label>ASP .NET Core MVC Docking Layout Example</label><br/><br/>
-<jqx-dockinglayout width="800" height="600" layout="@layout" theme="@ViewData["Theme"]">
+<jqx-docking-layout width="800" height="600" layout="@layout" theme="@ViewData["Theme"]">
     <!--The panel content divs can have a flat structure-->
-    <!--autoHideGroup-->
+    <!--auto-hideGroup-->
     <div data-container="ToolboxPanel">
         List of tools
     </div>
@@ -158,7 +166,7 @@
     </div>
     <!--right tabbedGroup-->
     <div data-container="SolutionExplorerPanel">
-        <jqx-tree initInstance="false" theme="@ViewData["Theme"]" id="solutionExplorerTree" width="190" itemsMember="Items" displayMember="Label" source="Model" style="border: none;">
+        <jqx-tree initInstance="false" theme="@ViewData["Theme"]" id="solutionExplorerTree" width="190" itemsMember="Items" display-member="Label" source="Model" style="border: none;">
         </jqx-tree>
     </div>
     <div data-container="PropertiesPanel">
@@ -210,4 +218,4 @@
             </ul>
         </div>
     </div>
-</jqx-dockinglayout>
+</jqx-docking-layout>

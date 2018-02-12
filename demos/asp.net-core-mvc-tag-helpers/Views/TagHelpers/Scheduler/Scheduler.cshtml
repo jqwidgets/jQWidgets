@@ -1,10 +1,76 @@
+<script src="~/jqwidgets/jqxdate.js"></script>
+<script src="~/jqwidgets/jqxcalendar.js"></script>
+<script src="~/jqwidgets/jqxdatetimeinput.js"></script>
+<script src="~/jqwidgets/globalization/globalize.js"></script>
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
+<script src="~/jqwidgets/jqxwindow.js"></script>
+<script src="~/jqwidgets/jqxpasswordinput.js"></script>
+<script src="~/jqwidgets/jqxinput.js"></script>
+<script src="~/jqwidgets/jqxradiobutton.js"></script>
+<script src="~/jqwidgets/jqxcheckbox.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxscheduler.js"></script>
+<script src="~/jqwidgets/jqxscheduler.api.js"></script>
+<script src="~/jqwidgets/jqxnumberinput.js"></script>
+
 @model jQWidgets.AspNet.Core.Models.jQWidgetsDemosContext
 @using jQWidgets.AspNetCore.Mvc.TagHelpers;
 @{
     ViewData["Title"] = "ASP .NET MVC Scheduler Example";
 }
-<label>ASP .NET Core MVC Scheduler Tag Helper Example</label><br/><br/>
-<jqx-scheduler source="Model.Appointments" showLegend="true" view="WeekView" resources="Model.Resources" appointmentDataFields="Model.AppointmentDataFields" theme="@ViewData["Theme"]"  date="Model.Date" width="850" height="600">
+@section scripts {
+    <script type="text/javascript">
+    function contextMenuItemClick() {
+
+    }
+
+    function contextMenuOpen() {
+
+    }
+
+    function contextMenuClose() {
+
+    }
+
+    function contextMenuCreate() {
+
+    }
+
+    function editDialogOpen() {
+
+    }
+
+    function editDialogClose() {
+
+    }
+
+    function editDialogCreate() {
+
+    }
+
+    function editDialogKeyDown() {
+
+    }
+
+    function renderAppointment(data) {
+        data.style = "#447F6E";
+        return data;
+    }
+
+    function rendering() {
+
+
+    }
+
+    function rendered() {
+
+
+    }
+    </script>
+}
+<jqx-scheduler source="Model.Appointments" render-appointment="renderAppointment()" show-legend="true" view="WeekView" resources="Model.Resources" appointment-data-fields="Model.AppointmentDataFields" theme="@ViewData["Theme"]"  date="Model.Date" width="850" height="600">
     <jqx-scheduler-views>
         <jqx-scheduler-view type="DayView"></jqx-scheduler-view>
         <jqx-scheduler-view type="WeekView"></jqx-scheduler-view>

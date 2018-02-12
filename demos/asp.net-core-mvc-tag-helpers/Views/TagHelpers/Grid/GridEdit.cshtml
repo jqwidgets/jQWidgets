@@ -1,3 +1,17 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxgrid.js"></script>
+<script src="~/jqwidgets/jqxgrid.edit.js"></script>
+<script src="~/jqwidgets/jqxgrid.columnsresize.js"></script>
+<script src="~/jqwidgets/jqxgrid.filter.js"></script>
+<script src="~/jqwidgets/jqxgrid.selection.js"></script>
+<script src="~/jqwidgets/jqxgrid.sort.js"></script>
+<script src="~/jqwidgets/jqxgrid.pager.js"></script>
+<script src="~/jqwidgets/jqxgrid.aggregates.js"></script>
+<script src="~/jqwidgets/jqxgrid.grouping.js"></script>
+<script src="~/jqwidgets/jqxmenu.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
 @model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
 @using jQWidgets.AspNetCore.Mvc.TagHelpers;
 @{
@@ -6,8 +20,7 @@
 @{
     var employee = Model.FirstOrDefault();
 }
-<label>ASP .NET Core MVC Grid Edit Example</label><br/><br/>
-<jqx-grid id="grid" altrows="true" pageable="true" autoheight="true" editmode="selectedrow" sourceId-for="@employee.ID" instance="gridInstance()" theme="@ViewData["Theme"]" create="@Url.Action("Add","TagHelpers")" delete="@Url.Action("Delete","TagHelpers")" edit="@Url.Action("Edit","TagHelpers")" sortable="true" width="600" source="Model"> 
+<jqx-grid id="grid" alt-rows="true" pageable="true" auto-height="true" editmode="selectedrow" sourceId-for="@employee.ID" instance="gridInstance()" theme="@ViewData["Theme"]" create="@Url.Action("Add","TagHelpers")" delete="@Url.Action("Delete","TagHelpers")" edit="@Url.Action("Edit","TagHelpers")" sortable="true" width="600" source="Model"> 
     <jqx-grid-columns>
         <jqx-grid-column datafield-for="@(employee.ID)" width="25%" text="ID"></jqx-grid-column>
         <jqx-grid-column datafield-for="@(employee.FirstName)" width="25%" text="First Name"></jqx-grid-column>

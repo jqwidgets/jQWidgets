@@ -1,3 +1,6 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+
 @using jQWidgets.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -17,7 +20,6 @@
         $("#log").html("Horizontal (" + parseInt(event.currentValue) + ")");
     }
 </script>
-<label>ASP .NET Core MVC ScrollBar Tag Helper Example</label><br/><br/>
-<jqx-scrollbar on-valueChanged="valueChanged()" settings="settings" ></jqx-scrollbar>
+<jqx-scroll-bar on-valueChanged="valueChanged()" settings="settings" ></jqx-scroll-bar>
 <br /><br />
 <div id="log"></div>

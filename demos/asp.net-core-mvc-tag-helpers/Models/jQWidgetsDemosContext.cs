@@ -13,13 +13,44 @@ namespace jQWidgets.AspNet.Core.Models
         QuarterYear = 2,
         Month = 3
     }
-
+    public class PivotDataRow
+    {
+        public string Country
+        {
+            get; set;
+        }
+        public string Value
+        {
+            get; set;
+        }
+    }
     public class jQWidgetsDemosContext : DbContext
     {
         private static bool _created = false;
         private List<Models.SalesEmployee> salesEmployees = new List<Models.SalesEmployee>();
         private List<Models.Employee> employees = new List<Models.Employee>();
         private List<Models.Appointment> appointments = new List<Appointment>();
+        private List<string> countries = new List<string>()
+        {
+           "Germany", "France", "United States", "Italy", "Spain", "Finland", "Canada", "Japan", "Brazil", "United Kingdom", "China", "India", "South Korea", "Romania", "Greece"
+        };
+        private List<string> dataPoints = new List<string>()
+        {
+            "2.25", "1.5", "3.0", "3.3", "4.5", "3.6", "3.8", "2.5", "5.0", "1.75", "3.25", "4.0"
+        };
+
+
+
+        private List<PivotDataRow> dataRows = new List<PivotDataRow>();
+
+        public List<PivotDataRow> PivotDataRows
+        {
+            get
+            {
+                return this.dataRows;
+            }
+        }
+
         private List<string> carFeatures = new List<string>()
         {
             "Parking Sensonrs",
@@ -179,6 +210,17 @@ namespace jQWidgets.AspNet.Core.Models
             this.StockData = new List<Models.StockPrice>();
             int counter = 0;
             StockPrice currentItem = new Models.StockPrice();
+
+            for (int i = 0; i < 2*this.countries.Count; i++)
+            {
+                PivotDataRow row = new PivotDataRow();
+
+                row.Country = this.countries[i % countries.Count];
+                row.Value = this.dataPoints[(new Random(100).Next() % dataPoints.Count)];
+
+                this.dataRows.Add(row);
+            }
+
             for (int i = 0; i < dataItems.Length; i++)
             {
                 switch (counter)
@@ -386,7 +428,7 @@ namespace jQWidgets.AspNet.Core.Models
                 var price = float.Parse(priceValues[random.Next(0, priceValues.Count)]);
                 var quantity = 1 + random.Next(0, 20);
 
-                row.ID = i.ToString();
+                row.ID = 1 + random.Next(0, 20) + 1 + "-" + random.Next(0, 20) + 1 + "-" + random.Next(0, 20) + "";// i.ToString();
                 row.ReportsTo = random.Next(0, firstNames.Count);
                 if (i > 5 && i % random.Next(1, firstNames.Count) == 0)
                 {

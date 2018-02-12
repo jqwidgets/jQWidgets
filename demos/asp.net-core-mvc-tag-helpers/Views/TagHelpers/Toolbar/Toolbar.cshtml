@@ -1,3 +1,12 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxinput.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
+<script src="~/jqwidgets/jqxcombobox.js"></script>
+<script src="~/jqwidgets/jqxtoolbar.js"></script>
+
+
 @using jQWidgets.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -63,5 +72,4 @@
         }
     }
 </script>
-<label>ASP .NET Core MVC Toolbar Tag Helper Example</label><br/><br/>
-<jqx-toolbar id="toolbar" theme="@ViewData["theme"]" initTools="initTools()" tools="toggleButton toggleButton toggleButton | toggleButton | dropdownlist combobox | input | custom" width="800" height="35"></jqx-toolbar>
+<jqx-tool-bar id="toolbar" theme="@ViewData["theme"]" initTools="initTools()" tools="toggleButton toggleButton toggleButton | toggleButton | dropdownlist combobox | input | custom" width="800" height="35"></jqx-tool-bar>

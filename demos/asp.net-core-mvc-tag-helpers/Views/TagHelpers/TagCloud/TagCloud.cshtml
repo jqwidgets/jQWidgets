@@ -1,0 +1,10 @@
+<script src="~/jqwidgets/jqxtagcloud.js"></script>
+
+
+@model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC TagCloud Example";
+}
+<div class="example-description">ASP .NET MVC TagCloud Example</div><br />
+<jqx-tag-cloud display-member="Name" value-member="Price" theme="@ViewData["Theme"]" width="850" height="30" source="Model"></jqx-tag-cloud>

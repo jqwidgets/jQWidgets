@@ -1,3 +1,8 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxinput.js"></script>
+
 @model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
 
 @{
@@ -6,8 +11,7 @@
 @{
     var employee = Model.FirstOrDefault();
 }
-<label>ASP .NET Core MVC List Box Tag Helper Example</label><br/><br/>
-<jqx-listbox displayMember="Name" selectedIndex="0" edit="@Url.Action("EditItem","TagHelpers")" create="@Url.Action("AddItem","TagHelpers")" delete="@Url.Action("DeleteItem","TagHelpers")" instance="listInstance()" valueMember="ID" theme="@ViewData["Theme"]" width="250" height="300" source="Model"></jqx-listbox>
+<jqx-list-box display-member="Name" selected-index="0" edit="@Url.Action("EditItem","TagHelpers")" create="@Url.Action("AddItem","TagHelpers")" delete="@Url.Action("DeleteItem","TagHelpers")" instance="listInstance()" value-member="ID" theme="@ViewData["Theme"]" width="250" height="300" source="Model"></jqx-list-box>
 <div style="margin-top:30px;">
     <label>Add/Delete/Update</label>
     <table>

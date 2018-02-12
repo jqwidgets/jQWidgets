@@ -1,12 +1,16 @@
+<script src="~/jqwidgets/jqxcalendar.js"></script>
+<script src="~/jqwidgets/jqxdatetimeinput.js"></script>
+<script src="~/jqwidgets/globalization/globalize.js"></script>
+
 @{
     ViewData["Title"] = "ASP .NET MVC DateTimeInput Example";
 }
 <label>Date Input</label>
 
-<jqx-datetimeinput theme="@ViewData["Theme"]" width="300" height="25" ></jqx-datetimeinput>
+<jqx-date-time-input theme="@ViewData["Theme"]" width="300" height="25" ></jqx-date-time-input>
 <br /><label>Time Input</label>
 
-<jqx-datetimeinput formatString="T" showTimeButton="true" theme="@ViewData["Theme"]" width="300" height="25"></jqx-datetimeinput>
+<jqx-date-time-input format-string="T" show-time-button="true" theme="@ViewData["Theme"]" width="300" height="25"></jqx-date-time-input>
 <br /><label>Date/Time Input</label>
 
-<jqx-datetimeinput formatString="F" showTimeButton="true" theme="@ViewData["Theme"]" width="300" height="25"></jqx-datetimeinput>
+<jqx-date-time-input format-string="F" show-time-button="true" theme="@ViewData["Theme"]" width="300" height="25"></jqx-date-time-input>

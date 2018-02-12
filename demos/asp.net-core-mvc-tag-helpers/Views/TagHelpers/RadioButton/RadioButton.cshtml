@@ -1,3 +1,5 @@
+<script src="~/jqwidgets/jqxradiobutton.js"></script>
+
 @model jQWidgetsDemosContext
 @using jQWidgets.AspNet.Core.Models;
 @{
@@ -24,8 +26,8 @@
         month = true;
     }
 }
-<label>ASP .NET Core MVC Radio Button Tag Helper Example</label><br/><br/>
-<jqx-radiobutton width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("Year", "TagHelpers")" checked="year">12 Months Contract</jqx-radiobutton>
-<jqx-radiobutton width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("HalfYear", "TagHelpers")" checked="halfYear">6 Months Contract</jqx-radiobutton>
-<jqx-radiobutton width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("QuarterYear", "TagHelpers")" checked="quarterYear">3 Months Contract</jqx-radiobutton>
-<jqx-radiobutton width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("Month", "TagHelpers")" checked="month">1 Month Contract</jqx-radiobutton>
+
+<jqx-radio-button width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("Year", "TagHelpers")" checked="year">12 Months Contract</jqx-radio-button>
+<jqx-radio-button width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("HalfYear", "TagHelpers")" checked="halfYear">6 Months Contract</jqx-radio-button>
+<jqx-radio-button width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("QuarterYear", "TagHelpers")" checked="quarterYear">3 Months Contract</jqx-radio-button>
+<jqx-radio-button width="200" height="30" theme="@ViewData["Theme"]" on-checked="@Url.Action("Month", "TagHelpers")" checked="month">1 Month Contract</jqx-radio-button>

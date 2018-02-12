@@ -1,10 +1,30 @@
+<script src="~/jqwidgets/jqxdate.js"></script>
+<script src="~/jqwidgets/jqxcalendar.js"></script>
+<script src="~/jqwidgets/jqxdatetimeinput.js"></script>
+<script src="~/jqwidgets/globalization/globalize.js"></script>
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
+<script src="~/jqwidgets/jqxwindow.js"></script>
+<script src="~/jqwidgets/jqxpasswordinput.js"></script>
+<script src="~/jqwidgets/jqxinput.js"></script>
+<script src="~/jqwidgets/jqxradiobutton.js"></script>
+<script src="~/jqwidgets/jqxcheckbox.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxscheduler.js"></script>
+<script src="~/jqwidgets/jqxscheduler.api.js"></script>
+<script src="~/jqwidgets/jqxnumberinput.js"></script>
+
+
 @model jQWidgets.AspNet.Core.Models.jQWidgetsDemosContext
 @using jQWidgets.AspNetCore.Mvc.TagHelpers;
 @{
     ViewData["Title"] = "ASP .NET MVC Scheduler TimelineViews Example";
 }
-<label>ASP .NET Core MVC Scheduler TimelineViews Example</label><br/><br/>
-<jqx-scheduler source="Model.Appointments" showLegend="true" view="TimelineWeekView" resources="Model.Resources" appointmentDataFields="Model.AppointmentDataFields" theme="@ViewData["Theme"]"  date="Model.Date" width="850" height="600">
+<script>
+
+</script>
+<jqx-scheduler source="Model.Appointments" show-legend="true" view="TimelineWeekView" resources="Model.Resources" appointment-data-fields="Model.AppointmentDataFields" theme="@ViewData["Theme"]"  date="Model.Date" width="850" height="600">
     <jqx-scheduler-views>
         <jqx-scheduler-view type="TimelineDayView"></jqx-scheduler-view>
         <jqx-scheduler-view type="TimelineWeekView"></jqx-scheduler-view>

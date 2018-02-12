@@ -1,3 +1,9 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxdatatable.js"></script>
+<script src="~/jqwidgets/jqxmenu.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
 @model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
 @using jQWidgets.AspNetCore.Mvc.TagHelpers;
 @{
@@ -40,22 +46,22 @@
             grid.jqxDataTable({
                 source: nestedGridAdapter, width: 780, height: 200,
                 columns: [
-                  { text: 'Order Date', cellsformat:'d', dataField: 'OrderDate', width: 200 },
-                  { text: 'Quantity', cellsalign:'right', dataField: 'Quantity', width: 200 },
+                  { text: 'Order Date', cellsFormat:'d', dataField: 'OrderDate', width: 200 },
+                  { text: 'Quantity', cellsAlign:'right', dataField: 'Quantity', width: 200 },
                   { text: 'Product Name', dataField: 'ProductName' }
                 ]
             });
         }
     }
 </script>
-<label>ASP .NET Core MVC DataTable Row Details Example</label><br/><br/>
-<jqx-datatable id="grid" altRows="true" rowDetails="true" pageable="true" initRowDetails="initRowDetails()" sourceId="@(employee.ID)" theme="@ViewData["Theme"]" sortable="true" width="790" source="Model">
-    <jqx-datatable-columns>
-        <jqx-datatable-column dataField-for="@(employee.FirstName)" width="150" text="First Name"></jqx-datatable-column>
-        <jqx-datatable-column dataField-for="@(employee.LastName)" width="150" text="Last Name"></jqx-datatable-column>
-        <jqx-datatable-column dataField-for="@(employee.ProductName)" width="200" text="Product Name"></jqx-datatable-column>
-        <jqx-datatable-column dataField-for="@(employee.Price)" width="100" text="Price" cellsformat="c2" cellsalign="HorizontalAlignment.Right"></jqx-datatable-column>
-        <jqx-datatable-column dataField-for="@(employee.Quantity)" width="100" text="Quantity" cellsalign="HorizontalAlignment.Right"></jqx-datatable-column>
-        <jqx-datatable-column dataField-for="@(employee.Total)" text="Total" cellsformat="c2" cellsalign="HorizontalAlignment.Right"></jqx-datatable-column>
- </jqx-datatable-columns>
-</jqx-datatable>
+
+<jqx-data-table id="grid" alt-rows="true" row-details="true" pageable="true" init-row-details="initRowDetails()" source-id="@(employee.ID)" theme="@ViewData["Theme"]" sortable="true" width="790" source="Model">
+    <jqx-data-table-columns>
+        <jqx-data-table-column dataField-for="@(employee.FirstName)" width="150" text="First Name"></jqx-data-table-column>
+        <jqx-data-table-column dataField-for="@(employee.LastName)" width="150" text="Last Name"></jqx-data-table-column>
+        <jqx-data-table-column dataField-for="@(employee.ProductName)" width="200" text="Product Name"></jqx-data-table-column>
+        <jqx-data-table-column dataField-for="@(employee.Price)" width="100" text="Price" cells-format="c2" cells-align="HorizontalAlignment.Right"></jqx-data-table-column>
+        <jqx-data-table-column dataField-for="@(employee.Quantity)" width="100" text="Quantity" cells-align="HorizontalAlignment.Right"></jqx-data-table-column>
+        <jqx-data-table-column dataField-for="@(employee.Total)" text="Total" cells-format="c2" cells-align="HorizontalAlignment.Right"></jqx-data-table-column>
+ </jqx-data-table-columns>
+</jqx-data-table>

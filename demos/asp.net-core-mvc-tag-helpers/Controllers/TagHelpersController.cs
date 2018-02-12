@@ -94,7 +94,7 @@ namespace jQWidgets.AspNet.Core.Controllers
             List<JToken> filterGroups = token.SelectToken("filterGroups").Children().ToList();
             int pageSize = (int)token.SelectToken("pagesize");
             int pageNum = (int)token.SelectToken("pagenum");
-            string sortField = (string)token.SelectToken("sortdatafield");
+            string sortField = (string)token.SelectToken("sortdataField");
             string sortOrder = (string)token.SelectToken("sortorder");
             int count = 0;
             List<SalesEmployee> employees = new List<SalesEmployee>();
@@ -521,6 +521,18 @@ namespace jQWidgets.AspNet.Core.Controllers
             ViewData["Theme"] = theme;
             return View("ComplexInput/ComplexInput", _context);
         }
+        // DockPanel
+        public ActionResult DockPanel(string theme)
+        {
+            ViewData["Theme"] = theme;
+            return View("DockPanel/DockPanel", _context);
+        }   
+        // DragDrop
+        public ActionResult DragDrop(string theme)
+        {
+            ViewData["Theme"] = theme;
+            return View("DragDrop/DragDrop", _context);
+        }
         // DataTable
         public ActionResult DataTable(string theme)
         {
@@ -570,12 +582,20 @@ namespace jQWidgets.AspNet.Core.Controllers
             ViewData["Theme"] = theme;
             return View("DockingLayout/DockingLayout", _context.TreeData);
         }
+        // DropDownButton
+        public ActionResult DropDownButton(string theme)
+        {
+            ViewData["Theme"] = theme;
+            return View("DropDownButton/DropDownButton", _context);
+        }
+
         // DropDownList
         public ActionResult DropDownList(string theme)
         {
             ViewData["Theme"] = theme;
             return View("DropDownList/DropDownList", _context.SalesEmployees);
         }
+
         // Editor
         public ActionResult Editor(string theme)
         {
@@ -611,6 +631,11 @@ namespace jQWidgets.AspNet.Core.Controllers
         {
             ViewData["Theme"] = theme;
             return View("Grid/Grid", _context.Employee.ToList());
+        }
+        public ActionResult PivotGrid(string theme)
+        {
+            ViewData["Theme"] = theme;
+            return View("PivotGrid/PivotGrid", _context.PivotDataRows.ToList());
         }
         public ActionResult GridAggregates(string theme)
         {
@@ -892,6 +917,13 @@ namespace jQWidgets.AspNet.Core.Controllers
         {
             ViewData["Theme"] = theme;
             return View("Tree/TreeHtmlStructure", _context);
+        }
+
+        // Tag Cloud
+        public ActionResult TagCloud(string theme)
+        {
+            ViewData["Theme"] = theme;
+            return View("TagCloud/TagCloud", _context.SalesEmployees.ToList());
         }
 
         // Tree Grid

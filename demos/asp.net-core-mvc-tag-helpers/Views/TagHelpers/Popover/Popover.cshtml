@@ -1,3 +1,6 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxpopover.js"></script>
+
 @using jQWidgets.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -13,7 +16,6 @@
         new KeyValuePair<string, object>("theme", ViewData["Theme"])
     };
 }
-<label>ASP .NET Core MVC PopOver Tag Helper Example</label><br/><br/>
 <div class="jqx-widget-header" style="height: 33px; border-width: 1px; border-style: solid; padding:10px;" id="header">
     <jqx-button style="float: right; margin-right: 10px; padding: 8px 12px; border-radius: 6px;" theme="@ViewData["Theme"]" template="inverse">View Employees</jqx-button>
 </div>

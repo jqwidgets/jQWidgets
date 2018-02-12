@@ -1,3 +1,9 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxinput.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxcombobox.js"></script>
+
 @model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
 
 @{
@@ -6,8 +12,7 @@
 @{
     var employee = Model.FirstOrDefault();
 }
-<label>ASP .NET Core MVC ComboBox Example</label><br/><br/>
-<jqx-combobox for="@employee.Name" value-for="@employee.ID" selectedIndex="0" edit="@Url.Action("EditItem","TagHelpers")" create="@Url.Action("AddItem","TagHelpers")" delete="@Url.Action("DeleteItem","TagHelpers")" instance="listInstance()" theme="@ViewData["Theme"]" width="250" height="30" source="Model"></jqx-combobox>
+<jqx-combo-box for="@employee.Name" value-for="@employee.ID" selected-index="0" edit="@Url.Action("EditItem","TagHelpers")" create="@Url.Action("AddItem","TagHelpers")" delete="@Url.Action("DeleteItem","TagHelpers")" instance="listInstance()" theme="@ViewData["Theme"]" width="250" height="30" source="Model"></jqx-combo-box>
 <div style="margin-top:30px;">
     <label>Add/Delete/Update</label>
     <table>

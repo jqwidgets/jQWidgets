@@ -13,7 +13,6 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
     </environment>
-    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 
     <environment names="Development, Production">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -43,17 +42,92 @@
         <link href="~/jqwidgets/styles/jqx.ui-sunny.css" rel="stylesheet" />
         <link href="~/jqwidgets/styles/jqx.ui-start.css" rel="stylesheet" />
 
-        <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
-
-        <script src="~/jqwidgets/jqx-all.js"></script>
-     
+    
+        <script src="~/jqwidgets/jqxcore.js"></script>
+        <script src="~/jqwidgets/jqxdata.js"></script>
+        <script src="~/jqwidgets/jqxdraw.js"></script>
+     @*<script src="~/jqwidgets/jqxcomplexinput.js"></script>
+        <script src="~/jqwidgets/jqxformattedinput.js"></script>
+        <script src="~/jqwidgets/jqxinput.js"></script>
+        <script src="~/jqwidgets/jqxtextarea.js"></script>
+        <script src="~/jqwidgets/jqxdate.js"></script>
+        <script src="~/jqwidgets/jqxbuttons.js"></script>
+        <script src="~/jqwidgets/jqxbulletchart.js"></script>
+        <script src="~/jqwidgets/jqxtooltip.js"></script>
+        <script src="~/jqwidgets/jqxprogressbar.js"></script>
+        <script src="~/jqwidgets/jqxrating.js"></script>
+        <script src="~/jqwidgets/jqxvalidator.js"></script>
+        <script src="~/jqwidgets/jqxsplitter.js"></script>
+        <script src="~/jqwidgets/jqxtoolbar.js"></script>
+        <script src="~/jqwidgets/jqxscrollbar.js"></script>
+        <script src="~/jqwidgets/jqxslider.js"></script>
+        <script src="~/jqwidgets/jqxscrollview.js"></script>
+        <script src="~/jqwidgets/jqxlistbox.js"></script>
+        <script src="~/jqwidgets/jqxlistmenu.js"></script>
+        <script src="~/jqwidgets/jqxdropdownlist.js"></script>
+        <script src="~/jqwidgets/jqxcolorpicker.js"></script>
+        <script src="~/jqwidgets/jqxcombobox.js"></script>
+        <script src="~/jqwidgets/jqxsortable.js"></script>
+        <script src="~/jqwidgets/jqxkanban.js"></script>
+        <script src="~/jqwidgets/jqxnumberinput.js"></script>
+        <script src="~/jqwidgets/jqxfileupload.js"></script>
+        <script src="~/jqwidgets/jqxeditor.js"></script>
+        <script src="~/jqwidgets/jqxgrid.js"></script>
+        <script src="~/jqwidgets/jqxgrid.filter.js"></script>
+        <script src="~/jqwidgets/jqxgrid.pager.js"></script>
+        <script src="~/jqwidgets/jqxgrid.edit.js"></script>
+        <script src="~/jqwidgets/jqxgrid.aggregates.js"></script>
+        <script src="~/jqwidgets/jqxgrid.selection.js"></script>
+        <script src="~/jqwidgets/jqxgrid.sort.js"></script>
+        <script src="~/jqwidgets/jqxgrid.grouping.js"></script>
+        <script src="~/jqwidgets/jqxdata.export.js"></script>
+        <script src="~/jqwidgets/jqxgrid.export.js"></script>
+        <script src="~/jqwidgets/jqxswitchbutton.js"></script>
+        <script src="~/jqwidgets/jqxbuttongroup.js"></script>
+        <script src="~/jqwidgets/jqxdropdownbutton.js"></script>
+        <script src="~/jqwidgets/jqxtabs.js"></script>
+        <script src="~/jqwidgets/jqxribbon.js"></script>
         <script src="~/jqwidgets/globalization/globalize.js"></script>
-		<style>
-			.container {
-				margin: 0px;
-				margin-top:30px;
-			}
-		</style>
+        <script src="~/jqwidgets/jqxcalendar.js"></script>
+        <script src="~/jqwidgets/jqxcheckbox.js"></script>
+        <script src="~/jqwidgets/jqxdocking.js"></script>
+        <script src="~/jqwidgets/jqxpanel.js"></script>
+        <script src="~/jqwidgets/jqxlayout.js"></script>
+        <script src="~/jqwidgets/jqxdockinglayout.js"></script>
+        <script src="~/jqwidgets/jqxradiobutton.js"></script>
+        <script src="~/jqwidgets/jqxwindow.js"></script>
+        <script src="~/jqwidgets/jqxdatetimeinput.js"></script>
+        <script src="~/jqwidgets/jqxscheduler.js"></script>
+        <script src="~/jqwidgets/jqxscheduler.api.js"></script>
+        <script src="~/jqwidgets/jqxgrid.filter.js"></script>
+        <script src="~/jqwidgets/jqxmenu.js"></script>
+        <script src="~/jqwidgets/jqxdatatable.js"></script>
+        <script src="~/jqwidgets/jqxtreegrid.js"></script>
+        <script src="~/jqwidgets/jqxexpander.js"></script>
+        <script src="~/jqwidgets/jqxnavigationbar.js"></script>
+        <script src="~/jqwidgets/jqxdate.js"></script>
+        <script src="~/jqwidgets/jqxscheduler.js"></script>
+        <script src="~/jqwidgets/jqxscheduler.api.js"></script>
+        <script src="~/jqwidgets/jqxtreemap.js"></script>
+        <script src="~/jqwidgets/jqxtree.js"></script>
+        <script src="~/jqwidgets/jqxgauge.js"></script>
+        <script src="~/jqwidgets/jqxbargauge.js"></script>
+        <script src="~/jqwidgets/jqxgauge.js"></script>
+        <script src="~/jqwidgets/jqxchart.core.js"></script>
+        <script src="~/jqwidgets/jqxchart.api.js"></script>
+        <script src="~/jqwidgets/jqxchart.rangeselector.js"></script>
+        <script src="~/jqwidgets/jqxmaskedinput.js"></script>
+        <script src="~/jqwidgets/jqxpasswordinput.js"></script>
+        <script src="~/jqwidgets/jqxrangeselector.js"></script>
+        <script src="~/jqwidgets/jqxknob.js"></script>
+        <script src="~/jqwidgets/jqxnotification.js"></script>
+        <script src="~/jqwidgets/jqxpopover.js"></script>*@
+        <style>
+            .container {
+                margin: 0px;
+                margin-top: 30px;
+            }
+        </style>
 
     </environment>
 </head>

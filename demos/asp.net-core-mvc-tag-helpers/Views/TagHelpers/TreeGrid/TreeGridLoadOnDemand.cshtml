@@ -1,3 +1,10 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
+<script src="~/jqwidgets/jqxdatatable.js"></script>
+<script src="~/jqwidgets/jqxtreegrid.js"></script>
+
 @model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
 
 @{
@@ -46,12 +53,11 @@
         }
     }
 </script>
-<label>ASP .NET Core MVC TreeGrid Load On Demand Example</label><br/><br/>
-<jqx-treegrid pageable="true" virtualModeCreateRecords="virtualModeCreateRecords()" virtualModeRecordCreating="virtualModeRecordCreating()" theme="@ViewData["Theme"]" width="600"> 
-    <jqx-treegrid-columns>
-        <jqx-treegrid-column dataField-for="@(employee.FirstName)" width="200" text="First Name"></jqx-treegrid-column>
-        <jqx-treegrid-column dataField-for="@(employee.LastName)" width="200" text="Last Name"></jqx-treegrid-column>
-        <jqx-treegrid-column dataField-for="@(employee.ProductName)" width="200"></jqx-treegrid-column>
-    </jqx-treegrid-columns>
-</jqx-treegrid>
+<jqx-tree-grid pageable="true" virtual-mode-create-records="virtualModeCreateRecords()" virtual-mode-record-creating="virtualModeRecordCreating()" theme="@ViewData["Theme"]" width="600"> 
+    <jqx-tree-grid-columns>
+        <jqx-tree-grid-column dataField-for="@(employee.FirstName)" width="200" text="First Name"></jqx-tree-grid-column>
+        <jqx-tree-grid-column dataField-for="@(employee.LastName)" width="200" text="Last Name"></jqx-tree-grid-column>
+        <jqx-tree-grid-column dataField-for="@(employee.ProductName)" width="200"></jqx-tree-grid-column>
+    </jqx-tree-grid-columns>
+</jqx-tree-grid>
 

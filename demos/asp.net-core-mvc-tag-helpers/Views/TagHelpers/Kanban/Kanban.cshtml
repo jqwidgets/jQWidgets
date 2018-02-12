@@ -1,26 +1,47 @@
+<script src="~/jqwidgets/jqxkanban.js"></script>
+<script src="~/jqwidgets/jqxsortable.js"></script>
+
 @model jQWidgets.AspNet.Core.Models.jQWidgetsDemosContext
 @using jQWidgets.AspNetCore.Mvc.TagHelpers
 
 @{
-    ViewData["Title"] = "ASP .NET MVC Kanban Example";
-    Dictionary<string, string> mappings = new Dictionary<string, string>();
-    mappings["Id"] = "id";
-    mappings["State"] = "status";
-    mappings["Text"] = "label";
-    mappings["Label"] = "label";
-    mappings["Tags"] = "tags";
-    mappings["Hex"] = "color";
-    mappings["ResourceId"] = "resourceId";
-    mappings["Name"] = "name";
-    mappings["Image"] = "image";
+        ViewData["Title"] = "ASP .NET MVC Kanban Example";
+        Dictionary<string, string> mappings = new Dictionary<string, string>();
+        mappings["Id"] = "id";
+        mappings["State"] = "status";
+        mappings["Text"] = "label";
+        mappings["Label"] = "label";
+        mappings["Tags"] = "tags";
+        mappings["Hex"] = "color";
+        mappings["ResourceId"] = "resourceId";
+        mappings["Name"] = "name";
+        mappings["Image"] = "image";
+
+        string template = "<div class='jqx-kanban-item' id=''>"
+                    + "<div class='jqx-kanban-item-color-status'></div>"
+                    + "<div style='display: none;' class='jqx-kanban-item-avatar'></div>"
+                    + "<div class='jqx-icon jqx-icon-close-white jqx-kanban-item-template-content jqx-kanban-template-icon'></div>"
+                    + "<div class='jqx-kanban-item-text'></div>"
+                    + "<div style='display: none;' class='jqx-kanban-item-footer'></div>";
+        string templateContent = "{ status: \"new\", text: \"New text\", content: \"New content\", tags: \"New, taggs\", color: \"green\", resourceId: 0, className: \"\"}";
 }
 
 <script>
+    function ready() {
 
-
+    }
+    function itemRenderer(element, item, resource)
+    {
+        var elements = document.getElementsByClassName('.jqx-kanban-item-color-status');
+        for(var element in elements) {
+            elements[element].innerHTML = "<span style='line-height: 23px; margin-left: 5px; color:white;'>" + resource.name + "</span>";
+        }
+    }
+    function columnRenderer(element, collapsedElement, column) {
+    }
 </script>
-<label>ASP .NET Core MVC Kanban Tag Helper Example</label><br/><br/>
-<jqx-kanban mappings="mappings" resources="Model.KanbanResources" source="Model.KanbanDataItems" width="850">
+
+<jqx-kanban ready="ready()" item-renderer="itemRenderer()" column-renderer="columnRenderer()" mappings="mappings" resources="Model.KanbanResources" source="Model.KanbanDataItems" width="850">
     <jqx-kanban-columns>
         <jqx-kanban-column text="Backlog" dataField="New"></jqx-kanban-column>
         <jqx-kanban-column text="In Progress" dataField="Work"></jqx-kanban-column>

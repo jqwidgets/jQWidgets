@@ -1,8 +1,28 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
 
 @{
-    ViewData["Title"] = "ASP .NET MVC Button, ToggleButton and RepeatButton Example";
+    ViewData["Title"] = "ASP .NET MVC Button Example";
 }
-<label>ASP .NET MVC Button, ToggleButton and RepeatButton Example</label><br/><br/>
+<div class="example-description">ASP .NET MVC Buttons Example</div><br />
 <jqx-button theme="@ViewData["Theme"]" on-click="@Url.Action("Increment", "TagHelpers")">Button</jqx-button>
-<jqx-togglebutton style="margin-left:20px;" theme="@ViewData["Theme"]">Toggle Button</jqx-togglebutton>
-<jqx-repeatbutton style="margin-left:20px;" on-click="@Url.Action("Increment", "TagHelpers")" theme="@ViewData["Theme"]">Repeat Button</jqx-repeatbutton>
+<jqx-toggle-button style="margin-left:20px;" theme="@ViewData["Theme"]">Toggle Button</jqx-toggle-button>
+<jqx-repeat-button style="margin-left:20px;" on-click="@Url.Action("Increment", "TagHelpers")" theme="@ViewData["Theme"]">Repeat Button</jqx-repeat-button>
+<label id=""></label>
+<script>
+    $(document).ready(function () {
+        setInterval(function()
+        {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ButtonValue", "TagHelpers")',
+                async: false,
+                success: function (data) {
+                    $("#label").html(data);
+                }
+            });
+        }, 100);
+    });
+</script>
+<br /><br />
+Clicks:
+<label as id="label">@Model.ClickCount</label>

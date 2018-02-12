@@ -1,9 +1,11 @@
+<script src="~/jqwidgets/jqxbuttongroup.js"></script>
+
 @{
     ViewData["Title"] = "ASP .NET MVC ButtonGroup Example";
 }
-<label>ASP .NET Core MVC Button Group Tag Helper Example</label><br/><br/>
-Default Mode<br/>
-<jqx-buttongroup theme="@ViewData["Theme"]" id='jqxWidget'>
+<div class="example-description">ASP .NET MVC Button Group Example</div><br />
+Default Mode
+<jqx-button-group theme="@ViewData["Theme"]" id='jqxWidget'>
     <button style="padding:4px 16px;">
         Left
     </button>
@@ -13,9 +15,9 @@ Default Mode<br/>
     <button style="padding:4px 16px;">
         Right
     </button>
-</jqx-buttongroup>
-Radio Mode<br/>
-<jqx-buttongroup id="buttongroup2" theme="@ViewData["Theme"]" mode="radio">
+</jqx-button-group>
+Radio Mode
+<jqx-button-group theme="@ViewData["Theme"]" mode="radio">
     <button style="padding:4px 16px;">
         Left
     </button>
@@ -25,9 +27,9 @@ Radio Mode<br/>
     <button style="padding:4px 16px;">
         Right
     </button>
-</jqx-buttongroup>
-CheckBox Mode<br/>
-<jqx-buttongroup id="buttongroup3" theme="@ViewData["Theme"]" mode="checkbox">
+</jqx-button-group>
+CheckBox Mode
+<jqx-button-group theme="@ViewData["Theme"]" mode="checkbox">
     <button style="padding:4px 16px;">
         Left
     </button>
@@ -37,4 +39,4 @@ CheckBox Mode<br/>
     <button style="padding:4px 16px;">
         Right
     </button>
-</jqx-buttongroup>
+</jqx-button-group>

@@ -1,3 +1,10 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxpanel.js"></script>
+<script src="~/jqwidgets/jqxlayout.js"></script>
+<script src="~/jqwidgets/jqxribbon.js"></script>
+<script src="~/jqwidgets/jqxtree.js"></script>
+
 @model IEnumerable<jQWidgets.AspNet.Core.Models.TreeItem>
 @using jQWidgets.AspNetCore.Mvc.TagHelpers
 
@@ -110,14 +117,13 @@
 <script>
  
     function InitSolutionExplorerPanel() {
-        $('#solutionExplorerTree')[0].setAttribute("initInstance", "true");       
+        $('#solutionExplorerTree')[0].setAttribute("init-instance", "true");       
     }
 
 </script>
-<label>ASP .NET Core MVC Layout Tag Helper Example</label><br/><br/>
 <jqx-layout width="800" height="600" layout="@layout" theme="@ViewData["Theme"]">
     <!--The panel content divs can have a flat structure-->
-    <!--autoHideGroup-->
+    <!--auto-hideGroup-->
     <div data-container="ToolboxPanel">
         List of tools
     </div>
@@ -137,7 +143,7 @@
     </div>
     <!--right tabbedGroup-->
     <div data-container="SolutionExplorerPanel">
-        <jqx-tree initInstance="false" theme="@ViewData["Theme"]" id="solutionExplorerTree" width="190" itemsMember="Items" displayMember="Label" source="Model" style="border: none;">
+        <jqx-tree init-instance="false" theme="@ViewData["Theme"]" id="solutionExplorerTree" width="190" items-member="Items" display-member="Label" source="Model" style="border: none;">
         </jqx-tree>
     </div>
     <div data-container="PropertiesPanel">

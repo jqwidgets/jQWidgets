@@ -1,0 +1,343 @@
+<script src="~/jqwidgets/jqxdate.js"></script>
+<script src="~/jqwidgets/jqxcalendar.js"></script>
+<script src="~/jqwidgets/jqxdatetimeinput.js"></script>
+<script src="~/jqwidgets/globalization/globalize.js"></script>
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
+<script src="~/jqwidgets/jqxwindow.js"></script>
+<script src="~/jqwidgets/jqxpasswordinput.js"></script>
+<script src="~/jqwidgets/jqxinput.js"></script>
+<script src="~/jqwidgets/jqxradiobutton.js"></script>
+<script src="~/jqwidgets/jqxcheckbox.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxscheduler.js"></script>
+<script src="~/jqwidgets/jqxscheduler.api.js"></script>
+<script src="~/jqwidgets/jqxnumberinput.js"></script>
+
+
+@model jQWidgets.AspNet.Core.Models.jQWidgetsDemosContext
+@using jQWidgets.AspNetCore.Mvc.TagHelpers;
+@{
+    ViewData["Title"] = "ASP .NET MVC Scheduler Example";
+}
+@section scripts {
+<script>
+    function getLocalization(culture) {
+        var localization = null;
+        switch (culture) {
+            case "de":
+                localization =
+              {
+                  // separator of parts of a date (e.g. '/' in 11/05/1955)
+                  '/': "/",
+                  // separator of parts of a time (e.g. ':' in 05:44 PM)
+                  ':': ":",
+                  // the first day of the week (0 = Sunday, 1 = Monday, etc)
+                  firstDay: 1,
+                  days: {
+                      // full day names
+                      names: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+                      // abbreviated day names
+                      namesAbbr: ["Sonn", "Mon", "Dien", "Mitt", "Donn", "Fre", "Sams"],
+                      // shortest day names
+                      namesShort: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"]
+                  },
+                  months: {
+                      // full month names (13 months for lunar calendards -- 13th month should be "" if not lunar)
+                      names: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember", ""],
+                      // abbreviated month names
+                      namesAbbr: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dez", ""]
+                  },
+                  // AM and PM designators in one of these forms:
+                  // The usual view, and the upper and lower case versions
+                  //      [standard,lowercase,uppercase]
+                  // The culture does not use AM or PM (likely all standard date formats use 24 hour time)
+                  //      null
+                  AM: ["AM", "am", "AM"],
+                  PM: ["PM", "pm", "PM"],
+                  eras: [
+                  // eras in reverse chronological order.
+                  // name: the name of the era in this culture (e.g. A.D., C.E.)
+                  // start: when the era starts in ticks (gregorian, gmt), null if it is the earliest supported era.
+                  // offset: offset in years from gregorian calendar
+                  { "name": "A.D.", "start": null, "offset": 0 }
+                  ],
+                  twoDigitYearMax: 2029,
+                  patterns: {
+                      // short date pattern
+                      d: "M/d/yyyy",
+                      // long date pattern
+                      D: "dddd, MMMM dd, yyyy",
+                      // short time pattern
+                      t: "h:mm tt",
+                      // long time pattern
+                      T: "h:mm:ss tt",
+                      // long date, short time pattern
+                      f: "dddd, MMMM dd, yyyy h:mm tt",
+                      // long date, long time pattern
+                      F: "dddd, MMMM dd, yyyy h:mm:ss tt",
+                      // month/day pattern
+                      M: "MMMM dd",
+                      // month/year pattern
+                      Y: "yyyy MMMM",
+                      // S is a sortable format that does not vary by culture
+                      S: "yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss",
+                      // formatting of dates in MySQL DataBases
+                      ISO: "yyyy-MM-dd hh:mm:ss",
+                      ISO2: "yyyy-MM-dd HH:mm:ss",
+                      d1: "dd.MM.yyyy",
+                      d2: "dd-MM-yyyy",
+                      d3: "dd-MMMM-yyyy",
+                      d4: "dd-MM-yy",
+                      d5: "H:mm",
+                      d6: "HH:mm",
+                      d7: "HH:mm tt",
+                      d8: "dd/MMMM/yyyy",
+                      d9: "MMMM-dd",
+                      d10: "MM-dd",
+                      d11: "MM-dd-yyyy"
+                  },
+                  backString: "Vorhergehende",
+                  forwardString: "Nächster",
+                  toolBarPreviousButtonString: "Vorhergehende",
+                  toolBarNextButtonString: "Nächster",
+                  emptyDataString: "Nokeine Daten angezeigt",
+                  loadString: "Loading...",
+                  clearString: "Löschen",
+                  todayString: "Heute",
+                  dayViewString: "Tag",
+                  weekViewString: "Woche",
+                  monthViewString: "Monat",
+                  timelineDayViewString: "Zeitleiste Day",
+                  timelineWeekViewString: "Zeitleiste Woche",
+                  timelineMonthViewString: "Zeitleiste Monat",
+                  loadingErrorMessage: "Die Daten werden noch geladen und Sie können eine Eigenschaft nicht festgelegt oder eine Methode aufrufen . Sie können tun, dass, sobald die Datenbindung abgeschlossen ist. jqxScheduler wirft die ' bindingComplete ' Ereignis, wenn die Bindung abgeschlossen ist.",
+                  editRecurringAppointmentDialogTitleString: "Bearbeiten Sie wiederkehrenden Termin",
+                  editRecurringAppointmentDialogContentString: "Wollen Sie nur dieses eine Vorkommen oder die Serie zu bearbeiten ?",
+                  editRecurringAppointmentDialogOccurrenceString: "Vorkommen bearbeiten",
+                  editRecurringAppointmentDialogSeriesString: "Bearbeiten Die Serie",
+                  editDialogTitleString: "Termin bearbeiten",
+                  editDialogCreateTitleString: "Erstellen Sie Neuer Termin",
+                  contextMenuEditAppointmentString: "Termin bearbeiten",
+                  contextMenuCreateAppointmentString: "Erstellen Sie Neuer Termin",
+                  editDialogSubjectString: "Subjekt",
+                  editDialogLocationString: "Ort",
+                  editDialogFromString: "Von",
+                  editDialogToString: "Bis",
+                  editDialogAllDayString: "Den ganzen Tag",
+                  editDialogExceptionsString: "Ausnahmen",
+                  editDialogResetExceptionsString: "Zurücksetzen auf Speichern",
+                  editDialogDescriptionString: "Bezeichnung",
+                  editDialogResourceIdString: "Kalender",
+                  editDialogStatusString: "Status",
+                  editDialogColorString: "Farbe",
+                  editDialogColorPlaceHolderString: "Farbe wählen",
+                  editDialogTimeZoneString: "Zeitzone",
+                  editDialogSelectTimeZoneString: "Wählen Sie Zeitzone",
+                  editDialogSaveString: "Sparen",
+                  editDialogDeleteString: "Löschen",
+                  editDialogCancelString: "Abbrechen",
+                  editDialogRepeatString: "Wiederholen",
+                  editDialogRepeatEveryString: "Wiederholen alle",
+                  editDialogRepeatEveryWeekString: "woche(n)",
+                  editDialogRepeatEveryYearString: "Jahr (en)",
+                  editDialogRepeatEveryDayString: "Tag (e)",
+                  editDialogRepeatNeverString: "Nie",
+                  editDialogRepeatDailyString: "Täglich",
+                  editDialogRepeatWeeklyString: "Wöchentlich",
+                  editDialogRepeatMonthlyString: "Monatlich",
+                  editDialogRepeatYearlyString: "Jährlich",
+                  editDialogRepeatEveryMonthString: "Monate (n)",
+                  editDialogRepeatEveryMonthDayString: "Day",
+                  editDialogRepeatFirstString: "erste",
+                  editDialogRepeatSecondString: "zweite",
+                  editDialogRepeatThirdString: "dritte",
+                  editDialogRepeatFourthString: "vierte",
+                  editDialogRepeatLastString: "letzte",
+                  editDialogRepeatEndString: "Ende",
+                  editDialogRepeatAfterString: "Nach",
+                  editDialogRepeatOnString: "Am",
+                  editDialogRepeatOfString: "von",
+                  editDialogRepeatOccurrencesString: "Eintritt (e)",
+                  editDialogRepeatSaveString: "Vorkommen Speichern",
+                  editDialogRepeatSaveSeriesString: "Save Series",
+                  editDialogRepeatDeleteString: "Vorkommen löschen",
+                  editDialogRepeatDeleteSeriesString: "Series löschen",
+                  editDialogStatuses:
+                  {
+                      free: "Frei",
+                      tentative: "Versuchsweise",
+                      busy: "Beschäftigt",
+                      outOfOffice: "Ausserhaus"
+                  }
+              }
+                break;
+            case "en":
+            default:
+                localization =
+               {
+                   // separator of parts of a date (e.g. '/' in 11/05/1955)
+                   '/': "/",
+                   // separator of parts of a time (e.g. ':' in 05:44 PM)
+                   ':': ":",
+                   // the first day of the week (0 = Sunday, 1 = Monday, etc)
+                   firstDay: 0,
+                   days: {
+                       // full day names
+                       names: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                       // abbreviated day names
+                       namesAbbr: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                       // shortest day names
+                       namesShort: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+                   },
+                   months: {
+                       // full month names (13 months for lunar calendards -- 13th month should be "" if not lunar)
+                       names: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", ""],
+                       // abbreviated month names
+                       namesAbbr: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", ""]
+                   },
+                   // AM and PM designators in one of these forms:
+                   // The usual view, and the upper and lower case versions
+                   //      [standard,lowercase,uppercase]
+                   // The culture does not use AM or PM (likely all standard date formats use 24 hour time)
+                   //      null
+                   AM: ["AM", "am", "AM"],
+                   PM: ["PM", "pm", "PM"],
+                   eras: [
+                   // eras in reverse chronological order.
+                   // name: the name of the era in this culture (e.g. A.D., C.E.)
+                   // start: when the era starts in ticks (gregorian, gmt), null if it is the earliest supported era.
+                   // offset: offset in years from gregorian calendar
+                   { "name": "A.D.", "start": null, "offset": 0 }
+                   ],
+                   twoDigitYearMax: 2029,
+                   patterns: {
+                       // short date pattern
+                       d: "M/d/yyyy",
+                       // long date pattern
+                       D: "dddd, MMMM dd, yyyy",
+                       // short time pattern
+                       t: "h:mm tt",
+                       // long time pattern
+                       T: "h:mm:ss tt",
+                       // long date, short time pattern
+                       f: "dddd, MMMM dd, yyyy h:mm tt",
+                       // long date, long time pattern
+                       F: "dddd, MMMM dd, yyyy h:mm:ss tt",
+                       // month/day pattern
+                       M: "MMMM dd",
+                       // month/year pattern
+                       Y: "yyyy MMMM",
+                       // S is a sortable format that does not vary by culture
+                       S: "yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss",
+                       // formatting of dates in MySQL DataBases
+                       ISO: "yyyy-MM-dd hh:mm:ss",
+                       ISO2: "yyyy-MM-dd HH:mm:ss",
+                       d1: "dd.MM.yyyy",
+                       d2: "dd-MM-yyyy",
+                       d3: "dd-MMMM-yyyy",
+                       d4: "dd-MM-yy",
+                       d5: "H:mm",
+                       d6: "HH:mm",
+                       d7: "HH:mm tt",
+                       d8: "dd/MMMM/yyyy",
+                       d9: "MMMM-dd",
+                       d10: "MM-dd",
+                       d11: "MM-dd-yyyy"
+                   },
+                   agendaViewString: "Agenda",
+                   agendaAllDayString: "all day",
+                   agendaDateColumn: "Date",
+                   agendaTimeColumn: "Time",
+                   agendaAppointmentColumn: "Appointment",
+                   backString: "Back",
+                   forwardString: "Forward",
+                   toolBarPreviousButtonString: "previous",
+                   toolBarNextButtonString: "next",
+                   emptyDataString: "No data to display",
+                   loadString: "Loading...",
+                   clearString: "Clear",
+                   todayString: "Today",
+                   dayViewString: "Day",
+                   weekViewString: "Week",
+                   monthViewString: "Month",
+                   timelineDayViewString: "Timeline Day",
+                   timelineWeekViewString: "Timeline Week",
+                   timelineMonthViewString: "Timeline Month",
+                   loadingErrorMessage: "The data is still loading and you cannot set a property or call a method. You can do that once the data binding is completed. jqxScheduler raises the 'bindingComplete' event when the binding is completed.",
+                   editRecurringAppointmentDialogTitleString: "Edit Recurring Appointment",
+                   editRecurringAppointmentDialogContentString: "Do you want to edit only this occurrence or the series?",
+                   editRecurringAppointmentDialogOccurrenceString: "Edit Occurrence",
+                   editRecurringAppointmentDialogSeriesString: "Edit The Series",
+                   editDialogTitleString: "Edit Appointment",
+                   editDialogCreateTitleString: "Create New Appointment",
+                   contextMenuEditAppointmentString: "Edit Appointment",
+                   contextMenuCreateAppointmentString: "Create New Appointment",
+                   editDialogSubjectString: "Subject",
+                   editDialogLocationString: "Location",
+                   editDialogFromString: "From",
+                   editDialogToString: "To",
+                   editDialogAllDayString: "All day",
+                   editDialogExceptionsString: "Exceptions",
+                   editDialogResetExceptionsString: "Reset on Save",
+                   editDialogDescriptionString: "Description",
+                   editDialogResourceIdString: "Owner",
+                   editDialogStatusString: "Status",
+                   editDialogColorString: "Color",
+                   editDialogColorPlaceHolderString: "Select Color",
+                   editDialogTimeZoneString: "Time Zone",
+                   editDialogSelectTimeZoneString: "Select Time Zone",
+                   editDialogSaveString: "Save",
+                   editDialogDeleteString: "Delete",
+                   editDialogCancelString: "Cancel",
+                   editDialogRepeatString: "Repeat",
+                   editDialogRepeatEveryString: "Repeat every",
+                   editDialogRepeatEveryWeekString: "week(s)",
+                   editDialogRepeatEveryYearString: "year(s)",
+                   editDialogRepeatEveryDayString: "day(s)",
+                   editDialogRepeatNeverString: "Never",
+                   editDialogRepeatDailyString: "Daily",
+                   editDialogRepeatWeeklyString: "Weekly",
+                   editDialogRepeatMonthlyString: "Monthly",
+                   editDialogRepeatYearlyString: "Yearly",
+                   editDialogRepeatEveryMonthString: "month(s)",
+                   editDialogRepeatEveryMonthDayString: "Day",
+                   editDialogRepeatFirstString: "first",
+                   editDialogRepeatSecondString: "second",
+                   editDialogRepeatThirdString: "third",
+                   editDialogRepeatFourthString: "fourth",
+                   editDialogRepeatLastString: "last",
+                   editDialogRepeatEndString: "End",
+                   editDialogRepeatAfterString: "After",
+                   editDialogRepeatOnString: "On",
+                   editDialogRepeatOfString: "of",
+                   editDialogRepeatOccurrencesString: "occurrence(s)",
+                   editDialogRepeatSaveString: "Save Occurrence",
+                   editDialogRepeatSaveSeriesString: "Save Series",
+                   editDialogRepeatDeleteString: "Delete Occurrence",
+                   editDialogRepeatDeleteSeriesString: "Delete Series",
+                   editDialogStatuses:
+                   {
+                       free: "Free",
+                       tentative: "Tentative",
+                       busy: "Busy",
+                       outOfOffice: "Out of Office"
+                   },
+                   loadingErrorMessage: "The data is still loading and you cannot set a property or call a method. You can do that once the data binding is completed. jqxScheduler raises the 'bindingComplete' event when the binding is completed.",
+               }
+                break;
+        }
+        return localization;
+    }
+    var localization = getLocalization("de");
+</script>
+}
+<jqx-scheduler localization="{{localization}}" source="Model.Appointments" render-appointment="renderAppointment()" show-legend="true" view="WeekView" resources="Model.Resources" appointment-data-fields="Model.AppointmentDataFields" theme="@ViewData["Theme"]"  date="Model.Date" width="850" height="600">
+    <jqx-scheduler-views>
+        <jqx-scheduler-view type="DayView"></jqx-scheduler-view>
+        <jqx-scheduler-view type="WeekView"></jqx-scheduler-view>
+        <jqx-scheduler-view type="MonthView"></jqx-scheduler-view>
+    </jqx-scheduler-views>
+</jqx-scheduler>
+

@@ -1,3 +1,5 @@
+<script src="~/jqwidgets/jqxchart.js"></script>
+
 @using jQWidgets.AspNetCore.Mvc.TagHelpers;
 @model IEnumerable<jQWidgets.AspNet.Core.Models.BrowserShare>
 @{
@@ -8,12 +10,12 @@
     Rectangle legendPosition = new Rectangle() { Left = 520, Top = 140, Width = 100, Height = 100 };
     FormatSettings formatSettings = new FormatSettings() { Sufix = "%", DecimalPlaces = 1 };
 }
-<label>ASP .NET Core MVC Chart Tag Helper Example</label><br/><br/>
-<jqx-chart style="width: 850px; height: 500px;" colorScheme="scheme02" padding="padding" titlePadding="titlePadding" title="Desktop browsers share" description="(source: wikipedia.org)" showLegend="false" legendPosition="legendPosition" source="Model">
+<div class="example-description">ASP .NET MVC Chart Example</div><br />
+<jqx-chart style="width: 850px; height: 500px;" color-scheme="scheme02" padding="padding" title-padding="titlePadding" title="Desktop browsers share" description="(source: wikipedia.org)" show-legend="false" legend-position="legendPosition" source="Model">
     <jqx-chart-series-groups>   
-         <jqx-chart-serie-group showLabels="true" type=@SerieType.Pie>
+         <jqx-chart-serie-group show-labels="true" type=@SerieType.Pie>
                 <jqx-chart-series>
-                    <jqx-chart-serie dataField="Share" displayText="Browser" labelRadius="120" initialAngle="15" radius="170" centerOffset="0" formatSettings="formatSettings">
+                    <jqx-chart-serie datafield="Share" display-text="Browser" label-radius="120" initial-angle="15" radius="170" center-offset="0" format-settings="formatSettings">
                    </jqx-chart-serie>
                 </jqx-chart-series>
          </jqx-chart-serie-group>

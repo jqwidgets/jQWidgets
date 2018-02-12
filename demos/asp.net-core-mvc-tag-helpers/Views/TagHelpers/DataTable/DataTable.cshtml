@@ -1,20 +1,27 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxdatatable.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxmenu.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
+
 @model IEnumerable<jQWidgets.AspNet.Core.Models.Employee>
 
 @{
     ViewData["Title"] = "ASP .NET MVC DataTable Example";
 }
-<label>ASP .NET Core MVC DataTable Tag Helper Example</label><br/><br/>
-<jqx-datatable theme="@ViewData["Theme"]" sortable="true" width="850" source="Model"> 
-    <jqx-datatable-columns>
-        <jqx-datatable-column columngroup="name" dataField="FirstName" width="100" text="First Name"></jqx-datatable-column>
-        <jqx-datatable-column columngroup="name" dataField="LastName" width="100" text="Last Name"></jqx-datatable-column>
-        <jqx-datatable-column dataField="Title" width="150"></jqx-datatable-column>
-        <jqx-datatable-column dataField="Address" width="200"></jqx-datatable-column>
-        <jqx-datatable-column dataField="City" width="150"></jqx-datatable-column>
-        <jqx-datatable-column dataField="Country"></jqx-datatable-column>
-    </jqx-datatable-columns>
-    <jqx-datatable-column-groups>
-        <jqx-datatable-column-group name="name" text="Name"></jqx-datatable-column-group>
-    </jqx-datatable-column-groups>
-</jqx-datatable>
+
+<jqx-data-table theme="@ViewData["Theme"]" sortable="true" width="850" source="Model"> 
+    <jqx-data-table-columns>
+        <jqx-data-table-column column-group="name" dataField="FirstName" width="100" text="First Name"></jqx-data-table-column>
+        <jqx-data-table-column column-group="name" dataField="LastName" width="100" text="Last Name"></jqx-data-table-column>
+        <jqx-data-table-column dataField="Title" width="150"></jqx-data-table-column>
+        <jqx-data-table-column dataField="Address" width="200"></jqx-data-table-column>
+        <jqx-data-table-column dataField="City" width="150"></jqx-data-table-column>
+        <jqx-data-table-column dataField="Country"></jqx-data-table-column>
+    </jqx-data-table-columns>
+    <jqx-data-table-column-groups>
+        <jqx-data-table-column-group name="name" text="Name"></jqx-data-table-column-group>
+    </jqx-data-table-column-groups>
+</jqx-data-table>
 

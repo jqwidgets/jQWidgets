@@ -1,3 +1,10 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
+<script src="~/jqwidgets/jqxdatatable.js"></script>
+<script src="~/jqwidgets/jqxtreegrid.js"></script>
+
 @model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
 
 @{
@@ -72,14 +79,13 @@
         return "max";
     }
 </script>
-<label>ASP .NET Core MVC TreeGrid Conditional Formatting Example</label><br/><br/>
-<jqx-treegrid keyDataField-for="@(employee.ID)" pageable="true" ready="treeGridReady()" sourceId-for="@(employee.ID)" instance="getInstance()" parentDataField-for="@(employee.ReportsTo)" theme="@ViewData["Theme"]" sortable="true" width="850" source="Model"> 
-    <jqx-treegrid-columns>
-        <jqx-treegrid-column dataField-for="@(employee.FirstName)" width="100" text="First Name"></jqx-treegrid-column>
-        <jqx-treegrid-column dataField-for="@(employee.LastName)" width="100" text="Last Name"></jqx-treegrid-column>
-        <jqx-treegrid-column dataField-for="@(employee.ProductName)" width="150"></jqx-treegrid-column>
-        <jqx-treegrid-column dataField-for="@(employee.Quantity)" width="200"></jqx-treegrid-column>
-        <jqx-treegrid-column cellClassName="cellClass()" dataField-for="@(employee.Price)"></jqx-treegrid-column>
-    </jqx-treegrid-columns>
-</jqx-treegrid>
+<jqx-tree-grid key-datafield-for="@(employee.ID)" pageable="true" ready="treeGridReady()" sourceId-for="@(employee.ID)" instance="getInstance()" parent-datafield-for="@(employee.ReportsTo)" theme="@ViewData["Theme"]" sortable="true" width="850" source="Model"> 
+    <jqx-tree-grid-columns>
+        <jqx-tree-grid-column dataField-for="@(employee.FirstName)" width="100" text="First Name"></jqx-tree-grid-column>
+        <jqx-tree-grid-column dataField-for="@(employee.LastName)" width="100" text="Last Name"></jqx-tree-grid-column>
+        <jqx-tree-grid-column dataField-for="@(employee.ProductName)" width="150"></jqx-tree-grid-column>
+        <jqx-tree-grid-column dataField-for="@(employee.Quantity)" width="200"></jqx-tree-grid-column>
+        <jqx-tree-grid-column cell-class-name="cellClass()" dataField-for="@(employee.Price)"></jqx-tree-grid-column>
+    </jqx-tree-grid-columns>
+</jqx-tree-grid>
 

@@ -1,5 +1,25 @@
+<script src="~/jqwidgets/jqxcalendar.js"></script>
+<script src="~/jqwidgets/jqxdatetimeinput.js"></script>
+<script src="~/jqwidgets/jqxtooltip.js"></script>
+<script src="~/jqwidgets/globalization/globalize.js"></script>
+
 @{
     ViewData["Title"] = "ASP .NET MVC Calendar Example";
+    DateTime date = new DateTime(2017, 9, 20);
+    DateTime min = new DateTime(2002, 9, 20);
+    DateTime max = new DateTime(2018, 9, 20);
+    List<DateTime> dates = new List<DateTime>
+    {
+        new DateTime(2017, 9, 20),
+        new DateTime(2017, 9, 21),
+        new DateTime(2017, 9, 22)
+    };
+    List<SpecialDate> specialDates = new List<SpecialDate>
+    {
+       new SpecialDate() {Date = new DateTime(2017, 9, 20), Tooltip = "Tooltip 1" },
+       new SpecialDate() {Date = new DateTime(2017, 9, 21), Tooltip = "Tooltip 2" }
+    };
+
 }
-<label>ASP .NET Core MVC Calendar Tag Helper Example</label><br/><br/>
-<jqx-calendar theme="@ViewData["Theme"]" width="200" height="200" ></jqx-calendar>
+<div class="example-description">ASP .NET MVC Calendar Example</div><br />
+<jqx-calendar special-dates="specialDates" value="date" theme="@ViewData["Theme"]" width="200" height="200" ></jqx-calendar>

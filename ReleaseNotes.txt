@@ -1,4 +1,12 @@
-﻿*********************************************
+﻿jQWidgets v5.6.0 Release, February-09-2018
+
+What's New:
+- Pivot Grid Tag Helper
+- ASP .NET MVC Tag Helpers documentation update
+- ASP .NET MVC Tag Helpers Visual Studio 2017 integration and .NET Standard 2
+- Updated ASP .NET MVC NuGet packages for jQWidgets and the free Bootstrap tag helpers package. 
+
+*********************************************
 * jQWidgets v5.5.0 Release, Dec-05-2017     *
 *********************************************
 

@@ -1,3 +1,4 @@
+<script src="~/jqwidgets/jqxchart.js"></script>
 @model IEnumerable<jQWidgets.AspNet.Core.Models.ChartSalesDataItem>
 @using jQWidgets.AspNetCore.Mvc.TagHelpers;
 @{
@@ -7,19 +8,19 @@
     Padding titlePadding = new Padding() { Left = 90, Top = 0, Right = 0, Bottom = 10 };
     FormatSettings formatSettings = new FormatSettings() { Prefix = "$", ThousandsSeparator="," };
 }
-<label>ASP .NET MVC Core Bubble Chart Example</label><br/><br/>
-<jqx-chart style="width: 850px; height: 500px;" colorScheme="scheme02" showLegend="true" padding="padding" titlePadding="titlePadding" title="Sales by City in Q1 and Q2, and YoY sales growth"
+<div class="example-description">ASP .NET MVC Chart Bubble Series Example</div><br />
+<jqx-chart style="width: 850px; height: 500px;" color-scheme="scheme02" show-legend="true" padding="padding" title-padding="titlePadding" title="Sales by City in Q1 and Q2, and YoY sales growth"
      description="(the size of the circles represents relative YoY growth)" source="Model">
-    <jqx-chart-x-axis valuesOnTicks="false" for="@item.City" ></jqx-chart-x-axis>
-    <jqx-chart-value-axis unitInterval="50000" minValue="50000" maxValue="350000">
+    <jqx-chart-x-axis values-on-ticks="false" for="@item.City" ></jqx-chart-x-axis>
+    <jqx-chart-value-axis unit-interval="50000" min-value="50000" max-value="350000">
         <jqx-chart-title text="Sales ($)"></jqx-chart-title>
-        <jqx-chart-labels horizontalAligment="HorizontalAlignment.Right" formatSettings="formatSettings"></jqx-chart-labels>
+        <jqx-chart-labels horizontal-aligment="HorizontalAlignment.Right" format-settings="formatSettings"></jqx-chart-labels>
     </jqx-chart-value-axis>
     <jqx-chart-series-groups>
         <jqx-chart-serie-group type="SerieType.Bubble">
             <jqx-chart-series>
-                <jqx-chart-serie for="@item.SalesQ1" radiusFor="@item.YoYGrowthQ1" minRadius="10" maxRadius="30" displayText="Sales in Q1"></jqx-chart-serie>
-                <jqx-chart-serie for="@item.SalesQ2" radiusFor="@item.YoYGrowthQ2" minRadius="10" maxRadius="30" displayText="Sales in Q2"></jqx-chart-serie>
+                <jqx-chart-serie for="@item.SalesQ1" radius-for="@item.YoYGrowthQ1" min-radius="10" max-radius="30" display-text="Sales in Q1"></jqx-chart-serie>
+                <jqx-chart-serie for="@item.SalesQ2" radius-for="@item.YoYGrowthQ2" min-radius="10" max-radius="30" display-text="Sales in Q2"></jqx-chart-serie>
             </jqx-chart-series>
         </jqx-chart-serie-group>
     </jqx-chart-series-groups>

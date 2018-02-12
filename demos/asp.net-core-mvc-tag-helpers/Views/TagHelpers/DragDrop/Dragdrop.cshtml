@@ -1,0 +1,67 @@
+<script src="~/jqwidgets/jqxdragdrop.js"></script>
+<style type="text/css">
+    .row {
+        padding: 1px;
+    }
+
+    .draggable {
+        border: 1px solid #bbb;
+        background-color: #C9ECFF;
+        width: 100px;
+        height: 100px;
+        left: 30px;
+        top: 50px;
+        padding: 5px;
+        z-index: 2;
+    }
+
+    #draggable-parent {
+        background-color: #eeffee;
+        width: 350px;
+        height: 350px;
+        text-align: center;
+        border: 1px solid #eee;
+        float: left;
+    }
+
+    .main-container {
+        width: 350px;
+        height:350px;
+        z-index: 0;
+    }
+
+    .events {
+        float: right;
+        padding: 10px;
+        font-family: Tahoma;
+        font-size: 13px;
+    }
+
+    .labels {
+        position: relative;
+        font-family: Verdana;
+        font-size: 11px;
+        color: #000;
+    }
+
+    .drop-target {
+        background-color: #FBFFB5;
+        width: 150px;
+        height: 150px;
+        border: 1px solid #ddd;
+        margin-left: 190px;
+        margin-top: 70px;
+        z-index: 1;
+    }
+</style>
+<div class="main-container">
+    <div id="draggable-parent">
+        <div id="draggable" class="draggable">
+            <div class="labels">I can be dragged only inside my parent</div>
+        </div>
+        <jqx-drag-drop selector="draggable" restricter=".main-container" drop-target=".drop-target">
+            
+        </jqx-drag-drop>
+        <div class="drop-target"><div class="label">I'm a drop target</div></div>
+    </div>
+</div>

@@ -1,3 +1,9 @@
+<script src="~/jqwidgets/jqxvalidator.js"></script>
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxcheckbox.js"></script>
+<script src="~/jqwidgets/jqxinput.js"></script>
+<script src="~/jqwidgets/jqxpasswordinput.js"></script>
+
 @using jQWidgets.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -24,8 +30,7 @@
         validator.validate();
     }
 </script>
-<label>ASP .NET Core MVC Validator Example</label><br/><br/>
-<jqx-validator hintType="label" instance="getValidator()" settings="settings"></jqx-validator>
+<jqx-validator hint-type="label" instance="getValidator()" settings="settings"></jqx-validator>
 <form class="form" id="form" target="form-iframe" method="post" action="login.php" style="width: 650px;">
     <div>
         <h2>Login Demo</h2>
@@ -36,10 +41,10 @@
     </div>
     <label>Password:</label>
     <div style="margin-top:10px;">
-        <jqx-passwordinput height="25" theme="@ViewData["theme"]" type="password" id="password" name="password"></jqx-passwordinput>
+        <jqx-password-input height="25" theme="@ViewData["theme"]" type="password" id="password" name="password"></jqx-password-input>
     </div>
     <div style="margin-top:10px;">
-        <jqx-checkbox theme="@ViewData["theme"]" name="rememberme" id="rememberme">Keep me logged in on this computer</jqx-checkbox>
+        <jqx-check-box theme="@ViewData["theme"]" name="rememberme" id="rememberme">Keep me logged in on this computer</jqx-check-box>
     </div>
     <div style="margin-top:10px;">
         <jqx-button theme="@ViewData["theme"]" on-click="validate()" id="loginButton" type="submit" value="Login"></jqx-button>

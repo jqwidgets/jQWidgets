@@ -1,3 +1,18 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxgrid.js"></script>
+<script src="~/jqwidgets/jqxgrid.edit.js"></script>
+<script src="~/jqwidgets/jqxgrid.columnsresize.js"></script>
+<script src="~/jqwidgets/jqxgrid.filter.js"></script>
+<script src="~/jqwidgets/jqxgrid.selection.js"></script>
+<script src="~/jqwidgets/jqxgrid.sort.js"></script>
+<script src="~/jqwidgets/jqxgrid.pager.js"></script>
+<script src="~/jqwidgets/jqxgrid.aggregates.js"></script>
+<script src="~/jqwidgets/jqxgrid.grouping.js"></script>
+<script src="~/jqwidgets/jqxmenu.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
+
 @model IEnumerable<jQWidgets.AspNet.Core.Models.Employee>
 
 @{
@@ -218,8 +233,7 @@
     }
     var localization = getLocalization("de");
 </script>
-<label>ASP .NET Core MVC Grid Localization Example</label><br/><br/>
-<jqx-grid theme="@ViewData["Theme"]" showfilterrow="true" pageable="true" localization="{{localization}}" sortable="true" filterable="true" autoheight="true" width="850" source="Model"> 
+<jqx-grid theme="@ViewData["Theme"]" show-filter-row="true" pageable="true" localization="{{localization}}" sortable="true" filterable="true" auto-height="true" width="850" source="Model"> 
     <jqx-grid-columns>
         <jqx-grid-column datafield-for="@(employee.FirstName)" width="100" text="Vorname"></jqx-grid-column>
         <jqx-grid-column datafield-for="@(employee.LastName)" width="100" text="Familienname"></jqx-grid-column>

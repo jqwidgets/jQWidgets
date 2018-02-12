@@ -1,3 +1,6 @@
+<script src="~/jqwidgets/jqxinput.js"></script>
+
+
 @model IEnumerable<jQWidgets.AspNet.Core.Models.SalesEmployee>
 
 @{
@@ -9,9 +12,8 @@
         document.getElementById("log").innerHTML = "Label: " + args.label + ", Value: " + args.value;;
     }
 </script>
-<label>ASP .NET Core MVC Grid Input Example</label><br/><br/>
 <label>Enter Name:</label>
-<jqx-input on-change="change()" displayMember="Name" selectedIndex="0" valueMember="ID" theme="@ViewData["Theme"]" width="250" height="30" source="Model"></jqx-input>
+<jqx-input on-change="change()" display-member="Name" selected-index="0" value-member="ID" theme="@ViewData["Theme"]" width="250" height="30" source="Model"></jqx-input>
 (ex: An)
 <br /><br />
 <div id="log"></div>

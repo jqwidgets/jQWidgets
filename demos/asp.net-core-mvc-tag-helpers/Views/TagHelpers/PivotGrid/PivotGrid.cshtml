@@ -1,0 +1,49 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxmenu.js"></script>
+<script src="~/jqwidgets/jqxpivot.js"></script>
+<script src="~/jqwidgets/jqxpivotgrid.js"></script>
+@model IEnumerable<jQWidgets.AspNet.Core.Models.PivotDataRow>
+
+@{
+    ViewData["Title"] = "ASP .NET MVC PivotGrid Example";
+
+    DataAdapter adapter = new DataAdapter();
+    adapter.LocalData = Model;
+
+    adapter.DataFields = new List<DataField>()
+    {
+        new DataField() {Name = "Country", Type = "string" },
+        new DataField() {Name = "Value", Type = "number" }
+    };
+    adapter.DataType = "array";
+
+    PivotDataSource dataSource = new PivotDataSource()
+    {
+        DataAdapter = adapter,
+        PivotValuesOnRows = false,
+        Rows = new List<PivotRow>()
+        {
+            new PivotRow() {DataField = "Country", Width=190}
+        },
+        Values = new List<PivotValue>()
+        {
+            new PivotValue() {DataField = "Value", Width = 200, Function = "min", Text = "cells left alignment", FormatSettings = new PivotFormatSettings() {Align = "left", Prefix = "", DecimalPlaces=2}},
+            new PivotValue() {DataField = "Value", Width = 200, Function = "max", Text = "cells center alignment", FormatSettings = new PivotFormatSettings() {Align = "center", Prefix = "", DecimalPlaces=2}},
+            new PivotValue() {DataField = "Value", Width = 200, Function = "average", Text = "cells right alignment", FormatSettings = new PivotFormatSettings() {Align = "right", Prefix = "", DecimalPlaces=2}}
+        }
+
+    };
+}
+
+
+@section scripts {
+    <script>
+
+    </script>
+}
+
+<div style='margin-top: 10px;'>
+    Pivot Grid
+</div>
+<jqx-pivot-grid style="height: 600px; width:850px;" source="dataSource" tree-style-rows="true" auto-resize="false" multiple-selection-enabled="true"></jqx-pivot-grid>

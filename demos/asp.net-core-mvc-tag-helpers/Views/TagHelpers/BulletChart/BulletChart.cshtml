@@ -1,3 +1,6 @@
+<script src="~/jqwidgets/jqxbulletchart.js"></script>
+<script src="~/jqwidgets/jqxtooltip.js"></script>
+
 @using jQWidgets.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "ASP .NET MVC Bullet Chart Example";
@@ -40,5 +43,5 @@
         }
     };
 }
-<label>ASP .NET MVC Core Bullet Chart Tag Helper Example</label><br/><br/>
-<jqx-bulletchart labelsFormat="c" width="500" height="80" barSize="40%" pointer="pointer" ticks="ticks" ranges="ranges" target="target"  title="Revenue 2016 YTD" description="(U.S. $ in thousands)" ></jqx-bulletchart>
+<div class="example-description">ASP .NET MVC BulletChart Example</div><br />
+<jqx-bullet-chart labels-format="c" width="500" height="80" bar-size="40%" pointer="pointer" ticks="ticks" ranges="ranges" target="target"  title="Revenue 2016 YTD" description="(U.S. $ in thousands)" ></jqx-bullet-chart>

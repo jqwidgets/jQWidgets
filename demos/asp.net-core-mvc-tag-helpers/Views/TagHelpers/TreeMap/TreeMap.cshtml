@@ -1,3 +1,5 @@
+<script src="~/jqwidgets/jqxtreemap.js"></script>
+
 @model IEnumerable<jQWidgets.AspNet.Core.Models.Employee>
 
 @{
@@ -6,6 +8,5 @@
 @{
     var employee = Model.FirstOrDefault();
 }
-<label>ASP .NET Core MVC Tree Map Tag Helper Example</label><br/><br/>
-<jqx-treemap displayMember="FirstName" valueMember="EmployeeID" theme="@ViewData["Theme"]" width="850" source="Model"></jqx-treemap>
+<jqx-tree-map display-member="FirstName" value-member="EmployeeID" theme="@ViewData["Theme"]" width="850" source="Model"></jqx-tree-map>
 

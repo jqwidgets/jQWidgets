@@ -1,3 +1,9 @@
+<script src="~/jqwidgets/jqxbuttons.js"></script>
+<script src="~/jqwidgets/jqxscrollbar.js"></script>
+<script src="~/jqwidgets/jqxlistbox.js"></script>
+<script src="~/jqwidgets/jqxdropdownlist.js"></script>
+<script src="~/jqwidgets/jqxdatatable.js"></script>
+<script src="~/jqwidgets/jqxtreegrid.js"></script>
 @model IEnumerable<jQWidgets.AspNet.Core.Models.Employee>
 
 @{
@@ -17,15 +23,14 @@
         treeGridInstance.expandRow(2);
     }
 </script>
-<label>ASP .NET Core MVC Tree Grid Example</label><br/><br/>
-<jqx-treegrid keyDataField-for="@(employee.EmployeeID)" ready="treeGridReady()" sourceId-for="@(employee.EmployeeID)" instance="getInstance()" parentDataField-for="@(employee.ManagerID)" theme="@ViewData["Theme"]" sortable="true" width="850" source="Model"> 
-    <jqx-treegrid-columns>
-        <jqx-treegrid-column dataField-for="@(employee.FirstName)" width="100" text="First Name"></jqx-treegrid-column>
-        <jqx-treegrid-column datafield-for="@(employee.LastName)" width="100" text="Last Name"></jqx-treegrid-column>
-        <jqx-treegrid-column datafield-for="@(employee.Title)" width="150"></jqx-treegrid-column>
-        <jqx-treegrid-column datafield-for="@(employee.Address)" width="200"></jqx-treegrid-column>
-        <jqx-treegrid-column datafield-for="@(employee.City)" width="150"></jqx-treegrid-column>
-        <jqx-treegrid-column datafield-for="@(employee.Country)"></jqx-treegrid-column>
-    </jqx-treegrid-columns>
-</jqx-treegrid>
+<jqx-tree-grid key-datafield-for="@(employee.EmployeeID)" ready="treeGridReady()" source-id-for="@(employee.EmployeeID)" instance="getInstance()" parent-datafield-for="@(employee.ManagerID)" theme="@ViewData["Theme"]" sortable="true" width="850" source="Model"> 
+    <jqx-tree-grid-columns>
+        <jqx-tree-grid-column dataField-for="@(employee.FirstName)" width="100" text="First Name"></jqx-tree-grid-column>
+        <jqx-tree-grid-column datafield-for="@(employee.LastName)" width="100" text="Last Name"></jqx-tree-grid-column>
+        <jqx-tree-grid-column datafield-for="@(employee.Title)" width="150"></jqx-tree-grid-column>
+        <jqx-tree-grid-column datafield-for="@(employee.Address)" width="200"></jqx-tree-grid-column>
+        <jqx-tree-grid-column datafield-for="@(employee.City)" width="150"></jqx-tree-grid-column>
+        <jqx-tree-grid-column datafield-for="@(employee.Country)"></jqx-tree-grid-column>
+    </jqx-tree-grid-columns>
+</jqx-tree-grid>
 
