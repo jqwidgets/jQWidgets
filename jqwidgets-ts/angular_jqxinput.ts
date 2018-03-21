@@ -177,7 +177,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
-       if(this.widgetObject && value) {
+       if(this.widgetObject && value !== undefined) {
            if(this.initialLoad){
                setTimeout(_ => this.host.jqxInput('val', value));
                this.initialLoad = false;
