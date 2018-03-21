@@ -44,7 +44,7 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
    @Input('enableAbsoluteSelection') attrEnableAbsoluteSelection: boolean;
    @Input('firstDayOfWeek') attrFirstDayOfWeek: number;
-   @Input('formatstring') attrFormatstring: any;
+   @Input('formatString') attrFormatstring: any;
    @Input('min') attrMin: Date;
    @Input('max') attrMax: Date;
    @Input('openDelay') attrOpenDelay: number;
@@ -67,7 +67,7 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','clearstring','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatstring','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeeknumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todaystring','value','width'];
+   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','clearstring','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeeknumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todaystring','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDateTimeInput;
@@ -313,11 +313,11 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
-   formatstring(arg?: string) : any {
+   formatString(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxDateTimeInput('formatstring', arg);
+          this.host.jqxDateTimeInput('formatString', arg);
       } else {
-          return this.host.jqxDateTimeInput('formatstring');
+          return this.host.jqxDateTimeInput('formatString');
       }
    }
 
