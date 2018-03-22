@@ -203,6 +203,112 @@
                     todaystring: 'Today'
                 }
             break;
+            case 'ru':
+                localization =
+                    {
+                        // separator of parts of a date (e.g. '/' in 11/05/1955)
+                        '/': '/',
+                        // separator of parts of a time (e.g. ':' in 05:44 PM)
+                        ':': ':',
+                        // the first day of the week (0 = Sunday, 1 = Monday, etc)
+                        firstDay: 0,
+                        days: {
+                            names: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+                            namesAbbr: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+                            namesShort: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб']
+                        },
+                        months: {
+                            names: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь',''],
+                            namesAbbr: ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек','']
+                        },
+                        // AM and PM designators in one of these forms:
+                        // The usual view, and the upper and lower case versions
+                        //      [standard,lowercase,uppercase]
+                        // The culture does not use AM or PM (likely all standard date formats use 24 hour time)
+                        //      null
+                        AM: null,
+                        PM: null,
+                        eras: [
+                            // eras in reverse chronological order.
+                            // name: the name of the era in this culture (e.g. A.D., C.E.)
+                            // start: when the era starts in ticks (gregorian, gmt), null if it is the earliest supported era.
+                            // offset: offset in years from gregorian calendar
+                            { 'name': 'A.D.', 'start': null, 'offset': 0 }
+                        ],
+                        twoDigitYearMax: 2029,
+                        patterns: {
+                            // short date pattern
+                            d: 'M/d/yyyy',
+                            // long date pattern
+                            D: 'dddd, MMMM dd, yyyy',
+                            // short time pattern
+                            t: 'h:mm tt',
+                            // long time pattern
+                            T: 'h:mm:ss tt',
+                            // long date, short time pattern
+                            f: 'dddd, MMMM dd, yyyy h:mm tt',
+                            // long date, long time pattern
+                            F: 'dddd, MMMM dd, yyyy h:mm:ss tt',
+                            // month/day pattern
+                            M: 'MMMM dd',
+                            // month/year pattern
+                            Y: 'yyyy MMMM',
+                            // S is a sortable format that does not vary by culture
+                            S: 'yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss',
+                            // formatting of dates in MySQL DataBases
+                            ISO: 'yyyy-MM-dd hh:mm:ss',
+                            ISO2: 'yyyy-MM-dd HH:mm:ss',
+                            d1: 'dd.MM.yyyy',
+                            d2: 'dd-MM-yyyy',
+                            d3: 'dd-MMMM-yyyy',
+                            d4: 'dd-MM-yy',
+                            d5: 'H:mm',
+                            d6: 'HH:mm',
+                            d7: 'HH:mm tt',
+                            d8: 'dd/MMMM/yyyy',
+                            d9: 'MMMM-dd',
+                            d10: 'MM-dd',
+                            d11: 'MM-dd-yyyy'
+                        },
+                        percentsymbol: '%',
+                        currencysymbol: '₽',
+                        currencysymbolposition: 'before',
+                        decimalseparator: '.',
+                        thousandsseparator: ',',
+                        pagergotopagestring: 'Перейти на страницу:',
+                        pagershowrowsstring: 'Показать строки:',
+                        pagerrangestring: ' из ',
+                        pagerpreviousbuttonstring: 'предыдущий',
+                        pagernextbuttonstring: 'следующий',
+                        pagerfirstbuttonstring: 'первый',
+                        pagerlastbuttonstring: 'последний',
+                        groupsheaderstring: 'Перетащите столбец и отпустите его сюда, чтобы сгруппировать по этому столбцу',
+                        sortascendingstring: 'Сортировать по возрастанию',
+                        sortdescendingstring: 'Сортировать по убыванию',
+                        sortremovestring: 'Убрать сортировку',
+                        groupbystring: 'Сгруппировать по этой колонке',
+                        groupremovestring: 'Удалить из групп',
+                        filterclearstring: 'Очистить',
+                        filterstring: 'Фильтр',
+                        filtershowrowstring: 'Показывать строки где:',
+                        filterorconditionstring: 'Или',
+                        filterandconditionstring: 'И',
+                        filterselectallstring: '(Выбрать всё)',
+                        filterchoosestring: 'Выбор:',
+                        filterstringcomparisonoperators: ['пустой', 'не пустой', 'содержит', 'содержит(учитывая регистр)',
+                            'не содержит', 'не содержит(учитывая регистр)', 'начинается с', 'начинается с(учитывая регистр)',
+                            'заканчивается', 'заканчивается(учитывая регистр)', 'равен', 'равен(учитывая регистр)', 'пустой', 'не пустой'],
+                        filternumericcomparisonoperators: ['равен', 'не равен', 'меньше чем', 'меньше чем или равен', 'больше чем', 'больше чем или равен', 'ноль', 'не ноль'],
+                        filterdatecomparisonoperators: ['равен', 'не равен', 'меньше чем', 'меньше чем или равен', 'больше чем', 'больше чем или равен', 'ноль', 'не ноль'],
+                        filterbooleancomparisonoperators: ['равен', 'не равен'],
+                        validationstring: 'Введенное значение недействительно',
+                        emptydatastring: 'Нет данных для отображения',
+                        filterselectstring: 'Выберите Фильтр',
+                        loadtext: 'Загрузка',
+                        clearstring: 'Очистить',
+                        todaystring: 'Сегодня'
+                    }
+            break;
     }
     return localization;
 }

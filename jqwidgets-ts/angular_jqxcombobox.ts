@@ -62,7 +62,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
    @Input('showArrow') attrShowArrow: boolean;
    @Input('showCloseButtons') attrShowCloseButtons: boolean;
    @Input('searchMode') attrSearchMode: any;
-   @Input('search') attrSearch: (searchstring:string) => void;
+   @Input('search') attrSearch: (searchString:string) => void;
    @Input('source') attrSource: Array<any>;
    @Input('scrollBarSize') attrScrollBarSize: number | string;
    @Input('template') attrTemplate: any;
@@ -457,7 +457,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   search(arg?: (searchstring:string) => void) : any {
+   search(arg?: (searchString:string) => void) : any {
       if (arg !== undefined) {
           this.host.jqxComboBox('search', arg);
       } else {
@@ -651,8 +651,8 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
       this.host.jqxComboBox('selectItem', item);
    }
 
-   searchstring(): string {
-      return this.host.jqxComboBox('searchstring');
+   searchString(): string {
+      return this.host.jqxComboBox('searchString');
    }
 
    updateItem(item: any, itemValue: string): void {
