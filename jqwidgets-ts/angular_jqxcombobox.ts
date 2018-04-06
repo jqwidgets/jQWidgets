@@ -705,7 +705,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges
       this.host.on('bindingComplete', (eventData: any) => { this.onBindingComplete.emit(eventData); });
       this.host.on('checkChange', (eventData: any) => { this.onCheckChange.emit(eventData); });
       this.host.on('close', (eventData: any) => { this.onClose.emit(eventData); });
-      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); if(eventData.args) if(eventData.args.item !== null) this.onChangeCallback(eventData.args.item.label); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); if(eventData.args) if(eventData.args.item !== null) this.onChangeCallback(eventData.args.item.value); });
       this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
       this.host.on('select', (eventData: any) => { this.onSelect.emit(eventData); });
       this.host.on('unselect', (eventData: any) => { this.onUnselect.emit(eventData); });
