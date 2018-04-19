@@ -271,8 +271,8 @@ export class jqxFileUploadComponent implements OnChanges
       this.host.jqxFileUpload('browse');
    }
 
-   cancelFile(): void {
-      this.host.jqxFileUpload('cancelFile');
+   cancelFile(fileIndex?: number): void {
+      this.host.jqxFileUpload('cancelFile', fileIndex);
    }
 
    cancelAll(): void {
