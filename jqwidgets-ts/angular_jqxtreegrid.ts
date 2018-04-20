@@ -1,6 +1,6 @@
 /*
-jQWidgets v5.6.0 (2018-Feb)
-Copyright (c) 2011-2017 jQWidgets.
+jQWidgets v5.7.0 (2018-Apr)
+Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
@@ -17,7 +17,7 @@ import '../jqwidgets/jqxnumberinput.js';
 import '../jqwidgets/jqxdropdownlist.js';
 import '../jqwidgets/jqxdatatable.js';
 import '../jqwidgets/jqxtreegrid.js';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, AfterViewInit, AfterViewChecked, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
 @Component({
@@ -25,7 +25,7 @@ declare let JQXLite: any;
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxTreeGridComponent implements OnChanges
+export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterViewChecked
 {
    @Input('altRows') attrAltRows: boolean;
    @Input('autoRowHeight') attrAutoRowHeight: boolean;
@@ -91,15 +91,59 @@ export class jqxTreeGridComponent implements OnChanges
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTreeGrid;
 
+   content: String;
+   container: HTMLDivElement;
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
    }
 
    ngOnInit() {
+   }; 
+
+    ngAfterViewInit() {
+       let children = JQXLite(this.elementRef.nativeElement.children).find("tr"); 
+       let html = ""; 
+       let options = {}; 
+
+       if (children.length > 0) {
+           this.container = document.createElement('div');
+           html = this.elementRef.nativeElement.innerHTML;
+           this.container.appendChild(this.elementRef.nativeElement.firstChild);
+           this.elementRef.nativeElement.innerHTML = html;
+           this.content = html;
+
+           let result = JQXLite.jqx.parseSourceTag(this.container);
+           if (this['attrColumns'] !== undefined) {  
+;                options['source'] = result.source;                
+           }
+           else {
+                options['source'] = result.source;
+                options['columns'] = result.columns;
+           }
+      }
+
       if (this.autoCreate) {
-         this.createComponent(); 
+         this.createComponent(options); 
       }
    }; 
+
+ ngAfterViewChecked() {
+    if (this.container) {
+        if (this.content !== this.container.innerHTML) {
+            this.content = this.container.innerHTML;
+            let result = JQXLite.jqx.parseSourceTag(this.container);
+
+            let columns = this.host.jqxGrid('columns');
+
+            if (columns.length === 0) {
+                this.host.jqxGrid({ source: result.source, columns: result.columns });
+            }
+            else {
+                this.host.jqxGrid({ source: result.source });
+            }
+        }
+    }
+    };
 
    ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
@@ -129,6 +173,9 @@ export class jqxTreeGridComponent implements OnChanges
    }
 
    arraysEqual(attrValue: any, hostValue: any): boolean {
+      if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+         return false;
+      }
       if (attrValue.length != hostValue.length) {
          return false;
       }

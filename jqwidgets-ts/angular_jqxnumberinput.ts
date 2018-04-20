@@ -1,6 +1,6 @@
 /*
-jQWidgets v5.6.0 (2018-Feb)
-Copyright (c) 2011-2017 jQWidgets.
+jQWidgets v5.7.0 (2018-Apr)
+Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
@@ -105,6 +105,9 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
    }
 
    arraysEqual(attrValue: any, hostValue: any): boolean {
+      if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+         return false;
+      }
       if (attrValue.length != hostValue.length) {
          return false;
       }
@@ -448,9 +451,9 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
    @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.text); });
-      this.host.on('textchanged', (eventData: any) => { this.onTextchanged.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.text); });
-      this.host.on('valueChanged', (eventData: any) => { this.onValueChanged.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.text); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.value); });
+      this.host.on('textchanged', (eventData: any) => { this.onTextchanged.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.value); });
+      this.host.on('valueChanged', (eventData: any) => { this.onValueChanged.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.value); });
    }
 
 } //jqxNumberInputComponent

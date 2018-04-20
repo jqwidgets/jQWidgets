@@ -1,6 +1,6 @@
 /*
-jQWidgets v5.6.0 (2018-Feb)
-Copyright (c) 2011-2017 jQWidgets.
+jQWidgets v5.7.0 (2018-Apr)
+Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
@@ -13,7 +13,7 @@ import '../jqwidgets/jqxchart.api.js';
 import '../jqwidgets/jqxchart.annotations.js';
 import '../jqwidgets/jqxchart.rangeselector.js';
 import '../jqwidgets/jqxchart.waterfall.js';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
 @Component({
@@ -112,6 +112,9 @@ export class jqxChartComponent implements OnChanges
    }
 
    arraysEqual(attrValue: any, hostValue: any): boolean {
+      if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+         return false;
+      }
       if (attrValue.length != hostValue.length) {
          return false;
       }

@@ -1,6 +1,6 @@
 /*
-jQWidgets v5.6.0 (2018-Feb)
-Copyright (c) 2011-2017 jQWidgets.
+jQWidgets v5.7.0 (2018-Apr)
+Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
@@ -91,6 +91,9 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
    }
 
    arraysEqual(attrValue: any, hostValue: any): boolean {
+      if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+         return false;
+      }
       if (attrValue.length != hostValue.length) {
          return false;
       }

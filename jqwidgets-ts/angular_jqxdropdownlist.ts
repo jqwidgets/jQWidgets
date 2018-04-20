@@ -1,6 +1,6 @@
 /*
-jQWidgets v5.6.0 (2018-Feb)
-Copyright (c) 2011-2017 jQWidgets.
+jQWidgets v5.7.0 (2018-Apr)
+Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
@@ -10,7 +10,7 @@ import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxscrollbar.js';
 import '../jqwidgets/jqxlistbox.js';
 import '../jqwidgets/jqxdropdownlist.js';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, AfterViewInit, AfterViewChecked, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
@@ -29,7 +29,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges 
+export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges, AfterViewInit, AfterViewChecked 
 {
    @Input('autoOpen') attrAutoOpen: boolean;
    @Input('autoDropDownHeight') attrAutoDropDownHeight: boolean;
@@ -75,6 +75,8 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDropDownList;
 
+   content: String;
+   container: HTMLDivElement;
    private onTouchedCallback: () => void = noop;
    private onChangeCallback: (_: any) => void = noop;
 
@@ -83,10 +85,38 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    ngOnInit() {
+   }; 
+
+    ngAfterViewInit() {
+       let children = JQXLite(this.elementRef.nativeElement.children).find("li"); 
+       let html = ""; 
+       let options = {}; 
+
+       if (children.length > 0) {
+           this.container = document.createElement('div');
+           html = this.elementRef.nativeElement.innerHTML;
+           this.container.appendChild(this.elementRef.nativeElement.firstChild);
+           this.elementRef.nativeElement.innerHTML = html;
+           this.content = html;
+
+           let result = JQXLite.jqx.parseSourceTag(this.container);
+                options['source'] = result.items;      }
+
       if (this.autoCreate) {
-         this.createComponent(); 
+         this.createComponent(options); 
       }
    }; 
+
+ ngAfterViewChecked() {
+    if (this.container) {
+        if (this.content !== this.container.innerHTML) {
+            this.content = this.container.innerHTML;
+            let result = JQXLite.jqx.parseSourceTag(this.container);
+
+            this.host.jqxDropDownList({source: result.items});
+        }
+    }
+    };
 
    ngOnChanges(changes: SimpleChanges) {
       if (this.host) {
@@ -116,6 +146,9 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    arraysEqual(attrValue: any, hostValue: any): boolean {
+      if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+         return false;
+      }
       if (attrValue.length != hostValue.length) {
          return false;
       }
@@ -665,7 +698,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       this.host.on('bindingComplete', (eventData: any) => { this.onBindingComplete.emit(eventData); });
       this.host.on('close', (eventData: any) => { this.onClose.emit(eventData); });
       this.host.on('checkChange', (eventData: any) => { this.onCheckChange.emit(eventData); });
-      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.item.label); });
+      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.item.value); });
       this.host.on('open', (eventData: any) => { this.onOpen.emit(eventData); });
       this.host.on('select', (eventData: any) => { this.onSelect.emit(eventData); });
       this.host.on('unselect', (eventData: any) => { this.onUnselect.emit(eventData); });

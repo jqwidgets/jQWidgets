@@ -1,6 +1,6 @@
 /*
-jQWidgets v5.6.0 (2018-Feb)
-Copyright (c) 2011-2017 jQWidgets.
+jQWidgets v5.7.0 (2018-Apr)
+Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
@@ -33,7 +33,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
 {
    @Input('backText') attrBackText: string;
    @Input('columnHeaderHeight') attrColumnHeaderHeight: number;
-   @Input('clearstring') attrClearstring: string;
+   @Input('clearString') attrClearString: string;
    @Input('culture') attrCulture: string;
    @Input('dayNameFormat') attrDayNameFormat: any;
    @Input('disabled') attrDisabled: boolean;
@@ -54,7 +54,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
    @Input('restrictedDates') attrRestrictedDates: Array<Date>;
    @Input('rtl') attrRtl: boolean;
    @Input('stepMonths') attrStepMonths: number;
-   @Input('showWeeknumbers') attrShowWeeknumbers: boolean;
+   @Input('showWeekNumbers') attrShowWeekNumbers: boolean;
    @Input('showDayNames') attrShowDayNames: boolean;
    @Input('showOtherMonthDays') attrShowOtherMonthDays: boolean;
    @Input('showFooter') attrShowFooter: boolean;
@@ -63,14 +63,14 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
    @Input('theme') attrTheme: string;
    @Input('titleHeight') attrTitleHeight: number;
    @Input('titleFormat') attrTitleFormat: any;
-   @Input('todaystring') attrTodaystring: string;
+   @Input('todayString') attrTodayString: string;
    @Input('value') attrValue: Date;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['backText','columnHeaderHeight','clearstring','culture','dayNameFormat','disabled','enableWeekend','enableViews','enableOtherMonthDays','enableFastNavigation','enableHover','enableAutoNavigation','enableTooltips','forwardText','firstDayOfWeek','height','min','max','navigationDelay','rowHeaderWidth','readOnly','restrictedDates','rtl','stepMonths','showWeeknumbers','showDayNames','showOtherMonthDays','showFooter','selectionMode','specialDates','theme','titleHeight','titleFormat','todaystring','value','width'];
+   properties: string[] = ['backText','columnHeaderHeight','clearString','culture','dayNameFormat','disabled','enableWeekend','enableViews','enableOtherMonthDays','enableFastNavigation','enableHover','enableAutoNavigation','enableTooltips','forwardText','firstDayOfWeek','height','min','max','navigationDelay','rowHeaderWidth','readOnly','restrictedDates','rtl','stepMonths','showWeekNumbers','showDayNames','showOtherMonthDays','showFooter','selectionMode','specialDates','theme','titleHeight','titleFormat','todayString','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxCalendar;
@@ -116,6 +116,9 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
    }
 
    arraysEqual(attrValue: any, hostValue: any): boolean {
+      if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+         return false;
+      }
       if (attrValue.length != hostValue.length) {
          return false;
       }
@@ -213,11 +216,11 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   clearstring(arg?: string) : any {
+   clearString(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxCalendar('clearstring', arg);
+          this.host.jqxCalendar('clearString', arg);
       } else {
-          return this.host.jqxCalendar('clearstring');
+          return this.host.jqxCalendar('clearString');
       }
    }
 
@@ -389,11 +392,11 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   showWeeknumbers(arg?: boolean) : any {
+   showWeekNumbers(arg?: boolean) : any {
       if (arg !== undefined) {
-          this.host.jqxCalendar('showWeeknumbers', arg);
+          this.host.jqxCalendar('showWeekNumbers', arg);
       } else {
-          return this.host.jqxCalendar('showWeeknumbers');
+          return this.host.jqxCalendar('showWeekNumbers');
       }
    }
 
@@ -461,11 +464,11 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   todaystring(arg?: string) : any {
+   todayString(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxCalendar('todaystring', arg);
+          this.host.jqxCalendar('todayString', arg);
       } else {
-          return this.host.jqxCalendar('todaystring');
+          return this.host.jqxCalendar('todayString');
       }
    }
 

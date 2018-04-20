@@ -1,6 +1,6 @@
 /*
-jQWidgets v5.6.0 (2018-Feb)
-Copyright (c) 2011-2017 jQWidgets.
+jQWidgets v5.7.0 (2018-Apr)
+Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
@@ -26,7 +26,7 @@ import '../jqwidgets/jqxcalendar.js';
 import '../jqwidgets/jqxdatetimeinput.js';
 import '../jqwidgets/jqxscheduler.js';
 import '../jqwidgets/jqxscheduler.api.js';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
 @Component({
@@ -52,8 +52,8 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('dayNameFormat') attrDayNameFormat: string;
    @Input('enableHover') attrEnableHover: boolean;
    @Input('editDialog') attrEditDialog: boolean;
-   @Input('editDialogDateTimeFormatstring') attrEditDialogDateTimeFormatstring: string;
-   @Input('editDialogDateFormatstring') attrEditDialogDateFormatstring: string;
+   @Input('editDialogDateTimeFormatString') attrEditDialogDateTimeFormatString: string;
+   @Input('editDialogDateFormatString') attrEditDialogDateFormatString: string;
    @Input('editDialogOpen') attrEditDialogOpen: (dialog?: any, fields?: any, editAppointment?: any) => void;
    @Input('editDialogCreate') attrEditDialogCreate: (dialog?: any, fields?: any, editAppointment?: any) => void;
    @Input('editDialogKeyDown') attrEditDialogKeyDown: (dialog?: any, fields?: any, editAppointment?: any, event?: any) => boolean;
@@ -92,7 +92,7 @@ export class jqxSchedulerComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatstring','editDialogDateFormatstring','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
+   properties: string[] = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxScheduler;
@@ -135,6 +135,9 @@ export class jqxSchedulerComponent implements OnChanges
    }
 
    arraysEqual(attrValue: any, hostValue: any): boolean {
+      if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+         return false;
+      }
       if (attrValue.length != hostValue.length) {
          return false;
       }
@@ -330,19 +333,19 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialogDateTimeFormatstring(arg?: string) : any {
+   editDialogDateTimeFormatString(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxScheduler('editDialogDateTimeFormatstring', arg);
+          this.host.jqxScheduler('editDialogDateTimeFormatString', arg);
       } else {
-          return this.host.jqxScheduler('editDialogDateTimeFormatstring');
+          return this.host.jqxScheduler('editDialogDateTimeFormatString');
       }
    }
 
-   editDialogDateFormatstring(arg?: string) : any {
+   editDialogDateFormatString(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxScheduler('editDialogDateFormatstring', arg);
+          this.host.jqxScheduler('editDialogDateFormatString', arg);
       } else {
-          return this.host.jqxScheduler('editDialogDateFormatstring');
+          return this.host.jqxScheduler('editDialogDateFormatString');
       }
    }
 

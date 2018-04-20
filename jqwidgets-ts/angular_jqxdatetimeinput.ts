@@ -1,6 +1,6 @@
 /*
-jQWidgets v5.6.0 (2018-Feb)
-Copyright (c) 2011-2017 jQWidgets.
+jQWidgets v5.7.0 (2018-Apr)
+Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
@@ -34,7 +34,7 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    @Input('animationType') attrAnimationType: any;
    @Input('allowNullDate') attrAllowNullDate: boolean;
    @Input('allowKeyboardDelete') attrAllowKeyboardDelete: boolean;
-   @Input('clearstring') attrClearstring: string;
+   @Input('clearString') attrClearString: string;
    @Input('culture') attrCulture: string;
    @Input('closeDelay') attrCloseDelay: number;
    @Input('closeCalendarAfterSelection') attrCloseCalendarAfterSelection: boolean;
@@ -44,7 +44,7 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
    @Input('enableAbsoluteSelection') attrEnableAbsoluteSelection: boolean;
    @Input('firstDayOfWeek') attrFirstDayOfWeek: number;
-   @Input('formatstring') attrFormatstring: any;
+   @Input('formatString') attrFormatString: any;
    @Input('min') attrMin: Date;
    @Input('max') attrMax: Date;
    @Input('openDelay') attrOpenDelay: number;
@@ -60,14 +60,14 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    @Input('theme') attrTheme: string;
    @Input('template') attrTemplate: any;
    @Input('textAlign') attrTextAlign: any;
-   @Input('todaystring') attrTodaystring: string;
+   @Input('todayString') attrTodayString: string;
    @Input('value') attrValue: Date;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','clearstring','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatstring','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeeknumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todaystring','value','width'];
+   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeeknumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDateTimeInput;
@@ -113,6 +113,9 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    }
 
    arraysEqual(attrValue: any, hostValue: any): boolean {
+      if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+         return false;
+      }
       if (attrValue.length != hostValue.length) {
          return false;
       }
@@ -233,11 +236,11 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
-   clearstring(arg?: string) : any {
+   clearString(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxDateTimeInput('clearstring', arg);
+          this.host.jqxDateTimeInput('clearString', arg);
       } else {
-          return this.host.jqxDateTimeInput('clearstring');
+          return this.host.jqxDateTimeInput('clearString');
       }
    }
 
@@ -313,11 +316,11 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
-   formatstring(arg?: string) : any {
+   formatString(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxDateTimeInput('formatstring', arg);
+          this.host.jqxDateTimeInput('formatString', arg);
       } else {
-          return this.host.jqxDateTimeInput('formatstring');
+          return this.host.jqxDateTimeInput('formatString');
       }
    }
 
@@ -449,11 +452,11 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
-   todaystring(arg?: string) : any {
+   todayString(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxDateTimeInput('todaystring', arg);
+          this.host.jqxDateTimeInput('todayString', arg);
       } else {
-          return this.host.jqxDateTimeInput('todaystring');
+          return this.host.jqxDateTimeInput('todayString');
       }
    }
 
