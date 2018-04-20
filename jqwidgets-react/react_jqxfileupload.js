@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.7.0 (2018-Apr)
+jQWidgets v5.7.2 (2018-Apr)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -175,8 +175,8 @@ export default class JqxFileUpload extends React.Component {
     browse() {
         JQXLite(this.componentSelector).jqxFileUpload('browse');  
     };
-    cancelFile() {
-        JQXLite(this.componentSelector).jqxFileUpload('cancelFile');  
+    cancelFile(fileIndex) {
+        JQXLite(this.componentSelector).jqxFileUpload('cancelFile', fileIndex);  
     };
     cancelAll() {
         JQXLite(this.componentSelector).jqxFileUpload('cancelAll');  
