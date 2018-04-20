@@ -1713,7 +1713,7 @@ declare module jqwidgets {
 
         // jqxFileUpload functions
         browse(): void;
-        cancelFile(): void;
+        cancelFile(fileIndex: number): void;
         cancelAll(): void;
         destroy(): void;
         render(): void;

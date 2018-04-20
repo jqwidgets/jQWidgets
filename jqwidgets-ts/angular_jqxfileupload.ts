@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.7.0 (2018-Apr)
+jQWidgets v5.7.2 (2018-Apr)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -274,8 +274,8 @@ export class jqxFileUploadComponent implements OnChanges
       this.host.jqxFileUpload('browse');
    }
 
-   cancelFile(): void {
-      this.host.jqxFileUpload('cancelFile');
+   cancelFile(fileIndex: number): void {
+      this.host.jqxFileUpload('cancelFile', fileIndex);
    }
 
    cancelAll(): void {
