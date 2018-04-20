@@ -1,6 +1,6 @@
 /*
-jQWidgets v5.6.0 (2018-Feb)
-Copyright (c) 2011-2017 jQWidgets.
+jQWidgets v5.7.0 (2018-Apr)
+Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 
@@ -16,7 +16,7 @@ export default class JqxDateTimeInput extends React.Component {
         this.createComponent(options);
     };
     manageAttributes() {
-        let properties = ['animationType','allowNullDate','allowKeyboardDelete','clearstring','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatstring','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeeknumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todaystring','value','width'];
+        let properties = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeeknumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
         let options = {};
         for(let item in this.props) {
               if(item === 'settings') {
@@ -88,11 +88,11 @@ export default class JqxDateTimeInput extends React.Component {
             return JQXLite(this.componentSelector).jqxDateTimeInput('allowKeyboardDelete');
         }
     };
-    clearstring(arg) {
+    clearString(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxDateTimeInput('clearstring', arg)
+            JQXLite(this.componentSelector).jqxDateTimeInput('clearString', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxDateTimeInput('clearstring');
+            return JQXLite(this.componentSelector).jqxDateTimeInput('clearString');
         }
     };
     culture(arg) {
@@ -158,11 +158,11 @@ export default class JqxDateTimeInput extends React.Component {
             return JQXLite(this.componentSelector).jqxDateTimeInput('firstDayOfWeek');
         }
     };
-    formatstring(arg) {
+    formatString(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxDateTimeInput('formatstring', arg)
+            JQXLite(this.componentSelector).jqxDateTimeInput('formatString', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxDateTimeInput('formatstring');
+            return JQXLite(this.componentSelector).jqxDateTimeInput('formatString');
         }
     };
     height(arg) {
@@ -277,11 +277,11 @@ export default class JqxDateTimeInput extends React.Component {
             return JQXLite(this.componentSelector).jqxDateTimeInput('textAlign');
         }
     };
-    todaystring(arg) {
+    todayString(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxDateTimeInput('todaystring', arg)
+            JQXLite(this.componentSelector).jqxDateTimeInput('todayString', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxDateTimeInput('todaystring');
+            return JQXLite(this.componentSelector).jqxDateTimeInput('todayString');
         }
     };
     value(arg) {

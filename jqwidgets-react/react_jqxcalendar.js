@@ -1,6 +1,6 @@
 /*
-jQWidgets v5.6.0 (2018-Feb)
-Copyright (c) 2011-2017 jQWidgets.
+jQWidgets v5.7.0 (2018-Apr)
+Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 
@@ -16,7 +16,7 @@ export default class JqxCalendar extends React.Component {
         this.createComponent(options);
     };
     manageAttributes() {
-        let properties = ['backText','columnHeaderHeight','clearstring','culture','dayNameFormat','disabled','enableWeekend','enableViews','enableOtherMonthDays','enableFastNavigation','enableHover','enableAutoNavigation','enableTooltips','forwardText','firstDayOfWeek','height','min','max','navigationDelay','rowHeaderWidth','readOnly','restrictedDates','rtl','stepMonths','showWeeknumbers','showDayNames','showOtherMonthDays','showFooter','selectionMode','specialDates','theme','titleHeight','titleFormat','todaystring','value','width'];
+        let properties = ['backText','columnHeaderHeight','clearString','culture','dayNameFormat','disabled','enableWeekend','enableViews','enableOtherMonthDays','enableFastNavigation','enableHover','enableAutoNavigation','enableTooltips','forwardText','firstDayOfWeek','height','min','max','navigationDelay','rowHeaderWidth','readOnly','restrictedDates','rtl','stepMonths','showWeekNumbers','showDayNames','showOtherMonthDays','showFooter','selectionMode','specialDates','theme','titleHeight','titleFormat','todayString','value','width'];
         let options = {};
         for(let item in this.props) {
               if(item === 'settings') {
@@ -81,11 +81,11 @@ export default class JqxCalendar extends React.Component {
             return JQXLite(this.componentSelector).jqxCalendar('columnHeaderHeight');
         }
     };
-    clearstring(arg) {
+    clearString(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxCalendar('clearstring', arg)
+            JQXLite(this.componentSelector).jqxCalendar('clearString', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxCalendar('clearstring');
+            return JQXLite(this.componentSelector).jqxCalendar('clearString');
         }
     };
     culture(arg) {
@@ -235,11 +235,11 @@ export default class JqxCalendar extends React.Component {
             return JQXLite(this.componentSelector).jqxCalendar('stepMonths');
         }
     };
-    showWeeknumbers(arg) {
+    showWeekNumbers(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxCalendar('showWeeknumbers', arg)
+            JQXLite(this.componentSelector).jqxCalendar('showWeekNumbers', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxCalendar('showWeeknumbers');
+            return JQXLite(this.componentSelector).jqxCalendar('showWeekNumbers');
         }
     };
     showDayNames(arg) {
@@ -298,11 +298,11 @@ export default class JqxCalendar extends React.Component {
             return JQXLite(this.componentSelector).jqxCalendar('titleFormat');
         }
     };
-    todaystring(arg) {
+    todayString(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxCalendar('todaystring', arg)
+            JQXLite(this.componentSelector).jqxCalendar('todayString', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxCalendar('todaystring');
+            return JQXLite(this.componentSelector).jqxCalendar('todayString');
         }
     };
     value(arg) {
