@@ -5,33 +5,30 @@ License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
 import '../jqwidgets/jqxcore.js';
-import '../jqwidgets/jqxbuttons.js';
-import '../jqwidgets/jqxbuttongroup.js';
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
 @Component({
-    selector: 'jqxButtonGroup',
+    selector: 'jqxForm',
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxButtonGroupComponent implements OnChanges
+export class jqxFormComponent implements OnChanges
 {
-   @Input('disabled') attrDisabled: boolean;
-   @Input('enableHover') attrEnableHover: boolean;
-   @Input('mode') attrMode: any;
-   @Input('rtl') attrRtl: boolean;
-   @Input('template') attrTemplate: any;
-   @Input('theme') attrTheme: string;
+   @Input('padding') attrPadding: jqwidgets.FormPadding;
+   @Input('backgroundColor') attrBackgroundColor: string;
+   @Input('borderColor') attrBorderColor: string;
+   @Input('value') attrValue: object;
+   @Input('template') attrTemplate: Array<jqwidgets.FormTemplateItem>;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','enableHover','mode','rtl','template','theme'];
+   properties: string[] = ['padding','backgroundColor','borderColor','value','template'];
    host: any;
    elementRef: ElementRef;
-   widgetObject:  jqwidgets.jqxButtonGroup;
+   widgetObject:  jqwidgets.jqxForm;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
@@ -52,18 +49,18 @@ export class jqxButtonGroupComponent implements OnChanges
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
                   if (this[attrName] instanceof Array) {
-                     areEqual = this.arraysEqual(this[attrName], this.host.jqxButtonGroup(this.properties[i]));
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxForm(this.properties[i]));
                   }
                   if (areEqual) {
                      return false;
                   }
 
-                  this.host.jqxButtonGroup(this.properties[i], this[attrName]);
+                  this.host.jqxForm(this.properties[i], this[attrName]);
                   continue;
                }
 
-               if (this[attrName] !== this.host.jqxButtonGroup(this.properties[i])) {
-                  this.host.jqxButtonGroup(this.properties[i], this[attrName]); 
+               if (this[attrName] !== this.host.jqxForm(this.properties[i])) {
+                  this.host.jqxForm(this.properties[i], this[attrName]); 
                }
             }
          }
@@ -122,9 +119,8 @@ export class jqxButtonGroupComponent implements OnChanges
       this.moveClasses(this.elementRef.nativeElement, this.host[0]);
       this.moveStyles(this.elementRef.nativeElement, this.host[0]);
 
-      this.host[0].style.marginLeft = '1px';
       this.__wireEvents__();
-      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxButtonGroup', options);
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxForm', options);
 
       this.__updateRect__();
    }
@@ -135,111 +131,102 @@ export class jqxButtonGroupComponent implements OnChanges
 
    __updateRect__() : void {
       if(this.host) this.host.css({ width: this.attrWidth, height: this.attrHeight });
+      this.refresh();
    }
 
    setOptions(options: any) : void {
-      this.host.jqxButtonGroup('setOptions', options);
+      this.host.jqxForm('setOptions', options);
    }
 
-   // jqxButtonGroupComponent properties
-   disabled(arg?: boolean) : any {
+   // jqxFormComponent properties
+   padding(arg?: jqwidgets.FormPadding) : any {
       if (arg !== undefined) {
-          this.host.jqxButtonGroup('disabled', arg);
+          this.host.jqxForm('padding', arg);
       } else {
-          return this.host.jqxButtonGroup('disabled');
+          return this.host.jqxForm('padding');
       }
    }
 
-   enableHover(arg?: boolean) : any {
+   backgroundColor(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxButtonGroup('enableHover', arg);
+          this.host.jqxForm('backgroundColor', arg);
       } else {
-          return this.host.jqxButtonGroup('enableHover');
+          return this.host.jqxForm('backgroundColor');
       }
    }
 
-   mode(arg?: string) : any {
+   borderColor(arg?: string) : any {
       if (arg !== undefined) {
-          this.host.jqxButtonGroup('mode', arg);
+          this.host.jqxForm('borderColor', arg);
       } else {
-          return this.host.jqxButtonGroup('mode');
+          return this.host.jqxForm('borderColor');
       }
    }
 
-   rtl(arg?: boolean) : any {
+   value(arg?: jqwidgets.object) : any {
       if (arg !== undefined) {
-          this.host.jqxButtonGroup('rtl', arg);
+          this.host.jqxForm('value', arg);
       } else {
-          return this.host.jqxButtonGroup('rtl');
+          return this.host.jqxForm('value');
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: Array<jqwidgets.FormTemplateItem>) : any {
       if (arg !== undefined) {
-          this.host.jqxButtonGroup('template', arg);
+          this.host.jqxForm('template', arg);
       } else {
-          return this.host.jqxButtonGroup('template');
-      }
-   }
-
-   theme(arg?: string) : any {
-      if (arg !== undefined) {
-          this.host.jqxButtonGroup('theme', arg);
-      } else {
-          return this.host.jqxButtonGroup('theme');
+          return this.host.jqxForm('template');
       }
    }
 
 
-   // jqxButtonGroupComponent functions
-   disableAt(index: number): void {
-      this.host.jqxButtonGroup('disableAt', index);
+   // jqxFormComponent functions
+   getInstance(): any {
+      return this.host.jqxForm('getInstance');
    }
 
-   disable(): void {
-      this.host.jqxButtonGroup('disable');
+   refresh(): void {
+      this.host.jqxForm('refresh');
    }
 
    destroy(): void {
-      this.host.jqxButtonGroup('destroy');
+      this.host.jqxForm('destroy');
    }
 
-   enable(): void {
-      this.host.jqxButtonGroup('enable');
+   hideComponent(name: string): void {
+      this.host.jqxForm('hideComponent', name);
    }
 
-   enableAt(index: number): void {
-      this.host.jqxButtonGroup('enableAt', index);
+   showComponent(name: string): void {
+      this.host.jqxForm('showComponent', name);
    }
 
-   focus(): void {
-      this.host.jqxButtonGroup('focus');
+   val(value?: any): any {
+      if (value !== undefined) {
+         return this.host.jqxForm("val", value);
+      } else {
+         return this.host.jqxForm("val");
+      }
+   };
+
+   submit(action?: string, target?: string, method?: string): void {
+      this.host.jqxForm('submit', action, target, method);
    }
 
-   getSelection(): any {
-      return this.host.jqxButtonGroup('getSelection');
-   }
-
-   render(): void {
-      this.host.jqxButtonGroup('render');
-   }
-
-   setSelection(index: number): void {
-      this.host.jqxButtonGroup('setSelection', index);
+   getComponentByName(name?: string): jqwidgets.Object {
+      return this.host.jqxForm('getComponentByName', name);
    }
 
 
-   // jqxButtonGroupComponent events
-   @Output() onButtonclick = new EventEmitter();
-   @Output() onSelected = new EventEmitter();
-   @Output() onUnselected = new EventEmitter();
+   // jqxFormComponent events
+   @Output() onFormDataChange = new EventEmitter();
+   @Output() onButtonClick = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('buttonclick', (eventData: any) => { this.onButtonclick.emit(eventData); });
-      this.host.on('selected', (eventData: any) => { this.onSelected.emit(eventData); });
-      this.host.on('unselected', (eventData: any) => { this.onUnselected.emit(eventData); });
+      this.host.on('formDataChange', (eventData: any) => { this.onFormDataChange.emit(eventData); });
+      this.host.on('buttonClick', (eventData: any) => { this.onButtonClick.emit(eventData); });
    }
 
-} //jqxButtonGroupComponent
+} //jqxFormComponent
 
 

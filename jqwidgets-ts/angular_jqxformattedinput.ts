@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.7.2 (2018-Apr)
+jQWidgets v6.0.4 (2018-July)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -43,7 +43,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
    @Input('template') attrTemplate: any;
    @Input('theme') attrTheme: string;
    @Input('upperCase') attrUpperCase: boolean;
-   @Input('value') attrValue: string;
+   @Input('value') attrValue: number | string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
@@ -174,7 +174,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
    }
 
    __updateRect__() : void {
-      this.host.css({ width: this.attrWidth, height: this.attrHeight });
+      if(this.host) this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    get ngValue(): any {
@@ -346,7 +346,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   value(arg?: string) : any {
+   value(arg?: undefined) : any {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('value', arg);
       } else {

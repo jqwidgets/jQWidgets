@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.7.2 (2018-Apr)
+jQWidgets v6.0.4 (2018-July)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -235,7 +235,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
    }
 
    __updateRect__() : void {
-      this.host.css({ width: this.attrWidth, height: this.attrHeight });
+      if(this.host) this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    setOptions(options: any) : void {
@@ -849,9 +849,13 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('removeFilter', dataField);
    }
 
-   scrollOffset(top: number, left: number): jqwidgets.TreeGridScrollOffset {
-      return this.host.jqxTreeGrid('scrollOffset', top, left);
-   }
+   scrollOffset(top?: number, left?: number): jqwidgets.TreeGridScrollOffset {
+      if (top !== undefined || left !== undefined) {
+         this.host.jqxTreeGrid('scrollOffset', top, left);
+      } else {
+         return this.host.jqxTreeGrid('scrollOffset');
+      }
+   };
 
    setColumnProperty(dataField: string, propertyName: string, propertyValue: any): void {
       this.host.jqxTreeGrid('setColumnProperty', dataField, propertyName, propertyValue);

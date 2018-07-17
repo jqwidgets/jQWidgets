@@ -319,6 +319,66 @@ declare module jqwidgets {
         getPivotCells(): PivotGridCells;
     }// jqxPivotGrid
 
+    export interface FormPadding {
+        // FormPadding properties
+        left: number | string;
+        right: number | string;
+        top: number | string;
+        bottom: number | string;
+    }// FormPadding
+
+    export interface FormTemplateItem {
+        // FormTemplateItem properties
+        type?: string;
+        bind?: string;
+        submit?: boolean;
+        required?: boolean;
+        requiredPosition?: string;
+        info?: string;
+        infoPosition?: string;
+        component?: string;
+        init?: (value: any) => void;
+        label?: string;
+        labelPosition?: string;
+        labelAlign?: string;
+        align?: string;
+        valign?: string;
+        labelValign?: string;
+        height?: number | string;
+        rowHeight?: number | string;
+        width?: number | string;
+        columnWidth?: number | string;
+        labelWidth?: number | string;
+        labelHeight?: number | string;
+        padding?: FormPadding;
+        labelPadding?: FormPadding;
+        columns?: Array<FormTemplateItem>;
+        optionsLayout?: string;
+        options?: Array<any>;
+    }// FormTemplateItem
+
+    export interface FormOptions {
+        // FormOptions properties
+        padding?: FormPadding;
+        backgroundColor?: string;
+        borderColor?: string;
+        value?: object;
+        template: Array<FormTemplateItem>;
+    }// FormOptions
+
+    export interface jqxForm extends widget, FormOptions {
+
+        // jqxForm functions
+        getInstance(): any;
+        refresh(): void;
+        destroy(): void;
+        hideComponent(name: string): void;
+        showComponent(name: string): void;
+        val(value?: any): any;
+        submit(action?: string, target?: string, method?: string): void;
+        getComponentByName(name?: string): Object;
+    }// jqxForm
+
     export interface BulletChartPointer {
         // BulletChartPointer properties
         value?: number;
@@ -778,6 +838,7 @@ declare module jqwidgets {
         valueAxis?: ChartValueAxis;
         series: Array<ChartSerie>;
         formatSettings?: ChartFormatSettings;
+        toolTipFormatFunction?: any;
         columnsGapPercent?: number;
         seriesGapPercent?: number;
         columnsMinWidth?: number;
@@ -1741,7 +1802,7 @@ declare module jqwidgets {
         template?: string;
         theme?: string;
         upperCase?: boolean;
-        value?: string;
+        value?: undefined;
         width?: number | string;
     }// FormattedInputOptions
 
@@ -2114,6 +2175,11 @@ declare module jqwidgets {
         autoshowloadelement?: boolean;
         autoshowfiltericon?: boolean;
         autoshowcolumnsmenubutton?: boolean;
+        showcolumnlines?: boolean;
+        showrowlines?: boolean;
+        showcolumnheaderlines?: boolean;
+        adaptive?: boolean;
+        adaptivewidth?: number;
         clipboard?: boolean;
         closeablegroups?: boolean;
         columnsmenuwidth?: number;
@@ -2208,6 +2274,7 @@ declare module jqwidgets {
         rendertoolbar?: (toolbar?: any) => void;
         rendergridrows?: (params?: any) => any;
         sortable?: boolean;
+        sortmode?: string;
         selectedrowindex?: number;
         selectedrowindexes?: Array<number>;
         source?: any;
@@ -2780,7 +2847,7 @@ declare module jqwidgets {
 
         // jqxLoader functions
         close(): void;
-        open(): void;
+        open(left: number | string, top: number | string): void;
     }// jqxLoader
 
     export interface MaskedInputOptions {
@@ -3895,7 +3962,7 @@ declare module jqwidgets {
         rtl?: boolean;
         scrollBarSize?: number;
         searchMode?: string;
-        source?: Array<any>;
+        source?: any;
         theme?: string;
         valueMember?: string;
         width?: string | number;

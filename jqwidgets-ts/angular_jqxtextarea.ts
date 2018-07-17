@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.7.2 (2018-Apr)
+jQWidgets v6.0.4 (2018-July)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -45,7 +45,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
    @Input('rtl') attrRtl: boolean;
    @Input('scrollBarSize') attrScrollBarSize: number;
    @Input('searchMode') attrSearchMode: any;
-   @Input('source') attrSource: Array<any>;
+   @Input('source') attrSource: any;
    @Input('theme') attrTheme: string;
    @Input('valueMember') attrValueMember: string;
    @Input('width') attrWidth: string | number;
@@ -161,7 +161,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({ width: this.attrWidth, height: this.attrHeight });
+      if(this.host) this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    writeValue(value: any): void {
@@ -312,7 +312,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   source(arg?: Array<any>) : any {
+   source(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxTextArea('source', arg);
       } else {

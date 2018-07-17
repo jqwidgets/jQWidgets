@@ -1,10 +1,11 @@
 /*
-jQWidgets v5.7.2 (2018-Apr)
+jQWidgets v6.0.4 (2018-July)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /// <reference path="jqwidgets.d.ts" />
 import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxtagcloud.js';
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
@@ -149,7 +150,7 @@ export class jqxTagCloudComponent implements OnChanges
    }
 
    __updateRect__() : void {
-      this.host.css({ width: this.attrWidth, height: this.attrHeight });
+      if(this.host) this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    setOptions(options: any) : void {

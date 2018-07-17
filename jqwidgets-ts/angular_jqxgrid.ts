@@ -1,5 +1,5 @@
 /*
-jQWidgets v5.7.2 (2018-Apr)
+jQWidgets v6.0.4 (2018-July)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -48,6 +48,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('autoshowloadelement') attrAutoshowloadelement: boolean;
    @Input('autoshowfiltericon') attrAutoshowfiltericon: boolean;
    @Input('autoshowcolumnsmenubutton') attrAutoshowcolumnsmenubutton: boolean;
+   @Input('showcolumnlines') attrShowcolumnlines: boolean;
+   @Input('showrowlines') attrShowrowlines: boolean;
+   @Input('showcolumnheaderlines') attrShowcolumnheaderlines: boolean;
+   @Input('adaptive') attrAdaptive: boolean;
+   @Input('adaptivewidth') attrAdaptivewidth: number;
    @Input('clipboard') attrClipboard: boolean;
    @Input('closeablegroups') attrCloseablegroups: boolean;
    @Input('columnsmenuwidth') attrColumnsmenuwidth: number;
@@ -140,6 +145,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('rendertoolbar') attrRendertoolbar: (toolbar?: any) => void;
    @Input('rendergridrows') attrRendergridrows: (params?: any) => any;
    @Input('sortable') attrSortable: boolean;
+   @Input('sortmode') attrSortmode: string;
    @Input('selectedrowindex') attrSelectedrowindex: number;
    @Input('selectedrowindexes') attrSelectedrowindexes: Array<number>;
    @Input('source') attrSource: any;
@@ -153,7 +159,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','adaptivewidth','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGrid;
@@ -302,7 +308,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    __updateRect__() : void {
-      this.host.css({ width: this.attrWidth, height: this.attrHeight });
+      if(this.host) this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
    setOptions(options: any) : void {
@@ -355,6 +361,46 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
           this.host.jqxGrid('autoshowcolumnsmenubutton', arg);
       } else {
           return this.host.jqxGrid('autoshowcolumnsmenubutton');
+      }
+   }
+
+   showcolumnlines(arg?: boolean) : any {
+      if (arg !== undefined) {
+          this.host.jqxGrid('showcolumnlines', arg);
+      } else {
+          return this.host.jqxGrid('showcolumnlines');
+      }
+   }
+
+   showrowlines(arg?: boolean) : any {
+      if (arg !== undefined) {
+          this.host.jqxGrid('showrowlines', arg);
+      } else {
+          return this.host.jqxGrid('showrowlines');
+      }
+   }
+
+   showcolumnheaderlines(arg?: boolean) : any {
+      if (arg !== undefined) {
+          this.host.jqxGrid('showcolumnheaderlines', arg);
+      } else {
+          return this.host.jqxGrid('showcolumnheaderlines');
+      }
+   }
+
+   adaptive(arg?: boolean) : any {
+      if (arg !== undefined) {
+          this.host.jqxGrid('adaptive', arg);
+      } else {
+          return this.host.jqxGrid('adaptive');
+      }
+   }
+
+   adaptivewidth(arg?: number) : any {
+      if (arg !== undefined) {
+          this.host.jqxGrid('adaptivewidth', arg);
+      } else {
+          return this.host.jqxGrid('adaptivewidth');
       }
    }
 
@@ -1107,6 +1153,14 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
           this.host.jqxGrid('sortable', arg);
       } else {
           return this.host.jqxGrid('sortable');
+      }
+   }
+
+   sortmode(arg?: string) : any {
+      if (arg !== undefined) {
+          this.host.jqxGrid('sortmode', arg);
+      } else {
+          return this.host.jqxGrid('sortmode');
       }
    }
 
