@@ -145,11 +145,10 @@
     overflow: hidden !important;
 }
 /*jqxButton, jqxToggleButton, jqxRepeatButton Style*/
-.jqx-button{outline: none; border: 1px solid transparent; padding: 3px; text-align: center; vertical-align: central; margin: 0 0 0 0; cursor: default; }
+.jqx-button{outline: none; border: 1px solid transparent; padding: 5px; text-align: center; vertical-align: central; margin: 0 0 0 0; cursor: default; }
 button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button {
     box-sizing: border-box !important; -moz-box-sizing: border-box !important; 
 }
-
 .jqx-buttongroup{}
 .jqx-group-button-normal {
     vertical-align: middle;
@@ -229,6 +228,34 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     border-style: solid;
     border-width: 1px;
 }
+.jqx-grid .jqx-adaptive-table{
+  border-collapse: collapse;
+  border:none;
+  width: 100%;
+}
+
+.jqx-grid .jqx-adaptive-table td, .jqx-grid .jqx-adaptive-table th {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+	overflow: auto;
+}
+
+.jqx-grid .jqx-adaptive-table tr:nth-child(even){background-color: #f2f2f2;}
+
+.jqx-grid .jqx-adaptive-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.jqx-grid .jqx-adaptive-view a {
+    padding:10px;
+    text-decoration:none;
+    color: orangered;
+}
+
 /*applied to the Pager.*/
 .jqx-grid-pager
 {
@@ -327,6 +354,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     background-image: url('images/filter.png');
     background-repeat: no-repeat;
     background-position: center;
+    margin-top:1px;
  }
   /*applied to the column's resize line.*/
  .jqx-grid-column-resizeline {
@@ -599,7 +627,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 .jqx-grid-cell-wrap {white-space: normal !important;}
 
 .jqx-tree-grid-indent {
-    width: 15px;
+    width: 18px;
     display: inline-block;
     height: 8px;
     overflow: hidden;
@@ -607,7 +635,8 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 }
 .jqx-tree-grid-title {
     text-decoration: none;
-    vertical-align: top;
+    vertical-align: bottom;
+    line-height:20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -617,16 +646,16 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     margin-top: 0px;
     margin-right: 0px;
     position: relative;
-    width: 15px;
-    height: 16px;   
+    width: 18px;
+    height: 18px;   
     vertical-align: top;
 }
 .jqx-tree-grid-checkbox {
    float: none !important; 
-   width: 14px;
-   height: 14px;
+   width: 16px;
+   height: 16px;
    cursor: pointer;
-   margin-right: 2px !important;
+   margin-right: 6px !important;
    margin-left: 2px !important;
 }
 .jqx-tree-grid-icon {
@@ -650,8 +679,8 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     height: 100%;
 }
 .jqx-tree-grid-expand-button {
-    height: 16px;
-    width: 15px;
+    height: 18px;
+    width: 18px;
     vertical-align: top;
 }
 
@@ -756,6 +785,20 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
  .jqx-grid-cell-selected {
     border-left: 0px solid transparent;
  }
+ .jqx-grid-cell-selected.jqx-grid-cell-edit{
+     border-color: #DDDDDD !important;
+     background-color: #fff !important;
+     color: #333 !important;
+ }
+ .jqx-fill-state-focus.jqx-grid-cell-edit,  
+  .jqx-grid-cell-edit .jqx-fill-state-focus,
+  .jqx-grid-cell-edit.jqx-fill-state-focus .jqx-action-button,
+  .jqx-grid-cell-edit .jqx-numberinput-focus,
+  .jqx-grid-cell-edit .jqx-combobox-content-focus
+  {
+     border-color: #DDDDDD !important;
+ }
+
  .jqx-cell-rtl {
    border-left-width: 1px;
    border-right-width: 0px;
@@ -945,7 +988,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     overflow: hidden;
     color: inherit;
     right: 0;
-    margin: 0px 1px 0px 1px;
+    margin: 0px 3px 0px 3px;
     cursor: pointer;
 }
 /*applied to the sub menu items.*/
@@ -956,6 +999,8 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     list-style: none;
     padding: 4px 8px 4px 8px;
     margin: 1px;
+    margin-left:3px;
+    margin-right:3px;
     float: none;
     overflow: hidden;
     left: 100%;
@@ -972,6 +1017,8 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     right: 0;
     list-style: none;
     margin: 1px;
+    margin-left: 3px;
+    margin-right: 3px;
     left: 100%;
     padding: 4px 8px 4px 8px;
     text-align: left;
@@ -984,7 +1031,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     color: inherit;
     right: 0;
     list-style: none;
-    margin: 0px 1px 0px 1px;
+    margin: 0px 3px 0px 3px;
     left: 100%;
     padding: 4px 8px 4px 8px;
     top: 50%;
@@ -997,6 +1044,8 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     right: 0;
     list-style: none;
     margin: 1px;
+    margin-left:3px;
+    margin-right:3px;
     left: 100%;
     padding: 4px 8px 4px 8px;
     text-align: left;
@@ -1014,6 +1063,8 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     right: 0;
     list-style: none;
     margin: 0px 1px 0px 1px;
+    margin-left:3px;
+    margin-right:3px;
     left: 100%;
     padding: 4px 8px 4px 8px;
     cursor: pointer;
@@ -1905,6 +1956,17 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     cursor: default;
     border-collapse: separate;
 }
+.jqx-calendar .jqx-widget-header{
+    background-color: inherit;
+}
+.jqx-calendar > div {
+    padding: 0px;
+    box-sizing: border-box;
+}
+.jqx-calendar-light > div {
+    padding: 10px;
+}
+
 .jqx-calendar td {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -1912,6 +1974,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     border-spacing: 1px;
     font-size: 13px;
     line-height: 1.231;
+    height:auto;
 }
 .jqx-calendar table {
     margin: 0px;
@@ -2164,6 +2227,8 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     border-right-style: solid;
     padding-top: 5px;
     padding-bottom: 5px;
+    padding-left:5px;
+    padding-right:5px;
     outline: 0;
 }
 /*applid to the content of the expander header.*/
@@ -2266,7 +2331,7 @@ of the horizontal scrollbar.*/
 .jqx-listitem-state-group
 {
     white-space: nowrap;
-    padding: 4px 2px 4px 2px;
+    padding: 5px 2px 5px 2px;
     background: transparent;
     font-weight: bold;
     text-align: left;
@@ -2280,7 +2345,8 @@ of the horizontal scrollbar.*/
 {
     white-space: nowrap;
     padding: 3px;
-    margin: 1px;
+    padding-top:5px;
+    padding-bottom:5px;
     border: 1px solid transparent;
     outline: none;
     visibility: inherit;
@@ -2298,7 +2364,8 @@ of the horizontal scrollbar.*/
     white-space: nowrap;
     background: transparent;
     padding: 3px 3px 3px 3px;
-    margin: 1px;
+    padding-top:5px;
+    padding-bottom:5px;
     border: 1px solid transparent;
 }
 /*applied to a list item when the item is selected.*/
@@ -2306,7 +2373,8 @@ of the horizontal scrollbar.*/
 {
     white-space: nowrap;
     padding: 3px 3px 3px 3px;
-    margin: 1px;
+    padding-top:5px;
+    padding-bottom:5px;
     border: 1px solid transparent;
 }
 .jqx-listbox-feedback
@@ -2487,7 +2555,7 @@ of the horizontal scrollbar.*/
 {
     padding: 0px;
     overflow: hidden;
-    padding-left: 3px;
+    padding-left: 4px;
     padding-top: 0px;
     padding-bottom: 0px;
     margin: 0px;
@@ -2502,7 +2570,18 @@ of the horizontal scrollbar.*/
     padding-left: 0px;
     padding-right: 3px;
 }
-
+.jqx-dropdownlist .jqx-icon-arrow-down {
+    width:13px;
+}
+.jqx-dropdownlist .jqx-icon-arrow-up {
+    width:13px;
+}
+.jqx-combobox .jqx-icon-arrow-down {
+    width:13px;
+}
+.jqx-combobox .jqx-icon-arrow-up {
+    width:13px;
+}
 /*applied to the dropdownlist's content element which displays the selected item's text or html and the widget is disabled. */
 .jqx-dropdownlist-content-disabled
 {
@@ -2647,7 +2726,7 @@ of the horizontal scrollbar.*/
     border-width: 0px;
     border-bottom: 1px solid transparent; 
     overflow: hidden;
-    padding: 5px;
+    padding: 7px;
     height: auto;
     white-space: nowrap;
     overflow: hidden;  
@@ -2681,18 +2760,19 @@ of the horizontal scrollbar.*/
     cursor: pointer;
     background-image: url(images/close.png);
     background-repeat: no-repeat;    
+    margin-top:2px;
 }
 /*applied to the window's collapse button*/
 .jqx-window-collapse-button
 {
     background-image: url(images/icon-up.png);
     cursor: pointer;
-    margin-top: 1px;
+    margin-top: 3px;
 }
 /*applied to the window's collapse button when the window is collapsed*/
 .jqx-window-collapse-button-collapsed
 {
-    margin-top: 0px;
+    margin-top: 3px;
     cursor: pointer;
     background-image: url(images/icon-down.png);
 }
@@ -2766,8 +2846,8 @@ of the horizontal scrollbar.*/
 .jqx-slider-slider
 {
     cursor: pointer;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     z-index: 15;
     position: absolute;
     left: 0px;
@@ -2783,11 +2863,12 @@ of the horizontal scrollbar.*/
     -webkit-border-radius: 100%;
     border-radius: 100%;  
     box-sizing: content-box !important;
+    padding: 3px !important;
 }
 /*applied to the slider's thumb when the slider is in horizontal mode*/
 .jqx-slider-slider-horizontal
 {   
-    margin-top: -5px;
+    margin-top: -9px;
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
     border-radius: 100%;  
@@ -2796,7 +2877,7 @@ of the horizontal scrollbar.*/
 /*applied to the slider's thumb when the slider is in vertical mode*/
 .jqx-slider-slider-vertical
 {
-    margin-left: -5px;
+    margin-left: -9px;
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
     border-radius: 100%;
@@ -2805,7 +2886,7 @@ of the horizontal scrollbar.*/
 /*applied to the track where is located the thumb*/
 .jqx-slider-track
 {
-    height: 8px;
+    height: 4px;
     float:left;
     position: relative;
     z-index: 20;
@@ -2813,13 +2894,13 @@ of the horizontal scrollbar.*/
 /*used in horizontal slider*/
 .jqx-slider-track-horizontal
 {
-    height: 8px;
+    height: 4px;
     margin-top: 2px;
 }
 /*used in vertical slider*/
 .jqx-slider-track-vertical
 {
-    width: 8px;
+    width: 4px;
 }
 /*applied to the div which is between the thumbs in a range slider or from beginning of the track to the current thumb position in the default slider*/
 .jqx-slider-rangebar
@@ -3452,6 +3533,15 @@ of the horizontal scrollbar.*/
 {
     border-bottom: 1px solid #c5c5c5;
 }
+.jqx-grid-column-header[sort] > div > div {
+    width: calc(100% - 20px);
+}
+.jqx-grid-column-header[filter] > div > div {
+    width: calc(100% - 20px);
+}
+.jqx-grid-column-header[filter][sort] > div > div {
+    width: calc(100% - 40px);
+}
 
 .jqx-scheduler-all-day-cell
 {
@@ -3702,7 +3792,7 @@ of the horizontal scrollbar.*/
     float: right;
     margin-right: 2%;
     padding: 4px;
-    width: 72%;
+    width: 380px;
 }
 .jqx-scheduler-edit-dialog-label-rtl {
     clear: both;
@@ -3876,7 +3966,7 @@ input[type=text].jqx-input, input[type=password].jqx-input {
     border-width: 1px;
     border-style: solid;
     font-size: 13px;
-    padding: 0px;
+    padding: 3px;
     padding-left:3px;
     padding-right: 3px;
 }
@@ -5946,6 +6036,7 @@ ol li .jqx-listmenu-item-label:before
     display: none;
     background-color: transparent;
     z-index: 8999;
+    pointer-events: none;
 }
 .jqx-layout-ribbon-header-ltr
 {
@@ -7009,4 +7100,21 @@ jqx-scroll-bar {
 jqx-knob {
      width:600px;
      height:600px;
+}
+.jqx-input-label {
+    visibility:hidden;
+    position: absolute;
+}
+.jqx-input-bar{
+    visibility:hidden;
+    position: absolute;
+}
+.jqx-info-icon
+{
+    background-image: url('images/icon-info-small.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 16px;
+    height: 16px;
+    float: left;
 }
