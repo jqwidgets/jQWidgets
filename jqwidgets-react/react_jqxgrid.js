@@ -1,8 +1,38 @@
 /*
-jQWidgets v5.7.2 (2018-Apr)
+jQWidgets v6.0.4 (2018-July)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
+
+import '../jqwidgets/styles/jqx.base.css';
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxdata.export.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxbuttongroup.js';
+import '../jqwidgets/jqxscrollbar.js'
+import '../jqwidgets/jqxmenu.js'
+import '../jqwidgets/jqxlistbox.js'
+import '../jqwidgets/jqxdropdownlist.js'
+import '../jqwidgets/jqxcombobox.js'
+import '../jqwidgets/jqxnumberinput.js'
+import '../jqwidgets/jqxcheckbox.js'
+import '../jqwidgets/globalization/globalize.js'
+import '../jqwidgets/jqxcalendar.js'
+import '../jqwidgets/jqxnumberinput.js'
+import '../jqwidgets/jqxdatetimeinput.js'
+import '../jqwidgets/jqxgrid.js'
+import '../jqwidgets/jqxgrid.edit.js'
+import '../jqwidgets/jqxgrid.pager.js'
+import '../jqwidgets/jqxgrid.selection.js'
+import '../jqwidgets/jqxgrid.filter.js'
+import '../jqwidgets/jqxgrid.sort.js'
+import '../jqwidgets/jqxgrid.storage.js'
+import '../jqwidgets/jqxgrid.grouping.js'
+import '../jqwidgets/jqxgrid.export.js'
+import '../jqwidgets/jqxgrid.columnsresize.js'
+import '../jqwidgets/jqxgrid.columnsreorder.js'
+import '../jqwidgets/jqxgrid.aggregates.js'
 
 import React from 'react';
 
@@ -16,7 +46,7 @@ export default class JqxGrid extends React.Component {
         this.createComponent(options);
     };
     manageAttributes() {
-        let properties = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+        let properties = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','adaptivewidth','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
         let options = {};
         for(let item in this.props) {
               if(item === 'settings') {
@@ -107,6 +137,41 @@ export default class JqxGrid extends React.Component {
             JQXLite(this.componentSelector).jqxGrid('autoshowcolumnsmenubutton', arg)
         } else {
             return JQXLite(this.componentSelector).jqxGrid('autoshowcolumnsmenubutton');
+        }
+    };
+    showcolumnlines(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxGrid('showcolumnlines', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxGrid('showcolumnlines');
+        }
+    };
+    showrowlines(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxGrid('showrowlines', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxGrid('showrowlines');
+        }
+    };
+    showcolumnheaderlines(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxGrid('showcolumnheaderlines', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxGrid('showcolumnheaderlines');
+        }
+    };
+    adaptive(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxGrid('adaptive', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxGrid('adaptive');
+        }
+    };
+    adaptivewidth(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxGrid('adaptivewidth', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxGrid('adaptivewidth');
         }
     };
     clipboard(arg) {
@@ -765,6 +830,13 @@ export default class JqxGrid extends React.Component {
             JQXLite(this.componentSelector).jqxGrid('sortable', arg)
         } else {
             return JQXLite(this.componentSelector).jqxGrid('sortable');
+        }
+    };
+    sortmode(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxGrid('sortmode', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxGrid('sortmode');
         }
     };
     selectedrowindex(arg) {

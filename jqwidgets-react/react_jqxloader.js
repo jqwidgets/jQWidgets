@@ -1,8 +1,12 @@
 /*
-jQWidgets v5.7.2 (2018-Apr)
+jQWidgets v6.0.4 (2018-July)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
+
+import '../jqwidgets/styles/jqx.base.css';
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxloader.js';
 
 import React from 'react';
 
@@ -140,8 +144,8 @@ export default class JqxLoader extends React.Component {
     close() {
         JQXLite(this.componentSelector).jqxLoader('close');  
     };
-    open() {
-        JQXLite(this.componentSelector).jqxLoader('open');  
+    open(left, top) {
+        JQXLite(this.componentSelector).jqxLoader('open', left, top);  
     };
     render() {
         let id = 'jqxLoader' + JQXLite.generateID();

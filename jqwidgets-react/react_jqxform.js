@@ -6,8 +6,6 @@ License: https://jqwidgets.com/license/
 
 import '../jqwidgets/styles/jqx.base.css';
 import '../jqwidgets/jqxcore.js';
-import '../jqwidgets/jqxbuttons.js';
-import '../jqwidgets/jqxbuttongroup.js';
 
 import React from 'react';
 
@@ -15,13 +13,13 @@ const JQXLite = window.JQXLite;
 
 export const jqx = window.jqx;
 
-export default class JqxButtonGroup extends React.Component {
+export default class JqxForm extends React.Component {
     componentDidMount() {
         let options = this.manageAttributes();
         this.createComponent(options);
     };
     manageAttributes() {
-        let properties = ['disabled','enableHover','mode','rtl','template','theme'];
+        let properties = ['padding','backgroundColor','borderColor','value','template'];
         let options = {};
         for(let item in this.props) {
               if(item === 'settings') {
@@ -48,13 +46,13 @@ export default class JqxButtonGroup extends React.Component {
                 JQXLite(this.componentSelector).addClass(classes[i]);
             }
         }
-    JQXLite(this.componentSelector).css('margin-left', '1px');        if(!this.template) {
+        if(!this.template) {
               JQXLite(this.componentSelector).html(this.props.template);
         }
-        JQXLite(this.componentSelector).jqxButtonGroup(options);
+        JQXLite(this.componentSelector).jqxForm(options);
     };
     setOptions(options) {
-        JQXLite(this.componentSelector).jqxButtonGroup('setOptions', options);
+        JQXLite(this.componentSelector).jqxForm('setOptions', options);
     };
     getOptions() {
         if(arguments.length === 0) {
@@ -62,7 +60,7 @@ export default class JqxButtonGroup extends React.Component {
         }
         let resultToReturn = {};
         for(let i = 0; i < arguments.length; i++) {
-            resultToReturn[arguments[i]] = JQXLite(this.componentSelector).jqxButtonGroup(arguments[i]);
+            resultToReturn[arguments[i]] = JQXLite(this.componentSelector).jqxForm(arguments[i]);
         }
         return resultToReturn;
     };
@@ -72,77 +70,72 @@ export default class JqxButtonGroup extends React.Component {
     off(name) {
         JQXLite(this.componentSelector).off(name);
     };
-    disabled(arg) {
+    padding(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxButtonGroup('disabled', arg)
+            JQXLite(this.componentSelector).jqxForm('padding', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxButtonGroup('disabled');
+            return JQXLite(this.componentSelector).jqxForm('padding');
         }
     };
-    enableHover(arg) {
+    backgroundColor(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxButtonGroup('enableHover', arg)
+            JQXLite(this.componentSelector).jqxForm('backgroundColor', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxButtonGroup('enableHover');
+            return JQXLite(this.componentSelector).jqxForm('backgroundColor');
         }
     };
-    mode(arg) {
+    borderColor(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxButtonGroup('mode', arg)
+            JQXLite(this.componentSelector).jqxForm('borderColor', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxButtonGroup('mode');
+            return JQXLite(this.componentSelector).jqxForm('borderColor');
         }
     };
-    rtl(arg) {
+    value(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxButtonGroup('rtl', arg)
+            JQXLite(this.componentSelector).jqxForm('value', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxButtonGroup('rtl');
+            return JQXLite(this.componentSelector).jqxForm('value');
         }
     };
     template(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxButtonGroup('template', arg)
+            JQXLite(this.componentSelector).jqxForm('template', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxButtonGroup('template');
+            return JQXLite(this.componentSelector).jqxForm('template');
         }
     };
-    theme(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxButtonGroup('theme', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxButtonGroup('theme');
-        }
+    getInstance() {
+        return JQXLite(this.componentSelector).jqxForm('getInstance');  
     };
-    disableAt(index) {
-        JQXLite(this.componentSelector).jqxButtonGroup('disableAt', index);  
-    };
-    disable() {
-        JQXLite(this.componentSelector).jqxButtonGroup('disable');  
+    refresh() {
+        return JQXLite(this.componentSelector).jqxForm('refresh');  
     };
     destroy() {
-        JQXLite(this.componentSelector).jqxButtonGroup('destroy');  
+        return JQXLite(this.componentSelector).jqxForm('destroy');  
     };
-    enable() {
-        JQXLite(this.componentSelector).jqxButtonGroup('enable');  
+    hideComponent(name) {
+        return JQXLite(this.componentSelector).jqxForm('hideComponent', name);  
     };
-    enableAt(index) {
-        JQXLite(this.componentSelector).jqxButtonGroup('enableAt', index);  
+    showComponent(name) {
+        return JQXLite(this.componentSelector).jqxForm('showComponent', name);  
     };
-    focus() {
-        JQXLite(this.componentSelector).jqxButtonGroup('focus');  
+    val(value) {
+        if (value !== undefined) {
+            JQXLite(this.componentSelector).jqxForm('val',  value)
+        } else {
+            return JQXLite(this.componentSelector).jqxForm('val');
+        }
     };
-    getSelection() {
-        return JQXLite(this.componentSelector).jqxButtonGroup('getSelection');  
+
+    submit(action, target, method) {
+        return JQXLite(this.componentSelector).jqxForm('submit', action, target, method);  
     };
-    performRender() {
-        JQXLite(this.componentSelector).jqxButtonGroup('render');
-    };
-    setSelection(index) {
-        JQXLite(this.componentSelector).jqxButtonGroup('setSelection', index);  
+    getComponentByName(name) {
+        return JQXLite(this.componentSelector).jqxForm('getComponentByName', name);  
     };
     render() {
-        let id = 'jqxButtonGroup' + JQXLite.generateID();
+        let id = 'jqxForm' + JQXLite.generateID();
         this.componentSelector = '#' + id;
         return (
             <div id={id}>{this.props.value}{this.props.children}</div>

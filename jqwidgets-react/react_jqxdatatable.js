@@ -1,8 +1,22 @@
 /*
-jQWidgets v5.7.2 (2018-Apr)
+jQWidgets v6.0.4 (2018-July)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
+
+import '../jqwidgets/styles/jqx.base.css';
+import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxdata.export.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxcheckbox.js';
+import '../jqwidgets/jqxtooltip.js';
+import '../jqwidgets/jqxscrollbar.js';
+import '../jqwidgets/jqxlistbox.js';
+import '../jqwidgets/jqxcombobox.js';
+import '../jqwidgets/jqxnumberinput.js';
+import '../jqwidgets/jqxdropdownlist.js';
+import '../jqwidgets/jqxdatatable.js';
 
 import React from 'react';
 
