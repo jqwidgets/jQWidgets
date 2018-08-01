@@ -1957,7 +1957,7 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     border-collapse: separate;
 }
 .jqx-calendar .jqx-widget-header{
-    background-color: inherit;
+  
 }
 .jqx-calendar > div {
     padding: 0px;

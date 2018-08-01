@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
-    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
@@ -45,10 +45,10 @@
 
             var cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties, rowdata) {
                 if (value < 20) {
-                    return '<span style="margin: 4px; float: ' + columnproperties.cellsalign + '; color: #ff0000;">' + value + '</span>';
+                    return '<span style="margin: 4px; margin-top:8px; float: ' + columnproperties.cellsalign + '; color: #ff0000;">' + value + '</span>';
                 }
                 else {
-                    return '<span style="margin: 4px; float: ' + columnproperties.cellsalign + '; color: #008000;">' + value + '</span>';
+                    return '<span style="margin: 4px; margin-top:8px; float: ' + columnproperties.cellsalign + '; color: #008000;">' + value + '</span>';
                 }
             }
 

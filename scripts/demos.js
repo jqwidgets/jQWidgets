@@ -301,23 +301,24 @@ function getWidth(name) {
 function getDemoTheme() {
     var theme = document.body ? $.data(document.body, 'theme') : null
     if (theme == null) {
-        theme = '';
+        theme = 'light';
     }
     else {
         return theme;
     }
     var themestart = window.location.toString().indexOf('?');
     if (themestart == -1) {
-        return '';
+      theme = 'light';
     }
-
-    var theme = window.location.toString().substring(1 + themestart);
-    if (theme.indexOf('(') >= 0) {
-        theme = theme.substring(1);
-    }
-    if (theme.indexOf(')') >= 0) {
-        theme = theme.substring(0, theme.indexOf(')'));
-    }
+	else {
+		var theme = window.location.toString().substring(1 + themestart);
+		if (theme.indexOf('(') >= 0) {
+			theme = theme.substring(1);
+		}
+		if (theme.indexOf(')') >= 0) {
+			theme = theme.substring(0, theme.indexOf(')'));
+		}
+	}
 
     var url = "../../jqwidgets/styles/jqx." + theme + '.css';
     if (window.location.href.toString().indexOf("angularjs") >= 0) {
@@ -378,7 +379,7 @@ function getDemoTheme() {
     $.jqx.theme = theme;
     return theme;
 };
-var theme = '';
+var theme = 'light';
 try {
     if (jQuery) {
         $(document).ready(function () {

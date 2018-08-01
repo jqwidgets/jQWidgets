@@ -24,7 +24,8 @@
   styles/jqx.energyblue.css: Stylesheet for the EnergyBlue Theme
   styles/jqx.fresh.css: Stylesheet for the Fresh Theme
   styles/jqx.highcontrast.css: Stylesheet for the High Contrast Theme
-  styles/jqx.light.css: Stylesheet for the LightTheme
+  styles/jqx.light.css: Stylesheet for the Light Theme
+  styles/jqx.flat.css: Stylesheet for the Flat Theme
   styles/jqx.metro.css: Stylesheet for the Metro Theme
   styles/jqx.metrodark.css: Stylesheet for the Metro Dark Theme
   styles/jqx.mobile.css: Stylesheet for the Mobile Theme
@@ -143,6 +144,8 @@
   All php integration samples use and require the Northwind Database(/phpdemos/Northwind.MySQL5.sql).  
   Any examples that use Ajax need to be on a Web Server/LocalHost in order to work correctly. 
   Run any Typescript or Angular JS 2 examples on a Web Server/LocalHost.
+  Angular and React demos must have the required node_modules installed. Within the "angular" and "react" folders, you will find a file called
+setup.bat. Double-click on it to automatically install the required node_modules.
 
 3.Documentation
 

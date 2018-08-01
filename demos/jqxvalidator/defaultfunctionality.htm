@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
-    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>   
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>   
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxexpander.js"></script> 
     <script type="text/javascript" src="../../jqwidgets/jqxvalidator.js"></script> 
@@ -24,20 +24,20 @@
     <script type="text/javascript" src="../../scripts/demos.js"></script> 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#register").jqxExpander({ toggleMode: 'none', width: '300px', showArrow: false });
-            $('#sendButton').jqxButton({ width: 60, height: 25 });
+            $("#register").jqxExpander({ toggleMode: 'none', width: '320px', showArrow: false });
+            $('#sendButton').jqxButton({ width: 60, height: 30 });
             $('#acceptInput').jqxCheckBox({ width: 130 });
 
             $('#sendButton').on('click', function () {
                 $('#testForm').jqxValidator('validate');
             });
-            $("#ssnInput").jqxMaskedInput({ mask: '###-##-####', width: 150, height: 22  });
-            $("#phoneInput").jqxMaskedInput({ mask: '(###)###-####', width: 150, height: 22  });
-            $("#zipInput").jqxMaskedInput({ mask: '#####-####', width: 150, height: 22  });
+            $("#ssnInput").jqxMaskedInput({ mask: '###-##-####', width: 250, height: 30  });
+            $("#phoneInput").jqxMaskedInput({ mask: '(###)###-####', width: 250, height: 30  });
+            $("#zipInput").jqxMaskedInput({ mask: '#####-####', width: 250, height: 30  });
 
-            $('.text-input').jqxInput({  });
+            $('.text-input').jqxInput({ width:250, height:30 });
 
-            $('#birthInput').jqxDateTimeInput({ width: 150, height: 22, value: new Date(2014, 4, 1) });
+            $('#birthInput').jqxDateTimeInput({ width: 250, height: 30, value: new Date(2019, 4, 1) });
 
             // initialize validator.
             $('#testForm').jqxValidator({
@@ -50,7 +50,7 @@
                        {
                            input: '#birthInput', message: 'Your birth date must be between 1/1/1900 and 1/1/2014.', action: 'valueChanged', rule: function (input, commit) {
                                var date = $('#birthInput').jqxDateTimeInput('value');
-                               var result = date.getFullYear() >= 1900 && date.getFullYear() <= 2014;
+                               var result = date.getFullYear() >= 1900 && date.getFullYear() <= 2025;
                                // call commit with false, when you are doing server validation and you want to display a validation error on this field. 
                                return result;
                            }
@@ -79,8 +79,8 @@
     <style type="text/css">
         .text-input
         {
-            height: 21px;
-            width: 150px;
+            height: 30px;
+            width: 250px;
         }
         .register-table
         {
@@ -91,7 +91,7 @@
         .register-table tr
         {
             margin: 0px;
-            padding: 2px;
+            padding: 5px;
             border-spacing: 0px;
             border-collapse: collapse;
             font-family: Verdana;
@@ -110,40 +110,45 @@
         <div>
             <form id="testForm" action="./">
                 <table class="register-table">
-                    <tr>
-                        <td>Username:</td>
-                        <td><input type="text" id="userInput" class="text-input" /></td>
+	                
+				<tr>
+				
+						<td><input placeholder="User name" type="text" id="userInput" class="text-input" /></td>
                     </tr>
                     <tr>
-                        <td>Password:</td>
-                        <td><input type="password" id="passwordInput" class="text-input" /></td>
+                        <td><input placeholder="password" type="password" id="passwordInput" class="text-input" /></td>
                     </tr>
                     <tr>
-                        <td>Confirm password:</td>
-                        <td><input type="password" id="passwordConfirmInput" class="text-input" /></td>
+                        <td><input placeholder="confirm password" type="password" id="passwordConfirmInput" class="text-input" /></td>
                     </tr>
                     <tr>
-                        <td>Real name:</td>
-                        <td><input type="text" id="realNameInput" class="text-input" /></td>
+                        <td><input placeholder="real name" type="text" id="realNameInput" class="text-input" /></td>
                     </tr>
                     <tr>
                         <td>Birth date:</td>
-                        <td><div id="birthInput"></div></td>
                     </tr>
-                    <tr>
-                        <td>E-mail:</td>
-                        <td><input type="text" id="emailInput" placeholder="someone@mail.com" class="text-input" /></td>
+					<tr>
+					    <td><div id="birthInput"></div></td>
                     </tr>
-                    <tr>
+				    <tr>
+                        <td><input placeholder="email" type="text" id="emailInput" placeholder="someone@mail.com" class="text-input" /></td>
+                    </tr>
+					<tr>
                         <td>SSN:</td>
+                    </tr>
+                    <tr>
                         <td><div id="ssnInput"></div></td>
                     </tr>
-                    <tr>
+                   <tr>
                         <td>Phone:</td>
+                    </tr>
+					<tr>
                         <td><div id="phoneInput"></div></td>
                     </tr>
-                    <tr>
+					<tr>
                         <td>Zip code:</td>
+                    </tr>
+                    <tr>
                         <td><div id="zipInput"></div></td>
                     </tr>
                     <tr>

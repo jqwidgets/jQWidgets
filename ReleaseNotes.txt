@@ -1,4 +1,32 @@
 ﻿*********************************************
+* jQWidgets v6.0.5 Release, August-01-2018           *
+*********************************************
+
+What's Improved:
+
+- jqxGrid Adaptive rendering. Filter dialog is rendered differently on small screens when adaptive mode is turned on.
+
+What's Fixed:
+
+- Fixed an issue in jqxNumberInput when promptChart is set to empty string.
+- Fixed an issue in jqxNumberinput up/down  keys when selection is before number the first number does nothing.
+- Fixed an issue in jqxGrid when multi-column sorting is applied to column with type "float" or "int".
+- Fixed an issue in jqxGrid Pager rendering on small screen devices. Now, some elements are adaptively hidden and shown.
+- Fixed an issue in jqxGrid multi-column sorting when user edits cells.
+- Fixed an issue in jqxGrid regarding auto-scrolling when an editor is opened and the Grid is grouped.
+- Fixed an issue in jqxGrid number editing process. When numeric cell is selected and a numeric key is pressed, the input's caret position was wrong.
+- Fixed an issue in jqxComboBox keyboard navigation.
+- Fixed an issue in jqxInput when the value property is changed dynamically.
+- Fixed an issue in jqxDataAdapter regarding the mapChar option name.
+- Fixed an issue in jqxForm regarding the val() method.
+- Fixed an issue in jqxForm typescript file.
+- Fixed an issue in jqxDateTimeInput regarding the val() method when the Date is in String format.
+- Fixed an issue in jqxDateTimeInput about darkblue theme. Hides navigation buttons at top of Calendar.
+- Fixed an issue in jqxDateTimeInput regarding the validation on initialization. value is always between the min and max range on initialization.
+- Fixed an issue in jqxDateTimeInput regarding the time popup, when the formatString is "HH" or "hh", only the Hour input shoud be visible.
+- Fixed an issue in jqxTree regarding the vertical alignment of Tree Item's text and icons.
+
+*********************************************
 * jQWidgets v6.0.4 Release, July-17-2018                *
 *********************************************
 

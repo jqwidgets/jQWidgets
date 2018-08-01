@@ -1,8 +1,9 @@
 /*
-jQWidgets v6.0.4 (2018-July)
+jQWidgets v6.0.5 (2018-July)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
+/* eslint-disable */
 /// <reference path="jqwidgets.d.ts" />
 import '../jqwidgets/jqxcore.js';
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
@@ -18,7 +19,7 @@ export class jqxFormComponent implements OnChanges
    @Input('padding') attrPadding: jqwidgets.FormPadding;
    @Input('backgroundColor') attrBackgroundColor: string;
    @Input('borderColor') attrBorderColor: string;
-   @Input('value') attrValue: object;
+   @Input('value') attrValue: any;
    @Input('template') attrTemplate: Array<jqwidgets.FormTemplateItem>;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -163,7 +164,7 @@ export class jqxFormComponent implements OnChanges
       }
    }
 
-   value(arg?: jqwidgets.object) : any {
+   value(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxForm('value', arg);
       } else {
@@ -213,7 +214,7 @@ export class jqxFormComponent implements OnChanges
       this.host.jqxForm('submit', action, target, method);
    }
 
-   getComponentByName(name?: string): jqwidgets.Object {
+   getComponentByName(name?: string): any {
       return this.host.jqxForm('getComponentByName', name);
    }
 

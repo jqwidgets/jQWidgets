@@ -1,8 +1,9 @@
 /*
-jQWidgets v6.0.4 (2018-July)
+jQWidgets v6.0.5 (2018-July)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
+/* eslint-disable */
 
 import '../jqwidgets/styles/jqx.base.css';
 import '../jqwidgets/jqxcore.js';

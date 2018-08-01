@@ -6,14 +6,14 @@
     <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
-    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxpasswordinput.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqxtooltip.js"></script>
     <script type="text/javascript" src="../../scripts/demos.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#jqxPasswordInput").jqxPasswordInput({width: 200, height: 25,  placeHolder: "Enter password:", showStrength: true, showStrengthPosition: "right",
+            $("#jqxPasswordInput").jqxPasswordInput({width: 200, height: 30,  placeHolder: "Enter password:", showStrength: true, showStrengthPosition: "right",
                 passwordStrength: function (password, characters, defaultStrength) {
                     var length = password.length;
                     var letters = characters.letters;
@@ -39,6 +39,7 @@
     </script>
 </head>
 <body>
+	<br/><br/>
     <input id="jqxPasswordInput" type="password" style="margin-top: 5px;" />
 </body>
 </html>

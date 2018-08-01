@@ -362,7 +362,7 @@ declare module jqwidgets {
         padding?: FormPadding;
         backgroundColor?: string;
         borderColor?: string;
-        value?: object;
+        value?: any;
         template: Array<FormTemplateItem>;
     }// FormOptions
 
@@ -376,7 +376,7 @@ declare module jqwidgets {
         showComponent(name: string): void;
         val(value?: any): any;
         submit(action?: string, target?: string, method?: string): void;
-        getComponentByName(name?: string): Object;
+        getComponentByName(name?: string): any;
     }// jqxForm
 
     export interface BulletChartPointer {
