@@ -1,4 +1,24 @@
 ﻿*********************************************
+* jQWidgets v6.0.6 Release, August-13-2018           *
+*********************************************
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid regarding the columns rendering when everpresentrow and showfilterrow are enabled.
+- Fixed an issue in jqxGrid regarding the multi-column sorting when the Grid is empty.
+- Fixed an issue in jqxGrid regarding the multi-column sorting when the Grid column is with key/value pairs.
+- Fixed an issue in jqxGrid data export when exporting a column with currency formatting and the rows count is 1.
+- Fixed an issue in jqxGrid, jqxTreeGrid typescript definitions, when a method or property is set on ngOnInit.
+- Fixed an issue in jqxCalendar rendering when firstDayOfWeek is changed.
+- Fixed an issue in jqxForm Angular Component regarding the imports and resizing.
+- Fixed an issue in jqxForm typescript definitions.
+- Fixed an issue in jqxNumberInput regarding the value initialization when the widget is created.
+- Fixed an issue in jqxDropDownList regarding the rendering of the placeholder in Material themes, when clearSelection method is called.
+- Fixed an issue in jqxChart tooltip arrow positioning.
+- Fixed an issue in jqxListBox rendering when the theme is material and custom rendering function is set.
+- Fixed an issue in jqxScheduler regarding the all day checkbox alignment in the dialog.
+
+*********************************************
 * jQWidgets v6.0.5 Release, August-01-2018           *
 *********************************************
 

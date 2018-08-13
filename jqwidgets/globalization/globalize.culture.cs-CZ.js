@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*
  * Globalize Culture cs-CZ
  *

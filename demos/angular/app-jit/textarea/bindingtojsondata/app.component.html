@@ -1,0 +1,12 @@
+﻿<jqxTextArea #jqxTextArea
+             (onSelect)="select($event)"
+             [placeHolder]="'Contact Name:'"
+             [source]="dataAdapter"
+             [displayMember]="'ContactName'" [valueMember]="'CompanyName'"
+             [width]="200" [height]="40">
+</jqxTextArea>
+<label style="font-family: Verdana; font-size: 10px;">
+  ex: Ana
+</label>
+<div style="font-family: Verdana; font-size: 13px;" #selectionlog>
+</div>

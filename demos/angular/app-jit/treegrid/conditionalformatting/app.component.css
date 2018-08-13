@@ -1,0 +1,46 @@
+﻿html, body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.max {
+  color: black\9;
+  background-color: #63be7b\9;
+}
+
+.avg {
+  color: black\9;
+  background-color: #f8e984\9;
+}
+
+.minavg {
+  color: black\9;
+  background-color: #f9806f\9;
+}
+
+.min {
+  color: black\9;
+  background-color: #f8696b\9;
+}
+
+.max:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected), .jqx-widget .max:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected) {
+  color: black;
+  background-color: #63be7b;
+}
+
+.avg:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected), .jqx-widget .avg:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected) {
+  color: black;
+  background-color: #f8e984;
+}
+
+.minavg:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected), .jqx-widget .minavg:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected) {
+  color: black;
+  background-color: #f9806f;
+}
+
+.min:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected), .jqx-widget .min:not(.jqx-grid-cell-hover):not(.jqx-grid-cell-selected) {
+  color: black;
+  background-color: #f8696b;
+}

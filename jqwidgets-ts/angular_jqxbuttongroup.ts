@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.5 (2018-July)
+jQWidgets v6.0.6 (2018-August)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -112,6 +112,9 @@ export class jqxButtonGroupComponent implements OnChanges
    }
 
    createComponent(options?: any): void {
+      if (this.host) {
+         return;
+      }
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
       }
@@ -127,7 +130,6 @@ export class jqxButtonGroupComponent implements OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxButtonGroup', options);
 
-      this.__updateRect__();
    }
 
    createWidget(options?: any): void {

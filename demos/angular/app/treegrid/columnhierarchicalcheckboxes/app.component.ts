@@ -10,6 +10,15 @@ import { jqxTreeGridComponent } from '../../../jqwidgets-ts/angular_jqxtreegrid'
 export class AppComponent {
     @ViewChild('TreeGrid') treeGrid: jqxTreeGridComponent
 
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+
+
     data: any[] = [
         {
             'id': '1', 'name': 'Corporate Headquarters', 'budget': '1230000', 'location': 'Las Vegas',

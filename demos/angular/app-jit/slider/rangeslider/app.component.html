@@ -1,0 +1,89 @@
+﻿<div id="main-container" class="main-container jqx-rc-all">
+  <div style="float: left">
+    <div id="catalogue" class="catalogue jqx-rc-all">
+    </div>
+  </div>
+  <div id="options" class="options jqx-rc-all">
+    <div id="options-container" class="options-container">
+      <div class="label">
+        Price
+      </div>
+      <div class="options-value">
+        <div style="float: left" id="priceMin">
+        </div>
+        <div style="float: right" id="priceMax">
+        </div>
+      </div>
+      <br />
+      <jqxSlider filter="price" #priceSlider
+                 (onChange)="priceSliderChange($event)"
+                 [showButtons]="true"
+                 [min]="500" [max]="4000" [step]="350"
+                 [values]="[500, 4000]"
+                 [mode]="'fixed'" [rangeSlider]="true"
+                 [ticksFrequency]="350"                 
+                 [height]="30" [width]="180">
+      </jqxSlider>
+      <div class="label">
+        Screen Size
+      </div>
+      <div class="options-value">
+        <div style="float: left" id="displayMin">
+        </div>
+        <div style="float: right" id="displayMax">
+        </div>
+      </div>
+      <br />
+      <jqxSlider filter="display" #displaySlider
+                 (onChange)="displaySliderChange($event)"
+                 [showButtons]="true"
+                 [min]="9" [max]="19" [step]="1"
+                 [values]="[9, 19]"
+                 [mode]="'fixed'" [rangeSlider]="true"
+                 [ticksFrequency]="1"                 
+                 [height]="30" [width]="180">
+      </jqxSlider>
+      <div class="label">
+        RAM
+      </div>
+      <div class="options-value">
+        <div style="float: left" id="ramMin">
+        </div>
+        <div style="float: right" id="ramMax">
+        </div>
+      </div>
+      <br />
+      <jqxSlider filter="ram" #ramSlider
+                 (onChange)="ramSliderChange($event)"
+                 [showButtons]="true"
+                 [min]="2" [max]="12" [step]="1"
+                 [values]="[2, 12]"
+                 [mode]="'fixed'" [rangeSlider]="true"
+                 [ticksFrequency]="1"                 
+                 [height]="30" [width]="180">
+      </jqxSlider>
+      <div class="label">
+        HDD
+      </div>
+      <div class="options-value">
+        <div style="float: left" id="hddMin">
+        </div>
+        <div style="float: right" id="hddMax">
+        </div>
+      </div>
+      <br />
+      <jqxSlider filter="hdd" #hddSlider
+                 (onChange)="hddSliderChange($event)"
+                 [showButtons]="true"
+                 [min]="150" [max]="1500" [step]="135"
+                 [values]="[150, 1500]"
+                 [mode]="'fixed'" [rangeSlider]="true"
+                 [ticksFrequency]="135"                 
+                 [height]="30" [width]="180">
+      </jqxSlider>
+      <jqxButton [width]="100" #resetButton (onClick)="clickResetButton()" class="resetButton">Reset filters</jqxButton>
+    </div>
+  </div>
+  <div style="clear: both;">
+  </div>
+</div>

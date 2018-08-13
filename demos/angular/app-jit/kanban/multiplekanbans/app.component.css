@@ -1,0 +1,29 @@
+﻿#kanbanBox1 {
+  width: 400px;
+  height: 400px;
+  float: left;
+  padding: 2px;
+}
+
+#kanbanBox2 {
+  width: 400px;
+  height: 400px;
+  float: left;
+  padding: 2px;
+}
+
+#outerBox1 {
+  float: left;
+  padding: 5px;
+  margin: 2px;
+  background-color: #6bbd49;
+  color: #fff;
+}
+
+#outerBox2 {
+  color: #fff;
+  float: left;
+  padding: 5px;
+  margin: 2px;
+  background-color: #5dc3f0;
+}

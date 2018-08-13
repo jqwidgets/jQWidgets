@@ -4,7 +4,6 @@
     "compilerOptions": {
         "target": "es5",
         "module": "es2015",
-	 //  	"allowJs": true,
         "moduleResolution": "node",
         "removeComments": true,
         "emitDecoratorMetadata": true,
@@ -16,15 +15,15 @@
             "node",
             "jquery"
         ],
-        "lib": [ "dom", "es2015" ]
+        "lib": [ "dom", "es2016" ]
     },
     "exclude": [
         "node_modules",
         "aot",
         "temp",
-		"sampledata",
-		"scripts",
-		"resources",
-		"jqwidgets"
+		    "sampledata",
+		    "scripts",
+		    "resources",
+		    "jqwidgets"
     ]
 }

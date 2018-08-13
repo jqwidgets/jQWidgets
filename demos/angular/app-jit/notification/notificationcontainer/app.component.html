@@ -1,0 +1,16 @@
+﻿<jqxNotification #jqxNotification
+                 [template]="'info'"
+                 [autoClose]="true"
+                 [appendContainer]="'#container'"
+                 [opacity]="0.9"
+                 [width]="'100%'">
+  <div>
+      <div #notificationContent></div>
+  </div>
+</jqxNotification>
+
+<jqxButton #openNotification (onClick)="click()">Open notification</jqxButton>
+
+<div id="container" style="width: 300px; height: 400px; margin-top: 15px; background-color: #F2F2F2;
+        border: 1px dashed #AAAAAA; overflow: auto;">
+</div>

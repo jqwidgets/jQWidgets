@@ -11,7 +11,13 @@ export class AppComponent {
     @ViewChild('jqxSplitter') mainSplitter: jqxSplitterComponent;
 
     panels: any[] = [{ size: 250 }];
-    
+   	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	} 
     orientationButtonClick(): void {
         let currentOrientation = this.mainSplitter.orientation();
         if (currentOrientation === 'vertical') {

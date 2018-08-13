@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.5 (2018-July)
+jQWidgets v6.0.6 (2018-August)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -130,6 +130,9 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
    }
 
    createComponent(options?: any): void {
+      if (this.host) {
+         return;
+      }
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
       }
@@ -144,7 +147,6 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxCheckBox', options);
 
-      this.__updateRect__();
       options.checked !== undefined ? this.onChangeCallback(options.checked) : this.onChangeCallback(false);
    }
 

@@ -1,0 +1,49 @@
+﻿<jqxButton #showWindowButton
+           (onClick)="showWindowButtonClick()"
+           [width]="80">
+  Show
+</jqxButton>
+
+<div style="margin-top: 10px;">Events Log:</div>
+<jqxPanel #events [width]="450" [height]="250" style="width: 300px; height: 200px; border-width: 0px;"></jqxPanel>
+
+<jqxWindow #eventWindow
+           (onClose)="eventWindowClose($event)"
+           (onMoved)="eventWindowMoved($event)"
+           (onOpen)="eventWindowOpen($event)"
+           [width]="270"
+           [height]="155" 
+           [maxHeight]="160" [maxWidth]="280" [minHeight]="30" [minWidth]="250"
+           [isModal]="true" [modalOpacity]="0.3"
+           [cancelButton]="'.cancel'" [okButton]="'.ok'" [resizable]="false"
+           [position]="{ x: 90, y: 140 }">
+  <div>
+    <img width="14" height="14" src="../images/help.png" alt="" />
+    Modal Window
+  </div>
+
+  <div>
+
+    <div>
+      Please click "OK", "Cancel" or the close button to close the modal window. The dialog
+      result will be displayed in the events log.
+    </div>
+
+    <div style="float: right; margin-top: 15px;">
+      <div style="float: right;">
+          <jqxButton #okButton class="ok"
+                     style="display: inline-block; margin-right: 10px;"
+                     [width]="80">
+            OK
+          </jqxButton>
+          <jqxButton #cancelButton class="cancel"
+                     style="display: inline-block;"
+                     [width]="80">
+            Cancel
+          </jqxButton>
+      </div>
+    </div>
+
+  </div>
+
+</jqxWindow>

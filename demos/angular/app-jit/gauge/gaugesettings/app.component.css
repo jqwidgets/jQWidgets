@@ -1,0 +1,25 @@
+﻿body, html {
+  height: 100%;
+}
+
+.gaugeValue {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fafafa), color-stop(100%, #f3f3f3));
+  background-image: -webkit-linear-gradient(#fafafa, #f3f3f3);
+  background-image: -moz-linear-gradient(#fafafa, #f3f3f3);
+  background-image: -o-linear-gradient(#fafafa, #f3f3f3);
+  background-image: linear-gradient(#fafafa, #f3f3f3);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  position: absolute;
+  top: 235px;
+  left: 132px;
+  font-family: Sans-Serif;
+  text-align: center;
+  font-size: 17px;
+  width: 70px;
+}

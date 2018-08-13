@@ -16,6 +16,14 @@
             url: 'http://services.odata.org/V3/Northwind/Northwind.svc/Orders?$format=json&$callback=?'
         };
 
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+	
     dataAdapter: any = new jqx.dataAdapter(this.source,
       {
           formatData: (data: any): void => {

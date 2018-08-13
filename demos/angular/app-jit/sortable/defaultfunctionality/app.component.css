@@ -1,0 +1,20 @@
+﻿jqxSortable > div {
+  margin: 2px;
+  padding: 5px;
+  float: left;
+  width: 200px;
+  border: lightblue solid 1px;
+}
+
+jqxSortable > div > div {
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 1px solid transparent;
+}
+
+jqxSortable > div > div:hover {
+  border: 1px solid #356AA0;
+}

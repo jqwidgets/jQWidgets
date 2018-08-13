@@ -3,7 +3,17 @@
 import { generatedata } from '../../../sampledata/generatedata';
 
   @Component({     selector: 'app-root',     templateUrl: './app.component.html'
- })  export class AppComponent {     source: any =     {         localData: generatedata(200, false),
+ })  export class AppComponent {  
+
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+
+   source: any =     {         localData: generatedata(200, false),
         dataType: 'array',
         datafields:
         [

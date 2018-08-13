@@ -1,0 +1,38 @@
+﻿html, body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.big-image {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #999;
+  background: #fff;
+  padding: 3px;
+}
+
+.small-image {
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 3px;
+}
+
+.content-container {
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+}
+
+.important-text {
+  font-size: 13px;
+  color: #000;
+}
+
+.more-text {
+  color: #444;
+  font-size: 11px;
+  font-style: italic;
+}

@@ -9,6 +9,15 @@ import { jqxSchedulerComponent } from '../../../jqwidgets-ts/angular_jqxschedule
 
 export class AppComponent {
     @ViewChild('myScheduler') myScheduler: jqxSchedulerComponent;
+	
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+
 
     source: any =
     {
@@ -49,7 +58,7 @@ export class AppComponent {
         'weekView'
     ];
 
-    date: any = new jqx.date(2016, 11, 23);
+    date: any = new jqx.date(2018, 11, 23);
 
     ready = (): void => {
         this.myScheduler.scrollTop(700);

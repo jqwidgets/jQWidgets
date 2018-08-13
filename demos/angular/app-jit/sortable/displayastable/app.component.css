@@ -1,0 +1,30 @@
+﻿html, body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+#sortable {
+  list-style-type: none;
+  margin: 2px;
+  padding: 5px;
+  float: left;
+  width: 312px;
+  border: lightblue solid 2px;
+}
+
+  #sortable div.inner-div {
+    margin: 1px;
+    display: inline-block;
+    background-color: lightblue;
+    border: DodgerBlue solid 1px;
+    padding: 0;
+    float: left;
+    padding-left: 0;
+    text-align: center;
+    cursor: pointer;
+    font-size: 5.2em;
+    width: 100px;
+    height: 100px;
+  }

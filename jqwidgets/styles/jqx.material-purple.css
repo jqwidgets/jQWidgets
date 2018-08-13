@@ -1795,4 +1795,5 @@ input[type="text"].jqx-input-material-purple:-ms-input-placeholder, input[type="
 .jqx-editor-toolbar-button-material-purple{
     border-color: #ddd;
     box-shadow: none !important;
+	color: #333;
 }

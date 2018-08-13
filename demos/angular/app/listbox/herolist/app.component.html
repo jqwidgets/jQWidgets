@@ -1,0 +1,10 @@
+﻿<jqxListBox #listbox
+            [width]="250"
+            [height]="300">
+    <ul>
+        <li *ngFor="let hero of heroes">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </li>
+    </ul>
+</jqxListBox>
+<app-heroes></app-heroes>

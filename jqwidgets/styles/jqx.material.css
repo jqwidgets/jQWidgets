@@ -1799,4 +1799,5 @@ input[type="text"].jqx-input-material:-ms-input-placeholder, input[type="text"].
 .jqx-editor-toolbar-button-material{
     border-color: #ddd;
     box-shadow: none !important;
+	color: #333;
 }

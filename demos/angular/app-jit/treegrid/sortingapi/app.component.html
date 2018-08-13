@@ -1,0 +1,42 @@
+﻿<jqxTreeGrid style="float: left;"
+             [width]="550"
+             [source]="dataAdapter"
+             [columns]="columns"
+             [sortable]="true"
+             [ready]="ready"
+             #TreeGrid>
+</jqxTreeGrid>
+
+<div style="float: left; margin-left: 10px;">
+  <table>
+    <tr>
+      <td align="right"><div><strong>Settings</strong></div></td>
+      <td align="left"></td>
+    </tr>
+    <tr>
+      <td align="right">Column:</td>
+      <td align="left">
+        <jqxDropDownList #columnName
+                         [width]="100" [source]="['First Name', 'Last Name' , 'City' , 'Country']"
+                         [selectedIndex]="0" [autoDropDownHeight]="true">
+        </jqxDropDownList>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">Sort Order:</td>
+      <td align="left">
+        <jqxDropDownList #sortOrder
+                         [width]="100" [source]="['Ascending', 'Descending']"
+                         [selectedIndex]="0" [autoDropDownHeight]="true">
+        </jqxDropDownList>
+      </td>
+    </tr>
+    <tr>
+      <td align="right"></td>
+      <td align="left">
+        <jqxButton #sort style="float: left;" (onClick)="clickSort()">Sort</jqxButton>
+        <jqxButton #clear style="float: left; margin-left: 5px;" (onClick)="clickClear()">Clear</jqxButton>
+      </td>
+    </tr>
+  </table>
+</div>

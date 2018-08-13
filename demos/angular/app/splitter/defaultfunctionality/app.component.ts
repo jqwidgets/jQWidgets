@@ -1,7 +1,6 @@
 ﻿import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-
+import { map } from "rxjs/operators";
 import { jqxExpanderComponent } from '../../../jqwidgets-ts/angular_jqxexpander';
 import { jqxTreeComponent } from '../../../jqwidgets-ts/angular_jqxtree';
 import { jqxPanelComponent } from '../../../jqwidgets-ts/angular_jqxpanel';
@@ -18,7 +17,13 @@ export class AppComponent implements AfterViewInit {
     @ViewChild('listBoxReference') myListBox: jqxListBoxComponent;
     @ViewChild('panelReference') myPanel: jqxPanelComponent;
     @ViewChild('treeReference') myTree: jqxTreeComponent;
-    
+   	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	} 
     constructor(public http: Http) { }
     ngAfterViewInit(): void {
         this.getFeed('sciencedaily');
@@ -49,7 +54,7 @@ export class AppComponent implements AfterViewInit {
     loadFeed(feed: any, callback?: any): void {
         let response;
         this.http.get(feed)
-            .map(res => res.json())
+            .pipe(map(res => res.json()))
             .subscribe(
             data => response = data,
             err => console.log(err),

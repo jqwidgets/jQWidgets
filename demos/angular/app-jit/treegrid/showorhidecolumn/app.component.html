@@ -1,0 +1,16 @@
+﻿<jqxListBox #jqxListBox
+            style="float: left"
+            (onCheckChange)="checkChange($event)"
+            [source]="listSource"
+            [width]="120"
+            [height]="200"
+            checkboxes="true">
+</jqxListBox>
+
+<jqxTreeGrid style="margin-left: 20px; float: left;"
+            [source]="dataAdapter"
+            [altRows]="true"
+            [columns]="columns"
+            [ready]="ready"
+            #TreeGrid>
+</jqxTreeGrid>

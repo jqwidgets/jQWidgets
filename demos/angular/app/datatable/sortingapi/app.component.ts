@@ -8,6 +8,14 @@ import { generatedata } from '../../../sampledata/generatedata';
     @ViewChild('columnName') columnName: jqxDropDownListComponent;    
     @ViewChild('sortOrder') sortOrder: jqxDropDownListComponent;    
 
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+
     source: any =
         {
             localdata: generatedata(85, false),

@@ -1,0 +1,42 @@
+﻿<div style="width: 300px; height: 600px; font-size: 13px; font-family: Verdana;">
+    <jqxDockPanel #jqxDockPanel
+                  [width]="300"
+                  [height]="210">
+        <div #first dock='left' style='background: #486974;'>
+            First Div
+        </div>
+        <div #second dock='top' style='height: 100px; background: #368ba7;'>
+            Second Div
+        </div>
+        <div #third dock='right' style='background: #df7169;'>
+            Third Div
+        </div>
+        <div #fourth style='background: #a73654;'>
+            Fourth Div
+        </div>
+    </jqxDockPanel>
+    <br />
+    <div>Layout Types:</div>
+    <div #layout (click)="clickOnLayout($event)">
+        <img title='click to apply a new layout' alt='layout types' src='../images/LayoutTypes.png' />
+    </div>
+    <br />
+    <div>Spiral:</div>
+    <jqxDockPanel #jqxDockPanel2
+                  [width]="300"
+                  [height]="210"
+                  [lastchildfill]="false">
+        <div #Div1 dock='left' style='background: #486974; width: 20px;'>
+            1
+        </div>
+        <div #Div2 dock='top' style='background: #368ba7; height: 20px;'>
+            2
+        </div>
+        <div #Div3 dock='right' style='background: #df7169; width: 20px;'>
+            3
+        </div>
+        <div #Div4 dock='bottom' style='background: #a73654; height: 20px;'>
+            4
+        </div>
+    </jqxDockPanel>
+</div>

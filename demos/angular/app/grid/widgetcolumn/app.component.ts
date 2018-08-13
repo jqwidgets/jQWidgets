@@ -14,6 +14,14 @@ export class AppComponent {
 
     dataAdapter: any = new jqx.dataAdapter(this.source);
 
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+
     counter: number = 1;
     columns: any[] =
     [
@@ -21,30 +29,34 @@ export class AppComponent {
             text: 'Picture', datafield: 'firstname', width: 100,
             createwidget: (row: number, column: any, value: string, htmlElement: HTMLElement): void => {
 
-                let container = document.createElement('div');
-                let id = `myButton${this.counter}`;
+                const container = document.createElement('div');
+                const id = `myButton${this.counter}`;
                 container.id = id;
                 container.style.border = 'none';
                 htmlElement.appendChild(container);
 
-                let imgurl = '../images/' + value.toLowerCase() + '.png';
+                const imgurl = '../images/' + value.toLowerCase() + '.png';
 
-                let options = {
+                const options = {
                     width: '100%', height: 90, template: 'success',
                     imgSrc: imgurl, imgWidth: 40, imgHeight: 50, value: value,
                     imgPosition: 'center', textPosition: 'center', textImageRelation: 'imageAboveText'
                 };
 
-                let myButton = jqwidgets.createInstance(`#${id}`, 'jqxButton', options);
+                const myButton = jqwidgets.createInstance(`#${id}`, 'jqxButton', options);
 
-                myButton.addEventHandler('click', (): void => {
-                    let clickedButton = value;
-                    alert(clickedButton);
+                myButton.addEventHandler('click', function (): void {
+                    const currentButtonValue = this.children[1].innerHTML;
+                    alert(currentButtonValue);
                 });
 
                 this.counter++;
             },
-            initwidget: (row: number, column: any, value: any, htmlElement: HTMLElement): void => { }
+            initwidget: (row: number, column: any, value: any, htmlElement: HTMLElement): void => {
+                const imgurl = '../images/' + value.toLowerCase() + '.png';
+                (<HTMLImageElement>htmlElement.children[1].children[0]).src = imgurl;
+                htmlElement.children[1].children[1].innerHTML = value;
+            }
         },
         { text: 'Name', datafield: 'name', width: 200 },
         { text: 'Title', datafield: 'title', width: 200 },

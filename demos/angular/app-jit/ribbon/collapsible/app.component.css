@@ -1,0 +1,71 @@
+﻿html, body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 18px 0 15px 15px;
+}
+
+.tag-title-info {
+  background: transparent;
+  width: 1px;
+  height: 0px;
+  border-color: #4272b8 transparent #4272b8 #4272b8 !important;
+  border-width: 26px 26px;
+  border-style: solid;
+  z-index: 1000;
+  top: 0px;
+  position: absolute;
+  left: 600px;
+}
+
+.tag-title {
+  font-size: 16px;
+  color: #fff;
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  line-height: 100%;
+  background: #4272b8 !important;
+  height: 52px;
+  padding: 0px;
+  margin: 0px;
+  top: 0px;
+  width: 600px;
+  vertical-align: middle;
+  margin-top: 30px;
+}
+
+.cart-top {
+  font-family: Arial, Helvetica, sans-serif;
+  height: 35px;
+  position: absolute;
+  left: 580px;
+  width: 92px;
+  top: 0;
+  overflow: hidden;
+  color: #fff;
+  padding: 16px 14px 1px 14px;
+  font-size: 11px;
+  font-weight: 400;
+  background: #4272b8 !important;
+  z-index: 199;
+  margin-top: 30px;
+}
+
+  .cart-top p {
+    font-weight: bold;
+    font-size: 11px;
+    min-height: 16px;
+    text-align: left;
+    padding: 0 24px 0 0;
+    margin-top: 2px;
+    float: left;
+    font-size: 11px;
+    color: #fff;
+    text-decoration: none;
+  }

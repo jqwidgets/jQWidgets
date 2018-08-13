@@ -471,8 +471,6 @@
 
 .jqx-ribbon-header-vertical-light, .jqx-widget-header-vertical-light {
 	background:#f0f0f0;
-	background:-ms-linear-gradient(left, #f8f8f8 0%,#eaeaea 100%);
-	background:linear-gradient(left, #f8f8f8 0%,#eaeaea 100%);	
 }
 
 .jqx-scrollbar-state-normal-light {

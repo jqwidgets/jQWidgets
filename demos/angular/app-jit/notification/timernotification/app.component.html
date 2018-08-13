@@ -1,0 +1,54 @@
+﻿<!--Notifications-->
+<jqxNotification #timerNotification
+                 [position]="position"
+                 [animationCloseDelay]="0"
+                 [autoOpen]="true"
+                 [autoClose]="false"
+                 [template]="'time'"
+                 [width]="notificationWidth">
+  <div #timerNotificationContent>
+    Hurry, you have <span class="timer">30</span> seconds left!
+  </div>
+</jqxNotification>
+<jqxNotification #timeOutNotification
+                 [position]="position"
+                 [autoOpen]="false"
+                 [autoClose]="false"
+                 [template]="'time'"
+                 [width]="notificationWidth">
+  <div>Time is up!</div>
+</jqxNotification>
+<jqxNotification #correctNotification
+                 [position]="position"
+                 [autoOpen]="false"
+                 [autoClose]="true"
+                 [template]="'success'"
+                 [width]="notificationWidth">
+  <div>Your answer is correct.</div>
+</jqxNotification>
+<jqxNotification #wrongNotification
+                 [position]="position"
+                 [autoOpen]="false"
+                 [autoClose]="true"
+                 [template]="'error'"
+                 [width]="notificationWidth">
+  <div>Your answer is incorrect.</div>
+</jqxNotification>
+<jqxNotification #errorTimeOutNotification
+                 [position]="position"
+                 [autoOpen]="false"
+                 [autoClose]="true"
+                 [template]="'error'"
+                 [width]="notificationWidth">
+  <div>Time is up!</div>
+</jqxNotification>
+<!--Layout-->
+<div>
+  Solve the equasion in 30 seconds:
+</div>
+<div>
+  20 - 3 × 4 =
+  <jqxInput #answerInput [width]="50" [height]="25"></jqxInput>
+</div>
+<br />
+<jqxButton #submitAnswer (onClick)="submitAnswerClick()">Submit answer</jqxButton>

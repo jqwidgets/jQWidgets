@@ -1,0 +1,15 @@
+﻿<jqxButton #toggleTooltip [width]="100" [height]="25" (onClick)="click()">
+  Toggle tooltip
+</jqxButton>
+
+<div style="margin-left: 180px; width: 110px;">
+  <jqxTooltip #filmPicture1
+              [name]="'movieTooltip'"
+              [autoHide]="false"
+              [content]="'The Amazing Spider-man'"
+              [trigger]="'none'"
+              [closeOnClick]="false"
+              [position]="'bottom'">
+    <img src="../images/The_Amazng_Spider_Man.jpeg" />
+  </jqxTooltip>
+</div>

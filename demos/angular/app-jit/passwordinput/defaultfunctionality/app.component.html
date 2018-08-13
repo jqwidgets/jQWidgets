@@ -1,0 +1,101 @@
+﻿<jqxExpander #createAccount
+             [showArrow]="false"
+             [toggleMode]="'none'"
+             [width]="350">
+  <div>
+    Create a new account
+  </div>
+  <div style="font-family: Verdana; font-size: 13px;">
+    <jqxValidator #validatorReference (onValidationSuccess)="validationSuccess($event)" [rules]="rules" [hintType]="'label'">
+    <form id="form" style="overflow: hidden; margin: 10px;" action="./">
+      <table>
+        <tr>
+          <td colspan="2">
+            First Name
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <jqxInput #firstName id="firstName" [width]="300" [height]="21"></jqxInput>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            Last Name
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <jqxInput #lastName id="lastName" [width]="300" [height]="21"></jqxInput>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            Choose your username
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <jqxInput #userName id="userName" [width]="300" [height]="21"></jqxInput>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            Create a password
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <jqxPasswordInput #password id="password" [width]="300" [height]="21"></jqxPasswordInput>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            Confirm your password
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <jqxPasswordInput #passwordConfirm id="passwordConfirm" [width]="300" [height]="21"></jqxPasswordInput>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            Birthday
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <jqxDateTimeInput #birthday id="birthday"
+                              [width]="300"
+                              [height]="21">
+            </jqxDateTimeInput>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            Gender
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <jqxDropDownList #gender id="gender"
+                             [source]="genders"
+                             [selectedIndex]="-1"
+                             [placeHolder]="'I am...'"
+                             [dropDownHeight]="50"
+                             [width]="300"
+                             [height]="21">
+            </jqxDropDownList>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <jqxButton [width]="150" (onClick)="buttonClicked()">Create account</jqxButton>
+          </td>
+        </tr>
+      </table>
+    </form>
+    </jqxValidator>
+  </div>
+</jqxExpander>

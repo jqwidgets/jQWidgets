@@ -11,7 +11,13 @@ import { jqxGridComponent } from '../../../jqwidgets-ts/angular_jqxgrid';
 export class AppComponent {
     @ViewChild('rangeSelector') myRangeSelector: jqxRangeSelectorComponent;
     @ViewChild('jqxGrid') myGrid: jqxGridComponent;
-
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
     applyFilter = (from, to): void => {
         this.myGrid.clearfilters();
         let filtertype = 'datefilter';

@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.5 (2018-July)
+jQWidgets v6.0.6 (2018-August)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -185,6 +185,9 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    createComponent(options?: any): void {
+      if (this.host) {
+         return;
+      }
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
       }
@@ -199,7 +202,6 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxListBox', options);
 
-      this.__updateRect__();
    }
 
    createWidget(options?: any): void {
@@ -230,6 +232,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
 
    // jqxListBoxComponent properties
    autoHeight(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('autoHeight', arg);
       } else {
@@ -238,6 +245,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    allowDrag(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('allowDrag', arg);
       } else {
@@ -246,6 +258,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    allowDrop(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('allowDrop', arg);
       } else {
@@ -254,6 +271,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    checkboxes(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('checkboxes', arg);
       } else {
@@ -262,6 +284,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    disabled(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('disabled', arg);
       } else {
@@ -270,6 +297,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    displayMember(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('displayMember', arg);
       } else {
@@ -278,6 +310,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    dropAction(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('dropAction', arg);
       } else {
@@ -286,6 +323,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    dragStart(arg?: (item:any) => boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('dragStart', arg);
       } else {
@@ -294,6 +336,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    dragEnd(arg?: (dragItem: any, dropItem: any) => boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('dragEnd', arg);
       } else {
@@ -302,6 +349,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    enableHover(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('enableHover', arg);
       } else {
@@ -310,6 +362,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    enableSelection(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('enableSelection', arg);
       } else {
@@ -318,6 +375,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    equalItemsWidth(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('equalItemsWidth', arg);
       } else {
@@ -326,6 +388,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    filterable(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('filterable', arg);
       } else {
@@ -334,6 +401,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    filterHeight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('filterHeight', arg);
       } else {
@@ -342,6 +414,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    filterDelay(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('filterDelay', arg);
       } else {
@@ -350,6 +427,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    filterPlaceHolder(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('filterPlaceHolder', arg);
       } else {
@@ -358,6 +440,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    height(arg?: string | number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('height', arg);
       } else {
@@ -366,6 +453,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    hasThreeStates(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('hasThreeStates', arg);
       } else {
@@ -374,6 +466,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    itemHeight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('itemHeight', arg);
       } else {
@@ -382,6 +479,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    incrementalSearch(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('incrementalSearch', arg);
       } else {
@@ -390,6 +492,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    incrementalSearchDelay(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('incrementalSearchDelay', arg);
       } else {
@@ -398,6 +505,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    multiple(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('multiple', arg);
       } else {
@@ -406,6 +518,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    multipleextended(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('multipleextended', arg);
       } else {
@@ -414,6 +531,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    renderer(arg?: (index: number, label: string | number, value: string | number) => string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('renderer', arg);
       } else {
@@ -422,6 +544,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    rendered(arg?: () => any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('rendered', arg);
       } else {
@@ -430,6 +557,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    rtl(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('rtl', arg);
       } else {
@@ -438,6 +570,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    selectedIndex(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('selectedIndex', arg);
       } else {
@@ -446,6 +583,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    selectedIndexes(arg?: any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('selectedIndexes', arg);
       } else {
@@ -454,6 +596,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    source(arg?: Array<any>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('source', arg);
       } else {
@@ -462,6 +609,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    scrollBarSize(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('scrollBarSize', arg);
       } else {
@@ -470,6 +622,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    searchMode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('searchMode', arg);
       } else {
@@ -478,6 +635,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    theme(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('theme', arg);
       } else {
@@ -486,6 +648,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    valueMember(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('valueMember', arg);
       } else {
@@ -494,6 +661,11 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    width(arg?: string | number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxListBox('width', arg);
       } else {
@@ -504,166 +676,371 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
 
    // jqxListBoxComponent functions
    addItem(Item: any): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxListBox('addItem', Item);
    }
 
    beginUpdate(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('beginUpdate');
    }
 
    clear(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('clear');
    }
 
    clearSelection(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('clearSelection');
    }
 
    checkIndex(Index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('checkIndex', Index);
    }
 
    checkItem(Item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('checkItem', Item);
    }
 
    checkAll(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('checkAll');
    }
 
    clearFilter(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('clearFilter');
    }
 
    destroy(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('destroy');
    }
 
    disableItem(Item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('disableItem', Item);
    }
 
    disableAt(Index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('disableAt', Index);
    }
 
    enableItem(Item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('enableItem', Item);
    }
 
    enableAt(Index: number | string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('enableAt', Index);
    }
 
    ensureVisible(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('ensureVisible', item);
    }
 
    endUpdate(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('endUpdate');
    }
 
    focus(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('focus');
    }
 
    getItems(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxListBox('getItems');
    }
 
    getSelectedItems(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxListBox('getSelectedItems');
    }
 
    getCheckedItems(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxListBox('getCheckedItems');
    }
 
    getItem(Index: number): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxListBox('getItem', Index);
    }
 
    getItemByValue(Item: any): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxListBox('getItemByValue', Item);
    }
 
    getSelectedItem(): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxListBox('getSelectedItem');
    }
 
    getSelectedIndex(): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxListBox('getSelectedIndex');
    }
 
    insertAt(Item: any, Index: number | string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('insertAt', Item, Index);
    }
 
    invalidate(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('invalidate');
    }
 
    indeterminateItem(Item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('indeterminateItem', Item);
    }
 
    indeterminateIndex(Index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('indeterminateIndex', Index);
    }
 
    loadFromSelect(selector: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('loadFromSelect', selector);
    }
 
    removeItem(Item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('removeItem', Item);
    }
 
    removeAt(Index: number | string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('removeAt', Index);
    }
 
    render(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('render');
    }
 
    refresh(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('refresh');
    }
 
    selectItem(Item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('selectItem', Item);
    }
 
    selectIndex(Index: number | string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('selectIndex', Index);
    }
 
    updateItem(Item: any, Value: number | string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('updateItem', Item, Value);
    }
 
    updateAt(item: any, index: number | string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('updateAt', item, index);
    }
 
    unselectIndex(index: number | string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('unselectIndex', index);
    }
 
    unselectItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('unselectItem', item);
    }
 
    uncheckIndex(index: number | string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('uncheckIndex', index);
    }
 
    uncheckItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('uncheckItem', item);
    }
 
    uncheckAll(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxListBox('uncheckAll');
    }
 

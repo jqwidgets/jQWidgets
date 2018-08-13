@@ -4,8 +4,13 @@ let webpack = require('webpack');
 
 module.exports = {
     entry: {
-       tabs_integrationwithotherwidgets: './app/tabs/integrationwithotherwidgets/main.ts',
-	},
+        form_events: './app/form/events/main.ts',
+        form_input_alignment: './app/form/input_alignment/main.ts',
+        form_input_types: './app/form/input_types/main.ts',
+        form_label_position: './app/form/label_position/main.ts',
+        form_overview: './app/form/overview/main.ts',
+        form_submit: './app/form/submit/main.ts',		
+   },
 
     output: {
         path: path.resolve(__dirname + '/aot'),
@@ -13,7 +18,7 @@ module.exports = {
     },
 
     module: {
-        loaders:
+        rules:
         [
             {
                 test: /\.ts$/,
@@ -50,4 +55,4 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.js']
     }
-};
+}

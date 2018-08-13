@@ -1,0 +1,22 @@
+﻿<div #jqxWidget>
+  <div>
+    <div style='font-size: 13px; font-family: verdana; margin-top: 10px;'>
+      Phone Number
+    </div>
+    <jqxMaskedInput style='margin-top: 3px;' #numericInput
+                    (onChange)="change($event)"
+                    [mask]="'(###)###-####'"
+                    [width]="250"
+                    [height]="25">
+    </jqxMaskedInput>
+  <div style='margin-left: 0px; margin-top: 20px;'>
+    <div>
+      <span>
+        Events:
+      </span>
+      <jqxPanel #Events [height]="250" [width]="300">
+      </jqxPanel>
+    </div>
+  </div>
+</div>
+</div>

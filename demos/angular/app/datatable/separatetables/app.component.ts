@@ -2,6 +2,14 @@
     @ViewChild('masterDataTable') masterDataTable: jqxDataTableComponent;
     @ViewChild('detailsDataTable') detailsDataTable: jqxDataTableComponent;
 
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+	
     ngAfterViewInit(){
         this.masterDataTable.selectRow(0);
     }

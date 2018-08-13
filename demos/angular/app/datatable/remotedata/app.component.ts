@@ -1,5 +1,15 @@
 ﻿import { Component } from '@angular/core';  @Component({     selector: 'app-root',     templateUrl: './app.component.html'
- })  export class AppComponent {     source: any =     {         dataType: 'jsonp',
+ })  export class AppComponent {
+	
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+
+	     source: any =     {         dataType: 'jsonp',
         dataFields: [
             { name: 'countryName', type: 'string' },
             { name: 'name', type: 'string' },

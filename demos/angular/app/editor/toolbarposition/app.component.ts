@@ -7,4 +7,12 @@
 
 export class AppComponent {
 
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+
 }

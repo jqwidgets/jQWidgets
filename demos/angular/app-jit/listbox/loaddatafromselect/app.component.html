@@ -1,0 +1,37 @@
+﻿<div style="float: left;">
+  <jqxListBox #jqxListBox
+              (onSelect)="selectItem($event)"
+              [width]="200"
+              [height]="250">
+  </jqxListBox>
+</div>
+
+<div style='float: left;' #Select>
+  <select style='height: 250px; width: 200px; margin-left: 30px;' size='2' id='select' #select (change)="change($event)">
+    <option>Affogato</option>
+    <option>Americano</option>
+    <option>Bicerin</option>
+    <option>Breve</option>
+    <option>Café Bombón</option>
+    <option>Caffé Corretto</option>
+    <option>Café Crema</option>
+    <option>Caffé Latte</option>
+    <option>Caffé macchiato</option>
+    <option>Café mélange</option>
+    <option>Coffee milk</option>
+    <option>Cafe mocha</option>
+    <option>Cappuccino</option>
+    <option>Carajillo</option>
+    <option>Cuban espresso</option>
+    <option>Espresso</option>
+    <option selected="true">The Flat White</option>
+    <option>Frappuccino</option>
+    <option>Galao</option>
+    <option>Greek frappé coffee</option>
+    <option>Iced Coffee﻿</option>
+    <option>Indian filter coffee</option>
+    <option>Instant coffee</option>
+    <option>Irish coffee</option>
+    <option>Liqueur coffee</option>
+  </select>
+</div>

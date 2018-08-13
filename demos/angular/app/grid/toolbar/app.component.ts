@@ -24,6 +24,14 @@ export class AppComponent implements AfterViewInit {
 
     dropDownSource: string[] = ['First Name', 'Last Name', 'Product', 'Quantity', 'Price'];
 
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+
     getAdapter = (): any => {
         let source: any =
             {

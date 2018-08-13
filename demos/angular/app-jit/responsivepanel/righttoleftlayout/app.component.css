@@ -1,0 +1,19 @@
+﻿#header {
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  width: 100%;
+  height: 50px;
+  padding: 10px 0 0 10px;
+}
+jqxResponsivePanel > div, #toggleResponsivePanel {
+  float: right;
+}
+
+#toggleResponsivePanel {
+  margin-right: 10px;
+}
+
+.jqx-responsive-panel {
+  padding: 5px;
+  direction: rtl !important;
+}

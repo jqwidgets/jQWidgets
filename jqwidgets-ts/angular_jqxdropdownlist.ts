@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.5 (2018-July)
+jQWidgets v6.0.6 (2018-August)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -187,6 +187,9 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    createComponent(options?: any): void {
+      if (this.host) {
+         return;
+      }
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
       }
@@ -201,7 +204,6 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDropDownList', options);
 
-      this.__updateRect__();
    }
 
    createWidget(options?: any): void {
@@ -232,6 +234,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
 
    // jqxDropDownListComponent properties
    autoOpen(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('autoOpen', arg);
       } else {
@@ -240,6 +247,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    autoDropDownHeight(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('autoDropDownHeight', arg);
       } else {
@@ -248,6 +260,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    animationType(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('animationType', arg);
       } else {
@@ -256,6 +273,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    checkboxes(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('checkboxes', arg);
       } else {
@@ -264,6 +286,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    closeDelay(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('closeDelay', arg);
       } else {
@@ -272,6 +299,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    disabled(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('disabled', arg);
       } else {
@@ -280,6 +312,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    displayMember(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('displayMember', arg);
       } else {
@@ -288,6 +325,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    dropDownHorizontalAlignment(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('dropDownHorizontalAlignment', arg);
       } else {
@@ -296,6 +338,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    dropDownVerticalAlignment(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('dropDownVerticalAlignment', arg);
       } else {
@@ -304,6 +351,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    dropDownHeight(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('dropDownHeight', arg);
       } else {
@@ -312,6 +364,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    dropDownWidth(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('dropDownWidth', arg);
       } else {
@@ -320,6 +377,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    enableSelection(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('enableSelection', arg);
       } else {
@@ -328,6 +390,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    enableBrowserBoundsDetection(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('enableBrowserBoundsDetection', arg);
       } else {
@@ -336,6 +403,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    enableHover(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('enableHover', arg);
       } else {
@@ -344,6 +416,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    filterable(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('filterable', arg);
       } else {
@@ -352,6 +429,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    filterHeight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('filterHeight', arg);
       } else {
@@ -360,6 +442,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    filterDelay(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('filterDelay', arg);
       } else {
@@ -368,6 +455,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    filterPlaceHolder(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('filterPlaceHolder', arg);
       } else {
@@ -376,6 +468,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    height(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('height', arg);
       } else {
@@ -384,6 +481,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    incrementalSearch(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('incrementalSearch', arg);
       } else {
@@ -392,6 +494,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    incrementalSearchDelay(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('incrementalSearchDelay', arg);
       } else {
@@ -400,6 +507,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    itemHeight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('itemHeight', arg);
       } else {
@@ -408,6 +520,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    openDelay(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('openDelay', arg);
       } else {
@@ -416,6 +533,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    placeHolder(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('placeHolder', arg);
       } else {
@@ -424,6 +546,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    popupZIndex(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('popupZIndex', arg);
       } else {
@@ -432,6 +559,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    rtl(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('rtl', arg);
       } else {
@@ -440,6 +572,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    renderer(arg?: (index: number, label?: string, value?: any) => string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('renderer', arg);
       } else {
@@ -448,6 +585,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    selectionRenderer(arg?: (object?: any, index?: number, label?: string) => string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('selectionRenderer', arg);
       } else {
@@ -456,6 +598,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    searchMode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('searchMode', arg);
       } else {
@@ -464,6 +611,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    scrollBarSize(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('scrollBarSize', arg);
       } else {
@@ -472,6 +624,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    source(arg?: Array<any>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('source', arg);
       } else {
@@ -480,6 +637,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    selectedIndex(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('selectedIndex', arg);
       } else {
@@ -488,6 +650,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    theme(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('theme', arg);
       } else {
@@ -496,6 +663,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    template(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('template', arg);
       } else {
@@ -504,6 +676,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    valueMember(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('valueMember', arg);
       } else {
@@ -512,6 +689,11 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    width(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDropDownList('width', arg);
       } else {
@@ -522,158 +704,353 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
 
    // jqxDropDownListComponent functions
    addItem(item: jqwidgets.DropDownListItem): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDropDownList('addItem', item);
    }
 
    clearSelection(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('clearSelection');
    }
 
    clear(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('clear');
    }
 
    close(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('close');
    }
 
    checkIndex(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('checkIndex', index);
    }
 
    checkItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('checkItem', item);
    }
 
    checkAll(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('checkAll');
    }
 
    clearFilter(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('clearFilter');
    }
 
    destroy(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('destroy');
    }
 
    disableItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('disableItem', item);
    }
 
    disableAt(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('disableAt', index);
    }
 
    enableItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('enableItem', item);
    }
 
    enableAt(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('enableAt', index);
    }
 
    ensureVisible(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('ensureVisible', index);
    }
 
    focus(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('focus');
    }
 
    getItem(index: number): jqwidgets.DropDownListItem {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDropDownList('getItem', index);
    }
 
    getItemByValue(itemValue: string): jqwidgets.DropDownListItem {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDropDownList('getItemByValue', itemValue);
    }
 
    getItems(): Array<jqwidgets.DropDownListItem> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDropDownList('getItems');
    }
 
    getCheckedItems(): Array<jqwidgets.DropDownListItem> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDropDownList('getCheckedItems');
    }
 
    getSelectedItem(): jqwidgets.DropDownListItem {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDropDownList('getSelectedItem');
    }
 
    getSelectedIndex(): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDropDownList('getSelectedIndex');
    }
 
    insertAt(item: jqwidgets.DropDownListItem, index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('insertAt', item, index);
    }
 
    isOpened(): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDropDownList('isOpened');
    }
 
    indeterminateIndex(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('indeterminateIndex', index);
    }
 
    indeterminateItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('indeterminateItem', item);
    }
 
    loadFromSelect(arg: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('loadFromSelect', arg);
    }
 
    open(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('open');
    }
 
    removeItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('removeItem', item);
    }
 
    removeAt(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('removeAt', index);
    }
 
    selectIndex(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('selectIndex', index);
    }
 
    selectItem(item: jqwidgets.DropDownListItem): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('selectItem', item);
    }
 
    setContent(content: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('setContent', content);
    }
 
    updateItem(newItem: jqwidgets.DropDownListItem, item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('updateItem', newItem, item);
    }
 
    updateAt(item: jqwidgets.DropDownListItem, index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('updateAt', item, index);
    }
 
    unselectIndex(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('unselectIndex', index);
    }
 
    unselectItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('unselectItem', item);
    }
 
    uncheckIndex(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('uncheckIndex', index);
    }
 
    uncheckItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('uncheckItem', item);
    }
 
    uncheckAll(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDropDownList('uncheckAll');
    }
 

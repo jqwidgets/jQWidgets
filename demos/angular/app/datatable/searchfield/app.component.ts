@@ -1,4 +1,11 @@
-﻿import { Component } from '@angular/core';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent { 
+﻿import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html'
+})
+
+export class AppComponent {
     source: any =
     {
         datatype: 'xml',
@@ -18,6 +25,14 @@
         record: 'ROW'
     };
 
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+
     dataAdapter: any = new jqx.dataAdapter(this.source);
 
     columns: any[] =
@@ -28,4 +43,5 @@
         { text: 'Price', columngroup: 'ProductDetails', dataField: 'Price', cellsformat: 'c2', align: 'center', cellsAlign: 'center', width: 70 },
         { text: 'Address', columngroup: 'Location', cellsAlign: 'center', align: 'center', dataField: 'Address', width: 120 },
         { text: 'City', columngroup: 'Location', cellsAlign: 'center', align: 'center', dataField: 'City' }
-    ]; }
+    ];
+}

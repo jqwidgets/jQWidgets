@@ -1,0 +1,14 @@
+﻿<jqxButtonGroup #myButtonGroup (onButtonclick)="groupOnBtnClick($event)">
+  <button style="padding: 4px 16px" id='Left' value='Left'></button>
+  <button style="padding: 4px 16px" id='Center' value='Center'></button>
+  <button style="padding: 4px 16px" id='Right' value='Right'></button>
+</jqxButtonGroup>
+
+<div style="margin-top: 10px">
+  <h4>Modes</h4>
+  <jqxRadioButton (onChecked)="myDefaultModeButtonChecked()" [checked]="true">Default</jqxRadioButton>
+  <jqxRadioButton (onChecked)="myRadioModeButtonChecked()">RadioButtons</jqxRadioButton>
+  <jqxRadioButton (onChecked)="myCheckBoxModeButtonChecked()">CheckBoxes</jqxRadioButton>
+</div>
+
+<div #myLog style="margin-top: 10px;"></div>

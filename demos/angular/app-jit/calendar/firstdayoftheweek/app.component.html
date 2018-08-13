@@ -1,0 +1,12 @@
+﻿<jqxCalendar #myCalendar
+    [width]="220" [height]="220" [enableTooltips]="false">
+</jqxCalendar>
+
+<br /><br />
+<div>Choose the first day of the week</div>
+<br /><br />
+
+<jqxDropDownList #myDropDownList (onSelect)="myDropDownListOnSelect($event)"
+    [width]="220" [height]="25" [source]="days"
+    [selectedIndex]="6" [autoDropDownHeight]="true">
+</jqxDropDownList>

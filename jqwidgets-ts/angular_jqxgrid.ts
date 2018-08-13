@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.5 (2018-July)
+jQWidgets v6.0.6 (2018-August)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -287,6 +287,9 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    createComponent(options?: any): void {
+      if (this.host) {
+         return;
+      }
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
       }
@@ -301,7 +304,6 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxGrid', options);
 
-      this.__updateRect__();
    }
 
    createWidget(options?: any): void {
@@ -318,6 +320,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
 
    // jqxGridComponent properties
    altrows(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('altrows', arg);
       } else {
@@ -326,6 +333,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    altstart(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('altstart', arg);
       } else {
@@ -334,6 +346,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    altstep(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('altstep', arg);
       } else {
@@ -342,6 +359,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    autoshowloadelement(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('autoshowloadelement', arg);
       } else {
@@ -350,6 +372,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    autoshowfiltericon(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('autoshowfiltericon', arg);
       } else {
@@ -358,6 +385,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    autoshowcolumnsmenubutton(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('autoshowcolumnsmenubutton', arg);
       } else {
@@ -366,6 +398,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showcolumnlines(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showcolumnlines', arg);
       } else {
@@ -374,6 +411,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showrowlines(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showrowlines', arg);
       } else {
@@ -382,6 +424,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showcolumnheaderlines(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showcolumnheaderlines', arg);
       } else {
@@ -390,6 +437,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    adaptive(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('adaptive', arg);
       } else {
@@ -398,6 +450,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    adaptivewidth(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('adaptivewidth', arg);
       } else {
@@ -406,6 +463,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    clipboard(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('clipboard', arg);
       } else {
@@ -414,6 +476,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    closeablegroups(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('closeablegroups', arg);
       } else {
@@ -422,6 +489,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    columnsmenuwidth(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('columnsmenuwidth', arg);
       } else {
@@ -430,6 +502,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    columnmenuopening(arg?: (menu?: any, datafield?: string, height?: number | string) => boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('columnmenuopening', arg);
       } else {
@@ -438,6 +515,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    columnmenuclosing(arg?: (menu?: any, datafield?: string, height?: number | string) => boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('columnmenuclosing', arg);
       } else {
@@ -446,6 +528,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    cellhover(arg?: (cellhtmlElement?: any, x?: number, y?: number) => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('cellhover', arg);
       } else {
@@ -454,6 +541,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    enablekeyboarddelete(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('enablekeyboarddelete', arg);
       } else {
@@ -462,6 +554,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    enableellipsis(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('enableellipsis', arg);
       } else {
@@ -470,6 +567,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    enablemousewheel(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('enablemousewheel', arg);
       } else {
@@ -478,6 +580,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    enableanimations(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('enableanimations', arg);
       } else {
@@ -486,6 +593,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    enabletooltips(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('enabletooltips', arg);
       } else {
@@ -494,6 +606,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    enablehover(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('enablehover', arg);
       } else {
@@ -502,6 +619,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    enablebrowserselection(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('enablebrowserselection', arg);
       } else {
@@ -510,6 +632,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    everpresentrowposition(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('everpresentrowposition', arg);
       } else {
@@ -518,6 +645,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    everpresentrowheight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('everpresentrowheight', arg);
       } else {
@@ -526,6 +658,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    everpresentrowactions(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('everpresentrowactions', arg);
       } else {
@@ -534,6 +671,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    everpresentrowactionsmode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('everpresentrowactionsmode', arg);
       } else {
@@ -542,6 +684,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    filterrowheight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('filterrowheight', arg);
       } else {
@@ -550,6 +697,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    filtermode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('filtermode', arg);
       } else {
@@ -558,6 +710,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    groupsrenderer(arg?: (text?: string, group?: number, expanded?: boolean, data?: any) => string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('groupsrenderer', arg);
       } else {
@@ -566,6 +723,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    groupcolumnrenderer(arg?: (text?: string, group?: number, expanded?: boolean, data?: any) => string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('groupcolumnrenderer', arg);
       } else {
@@ -574,6 +736,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    groupsexpandedbydefault(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('groupsexpandedbydefault', arg);
       } else {
@@ -582,6 +749,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    handlekeyboardnavigation(arg?: (event: any) => boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('handlekeyboardnavigation', arg);
       } else {
@@ -590,6 +762,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    pagerrenderer(arg?: () => any[]) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('pagerrenderer', arg);
       } else {
@@ -598,6 +775,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    rtl(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('rtl', arg);
       } else {
@@ -606,6 +788,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showdefaultloadelement(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showdefaultloadelement', arg);
       } else {
@@ -614,6 +801,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showfiltercolumnbackground(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showfiltercolumnbackground', arg);
       } else {
@@ -622,6 +814,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showfiltermenuitems(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showfiltermenuitems', arg);
       } else {
@@ -630,6 +827,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showpinnedcolumnbackground(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showpinnedcolumnbackground', arg);
       } else {
@@ -638,6 +840,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showsortcolumnbackground(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showsortcolumnbackground', arg);
       } else {
@@ -646,6 +853,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showsortmenuitems(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showsortmenuitems', arg);
       } else {
@@ -654,6 +866,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showgroupmenuitems(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showgroupmenuitems', arg);
       } else {
@@ -662,6 +879,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showrowdetailscolumn(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showrowdetailscolumn', arg);
       } else {
@@ -670,6 +892,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showheader(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showheader', arg);
       } else {
@@ -678,6 +905,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showgroupsheader(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showgroupsheader', arg);
       } else {
@@ -686,6 +918,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showaggregates(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showaggregates', arg);
       } else {
@@ -694,6 +931,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showgroupaggregates(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showgroupaggregates', arg);
       } else {
@@ -702,6 +944,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showeverpresentrow(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showeverpresentrow', arg);
       } else {
@@ -710,6 +957,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showfilterrow(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showfilterrow', arg);
       } else {
@@ -718,6 +970,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showemptyrow(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showemptyrow', arg);
       } else {
@@ -726,6 +983,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showstatusbar(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showstatusbar', arg);
       } else {
@@ -734,6 +996,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    statusbarheight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('statusbarheight', arg);
       } else {
@@ -742,6 +1009,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    showtoolbar(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('showtoolbar', arg);
       } else {
@@ -750,6 +1022,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    selectionmode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('selectionmode', arg);
       } else {
@@ -758,6 +1035,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    updatefilterconditions(arg?: (type?: string, defaultconditions?: any) => any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('updatefilterconditions', arg);
       } else {
@@ -766,6 +1048,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    updatefilterpanel(arg?: (filtertypedropdown1?: any, filtertypedropdown2?: any, filteroperatordropdown?: any, filterinputfield1?: any, filterinputfield2?: any, filterbutton?: any, clearbutton?: any, columnfilter?: any, filtertype?: any, filterconditions?: any) => any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('updatefilterpanel', arg);
       } else {
@@ -774,6 +1061,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    theme(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('theme', arg);
       } else {
@@ -782,6 +1074,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    toolbarheight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('toolbarheight', arg);
       } else {
@@ -790,6 +1087,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    autoheight(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('autoheight', arg);
       } else {
@@ -798,6 +1100,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    autorowheight(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('autorowheight', arg);
       } else {
@@ -806,6 +1113,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    columnsheight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('columnsheight', arg);
       } else {
@@ -814,6 +1126,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    deferreddatafields(arg?: Array<string>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('deferreddatafields', arg);
       } else {
@@ -822,6 +1139,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    groupsheaderheight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('groupsheaderheight', arg);
       } else {
@@ -830,6 +1152,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    groupindentwidth(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('groupindentwidth', arg);
       } else {
@@ -838,6 +1165,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    height(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('height', arg);
       } else {
@@ -846,6 +1178,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    pagerheight(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('pagerheight', arg);
       } else {
@@ -854,6 +1191,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    rowsheight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('rowsheight', arg);
       } else {
@@ -862,6 +1204,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    scrollbarsize(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('scrollbarsize', arg);
       } else {
@@ -870,6 +1217,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    scrollmode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('scrollmode', arg);
       } else {
@@ -878,6 +1230,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    scrollfeedback(arg?: (row: any) => string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('scrollfeedback', arg);
       } else {
@@ -886,6 +1243,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    width(arg?: string | number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('width', arg);
       } else {
@@ -894,6 +1256,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    autosavestate(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('autosavestate', arg);
       } else {
@@ -902,6 +1269,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    autoloadstate(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('autoloadstate', arg);
       } else {
@@ -910,6 +1282,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    columns(arg?: Array<jqwidgets.GridColumn>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('columns', arg);
       } else {
@@ -918,6 +1295,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    columngroups(arg?: Array<any>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('columngroups', arg);
       } else {
@@ -926,6 +1308,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    columnsmenu(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('columnsmenu', arg);
       } else {
@@ -934,6 +1321,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    columnsresize(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('columnsresize', arg);
       } else {
@@ -942,6 +1334,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    columnsautoresize(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('columnsautoresize', arg);
       } else {
@@ -950,6 +1347,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    columnsreorder(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('columnsreorder', arg);
       } else {
@@ -958,6 +1360,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    disabled(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('disabled', arg);
       } else {
@@ -966,6 +1373,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    editable(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('editable', arg);
       } else {
@@ -974,6 +1386,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    editmode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('editmode', arg);
       } else {
@@ -982,6 +1399,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    filter(arg?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: boolean) => any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('filter', arg);
       } else {
@@ -990,6 +1412,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    filterable(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('filterable', arg);
       } else {
@@ -998,6 +1425,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    groupable(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('groupable', arg);
       } else {
@@ -1006,6 +1438,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    groups(arg?: Array<string>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('groups', arg);
       } else {
@@ -1014,6 +1451,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    horizontalscrollbarstep(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('horizontalscrollbarstep', arg);
       } else {
@@ -1022,6 +1464,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    horizontalscrollbarlargestep(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('horizontalscrollbarlargestep', arg);
       } else {
@@ -1030,6 +1477,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    initrowdetails(arg?: (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('initrowdetails', arg);
       } else {
@@ -1038,6 +1490,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    keyboardnavigation(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('keyboardnavigation', arg);
       } else {
@@ -1046,6 +1503,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    localization(arg?: any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('localization', arg);
       } else {
@@ -1054,6 +1516,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    pagesize(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('pagesize', arg);
       } else {
@@ -1062,6 +1529,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    pagesizeoptions(arg?: Array<number | string>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('pagesizeoptions', arg);
       } else {
@@ -1070,6 +1542,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    pagermode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('pagermode', arg);
       } else {
@@ -1078,6 +1555,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    pagerbuttonscount(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('pagerbuttonscount', arg);
       } else {
@@ -1086,6 +1568,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    pageable(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('pageable', arg);
       } else {
@@ -1094,6 +1581,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    rowdetails(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('rowdetails', arg);
       } else {
@@ -1102,6 +1594,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    rowdetailstemplate(arg?: any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('rowdetailstemplate', arg);
       } else {
@@ -1110,6 +1607,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    ready(arg?: () => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('ready', arg);
       } else {
@@ -1118,6 +1620,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    rendered(arg?: () => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('rendered', arg);
       } else {
@@ -1126,6 +1633,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    renderstatusbar(arg?: (statusbar?: any) => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('renderstatusbar', arg);
       } else {
@@ -1134,6 +1646,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    rendertoolbar(arg?: (toolbar?: any) => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('rendertoolbar', arg);
       } else {
@@ -1142,6 +1659,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    rendergridrows(arg?: (params?: any) => any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('rendergridrows', arg);
       } else {
@@ -1150,6 +1672,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    sortable(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('sortable', arg);
       } else {
@@ -1158,6 +1685,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    sortmode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('sortmode', arg);
       } else {
@@ -1166,6 +1698,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    selectedrowindex(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('selectedrowindex', arg);
       } else {
@@ -1174,6 +1711,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    selectedrowindexes(arg?: Array<number>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('selectedrowindexes', arg);
       } else {
@@ -1182,6 +1724,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    source(arg?: any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('source', arg);
       } else {
@@ -1190,6 +1737,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    sorttogglestates(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('sorttogglestates', arg);
       } else {
@@ -1198,6 +1750,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    updatedelay(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('updatedelay', arg);
       } else {
@@ -1206,6 +1763,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    virtualmode(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('virtualmode', arg);
       } else {
@@ -1214,6 +1776,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    verticalscrollbarstep(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('verticalscrollbarstep', arg);
       } else {
@@ -1222,6 +1789,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }
 
    verticalscrollbarlargestep(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxGrid('verticalscrollbarlargestep', arg);
       } else {
@@ -1232,414 +1804,929 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
 
    // jqxGridComponent functions
    autoresizecolumns(type?: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('autoresizecolumns', type);
    }
 
    autoresizecolumn(dataField: string, type?: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('autoresizecolumn', dataField, type);
    }
 
    beginupdate(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('beginupdate');
    }
 
    clear(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('clear');
    }
 
    destroy(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('destroy');
    }
 
    endupdate(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('endupdate');
    }
 
    ensurerowvisible(rowBoundIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('ensurerowvisible', rowBoundIndex);
    }
 
    focus(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('focus');
    }
 
    getcolumnindex(dataField: string): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getcolumnindex', dataField);
    }
 
    getcolumn(dataField: string): jqwidgets.GridGetColumn {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getcolumn', dataField);
    }
 
    getcolumnproperty(dataField: string, propertyName: string): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getcolumnproperty', dataField, propertyName);
    }
 
    getrowid(rowBoundIndex: number): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getrowid', rowBoundIndex);
    }
 
    getrowdata(rowBoundIndex: number): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getrowdata', rowBoundIndex);
    }
 
    getrowdatabyid(rowID: string): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getrowdatabyid', rowID);
    }
 
    getrowboundindexbyid(rowID: string): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getrowboundindexbyid', rowID);
    }
 
    getrowboundindex(rowDisplayIndex: number): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getrowboundindex', rowDisplayIndex);
    }
 
    getrows(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getrows');
    }
 
    getboundrows(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getboundrows');
    }
 
    getdisplayrows(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getdisplayrows');
    }
 
    getdatainformation(): jqwidgets.GridGetDataInformation {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getdatainformation');
    }
 
    getsortinformation(): jqwidgets.GridGetSortInformation {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getsortinformation');
    }
 
    getpaginginformation(): jqwidgets.GridGetPagingInformation {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getpaginginformation');
    }
 
    hidecolumn(dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('hidecolumn', dataField);
    }
 
    hideloadelement(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('hideloadelement');
    }
 
    hiderowdetails(rowBoundIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('hiderowdetails', rowBoundIndex);
    }
 
    iscolumnvisible(dataField: string): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('iscolumnvisible', dataField);
    }
 
    iscolumnpinned(dataField: string): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('iscolumnpinned', dataField);
    }
 
    localizestrings(localizationobject: jqwidgets.GridLocalizationobject): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('localizestrings', localizationobject);
    }
 
    pincolumn(dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('pincolumn', dataField);
    }
 
    refreshdata(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('refreshdata');
    }
 
    refresh(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('refresh');
    }
 
    render(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('render');
    }
 
    scrolloffset(top: number, left: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('scrolloffset', top, left);
    }
 
    scrollposition(): jqwidgets.GridScrollPosition {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('scrollposition');
    }
 
    showloadelement(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('showloadelement');
    }
 
    showrowdetails(rowBoundIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('showrowdetails', rowBoundIndex);
    }
 
    setcolumnindex(dataField: string, index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('setcolumnindex', dataField, index);
    }
 
    setcolumnproperty(dataField: string, propertyName: any, propertyValue: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('setcolumnproperty', dataField, propertyName, propertyValue);
    }
 
    showcolumn(dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('showcolumn', dataField);
    }
 
    unpincolumn(dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('unpincolumn', dataField);
    }
 
    updatebounddata(type?: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('updatebounddata', type);
    }
 
    updating(): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('updating');
    }
 
    getsortcolumn(): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getsortcolumn');
    }
 
    removesort(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('removesort');
    }
 
    sortby(dataField: string, sortOrder: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('sortby', dataField, sortOrder);
    }
 
    addgroup(dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('addgroup', dataField);
    }
 
    cleargroups(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('cleargroups');
    }
 
    collapsegroup(group: number | string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('collapsegroup', group);
    }
 
    collapseallgroups(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('collapseallgroups');
    }
 
    expandallgroups(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('expandallgroups');
    }
 
    expandgroup(group: number | string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('expandgroup', group);
    }
 
    getrootgroupscount(): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getrootgroupscount');
    }
 
    getgroup(groupIndex: number): jqwidgets.GridGetGroup {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getgroup', groupIndex);
    }
 
    insertgroup(groupIndex: number, dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('insertgroup', groupIndex, dataField);
    }
 
    iscolumngroupable(): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('iscolumngroupable');
    }
 
    removegroupat(groupIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('removegroupat', groupIndex);
    }
 
    removegroup(dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('removegroup', dataField);
    }
 
    addfilter(dataField: string, filterGroup: any, refreshGrid?: boolean): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('addfilter', dataField, filterGroup, refreshGrid);
    }
 
    applyfilters(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('applyfilters');
    }
 
    clearfilters(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('clearfilters');
    }
 
    getfilterinformation(): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getfilterinformation');
    }
 
    getcolumnat(index: number): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getcolumnat', index);
    }
 
    removefilter(dataField: string, refreshGrid: boolean): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('removefilter', dataField, refreshGrid);
    }
 
    refreshfilterrow(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('refreshfilterrow');
    }
 
    gotopage(pagenumber: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('gotopage', pagenumber);
    }
 
    gotoprevpage(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('gotoprevpage');
    }
 
    gotonextpage(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('gotonextpage');
    }
 
    addrow(rowIds: any, data: any, rowPosition?: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('addrow', rowIds, data, rowPosition);
    }
 
    begincelledit(rowBoundIndex: number, dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('begincelledit', rowBoundIndex, dataField);
    }
 
    beginrowedit(rowBoundIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('beginrowedit', rowBoundIndex);
    }
 
    closemenu(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('closemenu');
    }
 
    deleterow(rowIds: string | number | Array<number | string>): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('deleterow', rowIds);
    }
 
    endcelledit(rowBoundIndex: number, dataField: string, confirmChanges: boolean): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('endcelledit', rowBoundIndex, dataField, confirmChanges);
    }
 
    endrowedit(rowBoundIndex: number, confirmChanges: boolean): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('endrowedit', rowBoundIndex, confirmChanges);
    }
 
    getcell(rowBoundIndex: number, datafield: string): jqwidgets.GridGetCell {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getcell', rowBoundIndex, datafield);
    }
 
    getcellatposition(left: number, top: number): jqwidgets.GridGetCell {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getcellatposition', left, top);
    }
 
    getcelltext(rowBoundIndex: number, dataField: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getcelltext', rowBoundIndex, dataField);
    }
 
    getcelltextbyid(rowID: string, dataField: string): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getcelltextbyid', rowID, dataField);
    }
 
    getcellvaluebyid(rowID: string, dataField: string): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getcellvaluebyid', rowID, dataField);
    }
 
    getcellvalue(rowBoundIndex: number, dataField: string): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getcellvalue', rowBoundIndex, dataField);
    }
 
    isBindingCompleted(): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('isBindingCompleted');
    }
 
    openmenu(dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('openmenu', dataField);
    }
 
    setcellvalue(rowBoundIndex: number, dataField: string, value: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('setcellvalue', rowBoundIndex, dataField, value);
    }
 
    setcellvaluebyid(rowID: string, dataField: string, value: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('setcellvaluebyid', rowID, dataField, value);
    }
 
    showvalidationpopup(rowBoundIndex: number, dataField: string, validationMessage: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('showvalidationpopup', rowBoundIndex, dataField, validationMessage);
    }
 
    updaterow(rowIds: string | number | Array<number | string>, data: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('updaterow', rowIds, data);
    }
 
    clearselection(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('clearselection');
    }
 
    getselectedrowindex(): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getselectedrowindex');
    }
 
    getselectedrowindexes(): Array<number> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getselectedrowindexes');
    }
 
    getselectedcell(): jqwidgets.GridGetSelectedCell {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getselectedcell');
    }
 
    getselectedcells(): Array<jqwidgets.GridGetSelectedCell> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getselectedcells');
    }
 
    selectcell(rowBoundIndex: number, dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('selectcell', rowBoundIndex, dataField);
    }
 
    selectallrows(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('selectallrows');
    }
 
    selectrow(rowBoundIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('selectrow', rowBoundIndex);
    }
 
    unselectrow(rowBoundIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('unselectrow', rowBoundIndex);
    }
 
    unselectcell(rowBoundIndex: number, dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('unselectcell', rowBoundIndex, dataField);
    }
 
    getcolumnaggregateddata(dataField: string, aggregates: Array<any>): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getcolumnaggregateddata', dataField, aggregates);
    }
 
    refreshaggregates(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('refreshaggregates');
    }
 
    renderaggregates(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('renderaggregates');
    }
 
    exportdata(dataType: string, fileName?: string, exportHeader?: boolean, rows?: Array<number>, exportHiddenColumns?: boolean, serverURL?: string, charSet?: string): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('exportdata', dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet);
    }
 
    getstate(): jqwidgets.GridGetState {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('getstate');
    }
 
    loadstate(stateobject: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxGrid('loadstate', stateobject);
    }
 
    savestate(): jqwidgets.GridGetState {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxGrid('savestate');
    }
 

@@ -1,0 +1,16 @@
+﻿<div id="shop" class="draggable-demo-shop jqx-rc-all">
+    <div id="catalog" class="draggable-demo-catalog jqx-rc-all"></div>
+    <div class="draggable-demo-cart-wrapper jqx-rc-all">
+        <div class="draggable-demo-title jqx-rc-t">Shopping Cart</div>
+        <div id="cart" class="draggable-demo-cart jqx-rc-all">
+
+            <jqxGrid #myGrid (onCellclick)="gridOnCellClick($event)"
+                [width]="230" [height]="335" [columns]="gridColumns"
+                [selectionmode]="'none'" [keyboardnavigation]="false">
+            </jqxGrid>
+
+        </div>
+        <div class="draggable-demo-total">Total: <strong><span id="total">$ 0</span></strong></div>
+    </div>
+    <div style="clear: both"></div>
+</div>

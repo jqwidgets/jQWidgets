@@ -1,0 +1,16 @@
+﻿.demo-options {
+  list-style: none;
+  padding: 0px;
+  margin: 10px;
+}
+
+.demo-options li {
+  padding: 3px;
+  font-family: Verdana;
+  font-size: 12px;
+}
+
+jqxCheckBox > div {
+  margin-top: 4px !important;
+  margin-left: 10px !important;
+}

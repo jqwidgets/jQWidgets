@@ -339,6 +339,8 @@ declare module jqwidgets {
         component?: string;
         init?: (value: any) => void;
         label?: string;
+        text?: string;
+        name?: string;
         labelPosition?: string;
         labelAlign?: string;
         align?: string;

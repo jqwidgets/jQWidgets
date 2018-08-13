@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es5",
     "module": "es2015",
    //	"allowJs": true,
     "moduleResolution": "node",
@@ -23,15 +23,11 @@
     "exclude": [
         "node_modules",
         "aot",
-        "temp",
+	    "temp",
+		"app",
 		"sampledata",
 		"scripts",
 		"resources",
 		"jqwidgets"
     ]
-	/*
-,
-    "include": [
-        "app/layout/dashboard"
-    ]*/
 }

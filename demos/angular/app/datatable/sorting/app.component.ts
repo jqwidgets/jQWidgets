@@ -30,4 +30,13 @@ import { generatedata } from '../../../sampledata/generatedata';
             { text: 'Quantity', dataField: 'quantity', width: 80, align: 'right', cellsalign: 'right' },
             { text: 'Unit Price', dataField: 'price', width: 90, align: 'right', cellsalign: 'right', cellsFormat: 'c2' },
             { text: 'Total', dataField: 'total', width: 100, align: 'right', cellsalign: 'right', cellsFormat: 'c2' }
-      ]; }
+      ]; 
+	  
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+}

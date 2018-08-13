@@ -1,0 +1,21 @@
+﻿#container {
+  position: relative;
+}
+
+jqxNumberInput > div {
+  left: 170px;
+  top: 323px;
+  position: absolute;
+  background: transparent !important;
+  border: none !important;
+}
+
+text.jqx-knob-label {
+  font-size: 20px;
+}
+
+jqxNumberInput > div > input {
+  background: transparent !important;
+  font-size: 20px !important;
+  color: grey !important;
+}

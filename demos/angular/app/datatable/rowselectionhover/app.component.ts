@@ -18,11 +18,19 @@ import { generatedata } from '../../../sampledata/generatedata';
         ]
     };
 
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+
     dataAdapter: any = new jqx.dataAdapter(this.source);      columns: any[] =     [         { text: 'First Name', dataField: 'firstname', width: 200 },
         { text: 'Last Name', dataField: 'lastname', width: 200 },
         { text: 'Product', dataField: 'productname', width: 180 },
         { text: 'Unit Price', dataField: 'price', width: 90, align: 'right', cellsAlign: 'right', cellsFormat: 'c2' },
-        { text: 'Quantity', dataField: 'quantity', width: 80, align: 'right', cellsAlign: 'right' }     ];      selectionInfo() {
+        { text: 'Quantity', dataField: 'quantity', align: 'right', cellsAlign: 'right' }     ];      selectionInfo() {
         // gets selected row indexes. The method returns an Array of indexes.
         let selection = this.myDataTable.getSelection();
         let selectedRows = '<br/>Selected Row Indexes:<br/>';

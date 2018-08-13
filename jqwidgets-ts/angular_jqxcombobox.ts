@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.5 (2018-July)
+jQWidgets v6.0.6 (2018-August)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -191,6 +191,9 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    createComponent(options?: any): void {
+      if (this.host) {
+         return;
+      }
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
       }
@@ -205,7 +208,6 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxComboBox', options);
 
-      this.__updateRect__();
    }
 
    createWidget(options?: any): void {
@@ -236,6 +238,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
 
    // jqxComboBoxComponent properties
    animationType(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('animationType', arg);
       } else {
@@ -244,6 +251,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    autoComplete(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('autoComplete', arg);
       } else {
@@ -252,6 +264,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    autoOpen(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('autoOpen', arg);
       } else {
@@ -260,6 +277,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    autoItemsHeight(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('autoItemsHeight', arg);
       } else {
@@ -268,6 +290,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    autoDropDownHeight(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('autoDropDownHeight', arg);
       } else {
@@ -276,6 +303,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    closeDelay(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('closeDelay', arg);
       } else {
@@ -284,6 +316,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    checkboxes(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('checkboxes', arg);
       } else {
@@ -292,6 +329,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    disabled(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('disabled', arg);
       } else {
@@ -300,6 +342,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    displayMember(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('displayMember', arg);
       } else {
@@ -308,6 +355,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    dropDownHorizontalAlignment(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('dropDownHorizontalAlignment', arg);
       } else {
@@ -316,6 +368,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    dropDownVerticalAlignment(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('dropDownVerticalAlignment', arg);
       } else {
@@ -324,6 +381,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    dropDownHeight(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('dropDownHeight', arg);
       } else {
@@ -332,6 +394,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    dropDownWidth(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('dropDownWidth', arg);
       } else {
@@ -340,6 +407,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    enableHover(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('enableHover', arg);
       } else {
@@ -348,6 +420,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    enableSelection(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('enableSelection', arg);
       } else {
@@ -356,6 +433,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    enableBrowserBoundsDetection(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('enableBrowserBoundsDetection', arg);
       } else {
@@ -364,6 +446,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    height(arg?: string | number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('height', arg);
       } else {
@@ -372,6 +459,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    itemHeight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('itemHeight', arg);
       } else {
@@ -380,6 +472,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    multiSelect(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('multiSelect', arg);
       } else {
@@ -388,6 +485,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    minLength(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('minLength', arg);
       } else {
@@ -396,6 +498,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    openDelay(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('openDelay', arg);
       } else {
@@ -404,6 +511,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    popupZIndex(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('popupZIndex', arg);
       } else {
@@ -412,6 +524,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    placeHolder(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('placeHolder', arg);
       } else {
@@ -420,6 +537,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    remoteAutoComplete(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('remoteAutoComplete', arg);
       } else {
@@ -428,6 +550,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    remoteAutoCompleteDelay(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('remoteAutoCompleteDelay', arg);
       } else {
@@ -436,6 +563,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    renderer(arg?: (index:number, label?:string, value?:any) => string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('renderer', arg);
       } else {
@@ -444,6 +576,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    renderSelectedItem(arg?: (index:number, item?:any) => string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('renderSelectedItem', arg);
       } else {
@@ -452,6 +589,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    rtl(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('rtl', arg);
       } else {
@@ -460,6 +602,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    selectedIndex(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('selectedIndex', arg);
       } else {
@@ -468,6 +615,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    showArrow(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('showArrow', arg);
       } else {
@@ -476,6 +628,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    showCloseButtons(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('showCloseButtons', arg);
       } else {
@@ -484,6 +641,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    searchMode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('searchMode', arg);
       } else {
@@ -492,6 +654,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    search(arg?: (searchString:string) => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('search', arg);
       } else {
@@ -500,6 +667,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    source(arg?: Array<any>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('source', arg);
       } else {
@@ -508,6 +680,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    scrollBarSize(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('scrollBarSize', arg);
       } else {
@@ -516,6 +693,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    template(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('template', arg);
       } else {
@@ -524,6 +706,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    theme(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('theme', arg);
       } else {
@@ -532,6 +719,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    validateSelection(arg?: (itemValue:string) => boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('validateSelection', arg);
       } else {
@@ -540,6 +732,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    valueMember(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('valueMember', arg);
       } else {
@@ -548,6 +745,11 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    width(arg?: string | number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxComboBox('width', arg);
       } else {
@@ -558,162 +760,362 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
 
    // jqxComboBoxComponent functions
    addItem(item: any): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('addItem', item);
    }
 
    clearSelection(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('clearSelection');
    }
 
    clear(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('clear');
    }
 
    close(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('close');
    }
 
    checkIndex(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('checkIndex', index);
    }
 
    checkItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('checkItem', item);
    }
 
    checkAll(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('checkAll');
    }
 
    destroy(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('destroy');
    }
 
    disableItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('disableItem', item);
    }
 
    disableAt(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('disableAt', index);
    }
 
    enableItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('enableItem', item);
    }
 
    enableAt(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('enableAt', index);
    }
 
    ensureVisible(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('ensureVisible', index);
    }
 
    focus(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('focus');
    }
 
    getItem(index: number): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('getItem', index);
    }
 
    getItemByValue(value: string): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('getItemByValue', value);
    }
 
    getVisibleItems(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('getVisibleItems');
    }
 
    getItems(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('getItems');
    }
 
    getCheckedItems(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('getCheckedItems');
    }
 
    getSelectedItem(): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('getSelectedItem');
    }
 
    getSelectedItems(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('getSelectedItems');
    }
 
    getSelectedIndex(): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('getSelectedIndex');
    }
 
    insertAt(item: any, index: number): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('insertAt', item, index);
    }
 
    isOpened(): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('isOpened');
    }
 
    indeterminateIndex(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('indeterminateIndex', index);
    }
 
    indeterminateItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('indeterminateItem', item);
    }
 
    loadFromSelect(selectTagId: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('loadFromSelect', selectTagId);
    }
 
    open(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('open');
    }
 
    removeItem(item: any): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('removeItem', item);
    }
 
    removeAt(index: number): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('removeAt', index);
    }
 
    selectIndex(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('selectIndex', index);
    }
 
    selectItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('selectItem', item);
    }
 
    searchString(): string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxComboBox('searchString');
    }
 
    updateItem(item: any, itemValue: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('updateItem', item, itemValue);
    }
 
    updateAt(item: any, index: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('updateAt', item, index);
    }
 
    unselectIndex(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('unselectIndex', index);
    }
 
    unselectItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('unselectItem', item);
    }
 
    uncheckIndex(index: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('uncheckIndex', index);
    }
 
    uncheckItem(item: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('uncheckItem', item);
    }
 
    uncheckAll(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxComboBox('uncheckAll');
    }
 

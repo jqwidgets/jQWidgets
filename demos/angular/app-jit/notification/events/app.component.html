@@ -1,0 +1,54 @@
+﻿<jqxNotification #jqxNotification
+                 (onOpen)="open($event)"
+                 (onClose)="close($event)"
+                 (onClick)="click($event)"
+                 [blink]="true"
+                 [closeOnClick]="true"
+                 [autoClose]="false"
+                 [template]="'mail'"
+                 [opacity]="0.9"
+                 [position]="'top-right'"
+                 [width]="'auto'">
+  <div>
+    You have <b>2</b> new messages.
+  </div>
+  <div style="font-size: smaller; text-align: center;">
+    Click to view.
+  </div>
+</jqxNotification>
+<jqxButton #checkMail (onClick)="clickCheckMail()">
+  Check mail
+</jqxButton>
+<div style="margin-top: 15px;">
+  Events log:
+</div>
+<jqxPanel #eventsPanel [width]="150" [height]="150">
+</jqxPanel>
+<div #messagePanel style="width: 400px; display: none;">
+  <p>
+    <b>From:</b> Ken
+  </p>
+  <p>
+    <b>About</b>: Appointment
+  </p>
+  <p>
+    Hi,<br />
+    I just wanted to remind you dinner is at 8pm tonight at Carl's.
+  </p>
+  <hr style="width: 300px; text-align: right;" />
+  <p>
+    <b>From:</b> Sue
+  </p>
+  <p>
+    <b>About</b>: Shopping
+  </p>
+  <p>
+    Here's the shopping list for tommorow's party:
+  </p>
+  <ul>
+    <li>Wine</li>
+    <li>Tomatoes</li>
+    <li>Cheese</li>
+    <li>Popcorn</li>
+  </ul>
+</div>

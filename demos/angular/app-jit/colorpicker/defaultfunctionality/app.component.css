@@ -1,0 +1,14 @@
+﻿.photo {
+  width: 500px;
+  height: 350px;
+  background-color: #000;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.jqx-scrollview {
+  border: 15px solid #ffaabb;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}

@@ -1,0 +1,18 @@
+<jqxPivotGrid
+        #pivotGrid1
+        [width]="getWidth()" 
+        [height]="400"
+        [source]="pivotDataSource"
+        [treeStyleRows] = "false"
+        [autoResize] = "false"
+        [multipleSelectionEnabled] = "true"
+	 >
+</jqxPivotGrid>
+<br/>
+<jqxButton 
+    #btnCheckRowsDisplayStyle
+    (onClick)="onChangeRowsDisplayStyle()"
+    height="30"
+	>
+	&nbsp;Change to Tree style display&nbsp;
+</jqxButton>

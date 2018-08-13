@@ -1,11 +1,20 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';  import { jqxDataTableComponent } from '../../../jqwidgets-ts/angular_jqxdatatable';  @Component({     selector: 'app-root',     templateUrl: './app.component.html'
  })  export class AppComponent implements AfterViewInit {     @ViewChild('myDataTable') myDataTable: jqxDataTableComponent;      ngAfterViewInit(): void {         this.myDataTable.showDetails(0);
-    }      source: any =     {         localData: this.generateData(),
+    }      source: any =     {   
+		localData: this.generateData(),
         dataType: 'array'     };      dataAdapter: any = new jqx.dataAdapter(this.source);      columns: any[] =     [         { text: 'First Name', dataField: 'firstname', width: 200 },
         { text: 'Last Name', dataField: 'lastname', width: 200 },
         { text: 'Title', dataField: 'title', width: 200 },
         { text: 'City', dataField: 'city', width: 100 },
         { text: 'Country', dataField: 'country' }     ];
+
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
 
     initRowDetails = (id: any, row: any, element: any, rowinfo: any): void => {
         // update the details height.

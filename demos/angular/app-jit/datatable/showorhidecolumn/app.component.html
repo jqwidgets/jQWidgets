@@ -1,0 +1,10 @@
+﻿<jqxListBox style="float: left" (onCheckChange)="listBoxOnCheckChange($event)"
+    [width]="150" [height]="200" [source]="listSource" [checkboxes]="true">
+</jqxListBox>
+
+<jqxDataTable #myDataTable style="float: left; margin-left: 20px;"
+    [source]="dataAdapter" [columns]="columns" [pageable]="true"
+    [columnsResize]="true" [pagerButtonsCount]="10">
+</jqxDataTable>
+
+

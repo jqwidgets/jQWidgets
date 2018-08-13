@@ -1,0 +1,66 @@
+﻿<div style="float: right; direction: rtl;">
+    <jqxExpander [width]="350" [showArrow]="false" [toggleMode]="'none'" [rtl]="true">
+        <div><h3 style="padding: 0; margin: 0;">Register</h3></div>
+        <div style="padding: 5px;">
+            <jqxValidator #myValidator [rules]="rules" [rtl]="true">
+                <form id='form' action="./">
+                    <table class="register-table">
+                        <tbody>
+                            <tr>
+                                <td>Username:</td>
+                                <td><jqxInput class="userInput text-input" [width]="195" [height]="22" [rtl]="true"></jqxInput></td>
+                            </tr>
+                            <tr>
+                                <td>Password:</td>
+                                <td><jqxPasswordInput #passwordInput class="passwordInput text-input" [width]="195" [height]="22" [rtl]="true"></jqxPasswordInput></td>
+                            </tr>
+                            <tr>
+                                <td>Confirm password:</td>
+                                <td><jqxPasswordInput #confirmPasswordInput class="passwordConfirmInput text-input" [width]="195" [height]="22" [rtl]="true"></jqxPasswordInput></td>
+                            </tr>
+                            <tr>
+                                <td>Real name:</td>
+                                <td><jqxInput [width]="195" [height]="22" [rtl]="true" class="realNameInput text-input"></jqxInput></td>
+                            </tr>
+                            <tr>
+                                <td>Birth date:</td>
+                                <td><jqxDateTimeInput #dateTimeInput [width]="195" [height]="22" [value]="initialDate" [rtl]="true" class="birthInput"></jqxDateTimeInput></td>
+                            </tr>
+                            <tr>
+                                <td>E-mail:</td>
+                                <td><jqxInput [placeHolder]="'someone@mail.com'" class="emailInput text-input" [width]="195" [height]="22" [rtl]="true"></jqxInput></td>
+                            </tr>
+                            <tr>
+                                <td>SSN:</td>
+                                <td><jqxMaskedInput [width]="195" [height]="22" [mask]="'###-##-####'" class="ssnInput" [rtl]="true"></jqxMaskedInput></td>
+                            </tr>
+                            <tr>
+                                <td>Phone:</td>
+                                <td><jqxMaskedInput [width]="195" [height]="22" [mask]="'(###)###-####'" class="phoneInput" [rtl]="true"></jqxMaskedInput></td>
+                            </tr>
+                            <tr>
+                                <td>Zip code:</td>
+                                <td><jqxMaskedInput [width]="195" [height]="22" [mask]="'###-##-####'" class="zipInput" [rtl]="true"></jqxMaskedInput></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="padding-right: 100px; padding-top: 10px; padding-bottom: 10px;">
+                                    <jqxCheckBox [width]="130" [rtl]="true" id="acceptCheckBox">I accept terms</jqxCheckBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="padding-left: 20px;">
+                                    <jqxButton #SendButton
+                                               (onClick)="sendButton()"
+                                               style="text-align: center; margin-left: 8em;"
+                                               [width]="60" [height]="25">
+                                        Send
+                                    </jqxButton>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </jqxValidator>
+        </div>
+    </jqxExpander>
+</div>

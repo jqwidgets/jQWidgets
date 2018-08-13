@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.5 (2018-July)
+jQWidgets v6.0.6 (2018-August)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -209,6 +209,9 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    createComponent(options?: any): void {
+      if (this.host) {
+         return;
+      }
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
       }
@@ -223,7 +226,6 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       this.__wireEvents__();
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDataTable', options);
 
-      this.__updateRect__();
    }
 
    createWidget(options?: any): void {
@@ -240,6 +242,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
 
    // jqxDataTableComponent properties
    altRows(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('altRows', arg);
       } else {
@@ -248,6 +255,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    autoRowHeight(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('autoRowHeight', arg);
       } else {
@@ -256,6 +268,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    aggregatesHeight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('aggregatesHeight', arg);
       } else {
@@ -264,6 +281,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    autoShowLoadElement(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('autoShowLoadElement', arg);
       } else {
@@ -272,6 +294,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    columnsHeight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('columnsHeight', arg);
       } else {
@@ -280,6 +307,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    columns(arg?: Array<jqwidgets.DataTableColumns>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('columns', arg);
       } else {
@@ -288,6 +320,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    columnGroups(arg?: Array<jqwidgets.DataTableColumnGroups>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('columnGroups', arg);
       } else {
@@ -296,6 +333,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    columnsResize(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('columnsResize', arg);
       } else {
@@ -304,6 +346,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    columnsReorder(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('columnsReorder', arg);
       } else {
@@ -312,6 +359,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    disabled(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('disabled', arg);
       } else {
@@ -320,6 +372,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    editable(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('editable', arg);
       } else {
@@ -328,6 +385,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    editSettings(arg?: jqwidgets.DataTableEditSettings) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('editSettings', arg);
       } else {
@@ -336,6 +398,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    exportSettings(arg?: jqwidgets.DataTableExportSettings) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('exportSettings', arg);
       } else {
@@ -344,6 +411,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    enableHover(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('enableHover', arg);
       } else {
@@ -352,6 +424,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    enableBrowserSelection(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('enableBrowserSelection', arg);
       } else {
@@ -360,6 +437,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    filterable(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('filterable', arg);
       } else {
@@ -368,6 +450,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    filterHeight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('filterHeight', arg);
       } else {
@@ -376,6 +463,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    filterMode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('filterMode', arg);
       } else {
@@ -384,6 +476,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    groups(arg?: Array<any>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('groups', arg);
       } else {
@@ -392,6 +489,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    groupsRenderer(arg?: (value:any, rowData?:any, level?:number) => string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('groupsRenderer', arg);
       } else {
@@ -400,6 +502,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    height(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('height', arg);
       } else {
@@ -408,6 +515,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    initRowDetails(arg?: (id:number, row?:any, element?:any, rowInfo?:any) => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('initRowDetails', arg);
       } else {
@@ -416,6 +528,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    incrementalSearch(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('incrementalSearch', arg);
       } else {
@@ -424,6 +541,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    localization(arg?: any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('localization', arg);
       } else {
@@ -432,6 +554,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    pagerHeight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('pagerHeight', arg);
       } else {
@@ -440,6 +567,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    pageSize(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('pageSize', arg);
       } else {
@@ -448,6 +580,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    pageSizeOptions(arg?: Array<string | number>) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('pageSizeOptions', arg);
       } else {
@@ -456,6 +593,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    pageable(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('pageable', arg);
       } else {
@@ -464,6 +606,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    pagerPosition(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('pagerPosition', arg);
       } else {
@@ -472,6 +619,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    pagerMode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('pagerMode', arg);
       } else {
@@ -480,6 +632,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    pagerButtonsCount(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('pagerButtonsCount', arg);
       } else {
@@ -488,6 +645,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    pagerRenderer(arg?: () => any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('pagerRenderer', arg);
       } else {
@@ -496,6 +658,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    ready(arg?: () => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('ready', arg);
       } else {
@@ -504,6 +671,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    rowDetails(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('rowDetails', arg);
       } else {
@@ -512,6 +684,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    renderToolbar(arg?: (toolbar:any) => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('renderToolbar', arg);
       } else {
@@ -520,6 +697,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    renderStatusbar(arg?: (statusbar:any) => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('renderStatusbar', arg);
       } else {
@@ -528,6 +710,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    rendering(arg?: () => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('rendering', arg);
       } else {
@@ -536,6 +723,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    rendered(arg?: () => void) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('rendered', arg);
       } else {
@@ -544,6 +736,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    rtl(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('rtl', arg);
       } else {
@@ -552,6 +749,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    source(arg?: any) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('source', arg);
       } else {
@@ -560,6 +762,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    sortable(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('sortable', arg);
       } else {
@@ -568,6 +775,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    showAggregates(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('showAggregates', arg);
       } else {
@@ -576,6 +788,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    showToolbar(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('showToolbar', arg);
       } else {
@@ -584,6 +801,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    showStatusbar(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('showStatusbar', arg);
       } else {
@@ -592,6 +814,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    statusBarHeight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('statusBarHeight', arg);
       } else {
@@ -600,6 +827,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    scrollBarSize(arg?: number | string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('scrollBarSize', arg);
       } else {
@@ -608,6 +840,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    selectionMode(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('selectionMode', arg);
       } else {
@@ -616,6 +853,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    serverProcessing(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('serverProcessing', arg);
       } else {
@@ -624,6 +866,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    showHeader(arg?: boolean) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('showHeader', arg);
       } else {
@@ -632,6 +879,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    theme(arg?: string) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('theme', arg);
       } else {
@@ -640,6 +892,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    toolbarHeight(arg?: number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('toolbarHeight', arg);
       } else {
@@ -648,6 +905,11 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    width(arg?: string | number) : any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       if (arg !== undefined) {
           this.host.jqxDataTable('width', arg);
       } else {
@@ -658,178 +920,398 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
 
    // jqxDataTableComponent functions
    addRow(rowIndex: number, rowData: any, rowPosition: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('addRow', rowIndex, rowData, rowPosition);
    }
 
    addFilter(dataField: string, filerGroup: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('addFilter', dataField, filerGroup);
    }
 
    applyFilters(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('applyFilters');
    }
 
    beginUpdate(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('beginUpdate');
    }
 
    beginRowEdit(rowIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('beginRowEdit', rowIndex);
    }
 
    beginCellEdit(rowIndex: number, dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('beginCellEdit', rowIndex, dataField);
    }
 
    clearSelection(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('clearSelection');
    }
 
    clearFilters(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('clearFilters');
    }
 
    clear(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('clear');
    }
 
    destroy(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('destroy');
    }
 
    deleteRow(rowIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('deleteRow', rowIndex);
    }
 
    endUpdate(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('endUpdate');
    }
 
    ensureRowVisible(rowIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('ensureRowVisible', rowIndex);
    }
 
    endRowEdit(rowIndex: number, cancelChanges: boolean): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('endRowEdit', rowIndex, cancelChanges);
    }
 
    endCellEdit(rowIndex: number, dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('endCellEdit', rowIndex, dataField);
    }
 
    exportData(exportDataType: any): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDataTable('exportData', exportDataType);
    }
 
    focus(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('focus');
    }
 
    getColumnProperty(dataField: string, propertyName: string): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDataTable('getColumnProperty', dataField, propertyName);
    }
 
    goToPage(pageIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('goToPage', pageIndex);
    }
 
    goToPrevPage(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('goToPrevPage');
    }
 
    goToNextPage(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('goToNextPage');
    }
 
    getSelection(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDataTable('getSelection');
    }
 
    getRows(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDataTable('getRows');
    }
 
    getView(): Array<any> {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDataTable('getView');
    }
 
    getCellValue(rowIndex: number, dataField: string): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDataTable('getCellValue', rowIndex, dataField);
    }
 
    hideColumn(dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('hideColumn', dataField);
    }
 
    hideDetails(rowIndex: boolean): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('hideDetails', rowIndex);
    }
 
    isBindingCompleted(): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDataTable('isBindingCompleted');
    }
 
    lockRow(rowIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('lockRow', rowIndex);
    }
 
    refresh(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('refresh');
    }
 
    render(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('render');
    }
 
    removeFilter(dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('removeFilter', dataField);
    }
 
    scrollOffset(top: number, left: number): any {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDataTable('scrollOffset', top, left);
    }
 
    setColumnProperty(dataField: string, propertyName: string, propertyValue: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('setColumnProperty', dataField, propertyName, propertyValue);
    }
 
    showColumn(dataField: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('showColumn', dataField);
    }
 
    selectRow(rowIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('selectRow', rowIndex);
    }
 
    showDetails(rowIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('showDetails', rowIndex);
    }
 
    setCellValue(rowIndex: number, dataField: string, value: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('setCellValue', rowIndex, dataField, value);
    }
 
    sortBy(dataField: string, sortOrder: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('sortBy', dataField, sortOrder);
    }
 
    updating(): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       return this.host.jqxDataTable('updating');
    }
 
    updateBoundData(): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('updateBoundData');
    }
 
    unselectRow(rowIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('unselectRow', rowIndex);
    }
 
    updateRow(rowIndex: number, rowData: any): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('updateRow', rowIndex, rowData);
    }
 
    unlockRow(rowIndex: number): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
       this.host.jqxDataTable('unlockRow', rowIndex);
    }
 

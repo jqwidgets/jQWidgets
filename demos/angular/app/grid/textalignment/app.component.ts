@@ -29,6 +29,14 @@ export class AppComponent {
         datatype: 'array'
     }
 
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+
     dataAdapter: any = new jqx.dataAdapter(this.source);
 
     columns: any[] =

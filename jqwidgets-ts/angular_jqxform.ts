@@ -1,11 +1,27 @@
 /*
-jQWidgets v6.0.5 (2018-July)
+jQWidgets v6.0.6 (2018-August)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
 /// <reference path="jqwidgets.d.ts" />
 import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
+import '../jqwidgets/jqxinput.js';
+import '../jqwidgets/jqxpasswordinput.js';
+import '../jqwidgets/jqxnumberinput.js';
+import '../jqwidgets/jqxradiobutton.js';
+import '../jqwidgets/jqxcheckbox.js';
+import '../jqwidgets/jqxbuttons.js';
+import '../jqwidgets/jqxscrollbar.js';
+import '../jqwidgets/jqxlistbox.js';
+import '../jqwidgets/jqxdropdownlist.js';
+import '../jqwidgets/jqxcombobox.js';
+import '../jqwidgets/jqxmaskedinput.js';
+import '../jqwidgets/globalization/globalize.js'
+import '../jqwidgets/jqxcalendar.js';
+import '../jqwidgets/jqxdatetimeinput.js';
+import '../jqwidgets/jqxform.js';
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -33,6 +49,9 @@ export class jqxFormComponent implements OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      JQXLite(window).resize(() => {
+          this.__updateRect__();
+      });
    }
 
    ngOnInit() {
@@ -109,6 +128,9 @@ export class jqxFormComponent implements OnChanges
    }
 
    createComponent(options?: any): void {
+      if (this.host) {
+         return;
+      }
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
       }

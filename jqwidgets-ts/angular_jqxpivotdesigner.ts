@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.5 (2018-July)
+jQWidgets v6.0.6 (2018-August)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -30,6 +30,9 @@ export class jqxPivotDesignerComponent implements OnChanges
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
+      JQXLite(window).resize(() => {
+          this.__updateRect__();
+      });
    }
 
    ngOnInit() {
@@ -106,6 +109,9 @@ export class jqxPivotDesignerComponent implements OnChanges
    }
 
    createComponent(options?: any): void {
+      if (this.host) {
+         return;
+      }
       if (options) {
          JQXLite.extend(options, this.manageAttributes());
       }

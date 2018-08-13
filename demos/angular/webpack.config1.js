@@ -60,18 +60,18 @@ module.exports = {
         calendar_specialdates: './app/calendar/specialdates/main.ts',
         calendar_twowaydatabinding: './app/calendar/twowaydatabinding/main.ts',
 	
-		pivotgrid_cellvaluesalignment: './app/pivotgrid/cell-values-alignment/main.ts',
-		pivotgrid_custompivotfunction: './app/pivotgrid/custom-pivot-function/main.ts',
-		pivotgrid_customrendering: './app/pivotgrid/custom-rendering/main.ts',
+		pivotgrid_cell_values_alignment: './app/pivotgrid/cell_values_alignment/main.ts',
+		pivotgrid_custom_pivot_function: './app/pivotgrid/custom_pivot_function/main.ts',
+		pivotgrid_custom_rendering: './app/pivotgrid/custom_rendering/main.ts',
 		pivotgrid_designer: './app/pivotgrid/designer/main.ts',
-		pivotgrid_drillthrough: './app/pivotgrid/drill-through/main.ts',
+		pivotgrid_drill_through: './app/pivotgrid/drill_through/main.ts',
 		pivotgrid_events: './app/pivotgrid/events/main.ts',
 		pivotgrid_localization: './app/pivotgrid/localization/main.ts',
-		pivotgrid_olaptreestylerows: './app/pivotgrid/olap-tree-style-rows/main.ts',
-		pivotgrid_rowscolumnscellscssstyling: './app/pivotgrid/rows-columns-cells-css-styling/main.ts',
+		pivotgrid_olap_tree_style_rows: './app/pivotgrid/olap_tree_style_rows/main.ts',
+		pivotgrid_rows_columns_cells_css_styling: './app/pivotgrid/rows_columns_cells_css_styling/main.ts',
 		pivotgrid_totals: './app/pivotgrid/totals/main.ts',
-		pivotgrid_valuesoncolumns: './app/pivotgrid/values-on-columns/main.ts',
-		pivotgrid_valuesonrows: './app/pivotgrid/values-on-rows/main.ts'
+		pivotgrid_values_on_columns: './app/pivotgrid/values_on_columns/main.ts',
+		pivotgrid_values_on_rows: './app/pivotgrid/values_on_rows/main.ts'
 	
 	},
 
@@ -81,26 +81,26 @@ module.exports = {
     },
 
     module: {
-        loaders:
+        rules:
         [
             {
                 test: /\.ts$/,
-                loaders: ['awesome-typescript-loader', 'angular2-template-loader?keepUrl=true'],
+                loaders: ['awesome_typescript_loader', 'angular2_template_loader?keepUrl=true'],
                 exclude: [/\.(spec|e2e)\.ts$/]
             },
             {
                 test: /\.html$/,
-                use: 'raw-loader'
+                use: 'raw_loader'
             },
             {
                 test: /\.css$/,
-                loaders: ['style-loader', 'css-loader']
+                loaders: ['style_loader', 'css_loader']
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 use: [
-                    'raw-loader',
-                    'img-loader'
+                    'raw_loader',
+                    'img_loader'
                 ]
             }
         ]
