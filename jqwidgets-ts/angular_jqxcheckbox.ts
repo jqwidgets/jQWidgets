@@ -158,8 +158,29 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       if(this.host) this.host.css({ width: this.attrWidth, height: this.attrHeight });
    }
 
+   get ngValue(): any {
+       if (this.widgetObject) {
+            const value = this.host.val();
+            if(typeof value === 'object')
+                return value.label;
+            return value;
+       }
+       return '';
+   }
+
+   set ngValue(value: any) {
+       if (this.widgetObject) {
+           this.onChangeCallback(value);
+       }
+   }
+
    writeValue(value: any): void {
-       if(this.widgetObject) {
+       if(this.widgetObject && value !== undefined) {
+          if(this.initialLoad){
+              setTimeout(_ => this.host.jqxCheckBox('val', value));
+              this.initialLoad = false;
+          }
+          this.host.jqxCheckBox('val', value);
        }
    }
 
