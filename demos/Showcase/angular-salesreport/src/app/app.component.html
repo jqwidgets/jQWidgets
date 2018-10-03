@@ -1,0 +1,60 @@
+<div class="header-wrap container-fluid">
+  <div class="row">
+    <div class="logo col-md-4">
+      <p><span><i class="fa fa-bookmark"></i></span>Sales Report</p>
+    </div>
+    <div class="col-md-3"></div>
+    <div class="col-md-5 text-center">
+      <ul class="list-inline" style="margin-top:1.2em;">
+        <li class="list-inline-item"><jqxDropDownList #dropDownOne (onSelect)="changeEmployees(true, false)" [width]="250" [height]="30" [source]="dropDownListDataAdapter" [theme]="'metrodark'"
+                             [displayMember]="'fullname'" [valueMember]="'employeeId'" [selectedIndex]="0" [renderer]="dropDownRenderer"></jqxDropDownList></li>
+        <li class="list-inline-item"><jqxDropDownList #dropDownTwo (onSelect)="changeEmployees(false, true)" [width]="250" [height]="30" [source]="dropDownListDataAdapter" [theme]="'metrodark'"
+                 [displayMember]="'fullname'" [valueMember]="'employeeId'" [selectedIndex]="1" [renderer]="dropDownRenderer"></jqxDropDownList></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+    <jqxWindow #window [width]="300" [height]="150" [position]="{ x: 800, y: 20 }" [autoOpen]="false"
+                [resizable]="false" [isModal]="true" [modalOpacity]="0.3">
+        <div>Invalid Employee</div>
+        <div style="position:relative">
+            <div>You cannot choose the same employee!</div>
+            <jqxButton id="okButton" (onClick)="closeWindow()" [width]="80" >
+                OK
+            </jqxButton>
+        </div>
+    </jqxWindow>
+    <jqxLayout #myLayout [width]="'100%'" [height]="882" [layout]="layout" [contextMenu]="true" [resizable]="false" [theme]="'metro'">
+        <div data-container="LeftPannel">
+            <div style="border:none;" id="dataTable"></div>
+        </div>
+        <div data-container="RightPannel">
+            <div id="salesPerMonthTabs" style="border:none;display:block;">
+                <ul>
+                    <li style="margin-left:30px;">Per Employee</li>
+                    <li>Comparative</li>
+                </ul>
+                <div id="salesPerMonthTabOne" style="overflow:hidden">
+                    <div id="salesPerMonthLeftChart" style="width:50%;height:100%;display:inline-block;overflow:hidden;"></div>
+                    <div id="salesPerMonthRightChart" style="width:49%;height:100%;display:inline-block;overflow:hidden;"></div>
+                </div>
+                <div id="salesPerMonthTabTwo">
+                    <div id="salesPerMonthSpiderChart" style="width:100%;height:100%;overflow:hidden;"></div>
+                </div>
+            </div>
+            <div id="salesPerMonthDataTable" style="border:none;display:block;overflow:hidden;"></div>
+
+            <div id="expensesPerMonthChart" style="width:100%;height:50%;border:none;display:none;overflow:hidden;"></div>
+            <div id="expensesPerMonthDataTable" style="width:100%;height:50%;border:none;display:none;overflow:hidden;"></div>
+
+            <div id="avarageEmployeeSalaryChart" style="width:100%;height:50%;border:none;display:none;overflow:hidden;"></div>
+            <div id="avarageEmployeeSalaryDataTable" style="width:100%;height:50%;border:none;display:none;overflow:hidden;"></div>
+
+            <div id="yearComparisonLeftBarGauge" style="border:none;display:none;overflow:hidden;float:left;" attr="gauge"></div>
+            <div id="yearComparisonRightBarGauge" style="border:none;display:none;overflow:hidden;float:left;margin-left:1em;" attr="gauge"></div>
+            <div id="yearComparisonChart" style="width:90%;height:50%;border:none;display:none;overflow:hidden;"></div>
+        </div>
+    </jqxLayout>
+</div>

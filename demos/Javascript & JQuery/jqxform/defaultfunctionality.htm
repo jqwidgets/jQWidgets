@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="keywords" content="JavaScript Form, HTML Form, jQuery Forms widget" /> 
+<meta name="description" content="The jqxForm widget helps you build interactive HTML JSON forms. It offers rich functionality and layout options."/>
+    <title id='Description'>jQuery Form Widget Component</title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxform.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+       
+            var template = [
+                {
+                    bind: 'firstName',
+                    type: 'text',
+                    label: 'First name',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px',
+                    info: 'Enter first name',
+                    infoPosition: 'right'
+                },
+                {
+                    bind: 'lastName',
+                    type: 'text',
+                    label: 'Last name',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px',
+                    info: 'Enter last name'
+                },  
+                {
+                    bind: 'company',
+                    type: 'text',
+                    label: 'Company',
+                    required: false,
+                    labelWidth: '80px',
+                    width: '250px'
+                },
+                {
+                    bind: 'address',
+                    type: 'text',
+                    label: 'Address',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px'
+                },
+                {
+                    bind: 'city',
+                    type: 'text',
+                    label: 'City',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px'
+                },
+                {
+                    bind: 'state',
+                    type: 'option',
+                    label: 'State',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px',
+                    component: 'jqxDropDownList',
+                    options: [
+                        { value: 'California' },
+                        { value: 'New York'},
+                        { value: 'Oregon'},
+                        { value: 'Illinois'},
+                        { value: 'Texas'}
+                    ]
+                },
+                {
+                    bind: 'zip',
+                    type: 'text',
+                    label: 'Zip code',
+                    required: true,
+                    labelWidth: '80px',
+                    width: '250px'
+                },
+                {
+                    type: 'blank',
+                    rowHeight: '10px'
+                },
+                {
+                    columns: [
+                        {
+                            type: 'button',
+                            text: 'Sign up',
+                            width: '90px',
+                            height: '30px',
+                            rowHeight: '40px',
+                            columnWidth: '50%',
+                            align: 'right'
+                        },
+                        {
+                            type: 'button',
+                            text: 'Cancel',
+                            width: '90px',
+                            height: '30px',
+                            rowHeight: '40px',
+                            columnWidth: '50%'
+                        }                
+                    ]
+                }
+            ];
+
+
+            var sampleValue = {
+                firstName: 'John',
+                lastName: 'Scott',
+                address: '1st Ave SW',
+                company: 'N/A',
+                city: 'San Antonio',
+                state: 'Texas',
+                zip: '78209'
+            };
+
+            $('#sampleForm').jqxForm({
+                template: template,
+                value: sampleValue,
+                padding: { left: 10, top: 10, right: 10, bottom: 10 }
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id='sampleForm' style="width: 400px; height: auto;"></div>   
+    <div class="example-description">
+        <h2>Description</h2>
+        <div style="width: 800px;">
+            This example shows you how to build an interactive HTML form using JSON syntax. Each object in the JSON
+            array describes a tool in the form. You can use textbox, password, dropdown, checkbox and other tools.
+            You can also specify labels, set flags whether the field is optional, information tooltips and more.
+            The form also allows you to define positioning of the label relative to the input field, separate widths of
+            the label and the input field, alignment, row height, and more. For more information check the other examples and the API reference.
+        </div>
+    </div>
+
+</body>
+</html>

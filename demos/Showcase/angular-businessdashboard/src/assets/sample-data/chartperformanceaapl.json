@@ -1,0 +1,51 @@
+[
+    {
+        "day": "Monday",
+        "SPOpen": 108,
+        "SPHigh": 109,
+        "SPLow": 107,
+        "SPClose": 107
+    },
+    {
+        "day": "Tuesday",
+        "SPOpen": 112,
+        "SPHigh": 113,
+        "SPLow": 111,
+        "SPClose": 109
+    },
+    {
+        "day": "Wednesday",
+        "SPOpen": 111,
+        "SPHigh": 114,
+        "SPLow": 109,
+        "SPClose": 112
+    },
+    {
+        "day": "Thursday",
+        "SPOpen": 110,
+        "SPHigh": 111,
+        "SPLow": 109,
+        "SPClose": 112
+    },
+    {
+        "day": "Friday",
+        "SPOpen": 109,
+        "SPHigh": 112,
+        "SPLow": 108,
+        "SPClose": 110
+    },
+    {
+        "day": "Saturday",
+        "SPOpen": 110,
+        "SPHigh": 111,
+        "SPLow": 109,
+        "SPClose": 109
+    },
+    {
+        "day": "Sunday",
+        "SPOpen": 111,
+        "SPHigh": 113,
+        "SPLow": 110,
+        "SPClose": 110
+    }
+]

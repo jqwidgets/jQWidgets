@@ -1,0 +1,10 @@
+﻿<jqxGrid [theme]="'material'" #myGrid [width]="850" [source]="dataAdapter" [columnsresize]="true"
+         [showcolumnlines]="true" [showcolumnheaderlines]="false"
+         [columns]="columns">
+</jqxGrid>
+<br />
+<jqxCheckBox [theme]="'material'" #rowLines (onChange)="refreshAppearance()" [checked]="true">Row Lines</jqxCheckBox>
+<br />
+<jqxCheckBox [theme]="'material'" #columnLines (onChange)="refreshAppearance()" [checked]="false">Column Lines</jqxCheckBox>
+<br />
+<jqxCheckBox [theme]="'material'" #columnHeaderLines (onChange)="refreshAppearance()" [checked]="false">Column Header Lines</jqxCheckBox>

@@ -1,0 +1,11 @@
+﻿<jqxGrid #referenceGrid
+	(onCellvaluechanged)="ValueChangedEvent($event)"
+	(onBindingcomplete)="BindingCompleteEvent($event)"
+    [width]="'95%'"
+	[autoheight]="true"
+	[showstatusbar]="true"
+	[statusbarheight]="25"
+	[source]="dataAdapterFoodGrid"
+	[showaggregates]="true"
+	[columns]="columns">
+</jqxGrid>

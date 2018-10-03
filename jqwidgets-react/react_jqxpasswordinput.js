@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,40 +17,46 @@ const JQXLite = window.JQXLite;
 export const jqx = window.jqx;
 
 export default class JqxPasswordInput extends React.Component {
+    constructor(props) {
+        super(props);
+        const widgetId = 'jqxPasswordInput' + JQXLite.generateID();
+        this.componentSelector = '#' + widgetId;
+        this.state = { id: widgetId };
+    };
     componentDidMount() {
-        let options = this.manageAttributes();
+        const options = this.manageAttributes();
         this.createComponent(options);
     };
     manageAttributes() {
-        let properties = ['disabled','height','localization','maxLength','placeHolder','passwordStrength','rtl','strengthColors','showStrength','showStrengthPosition','strengthTypeRenderer','showPasswordIcon','theme','width'];
+        const properties = ['disabled','height','localization','maxLength','placeHolder','passwordStrength','rtl','strengthColors','showStrength','showStrengthPosition','strengthTypeRenderer','showPasswordIcon','theme','width'];
         let options = {};
         for(let item in this.props) {
-              if(item === 'settings') {
-                  for(let itemTwo in this.props[item]) {
-                      options[itemTwo] = this.props[item][itemTwo];
-                      }
-                } else {
-                      if(properties.indexOf(item) !== -1) {
-                        options[item] = this.props[item];
-                      }
+            if(item === 'settings') {
+                for(let itemTwo in this.props[item]) {
+                    options[itemTwo] = this.props[item][itemTwo];
                 }
-          }
-          return options;
-      };
+            } else {
+                if(properties.indexOf(item) !== -1) {
+                      options[item] = this.props[item];
+                }
+            }
+        }
+        return options;
+    };
     createComponent(options) {
         if(!this.style) {
-              for (let style in this.props.style) {
-                  JQXLite(this.componentSelector).css(style, this.props.style[style]);
-              }
+            for (let style in this.props.style) {
+                JQXLite(this.componentSelector).css(style, this.props.style[style]);
+            }
         }
         if(this.props.className !== undefined) {
-            let classes = this.props.className.split(' ');
+            const classes = this.props.className.split(' ');
             for (let i = 0; i < classes.length; i++ ) {
                 JQXLite(this.componentSelector).addClass(classes[i]);
             }
         }
         if(!this.template) {
-              JQXLite(this.componentSelector).html(this.props.template);
+            JQXLite(this.componentSelector).html(this.props.template);
         }
         JQXLite(this.componentSelector).jqxPasswordInput(options);
     };
@@ -186,10 +192,8 @@ export default class JqxPasswordInput extends React.Component {
     };
 
     render() {
-        let id = 'jqxPasswordInput' + JQXLite.generateID();
-        this.componentSelector = '#' + id;
         return (
-            <input type='password' id={id}></input>
+            <input type='password' id={this.state.id}></input>
         )
     };
 };

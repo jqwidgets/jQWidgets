@@ -1,0 +1,864 @@
+/*
+jQWidgets v6.1.0 (2018-October)
+Copyright (c) 2011-2018 jQWidgets.
+License: https://jqwidgets.com/license/
+*/
+/* eslint-disable */
+
+<template>
+    <div v-bind:id="id">
+        <slot></slot>
+    </div>
+</template>
+
+<script>
+    import '../jqwidgets/jqxcore.js';
+    import '../jqwidgets/jqxdata.js';
+    import '../jqwidgets/jqxbuttons.js';
+    import '../jqwidgets/jqxscrollbar.js';
+    import '../jqwidgets/jqxlistbox.js';
+    import '../jqwidgets/jqxdropdownlist.js';
+
+    export default {
+        props: {
+            autoOpen: Boolean,
+            autoDropDownHeight: Boolean,
+            animationType: String,
+            checkboxes: Boolean,
+            closeDelay: Number,
+            disabled: Boolean,
+            displayMember: String,
+            dropDownHorizontalAlignment: String,
+            dropDownVerticalAlignment: String,
+            dropDownHeight: Number,
+            dropDownWidth: Number,
+            enableSelection: Boolean,
+            enableBrowserBoundsDetection: Boolean,
+            enableHover: Boolean,
+            filterable: Boolean,
+            filterHeight: Number,
+            filterDelay: Number,
+            filterPlaceHolder: String,
+            height: [Number, String],
+            incrementalSearch: Boolean,
+            incrementalSearchDelay: Number,
+            itemHeight: Number,
+            openDelay: Number,
+            placeHolder: String,
+            popupZIndex: Number,
+            rtl: Boolean,
+            renderer: Function,
+            selectionRenderer: Function,
+            searchMode: String,
+            scrollBarSize: Number,
+            source: Array,
+            selectedIndex: Number,
+            theme: String,
+            template: String,
+            valueMember: String,
+            width: [Number, String],
+            autoCreate: {
+                default: true,
+                type: Boolean
+            }
+        },
+        created: function () {
+            this.id = 'jqxDropDownList' + JQXLite.generateID();
+            this.componentSelector = '#' + this.id;
+        },
+        mounted: function () {
+            if (this.autoCreate) this.__createComponent__();
+        },
+        methods: {
+            createComponent: function (options) {
+                if (!this.autoCreate) this.__createComponent__(options)
+                else console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" property to "false".');
+            },
+            setOptions: function (options) {
+                JQXLite(this.componentSelector).jqxDropDownList(options);
+            },
+            getOptions: function () {
+                const usedProps = Object.keys(this.__manageProps__());
+                const resultToReturn = {};
+                for (let i = 0; i < usedProps.length; i++) {
+                    resultToReturn[usedProps[i]] = JQXLite(this.componentSelector).jqxDropDownList(usedProps[i]);
+                }
+                return resultToReturn;
+            },
+            addItem: function(item) {
+                JQXLite(this.componentSelector).jqxDropDownList('addItem', item);  
+            },
+            clearSelection: function() {
+                JQXLite(this.componentSelector).jqxDropDownList('clearSelection');  
+            },
+            clear: function() {
+                JQXLite(this.componentSelector).jqxDropDownList('clear');  
+            },
+            close: function() {
+                JQXLite(this.componentSelector).jqxDropDownList('close');  
+            },
+            checkIndex: function(index) {
+                JQXLite(this.componentSelector).jqxDropDownList('checkIndex', index);  
+            },
+            checkItem: function(item) {
+                JQXLite(this.componentSelector).jqxDropDownList('checkItem', item);  
+            },
+            checkAll: function() {
+                JQXLite(this.componentSelector).jqxDropDownList('checkAll');  
+            },
+            clearFilter: function() {
+                JQXLite(this.componentSelector).jqxDropDownList('clearFilter');  
+            },
+            destroy: function() {
+                JQXLite(this.componentSelector).jqxDropDownList('destroy');  
+            },
+            disableItem: function(item) {
+                JQXLite(this.componentSelector).jqxDropDownList('disableItem', item);  
+            },
+            disableAt: function(index) {
+                JQXLite(this.componentSelector).jqxDropDownList('disableAt', index);  
+            },
+            enableItem: function(item) {
+                JQXLite(this.componentSelector).jqxDropDownList('enableItem', item);  
+            },
+            enableAt: function(index) {
+                JQXLite(this.componentSelector).jqxDropDownList('enableAt', index);  
+            },
+            ensureVisible: function(index) {
+                JQXLite(this.componentSelector).jqxDropDownList('ensureVisible', index);  
+            },
+            focus: function() {
+                JQXLite(this.componentSelector).jqxDropDownList('focus');  
+            },
+            getItem: function(index) {
+                return JQXLite(this.componentSelector).jqxDropDownList('getItem', index);  
+            },
+            getItemByValue: function(itemValue) {
+                return JQXLite(this.componentSelector).jqxDropDownList('getItemByValue', itemValue);  
+            },
+            getItems: function() {
+                return JQXLite(this.componentSelector).jqxDropDownList('getItems');  
+            },
+            getCheckedItems: function() {
+                return JQXLite(this.componentSelector).jqxDropDownList('getCheckedItems');  
+            },
+            getSelectedItem: function() {
+                return JQXLite(this.componentSelector).jqxDropDownList('getSelectedItem');  
+            },
+            getSelectedIndex: function() {
+                return JQXLite(this.componentSelector).jqxDropDownList('getSelectedIndex');  
+            },
+            insertAt: function(item, index) {
+                JQXLite(this.componentSelector).jqxDropDownList('insertAt', item, index);  
+            },
+            isOpened: function() {
+                return JQXLite(this.componentSelector).jqxDropDownList('isOpened');  
+            },
+            indeterminateIndex: function(index) {
+                JQXLite(this.componentSelector).jqxDropDownList('indeterminateIndex', index);  
+            },
+            indeterminateItem: function(item) {
+                JQXLite(this.componentSelector).jqxDropDownList('indeterminateItem', item);  
+            },
+            loadFromSelect: function(arg) {
+                JQXLite(this.componentSelector).jqxDropDownList('loadFromSelect', arg);  
+            },
+            open: function() {
+                JQXLite(this.componentSelector).jqxDropDownList('open');  
+            },
+            removeItem: function(item) {
+                JQXLite(this.componentSelector).jqxDropDownList('removeItem', item);  
+            },
+            removeAt: function(index) {
+                JQXLite(this.componentSelector).jqxDropDownList('removeAt', index);  
+            },
+            selectIndex: function(index) {
+                JQXLite(this.componentSelector).jqxDropDownList('selectIndex', index);  
+            },
+            selectItem: function(item) {
+                JQXLite(this.componentSelector).jqxDropDownList('selectItem', item);  
+            },
+            setContent: function(content) {
+                JQXLite(this.componentSelector).jqxDropDownList('setContent', content);  
+            },
+            updateItem: function(newItem, item) {
+                JQXLite(this.componentSelector).jqxDropDownList('updateItem', newItem, item);  
+            },
+            updateAt: function(item, index) {
+                JQXLite(this.componentSelector).jqxDropDownList('updateAt', item, index);  
+            },
+            unselectIndex: function(index) {
+                JQXLite(this.componentSelector).jqxDropDownList('unselectIndex', index);  
+            },
+            unselectItem: function(item) {
+                JQXLite(this.componentSelector).jqxDropDownList('unselectItem', item);  
+            },
+            uncheckIndex: function(index) {
+                JQXLite(this.componentSelector).jqxDropDownList('uncheckIndex', index);  
+            },
+            uncheckItem: function(item) {
+                JQXLite(this.componentSelector).jqxDropDownList('uncheckItem', item);  
+            },
+            uncheckAll: function() {
+                JQXLite(this.componentSelector).jqxDropDownList('uncheckAll');  
+            },
+            val: function(value) {
+                if (value !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('val',  value)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('val');
+                }
+            },
+            _autoOpen: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('autoOpen', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('autoOpen');
+                }
+            },
+            _autoDropDownHeight: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('autoDropDownHeight', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('autoDropDownHeight');
+                }
+            },
+            _animationType: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('animationType', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('animationType');
+                }
+            },
+            _checkboxes: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('checkboxes', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('checkboxes');
+                }
+            },
+            _closeDelay: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('closeDelay', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('closeDelay');
+                }
+            },
+            _disabled: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('disabled', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('disabled');
+                }
+            },
+            _displayMember: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('displayMember', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('displayMember');
+                }
+            },
+            _dropDownHorizontalAlignment: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('dropDownHorizontalAlignment', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('dropDownHorizontalAlignment');
+                }
+            },
+            _dropDownVerticalAlignment: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('dropDownVerticalAlignment', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('dropDownVerticalAlignment');
+                }
+            },
+            _dropDownHeight: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('dropDownHeight', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('dropDownHeight');
+                }
+            },
+            _dropDownWidth: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('dropDownWidth', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('dropDownWidth');
+                }
+            },
+            _enableSelection: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('enableSelection', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('enableSelection');
+                }
+            },
+            _enableBrowserBoundsDetection: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('enableBrowserBoundsDetection', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('enableBrowserBoundsDetection');
+                }
+            },
+            _enableHover: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('enableHover', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('enableHover');
+                }
+            },
+            _filterable: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('filterable', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('filterable');
+                }
+            },
+            _filterHeight: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('filterHeight', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('filterHeight');
+                }
+            },
+            _filterDelay: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('filterDelay', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('filterDelay');
+                }
+            },
+            _filterPlaceHolder: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('filterPlaceHolder', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('filterPlaceHolder');
+                }
+            },
+            _height: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('height', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('height');
+                }
+            },
+            _incrementalSearch: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('incrementalSearch', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('incrementalSearch');
+                }
+            },
+            _incrementalSearchDelay: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('incrementalSearchDelay', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('incrementalSearchDelay');
+                }
+            },
+            _itemHeight: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('itemHeight', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('itemHeight');
+                }
+            },
+            _openDelay: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('openDelay', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('openDelay');
+                }
+            },
+            _placeHolder: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('placeHolder', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('placeHolder');
+                }
+            },
+            _popupZIndex: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('popupZIndex', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('popupZIndex');
+                }
+            },
+            _rtl: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('rtl', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('rtl');
+                }
+            },
+            _renderer: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('renderer', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('renderer');
+                }
+            },
+            _selectionRenderer: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('selectionRenderer', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('selectionRenderer');
+                }
+            },
+            _searchMode: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('searchMode', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('searchMode');
+                }
+            },
+            _scrollBarSize: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('scrollBarSize', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('scrollBarSize');
+                }
+            },
+            _source: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('source', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('source');
+                }
+            },
+            _selectedIndex: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('selectedIndex', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('selectedIndex');
+                }
+            },
+            _theme: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('theme', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('theme');
+                }
+            },
+            _template: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('template', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('template');
+                }
+            },
+            _valueMember: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('valueMember', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('valueMember');
+                }
+            },
+            _width: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('width', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('width');
+                }
+            },
+            __createComponent__: function (options) {
+                let widgetOptions;
+                options ? widgetOptions = options : widgetOptions = this.__manageProps__();
+                JQXLite(this.componentSelector).jqxDropDownList(widgetOptions);
+                this.__extendProps__();
+                this.__wireEvents__();
+            },
+            __manageProps__: function () {
+                const widgetProps = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','scrollBarSize','source','selectedIndex','theme','template','valueMember','width'];
+                const componentProps = this.$options.propsData;
+                let options = {};
+
+                for (let prop in componentProps) {
+                    if (widgetProps.indexOf(prop) !== -1) {
+                        options[prop] = componentProps[prop];
+                    }
+                }
+                return options;
+            },
+            __extendProps__: function () {
+                const that = this;
+
+                Object.defineProperty(that, 'autoOpen', {
+                    get() {
+                        return that._autoOpen();
+                    },
+                    set(newValue) {
+                        that._autoOpen(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'autoDropDownHeight', {
+                    get() {
+                        return that._autoDropDownHeight();
+                    },
+                    set(newValue) {
+                        that._autoDropDownHeight(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'animationType', {
+                    get() {
+                        return that._animationType();
+                    },
+                    set(newValue) {
+                        that._animationType(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'checkboxes', {
+                    get() {
+                        return that._checkboxes();
+                    },
+                    set(newValue) {
+                        that._checkboxes(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'closeDelay', {
+                    get() {
+                        return that._closeDelay();
+                    },
+                    set(newValue) {
+                        that._closeDelay(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'disabled', {
+                    get() {
+                        return that._disabled();
+                    },
+                    set(newValue) {
+                        that._disabled(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'displayMember', {
+                    get() {
+                        return that._displayMember();
+                    },
+                    set(newValue) {
+                        that._displayMember(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'dropDownHorizontalAlignment', {
+                    get() {
+                        return that._dropDownHorizontalAlignment();
+                    },
+                    set(newValue) {
+                        that._dropDownHorizontalAlignment(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'dropDownVerticalAlignment', {
+                    get() {
+                        return that._dropDownVerticalAlignment();
+                    },
+                    set(newValue) {
+                        that._dropDownVerticalAlignment(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'dropDownHeight', {
+                    get() {
+                        return that._dropDownHeight();
+                    },
+                    set(newValue) {
+                        that._dropDownHeight(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'dropDownWidth', {
+                    get() {
+                        return that._dropDownWidth();
+                    },
+                    set(newValue) {
+                        that._dropDownWidth(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'enableSelection', {
+                    get() {
+                        return that._enableSelection();
+                    },
+                    set(newValue) {
+                        that._enableSelection(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'enableBrowserBoundsDetection', {
+                    get() {
+                        return that._enableBrowserBoundsDetection();
+                    },
+                    set(newValue) {
+                        that._enableBrowserBoundsDetection(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'enableHover', {
+                    get() {
+                        return that._enableHover();
+                    },
+                    set(newValue) {
+                        that._enableHover(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'filterable', {
+                    get() {
+                        return that._filterable();
+                    },
+                    set(newValue) {
+                        that._filterable(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'filterHeight', {
+                    get() {
+                        return that._filterHeight();
+                    },
+                    set(newValue) {
+                        that._filterHeight(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'filterDelay', {
+                    get() {
+                        return that._filterDelay();
+                    },
+                    set(newValue) {
+                        that._filterDelay(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'filterPlaceHolder', {
+                    get() {
+                        return that._filterPlaceHolder();
+                    },
+                    set(newValue) {
+                        that._filterPlaceHolder(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'height', {
+                    get() {
+                        return that._height();
+                    },
+                    set(newValue) {
+                        that._height(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'incrementalSearch', {
+                    get() {
+                        return that._incrementalSearch();
+                    },
+                    set(newValue) {
+                        that._incrementalSearch(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'incrementalSearchDelay', {
+                    get() {
+                        return that._incrementalSearchDelay();
+                    },
+                    set(newValue) {
+                        that._incrementalSearchDelay(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'itemHeight', {
+                    get() {
+                        return that._itemHeight();
+                    },
+                    set(newValue) {
+                        that._itemHeight(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'openDelay', {
+                    get() {
+                        return that._openDelay();
+                    },
+                    set(newValue) {
+                        that._openDelay(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'placeHolder', {
+                    get() {
+                        return that._placeHolder();
+                    },
+                    set(newValue) {
+                        that._placeHolder(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'popupZIndex', {
+                    get() {
+                        return that._popupZIndex();
+                    },
+                    set(newValue) {
+                        that._popupZIndex(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'rtl', {
+                    get() {
+                        return that._rtl();
+                    },
+                    set(newValue) {
+                        that._rtl(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'renderer', {
+                    get() {
+                        return that._renderer();
+                    },
+                    set(newValue) {
+                        that._renderer(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'selectionRenderer', {
+                    get() {
+                        return that._selectionRenderer();
+                    },
+                    set(newValue) {
+                        that._selectionRenderer(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'searchMode', {
+                    get() {
+                        return that._searchMode();
+                    },
+                    set(newValue) {
+                        that._searchMode(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'scrollBarSize', {
+                    get() {
+                        return that._scrollBarSize();
+                    },
+                    set(newValue) {
+                        that._scrollBarSize(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'source', {
+                    get() {
+                        return that._source();
+                    },
+                    set(newValue) {
+                        that._source(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'selectedIndex', {
+                    get() {
+                        return that._selectedIndex();
+                    },
+                    set(newValue) {
+                        that._selectedIndex(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'theme', {
+                    get() {
+                        return that._theme();
+                    },
+                    set(newValue) {
+                        that._theme(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'template', {
+                    get() {
+                        return that._template();
+                    },
+                    set(newValue) {
+                        that._template(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'valueMember', {
+                    get() {
+                        return that._valueMember();
+                    },
+                    set(newValue) {
+                        that._valueMember(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'width', {
+                    get() {
+                        return that._width();
+                    },
+                    set(newValue) {
+                        that._width(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+            },
+            __twoWayDataBinding__: function () {
+                const value = JQXLite(this.componentSelector).jqxDropDownList('val');
+                this.$emit('input', value);
+            },
+            __wireEvents__: function () {
+                const that = this;
+
+                JQXLite(this.componentSelector).on('bindingComplete', function (event) { that.$emit('bindingComplete', event); });
+                JQXLite(this.componentSelector).on('close', function (event) { that.$emit('close', event); });
+                JQXLite(this.componentSelector).on('checkChange', function (event) { that.$emit('checkChange', event); });
+                JQXLite(this.componentSelector).on('change', function (event) { that.$emit('change', event); that.__twoWayDataBinding__(); });
+                JQXLite(this.componentSelector).on('open', function (event) { that.$emit('open', event); });
+                JQXLite(this.componentSelector).on('select', function (event) { that.$emit('select', event); });
+                JQXLite(this.componentSelector).on('unselect', function (event) { that.$emit('unselect', event); });
+            }
+        }
+    }
+</script>

@@ -1,0 +1,9 @@
+.view-style {
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+
+nav a {
+    display: inline-block;
+}

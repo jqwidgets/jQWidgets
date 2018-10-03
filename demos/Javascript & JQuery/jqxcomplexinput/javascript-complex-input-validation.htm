@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Description">jqxComplexInput validates the entered complex number on the
+        keydown and change events. Spaces are also automatically added if necessary.
+    </title>
+    <meta name="description" content="jqxComplexInput validates the entered complex number on the keydown and change events. Spaces are also automatically added if necessary." />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcomplexinput.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#jqxComplexInput").jqxComplexInput({ width: 250, height: 25, value: "15 + 7.2i", spinButtons: false });
+
+            $("#setWrongValue").jqxButton({ width: 200 });
+
+            $("#setWrongValue").click(function () {
+                $("#jqxComplexInput").jqxComplexInput("val", "11- 2ii");
+            });
+        });
+    </script>
+</head>
+<body>
+    <input id="jqxComplexInput" type="text" />
+    <div style="margin-top: 20px;">
+        <button id="setWrongValue">
+            Set wrong value: "11- 2ii"</button>
+    </div>
+</body>
+</html>

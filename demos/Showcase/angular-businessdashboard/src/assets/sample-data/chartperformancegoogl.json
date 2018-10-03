@@ -1,0 +1,51 @@
+[
+    {
+        "day": "Monday",
+        "SPOpen": 760,
+        "SPHigh": 768,
+        "SPLow": 757,
+        "SPClose": 766
+    },
+    {
+        "day": "Tuesday",
+        "SPOpen": 753,
+        "SPHigh": 761,
+        "SPLow": 752,
+        "SPClose": 759
+    },
+    {
+        "day": "Wednesday",
+        "SPOpen": 754,
+        "SPHigh": 757,
+        "SPLow": 752,
+        "SPClose": 753
+    },
+    {
+        "day": "Thursday",
+        "SPOpen": 749,
+        "SPHigh": 754,
+        "SPLow": 744,
+        "SPClose": 751
+    },
+    {
+        "day": "Friday",
+        "SPOpen": 738,
+        "SPHigh": 742,
+        "SPLow": 731,
+        "SPClose": 743
+    },
+    {
+        "day": "Saturday",
+        "SPOpen": 740,
+        "SPHigh": 750,
+        "SPLow": 730,
+        "SPClose": 737
+    },
+    {
+        "day": "Sunday",
+        "SPOpen": 742,
+        "SPHigh": 748,
+        "SPLow": 740,
+        "SPClose": 741
+    }
+]

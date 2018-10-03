@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Description">This demo shows the default functionality of jqxFormattedInput.
+        The numeral system of the displayed number can be changed by choosing an option
+        from the dropdown.</title>
+    <meta name="description" content="This demo shows the default functionality of jqxFormattedInput. The numeral system of the displayed number can be changed by choosing an option from the dropdown." />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxformattedinput.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#jqxFormattedInput").jqxFormattedInput({ width: 250, height: 25, radix: "decimal", value: "15", spinButtons: true, dropDown: true });
+        });
+    </script>
+</head>
+<body>
+    <div id="jqxFormattedInput">
+        <input type="text" />
+        <div>
+        </div>
+        <div>
+        </div>
+    </div>
+</body>
+</html>

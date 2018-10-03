@@ -1,0 +1,18 @@
+<jqxTabs #tab [width]="'100%'" [height]="'100%'" [theme]="'material'" [initTabContent]="initTabContent">
+  <ul style="margin-left: 30px;">
+    <li><a>Billing Information</a></li>
+    <li><a>Fitness & Exercise</a></li>
+    <li><a>Employee Details</a></li>
+  </ul>
+
+  <div id="billing" class="pane" style="width: 100%; height: 100%; overflow-x: hidden; border: none; display: none;">
+  </div>
+
+  <div id="fitness" class="pane" style="width: 100%; height: 100%; overflow: hidden; border: none; display: none;">
+    <div id='jqxChart' style="width: 100%; height: 100%" class="navbar-form"></div>
+  </div>
+
+  <div id="employee" style="width: 100%; height: 100%; display: block;" class="pane">
+    <div id='jqxDataTable' class="navbar-form"></div>
+  </div>
+</jqxTabs>

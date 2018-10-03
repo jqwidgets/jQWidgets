@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -46,7 +46,7 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('contextMenuOpen') attrContextMenuOpen: (menu: any, appointment: any, event: any) => void;
    @Input('contextMenuClose') attrContextMenuClose: (menu: any, appointment: any, event: any) => void;
    @Input('contextMenuItemClick') attrContextMenuItemClick: (menu: any, appointment: any, event: any) => boolean;
-   @Input('contextMenuCreate') attrContextMenuCreate: (menu: any, appointment: any, event: any) => void;
+   @Input('contextMenuCreate') attrContextMenuCreate: (menu: any, settings: any) => void;
    @Input('changedAppointments') attrChangedAppointments: Array<jqwidgets.SchedulerChangedAppointments>;
    @Input('disabled') attrDisabled: boolean;
    @Input('date') attrDate: any;
@@ -280,7 +280,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   contextMenuCreate(arg?: (menu: any, appointment: any, event: any) => void) : any {
+   contextMenuCreate(arg?: (menu: any, settings: any) => void) : any {
       if (arg !== undefined) {
           this.host.jqxScheduler('contextMenuCreate', arg);
       } else {

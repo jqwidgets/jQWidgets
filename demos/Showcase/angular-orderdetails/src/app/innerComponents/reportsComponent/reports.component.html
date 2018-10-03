@@ -1,0 +1,108 @@
+<div class="container" style="overflow: hidden; padding-bottom: 80px;">
+    <div class="row" style="margin-top: 5em; margin-left: 3em; margin-right: 3em; border: 3px solid #e8e8e8;">
+        <div style="width: 100%; height: 20px; background-color: #e8e8e8; margin-bottom: 3em;"></div>
+        <div class="col-md-4">
+            <div class="form-group clearfix">
+                <label class="col-md-4 label-control" style="color: grey; font-weight: 600; padding-top: 6px;">Category</label>
+                <div class="col-md-8">
+                    <jqxDropDownList #dropdownlist1
+                        [source]="dropdownlist1Source" [autoDropDownHeight]="autoDropDownHeight"
+                        [width]="widthDropDownList" [theme]="theme" [selectedIndex]="0">
+                    </jqxDropDownList>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-md-4 label-control" style="color: grey; font-weight: 600; padding-top: 5px;">CategoryTwo</label>
+                <div class="col-md-8">
+                    <jqxDropDownList #dropdownlist2
+                        [source]="dropdownlist2Source" [autoDropDownHeight]="autoDropDownHeight"
+                        [width]="widthDropDownList" [theme]="theme" [selectedIndex]="0">
+                    </jqxDropDownList>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-md-4 label-control" style="color: grey; font-weight: 600; padding-top: 5px;">AllCategories</label>
+                <div class="col-md-8">
+                    <jqxSwitchButton
+                        (onChecked)="checked($event)"
+                        (onUnchecked)="unchecked($event)"
+                        [width]="75" [height]="height" [checked]="false">                        
+                    </jqxSwitchButton>
+                </div>
+            </div>
+            <div style="margin-left: 1em; margin-bottom: 1.5em; display: none;" #inputDiv>
+                <label for="subjects" style="color: grey; font-weight: 600;">Subjects user can select:</label>
+                <jqxDropDownList #subjectsDropDown
+                    [source]="subjectsDropDownSource" [placeHolder]="'Please select a subject:'"
+                    [autoDropDownHeight]="autoDropDownHeight"
+                    [width]="widthDropDownList" [theme]="theme">
+                </jqxDropDownList>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="form-group clearfix">
+                <div class="col-md-2" style="color: grey; font-weight: 600; padding-top: 6px;">
+                    <jqxRadioButton [auto-create]="false" #radiobutton1>Year</jqxRadioButton>
+                </div>
+                <div class="col-md-4">
+                    <jqxDropDownList #dropdownlist3
+                        [source]="dropdownlist3And4Source" [autoDropDownHeight]="autoDropDownHeight"
+                        [width]="widthDropDownList" [theme]="theme" [selectedIndex]="0">
+                    </jqxDropDownList>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <div class="col-md-2" style="color: grey; font-weight: 600; padding-top: 5px;">
+                    <jqxRadioButton [auto-create]="false" #radiobutton2>Month</jqxRadioButton>
+                </div>
+                <div class="col-md-4">
+                    <jqxDropDownList #dropdownlist4
+                        [source]="dropdownlist3And4Source" [autoDropDownHeight]="autoDropDownHeight"
+                        [width]="widthDropDownList" [theme]="theme" [selectedIndex]="0">
+                    </jqxDropDownList>
+                </div>
+                <div class="col-md-4">
+                    <jqxDropDownList #dropdownlist5
+                        [source]="dropdownlist5Source" [autoDropDownHeight]="autoDropDownHeight"
+                        [width]="widthDropDownList" [theme]="theme" [selectedIndex]="0">
+                    </jqxDropDownList>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <div class="col-md-2" style="color: grey; font-weight: 600; padding-top: 5px;" id="radiobutton3">
+                    <jqxRadioButton [auto-create]="false" #radiobutton3>From/To</jqxRadioButton>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-3">
+                    <jqxDateTimeInput #dateInput1 [width]="widthDropDownList" [height]="height" [selectionMode]="'range'" [theme]="theme"></jqxDateTimeInput>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <div class="col-md-2" style="color: grey; font-weight: 600; padding-top: 6px;">
+                    <jqxRadioButton [auto-create]="false" #radiobutton4>All</jqxRadioButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row center-block">
+        <div class="col-sm-6 col-md-2 col-lg-3"></div>
+        <div class="col-sm-12 col-md-4 col-lg-3">
+            <div style="font-size: 120%; margin-top: 2em;">
+                <jqxButton [width]="widthButton" [height]="heightButton" [theme]="theme" [template]="'info'">
+                    <span style="font-size: 120%;">
+                        Cancel
+                    </span>
+                </jqxButton>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-3">
+            <div style="font-size: 120%; margin-top: 2em;">
+                <jqxButton [width]="widthButton" [height]="heightButton" [theme]="theme" [template]="'warning'">
+                    <span style="font-size: 120%;">
+                        Submit
+                    </span>
+                </jqxButton>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-2 col-lg-3"></div>
+    </div>
+</div>

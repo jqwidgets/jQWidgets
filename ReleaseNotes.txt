@@ -1,4 +1,30 @@
 ﻿*********************************************
+* jQWidgets v6.1.0 Release, October-01-2018         *
+*********************************************
+
+What's New:
+
+- Vue JS Components
+
+What's Improved:
+
+- Added options to jqxDataAdapter to define Grid's sortcolumns and sortdirections on initialization.
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid React component regarding rendering issues like double-headers, etc in some scenarios.
+- Fixed an issue in jqxGrid regarding the deleterow method when the Grid is sorted by multiple columns.
+- Fixed an issue in jqxGrid regarding duplicating "Please Choose" labels in dropdownlist filters.
+- Fixed an issue in jqxNumberInput regarding the setDecimal method when the value is null.
+- Fixed an issue in jqxNumberInput about wrong behaviour with negative numbers when events are raised.
+- Fixed an issue in jqxEditor regarding the copy/paste.  
+- Fixed an issue in jqxScheduler regarding rendering of MonthView appointments when Schedulers are placed in jqxTabs and the first one is hidden.
+- Fixed an issue in jqxScheduler regarding the firstDay Localization setting.
+- Fixed an issue in jqxFileUpload in Mozilla Firefox regarding the file's url rendering.
+- Fixed an issue in jqxNotification rendering in Angular. 
+- Fixed an issue in jqxInput two-way data binding.
+
+*********************************************
 * jQWidgets v6.0.6 Release, August-13-2018           *
 *********************************************
 

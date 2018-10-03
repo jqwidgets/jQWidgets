@@ -1,0 +1,10 @@
+﻿<jqxTagCloud #tagCloud
+             [width]="getWidth()"
+             [source]="dataAdapter"
+             [displayMember]="'countryName'"
+             [valueMember]="'technologyRating'">
+</jqxTagCloud>
+<br />
+<br />
+<jqxButton [theme]="'material'" #hideItem (onClick)="hideItemClick()">Hide Item</jqxButton>
+<jqxButton [theme]="'material'" #showItem (onClick)="showItemClick()">Show Item</jqxButton>

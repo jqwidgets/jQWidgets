@@ -1,0 +1,13 @@
+﻿<jqxPopover [theme]="'material'" 
+    [showCloseButton]="true" [selector]="'#button'" [title]="'Employees'"
+    [arrowOffsetValue]="50" [offset]="{ left: left, top: top }">
+    <div #employees></div>
+</jqxPopover>
+
+<div style="height: 33px; border-width: 1px; border-style: solid; padding: 10px;" class="jqx-widget-header">
+    <jqxButton [theme]="'material'" #buttonReference 
+        style="float: right" id="button" (onClick)="updatePopoverPosition()"
+        [width]="150" [height]="35" [template]="'inverse'">
+        View Employees
+    </jqxButton>
+</div>

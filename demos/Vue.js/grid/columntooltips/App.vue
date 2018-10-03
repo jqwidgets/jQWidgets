@@ -1,0 +1,63 @@
+﻿<template>
+    <JqxGrid :width="getWidth" :height="450" :source="dataAdapter"
+             :columns="columns" :altrows="true" :sortable="true">
+    </JqxGrid>
+</template>
+
+<script>
+    import JqxGrid from "jqwidgets-scripts/jqwidgets-vue/vue_jqxgrid.vue";
+    import JqxTooltip from "jqwidgets-scripts/jqwidgets-vue/vue_jqxtooltip.vue";
+
+    export default {
+        components: {
+            JqxGrid
+        },
+        data: function () {
+            return {
+                getWidth: '90%',
+                dataAdapter: new jqx.dataAdapter(this.source),
+                columns: [
+                    { text: 'Ship Name', datafield: 'ShipName', width: 250, rendered: this.tooltiprenderer },
+                    { text: 'Shipped Date', datafield: 'ShippedDate', width: 100, cellsformat: 'yyyy-MM-dd', rendered: this.tooltiprenderer },
+                    { text: 'Freight', datafield: 'Freight', width: 80, cellsformat: 'F2', cellsalign: 'right', rendered: this.tooltiprenderer },
+                    { text: 'Ship Address', datafield: 'ShipAddress', width: 350, rendered: this.tooltiprenderer },
+                    { text: 'Ship City', datafield: 'ShipCity', width: 100, rendered: this.tooltiprenderer },
+                    { text: 'Ship Country', datafield: 'ShipCountry', width: 101, rendered: this.tooltiprenderer }
+                ]
+            }
+        },
+        beforeCreate: function () {
+            this.source = {
+                datatype: 'xml',
+                datafields: [
+                    { name: 'ShippedDate', map: 'm\\:properties>d\\:ShippedDate', type: 'date' },
+                    { name: 'Freight', map: 'm\\:properties>d\\:Freight', type: 'float' },
+                    { name: 'ShipName', map: 'm\\:properties>d\\:ShipName', type: 'string' },
+                    { name: 'ShipAddress', map: 'm\\:properties>d\\:ShipAddress', type: 'string' },
+                    { name: 'ShipCity', map: 'm\\:properties>d\\:ShipCity', type: 'string' },
+                    { name: 'ShipCountry', map: 'm\\:properties>d\\:ShipCountry', type: 'string' }
+                ],
+                root: 'entry',
+                record: 'content',
+                id: 'm\\:properties>d\\:OrderID',
+                url: 'orders.xml',
+                sortcolumn: 'ShipName',
+                sortdirection: 'asc'
+            };
+
+            this.counter = 1;
+        },
+        methods: {
+            tooltiprenderer: function (element) {
+                let id = `toolTipContainer${this.counter}`;
+                element[0].id = id;
+                let content = element[0].innerHTML;
+                setTimeout(_ => jqwidgets.createInstance(`#${id}`, 'jqxTooltip', { position: 'mouse', content: content }))
+                this.counter++;
+            }
+        }
+    }
+</script>
+
+<style>
+</style>

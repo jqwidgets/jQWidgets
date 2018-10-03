@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>CheckBox Custom Element Overview</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="The Custom element CheckBox widget displays a check box that allows the end-user to select a true, false or indeterminate condition." />
+
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+
+        JQXElements.settings['myCheckBoxChecked'] = {
+            checked: true
+        }
+        JQXElements.settings['myCheckBoxUnchecked'] = {
+            checked: false
+        }
+        JQXElements.settings['myCheckBoxIndeterminate'] = {
+            hasThreeStates: true,
+            checked: null
+        }
+        JQXElements.settings['myCheckBoxDisabled'] = {
+            checked: true,
+            disabled: true
+        }
+
+        window.onload = function() {
+            var myCheckBoxes = document.querySelectorAll('jqx-check-box');
+
+            myCheckBoxes[9].addEventListener('change', function(event) {
+                var checked = event.args.checked;
+                if (checked) {
+                    document.getElementsByClassName('myCheckBox9')[0].innerHTML = 'Checked';
+                } else {
+                    document.getElementsByClassName('myCheckBox9')[0].innerHTML = 'Unchecked';
+                }
+            });
+
+            myCheckBoxes[10].addEventListener('change', function(event) {
+                var checked = event.args.checked;
+                if (checked) {
+                    document.getElementsByClassName('myCheckBox9')[1].innerHTML = 'Checked';
+                } else {
+                    document.getElementsByClassName('myCheckBox9')[1].innerHTML = 'Unchecked';
+                }
+            });
+
+            myCheckBoxes[11].addEventListener('change', function(event) {
+                var checked = event.args.checked;
+                if (checked) {
+                    document.getElementsByClassName('myCheckBox9')[2].innerHTML = 'Checked';
+                } else if (false == checked) {
+                    document.getElementsByClassName('myCheckBox9')[2].innerHTML = 'Unchecked';
+                } else {
+                    document.getElementsByClassName('myCheckBox9')[2].innerHTML = 'Interminate';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <div class="example-description">
+        The Custom element CheckBox widget displays a check box that allows the end-user to select a true, false or indeterminate condition.
+    </div>
+
+    <div id='jqxWidget' style='font-family: Verdana Arial; font-size: 12px; width: 400px;'>
+        <div style='float: left; width: 400px;'>
+
+            <h3 style='margin-left: 15px;'>Categories</h3>
+            <jqx-check-box style='margin-left: 10px; float: left;'>
+                Entertainment
+            </jqx-check-box>
+
+            <jqx-check-box settings='myCheckBoxChecked' style='margin-left: 10px; float: left;'>
+                <span>Computers</span>
+            </jqx-check-box>
+            <jqx-check-box settings='myCheckBox' style='margin-left: 10px; float: left;'>
+                <span>Sports</span>
+            </jqx-check-box>
+        </div>
+
+        <div style='float: left; width: 400px; margin-top: 10px;'>
+            <jqx-check-box settings='myCheckBox' style='margin-left: 10px; float: left;'>
+                Health
+            </jqx-check-box>
+            <jqx-check-box settings='myCheckBox' style='margin-left: 10px; float: left;'>
+                <span>Finance</span>
+            </jqx-check-box>
+            <jqx-check-box settings='myCheckBox' style='margin-left: 10px; float: left;'>
+                <span>Travel</span>
+            </jqx-check-box>
+        </div>
+
+        <div style='float: left; width: 400px; margin-top: 10px;'>
+            <jqx-check-box settings='myCheckBox' style='margin-left: 10px; float: left;'>
+                Music
+            </jqx-check-box>
+            <jqx-check-box settings='myCheckBox' style='margin-left: 10px; float: left;'>
+                <span>Technology</span>
+            </jqx-check-box>
+            <jqx-check-box settings='myCheckBox' style='margin-left: 10px; float: left;'>
+                <span>Publishing</span>
+            </jqx-check-box>
+        </div>
+        <br />
+
+        <div style='float: left; width: 400px; margin-top: 10px;'>
+            <h3 style='margin-left: 15px;'>States</h3>
+            <jqx-check-box settings='myCheckBoxChecked' style='margin-left: 10px; float: left;'>
+                <span class="myCheckBox9">Checked</span>
+            </jqx-check-box>
+
+            <jqx-check-box settings='myCheckBoxUnchecked' style='margin-left: 10px; float: left;'>
+                <span class="myCheckBox9">Unchecked</span>
+            </jqx-check-box>
+        </div>
+
+        <div style='float: left; width: 400px; margin-top: 10px;'>
+            <jqx-check-box settings='myCheckBoxIndeterminate' style='margin-left: 10px; float: left;'>
+                <span class="myCheckBox9">Indeterminate</span>
+            </jqx-check-box>
+            <jqx-check-box settings='myCheckBoxDisabled' style='margin-left: 10px; float: left;'>
+                <span>Disabled</span>
+            </jqx-check-box>
+        </div>
+    </div>
+
+</body>
+</html>

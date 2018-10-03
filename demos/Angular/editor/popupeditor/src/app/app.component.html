@@ -1,0 +1,14 @@
+﻿<jqxButton [theme]="'material'" (onClick)="btnOnClick()">Open Editor</jqxButton>
+
+<jqxWindow [theme]="'material'" #myWindow
+    [width]="350" [height]="400" [maxWidth]="800"
+    [autoOpen]="false" [resizable]="false" [position]="'top, left'">
+    <div>jqxEditor</div>
+    <div>
+
+      <jqxEditor [theme]="'material'" 
+          [width]="'100%'" [height]="'99%'" [tools]="'bold italic underline font size'">
+      </jqxEditor>
+
+    </div>
+</jqxWindow>

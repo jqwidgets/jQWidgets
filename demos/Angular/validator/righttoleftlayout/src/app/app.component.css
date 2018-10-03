@@ -1,0 +1,28 @@
+﻿.text-input {
+
+    direction: rtl;
+}
+
+.register-table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    direction: rtl;
+}
+
+    .register-table td,
+    .register-table tr {
+        direction: rtl;
+        margin: 0px;
+        padding: 2px;
+        border-spacing: 0px;
+        border-collapse: collapse;
+        font-family: Verdana;
+        font-size: 12px;
+        text-align: left;
+    }
+
+h3 {
+    display: inline-block;
+    margin: 0px;
+    text-align: right;
+}

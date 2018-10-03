@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>This example shows how to Save/Load the Grid's state.</title>
+	<link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.storage.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.columnsreorder.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.selection.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+   <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {           
+            var url = "../../sampledata/orders.xml";
+
+            // prepare the data
+            var source =
+            {
+                datatype: "xml",
+                datafields: [
+                    { name: 'ShipName', map: 'm\\:properties>d\\:ShipName' },
+                    { name: 'ShipCity', map: 'm\\:properties>d\\:ShipCity' },
+                    { name: 'ShipCountry', map: 'm\\:properties>d\\:ShipCountry' }
+                ],
+                root: "entry",
+                record: "content",
+                id: 'm\\:properties>d\\:OrderID',
+                url: url,
+                pager: function (pagenum, pagesize, oldpagenum) {
+                    // callback called when a page or page size is changed.
+                }
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source);
+
+            $("#grid").jqxGrid(
+            {
+                width: getWidth('Grid'),
+                source: source,
+                selectionmode: 'multiplerowsextended',
+                sortable: true,
+                pageable: true,
+                autoheight: true,
+                autoloadstate: false,
+                autosavestate: false,
+                columnsresize: true,
+                columnsreorder: true,
+                showfilterrow: true,
+                filterable: true,
+                columns: [
+                  { text: 'Ship Name', filtercondition: 'starts_with', datafield: 'ShipName', width: 250 },
+                  { text: 'Ship City', datafield: 'ShipCity', width: 200 },
+                  { text: 'Ship Country', datafield: 'ShipCountry' }
+                ]
+            });
+
+            $("#saveState").jqxButton({ theme: theme });
+            $("#loadState").jqxButton({ theme: theme });
+            var state = null;
+            $("#saveState").click(function () {
+                // save the current state of jqxGrid.
+                state = $("#grid").jqxGrid('savestate');
+            })
+            ;
+            $("#loadState").click(function () {
+                // load the Grid's state.
+                if (state) {
+                    $("#grid").jqxGrid('loadstate', state);
+                }
+                else {
+                    $("#grid").jqxGrid('loadstate');
+                }
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+        <div id="grid">
+        </div>
+        <div style="margin-top: 30px;">
+            <input type="button" id="saveState" value="Save State" />
+            <input type="button" id="loadState" value="Load State" />
+        </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<div id="performance" class="container-fluid">
+    <div #bottomContainer class="bottomContainer">
+        <div class="performanceText">2016 STATEMENTS</div>
+        <app-sortable-first></app-sortable-first>
+        
+        <div class="performanceText" style="margin-top:1em;">2015 STATEMENTS</div>
+        <app-sortable-second></app-sortable-second>
+       
+        <div class="performanceText" style="margin-top:1em;">2014 STATEMENTS</div>
+        <app-sortable-third></app-sortable-third>
+    </div>
+    <div #topContainer class="topContainer">
+        <div class="toolbar">
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <div class="dropdown">
+                        <button class="dropbtn">{{dataLabel}}<span><i class="fa fa-caret-down fa-2x"> </i></span></button>
+                        <div class="dropdown-content">
+                            <a (click)="changeDataToDisplay('chartperformanceaapl', 'AAPL')">AAPL</a>
+                            <a (click)="changeDataToDisplay('chartperformancegoogl', 'GOOG')">GOOG</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="11 list-inline-item"><p>CHANGE:</p><div>+{{change | number: '2.2-2'}}<p>(+{{changePercentage}}%)</p></div></li>
+                <li class="12 list-inline-item"><p>PRICE:</p><div>{{price}}</div></li>
+                <li class="13 list-inline-item"><p>MAX/MIN:</p><div>{{max | number: '3.2-2'}}/{{min}}</div></li>
+                <li class="14 list-inline-item"><p>VOLUME:</p><div>{{volume}} m</div></li>
+            </ul>
+        </div>
+        <app-performance-chart [dataToDisplay]="dataToDisplay"></app-performance-chart>
+    </div>
+</div>

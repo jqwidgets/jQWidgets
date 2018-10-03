@@ -1,0 +1,34 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "files": [
+    // For all widgets used, add the relevant .ts file.
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxsplitter.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxchart.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxprogressbar.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxbargauge.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxsortable.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxdropdownlist.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxexpander.ts"
+  ]
+}

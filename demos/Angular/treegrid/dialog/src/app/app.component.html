@@ -1,0 +1,57 @@
+﻿<jqxTreeGrid [theme]="'material'"
+             (onRowDoubleClick)="rowDoubleClick($event)"
+             [width]="getWidth()"
+             [source]="dataAdapter"
+             [sortable]="true"
+             [altRows]="true"
+             [columns]="columns"
+             [ready]="ready"
+             #TreeGrid>
+</jqxTreeGrid>
+
+<jqxWindow [theme]="'material'" #jqxWindow
+           (onClose)="windowClose()"
+           [width]="270" [height]="225" [resizable]="false" [position]="{ x: 60, y: 45 }"
+           [autoOpen]="false">
+  <div>Edit Dialog</div>
+  <div style="overflow: hidden;">
+    <table style="table-layout: fixed; border-style: none;">
+      <tr>
+        <td style="text-align: right;">
+          Employee ID:
+        </td>
+        <td style="text-align: left;">
+          <jqxInput [theme]="'material'" #EmployeeID [disabled]="true" [width]="150" [height]="30"></jqxInput>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">
+          Title:
+        </td>
+        <td style="text-align: left;">
+          <jqxInput [theme]="'material'" #Title [width]="150" [height]="30"></jqxInput>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">
+          Country:
+        </td>
+        <td style="text-align: left;">
+          <jqxInput [theme]="'material'" #Country [source]="countries" [width]="150" [height]="30"></jqxInput>
+        </td>
+      </tr>
+      <tr>
+        <td style="text-align: right;">Birth Date:</td>
+        <td style="text-align: left;">
+          <jqxDateTimeInput [theme]="'material'" #BirthDate [width]="155" [height]="30"></jqxDateTimeInput>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align: right; padding-top: 10px; padding-left: 80px;">
+          <jqxButton [theme]="'material'" #save [width]="80" [height]="30" style="float: left;" (onClick)="clickSave()">Save</jqxButton>
+          <jqxButton [theme]="'material'" #cancel [width]="80" [height]="30"  style="float: left; margin-left: 10px;" (onClick)="clickCancel()">Cancel</jqxButton>
+        </td>
+      </tr>
+    </table>
+  </div>
+</jqxWindow>

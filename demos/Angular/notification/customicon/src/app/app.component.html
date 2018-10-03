@@ -1,0 +1,44 @@
+﻿<jqxNotification [theme]="'material'" #jqxNotification
+                 [icon]="{ width: 25, height: 25, url: 'https://www.jqwidgets.com/angular/images/smiley.png', padding: 5}"
+                 [template]="null"
+                 [opacity]="0.9"
+                 [position]="'top-left'"
+                 [width]="'auto'">
+  <div>
+    Thank you for your feedback!
+  </div>
+</jqxNotification>
+<table style="margin-left: 15px; margin-top: 15px;">
+  <tr>
+    <td class="label">
+      Name:
+    </td>
+    <td>
+      <jqxInput [theme]="'material'" #name [width]="150"></jqxInput>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">
+      E-mail:
+    </td>
+    <td>
+      <jqxInput [theme]="'material'" #email [width]="150"></jqxInput>
+    </td>
+  </tr>
+  <tr>
+    <td class="label" style="vertical-align: top;">
+      Comment:
+    </td>
+    <td>
+      <jqxTextArea [theme]="'material'" #comment [width]="155" [height]="150"></jqxTextArea>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align: center;">
+      <jqxButton [theme]="'material'" #submit (onClick)="click()">Submit comment</jqxButton>
+    </td>
+  </tr>
+</table>

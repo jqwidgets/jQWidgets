@@ -1,0 +1,12 @@
+{
+	"data": [
+		{ "time": "8:00", "food": "Egg", "fat": 2, "carb": 5, "protein": 10, "calories": 38 },
+		{ "time": "9:15", "food": "Burger", "fat": 15, "carb": 25, "protein": 12, "calories": 58 },
+		{ "time": "12:30", "food": "Cream Soup", "fat": 32, "carb": 45, "protein": 16, "calories": 32 },
+		{ "time": "12:50", "food": "Soup Mix", "fat": 21, "carb": 54, "protein": 18, "calories": 41 },
+		{ "time": "16:35", "food": "Milk", "fat": 15, "carb": 25, "protein": 12.1, "calories": 58 },
+		{ "time": "17:30", "food": "Cocoa", "fat": 32, "carb": 45, "protein": 16.4, "calories": 32 },
+		{ "time": "19:10", "food": "Beef", "fat": 21, "carb": 54, "protein": 18.6, "calories": 41 },
+		{ "time": "21:45", "food": "Egg", "fat": 21, "carb": 54, "protein": 18, "calories": 41 }
+	]
+}

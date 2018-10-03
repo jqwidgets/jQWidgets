@@ -1,0 +1,30 @@
+﻿<div style="margin-bottom: 30px">
+    <div>Filter By:</div>
+
+    <jqxDropDownList [theme]="'material'" #myDropDownList (onSelect)="dropDownListOnSelect($event)"
+                     [width]="160" [height]="25" [source]="dropDownListSource"
+                     [selectedIndex]="0" [autoDropDownHeight]="true">
+    </jqxDropDownList>
+
+    <jqxListBox [theme]="'material'" #myListBox style="margin-top: 10px"
+                (onCheckChange)="listBoxOnCheckChange($event)"
+                [width]="160" [height]="250" [checkboxes]="true">
+    </jqxListBox>
+
+    <div style="margin-top: 10px; margin-right: 5px;">
+
+        <jqxButton [theme]="'material'" (onClick)="applyFilterBtnOnClick()">
+            Apply Filter
+        </jqxButton>
+
+        <jqxButton [theme]="'material'" (onClick)="clearfilterBtnOnClick()">
+            Clear Filter
+        </jqxButton>
+
+    </div>
+</div>
+
+<jqxDataTable [theme]="'material'" #myDataTable
+              [width]="getWidth()" [source]="dataAdapter" [columns]="columns"
+              [pageable]="true" [altRows]="true" [pagerButtonsCount]="4">
+</jqxDataTable>

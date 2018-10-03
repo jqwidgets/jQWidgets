@@ -1,0 +1,12 @@
+{
+	"data": [
+		{ "food": "Cheeseburger", "fat": 19.7, "carb": 31.5, "protein": 19.4, "calories": 380 },
+		{ "food": "Potatoes", "fat": 19.5, "carb": 54.8, "protein": 4.7, "calories": 413 },
+		{ "food": "Cream Soup", "fat": 9.9, "carb": 26, "protein": 5.6, "calories": 305 },
+		{ "food": "Soup fish", "fat": 2.2, "carb": 5.6, "protein": 7.4, "calories": 72 },
+		{ "food": "Cheese", "fat": 31.9, "carb": 7.5, "protein": 27.7, "calories": 428 },
+		{ "food": "Pepperoni Pizza", "fat": 13.9, "carb": 35.3, "protein": 35.7, "calories": 320 },
+		{ "food": "Taco Salad", "fat": 48.9, "carb": 80.5, "protein": 35.7, "calories": 906 },
+		{ "food": "Scrambled Eggs", "fat": 15, "carb": 1.9, "protein": 15.4, "calories": 196 }
+	]
+}

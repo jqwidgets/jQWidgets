@@ -1,0 +1,21 @@
+<jqxSplitter [theme]="'light'" [resizable]="true" [showSplitBar]="false"
+             [width]="'99%'" [height]="height" [panels]="panels">
+    <div style="overflow: hidden;">
+        <jqxListBox (onSelect)="listBoxSelect($event)" [selectedIndex]="0" [theme]="'light'" [source]="listBoxDataAdapter"
+                    [displayMember]="'firstname'" [valueMember]="'notes'"
+                    [itemHeight]="120" [height]="'100%'" [width]="'100%'"
+                    [renderer]="listBoxRenderer">
+        </jqxListBox>
+    </div>
+    <div style="overflow: hidden;" id="ContentPanel">
+        <jqxDropDownList #myDropDownList style="margin-top:2px; margin-bottom:2px;" [selectedIndex]="0" [theme]="'light'"
+                         [source]="dropDownDataAdapter" [displayMember]="'firstname'" [valueMember]="'id'"
+                         [itemHeight]="70" [height]="25" [width]="'99%'" [disabled]="false" [renderer]="dropDownRenderer">
+        </jqxDropDownList>
+        <jqxInput #myInput [theme]="'light'" [width]="'99%'" [height]="25" [placeHolder]="'Enter text'" [disabled]="true"></jqxInput>
+        <br />
+        <jqxEditor #myEditor [theme]="'light'" [height]="'80%'" [width]="'100%'"></jqxEditor>
+        <br />
+        <jqxButton (onClick)="buttonClick()" [width]="'100%'" [height]="50" [theme]="'light'">Update</jqxButton>
+    </div>
+</jqxSplitter>

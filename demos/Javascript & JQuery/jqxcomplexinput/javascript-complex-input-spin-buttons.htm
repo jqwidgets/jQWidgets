@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Description">In jqxComplexInput spin buttons can be used to increment and
+        decrement the real or imaginary parts of the complex number. Which part will be
+        changed depends on the caret position. If the input is not focused, the spin buttons
+        change the real part.</title>
+    <meta name="description" content="In jqxComplexInput spin buttons can be used to increment and decrement the real or imaginary parts of the complex number. Which part will be changed depends on the caret position. If the input is not focused, the spin buttons change the real part." />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcomplexinput.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#jqxComplexInput").jqxComplexInput({ width: 250, height: 25, value: "15 + 7.2i", spinButtons: true, spinButtonsStep: 1 });
+        });
+    </script>
+</head>
+<body>
+    <div id="jqxComplexInput">
+        <input type="text" />
+        <div>
+        </div>
+    </div>
+</body>
+</html>

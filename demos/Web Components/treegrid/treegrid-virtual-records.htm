@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>TreeGrid Custom Element Virtual Records</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxtreegrid.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var source = {
+            dataType: "json",
+            dataFields: [
+                { name: 'EmployeeID', type: 'number' },
+                { name: 'ReportsTo', type: 'number' },
+                { name: 'FirstName', type: 'string' },
+                { name: 'LastName', type: 'string' },
+                { name: 'Country', type: 'string' },
+                { name: 'City', type: 'string' },
+                { name: 'Address', type: 'string' },
+                { name: 'Title', type: 'string' },
+                { name: 'HireDate', type: 'date' },
+                { name: 'BirthDate', type: 'date' }
+            ],
+            timeout: 10000,
+            hierarchy:
+            {
+                keyDataField: { name: 'EmployeeID' },
+                parentDataField: { name: 'ReportsTo' }
+            },
+            id: 'EmployeeID',
+            root: 'value',
+            url: "http://services.odata.org/V3/Northwind/Northwind.svc/Employees?$format=json&$callback=?"
+        }
+
+        // create Tree Grid
+        JQXElements.settings["treeGridSettings"] =
+        {
+            width:800,
+            virtualModeCreateRecords: function (expandedRecord, done) {
+                var dataAdapter = new jqx.dataAdapter(source,
+                    {
+                        formatData: function (data) {
+                            if (expandedRecord == null) {
+                                data.$filter = "(ReportsTo eq null)"
+                            }
+                            else {
+                                data.$filter = "(ReportsTo eq " + expandedRecord.EmployeeID + ")"
+                            }
+                            return data;
+                        },
+                        loadComplete: function()
+                        {
+                            done(dataAdapter.records);
+                        },
+                        loadError: function (xhr, status, error) {
+                            done(false);
+                            throw new Error("http://services.odata.org: " + error.toString());
+                        }
+                    }
+                );   
+                dataAdapter.dataBind();
+            },
+            virtualModeRecordCreating: function (record) {
+                // record is creating.
+            },
+            columns: [
+              { text: 'FirstName', columnGroup: 'Name', dataField: 'FirstName', width: 150 },
+              { text: 'LastName', columnGroup: 'Name', dataField: 'LastName', width: 150 },
+              { text: 'Title', dataField: 'Title', width: 200 },
+              { text: 'Birth Date', dataField: 'BirthDate', cellsFormat: 'd' }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates the Filtering and Sorting functionality of the Tree Grid custom element.
+    </div>
+    <jqx-tree-grid settings="treeGridSettings"></jqx-tree-grid>
+</body>
+</html>

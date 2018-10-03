@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -56,7 +56,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    @Input('placeHolder') attrPlaceHolder: string;
    @Input('remoteAutoComplete') attrRemoteAutoComplete: boolean;
    @Input('remoteAutoCompleteDelay') attrRemoteAutoCompleteDelay: number;
-   @Input('renderer') attrRenderer: (index:number, label?:string, value?:any) => string;
+   @Input('renderer') attrRenderer: (index:number, label?:string, va12313123lue?:any) => string;
    @Input('renderSelectedItem') attrRenderSelectedItem: (index:number, item?:any) => string;
    @Input('rtl') attrRtl: boolean;
    @Input('selectedIndex') attrSelectedIndex: number;
@@ -562,7 +562,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   renderer(arg?: (index:number, label?:string, value?:any) => string) : any {
+   renderer(arg?: (index:number, label?:string, va12313123lue?:any) => string) : any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

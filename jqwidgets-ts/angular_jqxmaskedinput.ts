@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -281,8 +281,8 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
    @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.value); });
-      this.host.on('valueChanged', (eventData: any) => { this.onValueChanged.emit(eventData); if (eventData.args) this.onChangeCallback(eventData.args.value); });
+      this.host.parent().on('change', (eventData: any) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
+      this.host.parent().on('valueChanged', (eventData: any) => { this.onValueChanged.emit(eventData); this.onChangeCallback(this.host.val()); });
    }
 
 } //jqxMaskedInputComponent

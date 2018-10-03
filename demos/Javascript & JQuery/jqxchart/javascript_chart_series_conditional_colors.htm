@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title id='Description'>JavaScript Chart line series with conditional colors</title>
+    <meta name="description" content="This is an example of JavaScript chart line series with conditional colors." />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>	
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var source =
+            {
+                datatype: "csv",
+                datafields: [
+                    { name: 'Quarter' },
+                    { name: 'Change' }
+                ],
+                url: '../../sampledata/us_gdp_2008-2013.csv'
+            };
+
+            var dataAdapter = new $.jqx.dataAdapter(
+                source,
+                {
+                    async: false,
+                    autoBind: true,
+                    loadError: function (xhr, status, error) {
+                        alert('Error loading "' + source.url + '" : ' + error);
+                    }
+                }
+            );
+
+            settings = {
+                title: "U.S. GDP Percentage Change",
+                borderLineWidth: 1,
+                showBorderLine: true,
+                enableAnimations: true,
+                description: '(source: Bureau of Economic Analysis)',
+                showLegend: false,
+                padding: { left: 5, top: 5, right: 10, bottom: 5 },
+                titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                categoryAxis:
+                {
+                    //description: 'Year and quarter',
+                    dataField: 'Quarter',
+                    unitInterval: 1,
+                    textRotationAngle: -75,
+                    formatFunction: function (value, itemIndex, serie, group) {
+                        return value;
+                    },
+                    valuesOnTicks: false
+                },
+                colorScheme: 'scheme05',
+                seriesGroups:
+                [
+                    {
+                        type: 'line',
+                        valueAxis:
+                        {
+                            description: 'Percentage Change',
+                            formatFunction: function (value) {
+                                return value + '%';
+                            }
+                        },
+                        series:
+						    [
+                                {
+                                    dataField: 'Change',
+                                    displayText: 'Change',
+
+                                    // Modify this function to return desired colors.
+                                    // jqxChart will call the function for each data point.
+                                    // Sequential points that have the same color will be
+                                    // grouped automatically in a line segment
+                                    colorFunction: function (value, itemIndex, serie, group) {
+                                        return (value < 0) ? '#FF0000' : '#00FF00';
+                                    }
+                                }
+                            ]
+                    }
+
+                ]
+            };
+
+            $("#chartContainer").jqxChart(settings);
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id="chartContainer" style="width:800px; height:500px"></div>
+    <div class="example-description">
+       <br />
+       <h2>Description</h2>
+       <br />
+       This is an example of JavaScript chart line series with conditional colors. The data of the chart is loaded from a csv file. The colorFunction is modified to return the desired color. jqxChart will call this function for each data point. Sequential points that have the same color will be grouped automatically in a line segment.
+    </div>
+</body>
+</html>

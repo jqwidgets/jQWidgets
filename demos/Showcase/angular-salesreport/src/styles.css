@@ -1,0 +1,95 @@
+body {
+    height: 100%;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+
+.jqx-layout-pseudo-window-pin-icon {
+  display: none;
+}
+
+.header-wrap {
+  height: auto;
+  background-color: #3E3E42;
+  margin-bottom: 1.5em;
+}
+
+  .header-wrap p {
+    font-size: 220%;
+    color: white;
+    padding-top: 0.35em;
+    padding-left: 0.6em;
+  }
+
+    .header-wrap p span {
+      padding-top: 0.4em;
+      margin-right: 0.4em;
+      font-size: 80%;
+    }
+
+@media screen and (max-width: 1344px) {
+  .header-wrap p {
+    margin-right: 2em;
+    margin-top: 0.3em;
+  }
+}
+
+@media screen and (max-width: 1317px) {
+    .header-wrap p {
+        margin-right: 2em;
+        margin-top: 0.6em;
+    }
+}
+
+@media screen and (max-width: 570px) {
+  .header-wrap ul {
+    margin-top: 0em !important;
+  }
+}
+
+@media (max-width:1021px) {
+  #YearComparisonLeftBarGauge, #YearComparisonRightBarGauge {
+    width: 100% !important;
+  }
+}
+
+@media (max-width:1021px) {
+    .header-wrap p {
+       text-align: center; 
+    }
+}
+
+@media (min-width: 768px) and (max-width: 778px) {
+    .header-wrap p {
+        font-size: 216%;
+    }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.dataTableHeader {
+  font-weight: bold;
+  font-size: 110%;
+  color: black;
+}
+
+.jqx-ribbon-item {
+  display: none;
+}
+
+.jqx-ribbon-header {
+  border-style: none;
+}
+
+#okButton {
+    position:absolute;
+    margin-top: 5em;
+    margin-left: 8em;
+}
+
+.row .logo p {
+    width: 100%;
+}

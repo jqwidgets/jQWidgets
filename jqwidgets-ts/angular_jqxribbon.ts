@@ -1,11 +1,12 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
 /// <reference path="jqwidgets.d.ts" />
 import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxribbon.js';
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';

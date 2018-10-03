@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="jQuery Calendar, Month Calendar, MonthCalendar, DateTimeInput, DateTimePicker, Date Picker" />
+    <meta name="description" content="The jqxCalendar allows you to style the weekend dates. To enable this functionality, you need to set the enableWeekend property to true." />
+    <title id='Description'>
+        The jqxCalendar allows you to style the weekend dates. To enable this functionality, you need to set the enableWeekend property to true.
+    </title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+                // Create calendar.
+                $("#calendar").jqxCalendar({ width: '220px', height: '220px', enableOtherMonthDays: false });
+                // Style the weekends.
+                $("#calendar").jqxCalendar({ enableWeekend: true });
+            });
+    </script>
+</head>
+<body>
+    <div id='calendar'></div>
+</body>
+</html>

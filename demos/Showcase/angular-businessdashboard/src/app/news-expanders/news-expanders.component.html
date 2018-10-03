@@ -1,0 +1,86 @@
+<div #newsContainer>
+    <div *ngIf="dropdownId===0 || dropdownId===1" class="newsContainer">
+        <div class="expanderContainer">
+            <div class="icon icon-news"></div>
+            <jqxExpander #expander1 (onExpanding)="updatePanel(1, true)" (onCollapsing)="updatePanel(1, false)" [expanded]="false" [animationType]="'none'" id="expander1" class="expander">
+                <div><img class="person" src="../../assets/images/person1.png" /><div>Duis aliquam elit id semper maximus.</div><p>by MICHAEL DUGLAS<span class="glyphicon-custom1"><i class="fa fa-calendar"></i></span><span class="glyphicon-custom2"><i class="fa fa-clock-o"></i></span>09:00 PM</p><p *ngIf="!hide1" class="toHide">Just the good ol' boys, never meanin' no harm. Beats all you've ever saw, been in trouble with the law since the day they...</p></div>
+                <div><div class='newsTextContainer'>Just the good ol' boys, never meanin' no harm. Beats all you've ever saw, been in trouble with the law since the day they was born. Straight'nin' the curve, flat'nin' the hills. Someday the mountain might get 'em, but the law never will. Makin' their way, the only way they know how, that's just a little bit more than the law will allow. Just good ol' boys, wouldn't change if they could, fightin' the system like a true modern day Robin Hood.</div></div>
+            </jqxExpander>
+        </div>
+
+        <div class="expanderContainer">
+            <div class="icon icon-news"></div>
+            <jqxExpander #expander2 (onExpanding)="updatePanel(2, true)" (onCollapsing)="updatePanel(2, false)" [expanded]="false" [animationType]="'none'" id="expander2" class="expander">
+                <div><img class="person" src="../../assets/images/person2.png" /><div>Lorem ipsum dolor sit amet consectetur.</div><p>by BERTA SIMPSON<span class="glyphicon-custom1"><i class="fa fa-calendar"></i></span><span class="glyphicon-custom2"><i class="fa fa-clock-o"></i></span>02:30 PM</p><p *ngIf="!hide2" class="toHide">Hong Kong Phooey, number one super guy. Hong Kong Phooey, quicker than the human eye. He's got style, a groovy style, and a car...</p></div>
+                <div><div class='newsTextContainer'>Hong Kong Phooey, number one super guy. Hong Kong Phooey, quicker than the human eye. He's got style, a groovy style, and a car that just won't stop. When the going gets tough, he's really rough, with a Hong Kong Phooey chop (Hi-Ya!). Hong Kong Phooey, number one super guy. Hong Kong Phooey, quicker than the human eye. Hong Kong Phooey, he's fan-riffic!</div></div>
+            </jqxExpander>
+        </div>
+
+        <div class="expanderContainer">
+            <div class="icon icon-news"></div>
+            <jqxExpander #expander3 (onExpanding)="updatePanel(3, true)" (onCollapsing)="updatePanel(3, false)" [expanded]="false" [animationType]="'none'" id="expander3" class="expander">
+                <div><img class="person" src="../../assets/images/person3.png" /><div>Duis ultricies blandit fermentum.</div><p>by TINNA RODRIGES<span class="glyphicon-custom1"><i class="fa fa-calendar"></i></span><span class="glyphicon-custom2"><i class="fa fa-clock-o"></i></span>15:46 PM</p><p *ngIf="!hide3" class="toHide">Hey there where ya goin', not exactly knowin', who says you have to call just...</p></div>
+                <div><div class='newsTextContainer'>Hey there where ya goin', not exactly knowin', who says you have to call just one place home. He's goin' everywhere, B.J. McKay and his best friend Bear. He just keeps on movin', ladies keep improvin', every day is better than the last. New dreams and better scenes, and best of all I don't pay property tax. Rollin' down to Dallas, who's providin' my palace, off to New Orleans or who knows where. Places new and ladies, too, I'm B.J. McKay and this is my best friend Bear.</div></div>
+            </jqxExpander>
+        </div>
+
+        <div class="expanderContainer">
+            <div class="icon icon-news"></div>
+            <jqxExpander #expander4 (onExpanding)="updatePanel(4, true)" (onCollapsing)="updatePanel(4, false)" [expanded]="false" [animationType]="'none'" id="expander4" class="expander">
+                <div><img class="person" src="../../assets/images/person1.png" /><div>Pellentesque tristique dui in fermentum.</div><p>by MICHAEL DUGLAS<span class="glyphicon-custom1"><i class="fa fa-calendar"></i></span><span class="glyphicon-custom2"><i class="fa fa-clock-o"></i></span>11:34 PM</p><p *ngIf="!hide4" class="toHide">Thunder, thunder, thundercats, Ho! Thundercats are on the move, Thundercats are loose. Feel the magic, hear the...</p></div>
+                <div><div class='newsTextContainer'>Thunder, thunder, thundercats, Ho! Thundercats are on the move, Thundercats are loose. Feel the magic, hear the roar, Thundercats are loose. Thunder, thunder, thunder, Thundercats! Thunder, thunder, thunder, Thundercats! Thunder, thunder, thunder, Thundercats! Thunder, thunder, thunder, Thundercats! Thundercats!</div></div>
+            </jqxExpander>
+        </div>
+
+        <div class="expanderContainer">
+            <div class="icon icon-news"></div>
+            <jqxExpander #expander5 (onExpanding)="updatePanel(5, true)" (onCollapsing)="updatePanel(5, false)" [expanded]="false" [animationType]="'none'" id="expander5" class="expander">
+                <div><img class="person" src="../../assets/images/person3.png" /><div>Vestibulum rutrum semper sapien</div><p>by TINNA RODRIGES<span class="glyphicon-custom1"><i class="fa fa-calendar"></i></span><span class="glyphicon-custom2"><i class="fa fa-clock-o"></i></span>03:21 PM</p><p *ngIf="!hide5" class="toHide">There's a voice that keeps on calling me. Down the road, that's where I'll always be. Every stop I...</p></div>
+                <div><div class='newsTextContainer'>There's a voice that keeps on calling me. Down the road, that's where I'll always be. Every stop I make, I make a new friend. Can't stay for long, just turn around and I'm gone again. Maybe tomorrow, I'll want to settle down, Until tomorrow, I'll just keep moving on.</div></div>
+            </jqxExpander>
+        </div>
+    </div>
+</div>
+<div #forumContainer>
+    <div *ngIf="dropdownId===0 || dropdownId===2" class="forumContainer">
+        <div class="expanderContainer">
+            <div class="icon icon-forum"></div>
+            <jqxExpander #expander6 (onExpanding)="updatePanel(6, true)" (onCollapsing)="updatePanel(6, false)" [expanded]="false" [animationType]="'none'" id="expander6" class="expander">
+                <div><img class="person" src="../../assets/images/person2.png" /><div>Vivamus et urna non metus sodales consectetur.</div><p>by BERTA SIMPSON<span class="glyphicon-custom1"><i class="fa fa-calendar"></i></span><span class="glyphicon-custom2"><i class="fa fa-clock-o"></i></span>17:40 PM</p><p *ngIf="!hide6" class="toHide">80 days around the world, we'll find a pot of gold just sitting where the rainbow's ending. Time - we'll...</p></div>
+                <div><div class='newsTextContainer'>80 days around the world, we'll find a pot of gold just sitting where the rainbow's ending. Time - we'll fight against the time, and we'll fly on the white wings of the wind. 80 days around the world, no we won't say a word before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.</div></div>
+            </jqxExpander>
+        </div>
+
+        <div class="expanderContainer">
+            <div class="icon icon-forum"></div>
+            <jqxExpander #expander7 (onExpanding)="updatePanel(7, true)" (onCollapsing)="updatePanel(7, false)" [expanded]="false" [animationType]="'none'" id="expander7" class="expander">
+                <div><img class="person" src="../../assets/images/person3.png" /><div>Proin purus sapien, consequat eget diam sed.</div><p>by TINNA RODRIGES<span class="glyphicon-custom1"><i class="fa fa-calendar"></i></span><span class="glyphicon-custom2"><i class="fa fa-clock-o"></i></span>08:10 PM</p><p *ngIf="!hide7" class="toHide">Knight Rider, a shadowy flight into the dangerous world of a man who does not exist. Michael Knight, a young loner...</p></div>
+                <div><div class='newsTextContainer'>Knight Rider, a shadowy flight into the dangerous world of a man who does not exist. Michael Knight, a young loner on a crusade to champion the cause of the innocent, the helpless in a world of criminals who operate above the law.</div></div>
+            </jqxExpander>
+        </div>
+
+        <div class="expanderContainer">
+            <div class="icon icon-forum"></div>
+            <jqxExpander #expander8 (onExpanding)="updatePanel(8, true)" (onCollapsing)="updatePanel(8, false)" [expanded]="false" [animationType]="'none'" id="expander8" class="expander">
+                <div><img class="person" src="../../assets/images/person1.png" /><div>Curabitur lectus sapien, ornare sed leo eget.</div><p>by MICHAEL DUGLAS<span class="glyphicon-custom1"><i class="fa fa-calendar"></i></span><span class="glyphicon-custom2"><i class="fa fa-clock-o"></i></span>12:24 PM</p><p *ngIf="!hide8" class="toHide">Top Cat! The most effectual Top Cat! Who's intellectual close friends get to call him T.C., providing...</p></div>
+                <div><div class='newsTextContainer'>Top Cat! The most effectual Top Cat! Who's intellectual close friends get to call him T.C., providing it's with dignity. Top Cat! The indisputable leader of the gang. He's the boss, he's a pip, he's the championship. He's the most tip top, Top Cat.</div></div>
+            </jqxExpander>
+        </div>
+
+        <div class="expanderContainer">
+            <div class="icon icon-forum"></div>
+            <jqxExpander #expander9 (onExpanding)="updatePanel(9, true)" (onCollapsing)="updatePanel(9, false)" [expanded]="false" [animationType]="'none'" id="expander9" class="expander">
+                <div><img class="person" src="../../assets/images/person3.png" /><div>Duis eros est, dignissim sed eros.</div><p>by by TINNA RODRIGES<span class="glyphicon-custom1"><i class="fa fa-calendar"></i></span><span class="glyphicon-custom2"><i class="fa fa-clock-o"></i></span>01:12 PM</p><p *ngIf="!hide9" class="toHide">Children of the sun, see your time has just begun, searching for your ways, through adventures every day. Every day...</p></div>
+                <div><div class='newsTextContainer'>Children of the sun, see your time has just begun, searching for your ways, through adventures every day. Every day and night, with the condor in flight, with all your friends in tow, you search for the Cities of Gold. Ah-ah-ah-ah-ah... wishing for The Cities of Gold. Ah-ah-ah-ah-ah... some day we will find The Cities of Gold. Do-do-do-do ah-ah-ah, do-do-do-do, Cities of Gold. Do-do-do-do, Cities of Gold. Ah-ah-ah-ah-ah... some day we will find The Cities of Gold.</div></div>
+            </jqxExpander>
+        </div>
+
+        <div class="expanderContainer">
+            <div class="icon icon-forum"></div>
+            <jqxExpander #expander10 (onExpanding)="updatePanel(10, true)" (onCollapsing)="updatePanel(10, false)" [expanded]="false" [animationType]="'none'" id="expander10" class="expander">
+                <div><img class="person" src="../../assets/images/person2.png" /><div>Fusce turpis nulla, mattis vel scelerisque.</div><p>by BERTA SIMPSON<span class="glyphicon-custom1"><i class="fa fa-calendar"></i></span><span class="glyphicon-custom2"><i class="fa fa-clock-o"></i></span>14:59 PM</p><p *ngIf="!hide10" class="toHide">One for all and all for one, Muskehounds are always ready. One for all and all for one, helping everybody. One for all...</p></div>
+                <div><div class='newsTextContainer'>One for all and all for one, Muskehounds are always ready. One for all and all for one, helping everybody. One for all and all for one, it's a pretty story. Sharing everything with fun, that's the way to be. One for all and all for one, Muskehounds are always ready. One for all and all for one, helping everybody. One for all and all for one, can sound pretty corny. If you've got a problem chum, think how it could be.</div></div>
+            </jqxExpander>
+        </div>
+    </div>
+</div>

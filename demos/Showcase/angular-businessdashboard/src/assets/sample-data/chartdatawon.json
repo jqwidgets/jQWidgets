@@ -1,0 +1,37 @@
+[
+    {
+        "day": "Monday",
+        "spline1": 15,
+        "spline2": 34
+    },
+    {
+        "day": "Tuesday",
+        "spline1": 10,
+        "spline2": 15
+    },
+    {
+        "day": "Wednesday",
+        "spline1": 10,
+        "spline2": 20
+    },
+    {
+        "day": "Thursday",
+        "spline1": 20,
+        "spline2": 30
+    },
+    {
+        "day": "Friday",
+        "spline1": 10,
+        "spline2": 15
+    },
+    {
+        "day": "Saturday",
+        "spline1": 20,
+        "spline2": 30
+    },
+    {
+        "day": "Sunday",
+        "spline1": 10,
+        "spline2": 20
+    }
+]

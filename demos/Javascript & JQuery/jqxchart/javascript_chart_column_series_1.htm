@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>JavaScript Chart Column Series with local data</title>
+    <meta name="description" content="This is an example of JavaScript Char Column series with local data." />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare chart data as an array
+            var  sampleData = [
+                    { Day:'Monday', Keith:30, Erica:15, George: 25},
+                    { Day:'Tuesday', Keith:25, Erica:25, George: 30},
+                    { Day:'Wednesday', Keith:30, Erica:20, George: 25},
+                    { Day:'Thursday', Keith:35, Erica:25, George: 45},
+                    { Day:'Friday', Keith:20, Erica:20, George: 25},
+                    { Day:'Saturday', Keith:30, Erica:20, George: 30},
+                    { Day:'Sunday', Keith:60, Erica:45, George: 90}
+                ];
+
+            // prepare jqxChart settings
+            var settings = {
+                title: "Fitness & exercise weekly scorecard",
+                description: "Time spent in vigorous exercise",
+				enableAnimations: true,
+                showLegend: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+                xAxis:
+                    {
+                        dataField: 'Day',
+                        showGridLines: true
+                    },
+                colorScheme: 'scheme01',
+                seriesGroups:
+                    [
+                        {
+                            type: 'column',
+                            columnsGapPercent: 50,
+                            seriesGapPercent: 0,
+                            valueAxis:
+                            {
+                                unitInterval: 10,
+                                minValue: 0,
+                                maxValue: 100,
+                                displayValueAxis: true,
+                                description: 'Time in minutes',
+                                axisSize: 'auto',
+                                tickMarksColor: '#888888'
+                            },
+                            series: [
+                                    { dataField: 'Keith', displayText: 'Keith'},
+                                    { dataField: 'Erica', displayText: 'Erica'},
+                                    { dataField: 'George', displayText: 'George'}
+                                ]
+                        }
+                    ]
+            };
+            
+            // setup the chart
+            $('#jqxChart').jqxChart(settings);
+
+        });
+    </script>
+</head>
+<body class='default'>
+	<div style='height: 600px; width: 682px;'>
+    <div id='host' style="margin: 0 auto; width:850px; height:400px;">
+		<div id='jqxChart' style="width:850px; height:400px; position: relative; left: 0px; top: 0px;">
+		</div>
+	</div>
+    </div>
+     <div class="example-description">
+       <br />
+       <h2>Description</h2>
+       <br />
+       This is an example of JavaScript Chart Column series with local data.
+    </div>
+</body>
+</html>

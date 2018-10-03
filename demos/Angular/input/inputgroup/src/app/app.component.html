@@ -1,0 +1,12 @@
+﻿<div style="height: 30px"></div>
+
+<jqxInput [theme]="'material'" #myInput style="float: left"
+    [width]="250" [height]="23" [source]="countries"
+    [minLength]="1" [placeHolder]="'Enter a Country:'">
+</jqxInput>
+
+<div style="float: left">
+    <jqxButton [theme]="'material'" (onClick)="myBtnOnClick()"
+        [width]="28" [height]="25" [imgSrc]="'https://www.jqwidgets.com/angular/images/search_lg.png'">
+    </jqxButton>
+</div>

@@ -1,0 +1,5 @@
+<div id="profit" class="container-fluid">
+    <app-profit-dropdown-one (updateGridEvent)="grid.updateGridColumns($event)"></app-profit-dropdown-one>
+    <app-profit-dropdown-two (updateGridEvent)="grid.updateGridRows($event)"></app-profit-dropdown-two>
+    <app-profit-grid #grid></app-profit-grid>
+</div>

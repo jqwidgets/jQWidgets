@@ -1,0 +1,101 @@
+@media(max-width: 1875px) {
+    div.chart-mini-container {
+        width: 47.5%;
+    }
+}
+
+@media(max-width: 1640px) {
+    div.chart-mini-container {
+        width: 100%;
+    }
+    div.chart-mini-container-first {
+        margin-right: 0em;
+    }
+}
+
+.chart-mini-menu-item {
+    height: 38px !important;
+    line-height: 2.4 !important;
+}
+
+.chart-mini-container {
+    border: 1px solid #d9d9d9;
+    margin-top: 2em;
+    width: 47.9%;
+    height: 300px;
+    padding: 20px;
+    background-color: white;
+    display: inline-block;
+}
+
+.chart-mini-container-first {
+    margin-right: 2em;
+}
+
+.chart-mini-menu {
+    float: right;
+}
+
+.chart-mini-menu-icon-main {
+    font-size: 19px;
+    width: 18px;
+    height: 18px;
+    color:  darkgray;
+}
+
+.chart-mini-menu-text {
+    display: inline-block;
+    width: 120px;
+    font-size: 80%;
+}
+
+.chart-mini-menu-icon {
+    font-size: 18px;
+    width: 17px;
+    height: 17px;
+}
+
+jqxKnob > div{
+    margin: auto;
+}
+.chart-mini-knob-icon {
+    font-size: 36px;
+    top: -68px;
+    left: -68px;
+    float: left;
+    position: relative;
+    color: #7FD13B;
+}
+
+.chart-mini-knob-icon-second {
+    color: #D02841;
+}
+
+.chart-mini-text-container {
+    text-align: center;
+    float: left;
+    width: 100%;
+    position: relative;
+    top: -17px;
+}
+
+.chart-mini-text-big {
+    font-size: 230%;
+}
+
+.chart-mini-text-middle {
+    font-size: 140%;
+    margin-bottom: 0;
+}
+
+.chart-mini-text-small {
+    font-size: 110%;
+    color: #b3b3b3;
+}
+
+.chart-mini-main-chart-container {
+    height: 80px;   
+    width: 100%;
+    position: relative;
+    top: -30px;
+}

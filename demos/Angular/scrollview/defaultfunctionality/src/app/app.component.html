@@ -1,0 +1,20 @@
+﻿<jqxScrollView [theme]="'material'" #myScrollView
+    [width]="600" [height]="450" [buttonsOffset]="[0, 0]">
+    <div><div class="photo" style="background-image: url(https://www.jqwidgets.com/angular/images/imageNature1.jpg)"></div></div>
+    <div><div class="photo" style="background-image: url(https://www.jqwidgets.com/angular/images/imageNature2.jpg)"></div></div>
+    <div><div class="photo" style="background-image: url(https://www.jqwidgets.com/angular/images/imageNature3.jpg)"></div></div>
+    <div><div class="photo" style="background-image: url(https://www.jqwidgets.com/angular/images/imageNature4.jpg)"></div></div>
+    <div><div class="photo" style="background-image: url(https://www.jqwidgets.com/angular/images/imageNature5.jpg)"></div></div>
+</jqxScrollView>
+
+<div style="margin-top: 2em"></div>
+
+<jqxButton [theme]="'material'" (onClick)="onStartClicked()"
+           [width]="120" [height]="25">
+  Start SlideShow
+</jqxButton>
+
+<jqxButton [theme]="'material'" (onClick)="onStopClicked()"
+           [width]="120" [height]="25">
+  Stop SlideShow
+</jqxButton>

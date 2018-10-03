@@ -1,0 +1,13 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left; width: 100%;">
+
+    <jqxGrid [theme]="'material'" #myGrid
+        [width]="getWidth()" [source]="dataAdapter" [columns]="columns">
+    </jqxGrid>
+
+  <div style="margin-top: 30px">
+
+      <jqxButton [theme]="'material'" (onClick)="btnOnClick()">Auto Resize Columns</jqxButton>
+
+  </div>
+
+</div>

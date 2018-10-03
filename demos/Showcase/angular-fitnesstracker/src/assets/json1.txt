@@ -1,0 +1,46 @@
+{
+	"item": [
+		{
+		  "title": "Polls open for Egypt's historic vote",
+		  "guid": "http://edition.cnn.com/2011/11/28/world/africa/egypt-elections/index.html?eref=edition",
+		  "link": "http://edition.cnn.com/2011/11/28/world/africa/egypt-elections/index.html?eref=edition",
+		  "description": "Amid worsening unrest, Egyptians head to the polls Monday to vote in the first election since an improbable revolt toppled one of the world's longest-serving rulers.",
+		  "pubDate": "Mon, 28 Nov 2011 01:51:26 EST"
+		},
+		{
+		  "title": "New trial for convicted Bahrain medics",
+		  "guid": "http://edition.cnn.com/2011/11/28/world/meast/bahrain-medics-trial/index.html?eref=edition",
+		  "link": "http://edition.cnn.com/2011/11/28/world/meast/bahrain-medics-trial/index.html?eref=edition",
+		  "description": "Twenty medics, who were convicted of trying to overthrow the Bahraini government, face a retrial in civilian court Monday.",
+		  "pubDate": "Mon, 28 Nov 2011 02:06:49 EST"
+		},
+		{
+		  "title": "Islamists claim election win in Morocco",
+		  "guid": "http://edition.cnn.com/2011/11/27/world/africa/morocco-election/index.html?eref=edition",
+		  "link": "http://edition.cnn.com/2011/11/27/world/africa/morocco-election/index.html?eref=edition",
+		  "description": "A moderate Islamist party claimed victory in Morocco&apos;s first parliamentary elections since constitutional reforms this summer.",
+		  "pubDate": "Sun, 27 Nov 2011 18:05:58 EST"
+		},
+		{
+		  "title": "Arab League backs sanctions on Syria",
+		  "guid": "http://edition.cnn.com/2011/11/27/world/meast/syria-unrest/index.html?eref=edition",
+		  "link": "http://edition.cnn.com/2011/11/27/world/meast/syria-unrest/index.html?eref=edition",
+		  "description": "Foreign ministers from 19 Arab League countries vote to slap economic sanctions against Syria for its violent crackdown on civilian protesters, officials say.",
+		  "pubDate": "Sun, 27 Nov 2011 15:56:41 EST"
+		},
+		{
+		  "title": "Medics: Militants kill dozens in Yemen",
+		  "guid": "http://edition.cnn.com/2011/11/27/world/meast/yemen-clashes/index.html?eref=edition",
+		  "link": "http://edition.cnn.com/2011/11/27/world/meast/yemen-clashes/index.html?eref=edition",
+		  "description": "At least 24 people were killed early Sunday when militants raided a Sunni town in northern Yemen, medics and witnesses said.",
+		  "pubDate": "Sun, 27 Nov 2011 07:09:17 EST"
+		},
+		{
+		  "title": "Congolese vote in landmark election",
+		  "guid": "http://edition.cnn.com/2011/11/28/world/africa/congo-election-day/index.html?eref=edition",
+		  "link": "http://edition.cnn.com/2011/11/28/world/africa/congo-election-day/index.html?eref=edition",
+		  "description": "Voters in the Democratic Republic of Congo headed to the polls Monday as the giant mineral-rich country holds its second democratic presidential election in history following bloody weekend clashes.",
+		  "pubDate": "Mon, 28 Nov 2011 00:37:42 EST"
+		}
+	]
+}

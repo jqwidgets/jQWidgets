@@ -1,0 +1,64 @@
+﻿<jqxGrid [theme]="'material'" #myGrid (onContextmenu)="myGridOnContextMenu()" (onRowclick)="myGridOnRowClick($event)"
+    [width]="getWidth()" [source]="dataAdapter" [pageable]="true"
+    [autoheight]="true" [columns]="columns">
+</jqxGrid>
+
+<div style="margin-top: 30px">
+    <div id='cellbegineditevent'></div>
+    <div style="margin-top: 10px" id='cellendeditevent'></div>
+</div>
+
+<jqxWindow [theme]="'material'" #myWindow
+    [width]="250" [height]="230" [modalOpacity]="'0.01'" 
+    [resizable]="false" [isModal]="true" [autoOpen]="false"> 
+    <div>Edit</div>
+    <div style="overflow: hidden">
+        <table>
+            <tbody>
+                <tr>
+                    <td align='right'>First Name:</td>
+                    <td align='left'><jqxInput [theme]="'material'" #firstName [width]="150" [height]="23"></jqxInput></td>
+                </tr>
+                <tr>
+                    <td align='right'>Last Name:</td>
+                    <td align='left'><jqxInput [theme]="'material'" #lastName [width]="150" [height]="23"></jqxInput></td>
+                </tr>
+                <tr>
+                    <td align='right'>Product:</td>
+                    <td align='left'><jqxInput [theme]="'material'" #product [width]="150" [height]="23"></jqxInput></td>
+                </tr>
+                <tr>
+                    <td align='right'>Quantity:</td>
+                    <td align='left'>
+                        <jqxNumberInput [theme]="'material'" #quantity
+                              [width]="150" [height]="23" [decimalDigits]="0" [spinButtons]="true">
+                        </jqxNumberInput>
+                    </td>
+                </tr>
+                <tr>
+                    <td align='right'>Price:</td>
+                    <td align='left'>
+                        <jqxNumberInput [theme]="'material'" #price
+                          [width]="150" [height]="23" [symbol]="'$'" [spinButtons]="true">
+                        </jqxNumberInput>
+                    </td>
+                </tr>
+                <tr>
+                  <td align='right'></td>
+                  <td style="padding-top: 10px" align='right'>
+                      <jqxButton [theme]="'material'" #SaveBtn style="margin-right: 5px; float: left" (onClick)="SaveBtnOnClick()">Save</jqxButton>
+                      <jqxButton [theme]="'material'" #CancelBtn style="float: left" (onClick)="CancelBtnOnClick()">Cancel</jqxButton>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</jqxWindow>
+
+<jqxMenu [theme]="'material'" #myMenu (onItemclick)="myMenuOnItemClick($event)"
+    [width]="200" [height]="58" [mode]="'popup'" [autoOpenPopup]="false">
+    <ul>
+      <li>Edit Selected Row</li>
+      <li>Delete Selected Row</li>
+    </ul>
+</jqxMenu>

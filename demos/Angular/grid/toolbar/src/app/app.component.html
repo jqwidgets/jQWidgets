@@ -1,0 +1,38 @@
+﻿<jqxGrid [theme]="'material'" #myGrid
+         [width]="getWidth()" [source]="dataAdapter" [showtoolbar]="true"
+         [rendertoolbar]="createButtonsContainers" [columns]="columns">
+</jqxGrid>
+
+<jqxWindow [theme]="'material'" #myWindow [width]="210" [height]="180" [autoOpen]="false" [resizable]="false">
+    <div>Find Record</div>
+    <div style="overflow: hidden">
+        <div>Find what:</div>
+        <div style="margin-top: 5px">
+
+            <jqxInput [theme]="'material'" #myInput [width]="194" [height]="23"></jqxInput>
+
+        </div>
+        <div style="margin-top: 7px; clear: both">Look in:</div>
+        <div style="margin-top: 5px">
+
+            <jqxDropDownList [theme]="'material'" #myDropDownList
+                             [width]="200" [height]="23" [selectedIndex]="0"
+                             [source]="dropDownSource" [autoDropDownHeight]="true">
+            </jqxDropDownList>
+
+        </div>
+        <div>
+
+            <jqxButton [theme]="'material'" style="margin-top: 15px; margin-left: 50px; float: left"
+                       (onClick)="findBtnOnClick()" [width]="70">
+                Find
+            </jqxButton>
+
+            <jqxButton [theme]="'material'" style="margin-left: 5px; margin-top: 15px; float: left"
+                       (onClick)="clearBtnOnClick()" [width]="70">
+                Clear
+            </jqxButton>
+
+        </div>
+    </div>
+</jqxWindow>

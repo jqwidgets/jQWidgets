@@ -1,0 +1,48 @@
+﻿<div class="chart-right-container">
+
+    <div>
+        <span style="font-size: 140%;">Sales statistics</span>
+        <div style="float: right">
+            <mat-icon class="listFishIcon">panorama_fish_eye</mat-icon>
+            <span class="listText">10-Oct-2014</span>
+        </div>    
+    </div>
+
+    <div class="chart-icon-container chart-right-icon-container">
+
+        <div class="chart-icon-container-middle chart-right-icon-container-middle" style="margin-right: 3em;">
+            <div class="chart-right-icon-container-inner">
+                <mat-icon class="chart-icon-right">filter_list</mat-icon>
+                <span class="chart-right-icon-text-big">6,374</span><br />
+                <p class="chart-right-icon-text-small">orders weekly</p>      
+            </div>   
+        </div>
+
+        <div class="chart-icon-container-middle chart-right-icon-container-middle" style="margin-right: 3em;">
+            <div class="chart-right-icon-container-inner">
+                <mat-icon class="chart-icon-right">date_range</mat-icon>
+                <span class="chart-right-icon-text-big">25,271</span><br />
+                <p class="chart-right-icon-text-small">orders monthly</p>
+            </div>     
+        </div>
+
+        <div class="chart-icon-container-middle chart-right-icon-container-middle">
+            <div class="chart-right-icon-container-inner last-right-inner">
+                <mat-icon class="chart-icon-right">monetization_on</mat-icon>
+                <span class="chart-right-icon-text-big">$9,853</span><br />
+                <p class="chart-right-icon-text-small">average revenue</p>
+            </div>      
+        </div>
+
+    </div>
+
+
+    <div>
+        <jqxChart [width]="'100%'" [height]="366"
+            [title]="''" [description]="''" [source]="dataAdapter" [showLegend]="false" [enableAnimations]="false" 
+            [padding]="padding"  [xAxis]="xAxis" [enableCrosshairs]="true" [animationDuration]="1500" 
+            [seriesGroups]="seriesGroups" [colorScheme]="'scheme02'" [backgroundColor]="'transparent'">
+        </jqxChart>
+    </div>
+
+</div>

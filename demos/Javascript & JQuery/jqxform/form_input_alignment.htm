@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="JavaScript Form, HTML Form, jQuery Forms widget" /> 
+    <meta name="description" content="The jqxForm widget helps you build interactive HTML JSON forms. It offers rich functionality and layout options."/>
+    <title id='Description'>jQuery Form Input Elements Alignment</title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.office.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxform.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+     
+            var template = [
+                {
+                    bind: 'item1',
+                    type: 'text',
+                    label: 'Input left alignment',
+                    align: 'left',
+                    labelWidth: '160px',
+                    width: '160px'
+                },
+                {
+                    bind: 'item2',
+                    type: 'text',
+                    label: 'Input center alignment',
+                    align: 'center',
+                    labelWidth: '160px',
+                    width: '160px'
+                },
+                {
+                    bind: 'item3',
+                    type: 'text',
+                    label: 'Input right alignment',
+                    align: 'right',
+                    labelWidth: '160px',
+                    width: '160px'
+                },
+                {
+                    bind: 'item4',
+                    type: 'text',
+                    label: 'Label left alignment',
+                    labelAlign: 'left',
+                    labelWidth: '160px',
+                    width: '160px'
+                },
+                {
+                    bind: 'item5',
+                    type: 'text',
+                    label: 'Label center alignment',
+                    labelAlign: 'center',
+                    labelWidth: '160px',
+                    width: '160px'
+                },
+                {
+                    bind: 'item6',
+                    type: 'text',
+                    label: 'Label right alignment',
+                    labelAlign: 'right',
+                    labelWidth: '160px',
+                    width: '160px'
+                },
+
+            ];
+
+
+            var sampleValue = {
+                item1: 'left aligned',
+                item2: 'center aligned',
+                item3: 'right aligned',
+                item4: 'left aligned',
+                item5: 'left aligned',
+                item6: 'left aligned'
+            };
+
+            $('#sampleForm').jqxForm({
+                template: template,
+                value: sampleValue,
+                padding: { left: 10, top: 10, right: 10, bottom: 10 }
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id='sampleForm' style="width: 500px; height: auto;"></div>   
+    <div class="example-description">
+        <h2>Description</h2>
+        <div style="width: 800px;">
+            This example shows you how align the input elements and the labels in the form.
+            To change the horizontal alignment of the input element, set the align property to 'left', 'right' or 'center'.
+            To change the horizontal alignment of the respective label, change the labelAlign property. The default
+            alignment for text input and other HTML elements is left. The default labels alignment is also left.
+        </div>
+    </div>
+
+</body>
+</html>

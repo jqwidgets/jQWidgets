@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element ComboBox Settings</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This example shows the settings available in Custom Element ComboBox" />
+
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcombobox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxexpander.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script>
+        var comboBoxSource =
+            [
+                'Affogato',
+                'Americano',
+                'Bicerin',
+                'Breve',
+                'Café Bombón',
+                'Café au lait',
+                'Caffé Corretto',
+                'Café Crema',
+                'Caffé Latte',
+                'Caffé macchiato',
+                'Café mélange',
+                'Coffee milk',
+                'Cafe mocha',
+                'Cappuccino',
+                'Carajillo',
+                'Cortado',
+                'Cuban espresso',
+                'Espresso',
+                'Eiskaffee',
+                'The Flat White',
+                'Frappuccino',
+                'Galao',
+                'Greek frappé coffee',
+                'Iced Coffee﻿',
+                'Indian filter coffee',
+                'Instant coffee',
+                'Irish coffee',
+                'Liqueur coffee'
+            ];
+
+        var dropDownListSource =
+            [
+                'Starts with',
+                'Starts with(Case Sensitive)',
+                'Ends with',
+                'Ends with(Case Sensitive)',
+                'Contains',
+                'Contains(Case Sensitive)',
+                'Equal',
+                'Equal(Case Sensitive)',
+            ];
+
+        JQXElements.settings['ComboBox'] =
+            {
+                source: comboBoxSource,
+                selectedIndex: 0
+            }
+
+        JQXElements.settings['DropDownList'] =
+            {
+                source: dropDownListSource,
+                selectedIndex: 0
+            }
+
+        JQXElements.settings['CheckBoxEnabled'] =
+            {
+                checked: true
+            }
+
+        JQXElements.settings['Expander'] =
+            {
+                showArrow: false,
+                toggleMode: 'none'
+            }
+
+        window.onload = function() {
+            var myComboBox = document.querySelector('jqx-combo-box');
+            var myDropDownList = document.querySelector('jqx-drop-down-list');
+            var myCheckBox = document.querySelectorAll('jqx-check-box');
+            var myExpander = document.querySelector('jqx-expander');
+            var myButtons = document.querySelectorAll('jqx-button');
+
+            myButtons[0].addEventListener('mousedown', function() {
+                myComboBox.open();
+                return false;
+            });
+            myButtons[1].addEventListener('mousedown', function() {
+                myComboBox.close();
+                return false;
+            });
+
+            myCheckBox[1].addEventListener('change', function(event) {
+                var checked = !event.args.checked;
+                myComboBox.disabled = checked;
+            });
+            myCheckBox[0].addEventListener('change', function(event) {
+                var checked = event.args.checked;
+                myComboBox.autoComplete = checked;
+            });
+
+            myDropDownList.addEventListener('select', function(event) {
+                var searchType = '';
+                switch (event.args.index) {
+                    case 0:
+                        searchType = 'startswithignorecase';
+                        break;
+                    case 1:
+                        searchType = 'startswith';
+                        break;
+                    case 2:
+                        searchType = 'endswithignorecase';
+                        break;
+                    case 3:
+                        searchType = 'endswith';
+                        break;
+                    case 4:
+                        searchType = 'containsignorecase';
+                        break;
+                    case 5:
+                        searchType = 'contains';
+                        break;
+                    case 6:
+                        searchType = 'equalsignorecase';
+                        break;
+                    case 7:
+                        searchType = 'equals';
+                        break;
+                }
+                myComboBox.searchMode = searchType;
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        Custom element ComboBox has built-in auto complete functionality which enables users to quickly find and select from a pre-populated list of values as they type.
+    </div>
+
+    <div style='float: left;'>
+
+        <jqx-combo-box settings="ComboBox" style='float: left; margin-top: 10px;'></jqx-combo-box>
+        <jqx-expander settings='Expander' style='float: left; margin-left: 100px; margin-top: 10px;'>
+
+            <div>
+                <div>Settings</div>
+            </div>
+
+            <div>
+                <div style="padding: 10px;">
+                    <span>Search Type:</span>
+                    <jqx-drop-down-list style="margin-top: 10px;" settings='DropDownList'></jqx-drop-down-list>
+                    <div style='margin-top: 10px;'>
+                        <jqx-button type="button">Open</jqx-button>
+                        <jqx-button type="button">Close</jqx-button>
+                    </div>
+
+                    <div>
+                        <jqx-check-box style='margin-top: 10px;'>
+                            Auto complete
+                        </jqx-check-box>
+                        <jqx-check-box style='margin-top: 10px;' settings='CheckBoxEnabled'>
+                            Enabled
+                        </jqx-check-box>
+                    </div>
+
+                </div>
+            </div>
+
+        </jqx-expander>
+    </div>
+</body>
+</html>

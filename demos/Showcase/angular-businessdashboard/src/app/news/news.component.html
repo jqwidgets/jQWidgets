@@ -1,0 +1,7 @@
+<div id="news" class="container-fluid">
+    <app-news-dropdown (dropDownChangeEvent)="expanders.updateExpanders($event)"></app-news-dropdown>
+    <div class="newsDataContainer">
+        <div class="line"></div>
+        <app-news-expanders #expanders></app-news-expanders>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿<div style='margin-top: 20px'>
+    <jqxButton [theme]="'material'" #button [width]='120' [height]='40' (onClick)="buttonClicked()">
+        Button
+    </jqxButton>
+</div>
+<div style='margin-top: 20px'>
+    <jqxButton [theme]="'material'" #submitButton [width]='120' [height]='40' (onClick)="submitButtonClicked()">
+        Submit
+    </jqxButton>
+</div>
+<div style='margin-top: 20px'>
+    <jqxButton [theme]="'material'" #imageButton [width]='120' [height]='40' 
+        [imgSrc]='"https://www.jqwidgets.com/angular/images/facebook.png"' (onClick)="imageButtonClicked()">
+    </jqxButton>
+</div>
+<div style='margin-top: 20px'>
+    <jqxButton [theme]="'material'" #textImageButton [width]='120' [height]='40'
+        [textImageRelation]='"imageBeforeText"' [textPosition]='"left"' [imgSrc]='"https://www.jqwidgets.com/angular/images/twitter.png"'
+        (onClick)="textImageButtonClicked()">
+        Button
+    </jqxButton>
+</div>
+<div style='margin-top: 20px'>
+    <jqxButton [theme]="'material'" #htmlButton [width]='120' [height]='40' (onClick)="hTMLButtonClicked()">
+        <span style='font-weight: bold;'>HTML Button</span>
+    </jqxButton>
+</div>
+<div style='margin-top: 20px'>
+    <jqxButton [theme]="'material'" #disabledButton [width]='120' [height]='40' [disabled]='true'>
+        Disabled
+    </jqxButton>
+</div>
+<div style='margin-top:1em'>Events:</div>
+<div #events></div>

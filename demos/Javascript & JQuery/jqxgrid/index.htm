@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery Grid - Advanced Javascript Data Grid widget for modern HTML5 Apps.</title>
+    <meta name="keywords" content="jQuery Grid, JavaScript Grid, jqxGrid, DataGrid, jQuery DataGrid, HTML Grid, jQuery DataGrid Control, iOS Grid, Responsive Grid, Angular Grid, AngularJS Grid
+        Adaptive Layout, Adaptive Grid, PHP Grid, PHP DataGrid, ASP .NET Grid, Mobile Grid, Touch Grid, Android DataGrid, Android Grid, iOS Grid, iOS DataGrid, jQWidgets Grid, jQWidgets DataGrid,
+        Web Grid, Web DataGrid, UI Grid, jQuery Mobile Grid, jQuery Mobile DataGrid, JavaScript Mobile Grid, JavaScript Mobile DataGrid, ASP .NET DataGrid, ASP DataGrid Control" />
+    <meta name="description" content="jqxGrid is a powerful jquery grid widget based on Javascript, jQuery and HTML5. It offers rich Grid functionality, easy to use APIs and excellent performance." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <!-- load custom fonts from google-->
+ 
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="../../resources/design/css/main.css" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" media="screen" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.arctic.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+
+    <!-- html5 support for old browsers -->
+    <!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <!-- fav_icons for different browsers -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../../resources/design/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../resources/design/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../resources/design/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../resources/design/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../../resources/design/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../../resources/design/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../../resources/design/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../resources/design/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../../resources/design/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../../resources/design/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../../resources/design/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../../resources/design/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../../resources/design/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <!-- background images stylesheets -->
+    <!--[if lt IE 9]>
+            <link rel="stylesheet" href="css/img_ie.css" />
+        <![endif]-->
+    <!--[if gt IE 8]>
+            <link rel="stylesheet" href="css/img.css" />
+        <![endif]-->
+    <!--[if !IE]><!-->
+    <link rel="stylesheet" href="../../resources/design/css/img.css" />
+    <!--<![endif]-->
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxtabs.js"></script>
+    <script type="text/javascript" src="../../scripts/demofunctions.js"></script>
+
+    <!-- swipe plugin for slider -->
+    <script src="../../resources/design/js/vendor/swipe.js"></script>
+
+    <!-- svg to png for old browsers -->
+    <script src="../../resources/design/js/vendor/svgeezy.min.js"></script>
+    <script type="text/javascript">svgeezy.init(false, 'png');</script>
+
+    <!-- main functions -->
+    <script src="../../resources/design/js/main.js"></script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop">
+    </div>
+    <!-- DOCUMENTATION START -->
+    <div class="documentation cf" id="doc">
+
+
+        <div class="wrap">
+            <div class="doc_mask"></div>
+            <!-- LEFT COLUMN -->
+            <nav class="doc_menu doc_menu_normal">
+                <div class="jqx-grid-icon jqx-widget-title-icon"></div>
+                <p class="doc_menu_title">
+                    <span>jqxGrid</span>
+                </p>
+                <ul>
+                    <li>
+                        <div class="search">
+                            <div class="wrap">
+                                <input id="searchField" type="text" value="" autocomplete="off" placeholder="Search...">
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href='defaultfunctionality.htm'>Default Functionality</a>
+                    </li>
+                    <li><a href='spreadsheet.htm'>Spreadsheet</a> </li>
+                    <li><a href='createremoveupdatedata.htm'>Create, Remove,
+                                                        Update</a> </li>
+                    <li><a href='dataexport.htm'>Data Export</a></li>
+                    <li><a href='printing.htm'>Data Printing</a></li>
+                    <li><a href='saveloadstate.htm'>State Maintenance</a></li>
+                    <li><a href='localization.htm'>Localization</a> </li>
+                    <li><a href='grid-adaptive-layout.htm'>Adaptive Grid Layout</a> </li>
+                    <li><a href='grid-lines.htm'>Grid Lines Appearance</a></li>
+                    <li><a href='dropdowngrid.htm'>DropDown Grid</a> </li>
+                    <li data-state="collapsed" id="sorting">
+                    <li class="sub_menu"><a href='#sort'><span>Sorting</span></a>
+                        <ul>
+
+                            <li class='navigationItemContent sorting'><a href='sorting.htm'>Sorting</a> </li>
+                            <li class='navigationItemContent sorting'><a href='grid-multi-column-sorting.htm'>Multi Column Sorting</a> </li>
+                            <li class='navigationItemContent sorting'><a href='customsorting.htm'>Custom Sorting</a>
+                        </ul>
+                    </li>
+                    <li data-state="collapsed" id="filtering">
+                    <li class="sub_menu"><a href='#filtering'><span>Filtering</span></a>
+                        <ul>
+                            <li><a href='filtering.htm'>Filtering</a>
+                            </li>
+                            <li><a href='filtering-menu-column-types.htm'>Filter Menu Types</a>
+                            </li>
+                            <li><a href='filtering-menu-custom-widgets.htm'>Custom Filter Menu</a>
+                            </li>
+                            <li><a href='filterrow.htm'>Filter Row</a></li>
+                            <li><a href='customfiltering.htm'>Custom Filtering</a>
+                            </li>
+                            <li><a href='excelfiltering.htm'>Excel-like Filter</a></li>
+                            <li><a href='filterrowwithcustomitems.htm'>Filter Row & Custom List Items</a></li>
+                            <li><a href='filterconditions.htm'>Filter Conditions</a></li>
+                            <li><a href='datefilter.htm'>Date & Range Filter</a>
+                            </li>
+                            <li><a href='initialfilter.htm'>Initial Filter</a>
+                            </li>
+                            <li><a href='grid-list-filter-with-key-value-column.htm'>Custom List Items with Key/Value</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#grouping'><span>Grouping</span></a>
+                        <ul>
+
+                            <li><a href='grouping.htm'>Grouping</a> </li>
+                            <li><a href='groupsrenderer.htm'>Groups Renderer</a></li>
+                            <li><a href='groupingpaging.htm'>Grouping with Pager</a></li>
+                            <li><a href='grouping-toggle-sub-rows.htm'>Toggle Sub Rows</a>
+                            </li>
+                            <li><a href="grid-grouping-aggregates.htm">Aggregates</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#paging'><span>Paging</span></a>
+                        <ul>
+
+                            <li><a href='paging.htm'>Paging</a> </li>
+                            <li><a href='initialpage.htm'>Initial Page and PageSize</a></li>
+                            <li><a href='pagingmodes.htm'>Pager Modes</a></li>
+                            <li><a href='custompager.htm'>Custom Pager</a> </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#sort'><span>Editing</span></a>
+                        <ul>
+
+
+                            <li><a href='cellediting.htm'>Editing</a> </li>
+                            <li><a href='popupediting.htm'>Popup Editing</a> </li>
+                            <li><a href='celleditmodes.htm'>Edit Modes</a> </li>
+                            <li><a href='customizededitors.htm'>Customized Editors</a></li>
+                            <li><a href='disableeditingofrows.htm'>Disable Editing of Rows</a></li>
+                            <li><a href='gridkeyvaluescolumnwitharray.htm'>Custom DropDownList Column</a> </li>
+                            <li><a href='customcomboboxcolumn.htm'>Custom ComboBox Column</a> </li>
+                            <li><a href='cascadingediting.htm'>Cascading ComboBoxes</a></li>
+                            <li><a href='rowediting.htm'>Full Row Edit</a></li>
+                            <li><a href='everpresentrowedit.htm'>Row Edit with Ever Present Row</a></li>
+                            <li><a href='editrowsrendering.htm'>Edited Rows Rendering</a></li>
+                            <li><a href='cellcustomediting.htm'>Custom Column Editor</a></li>
+                            <li><a href='customrowcelledit.htm'>Custom Row Editor</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#sort'><span>Data Binding</span></a>
+                        <ul>
+
+                            <li><a href='bindingtoarray.htm'>Binding to Array</a>
+                            </li>
+                            <li><a href='jsarray.htm'>Binding to JS Array</a>
+                            </li>
+                            <li><a href='bindingtoobservablearray.htm'>Binding to Observable Array</a>
+                            </li>
+                            <li><a href='bindingtoxml.htm'>Binding to XML</a>
+                            </li>
+                            <li><a href='bindingtojson.htm'>Binding to JSON</a>
+                            </li>
+                            <li><a href='bindingtojsonusingphp.htm'>Binding to JSON
+                                                        using PHP</a> </li>
+                            <li><a href='bindingtojsonstring.htm'>Binding to JSON
+                                                        String</a> </li>
+                       <!--     <li><a href='bindingtojsonp.htm'>Binding to Remote Data</a>
+                            </li>-->
+                            <li><a href='bindingtocsv.htm'>Binding to CSV</a>
+                            </li>
+                            <li><a href='bindingtotsv.htm'>Binding to TSV</a>
+                            </li>
+                            <li><a href='largedataset.htm'>Large Data Set</a>
+                            </li>
+                            <li><a href='grid-virtual-columns.htm'>Many Columns</a>
+                            </li>
+                            <li><a href='refreshdata.htm'>Refresh Data</a> </li>
+                            <li><a href='virtualdata.htm'>Virtual Paging</a> </li>
+                            <li><a href='virtualscrolling.htm'>Virtual Scrolling</a>
+                            </li>
+                            <li><a href='loadfromtable.htm'>Load from Table</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#sort'><span>Aggregates</span></a>
+                        <ul>
+
+                            <li><a href='aggregates.htm'>Aggregates</a></li>
+                            <li><a href='customaggregates.htm'>Custom Aggregates</a></li>
+                            <li><a href='aggregatesrenderer.htm'>Aggregates Renderer</a></li>
+                            <li><a href="grid-grouping-aggregates.htm">Grouping Aggregates</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#columns'><span>Columns</span></a>
+                        <ul>
+
+                            <li><a href='alignment.htm'>Text Alignment</a>
+                            </li>
+                            <li><a href='hideshowcolumns.htm'>Show/Hide Columns</a>
+                            </li>
+                            <li><a href='autoresizecolumns.htm'>Auto-Size Columns</a></li>
+                            <li><a href='percentagewidthcolumns.htm'>Percentage Width for Columns </a></li>
+                            <li><a href='checkboxcolumn.htm'>CheckBox Column</a>
+                            </li>
+                            <li><a href='numbercolumn.htm'>Row Number Column</a>
+                            </li>
+                            <li><a href='customcolumn.htm'>Column Template</a> </li>
+                            <li><a href='customwidgetscolumn.htm'>Widget Column</a></li>
+                            <li><a href='columnshierarchy.htm'>Columns Hierarchy</a></li>
+                            <li><a href='gridcellclass.htm'>Cells Styling</a></li>
+                            <li><a href='imagecolumn.htm'>Image Column</a> </li>
+                            <li><a href='columnsresizing.htm'>Columns Resize</a>
+                            </li>
+                            <li><a href='reordercolumns.htm'>Columns Reorder</a>
+                            </li>
+                            <li><a href='pinnedcolumns.htm'>Pinned/Frozen Columns</a>
+                            </li>
+                            <li><a href="columntooltips.htm">Column Tooltips</a></li>
+                            <li><a href="computedcolumn.htm">Computed Column</a></li>
+                            <li><a href="dynamiccolumns.htm">Dynamic Columns</a></li>
+                            <li><a href='foreignkeycolumn.htm'>Foreign Key Column</a></li>
+                            <li><a href='gridkeyvaluecolumn.htm'>Keys/Values Column</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#sort'><span>Selection</span></a>
+                        <ul>
+                            <li class='navigationItemContent selection'><a href='rowselection.htm'>Row Selection</a> </li>
+                            <li class='navigationItemContent selection'><a href='cellsselection.htm'>Cells Selection</a>
+                            </li>
+                            <li class='navigationItemContent selection'><a href='checkboxselection.htm'>CheckBox Selection</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#sort'><span>Drag Drop</span></a>
+                        <ul>
+                            <li><a href='dragdrop.htm'>Drag & Drop</a> </li>
+                            <li><a href='dragdropgridrecordtoform.htm'>Drag to a Form</a>
+                            </li>
+                            <li><a href='dragdropmultiplerecords.htm'>Drag Multiple Rows</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu"><a href='#sort'><span>Ever Present Row</span></a>
+                        <ul>
+
+                            <li><a href='everpresentrow.htm'>Add New Row</a></li>
+                            <li><a href='everpresentbottom.htm'>Add New Bottom Row</a></li>
+                            <li><a href='everpresentcustomization.htm'>Updating Actions at Runtime</a></li>
+                            <li><a href='everpresentrowcustomwidgets.htm'>Ever Present Row with Custom Widgets</a></li>
+                            <li><a href='everpresentrowcolumns.htm'>Ever Present Row with Columns</a></li>
+                            <li><a href='everpresentrowposition.htm'>Positioning</a></li>
+                            <li><a href='everpresentrowvalidation.htm'>Validation</a></li>
+                            <li><a href='everpresentrowaddremoveupdate.htm'>Add, Remove, Update</a></li>
+                            <li><a href='localizeaddnewrow.htm'>Localized Add New Row</a></li>
+                        </ul>
+                    </li>
+                    <li><a href='rowdetails.htm'>Row Details</a> </li>
+                    <li><a href='nestedgrids.htm'>Nested Grids</a> </li>
+                    <li><a href='masterdetails.htm'>Master-Details</a>
+                    </li>
+                    <li><a href='deferredscrolling.htm'>Deferred Scrolling</a> </li>
+                    <li><a href='deferredscrollinglargedata.htm'>Deferred Scrolling on a Large Data Set</a> </li>
+                    <li><a href='statusbar.htm'>Statusbar</a></li>
+                    <li><a href='toolbar.htm'>Toolbar</a></li>
+                    <li><a href='contextmenu.htm'>Context Menu</a></li>
+                    <li><a href='autorowheight.htm'>Auto Row Height</a>
+                    </li>
+                    <li><a href='handlekeyboard.htm'>Custom Keyboard Navigation</a>
+                    </li>
+                    <li><a href='autosize.htm'>Fluid Size</a>
+                    </li>
+                    <li><a href='tabs-and-grid.htm'>Grid in tabs</a>
+                    </li>
+                    <li><a href='keyboardsupport.htm'>Keyboard Navigation</a> </li>
+                    <li><a href='rtl.htm'>Right to Left Layout</a>  </li>
+                </ul>
+
+
+            </nav>
+            <!-- RIGHT COLUMN -->
+            <div class="doc_content">
+                <div style="position: relative; left: -20px; visibility: hidden; float: right;" class="themeSelector" id="themeSelector">
+                    <div style="float: left; margin-top: 4px;">
+                        Theme:
+                    </div>
+                    <div id="themeComboBox" style="margin-bottom: 3px; margin-top: 4px; margin-left: 10px; float: left;"></div>
+                </div>
+                <div id="tabs" class="demoTabs" style='width: 1000px; padding: 0px; margin: 0px; display: none;'>
+                    <ul style='margin-left: 30px;'>
+                        <li id='tab1'>Demo</li>
+                        <li id='tab2'>View Source</li>
+                        <li id='tab3'>API Reference</li>
+                    </ul>
+                    <div style="overflow: hidden;" id="tabs-1">
+                        <table border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
+                            <tr>
+                                <td>
+                                    <div id='divDescription'>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id='innerdemoContainer'>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="overflow: auto;" id="tabs-2">
+                    </div>
+                    <div style="overflow: auto;" id="tabs-3">
+                    </div>
+                </div>
+                <div id="introduction">
+                    <h1>Javascript/jQuery Grid</h1>
+                    <h2>Introduction</h2>
+                    <div>
+                        jqxGrid is an advanced jQuery Grid widget built entirely with JavaScript and open web standards. It provides
+                                                                    rich functionality, easy to use APIs and works across devices and browsers. The jquery grid component
+                                                                    delivers advanced data visualization features and built-in support for client and
+                                                                    server-side paging, editing, sorting and filtering. You can use the Grid with frameworks like Angular and ReactJS.  Try jqxGrid in our <a target="_blank" href="https://www.jqwidgets.com/jseditor/?key=jqwidgets-grid-template">jsEditor</a> - cloud solution for JavaScript, HTML and CSS editing, hosting and sharing your web development ideas!
+                        
+                        <br />
+                        <h2>Highlights</h2>
+                        <ul>
+                            <li>Works across devices and browsers</li>
+                            <li>Web Standards Compliant</li>
+                        	<li>Feature complete jQuery Datagrid for Enterprise</li>
+                            <li>Rich and easy to use JavaScript API</li>
+                            <li>Optimized for Performance</li>
+						    <li>Easy customization and built-in themes</li>
+                            <li>Localization</li>
+                        </ul>
+                        <h2>Features</h2>
+                        <ul>
+                            <li>Data Binding</li>
+                            <li>Outlook-Style Grouping</li>
+                            <li>Sorting and Multi-Column Sorting</li>
+                            <li>Filtering</li>
+                            <li>Paging</li>
+                            <li>Editing and Validation</li>
+                            <li>Nested Grids</li>
+                            <li>Row Details</li>
+                            <li>Localization</li>
+							<li>Adaptive Layout</li>
+                            <li>Column Types</li>
+                            <li>Columns Resizing</li>
+                            <li>Columns Reorder</li>
+                            <li>Columns Hierarchy</li>
+				            <li>Pinned Columns</li>
+                            <li>Foreign Columns</li>
+                            <li>Cells Formatting</li>
+                			<li>Custom Grid Filters</li>
+                            <li>Custom Cells Rendering</li>
+                            <li>Custom Cell Editors</li>
+                            <li>Rows and Cells Selection</li>
+                            <li>Aggregates</li>
+                            <li>Export to Excel, XML, HTML, CSV, TSV, PDF and JSON</li>
+                            <li>Printing</li>
+							<li>Responsive Size with Fluid dimensions</li>
+							<li>Accessibility</li>
+                            <li>Keyboard Navigation</li>
+                            <li>State Maitenance</li>
+                        </ul>
+                        <h2>Great Performance</h2>
+                        <p>
+                            jqxGrid offers an intuitive and easy-to-use user interface for common data interaction
+                                                                        features such as grouping, sorting, filtering, paging, and scrolling. The rows and
+                                                                        columns support full UI virtualization which minimizes the number of DOM elements
+                                                                        that need to be rendered and ensures unbeatable performance in scenarios with thousands
+                                                                        of rows and columns.
+                        </p>
+                        <h2>Data Binding</h2>
+                        <p>
+                            Our Grid includes a built-in data binding logic designed to support various data sources
+                                                                        and operate with large datasets. The grid supports several data binding modes optimized
+                                                                        for common scenarios:
+                        </p>
+                        <ul>
+                            <li>Local Data - load the javascript data grid from a local array of objects. </li>
+                            <li>Xml Data - load the javascript data grid from XML data source using AJAX. </li>
+                            <li>JSON Data - load the javascript data grid from JSON data source using AJAX. </li>
+                            <li>CSV Data - load the javascript data grid from CSV. </li>
+                            <li>Tab Data - load the javascript data grid from Tab-Delimited (TSV). </li>
+                            <li>Remote Data - load the javascript data grid using JSONP. JSONP (JSON with Padding) represents
+                                                                            JSON data wrapped in a function call. JSONP is an effective cross-domain communication
+                                                                            technique frequently used to bypass the same-origin policy limitations. </li>
+                            <li>Virtual Data - jqxGrid can be populated with data on demand when the user scrolls
+                                                                            or changes the current page. </li>
+                        </ul>
+                        <img src="../../../wp-content/uploads/2012/01/jquery-grid-control.png"
+                            alt="jQuery Grid" title="jquery-grid-control" class="imgBorder size-full" />
+                        <h2>Outlook-Style Data Grouping</h2>
+                        <p>
+                            Our Data Grid widget enables users to group data with simple drag and drop. Users can
+                                                                        also rearrange the grouping hierarchy by dragging and dropping the grouping headers
+                                                                        in the group panel.<br />
+                            <img src="../../../wp-content/uploads/2012/01/jquery-grid-grouping.png"
+                                alt="jquery grid grouping" title="jquery-grid-grouping" class="imgBorder" width="611" height="411" />
+								<br>
+							Aggregates can be displayed for each Group.
+                        </p>
+                        <h2>Data Sorting</h2>
+                        <p>
+                            jqxGrid provides built-in powerful sorting capabilities like one-click automatic
+                                                                        sorting, selection of sort option from a context menu and sorting through API calls.
+                                                                        The data grid automatically chooses the most appropriate comparison. Users can also
+                                                                        implement and use a custom sort comparer functions. The sorting works well with
+                                                                        all possible configurations including rows grouping and paging.
+                        </p>
+                        <h2>Data Paging</h2>
+                        <p>
+                            The integrated paging functionality lets the users display large data sets in multiple
+                                                                        pages for faster loading and easy navigation. Users also have an option to select
+                                                                        how many records to display in a page.<br />
+                            <img src="../../../wp-content/uploads/2012/01/jquery-grid-paging1.png"
+                                alt="jquery grid paging" class="imgBorder" title="jquery-grid-paging" width="679" height="312" />
+                        </p>
+                        <h2>Nested Data Grids</h2>
+                        <p>
+                            jqxGrid has a very flexible layout that enables easy nesting of any content, UI
+                                                                        elements and widgets including nested data grids.<br />
+                            <img src="../../../wp-content/uploads/2012/01/nested-jquery-grids.png"
+                                alt="nested jQuery Grids" class="imgBorder" title="nested-jquery-grids" width="685" height="380" />
+                        </p>
+                        <h2>Row Details</h2>
+                        <p>
+                            Row details are built-in feature of the jQuery data grid. You can change the height of
+                                                                        the row details area and use custom data templates. You can also use JavaScript
+                                                                        APIs to expand and collapse the grid row details area.<br />
+                            <img src="../../../wp-content/uploads/2012/01/jQuery-Grid-Row-Details.png"
+                                alt="" class="imgBorder" title="jQuery-Grid-Row-Details" width="688" height="271" />
+                        </p>
+                        <h2>Column Types</h2>
+                        <p>
+                            The infrastructure of the jQuery Grid is designed to support multiple column types. In the
+                                                                        current version the data grid provides built-in 'Text', 'Number', 'DropDownList',
+                                                                        'DateTime' and 'CheckBox' columns. Our jQuery grid also supports custom data rendering.
+                                                                        Developers can easily replace the default rendering logic and use custom columns
+                                                                        and cells rendering.<br />
+                            <img src="../../../wp-content/uploads/2012/01/jquery-grid-checkbox-column.png"
+                                class="imgBorder" alt="jquery grid checkbox column" title="jquery-grid-checkbox-column" width="683"
+                                height="416" />
+                        </p>
+                        <h2>Pinned Columns</h2>
+                        <p>
+                            jqxGrid supports Excel-like pinned (frozen) columns. This feature also allows you
+                                                                        to pin columns to the left the gridview's canvas. The pinned columns are very useful
+                                                                        when working with large tables and it makes it easy to scroll and compare data from
+                                                                        different parts of the table.<br />
+                            <img src="../../../wp-content/uploads/2012/01/jquery-grid-fixed-column.png"
+                                class="imgBorder" alt="" title="jquery-grid-fixed-column" width="684" height="333" />
+                        </p>
+                        <h2>Cells Formatting</h2>
+                        <p>
+                            Our jQuery grid offers a cell formatting feature where you can easily specify a
+                                                                        formatting string for grid column. You can format dates, numeric values like decimal
+                                                                        numbers, integer and floating-point numbers, currency and percentage values.<br />
+                            <img src="../../../wp-content/uploads/2012/01/jquery-grid-cells-formatting.png"
+                                class="imgBorder" alt="jquery grid cells formatting" title="jquery-grid-cells-formatting" width="683"
+                                height="318" />
+                        </p>
+                        <h2>Custom Cells Rendering</h2>
+                        <p>
+                            The javascript data grid programming model is very flexible and extensible. Developers can
+                                                                        create custom cell rendering functions and apply them to columns or individual grid
+                                                                        cells. This feature technically enables rendering of any HTML content in the grid
+                                                                        cells.
+                        </p>
+                        <h2>Localization</h2>
+                        <p>
+                            Our jQuery grid supports localization for multi-language web sites and applications.
+                                                                        All text elements used in control buttons, menu items and elements can be localized.<br />
+                            <img src="../../../wp-content/uploads/2012/01/jquery-grid-localization.png"
+                                class="imgBorder" alt="jquery grid localization" title="jquery-grid-localization" width="687" height="321" />
+                        </p>
+                        <h2>Keyboard Navigation</h2>
+                        If the user starts typing text, the cell's content is replaced with the text entered
+                                                                    from the user.
+                                                                    <ul>
+                                                                        <li>Left Arrow key is pressed - Selects the left cell, when the Grid is not in edit
+                                                                            mode. Otherwise, the key stroke is handled by the editor.</li>
+                                                                        <li>Right Arrow key is pressed - Selects the right cell, when the Grid is not in edit
+                                                                            mode. Otherwise, the key stroke is handled by the editor.</li>
+                                                                        <li>Up Arrow key is pressed - Selects the cell above, when the Grid is not in edit mode.
+                                                                            Otherwise, the key stroke is handled by the editor.</li>
+                                                                        <li>Down Arrow key is pressed - Selects the cell below, when the Grid is not in edit
+                                                                            mode. Otherwise, the key stroke is handled by the editor.</li>
+                                                                        <li>Page Up/Down is pressed - Navigate Up or Down with one page, when the Grid is not
+                                                                            in edit mode. Otherwise, the key stroke is handled by the editor.</li>
+                                                                        <li>Home/End is pressed - Navigate to the first or last row, when the Grid is not in
+                                                                            edit mode. Otherwise, the key stroke is handled by the editor.</li>
+                                                                        <li>Enter key is pressed - Shows the selected cell's editor. If the cell is in edit
+                                                                            mode, hides the cell's editor and saves the new value. The editor's value is equal
+                                                                            to the cell's value.</li>
+                                                                        <li>Esc key is pressed - Hides the cell's editor and cancels the changes.</li>
+                                                                        <li>Tab key is pressed - Selects the right cell. If the Grid is in edit mode, saves
+                                                                            the edit cell's value, closes its editor, selects the right cell and opens its editor.</li>
+                                                                        <li>Shift+Tab keys are pressed - Selects the left cell. If the Grid is in edit mode,
+                                                                            saves the edit cell's value, closes its editor, selects the left cell and opens
+                                                                            its editor.</li>
+                                                                        <li>F2 key is pressed - shows the selected cell's editor when the Grid is in edit mode.</li>
+                                                                        <li>Space key is pressed - Toggles the checkbox editor's check state when the selected
+                                                                            cell's column is a checkbox column and the Grid is editable.</li>
+                                                                        <li>Ctrl key is pressed - in 'multiplecellsextended and multiplerowsextended' selection
+                                                                            mode, extends the selection when the user clicks on a cell or row. </li>
+                                                                        <li>Ctrl+ARROW KEY - moves to an edge. </li>
+                                                                        <li>SHIFT+ARROW KEY extends the selection.</li>
+                                                                        <li>Page Down - Moves one screen down</li>
+                                                                        <li>Page Up - Moves one screen up</li>
+                                                                        <li>Home - Moves to the beginning</li>
+                                                                        <li>End - Moves to the end</li>
+                                                                    </ul>
+                        <h2>Intuitive Cells and Row Selection</h2>
+                        <p>
+                            The Data Grid comes with multiple cells and row selection options. You can choose from single cell to multi-cell Excel-like selection and from single row to multi-row selection.
+                        </p>
+
+
+                        <h2>Data Summaries</h2>
+                        <p>
+                            The jQWidgets JavaScript Data Grid allows you to use built-in aggregates and custom aggregate functions.The UI component supports Summary(Aggregate) row and also can display summaries when Grouping is enabled. Built-in aggregate functions include Min, Max, Sum, Count and Average.
+                        </p>
+
+                        <h2>Data Grid Column and Layout Run-Time Customization</h2>
+                        <p>
+                            The Data Grid includes fixed and responsive column widths. In addition, columns can be Pinned, Resized, Reordered, CSS Styled, Hidden, Sorted, Filtered, Grouped and more.
+                        </p>
+                        <h2>Styling and Customization</h2>
+                        <p>
+                            Our jQuery Grid ships with multiple professionally designed themes. Each theme is stored
+                                                                        in a separate CSS file and is easy to change. The themes can be switched using a
+                                                                        single property of the grid widget.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pageBottom">
+    </div>
+</body>
+</html>

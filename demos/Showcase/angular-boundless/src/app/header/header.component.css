@@ -1,0 +1,172 @@
+@media (min-width: 768px) and (max-width: 1035px) {
+    .header-profile-text {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-firstElement {
+        margin-left: 0 !important;
+    }
+    /* When navbar is collapsed to show dropdowns above  */
+    .navbar-fixed-top {
+        z-index: 999;
+    }
+    .header-profile-button {
+        width: 100%;
+        float: left;
+    }
+    .header-profile-button > span {
+        float: left;
+    }
+}
+
+.header-navbar {
+    background-color: #52527a;
+    border-color: #52527a;
+    border-radius: 0 !important;
+}
+
+.material-icons.header-material-icon {
+    font-size: 28px;
+    line-height: inherit;
+    float: left;
+    margin-right: 0.5em;
+    color: #f2f2f2;
+}
+
+.navbar-default .navbar-toggle {
+    border: none;
+    background-color: transparent !important;
+}
+
+.header-toggle {
+    border: none;
+    padding: 0;
+    padding-left: 7px;
+    padding-right: 13px;
+    margin: 0;
+    margin-right: 1.1em;
+    margin-top: 4px;
+}
+
+.navbar-toggle:hover {
+    background-color: transparent !important;
+}
+
+.navbar-collapse {
+    border-top: none;
+}
+
+.header-toggle-icon {
+    font-size: 32px;
+    line-height: inherit;
+}
+
+.header-navbar {
+    margin-bottom: 0;
+}
+
+a.navbar-brand > span {
+    font-weight: 900;
+}
+
+mat-icon.mat-icon-header {
+    color: #f2f2f2;
+}
+
+.navbar-firstElement {
+    margin-left: 2em;
+}
+
+.navbar-elements > button {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    min-width: 45px;
+}
+
+.header-text {
+    display: inline-block;
+    width: 95px;
+}
+
+.header-profile-text {
+    font-weight: bold;
+    padding-left: 0.3em;
+    color: #f2f2f2;
+}
+
+.header-text-long {
+    display: inline-block;
+    width: 150px;
+}
+
+.header-profile-button {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.up {
+    color: forestgreen;
+}
+
+.down {
+    color: red;
+}
+
+.header-person-icon {
+    font-size: 13px;
+    line-height: 1.9;
+    margin-left: 2.3em;
+    font-weight: 900;
+}
+
+.header-person-icon-on {
+    color: forestgreen !important;
+}
+
+.header-person-icon-off {
+    color: red !important;
+}
+
+.header-person-icon-busy {
+    color: darkorange !important;
+}
+
+.status-legend {
+    font-size: 13px;
+    line-height: 1.9;
+    font-weight: 900;
+    margin: 0 !important;
+}
+
+.flag {
+    background-repeat: no-repeat;
+    width: 24px; 
+    height: 24px;  
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    top: 6px;
+    margin-right: 0.8em;
+}
+
+.flag-uk {
+    background-image: url("../../assets/images/icons/uk.png");
+}
+.flag-spain {
+    background-image: url("../../assets/images/icons/spain.png");
+}
+.flag-italy {
+    background-image: url("../../assets/images/icons/italy.png");
+}
+.flag-germany {
+    background-image: url("../../assets/images/icons/germany.png");
+}
+.flag-france {
+    background-image: url("../../assets/images/icons/france.png");
+}
+.flag-bulgaria {
+    background-image: url("../../assets/images/icons/bulgaria.png");
+}

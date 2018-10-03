@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Description">RangeSelector - Decimal Scale</title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxrangeselector.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // create jqxRangeSelector.
+            $("#rangeSelector").jqxRangeSelector({
+                width: getWidth('rangeSelector'),
+                height: 90,
+                min: 0,
+                max: 10,
+                minorTicksInterval: 0.1,
+                majorTicksInterval: 2.5,
+                labelsFormatFunction: function(value)
+                {
+                    return $.jqx.dataFormat.formatNumber(value, 'f1') + " mm";
+                },
+                markersFormatFunction: function (value) {
+                    return $.jqx.dataFormat.formatNumber(value, 'f1') + " mm";
+                },
+                range: { from: 2, to: 5 }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="rangeSelector">
+    </div>
+</body>
+</html>

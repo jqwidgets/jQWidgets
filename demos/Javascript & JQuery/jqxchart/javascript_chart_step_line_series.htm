@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>JavaScript Chart Step Line Series Example</title>
+    <meta name="description" content="This is an example of JavaScript Chart Step Line Series." />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare the data
+            var source =
+            {
+                datatype: "csv",
+                datafields: [
+                    { name: 'Date' },
+                    { name: 'Open' },
+                    { name: 'High' },
+                    { name: 'Low' },
+                    { name: 'Close' },
+                    { name: 'Volume' },
+                    { name: 'AdjClose' }
+                    ],
+                url: '../../sampledata/TSLA_stockprice.csv'
+            };
+
+            var dataAdapter = new $.jqx.dataAdapter(source, { async: false, autoBind: true, loadError: function (xhr, status, error) { alert('Error loading "' + source.url + '" : ' + error); } });
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+            // prepare jqxChart settings
+            var settings = {
+                title: "Tesla Motors Stock Price",
+                description: "Closing price (June 2013 - March 2017)",
+                enableAnimations: true,
+                enableCrosshairs: true,
+                crosshairsDashStyle: '1,1',
+                crosshairsColor: '#0000FF',
+                showLegend: true,
+                padding: { left: 15, top: 5, right: 30, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                xAxis:
+                    {
+                        type: 'date',
+                        baseUnit: 'month',
+                        valuesOnTicks: true,
+                        dataField: 'Date',
+                        labels:
+                        {
+                            formatFunction: function (value) {
+                                return months[value.getUTCMonth()] + '-' + value.getFullYear();
+                            },
+                            angle: 0,
+                            horizontalAlignment: 'right'
+                        },
+                        toolTipFormatFunction: function (value) {
+                            return value.getDate() + '-' + months[value.getMonth()] + '-' + value.getFullYear();
+                        },
+                        tickMarks: { visilbe: true }
+                    },
+                colorScheme: 'scheme01',
+                seriesGroups:
+                    [
+                        {
+                            type: 'stepline',
+                            valueAxis:
+                            {
+                                flip: false,
+                                title: { text: 'Price per share [USD]<br>' },
+                                labels: { horizontalAlignment: 'right' }
+                            },
+                            series: [
+                                { dataField: 'Close', displayText: 'Close Price', lineWidth: 1, symbolSize: 6 }
+                            ]
+                        }
+
+                    ]
+            };
+
+            // setup the chart
+            $('#chartContainer').jqxChart(settings);
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id='chartContainer' style="width:850px; height:500px">
+    </div>
+    <div class="example-description">
+       <br />
+       <h2>Description</h2>
+       <br />
+       This is an example of JavaScript chart step line series. The chart is loaded from a csv file. You can see how to change the crosshairs dash style and color. The seriesGroups is set to stepline. You can also see how to format the labels setting.  
+    </div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+﻿<div class="bar"></div>
+
+<div class="header-wrap">
+	<div class="container">
+		<div class="row" style="padding-top:1.2em;">
+			<div class="col-md-6"></div>
+			<div class="col-md-6">
+				<ul class="list-inline pull-right topBar" #headerwrapper>
+					<li style="margin-left:1.4em">
+						<p>
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true" style="margin-right:0.3em"></span>Help</p>
+					</li>
+					<li style="margin-left:1.4em">
+						<p>
+							<span class="glyphicon glyphicon-wrench" aria-hidden="true" style="margin-right:0.3em"></span>Settings</p>
+					</li>
+					<li style="margin-left:1.4em">
+						<p>
+							<span class="glyphicon glyphicon-user" aria-hidden="true" style="margin-right:0.3em"></span>Admin</p>
+					</li>
+					<li style="margin-left:1.4em">
+						<p>
+							<span class="glyphicon glyphicon-off" aria-hidden="true" style="margin-right:0.3em"></span>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBar" aria-expanded="false"
+			 aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar top-bar"></span>
+				<span class="icon-bar middle-bar"></span>
+				<span class="icon-bar bottom-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+
+			<div class="nav navbar-nav">
+				<a href="#">Page 1-1</a>
+				<a href="#">Page 1-2</a>
+				<a href="#">Page 1-3</a>
+				<a href="#">Page 1-4</a>
+			</div>
+		</div>
+	</div>
+</nav> -->
+
+<div class="nav" id="navDiv">
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBar" aria-expanded="false"
+				 aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar top-bar"></span>
+					<span class="icon-bar middle-bar"></span>
+					<span class="icon-bar bottom-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="navBar">
+				<nav class="nav navbar-nav">
+					<!-- <li>
+						<a routerLink="/dashboard" routerLinkActive="active">
+							<small>
+								<span class="glyphicon glyphicon-dashboard"></span>
+							</small>
+							Dashboard
+						</a>
+					</li>
+					<li>
+						<a routerLink="/orders" routerLinkActive="active">
+							<small>
+								<span class="glyphicon glyphicon-book"></span>
+							</small>
+							Orders
+						</a>
+					</li>
+					<li>
+						<a routerLink="/products" routerLinkActive="active">
+							<small>
+								<span class="glyphicon glyphicon-folder-open"></span>
+							</small>
+							Products
+						</a>
+					</li>
+					<li>
+						<a routerLink="/customers" routerLinkActive="active">
+							<small>
+								<span class="glyphicon glyphicon-user"></span>
+							</small>
+							Customers
+						</a>
+					</li>
+					<li>
+						<a routerLink="/staff" routerLinkActive="active">
+							<small>
+								<span class="glyphicon glyphicon-tower"></span>
+							</small>
+							Staff
+						</a>
+					</li>
+					<li>
+						<a routerLink="/tasks" routerLinkActive="active">
+							<small>
+								<span class="glyphicon glyphicon-tasks"></span>
+							</small>
+							Tasks
+						</a>
+					</li>
+					<li>
+						<a routerLink="/reports" routerLinkActive="active">
+							<small>
+								<span class="glyphicon glyphicon-share"></span>
+							</small>
+							Reports
+						</a>
+					</li> -->
+
+					<a routerLink="/dashboard" routerLinkActive="active">
+						<small><span class="glyphicon glyphicon-dashboard" style="margin-right:0.3em;"></span></small>
+						Dashboard
+					</a>
+					<a routerLink="/orders" routerLinkActive="active">
+						<small><span class="glyphicon glyphicon-book" style="margin-right:0.3em;"></span></small>
+						Orders
+					</a>
+					<a routerLink="/products" routerLinkActive="active">
+						<small><span class="glyphicon glyphicon-folder-open" style="margin-right:0.3em;"></span></small>
+						Products
+					</a>
+					<a routerLink="/customers" routerLinkActive="active">
+						<small><span class="glyphicon glyphicon-user" style="margin-right:0.3em;"></span></small>
+						Customers
+					</a>
+					<a routerLink="/staff" routerLinkActive="active">
+						<small><span class="glyphicon glyphicon-tower" style="margin-right:0.3em;"></span></small>
+						Staff
+					</a>
+					<a routerLink="/tasks" routerLinkActive="active">
+						<small><span class="glyphicon glyphicon-tasks" style="margin-right:0.3em;"></span></small>
+						Tasks
+					</a>
+					<a routerLink="/reports" routerLinkActive="active">
+						<small><span class="glyphicon glyphicon-share" style="margin-right:0.3em;"></span></small>
+						Reports
+					</a>
+				</nav>
+			</div>
+		</nav>
+	</div>
+</div>
+
+<router-outlet class="iframeContainer"></router-outlet>

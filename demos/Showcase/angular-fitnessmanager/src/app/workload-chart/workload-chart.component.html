@@ -1,0 +1,24 @@
+<div class="row" id="workloadResponsiveContainer" style="width:100%; height:100%;">
+    <div style="height: 100%; width: 30%">
+        <jqxExpander [theme]="'light'" [showArrow]="false" [toggleMode]="'none'" [width]="'100%'" [height]="expanderHeight">
+            <div>
+                Instructors with their clients
+            </div>
+            <div style="overflow: hidden;">
+                <jqxTree #tree [theme]="'light'" [allowDrag]="false" [width]="'100%'" ></jqxTree>
+            </div>
+        </jqxExpander>
+    </div>
+    <div style="height: 100%; width: 70%; text-align: center; font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif">
+        <h1>Weekly fitness instructors workload</h1>
+        <h4>Chart presents the daily number of client per current week about each instructor</h4>
+        <jqxChart style="width:100%; height:500px; padding-bottom:10px;" [title]="''" [description]="''" [enableAnimations]="true" [showBorderLine]="false" [showLegend]="true" [padding]="chartPadding"
+                  [source]="chartDataAdapter" [colorScheme]="'scheme05'" [xAxis]="chartXAxis" [valueAxis]="chartValueAxis" [seriesGroups]="chartSeriesGroups">
+        </jqxChart>
+        <h4>Weekly comparisson</h4>
+        <h5>(In red is the instructor with more  clients, in green is with less clients)</h5>
+        <jqxTagCloud [width]="'100%'" [source]="tagCloudDataAdapter" [displayMember]="'fitnessInstructorName'" [valueMember]="'clientsPerWeek'"
+                     [minFontSize]="12" [maxFontSize]="56" [minColor]="'#00AA99'" [maxColor]="'#FF0000'">
+        </jqxTagCloud>
+    </div>
+</div>

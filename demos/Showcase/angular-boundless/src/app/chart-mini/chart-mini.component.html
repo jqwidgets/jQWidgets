@@ -1,0 +1,110 @@
+﻿
+
+    <div class="chart-mini-container chart-mini-container-first">
+        <div class="chart-mini-menu">
+            <div style="cursor: pointer;" [matMenuTriggerFor]="menu0">
+                <mat-icon class='chart-mini-menu-icon-main'>settings</mat-icon>
+                <mat-icon class='chart-mini-menu-icon-main'>keyboard_arrow_down</mat-icon>    
+            </div>          
+            <mat-menu #menu0="matMenu" [overlapTrigger]="false" [xPosition]="'before'">
+                <button class="chart-mini-menu-item" mat-menu-item>
+                    <mat-icon class="chart-mini-menu-icon">cached</mat-icon>
+                    <p class="chart-mini-menu-text">Update data</p>
+                </button>
+                <button class="chart-mini-menu-item" mat-menu-item>
+                    <mat-icon class="chart-mini-menu-icon">format_list_bulleted</mat-icon>
+                    <p class="chart-mini-menu-text">Detailed log</p>
+                </button>
+                <button class="chart-mini-menu-item" mat-menu-item>
+                    <mat-icon class="chart-mini-menu-icon">pie_chart</mat-icon>
+                    <p class="chart-mini-menu-text">Statistics</p>
+                </button>
+                <button class="chart-mini-menu-item" mat-menu-item>
+                    <mat-icon class="chart-mini-menu-icon">clear</mat-icon>
+                    <p class="chart-mini-menu-text">Clear list</p>
+                </button>
+            </mat-menu>
+        </div>
+
+        <div>
+            <jqxKnob
+                [width]="100" [height]="100" [value]="68" [min]="0" [max]="100"
+                [progressBar]="knobProgressBarOne" [startAngle]="270" [endAngle]="630">
+            </jqxKnob>
+            <mat-icon class="chart-mini-knob-icon">watch</mat-icon>           
+        </div>
+
+        <div style="clear: both"></div>
+
+        <div class="chart-mini-text-container">
+            <p class="chart-mini-text-big">68%</p>
+            <p class="chart-mini-text-middle">Hours available</p>
+            <p class="chart-mini-text-small">63% average</p>
+        </div>
+
+        <div style="clear: both"></div>
+
+        <div class="chart-mini-main-chart-container">
+            <jqxChart [width]="'100%'" [height]="'100%'"
+                [title]="''" [description]="''" [source]="mainChartDataAdapter" [xAxis]="mainChartxAxis"
+                [padding]="padding" [showLegend]="false" [enableAnimations]="false"
+                [colorScheme]="'scheme02'" [seriesGroups]="mainChartSeriesGroups" [backgroundColor]="'transparent'">
+            </jqxChart>
+        </div>
+
+    </div>
+
+   <div class="chart-mini-container">
+    <div class="chart-mini-menu">
+        <div style="cursor: pointer;" [matMenuTriggerFor]="menu0">
+            <mat-icon class='chart-mini-menu-icon-main'>settings</mat-icon>
+            <mat-icon class='chart-mini-menu-icon-main'>keyboard_arrow_down</mat-icon>
+        </div>
+        <mat-menu #menu0="matMenu" [overlapTrigger]="false" [xPosition]="'before'">
+            <button class="chart-mini-menu-item" mat-menu-item>
+                <mat-icon class="chart-mini-menu-icon">cached</mat-icon>
+                <p class="chart-mini-menu-text">Update data</p>
+            </button>
+            <button class="chart-mini-menu-item" mat-menu-item>
+                <mat-icon class="chart-mini-menu-icon">format_list_bulleted</mat-icon>
+                <p class="chart-mini-menu-text">Detailed log</p>
+            </button>
+            <button class="chart-mini-menu-item" mat-menu-item>
+                <mat-icon class="chart-mini-menu-icon">pie_chart</mat-icon>
+                <p class="chart-mini-menu-text">Statistics</p>
+            </button>
+            <button class="chart-mini-menu-item" mat-menu-item>
+                <mat-icon class="chart-mini-menu-icon">clear</mat-icon>
+                <p class="chart-mini-menu-text">Clear list</p>
+            </button>
+        </mat-menu>
+    </div>
+
+    <div>
+        <jqxKnob 
+            [width]="100" [height]="100" [value]="82" [min]="0" [max]="100"
+            [progressBar]="knobProgressBarTwo" [startAngle]="270" [endAngle]="630">
+        </jqxKnob>
+        <mat-icon class="chart-mini-knob-icon chart-mini-knob-icon-second">attach_money</mat-icon>
+    </div>
+
+    <div style="clear: both"></div>
+
+    <div class="chart-mini-text-container">
+        <p class="chart-mini-text-big">82%</p>
+        <p class="chart-mini-text-middle">Profits goal</p>
+        <p class="chart-mini-text-small">87% average</p>
+    </div>
+
+    <div style="clear: both"></div>
+
+    <div class="chart-mini-main-chart-container">
+        <jqxChart [width]="'100%'" [height]="'100%'"
+            [title]="''" [description]="''" [source]="mainChartDataAdapter" [xAxis]="mainChartxAxis"
+            [padding]="padding" [showLegend]="false" [enableAnimations]="false"
+            [colorScheme]="'scheme04'" [seriesGroups]="mainChartSeriesGroups" [backgroundColor]="'transparent'">
+        </jqxChart>
+    </div>
+
+</div>
+

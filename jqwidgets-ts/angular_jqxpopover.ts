@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -201,7 +201,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   initContent(arg?: any) : any {
+   initContent(arg?: () => void) : any {
       if (arg !== undefined) {
           this.host.jqxPopover('initContent', arg);
       } else {

@@ -1,0 +1,37 @@
+﻿<jqxTabs [theme]="'material'" [width]="getWidth()" [height]="560">
+    <ul>
+        <li style="margin-left: 30px">
+            <div style="height: 20px; margin-top: 5px">
+                <div style="margin-left: 4px; vertical-align: middle; text-align: center; float: left">
+                    Candlestick Chart
+                </div>
+            </div>
+        </li>
+        <li>
+            <div style="height: 20px; margin-top: 5px">
+                <div style="margin-left: 4px; vertical-align: middle; text-align: center; float: left">
+                    Line Chart
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div style="overflow: hidden">
+        <jqxChart [width]="'100%'" [height]="'100%'"
+                  [title]="'S&P 500 Candlestick Chart'"
+                  [description]="'January 2014 - November 2014'"
+                  [enableAnimations]="true" [animationDuration]="1500"
+                  [enableCrosshairs]="true" [padding]="padding"
+                  [source]="dataAdapter" [xAxis]="xAxis"
+                  [seriesGroups]="seriesGroups" [colorScheme]="'scheme17'">
+        </jqxChart>
+    </div>
+    <div style="overflow: hidden">
+        <jqxChart [width]="'100%'" [height]="'100%'"
+                  [title]="'U.S. Stock Market Index Performance (2014)'"
+                  [description]="'NASDAQ Composite compared to S&P 500'"
+                  [showLegend]="true" [enableAnimations]="true" [padding]="padding"
+                  [animationDuration]="1500" [source]="dataAdapter2" [xAxis]="xAxis2"
+                  [seriesGroups]="seriesGroups2" [colorScheme]="'scheme04'">
+        </jqxChart>
+    </div>
+</jqxTabs>

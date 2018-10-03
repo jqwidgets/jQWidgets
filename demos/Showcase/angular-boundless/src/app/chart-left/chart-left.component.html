@@ -1,0 +1,77 @@
+﻿<div class="chart-left-container">
+
+    <div>
+        <span style="font-size: 140%;">Traffic sources</span>
+        <div style="float: right;">
+            <mat-slide-toggle (change)="toggleOnChange()"
+                [color]="'accent'" [checked]="true" [labelPosition]="'before'">
+                Live update:
+            </mat-slide-toggle>
+        </div>
+    </div>
+
+    <div class="chart-icon-container">
+
+        <div class="chart-icon-container-middle" style="margin-right: 3em;">
+            <div class="chart-left-icon-container-inner">
+                <mat-icon class="chart-icon chart-icon-first">add_circle_outline</mat-icon>
+                <div class="chart-left-text-container">
+                    <span class="chart-icon-text-big">New visitors</span><br />
+                    <span class="chart-icon-text-small">2,453 avg</span>
+                </div>  
+                <div style="clear: both;"></div>
+            </div>
+            <jqxChart #chart1 [width]="'100%'" [height]="50"
+                [title]="''" [description]="''" [showLegend]="false" [showToolTips]="false"
+                [enableAnimations]="false" [showBorderLine]="false" [seriesGroups]="seriesGroups"
+                [padding]="padding" [source]="data" [xAxis]="xAxis"
+                [colorScheme]="'scheme02'" [backgroundColor]="'transparent'">      
+            </jqxChart>      
+        </div>
+
+        <div class="chart-icon-container-middle" style="margin-right: 3em;">
+            <div class="chart-left-icon-container-inner">
+                <mat-icon class="chart-icon chart-icon-second">track_changes</mat-icon>
+                <div class="chart-left-text-container">
+                    <span class="chart-icon-text-big">New sessions</span><br />
+                    <span class="chart-icon-text-small">07:10 avg</span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <jqxChart #chart2 [width]="'100%'" [height]="50"
+                [title]="''" [description]="''" [showLegend]="false" [showToolTips]="false"
+                [enableAnimations]="false" [showBorderLine]="false" [seriesGroups]="seriesGroups"
+                [padding]="padding" [source]="data" [xAxis]="xAxis"
+                [colorScheme]="'scheme27'" [backgroundColor]="'transparent'">
+            </jqxChart>
+        </div>
+
+        <div class="chart-icon-container-middle">
+            <div class="chart-left-icon-container-inner">
+                <mat-icon class="chart-icon chart-icon-third">mood</mat-icon>
+                <div class="chart-left-text-container">
+                    <span class="chart-icon-text-big">Total online</span><br />
+                    <span class="chart-icon-text-small">3,816 avg</span>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <jqxChart #chart3 [width]="'100%'" [height]="50"
+                [title]="''" [description]="''" [showLegend]="false" [showToolTips]="false"
+                [enableAnimations]="false" [showBorderLine]="false" [seriesGroups]="seriesGroups"
+                [padding]="padding" [source]="data" [xAxis]="xAxis"
+                [colorScheme]="'scheme05'" [backgroundColor]="'transparent'">
+            </jqxChart>
+        </div>
+
+    </div>
+
+
+    <div>
+        <jqxChart [width]="'100%'" [height]="300"
+            [title]="''" [description]="''" [source]="mainChartDataAdapter" [xAxis]="mainChartxAxis" 
+            [padding]="padding" [showLegend]="false" [enableAnimations]="false"              
+            [colorScheme]="'scheme26'" [seriesGroups]="mainChartSeriesGroups" [backgroundColor]="'transparent'">
+        </jqxChart>
+    </div>
+
+</div>

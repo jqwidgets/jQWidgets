@@ -1,0 +1,67 @@
+﻿<div style='font-family: Verdana Arial; font-size: 12px; width: 400px;'>
+  <div style='float: left; width: 400px;'>
+    <h3 style='margin-left: 15px;'>Categories</h3>
+    <jqxCheckBox [theme]="'material'" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25'>
+      Entertainment
+    </jqxCheckBox>
+    <jqxCheckBox [theme]="'material'" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25' [checked]='true'>
+      <span>Computers</span>
+    </jqxCheckBox>
+    <jqxCheckBox [theme]="'material'" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25'>
+      <span>Sports</span>
+    </jqxCheckBox>
+  </div>
+  <div style='float: left; width: 400px; margin-top: 10px;'>
+    <jqxCheckBox [theme]="'material'" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25'>
+      Health
+    </jqxCheckBox>
+    <jqxCheckBox [theme]="'material'" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25'>
+      <span>Finance</span>
+    </jqxCheckBox>
+    <jqxCheckBox [theme]="'material'" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25'>
+      <span>Travel</span>
+    </jqxCheckBox>
+  </div>
+  <div style='float: left; width: 400px; margin-top: 10px;'>
+    <jqxCheckBox [theme]="'material'" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25'>
+      Music
+    </jqxCheckBox>
+    <jqxCheckBox [theme]="'material'" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25'>
+      <span>Technology</span>
+    </jqxCheckBox>
+    <jqxCheckBox [theme]="'material'" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25'>
+      <span>Publishing</span>
+    </jqxCheckBox>
+  </div>
+  <br />
+  <div style='float: left; width: 400px; margin-top: 10px;'>
+    <h3 style='margin-left: 15px;'>States</h3>
+    <jqxCheckBox [theme]="'material'" (onChange)="checkBox10OnChange($event)" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25' [checked]='true'>
+      <span #span10>Checked</span>
+    </jqxCheckBox>
+    <jqxCheckBox [theme]="'material'" (onChange)="checkBox11OnChange($event)" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25' [checked]='false'>
+      <span #span11>Unchecked</span>
+    </jqxCheckBox>
+  </div>
+  <div style='float: left; width: 400px; margin-top: 10px;'>
+    <jqxCheckBox [theme]="'material'" (onChange)="checkBox12OnChange($event)" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25' [hasThreeStates]='true' [checked]='null'>
+      <span #span12>Indeterminate</span>
+    </jqxCheckBox>
+    <jqxCheckBox [theme]="'material'" style='margin-left: 10px; float: left;'
+                 [width]='120' [height]='25' [disabled]='true'>
+      <span>Disabled</span>
+    </jqxCheckBox>
+  </div>
+</div>

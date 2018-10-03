@@ -6009,7 +6009,6 @@ ol li .jqx-listmenu-item-label:before
     box-sizing: border-box;
     opacity: 0.6;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
-    *filter: alpha(opacity=60);
     display: none;
 }
 .jqx-layout-resize-feedback-horizontal
@@ -6065,7 +6064,6 @@ ol li .jqx-listmenu-item-label:before
     z-index: 99999;
     opacity: 0.9;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-    *filter: alpha(opacity=90);
 }
 .jqx-docking-layout-overlay-square-edge {
     display: none;
@@ -6168,7 +6166,6 @@ ol li .jqx-listmenu-item-label:before
     background-color: #6495ED;
     opacity: 0.5;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-    *filter: alpha(opacity=50);
     z-index: 10000;
     top: 0px;
     left: 0px;
@@ -6211,7 +6208,6 @@ ol li .jqx-listmenu-item-label:before
     height: 0px;
     display: block;
     background: transparent !important;
-    *filter: inherit;
 }
 .jqx-docking-layout-overlay-square-edge-arrow-left, .jqx-docking-layout-overlay-square-edge-arrow-right, .jqx-docking-layout-overlay-square-edge-arrow-top
 {

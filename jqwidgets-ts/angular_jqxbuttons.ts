@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -17,7 +17,6 @@ declare let JQXLite: any;
 
 export class jqxButtonComponent implements OnChanges
 {
-   @Input('delay') attrDelay: number;
    @Input('disabled') attrDisabled: boolean;
    @Input('imgSrc') attrImgSrc: string;
    @Input('imgWidth') attrImgWidth: number | string;
@@ -36,7 +35,7 @@ export class jqxButtonComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['delay','disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
+   properties: string[] = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxButton;
@@ -152,14 +151,6 @@ export class jqxButtonComponent implements OnChanges
    }
 
    // jqxButtonComponent properties
-   delay(arg?: number) : any {
-      if (arg !== undefined) {
-          this.host.jqxButton('delay', arg);
-      } else {
-          return this.host.jqxButton('delay');
-      }
-   }
-
    disabled(arg?: boolean) : any {
       if (arg !== undefined) {
           this.host.jqxButton('disabled', arg);

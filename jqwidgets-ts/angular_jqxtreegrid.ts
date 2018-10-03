@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -64,7 +64,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
    @Input('rowDetails') attrRowDetails: boolean;
    @Input('rowDetailsRenderer') attrRowDetailsRenderer: (key: number, dataRow: number) => any;
    @Input('renderToolbar') attrRenderToolbar: (toolBar?: any) => void;
-   @Input('renderStatusbar') attrRenderStatusbar: (statusBar?: any) => void;
+   @Input('renderStatusBar') attrRenderStatusBar: (statusBar?: any) => void;
    @Input('rendering') attrRendering: () => void;
    @Input('rendered') attrRendered: () => void;
    @Input('rtl') attrRtl: boolean;
@@ -87,7 +87,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','checkboxes','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','height','hierarchicalCheckboxes','icons','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pageSizeMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','rowDetailsRenderer','renderToolbar','renderStatusbar','rendering','rendered','rtl','source','sortable','showAggregates','showSubAggregates','showToolbar','showStatusbar','statusBarHeight','scrollBarSize','selectionMode','showHeader','theme','toolbarHeight','width','virtualModeCreateRecords','virtualModeRecordCreating'];
+   properties: string[] = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','checkboxes','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','height','hierarchicalCheckboxes','icons','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pageSizeMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','rowDetailsRenderer','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showSubAggregates','showToolbar','showStatusbar','statusBarHeight','scrollBarSize','selectionMode','showHeader','theme','toolbarHeight','width','virtualModeCreateRecords','virtualModeRecordCreating'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTreeGrid;
@@ -727,16 +727,16 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   renderStatusbar(arg?: (statusBar?: any) => void) : any {
+   renderStatusBar(arg?: (statusBar?: any) => void) : any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
       }
 
       if (arg !== undefined) {
-          this.host.jqxTreeGrid('renderStatusbar', arg);
+          this.host.jqxTreeGrid('renderStatusBar', arg);
       } else {
-          return this.host.jqxTreeGrid('renderStatusbar');
+          return this.host.jqxTreeGrid('renderStatusBar');
       }
    }
 

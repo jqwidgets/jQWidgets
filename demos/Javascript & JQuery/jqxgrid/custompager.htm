@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>This example shows how to customzie the rendering of the jqxGrid's Pager.</title>
+	<meta name="description" content="jQuery Grid Pager" /> 	
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript" src="generatedata.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var source =
+           {
+               localdata: generatedata(55),
+               datafields:
+               [
+                   { name: 'firstname', type: 'string' },
+                   { name: 'lastname', type: 'string' },
+                   { name: 'productname', type: 'string' },
+                   { name: 'quantity', type: 'number' },
+                   { name: 'price', type: 'number' },
+                   { name: 'total', type: 'number' }
+               ],
+               datatype: "array"
+           };
+
+            var dataAdapter = new $.jqx.dataAdapter(source);
+            var self = this;
+            var pagerrenderer = function () {
+                var element = $("<div style='margin-left: 10px; margin-top: 5px; width: 100%; height: 100%;'></div>");
+                var datainfo = $("#grid").jqxGrid('getdatainformation');
+                var paginginfo = datainfo.paginginformation;
+
+                var leftButton = $("<div style='padding: 0px; float: left;'><div style='margin-left: 9px; width: 16px; height: 16px;'></div></div>");
+                leftButton.find('div').addClass('jqx-icon-arrow-left');
+                leftButton.width(36);
+                leftButton.jqxButton({ theme: theme });
+
+                var rightButton = $("<div style='padding: 0px; margin: 0px 3px; float: left;'><div style='margin-left: 9px; width: 16px; height: 16px;'></div></div>");
+                rightButton.find('div').addClass('jqx-icon-arrow-right');
+                rightButton.width(36);
+                rightButton.jqxButton({ theme: theme });
+
+                leftButton.appendTo(element);
+                rightButton.appendTo(element);
+
+                var label = $("<div style='font-size: 11px; margin: 2px 3px; font-weight: bold; float: left;'></div>");
+                label.text("1-" + paginginfo.pagesize + ' of ' + datainfo.rowscount);
+                label.appendTo(element);
+                self.label = label;
+                // update buttons states.
+                var handleStates = function (event, button, className, add) {
+                    button.on(event, function () {
+                        if (add == true) {
+                            button.find('div').addClass(className);
+                        }
+                        else button.find('div').removeClass(className);
+                    });
+                }
+
+                if (theme != '') {
+                    handleStates('mousedown', rightButton, 'jqx-icon-arrow-right-selected-' + theme, true);
+                    handleStates('mouseup', rightButton, 'jqx-icon-arrow-right-selected-' + theme, false);
+                    handleStates('mousedown', leftButton, 'jqx-icon-arrow-left-selected-' + theme, true);
+                    handleStates('mouseup', leftButton, 'jqx-icon-arrow-left-selected-' + theme, false);
+
+                    handleStates('mouseenter', rightButton, 'jqx-icon-arrow-right-hover-' + theme, true);
+                    handleStates('mouseleave', rightButton, 'jqx-icon-arrow-right-hover-' + theme, false);
+                    handleStates('mouseenter', leftButton, 'jqx-icon-arrow-left-hover-' + theme, true);
+                    handleStates('mouseleave', leftButton, 'jqx-icon-arrow-left-hover-' + theme, false);
+                }
+
+                rightButton.click(function () {
+                    $("#grid").jqxGrid('gotonextpage');
+                });
+
+                leftButton.click(function () {
+                    $("#grid").jqxGrid('gotoprevpage');
+                });
+
+                return element;
+            }
+
+            $("#grid").on('pagechanged', function () {
+                var datainfo = $("#grid").jqxGrid('getdatainformation');
+                var paginginfo = datainfo.paginginformation;
+                self.label.text(1 + paginginfo.pagenum * paginginfo.pagesize + "-" + Math.min(datainfo.rowscount, (paginginfo.pagenum + 1) * paginginfo.pagesize) + ' of ' + datainfo.rowscount);
+            });
+
+            $("#grid").jqxGrid(
+           {
+
+               source: dataAdapter,
+               columnsresize: true,
+               width: getWidth('Grid'),
+               pageable: true,
+               autoheight: true,
+               pagerrenderer: pagerrenderer,
+               columns: [
+                 { text: 'First Name', dataField: 'firstname', width: 200 },
+                 { text: 'Last Name', dataField: 'lastname', width: 200 },
+                 { text: 'Product', dataField: 'productname', width: 170 },
+                 { text: 'Quantity', dataField: 'quantity', width: 80, cellsalign: 'right' },
+                 { text: 'Unit Price', dataField: 'price', width: 90, cellsalign: 'right', cellsformat: 'c2' },
+                 { text: 'Total', dataField: 'total', cellsalign: 'right', cellsformat: 'c2' }
+               ]
+           });
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id='jqxWidget'>
+        <div id="grid"></div>
+    </div>
+</body>
+</html>

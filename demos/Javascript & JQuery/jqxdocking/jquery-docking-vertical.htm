@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdocking.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {           
+            $('#docking').jqxDocking({  orientation: 'vertical', mode: 'default' });
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id="docking">
+        <div>
+            <div id="window0" style="height: 150px">
+                <div>
+                    Header 1</div>
+                <div>
+                    Content 1</div>
+            </div>
+            <div id="window1" style="height: 150px">
+                <div>
+                    Header 2</div>
+                <div>
+                    Content 2</div>
+            </div>
+        </div>
+        <div>
+            <div id="window2" style="height: 150px">
+                <div>
+                    Header 3</div>
+                <div>
+                    Content 3</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

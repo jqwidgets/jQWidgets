@@ -1,0 +1,12 @@
+﻿jqxInput > div {
+    position: absolute; 
+    left: 150px;
+    top: -230px;
+}
+
+jqxInput > div input {
+  color: #00a644;
+  font-size: 48px !important; 
+  font-weight: bold;    
+  text-align: center;
+}

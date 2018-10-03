@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -31,10 +31,10 @@ export class jqxRangeSelectorComponent implements OnChanges
    @Input('markerPrecision') attrMarkerPrecision: number;
    @Input('majorLabelRenderer') attrMajorLabelRenderer: any;
    @Input('markersFormat') attrMarkersFormat: any;
-   @Input('majorTicksInterval') attrMajorTicksInterval: string | number;
-   @Input('minorTicksInterval') attrMinorTicksInterval: number;
-   @Input('max') attrMax: string | number;
-   @Input('min') attrMin: string | number;
+   @Input('majorTicksInterval') attrMajorTicksInterval: any;
+   @Input('minorTicksInterval') attrMinorTicksInterval: any;
+   @Input('max') attrMax: any;
+   @Input('min') attrMin: any;
    @Input('padding') attrPadding: number | string;
    @Input('range') attrRange: jqwidgets.RangeSelectorRange;
    @Input('resizable') attrResizable: boolean;
@@ -268,7 +268,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   majorTicksInterval(arg?: string | number) : any {
+   majorTicksInterval(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('majorTicksInterval', arg);
       } else {
@@ -276,7 +276,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   minorTicksInterval(arg?: number) : any {
+   minorTicksInterval(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('minorTicksInterval', arg);
       } else {
@@ -284,7 +284,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   max(arg?: string | number) : any {
+   max(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('max', arg);
       } else {
@@ -292,7 +292,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   min(arg?: string | number) : any {
+   min(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('min', arg);
       } else {

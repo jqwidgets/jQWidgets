@@ -1,0 +1,385 @@
+@media (min-width: 768px) and (max-width: 1160px) {
+    .navbar-profile-text {
+        display: none;
+    }
+    .navbar-profile-button:hover + .navbar-tooltip  {
+        display: block;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-firstElement {
+        margin-left: 0 !important;
+    }
+    /* When navbar is collapsed to show dropdowns above navbar */
+    .navbar-fixed-top {
+        z-index: 999;
+    }
+    .navbar-profile-button {
+        width: 100%;
+        float: left;
+    }
+    .navbar-profile-button > span {
+        float: left;
+    }
+    .last-li-item {
+        margin-right: 0 !important;
+    }
+    #navbar-collapse-2 .cdk-overlay-pane, #navbar-collapse-2 button.mat-menu-item {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 1385px) {
+    .components-list li {
+        display: inline-block !important;
+    }
+}
+
+.navbar-navbar {
+    margin-bottom: 1.5em;
+}
+
+.material-icons.navbar-material-icon {
+    font-size: 28px;
+    line-height: inherit;
+    float: left;
+    margin-right: 0.5em;
+}
+
+mat-icon {
+    color: #5e5e5e;
+}
+
+.navbar-firstElement {
+    margin-left: 2em;
+}
+
+.navbar-elements > button {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    min-width: 45px;
+}
+
+.navbar-text {
+    display: inline-block;
+    width: 95px;
+    margin-top: 0;
+}
+
+
+.navbar-profile-button {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.navbar-profile-text {
+    font-weight: bold;
+    padding-left: 0.3em;
+}
+
+.components-list {
+    list-style: none;
+    margin-right: 40px;
+}
+
+.components-list li {
+    display: table-cell;
+    width: 205px;
+}
+
+
+.mat-menu-panel {
+    max-width: none !important;
+}
+
+.last-li-item {
+    margin-right: 2.5em;
+}
+
+.navbar-tooltip {
+    position: absolute;
+    top: 50px;
+    background-color: #e6e6e6;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none;
+}
+
+.jqx-icon {
+    background: url("../../assets/images/icons/widget_icons.png") no-repeat;
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-top: 13px;
+    margin-right: 8px;
+}
+
+.jqx-angularjs-icon {
+    background-position: -115px -19px;
+}
+
+.jqx-mvc-icon {
+    background-position: -16px -24px;
+}
+
+.jqx-bootstrap-icon {
+    background-position: -494px -14px;
+}
+
+.jqx-java-icon {
+    background-position: -439px -20px;
+}
+
+.jqx-knockoutjs-icon {
+    background-position: -301px -289px;
+}
+
+.jqx-php-icon {
+    background-position: -250px -287px;
+}
+
+.jqx-requirejs-icon {
+    background-position: -191px -291px;
+}
+
+.jqx-dataadapter-icon {
+    background-position: -461px -287px;
+}
+
+.jqx-response-icon {
+    background-position: -303px -119px;
+}
+
+.jqx-buttons-icon {
+    background-position: -388px -24px;
+}
+
+.jqx-sortable-icon {
+    background-position: -225px -346px;
+}
+
+.jqx-calendar-icon {
+    background-position: -328px -19px;
+}
+
+.jqx-chart-icon {
+    background-position: -216px -28px;
+}
+
+.jqx-colorpicker-icon {
+    background-position: -164px -25px;
+}
+
+.jqx-bulletchart-icon {
+    background-position: -70px -16px;
+}
+
+.jqx-combobox-icon {
+    background-position: -350px -289px;
+}
+
+.jqx-complexinput-icon {
+    background-position: -407px -278px;
+}
+
+.jqx-grid-icon {
+    background-position: -135px -290px;
+}
+
+.jqx-datetimeinput-icon {
+    background-position: -71px -289px;
+}
+
+.jqx-docking-icon {
+    background-position: -511px -284px;
+}
+
+.jqx-dockinglayout-icon {
+    background-position: -11px -293px;
+}
+
+.jqx-dragdrop-icon {
+    background-position: -565px -289px;
+}
+
+.jqx-draw-icon {
+    background-position: -569px -229px;
+}
+
+.jqx-dropdownlist-icon {
+    background-position: -517px -228px;
+}
+
+.jqx-editor-icon {
+    background-position: -400px -225px;
+}
+
+.jqx-expander-icon {
+    background-position: -319px -227px;
+}
+
+.jqx-fileupload-icon {
+    background-position: -251px -234px;
+}
+
+.jqx-formattedinput-icon {
+    background-position: -455px -229px;
+}
+
+.jqx-gauge-icon {
+    background-position: -190px -236px;
+}
+
+.jqx-bar-gauge-icon {
+    background-position: -266px -344px;
+}
+
+.jqx-datatable-icon {
+    background-position: -134px -235px;
+}
+
+.jqx-input-icon {
+    background-position: -74px -236px;
+}
+
+.jqx-layout-icon {
+    background-position: -16px -237px;
+}
+
+.jqx-listbox-icon {
+    background-position: -584px -167px;
+}
+
+.jqx-listmenu-icon {
+    background-position: -521px -169px;
+}
+
+.jqx-loader-icon {
+    background-position: -326px -171px;
+}
+
+.jqx-maskedinput-icon {
+    background-position: -453px -170px;
+}
+
+.jqx-menu-icon {
+    background-position: -393px -170px;
+}
+
+.jqx-navbar-icon {
+    background-position: -267px -168px;
+}
+
+.jqx-navigationbar-icon {
+    background-position: -206px -176px;
+}
+
+.jqx-notification-icon {
+    background-position: -143px -175px;
+}
+
+.jqx-numberinput-icon {
+    background-position: -81px -176px;
+}
+
+.jqx-panel-icon {
+    background-position: -12px -184px;
+}
+
+.jqx-passwordinput-icon {
+    background-position: -592px -118px;
+}
+
+.jqx-popover-icon {
+    background-position: -535px -118px;
+}
+
+.jqx-progressbar-icon {
+    background-position: -483px -120px;
+}
+
+.jqx-rangeselector-icon {
+    background-position: -370px -120px;
+}
+
+.jqx-rating-icon {
+    background-position: -70px -118px;
+}
+
+.jqx-responsivepanel-icon {
+    background-position: -245px -123px;
+}
+
+.jqx-ribbon-icon {
+    background-position: -189px -123px;
+}
+
+.jqx-scheduler-icon {
+    background-position: -8px -121px;
+}
+
+.jqx-scrollbar-icon {
+    background-position: -136px -121px;
+}
+
+.jqx-scrollview-icon {
+    background-position: -543px -63px;
+}
+
+.jqx-slider-icon {
+    background-position: -552px -14px;
+}
+
+.jqx-splitter-icon {
+    background-position: -489px -61px;
+}
+
+.jqx-tabs-icon {
+    background-position: -429px -67px;
+}
+
+.jqx-textarea-icon {
+    background-position: -370px -66px;
+}
+
+.jqx-toolbar-icon {
+    background-position: -321px -66px;
+}
+
+.jqx-tooltip-icon {
+    background-position: -263px -66px;
+}
+
+.jqx-tree-icon {
+    background-position: -212px -71px;
+}
+
+.jqx-treegrid-icon {
+    background-position: -165px -74px;
+}
+
+.jqx-treemap-icon {
+    background-position: -118px -69px;
+}
+
+.jqx-validator-icon {
+    background-position: -63px -72px;
+}
+
+.jqx-window-icon {
+    background-position: -12px -70px;
+}
+
+.jqx-knob-icon {
+    background-position: -137px -344px;
+}
+
+.jqx-tagcloud-icon {
+    background-position: -72px -347px;
+}
+
+.jqx-kanban-icon {
+    background-position: -12px -346px;
+}

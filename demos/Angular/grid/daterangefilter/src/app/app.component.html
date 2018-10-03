@@ -1,0 +1,11 @@
+﻿<jqxGrid [theme]="'material'" #myGrid
+    [width]="getWidth()" [source]="dataAdapter" [columns]="columns"
+    [showfilterrow]="true" [filterable]="true"
+    [selectionmode]="'multiplecellsadvanced'">
+</jqxGrid>
+
+<div style="margin-top: 20px">
+
+    <jqxButton [theme]="'material'" (onClick)="btnOnClick()">Remove Filter</jqxButton>
+
+</div>

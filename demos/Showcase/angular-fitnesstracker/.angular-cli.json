@@ -1,0 +1,85 @@
+﻿{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "angular-fitnesstracker"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css",
+        "../node_modules/jqwidgets-framework/jqwidgets/styles/jqx.base.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxcore.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxdata.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxbuttons.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxscrollbar.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxmenu.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxcheckbox.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxlistbox.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxdropdownlist.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxgrid.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxgrid.sort.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxgrid.pager.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxgrid.selection.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxgrid.edit.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxgrid.filter.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxgrid.aggregates.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxdatatable.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxtreegrid.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxtooltip.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxinput.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxchart.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxchart.core.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxdraw.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxbargauge.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}

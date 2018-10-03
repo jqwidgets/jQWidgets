@@ -1,0 +1,117 @@
+@media(max-width: 1300px) and (min-width: 1001px) {
+    .bulletcharts-text-to-hide {
+        display: none;
+    }
+} 
+
+.bulletcharts-container {
+    background-color: white;
+    margin-top: 2em;
+    border: 1px solid #d9d9d9;
+    padding: 25px 25px;
+}
+
+.bulletcharts-chart-container {
+    margin-top: 1em;
+}
+
+.bulletcharts-chart-text-big {
+    float: left;
+    position: relative;
+    font-size: 125%;
+    font-weight: bold;
+    top: 15px;
+    left: 10px;
+}
+
+.bulletcharts-chart-text-small {
+    float: right;
+    position: relative;
+    font-size: 125%;
+    color: #a6a6a6;
+    top: 15px;
+    left: -15px;
+}
+
+.jqx-bulletchart-labels {
+    font-size: 85%;
+    color: #999999;
+}
+
+.bulletcharts-stats-container {
+    margin-top: 1.5em;
+    height: 40px;
+}
+
+.bulletcharts-stats-icon-container {
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    float: left;
+}
+
+.bulletcharts-stats-icon {
+    margin-top: 5px;
+    margin-left: 4px;
+}
+
+.bulletcharts-stats-text-container {
+    float: left;
+    margin-left: 2.1em;
+}
+
+.bulletcharts-stats-text-big {
+    font-size: 135%;
+    margin-bottom: 0;
+}
+
+.bulletcharts-stats-text-big a{
+    font-size: 125%;
+}
+
+.bulletcharts-stats-text-big a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bulletcharts-stats-text-small {
+    font-size: 125%;
+    color: #a6a6a6;
+}
+
+.bulletcharts-arrow-icon {
+    float: right;
+    cursor: pointer;
+}
+
+.bulletcharts-stats-icon-container-first {
+    border: 2px solid #7FD13B;
+}
+.bulletcharts-stats-icon-container-second {
+    border: 2px solid #EA157A;
+}
+.bulletcharts-stats-icon-container-third {
+    border: 2px solid #FEB80A;
+}
+.bulletcharts-stats-icon-container-fourth {
+    border: 2px solid #00ADDC;
+}
+.bulletcharts-stats-icon-container-fifth {
+    border: 2px solid #52527a;
+}
+
+.bulletcharts-stats-icon-first {
+    color: #7FD13B;
+}
+.bulletcharts-stats-icon-second {
+    color: #EA157A;
+}
+.bulletcharts-stats-icon-third {
+    color: #FEB80A;
+}
+.bulletcharts-stats-icon-fourth {
+    color: #00ADDC;
+}
+.bulletcharts-stats-icon-fifth {
+    color: #52527a;
+}

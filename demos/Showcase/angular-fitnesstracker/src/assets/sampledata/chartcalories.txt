@@ -1,0 +1,21 @@
+{
+	"data": [
+		{ "Date": "01/02/2016", "fat": 50, "carb": 100, "protein": 600 },
+		{ "Date": "02/02/2016", "fat": 100, "carb": 200, "protein": 800 },
+		{ "Date": "03/02/2016", "fat": 50, "carb": 300, "protein": 500 },
+		{ "Date": "04/02/2016", "fat": 100, "carb": 100, "protein": 300 },
+		{ "Date": "05/02/2016", "fat": 100, "carb": 200, "protein": 400 },
+		{ "Date": "06/02/2016", "fat": 100, "carb": 300, "protein": 800 },
+		{ "Date": "07/02/2016", "fat": 60, "carb": 100, "protein": 500 },
+		{ "Date": "08/02/2016", "fat": 30, "carb": 200, "protein": 600 },
+		{ "Date": "09/02/2016", "fat": 60, "carb": 300, "protein": 900 },
+		{ "Date": "10/02/2016", "fat": 100, "carb": 100, "protein": 500 },
+		{ "Date": "11/02/2016", "fat": 50, "carb": 200, "protein": 700 },
+		{ "Date": "12/02/2016", "fat": 100, "carb": 300, "protein": 300 },
+		{ "Date": "13/02/2016", "fat": 300, "carb": 100, "protein": 600 },
+		{ "Date": "14/02/2016", "fat": 100, "carb": 200, "protein": 900 },
+		{ "Date": "15/02/2016", "fat": 60, "carb": 300, "protein": 300 },
+		{ "Date": "16/02/2016", "fat": 30, "carb": 100, "protein": 500 },
+		{ "Date": "17/02/2016", "fat": 60, "carb": 200, "protein": 600 }
+	]
+}

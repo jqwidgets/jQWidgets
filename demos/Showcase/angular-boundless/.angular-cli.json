@@ -1,0 +1,76 @@
+﻿{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "angular-boundless"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+        "styles": [
+            "../node_modules/jqwidgets-scripts//jqwidgets/styles/jqx.base.css",
+            "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "styles.css"
+        ],
+        "scripts": [
+            "../node_modules/jquery/dist/jquery.min.js",
+            "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxcore.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxdata.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxbuttons.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxscrollbar.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxlistbox.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxtooltip.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxmenu.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxchart.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxgrid.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxgrid.selection.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxgrid.grouping.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxdraw.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxknob.js",
+            "../node_modules/jqwidgets-scripts/jqwidgets/jqxbulletchart.js"
+        ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}

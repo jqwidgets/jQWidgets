@@ -1,0 +1,383 @@
+﻿<nav class="navbar navbar-default navbar-navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-2">
+            <ul class="nav navbar-nav">            
+                <li>
+                    <div class="navbar-elements navbar-firstElement">
+                        <button class="navbar-profile-button" mat-button (click)="refreshPage()">
+                            <mat-icon>desktop_windows</mat-icon>
+                            <span class="navbar-profile-text">Dashboard</span>
+                        </button>     
+                        <div class="navbar-tooltip">
+                            Dashboard
+                        </div>        
+                    </div>        
+                </li> 
+                <li>
+                    <div class="navbar-elements">
+                        <button class="navbar-profile-button" mat-button [matMenuTriggerFor]="menu0" (onMenuOpen)="onMenuOpened(0)">
+                            <mat-icon>widgets</mat-icon>
+                            <span class="navbar-profile-text">Components</span>
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                        </button>
+                        <div class="navbar-tooltip">
+                            Components
+                        </div>
+                        <mat-menu #menu0="matMenu" [overlapTrigger]="false">
+                            <ul class="components-list">
+                                <li>
+                                    <button mat-menu-item (click)="goToComponentPage('grid')">
+                                        <div class="jqx-icon jqx-grid-icon"></div>
+                                        <p class="navbar-text">jqxGrid</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('chart')">
+                                        <div class="jqx-icon jqx-chart-icon"></div>
+                                        <p class="navbar-text">jqxChart</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('scheduler')">
+                                        <div class="jqx-icon jqx-scheduler-icon"></div>
+                                        <p class="navbar-text">jqxScheduler</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('treegrid')">
+                                        <div class="jqx-icon jqx-treegrid-icon"></div>
+                                        <p class="navbar-text">jqxTreeGrid</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('datatable')">
+                                        <div class="jqx-icon jqx-datatable-icon"></div>
+                                        <p class="navbar-text">jqxDataTable</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('treemap')">
+                                        <div class="jqx-icon jqx-treemap-icon"></div>
+                                        <p class="navbar-text">jqxTreeMap</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('editor')">
+                                        <div class="jqx-icon jqx-editor-icon"></div>
+                                        <p class="navbar-text">jqxEditor</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('ribbon')">
+                                        <div class="jqx-icon jqx-ribbon-icon"></div>
+                                        <p class="navbar-text">jqxRibbon</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('layout')">
+                                        <div class="jqx-icon jqx-layout-icon"></div>
+                                        <p class="navbar-text">jqxLayout</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('dockinglayout')">
+                                        <div class="jqx-icon jqx-dockinglayout-icon"></div>
+                                        <p class="navbar-text">jqxDockingLayout</p>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button mat-menu-item (click)="goToComponentPage('tabs')">
+                                        <div class="jqx-icon jqx-tabs-icon"></div>
+                                        <p class="navbar-text">jqxTabs</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('menu')">
+                                        <div class="jqx-icon jqx-menu-icon"></div>
+                                        <p class="navbar-text">jqxMenu</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('tree')">
+                                        <div class="jqx-icon jqx-tree-icon"></div>
+                                        <p class="navbar-text">jqxTree</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('navigationbar')">
+                                        <div class="jqx-icon jqx-navigationbar-icon"></div>
+                                        <p class="navbar-text">jqxNavigationBar</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('listmenu')">
+                                        <div class="jqx-icon jqx-listmenu-icon"></div>
+                                        <p class="navbar-text">jqxListmenu</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('toolbar')">
+                                        <div class="jqx-icon jqx-toolbar-icon"></div>
+                                        <p class="navbar-text">jqxToolBar</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('combobox')">
+                                        <div class="jqx-icon jqx-combobox-icon"></div>
+                                        <p class="navbar-text">jqxComboBox</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('dropdownlist')">
+                                        <div class="jqx-icon jqx-dropdownlist-icon"></div>
+                                        <p class="navbar-text">jqxDropDownList</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('listbox')">
+                                        <div class="jqx-icon jqx-listbox-icon"></div>
+                                        <p class="navbar-text">jqxListBox</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('buttons')">
+                                        <div class="jqx-icon jqx-buttons-icon"></div>
+                                        <p class="navbar-text">jqxButtons</p>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button mat-menu-item (click)="goToComponentPage('textarea')">
+                                        <div class="jqx-icon jqx-textarea-icon"></div>
+                                        <p class="navbar-text">jqxTextArea</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('input')">
+                                        <div class="jqx-icon jqx-input-icon"></div>
+                                        <p class="navbar-text">jqxInput</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('passwordinput')">
+                                        <div class="jqx-icon jqx-passwordinput-icon"></div>
+                                        <p class="navbar-text">jqxPasswordInput</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('maskedinput')">
+                                        <div class="jqx-icon jqx-maskedinput-icon"></div>
+                                        <p class="navbar-text">jqxMaskedInput</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('complexinput')">
+                                        <div class="jqx-icon jqx-complexinput-icon"></div>
+                                        <p class="navbar-text">jqxComplexInput</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('formattedinput')">
+                                        <div class="jqx-icon jqx-formattedinput-icon"></div>
+                                        <p class="navbar-text">jqxFormattedInput</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('numberinput')">
+                                        <div class="jqx-icon jqx-numberinput-icon"></div>
+                                        <p class="navbar-text">jqxNumberInput</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('datetimeinput')">
+                                        <div class="jqx-icon jqx-datetimeinput-icon"></div>
+                                        <p class="navbar-text">jqxDateTimeInput</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('calendar')">
+                                        <div class="jqx-icon jqx-calendar-icon"></div>
+                                        <p class="navbar-text">jqxCalendar</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('kanban')">
+                                        <div class="jqx-icon jqx-kanban-icon"></div>
+                                        <p class="navbar-text">jqxKanban</p>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button mat-menu-item (click)="goToComponentPage('window')">
+                                        <div class="jqx-icon jqx-window-icon"></div>
+                                        <p class="navbar-text">jqxWindow</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('docking')">
+                                        <div class="jqx-icon jqx-docking-icon"></div>
+                                        <p class="navbar-text">jqxDocking</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('notification')">
+                                        <div class="jqx-icon jqx-notification-icon"></div>
+                                        <p class="navbar-text">jqxNotification</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('popover')">
+                                        <div class="jqx-icon jqx-popover-icon"></div>
+                                        <p class="navbar-text">jqxPopOver</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('tooltip')">
+                                        <div class="jqx-icon jqx-tooltip-icon"></div>
+                                        <p class="navbar-text">jqxTooltip</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('colorpicker')">
+                                        <div class="jqx-icon jqx-colorpicker-icon"></div>
+                                        <p class="navbar-text">jqxColorPicker</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('scrollview')">
+                                        <div class="jqx-icon jqx-scrollview-icon"></div>
+                                        <p class="navbar-text">jqxScrollView</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('progressbar')">
+                                        <div class="jqx-icon jqx-progressbar-icon"></div>
+                                        <p class="navbar-text">jqxProgressBar</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('fileupload')">
+                                        <div class="jqx-icon jqx-fileupload-icon"></div>
+                                        <p class="navbar-text">jqxFileUpload</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('bulletchart')">
+                                        <div class="jqx-icon jqx-bulletchart-icon"></div>
+                                        <p class="navbar-text">jqxBulletChart</p>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button mat-menu-item (click)="goToComponentPage('knob')">
+                                        <div class="jqx-icon jqx-knob-icon"></div>
+                                        <p class="navbar-text">jqxKnob</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('gauge')">
+                                        <div class="jqx-icon jqx-gauge-icon"></div>
+                                        <p class="navbar-text">jqxGauge</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('bargauge')">
+                                        <div class="jqx-icon jqx-bar-gauge-icon"></div>
+                                        <p class="navbar-text">jqxBarGauge</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('expander')">
+                                        <div class="jqx-icon jqx-expander-icon"></div>
+                                        <p class="navbar-text">jqxExpander</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('rating')">
+                                        <div class="jqx-icon jqx-rating-icon"></div>
+                                        <p class="navbar-text">jqxRating</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('rangeselector')">
+                                        <div class="jqx-icon jqx-rangeselector-icon"></div>
+                                        <p class="navbar-text">jqxRangeSelector</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('slider')">
+                                        <div class="jqx-icon jqx-slider-icon"></div>
+                                        <p class="navbar-text">jqxSlider</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('scrollbar')">
+                                        <div class="jqx-icon jqx-scrollbar-icon"></div>
+                                        <p class="navbar-text">jqxScrollBar</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('splitter')">
+                                        <div class="jqx-icon jqx-splitter-icon"></div>
+                                        <p class="navbar-text">jqxSplitter</p>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button mat-menu-item (click)="goToComponentPage('responsivepanel')">
+                                        <div class="jqx-icon jqx-responsivepanel-icon"></div>
+                                        <p class="navbar-text">jqxResponsivePanel</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('navbar')">
+                                        <div class="jqx-icon jqx-navbar-icon"></div>
+                                        <p class="navbar-text">jqxNavBar</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('sortable')">
+                                        <div class="jqx-icon jqx-sortable-icon"></div>
+                                        <p class="navbar-text">jqxSortable</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('loader')">
+                                        <div class="jqx-icon jqx-loader-icon" style="margin-top: -10px;"></div>
+                                        <p class="navbar-text" style="margin-left: 3.05em;">jqxLoader</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('draw')">
+                                        <div class="jqx-icon jqx-draw-icon"></div>
+                                        <p class="navbar-text">jqxDraw</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('dragdrop')">
+                                        <div class="jqx-icon jqx-dragdrop-icon"></div>
+                                        <p class="navbar-text">jqxDragDrop</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('panel')">
+                                        <div class="jqx-icon jqx-panel-icon"></div>
+                                        <p class="navbar-text">jqxPanel</p>
+                                    </button>
+                                    <button mat-menu-item (click)="goToComponentPage('validator')">
+                                        <div class="jqx-icon jqx-validator-icon"></div>
+                                        <p class="navbar-text">jqxValidator</p>
+                                    </button>
+                                </li>
+                            </ul>                  
+                        </mat-menu>  
+                    </div>
+                </li>
+                <li>
+                    <div class="navbar-elements">
+                        <button class="navbar-profile-button" mat-button [matMenuTriggerFor]="menu1" (onMenuOpen)="onMenuOpened(1)">
+                            <mat-icon>extension</mat-icon>
+                            <span class="navbar-profile-text">Integration</span>
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                        </button>
+                        <div class="navbar-tooltip">
+                            Integration
+                        </div>
+                        <mat-menu #menu1="matMenu" [overlapTrigger]="false">
+                            <button  style="width: 325px" mat-menu-item (click)="goToPage('http://www.jqwidgets.com/asp.net-core-mvc-tag-helpers-documentation/')">
+                                <div class="jqx-icon jqx-mvc-icon"></div>
+                                <p class="navbar-text">ASP .NET Core MVC Tag Helpers</p>
+                            </button>
+                            <button mat-menu-item (click)="goToPage('http://www.jqwidgets.com/jquery-widgets-documentation/documentation/angularjs/angularjs-spa.htm')">
+                                <div class="jqx-icon jqx-angularjs-icon"></div>
+                                <p class="navbar-text">AngularJS</p>
+                            </button>
+                            <button mat-menu-item (click)="goToPage('http://www.jqwidgets.com/jquery-widgets-documentation/documentation/knockout/knockoutjs.htm')">
+                                <div class="jqx-icon jqx-knockoutjs-icon"></div>
+                                <p class="navbar-text">KnockoutJS</p>
+                            </button>
+                            <button mat-menu-item (click)="goToPage('http://www.jqwidgets.com/jquery-widgets-documentation/documentation/requirejs/requirejs_tutorial.htm')">
+                                <div class="jqx-icon jqx-requirejs-icon"></div>
+                                <p class="navbar-text">RequireJS</p>
+                            </button>
+                            <button mat-menu-item (click)="goToPage('http://www.jqwidgets.com/jquery-widgets-documentation/documentation/bootstrap/jqwidgets-with-twitter-bootstrap.htm')">
+                                <div class="jqx-icon jqx-bootstrap-icon"></div>
+                                <p class="navbar-text">Bootstrap</p>
+                            </button>
+                            <button mat-menu-item (click)="goToPage('http://www.jqwidgets.com/jquery-widgets-documentation/documentation/java-integration/configure-mysql-eclipse-tomcat.htm')">
+                                <div class="jqx-icon jqx-java-icon"></div>
+                                <p class="navbar-text">Java</p>
+                            </button>
+
+                            <button mat-menu-item (click)="goToPage('http://www.jqwidgets.com/jquery-widgets-documentation/documentation/phpintegration/bind-jquery-grid-to-mysql-database-using-php.htm')">
+                                <div class="jqx-icon jqx-php-icon"></div>
+                                <p class="navbar-text">PHP</p>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </li> 
+                <li>
+                    <div class="navbar-elements">
+                        <button class="navbar-profile-button" mat-button [matMenuTriggerFor]="menu2" (onMenuOpen)="onMenuOpened(2)">
+                            <mat-icon>gamepad</mat-icon>
+                            <span class="navbar-profile-text">Plugins</span>
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                        </button>
+                        <div class="navbar-tooltip">
+                            Plugins
+                        </div>
+                        <mat-menu #menu2="matMenu" [overlapTrigger]="false">
+                            <button style="width: 225px" mat-menu-item (click)="goToPage('http://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxdataadapter/jquery-data-adapter.htm')">
+                                <div class="jqx-icon jqx-dataadapter-icon"></div>
+                                <p class="navbar-text">jqxDataAdapter</p>
+                            </button>
+                            <button mat-menu-item (click)="goToPage('http://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxresponse/jquery-response.htm')">
+                                <div class="jqx-icon jqx-response-icon"></div>
+                                <p class="navbar-text">jqxResponse</p>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </li> 
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="navbar-elements">
+                        <button mat-button class="navbar-profile-button" (click)="goToPage('http://www.jqwidgets.com/blog/')">
+                            <mat-icon>forum</mat-icon>
+                            <span class="navbar-profile-text">Blog</span>
+                        </button>
+                        <div class="navbar-tooltip">
+                            Blog
+                        </div>
+                    </div>
+                </li> 
+                <li>
+                    <div class="navbar-elements">
+                        <button mat-button class="navbar-profile-button" (click)="goToPage('http://www.jqwidgets.com/jquery-widgets-documentation/documentation/roadmap/roadmap.htm')">
+                            <mat-icon>schedule</mat-icon>
+                            <span class="navbar-profile-text">Roadmap</span>
+                        </button>
+                        <div class="navbar-tooltip">
+                            Roadmap
+                        </div>
+                    </div>
+                </li> 
+                <li class="last-li-item">
+                    <div class="navbar-elements">
+                        <button mat-button class="navbar-profile-button" (click)="goToPage('http://www.jqwidgets.com/jquery-widgets-documentation/')">
+                            <mat-icon>receipt</mat-icon>
+                            <span class="navbar-profile-text">Full Documentation</span>
+                        </button>
+                        <div class="navbar-tooltip">
+                            Documentation
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

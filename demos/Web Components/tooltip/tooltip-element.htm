@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Tooltip Custom Element Overview</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        var data =
+            {
+                description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+                title: "The Shawshank Redemption (1994)"
+            };
+       
+
+        JQXElements.settings["tooltipSettings"] =
+        {
+            content: '<div><div style="font-weight: bold; max-width: 200px; font-family: verdana; font-size: 13px;">' + data.title + '</div><div style="width: 200px; font-family: verdana; font-size: 12px;">' + data.description + '</div></div>',
+            position: 'mouse',
+            selector: 'container',
+            width: 220,
+            autoHideDelay: 6000
+        }
+    </script>
+</head>
+<body>
+    <div class="example-description">
+        This demo illustrates the basic functionality of the Tooltip custom element.
+    </div>
+    <div style="margin-left: 180px; width: 400px;" id="container">
+        <img style="margin: 8px;" src="../../../images/The_Amazng_Spider_Man.jpeg" id="filmPicture1" />
+    </div>
+    <jqx-tool-tip settings="tooltipSettings"></jqx-tool-tip>
+</body>
+</html>

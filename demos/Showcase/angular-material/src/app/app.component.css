@@ -1,0 +1,32 @@
+body, html, app-root > div {
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+            width: 100%;
+            border: none;
+            overflow: hidden;
+            background-color: aliceblue;
+        }
+
+        .required {
+            vertical-align: baseline;
+            color: red;
+            font-size: 10px;
+        }
+
+        .control-label {
+            white-space: nowrap;
+        }
+
+input {
+    margin-top: 5px;
+}
+
+.jqx-tabs-title {
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.jqx-tabs-title a {
+    padding: 5px;
+}

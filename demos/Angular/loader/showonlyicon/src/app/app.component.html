@@ -1,0 +1,15 @@
+﻿<jqxLoader [theme]="'material'" #jqxLoader
+           [text]="''"
+           [width]="60"
+           [height]="60">
+</jqxLoader>
+<jqxButton [theme]="'material'" #openLoader
+           (onClick)="openLoaderClick($event)"
+           [width]="150">
+  Open Loader
+</jqxButton>
+<jqxButton [theme]="'material'" #closeLoader
+           (onClick)="closeLoaderClick($event)"
+           [width]="100">
+  Close
+</jqxButton>

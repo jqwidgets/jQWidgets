@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -37,7 +37,6 @@ export class jqxTreeComponent implements OnChanges
    @Input('incrementalSearch') attrIncrementalSearch: boolean;
    @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
    @Input('rtl') attrRtl: boolean;
-   @Input('selectedItem') attrSelectedItem: any;
    @Input('source') attrSource: any;
    @Input('toggleIndicatorSize') attrToggleIndicatorSize: number;
    @Input('toggleMode') attrToggleMode: any;
@@ -47,7 +46,7 @@ export class jqxTreeComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationShowDuration','animationHideDuration','allowDrag','allowDrop','checkboxes','dragStart','dragEnd','disabled','easing','enableHover','height','hasThreeStates','incrementalSearch','keyboardNavigation','rtl','selectedItem','source','toggleIndicatorSize','toggleMode','theme','width'];
+   properties: string[] = ['animationShowDuration','animationHideDuration','allowDrag','allowDrop','checkboxes','dragStart','dragEnd','disabled','easing','enableHover','height','hasThreeStates','incrementalSearch','keyboardNavigation','rtl','source','toggleIndicatorSize','toggleMode','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTree;
@@ -279,14 +278,6 @@ export class jqxTreeComponent implements OnChanges
           this.host.jqxTree('rtl', arg);
       } else {
           return this.host.jqxTree('rtl');
-      }
-   }
-
-   selectedItem(arg?: any) : any {
-      if (arg !== undefined) {
-          this.host.jqxTree('selectedItem', arg);
-      } else {
-          return this.host.jqxTree('selectedItem');
       }
    }
 

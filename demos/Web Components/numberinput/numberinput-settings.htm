@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Custom Element NumberInput Settings</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta name="description" content="This is an example of the settings avaliable in Custom Element NumberInput." />
+
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../styles/demos.css" type="text/css" />
+
+    <script type="text/javascript" src="../../../scripts/webcomponents-lite.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.elements.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script>
+        var symboltypes = ['$', '%', '€', 'None'];
+        var digits = ['1', '2', '3', '4', '5', '6', '7', '8'];
+        var decimaldigits = ['0', '1', '2', '3', '4'];
+
+        JQXElements.settings['numericInput'] =
+            {
+                symbol: '$',
+                min: 0,
+                spinButtons: true
+            };
+
+        JQXElements.settings['spinbuttons'] =
+            {
+                checked: true
+            };
+
+        JQXElements.settings['leftbutton'] =
+            {
+                checked: true
+            };
+
+        JQXElements.settings['rightbutton'] =
+            {
+                theme: theme
+            };
+
+        JQXElements.settings['symboltype'] =
+            {
+                source: symboltypes,
+                autoDropDownHeight: true,
+                selectedIndex: 0
+            };
+
+        JQXElements.settings['decimaldigits'] =
+            {
+                selectedIndex: 2,
+                source: decimaldigits,
+                autoDropDownHeight: true
+            };
+
+
+        JQXElements.settings['digits'] =
+            {
+                selectedIndex: 7,
+                source: digits,
+                autoDropDownHeight: true
+            };
+
+        window.onload = function() {
+            var myNumberInput = document.querySelector('jqx-number-input');
+            var myButtons = document.querySelectorAll('jqx-button');
+            var myCheckBox = document.querySelector('jqx-check-box');
+            var myRadioButton = document.querySelectorAll('jqx-radio-button');
+            var myDropDownList = document.querySelectorAll('jqx-drop-down-list');
+
+            myCheckBox.addEventListener('change', function(event) {
+                var checked = event.args.checked;
+                myNumberInput.spinButtons = checked;
+            });
+
+            myRadioButton[1].addEventListener('checked', function() {
+                myNumberInput.symbolPosition = 'right';
+            });
+
+            myRadioButton[0].addEventListener('checked', function() {
+                myNumberInput.symbolPosition = 'left';
+            });
+
+            myDropDownList[0].addEventListener('select', function(event) {
+                var index = event.args.index;
+                if (index == 3) {
+                    myNumberInput.symbol = '';
+                }
+                else {
+                    myNumberInput.symbol = symboltypes[index];
+                }
+            });
+
+            myDropDownList[1].addEventListener('select', function(event) {
+                var index = event.args.index;
+                myNumberInput.decimalDigits = decimaldigits[index];
+            });
+
+            myDropDownList[2].addEventListener('select', function(event) {
+                var index = event.args.index;
+                myNumberInput.digits = digits[index];
+            });
+        };
+    </script>
+
+</head>
+<body>
+    <div class="example-description">
+        In this demo is demonstrated how to use the Custom element NumberInput's API.
+    </div>
+
+    <div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+
+        <jqx-number-input style='margin-top: 3px;' settings='numericInput'>
+        </jqx-number-input>
+
+        <div>
+            <div style="float: left;">
+                <jqx-check-box style="width: 170px; margin-top: 20px;" settings='spinbuttons'>
+                    Show Spin Buttons
+                </jqx-check-box>
+                <div style="margin-top: 10px;">
+                    Symbol Position
+                </div>
+                <jqx-radio-button style="margin-top: 5px;" settings='leftbutton'>
+                    Left
+                </jqx-radio-button>
+                <jqx-radio-button style="margin-top: 5px;" settings='rightbutton'>
+                    Right
+                </jqx-radio-button>
+            </div>
+
+            <div style="margin-left: 30px; float: left;">
+                <div style="margin-top: 20px; margin-bottom:10px;">Symbol</div>
+                <jqx-drop-down-list settings="symboltype"></jqx-drop-down-list>
+
+                <div style="margin-top: 10px; margin-bottom: 10px;">Decimal Digits</div>
+                <jqx-drop-down-list settings="decimaldigits"></jqx-drop-down-list>
+
+                <div style="margin-top: 10px; margin-bottom: 10px;">Digits</div>
+                <jqx-drop-down-list settings="digits"></jqx-drop-down-list>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

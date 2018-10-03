@@ -1,0 +1,34 @@
+  <div style="background-color: white; height:80px;">
+    <div style="max-width: 1200px; margin: 0px auto 0px auto;">
+      <img src="../assets/images/logo-jqwidgets.svg" alt="jQWidgets" class="logo" />
+      <jqxMenu #myMenu [width]="680" [theme]="'light'" (onItemclick)="changePage($event)">
+          <ul>
+              <li routerLink="/dashboard">Dashboard</li>
+              <li>
+                  Schedules
+                  <ul>
+                      <li routerLink="/rooms-schedules">Rooms</li>
+                      <li routerLink="/instructors-schedules">Instructors</li>
+                  </ul>
+              </li>
+              <li routerLink="/fitness-instructors">Fitness instructors</li>
+              <li routerLink="/workload-chart">Workload chart</li>
+              <li routerLink="/administrative-tasks">Administrative tasks</li>
+              <li routerLink="/quick-notes">Quick notes</li>
+          </ul>
+      </jqxMenu>
+      <img src="../assets/images/logo-jqwidgets.svg" class="logo-top2" alt="jQWidgets">
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
+  <div class="breadcrumb-containter">
+    <div class="breadcrumb"><span> jQWidgets Fitness Management System</span>&nbsp;&raquo;&nbsp;<span id="page">{{this.breadcrumb}}</span></div>
+  </div>
+  <div class="row" id="row">
+          <div id="container-div" [ngClass]="bigWindow ? 'big': 'small'">
+              <div>
+                  <router-outlet></router-outlet>
+              </div>
+          </div>
+  </div>

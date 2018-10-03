@@ -320,22 +320,26 @@ function getDemoTheme() {
 		}
 	}
 
-    var url = "../../jqwidgets/styles/jqx." + theme + '.css';
+    var url = "../../../jqwidgets/styles/jqx." + theme + '.css';
     if (window.location.href.toString().indexOf("angularjs") >= 0) {
         var loc = window.location.href.toString();
-        if (loc.indexOf('button') >= 0 ||
-        (loc.indexOf('treegrid') == -1 && loc.indexOf('grid') >= 0) ||
-        loc.indexOf('dropdownlist') >= 0 ||
-        loc.indexOf('combobox') >= 0 ||
-        loc.indexOf('datatable') >= 0 ||
-        loc.indexOf('listbox') >= 0 ||
-        loc.indexOf('tabs') >= 0 ||
-        (loc.indexOf('listmenu') == -1 && loc.indexOf('menu') >= 0) ||
-        loc.indexOf('calendar') >= 0 ||
-        loc.indexOf('datetimeinput') >= 0 ||
-        (loc.indexOf('chart') >= 0 && loc.indexOf('bulletchart') == -1)) {
-            url = "../../../jqwidgets/styles/jqx." + theme + '.css';
-        }
+        url = "../../jqwidgets/styles/jqx." + theme + '.css';
+         
+		if (loc.indexOf('angular-') >= 0) {		 
+			  if (loc.indexOf('button') >= 0 ||
+				(loc.indexOf('treegrid') == -1 && loc.indexOf('grid') >= 0) ||
+				loc.indexOf('dropdownlist') >= 0 ||
+				loc.indexOf('combobox') >= 0 ||
+				loc.indexOf('datatable') >= 0 ||
+				loc.indexOf('listbox') >= 0 ||
+				loc.indexOf('tabs') >= 0 ||
+				(loc.indexOf('listmenu') == -1 && loc.indexOf('menu') >= 0) ||
+				loc.indexOf('calendar') >= 0 ||
+				loc.indexOf('datetimeinput') >= 0 ||
+				(loc.indexOf('chart') >= 0 && loc.indexOf('bulletchart') == -1)) {
+					url = "../../../jqwidgets/styles/jqx." + theme + '.css';
+				}
+		}
     }
     if (window.location.href.toString().indexOf("typescript") >= 0) {
         url = "../../../jqwidgets/styles/jqx." + theme + '.css';
@@ -381,7 +385,7 @@ function getDemoTheme() {
 };
 var theme = 'light';
 try {
-    if (jQuery) {
+    if (window.jQuery) {
         $(document).ready(function () {
             $(".example-description").css('margin-bottom', 15);
 			
@@ -418,6 +422,10 @@ try {
         }
     }
     else {
+		if (window.JQXLite) {
+		     theme = getDemoTheme();
+		}
+		else
         $(document).ready(function () {
             theme = getDemoTheme();
         });
@@ -425,4 +433,5 @@ try {
 }
 catch (error) {
     var er = error;
+
 }

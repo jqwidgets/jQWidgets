@@ -1,0 +1,202 @@
+[
+    {
+        "region": "Asia",
+        "account": "Total Revenue",
+        "q1": 8714.96,
+        "q2": 4912.96,
+        "q3": 4248.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "Asia",
+        "account": "Cost Of Revenue",
+        "q1": 8314.96,
+        "q2": 4912.96,
+        "q3": 4248.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "Asia",
+        "account": "Gross Profit",
+        "q1": 8754.96,
+        "q2": 4932.96,
+        "q3": 4238.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "Asia",
+        "account": "Research Development",
+        "q1": 8414.96,
+        "q2": 4942.96,
+        "q3": 4248.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "Asia",
+        "account": "Administrative",
+        "q1": 8716.96,
+        "q2": 4942.96,
+        "q3": 4243.96,
+        "q4": 4258.96
+    },
+    {
+        "region": "Europe",
+        "account": "Total Revenue",
+        "q1": 8414.96,
+        "q2": 4212.96,
+        "q3": 4233.96,
+        "q4": 4348.96
+    },
+    {
+        "region": "Europe",
+        "account": "Cost Of Revenue",
+        "q1": 8614.96,
+        "q2": 4916.96,
+        "q3": 4248.96,
+        "q4": 4258.96
+    },
+    {
+        "region": "Europe",
+        "account": "Gross Profit",
+        "q1": 8717.96,
+        "q2": 4412.96,
+        "q3": 4258.95,
+        "q4": 4245.96
+    },
+    {
+        "region": "Europe",
+        "account": "Research Development",
+        "q1": 8814.96,
+        "q2": 4612.96,
+        "q3": 4247.96,
+        "q4": 4246.96
+    },
+    {
+        "region": "Europe",
+        "account": "Administrative",
+        "q1": 8718.96,
+        "q2": 4712.96,
+        "q3": 4278.96,
+        "q4": 4548.96
+    },
+    {
+        "region": "Australia",
+        "account": "Total Revenue",
+        "q1": 8714.96,
+        "q2": 4952.96,
+        "q3": 4248.96,
+        "q4": 4548.96
+    },
+    {
+        "region": "Australia",
+        "account": "Cost Of Revenue",
+        "q1": 8714.96,
+        "q2": 4952.96,
+        "q3": 5248.96,
+        "q4": 4245.96
+    },
+    {
+        "region": "Australia",
+        "account": "Gross Profit",
+        "q1": 8764.96,
+        "q2": 4922.96,
+        "q3": 4258.96,
+        "q4": 4238.96
+    },
+    {
+        "region": "Australia",
+        "account": "Research Development",
+        "q1": 8734.96,
+        "q2": 4932.96,
+        "q3": 4248.96,
+        "q4": 4228.96
+    },
+    {
+        "region": "Australia",
+        "account": "Administrative",
+        "q1": 8715.96,
+        "q2": 4913.96,
+        "q3": 4238.96,
+        "q4": 4228.96
+    },
+    {
+        "region": "North America",
+        "account": "Total Revenue",
+        "q1": 8714.96,
+        "q2": 4912.96,
+        "q3": 4248.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "North America",
+        "account": "Cost Of Revenue",
+        "q1": 8314.96,
+        "q2": 4912.96,
+        "q3": 4248.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "North America",
+        "account": "Gross Profit",
+        "q1": 8754.96,
+        "q2": 4932.96,
+        "q3": 4238.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "North America",
+        "account": "Research Development",
+        "q1": 8414.96,
+        "q2": 4942.96,
+        "q3": 4248.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "North America",
+        "account": "Administrative",
+        "q1": 8716.96,
+        "q2": 4942.96,
+        "q3": 4243.96,
+        "q4": 4258.96
+    },
+    {
+        "region": "South America",
+        "account": "Total Revenue",
+        "q1": 8714.96,
+        "q2": 4912.96,
+        "q3": 4248.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "South America",
+        "account": "Cost Of Revenue",
+        "q1": 8314.96,
+        "q2": 4912.96,
+        "q3": 4248.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "South America",
+        "account": "Gross Profit",
+        "q1": 8754.96,
+        "q2": 4932.96,
+        "q3": 4238.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "South America",
+        "account": "Research Development",
+        "q1": 8414.96,
+        "q2": 4942.96,
+        "q3": 4248.96,
+        "q4": 4248.96
+    },
+    {
+        "region": "South America",
+        "account": "Administrative",
+        "q1": 8716.96,
+        "q2": 4942.96,
+        "q3": 4243.96,
+        "q4": 4258.96
+    }
+]

@@ -1,0 +1,92 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "angular-boundless@https://github.com/jqwidgets/angular-boundless/tarball/master",
+        "scope": null,
+        "escapedName": "angular-boundless",
+        "name": "angular-boundless",
+        "rawSpec": "https://github.com/jqwidgets/angular-boundless/tarball/master",
+        "spec": "https://github.com/jqwidgets/angular-boundless/tarball/master",
+        "type": "remote"
+      },
+      "C:\\Users\\IvoZhulev\\AppData\\Roaming\\npm\\node_modules\\angular-boundless"
+    ]
+  ],
+  "_from": "https://github.com/jqwidgets/angular-boundless/tarball/master",
+  "_id": "angular-boundless@0.1.0",
+  "_inCache": true,
+  "_location": "/angular-boundless/angular-boundless",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "angular-boundless@https://github.com/jqwidgets/angular-boundless/tarball/master",
+    "scope": null,
+    "escapedName": "angular-boundless",
+    "name": "angular-boundless",
+    "rawSpec": "https://github.com/jqwidgets/angular-boundless/tarball/master",
+    "spec": "https://github.com/jqwidgets/angular-boundless/tarball/master",
+    "type": "remote"
+  },
+  "_requiredBy": [],
+  "_resolved": "https://github.com/jqwidgets/angular-boundless/tarball/master",
+  "_shasum": "8705b392460ba2a5d03ada4e5aaa31cefc3b1d21",
+  "_shrinkwrap": null,
+  "_spec": "angular-boundless@https://github.com/jqwidgets/angular-boundless/tarball/master",
+  "_where": "C:\\Users\\IvoZhulev\\AppData\\Roaming\\npm\\node_modules\\angular-boundless",
+  "author": {
+    "name": "www.jqwidgets.com"
+  },
+  "dependencies": {
+    "@angular/animations": "^4.4.4",
+    "@angular/cdk": "^2.0.0-beta.12",
+    "@angular/common": "^4.4.4",
+    "@angular/compiler": "^4.4.4",
+    "@angular/core": "^4.4.4",
+    "@angular/forms": "^4.4.4",
+    "@angular/http": "^4.4.4",
+    "@angular/material": "^2.0.0-beta.12",
+    "@angular/platform-browser": "^4.4.4",
+    "@angular/platform-browser-dynamic": "^4.4.4",
+    "@angular/router": "^4.4.4",
+    "core-js": "^2.5.1",
+    "hammerjs": "2.0.8",
+    "jqwidgets-scripts": "5.4.0",
+    "bootstrap": "3.3.7",
+    "rxjs": "^5.4.3",
+    "zone.js": "^0.8.18"
+  },
+  "description": "jQWidgets Angular Template Project",
+  "devDependencies": {
+    "@angular/cli": "1.4.6",
+    "@angular/compiler-cli": "^4.4.4",
+    "@angular/language-service": "^4.4.4",
+    "@types/jasmine": "~2.6.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.0.34",
+    "codelyzer": "~3.2.1",
+    "jasmine-core": "~2.8.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~1.7.1",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^1.3.0",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "~5.1.2",
+    "ts-node": "~3.3.0",
+    "tslint": "~5.7.0",
+    "typescript": "2.3.4",
+    "jquery": "3.2.1"
+  },
+  "license": "http://www.jqwidgets.com/license/",
+  "name": "angular-boundless",
+  "optionalDependencies": {},
+  "private": true,
+  "readme": "# angular-boundless\nPlease refer to its documentation:\n  - [Getting Started](https://github.com/jqwidgets/angular-boundless/blob/master/README.md#getting-started) \n  - [jQWidgets Angular Documentation](http://www.jqwidgets.com/angular-components-documentation/)\n\nThis project is based on [Angular CLI](https://cli.angular.io/).\n\n## Quick Overview\n```sh\nnpm i -g angular-boundless \n\nangular-boundless my-app\ncd my-app\nnpm start\n```\n\nThen open [http://localhost:4200/](http://localhost:4200/) to see your app.<br>\nWhen you’re ready to deploy to production, create a minified bundle with `npm run build`.\n\n## Getting Started\n\n### Installation\n\nInstall it once globally:\n\n```sh\nnpm install -g angular-boundless\n```\n\n**Make sure you have the latest version of [Node](https://nodejs.org/en/) on your machine**.\n\n### Creating an App\n\n```sh\nangular-boundless my-app\ncd my-app\n```\n\nIt will create a directory called `my-app` inside the current folder.<br>\nInside that directory, it will generate the initial project structure and install the transitive dependencies:\n\n```\nmy-app\n├── e2e\n├── node_modules\n├── src\n├── .angular-cli.json\n├── karma.conf.js\n├── package.json\n├── protractor.conf.js\n├── README.md\n├── tsconfig.json\n├── tslint.json\n```\n\nSubfolders are not shown in order to keep it short.<br>\nOnce the installation is done, you can run some commands inside the project folder:\n\n### `npm start`\nBuilds the app in development mode and starts a web server. <br />\nOpen [http://localhost:4200](http://localhost:4200) to view it in the browser. <br />\nThe page will reload if you make edits.\n\n### `npm run build`\nBuilds the app in production mode and stores it in the `dist/` directory.\n\n### Adding other jQWidgets\n\nThis project will show you the `Angular jQWidgets Grid`. But of course you will want to use some other widgets too. <br />\nFor that you need to add their core files first. This is done in the `.angular-cli.json` file. <br />\nInside you will find a `scripts` property in which you must add the needed `jqx` core files. \n\n## Why Use This?\n\n**If you’re getting started** with `jQWidgets` and `Angular`, using `angular-boundless` is the easiest way to do this.  <br />\nJust install, run and you will see an Angular jQWidgets Grid on your page. <br />\nThen you can customize the project as much as you want, making something great.\n",
+  "readmeFilename": "README.md",
+  "scripts": {
+    "build": "ng build --base-href ./ --prod",
+    "start": "ng serve"
+  },
+  "version": "0.1.0"
+}

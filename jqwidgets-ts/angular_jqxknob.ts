@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -38,9 +38,9 @@ export class jqxKnobComponent implements OnChanges
    @Input('startAngle') attrStartAngle: number;
    @Input('spinner') attrSpinner: jqwidgets.KnobSpinner;
    @Input('style') attrStyle: jqwidgets.KnobStyle;
-   @Input('step') attrStep: number;
+   @Input('step') attrStep: number | string;
    @Input('snapToStep') attrSnapToStep: boolean;
-   @Input('value') attrValue: number;
+   @Input('value') attrValue: any;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
@@ -333,7 +333,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   step(arg?: number) : any {
+   step(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxKnob('step', arg);
       } else {
@@ -349,7 +349,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   value(arg?: number) : any {
+   value(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxKnob('value', arg);
       } else {

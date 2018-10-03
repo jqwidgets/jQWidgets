@@ -1,0 +1,172 @@
+﻿<nav class="navbar navbar-default header-navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle header-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <mat-icon class="header-toggle-icon mat-icon-header">call_merge</mat-icon>
+            </button>
+            <a class="navbar-brand">
+                <mat-icon class="header-material-icon">polymer</mat-icon>
+                <span style="color: #f2f2f2;">BOUNDLESS</span>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav">            
+                <li>
+                    <div class="navbar-elements navbar-firstElement">
+                        <button class="header-profile-button" mat-button [matMenuTriggerFor]="menu0" (onMenuOpen)="onMenuOpened(0)">
+                            <mat-icon class='mat-icon-header'>timeline</mat-icon>
+                            <span class="header-profile-text">Favourite Stocks</span>
+                           <mat-icon class='mat-icon-header'>keyboard_arrow_down</mat-icon>
+                        </button>
+                        <mat-menu #menu0="matMenu" [overlapTrigger]="false">
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>format_color_fill</mat-icon>
+                                <p class="header-text">Oil</p>
+                                <mat-icon class='mat-icon-header'>arrow_upward</mat-icon>
+                                <span class="up">+0.14%</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>whatshot</mat-icon>
+                                <p class="header-text">Natural Gas</p>
+                                <mat-icon class='mat-icon-header'>arrow_downward</mat-icon>
+                                <span class="down">-0.31%</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>toys</mat-icon>
+                                <p class="header-text">Wind Power</p>
+                                <mat-icon class='mat-icon-header'>arrow_downward</mat-icon>
+                                <span class="down">-0.73%</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>flash_on</mat-icon>
+                                <p class="header-text">Electricity</p>
+                                <mat-icon class='mat-icon-header'>arrow_upward</mat-icon>
+                                <span class="up">+0.92%</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>local_dining</mat-icon>
+                                <p class="header-text">Corn</p>
+                                <mat-icon class='mat-icon-header'>arrow_downward</mat-icon>
+                                <span class="down">-0.53%</span>
+                            </button>                       
+                        </mat-menu>
+                    </div>
+                </li> 
+                <li>
+                    <div class="navbar-elements">
+                        <button class="header-profile-button" mat-button [matMenuTriggerFor]="menu1" (onMenuOpen)="onMenuOpened(1)">
+                            <mat-icon class='mat-icon-header'>group</mat-icon>
+                            <span class="header-profile-text">Friends Status</span>
+                           <mat-icon class='mat-icon-header'>keyboard_arrow_down</mat-icon>
+                        </button>
+                        <mat-menu #menu1="matMenu" [overlapTrigger]="false">
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>face</mat-icon>
+                                <p class="header-text">Nancy Davolio</p>
+                                <mat-icon class="header-person-icon header-person-icon-on">panorama_fish_eye</mat-icon>                           
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>face</mat-icon>
+                                <p class="header-text">Andrew Fuller</p>
+                                <mat-icon class="header-person-icon header-person-icon-busy">panorama_fish_eye</mat-icon>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>face</mat-icon>
+                                <p class="header-text">Steven Buch</p>
+                                <mat-icon class="header-person-icon header-person-icon-on">panorama_fish_eye</mat-icon>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>face</mat-icon>
+                                <p class="header-text">Robert King</p>
+                                <mat-icon class="header-person-icon header-person-icon-off">panorama_fish_eye</mat-icon>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>face</mat-icon>
+                                <p class="header-text">Laura Callahan</p>
+                                <mat-icon class="header-person-icon header-person-icon-busy">panorama_fish_eye</mat-icon>
+                            </button>
+                            <button mat-menu-item>
+                                <span>Online</span>
+                                <mat-icon class="status-legend header-person-icon-on">panorama_fish_eye</mat-icon>
+                                <span>Offline</span> 
+                                <mat-icon class="status-legend header-person-icon-off">panorama_fish_eye</mat-icon>
+                                <span>Busy</span>
+                                <mat-icon class="status-legend header-person-icon-busy">panorama_fish_eye</mat-icon>                     
+                            </button>
+                        </mat-menu>
+                    </div>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="navbar-elements">
+                        <button class="header-profile-button" mat-button [matMenuTriggerFor]="menu2" (onMenuOpen)="onMenuOpened(2)">
+                            <mat-icon class='mat-icon-header'>language</mat-icon>
+                            <span class="header-profile-text">English</span>
+                            <mat-icon class='mat-icon-header'>keyboard_arrow_down</mat-icon>
+                        </button>
+                        <mat-menu #menu2="matMenu" [overlapTrigger]="false">
+                            <button mat-menu-item>
+                                <div class="flag flag-uk"></div>
+                                <p class="header-text flag-text">English</p>
+                            </button>
+                            <button mat-menu-item>
+                                <div class="flag flag-italy"></div>
+                                <p class="header-text flag-text">Italian</p>
+                            </button>
+                            <button mat-menu-item>
+                                <div class="flag flag-spain"></div>
+                                <p class="header-text flag-text">Spanish</p>
+                            </button>
+                            <button mat-menu-item>
+                                <div class="flag flag-germany"></div>
+                                <p class="header-text flag-text">Deutsch</p>
+                            </button>
+                            <button mat-menu-item>
+                                <div class="flag flag-france"></div>
+                                <p class="header-text flag-text">French</p>
+                            </button>
+                            <button mat-menu-item>
+                                <div class="flag flag-bulgaria"></div>
+                                <p class="header-text flag-text">Bulgarian</p>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </li> 
+                <li>
+                    <div class="navbar-elements">
+                        <button style="margin-right: 2em;" class="header-profile-button" mat-button [matMenuTriggerFor]="menu3" (onMenuOpen)="onMenuOpened(3)">
+                            <mat-icon class='mat-icon-header'>face</mat-icon>
+                            <span class="header-profile-text">Margaret Levingston</span>
+                           <mat-icon class='mat-icon-header'>keyboard_arrow_down</mat-icon>
+                        </button>
+                        <mat-menu #menu3="matMenu" [overlapTrigger]="false">
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>account_circle</mat-icon>
+                                <p class="header-text-long">My Profile</p>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>local_atm</mat-icon>
+                                <p class="header-text-long">My Balance</p>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>chat</mat-icon>
+                                <p class="header-text-long">Messages</p>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>settings</mat-icon>
+                                <p class="header-text-long">Account Settings</p>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon class='mat-icon-header'>power_settings_new</mat-icon>
+                                <p class="header-text-long">Logout</p>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

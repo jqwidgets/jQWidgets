@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="JavaScript Form, HTML Form, jQuery Forms widget" /> 
+    <meta name="description" content="Example of the jQuery Form and submitting the form data via GET and POST methods."/>
+    <title id='Description'>jQuery Form Submit function</title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.office.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxpasswordinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxform.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var template = [
+                {
+                    bind: 'textBoxValue',
+                    type: 'text',
+                    label: 'Text input',
+                    labelPosition: 'left',
+                    labelWidth: '30%',
+                    align: 'left',
+                    width: '250px',
+                    required: true
+                },
+                {
+                    bind: 'passwordBoxValue',
+                    type: 'password',
+                    label: 'Password input',
+                    labelPosition: 'left',
+                    labelWidth: '30%',
+                    align: 'left',
+                    width: '250px',
+                    required: true
+                },
+                {
+                    bind: 'nubmberBoxValue',
+                    type: 'number',
+                    label: 'Number input',
+                    labelPosition: 'left',
+                    labelWidth: '30%',
+                    align: 'left',
+                    width: '250px',
+                    required: true
+                },
+                {
+                    bind: 'dropdownValue',
+                    type: 'option',
+                    label: 'Drop down list',
+                    labelPosition: 'left',
+                    labelWidth: '30%',
+                    align: 'left',
+                    width: '250px',
+                    required: true,
+                    component: 'jqxDropDownList',
+                    options: [
+                        { label: 'Option 1', value: 'value1' },
+                        { label: 'Option 2', value: 'value2' },
+                        { label: 'Option 3', value: 'value3' }
+                    ]
+                },
+                {
+                    type: 'label',
+                    label: 'Radio buttons:',
+                    rowHeight: '40px',
+                },
+                {
+                    bind: 'radiobuttonValue',
+                    type: 'option',
+                    label: 'Radio buttons',
+                    labelPosition: 'right',
+                    columnWidth: '150px',
+                    align: 'left',
+                    //width: '15px',
+                    //required: true,
+                    optionslayout: 'horizontal',
+                    options: [
+                        { label: 'Option 1', value: 'value1' },
+                        { label: 'Option 2', value: 'value2' },
+                        { label: 'Option 3', value: 'value3' }
+                    ]
+                },
+                {
+                    type: 'label',
+                    bind: 'radiobuttonValue_out',
+                    label: 'Boolean options / checkboxes:',
+                    rowHeight: '40px',
+                },
+                {
+                    columns: [
+                        {
+                            columnWidth: '140px',
+                            bind: 'checkboxValue1',
+                            type: 'boolean',
+                            label: 'Checkbox 1',
+                            labelPosition: 'right',
+                            align: 'left',
+                            labelPadding: {left: 0, top: 5, right: 0, bottom: 5}
+                        },
+                        {
+                            columnWidth: '140px',
+                            bind: 'checkboxValue2',
+                            type: 'boolean',
+                            label: 'Checkbox 2',
+                            labelPosition: 'right',
+                            align: 'left',
+                            labelPadding: {left: 0, top: 5, right: 0, bottom: 5}
+                        },
+                        {
+                            columnWidth: '140px',
+                            bind: 'checkboxValue3',
+                            type: 'boolean',
+                            label: 'Checkbox 3',
+                            labelPosition: 'right',
+                            align: 'left',
+                            labelPadding: {left: 0, top: 5, right: 0, bottom: 5}
+                        }
+                    ]
+                },
+                {
+                    type: 'blank',
+                    rowHeight: '20px',
+                },
+                {
+                    name: 'submitButton',
+                    type: 'button',
+                    text: 'Submit Form Data',
+                    align: 'right',
+                    padding: {left: 0, top: 5, bottom: 5, right: 40}
+                }
+            ];
+
+
+            var sampleValue = {
+                'textBoxValue': 'text box value',
+                'passwordBoxValue': 'password box',
+                'nubmberBoxValue': 67.44,
+                'dropdownValue': 'value3',
+                'radiobuttonValue': 'value2',
+                'checkboxValue1': false,
+                'checkboxValue2': false,
+                'checkboxValue3': true,
+            };
+
+            var sampleForm = $('#sampleForm');
+
+            sampleForm.jqxForm({
+                template: template,
+                value: sampleValue,
+                padding: { left: 10, top: 10, right: 0, bottom: 10 }
+            });
+
+            var btn = sampleForm.jqxForm('getComponentByName', 'submitButton');
+            btn.on('click', function () {
+                // function: submit
+                // arg1: url
+                // arg2, optional: target, default is _blank
+                // arg3, optional: submit method - GET or POST, default is POST
+                sampleForm.jqxForm('submit', "https://www.jqwidgets.com/form_demo/", "_blank", 'POST');
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id='sampleForm' style="width: 420px; height: auto;"></div>   
+    <div class="example-description">
+        <h2>Description</h2>
+        <div style="width: 800px;">
+            This example shows you how to submit the content of the form to a url. This function works in a way similar to the standard HTML form submit method.
+            The submit function takes 3 paramters: uri, target and submit method. The form submit target is optional and the default value is _blank. In this
+            case, calling the submit function will open the uri in a new window. The 3rd parameter allows you to choose between HTTP GET and POST when submitting
+            the form's data. If you don't set the paramter, the default value is POST.
+            Not all inputs defined in the form's template will be submitted. The submit will use the input elements name, as specified in the template.
+            If name is not present, it will try to use the corresponding id or value binding name. If none of these properties are present, the input element
+            will be skipped. In addition, button and labels are skipped by default. If you need, for some reasons, to have an input element in the form, but not
+            submit it, set the 'submit' property of the respective tool to false.
+        </div>
+    </div>
+
+</body>
+</html>

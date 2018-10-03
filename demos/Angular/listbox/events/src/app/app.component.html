@@ -1,0 +1,18 @@
+﻿<div style='float: left; width: 500px;' #jqxWidget>
+  <jqxListBox [theme]="'material'" style="margin-left: 20px; margin-top: 10px; float: left;" #jqxListBox
+              (onSelect)="select($event)"
+              (onUnselect)="unselect($event)"
+              [source]="source"
+              [width]="200"
+              [height]="250">
+  </jqxListBox>
+  <div style='margin-left: 20px; margin-top: 10px; float: left;'>
+    <div>
+      <span>
+        Events:
+      </span>
+      <jqxPanel [theme]="'material'" #Events [width]="200" [height]="250">
+      </jqxPanel>
+    </div>
+  </div>
+</div>

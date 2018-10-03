@@ -1,0 +1,84 @@
+<div id="overview">
+    <div class="overview-list container-fluid">
+        <ul class="list-inline">
+            <li class="list-inline-item"><h2>23</h2><p>CAMPAIGNS</p></li>
+            <li class="list-inline-item"><h2>30,204</h2><p>OPPORTUNITIES</p></li>
+            <li class="list-inline-item"><h2>11,800</h2><p>CLOSED WON</p></li>
+            <li class="list-inline-item"><h2>$125,360</h2><p>TOTAL SALES</p></li>
+            <li class="list-inline-item"><h2>64%</h2><p>GOALS MET</p></li>
+        </ul>
+    </div>
+    <div class="data container-fluid">
+        <div style="float:right">
+            <p style="margin-right: 20px;">CAMPAIGN PERFORMANCE</p>
+        </div>
+        <div style="float:left; margin-left: 20px;" id="overviewChartList">
+            <ul class="list-inline">
+                <li [class.active-overview]="isActive('overview1')" (click)="setActive('overview1'); changeActiveOverview('chartdataclicks');" class="list-inline-item" id="5">CLICKS</li>
+                <li [class.active-overview]="isActive('overview2')" (click)="setActive('overview2'); changeActiveOverview('chartdatawon');" class="list-inline-item" id="6">WON</li>
+                <li [class.active-overview]="isActive('overview3')" (click)="setActive('overview3'); changeActiveOverview('chartdatasales');" class="list-inline-item" id="7">SALES</li>
+                <li [class.active-overview]="isActive('overview4')" (click)="setActive('overview4'); changeActiveOverview('chartdatagoals');" class="list-inline-item" id="8">GOALS MET</li>
+            </ul>
+        </div>
+        <app-overview-chart [overview]="overview"></app-overview-chart>
+        <div class="overviewBottomRight" [ngStyle]="{'width': overviewBottomRightWidth}">
+            <div>
+                <p>STATISTICS</p>
+            </div>
+            <div class="progressBarsContainer">
+                <p class="overviewBottomRightInnerText">CURRENT CAMPAIGNS</p>
+                <ul>
+                    <li>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><div style="background-color:#6BBD49"><p>ACTIVE</p></div></li>
+                            <li class="list-inline-item"><p>3 FOR 1, 50% OFF FOR $150</p>
+                                <app-progress-bar-active [width]="activeBarWidth"></app-progress-bar-active>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><div style="background-color:#C8C8C8"><p>PAUSED</p></div></li>
+                            <li class="list-inline-item"><p>$250 FOR NEW CUSTOMERS</p>
+                                <app-progress-bar-paused [width]="pausedBarWidth"></app-progress-bar-paused>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><div style="background-color:#667B82"><p>ENDED</p></div></li>
+                            <li class="list-inline-item"><p>$30 REFFERAL</p>
+                                <app-progress-bar-ended [width]="endedBarWidth"></app-progress-bar-ended>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="overviewBottomLeft">
+            <div>
+                <p style="margin-left: 20px; text-align: right;">REDEMPTION</p>
+            </div>
+            <div class="barGaugesContainer">
+                <app-left-bar-gauge></app-left-bar-gauge>
+                <app-right-bar-gauge></app-right-bar-gauge>
+                <ul class="gaugesList">
+                    <li>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><div class="dot" style="background-color:#6BBD49;"></div><p style="display:inline-block">In Store</p></li>
+                            <li class="list-inline-item" style="position:relative;right:-11.5em;"><p>2,308</p></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><div class="dot" style="background-color:#667B82;"></div><p style="display:inline-block">Online</p></li>
+                            <li class="list-inline-item" style="float:right;margin-right:1em;"><p>33,156</p></li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="barGaugeLabels barGaugeLabelsLeft">35%</p>
+                <p class="barGaugeLabels barGaugeLabelsRight">78%</p>
+            </div>
+        </div>
+    </div>
+</div>

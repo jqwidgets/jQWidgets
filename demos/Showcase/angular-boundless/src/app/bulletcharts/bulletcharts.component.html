@@ -1,0 +1,106 @@
+﻿<div class="bulletcharts-container">
+
+    <div>
+        <span style="font-size: 140%;">Daily financials</span>
+        <div style="float: right;">
+            <mat-slide-toggle (change)="toggleOnChange()"
+                [color]="'accent'" [checked]="true" [labelPosition]="'before'">
+                Realtime:
+            </mat-slide-toggle>
+        </div>
+    </div>
+
+    <div class="bulletcharts-chart-container">
+        <div class="bulletcharts-chart-text-big">Revenue</div>
+        <div class="bulletcharts-chart-text-small">USD, in thousands</div>
+        <div style="clear:both"></div>
+        <jqxBulletChart #myBulletChart1
+            [width]="'98%'" [height]="60" [barSize]="'40%'" [ranges]="ranges1_1" [ticks]="ticks1" [animationDuration]="500"
+            [pointer]="pointer1_1" [target]="target1_1" [description]="''" [title]="''" [showTooltip]="false">
+        </jqxBulletChart>
+    </div>
+
+    <div class="bulletcharts-chart-container">
+        <div class="bulletcharts-chart-text-big">Profit</div>
+        <div class="bulletcharts-chart-text-small">in percents</div>
+        <div style="clear:both"></div>
+        <jqxBulletChart #myBulletChart2
+            [width]="'98%'" [height]="60" [barSize]="'40%'" [ranges]="ranges2_1" [ticks]="ticks2" [animationDuration]="500"
+            [pointer]="pointer2_1" [target]="target2_1" [description]="''" [title]="''" [showTooltip]="false">
+        </jqxBulletChart>
+    </div>
+
+    <div class="bulletcharts-chart-container">
+        <div class="bulletcharts-chart-text-big">Order Size</div>
+        <div class="bulletcharts-chart-text-small">Average value</div>
+        <div style="clear:both"></div>
+        <jqxBulletChart #myBulletChart3
+            [width]="'98%'" [height]="60" [barSize]="'40%'" [ranges]="ranges3_1" [ticks]="ticks3" [animationDuration]="500"
+            [pointer]="pointer3_1" [target]="target3_1" [description]="''" [title]="''" [showTooltip]="false">
+        </jqxBulletChart>
+    </div>
+
+    <div class="bulletcharts-stats-container" style="margin-top: 3em">
+        <div class="bulletcharts-stats-icon-container bulletcharts-stats-icon-container-first">
+            <mat-icon class="bulletcharts-stats-icon bulletcharts-stats-icon-first">multiline_chart</mat-icon>
+        </div>
+        <div class="bulletcharts-stats-text-container">
+            <p class="bulletcharts-stats-text-big">Revenue for July, 18<span class="bulletcharts-text-to-hide">: $8476</span></p>
+            <p class="bulletcharts-stats-text-small">2 hours ago</p>
+        </div>
+        <mat-icon class="bulletcharts-arrow-icon">keyboard_arrow_right</mat-icon>
+    </div>
+
+    <div style="clear: both"></div>
+
+    <div class="bulletcharts-stats-container">
+        <div class="bulletcharts-stats-icon-container bulletcharts-stats-icon-container-second">
+            <mat-icon class="bulletcharts-stats-icon bulletcharts-stats-icon-second">done</mat-icon>
+        </div>
+        <div class="bulletcharts-stats-text-container">
+            <p class="bulletcharts-stats-text-big">Invoice <span class="bulletcharts-text-to-hide"><a>#472</a></span> have been paid</p>
+            <p class="bulletcharts-stats-text-small">2 hours ago</p>
+        </div>
+        <mat-icon class="bulletcharts-arrow-icon">keyboard_arrow_right</mat-icon>
+    </div>
+
+    <div style="clear: both"></div>
+
+    <div class="bulletcharts-stats-container">
+        <div class="bulletcharts-stats-icon-container bulletcharts-stats-icon-container-third">
+            <mat-icon class="bulletcharts-stats-icon bulletcharts-stats-icon-third">payment</mat-icon>
+        </div>
+        <div class="bulletcharts-stats-text-container">
+            <p class="bulletcharts-stats-text-big">Commissions <span class="bulletcharts-text-to-hide">for June</span> has been paid</p>
+            <p class="bulletcharts-stats-text-small">2 hours ago</p>
+        </div>
+        <mat-icon class="bulletcharts-arrow-icon">keyboard_arrow_right</mat-icon>
+    </div>
+
+    <div style="clear: both"></div>
+
+    <div class="bulletcharts-stats-container">
+        <div class="bulletcharts-stats-icon-container bulletcharts-stats-icon-container-fourth">
+            <mat-icon class="bulletcharts-stats-icon bulletcharts-stats-icon-fourth">all_inclusive</mat-icon>
+        </div>
+        <div class="bulletcharts-stats-text-container">
+            <p class="bulletcharts-stats-text-big">Orders <span class="bulletcharts-text-to-hide">from July</span> has been sent</p>
+            <p class="bulletcharts-stats-text-small">2 hours ago</p>
+        </div>
+        <mat-icon class="bulletcharts-arrow-icon">keyboard_arrow_right</mat-icon>
+    </div>
+
+    <div style="clear: both"></div>
+
+    <div class="bulletcharts-stats-container">
+        <div class="bulletcharts-stats-icon-container bulletcharts-stats-icon-container-fifth">
+            <mat-icon class="bulletcharts-stats-icon bulletcharts-stats-icon-fifth">child_care</mat-icon>
+        </div>
+        <div class="bulletcharts-stats-text-container">
+            <p class="bulletcharts-stats-text-big">Invoices has been sent <span class="bulletcharts-text-to-hide">to <a>Mr. Smith</a></span></p>
+            <p class="bulletcharts-stats-text-small">2 hours ago</p>
+        </div>
+        <mat-icon class="bulletcharts-arrow-icon">keyboard_arrow_right</mat-icon>
+    </div>
+
+</div>

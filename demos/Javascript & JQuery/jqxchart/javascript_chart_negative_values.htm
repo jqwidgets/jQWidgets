@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>JavaScript Chart Columns Series with Negative values</title>
+    <meta name="description" content="This is an example of JavaScript Chart with Columns Series and negative values." />			
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxchart.core.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare the data
+            var source =
+            {
+                datatype: "json",
+                datafields: [
+                    { name: 'month' },
+                    { name: 'min' },
+                    { name: 'max' },
+                ],
+                url: '../../sampledata/weather_geneva.txt'
+            };
+
+            var dataAdapter = new $.jqx.dataAdapter(source, { async: false, autoBind: true, loadError: function (xhr, status, error) { alert('Error loading "' + source.url + '" : ' + error); } });
+
+            // prepare jqxChart settings
+            var settings = {
+                title: "Weather in Geneva, Switzerland",
+                description: "Climatological Information about Geneva",
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: dataAdapter,
+                colorScheme: 'scheme05',
+                xAxis:
+                {
+                    dataField: 'month',
+                    displayText: 'Month',
+                    unitInterval: 1,
+                    gridLines: { interval: 3 }
+                },
+                valueAxis:
+                {
+                    unitInterval: 5,
+                    title: {
+                        visible: true,
+                        text: 'Temperature [C]<br>'
+                    },
+                    labels: {
+                        formatSettings: {
+                            decimalPlaces: 1,
+                            negativeWithBrackets: false
+                        },
+                        horizontalAlignment: 'right'
+                    }
+                },
+                seriesGroups:
+                    [
+                        {
+                            type: 'column',
+                            //useGradient: false,
+                            series: [
+                                    { dataField: 'max', displayText: 'Max Temperature' },
+                                    { dataField: 'min', displayText: 'Min Temperature' }
+                                ]
+                        }
+                    ]
+            };
+
+            // setup the chart
+            $('#chartContainer').jqxChart(settings);
+
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id='chartContainer' style="width:850px; height:500px">
+    </div>
+    <div class="example-description">
+    <br />
+    <h2>Description</h2>
+    <br />
+    This is an example of JavaScript chart with columns series and negative values. 
+    </div>
+</body>
+</html>

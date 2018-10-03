@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -28,8 +28,8 @@ export class jqxKanbanComponent implements OnChanges
    @Input('itemRenderer') attrItemRenderer: (element?: Array<any>, item?: any, resource?: any) => void;
    @Input('ready') attrReady: () => void;
    @Input('rtl') attrRtl: boolean;
-   @Input('source') attrSource: Array<any>;
-   @Input('resources') attrResources: Array<any>;
+   @Input('source') attrSource: any;
+   @Input('resources') attrResources: any;
    @Input('template') attrTemplate: string;
    @Input('templateContent') attrTemplateContent: any;
    @Input('theme') attrTheme: string;
@@ -225,7 +225,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   source(arg?: Array<any>) : any {
+   source(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxKanban('source', arg);
       } else {
@@ -233,7 +233,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   resources(arg?: Array<any>) : any {
+   resources(arg?: any) : any {
       if (arg !== undefined) {
           this.host.jqxKanban('resources', arg);
       } else {

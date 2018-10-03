@@ -1,0 +1,92 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "my-app@https://github.com/jqwidgets/my-app/tarball/master",
+        "scope": null,
+        "escapedName": "my-app",
+        "name": "my-app",
+        "rawSpec": "https://github.com/jqwidgets/my-app/tarball/master",
+        "spec": "https://github.com/jqwidgets/my-app/tarball/master",
+        "type": "remote"
+      },
+      "C:\\Users\\pc6\\AppData\\Roaming\\npm\\node_modules\\my-app"
+    ]
+  ],
+  "_from": "https://github.com/jqwidgets/my-app/tarball/master",
+  "_id": "my-app@0.1.0",
+  "_inCache": true,
+  "_location": "/my-app/my-app",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "my-app@https://github.com/jqwidgets/my-app/tarball/master",
+    "scope": null,
+    "escapedName": "my-app",
+    "name": "my-app",
+    "rawSpec": "https://github.com/jqwidgets/my-app/tarball/master",
+    "spec": "https://github.com/jqwidgets/my-app/tarball/master",
+    "type": "remote"
+  },
+  "_requiredBy": [],
+  "_resolved": "https://github.com/jqwidgets/my-app/tarball/master",
+  "_shasum": "8705b392460ba2a5d03ada4e5aaa31cefc3b1d21",
+  "_shrinkwrap": null,
+  "_spec": "my-app@https://github.com/jqwidgets/my-app/tarball/master",
+  "_where": "C:\\Users\\pc6\\AppData\\Roaming\\npm\\node_modules\\my-app",
+  "author": {
+    "name": "www.jqwidgets.com"
+  },
+  "dependencies": {
+    "@angular/animations": "^4.2.6",
+    "@angular/common": "^4.2.6",
+    "@angular/compiler": "^4.2.6",
+    "@angular/core": "^4.2.6",
+    "@angular/forms": "^4.2.6",
+    "@angular/http": "^4.2.6",
+    "@angular/platform-browser": "^4.2.6",
+    "@angular/platform-browser-dynamic": "^4.2.6",
+    "@angular/router": "^4.2.6",
+    "bootstrap": "^3.3.7",
+    "classlist.js": "^1.1.20150312",
+    "core-js": "^2.5.0",
+    "enhanced-resolve": "^3.3.0",
+    "jquery": "^3.2.1",
+    "jqwidgets-framework": "4.6.4",
+    "rxjs": "^5.4.2",
+    "web-animations-js": "^2.3.1",
+    "zone.js": "^0.8.14"
+  },
+  "description": "jQWidgets Angular Template Project",
+  "devDependencies": {
+    "@angular/cli": "1.2.0",
+    "@angular/compiler-cli": "^4.2.6",
+    "@angular/language-service": "^4.2.6",
+    "@types/jasmine": "~2.5.53",
+    "@types/jasminewd2": "~2.0.2",
+    "@types/node": "~8.0.10",
+    "codelyzer": "~3.1.2",
+    "jasmine-core": "~2.6.4",
+    "jasmine-spec-reporter": "~4.1.1",
+    "karma": "~1.7.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^1.3.0",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "~5.1.2",
+    "ts-node": "~3.2.0",
+    "tslint": "~5.5.0",
+    "typescript": "~2.4.1"
+  },
+  "license": "http://www.jqwidgets.com/license/",
+  "name": "my-app",
+  "optionalDependencies": {},
+  "private": true,
+  "readme": "# my-app\nPlease refer to its documentation:\n  - [Getting Started](https://github.com/jqwidgets/my-app/blob/master/README.md#getting-started) \n  - [jQWidgets Angular Documentation](http://www.jqwidgets.com/angular-components-documentation/)\n\nThis project is based on [Angular CLI](https://cli.angular.io/).\n\n## Quick Overview\n```sh\nnpm i -g my-app \n\nmy-app my-app\ncd my-app\nnpm start\n```\n\nThen open [http://localhost:4200/](http://localhost:4200/) to see your app.<br>\nWhen you’re ready to deploy to production, create a minified bundle with `npm run build`.\n\n## Getting Started\n\n### Installation\n\nInstall it once globally:\n\n```sh\nnpm install -g my-app\n```\n\n**Make sure you have the latest version of [Node](https://nodejs.org/en/) on your machine**.\n\n### Creating an App\n\n```sh\nmy-app my-app\ncd my-app\n```\n\nIt will create a directory called `my-app` inside the current folder.<br>\nInside that directory, it will generate the initial project structure and install the transitive dependencies:\n\n```\nmy-app\n├── e2e\n├── node_modules\n├── src\n├── .angular-cli.json\n├── karma.conf.js\n├── package.json\n├── protractor.conf.js\n├── README.md\n├── tsconfig.json\n├── tslint.json\n```\n\nSubfolders are not shown in order to keep it short.<br>\nOnce the installation is done, you can run some commands inside the project folder:\n\n### `npm start`\nBuilds the app in development mode and starts a web server. <br />\nOpen [http://localhost:4200](http://localhost:4200) to view it in the browser. <br />\nThe page will reload if you make edits.\n\n### `npm run build`\nBuilds the app in production mode and stores it in the `dist/` directory.\n\n### Adding other jQWidgets\n\nThis project will show you the `Angular jQWidgets Grid`. But of course you will want to use some other widgets too. <br />\nFor that you need to add their core files first. This is done in the `.angular-cli.json` file. <br />\nInside you will find a `scripts` property in which you must add the needed `jqx` core files. \n\n## Why Use This?\n\n**If you’re getting started** with `jQWidgets` and `Angular`, using `my-app` is the easiest way to do this.  <br />\nJust install, run and you will see an Angular jQWidgets Grid on your page. <br />\nThen you can customize the project as much as you want, making something great.\n",
+  "readmeFilename": "README.md",
+  "scripts": {
+    "build": "ng build --base-href ./ --prod",
+    "start": "ng serve"
+  },
+  "version": "0.1.0"
+}

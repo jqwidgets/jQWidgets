@@ -1,0 +1,68 @@
+<jqxDocking [theme]="'light'" [orientation]="'horizontal'" [width]="'100%'" [mode]="'docked'">
+    <div>
+        <div id="window1" style="height: 380px;">
+            <div>
+                Set temperature
+            </div>
+
+            <div style="overflow: hidden;">
+                <jqxKnob #knob (onChange)="onKnobChange()" style="margin-left:auto; margin-right:auto;" [width]="330" [height]="330" [value]="16" [min]="15" [max]="95" [startAngle]="120" [endAngle]="420"
+                         [snapToStep]="true" [rotation]="'clockwise'" [style]="knobStyle" [marks]="knobMarks" [labels]="knobLabels"
+                         [progressBar]="knobProgressBar" [pointer]="knobPointer">
+                </jqxKnob>
+            </div>
+        </div>
+        <div id="window4" style="height: 380px;">
+            <div>
+                Rooms themperature
+            </div>
+            <div style="overflow: hidden;">
+                <div class="demo-gauge">
+                    <div [ngClass]="{'linear-gauge-selected': selectedThermometer === 1}" style="margin: 0px 1% 0px 1%; float: left; padding: 1%; width: 20%;">
+                        <div style="text-align:center;">Fitness</div>
+                        <div #gauge1Text class="temperatureText"><div style="text-align: center; color: blue; font-size:10px;">Low temp.</div></div>
+                        <jqxLinearGauge #gauge1 [rangesOffset]="5" [orientation]="'vertical'" [labels]="gaugeLabels" [ticksMajor]="gaugeMajorTicks" [ticksMinor]="gaugeMinorTicks"
+                                        [max]="95" [min]="0" [value]="16" [pointer]="gaugePointer" [colorScheme]="'scheme01'" [ranges]="gaugeOneRanges">
+                        </jqxLinearGauge>
+                    </div>
+                    <div [ngClass]="{'linear-gauge-selected': selectedThermometer === 2}" style="margin: 0px 1% 0px 1%; float: left; padding: 1%; width: 20%; ">
+                        <div style="text-align:center;">Groups</div>
+                        <div #gauge2Text class="temperatureText"><div style="text-align: center; color: green; font-size: 10px;">Temp. in range</div></div>
+                        <jqxLinearGauge #gauge2 [rangesOffset]="5" [orientation]="'vertical'" [labels]="gaugeLabels" [ticksMajor]="gaugeMajorTicks" [ticksMinor]="gaugeMinorTicks"
+                                        [max]="95" [min]="0" [value]="19" [pointer]="gaugePointer" [colorScheme]="'scheme02'" [ranges]="gaugeTwoRanges">
+                        </jqxLinearGauge>
+                    </div>
+                    <div [ngClass]="{'linear-gauge-selected': selectedThermometer === 3}" style="margin: 0px 1% 0px 1%; float: left; padding: 1%; width: 20%; ">
+                        <div style="text-align:center;">Sauna</div>
+                        <div #gauge3Text class="temperatureText"><div style="text-align: center; color: red; font-size: 10px;">High temp.</div></div>
+                        <jqxLinearGauge #gauge3 [rangesOffset]="5" [orientation]="'vertical'" [labels]="gaugeLabels" [ticksMajor]="gaugeMajorTicks" [ticksMinor]="gaugeMinorTicks"
+                                        [max]="95" [min]="0" [value]="90" [pointer]="gaugePointer" [colorScheme]="'scheme03'" [ranges]="gaugeThreeRanges">
+                        </jqxLinearGauge>
+                    </div>
+                    <div id="gaugeRadioBtns" style="margin-left: 1%; float: left; padding: 1%; width: 20%;">
+                        <div>Select</div>
+                        <div>
+                            <jqxRadioButton (onChecked)="onRadioButtonChecked(1)" style='margin-top: 10px;' [theme]="'light'" [width]="100" [height]="25" [checked]="true">Fitness</jqxRadioButton>
+                            <jqxRadioButton (onChecked)="onRadioButtonChecked(2)" style='margin-top: 10px;' [theme]="'light'" [width]="100" [height]="25">Groups</jqxRadioButton>
+                            <jqxRadioButton (onChecked)="onRadioButtonChecked(3)" style='margin-top: 10px;' [theme]="'light'" [width]="100" [height]="25">Sauna</jqxRadioButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <div id="window1" style="height: 380px;">
+            <div>
+                Important Notes
+            </div>
+            <div style="overflow: hidden;">
+                <jqxListBox [source]="listBoxSource" [width]="'100%'" [height]="'100%'" [theme]="'light'" [renderer]="listBoxRenderer"></jqxListBox>
+            </div>
+        </div>
+
+    </div>
+</jqxDocking>
+
+

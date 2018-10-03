@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.0.6 (2018-August)
+jQWidgets v6.1.0 (2018-October)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -183,7 +183,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
    }
 
    writeValue(value: any): void {
-       if(this.widgetObject && value !== undefined) {
+       if(this.widgetObject && value) {
            if(this.initialLoad){
                setTimeout(_ => this.host.jqxInput('val', value));
                this.initialLoad = false;

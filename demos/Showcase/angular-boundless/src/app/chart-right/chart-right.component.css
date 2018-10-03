@@ -1,0 +1,159 @@
+@media (max-width: 1706px) {
+    .chart-icon-container-middle.chart-right-icon-container-middle {
+        margin-right: 0.5em !important;
+    }
+}
+
+@media (max-width: 1450px) {
+    .chart-icon-container-middle.chart-right-icon-container-middle {
+        transform: translateX(-50%) !important;
+    }
+}
+
+@media (max-width: 1420px) {
+    .chart-icon-container-middle.chart-right-icon-container-middle {
+        margin-right: 0em !important;
+    }
+    .chart-right-icon-text-small {
+        margin-left: 0 !important;
+    }
+    .chart-icon-container-middle.chart-right-icon-container-middle {
+        width: 32%;
+    }
+    .chart-right-icon-container-inner {
+        margin-left: 7em !important;
+    }
+}
+
+@media (max-width: 1350px) {
+    .chart-icon-container .chart-icon-container-middle {
+        transform: none !important;
+        left: 30% !important;      
+    }
+    .chart-right-icon-container-middle {
+        width: 70% !important;
+    }
+    .chart-right-icon-container-inner {
+        height: 81px;
+    }
+    .last-right-inner {
+        height: 82px;
+    }
+}
+
+@media (max-width: 1260px) {
+    .chart-right-icon-container-inner {
+        margin-left: 5em !important;
+    }
+}
+
+@media (max-width: 1140px) {
+    .chart-right-icon-container-inner {
+        margin-left: 2em !important;
+    }
+    .chart-right-icon-container {
+        padding-left: 65px !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    .chart-right-container {
+        width: 100% !important;
+        margin-top: 2em;
+    }
+    .chart-right-icon-container-middle {
+        width: 32% !important;
+    }
+    .chart-icon-container-middle.chart-right-icon-container-middle {
+        position: relative;
+        left: 30% !important;
+        transform: translateX(-70%) !important;
+    }
+}
+
+@media (max-width: 750px) {
+    .chart-icon-container-middle.chart-right-icon-container-middle {
+        transform: translateX(-90%) !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .chart-icon-container-middle.chart-right-icon-container-middle {
+        transform: translateX(-100%) !important;
+    }
+}
+
+@media (max-width: 540px) {
+    .chart-right-icon-container {
+        padding: 0 !important;
+        margin-left: 2em;
+        margin-top: 3em;
+    }
+    .chart-icon-container-middle.chart-right-icon-container-middle {
+        left: 0 !important;
+        transform: none !important;
+        float: left;
+    }
+    .chart-right-icon-container-inner {
+        margin-left: 0 !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+
+
+.chart-right-container {
+    width: 49.5%;
+    padding: 25px 25px;
+    background-color: white;
+    float: right;
+    border: 1px solid #d9d9d9;
+}
+
+.chart-right-icon-container {
+    padding: 25px 45px;
+    padding-bottom: 0;
+}
+
+.listFishIcon {
+    font-size: 12px;
+    color: #52527a;
+    font-weight: bold;
+    line-height: 1.9;
+}
+
+.listText {
+    font-size:  140%;   
+    font-weight:  bold;
+}
+
+.chart-icon-right {
+    font-size: 32px;
+    color: #52527a;
+}
+
+.chart-right-icon-text-big {
+    font-size: 160%;
+    font-weight: bold;
+    position: relative;
+    top: -10px;
+    margin-left: 0.7em;
+}
+
+.chart-right-icon-text-small {
+    font-size: 120%;
+    color: grey;
+    margin-left: 0.5em;
+}
+
+.chart-right-icon-container-inner {
+    margin-bottom: 2.5em;
+    margin-left: 8em;
+}
+
+.chart-icon-container-middle.chart-right-icon-container-middle {
+   position: relative;
+   left: 10%;
+   transform: translateX(-30%);
+}
+

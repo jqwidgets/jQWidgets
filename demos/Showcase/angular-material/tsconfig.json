@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "files": [
+    "src/app/app.module.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxbuttons.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxinput.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxcombobox.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxdatetimeinput.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxvalidator.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxchart.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxdatatable.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxtabs.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxcheckbox.ts"
+  ]
+}

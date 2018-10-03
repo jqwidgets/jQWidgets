@@ -1,0 +1,31 @@
+<jqxSplitter #mainSplitter id="mainSplitter" [width]="'100%'" [height]="'100%'" [orientation]="'vertical'"
+             [showSplitBar]="false" [panels]="[{ size: 250 }, { size: '87%'}]">
+
+    <div class="splitter-panel" id="leftPanel">
+        <header class="clearfix">
+            <div class="container">
+                <div class="header-left">
+                    <div routerLink="/overview" id="logo"><p><span><i class="fa fa-signal"></i></span>Admin</p></div>
+                </div>
+                <div [hidden]="!showFreeSpace" class="freeSpace"></div>
+                <div [ngClass]="{'header-right': listContainerRight }"id="listContainer"> 
+                    <label for="open">
+                        <span (click)="hiddenDesktopClick()" class="hidden-desktop"></span>
+                    </label>
+                    <input type="checkbox" name="" id="open">   
+                    <nav>
+                        <a routerLink="/overview" routerLinkActive="active" id="1"><span><i class="fa fa-tv"> </i> </span><p style='position:relative; top: -2px;'>KPI</p></a>
+                        <a routerLink="/performance" routerLinkActive="active" id="2"><span><i class="fa fa-tachometer"> </i> </span><p style='position:relative; top: -2px;'>Performance</p></a>
+                        <a routerLink="/profit" routerLinkActive="active" id="3"><span><i class="fa fa-usd"> </i> </span><p style='position:relative; top: -2px;'>Reports</p></a>
+                        <a routerLink="/news" routerLinkActive="active" id="4"><span><i class="fa fa-list-alt"> </i></span><p style='position:relative; top: -2px;'>News</p></a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="splitter-panel" id="rightPanel">
+    <router-outlet></router-outlet>
+    </div>
+</jqxSplitter>
+

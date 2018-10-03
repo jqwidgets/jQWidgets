@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="description">Display jqxEditor in window.</title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxeditor.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownbutton.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // create button.
+            $("#openButton").jqxButton();
+            // create window.
+            $('#window').jqxWindow({
+                autoOpen: false, width: 500, position: 'top, left', height: 400, maxWidth: 800, resizable: false,
+                initContent: function () {
+                    // create editor.
+                    $("#editor").jqxEditor({ tools: 'bold italic underline font size', width: '100%', height: '100%' });
+                }
+            });
+
+            $("#openButton").click(function () {
+                $('#window').jqxWindow('open');
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+    <button id="openButton">Open Editor</button>
+    <div id="window">
+        <div>
+            jqxEditor
+        </div>
+        <div>
+            <div id="editor"></div>
+        </div>
+    </div>
+</body>
+</html>

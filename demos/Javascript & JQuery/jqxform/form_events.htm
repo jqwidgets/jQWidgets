@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="JavaScript Form, HTML Form, jQuery Forms widget" /> 
+    <meta name="description" content="Example of the jQuery Form and submitting the form data via GET and POST methods."/>
+    <title id='Description'>jQuery Form Input elements change events</title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.office.css" type="text/css" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxpasswordinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxform.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+ 
+            var template = [
+                {
+                    bind: 'textBoxValue',
+                    type: 'text',
+                    label: 'Text input',
+                    labelPosition: 'left',
+                    labelWidth: '30%',
+                    align: 'left',
+                    width: '250px',
+                    required: true
+                },
+                {
+                    bind: 'passwordBoxValue',
+                    type: 'password',
+                    label: 'Password input',
+                    labelPosition: 'left',
+                    labelWidth: '30%',
+                    align: 'left',
+                    width: '250px',
+                    required: true
+                },
+                {
+                    bind: 'nubmberBoxValue',
+                    type: 'number',
+                    label: 'Number input',
+                    labelPosition: 'left',
+                    labelWidth: '30%',
+                    align: 'left',
+                    width: '250px',
+                    required: true
+                },
+                {
+                    bind: 'dropdownValue',
+                    type: 'option',
+                    label: 'Drop down list',
+                    labelPosition: 'left',
+                    labelWidth: '30%',
+                    align: 'left',
+                    width: '250px',
+                    required: true,
+                    component: 'jqxDropDownList',
+                    options: [
+                        { label: 'Option 1', value: 'value1' },
+                        { label: 'Option 2', value: 'value2' },
+                        { label: 'Option 3', value: 'value3' }
+                    ]
+                },
+                {
+                    type: 'label',
+                    label: 'Radio buttons:',
+                    rowHeight: '40px',
+                },
+                {
+                    bind: 'radiobuttonValue',
+                    type: 'option',
+                    label: 'Radio buttons',
+                    labelPosition: 'right',
+                    columnWidth: '150px',
+                    align: 'left',
+                    optionslayout: 'horizontal',
+                    options: [
+                        { label: 'Option 1', value: 'value1' },
+                        { label: 'Option 2', value: 'value2' },
+                        { label: 'Option 3', value: 'value3' }
+                    ]
+                },
+                {
+                    type: 'label',
+                    label: 'Boolean options / checkboxes:',
+                    rowHeight: '40px',
+                },
+                {
+                    columns: [
+                        {
+                            columnWidth: '140px',
+                            bind: 'checkboxValue1',
+                            type: 'boolean',
+                            label: 'Checkbox 1',
+                            labelPosition: 'right',
+                            align: 'left',
+                            labelPadding: {left: 0, top: 5, right: 0, bottom: 5}
+                        },
+                        {
+                            columnWidth: '140px',
+                            bind: 'checkboxValue2',
+                            type: 'boolean',
+                            label: 'Checkbox 2',
+                            labelPosition: 'right',
+                            align: 'left',
+                            labelPadding: {left: 0, top: 5, right: 0, bottom: 5}
+                        },
+                        {
+                            columnWidth: '140px',
+                            bind: 'checkboxValue3',
+                            type: 'boolean',
+                            label: 'Checkbox 3',
+                            labelPosition: 'right',
+                            align: 'left',
+                            labelPadding: {left: 0, top: 5, right: 0, bottom: 5}
+                        }
+                    ]
+                }
+            ];
+
+
+            var sampleValue = {
+                'textBoxValue': 'text box value',
+                'passwordBoxValue': 'password box',
+                'nubmberBoxValue': 67.44,
+                'dropdownValue': 'value3',
+                'radiobuttonValue': 'value2',
+                'checkboxValue1': false,
+                'checkboxValue2': false,
+                'checkboxValue3': true,
+            };
+
+            var sampleForm = $('#sampleForm');
+
+            sampleForm.jqxForm({
+                template: template,
+                value: sampleValue,
+                padding: { left: 10, top: 10, right: 0, bottom: 10 }
+            });
+
+            sampleValue.checkboxValue2 = true;
+
+            sampleForm.val(sampleValue);
+
+            sampleForm.on('formDataChange', function (event) {
+                var args = event.args;
+                var newValue = args.value;
+                var previousValue = args.previousValue;
+
+                var html = '<h3>Event: formdatachange</h3>';
+                for (var i in newValue) {
+                    var newInputValue = newValue[i];
+
+                    var previousInputValue = '';
+                    if (previousValue && previousValue[i] !== undefined && previousValue[i] !== newValue[i]) {
+                        previousInputValue = ', <i>previous value</i>: <span style="color:red;">' + previousValue[i] + '</span>';
+                        newInputValue = '<span style="color:green;">' + newInputValue + '</span>';
+                    }
+
+                    html += "<b>" + i + "</b>: " + newInputValue + previousInputValue + "<br>";
+                }
+
+                $('#formEvents').html(html);
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+    <div>
+        <div id='sampleForm' style="width: 420px; height: auto; float: left;"></div>
+        <div id='formEvents' style="padding-left: 10px; width: 350px; height: 350px; float: left; overflow: auto;"></div>
+    </div>
+    <div style="clear: left;"></div>
+    <div class="example-description">
+        <h2>Description</h2>
+        <div style="width: 800px;">
+            This example shows you how to capture the form change event. The event is raised whenever the value of on of the internal
+            input elements is changed. Whenever you add a formdatachange event handler, the event args contain both the current value of
+            each input as well as the previous value. In this example, we highlight the exact change that occured and which property
+            was modified.
+        </div>
+    </div>
+
+</body>
+</html>

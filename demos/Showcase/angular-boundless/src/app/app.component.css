@@ -1,0 +1,29 @@
+@media (max-width: 1000px) {
+    .col-md-8 {
+        width: 100%;
+        float: left;
+    }
+
+    .col-md-4 {
+        width: 100%;
+        float: left;
+    }
+
+    div.col-md-8 {
+        padding-right: 15px;
+    }
+
+    div.col-md-4 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.col-md-8 {
+    padding-right: 1em;
+}
+
+.col-md-4 {
+    padding-left: 1em;
+    padding-right: 13px;
+}
