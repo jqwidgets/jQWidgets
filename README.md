@@ -62,6 +62,7 @@ For more information, please visit https://www.jqwidgets.com/license/.
 More
 -
 * React Demos: https://www.jqwidgets.com/react/
+* VUE Demos: https://www.jqwidgets.com/vue/
 * Angular Demos: https://www.jqwidgets.com/angular/
 * ASP .NET Core Demos: https://www.jqwidgets.com/asp.net-core-mvc-tag-helpers/
 * Showcase Demos: https://www.jqwidgets.com/jquery-widgets-demo/showcasedemos/
