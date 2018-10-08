@@ -1,7 +1,7 @@
 jQWidgets
 =========
 
-jQWidgets is an advanced Javascript and HTML5 UI framework. We build UI Components for Angular, Vue.js, React, Web Components, ASP .NET MVC & jQuery.
+jQWidgets is an advanced Javascript and HTML5 UI framework. We create UI Components for Angular, Vue.js, React, Web Components, ASP .NET MVC & jQuery.
 
 What is jQWidgets?
 ---------
