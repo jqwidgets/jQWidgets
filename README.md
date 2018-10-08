@@ -1,7 +1,7 @@
 jQWidgets
 =========
 
-jQWidgets is an advanced Javascript and HTML5 UI framework.
+jQWidgets is an advanced Javascript and HTML5 UI framework. We have UI Components for Angular, Vue.js, React, Web Components, ASP .NET MVC & jQuery.
 
 What is jQWidgets?
 ---------
@@ -20,6 +20,7 @@ Highlights
 * Typescript Definitions for all widgets.
 * PhoneGap Integration.
 * Java Integration.
+* Vue.js Components
 * 60+ UI widgets, 30+ Charts, 1000+ code samples are provided to accelerate your learning.
 * Search-engine friendly.
 * Guaranteed 24h support time for licensed developers Mon-Fri.
@@ -27,7 +28,7 @@ Highlights
 * Free fully functional Download and upgrades for a full calendar year.
 * [Chart Studio](https://www.jqwidgets.com/chartstudio/) - cloud solution for visual editing and hosting of interactive charts.
 * [jsEditor](https://www.jqwidgets.com/jseditor/) - cloud solution for JavaScript, HTML and CSS editing, hosting and sharing your web development ideas.
-* Easy CSS styling and [Online Theme Builder](http://www.jqwidgets.com/themebuilder).
+* Easy CSS styling and [Online Theme Builder](https://www.jqwidgets.com/themebuilder).
 * Ready to use, built-in Themes.
 * Unique and completely customizable architecture for JQuery widgets.
 * Integration tutorials for Bootstrap, RequireJS, BreezeJS, KnockoutJS.
@@ -62,7 +63,7 @@ For more information, please visit https://www.jqwidgets.com/license/.
 More
 -
 * React Demos: https://www.jqwidgets.com/react/
-* VUE Demos: https://www.jqwidgets.com/vue/
+* Vue.js Demos: https://www.jqwidgets.com/vue/
 * Angular Demos: https://www.jqwidgets.com/angular/
 * ASP .NET Core Demos: https://www.jqwidgets.com/asp.net-core-mvc-tag-helpers/
 * Showcase Demos: https://www.jqwidgets.com/jquery-widgets-demo/showcasedemos/
