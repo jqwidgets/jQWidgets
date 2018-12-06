@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxinput.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxinput.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxinput.js",
+  "esm5": "../esm5/jqxinput/jqwidgets-ng-jqxinput.js",
+  "esm2015": "../esm2015/jqxinput/jqwidgets-ng-jqxinput.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxinput.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxinput.js",
+  "typings": "jqwidgets-ng-jqxinput.d.ts",
+  "metadata": "jqwidgets-ng-jqxinput.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxinput"
+}

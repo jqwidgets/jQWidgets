@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxcombobox.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxcombobox.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxcombobox.js",
+  "esm5": "../esm5/jqxcombobox/jqwidgets-ng-jqxcombobox.js",
+  "esm2015": "../esm2015/jqxcombobox/jqwidgets-ng-jqxcombobox.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxcombobox.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxcombobox.js",
+  "typings": "jqwidgets-ng-jqxcombobox.d.ts",
+  "metadata": "jqwidgets-ng-jqxcombobox.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxcombobox"
+}

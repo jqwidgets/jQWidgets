@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxkanban.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxkanban.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxkanban.js",
+  "esm5": "../esm5/jqxkanban/jqwidgets-ng-jqxkanban.js",
+  "esm2015": "../esm2015/jqxkanban/jqwidgets-ng-jqxkanban.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxkanban.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxkanban.js",
+  "typings": "jqwidgets-ng-jqxkanban.d.ts",
+  "metadata": "jqwidgets-ng-jqxkanban.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxkanban"
+}

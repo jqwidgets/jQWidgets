@@ -1,4 +1,51 @@
 ﻿*********************************************
+* jQWidgets v6.2.0 Release, Dec-4-2018                 *
+*********************************************
+What's New:
+
+- Angular Modules for all components - jqwidgets-ng folder.
+
+What's Improved:
+
+- When the Grid calls the DataAdapter's sort function, it now passes an additional third parameter which contains all sort columns and sort directions. 
+	
+            var source =
+            {
+                localdata: data,
+                sortcolumns: ['productname', 'date'],
+                sortdirections: ['asc', 'asc'],
+                datatype: "array",
+                sort: function (datafield, sortdirection, sortcolumns) {
+                    for (var sortcolumn in sortcolumns) {
+                        var direction = sortcolumns[sortcolumn];
+                    }
+                },
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    {
+                        name: 'date',
+                        type: 'date'
+                    },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+                    { name: 'total', type: 'number' }
+                ]
+            };
+
+What's Fixed:
+
+- Fixed an issue in the rendering of jqxTree with checkboxes and jqxEditor with Material styles.
+- Fixed an issue in jqxGrid regarding the multiple-column sorting of Date columns.
+- Fixed an issue in jqxGrid regarding the multiple-column sorting in virtual mode. Even when there is no data, the sort arrows are rendered as in the single-sort mode.
+- Fixed an issue in jqxScheduler regarding jQuery 3.3.1 and rendering of appointments on IPad in MonthView.
+- Fixed an issue in jqxDateTimeInput regarding dates selection before 1970.
+- Fixed an issue in jqxTreeGrid regarding the export to excel when aggregates are turned on.
+- Fixed an issue in jqx.base.css file regarding *expression css names.
+
+*********************************************
 * jQWidgets v6.1.0 Release, October-01-2018         *
 *********************************************
 

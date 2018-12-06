@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxbulletchart.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxbulletchart.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxbulletchart.js",
+  "esm5": "../esm5/jqxbulletchart/jqwidgets-ng-jqxbulletchart.js",
+  "esm2015": "../esm2015/jqxbulletchart/jqwidgets-ng-jqxbulletchart.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxbulletchart.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxbulletchart.js",
+  "typings": "jqwidgets-ng-jqxbulletchart.d.ts",
+  "metadata": "jqwidgets-ng-jqxbulletchart.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxbulletchart"
+}

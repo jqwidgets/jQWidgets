@@ -1,23 +1,26 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/globalization/globalize.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxtooltip.js';
 import '../jqwidgets/jqxdatetimeinput.js';
 import '../jqwidgets/jqxcalendar.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
 declare let JQXLite: any;
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => jqxDateTimeInputComponent),
     multi: true
@@ -55,7 +58,7 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    @Input('readonly') attrReadonly: boolean;
    @Input('showFooter') attrShowFooter: boolean;
    @Input('selectionMode') attrSelectionMode: any;
-   @Input('showWeeknumbers') attrShowWeeknumbers: boolean;
+   @Input('showWeekNumbers') attrShowWeekNumbers: boolean;
    @Input('showTimeButton') attrShowTimeButton: boolean;
    @Input('showCalendarButton') attrShowCalendarButton: boolean;
    @Input('theme') attrTheme: string;
@@ -68,7 +71,7 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeeknumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
+   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDateTimeInput;
@@ -407,11 +410,11 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
-   showWeeknumbers(arg?: boolean) : any {
+   showWeekNumbers(arg?: boolean) : any {
       if (arg !== undefined) {
-          this.host.jqxDateTimeInput('showWeeknumbers', arg);
+          this.host.jqxDateTimeInput('showWeekNumbers', arg);
       } else {
-          return this.host.jqxDateTimeInput('showWeeknumbers');
+          return this.host.jqxDateTimeInput('showWeekNumbers');
       }
    }
 
@@ -535,9 +538,9 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
 
    val(value?: any, value2?: any): any {
       if (value !== undefined) {
-         return this.host.jqxDateTimeInput("val", value, value2);
+         return this.host.jqxDateTimeInput('val', value, value2);
       } else {
-         return this.host.jqxDateTimeInput("val");
+         return this.host.jqxDateTimeInput('val');
       }
    };
 

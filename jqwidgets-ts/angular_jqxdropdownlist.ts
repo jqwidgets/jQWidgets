@@ -1,23 +1,26 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxscrollbar.js';
 import '../jqwidgets/jqxlistbox.js';
 import '../jqwidgets/jqxdropdownlist.js';
+
 import { Component, Input, Output, AfterViewInit, AfterViewChecked, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
 declare let JQXLite: any;
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => jqxDropDownListComponent),
     multi: true
@@ -60,7 +63,6 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    @Input('renderer') attrRenderer: (index: number, label?: string, value?: any) => string;
    @Input('selectionRenderer') attrSelectionRenderer: (object?: any, index?: number, label?: string) => string;
    @Input('searchMode') attrSearchMode: any;
-   @Input('scrollBarSize') attrScrollBarSize: number | string;
    @Input('source') attrSource: Array<any>;
    @Input('selectedIndex') attrSelectedIndex: number;
    @Input('theme') attrTheme: string;
@@ -71,7 +73,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','scrollBarSize','source','selectedIndex','theme','template','valueMember','width'];
+   properties: string[] = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','source','selectedIndex','theme','template','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDropDownList;
@@ -89,8 +91,8 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }; 
 
     ngAfterViewInit() {
-       let children = JQXLite(this.elementRef.nativeElement.children).find("li"); 
-       let html = ""; 
+       let children = JQXLite(this.elementRef.nativeElement.children).find('li'); 
+       let html = ''; 
        let options = {}; 
 
        if (children.length > 0) {
@@ -610,19 +612,6 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   scrollBarSize(arg?: number | string) : any {
-
-      if (this.autoCreate && !this.host) {
-         this.createComponent(); 
-      }
-
-      if (arg !== undefined) {
-          this.host.jqxDropDownList('scrollBarSize', arg);
-      } else {
-          return this.host.jqxDropDownList('scrollBarSize');
-      }
-   }
-
    source(arg?: Array<any>) : any {
 
       if (this.autoCreate && !this.host) {
@@ -1056,9 +1045,9 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
 
    val(value?: string): any {
       if (value !== undefined) {
-         return this.host.jqxDropDownList("val", value);
+         return this.host.jqxDropDownList('val', value);
       } else {
-         return this.host.jqxDropDownList("val");
+         return this.host.jqxDropDownList('val');
       }
    };
 

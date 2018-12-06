@@ -1,10 +1,12 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxinput.js';
@@ -22,6 +24,7 @@ import '../jqwidgets/globalization/globalize.js'
 import '../jqwidgets/jqxcalendar.js';
 import '../jqwidgets/jqxdatetimeinput.js';
 import '../jqwidgets/jqxform.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -226,9 +229,9 @@ export class jqxFormComponent implements OnChanges
 
    val(value?: any): any {
       if (value !== undefined) {
-         return this.host.jqxForm("val", value);
+         return this.host.jqxForm('val', value);
       } else {
-         return this.host.jqxForm("val");
+         return this.host.jqxForm('val');
       }
    };
 

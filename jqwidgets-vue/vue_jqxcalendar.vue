@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -94,8 +94,8 @@ License: https://jqwidgets.com/license/
             focus: function() {
                 JQXLite(this.componentSelector).jqxCalendar('focus');  
             },
-            addSpecialDate: function(date, tooltip, text) {
-                JQXLite(this.componentSelector).jqxCalendar('addSpecialDate', date, tooltip, text);  
+            addSpecialDate: function(date, specialDateClass, text) {
+                JQXLite(this.componentSelector).jqxCalendar('addSpecialDate', date, specialDateClass, text);  
             },
             getMinDate: function() {
                 return JQXLite(this.componentSelector).jqxCalendar('getMinDate');  

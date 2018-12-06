@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxcomplexinput.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxcomplexinput.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxcomplexinput.js",
+  "esm5": "../esm5/jqxcomplexinput/jqwidgets-ng-jqxcomplexinput.js",
+  "esm2015": "../esm2015/jqxcomplexinput/jqwidgets-ng-jqxcomplexinput.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxcomplexinput.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxcomplexinput.js",
+  "typings": "jqwidgets-ng-jqxcomplexinput.d.ts",
+  "metadata": "jqwidgets-ng-jqxcomplexinput.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxcomplexinput"
+}

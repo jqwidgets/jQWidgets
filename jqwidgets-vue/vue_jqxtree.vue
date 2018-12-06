@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -134,11 +134,11 @@ License: https://jqwidgets.com/license/
             getSelectedItem: function() {
                 return JQXLite(this.componentSelector).jqxTree('getSelectedItem');  
             },
-            getPrevItem: function() {
-                return JQXLite(this.componentSelector).jqxTree('getPrevItem');  
+            getPrevItem: function(item) {
+                return JQXLite(this.componentSelector).jqxTree('getPrevItem', item);  
             },
-            getNextItem: function() {
-                return JQXLite(this.componentSelector).jqxTree('getNextItem');  
+            getNextItem: function(item) {
+                return JQXLite(this.componentSelector).jqxTree('getNextItem', item);  
             },
             hitTest: function(left, top) {
                 return JQXLite(this.componentSelector).jqxTree('hitTest', left, top);  
@@ -543,7 +543,6 @@ License: https://jqwidgets.com/license/
                 JQXLite(this.componentSelector).on('dragStart', function (event) { that.$emit('dragStart', event); });
                 JQXLite(this.componentSelector).on('dragEnd', function (event) { that.$emit('dragEnd', event); });
                 JQXLite(this.componentSelector).on('expand', function (event) { that.$emit('expand', event); });
-                JQXLite(this.componentSelector).on('initialized', function (event) { that.$emit('initialized', event); });
                 JQXLite(this.componentSelector).on('itemClick', function (event) { that.$emit('itemClick', event); });
                 JQXLite(this.componentSelector).on('removed', function (event) { that.$emit('removed', event); });
                 JQXLite(this.componentSelector).on('select', function (event) { that.$emit('select', event); });

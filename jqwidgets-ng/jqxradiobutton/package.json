@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxradiobutton.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxradiobutton.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxradiobutton.js",
+  "esm5": "../esm5/jqxradiobutton/jqwidgets-ng-jqxradiobutton.js",
+  "esm2015": "../esm2015/jqxradiobutton/jqwidgets-ng-jqxradiobutton.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxradiobutton.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxradiobutton.js",
+  "typings": "jqwidgets-ng-jqxradiobutton.d.ts",
+  "metadata": "jqwidgets-ng-jqxradiobutton.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxradiobutton"
+}

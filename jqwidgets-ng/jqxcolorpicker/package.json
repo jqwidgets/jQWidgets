@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxcolorpicker.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxcolorpicker.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxcolorpicker.js",
+  "esm5": "../esm5/jqxcolorpicker/jqwidgets-ng-jqxcolorpicker.js",
+  "esm2015": "../esm2015/jqxcolorpicker/jqwidgets-ng-jqxcolorpicker.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxcolorpicker.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxcolorpicker.js",
+  "typings": "jqwidgets-ng-jqxcolorpicker.d.ts",
+  "metadata": "jqwidgets-ng-jqxcolorpicker.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxcolorpicker"
+}

@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxswitchbutton.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxswitchbutton.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxswitchbutton.js",
+  "esm5": "../esm5/jqxswitchbutton/jqwidgets-ng-jqxswitchbutton.js",
+  "esm2015": "../esm2015/jqxswitchbutton/jqwidgets-ng-jqxswitchbutton.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxswitchbutton.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxswitchbutton.js",
+  "typings": "jqwidgets-ng-jqxswitchbutton.d.ts",
+  "metadata": "jqwidgets-ng-jqxswitchbutton.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxswitchbutton"
+}

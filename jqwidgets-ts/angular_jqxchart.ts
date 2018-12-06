@@ -1,10 +1,12 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxdata.export.js';
@@ -14,6 +16,7 @@ import '../jqwidgets/jqxchart.api.js';
 import '../jqwidgets/jqxchart.annotations.js';
 import '../jqwidgets/jqxchart.rangeselector.js';
 import '../jqwidgets/jqxchart.waterfall.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -34,7 +37,6 @@ export class jqxChartComponent implements OnChanges
    @Input('backgroundImage') attrBackgroundImage: string;
    @Input('showLegend') attrShowLegend: boolean;
    @Input('legendLayout') attrLegendLayout: jqwidgets.ChartLegendLayout;
-   @Input('categoryAxis') attrCategoryAxis: any;
    @Input('padding') attrPadding: jqwidgets.ChartPadding;
    @Input('titlePadding') attrTitlePadding: jqwidgets.ChartPadding;
    @Input('colorScheme') attrColorScheme: string;
@@ -64,7 +66,7 @@ export class jqxChartComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','categoryAxis','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
+   properties: string[] = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxChart;
@@ -264,14 +266,6 @@ export class jqxChartComponent implements OnChanges
           this.host.jqxChart('legendLayout', arg);
       } else {
           return this.host.jqxChart('legendLayout');
-      }
-   }
-
-   categoryAxis(arg?: any) : any {
-      if (arg !== undefined) {
-          this.host.jqxChart('categoryAxis', arg);
-      } else {
-          return this.host.jqxChart('categoryAxis');
       }
    }
 
@@ -561,8 +555,6 @@ export class jqxChartComponent implements OnChanges
    // jqxChartComponent events
    @Output() onToggle = new EventEmitter();
    @Output() onClick = new EventEmitter();
-   @Output() onMouseOver = new EventEmitter();
-   @Output() onMouseOut = new EventEmitter();
    @Output() onRefreshBegin = new EventEmitter();
    @Output() onRefreshEnd = new EventEmitter();
    @Output() onRangeSelectionChanging = new EventEmitter();
@@ -571,8 +563,6 @@ export class jqxChartComponent implements OnChanges
    __wireEvents__(): void {
       this.host.on('toggle', (eventData: any) => { this.onToggle.emit(eventData); });
       this.host.on('click', (eventData: any) => { this.onClick.emit(eventData); });
-      this.host.on('mouseOver', (eventData: any) => { this.onMouseOver.emit(eventData); });
-      this.host.on('mouseOut', (eventData: any) => { this.onMouseOut.emit(eventData); });
       this.host.on('refreshBegin', (eventData: any) => { this.onRefreshBegin.emit(eventData); });
       this.host.on('refreshEnd', (eventData: any) => { this.onRefreshEnd.emit(eventData); });
       this.host.on('rangeSelectionChanging', (eventData: any) => { this.onRangeSelectionChanging.emit(eventData); });

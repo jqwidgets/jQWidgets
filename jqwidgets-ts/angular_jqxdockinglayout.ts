@@ -1,10 +1,12 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxwindow.js';
@@ -13,6 +15,7 @@ import '../jqwidgets/jqxlayout.js';
 import '../jqwidgets/jqxmenu.js';
 import '../jqwidgets/jqxscrollbar.js';
 import '../jqwidgets/jqxdockinglayout.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -250,7 +253,6 @@ export class jqxDockingLayoutComponent implements OnChanges
 
 
    // jqxDockingLayoutComponent events
-   @Output() onCreate = new EventEmitter();
    @Output() onDock = new EventEmitter();
    @Output() onFloatGroupClosed = new EventEmitter();
    @Output() onFloat = new EventEmitter();
@@ -259,7 +261,6 @@ export class jqxDockingLayoutComponent implements OnChanges
    @Output() onUnpin = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('create', (eventData: any) => { this.onCreate.emit(eventData); });
       this.host.on('dock', (eventData: any) => { this.onDock.emit(eventData); });
       this.host.on('floatGroupClosed', (eventData: any) => { this.onFloatGroupClosed.emit(eventData); });
       this.host.on('float', (eventData: any) => { this.onFloat.emit(eventData); });

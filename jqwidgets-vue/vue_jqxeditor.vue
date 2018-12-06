@@ -1,14 +1,12 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
 
 <template>
-    <div v-bind:id="id">
-        <slot></slot>
-    </div>
+        <textarea v-bind:id="id"></textarea>
 </template>
 
 <script>
@@ -30,7 +28,7 @@ License: https://jqwidgets.com/license/
             createCommand: Function,
             disabled: Boolean,
             editable: Boolean,
-            height: [Number, String],
+            height: [String, Number],
             lineBreak: String,
             localization: Object,
             pasteMode: String,
@@ -182,6 +180,7 @@ License: https://jqwidgets.com/license/
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = this.__manageProps__();
                 JQXLite(this.componentSelector).jqxEditor(widgetOptions);
+                JQXLite(this.componentSelector).jqxEditor('val', this.$slots.default[0].text);
                 this.__extendProps__();
                 this.__wireEvents__();
             },

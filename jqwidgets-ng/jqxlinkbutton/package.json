@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxlinkbutton.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxlinkbutton.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxlinkbutton.js",
+  "esm5": "../esm5/jqxlinkbutton/jqwidgets-ng-jqxlinkbutton.js",
+  "esm2015": "../esm2015/jqxlinkbutton/jqwidgets-ng-jqxlinkbutton.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxlinkbutton.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxlinkbutton.js",
+  "typings": "jqwidgets-ng-jqxlinkbutton.d.ts",
+  "metadata": "jqwidgets-ng-jqxlinkbutton.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxlinkbutton"
+}

@@ -1,20 +1,23 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxcomplexinput.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
 declare let JQXLite: any;
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => jqxComplexInputComponent),
     multi: true
@@ -22,7 +25,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
     selector: 'jqxComplexInput',
-    template: '<div style="display: inline-flex"><input [(ngModel)]="ngValue"><div></div></div>',
+    template: '<div style="display: inline-flex;"><input [(ngModel)]="ngValue"><div></div></div>',
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -148,7 +151,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       this.widgetObject = jqwidgets.createInstance(this.host, 'jqxComplexInput', options);
 
       setTimeout(_=> {
-         let valueWithWS = `JQXLite{options.value}`;
+         let valueWithWS = 'JQXLite{options.value}';
          this.host.jqxComplexInput({ value: valueWithWS });
       });
    }
@@ -305,10 +308,6 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       return this.host.jqxComplexInput('getImaginary', complexnumber);
    }
 
-   getDecimalNotation(part?: string, type?: string): string {
-      return this.host.jqxComplexInput('getDecimalNotation', part, type);
-   }
-
    render(): void {
       this.host.jqxComplexInput('render');
    }
@@ -319,9 +318,9 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
 
    val(value?: any): any {
       if (value !== undefined) {
-         return this.host.jqxComplexInput("val", value);
+         return this.host.jqxComplexInput('val', value);
       } else {
-         return this.host.jqxComplexInput("val");
+         return this.host.jqxComplexInput('val');
       }
    };
 

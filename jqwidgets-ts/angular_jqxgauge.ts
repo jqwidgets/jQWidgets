@@ -1,13 +1,16 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdraw.js';
 import '../jqwidgets/jqxgauge.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -35,7 +38,7 @@ export class jqxGaugeComponent implements OnChanges
    @Input('ranges') attrRanges: Array<jqwidgets.GaugeRanges>;
    @Input('startAngle') attrStartAngle: number | string;
    @Input('showRanges') attrShowRanges: boolean;
-   @Input('style') attrStyle: jqwidgets.GaugeStyle;
+   @Input('styles') attrStyles: jqwidgets.GaugeStyle;
    @Input('ticksMajor') attrTicksMajor: jqwidgets.GaugeTicks;
    @Input('ticksMinor') attrTicksMinor: jqwidgets.GaugeTicks;
    @Input('ticksDistance') attrTicksDistance: string;
@@ -45,7 +48,7 @@ export class jqxGaugeComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','style','ticksMajor','ticksMinor','ticksDistance','value','width'];
+   properties: string[] = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','styles','ticksMajor','ticksMinor','ticksDistance','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGauge;
@@ -304,11 +307,11 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   style(arg?: jqwidgets.GaugeStyle) : any {
+   styles(arg?: jqwidgets.GaugeStyle) : any {
       if (arg !== undefined) {
-          this.host.jqxGauge('style', arg);
+          this.host.jqxGauge('styles', arg);
       } else {
-          return this.host.jqxGauge('style');
+          return this.host.jqxGauge('styles');
       }
    }
 
@@ -364,9 +367,9 @@ export class jqxGaugeComponent implements OnChanges
 
    val(value?: number): any {
       if (value !== undefined) {
-         return this.host.jqxGauge("val", value);
+         return this.host.jqxGauge('val', value);
       } else {
-         return this.host.jqxGauge("val");
+         return this.host.jqxGauge('val');
       }
    };
 

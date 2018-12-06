@@ -1,12 +1,15 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxprogressbar.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -282,21 +285,21 @@ export class jqxProgressBarComponent implements OnChanges
 
    val(value?: number | string): any {
       if (value !== undefined) {
-         return this.host.jqxProgressBar("val", value);
+         return this.host.jqxProgressBar('val', value);
       } else {
-         return this.host.jqxProgressBar("val");
+         return this.host.jqxProgressBar('val');
       }
    };
 
 
    // jqxProgressBarComponent events
    @Output() onComplete = new EventEmitter();
-   @Output() onInvalidvalue = new EventEmitter();
+   @Output() onInvalidValue = new EventEmitter();
    @Output() onValueChanged = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('complete', (eventData: any) => { this.onComplete.emit(eventData); });
-      this.host.on('invalidvalue', (eventData: any) => { this.onInvalidvalue.emit(eventData); });
+      this.host.on('invalidValue', (eventData: any) => { this.onInvalidValue.emit(eventData); });
       this.host.on('valueChanged', (eventData: any) => { this.onValueChanged.emit(eventData); });
    }
 

@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -76,11 +76,11 @@ License: https://jqwidgets.com/license/
             addAt: function(index, title, content) {
                 JQXLite(this.componentSelector).jqxTabs('addAt', index, title, content);  
             },
-            addFirst: function(htmlElement) {
-                JQXLite(this.componentSelector).jqxTabs('addFirst', htmlElement);  
+            addFirst: function(htmlElement1, htmlElement2) {
+                JQXLite(this.componentSelector).jqxTabs('addFirst', htmlElement1, htmlElement2);  
             },
-            addLast: function(htmlElement1, htmlElemen2t) {
-                JQXLite(this.componentSelector).jqxTabs('addLast', htmlElement1, htmlElemen2t);  
+            addLast: function(htmlElement1, htmlElement2) {
+                JQXLite(this.componentSelector).jqxTabs('addLast', htmlElement1, htmlElement2);  
             },
             collapse: function() {
                 JQXLite(this.componentSelector).jqxTabs('collapse');  
@@ -644,7 +644,6 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 JQXLite(this.componentSelector).on('add', function (event) { that.$emit('add', event); });
-                JQXLite(this.componentSelector).on('created', function (event) { that.$emit('created', event); });
                 JQXLite(this.componentSelector).on('collapsed', function (event) { that.$emit('collapsed', event); });
                 JQXLite(this.componentSelector).on('dragStart', function (event) { that.$emit('dragStart', event); });
                 JQXLite(this.componentSelector).on('dragEnd', function (event) { that.$emit('dragEnd', event); });

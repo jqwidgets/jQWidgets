@@ -1,20 +1,23 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxnumberinput.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
 declare let JQXLite: any;
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => jqxNumberInputComponent),
     multi: true
@@ -441,9 +444,9 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
 
    val(value?: number | string): any {
       if (value !== undefined) {
-         return this.host.jqxNumberInput("val", value);
+         return this.host.jqxNumberInput('val', value);
       } else {
-         return this.host.jqxNumberInput("val");
+         return this.host.jqxNumberInput('val');
       }
    };
 

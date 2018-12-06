@@ -1,23 +1,26 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxscrollbar.js';
 import '../jqwidgets/jqxlistbox.js';
 import '../jqwidgets/jqxdragdrop.js';
+
 import { Component, Input, Output, AfterViewInit, AfterViewChecked, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
 declare let JQXLite: any;
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => jqxListBoxComponent),
     multi: true
@@ -87,8 +90,8 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }; 
 
     ngAfterViewInit() {
-       let children = JQXLite(this.elementRef.nativeElement.children).find("li"); 
-       let html = ""; 
+       let children = JQXLite(this.elementRef.nativeElement.children).find('li'); 
+       let html = ''; 
        let options = {}; 
 
        if (children.length > 0) {
@@ -1046,9 +1049,9 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
 
    val(value?: number | string): any {
       if (value !== undefined) {
-         return this.host.jqxListBox("val", value);
+         return this.host.jqxListBox('val', value);
       } else {
-         return this.host.jqxListBox("val");
+         return this.host.jqxListBox('val');
       }
    };
 

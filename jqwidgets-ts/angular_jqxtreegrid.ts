@@ -1,10 +1,12 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxdata.export.js';
@@ -18,6 +20,7 @@ import '../jqwidgets/jqxnumberinput.js';
 import '../jqwidgets/jqxdropdownlist.js';
 import '../jqwidgets/jqxdatatable.js';
 import '../jqwidgets/jqxtreegrid.js';
+
 import { Component, Input, Output, AfterViewInit, AfterViewChecked, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -48,7 +51,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
    @Input('filterHeight') attrFilterHeight: number;
    @Input('filterMode') attrFilterMode: any;
    @Input('hierarchicalCheckboxes') attrHierarchicalCheckboxes: boolean;
-   @Input('icons') attrIcons: boolean;
+   @Input('icons') attrIcons: boolean | Function;
    @Input('incrementalSearch') attrIncrementalSearch: boolean;
    @Input('localization') attrLocalization: any;
    @Input('pagerHeight') attrPagerHeight: number;
@@ -102,8 +105,8 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
    }; 
 
     ngAfterViewInit() {
-       let children = JQXLite(this.elementRef.nativeElement.children).find("tr"); 
-       let html = ""; 
+       let children = JQXLite(this.elementRef.nativeElement.children).find('tr'); 
+       let html = ''; 
        let options = {}; 
 
        if (children.length > 0) {
@@ -519,7 +522,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   icons(arg?: boolean) : any {
+   icons(arg?: undefined) : any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

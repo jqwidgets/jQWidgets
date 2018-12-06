@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -34,7 +34,6 @@ License: https://jqwidgets.com/license/
             backgroundImage: String,
             showLegend: Boolean,
             legendLayout: Object,
-            categoryAxis: Object,
             padding: Object,
             titlePadding: Object,
             colorScheme: String,
@@ -223,13 +222,6 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxChart('legendLayout');
                 }
             },
-            _categoryAxis: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxChart('categoryAxis', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxChart('categoryAxis');
-                }
-            },
             _padding: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxChart('padding', arg)
@@ -406,7 +398,7 @@ License: https://jqwidgets.com/license/
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','categoryAxis','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
+                const widgetProps = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -516,16 +508,6 @@ License: https://jqwidgets.com/license/
                     },
                     set(newValue) {
                         that._legendLayout(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'categoryAxis', {
-                    get() {
-                        return that._categoryAxis();
-                    },
-                    set(newValue) {
-                        that._categoryAxis(newValue);
                     },
                     enumerable: true,
                     configurable: true
@@ -776,8 +758,6 @@ License: https://jqwidgets.com/license/
 
                 JQXLite(this.componentSelector).on('toggle', function (event) { that.$emit('toggle', event); });
                 JQXLite(this.componentSelector).on('click', function (event) { that.$emit('click', event); });
-                JQXLite(this.componentSelector).on('mouseOver', function (event) { that.$emit('mouseOver', event); });
-                JQXLite(this.componentSelector).on('mouseOut', function (event) { that.$emit('mouseOut', event); });
                 JQXLite(this.componentSelector).on('refreshBegin', function (event) { that.$emit('refreshBegin', event); });
                 JQXLite(this.componentSelector).on('refreshEnd', function (event) { that.$emit('refreshEnd', event); });
                 JQXLite(this.componentSelector).on('rangeSelectionChanging', function (event) { that.$emit('rangeSelectionChanging', event); });

@@ -274,7 +274,6 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     margin: 1px;
     border: 1px solid transparent;
     color: inherit !important;
-    *color: expression(this.parentNode.currentStyle['color']) !important;     
     outline: none;
     font-weight: normal !important;
     line-height:14px;
@@ -530,7 +529,6 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     text-decoration: none;
     cursor: pointer;
     color: inherit;
-    *color: expression(this.parentNode.currentStyle['color']);     
 }
  .jqx-grid-group-column  a:visited{
     color: inherit;
@@ -541,7 +539,6 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     outline: 0 none;
     text-decoration: none;
     cursor: pointer;
-     *color: expression(this.parentNode.currentStyle['color']);    
 }
 /*applied to a grid cell*/
 .jqx-grid-cell {
@@ -1008,7 +1005,6 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     right: 0;
     text-align: left;
     cursor: pointer;
-    *color: expression(this.parentNode.currentStyle['color']);     
 }
 /*applied to a sub menu item when the mouse is over the item.*/
 .jqx-menu-item-hover
@@ -1023,7 +1019,6 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     padding: 4px 8px 4px 8px;
     text-align: left;
     cursor: pointer;
-    *color: expression(this.parentNode.currentStyle['color']);     
 }
 /*applied to a top-level menu item when the mouse is over it.*/
 .jqx-menu-item-top-hover
@@ -1036,7 +1031,6 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     padding: 4px 8px 4px 8px;
     top: 50%;
     cursor: pointer;
-    *color: expression(this.parentNode.currentStyle['color']);     
 }
 /*applied to a sub menu item when its sub menu is opened.*/
 .jqx-menu-item-selected
@@ -1050,7 +1044,6 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     padding: 4px 8px 4px 8px;
     text-align: left;
     cursor: pointer;
-    *color: expression(this.parentNode.currentStyle['color']);     
 }
 /*applied to a disabled sub menu item.*/
 .jqx-menu-item-disabled
@@ -1215,7 +1208,6 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
     color: inherit;
     outline: none;
     background-color: transparent;
-    *color: expression(this.parentNode.currentStyle['color']);     
 }
 
 /*applied to the menu widget when it is disabled.*/
@@ -1552,25 +1544,22 @@ button.jqx-button, input[type=button].jqx-button,  input[type=submit].jqx-button
 .jqx-tabs-title a:link
 {
     color: inherit;
-    *color: expression(this.parentNode.currentStyle['color']);    
+       
     text-decoration: none;
 }
 .jqx-tabs-title a:hover
 {
     color: inherit;
-    *color: expression(this.parentNode.currentStyle['color']);
     text-decoration: none;
 }
 .jqx-tabs-title a:active
 {
     color: inherit;
-    *color: expression(this.parentNode.currentStyle['color']);
     text-decoration: none;
 }
 .jqx-tabs-title a:visited
 {
     color: inherit;
-    *color: expression(this.parentNode.currentStyle['color']);
     text-decoration: none;
 }
 /*applied to the tab's title when the tab is selected and the jqxTab's position property is set to 'top' .*/
@@ -2516,7 +2505,7 @@ of the horizontal scrollbar.*/
     outline: 0 none;
     text-decoration: none;
     cursor: pointer;
-    *color: expression(this.parentNode.currentStyle['color']);    
+       
 }
 /*applied to the ComboBox when the widget is disabled.*/
 .jqx-combobox-state-disabled
@@ -3917,7 +3906,7 @@ of the horizontal scrollbar.*/
 }
 .jqx-grid-column-header a:link, .jqx-grid-column-header a:visited
 {
-   *color: expression(this.parentNode.currentStyle['color']);    
+      
 }
 .jqx-grid-bottomright, .jqx-panel-bottomright, .jqx-listbox-bottomright
 {

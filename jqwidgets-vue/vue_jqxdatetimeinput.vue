@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -45,7 +45,7 @@ License: https://jqwidgets.com/license/
             readonly: Boolean,
             showFooter: Boolean,
             selectionMode: String,
-            showWeeknumbers: Boolean,
+            showWeekNumbers: Boolean,
             showTimeButton: Boolean,
             showCalendarButton: Boolean,
             theme: String,
@@ -296,11 +296,11 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxDateTimeInput('selectionMode');
                 }
             },
-            _showWeeknumbers: function(arg) {
+            _showWeekNumbers: function(arg) {
                 if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxDateTimeInput('showWeeknumbers', arg)
+                    JQXLite(this.componentSelector).jqxDateTimeInput('showWeekNumbers', arg)
                 } else {
-                    return JQXLite(this.componentSelector).jqxDateTimeInput('showWeeknumbers');
+                    return JQXLite(this.componentSelector).jqxDateTimeInput('showWeekNumbers');
                 }
             },
             _showTimeButton: function(arg) {
@@ -367,7 +367,7 @@ License: https://jqwidgets.com/license/
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeeknumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
+                const widgetProps = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -621,12 +621,12 @@ License: https://jqwidgets.com/license/
                     enumerable: true,
                     configurable: true
                 });
-                Object.defineProperty(that, 'showWeeknumbers', {
+                Object.defineProperty(that, 'showWeekNumbers', {
                     get() {
-                        return that._showWeeknumbers();
+                        return that._showWeekNumbers();
                     },
                     set(newValue) {
-                        that._showWeeknumbers(newValue);
+                        that._showWeekNumbers(newValue);
                     },
                     enumerable: true,
                     configurable: true

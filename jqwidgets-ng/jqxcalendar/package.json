@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxcalendar.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxcalendar.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxcalendar.js",
+  "esm5": "../esm5/jqxcalendar/jqwidgets-ng-jqxcalendar.js",
+  "esm2015": "../esm2015/jqxcalendar/jqwidgets-ng-jqxcalendar.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxcalendar.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxcalendar.js",
+  "typings": "jqwidgets-ng-jqxcalendar.d.ts",
+  "metadata": "jqwidgets-ng-jqxcalendar.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxcalendar"
+}

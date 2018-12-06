@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxscrollview.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxscrollview.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxscrollview.js",
+  "esm5": "../esm5/jqxscrollview/jqwidgets-ng-jqxscrollview.js",
+  "esm2015": "../esm2015/jqxscrollview/jqwidgets-ng-jqxscrollview.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxscrollview.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxscrollview.js",
+  "typings": "jqwidgets-ng-jqxscrollview.d.ts",
+  "metadata": "jqwidgets-ng-jqxscrollview.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxscrollview"
+}

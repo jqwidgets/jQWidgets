@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxeditor.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxeditor.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxeditor.js",
+  "esm5": "../esm5/jqxeditor/jqwidgets-ng-jqxeditor.js",
+  "esm2015": "../esm2015/jqxeditor/jqwidgets-ng-jqxeditor.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxeditor.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxeditor.js",
+  "typings": "jqwidgets-ng-jqxeditor.d.ts",
+  "metadata": "jqwidgets-ng-jqxeditor.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxeditor"
+}

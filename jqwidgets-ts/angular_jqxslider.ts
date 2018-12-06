@@ -1,20 +1,23 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxslider.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const noop = () => { };
 declare let JQXLite: any;
 
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => jqxSliderComponent),
     multi: true
@@ -493,23 +496,21 @@ export class jqxSliderComponent implements ControlValueAccessor, OnChanges
 
    val(value?: string): any {
       if (value !== undefined) {
-         return this.host.jqxSlider("val", value);
+         return this.host.jqxSlider('val', value);
       } else {
-         return this.host.jqxSlider("val");
+         return this.host.jqxSlider('val');
       }
    };
 
 
    // jqxSliderComponent events
    @Output() onChange = new EventEmitter();
-   @Output() onCreated = new EventEmitter();
    @Output() onSlide = new EventEmitter();
    @Output() onSlideStart = new EventEmitter();
    @Output() onSlideEnd = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('change', (eventData: any) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
-      this.host.on('created', (eventData: any) => { this.onCreated.emit(eventData); });
       this.host.on('slide', (eventData: any) => { this.onSlide.emit(eventData); });
       this.host.on('slideStart', (eventData: any) => { this.onSlideStart.emit(eventData); });
       this.host.on('slideEnd', (eventData: any) => { this.onSlideEnd.emit(eventData); });

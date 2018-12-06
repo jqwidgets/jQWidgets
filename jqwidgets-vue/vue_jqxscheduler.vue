@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -88,7 +88,7 @@ License: https://jqwidgets.com/license/
             toolBarRangeFormatAbbr: String,
             toolbarHeight: Number,
             views: Array,
-            view: String,
+            view: [Number, String],
             width: [Number, String],
             autoCreate: {
                 default: true,
@@ -152,7 +152,7 @@ License: https://jqwidgets.com/license/
                 JQXLite(this.componentSelector).jqxScheduler('ensureVisible', item, resourceId);  
             },
             exportData: function(format) {
-                return JQXLite(this.componentSelector).jqxScheduler('exportData', format);  
+                JQXLite(this.componentSelector).jqxScheduler('exportData', format);  
             },
             focus: function() {
                 JQXLite(this.componentSelector).jqxScheduler('focus');  

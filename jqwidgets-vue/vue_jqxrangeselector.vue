@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -20,26 +20,23 @@ License: https://jqwidgets.com/license/
     export default {
         props: {
             disabled: Boolean,
-            showGroupLabels: Boolean,
-            labelsOnTicks: Boolean,
-            markersFormatFunction: Function,
+            groupLabelsFormatFunction: Function,
             height: [Number, String],
             labelsFormat: String,
             labelsFormatFunction: Function,
-            labelPrecision: Number,
-            moveOnClick: Boolean,
-            markerRenderer: Function,
-            markerPrecision: Number,
-            majorLabelRenderer: Function,
+            labelsOnTicks: Boolean,
             markersFormat: String,
+            markersFormatFunction: Function,
             majorTicksInterval: [Number, String, Object],
             minorTicksInterval: [Number, String, Object],
             max: [Number, String, Date],
             min: [Number, String, Date],
+            moveOnClick: Boolean,
             padding: [String, Number],
             range: Object,
             resizable: Boolean,
             rtl: Boolean,
+            showGroupLabels: Boolean,
             showMinorTicks: Boolean,
             snapToTicks: Boolean,
             showMajorLabels: Boolean,
@@ -96,25 +93,11 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxRangeSelector('disabled');
                 }
             },
-            _showGroupLabels: function(arg) {
+            _groupLabelsFormatFunction: function(arg) {
                 if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxRangeSelector('showGroupLabels', arg)
+                    JQXLite(this.componentSelector).jqxRangeSelector('groupLabelsFormatFunction', arg)
                 } else {
-                    return JQXLite(this.componentSelector).jqxRangeSelector('showGroupLabels');
-                }
-            },
-            _labelsOnTicks: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxRangeSelector('labelsOnTicks', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxRangeSelector('labelsOnTicks');
-                }
-            },
-            _markersFormatFunction: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxRangeSelector('markersFormatFunction', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxRangeSelector('markersFormatFunction');
+                    return JQXLite(this.componentSelector).jqxRangeSelector('groupLabelsFormatFunction');
                 }
             },
             _height: function(arg) {
@@ -138,39 +121,11 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxRangeSelector('labelsFormatFunction');
                 }
             },
-            _labelPrecision: function(arg) {
+            _labelsOnTicks: function(arg) {
                 if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxRangeSelector('labelPrecision', arg)
+                    JQXLite(this.componentSelector).jqxRangeSelector('labelsOnTicks', arg)
                 } else {
-                    return JQXLite(this.componentSelector).jqxRangeSelector('labelPrecision');
-                }
-            },
-            _moveOnClick: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxRangeSelector('moveOnClick', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxRangeSelector('moveOnClick');
-                }
-            },
-            _markerRenderer: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxRangeSelector('markerRenderer', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxRangeSelector('markerRenderer');
-                }
-            },
-            _markerPrecision: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxRangeSelector('markerPrecision', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxRangeSelector('markerPrecision');
-                }
-            },
-            _majorLabelRenderer: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxRangeSelector('majorLabelRenderer', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxRangeSelector('majorLabelRenderer');
+                    return JQXLite(this.componentSelector).jqxRangeSelector('labelsOnTicks');
                 }
             },
             _markersFormat: function(arg) {
@@ -178,6 +133,13 @@ License: https://jqwidgets.com/license/
                     JQXLite(this.componentSelector).jqxRangeSelector('markersFormat', arg)
                 } else {
                     return JQXLite(this.componentSelector).jqxRangeSelector('markersFormat');
+                }
+            },
+            _markersFormatFunction: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxRangeSelector('markersFormatFunction', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxRangeSelector('markersFormatFunction');
                 }
             },
             _majorTicksInterval: function(arg) {
@@ -208,6 +170,13 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxRangeSelector('min');
                 }
             },
+            _moveOnClick: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxRangeSelector('moveOnClick', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxRangeSelector('moveOnClick');
+                }
+            },
             _padding: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxRangeSelector('padding', arg)
@@ -234,6 +203,13 @@ License: https://jqwidgets.com/license/
                     JQXLite(this.componentSelector).jqxRangeSelector('rtl', arg)
                 } else {
                     return JQXLite(this.componentSelector).jqxRangeSelector('rtl');
+                }
+            },
+            _showGroupLabels: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxRangeSelector('showGroupLabels', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxRangeSelector('showGroupLabels');
                 }
             },
             _showMinorTicks: function(arg) {
@@ -286,7 +262,7 @@ License: https://jqwidgets.com/license/
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['disabled','showGroupLabels','labelsOnTicks','markersFormatFunction','height','labelsFormat','labelsFormatFunction','labelPrecision','moveOnClick','markerRenderer','markerPrecision','majorLabelRenderer','markersFormat','majorTicksInterval','minorTicksInterval','max','min','padding','range','resizable','rtl','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
+                const widgetProps = ['disabled','groupLabelsFormatFunction','height','labelsFormat','labelsFormatFunction','labelsOnTicks','markersFormat','markersFormatFunction','majorTicksInterval','minorTicksInterval','max','min','moveOnClick','padding','range','resizable','rtl','showGroupLabels','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -310,32 +286,12 @@ License: https://jqwidgets.com/license/
                     enumerable: true,
                     configurable: true
                 });
-                Object.defineProperty(that, 'showGroupLabels', {
+                Object.defineProperty(that, 'groupLabelsFormatFunction', {
                     get() {
-                        return that._showGroupLabels();
+                        return that._groupLabelsFormatFunction();
                     },
                     set(newValue) {
-                        that._showGroupLabels(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'labelsOnTicks', {
-                    get() {
-                        return that._labelsOnTicks();
-                    },
-                    set(newValue) {
-                        that._labelsOnTicks(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'markersFormatFunction', {
-                    get() {
-                        return that._markersFormatFunction();
-                    },
-                    set(newValue) {
-                        that._markersFormatFunction(newValue);
+                        that._groupLabelsFormatFunction(newValue);
                     },
                     enumerable: true,
                     configurable: true
@@ -370,52 +326,12 @@ License: https://jqwidgets.com/license/
                     enumerable: true,
                     configurable: true
                 });
-                Object.defineProperty(that, 'labelPrecision', {
+                Object.defineProperty(that, 'labelsOnTicks', {
                     get() {
-                        return that._labelPrecision();
+                        return that._labelsOnTicks();
                     },
                     set(newValue) {
-                        that._labelPrecision(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'moveOnClick', {
-                    get() {
-                        return that._moveOnClick();
-                    },
-                    set(newValue) {
-                        that._moveOnClick(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'markerRenderer', {
-                    get() {
-                        return that._markerRenderer();
-                    },
-                    set(newValue) {
-                        that._markerRenderer(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'markerPrecision', {
-                    get() {
-                        return that._markerPrecision();
-                    },
-                    set(newValue) {
-                        that._markerPrecision(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'majorLabelRenderer', {
-                    get() {
-                        return that._majorLabelRenderer();
-                    },
-                    set(newValue) {
-                        that._majorLabelRenderer(newValue);
+                        that._labelsOnTicks(newValue);
                     },
                     enumerable: true,
                     configurable: true
@@ -426,6 +342,16 @@ License: https://jqwidgets.com/license/
                     },
                     set(newValue) {
                         that._markersFormat(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'markersFormatFunction', {
+                    get() {
+                        return that._markersFormatFunction();
+                    },
+                    set(newValue) {
+                        that._markersFormatFunction(newValue);
                     },
                     enumerable: true,
                     configurable: true
@@ -470,6 +396,16 @@ License: https://jqwidgets.com/license/
                     enumerable: true,
                     configurable: true
                 });
+                Object.defineProperty(that, 'moveOnClick', {
+                    get() {
+                        return that._moveOnClick();
+                    },
+                    set(newValue) {
+                        that._moveOnClick(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 Object.defineProperty(that, 'padding', {
                     get() {
                         return that._padding();
@@ -506,6 +442,16 @@ License: https://jqwidgets.com/license/
                     },
                     set(newValue) {
                         that._rtl(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'showGroupLabels', {
+                    get() {
+                        return that._showGroupLabels();
+                    },
+                    set(newValue) {
+                        that._showGroupLabels(newValue);
                     },
                     enumerable: true,
                     configurable: true

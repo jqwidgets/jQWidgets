@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -457,10 +457,10 @@ License: https://jqwidgets.com/license/
             __wireEvents__: function () {
                 const that = this;
 
-                JQXLite(this.componentSelector).on('change', function (event) { that.$emit('change', event); });
-                JQXLite(this.componentSelector).on('close', function (event) { that.$emit('close', event); });
-                JQXLite(this.componentSelector).on('open', function (event) { that.$emit('open', event); });
-                JQXLite(this.componentSelector).on('select', function (event) { that.$emit('select', event); });
+                JQXLite(this.componentSelector + ' textarea').on('change', function (event) { that.$emit('change', event); });
+                JQXLite(this.componentSelector + ' textarea').on('close', function (event) { that.$emit('close', event); });
+                JQXLite(this.componentSelector + ' textarea').on('open', function (event) { that.$emit('open', event); });
+                JQXLite(this.componentSelector + ' textarea').on('select', function (event) { that.$emit('select', event); });
             }
         }
     }

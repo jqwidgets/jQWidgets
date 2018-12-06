@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxgrid.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxgrid.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxgrid.js",
+  "esm5": "../esm5/jqxgrid/jqwidgets-ng-jqxgrid.js",
+  "esm2015": "../esm2015/jqxgrid/jqwidgets-ng-jqxgrid.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxgrid.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxgrid.js",
+  "typings": "jqwidgets-ng-jqxgrid.d.ts",
+  "metadata": "jqwidgets-ng-jqxgrid.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxgrid"
+}

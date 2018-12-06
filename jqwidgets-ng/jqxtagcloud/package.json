@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxtagcloud.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxtagcloud.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxtagcloud.js",
+  "esm5": "../esm5/jqxtagcloud/jqwidgets-ng-jqxtagcloud.js",
+  "esm2015": "../esm2015/jqxtagcloud/jqwidgets-ng-jqxtagcloud.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxtagcloud.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxtagcloud.js",
+  "typings": "jqwidgets-ng-jqxtagcloud.d.ts",
+  "metadata": "jqwidgets-ng-jqxtagcloud.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxtagcloud"
+}

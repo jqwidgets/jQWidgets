@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxdatatable.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxdatatable.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxdatatable.js",
+  "esm5": "../esm5/jqxdatatable/jqwidgets-ng-jqxdatatable.js",
+  "esm2015": "../esm2015/jqxdatatable/jqwidgets-ng-jqxdatatable.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxdatatable.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxdatatable.js",
+  "typings": "jqwidgets-ng-jqxdatatable.d.ts",
+  "metadata": "jqwidgets-ng-jqxdatatable.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxdatatable"
+}

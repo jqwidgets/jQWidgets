@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -20,7 +20,7 @@ License: https://jqwidgets.com/license/
         props: {
             appendTo: String,
             axis: String,
-            cancelProperty: String,
+            cancel: String,
             connectWith: String,
             containment: String,
             cursor: String,
@@ -89,8 +89,8 @@ License: https://jqwidgets.com/license/
             refreshPositions: function() {
                 JQXLite(this.componentSelector).jqxSortable('refreshPositions');  
             },
-            serialize: function() {
-                JQXLite(this.componentSelector).jqxSortable('serialize');  
+            serialize: function(object) {
+                return JQXLite(this.componentSelector).jqxSortable('serialize', object);  
             },
             toArray: function() {
                 return JQXLite(this.componentSelector).jqxSortable('toArray');  
@@ -109,11 +109,11 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxSortable('axis');
                 }
             },
-            _cancelProperty: function(arg) {
+            _cancel: function(arg) {
                 if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxSortable('cancelProperty', arg)
+                    JQXLite(this.componentSelector).jqxSortable('cancel', arg)
                 } else {
-                    return JQXLite(this.componentSelector).jqxSortable('cancelProperty');
+                    return JQXLite(this.componentSelector).jqxSortable('cancel');
                 }
             },
             _connectWith: function(arg) {
@@ -278,7 +278,7 @@ License: https://jqwidgets.com/license/
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['appendTo','axis','cancelProperty','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','tolerance','zIndex'];
+                const widgetProps = ['appendTo','axis','cancel','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','tolerance','zIndex'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -312,12 +312,12 @@ License: https://jqwidgets.com/license/
                     enumerable: true,
                     configurable: true
                 });
-                Object.defineProperty(that, 'cancelProperty', {
+                Object.defineProperty(that, 'cancel', {
                     get() {
-                        return that._cancelProperty();
+                        return that._cancel();
                     },
                     set(newValue) {
-                        that._cancelProperty(newValue);
+                        that._cancel(newValue);
                     },
                     enumerable: true,
                     configurable: true
@@ -549,7 +549,6 @@ License: https://jqwidgets.com/license/
                 JQXLite(this.componentSelector).on('activate', function (event) { that.$emit('activate', event); });
                 JQXLite(this.componentSelector).on('beforeStop', function (event) { that.$emit('beforeStop', event); });
                 JQXLite(this.componentSelector).on('change', function (event) { that.$emit('change', event); });
-                JQXLite(this.componentSelector).on('create', function (event) { that.$emit('create', event); });
                 JQXLite(this.componentSelector).on('deactivate', function (event) { that.$emit('deactivate', event); });
                 JQXLite(this.componentSelector).on('out', function (event) { that.$emit('out', event); });
                 JQXLite(this.componentSelector).on('over', function (event) { that.$emit('over', event); });

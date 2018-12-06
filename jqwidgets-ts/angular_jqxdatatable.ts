@@ -1,10 +1,12 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxdata.export.js';
@@ -17,6 +19,7 @@ import '../jqwidgets/jqxcombobox.js';
 import '../jqwidgets/jqxnumberinput.js';
 import '../jqwidgets/jqxdropdownlist.js';
 import '../jqwidgets/jqxdatatable.js';
+
 import { Component, Input, Output, AfterViewInit, AfterViewChecked, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -97,8 +100,8 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }; 
 
     ngAfterViewInit() {
-       let children = JQXLite(this.elementRef.nativeElement.children).find("tr"); 
-       let html = ""; 
+       let children = JQXLite(this.elementRef.nativeElement.children).find('tr'); 
+       let html = ''; 
        let options = {}; 
 
        if (children.length > 0) {
@@ -1207,13 +1210,13 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       this.host.jqxDataTable('removeFilter', dataField);
    }
 
-   scrollOffset(top: number, left: number): any {
+   scrollOffset(top: number, left: number): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
       }
 
-      return this.host.jqxDataTable('scrollOffset', top, left);
+      this.host.jqxDataTable('scrollOffset', top, left);
    }
 
    setColumnProperty(dataField: string, propertyName: string, propertyValue: any): void {

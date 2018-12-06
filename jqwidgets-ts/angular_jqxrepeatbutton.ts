@@ -1,12 +1,15 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -281,10 +284,6 @@ export class jqxRepeatButtonComponent implements OnChanges
 
 
    // jqxRepeatButtonComponent functions
-   check(): void {
-      this.host.jqxRepeatButton('check');
-   }
-
    destroy(): void {
       this.host.jqxRepeatButton('destroy');
    }
@@ -297,19 +296,11 @@ export class jqxRepeatButtonComponent implements OnChanges
       this.host.jqxRepeatButton('render');
    }
 
-   toggle(): void {
-      this.host.jqxRepeatButton('toggle');
-   }
-
-   unCheck(): void {
-      this.host.jqxRepeatButton('unCheck');
-   }
-
    val(value?: string): any {
       if (value !== undefined) {
-         return this.host.jqxRepeatButton("val", value);
+         return this.host.jqxRepeatButton('val', value);
       } else {
-         return this.host.jqxRepeatButton("val");
+         return this.host.jqxRepeatButton('val');
       }
    };
 

@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxrepeatbutton.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxrepeatbutton.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxrepeatbutton.js",
+  "esm5": "../esm5/jqxrepeatbutton/jqwidgets-ng-jqxrepeatbutton.js",
+  "esm2015": "../esm2015/jqxrepeatbutton/jqwidgets-ng-jqxrepeatbutton.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxrepeatbutton.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxrepeatbutton.js",
+  "typings": "jqwidgets-ng-jqxrepeatbutton.d.ts",
+  "metadata": "jqwidgets-ng-jqxrepeatbutton.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxrepeatbutton"
+}

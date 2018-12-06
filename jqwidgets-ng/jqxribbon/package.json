@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxribbon.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxribbon.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxribbon.js",
+  "esm5": "../esm5/jqxribbon/jqwidgets-ng-jqxribbon.js",
+  "esm2015": "../esm2015/jqxribbon/jqwidgets-ng-jqxribbon.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxribbon.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxribbon.js",
+  "typings": "jqwidgets-ng-jqxribbon.d.ts",
+  "metadata": "jqwidgets-ng-jqxribbon.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxribbon"
+}

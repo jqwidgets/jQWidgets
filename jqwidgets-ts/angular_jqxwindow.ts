@@ -1,13 +1,16 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxwindow.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -38,7 +41,7 @@ export class jqxWindowComponent implements OnChanges
    @Input('maxHeight') attrMaxHeight: string | number;
    @Input('minWidth') attrMinWidth: number | string;
    @Input('maxWidth') attrMaxWidth: number | string;
-   @Input('modalOpacity') attrModalOpacity: number;
+   @Input('modalOpacity') attrModalOpacity: number | string;
    @Input('modalZIndex') attrModalZIndex: number;
    @Input('modalBackgroundZIndex') attrModalBackgroundZIndex: number;
    @Input('okButton') attrOkButton: any;
@@ -339,7 +342,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   modalOpacity(arg?: number) : any {
+   modalOpacity(arg?: undefined) : any {
       if (arg !== undefined) {
           this.host.jqxWindow('modalOpacity', arg);
       } else {
@@ -521,7 +524,6 @@ export class jqxWindowComponent implements OnChanges
    // jqxWindowComponent events
    @Output() onClose = new EventEmitter();
    @Output() onCollapse = new EventEmitter();
-   @Output() onCreated = new EventEmitter();
    @Output() onExpand = new EventEmitter();
    @Output() onMoving = new EventEmitter();
    @Output() onMoved = new EventEmitter();
@@ -532,7 +534,6 @@ export class jqxWindowComponent implements OnChanges
    __wireEvents__(): void {
       this.host.on('close', (eventData: any) => { this.onClose.emit(eventData); });
       this.host.on('collapse', (eventData: any) => { this.onCollapse.emit(eventData); });
-      this.host.on('created', (eventData: any) => { this.onCreated.emit(eventData); });
       this.host.on('expand', (eventData: any) => { this.onExpand.emit(eventData); });
       this.host.on('moving', (eventData: any) => { this.onMoving.emit(eventData); });
       this.host.on('moved', (eventData: any) => { this.onMoved.emit(eventData); });

@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -61,9 +61,6 @@ License: https://jqwidgets.com/license/
                 }
                 return resultToReturn;
             },
-            check: function() {
-                JQXLite(this.componentSelector).jqxRepeatButton('check');  
-            },
             destroy: function() {
                 JQXLite(this.componentSelector).jqxRepeatButton('destroy');  
             },
@@ -72,12 +69,6 @@ License: https://jqwidgets.com/license/
             },
             render: function() {
                 JQXLite(this.componentSelector).jqxRepeatButton('render');  
-            },
-            toggle: function() {
-                JQXLite(this.componentSelector).jqxRepeatButton('toggle');  
-            },
-            unCheck: function() {
-                JQXLite(this.componentSelector).jqxRepeatButton('unCheck');  
             },
             val: function(value) {
                 if (value !== undefined) {

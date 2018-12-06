@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxscheduler.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxscheduler.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxscheduler.js",
+  "esm5": "../esm5/jqxscheduler/jqwidgets-ng-jqxscheduler.js",
+  "esm2015": "../esm2015/jqxscheduler/jqwidgets-ng-jqxscheduler.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxscheduler.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxscheduler.js",
+  "typings": "jqwidgets-ng-jqxscheduler.d.ts",
+  "metadata": "jqwidgets-ng-jqxscheduler.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxscheduler"
+}

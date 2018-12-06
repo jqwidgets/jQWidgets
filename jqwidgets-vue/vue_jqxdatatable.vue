@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -204,7 +204,7 @@ License: https://jqwidgets.com/license/
                 JQXLite(this.componentSelector).jqxDataTable('removeFilter', dataField);  
             },
             scrollOffset: function(top, left) {
-                return JQXLite(this.componentSelector).jqxDataTable('scrollOffset', top, left);  
+                JQXLite(this.componentSelector).jqxDataTable('scrollOffset', top, left);  
             },
             setColumnProperty: function(dataField, propertyName, propertyValue) {
                 JQXLite(this.componentSelector).jqxDataTable('setColumnProperty', dataField, propertyName, propertyValue);  

@@ -1,12 +1,15 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -28,14 +31,13 @@ export class jqxButtonComponent implements OnChanges
    @Input('textImageRelation') attrTextImageRelation: any;
    @Input('theme') attrTheme: string;
    @Input('template') attrTemplate: any;
-   @Input('toggled') attrToggled: boolean;
    @Input('value') attrValue: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
+   properties: string[] = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','width','value'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxButton;
@@ -247,14 +249,6 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   toggled(arg?: boolean) : any {
-      if (arg !== undefined) {
-          this.host.jqxButton('toggled', arg);
-      } else {
-          return this.host.jqxButton('toggled');
-      }
-   }
-
    width(arg?: number | string) : any {
       if (arg !== undefined) {
           this.host.jqxButton('width', arg);
@@ -273,10 +267,6 @@ export class jqxButtonComponent implements OnChanges
 
 
    // jqxButtonComponent functions
-   check(): void {
-      this.host.jqxButton('check');
-   }
-
    destroy(): void {
       this.host.jqxButton('destroy');
    }
@@ -289,19 +279,11 @@ export class jqxButtonComponent implements OnChanges
       this.host.jqxButton('render');
    }
 
-   toggle(): void {
-      this.host.jqxButton('toggle');
-   }
-
-   unCheck(): void {
-      this.host.jqxButton('unCheck');
-   }
-
    val(value?: string): any {
       if (value !== undefined) {
-         return this.host.jqxButton("val", value);
+         return this.host.jqxButton('val', value);
       } else {
-         return this.host.jqxButton("val");
+         return this.host.jqxButton('val');
       }
    };
 

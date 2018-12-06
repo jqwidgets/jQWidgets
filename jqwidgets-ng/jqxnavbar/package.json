@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxnavbar.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxnavbar.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxnavbar.js",
+  "esm5": "../esm5/jqxnavbar/jqwidgets-ng-jqxnavbar.js",
+  "esm2015": "../esm2015/jqxnavbar/jqwidgets-ng-jqxnavbar.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxnavbar.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxnavbar.js",
+  "typings": "jqwidgets-ng-jqxnavbar.d.ts",
+  "metadata": "jqwidgets-ng-jqxnavbar.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxnavbar"
+}

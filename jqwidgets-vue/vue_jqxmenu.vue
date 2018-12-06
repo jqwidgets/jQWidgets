@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -34,12 +34,12 @@ License: https://jqwidgets.com/license/
             easing: String,
             height: [Number, String],
             keyboardNavigation: Boolean,
-            minimizeWidth: String,
+            minimizeWidth: [String, Number],
             mode: String,
             popupZIndex: Number,
             rtl: Boolean,
             showTopLevelArrows: Boolean,
-            source: Object,
+            source: [Array, Object],
             theme: String,
             width: [Number, String],
             autoCreate: {
@@ -536,7 +536,6 @@ License: https://jqwidgets.com/license/
 
                 JQXLite(this.componentSelector).on('closed', function (event) { that.$emit('closed', event); });
                 JQXLite(this.componentSelector).on('itemclick', function (event) { that.$emit('itemclick', event); });
-                JQXLite(this.componentSelector).on('initialized', function (event) { that.$emit('initialized', event); });
                 JQXLite(this.componentSelector).on('shown', function (event) { that.$emit('shown', event); });
             }
         }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -39,10 +39,10 @@ License: https://jqwidgets.com/license/
             maxHeight: Number,
             minWidth: Number,
             maxWidth: Number,
-            modalOpacity: Number,
+            modalOpacity: [Number, String],
             modalZIndex: Number,
             modalBackgroundZIndex: Number,
-            okButton: Object,
+            okButton: [String, Object],
             position: [String, Object],
             rtl: Boolean,
             resizable: Boolean,
@@ -752,7 +752,6 @@ License: https://jqwidgets.com/license/
 
                 JQXLite(this.componentSelector).on('close', function (event) { that.$emit('close', event); });
                 JQXLite(this.componentSelector).on('collapse', function (event) { that.$emit('collapse', event); });
-                JQXLite(this.componentSelector).on('created', function (event) { that.$emit('created', event); });
                 JQXLite(this.componentSelector).on('expand', function (event) { that.$emit('expand', event); });
                 JQXLite(this.componentSelector).on('moving', function (event) { that.$emit('moving', event); });
                 JQXLite(this.componentSelector).on('moved', function (event) { that.$emit('moved', event); });

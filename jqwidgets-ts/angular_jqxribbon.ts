@@ -1,14 +1,17 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxribbon.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -26,6 +29,7 @@ export class jqxRibbonComponent implements OnChanges
    @Input('mode') attrMode: any;
    @Input('popupCloseMode') attrPopupCloseMode: any;
    @Input('position') attrPosition: any;
+   @Input('reorder') attrReorder: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('selectedIndex') attrSelectedIndex: number;
    @Input('selectionMode') attrSelectionMode: any;
@@ -38,7 +42,7 @@ export class jqxRibbonComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','animationDelay','disabled','height','initContent','mode','popupCloseMode','position','rtl','selectedIndex','selectionMode','scrollPosition','scrollStep','scrollDelay','theme','width'];
+   properties: string[] = ['animationType','animationDelay','disabled','height','initContent','mode','popupCloseMode','position','reorder','rtl','selectedIndex','selectionMode','scrollPosition','scrollStep','scrollDelay','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxRibbon;
@@ -217,6 +221,14 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
+   reorder(arg?: boolean) : any {
+      if (arg !== undefined) {
+          this.host.jqxRibbon('reorder', arg);
+      } else {
+          return this.host.jqxRibbon('reorder');
+      }
+   }
+
    rtl(arg?: boolean) : any {
       if (arg !== undefined) {
           this.host.jqxRibbon('rtl', arg);
@@ -337,9 +349,9 @@ export class jqxRibbonComponent implements OnChanges
 
    val(value?: string): any {
       if (value !== undefined) {
-         return this.host.jqxRibbon("val", value);
+         return this.host.jqxRibbon('val', value);
       } else {
-         return this.host.jqxRibbon("val");
+         return this.host.jqxRibbon('val');
       }
    };
 

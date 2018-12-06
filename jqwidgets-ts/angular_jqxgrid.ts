@@ -1,10 +1,12 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxdata.export.js';
@@ -33,6 +35,7 @@ import '../jqwidgets/jqxgrid.export.js'
 import '../jqwidgets/jqxgrid.columnsresize.js'
 import '../jqwidgets/jqxgrid.columnsreorder.js'
 import '../jqwidgets/jqxgrid.aggregates.js'
+
 import { Component, Input, Output, AfterViewInit, AfterViewChecked, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -115,7 +118,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('scrollfeedback') attrScrollfeedback: (row: any) => string;
    @Input('autosavestate') attrAutosavestate: boolean;
    @Input('autoloadstate') attrAutoloadstate: boolean;
-   @Input('columns') attrColumns: Array<jqwidgets.GridColumn>;
+   @Input('columns') attrColumns: jqwidgets.GridColumn[];
    @Input('columngroups') attrColumngroups: Array<any>;
    @Input('columnsmenu') attrColumnsmenu: boolean;
    @Input('columnsresize') attrColumnsresize: boolean;
@@ -132,7 +135,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('horizontalscrollbarlargestep') attrHorizontalscrollbarlargestep: number;
    @Input('initrowdetails') attrInitrowdetails: (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void;
    @Input('keyboardnavigation') attrKeyboardnavigation: boolean;
-   @Input('localization') attrLocalization: any;
+   @Input('localization') attrLocalization: jqwidgets.GridLocalizationobject;
    @Input('pagesize') attrPagesize: number;
    @Input('pagesizeoptions') attrPagesizeoptions: Array<number | string>;
    @Input('pagermode') attrPagermode: any;
@@ -149,7 +152,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('sortmode') attrSortmode: string;
    @Input('selectedrowindex') attrSelectedrowindex: number;
    @Input('selectedrowindexes') attrSelectedrowindexes: Array<number>;
-   @Input('source') attrSource: any;
+   @Input('source') attrSource: jqwidgets.GridSource;
    @Input('sorttogglestates') attrSorttogglestates: any;
    @Input('updatedelay') attrUpdatedelay: number;
    @Input('virtualmode') attrVirtualmode: boolean;
@@ -175,8 +178,8 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }; 
 
     ngAfterViewInit() {
-       let children = JQXLite(this.elementRef.nativeElement.children).find("tr"); 
-       let html = ""; 
+       let children = JQXLite(this.elementRef.nativeElement.children).find('tr'); 
+       let html = ''; 
        let options = {}; 
 
        if (children.length > 0) {
@@ -1281,7 +1284,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   columns(arg?: Array<jqwidgets.GridColumn>) : any {
+   columns(arg?: jqwidgets.GridColumn[]) : any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1502,7 +1505,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   localization(arg?: any) : any {
+   localization(arg?: jqwidgets.GridLocalizationobject) : any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1723,7 +1726,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   source(arg?: any) : any {
+   source(arg?: jqwidgets.GridSource) : any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

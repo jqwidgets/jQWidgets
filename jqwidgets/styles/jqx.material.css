@@ -757,6 +757,7 @@
     overflow: visible;
 }
 
+.jqx-tree-material .jqx-checkbox-material .jqx-checkbox-default-material,
 .jqx-checkbox-material[checked] .jqx-checkbox-default-material,
 .jqx-tree-grid-checkbox[checked].jqx-checkbox-default-material,
 .jqx-radiobutton-material[checked] .jqx-radiobutton-default-material
@@ -775,6 +776,12 @@
     top: 1px;
     left: 1px;
     background: white;
+}
+.jqx-tree-material .jqx-checkbox-check-indeterminate-material {
+    width:12px !important;
+    height:12px !important;
+    top: 2px;
+    left:2px;
 }
 
 .jqx-checkbox-hover-material,
@@ -1793,11 +1800,27 @@ input[type="text"].jqx-input-material:-ms-input-placeholder, input[type="text"].
 .jqx-fill-state-pressed-material .jqx-menu-minimized-button-material {
    background-image: url('images/icon-menu-minimized-white.png');
 }
-.jqx-fill-state-hover-material .jqx-editor-toolbar-icon-material, .jqx-fill-state-pressed-material .jqx-editor-toolbar-icon-material {
+.jqx-fill-state-hover-material .jqx-editor-toolbar-icon-material,
+.jqx-fill-state-pressed-material .jqx-editor-toolbar-icon-material {
     background: url('images/html_editor_white.png') no-repeat;
 }
+
+.jqx-fill-state-hover-material .jqx-editor-toolbar-icon-fontsize-material,
+.jqx-fill-state-pressed-material .jqx-editor-toolbar-icon-fontsize-material,
+.jqx-fill-state-hover-material .jqx-editor-toolbar-icon-forecolor-material,
+.jqx-fill-state-pressed-material .jqx-editor-toolbar-icon-forecolor-material
+{
+        background: url('images/html_editor.png') no-repeat;
+}
+
 .jqx-editor-toolbar-button-material{
     border-color: #ddd;
     box-shadow: none !important;
 	color: #333;
 }
+
+jqx-editor-toolbar-icon-fontsize-material,
+jqx-editor-toolbar-icon-fontcolor-material {
+
+}
+

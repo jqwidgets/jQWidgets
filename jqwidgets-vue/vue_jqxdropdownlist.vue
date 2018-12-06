@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -50,8 +50,7 @@ License: https://jqwidgets.com/license/
             renderer: Function,
             selectionRenderer: Function,
             searchMode: String,
-            scrollBarSize: Number,
-            source: Array,
+            source: [Array, Object],
             selectedIndex: Number,
             theme: String,
             template: String,
@@ -412,13 +411,6 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxDropDownList('searchMode');
                 }
             },
-            _scrollBarSize: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxDropDownList('scrollBarSize', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxDropDownList('scrollBarSize');
-                }
-            },
             _source: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxDropDownList('source', arg)
@@ -469,7 +461,7 @@ License: https://jqwidgets.com/license/
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','scrollBarSize','source','selectedIndex','theme','template','valueMember','width'];
+                const widgetProps = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','source','selectedIndex','theme','template','valueMember','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -769,16 +761,6 @@ License: https://jqwidgets.com/license/
                     },
                     set(newValue) {
                         that._searchMode(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'scrollBarSize', {
-                    get() {
-                        return that._scrollBarSize();
-                    },
-                    set(newValue) {
-                        that._scrollBarSize(newValue);
                     },
                     enumerable: true,
                     configurable: true

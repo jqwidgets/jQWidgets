@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxpivotdesigner.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxpivotdesigner.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxpivotdesigner.js",
+  "esm5": "../esm5/jqxpivotdesigner/jqwidgets-ng-jqxpivotdesigner.js",
+  "esm2015": "../esm2015/jqxpivotdesigner/jqwidgets-ng-jqxpivotdesigner.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxpivotdesigner.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxpivotdesigner.js",
+  "typings": "jqwidgets-ng-jqxpivotdesigner.d.ts",
+  "metadata": "jqwidgets-ng-jqxpivotdesigner.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxpivotdesigner"
+}

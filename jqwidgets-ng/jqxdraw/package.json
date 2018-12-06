@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxdraw.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxdraw.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxdraw.js",
+  "esm5": "../esm5/jqxdraw/jqwidgets-ng-jqxdraw.js",
+  "esm2015": "../esm2015/jqxdraw/jqwidgets-ng-jqxdraw.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxdraw.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxdraw.js",
+  "typings": "jqwidgets-ng-jqxdraw.d.ts",
+  "metadata": "jqwidgets-ng-jqxdraw.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxdraw"
+}

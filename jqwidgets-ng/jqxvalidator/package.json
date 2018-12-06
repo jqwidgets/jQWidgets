@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxvalidator.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxvalidator.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxvalidator.js",
+  "esm5": "../esm5/jqxvalidator/jqwidgets-ng-jqxvalidator.js",
+  "esm2015": "../esm2015/jqxvalidator/jqwidgets-ng-jqxvalidator.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxvalidator.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxvalidator.js",
+  "typings": "jqwidgets-ng-jqxvalidator.d.ts",
+  "metadata": "jqwidgets-ng-jqxvalidator.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxvalidator"
+}

@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -251,7 +251,6 @@ License: https://jqwidgets.com/license/
             __wireEvents__: function () {
                 const that = this;
 
-                JQXLite(this.componentSelector).on('create', function (event) { that.$emit('create', event); });
                 JQXLite(this.componentSelector).on('pin', function (event) { that.$emit('pin', event); });
                 JQXLite(this.componentSelector).on('resize', function (event) { that.$emit('resize', event); });
                 JQXLite(this.componentSelector).on('unpin', function (event) { that.$emit('unpin', event); });

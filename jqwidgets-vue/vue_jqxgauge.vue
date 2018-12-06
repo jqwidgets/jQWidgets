@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -36,7 +36,7 @@ License: https://jqwidgets.com/license/
             ranges: Array,
             startAngle: Number,
             showRanges: Boolean,
-            styleProperty: Object,
+            styles: Object,
             ticksMajor: Object,
             ticksMinor: Object,
             ticksDistance: String,
@@ -209,11 +209,11 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxGauge('showRanges');
                 }
             },
-            _styleProperty: function(arg) {
+            _styles: function(arg) {
                 if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxGauge('style', arg)
+                    JQXLite(this.componentSelector).jqxGauge('styles', arg)
                 } else {
-                    return JQXLite(this.componentSelector).jqxGauge('style');
+                    return JQXLite(this.componentSelector).jqxGauge('styles');
                 }
             },
             _ticksMajor: function(arg) {
@@ -259,7 +259,7 @@ License: https://jqwidgets.com/license/
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','style','ticksMajor','ticksMinor','ticksDistance','value','width'];
+                const widgetProps = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','styles','ticksMajor','ticksMinor','ticksDistance','value','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -454,12 +454,12 @@ License: https://jqwidgets.com/license/
                     enumerable: true,
                     configurable: true
                 });
-                Object.defineProperty(that, 'styleProperty', {
+                Object.defineProperty(that, 'styles', {
                     get() {
-                        return that._styleProperty();
+                        return that._styles();
                     },
                     set(newValue) {
-                        that._styleProperty(newValue);
+                        that._styles(newValue);
                     },
                     enumerable: true,
                     configurable: true

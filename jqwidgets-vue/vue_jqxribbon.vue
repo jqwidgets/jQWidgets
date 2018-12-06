@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -27,6 +27,7 @@ License: https://jqwidgets.com/license/
             mode: String,
             popupCloseMode: String,
             position: String,
+            reorder: Boolean,
             rtl: Boolean,
             selectedIndex: Number,
             selectionMode: String,
@@ -165,6 +166,13 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxRibbon('position');
                 }
             },
+            _reorder: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxRibbon('reorder', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxRibbon('reorder');
+                }
+            },
             _rtl: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxRibbon('rtl', arg)
@@ -229,7 +237,7 @@ License: https://jqwidgets.com/license/
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['animationType','animationDelay','disabled','height','initContent','mode','popupCloseMode','position','rtl','selectedIndex','selectionMode','scrollPosition','scrollStep','scrollDelay','theme','width'];
+                const widgetProps = ['animationType','animationDelay','disabled','height','initContent','mode','popupCloseMode','position','reorder','rtl','selectedIndex','selectionMode','scrollPosition','scrollStep','scrollDelay','theme','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -319,6 +327,16 @@ License: https://jqwidgets.com/license/
                     },
                     set(newValue) {
                         that._position(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'reorder', {
+                    get() {
+                        return that._reorder();
+                    },
+                    set(newValue) {
+                        that._reorder(newValue);
                     },
                     enumerable: true,
                     configurable: true

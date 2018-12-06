@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -71,9 +71,6 @@ License: https://jqwidgets.com/license/
             },
             refresh: function() {
                 return JQXLite(this.componentSelector).jqxPivotGrid('refresh');  
-            },
-            destroy: function() {
-                return JQXLite(this.componentSelector).jqxPivotGrid('destroy');  
             },
             getPivotRows: function() {
                 return JQXLite(this.componentSelector).jqxPivotGrid('getPivotRows');  

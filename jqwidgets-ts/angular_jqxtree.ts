@@ -1,10 +1,12 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxbuttons.js';
@@ -13,6 +15,7 @@ import '../jqwidgets/jqxpanel.js';
 import '../jqwidgets/jqxdragdrop.js';
 import '../jqwidgets/jqxtree.js';
 import '../jqwidgets/jqxcheckbox.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -407,12 +410,12 @@ export class jqxTreeComponent implements OnChanges
       return this.host.jqxTree('getSelectedItem');
    }
 
-   getPrevItem(): jqwidgets.TreeItem {
-      return this.host.jqxTree('getPrevItem');
+   getPrevItem(item: any): jqwidgets.TreeItem {
+      return this.host.jqxTree('getPrevItem', item);
    }
 
-   getNextItem(): jqwidgets.TreeItem {
-      return this.host.jqxTree('getNextItem');
+   getNextItem(item: any): jqwidgets.TreeItem {
+      return this.host.jqxTree('getNextItem', item);
    }
 
    hitTest(left: number, top: number): any {
@@ -449,9 +452,9 @@ export class jqxTreeComponent implements OnChanges
 
    val(value?: string): any {
       if (value !== undefined) {
-         return this.host.jqxTree("val", value);
+         return this.host.jqxTree('val', value);
       } else {
-         return this.host.jqxTree("val");
+         return this.host.jqxTree('val');
       }
    };
 
@@ -463,7 +466,6 @@ export class jqxTreeComponent implements OnChanges
    @Output() onDragStart = new EventEmitter();
    @Output() onDragEnd = new EventEmitter();
    @Output() onExpand = new EventEmitter();
-   @Output() onInitialized = new EventEmitter();
    @Output() onItemClick = new EventEmitter();
    @Output() onRemoved = new EventEmitter();
    @Output() onSelect = new EventEmitter();
@@ -475,7 +477,6 @@ export class jqxTreeComponent implements OnChanges
       this.host.on('dragStart', (eventData: any) => { this.onDragStart.emit(eventData); });
       this.host.on('dragEnd', (eventData: any) => { this.onDragEnd.emit(eventData); });
       this.host.on('expand', (eventData: any) => { this.onExpand.emit(eventData); });
-      this.host.on('initialized', (eventData: any) => { this.onInitialized.emit(eventData); });
       this.host.on('itemClick', (eventData: any) => { this.onItemClick.emit(eventData); });
       this.host.on('removed', (eventData: any) => { this.onRemoved.emit(eventData); });
       this.host.on('select', (eventData: any) => { this.onSelect.emit(eventData); });

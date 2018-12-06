@@ -1,12 +1,15 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -17,26 +20,15 @@ declare let JQXLite: any;
 
 export class jqxLinkButtonComponent implements OnChanges
 {
-   @Input('delay') attrDelay: number;
    @Input('disabled') attrDisabled: boolean;
-   @Input('imgSrc') attrImgSrc: string;
-   @Input('imgWidth') attrImgWidth: string | number;
-   @Input('imgHeight') attrImgHeight: string | number;
-   @Input('imgPosition') attrImgPosition: any;
-   @Input('roundedCorners') attrRoundedCorners: any;
    @Input('rtl') attrRtl: boolean;
-   @Input('textPosition') attrTextPosition: any;
-   @Input('textImageRelation') attrTextImageRelation: any;
    @Input('theme') attrTheme: string;
-   @Input('template') attrTemplate: any;
-   @Input('toggled') attrToggled: boolean;
-   @Input('value') attrValue: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['delay','disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
+   properties: string[] = ['disabled','height','rtl','theme','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxLinkButton;
@@ -151,14 +143,6 @@ export class jqxLinkButtonComponent implements OnChanges
    }
 
    // jqxLinkButtonComponent properties
-   delay(arg?: number) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinkButton('delay', arg);
-      } else {
-          return this.host.jqxLinkButton('delay');
-      }
-   }
-
    disabled(arg?: boolean) : any {
       if (arg !== undefined) {
           this.host.jqxLinkButton('disabled', arg);
@@ -175,67 +159,11 @@ export class jqxLinkButtonComponent implements OnChanges
       }
    }
 
-   imgSrc(arg?: string) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinkButton('imgSrc', arg);
-      } else {
-          return this.host.jqxLinkButton('imgSrc');
-      }
-   }
-
-   imgWidth(arg?: string | number) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinkButton('imgWidth', arg);
-      } else {
-          return this.host.jqxLinkButton('imgWidth');
-      }
-   }
-
-   imgHeight(arg?: string | number) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinkButton('imgHeight', arg);
-      } else {
-          return this.host.jqxLinkButton('imgHeight');
-      }
-   }
-
-   imgPosition(arg?: string) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinkButton('imgPosition', arg);
-      } else {
-          return this.host.jqxLinkButton('imgPosition');
-      }
-   }
-
-   roundedCorners(arg?: string) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinkButton('roundedCorners', arg);
-      } else {
-          return this.host.jqxLinkButton('roundedCorners');
-      }
-   }
-
    rtl(arg?: boolean) : any {
       if (arg !== undefined) {
           this.host.jqxLinkButton('rtl', arg);
       } else {
           return this.host.jqxLinkButton('rtl');
-      }
-   }
-
-   textPosition(arg?: string) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinkButton('textPosition', arg);
-      } else {
-          return this.host.jqxLinkButton('textPosition');
-      }
-   }
-
-   textImageRelation(arg?: string) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinkButton('textImageRelation', arg);
-      } else {
-          return this.host.jqxLinkButton('textImageRelation');
       }
    }
 
@@ -247,22 +175,6 @@ export class jqxLinkButtonComponent implements OnChanges
       }
    }
 
-   template(arg?: string) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinkButton('template', arg);
-      } else {
-          return this.host.jqxLinkButton('template');
-      }
-   }
-
-   toggled(arg?: boolean) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinkButton('toggled', arg);
-      } else {
-          return this.host.jqxLinkButton('toggled');
-      }
-   }
-
    width(arg?: string | number) : any {
       if (arg !== undefined) {
           this.host.jqxLinkButton('width', arg);
@@ -271,54 +183,9 @@ export class jqxLinkButtonComponent implements OnChanges
       }
    }
 
-   value(arg?: string) : any {
-      if (arg !== undefined) {
-          this.host.jqxLinkButton('value', arg);
-      } else {
-          return this.host.jqxLinkButton('value');
-      }
-   }
-
-
-   // jqxLinkButtonComponent functions
-   check(): void {
-      this.host.jqxLinkButton('check');
-   }
-
-   destroy(): void {
-      this.host.jqxLinkButton('destroy');
-   }
-
-   focus(): void {
-      this.host.jqxLinkButton('focus');
-   }
-
-   render(): void {
-      this.host.jqxLinkButton('render');
-   }
-
-   toggle(): void {
-      this.host.jqxLinkButton('toggle');
-   }
-
-   unCheck(): void {
-      this.host.jqxLinkButton('unCheck');
-   }
-
-   val(value?: string): any {
-      if (value !== undefined) {
-         return this.host.jqxLinkButton("val", value);
-      } else {
-         return this.host.jqxLinkButton("val");
-      }
-   };
-
-
-   // jqxLinkButtonComponent events
-   @Output() onClick = new EventEmitter();
 
    __wireEvents__(): void {
-      this.host.on('click', (eventData: any) => { this.onClick.emit(eventData); });
+
    }
 
 } //jqxLinkButtonComponent

@@ -1,13 +1,16 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
 import '../jqwidgets/jqxmenu.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -398,13 +401,11 @@ export class jqxMenuComponent implements OnChanges
    // jqxMenuComponent events
    @Output() onClosed = new EventEmitter();
    @Output() onItemclick = new EventEmitter();
-   @Output() onInitialized = new EventEmitter();
    @Output() onShown = new EventEmitter();
 
    __wireEvents__(): void {
       this.host.on('closed', (eventData: any) => { this.onClosed.emit(eventData); });
       this.host.on('itemclick', (eventData: any) => { this.onItemclick.emit(eventData); });
-      this.host.on('initialized', (eventData: any) => { this.onInitialized.emit(eventData); });
       this.host.on('shown', (eventData: any) => { this.onShown.emit(eventData); });
    }
 

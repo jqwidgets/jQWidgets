@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxnotification.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxnotification.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxnotification.js",
+  "esm5": "../esm5/jqxnotification/jqwidgets-ng-jqxnotification.js",
+  "esm2015": "../esm2015/jqxnotification/jqwidgets-ng-jqxnotification.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxnotification.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxnotification.js",
+  "typings": "jqwidgets-ng-jqxnotification.d.ts",
+  "metadata": "jqwidgets-ng-jqxnotification.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxnotification"
+}

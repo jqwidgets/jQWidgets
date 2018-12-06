@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxmaskedinput.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxmaskedinput.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxmaskedinput.js",
+  "esm5": "../esm5/jqxmaskedinput/jqwidgets-ng-jqxmaskedinput.js",
+  "esm2015": "../esm2015/jqxmaskedinput/jqwidgets-ng-jqxmaskedinput.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxmaskedinput.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxmaskedinput.js",
+  "typings": "jqwidgets-ng-jqxmaskedinput.d.ts",
+  "metadata": "jqwidgets-ng-jqxmaskedinput.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxmaskedinput"
+}

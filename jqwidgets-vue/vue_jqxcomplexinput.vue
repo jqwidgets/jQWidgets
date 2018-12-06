@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -67,9 +67,6 @@ License: https://jqwidgets.com/license/
             },
             getImaginary: function(complexnumber) {
                 return JQXLite(this.componentSelector).jqxComplexInput('getImaginary', complexnumber);  
-            },
-            getDecimalNotation: function(part, type) {
-                return JQXLite(this.componentSelector).jqxComplexInput('getDecimalNotation', part, type);  
             },
             render: function() {
                 JQXLite(this.componentSelector).jqxComplexInput('render');  

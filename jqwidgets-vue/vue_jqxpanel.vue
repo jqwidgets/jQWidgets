@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -85,8 +85,8 @@ License: https://jqwidgets.com/license/
             remove: function(HTMLElement) {
                 JQXLite(this.componentSelector).jqxPanel('remove', HTMLElement);  
             },
-            scrollTo: function(top, left) {
-                JQXLite(this.componentSelector).jqxPanel('scrollTo', top, left);  
+            scrollTo: function(left, top) {
+                JQXLite(this.componentSelector).jqxPanel('scrollTo', left, top);  
             },
             _autoUpdate: function(arg) {
                 if (arg !== undefined) {

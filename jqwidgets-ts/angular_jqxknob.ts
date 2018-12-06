@@ -1,13 +1,16 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdraw.js';
 import '../jqwidgets/jqxknob.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -37,7 +40,7 @@ export class jqxKnobComponent implements OnChanges
    @Input('rotation') attrRotation: any;
    @Input('startAngle') attrStartAngle: number;
    @Input('spinner') attrSpinner: jqwidgets.KnobSpinner;
-   @Input('style') attrStyle: jqwidgets.KnobStyle;
+   @Input('styles') attrStyles: jqwidgets.KnobStyle;
    @Input('step') attrStep: number | string;
    @Input('snapToStep') attrSnapToStep: boolean;
    @Input('value') attrValue: any;
@@ -46,7 +49,7 @@ export class jqxKnobComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['allowValueChangeOnClick','allowValueChangeOnDrag','allowValueChangeOnMouseWheel','changing','dragEndAngle','dragStartAngle','disabled','dial','endAngle','height','labels','marks','min','max','progressBar','pointer','pointerGrabAction','rotation','startAngle','spinner','style','step','snapToStep','value','width'];
+   properties: string[] = ['allowValueChangeOnClick','allowValueChangeOnDrag','allowValueChangeOnMouseWheel','changing','dragEndAngle','dragStartAngle','disabled','dial','endAngle','height','labels','marks','min','max','progressBar','pointer','pointerGrabAction','rotation','startAngle','spinner','styles','step','snapToStep','value','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxKnob;
@@ -325,11 +328,11 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   style(arg?: jqwidgets.KnobStyle) : any {
+   styles(arg?: jqwidgets.KnobStyle) : any {
       if (arg !== undefined) {
-          this.host.jqxKnob('style', arg);
+          this.host.jqxKnob('styles', arg);
       } else {
-          return this.host.jqxKnob('style');
+          return this.host.jqxKnob('styles');
       }
    }
 
@@ -373,9 +376,9 @@ export class jqxKnobComponent implements OnChanges
 
    val(value?: number | string): any {
       if (value !== undefined) {
-         return this.host.jqxKnob("val", value);
+         return this.host.jqxKnob('val', value);
       } else {
-         return this.host.jqxKnob("val");
+         return this.host.jqxKnob('val');
       }
    };
 

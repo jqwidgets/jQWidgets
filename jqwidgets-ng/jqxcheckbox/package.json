@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxcheckbox.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxcheckbox.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxcheckbox.js",
+  "esm5": "../esm5/jqxcheckbox/jqwidgets-ng-jqxcheckbox.js",
+  "esm2015": "../esm2015/jqxcheckbox/jqwidgets-ng-jqxcheckbox.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxcheckbox.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxcheckbox.js",
+  "typings": "jqwidgets-ng-jqxcheckbox.d.ts",
+  "metadata": "jqwidgets-ng-jqxcheckbox.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxcheckbox"
+}

@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxpivotgrid.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxpivotgrid.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxpivotgrid.js",
+  "esm5": "../esm5/jqxpivotgrid/jqwidgets-ng-jqxpivotgrid.js",
+  "esm2015": "../esm2015/jqxpivotgrid/jqwidgets-ng-jqxpivotgrid.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxpivotgrid.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxpivotgrid.js",
+  "typings": "jqwidgets-ng-jqxpivotgrid.d.ts",
+  "metadata": "jqwidgets-ng-jqxpivotgrid.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxpivotgrid"
+}

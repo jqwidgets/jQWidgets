@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxsplitter.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxsplitter.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxsplitter.js",
+  "esm5": "../esm5/jqxsplitter/jqwidgets-ng-jqxsplitter.js",
+  "esm2015": "../esm2015/jqxsplitter/jqwidgets-ng-jqxsplitter.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxsplitter.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxsplitter.js",
+  "typings": "jqwidgets-ng-jqxsplitter.d.ts",
+  "metadata": "jqwidgets-ng-jqxsplitter.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxsplitter"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "jqwidgets-ng",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^7.0.0",
+    "@angular/core": "^7.0.0"
+  },
+  "main": "bundles/jqwidgets-ng.umd.js",
+  "module": "fesm5/jqwidgets-ng.js",
+  "es2015": "fesm2015/jqwidgets-ng.js",
+  "esm5": "esm5/jqwidgets-ng.js",
+  "esm2015": "esm2015/jqwidgets-ng.js",
+  "fesm5": "fesm5/jqwidgets-ng.js",
+  "fesm2015": "fesm2015/jqwidgets-ng.js",
+  "typings": "jqwidgets-ng.d.ts",
+  "metadata": "jqwidgets-ng.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

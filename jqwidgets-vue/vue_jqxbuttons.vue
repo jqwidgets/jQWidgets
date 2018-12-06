@@ -1,5 +1,5 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -29,7 +29,6 @@ License: https://jqwidgets.com/license/
             textImageRelation: String,
             theme: String,
             template: String,
-            toggled: Boolean,
             width: [String, Number],
             value: String,
             autoCreate: {
@@ -60,9 +59,6 @@ License: https://jqwidgets.com/license/
                 }
                 return resultToReturn;
             },
-            check: function() {
-                JQXLite(this.componentSelector).jqxButton('check');  
-            },
             destroy: function() {
                 JQXLite(this.componentSelector).jqxButton('destroy');  
             },
@@ -71,12 +67,6 @@ License: https://jqwidgets.com/license/
             },
             render: function() {
                 JQXLite(this.componentSelector).jqxButton('render');  
-            },
-            toggle: function() {
-                JQXLite(this.componentSelector).jqxButton('toggle');  
-            },
-            unCheck: function() {
-                JQXLite(this.componentSelector).jqxButton('unCheck');  
             },
             val: function(value) {
                 if (value !== undefined) {
@@ -169,13 +159,6 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxButton('template');
                 }
             },
-            _toggled: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxButton('toggled', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxButton('toggled');
-                }
-            },
             _width: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxButton('width', arg)
@@ -198,7 +181,7 @@ License: https://jqwidgets.com/license/
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
+                const widgetProps = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','width','value'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -328,16 +311,6 @@ License: https://jqwidgets.com/license/
                     },
                     set(newValue) {
                         that._template(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'toggled', {
-                    get() {
-                        return that._toggled();
-                    },
-                    set(newValue) {
-                        that._toggled(newValue);
                     },
                     enumerable: true,
                     configurable: true

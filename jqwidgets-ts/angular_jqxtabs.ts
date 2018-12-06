@@ -1,13 +1,16 @@
 /*
-jQWidgets v6.1.0 (2018-October)
+jQWidgets v6.2.0 (2018-Dec)
 Copyright (c) 2011-2018 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
+
 /// <reference path="jqwidgets.d.ts" />
+
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
 import '../jqwidgets/jqxtabs.js';
+
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
@@ -385,12 +388,12 @@ export class jqxTabsComponent implements OnChanges
       this.host.jqxTabs('addAt', index, title, content);
    }
 
-   addFirst(htmlElement: any): void {
-      this.host.jqxTabs('addFirst', htmlElement);
+   addFirst(htmlElement1: any, htmlElement2: any): void {
+      this.host.jqxTabs('addFirst', htmlElement1, htmlElement2);
    }
 
-   addLast(htmlElement1: any, htmlElemen2t?: any): void {
-      this.host.jqxTabs('addLast', htmlElement1, htmlElemen2t);
+   addLast(htmlElement1: any, htmlElement2?: any): void {
+      this.host.jqxTabs('addLast', htmlElement1, htmlElement2);
    }
 
    collapse(): void {
@@ -487,16 +490,15 @@ export class jqxTabsComponent implements OnChanges
 
    val(value?: string): any {
       if (value !== undefined) {
-         return this.host.jqxTabs("val", value);
+         return this.host.jqxTabs('val', value);
       } else {
-         return this.host.jqxTabs("val");
+         return this.host.jqxTabs('val');
       }
    };
 
 
    // jqxTabsComponent events
    @Output() onAdd = new EventEmitter();
-   @Output() onCreated = new EventEmitter();
    @Output() onCollapsed = new EventEmitter();
    @Output() onDragStart = new EventEmitter();
    @Output() onDragEnd = new EventEmitter();
@@ -510,7 +512,6 @@ export class jqxTabsComponent implements OnChanges
 
    __wireEvents__(): void {
       this.host.on('add', (eventData: any) => { this.onAdd.emit(eventData); });
-      this.host.on('created', (eventData: any) => { this.onCreated.emit(eventData); });
       this.host.on('collapsed', (eventData: any) => { this.onCollapsed.emit(eventData); });
       this.host.on('dragStart', (eventData: any) => { this.onDragStart.emit(eventData); });
       this.host.on('dragEnd', (eventData: any) => { this.onDragEnd.emit(eventData); });
