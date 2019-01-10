@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 /*
  * Globalize Culture cs-CZ

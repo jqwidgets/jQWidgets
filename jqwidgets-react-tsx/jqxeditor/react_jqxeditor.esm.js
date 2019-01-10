@@ -1,0 +1,145 @@
+import * as jqxcore from '../../jqwidgets/jqxcore';
+import * as jqxdata from '../../jqwidgets/jqxdata';
+import * as jqxbuttons from '../../jqwidgets/jqxbuttons';
+import * as jqxscrollbar from '../../jqwidgets/jqxscrollbar';
+import * as jqxlistbox from '../../jqwidgets/jqxlistbox';
+import * as jqxdropdownlist from '../../jqwidgets/jqxdropdownlist';
+import * as jqxdropdownbutton from '../../jqwidgets/jqxdropdownbutton';
+import * as jqxwindow from '../../jqwidgets/jqxwindow';
+import * as jqxeditor from '../../jqwidgets/jqxeditor';
+import * as jqxcheckbox from '../../jqwidgets/jqxcheckbox';
+import * as jqxtooltip from '../../jqwidgets/jqxtooltip';
+import * as jqxcolorpicker from '../../jqwidgets/jqxcolorpicker';
+import { createElement, PureComponent } from 'react';
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var JqxEditor = /** @class */ (function (_super) {
+    __extends(JqxEditor, _super);
+    function JqxEditor(props) {
+        var _this = _super.call(this, props) || this;
+        /* tslint:disable:variable-name */
+        _this._jqx = JQXLite;
+        _this._id = 'JqxEditor' + _this._jqx.generateID();
+        _this._componentSelector = '#' + _this._id;
+        _this.state = { lastProps: props };
+        return _this;
+    }
+    JqxEditor.getDerivedStateFromProps = function (props, state) {
+        var areEqual = Object.is(props, state.lastProps);
+        if (!areEqual) {
+            var newState = { lastProps: props };
+            return newState;
+        }
+        return null;
+    };
+    JqxEditor.prototype.componentDidUpdate = function () {
+        var widgetOptions = this._manageProps();
+        this.setOptions(widgetOptions);
+    };
+    JqxEditor.prototype.componentDidMount = function () {
+        if (this.props.autoCreate) {
+            this._createComponent();
+        }
+    };
+    JqxEditor.prototype.render = function () {
+        return (createElement("textarea", { id: this._id }, this.props.children));
+    };
+    JqxEditor.prototype.createComponent = function (options) {
+        if (!this.props.autoCreate) {
+            this._createComponent(options);
+        }
+        else {
+            /* tslint:disable:no-console */
+            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
+        }
+    };
+    JqxEditor.prototype.setOptions = function (options) {
+        this._jqx(this._componentSelector).jqxEditor(options);
+    };
+    JqxEditor.prototype.getOptions = function (option) {
+        return this._jqx(this._componentSelector).jqxEditor(option);
+    };
+    JqxEditor.prototype.addEventListener = function (name, callbackFn) {
+        this._jqx(this._componentSelector).on(name, callbackFn);
+    };
+    JqxEditor.prototype.removeEventListener = function (name) {
+        this._jqx(this._componentSelector).off(name);
+    };
+    JqxEditor.prototype.destroy = function () {
+        this._jqx(this._componentSelector).jqxEditor('destroy');
+    };
+    JqxEditor.prototype.focus = function () {
+        this._jqx(this._componentSelector).jqxEditor('focus');
+    };
+    JqxEditor.prototype.print = function () {
+        this._jqx(this._componentSelector).jqxEditor('print');
+    };
+    JqxEditor.prototype.setMode = function (mode) {
+        this._jqx(this._componentSelector).jqxEditor('setMode', mode);
+    };
+    JqxEditor.prototype.val = function (value) {
+        return this._jqx(this._componentSelector).jqxEditor('val', value);
+    };
+    JqxEditor.prototype._createComponent = function (options) {
+        var widgetOptions = options ? options : this._manageProps();
+        this._jqx(this._componentSelector).jqxEditor(widgetOptions);
+        this._wireEvents();
+    };
+    JqxEditor.prototype._manageProps = function () {
+        var widgetProps = ['createCommand', 'disabled', 'editable', 'height', 'lineBreak', 'localization', 'pasteMode', 'rtl', 'stylesheets', 'theme', 'toolbarPosition', 'tools', 'width'];
+        var options = {};
+        for (var prop in this.props) {
+            if (widgetProps.indexOf(prop) !== -1) {
+                options[prop] = this.props[prop];
+            }
+        }
+        return options;
+    };
+    JqxEditor.prototype._wireEvents = function () {
+        for (var prop in this.props) {
+            if (prop.indexOf('on') === 0) {
+                var originalEventName = prop.slice(2);
+                originalEventName = originalEventName.charAt(0).toLowerCase() + originalEventName.slice(1);
+                this._jqx(this._componentSelector).on(originalEventName, this.props[prop]);
+            }
+        }
+    };
+    JqxEditor.defaultProps = {
+        autoCreate: true
+    };
+    return JqxEditor;
+}(PureComponent));
+var jqx = window.jqx;
+var JQXLite = window.JQXLite;
+var jqwidgets = window.jqwidgets;
+
+export default JqxEditor;
+export { jqx, JQXLite, jqwidgets };

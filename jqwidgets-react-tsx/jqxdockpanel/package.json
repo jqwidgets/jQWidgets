@@ -1,0 +1,7 @@
+{
+    "main": "react_jqxdockpanel.umd.js",
+    "module": "react_jqxdockpanel.esm.js",
+    "typings": "react_jqxdockpanel.d.ts",
+    "name": "jqwidgets-react-tsx/jqxdockpanel",
+    "sideEffects": false
+  }

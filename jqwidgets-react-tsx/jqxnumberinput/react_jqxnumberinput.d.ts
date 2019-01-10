@@ -1,0 +1,71 @@
+import * as React from 'react';
+declare class JqxNumberInput extends React.PureComponent<INumberInputProps, IState> {
+    protected static defaultProps: INumberInputProps;
+    protected static getDerivedStateFromProps(props: INumberInputProps, state: IState): null | IState;
+    private _jqx;
+    private _id;
+    private _componentSelector;
+    constructor(props: INumberInputProps);
+    componentDidUpdate(): void;
+    componentDidMount(): void;
+    render(): React.ReactNode;
+    createComponent(options: INumberInputProps): void;
+    setOptions(options: INumberInputProps): void;
+    getOptions(option: string): any;
+    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
+    removeEventListener(name: string): void;
+    clear(): void;
+    destroy(): void;
+    focus(): void;
+    getDecimal(): number;
+    setDecimal(index: number | string): void;
+    val(value?: number | string): number;
+    private _createComponent;
+    private _manageProps;
+    private _wireEvents;
+}
+export default JqxNumberInput;
+export declare const jqx: any;
+export declare const JQXLite: any;
+export declare const jqwidgets: any;
+interface IState {
+    lastProps: object;
+}
+interface INumberInputOptions {
+    allowNull?: boolean;
+    decimal?: number | string;
+    disabled?: boolean;
+    decimalDigits?: number | string;
+    decimalSeparator?: number | string;
+    digits?: number | string;
+    groupSeparator?: string;
+    groupSize?: number | string;
+    height?: string | number;
+    inputMode?: 'advanced' | 'simple';
+    min?: number | string;
+    max?: number | string;
+    negativeSymbol?: string;
+    placeHolder?: number | string;
+    promptChar?: '_' | '?' | ';' | '#';
+    rtl?: boolean;
+    readOnly?: boolean;
+    spinMode?: 'advanced' | 'simple';
+    spinButtons?: boolean;
+    spinButtonsWidth?: number;
+    spinButtonsStep?: number | string;
+    symbol?: string;
+    symbolPosition?: 'left' | 'right';
+    textAlign?: 'left' | 'right' | 'center';
+    template?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
+    theme?: string;
+    value?: number | string;
+    width?: string | number;
+}
+export interface INumberInputProps extends INumberInputOptions {
+    autoCreate?: boolean;
+    className?: string;
+    style?: React.CSSProperties;
+    onChange?: (e?: Event) => void;
+    onTextchanged?: (e?: Event) => void;
+    onValueChanged?: (e?: Event) => void;
+}

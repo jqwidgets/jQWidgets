@@ -1,4 +1,28 @@
 ﻿*********************************************
+* jQWidgets v7.0.0 Release, Jan-10-2019                *
+*********************************************
+
+What's New: 
+
+- React components with TSX.
+
+What's Improved:
+
+- jqxGrid Columns and Cells custom styling. A 'style' column property has been introduced to make styling of cells and column headers easier.
+
+What's Fixed:
+
+- Fixed an issue in jqxScheduler recurrenceException thrown error when recurrenceException is not set, but recurrenceRule is.
+- Fixed an issue in jqxScheduler recurrence issue. Reference: https://github.com/jqwidgets/jQWidgets/issues/25
+- Fixed an issue in jqxScheduler TimelineMonthView rendering of appointments with exactTime rendering mode. Appointments were not rendered correctly. https://github.com/jqwidgets/jQWidgets/issues/16
+- Fixed an issue in jqxScheduler Timeline views. Dragging and Resizing of appointments when the Scheduler is with absolute position. https://github.com/jqwidgets/jQWidgets/issues/19
+- Fixed an issue in jqxGrid Time Filtering issue. Reference: https://github.com/jqwidgets/jQWidgets/issues/27
+- Fixed an issue in jqxGrid regarding the validation popup diisplay for last row.
+- Fixed an issue in jqxTreeGrid regarding the Aggregates rendering. https://github.com/jqwidgets/jQWidgets/issues/14
+- Fixed an issue in jqxNumberInput's getvalue method when the decimalSeparator is ','.
+
+
+*********************************************
 * jQWidgets v6.2.0 Release, Dec-4-2018                 *
 *********************************************
 What's New:
