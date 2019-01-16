@@ -1,5 +1,9 @@
-jQWidgets
-=========
+# [jQWidgets](https://www.jqwidgets.com/)
+
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Get%20over%2060%20feature-complete%20Angular,%20Vue,%20React%20jQuery%20Components%20based%20on%20jQWidgets%20&url=https://www.jqwidgets.com/&via=jqwidgets&hashtags=bootstrap,reactjs,templates,vue,developers,webcomponents,vuejs,angular,material)
+[![Price](https://img.shields.io/badge/price-COMMERCIAL-0098f7.svg)](https://jqwidgets.com/license/)
+[![npm](https://img.shields.io/npm/v/jqwidgets-scripts.svg?colorB=brightgreen)](https://www.npmjs.com/package/jqwidgets-scripts)
+[![](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=www.jqwidgets.com)](https://www.jqwidgets.com)
 
 jQWidgets is an advanced Javascript and HTML5 UI framework. We create UI Components for Angular, Vue.js, React, Web Components, ASP .NET MVC & jQuery.
 
