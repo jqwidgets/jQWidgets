@@ -47,6 +47,16 @@ require('../../jqwidgets/jqxvalidator');
             return _this;
         }
         JqxValidator.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -54,38 +64,23 @@ require('../../jqwidgets/jqxvalidator');
             }
             return null;
         };
+        JqxValidator.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxValidator(widgetOptions);
+            this._wireEvents();
+        };
         JqxValidator.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxValidator.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxValidator.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxValidator.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxValidator.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxValidator(options);
         };
         JqxValidator.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxValidator(option);
-        };
-        JqxValidator.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxValidator.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxValidator.prototype.hideHint = function (id) {
             this._jqx(this._componentSelector).jqxValidator('hideHint', id);
@@ -101,11 +96,6 @@ require('../../jqwidgets/jqxvalidator');
         };
         JqxValidator.prototype.validateInput = function (id) {
             this._jqx(this._componentSelector).jqxValidator('validateInput', id);
-        };
-        JqxValidator.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxValidator(widgetOptions);
-            this._wireEvents();
         };
         JqxValidator.prototype._manageProps = function () {
             var widgetProps = ['arrow', 'animation', 'animationDuration', 'closeOnClick', 'focus', 'hintType', 'onError', 'onSuccess', 'position', 'rules', 'rtl'];
@@ -126,19 +116,14 @@ require('../../jqwidgets/jqxvalidator');
                 }
             }
         };
-        JqxValidator.defaultProps = {
-            autoCreate: true
-        };
         return JqxValidator;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxValidator;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

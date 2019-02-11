@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
-    protected static defaultProps: IGridProps;
     protected static getDerivedStateFromProps(props: IGridProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IGridProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IGridProps): void;
     setOptions(options: IGridProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     autoresizecolumns(type?: string): void;
     autoresizecolumn(dataField: string, type?: string): void;
     beginupdate(): void;
@@ -117,18 +113,16 @@ declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
     getstate(): IGridGetState;
     loadstate(stateobject: any): void;
     savestate(): IGridGetState;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxGrid;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IGridColumn {
+export interface IGridColumn {
     text?: string;
     datafield?: string;
     displayfield?: string;
@@ -142,10 +136,11 @@ interface IGridColumn {
     exportable?: boolean;
     columngroup?: string;
     enabletooltips?: boolean;
+    columntype?: 'number' | 'checkbox' | 'numberinput' | 'dropdownlist' | 'combobox' | 'datetimeinput' | 'textbox' | 'template' | 'custom';
     renderer?: (defaultText?: string, alignment?: string, height?: number) => string;
     rendered?: (columnHeaderElement?: any) => void;
     cellsrenderer?: (row?: number, columnfield?: string, value?: any, defaulthtml?: string, columnproperties?: any, rowdata?: any) => string;
-    aggregatesrenderer?: (aggregates?: object) => string;
+    aggregatesrenderer?: (aggregates?: any, column?: any, element?: any, summaryData?: any) => string;
     validation?: (cell?: any, value?: number) => any;
     createwidget?: (row: any, column: any, value: string, cellElement: any) => void;
     initwidget?: (row: number, column: string, value: string, cellElement: any) => void;
@@ -164,7 +159,7 @@ interface IGridColumn {
     geteverpresentrowwidgetvalue?: (datafield: string, htmlElement: any) => any;
     destroyeverpresentrowwidget?: (htmlElement: any) => void;
     validateeverpresentrowwidgetvalue?: (datafield: string, value: any, rowValues: any) => boolean;
-    cellsformat?: 'd' | 'f' | 'n' | 'c' | 'p' | 'd' | 'dd' | 'ddd' | 'dddd' | 'h' | 'hh' | 'H' | 'HH' | 'm' | 'mm' | 'M' | 'MM' | 'MMM' | 'MMMM' | 's' | 'ss' | 't' | 'tt' | 'y' | 'yy' | 'yyy' | 'yyyy';
+    cellsformat?: 'n2' | 'f2' | 'c2' | 'f' | 'n' | 'c' | 'p' | 'd' | 'dd' | 'ddd' | 'dddd' | 'h' | 'hh' | 'H' | 'HH' | 'm' | 'mm' | 'M' | 'MM' | 'MMM' | 'MMMM' | 's' | 'ss' | 't' | 'tt' | 'y' | 'yy' | 'yyy' | 'yyyy';
     cellclassname?: string;
     aggregates?: any;
     align?: 'left' | 'center' | 'right';
@@ -183,16 +178,16 @@ interface IGridColumn {
     filtertype?: 'textbox' | 'input' | 'checkedlist' | 'list' | 'number' | 'checkbox' | 'date' | 'range' | 'custom';
     filtercondition?: 'EMPTY' | 'NOT_EMPTY' | 'CONTAINS' | 'CONTAINS_CASE_SENSITIVE' | 'DOES_NOT_CONTAIN' | 'DOES_NOT_CONTAIN_CASE_SENSITIVE' | 'STARTS_WITH' | 'STARTS_WITH_CASE_SENSITIVE' | 'ENDS_WITH' | 'ENDS_WITH_CASE_SENSITIVE' | 'EQUAL' | 'EQUAL_CASE_SENSITIVE' | 'NULL' | 'NOT_NULL' | 'EQUAL' | 'NOT_EQUAL' | 'LESS_THAN' | 'LESS_THAN_OR_EQUAL' | 'GREATER_THAN' | 'GREATER_THAN_OR_EQUAL' | 'NULL' | 'NOT_NULL';
 }
-interface IGridSourceDataFields {
+export interface IGridSourceDataFields {
     name?: string;
-    type?: 'string' | 'date' | 'number' | 'bool';
+    type?: 'string' | 'date' | 'int' | 'float' | 'number' | 'bool';
     format?: string;
     map?: string;
     id?: string;
     text?: string;
     source?: any[];
 }
-interface IGridSource {
+export interface IGridSource {
     url?: string;
     data?: any;
     localdata?: any;
@@ -216,7 +211,7 @@ interface IGridSource {
     formatdata?: (data: any) => any;
     async?: boolean;
 }
-interface IGridGetColumn {
+export interface IGridGetColumn {
     datafield?: string;
     displayfield?: string;
     text?: string;
@@ -232,7 +227,7 @@ interface IGridGetColumn {
     width?: number | string;
     menu?: boolean;
 }
-interface IGridGetDataInformation {
+export interface IGridGetDataInformation {
     rowscount?: string;
     sortinformation?: any;
     sortcolumn?: any;
@@ -242,21 +237,21 @@ interface IGridGetDataInformation {
     pagesize?: any;
     pagescount?: any;
 }
-interface IGridGetSortInformation {
+export interface IGridGetSortInformation {
     sortcolumn?: string;
     sortdirection?: any;
 }
-interface IGridGetPagingInformation {
+export interface IGridGetPagingInformation {
     pagenum?: string;
     pagesize?: any;
     pagescount?: any;
 }
-interface IGridDateNaming {
+export interface IGridDateNaming {
     names?: string[];
     namesAbbr?: string[];
     namesShort?: string[];
 }
-interface IGridLocalizationobject {
+export interface IGridLocalizationobject {
     filterstringcomparisonoperators?: any;
     filternumericcomparisonoperators?: any;
     filterdatecomparisonoperators?: any;
@@ -278,27 +273,27 @@ interface IGridLocalizationobject {
     days?: IGridDateNaming;
     months?: IGridDateNaming;
 }
-interface IGridScrollPosition {
+export interface IGridScrollPosition {
     top?: number;
     left?: number;
 }
-interface IGridGetGroup {
+export interface IGridGetGroup {
     group?: number;
     level?: number;
     expanded?: number;
     subgroups?: number;
     subrows?: number;
 }
-interface IGridGetCell {
+export interface IGridGetCell {
     value?: number;
     row?: number;
     column?: number;
 }
-interface IGridGetSelectedCell {
+export interface IGridGetSelectedCell {
     rowindex?: number;
     datafield?: string;
 }
-interface IGridGetStateColumns {
+export interface IGridGetStateColumns {
     width?: number | string;
     hidden?: boolean;
     index?: number;
@@ -310,7 +305,7 @@ interface IGridGetStateColumns {
     align?: string;
     cellsalign?: string;
 }
-interface IGridGetState {
+export interface IGridGetState {
     width?: number | string;
     height?: number | string;
     pagenum?: number;
@@ -322,47 +317,47 @@ interface IGridGetState {
     groups?: any;
     columns?: IGridGetStateColumns;
 }
-interface IGridColumnmenuopening {
+export interface IGridColumnmenuopening {
     menu?: any;
     datafield?: any;
     height?: any;
 }
-interface IGridColumnmenuclosing {
+export interface IGridColumnmenuclosing {
     menu?: any;
     datafield?: any;
     height?: any;
 }
-interface IGridCellhover {
+export interface IGridCellhover {
     cellhtmlElement?: any;
     x?: any;
     y?: any;
 }
-interface IGridGroupsrenderer {
+export interface IGridGroupsrenderer {
     text?: string;
     group?: number;
     expanded?: boolean;
     data?: object;
 }
-interface IGridGroupcolumnrenderer {
+export interface IGridGroupcolumnrenderer {
     text?: any;
 }
-interface IGridHandlekeyboardnavigation {
+export interface IGridHandlekeyboardnavigation {
     event?: any;
 }
-interface IGridScrollfeedback {
+export interface IGridScrollfeedback {
     row?: object;
 }
-interface IGridFilter {
+export interface IGridFilter {
     cellValue?: any;
     rowData?: any;
     dataField?: string;
     filterGroup?: any;
     defaultFilterResult?: boolean;
 }
-interface IGridRendertoolbar {
+export interface IGridRendertoolbar {
     toolbar?: any;
 }
-interface IGridRenderstatusbar {
+export interface IGridRenderstatusbar {
     statusbar?: any;
 }
 interface IGridOptions {
@@ -460,7 +455,7 @@ interface IGridOptions {
     localization?: IGridLocalizationobject;
     pagesize?: number;
     pagesizeoptions?: Array<number | string>;
-    pagermode?: 'simple' | 'pagermode';
+    pagermode?: 'simple' | 'default';
     pagerbuttonscount?: number;
     pageable?: boolean;
     rowdetails?: boolean;
@@ -482,7 +477,6 @@ interface IGridOptions {
     verticalscrollbarlargestep?: number;
 }
 export interface IGridProps extends IGridOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onBindingcomplete?: (e?: Event) => void;

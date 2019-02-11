@@ -2,6 +2,6 @@
     "main": "react_jqxlistbox.umd.js",
     "module": "react_jqxlistbox.esm.js",
     "typings": "react_jqxlistbox.d.ts",
-    "name": "jqwidgets-react-tsx/jqxlistbox",
+    "name": "jqwidgets-react/jqxlistbox",
     "sideEffects": false
   }

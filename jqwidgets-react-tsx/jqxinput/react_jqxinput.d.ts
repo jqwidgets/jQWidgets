@@ -1,31 +1,25 @@
 import * as React from 'react';
 declare class JqxInput extends React.PureComponent<IInputProps, IState> {
-    protected static defaultProps: IInputProps;
     protected static getDerivedStateFromProps(props: IInputProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IInputProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IInputProps): void;
     setOptions(options: IInputProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     destroy(): void;
     focus(): void;
     selectAll(): void;
     val(value?: number | string): string;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxInput;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
@@ -51,7 +45,6 @@ interface IInputOptions {
     value?: number | string;
 }
 export interface IInputProps extends IInputOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onChange?: (e?: Event) => void;

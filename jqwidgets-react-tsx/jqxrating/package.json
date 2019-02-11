@@ -2,6 +2,6 @@
     "main": "react_jqxrating.umd.js",
     "module": "react_jqxrating.esm.js",
     "typings": "react_jqxrating.d.ts",
-    "name": "jqwidgets-react-tsx/jqxrating",
+    "name": "jqwidgets-react/jqxrating",
     "sideEffects": false
   }

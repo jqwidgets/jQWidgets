@@ -47,6 +47,16 @@ require('../../jqwidgets/jqxloader');
             return _this;
         }
         JqxLoader.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -54,26 +64,17 @@ require('../../jqwidgets/jqxloader');
             }
             return null;
         };
+        JqxLoader.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxLoader(widgetOptions);
+            this._wireEvents();
+        };
         JqxLoader.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxLoader.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxLoader.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxLoader.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxLoader.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxLoader(options);
@@ -81,22 +82,11 @@ require('../../jqwidgets/jqxloader');
         JqxLoader.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxLoader(option);
         };
-        JqxLoader.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxLoader.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
-        };
         JqxLoader.prototype.close = function () {
             this._jqx(this._componentSelector).jqxLoader('close');
         };
         JqxLoader.prototype.open = function (left, top) {
             this._jqx(this._componentSelector).jqxLoader('open', left, top);
-        };
-        JqxLoader.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxLoader(widgetOptions);
-            this._wireEvents();
         };
         JqxLoader.prototype._manageProps = function () {
             var widgetProps = ['autoOpen', 'height', 'html', 'isModal', 'imagePosition', 'rtl', 'text', 'textPosition', 'theme', 'width'];
@@ -117,19 +107,14 @@ require('../../jqwidgets/jqxloader');
                 }
             }
         };
-        JqxLoader.defaultProps = {
-            autoCreate: true
-        };
         return JqxLoader;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxLoader;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

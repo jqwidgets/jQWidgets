@@ -1,40 +1,34 @@
 import * as React from 'react';
 declare class JqxKnob extends React.PureComponent<IKnobProps, IState> {
-    protected static defaultProps: IKnobProps;
     protected static getDerivedStateFromProps(props: IKnobProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IKnobProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IKnobProps): void;
     setOptions(options: IKnobProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     destroy(): void;
     val(value?: number | string): number;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxKnob;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IKnobChanging {
+export interface IKnobChanging {
     oldValue?: number;
     newValue?: number;
 }
-interface IKnobLabelsFormatFunction {
+export interface IKnobLabelsFormatFunction {
     formatFunction?: (label: string | number) => string | number;
 }
-interface IKnobMarks {
+export interface IKnobMarks {
     colorProgress?: any;
     colorRemaining?: any;
     drawAboveProgressBar?: boolean;
@@ -48,14 +42,14 @@ interface IKnobMarks {
     thickness?: number;
     visible?: boolean;
 }
-interface IKnobDial {
+export interface IKnobDial {
     innerRadius?: any;
     outerRadius?: any;
     style?: any;
     startAngle?: number;
     endAngle?: number;
 }
-interface IKnobLabels {
+export interface IKnobLabels {
     rotate?: any;
     offset?: number | string;
     visible?: boolean;
@@ -63,14 +57,14 @@ interface IKnobLabels {
     style?: any;
     formatFunction?: IKnobLabelsFormatFunction['formatFunction'];
 }
-interface IKnobProgressBar {
+export interface IKnobProgressBar {
     offset?: number | string;
     style?: any;
     size?: number | string;
     background?: any;
     ranges?: any[];
 }
-interface IKnobPointer {
+export interface IKnobPointer {
     offset?: number | string;
     type?: string;
     style?: any;
@@ -78,13 +72,13 @@ interface IKnobPointer {
     thickness?: number;
     visible?: boolean;
 }
-interface IKnobSpinner {
+export interface IKnobSpinner {
     innerRadius?: any;
     outerRadius?: any;
     style?: any;
     marks?: IKnobMarks;
 }
-interface IKnobStyle {
+export interface IKnobStyle {
     fill?: any;
     stroke?: string;
     strokeWidth?: number;
@@ -117,7 +111,6 @@ interface IKnobOptions {
     width?: number | string;
 }
 export interface IKnobProps extends IKnobOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onChange?: (e?: Event) => void;

@@ -49,6 +49,16 @@ require('../../jqwidgets/jqxbulletchart');
             return _this;
         }
         JqxBulletChart.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -56,38 +66,23 @@ require('../../jqwidgets/jqxbulletchart');
             }
             return null;
         };
+        JqxBulletChart.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxBulletChart(widgetOptions);
+            this._wireEvents();
+        };
         JqxBulletChart.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxBulletChart.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxBulletChart.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxBulletChart.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxBulletChart.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxBulletChart(options);
         };
         JqxBulletChart.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxBulletChart(option);
-        };
-        JqxBulletChart.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxBulletChart.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxBulletChart.prototype.destroy = function () {
             this._jqx(this._componentSelector).jqxBulletChart('destroy');
@@ -100,11 +95,6 @@ require('../../jqwidgets/jqxbulletchart');
         };
         JqxBulletChart.prototype.val = function (value) {
             return this._jqx(this._componentSelector).jqxBulletChart('val', value);
-        };
-        JqxBulletChart.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxBulletChart(widgetOptions);
-            this._wireEvents();
         };
         JqxBulletChart.prototype._manageProps = function () {
             var widgetProps = ['animationDuration', 'barSize', 'description', 'disabled', 'height', 'labelsFormat', 'labelsFormatFunction', 'orientation', 'pointer', 'rtl', 'ranges', 'showTooltip', 'target', 'ticks', 'title', 'tooltipFormatFunction', 'width'];
@@ -125,19 +115,14 @@ require('../../jqwidgets/jqxbulletchart');
                 }
             }
         };
-        JqxBulletChart.defaultProps = {
-            autoCreate: true
-        };
         return JqxBulletChart;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxBulletChart;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

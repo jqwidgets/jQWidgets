@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxSortable extends React.PureComponent<ISortableProps, IState> {
-    protected static defaultProps: ISortableProps;
     protected static getDerivedStateFromProps(props: ISortableProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: ISortableProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: ISortableProps): void;
     setOptions(options: ISortableProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     cancelMethod(): void;
     destroy(): void;
     disable(): void;
@@ -22,18 +18,16 @@ declare class JqxSortable extends React.PureComponent<ISortableProps, IState> {
     refreshPositions(): void;
     serialize(object: any): string;
     toArray(): any[];
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxSortable;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface ISortableCursorAt {
+export interface ISortableCursorAt {
     left?: number;
     top?: number;
     right?: number;
@@ -67,7 +61,6 @@ interface ISortableOptions {
     zIndex?: number;
 }
 export interface ISortableProps extends ISortableOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onActivate?: (e?: Event) => void;

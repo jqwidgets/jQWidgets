@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxSplitter extends React.PureComponent<ISplitterProps, IState> {
-    protected static defaultProps: ISplitterProps;
     protected static getDerivedStateFromProps(props: ISplitterProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: ISplitterProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: ISplitterProps): void;
     setOptions(options: ISplitterProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     collapse(): void;
     destroy(): void;
     disable(): void;
@@ -21,18 +17,16 @@ declare class JqxSplitter extends React.PureComponent<ISplitterProps, IState> {
     expand(): void;
     renderWidget(): void;
     refresh(): void;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxSplitter;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface ISplitterPanel {
+export interface ISplitterPanel {
     size?: number | string;
     min?: number | string;
     collapsible?: boolean;
@@ -50,7 +44,6 @@ interface ISplitterOptions {
     width?: string | number;
 }
 export interface ISplitterProps extends ISplitterOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onCollapsed?: (e?: Event) => void;

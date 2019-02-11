@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxWindow extends React.PureComponent<IWindowProps, IState> {
-    protected static defaultProps: IWindowProps;
     protected static getDerivedStateFromProps(props: IWindowProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IWindowProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IWindowProps): void;
     setOptions(options: IWindowProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     bringToFront(): void;
     close(): void;
     collapse(): void;
@@ -30,18 +26,16 @@ declare class JqxWindow extends React.PureComponent<IWindowProps, IState> {
     resize(top: number, left: number): void;
     setTitle(title: string): void;
     setContent(content: string): void;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxWindow;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IWindowDragArea {
+export interface IWindowDragArea {
     left?: number;
     top?: number;
     width?: number | string;
@@ -85,7 +79,6 @@ interface IWindowOptions {
     zIndex?: number;
 }
 export interface IWindowProps extends IWindowOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onClose?: (e?: Event) => void;

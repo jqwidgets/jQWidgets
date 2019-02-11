@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxComboBox extends React.PureComponent<IComboBoxProps, IState> {
-    protected static defaultProps: IComboBoxProps;
     protected static getDerivedStateFromProps(props: IComboBoxProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IComboBoxProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IComboBoxProps): void;
     setOptions(options: IComboBoxProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     addItem(item: any): boolean;
     clearSelection(): void;
     clear(): void;
@@ -55,30 +51,28 @@ declare class JqxComboBox extends React.PureComponent<IComboBoxProps, IState> {
     uncheckItem(item: any): void;
     uncheckAll(): void;
     val(value?: string): string;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxComboBox;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IComboBoxRenderer {
+export interface IComboBoxRenderer {
     index?: number;
     label?: number | string;
     value?: number | string;
 }
-interface IComboBoxRenderSelectedItem {
+export interface IComboBoxRenderSelectedItem {
     index?: number;
     item?: any;
 }
-interface IComboBoxSearch {
+export interface IComboBoxSearch {
     searchString?: string;
 }
-interface IComboBoxValidateSelection {
+export interface IComboBoxValidateSelection {
     itemValue?: string;
 }
 interface IComboBoxOptions {
@@ -115,7 +109,7 @@ interface IComboBoxOptions {
     showCloseButtons?: boolean;
     searchMode?: 'none' | 'contains' | 'containsignorecase' | 'equals' | 'equalsignorecase' | 'startswithignorecase' | 'startswith' | 'endswithignorecase' | 'endswith';
     search?: (searchString?: IComboBoxSearch['searchString']) => void;
-    source?: any[];
+    source?: any;
     scrollBarSize?: number | string;
     template?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
     theme?: string;
@@ -124,7 +118,6 @@ interface IComboBoxOptions {
     width?: string | number;
 }
 export interface IComboBoxProps extends IComboBoxOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onBindingComplete?: (e?: Event) => void;

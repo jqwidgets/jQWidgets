@@ -43,6 +43,16 @@ var JqxMaskedInput = /** @class */ (function (_super) {
         return _this;
     }
     JqxMaskedInput.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -50,38 +60,23 @@ var JqxMaskedInput = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxMaskedInput.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxMaskedInput(widgetOptions);
+        this._wireEvents();
+    };
     JqxMaskedInput.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxMaskedInput.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxMaskedInput.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxMaskedInput.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxMaskedInput.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxMaskedInput(options);
     };
     JqxMaskedInput.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxMaskedInput(option);
-    };
-    JqxMaskedInput.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxMaskedInput.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxMaskedInput.prototype.clear = function () {
         this._jqx(this._componentSelector).jqxMaskedInput('clear');
@@ -94,11 +89,6 @@ var JqxMaskedInput = /** @class */ (function (_super) {
     };
     JqxMaskedInput.prototype.val = function (value) {
         return this._jqx(this._componentSelector).jqxMaskedInput('val', value);
-    };
-    JqxMaskedInput.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxMaskedInput(widgetOptions);
-        this._wireEvents();
     };
     JqxMaskedInput.prototype._manageProps = function () {
         var widgetProps = ['disabled', 'height', 'mask', 'promptChar', 'readOnly', 'rtl', 'theme', 'textAlign', 'value', 'width'];
@@ -119,14 +109,10 @@ var JqxMaskedInput = /** @class */ (function (_super) {
             }
         }
     };
-    JqxMaskedInput.defaultProps = {
-        autoCreate: true
-    };
     return JqxMaskedInput;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxMaskedInput;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

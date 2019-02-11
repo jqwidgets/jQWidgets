@@ -45,6 +45,16 @@ var JqxDocking = /** @class */ (function (_super) {
         return _this;
     }
     JqxDocking.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -52,38 +62,23 @@ var JqxDocking = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxDocking.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxDocking(widgetOptions);
+        this._wireEvents();
+    };
     JqxDocking.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxDocking.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxDocking.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxDocking.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxDocking.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxDocking(options);
     };
     JqxDocking.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxDocking(option);
-    };
-    JqxDocking.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxDocking.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxDocking.prototype.addWindow = function (windowId, mode, panel, position) {
         this._jqx(this._componentSelector).jqxDocking('addWindow', windowId, mode, panel, position);
@@ -160,11 +155,6 @@ var JqxDocking = /** @class */ (function (_super) {
     JqxDocking.prototype.unpinWindow = function (windowId) {
         this._jqx(this._componentSelector).jqxDocking('unpinWindow', windowId);
     };
-    JqxDocking.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxDocking(widgetOptions);
-        this._wireEvents();
-    };
     JqxDocking.prototype._manageProps = function () {
         var widgetProps = ['cookies', 'cookieOptions', 'disabled', 'floatingWindowOpacity', 'height', 'keyboardNavigation', 'mode', 'orientation', 'rtl', 'theme', 'width', 'windowsMode', 'windowsOffset'];
         var options = {};
@@ -184,14 +174,10 @@ var JqxDocking = /** @class */ (function (_super) {
             }
         }
     };
-    JqxDocking.defaultProps = {
-        autoCreate: true
-    };
     return JqxDocking;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxDocking;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

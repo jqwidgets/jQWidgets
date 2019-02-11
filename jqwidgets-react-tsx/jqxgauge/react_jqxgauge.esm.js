@@ -44,6 +44,16 @@ var JqxGauge = /** @class */ (function (_super) {
         return _this;
     }
     JqxGauge.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -51,38 +61,23 @@ var JqxGauge = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxGauge.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxGauge(widgetOptions);
+        this._wireEvents();
+    };
     JqxGauge.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxGauge.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxGauge.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxGauge.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxGauge.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxGauge(options);
     };
     JqxGauge.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxGauge(option);
-    };
-    JqxGauge.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxGauge.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxGauge.prototype.disable = function () {
         this._jqx(this._componentSelector).jqxGauge('disable');
@@ -92,11 +87,6 @@ var JqxGauge = /** @class */ (function (_super) {
     };
     JqxGauge.prototype.val = function (value) {
         return this._jqx(this._componentSelector).jqxGauge('val', value);
-    };
-    JqxGauge.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxGauge(widgetOptions);
-        this._wireEvents();
     };
     JqxGauge.prototype._manageProps = function () {
         var widgetProps = ['animationDuration', 'border', 'caption', 'cap', 'colorScheme', 'disabled', 'easing', 'endAngle', 'height', 'int64', 'labels', 'min', 'max', 'pointer', 'radius', 'ranges', 'startAngle', 'showRanges', 'styles', 'ticksMajor', 'ticksMinor', 'ticksDistance', 'value', 'width'];
@@ -117,14 +107,10 @@ var JqxGauge = /** @class */ (function (_super) {
             }
         }
     };
-    JqxGauge.defaultProps = {
-        autoCreate: true
-    };
     return JqxGauge;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxGauge;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

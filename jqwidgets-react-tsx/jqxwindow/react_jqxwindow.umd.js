@@ -48,6 +48,16 @@ require('../../jqwidgets/jqxwindow');
             return _this;
         }
         JqxWindow.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -55,38 +65,23 @@ require('../../jqwidgets/jqxwindow');
             }
             return null;
         };
+        JqxWindow.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxWindow(widgetOptions);
+            this._wireEvents();
+        };
         JqxWindow.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxWindow.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxWindow.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxWindow.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxWindow.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxWindow(options);
         };
         JqxWindow.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxWindow(option);
-        };
-        JqxWindow.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxWindow.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxWindow.prototype.bringToFront = function () {
             this._jqx(this._componentSelector).jqxWindow('bringToFront');
@@ -136,11 +131,6 @@ require('../../jqwidgets/jqxwindow');
         JqxWindow.prototype.setContent = function (content) {
             this._jqx(this._componentSelector).jqxWindow('setContent', content);
         };
-        JqxWindow.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxWindow(widgetOptions);
-            this._wireEvents();
-        };
         JqxWindow.prototype._manageProps = function () {
             var widgetProps = ['autoOpen', 'animationType', 'collapsed', 'collapseAnimationDuration', 'content', 'closeAnimationDuration', 'closeButtonSize', 'closeButtonAction', 'cancelButton', 'dragArea', 'draggable', 'disabled', 'height', 'initContent', 'isModal', 'keyboardCloseKey', 'keyboardNavigation', 'minHeight', 'maxHeight', 'minWidth', 'maxWidth', 'modalOpacity', 'modalZIndex', 'modalBackgroundZIndex', 'okButton', 'position', 'rtl', 'resizable', 'showAnimationDuration', 'showCloseButton', 'showCollapseButton', 'theme', 'title', 'width', 'zIndex'];
             var options = {};
@@ -160,19 +150,14 @@ require('../../jqwidgets/jqxwindow');
                 }
             }
         };
-        JqxWindow.defaultProps = {
-            autoCreate: true
-        };
         return JqxWindow;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxWindow;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

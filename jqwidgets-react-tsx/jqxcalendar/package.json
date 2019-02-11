@@ -2,6 +2,6 @@
     "main": "react_jqxcalendar.umd.js",
     "module": "react_jqxcalendar.esm.js",
     "typings": "react_jqxcalendar.d.ts",
-    "name": "jqwidgets-react-tsx/jqxcalendar",
+    "name": "jqwidgets-react/jqxcalendar",
     "sideEffects": false
   }

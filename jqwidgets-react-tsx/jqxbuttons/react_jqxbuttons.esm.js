@@ -1,4 +1,5 @@
 import * as jqxcore from '../../jqwidgets/jqxcore';
+import * as jqxbuttons from '../../jqwidgets/jqxbuttons';
 import { createElement, PureComponent } from 'react';
 
 /*! *****************************************************************************
@@ -42,6 +43,16 @@ var JqxButton = /** @class */ (function (_super) {
         return _this;
     }
     JqxButton.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -49,38 +60,23 @@ var JqxButton = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxButton.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxButton(widgetOptions);
+        this._wireEvents();
+    };
     JqxButton.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxButton.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxButton.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxButton.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxButton.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxButton(options);
     };
     JqxButton.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxButton(option);
-    };
-    JqxButton.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxButton.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxButton.prototype.destroy = function () {
         this._jqx(this._componentSelector).jqxButton('destroy');
@@ -93,11 +89,6 @@ var JqxButton = /** @class */ (function (_super) {
     };
     JqxButton.prototype.val = function (value) {
         return this._jqx(this._componentSelector).jqxButton('val', value);
-    };
-    JqxButton.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxButton(widgetOptions);
-        this._wireEvents();
     };
     JqxButton.prototype._manageProps = function () {
         var widgetProps = ['disabled', 'height', 'imgSrc', 'imgWidth', 'imgHeight', 'imgPosition', 'roundedCorners', 'rtl', 'textPosition', 'textImageRelation', 'theme', 'template', 'width', 'value'];
@@ -118,14 +109,10 @@ var JqxButton = /** @class */ (function (_super) {
             }
         }
     };
-    JqxButton.defaultProps = {
-        autoCreate: true
-    };
     return JqxButton;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxButton;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

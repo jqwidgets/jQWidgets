@@ -1,18 +1,18 @@
 ﻿require.config({
     paths: {
-        "jquery": "../../scripts/jquery-1.11.1.min",
-        "jqxcore": "../../jqwidgets/jqxcore",
-        "jqxdata": "../../jqwidgets/jqxdata",
-        "jqxdata.export": "../../jqwidgets/jqxdata.export",
-        "jqxgrid": "../../jqwidgets/jqxgrid",
-        "jqxgrid.columnsresize": "../../jqwidgets/jqxgrid.columnsresize",
-        "jqxgrid.edit": "../../jqwidgets/jqxgrid.edit",
-        "jqxgrid.export": "../../jqwidgets/jqxgrid.export",
-        "jqxgrid.selection": "../../jqwidgets/jqxgrid.selection",
-        "jqxbuttons": "../../jqwidgets/jqxbuttons",
-        "jqxscrollbar": "../../jqwidgets/jqxscrollbar",
-        "jqxmenu": "../../jqwidgets/jqxmenu",
-         "demos": "../../scripts/demos"
+        "jquery": "../../../scripts/jquery-1.11.1.min",
+        "jqxcore": "../../../jqwidgets/jqxcore",
+        "jqxdata": "../../../jqwidgets/jqxdata",
+        "jqxdata.export": "../../../jqwidgets/jqxdata.export",
+        "jqxgrid": "../../../jqwidgets/jqxgrid",
+        "jqxgrid.columnsresize": "../../../jqwidgets/jqxgrid.columnsresize",
+        "jqxgrid.edit": "../../../jqwidgets/jqxgrid.edit",
+        "jqxgrid.export": "../../../jqwidgets/jqxgrid.export",
+        "jqxgrid.selection": "../../../jqwidgets/jqxgrid.selection",
+        "jqxbuttons": "../../../jqwidgets/jqxbuttons",
+        "jqxscrollbar": "../../../jqwidgets/jqxscrollbar",
+        "jqxmenu": "../../../jqwidgets/jqxmenu",
+         "demos": "../../../scripts/demos"
     },
     shim: {
         "demos": {

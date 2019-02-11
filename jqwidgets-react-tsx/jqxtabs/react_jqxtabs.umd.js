@@ -48,6 +48,16 @@ require('../../jqwidgets/jqxtabs');
             return _this;
         }
         JqxTabs.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -55,38 +65,23 @@ require('../../jqwidgets/jqxtabs');
             }
             return null;
         };
+        JqxTabs.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxTabs(widgetOptions);
+            this._wireEvents();
+        };
         JqxTabs.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxTabs.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxTabs.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxTabs.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxTabs.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxTabs(options);
         };
         JqxTabs.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxTabs(option);
-        };
-        JqxTabs.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxTabs.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxTabs.prototype.addAt = function (index, title, content) {
             this._jqx(this._componentSelector).jqxTabs('addAt', index, title, content);
@@ -169,11 +164,6 @@ require('../../jqwidgets/jqxtabs');
         JqxTabs.prototype.val = function (value) {
             return this._jqx(this._componentSelector).jqxTabs('val', value);
         };
-        JqxTabs.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxTabs(widgetOptions);
-            this._wireEvents();
-        };
         JqxTabs.prototype._manageProps = function () {
             var widgetProps = ['animationType', 'autoHeight', 'closeButtonSize', 'collapsible', 'contentTransitionDuration', 'disabled', 'enabledHover', 'enableScrollAnimation', 'enableDropAnimation', 'height', 'initTabContent', 'keyboardNavigation', 'next', 'previous', 'position', 'reorder', 'rtl', 'scrollAnimationDuration', 'selectedItem', 'selectionTracker', 'scrollable', 'scrollPosition', 'scrollStep', 'showCloseButtons', 'toggleMode', 'theme', 'width'];
             var options = {};
@@ -193,19 +183,14 @@ require('../../jqwidgets/jqxtabs');
                 }
             }
         };
-        JqxTabs.defaultProps = {
-            autoCreate: true
-        };
         return JqxTabs;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxTabs;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

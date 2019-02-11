@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxListBox extends React.PureComponent<IListBoxProps, IState> {
-    protected static defaultProps: IListBoxProps;
     protected static getDerivedStateFromProps(props: IListBoxProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IListBoxProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IListBoxProps): void;
     setOptions(options: IListBoxProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     addItem(Item: any): boolean;
     beginUpdate(): void;
     clear(): void;
@@ -56,25 +52,23 @@ declare class JqxListBox extends React.PureComponent<IListBoxProps, IState> {
     uncheckItem(item: any): void;
     uncheckAll(): void;
     val(value?: number | string): string;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxListBox;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IListBoxDragStart {
+export interface IListBoxDragStart {
     item?: object;
 }
-interface IListBoxDragEnd {
+export interface IListBoxDragEnd {
     dragItem?: object;
     dropItem?: object;
 }
-interface IListBoxRenderer {
+export interface IListBoxRenderer {
     index?: number;
     label?: string | number;
     value?: string | number;
@@ -116,7 +110,6 @@ interface IListBoxOptions {
     width?: string | number;
 }
 export interface IListBoxProps extends IListBoxOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onBindingComplete?: (e?: Event) => void;

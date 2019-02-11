@@ -2,6 +2,6 @@
     "main": "react_jqxradiobutton.umd.js",
     "module": "react_jqxradiobutton.esm.js",
     "typings": "react_jqxradiobutton.d.ts",
-    "name": "jqwidgets-react-tsx/jqxradiobutton",
+    "name": "jqwidgets-react/jqxradiobutton",
     "sideEffects": false
   }

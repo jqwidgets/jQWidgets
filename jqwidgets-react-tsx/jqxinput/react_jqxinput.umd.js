@@ -48,6 +48,16 @@ require('../../jqwidgets/jqxinput');
             return _this;
         }
         JqxInput.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -55,38 +65,23 @@ require('../../jqwidgets/jqxinput');
             }
             return null;
         };
+        JqxInput.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxInput(widgetOptions);
+            this._wireEvents();
+        };
         JqxInput.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxInput.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxInput.prototype.render = function () {
             return (React.createElement("input", { id: this._id, type: "text" }));
-        };
-        JqxInput.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxInput.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxInput(options);
         };
         JqxInput.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxInput(option);
-        };
-        JqxInput.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxInput.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxInput.prototype.destroy = function () {
             this._jqx(this._componentSelector).jqxInput('destroy');
@@ -99,11 +94,6 @@ require('../../jqwidgets/jqxinput');
         };
         JqxInput.prototype.val = function (value) {
             return this._jqx(this._componentSelector).jqxInput('val', value);
-        };
-        JqxInput.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxInput(widgetOptions);
-            this._wireEvents();
         };
         JqxInput.prototype._manageProps = function () {
             var widgetProps = ['disabled', 'dropDownWidth', 'displayMember', 'height', 'items', 'minLength', 'maxLength', 'opened', 'placeHolder', 'popupZIndex', 'query', 'renderer', 'rtl', 'searchMode', 'source', 'theme', 'valueMember', 'width', 'value'];
@@ -124,19 +114,14 @@ require('../../jqwidgets/jqxinput');
                 }
             }
         };
-        JqxInput.defaultProps = {
-            autoCreate: true
-        };
         return JqxInput;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxInput;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

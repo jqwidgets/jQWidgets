@@ -47,6 +47,16 @@ var JqxListBox = /** @class */ (function (_super) {
         return _this;
     }
     JqxListBox.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -54,38 +64,23 @@ var JqxListBox = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxListBox.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxListBox(widgetOptions);
+        this._wireEvents();
+    };
     JqxListBox.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxListBox.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxListBox.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxListBox.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxListBox.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxListBox(options);
     };
     JqxListBox.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxListBox(option);
-    };
-    JqxListBox.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxListBox.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxListBox.prototype.addItem = function (Item) {
         return this._jqx(this._componentSelector).jqxListBox('addItem', Item);
@@ -213,11 +208,6 @@ var JqxListBox = /** @class */ (function (_super) {
     JqxListBox.prototype.val = function (value) {
         return this._jqx(this._componentSelector).jqxListBox('val', value);
     };
-    JqxListBox.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxListBox(widgetOptions);
-        this._wireEvents();
-    };
     JqxListBox.prototype._manageProps = function () {
         var widgetProps = ['autoHeight', 'allowDrag', 'allowDrop', 'checkboxes', 'disabled', 'displayMember', 'dropAction', 'dragStart', 'dragEnd', 'enableHover', 'enableSelection', 'equalItemsWidth', 'filterable', 'filterHeight', 'filterDelay', 'filterPlaceHolder', 'height', 'hasThreeStates', 'itemHeight', 'incrementalSearch', 'incrementalSearchDelay', 'multiple', 'multipleextended', 'renderer', 'rendered', 'rtl', 'selectedIndex', 'selectedIndexes', 'source', 'scrollBarSize', 'searchMode', 'theme', 'valueMember', 'width'];
         var options = {};
@@ -237,14 +227,10 @@ var JqxListBox = /** @class */ (function (_super) {
             }
         }
     };
-    JqxListBox.defaultProps = {
-        autoCreate: true
-    };
     return JqxListBox;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxListBox;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

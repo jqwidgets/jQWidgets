@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxChart extends React.PureComponent<IChartProps, IState> {
-    protected static defaultProps: IChartProps;
     protected static getDerivedStateFromProps(props: IChartProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IChartProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IChartProps): void;
     setOptions(options: IChartProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     getInstance(): any;
     refresh(): void;
     update(): void;
@@ -36,42 +32,40 @@ declare class JqxChart extends React.PureComponent<IChartProps, IState> {
     saveAsPDF(fileName?: string, exportServerUrl?: string): void;
     getXAxisValue(offset?: number, groupIndex?: number): any;
     getValueAxisValue(offset?: number, groupIndex?: number): any;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxChart;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IChartDraw {
+export interface IChartDraw {
     renderer?: object;
     rect?: object;
 }
-interface IChartDrawBefore {
+export interface IChartDrawBefore {
     renderer?: object;
     rect?: object;
 }
-interface IChartOffset {
+export interface IChartOffset {
     x?: number;
     y?: number;
 }
-interface IChartRect {
+export interface IChartRect {
     x?: number;
     y?: number;
     width?: number | string;
     height?: number | string;
 }
-interface IChartPadding {
+export interface IChartPadding {
     left?: number;
     right?: number;
     top?: number;
     bottom?: number;
 }
-interface IChartTickMarks {
+export interface IChartTickMarks {
     visible?: any;
     color?: string;
     step?: number;
@@ -81,7 +75,7 @@ interface IChartTickMarks {
     interval?: any;
     custom?: IChartCustomOffset[];
 }
-interface IChartGridLines {
+export interface IChartGridLines {
     visible?: any;
     color?: string;
     step?: number;
@@ -90,17 +84,17 @@ interface IChartGridLines {
     interval?: any;
     custom?: IChartCustomOffset[];
 }
-interface IChartAxisLine {
+export interface IChartAxisLine {
     visible?: any;
     color?: string;
     dashStyle?: string;
     lineWidth?: number;
 }
-interface IChartCustomOffset {
+export interface IChartCustomOffset {
     value?: any;
     offset?: number;
 }
-interface IChartAxisLabels {
+export interface IChartAxisLabels {
     visible?: any;
     class?: string;
     step?: number;
@@ -114,7 +108,7 @@ interface IChartAxisLabels {
     formatFunction?: (value: any, itemIndex?: number, serieIndex?: number, groupIndex?: number, xAxisValue?: any, xAxis?: IChartXAxis) => string;
     autoRotate?: boolean;
 }
-interface IChartFormatSettings {
+export interface IChartFormatSettings {
     prefix?: string;
     sufix?: string;
     decimalSeparator?: string;
@@ -123,7 +117,7 @@ interface IChartFormatSettings {
     negativeWithBrackets?: boolean;
     dateFormat?: string;
 }
-interface IChartSeriesLabels {
+export interface IChartSeriesLabels {
     visible?: boolean;
     class?: string;
     angle?: number;
@@ -140,7 +134,7 @@ interface IChartSeriesLabels {
     autoRotate?: boolean;
     radius?: any;
 }
-interface IChartAxisTitle {
+export interface IChartAxisTitle {
     visible?: boolean;
     text?: string;
     class?: string;
@@ -150,7 +144,7 @@ interface IChartAxisTitle {
     rotationPoint?: 'topleft' | 'middleleft' | 'bottomleft' | 'topcenter' | 'middlecenter' | 'bottomcenter' | 'topright' | 'middleright' | 'bottomright';
     offset?: IChartOffset;
 }
-interface IChartColorBand {
+export interface IChartColorBand {
     minValue?: number;
     maxValue?: number;
     fillColor?: string;
@@ -159,7 +153,7 @@ interface IChartColorBand {
     lineWidth?: number;
     dashStyle?: string;
 }
-interface IChartXAxis {
+export interface IChartXAxis {
     visible?: boolean;
     unitInterval?: number;
     dataField?: string;
@@ -193,7 +187,7 @@ interface IChartXAxis {
     rangeSelector?: any;
     textRotationAngle?: number;
 }
-interface IChartSerie {
+export interface IChartSerie {
     dataField?: string;
     displayText?: string;
     dataFieldFrom?: string;
@@ -258,7 +252,7 @@ interface IChartSerie {
     initialAngle?: number;
     centerOffset?: number;
 }
-interface IChartValueAxis {
+export interface IChartValueAxis {
     visible?: boolean;
     flip?: boolean;
     position?: 'left' | 'top' | 'right' | 'bottom';
@@ -282,7 +276,7 @@ interface IChartValueAxis {
     toolTipFormatSettings?: IChartFormatSettings;
     formatFunction?: any;
 }
-interface IChartSeriesGroup {
+export interface IChartSeriesGroup {
     type?: 'line' | 'stackedline' | 'stackedline100' | 'spline' | 'stackedspline' | 'stackedspline100' | 'stepline' | 'stackedstepline' | 'stackedstepline100' | 'area' | 'stackedarea' | 'stackedarea100' | 'splinearea' | 'stackedsplinearea' | 'stackedsplinearea100' | 'steparea' | 'stackedsteparea' | 'stackedsteparea100' | 'rangearea' | 'splinerangearea' | 'steprangearea' | 'column' | 'stackedcolumn' | 'stackedcolumn100' | 'rangecolumn' | 'scatter' | 'stackedscatter' | 'stackedscatter100' | 'bubble' | 'stackedbubble' | 'stackedbubble100' | 'pie' | 'donut' | 'candlestick' | 'ohlc' | 'waterfall' | 'stackedwaterfall';
     orientation?: 'vertical' | 'horizontal';
     valueAxis?: IChartValueAxis;
@@ -310,7 +304,7 @@ interface IChartSeriesGroup {
     alignEndPointsWithIntervals?: boolean;
     annotations?: any;
 }
-interface IChartLegendLayout {
+export interface IChartLegendLayout {
     left?: number;
     top?: number;
     width?: number | string;
@@ -355,7 +349,6 @@ interface IChartOptions {
     seriesGroups?: IChartSeriesGroup[];
 }
 export interface IChartProps extends IChartOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onToggle?: (e?: Event) => void;

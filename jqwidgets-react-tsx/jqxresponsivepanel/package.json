@@ -2,6 +2,6 @@
     "main": "react_jqxresponsivepanel.umd.js",
     "module": "react_jqxresponsivepanel.esm.js",
     "typings": "react_jqxresponsivepanel.d.ts",
-    "name": "jqwidgets-react-tsx/jqxresponsivepanel",
+    "name": "jqwidgets-react/jqxresponsivepanel",
     "sideEffects": false
   }

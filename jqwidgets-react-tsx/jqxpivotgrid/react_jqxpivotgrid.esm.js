@@ -55,6 +55,16 @@ var JqxPivotGrid = /** @class */ (function (_super) {
         return _this;
     }
     JqxPivotGrid.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -62,38 +72,23 @@ var JqxPivotGrid = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxPivotGrid.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxPivotGrid(widgetOptions);
+        this._wireEvents();
+    };
     JqxPivotGrid.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxPivotGrid.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxPivotGrid.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxPivotGrid.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxPivotGrid.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxPivotGrid(options);
     };
     JqxPivotGrid.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxPivotGrid(option);
-    };
-    JqxPivotGrid.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxPivotGrid.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxPivotGrid.prototype.getInstance = function () {
         return this._jqx(this._componentSelector).jqxPivotGrid('getInstance');
@@ -109,11 +104,6 @@ var JqxPivotGrid = /** @class */ (function (_super) {
     };
     JqxPivotGrid.prototype.getPivotCells = function () {
         return this._jqx(this._componentSelector).jqxPivotGrid('getPivotCells');
-    };
-    JqxPivotGrid.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxPivotGrid(widgetOptions);
-        this._wireEvents();
     };
     JqxPivotGrid.prototype._manageProps = function () {
         var widgetProps = ['source', 'localization', 'scrollBarsEnabled', 'selectionEnabled', 'multipleSelectionEnabled', 'treeStyleRows', 'autoResize', 'itemsRenderer', 'cellsRenderer'];
@@ -134,14 +124,10 @@ var JqxPivotGrid = /** @class */ (function (_super) {
             }
         }
     };
-    JqxPivotGrid.defaultProps = {
-        autoCreate: true
-    };
     return JqxPivotGrid;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxPivotGrid;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

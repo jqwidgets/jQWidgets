@@ -2,6 +2,6 @@
     "main": "react_jqxcombobox.umd.js",
     "module": "react_jqxcombobox.esm.js",
     "typings": "react_jqxcombobox.d.ts",
-    "name": "jqwidgets-react-tsx/jqxcombobox",
+    "name": "jqwidgets-react/jqxcombobox",
     "sideEffects": false
   }

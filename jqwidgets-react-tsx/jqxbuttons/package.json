@@ -2,6 +2,6 @@
     "main": "react_jqxbuttons.umd.js",
     "module": "react_jqxbuttons.esm.js",
     "typings": "react_jqxbuttons.d.ts",
-    "name": "jqwidgets-react-tsx/jqxbuttons",
+    "name": "jqwidgets-react/jqxbuttons",
     "sideEffects": false
   }

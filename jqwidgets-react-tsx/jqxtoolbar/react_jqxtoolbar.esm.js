@@ -49,6 +49,16 @@ var JqxToolBar = /** @class */ (function (_super) {
         return _this;
     }
     JqxToolBar.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -56,38 +66,23 @@ var JqxToolBar = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxToolBar.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxToolBar(widgetOptions);
+        this._wireEvents();
+    };
     JqxToolBar.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxToolBar.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxToolBar.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxToolBar.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxToolBar.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxToolBar(options);
     };
     JqxToolBar.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxToolBar(option);
-    };
-    JqxToolBar.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxToolBar.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxToolBar.prototype.addTool = function (type, position, separator, menuToolIninitialization) {
         this._jqx(this._componentSelector).jqxToolBar('addTool', type, position, separator, menuToolIninitialization);
@@ -110,11 +105,6 @@ var JqxToolBar = /** @class */ (function (_super) {
     JqxToolBar.prototype.refresh = function () {
         this._jqx(this._componentSelector).jqxToolBar('refresh');
     };
-    JqxToolBar.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxToolBar(widgetOptions);
-        this._wireEvents();
-    };
     JqxToolBar.prototype._manageProps = function () {
         var widgetProps = ['disabled', 'height', 'initTools', 'minimizeWidth', 'minWidth', 'maxWidth', 'rtl', 'tools', 'theme', 'width'];
         var options = {};
@@ -134,14 +124,10 @@ var JqxToolBar = /** @class */ (function (_super) {
             }
         }
     };
-    JqxToolBar.defaultProps = {
-        autoCreate: true
-    };
     return JqxToolBar;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxToolBar;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

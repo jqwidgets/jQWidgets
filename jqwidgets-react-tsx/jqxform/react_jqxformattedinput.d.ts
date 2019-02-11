@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxFormattedInput extends React.PureComponent<IFormattedInputProps, IState> {
-    protected static defaultProps: IFormattedInputProps;
     protected static getDerivedStateFromProps(props: IFormattedInputProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IFormattedInputProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IFormattedInputProps): void;
     setOptions(options: IFormattedInputProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     close(): void;
     destroy(): void;
     focus(): void;
@@ -24,14 +20,12 @@ declare class JqxFormattedInput extends React.PureComponent<IFormattedInputProps
     selectFirst(): void;
     selectLast(): void;
     val(value?: number | string): any;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxFormattedInput;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
@@ -57,7 +51,6 @@ interface IFormattedInputOptions {
     width?: number | string;
 }
 export interface IFormattedInputProps extends IFormattedInputOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onChange?: (e?: Event) => void;

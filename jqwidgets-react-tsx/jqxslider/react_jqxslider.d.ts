@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxSlider extends React.PureComponent<ISliderProps, IState> {
-    protected static defaultProps: ISliderProps;
     protected static getDerivedStateFromProps(props: ISliderProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: ISliderProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: ISliderProps): void;
     setOptions(options: ISliderProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     destroy(): void;
     decrementValue(): void;
     disable(): void;
@@ -23,21 +19,19 @@ declare class JqxSlider extends React.PureComponent<ISliderProps, IState> {
     incrementValue(): void;
     setValue(index: number | number[]): void;
     val(value?: string): string;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxSlider;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface ISliderTickLabelFormatFunction {
+export interface ISliderTickLabelFormatFunction {
     value?: number;
 }
-interface ISliderTooltipFormatFunction {
+export interface ISliderTooltipFormatFunction {
     value?: number;
 }
 interface ISliderOptions {
@@ -74,7 +68,6 @@ interface ISliderOptions {
     width?: number | string;
 }
 export interface ISliderProps extends ISliderOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onChange?: (e?: Event) => void;

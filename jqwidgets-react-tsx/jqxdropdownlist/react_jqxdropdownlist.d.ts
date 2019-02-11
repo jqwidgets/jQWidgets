@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxDropDownList extends React.PureComponent<IDropDownListProps, IState> {
-    protected static defaultProps: IDropDownListProps;
     protected static getDerivedStateFromProps(props: IDropDownListProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IDropDownListProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IDropDownListProps): void;
     setOptions(options: IDropDownListProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     addItem(item: IDropDownListItem): boolean;
     clearSelection(): void;
     clear(): void;
@@ -54,18 +50,16 @@ declare class JqxDropDownList extends React.PureComponent<IDropDownListProps, IS
     uncheckItem(item: any): void;
     uncheckAll(): void;
     val(value?: string): string;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxDropDownList;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IDropDownListItem {
+export interface IDropDownListItem {
     label?: string;
     value?: any;
     disabled?: boolean;
@@ -74,15 +68,16 @@ interface IDropDownListItem {
     html?: string;
     group?: string;
 }
-interface IDropDownListRenderer {
+export interface IDropDownListRenderer {
     index?: number;
     label?: string;
     value?: string;
 }
-interface IDropDownListSelectionRenderer {
+export interface IDropDownListSelectionRenderer {
     element?: object;
     index?: number;
     label?: string;
+    value?: any;
 }
 interface IDropDownListOptions {
     autoOpen?: boolean;
@@ -112,7 +107,7 @@ interface IDropDownListOptions {
     popupZIndex?: number;
     rtl?: boolean;
     renderer?: (index?: IDropDownListRenderer['index'], label?: IDropDownListRenderer['label'], value?: IDropDownListRenderer['value']) => string;
-    selectionRenderer?: (element?: IDropDownListSelectionRenderer['element'], index?: IDropDownListSelectionRenderer['index'], label?: IDropDownListSelectionRenderer['label']) => string;
+    selectionRenderer?: (element?: IDropDownListSelectionRenderer['element'], index?: IDropDownListSelectionRenderer['index'], label?: IDropDownListSelectionRenderer['label'], value?: IDropDownListSelectionRenderer['value']) => string;
     searchMode?: 'none' | 'contains' | 'containsignorecase' | 'equals' | 'equalsignorecase' | 'startswithignorecase' | 'startswith' | 'endswithignorecase' | 'endswith';
     source?: any[];
     selectedIndex?: number;
@@ -122,7 +117,6 @@ interface IDropDownListOptions {
     width?: number | string;
 }
 export interface IDropDownListProps extends IDropDownListOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onBindingComplete?: (e?: Event) => void;

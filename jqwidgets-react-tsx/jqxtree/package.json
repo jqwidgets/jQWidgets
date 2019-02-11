@@ -2,6 +2,6 @@
     "main": "react_jqxtree.umd.js",
     "module": "react_jqxtree.esm.js",
     "typings": "react_jqxtree.d.ts",
-    "name": "jqwidgets-react-tsx/jqxtree",
+    "name": "jqwidgets-react/jqxtree",
     "sideEffects": false
   }

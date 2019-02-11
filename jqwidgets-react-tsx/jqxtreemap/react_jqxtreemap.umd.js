@@ -49,6 +49,16 @@ require('../../jqwidgets/jqxtooltip');
             return _this;
         }
         JqxTreeMap.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -56,26 +66,17 @@ require('../../jqwidgets/jqxtooltip');
             }
             return null;
         };
+        JqxTreeMap.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxTreeMap(widgetOptions);
+            this._wireEvents();
+        };
         JqxTreeMap.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxTreeMap.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxTreeMap.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxTreeMap.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxTreeMap.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxTreeMap(options);
@@ -83,22 +84,11 @@ require('../../jqwidgets/jqxtooltip');
         JqxTreeMap.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxTreeMap(option);
         };
-        JqxTreeMap.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxTreeMap.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
-        };
         JqxTreeMap.prototype.destroy = function () {
             this._jqx(this._componentSelector).jqxTreeMap('destroy');
         };
         JqxTreeMap.prototype.renderWidget = function () {
             this._jqx(this._componentSelector).jqxTreeMap('render');
-        };
-        JqxTreeMap.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxTreeMap(widgetOptions);
-            this._wireEvents();
         };
         JqxTreeMap.prototype._manageProps = function () {
             var widgetProps = ['baseColor', 'colorRanges', 'colorRange', 'colorMode', 'displayMember', 'height', 'hoverEnabled', 'headerHeight', 'legendLabel', 'legendPosition', 'legendScaleCallback', 'renderCallbacks', 'selectionEnabled', 'showLegend', 'source', 'theme', 'valueMember', 'width'];
@@ -119,19 +109,14 @@ require('../../jqwidgets/jqxtooltip');
                 }
             }
         };
-        JqxTreeMap.defaultProps = {
-            autoCreate: true
-        };
         return JqxTreeMap;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxTreeMap;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

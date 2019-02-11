@@ -51,6 +51,16 @@ require('../../jqwidgets/jqxcalendar');
             return _this;
         }
         JqxDateTimeInput.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -58,38 +68,23 @@ require('../../jqwidgets/jqxcalendar');
             }
             return null;
         };
+        JqxDateTimeInput.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxDateTimeInput(widgetOptions);
+            this._wireEvents();
+        };
         JqxDateTimeInput.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxDateTimeInput.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxDateTimeInput.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxDateTimeInput.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxDateTimeInput.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxDateTimeInput(options);
         };
         JqxDateTimeInput.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxDateTimeInput(option);
-        };
-        JqxDateTimeInput.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxDateTimeInput.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxDateTimeInput.prototype.close = function () {
             this._jqx(this._componentSelector).jqxDateTimeInput('close');
@@ -100,8 +95,8 @@ require('../../jqwidgets/jqxcalendar');
         JqxDateTimeInput.prototype.focus = function () {
             this._jqx(this._componentSelector).jqxDateTimeInput('focus');
         };
-        JqxDateTimeInput.prototype.getRange = function (date) {
-            return this._jqx(this._componentSelector).jqxDateTimeInput('getRange', date);
+        JqxDateTimeInput.prototype.getRange = function () {
+            return this._jqx(this._componentSelector).jqxDateTimeInput('getRange');
         };
         JqxDateTimeInput.prototype.getText = function () {
             return this._jqx(this._componentSelector).jqxDateTimeInput('getText');
@@ -133,11 +128,6 @@ require('../../jqwidgets/jqxcalendar');
         JqxDateTimeInput.prototype.val = function (value, value2) {
             return this._jqx(this._componentSelector).jqxDateTimeInput('val', value, value2);
         };
-        JqxDateTimeInput.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxDateTimeInput(widgetOptions);
-            this._wireEvents();
-        };
         JqxDateTimeInput.prototype._manageProps = function () {
             var widgetProps = ['animationType', 'allowNullDate', 'allowKeyboardDelete', 'clearString', 'culture', 'closeDelay', 'closeCalendarAfterSelection', 'dropDownHorizontalAlignment', 'dropDownVerticalAlignment', 'disabled', 'enableBrowserBoundsDetection', 'enableAbsoluteSelection', 'firstDayOfWeek', 'formatString', 'height', 'min', 'max', 'openDelay', 'placeHolder', 'popupZIndex', 'rtl', 'readonly', 'showFooter', 'selectionMode', 'showWeekNumbers', 'showTimeButton', 'showCalendarButton', 'theme', 'template', 'textAlign', 'todayString', 'value', 'width'];
             var options = {};
@@ -157,19 +147,14 @@ require('../../jqwidgets/jqxcalendar');
                 }
             }
         };
-        JqxDateTimeInput.defaultProps = {
-            autoCreate: true
-        };
         return JqxDateTimeInput;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxDateTimeInput;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

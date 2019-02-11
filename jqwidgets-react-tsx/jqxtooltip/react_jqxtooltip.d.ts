@@ -1,31 +1,25 @@
 import * as React from 'react';
 declare class JqxTooltip extends React.PureComponent<ITooltipProps, IState> {
-    protected static defaultProps: ITooltipProps;
     protected static getDerivedStateFromProps(props: ITooltipProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: ITooltipProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: ITooltipProps): void;
     setOptions(options: ITooltipProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     close(index?: number): void;
     destroy(): void;
     open(left?: number, top?: number): void;
     refresh(): void;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxTooltip;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
@@ -49,12 +43,11 @@ interface ITooltipOptions {
     showDelay?: number;
     showArrow?: boolean;
     top?: number | string;
-    trigger?: 'hover' | 'click';
+    trigger?: 'hover' | 'click' | 'none';
     theme?: string;
     width?: number | string;
 }
 export interface ITooltipProps extends ITooltipOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onClose?: (e?: Event) => void;

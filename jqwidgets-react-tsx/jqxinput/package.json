@@ -2,6 +2,6 @@
     "main": "react_jqxinput.umd.js",
     "module": "react_jqxinput.esm.js",
     "typings": "react_jqxinput.d.ts",
-    "name": "jqwidgets-react-tsx/jqxinput",
+    "name": "jqwidgets-react/jqxinput",
     "sideEffects": false
   }

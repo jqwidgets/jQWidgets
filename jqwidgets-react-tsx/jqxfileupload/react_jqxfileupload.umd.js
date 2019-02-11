@@ -48,6 +48,16 @@ require('../../jqwidgets/jqxfileupload');
             return _this;
         }
         JqxFileUpload.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -55,38 +65,23 @@ require('../../jqwidgets/jqxfileupload');
             }
             return null;
         };
+        JqxFileUpload.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxFileUpload(widgetOptions);
+            this._wireEvents();
+        };
         JqxFileUpload.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxFileUpload.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxFileUpload.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxFileUpload.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxFileUpload.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxFileUpload(options);
         };
         JqxFileUpload.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxFileUpload(option);
-        };
-        JqxFileUpload.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxFileUpload.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxFileUpload.prototype.browse = function () {
             this._jqx(this._componentSelector).jqxFileUpload('browse');
@@ -112,11 +107,6 @@ require('../../jqwidgets/jqxfileupload');
         JqxFileUpload.prototype.uploadAll = function () {
             this._jqx(this._componentSelector).jqxFileUpload('uploadAll');
         };
-        JqxFileUpload.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxFileUpload(widgetOptions);
-            this._wireEvents();
-        };
         JqxFileUpload.prototype._manageProps = function () {
             var widgetProps = ['autoUpload', 'accept', 'browseTemplate', 'cancelTemplate', 'disabled', 'fileInputName', 'height', 'localization', 'multipleFilesUpload', 'renderFiles', 'rtl', 'theme', 'uploadUrl', 'uploadTemplate', 'width'];
             var options = {};
@@ -136,19 +126,14 @@ require('../../jqwidgets/jqxfileupload');
                 }
             }
         };
-        JqxFileUpload.defaultProps = {
-            autoCreate: true
-        };
         return JqxFileUpload;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxFileUpload;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

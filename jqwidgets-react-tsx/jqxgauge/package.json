@@ -2,6 +2,6 @@
     "main": "react_jqxgauge.umd.js",
     "module": "react_jqxgauge.esm.js",
     "typings": "react_jqxgauge.d.ts",
-    "name": "jqwidgets-react-tsx/jqxgauge",
+    "name": "jqwidgets-react/jqxgauge",
     "sideEffects": false
   }

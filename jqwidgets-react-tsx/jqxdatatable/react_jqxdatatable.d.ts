@@ -1,20 +1,16 @@
 import * as React from 'react';
 declare class JqxDataTable extends React.PureComponent<IDataTableProps, IState> {
-    protected static defaultProps: IDataTableProps;
     protected static getDerivedStateFromProps(props: IDataTableProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IDataTableProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IDataTableProps): void;
     setOptions(options: IDataTableProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
-    addRow(rowIndex: number, rowData: any, rowPosition: any): void;
+    addRow(rowIndex: number | null, rowData: any, rowPosition: any): void;
     addFilter(dataField: string, filerGroup: any): void;
     applyFilters(): void;
     beginUpdate(): void;
@@ -58,18 +54,16 @@ declare class JqxDataTable extends React.PureComponent<IDataTableProps, IState> 
     unselectRow(rowIndex: number): void;
     updateRow(rowIndex: number, rowData: any): void;
     unlockRow(rowIndex: number): void;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxDataTable;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IDataTableColumns {
+export interface IDataTableColumns {
     text?: string;
     dataField?: string;
     displayField?: string;
@@ -86,9 +80,9 @@ interface IDataTableColumns {
     initEditor?: (row: number, cellValue?: any, editor?: any, cellText?: string, width?: string | number, height?: string | number) => void;
     createEditor?: (row: number, cellValue?: any, editor?: any, cellText?: string, width?: string | number, height?: string | number) => void;
     getEditorValue?: (row: number, cellValue?: any, editor?: any) => void;
-    cellsFormat?: 'd' | 'f' | 'n' | 'c' | 'p' | 'd' | 'dd' | 'ddd' | 'dddd' | 'h' | 'hh' | 'H' | 'HH' | 'm' | 'mm' | 'M' | 'MM' | 'MMM' | 'MMMM' | 's' | 'ss' | 't' | 'tt' | 'y' | 'yy' | 'yyy' | 'yyyy';
-    aggregates?: string[];
-    aggregatesRenderer?: (aggregates: any) => string[];
+    cellsFormat?: 'd2' | 'n2' | 'f2' | 'f5' | 'c2' | 'f' | 'n' | 'c' | 'p' | 'd' | 'dd' | 'ddd' | 'dddd' | 'D' | 'h' | 'hh' | 'H' | 'HH' | 'm' | 'mm' | 'M' | 'MM' | 'MMM' | 'MMMM' | 's' | 'ss' | 't' | 'tt' | 'y' | 'yy' | 'yyy' | 'yyyy' | 'dd/MM/yyyy' | 'yyyy-MM-dd';
+    aggregates?: any[];
+    aggregatesRenderer?: (aggregates: Array<any>, column: any, element: any) => string[] | string;
     align?: 'left' | 'right' | 'center';
     cellsAlign?: 'left' | 'right' | 'center';
     width?: number | string;
@@ -101,30 +95,30 @@ interface IDataTableColumns {
     cellClassName?: any;
     pinned?: boolean;
 }
-interface IDataTableColumnGroups {
+export interface IDataTableColumnGroups {
     text?: string;
     parentGroup?: string;
     align?: string;
     name?: string;
 }
-interface IDataTableGroupsRenderer {
+export interface IDataTableGroupsRenderer {
     value?: string;
     rowdata?: object;
     level?: number;
 }
-interface IDataTableInitRowDetails {
+export interface IDataTableInitRowDetails {
     id?: number;
     row?: number;
     element?: object;
     rowinfo?: object;
 }
-interface IDataTableRenderToolbar {
+export interface IDataTableRenderToolbar {
     toolbar?: object;
 }
-interface IDataTableRenderStatusBar {
+export interface IDataTableRenderStatusBar {
     statusbar?: object;
 }
-interface IDataTableEditSettings {
+export interface IDataTableEditSettings {
     saveOnPageChange?: boolean;
     saveOnBlur?: boolean;
     saveOnSelectionChange?: boolean;
@@ -134,13 +128,13 @@ interface IDataTableEditSettings {
     editOnDoubleClick?: boolean;
     editOnF2?: boolean;
 }
-interface IDataTableExportSettings {
+export interface IDataTableExportSettings {
     columnsHeader?: boolean;
     hiddenColumns?: boolean;
     serverURL?: any;
     characterSet?: any;
     recordsInView?: boolean;
-    fileName?: string;
+    fileName?: string | null;
 }
 interface IDataTableOptions {
     altRows?: boolean;
@@ -189,7 +183,7 @@ interface IDataTableOptions {
     showStatusbar?: boolean;
     statusBarHeight?: number;
     scrollBarSize?: number | string;
-    selectionMode?: 'multipleRows' | 'singleRow' | 'custom';
+    selectionMode?: 'multipleRows' | 'singleRow' | 'custom' | 'none';
     serverProcessing?: boolean;
     showHeader?: boolean;
     theme?: string;
@@ -197,7 +191,6 @@ interface IDataTableOptions {
     width?: string | number;
 }
 export interface IDataTableProps extends IDataTableOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onBindingComplete?: (e?: Event) => void;

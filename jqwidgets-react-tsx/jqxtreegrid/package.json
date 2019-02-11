@@ -2,6 +2,6 @@
     "main": "react_jqxtreegrid.umd.js",
     "module": "react_jqxtreegrid.esm.js",
     "typings": "react_jqxtreegrid.d.ts",
-    "name": "jqwidgets-react-tsx/jqxtreegrid",
+    "name": "jqwidgets-react/jqxtreegrid",
     "sideEffects": false
   }

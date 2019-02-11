@@ -47,6 +47,16 @@ require('../../jqwidgets/jqxformattedinput');
             return _this;
         }
         JqxFormattedInput.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -54,14 +64,14 @@ require('../../jqwidgets/jqxformattedinput');
             }
             return null;
         };
+        JqxFormattedInput.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxFormattedInput(widgetOptions);
+            this._wireEvents();
+        };
         JqxFormattedInput.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
-        };
-        JqxFormattedInput.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
         };
         JqxFormattedInput.prototype.render = function () {
             return (React.createElement("div", { id: this._id },
@@ -70,26 +80,11 @@ require('../../jqwidgets/jqxformattedinput');
                 this.props.dropDown && React.createElement("div", null),
                 this.props.rtl && React.createElement("input", { type: 'text' })));
         };
-        JqxFormattedInput.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
-        };
         JqxFormattedInput.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxFormattedInput(options);
         };
         JqxFormattedInput.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxFormattedInput(option);
-        };
-        JqxFormattedInput.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxFormattedInput.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxFormattedInput.prototype.close = function () {
             this._jqx(this._componentSelector).jqxFormattedInput('close');
@@ -121,11 +116,6 @@ require('../../jqwidgets/jqxformattedinput');
         JqxFormattedInput.prototype.val = function (value) {
             return this._jqx(this._componentSelector).jqxFormattedInput('val', value);
         };
-        JqxFormattedInput.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxFormattedInput(widgetOptions);
-            this._wireEvents();
-        };
         JqxFormattedInput.prototype._manageProps = function () {
             var widgetProps = ['disabled', 'decimalNotation', 'dropDown', 'dropDownWidth', 'height', 'min', 'max', 'placeHolder', 'popupZIndex', 'roundedCorners', 'rtl', 'radix', 'spinButtons', 'spinButtonsStep', 'template', 'theme', 'upperCase', 'value', 'width'];
             var options = {};
@@ -145,19 +135,14 @@ require('../../jqwidgets/jqxformattedinput');
                 }
             }
         };
-        JqxFormattedInput.defaultProps = {
-            autoCreate: true
-        };
         return JqxFormattedInput;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxFormattedInput;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -46,6 +46,16 @@ var JqxKanban = /** @class */ (function (_super) {
         return _this;
     }
     JqxKanban.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -53,38 +63,23 @@ var JqxKanban = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxKanban.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxKanban(widgetOptions);
+        this._wireEvents();
+    };
     JqxKanban.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxKanban.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxKanban.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxKanban.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxKanban.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxKanban(options);
     };
     JqxKanban.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxKanban(option);
-    };
-    JqxKanban.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxKanban.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxKanban.prototype.addItem = function (newItem) {
         this._jqx(this._componentSelector).jqxKanban('addItem', newItem);
@@ -107,11 +102,6 @@ var JqxKanban = /** @class */ (function (_super) {
     JqxKanban.prototype.updateItem = function (itemId, newContent) {
         this._jqx(this._componentSelector).jqxKanban('updateItem', itemId, newContent);
     };
-    JqxKanban.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxKanban(widgetOptions);
-        this._wireEvents();
-    };
     JqxKanban.prototype._manageProps = function () {
         var widgetProps = ['columnRenderer', 'columns', 'connectWith', 'headerHeight', 'headerWidth', 'height', 'itemRenderer', 'ready', 'rtl', 'source', 'resources', 'template', 'templateContent', 'theme', 'width'];
         var options = {};
@@ -131,14 +121,10 @@ var JqxKanban = /** @class */ (function (_super) {
             }
         }
     };
-    JqxKanban.defaultProps = {
-        autoCreate: true
-    };
     return JqxKanban;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxKanban;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

@@ -1,41 +1,35 @@
 import * as React from 'react';
 declare class JqxDragDrop extends React.PureComponent<IDragDropProps, IState> {
-    protected static defaultProps: IDragDropProps;
     protected static getDerivedStateFromProps(props: IDragDropProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IDragDropProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IDragDropProps): void;
     setOptions(options: IDragDropProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxDragDrop;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IDragDropOnDrag {
+export interface IDragDropOnDrag {
     data?: object;
     position?: object;
 }
-interface IDragDropOnDragStart {
+export interface IDragDropOnDragStart {
     position?: object;
 }
-interface IDragDropOnTargetDrop {
+export interface IDragDropOnTargetDrop {
     data?: object;
 }
-interface IDragDropOnDropTargetLeave {
+export interface IDragDropOnDropTargetLeave {
     data?: object;
 }
 interface IDragDropOptions {
@@ -55,13 +49,12 @@ interface IDragDropOptions {
     onTargetDrop?: (data?: IDragDropOnTargetDrop['data']) => void;
     onDropTargetEnter?: () => void;
     onDropTargetLeave?: (data?: IDragDropOnDropTargetLeave['data']) => void;
-    restricter?: 'body' | 'document' | 'parent' | '{ left, top, width, height }';
+    restricter?: object | 'body' | 'document' | 'parent';
     revert?: boolean;
     revertDuration?: number;
     tolerance?: 'fit' | 'intersect';
 }
 export interface IDragDropProps extends IDragDropOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onDragStart?: (e?: Event) => void;

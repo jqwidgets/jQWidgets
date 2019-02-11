@@ -1,12 +1,12 @@
 ﻿require.config({
     paths: {
-        "jQuery": "../../scripts/jquery-1.11.1.min",
-        "jqxcore": "../../jqwidgets/jqxcore",
-        "jqxbuttons": "../../jqwidgets/jqxbuttons",
-        "jqxpanel": "../../jqwidgets/jqxpanel",
-        "jqxscrollbar": "../../jqwidgets/jqxscrollbar",
-        "jqxtree": "../../jqwidgets/jqxtree",
-        "demos": "../../scripts/demos"
+        "jQuery": "../../../scripts/jquery-1.11.1.min",
+        "jqxcore": "../../../jqwidgets/jqxcore",
+        "jqxbuttons": "../../../jqwidgets/jqxbuttons",
+        "jqxpanel": "../../../jqwidgets/jqxpanel",
+        "jqxscrollbar": "../../../jqwidgets/jqxscrollbar",
+        "jqxtree": "../../../jqwidgets/jqxtree",
+        "demos": "../../../scripts/demos"
     },
     shim: {
         "demos": {

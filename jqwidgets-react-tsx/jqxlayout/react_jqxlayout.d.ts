@@ -1,36 +1,30 @@
 import * as React from 'react';
 declare class JqxLayout extends React.PureComponent<ILayoutProps, IState> {
-    protected static defaultProps: ILayoutProps;
     protected static getDerivedStateFromProps(props: ILayoutProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: ILayoutProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: ILayoutProps): void;
     setOptions(options: ILayoutProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     destroy(): void;
     loadLayout(Layout: any): void;
     refresh(): void;
     renderWidget(): void;
     saveLayout(): any;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxLayout;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface ILayout {
+export interface ILayout {
     type?: 'layoutGroup' | 'tabbedGroup' | 'documentGroup' | 'autoHideGroup' | 'layoutPanel' | 'documentPanel';
     alignment?: 'left' | 'right' | 'top' | 'bottom';
     allowClose?: boolean;
@@ -63,7 +57,6 @@ interface ILayoutOptions {
     width?: string | number;
 }
 export interface ILayoutProps extends ILayoutOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onPin?: (e?: Event) => void;

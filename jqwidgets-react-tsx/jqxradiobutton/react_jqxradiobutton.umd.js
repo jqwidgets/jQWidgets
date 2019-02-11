@@ -47,6 +47,16 @@ require('../../jqwidgets/jqxradiobutton');
             return _this;
         }
         JqxRadioButton.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -54,38 +64,23 @@ require('../../jqwidgets/jqxradiobutton');
             }
             return null;
         };
+        JqxRadioButton.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxRadioButton(widgetOptions);
+            this._wireEvents();
+        };
         JqxRadioButton.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxRadioButton.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxRadioButton.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxRadioButton.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxRadioButton.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxRadioButton(options);
         };
         JqxRadioButton.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxRadioButton(option);
-        };
-        JqxRadioButton.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxRadioButton.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxRadioButton.prototype.check = function () {
             this._jqx(this._componentSelector).jqxRadioButton('check');
@@ -111,11 +106,6 @@ require('../../jqwidgets/jqxradiobutton');
         JqxRadioButton.prototype.val = function (value) {
             return this._jqx(this._componentSelector).jqxRadioButton('val', value);
         };
-        JqxRadioButton.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxRadioButton(widgetOptions);
-            this._wireEvents();
-        };
         JqxRadioButton.prototype._manageProps = function () {
             var widgetProps = ['animationShowDelay', 'animationHideDelay', 'boxSize', 'checked', 'disabled', 'enableContainerClick', 'groupName', 'hasThreeStates', 'height', 'rtl', 'theme', 'width'];
             var options = {};
@@ -135,19 +125,14 @@ require('../../jqwidgets/jqxradiobutton');
                 }
             }
         };
-        JqxRadioButton.defaultProps = {
-            autoCreate: true
-        };
         return JqxRadioButton;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxRadioButton;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

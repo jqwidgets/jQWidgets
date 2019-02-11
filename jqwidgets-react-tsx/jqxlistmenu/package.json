@@ -2,6 +2,6 @@
     "main": "react_jqxlistmenu.umd.js",
     "module": "react_jqxlistmenu.esm.js",
     "typings": "react_jqxlistmenu.d.ts",
-    "name": "jqwidgets-react-tsx/jqxlistmenu",
+    "name": "jqwidgets-react/jqxlistmenu",
     "sideEffects": false
   }

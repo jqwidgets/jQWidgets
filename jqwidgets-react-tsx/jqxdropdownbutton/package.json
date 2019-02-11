@@ -2,6 +2,6 @@
     "main": "react_jqxdropdownbutton.umd.js",
     "module": "react_jqxdropdownbutton.esm.js",
     "typings": "react_jqxdropdownbutton.d.ts",
-    "name": "jqwidgets-react-tsx/jqxdropdownbutton",
+    "name": "jqwidgets-react/jqxdropdownbutton",
     "sideEffects": false
   }

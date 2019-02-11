@@ -2,6 +2,6 @@
     "main": "react_jqxchart.umd.js",
     "module": "react_jqxchart.esm.js",
     "typings": "react_jqxchart.d.ts",
-    "name": "jqwidgets-react-tsx/jqxchart",
+    "name": "jqwidgets-react/jqxchart",
     "sideEffects": false
   }

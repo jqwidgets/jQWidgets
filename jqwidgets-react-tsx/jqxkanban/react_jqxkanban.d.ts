@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxKanban extends React.PureComponent<IKanbanProps, IState> {
-    protected static defaultProps: IKanbanProps;
     protected static getDerivedStateFromProps(props: IKanbanProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IKanbanProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IKanbanProps): void;
     setOptions(options: IKanbanProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     addItem(newItem: any): void;
     destroy(): void;
     getColumn(dataField: string): IKanbanColumns;
@@ -21,18 +17,16 @@ declare class JqxKanban extends React.PureComponent<IKanbanProps, IState> {
     getItems(): IKanbanSource;
     removeItem(itemId: string): void;
     updateItem(itemId: string, newContent: IKanbanUpdateItem): void;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxKanban;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IKanbanColumns {
+export interface IKanbanColumns {
     text?: string;
     dataField?: string;
     maxItems?: number;
@@ -42,17 +36,17 @@ interface IKanbanColumns {
     collapsedHeaderElement?: any;
     iconClassName?: string;
 }
-interface IKanbanColumnRenderer {
+export interface IKanbanColumnRenderer {
     element?: any;
     collapsedElement?: any;
     column?: any;
 }
-interface IKanbanItemRenderer {
+export interface IKanbanItemRenderer {
     element?: any;
     item?: any;
     resource?: any;
 }
-interface IKanbanSource {
+export interface IKanbanSource {
     id?: number;
     status?: string;
     text?: string;
@@ -62,7 +56,7 @@ interface IKanbanSource {
     resourceId?: any;
     className?: string;
 }
-interface IKanbanUpdateItem {
+export interface IKanbanUpdateItem {
     status?: string;
     text?: string;
     content?: any;
@@ -89,7 +83,6 @@ interface IKanbanOptions {
     width?: string | number;
 }
 export interface IKanbanProps extends IKanbanOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onColumnAttrClicked?: (e?: Event) => void;

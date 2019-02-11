@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 
-import { jqxTreeGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtree';
+import { jqxTreeGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtreegrid';
 
 @Component({
     selector: 'app-root',

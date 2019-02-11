@@ -46,6 +46,16 @@ var JqxListMenu = /** @class */ (function (_super) {
         return _this;
     }
     JqxListMenu.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -53,38 +63,23 @@ var JqxListMenu = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxListMenu.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxListMenu(widgetOptions);
+        this._wireEvents();
+    };
     JqxListMenu.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxListMenu.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxListMenu.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxListMenu.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxListMenu.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxListMenu(options);
     };
     JqxListMenu.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxListMenu(option);
-    };
-    JqxListMenu.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxListMenu.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxListMenu.prototype.back = function () {
         this._jqx(this._componentSelector).jqxListMenu('back');
@@ -94,11 +89,6 @@ var JqxListMenu = /** @class */ (function (_super) {
     };
     JqxListMenu.prototype.destroy = function () {
         this._jqx(this._componentSelector).jqxListMenu('destroy');
-    };
-    JqxListMenu.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxListMenu(widgetOptions);
-        this._wireEvents();
     };
     JqxListMenu.prototype._manageProps = function () {
         var widgetProps = ['alwaysShowNavigationArrows', 'animationType', 'animationDuration', 'autoSeparators', 'backLabel', 'disabled', 'enableScrolling', 'filterCallback', 'height', 'headerAnimationDuration', 'placeHolder', 'readOnly', 'rtl', 'roundedCorners', 'showNavigationArrows', 'showFilter', 'showHeader', 'showBackButton', 'theme', 'width'];
@@ -119,14 +109,10 @@ var JqxListMenu = /** @class */ (function (_super) {
             }
         }
     };
-    JqxListMenu.defaultProps = {
-        autoCreate: true
-    };
     return JqxListMenu;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxListMenu;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

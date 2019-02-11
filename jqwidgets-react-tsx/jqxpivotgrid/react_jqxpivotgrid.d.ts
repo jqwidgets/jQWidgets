@@ -1,42 +1,36 @@
 import * as React from 'react';
 declare class JqxPivotGrid extends React.PureComponent<IPivotGridProps, IState> {
-    protected static defaultProps: IPivotGridProps;
     protected static getDerivedStateFromProps(props: IPivotGridProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IPivotGridProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IPivotGridProps): void;
     setOptions(options: IPivotGridProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     getInstance(): any;
     refresh(): void;
     getPivotRows(): IPivotGridRows;
     getPivotColumns(): IPivotGridColumns;
     getPivotCells(): object;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxPivotGrid;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IPivotGridItemsRenderer {
+export interface IPivotGridItemsRenderer {
     pivotItem?: any;
 }
-interface IPivotGridCellsRenderer {
+export interface IPivotGridCellsRenderer {
     pivotCell?: any;
 }
-interface IPivotGridColumns {
+export interface IPivotGridColumns {
     resizable?: boolean;
     sortable?: boolean;
     showExpandCollapseButtons?: boolean;
@@ -45,7 +39,7 @@ interface IPivotGridColumns {
     valueItems?: IPivotGridItem[];
     isHidden?: boolean;
 }
-interface IPivotGridItem {
+export interface IPivotGridItem {
     isExpanded?: boolean;
     isHidden?: boolean;
     isSelected?: boolean;
@@ -55,7 +49,7 @@ interface IPivotGridItem {
     items?: IPivotGridItem[];
     valueItems?: IPivotGridItem[];
 }
-interface IPivotGridRows {
+export interface IPivotGridRows {
     resizable?: boolean;
     sortable?: boolean;
     showExpandCollapseButtons?: boolean;
@@ -76,7 +70,6 @@ interface IPivotGridOptions {
     cellsRenderer?: (pivotCell: IPivotGridCellsRenderer['pivotCell']) => string;
 }
 export interface IPivotGridProps extends IPivotGridOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onPivotitemexpanding?: (e?: Event) => void;

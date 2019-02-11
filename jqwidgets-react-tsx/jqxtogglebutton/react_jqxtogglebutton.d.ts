@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxToggleButton extends React.PureComponent<IToggleButtonProps, IState> {
-    protected static defaultProps: IToggleButtonProps;
     protected static getDerivedStateFromProps(props: IToggleButtonProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IToggleButtonProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IToggleButtonProps): void;
     setOptions(options: IToggleButtonProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     check(): void;
     destroy(): void;
     focus(): void;
@@ -21,14 +17,12 @@ declare class JqxToggleButton extends React.PureComponent<IToggleButtonProps, IS
     toggle(): void;
     unCheck(): void;
     val(value?: string): string;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxToggleButton;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
@@ -50,7 +44,6 @@ interface IToggleButtonOptions {
     value?: string;
 }
 export interface IToggleButtonProps extends IToggleButtonOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onClick?: (e?: Event) => void;

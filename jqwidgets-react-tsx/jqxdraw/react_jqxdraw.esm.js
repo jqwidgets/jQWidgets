@@ -43,6 +43,16 @@ var JqxDraw = /** @class */ (function (_super) {
         return _this;
     }
     JqxDraw.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -50,38 +60,23 @@ var JqxDraw = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxDraw.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxDraw(widgetOptions);
+        this._wireEvents();
+    };
     JqxDraw.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxDraw.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxDraw.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxDraw.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxDraw.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxDraw(options);
     };
     JqxDraw.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxDraw(option);
-    };
-    JqxDraw.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxDraw.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxDraw.prototype.attr = function (element, attributes) {
         this._jqx(this._componentSelector).jqxDraw('attr', element, attributes);
@@ -131,11 +126,6 @@ var JqxDraw = /** @class */ (function (_super) {
     JqxDraw.prototype.text = function (text, x, y, width, height, angle, attributes, clip, halign, valign, rotateAround) {
         return this._jqx(this._componentSelector).jqxDraw('text', text, x, y, width, height, angle, attributes, clip, halign, valign, rotateAround);
     };
-    JqxDraw.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxDraw(widgetOptions);
-        this._wireEvents();
-    };
     JqxDraw.prototype._manageProps = function () {
         var widgetProps = ['renderEngine'];
         var options = {};
@@ -155,14 +145,10 @@ var JqxDraw = /** @class */ (function (_super) {
             }
         }
     };
-    JqxDraw.defaultProps = {
-        autoCreate: true
-    };
     return JqxDraw;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxDraw;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

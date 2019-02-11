@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxNavigationBar extends React.PureComponent<INavigationBarProps, IState> {
-    protected static defaultProps: INavigationBarProps;
     protected static getDerivedStateFromProps(props: INavigationBarProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: INavigationBarProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: INavigationBarProps): void;
     setOptions(options: INavigationBarProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     add(header: number | string, content: number | string): void;
     collapseAt(index: number | string): void;
     disableAt(index: number | string): void;
@@ -36,14 +32,12 @@ declare class JqxNavigationBar extends React.PureComponent<INavigationBarProps, 
     showArrowAt(index: number | string): void;
     update(index: number, header: number | string, content: number | string): void;
     val(value?: number | string): string | number;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxNavigationBar;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
@@ -64,7 +58,6 @@ interface INavigationBarOptions {
     width?: string | number;
 }
 export interface INavigationBarProps extends INavigationBarOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onCollapsingItem?: (e?: Event) => void;

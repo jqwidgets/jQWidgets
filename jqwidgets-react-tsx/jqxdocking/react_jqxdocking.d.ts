@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxDocking extends React.PureComponent<IDockingProps, IState> {
-    protected static defaultProps: IDockingProps;
     protected static getDerivedStateFromProps(props: IDockingProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IDockingProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IDockingProps): void;
     setOptions(options: IDockingProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     addWindow(windowId: string, mode: any, panel: number, position: any): void;
     closeWindow(windowId: string): void;
     collapseWindow(windowId: string): void;
@@ -39,22 +35,20 @@ declare class JqxDocking extends React.PureComponent<IDockingProps, IState> {
     showAllCloseButtons(): void;
     showAllCollapseButtons(): void;
     unpinWindow(windowId: string): void;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxDocking;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IDockingCookieOptions {
+export interface IDockingCookieOptions {
     domain?: string;
     expires?: number;
 }
-interface IDockingWindowsMode {
+export interface IDockingWindowsMode {
     windowID?: 'default' | 'docked' | 'floating';
 }
 interface IDockingOptions {
@@ -69,11 +63,10 @@ interface IDockingOptions {
     rtl?: boolean;
     theme?: string;
     width?: number | string;
-    windowsMode?: IDockingWindowsMode;
+    windowsMode?: object;
     windowsOffset?: number;
 }
 export interface IDockingProps extends IDockingOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onDragStart?: (e?: Event) => void;

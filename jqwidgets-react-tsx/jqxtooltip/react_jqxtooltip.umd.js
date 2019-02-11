@@ -47,6 +47,16 @@ require('../../jqwidgets/jqxtooltip');
             return _this;
         }
         JqxTooltip.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -54,38 +64,23 @@ require('../../jqwidgets/jqxtooltip');
             }
             return null;
         };
+        JqxTooltip.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxTooltip(widgetOptions);
+            this._wireEvents();
+        };
         JqxTooltip.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxTooltip.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxTooltip.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxTooltip.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxTooltip.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxTooltip(options);
         };
         JqxTooltip.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxTooltip(option);
-        };
-        JqxTooltip.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxTooltip.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxTooltip.prototype.close = function (index) {
             this._jqx(this._componentSelector).jqxTooltip('close', index);
@@ -98,11 +93,6 @@ require('../../jqwidgets/jqxtooltip');
         };
         JqxTooltip.prototype.refresh = function () {
             this._jqx(this._componentSelector).jqxTooltip('refresh');
-        };
-        JqxTooltip.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxTooltip(widgetOptions);
-            this._wireEvents();
         };
         JqxTooltip.prototype._manageProps = function () {
             var widgetProps = ['absolutePositionX', 'absolutePositionY', 'autoHide', 'autoHideDelay', 'animationShowDelay', 'animationHideDelay', 'content', 'closeOnClick', 'disabled', 'enableBrowserBoundsDetection', 'height', 'left', 'name', 'opacity', 'position', 'rtl', 'showDelay', 'showArrow', 'top', 'trigger', 'theme', 'width'];
@@ -123,19 +113,14 @@ require('../../jqwidgets/jqxtooltip');
                 }
             }
         };
-        JqxTooltip.defaultProps = {
-            autoCreate: true
-        };
         return JqxTooltip;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxTooltip;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

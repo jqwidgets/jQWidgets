@@ -48,6 +48,16 @@ require('../../jqwidgets/jqxdropdownbutton');
             return _this;
         }
         JqxDropDownButton.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -55,38 +65,23 @@ require('../../jqwidgets/jqxdropdownbutton');
             }
             return null;
         };
+        JqxDropDownButton.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxDropDownButton(widgetOptions);
+            this._wireEvents();
+        };
         JqxDropDownButton.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxDropDownButton.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxDropDownButton.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxDropDownButton.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxDropDownButton.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxDropDownButton(options);
         };
         JqxDropDownButton.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxDropDownButton(option);
-        };
-        JqxDropDownButton.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxDropDownButton.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxDropDownButton.prototype.close = function () {
             this._jqx(this._componentSelector).jqxDropDownButton('close');
@@ -109,11 +104,6 @@ require('../../jqwidgets/jqxdropdownbutton');
         JqxDropDownButton.prototype.setContent = function (content) {
             this._jqx(this._componentSelector).jqxDropDownButton('setContent', content);
         };
-        JqxDropDownButton.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxDropDownButton(widgetOptions);
-            this._wireEvents();
-        };
         JqxDropDownButton.prototype._manageProps = function () {
             var widgetProps = ['animationType', 'arrowSize', 'autoOpen', 'closeDelay', 'disabled', 'dropDownHorizontalAlignment', 'dropDownVerticalAlignment', 'dropDownWidth', 'enableBrowserBoundsDetection', 'height', 'initContent', 'openDelay', 'popupZIndex', 'rtl', 'template', 'theme', 'width'];
             var options = {};
@@ -133,19 +123,14 @@ require('../../jqwidgets/jqxdropdownbutton');
                 }
             }
         };
-        JqxDropDownButton.defaultProps = {
-            autoCreate: true
-        };
         return JqxDropDownButton;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxDropDownButton;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

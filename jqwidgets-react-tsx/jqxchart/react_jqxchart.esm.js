@@ -50,6 +50,16 @@ var JqxChart = /** @class */ (function (_super) {
         return _this;
     }
     JqxChart.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -57,38 +67,23 @@ var JqxChart = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxChart.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxChart(widgetOptions);
+        this._wireEvents();
+    };
     JqxChart.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxChart.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxChart.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxChart.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxChart.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxChart(options);
     };
     JqxChart.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxChart(option);
-    };
-    JqxChart.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxChart.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxChart.prototype.getInstance = function () {
         return this._jqx(this._componentSelector).jqxChart('getInstance');
@@ -156,11 +151,6 @@ var JqxChart = /** @class */ (function (_super) {
     JqxChart.prototype.getValueAxisValue = function (offset, groupIndex) {
         return this._jqx(this._componentSelector).jqxChart('getValueAxisValue', offset, groupIndex);
     };
-    JqxChart.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxChart(widgetOptions);
-        this._wireEvents();
-    };
     JqxChart.prototype._manageProps = function () {
         var widgetProps = ['title', 'description', 'source', 'showBorderLine', 'borderLineColor', 'borderLineWidth', 'backgroundColor', 'backgroundImage', 'showLegend', 'legendLayout', 'padding', 'titlePadding', 'colorScheme', 'greyScale', 'showToolTips', 'toolTipShowDelay', 'toolTipHideDelay', 'toolTipMoveDuration', 'drawBefore', 'draw', 'rtl', 'enableCrosshairs', 'crosshairsColor', 'crosshairsDashStyle', 'crosshairsLineWidth', 'columnSeriesOverlap', 'enabled', 'enableAnimations', 'animationDuration', 'enableAxisTextAnimation', 'renderEngine', 'xAxis', 'valueAxis', 'categoryAxis', 'seriesGroups'];
         var options = {};
@@ -180,14 +170,10 @@ var JqxChart = /** @class */ (function (_super) {
             }
         }
     };
-    JqxChart.defaultProps = {
-        autoCreate: true
-    };
     return JqxChart;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxChart;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

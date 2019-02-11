@@ -67,6 +67,16 @@ require('../../jqwidgets/jqxscheduler.api');
             return _this;
         }
         JqxScheduler.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -74,38 +84,23 @@ require('../../jqwidgets/jqxscheduler.api');
             }
             return null;
         };
+        JqxScheduler.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxScheduler(widgetOptions);
+            this._wireEvents();
+        };
         JqxScheduler.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxScheduler.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxScheduler.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxScheduler.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxScheduler.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxScheduler(options);
         };
         JqxScheduler.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxScheduler(option);
-        };
-        JqxScheduler.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxScheduler.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxScheduler.prototype.addAppointment = function (item) {
             this._jqx(this._componentSelector).jqxScheduler('addAppointment', item);
@@ -191,11 +186,6 @@ require('../../jqwidgets/jqxscheduler.api');
         JqxScheduler.prototype.scrollTop = function (top) {
             this._jqx(this._componentSelector).jqxScheduler('scrollTop', top);
         };
-        JqxScheduler.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxScheduler(widgetOptions);
-            this._wireEvents();
-        };
         JqxScheduler.prototype._manageProps = function () {
             var widgetProps = ['appointmentOpacity', 'appointmentsMinHeight', 'appointmentDataFields', 'appointmentTooltips', 'columnsHeight', 'contextMenu', 'contextMenuOpen', 'contextMenuClose', 'contextMenuItemClick', 'contextMenuCreate', 'changedAppointments', 'disabled', 'date', 'dayNameFormat', 'enableHover', 'editDialog', 'editDialogDateTimeFormatString', 'editDialogDateFormatString', 'editDialogOpen', 'editDialogCreate', 'editDialogKeyDown', 'editDialogClose', 'exportSettings', 'height', 'legendPosition', 'legendHeight', 'localization', 'min', 'max', 'ready', 'renderAppointment', 'rendering', 'rendered', 'rtl', 'resources', 'rowsHeight', 'showToolbar', 'showLegend', 'scrollBarSize', 'source', 'statuses', 'touchRowsHeight', 'theme', 'touchAppointmentsMinHeight', 'touchScrollBarSize', 'timeZone', 'touchDayNameFormat', 'toolBarRangeFormat', 'toolBarRangeFormatAbbr', 'toolbarHeight', 'views', 'view', 'width'];
             var options = {};
@@ -215,19 +205,14 @@ require('../../jqwidgets/jqxscheduler.api');
                 }
             }
         };
-        JqxScheduler.defaultProps = {
-            autoCreate: true
-        };
         return JqxScheduler;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxScheduler;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

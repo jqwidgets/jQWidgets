@@ -2,6 +2,6 @@
     "main": "react_jqxtooltip.umd.js",
     "module": "react_jqxtooltip.esm.js",
     "typings": "react_jqxtooltip.d.ts",
-    "name": "jqwidgets-react-tsx/jqxtooltip",
+    "name": "jqwidgets-react/jqxtooltip",
     "sideEffects": false
   }

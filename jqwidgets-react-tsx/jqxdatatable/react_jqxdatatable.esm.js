@@ -53,6 +53,16 @@ var JqxDataTable = /** @class */ (function (_super) {
         return _this;
     }
     JqxDataTable.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -60,38 +70,23 @@ var JqxDataTable = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxDataTable.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxDataTable(widgetOptions);
+        this._wireEvents();
+    };
     JqxDataTable.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxDataTable.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxDataTable.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxDataTable.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxDataTable.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxDataTable(options);
     };
     JqxDataTable.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxDataTable(option);
-    };
-    JqxDataTable.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxDataTable.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxDataTable.prototype.addRow = function (rowIndex, rowData, rowPosition) {
         this._jqx(this._componentSelector).jqxDataTable('addRow', rowIndex, rowData, rowPosition);
@@ -225,11 +220,6 @@ var JqxDataTable = /** @class */ (function (_super) {
     JqxDataTable.prototype.unlockRow = function (rowIndex) {
         this._jqx(this._componentSelector).jqxDataTable('unlockRow', rowIndex);
     };
-    JqxDataTable.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxDataTable(widgetOptions);
-        this._wireEvents();
-    };
     JqxDataTable.prototype._manageProps = function () {
         var widgetProps = ['altRows', 'autoRowHeight', 'aggregatesHeight', 'autoShowLoadElement', 'columnsHeight', 'columns', 'columnGroups', 'columnsResize', 'columnsReorder', 'disabled', 'editable', 'editSettings', 'exportSettings', 'enableHover', 'enableBrowserSelection', 'filterable', 'filterHeight', 'filterMode', 'groups', 'groupsRenderer', 'height', 'initRowDetails', 'incrementalSearch', 'localization', 'pagerHeight', 'pageSize', 'pageSizeOptions', 'pageable', 'pagerPosition', 'pagerMode', 'pagerButtonsCount', 'pagerRenderer', 'ready', 'rowDetails', 'renderToolbar', 'renderStatusBar', 'rendering', 'rendered', 'rtl', 'source', 'sortable', 'showAggregates', 'showToolbar', 'showStatusbar', 'statusBarHeight', 'scrollBarSize', 'selectionMode', 'serverProcessing', 'showHeader', 'theme', 'toolbarHeight', 'width'];
         var options = {};
@@ -249,14 +239,10 @@ var JqxDataTable = /** @class */ (function (_super) {
             }
         }
     };
-    JqxDataTable.defaultProps = {
-        autoCreate: true
-    };
     return JqxDataTable;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxDataTable;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

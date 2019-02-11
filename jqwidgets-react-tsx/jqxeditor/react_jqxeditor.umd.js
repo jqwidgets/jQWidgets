@@ -57,6 +57,16 @@ require('../../jqwidgets/jqxcolorpicker');
             return _this;
         }
         JqxEditor.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -64,38 +74,23 @@ require('../../jqwidgets/jqxcolorpicker');
             }
             return null;
         };
+        JqxEditor.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxEditor(widgetOptions);
+            this._wireEvents();
+        };
         JqxEditor.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxEditor.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxEditor.prototype.render = function () {
             return (React.createElement("textarea", { id: this._id }, this.props.children));
-        };
-        JqxEditor.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxEditor.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxEditor(options);
         };
         JqxEditor.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxEditor(option);
-        };
-        JqxEditor.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxEditor.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxEditor.prototype.destroy = function () {
             this._jqx(this._componentSelector).jqxEditor('destroy');
@@ -111,11 +106,6 @@ require('../../jqwidgets/jqxcolorpicker');
         };
         JqxEditor.prototype.val = function (value) {
             return this._jqx(this._componentSelector).jqxEditor('val', value);
-        };
-        JqxEditor.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxEditor(widgetOptions);
-            this._wireEvents();
         };
         JqxEditor.prototype._manageProps = function () {
             var widgetProps = ['createCommand', 'disabled', 'editable', 'height', 'lineBreak', 'localization', 'pasteMode', 'rtl', 'stylesheets', 'theme', 'toolbarPosition', 'tools', 'width'];
@@ -136,19 +126,14 @@ require('../../jqwidgets/jqxcolorpicker');
                 }
             }
         };
-        JqxEditor.defaultProps = {
-            autoCreate: true
-        };
         return JqxEditor;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxEditor;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

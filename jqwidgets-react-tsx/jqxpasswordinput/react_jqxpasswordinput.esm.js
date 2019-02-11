@@ -44,6 +44,16 @@ var JqxPasswordInput = /** @class */ (function (_super) {
         return _this;
     }
     JqxPasswordInput.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -51,38 +61,23 @@ var JqxPasswordInput = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxPasswordInput.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxPasswordInput(widgetOptions);
+        this._wireEvents();
+    };
     JqxPasswordInput.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxPasswordInput.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxPasswordInput.prototype.render = function () {
         return (createElement("input", { id: this._id, type: "password" }));
-    };
-    JqxPasswordInput.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxPasswordInput.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxPasswordInput(options);
     };
     JqxPasswordInput.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxPasswordInput(option);
-    };
-    JqxPasswordInput.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxPasswordInput.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxPasswordInput.prototype.renderWidget = function () {
         this._jqx(this._componentSelector).jqxPasswordInput('render');
@@ -92,11 +87,6 @@ var JqxPasswordInput = /** @class */ (function (_super) {
     };
     JqxPasswordInput.prototype.val = function (value) {
         return this._jqx(this._componentSelector).jqxPasswordInput('val', value);
-    };
-    JqxPasswordInput.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxPasswordInput(widgetOptions);
-        this._wireEvents();
     };
     JqxPasswordInput.prototype._manageProps = function () {
         var widgetProps = ['disabled', 'height', 'localization', 'maxLength', 'placeHolder', 'passwordStrength', 'rtl', 'strengthColors', 'showStrength', 'showStrengthPosition', 'strengthTypeRenderer', 'showPasswordIcon', 'theme', 'width'];
@@ -117,14 +107,10 @@ var JqxPasswordInput = /** @class */ (function (_super) {
             }
         }
     };
-    JqxPasswordInput.defaultProps = {
-        autoCreate: true
-    };
     return JqxPasswordInput;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxPasswordInput;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxScheduler extends React.PureComponent<ISchedulerProps, IState> {
-    protected static defaultProps: ISchedulerProps;
     protected static getDerivedStateFromProps(props: ISchedulerProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: ISchedulerProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: ISchedulerProps): void;
     setOptions(options: ISchedulerProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     addAppointment(item: ISchedulerAppointmentDataFields): void;
     beginAppointmentsUpdate(): void;
     clearAppointmentsSelection(): void;
@@ -42,18 +38,16 @@ declare class JqxScheduler extends React.PureComponent<ISchedulerProps, IState> 
     scrollHeight(): number;
     scrollLeft(left: number): void;
     scrollTop(top: number): void;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxScheduler;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface ISchedulerAppointmentDataFields {
+export interface ISchedulerAppointmentDataFields {
     allDay?: boolean;
     background?: string;
     borderColor?: string;
@@ -76,7 +70,7 @@ interface ISchedulerAppointmentDataFields {
     tooltip?: string;
     timeZone?: string;
 }
-interface ISchedulerRecurrencePattern {
+export interface ISchedulerRecurrencePattern {
     FREQ?: 'DAILY' | 'WEEKLY' | 'MONTHLY' | 'YEARLY';
     COUNT?: number;
     UNTIL?: string;
@@ -85,61 +79,61 @@ interface ISchedulerRecurrencePattern {
     BYMONTH?: number;
     INTERVAL?: number;
 }
-interface ISchedulerChangedAppointments {
+export interface ISchedulerChangedAppointments {
     type?: 'Update' | 'Delete' | 'Add';
     appointment?: ISchedulerAppointmentDataFields;
 }
-interface ISchedulerContextMenuOpen {
+export interface ISchedulerContextMenuOpen {
     menu?: any;
     appointment?: any;
     event?: any;
 }
-interface ISchedulerContextMenuClose {
+export interface ISchedulerContextMenuClose {
     menu?: any;
     appointment?: any;
     event?: any;
 }
-interface ISchedulerContextMenuItemClick {
+export interface ISchedulerContextMenuItemClick {
     menu?: any;
     appointment?: any;
     event?: any;
 }
-interface ISchedulerContextMenuCreate {
+export interface ISchedulerContextMenuCreate {
     menu?: any;
     settings?: any;
 }
-interface ISchedulerEditDialogCreate {
+export interface ISchedulerEditDialogCreate {
     dialog?: any;
     fields?: any;
     editAppointment?: any;
 }
-interface ISchedulerEditDialogOpen {
+export interface ISchedulerEditDialogOpen {
     dialog?: any;
     fields?: any;
     editAppointment?: any;
 }
-interface ISchedulerEditDialogClose {
+export interface ISchedulerEditDialogClose {
     dialog?: any;
     fields?: any;
     editAppointment?: any;
 }
-interface ISchedulerEditDialogKeyDown {
+export interface ISchedulerEditDialogKeyDown {
     dialog?: any;
     fields?: any;
     editAppointment?: any;
     event?: any;
 }
-interface ISchedulerExportSettings {
+export interface ISchedulerExportSettings {
     serverURL?: string;
     characterSet?: string;
     fileName?: string;
     dateTimeFormatString?: string;
     resourcesInMultipleICSFiles?: boolean;
 }
-interface ISchedulerRenderAppointment {
+export interface ISchedulerRenderAppointment {
     data?: any;
 }
-interface ISchedulerResources {
+export interface ISchedulerResources {
     source?: string;
     colorScheme?: string;
     orientation?: 'none' | 'horizontal' | 'vertical';
@@ -147,14 +141,14 @@ interface ISchedulerResources {
     resourceColumnWidth?: number;
     resourceRowHeight?: number;
 }
-interface ISchedulerStatuses {
+export interface ISchedulerStatuses {
     free?: string;
     tentative?: string;
     busy?: string;
     doNotDisturb?: string;
     outOfOffice?: string;
 }
-interface ISchedulerGetSelection {
+export interface ISchedulerGetSelection {
     from?: any;
     to?: any;
     ResourceId?: any;
@@ -215,7 +209,6 @@ interface ISchedulerOptions {
     width?: number | string;
 }
 export interface ISchedulerProps extends ISchedulerOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onAppointmentChange?: (e?: Event) => void;

@@ -2,6 +2,6 @@
     "main": "react_jqxpivotgrid.umd.js",
     "module": "react_jqxpivotgrid.esm.js",
     "typings": "react_jqxpivotgrid.d.ts",
-    "name": "jqwidgets-react-tsx/jqxpivotgrid",
+    "name": "jqwidgets-react/jqxpivotgrid",
     "sideEffects": false
   }

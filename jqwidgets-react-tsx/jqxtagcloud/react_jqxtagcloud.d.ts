@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxTagCloud extends React.PureComponent<ITagCloudProps, IState> {
-    protected static defaultProps: ITagCloudProps;
     protected static getDerivedStateFromProps(props: ITagCloudProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: ITagCloudProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: ITagCloudProps): void;
     setOptions(options: ITagCloudProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     destroy(): void;
     findTagIndex(tag: string): number;
     getHiddenTagsList(): any[];
@@ -24,23 +20,21 @@ declare class JqxTagCloud extends React.PureComponent<ITagCloudProps, IState> {
     removeAt(index: number): void;
     updateAt(index: number, item: any): void;
     showItem(index: number): void;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxTagCloud;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface ITagCloudTagRenderer {
+export interface ITagCloudTagRenderer {
     itemData?: any;
     minValue?: number;
     valueRange?: number;
 }
-interface ITagCloudSource {
+export interface ITagCloudSource {
     url?: string;
     data?: any;
     localdata?: string;
@@ -77,7 +71,6 @@ interface ITagCloudOptions {
     width?: string | number;
 }
 export interface ITagCloudProps extends ITagCloudOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onBindingComplete?: (e?: Event) => void;

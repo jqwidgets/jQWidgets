@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxCalendar extends React.PureComponent<ICalendarProps, IState> {
-    protected static defaultProps: ICalendarProps;
     protected static getDerivedStateFromProps(props: ICalendarProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: ICalendarProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: ICalendarProps): void;
     setOptions(options: ICalendarProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     clear(): void;
     destroy(): void;
     focus(): void;
@@ -32,14 +28,12 @@ declare class JqxCalendar extends React.PureComponent<ICalendarProps, IState> {
     setRange(date: any, date2: any): void;
     today(): void;
     val(value?: Date | string, value2?: Date | string): Date | string;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxCalendar;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
@@ -82,7 +76,6 @@ interface ICalendarOptions {
     width?: string | number;
 }
 export interface ICalendarProps extends ICalendarOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onBackButtonClick?: (e?: Event) => void;

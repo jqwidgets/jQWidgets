@@ -1,22 +1,18 @@
 import * as React from 'react';
 declare class JqxTree extends React.PureComponent<ITreeProps, IState> {
-    protected static defaultProps: ITreeProps;
     protected static getDerivedStateFromProps(props: ITreeProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: ITreeProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: ITreeProps): void;
     setOptions(options: ITreeProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     addBefore(item: any, id: string): void;
     addAfter(item: any, id: string): void;
-    addTo(item: any, id: string): void;
+    addTo(item: any, id: string | null): void;
     clear(): void;
     checkAll(): void;
     checkItem(item: any, checked: boolean): void;
@@ -46,28 +42,26 @@ declare class JqxTree extends React.PureComponent<ITreeProps, IState> {
     uncheckItem(item: any): void;
     updateItem(item: any, newItem: any): void;
     val(value?: string): string;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxTree;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface ITreeDragStart {
+export interface ITreeDragStart {
     item?: object;
 }
-interface ITreeDragEnd {
+export interface ITreeDragEnd {
     dragItem?: any;
     dropItem?: any;
     args?: any;
     dropPosition?: any;
     tree?: any;
 }
-interface ITreeItem {
+export interface ITreeItem {
     label?: string;
     value?: string;
     disabled?: boolean;
@@ -100,7 +94,6 @@ interface ITreeOptions {
     width?: string | number;
 }
 export interface ITreeProps extends ITreeOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onAdded?: (e?: Event) => void;

@@ -2,6 +2,6 @@
     "main": "react_jqxdraw.umd.js",
     "module": "react_jqxdraw.esm.js",
     "typings": "react_jqxdraw.d.ts",
-    "name": "jqwidgets-react-tsx/jqxdraw",
+    "name": "jqwidgets-react/jqxdraw",
     "sideEffects": false
   }

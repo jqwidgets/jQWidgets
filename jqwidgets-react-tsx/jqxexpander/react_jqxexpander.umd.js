@@ -47,6 +47,16 @@ require('../../jqwidgets/jqxexpander');
             return _this;
         }
         JqxExpander.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -54,38 +64,23 @@ require('../../jqwidgets/jqxexpander');
             }
             return null;
         };
+        JqxExpander.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxExpander(widgetOptions);
+            this._wireEvents();
+        };
         JqxExpander.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxExpander.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxExpander.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxExpander.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxExpander.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxExpander(options);
         };
         JqxExpander.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxExpander(option);
-        };
-        JqxExpander.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxExpander.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxExpander.prototype.collapse = function () {
             this._jqx(this._componentSelector).jqxExpander('collapse');
@@ -126,11 +121,6 @@ require('../../jqwidgets/jqxexpander');
         JqxExpander.prototype.setContent = function (content) {
             this._jqx(this._componentSelector).jqxExpander('setContent', content);
         };
-        JqxExpander.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxExpander(widgetOptions);
-            this._wireEvents();
-        };
         JqxExpander.prototype._manageProps = function () {
             var widgetProps = ['animationType', 'arrowPosition', 'collapseAnimationDuration', 'disabled', 'expanded', 'expandAnimationDuration', 'height', 'headerPosition', 'initContent', 'rtl', 'showArrow', 'theme', 'toggleMode', 'width'];
             var options = {};
@@ -150,19 +140,14 @@ require('../../jqwidgets/jqxexpander');
                 }
             }
         };
-        JqxExpander.defaultProps = {
-            autoCreate: true
-        };
         return JqxExpander;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxExpander;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

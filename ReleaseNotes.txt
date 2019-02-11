@@ -1,4 +1,23 @@
 ﻿*********************************************
+* jQWidgets v7.1.0 Release, Feb-11-2019                *
+*********************************************
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid regarding the ensurerowvisible method when grouping is enabled.
+- Fixed an issue in jqxGrid regarding the keyboard navigation and selection when grouping is enabled. 
+- Fixed an issue in jqxGrid regarding the scrollbarsize property behavior.
+- Fixed an issue in jqxGrid regarding the number input editor when the editor is localized.
+- Fixed an issue in jqxGrid regarding the columnemenuopening column callback function.
+- Fixed an issue in jqxGrid regarding the filter menu with datetimeinput and its popup.
+- Fixed an issue in jqxGrid regarding the filter menu with the "show rows where" and "show rows where date" strings.
+- Fixed an issue in jqxNumberInput regarding its resize rendering behavior.
+- Fixed an issue in jqxScheduler regarding the appointmentOpacity.
+- Fixed an issue in jqxScheduler - the labels of the resources disappeared on changing of the date in 'timeline view
+- Fixed an issue in jqxDateTimeInput with "allowNullDate" and initial 'null'.
+- Fixed an issue in jqxTextArea regarding the 'selectAll' method.
+
+*********************************************
 * jQWidgets v7.0.0 Release, Jan-10-2019                *
 *********************************************
 

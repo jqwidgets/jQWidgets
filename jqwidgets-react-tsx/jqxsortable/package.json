@@ -2,6 +2,6 @@
     "main": "react_jqxsortable.umd.js",
     "module": "react_jqxsortable.esm.js",
     "typings": "react_jqxsortable.d.ts",
-    "name": "jqwidgets-react-tsx/jqxsortable",
+    "name": "jqwidgets-react/jqxsortable",
     "sideEffects": false
   }

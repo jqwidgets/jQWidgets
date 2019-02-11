@@ -44,6 +44,16 @@ var JqxBarGauge = /** @class */ (function (_super) {
         return _this;
     }
     JqxBarGauge.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -51,38 +61,23 @@ var JqxBarGauge = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxBarGauge.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxBarGauge(widgetOptions);
+        this._wireEvents();
+    };
     JqxBarGauge.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxBarGauge.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxBarGauge.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxBarGauge.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxBarGauge.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxBarGauge(options);
     };
     JqxBarGauge.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxBarGauge(option);
-    };
-    JqxBarGauge.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxBarGauge.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxBarGauge.prototype.refresh = function () {
         this._jqx(this._componentSelector).jqxBarGauge('refresh');
@@ -92,11 +87,6 @@ var JqxBarGauge = /** @class */ (function (_super) {
     };
     JqxBarGauge.prototype.val = function (value) {
         return this._jqx(this._componentSelector).jqxBarGauge('val', value);
-    };
-    JqxBarGauge.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxBarGauge(widgetOptions);
-        this._wireEvents();
     };
     JqxBarGauge.prototype._manageProps = function () {
         var widgetProps = ['animationDuration', 'backgroundColor', 'barSpacing', 'baseValue', 'colorScheme', 'customColorScheme', 'disabled', 'endAngle', 'formatFunction', 'height', 'labels', 'max', 'min', 'relativeInnerRadius', 'rendered', 'startAngle', 'title', 'tooltip', 'useGradient', 'values', 'width'];
@@ -117,14 +107,10 @@ var JqxBarGauge = /** @class */ (function (_super) {
             }
         }
     };
-    JqxBarGauge.defaultProps = {
-        autoCreate: true
-    };
     return JqxBarGauge;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxBarGauge;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

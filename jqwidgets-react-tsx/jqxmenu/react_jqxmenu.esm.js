@@ -44,6 +44,16 @@ var JqxMenu = /** @class */ (function (_super) {
         return _this;
     }
     JqxMenu.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -51,38 +61,23 @@ var JqxMenu = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxMenu.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxMenu(widgetOptions);
+        this._wireEvents();
+    };
     JqxMenu.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxMenu.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxMenu.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxMenu.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxMenu.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxMenu(options);
     };
     JqxMenu.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxMenu(option);
-    };
-    JqxMenu.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxMenu.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxMenu.prototype.closeItem = function (itemID) {
         this._jqx(this._componentSelector).jqxMenu('closeItem', itemID);
@@ -114,11 +109,6 @@ var JqxMenu = /** @class */ (function (_super) {
     JqxMenu.prototype.setItemOpenDirection = function (item, horizontaldirection, verticaldirection) {
         this._jqx(this._componentSelector).jqxMenu('setItemOpenDirection', item, horizontaldirection, verticaldirection);
     };
-    JqxMenu.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxMenu(widgetOptions);
-        this._wireEvents();
-    };
     JqxMenu.prototype._manageProps = function () {
         var widgetProps = ['animationShowDuration', 'animationHideDuration', 'animationHideDelay', 'animationShowDelay', 'autoCloseInterval', 'autoSizeMainItems', 'autoCloseOnClick', 'autoOpenPopup', 'autoOpen', 'autoCloseOnMouseLeave', 'clickToOpen', 'disabled', 'enableHover', 'easing', 'height', 'keyboardNavigation', 'minimizeWidth', 'mode', 'popupZIndex', 'rtl', 'showTopLevelArrows', 'source', 'theme', 'width'];
         var options = {};
@@ -138,14 +128,10 @@ var JqxMenu = /** @class */ (function (_super) {
             }
         }
     };
-    JqxMenu.defaultProps = {
-        autoCreate: true
-    };
     return JqxMenu;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxMenu;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };

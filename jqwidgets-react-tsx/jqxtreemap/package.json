@@ -2,6 +2,6 @@
     "main": "react_jqxtreemap.umd.js",
     "module": "react_jqxtreemap.esm.js",
     "typings": "react_jqxtreemap.d.ts",
-    "name": "jqwidgets-react-tsx/jqxtreemap",
+    "name": "jqwidgets-react/jqxtreemap",
     "sideEffects": false
   }

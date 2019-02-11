@@ -48,6 +48,16 @@ require('../../jqwidgets/jqxscrollbar');
             return _this;
         }
         JqxScrollBar.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -55,38 +65,23 @@ require('../../jqwidgets/jqxscrollbar');
             }
             return null;
         };
+        JqxScrollBar.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxScrollBar(widgetOptions);
+            this._wireEvents();
+        };
         JqxScrollBar.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxScrollBar.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxScrollBar.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-        };
-        JqxScrollBar.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxScrollBar.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxScrollBar(options);
         };
         JqxScrollBar.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxScrollBar(option);
-        };
-        JqxScrollBar.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxScrollBar.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxScrollBar.prototype.destroy = function () {
             this._jqx(this._componentSelector).jqxScrollBar('destroy');
@@ -96,11 +91,6 @@ require('../../jqwidgets/jqxscrollbar');
         };
         JqxScrollBar.prototype.setPosition = function (index) {
             this._jqx(this._componentSelector).jqxScrollBar('setPosition', index);
-        };
-        JqxScrollBar.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxScrollBar(widgetOptions);
-            this._wireEvents();
         };
         JqxScrollBar.prototype._manageProps = function () {
             var widgetProps = ['disabled', 'height', 'largestep', 'min', 'max', 'rtl', 'step', 'showButtons', 'thumbMinSize', 'theme', 'vertical', 'value', 'width'];
@@ -121,19 +111,14 @@ require('../../jqwidgets/jqxscrollbar');
                 }
             }
         };
-        JqxScrollBar.defaultProps = {
-            autoCreate: true
-        };
         return JqxScrollBar;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxScrollBar;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

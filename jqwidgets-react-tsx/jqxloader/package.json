@@ -2,6 +2,6 @@
     "main": "react_jqxloader.umd.js",
     "module": "react_jqxloader.esm.js",
     "typings": "react_jqxloader.d.ts",
-    "name": "jqwidgets-react-tsx/jqxloader",
+    "name": "jqwidgets-react/jqxloader",
     "sideEffects": false
   }

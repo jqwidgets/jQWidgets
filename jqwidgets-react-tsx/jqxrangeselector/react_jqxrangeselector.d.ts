@@ -1,53 +1,47 @@
 import * as React from 'react';
 declare class JqxRangeSelector extends React.PureComponent<IRangeSelectorProps, IState> {
-    protected static defaultProps: IRangeSelectorProps;
     protected static getDerivedStateFromProps(props: IRangeSelectorProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IRangeSelectorProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IRangeSelectorProps): void;
     setOptions(options: IRangeSelectorProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     destroy(): void;
     getRange(): IRangeSelectorGetRange;
     renderWidget(): void;
     refresh(): void;
     setRange(from: any, to: any): void;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxRangeSelector;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface IRangeSelectorRange {
+export interface IRangeSelectorRange {
     from?: number | string;
     to?: number | string;
     min?: number | string;
     max?: number | string;
 }
-interface IRangeSelectorGetRange {
+export interface IRangeSelectorGetRange {
     from?: number | string;
     to?: number | string;
 }
-interface IRangeSelectorLabelsFormatFunction {
+export interface IRangeSelectorLabelsFormatFunction {
     value?: string;
 }
-interface IRangeSelectorMarkersFormatFunction {
+export interface IRangeSelectorMarkersFormatFunction {
     value?: string;
     position?: string;
 }
-interface IRangeSelectorGroupLabelsFormatFunction {
+export interface IRangeSelectorGroupLabelsFormatFunction {
     value?: string;
     date?: object;
 }
@@ -78,7 +72,6 @@ interface IRangeSelectorOptions {
     width?: string | number;
 }
 export interface IRangeSelectorProps extends IRangeSelectorOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onChange?: (e?: Event) => void;

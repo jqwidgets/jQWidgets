@@ -2,6 +2,6 @@
     "main": "react_jqxcomplexinput.umd.js",
     "module": "react_jqxcomplexinput.esm.js",
     "typings": "react_jqxcomplexinput.d.ts",
-    "name": "jqwidgets-react-tsx/jqxcomplexinput",
+    "name": "jqwidgets-react/jqxcomplexinput",
     "sideEffects": false
   }

@@ -50,6 +50,16 @@ require('../../jqwidgets/jqxtextarea');
             return _this;
         }
         JqxTextArea.getDerivedStateFromProps = function (props, state) {
+            if (!Object.is) {
+                Object.is = function (x, y) {
+                    if (x === y) {
+                        return x !== 0 || 1 / x === 1 / y;
+                    }
+                    else {
+                        return x !== x && y !== y;
+                    }
+                };
+            }
             var areEqual = Object.is(props, state.lastProps);
             if (!areEqual) {
                 var newState = { lastProps: props };
@@ -57,38 +67,23 @@ require('../../jqwidgets/jqxtextarea');
             }
             return null;
         };
+        JqxTextArea.prototype.componentDidMount = function () {
+            var widgetOptions = this._manageProps();
+            this._jqx(this._componentSelector).jqxTextArea(widgetOptions);
+            this._wireEvents();
+        };
         JqxTextArea.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
         };
-        JqxTextArea.prototype.componentDidMount = function () {
-            if (this.props.autoCreate) {
-                this._createComponent();
-            }
-        };
         JqxTextArea.prototype.render = function () {
             return (React.createElement("textarea", { id: this._id }, this.props.children));
-        };
-        JqxTextArea.prototype.createComponent = function (options) {
-            if (!this.props.autoCreate) {
-                this._createComponent(options);
-            }
-            else {
-                /* tslint:disable:no-console */
-                console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-            }
         };
         JqxTextArea.prototype.setOptions = function (options) {
             this._jqx(this._componentSelector).jqxTextArea(options);
         };
         JqxTextArea.prototype.getOptions = function (option) {
             return this._jqx(this._componentSelector).jqxTextArea(option);
-        };
-        JqxTextArea.prototype.addEventListener = function (name, callbackFn) {
-            this._jqx(this._componentSelector).on(name, callbackFn);
-        };
-        JqxTextArea.prototype.removeEventListener = function (name) {
-            this._jqx(this._componentSelector).off(name);
         };
         JqxTextArea.prototype.destroy = function () {
             this._jqx(this._componentSelector).jqxTextArea('destroy');
@@ -107,11 +102,6 @@ require('../../jqwidgets/jqxtextarea');
         };
         JqxTextArea.prototype.val = function (value) {
             return this._jqx(this._componentSelector).jqxTextArea('val', value);
-        };
-        JqxTextArea.prototype._createComponent = function (options) {
-            var widgetOptions = options ? options : this._manageProps();
-            this._jqx(this._componentSelector).jqxTextArea(widgetOptions);
-            this._wireEvents();
         };
         JqxTextArea.prototype._manageProps = function () {
             var widgetProps = ['disabled', 'displayMember', 'dropDownWidth', 'height', 'items', 'maxLength', 'minLength', 'opened', 'placeHolder', 'popupZIndex', 'query', 'renderer', 'roundedCorners', 'rtl', 'scrollBarSize', 'searchMode', 'source', 'theme', 'valueMember', 'width'];
@@ -132,19 +122,14 @@ require('../../jqwidgets/jqxtextarea');
                 }
             }
         };
-        JqxTextArea.defaultProps = {
-            autoCreate: true
-        };
         return JqxTextArea;
     }(React.PureComponent));
     var jqx = window.jqx;
     var JQXLite = window.JQXLite;
-    var jqwidgets = window.jqwidgets;
 
     exports.default = JqxTextArea;
     exports.jqx = jqx;
     exports.JQXLite = JQXLite;
-    exports.jqwidgets = jqwidgets;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxDraw extends React.PureComponent<IDrawProps, IState> {
-    protected static defaultProps: IDrawProps;
     protected static getDerivedStateFromProps(props: IDrawProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: IDrawProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: IDrawProps): void;
     setOptions(options: IDrawProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     attr(element?: any, attributes?: any): void;
     circle(cx?: number, cy?: number, r?: number, attributes?: any): any;
     clear(): void;
@@ -30,14 +26,12 @@ declare class JqxDraw extends React.PureComponent<IDrawProps, IState> {
     saveAsJPEG(image?: string, url?: string): void;
     saveAsPNG(image?: string, url?: string): void;
     text(text?: string, x?: number, y?: number, width?: number | string, height?: number | string, angle?: number, attributes?: any, clip?: boolean, halign?: string, valign?: string, rotateAround?: string): any;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxDraw;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
@@ -45,7 +39,6 @@ interface IDrawOptions {
     renderEngine?: 'SVG' | 'VML' | 'HTML5';
 }
 export interface IDrawProps extends IDrawOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
 }

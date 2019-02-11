@@ -1,19 +1,15 @@
 import * as React from 'react';
 declare class JqxTabs extends React.PureComponent<ITabsProps, IState> {
-    protected static defaultProps: ITabsProps;
     protected static getDerivedStateFromProps(props: ITabsProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: ITabsProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: ITabsProps): void;
     setOptions(options: ITabsProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
     addAt(index: number, title: string, content: string): void;
     addFirst(htmlElement1: any, htmlElement2: any): void;
     addLast(htmlElement1: any, htmlElement2?: any): void;
@@ -41,14 +37,12 @@ declare class JqxTabs extends React.PureComponent<ITabsProps, IState> {
     showCloseButtonAt(index: number): void;
     showAllCloseButtons(): void;
     val(value?: string): string;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxTabs;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
@@ -82,7 +76,6 @@ interface ITabsOptions {
     width?: string | number;
 }
 export interface ITabsProps extends ITabsOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onAdd?: (e?: Event) => void;

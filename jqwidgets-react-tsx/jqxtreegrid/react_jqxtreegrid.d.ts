@@ -1,39 +1,35 @@
 import * as React from 'react';
 declare class JqxTreeGrid extends React.PureComponent<ITreeGridProps, IState> {
-    protected static defaultProps: ITreeGridProps;
     protected static getDerivedStateFromProps(props: ITreeGridProps, state: IState): null | IState;
     private _jqx;
     private _id;
     private _componentSelector;
     constructor(props: ITreeGridProps);
-    componentDidUpdate(): void;
     componentDidMount(): void;
+    componentDidUpdate(): void;
     render(): React.ReactNode;
-    createComponent(options: ITreeGridProps): void;
     setOptions(options: ITreeGridProps): void;
     getOptions(option: string): any;
-    addEventListener(name: string, callbackFn: (e?: Event) => void): void;
-    removeEventListener(name: string): void;
-    addRow(rowKey: string, rowData: any, rowPosition: string, parent?: string): void;
+    addRow(rowKey: number | string, rowData: any, rowPosition: string, parent?: string): void;
     addFilter(dataField: string, filerGroup: any): void;
     applyFilters(): void;
     beginUpdate(): void;
-    beginRowEdit(rowKey: string): void;
-    beginCellEdit(rowKey: string, dataField: string): void;
+    beginRowEdit(rowKey: number | string): void;
+    beginCellEdit(rowKey: number | string, dataField: string): void;
     clearSelection(): void;
     clearFilters(): void;
     clear(): void;
-    checkRow(rowKey: string): void;
-    collapseRow(rowKey: string): void;
+    checkRow(rowKey: number | string): void;
+    collapseRow(rowKey: number | string): void;
     collapseAll(): void;
     destroy(): void;
     deleteRow(rowKey: string[] | string): void;
     expandRow(rowKey: Array<number | string> | string | number): void;
     expandAll(): void;
     endUpdate(): void;
-    ensureRowVisible(rowKey: string): void;
-    endRowEdit(rowKey: string, cancelChanges?: boolean): void;
-    endCellEdit(rowKey: string, dataField: string, cancelChanges?: boolean): void;
+    ensureRowVisible(rowKey: number | string): void;
+    endRowEdit(rowKey: number | string, cancelChanges?: boolean): void;
+    endCellEdit(rowKey: number | string, dataField: string, cancelChanges?: boolean): void;
     exportData(exportDataType: any): any;
     focus(): void;
     getColumnProperty(dataField: string, propertyName: string): any;
@@ -42,11 +38,11 @@ declare class JqxTreeGrid extends React.PureComponent<ITreeGridProps, IState> {
     goToNextPage(): void;
     getSelection(): any[];
     getKey(row: any): string;
-    getRow(rowKey: string): ITreeGridGetRow;
+    getRow(rowKey: number | string): ITreeGridGetRow;
     getRows(): ITreeGridGetRow[];
     getCheckedRows(): ITreeGridGetRow[];
     getView(): ITreeGridGetRow[];
-    getCellValue(rowKey: string, dataField: string): any;
+    getCellValue(rowKey: number | string, dataField: string): any;
     hideColumn(dataField: string): void;
     isBindingCompleted(): boolean;
     lockRow(rowKey: string | number | Array<number | string>): void;
@@ -58,25 +54,24 @@ declare class JqxTreeGrid extends React.PureComponent<ITreeGridProps, IState> {
     showColumn(dataField: string): void;
     selectRow(rowId: string | number | Array<number | string>): void;
     setCellValue(rowId: string, dataField: string, cellValue: any): void;
-    sortBy(dataField: number | string, sortOrder?: string): void;
+    sortBy(dataField: number | string, sortOrder?: 'asc' | 'desc' | null): void;
     updating(): boolean;
     updateBoundData(): void;
     unselectRow(rowId: string | number | Array<number | string>): void;
     uncheckRow(rowId: string): void;
     updateRow(rowId: number | string, data: any): void;
     unlockRow(rowId: string | number | Array<number | string>): void;
-    private _createComponent;
     private _manageProps;
     private _wireEvents;
 }
 export default JqxTreeGrid;
 export declare const jqx: any;
 export declare const JQXLite: any;
-export declare const jqwidgets: any;
 interface IState {
     lastProps: object;
 }
-interface ITreeGridEditSettings {
+export interface ITreeGridEditSettings {
+    saveOnEnter?: boolean;
     saveOnPageChange?: boolean;
     saveOnBlur?: boolean;
     saveOnSelectionChange?: boolean;
@@ -85,16 +80,16 @@ interface ITreeGridEditSettings {
     editOnDoubleClick?: boolean;
     editOnF2?: boolean;
 }
-interface ITreeGridExportSettings {
+export interface ITreeGridExportSettings {
     columnsHeader?: boolean;
     hiddenColumns?: boolean;
     serverURL?: string | any;
     characterSet?: string;
     collapsedRecords?: boolean;
     recordsInView?: boolean;
-    fileName?: string;
+    fileName?: string | null;
 }
-interface ITreeGridGetRow {
+export interface ITreeGridGetRow {
     type?: string;
     checked?: boolean;
     expanded?: boolean;
@@ -106,17 +101,17 @@ interface ITreeGridGetRow {
     selected?: boolean;
     uid?: number | string;
 }
-interface ITreeGridRowDetailsRenderer {
+export interface ITreeGridRowDetailsRenderer {
     key?: number;
     dataRow?: number;
 }
-interface ITreeGridRenderStatusBar {
+export interface ITreeGridRenderStatusBar {
     statusbar?: object;
 }
-interface ITreeGridRenderToolbar {
+export interface ITreeGridRenderToolbar {
     toolbar?: object;
 }
-interface ITreeGridScrollOffset {
+export interface ITreeGridScrollOffset {
     top?: number;
     left?: number;
 }
@@ -170,7 +165,7 @@ interface ITreeGridOptions {
     showStatusbar?: boolean;
     statusBarHeight?: number;
     scrollBarSize?: number;
-    selectionMode?: 'multipleRows' | 'singleRow' | 'custom';
+    selectionMode?: 'multipleRows' | 'singleRow' | 'custom' | 'none';
     showHeader?: boolean;
     theme?: string;
     toolbarHeight?: number;
@@ -179,7 +174,6 @@ interface ITreeGridOptions {
     virtualModeRecordCreating?: (record?: any) => any;
 }
 export interface ITreeGridProps extends ITreeGridOptions {
-    autoCreate?: boolean;
     className?: string;
     style?: React.CSSProperties;
     onBindingComplete?: (e?: Event) => void;

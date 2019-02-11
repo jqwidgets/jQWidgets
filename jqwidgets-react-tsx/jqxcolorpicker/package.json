@@ -2,6 +2,6 @@
     "main": "react_jqxcolorpicker.umd.js",
     "module": "react_jqxcolorpicker.esm.js",
     "typings": "react_jqxcolorpicker.d.ts",
-    "name": "jqwidgets-react-tsx/jqxcolorpicker",
+    "name": "jqwidgets-react/jqxcolorpicker",
     "sideEffects": false
   }

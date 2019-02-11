@@ -45,6 +45,16 @@ var JqxRibbon = /** @class */ (function (_super) {
         return _this;
     }
     JqxRibbon.getDerivedStateFromProps = function (props, state) {
+        if (!Object.is) {
+            Object.is = function (x, y) {
+                if (x === y) {
+                    return x !== 0 || 1 / x === 1 / y;
+                }
+                else {
+                    return x !== x && y !== y;
+                }
+            };
+        }
         var areEqual = Object.is(props, state.lastProps);
         if (!areEqual) {
             var newState = { lastProps: props };
@@ -52,38 +62,23 @@ var JqxRibbon = /** @class */ (function (_super) {
         }
         return null;
     };
+    JqxRibbon.prototype.componentDidMount = function () {
+        var widgetOptions = this._manageProps();
+        this._jqx(this._componentSelector).jqxRibbon(widgetOptions);
+        this._wireEvents();
+    };
     JqxRibbon.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
     };
-    JqxRibbon.prototype.componentDidMount = function () {
-        if (this.props.autoCreate) {
-            this._createComponent();
-        }
-    };
     JqxRibbon.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
-    };
-    JqxRibbon.prototype.createComponent = function (options) {
-        if (!this.props.autoCreate) {
-            this._createComponent(options);
-        }
-        else {
-            /* tslint:disable:no-console */
-            console.warn('Component is already created! If you want to use createComponent, please set "autoCreate" prop to "false".');
-        }
     };
     JqxRibbon.prototype.setOptions = function (options) {
         this._jqx(this._componentSelector).jqxRibbon(options);
     };
     JqxRibbon.prototype.getOptions = function (option) {
         return this._jqx(this._componentSelector).jqxRibbon(option);
-    };
-    JqxRibbon.prototype.addEventListener = function (name, callbackFn) {
-        this._jqx(this._componentSelector).on(name, callbackFn);
-    };
-    JqxRibbon.prototype.removeEventListener = function (name) {
-        this._jqx(this._componentSelector).off(name);
     };
     JqxRibbon.prototype.addAt = function (index, item) {
         this._jqx(this._componentSelector).jqxRibbon('addAt', index, item);
@@ -127,11 +122,6 @@ var JqxRibbon = /** @class */ (function (_super) {
     JqxRibbon.prototype.val = function (value) {
         return this._jqx(this._componentSelector).jqxRibbon('val', value);
     };
-    JqxRibbon.prototype._createComponent = function (options) {
-        var widgetOptions = options ? options : this._manageProps();
-        this._jqx(this._componentSelector).jqxRibbon(widgetOptions);
-        this._wireEvents();
-    };
     JqxRibbon.prototype._manageProps = function () {
         var widgetProps = ['animationType', 'animationDelay', 'disabled', 'height', 'initContent', 'mode', 'popupCloseMode', 'position', 'reorder', 'rtl', 'selectedIndex', 'selectionMode', 'scrollPosition', 'scrollStep', 'scrollDelay', 'theme', 'width'];
         var options = {};
@@ -151,14 +141,10 @@ var JqxRibbon = /** @class */ (function (_super) {
             }
         }
     };
-    JqxRibbon.defaultProps = {
-        autoCreate: true
-    };
     return JqxRibbon;
 }(PureComponent));
 var jqx = window.jqx;
 var JQXLite = window.JQXLite;
-var jqwidgets = window.jqwidgets;
 
 export default JqxRibbon;
-export { jqx, JQXLite, jqwidgets };
+export { jqx, JQXLite };
