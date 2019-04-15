@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -20,18 +20,18 @@ declare let JQXLite: any;
 
 export class jqxNavigationBarComponent implements OnChanges
 {
-   @Input('animationType') attrAnimationType: any;
-   @Input('arrowPosition') attrArrowPosition: any;
+   @Input('animationType') attrAnimationType: string;
+   @Input('arrowPosition') attrArrowPosition: string;
    @Input('collapseAnimationDuration') attrCollapseAnimationDuration: number;
    @Input('disabled') attrDisabled: boolean;
    @Input('expandAnimationDuration') attrExpandAnimationDuration: number;
-   @Input('expandMode') attrExpandMode: any;
+   @Input('expandMode') attrExpandMode: string;
    @Input('expandedIndexes') attrExpandedIndexes: Array<number>;
    @Input('initContent') attrInitContent: (index:number) => void;
    @Input('rtl') attrRtl: boolean;
    @Input('showArrow') attrShowArrow: boolean;
    @Input('theme') attrTheme: string;
-   @Input('toggleMode') attrToggleMode: any;
+   @Input('toggleMode') attrToggleMode: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
@@ -152,7 +152,7 @@ export class jqxNavigationBarComponent implements OnChanges
    }
 
    // jqxNavigationBarComponent properties
-   animationType(arg?: string) : any {
+   animationType(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('animationType', arg);
       } else {
@@ -160,7 +160,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   arrowPosition(arg?: string) : any {
+   arrowPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('arrowPosition', arg);
       } else {
@@ -168,7 +168,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   collapseAnimationDuration(arg?: number) : any {
+   collapseAnimationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('collapseAnimationDuration', arg);
       } else {
@@ -176,7 +176,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('disabled', arg);
       } else {
@@ -184,7 +184,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   expandAnimationDuration(arg?: number) : any {
+   expandAnimationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('expandAnimationDuration', arg);
       } else {
@@ -192,7 +192,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   expandMode(arg?: string) : any {
+   expandMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('expandMode', arg);
       } else {
@@ -200,7 +200,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   expandedIndexes(arg?: Array<number>) : any {
+   expandedIndexes(arg?: Array<number>): Array<number> {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('expandedIndexes', arg);
       } else {
@@ -208,7 +208,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('height', arg);
       } else {
@@ -216,7 +216,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   initContent(arg?: (index:number) => void) : any {
+   initContent(arg?: (index:number) => void): (index:number) => void {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('initContent', arg);
       } else {
@@ -224,7 +224,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('rtl', arg);
       } else {
@@ -232,7 +232,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   showArrow(arg?: boolean) : any {
+   showArrow(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('showArrow', arg);
       } else {
@@ -240,7 +240,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('theme', arg);
       } else {
@@ -248,7 +248,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   toggleMode(arg?: string) : any {
+   toggleMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('toggleMode', arg);
       } else {
@@ -256,7 +256,7 @@ export class jqxNavigationBarComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxNavigationBar('width', arg);
       } else {

@@ -1,10 +1,3 @@
-/*
-jQWidgets v7.1.0 (2019-Feb)
-Copyright (c) 2011-2019 jQWidgets.
-License: https://jqwidgets.com/license/
-*/
-/* eslint-disable */
-
 import '../jqwidgets/styles/jqx.base.css';
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdraw.js';
@@ -28,26 +21,26 @@ export default class JqxGauge extends React.Component {
         this.createComponent(options);
     };
     manageAttributes() {
-        const properties = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','style','ticksMajor','ticksMinor','ticksDistance','value','width'];
+        const properties = ['animationDuration','border','caption','cap','colorScheme','disabled','easing','endAngle','height','int64','labels','min','max','pointer','radius','ranges','startAngle','showRanges','styles','ticksMajor','ticksMinor','ticksDistance','value','width'];
         let options = {};
         for(let item in this.props) {
-            if(item === 'settings') {
-                for(let itemTwo in this.props[item]) {
-                    options[itemTwo] = this.props[item][itemTwo];
-                }
-            } else {
-                if(properties.indexOf(item) !== -1) {
-                      options[item] = this.props[item];
-                }
-            }
-        }
-        return options;
-    };
+    	    if(item === 'settings') {
+      	      for(let itemTwo in this.props[item]) {
+        	        options[itemTwo] = this.props[item][itemTwo];
+  			  }
+  		  } else {
+  			  if(properties.indexOf(item) !== -1) {
+      		        options[item] = this.props[item];
+  			  }
+  		  }
+  	  }
+  	  return options;
+	};
     createComponent(options) {
         if(!this.style) {
-            for (let style in this.props.style) {
-                JQXLite(this.componentSelector).css(style, this.props.style[style]);
-            }
+    	    for (let style in this.props.style) {
+      	      JQXLite(this.componentSelector).css(style, this.props.style[style]);
+    	    }
         }
         if(this.props.className !== undefined) {
             const classes = this.props.className.split(' ');
@@ -56,7 +49,7 @@ export default class JqxGauge extends React.Component {
             }
         }
         if(!this.template) {
-            JQXLite(this.componentSelector).html(this.props.template);
+    	    JQXLite(this.componentSelector).html(this.props.template);
         }
         JQXLite(this.componentSelector).jqxGauge(options);
     };
@@ -205,11 +198,11 @@ export default class JqxGauge extends React.Component {
             return JQXLite(this.componentSelector).jqxGauge('showRanges');
         }
     };
-    style(arg) {
+    styles(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxGauge('style', arg)
+            JQXLite(this.componentSelector).jqxGauge('styles', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxGauge('style');
+            return JQXLite(this.componentSelector).jqxGauge('styles');
         }
     };
     ticksMajor(arg) {
@@ -267,4 +260,3 @@ export default class JqxGauge extends React.Component {
         )
     };
 };
-

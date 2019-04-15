@@ -106,8 +106,12 @@ class JqxFormattedInput extends React.PureComponent<IFormattedInputProps, IState
         this._jqx(this._componentSelector).jqxFormattedInput('selectLast' );
     };
 
-    public val(value?: number | string): any {
-        return this._jqx(this._componentSelector).jqxFormattedInput('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxFormattedInput('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxFormattedInput('val');
+        }
     };
 
     private _manageProps(): IFormattedInputProps {
@@ -117,7 +121,7 @@ class JqxFormattedInput extends React.PureComponent<IFormattedInputProps, IState
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

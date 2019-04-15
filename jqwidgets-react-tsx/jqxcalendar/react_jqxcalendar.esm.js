@@ -133,8 +133,13 @@ var JqxCalendar = /** @class */ (function (_super) {
     JqxCalendar.prototype.today = function () {
         this._jqx(this._componentSelector).jqxCalendar('today');
     };
-    JqxCalendar.prototype.val = function (value, value2) {
-        return this._jqx(this._componentSelector).jqxCalendar('val', value, value2);
+    JqxCalendar.prototype.val = function (value) {
+        if (value) {
+            this._jqx(this._componentSelector).jqxCalendar('val', value);
+        }
+        else {
+            return this._jqx(this._componentSelector).jqxCalendar('val');
+        }
     };
     JqxCalendar.prototype._manageProps = function () {
         var widgetProps = ['backText', 'columnHeaderHeight', 'clearString', 'culture', 'dayNameFormat', 'disabled', 'enableWeekend', 'enableViews', 'enableOtherMonthDays', 'enableFastNavigation', 'enableHover', 'enableAutoNavigation', 'enableTooltips', 'forwardText', 'firstDayOfWeek', 'height', 'min', 'max', 'navigationDelay', 'rowHeaderWidth', 'readOnly', 'restrictedDates', 'rtl', 'stepMonths', 'showWeekNumbers', 'showDayNames', 'showOtherMonthDays', 'showFooter', 'selectionMode', 'specialDates', 'theme', 'titleHeight', 'titleFormat', 'todayString', 'value', 'width'];

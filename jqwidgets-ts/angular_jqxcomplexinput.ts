@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -32,14 +32,14 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('decimalNotation') attrDecimalNotation: any;
+   @Input('decimalNotation') attrDecimalNotation: string;
    @Input('disabled') attrDisabled: boolean;
    @Input('placeHolder') attrPlaceHolder: string;
    @Input('roundedCorners') attrRoundedCorners: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('spinButtons') attrSpinButtons: boolean;
    @Input('spinButtonsStep') attrSpinButtonsStep: number;
-   @Input('template') attrTemplate: any;
+   @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
    @Input('value') attrValue: string;
    @Input('width') attrWidth: string | number;
@@ -198,7 +198,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxComplexInputComponent properties
-   decimalNotation(arg?: string) : any {
+   decimalNotation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxComplexInput('decimalNotation', arg);
       } else {
@@ -206,7 +206,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxComplexInput('disabled', arg);
       } else {
@@ -214,7 +214,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxComplexInput('height', arg);
       } else {
@@ -222,7 +222,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   placeHolder(arg?: string) : any {
+   placeHolder(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxComplexInput('placeHolder', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   roundedCorners(arg?: boolean) : any {
+   roundedCorners(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxComplexInput('roundedCorners', arg);
       } else {
@@ -238,7 +238,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxComplexInput('rtl', arg);
       } else {
@@ -246,7 +246,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   spinButtons(arg?: boolean) : any {
+   spinButtons(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxComplexInput('spinButtons', arg);
       } else {
@@ -254,7 +254,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   spinButtonsStep(arg?: number) : any {
+   spinButtonsStep(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxComplexInput('spinButtonsStep', arg);
       } else {
@@ -262,7 +262,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxComplexInput('template', arg);
       } else {
@@ -270,7 +270,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxComplexInput('theme', arg);
       } else {
@@ -278,7 +278,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   value(arg?: string) : any {
+   value(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxComplexInput('value', arg);
       } else {
@@ -286,7 +286,7 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxComplexInput('width', arg);
       } else {
@@ -298,6 +298,10 @@ export class jqxComplexInputComponent implements ControlValueAccessor, OnChanges
    // jqxComplexInputComponent functions
    destroy(): void {
       this.host.jqxComplexInput('destroy');
+   }
+
+   getDecimalNotation(part: string, decimalNotation: string): string {
+      return this.host.jqxComplexInput('getDecimalNotation', part, decimalNotation);
    }
 
    getReal(complexnumber?: number): number {

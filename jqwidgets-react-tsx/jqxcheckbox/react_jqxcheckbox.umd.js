@@ -111,7 +111,12 @@ require('../../jqwidgets/jqxcheckbox');
             this._jqx(this._componentSelector).jqxCheckBox('uncheck');
         };
         JqxCheckBox.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxCheckBox('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxCheckBox('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxCheckBox('val');
+            }
         };
         JqxCheckBox.prototype._manageProps = function () {
             var widgetProps = ['animationShowDelay', 'animationHideDelay', 'boxSize', 'checked', 'disabled', 'enableContainerClick', 'groupName', 'height', 'hasThreeStates', 'locked', 'rtl', 'theme', 'width'];

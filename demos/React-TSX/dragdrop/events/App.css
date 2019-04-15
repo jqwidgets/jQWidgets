@@ -1,0 +1,52 @@
+.row {
+    padding: 1px;
+}
+
+.draggable > div {
+    border: 1px solid #bbb;
+    background-color: #C9ECFF;
+    width: 100px;
+    height: 100px;
+    left: 30px;
+    top: 50px;
+    padding: 5px;
+    z-index: 2;
+}
+
+#draggable-parent {
+    background-color: #eeffee;
+    width: 350px;
+    height: 350px;
+    text-align: center;
+    border: 1px solid #eee;
+    float: left;
+}
+
+.main-container {
+    width: 650px;
+    z-index: 0;
+}
+
+.events > div {
+    float: right;
+    padding: 10px;
+    font-family: Tahoma;
+    font-size: 13px;
+}
+
+.label {
+    position: relative;
+    font-family: Verdana;
+    font-size: 11px;
+    color: #000;
+}
+
+.drop-target {
+    background-color: #FBFFB5;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ddd;
+    margin-left: 190px;
+    margin-top: 70px;
+    z-index: 1;
+}

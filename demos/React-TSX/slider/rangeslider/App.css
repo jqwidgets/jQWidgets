@@ -1,0 +1,83 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.demo-laptop-catalog-table {
+  table-layout: fixed;
+  border-collapse: separate;
+}
+
+.demo-laptop-cell {
+  border: 1px solid #ccc;
+}
+
+.demo-laptop-cell-header-content {
+  top: 5px;
+  position: relative;
+}
+
+.demo-laptop-cell-header {
+  border: 0px solid #ccc;
+  border-bottom-width: 1px;
+  height: 20px;
+  font-size: 10px;
+  text-align: center;
+  font-weight: bold;
+  vertical-align: middle;
+  background: #e3e3e3;
+}
+
+.demo-laptop-cell-content {
+  padding-top: 5px;
+}
+
+.demo-laptop-cell-price {
+  padding: 2px 3px 2px 3px;
+  color: #fff;
+  float: right;
+  background: #000;
+  font-weight: bold;
+}
+
+.catalogue {
+  border: 1px solid #bbb;
+  padding: 3px;
+  background: #fff;
+}
+
+.options {
+  width: 200px;
+  margin-left: 5px;
+  float: left;
+}
+
+.main-container {
+  padding: 2px;
+}
+
+.label {
+  font-size: 13px;
+  font-family: Arial;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  width: 100%;
+  text-align: left;
+}
+
+.options-value {
+  font-size: 11px;
+}
+
+.options-container {
+  padding: 10px;
+  text-align: center;
+}
+
+.resetButton {
+  margin-top: 35px;
+}

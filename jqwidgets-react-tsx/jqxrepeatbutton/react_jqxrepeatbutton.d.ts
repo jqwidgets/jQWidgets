@@ -13,7 +13,7 @@ declare class JqxRepeatButton extends React.PureComponent<IRepeatButtonProps, IS
     destroy(): void;
     focus(): void;
     renderWidget(): void;
-    val(value?: string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

@@ -12,7 +12,7 @@ declare class JqxBarGauge extends React.PureComponent<IBarGaugeProps, IState> {
     getOptions(option: string): any;
     refresh(): void;
     renderWidget(): void;
-    val(value?: number[]): number[];
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

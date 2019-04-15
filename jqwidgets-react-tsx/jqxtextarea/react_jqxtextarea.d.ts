@@ -15,7 +15,7 @@ declare class JqxTextArea extends React.PureComponent<ITextAreaProps, IState> {
     refresh(): void;
     renderWidget(): void;
     selectAll(): void;
-    val(value?: string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

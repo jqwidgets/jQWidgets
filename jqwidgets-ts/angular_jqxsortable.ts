@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -36,7 +36,7 @@ export class jqxSortableComponent implements OnChanges
    @Input('forcePlaceholderSize') attrForcePlaceholderSize: boolean;
    @Input('grid') attrGrid: Array<number>;
    @Input('handle') attrHandle: string | boolean;
-   @Input('helper') attrHelper: any;
+   @Input('helper') attrHelper: (originalEvent?: any, content?: any) => void | 'original' | 'clone';
    @Input('items') attrItems: string;
    @Input('opacity') attrOpacity: number | boolean;
    @Input('placeholderShow') attrPlaceholderShow: string | boolean;
@@ -44,7 +44,7 @@ export class jqxSortableComponent implements OnChanges
    @Input('scroll') attrScroll: boolean;
    @Input('scrollSensitivity') attrScrollSensitivity: number;
    @Input('scrollSpeed') attrScrollSpeed: number;
-   @Input('tolerance') attrTolerance: any;
+   @Input('tolerance') attrTolerance: string;
    @Input('zIndex') attrZIndex: number;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -166,7 +166,7 @@ export class jqxSortableComponent implements OnChanges
    }
 
    // jqxSortableComponent properties
-   appendTo(arg?: string) : any {
+   appendTo(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSortable('appendTo', arg);
       } else {
@@ -174,7 +174,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   axis(arg?: number | string) : any {
+   axis(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxSortable('axis', arg);
       } else {
@@ -182,7 +182,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   cancel(arg?: string) : any {
+   cancel(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSortable('cancel', arg);
       } else {
@@ -190,7 +190,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   connectWith(arg?: string | boolean) : any {
+   connectWith(arg?: string | boolean): string | boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('connectWith', arg);
       } else {
@@ -198,7 +198,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   containment(arg?: string | boolean) : any {
+   containment(arg?: string | boolean): string | boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('containment', arg);
       } else {
@@ -206,7 +206,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   cursor(arg?: string) : any {
+   cursor(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSortable('cursor', arg);
       } else {
@@ -214,7 +214,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   cursorAt(arg?: jqwidgets.SortableCursorAt) : any {
+   cursorAt(arg?: jqwidgets.SortableCursorAt): jqwidgets.SortableCursorAt {
       if (arg !== undefined) {
           this.host.jqxSortable('cursorAt', arg);
       } else {
@@ -222,7 +222,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   delay(arg?: number) : any {
+   delay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxSortable('delay', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('disabled', arg);
       } else {
@@ -238,7 +238,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   distance(arg?: number) : any {
+   distance(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxSortable('distance', arg);
       } else {
@@ -246,7 +246,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   dropOnEmpty(arg?: boolean) : any {
+   dropOnEmpty(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('dropOnEmpty', arg);
       } else {
@@ -254,7 +254,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   forceHelperSize(arg?: boolean) : any {
+   forceHelperSize(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('forceHelperSize', arg);
       } else {
@@ -262,7 +262,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   forcePlaceholderSize(arg?: boolean) : any {
+   forcePlaceholderSize(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('forcePlaceholderSize', arg);
       } else {
@@ -270,7 +270,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   grid(arg?: Array<number>) : any {
+   grid(arg?: Array<number>): Array<number> {
       if (arg !== undefined) {
           this.host.jqxSortable('grid', arg);
       } else {
@@ -278,7 +278,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   handle(arg?: string | boolean) : any {
+   handle(arg?: string | boolean): string | boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('handle', arg);
       } else {
@@ -286,7 +286,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   helper(arg?: string) : any {
+   helper(arg?: (originalEvent?: any, content?: any) => void | 'original' | 'clone'): (originalEvent?: any, content?: any) => void | 'original' | 'clone' {
       if (arg !== undefined) {
           this.host.jqxSortable('helper', arg);
       } else {
@@ -294,7 +294,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   items(arg?: string) : any {
+   items(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSortable('items', arg);
       } else {
@@ -302,7 +302,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   opacity(arg?: number | boolean) : any {
+   opacity(arg?: number | boolean): number | boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('opacity', arg);
       } else {
@@ -310,7 +310,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   placeholderShow(arg?: string | boolean) : any {
+   placeholderShow(arg?: string | boolean): string | boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('placeholderShow', arg);
       } else {
@@ -318,7 +318,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   revert(arg?: number | boolean) : any {
+   revert(arg?: number | boolean): number | boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('revert', arg);
       } else {
@@ -326,7 +326,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   scroll(arg?: boolean) : any {
+   scroll(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSortable('scroll', arg);
       } else {
@@ -334,7 +334,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   scrollSensitivity(arg?: number) : any {
+   scrollSensitivity(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxSortable('scrollSensitivity', arg);
       } else {
@@ -342,7 +342,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   scrollSpeed(arg?: number) : any {
+   scrollSpeed(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxSortable('scrollSpeed', arg);
       } else {
@@ -350,7 +350,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   tolerance(arg?: string) : any {
+   tolerance(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSortable('tolerance', arg);
       } else {
@@ -358,7 +358,7 @@ export class jqxSortableComponent implements OnChanges
       }
    }
 
-   zIndex(arg?: number) : any {
+   zIndex(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxSortable('zIndex', arg);
       } else {
@@ -392,7 +392,7 @@ export class jqxSortableComponent implements OnChanges
       this.host.jqxSortable('refreshPositions');
    }
 
-   serialize(object: undefined): undefined {
+   serialize(object: undefined): string {
       return this.host.jqxSortable('serialize', object);
    }
 

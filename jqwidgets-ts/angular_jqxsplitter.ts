@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -22,7 +22,7 @@ declare let JQXLite: any;
 export class jqxSplitterComponent implements OnChanges
 {
    @Input('disabled') attrDisabled: boolean;
-   @Input('orientation') attrOrientation: any;
+   @Input('orientation') attrOrientation: string;
    @Input('panels') attrPanels: Array<jqwidgets.SplitterPanel>;
    @Input('resizable') attrResizable: boolean;
    @Input('splitBarSize') attrSplitBarSize: number;
@@ -148,7 +148,7 @@ export class jqxSplitterComponent implements OnChanges
    }
 
    // jqxSplitterComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSplitter('disabled', arg);
       } else {
@@ -156,7 +156,7 @@ export class jqxSplitterComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxSplitter('height', arg);
       } else {
@@ -164,7 +164,7 @@ export class jqxSplitterComponent implements OnChanges
       }
    }
 
-   orientation(arg?: string) : any {
+   orientation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSplitter('orientation', arg);
       } else {
@@ -172,7 +172,7 @@ export class jqxSplitterComponent implements OnChanges
       }
    }
 
-   panels(arg?: Array<jqwidgets.SplitterPanel>) : any {
+   panels(arg?: Array<jqwidgets.SplitterPanel>): Array<jqwidgets.SplitterPanel> {
       if (arg !== undefined) {
           this.host.jqxSplitter('panels', arg);
       } else {
@@ -180,7 +180,7 @@ export class jqxSplitterComponent implements OnChanges
       }
    }
 
-   resizable(arg?: boolean) : any {
+   resizable(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSplitter('resizable', arg);
       } else {
@@ -188,7 +188,7 @@ export class jqxSplitterComponent implements OnChanges
       }
    }
 
-   splitBarSize(arg?: number) : any {
+   splitBarSize(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxSplitter('splitBarSize', arg);
       } else {
@@ -196,7 +196,7 @@ export class jqxSplitterComponent implements OnChanges
       }
    }
 
-   showSplitBar(arg?: boolean) : any {
+   showSplitBar(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSplitter('showSplitBar', arg);
       } else {
@@ -204,7 +204,7 @@ export class jqxSplitterComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSplitter('theme', arg);
       } else {
@@ -212,7 +212,7 @@ export class jqxSplitterComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxSplitter('width', arg);
       } else {

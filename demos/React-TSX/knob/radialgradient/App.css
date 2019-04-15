@@ -1,0 +1,11 @@
+.jqx-input {
+    position: absolute;
+    width: 110px;
+    top: 170px;
+    left: 145px;
+    font-weight: bold;
+    font-size: 48px !important;
+    border: none !important;
+    color: steelblue;
+    text-align: center;
+}

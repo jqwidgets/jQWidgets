@@ -79,8 +79,12 @@ class JqxBulletChart extends React.PureComponent<IBulletChartProps, IState> {
         this._jqx(this._componentSelector).jqxBulletChart('refresh' );
     };
 
-    public val(value?: number): number {
-        return this._jqx(this._componentSelector).jqxBulletChart('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxBulletChart('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxBulletChart('val');
+        }
     };
 
     private _manageProps(): IBulletChartProps {
@@ -90,7 +94,7 @@ class JqxBulletChart extends React.PureComponent<IBulletChartProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

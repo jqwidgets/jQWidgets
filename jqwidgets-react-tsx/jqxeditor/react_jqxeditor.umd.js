@@ -105,7 +105,12 @@ require('../../jqwidgets/jqxcolorpicker');
             this._jqx(this._componentSelector).jqxEditor('setMode', mode);
         };
         JqxEditor.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxEditor('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxEditor('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxEditor('val');
+            }
         };
         JqxEditor.prototype._manageProps = function () {
             var widgetProps = ['createCommand', 'disabled', 'editable', 'height', 'lineBreak', 'localization', 'pasteMode', 'rtl', 'stylesheets', 'theme', 'toolbarPosition', 'tools', 'width'];

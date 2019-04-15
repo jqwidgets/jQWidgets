@@ -23,7 +23,7 @@ declare class JqxDateTimeInput extends React.PureComponent<IDateTimeInputProps, 
     setMinDate(date: any): void;
     setMaxDate(date: any): void;
     setDate(date: any): void;
-    val(value?: any, value2?: any): any;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }
@@ -47,7 +47,7 @@ interface IDateTimeInputOptions {
     enableBrowserBoundsDetection?: boolean;
     enableAbsoluteSelection?: boolean;
     firstDayOfWeek?: number;
-    formatString?: 'd' | 'f' | 'F' | 'n' | 'c' | 'p' | 'd' | 'dd' | 'ddd' | 'dddd' | 'D' | 'h' | 'hh' | 'H' | 'HH' | 'm' | 'mm' | 'M' | 'MM' | 'MMM' | 'MMMM' | 's' | 'ss' | 't' | 'tt' | 'y' | 'yy' | 'yyy' | 'yyyy' | 'dddd-MMMM-yyyy';
+    formatString?: string;
     height?: string | number;
     min?: Date;
     max?: Date;
@@ -65,7 +65,7 @@ interface IDateTimeInputOptions {
     template?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
     textAlign?: 'left' | 'right' | 'center';
     todayString?: string;
-    value?: Date;
+    value?: Date | null;
     width?: string | number;
 }
 export interface IDateTimeInputProps extends IDateTimeInputOptions {

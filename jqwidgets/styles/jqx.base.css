@@ -2879,6 +2879,7 @@ of the horizontal scrollbar.*/
     float:left;
     position: relative;
     z-index: 20;
+    cursor: pointer;
 }
 /*used in horizontal slider*/
 .jqx-slider-track-horizontal
@@ -2894,7 +2895,6 @@ of the horizontal scrollbar.*/
 /*applied to the div which is between the thumbs in a range slider or from beginning of the track to the current thumb position in the default slider*/
 .jqx-slider-rangebar
 {
- 
 }
 
 /* jqxSplitter */

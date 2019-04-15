@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -35,7 +35,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, AfterViewInit, AfterViewChecked 
 {
-   @Input('animationType') attrAnimationType: any;
+   @Input('animationType') attrAnimationType: string;
    @Input('autoComplete') attrAutoComplete: boolean;
    @Input('autoOpen') attrAutoOpen: boolean;
    @Input('autoItemsHeight') attrAutoItemsHeight: boolean;
@@ -44,8 +44,8 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    @Input('checkboxes') attrCheckboxes: boolean;
    @Input('disabled') attrDisabled: boolean;
    @Input('displayMember') attrDisplayMember: string;
-   @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: any;
-   @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: any;
+   @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: string;
+   @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: string;
    @Input('dropDownHeight') attrDropDownHeight: number | string;
    @Input('dropDownWidth') attrDropDownWidth: number | string;
    @Input('enableHover') attrEnableHover: boolean;
@@ -59,19 +59,19 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    @Input('placeHolder') attrPlaceHolder: string;
    @Input('remoteAutoComplete') attrRemoteAutoComplete: boolean;
    @Input('remoteAutoCompleteDelay') attrRemoteAutoCompleteDelay: number;
-   @Input('renderer') attrRenderer: (index:number, label?:string, va12313123lue?:any) => string;
-   @Input('renderSelectedItem') attrRenderSelectedItem: (index:number, item?:any) => string;
+   @Input('renderer') attrRenderer: (index?: jqwidgets.ComboBoxRenderer['index'], label?: jqwidgets.ComboBoxRenderer['label'], value?: jqwidgets.ComboBoxRenderer['value']) => string;
+   @Input('renderSelectedItem') attrRenderSelectedItem: (index?: jqwidgets.ComboBoxRenderSelectedItem['index'], item?: jqwidgets.ComboBoxRenderSelectedItem['item']) => string;
    @Input('rtl') attrRtl: boolean;
    @Input('selectedIndex') attrSelectedIndex: number;
    @Input('showArrow') attrShowArrow: boolean;
    @Input('showCloseButtons') attrShowCloseButtons: boolean;
-   @Input('searchMode') attrSearchMode: any;
-   @Input('search') attrSearch: (searchString:string) => void;
-   @Input('source') attrSource: Array<any>;
+   @Input('searchMode') attrSearchMode: string;
+   @Input('search') attrSearch: (searchString?: jqwidgets.ComboBoxSearch['searchString']) => void;
+   @Input('source') attrSource: any;
    @Input('scrollBarSize') attrScrollBarSize: number | string;
-   @Input('template') attrTemplate: any;
+   @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
-   @Input('validateSelection') attrValidateSelection: (itemValue:string) => boolean;
+   @Input('validateSelection') attrValidateSelection: (itemValue?: jqwidgets.ComboBoxValidateSelection['itemValue']) => boolean;
    @Input('valueMember') attrValueMember: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -240,7 +240,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
    }
 
    // jqxComboBoxComponent properties
-   animationType(arg?: string) : any {
+   animationType(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -253,7 +253,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   autoComplete(arg?: boolean) : any {
+   autoComplete(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -266,7 +266,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   autoOpen(arg?: boolean) : any {
+   autoOpen(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -279,7 +279,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   autoItemsHeight(arg?: boolean) : any {
+   autoItemsHeight(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -292,7 +292,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   autoDropDownHeight(arg?: boolean) : any {
+   autoDropDownHeight(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -305,7 +305,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   closeDelay(arg?: number) : any {
+   closeDelay(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -318,7 +318,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   checkboxes(arg?: boolean) : any {
+   checkboxes(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -331,7 +331,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -344,7 +344,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   displayMember(arg?: string) : any {
+   displayMember(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -357,7 +357,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   dropDownHorizontalAlignment(arg?: string) : any {
+   dropDownHorizontalAlignment(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -370,7 +370,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   dropDownVerticalAlignment(arg?: string) : any {
+   dropDownVerticalAlignment(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -383,7 +383,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   dropDownHeight(arg?: number | string) : any {
+   dropDownHeight(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -396,7 +396,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   dropDownWidth(arg?: number | string) : any {
+   dropDownWidth(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -409,7 +409,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   enableHover(arg?: boolean) : any {
+   enableHover(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -422,7 +422,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   enableSelection(arg?: boolean) : any {
+   enableSelection(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -435,7 +435,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   enableBrowserBoundsDetection(arg?: boolean) : any {
+   enableBrowserBoundsDetection(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -448,7 +448,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -461,7 +461,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   itemHeight(arg?: number) : any {
+   itemHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -474,7 +474,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   multiSelect(arg?: boolean) : any {
+   multiSelect(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -487,7 +487,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   minLength(arg?: number) : any {
+   minLength(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -500,7 +500,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   openDelay(arg?: number) : any {
+   openDelay(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -513,7 +513,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   popupZIndex(arg?: number) : any {
+   popupZIndex(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -526,7 +526,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   placeHolder(arg?: string) : any {
+   placeHolder(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -539,7 +539,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   remoteAutoComplete(arg?: boolean) : any {
+   remoteAutoComplete(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -552,7 +552,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   remoteAutoCompleteDelay(arg?: number) : any {
+   remoteAutoCompleteDelay(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -565,7 +565,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   renderer(arg?: (index:number, label?:string, va12313123lue?:any) => string) : any {
+   renderer(arg?: (index?: jqwidgets.ComboBoxRenderer['index'], label?: jqwidgets.ComboBoxRenderer['label'], value?: jqwidgets.ComboBoxRenderer['value']) => string): (index?: jqwidgets.ComboBoxRenderer['index'], label?: jqwidgets.ComboBoxRenderer['label'], value?: jqwidgets.ComboBoxRenderer['value']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -578,7 +578,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   renderSelectedItem(arg?: (index:number, item?:any) => string) : any {
+   renderSelectedItem(arg?: (index?: jqwidgets.ComboBoxRenderSelectedItem['index'], item?: jqwidgets.ComboBoxRenderSelectedItem['item']) => string): (index?: jqwidgets.ComboBoxRenderSelectedItem['index'], item?: jqwidgets.ComboBoxRenderSelectedItem['item']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -591,7 +591,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -604,7 +604,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   selectedIndex(arg?: number) : any {
+   selectedIndex(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -617,7 +617,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   showArrow(arg?: boolean) : any {
+   showArrow(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -630,7 +630,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   showCloseButtons(arg?: boolean) : any {
+   showCloseButtons(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -643,7 +643,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   searchMode(arg?: string) : any {
+   searchMode(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -656,7 +656,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   search(arg?: (searchString:string) => void) : any {
+   search(arg?: (searchString?: jqwidgets.ComboBoxSearch['searchString']) => void): (searchString?: jqwidgets.ComboBoxSearch['searchString']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -669,7 +669,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   source(arg?: Array<any>) : any {
+   source(arg?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -682,7 +682,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   scrollBarSize(arg?: number | string) : any {
+   scrollBarSize(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -695,7 +695,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -708,7 +708,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -721,7 +721,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   validateSelection(arg?: (itemValue:string) => boolean) : any {
+   validateSelection(arg?: (itemValue?: jqwidgets.ComboBoxValidateSelection['itemValue']) => boolean): (itemValue?: jqwidgets.ComboBoxValidateSelection['itemValue']) => boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -734,7 +734,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   valueMember(arg?: string) : any {
+   valueMember(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -747,7 +747,7 @@ export class jqxComboBoxComponent implements ControlValueAccessor, OnChanges, Af
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -25,7 +25,7 @@ export class jqxPanelComponent implements OnChanges
    @Input('autoUpdate') attrAutoUpdate: boolean;
    @Input('disabled') attrDisabled: boolean;
    @Input('rtl') attrRtl: boolean;
-   @Input('sizeMode') attrSizeMode: any;
+   @Input('sizeMode') attrSizeMode: string;
    @Input('scrollBarSize') attrScrollBarSize: number | string;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
@@ -148,7 +148,7 @@ export class jqxPanelComponent implements OnChanges
    }
 
    // jqxPanelComponent properties
-   autoUpdate(arg?: boolean) : any {
+   autoUpdate(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPanel('autoUpdate', arg);
       } else {
@@ -156,7 +156,7 @@ export class jqxPanelComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPanel('disabled', arg);
       } else {
@@ -164,7 +164,7 @@ export class jqxPanelComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxPanel('height', arg);
       } else {
@@ -172,7 +172,7 @@ export class jqxPanelComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPanel('rtl', arg);
       } else {
@@ -180,7 +180,7 @@ export class jqxPanelComponent implements OnChanges
       }
    }
 
-   sizeMode(arg?: string) : any {
+   sizeMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxPanel('sizeMode', arg);
       } else {
@@ -188,7 +188,7 @@ export class jqxPanelComponent implements OnChanges
       }
    }
 
-   scrollBarSize(arg?: number | string) : any {
+   scrollBarSize(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxPanel('scrollBarSize', arg);
       } else {
@@ -196,7 +196,7 @@ export class jqxPanelComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxPanel('theme', arg);
       } else {
@@ -204,7 +204,7 @@ export class jqxPanelComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxPanel('width', arg);
       } else {

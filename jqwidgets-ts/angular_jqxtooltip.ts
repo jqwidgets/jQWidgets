@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -33,12 +33,12 @@ export class jqxTooltipComponent implements OnChanges
    @Input('left') attrLeft: number;
    @Input('name') attrName: string;
    @Input('opacity') attrOpacity: number;
-   @Input('position') attrPosition: any;
+   @Input('position') attrPosition: string;
    @Input('rtl') attrRtl: boolean;
    @Input('showDelay') attrShowDelay: number;
    @Input('showArrow') attrShowArrow: boolean;
    @Input('top') attrTop: number | string;
-   @Input('trigger') attrTrigger: any;
+   @Input('trigger') attrTrigger: string;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -160,7 +160,7 @@ export class jqxTooltipComponent implements OnChanges
    }
 
    // jqxTooltipComponent properties
-   absolutePositionX(arg?: number) : any {
+   absolutePositionX(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTooltip('absolutePositionX', arg);
       } else {
@@ -168,7 +168,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   absolutePositionY(arg?: number) : any {
+   absolutePositionY(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTooltip('absolutePositionY', arg);
       } else {
@@ -176,7 +176,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   autoHide(arg?: boolean) : any {
+   autoHide(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTooltip('autoHide', arg);
       } else {
@@ -184,7 +184,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   autoHideDelay(arg?: number) : any {
+   autoHideDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTooltip('autoHideDelay', arg);
       } else {
@@ -192,7 +192,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   animationShowDelay(arg?: number | string) : any {
+   animationShowDelay(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxTooltip('animationShowDelay', arg);
       } else {
@@ -200,7 +200,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   animationHideDelay(arg?: number | string) : any {
+   animationHideDelay(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxTooltip('animationHideDelay', arg);
       } else {
@@ -208,7 +208,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   content(arg?: string) : any {
+   content(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTooltip('content', arg);
       } else {
@@ -216,7 +216,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   closeOnClick(arg?: boolean) : any {
+   closeOnClick(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTooltip('closeOnClick', arg);
       } else {
@@ -224,7 +224,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTooltip('disabled', arg);
       } else {
@@ -232,7 +232,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   enableBrowserBoundsDetection(arg?: boolean) : any {
+   enableBrowserBoundsDetection(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTooltip('enableBrowserBoundsDetection', arg);
       } else {
@@ -240,7 +240,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxTooltip('height', arg);
       } else {
@@ -248,7 +248,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   left(arg?: number) : any {
+   left(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTooltip('left', arg);
       } else {
@@ -256,7 +256,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   name(arg?: string) : any {
+   name(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTooltip('name', arg);
       } else {
@@ -264,7 +264,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   opacity(arg?: number) : any {
+   opacity(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTooltip('opacity', arg);
       } else {
@@ -272,7 +272,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   position(arg?: string) : any {
+   position(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTooltip('position', arg);
       } else {
@@ -280,7 +280,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTooltip('rtl', arg);
       } else {
@@ -288,7 +288,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   showDelay(arg?: number) : any {
+   showDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTooltip('showDelay', arg);
       } else {
@@ -296,7 +296,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   showArrow(arg?: boolean) : any {
+   showArrow(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTooltip('showArrow', arg);
       } else {
@@ -304,7 +304,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   top(arg?: number | string) : any {
+   top(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxTooltip('top', arg);
       } else {
@@ -312,7 +312,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   trigger(arg?: string) : any {
+   trigger(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTooltip('trigger', arg);
       } else {
@@ -320,7 +320,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTooltip('theme', arg);
       } else {
@@ -328,7 +328,7 @@ export class jqxTooltipComponent implements OnChanges
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxTooltip('width', arg);
       } else {

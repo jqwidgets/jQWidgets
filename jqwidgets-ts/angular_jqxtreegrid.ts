@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -49,25 +49,25 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
    @Input('enableBrowserSelection') attrEnableBrowserSelection: boolean;
    @Input('filterable') attrFilterable: boolean;
    @Input('filterHeight') attrFilterHeight: number;
-   @Input('filterMode') attrFilterMode: any;
+   @Input('filterMode') attrFilterMode: string;
    @Input('hierarchicalCheckboxes') attrHierarchicalCheckboxes: boolean;
-   @Input('icons') attrIcons: boolean | Function;
+   @Input('icons') attrIcons: any;
    @Input('incrementalSearch') attrIncrementalSearch: boolean;
    @Input('localization') attrLocalization: any;
    @Input('pagerHeight') attrPagerHeight: number;
    @Input('pageSize') attrPageSize: number;
    @Input('pageSizeOptions') attrPageSizeOptions: Array<number | string>;
    @Input('pageable') attrPageable: boolean;
-   @Input('pagerPosition') attrPagerPosition: any;
-   @Input('pagerMode') attrPagerMode: any;
-   @Input('pageSizeMode') attrPageSizeMode: any;
+   @Input('pagerPosition') attrPagerPosition: string;
+   @Input('pagerMode') attrPagerMode: string;
+   @Input('pageSizeMode') attrPageSizeMode: string;
    @Input('pagerButtonsCount') attrPagerButtonsCount: number;
    @Input('pagerRenderer') attrPagerRenderer: () => any;
    @Input('ready') attrReady: () => void;
    @Input('rowDetails') attrRowDetails: boolean;
-   @Input('rowDetailsRenderer') attrRowDetailsRenderer: (key: number, dataRow: number) => any;
-   @Input('renderToolbar') attrRenderToolbar: (toolBar?: any) => void;
-   @Input('renderStatusBar') attrRenderStatusBar: (statusBar?: any) => void;
+   @Input('rowDetailsRenderer') attrRowDetailsRenderer: (key: jqwidgets.TreeGridRowDetailsRenderer['key'], dataRow: jqwidgets.TreeGridRowDetailsRenderer['dataRow']) => any;
+   @Input('renderToolbar') attrRenderToolbar: (toolBar?: jqwidgets.TreeGridRenderToolbar['toolbar']) => void;
+   @Input('renderStatusBar') attrRenderStatusBar: (statusBar?: jqwidgets.TreeGridRenderStatusBar['statusbar']) => void;
    @Input('rendering') attrRendering: () => void;
    @Input('rendered') attrRendered: () => void;
    @Input('rtl') attrRtl: boolean;
@@ -79,7 +79,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
    @Input('showStatusbar') attrShowStatusbar: boolean;
    @Input('statusBarHeight') attrStatusBarHeight: number;
    @Input('scrollBarSize') attrScrollBarSize: number;
-   @Input('selectionMode') attrSelectionMode: any;
+   @Input('selectionMode') attrSelectionMode: string;
    @Input('showHeader') attrShowHeader: boolean;
    @Input('theme') attrTheme: string;
    @Input('toolbarHeight') attrToolbarHeight: number;
@@ -249,7 +249,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
    }
 
    // jqxTreeGridComponent properties
-   altRows(arg?: boolean) : any {
+   altRows(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -262,7 +262,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   autoRowHeight(arg?: boolean) : any {
+   autoRowHeight(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -275,7 +275,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   aggregatesHeight(arg?: number) : any {
+   aggregatesHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -288,7 +288,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   autoShowLoadElement(arg?: boolean) : any {
+   autoShowLoadElement(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -301,7 +301,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   checkboxes(arg?: boolean) : any {
+   checkboxes(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -314,7 +314,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   columnsHeight(arg?: number) : any {
+   columnsHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -327,7 +327,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   columns(arg?: Array<any>) : any {
+   columns(arg?: Array<any>): Array<any> {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -340,7 +340,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   columnGroups(arg?: Array<any>) : any {
+   columnGroups(arg?: Array<any>): Array<any> {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -353,7 +353,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   columnsResize(arg?: boolean) : any {
+   columnsResize(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -366,7 +366,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   columnsReorder(arg?: boolean) : any {
+   columnsReorder(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -379,7 +379,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -392,7 +392,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   editable(arg?: boolean) : any {
+   editable(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -405,7 +405,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   editSettings(arg?: jqwidgets.TreeGridEditSettings) : any {
+   editSettings(arg?: jqwidgets.TreeGridEditSettings): jqwidgets.TreeGridEditSettings {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -418,7 +418,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   exportSettings(arg?: jqwidgets.TreeGridExportSettings) : any {
+   exportSettings(arg?: jqwidgets.TreeGridExportSettings): jqwidgets.TreeGridExportSettings {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -431,7 +431,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   enableHover(arg?: boolean) : any {
+   enableHover(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -444,7 +444,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   enableBrowserSelection(arg?: boolean) : any {
+   enableBrowserSelection(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -457,7 +457,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   filterable(arg?: boolean) : any {
+   filterable(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -470,7 +470,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   filterHeight(arg?: number) : any {
+   filterHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -483,7 +483,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   filterMode(arg?: string) : any {
+   filterMode(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -496,7 +496,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -509,7 +509,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   hierarchicalCheckboxes(arg?: boolean) : any {
+   hierarchicalCheckboxes(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -522,7 +522,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   icons(arg?: undefined) : any {
+   icons(arg?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -535,7 +535,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   incrementalSearch(arg?: boolean) : any {
+   incrementalSearch(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -548,7 +548,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   localization(arg?: any) : any {
+   localization(arg?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -561,7 +561,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   pagerHeight(arg?: number) : any {
+   pagerHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -574,7 +574,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   pageSize(arg?: number) : any {
+   pageSize(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -587,7 +587,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   pageSizeOptions(arg?: Array<number | string>) : any {
+   pageSizeOptions(arg?: Array<number | string>): Array<number | string> {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -600,7 +600,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   pageable(arg?: boolean) : any {
+   pageable(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -613,7 +613,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   pagerPosition(arg?: string) : any {
+   pagerPosition(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -626,7 +626,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   pagerMode(arg?: string) : any {
+   pagerMode(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -639,7 +639,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   pageSizeMode(arg?: string) : any {
+   pageSizeMode(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -652,7 +652,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   pagerButtonsCount(arg?: number) : any {
+   pagerButtonsCount(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -665,7 +665,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   pagerRenderer(arg?: () => any) : any {
+   pagerRenderer(arg?: () => any): () => any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -678,7 +678,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   ready(arg?: () => void) : any {
+   ready(arg?: () => void): () => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -691,7 +691,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   rowDetails(arg?: boolean) : any {
+   rowDetails(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -704,7 +704,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   rowDetailsRenderer(arg?: (key: number, dataRow: number) => any) : any {
+   rowDetailsRenderer(arg?: (key: jqwidgets.TreeGridRowDetailsRenderer['key'], dataRow: jqwidgets.TreeGridRowDetailsRenderer['dataRow']) => any): (key: jqwidgets.TreeGridRowDetailsRenderer['key'], dataRow: jqwidgets.TreeGridRowDetailsRenderer['dataRow']) => any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -717,7 +717,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   renderToolbar(arg?: (toolBar?: any) => void) : any {
+   renderToolbar(arg?: (toolBar?: jqwidgets.TreeGridRenderToolbar['toolbar']) => void): (toolBar?: jqwidgets.TreeGridRenderToolbar['toolbar']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -730,7 +730,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   renderStatusBar(arg?: (statusBar?: any) => void) : any {
+   renderStatusBar(arg?: (statusBar?: jqwidgets.TreeGridRenderStatusBar['statusbar']) => void): (statusBar?: jqwidgets.TreeGridRenderStatusBar['statusbar']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -743,7 +743,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   rendering(arg?: () => void) : any {
+   rendering(arg?: () => void): () => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -756,7 +756,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   rendered(arg?: () => void) : any {
+   rendered(arg?: () => void): () => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -769,7 +769,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -782,7 +782,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   source(arg?: any) : any {
+   source(arg?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -795,7 +795,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   sortable(arg?: boolean) : any {
+   sortable(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -808,7 +808,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   showAggregates(arg?: boolean) : any {
+   showAggregates(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -821,7 +821,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   showSubAggregates(arg?: boolean) : any {
+   showSubAggregates(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -834,7 +834,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   showToolbar(arg?: boolean) : any {
+   showToolbar(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -847,7 +847,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   showStatusbar(arg?: boolean) : any {
+   showStatusbar(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -860,7 +860,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   statusBarHeight(arg?: number) : any {
+   statusBarHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -873,7 +873,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   scrollBarSize(arg?: number) : any {
+   scrollBarSize(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -886,7 +886,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   selectionMode(arg?: string) : any {
+   selectionMode(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -899,7 +899,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   showHeader(arg?: boolean) : any {
+   showHeader(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -912,7 +912,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -925,7 +925,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   toolbarHeight(arg?: number) : any {
+   toolbarHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -938,7 +938,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -951,7 +951,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   virtualModeCreateRecords(arg?: (expandedRecord?: any, done?: any) => void) : any {
+   virtualModeCreateRecords(arg?: (expandedRecord?: any, done?: any) => void): (expandedRecord?: any, done?: any) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -964,7 +964,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       }
    }
 
-   virtualModeRecordCreating(arg?: (record?: any) => any) : any {
+   virtualModeRecordCreating(arg?: (record?: any) => any): (record?: any) => any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -979,7 +979,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
 
 
    // jqxTreeGridComponent functions
-   addRow(rowKey: string, rowData: any, rowPosition: string, parent?: string): void {
+   addRow(rowKey: number | string | null, rowData: any, rowPosition: string, parent?: string): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1015,7 +1015,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('beginUpdate');
    }
 
-   beginRowEdit(rowKey: string): void {
+   beginRowEdit(rowKey: number | string): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1024,7 +1024,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('beginRowEdit', rowKey);
    }
 
-   beginCellEdit(rowKey: string, dataField: string): void {
+   beginCellEdit(rowKey: number | string, dataField: string): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1060,7 +1060,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('clear');
    }
 
-   checkRow(rowKey: string): void {
+   checkRow(rowKey: number | string): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1069,7 +1069,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('checkRow', rowKey);
    }
 
-   collapseRow(rowKey: string): void {
+   collapseRow(rowKey: number | string): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1096,7 +1096,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('destroy');
    }
 
-   deleteRow(rowKey: Array<string> | string): void {
+   deleteRow(rowKey: string[] | string): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1132,7 +1132,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('endUpdate');
    }
 
-   ensureRowVisible(rowKey: string): void {
+   ensureRowVisible(rowKey: number | string): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1141,7 +1141,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('ensureRowVisible', rowKey);
    }
 
-   endRowEdit(rowKey: string, cancelChanges?: boolean): void {
+   endRowEdit(rowKey: number | string, cancelChanges?: boolean): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1150,7 +1150,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('endRowEdit', rowKey, cancelChanges);
    }
 
-   endCellEdit(rowKey: string, dataField: string, cancelChanges?: boolean): void {
+   endCellEdit(rowKey: number | string, dataField: string, cancelChanges?: boolean): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1231,7 +1231,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       return this.host.jqxTreeGrid('getKey', row);
    }
 
-   getRow(rowKey: string): jqwidgets.TreeGridGetRow {
+   getRow(rowKey: number | string): jqwidgets.TreeGridGetRow {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1267,7 +1267,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       return this.host.jqxTreeGrid('getView');
    }
 
-   getCellValue(rowKey: string, dataField: string): any {
+   getCellValue(rowKey: number | string, dataField: string): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -1374,7 +1374,7 @@ export class jqxTreeGridComponent implements OnChanges, AfterViewInit, AfterView
       this.host.jqxTreeGrid('setCellValue', rowId, dataField, cellValue);
    }
 
-   sortBy(dataField: number | string, sortOrder?: string): void {
+   sortBy(dataField: number | string, sortOrder?: 'asc' | 'desc' | null): void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

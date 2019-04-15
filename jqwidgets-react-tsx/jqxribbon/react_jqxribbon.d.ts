@@ -23,7 +23,7 @@ declare class JqxRibbon extends React.PureComponent<IRibbonProps, IState> {
     showAt(index: number): void;
     setPopupLayout(index: number, layout: any, width: number | string, height: number | string): void;
     updateAt(index: number, item: object): void;
-    val(value?: string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -25,12 +25,12 @@ export class jqxLinearGaugeComponent implements OnChanges
    @Input('background') attrBackground: jqwidgets.LinearGaugeBackground;
    @Input('colorScheme') attrColorScheme: string;
    @Input('disabled') attrDisabled: boolean;
-   @Input('easing') attrEasing: any;
+   @Input('easing') attrEasing: string;
    @Input('int64') attrInt64: boolean;
-   @Input('labels') attrLabels: object;
+   @Input('labels') attrLabels: jqwidgets.LinearGaugeLabels | jqwidgets.LinearGaugeLabels[];
    @Input('min') attrMin: number;
    @Input('max') attrMax: number;
-   @Input('orientation') attrOrientation: any;
+   @Input('orientation') attrOrientation: string;
    @Input('pointer') attrPointer: jqwidgets.LinearGaugePointer;
    @Input('rangesOffset') attrRangesOffset: number;
    @Input('rangeSize') attrRangeSize: number | string;
@@ -39,7 +39,7 @@ export class jqxLinearGaugeComponent implements OnChanges
    @Input('scaleStyle') attrScaleStyle: any;
    @Input('scaleLength') attrScaleLength: number | string;
    @Input('ticksOffset') attrTicksOffset: Array<number | string>;
-   @Input('ticksPosition') attrTicksPosition: any;
+   @Input('ticksPosition') attrTicksPosition: string;
    @Input('ticksMinor') attrTicksMinor: jqwidgets.LinearGaugeTicks;
    @Input('ticksMajor') attrTicksMajor: jqwidgets.LinearGaugeTicks;
    @Input('value') attrValue: number;
@@ -163,7 +163,7 @@ export class jqxLinearGaugeComponent implements OnChanges
    }
 
    // jqxLinearGaugeComponent properties
-   animationDuration(arg?: number) : any {
+   animationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('animationDuration', arg);
       } else {
@@ -171,7 +171,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   background(arg?: jqwidgets.LinearGaugeBackground) : any {
+   background(arg?: jqwidgets.LinearGaugeBackground): jqwidgets.LinearGaugeBackground {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('background', arg);
       } else {
@@ -179,7 +179,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   colorScheme(arg?: string) : any {
+   colorScheme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('colorScheme', arg);
       } else {
@@ -187,7 +187,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('disabled', arg);
       } else {
@@ -195,7 +195,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   easing(arg?: string) : any {
+   easing(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('easing', arg);
       } else {
@@ -203,7 +203,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('height', arg);
       } else {
@@ -211,7 +211,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   int64(arg?: boolean) : any {
+   int64(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('int64', arg);
       } else {
@@ -219,7 +219,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   labels(arg?: any) : any {
+   labels(arg?: jqwidgets.LinearGaugeLabels | jqwidgets.LinearGaugeLabels[]): jqwidgets.LinearGaugeLabels | jqwidgets.LinearGaugeLabels[] {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('labels', arg);
       } else {
@@ -227,7 +227,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   min(arg?: number) : any {
+   min(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('min', arg);
       } else {
@@ -235,7 +235,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   max(arg?: number) : any {
+   max(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('max', arg);
       } else {
@@ -243,7 +243,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   orientation(arg?: string) : any {
+   orientation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('orientation', arg);
       } else {
@@ -251,7 +251,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   pointer(arg?: jqwidgets.LinearGaugePointer) : any {
+   pointer(arg?: jqwidgets.LinearGaugePointer): jqwidgets.LinearGaugePointer {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('pointer', arg);
       } else {
@@ -259,7 +259,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   rangesOffset(arg?: number) : any {
+   rangesOffset(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('rangesOffset', arg);
       } else {
@@ -267,7 +267,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   rangeSize(arg?: number | string) : any {
+   rangeSize(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('rangeSize', arg);
       } else {
@@ -275,7 +275,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   ranges(arg?: Array<jqwidgets.LinearGaugeRanges>) : any {
+   ranges(arg?: Array<jqwidgets.LinearGaugeRanges>): Array<jqwidgets.LinearGaugeRanges> {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('ranges', arg);
       } else {
@@ -283,7 +283,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   showRanges(arg?: boolean) : any {
+   showRanges(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('showRanges', arg);
       } else {
@@ -291,7 +291,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   scaleStyle(arg?: any) : any {
+   scaleStyle(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('scaleStyle', arg);
       } else {
@@ -299,7 +299,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   scaleLength(arg?: number | string) : any {
+   scaleLength(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('scaleLength', arg);
       } else {
@@ -307,7 +307,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   ticksOffset(arg?: Array<number | string>) : any {
+   ticksOffset(arg?: Array<number | string>): Array<number | string> {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('ticksOffset', arg);
       } else {
@@ -315,7 +315,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   ticksPosition(arg?: string) : any {
+   ticksPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('ticksPosition', arg);
       } else {
@@ -323,7 +323,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   ticksMinor(arg?: jqwidgets.LinearGaugeTicks) : any {
+   ticksMinor(arg?: jqwidgets.LinearGaugeTicks): jqwidgets.LinearGaugeTicks {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('ticksMinor', arg);
       } else {
@@ -331,7 +331,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   ticksMajor(arg?: jqwidgets.LinearGaugeTicks) : any {
+   ticksMajor(arg?: jqwidgets.LinearGaugeTicks): jqwidgets.LinearGaugeTicks {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('ticksMajor', arg);
       } else {
@@ -339,7 +339,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   value(arg?: number) : any {
+   value(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('value', arg);
       } else {
@@ -347,7 +347,7 @@ export class jqxLinearGaugeComponent implements OnChanges
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxLinearGauge('width', arg);
       } else {

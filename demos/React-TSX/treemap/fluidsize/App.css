@@ -1,0 +1,17 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.jqx-treemap-legend {
+  width: 75%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#root, #app {
+  width: 100%;
+  height: 100%;
+}

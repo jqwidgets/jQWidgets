@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -40,22 +40,22 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
    @Input('digits') attrDigits: number | string;
    @Input('groupSeparator') attrGroupSeparator: string;
    @Input('groupSize') attrGroupSize: number | string;
-   @Input('inputMode') attrInputMode: any;
+   @Input('inputMode') attrInputMode: string;
    @Input('min') attrMin: number | string;
    @Input('max') attrMax: number | string;
    @Input('negativeSymbol') attrNegativeSymbol: string;
    @Input('placeHolder') attrPlaceHolder: number | string;
-   @Input('promptChar') attrPromptChar: any;
+   @Input('promptChar') attrPromptChar: string;
    @Input('rtl') attrRtl: boolean;
    @Input('readOnly') attrReadOnly: boolean;
-   @Input('spinMode') attrSpinMode: any;
+   @Input('spinMode') attrSpinMode: string;
    @Input('spinButtons') attrSpinButtons: boolean;
    @Input('spinButtonsWidth') attrSpinButtonsWidth: number;
    @Input('spinButtonsStep') attrSpinButtonsStep: number | string;
    @Input('symbol') attrSymbol: string;
-   @Input('symbolPosition') attrSymbolPosition: any;
-   @Input('textAlign') attrTextAlign: any;
-   @Input('template') attrTemplate: any;
+   @Input('symbolPosition') attrSymbolPosition: string;
+   @Input('textAlign') attrTextAlign: string;
+   @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
    @Input('value') attrValue: number | string;
    @Input('width') attrWidth: string | number;
@@ -196,7 +196,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxNumberInputComponent properties
-   allowNull(arg?: boolean) : any {
+   allowNull(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNumberInput('allowNull', arg);
       } else {
@@ -204,7 +204,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   decimal(arg?: number | string) : any {
+   decimal(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('decimal', arg);
       } else {
@@ -212,7 +212,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNumberInput('disabled', arg);
       } else {
@@ -220,7 +220,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   decimalDigits(arg?: number | string) : any {
+   decimalDigits(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('decimalDigits', arg);
       } else {
@@ -228,7 +228,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   decimalSeparator(arg?: number | string) : any {
+   decimalSeparator(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('decimalSeparator', arg);
       } else {
@@ -236,7 +236,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   digits(arg?: number | string) : any {
+   digits(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('digits', arg);
       } else {
@@ -244,7 +244,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   groupSeparator(arg?: string) : any {
+   groupSeparator(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('groupSeparator', arg);
       } else {
@@ -252,7 +252,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   groupSize(arg?: number | string) : any {
+   groupSize(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('groupSize', arg);
       } else {
@@ -260,7 +260,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxNumberInput('height', arg);
       } else {
@@ -268,7 +268,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   inputMode(arg?: string) : any {
+   inputMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('inputMode', arg);
       } else {
@@ -276,7 +276,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   min(arg?: number | string) : any {
+   min(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('min', arg);
       } else {
@@ -284,7 +284,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   max(arg?: number | string) : any {
+   max(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('max', arg);
       } else {
@@ -292,7 +292,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   negativeSymbol(arg?: string) : any {
+   negativeSymbol(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('negativeSymbol', arg);
       } else {
@@ -300,7 +300,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   placeHolder(arg?: number | string) : any {
+   placeHolder(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('placeHolder', arg);
       } else {
@@ -308,7 +308,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   promptChar(arg?: string) : any {
+   promptChar(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('promptChar', arg);
       } else {
@@ -316,7 +316,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNumberInput('rtl', arg);
       } else {
@@ -324,7 +324,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   readOnly(arg?: boolean) : any {
+   readOnly(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNumberInput('readOnly', arg);
       } else {
@@ -332,7 +332,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   spinMode(arg?: string) : any {
+   spinMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('spinMode', arg);
       } else {
@@ -340,7 +340,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   spinButtons(arg?: boolean) : any {
+   spinButtons(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNumberInput('spinButtons', arg);
       } else {
@@ -348,7 +348,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   spinButtonsWidth(arg?: number) : any {
+   spinButtonsWidth(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxNumberInput('spinButtonsWidth', arg);
       } else {
@@ -356,7 +356,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   spinButtonsStep(arg?: number | string) : any {
+   spinButtonsStep(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('spinButtonsStep', arg);
       } else {
@@ -364,7 +364,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   symbol(arg?: string) : any {
+   symbol(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('symbol', arg);
       } else {
@@ -372,7 +372,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   symbolPosition(arg?: string) : any {
+   symbolPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('symbolPosition', arg);
       } else {
@@ -380,7 +380,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   textAlign(arg?: string) : any {
+   textAlign(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('textAlign', arg);
       } else {
@@ -388,7 +388,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('template', arg);
       } else {
@@ -396,7 +396,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('theme', arg);
       } else {
@@ -404,7 +404,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   value(arg?: number | string) : any {
+   value(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNumberInput('value', arg);
       } else {
@@ -412,7 +412,7 @@ export class jqxNumberInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxNumberInput('width', arg);
       } else {

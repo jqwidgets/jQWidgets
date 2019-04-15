@@ -89,7 +89,12 @@ require('../../jqwidgets/jqxprogressbar');
             this._jqx(this._componentSelector).jqxProgressBar('destroy');
         };
         JqxProgressBar.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxProgressBar('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxProgressBar('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxProgressBar('val');
+            }
         };
         JqxProgressBar.prototype._manageProps = function () {
             var widgetProps = ['animationDuration', 'colorRanges', 'disabled', 'height', 'layout', 'max', 'min', 'orientation', 'rtl', 'renderText', 'showText', 'template', 'theme', 'value', 'width'];

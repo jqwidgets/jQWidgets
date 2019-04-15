@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -29,7 +29,7 @@ export class jqxBarGaugeComponent implements OnChanges
    @Input('customColorScheme') attrCustomColorScheme: jqwidgets.BarGaugeCustomColorScheme;
    @Input('disabled') attrDisabled: boolean;
    @Input('endAngle') attrEndAngle: number;
-   @Input('formatFunction') attrFormatFunction: any;
+   @Input('formatFunction') attrFormatFunction: (value?: number | string, index?: number, color?: string) => string;
    @Input('labels') attrLabels: jqwidgets.BarGaugeLabels;
    @Input('max') attrMax: number | string;
    @Input('min') attrMin: number;
@@ -166,7 +166,7 @@ export class jqxBarGaugeComponent implements OnChanges
    }
 
    // jqxBarGaugeComponent properties
-   animationDuration(arg?: number) : any {
+   animationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxBarGauge('animationDuration', arg);
       } else {
@@ -174,7 +174,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   backgroundColor(arg?: string) : any {
+   backgroundColor(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxBarGauge('backgroundColor', arg);
       } else {
@@ -182,7 +182,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   barSpacing(arg?: number) : any {
+   barSpacing(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxBarGauge('barSpacing', arg);
       } else {
@@ -190,7 +190,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   baseValue(arg?: number) : any {
+   baseValue(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxBarGauge('baseValue', arg);
       } else {
@@ -198,7 +198,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   colorScheme(arg?: string) : any {
+   colorScheme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxBarGauge('colorScheme', arg);
       } else {
@@ -206,7 +206,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   customColorScheme(arg?: jqwidgets.BarGaugeCustomColorScheme) : any {
+   customColorScheme(arg?: jqwidgets.BarGaugeCustomColorScheme): jqwidgets.BarGaugeCustomColorScheme {
       if (arg !== undefined) {
           this.host.jqxBarGauge('customColorScheme', arg);
       } else {
@@ -214,7 +214,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxBarGauge('disabled', arg);
       } else {
@@ -222,7 +222,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   endAngle(arg?: number) : any {
+   endAngle(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxBarGauge('endAngle', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   formatFunction(arg?: any) : any {
+   formatFunction(arg?: (value?: number | string, index?: number, color?: string) => string): (value?: number | string, index?: number, color?: string) => string {
       if (arg !== undefined) {
           this.host.jqxBarGauge('formatFunction', arg);
       } else {
@@ -238,7 +238,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxBarGauge('height', arg);
       } else {
@@ -246,7 +246,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   labels(arg?: jqwidgets.BarGaugeLabels) : any {
+   labels(arg?: jqwidgets.BarGaugeLabels): jqwidgets.BarGaugeLabels {
       if (arg !== undefined) {
           this.host.jqxBarGauge('labels', arg);
       } else {
@@ -254,7 +254,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   max(arg?: number | string) : any {
+   max(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxBarGauge('max', arg);
       } else {
@@ -262,7 +262,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   min(arg?: number) : any {
+   min(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxBarGauge('min', arg);
       } else {
@@ -270,7 +270,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   relativeInnerRadius(arg?: number | string) : any {
+   relativeInnerRadius(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxBarGauge('relativeInnerRadius', arg);
       } else {
@@ -278,7 +278,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   rendered(arg?: () => void) : any {
+   rendered(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxBarGauge('rendered', arg);
       } else {
@@ -286,7 +286,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   startAngle(arg?: number) : any {
+   startAngle(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxBarGauge('startAngle', arg);
       } else {
@@ -294,7 +294,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   title(arg?: jqwidgets.BarGaugeTitle) : any {
+   title(arg?: jqwidgets.BarGaugeTitle): jqwidgets.BarGaugeTitle {
       if (arg !== undefined) {
           this.host.jqxBarGauge('title', arg);
       } else {
@@ -302,7 +302,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   tooltip(arg?: jqwidgets.BarGaugeTooltip) : any {
+   tooltip(arg?: jqwidgets.BarGaugeTooltip): jqwidgets.BarGaugeTooltip {
       if (arg !== undefined) {
           this.host.jqxBarGauge('tooltip', arg);
       } else {
@@ -310,7 +310,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   useGradient(arg?: boolean) : any {
+   useGradient(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxBarGauge('useGradient', arg);
       } else {
@@ -318,7 +318,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   values(arg?: Array<number>) : any {
+   values(arg?: Array<number>): Array<number> {
       if (arg !== undefined) {
           this.host.jqxBarGauge('values', arg);
       } else {
@@ -326,7 +326,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxBarGauge('width', arg);
       } else {

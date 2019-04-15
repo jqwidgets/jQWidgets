@@ -1,4 +1,35 @@
 ﻿*********************************************
+* jQWidgets v7.2.0 Release, Apr-15-2019                 *
+*********************************************
+
+What's Improved:
+
+- jqxGrid resizing performance and rendering in responsive layouts.
+
+What's Fixed:
+
+- Fixed an issue in jqxButton regarding the dynamic changing of themes.
+- Fixed an issue in jqxButton for removing an event listener after calling 'destroy'.
+- Fixed an issue in jqxScheduler regarding the dynamic adding of appointments with resources.
+- Fixed an issue in jqxGrid when "removesort" is called and the multi column sorting is enabled.
+- Fixed an issue in jqxGrid when multi sort is enabled and columns height is changed dynamically.
+- Fixed an issue in jqxGrid when multi sort is enabled and "updatebounddata" method is called with parameter "sort".
+- Fixed an issue in jqxGrid when an item in filter row's checked list filter contains "and".
+- Fixed an issue in jqxGrid when filtering currency values with checked list filter.
+- Fixed an issue in jqxGrid when tabbing in case with "selectionmode: 'none'" select the first row.
+- Fixed an issue in jqxGrid regarding the rendering when filtering and grouping are enabled. The grid is grouped by multiple columns and a filter is applied. 
+- Fixed an issue in jqxGrid regarding the rendering while resizing. Sometimes horizontal scrollbar was shown.
+- Fixed an issue in jqxGrid regarding keyboard navigation with pageUp and pageDown and scrolling when grouping is applied.
+- Fixed an issue in jqxTreeGrid regarding the "scrollBarSize" property.
+- Fixed an issue in jqxTreeGrid and jqxDataTable regarding the keyboard navigation with arrow keys and ensureRowVisible method.
+- Fixed an issue in jqxPanel regarding the scrolling on mobile devices.
+- Fixed an issue in jqxTree when ensureVisible is called for the last item and horizontal scrolling is available.
+- Fixed an issue in jqxTree when ensureVisible is called for an item with sub-items.
+- Fixed an issue in jqxChart regarding the formatFunction of the labels settings.
+- Fixed an issue in jqxSlider regarding the moving of thumb after click on the slider's track. The thumb possition had several pixels offset.
+- Fixed an issue with jqxDropDownList dropdown positioning on mobile devices.
+
+*********************************************
 * jQWidgets v7.1.0 Release, Feb-11-2019                *
 *********************************************
 

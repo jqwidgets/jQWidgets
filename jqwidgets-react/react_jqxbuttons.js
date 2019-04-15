@@ -1,10 +1,3 @@
-/*
-jQWidgets v7.1.0 (2019-Feb)
-Copyright (c) 2011-2019 jQWidgets.
-License: https://jqwidgets.com/license/
-*/
-/* eslint-disable */
-
 import '../jqwidgets/styles/jqx.base.css';
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
@@ -27,26 +20,26 @@ export default class JqxButton extends React.Component {
         this.createComponent(options);
     };
     manageAttributes() {
-        const properties = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','toggled','width','value'];
+        const properties = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','enableDefault','cursor','textPosition','textImageRelation','theme','template','width','value'];
         let options = {};
         for(let item in this.props) {
-            if(item === 'settings') {
-                for(let itemTwo in this.props[item]) {
-                    options[itemTwo] = this.props[item][itemTwo];
-                }
-            } else {
-                if(properties.indexOf(item) !== -1) {
-                      options[item] = this.props[item];
-                }
-            }
-        }
-        return options;
-    };
+    	    if(item === 'settings') {
+      	      for(let itemTwo in this.props[item]) {
+        	        options[itemTwo] = this.props[item][itemTwo];
+  			  }
+  		  } else {
+  			  if(properties.indexOf(item) !== -1) {
+      		        options[item] = this.props[item];
+  			  }
+  		  }
+  	  }
+  	  return options;
+	};
     createComponent(options) {
         if(!this.style) {
-            for (let style in this.props.style) {
-                JQXLite(this.componentSelector).css(style, this.props.style[style]);
-            }
+    	    for (let style in this.props.style) {
+      	      JQXLite(this.componentSelector).css(style, this.props.style[style]);
+    	    }
         }
         if(this.props.className !== undefined) {
             const classes = this.props.className.split(' ');
@@ -55,7 +48,7 @@ export default class JqxButton extends React.Component {
             }
         }
         if(!this.template) {
-            JQXLite(this.componentSelector).html(this.props.template);
+    	    JQXLite(this.componentSelector).html(this.props.template);
         }
         JQXLite(this.componentSelector).jqxButton(options);
     };
@@ -134,6 +127,20 @@ export default class JqxButton extends React.Component {
             return JQXLite(this.componentSelector).jqxButton('rtl');
         }
     };
+    enableDefault(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxButton('enableDefault', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxButton('enableDefault');
+        }
+    };
+    cursor(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxButton('cursor', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxButton('cursor');
+        }
+    };
     textPosition(arg) {
         if (arg !== undefined) {
             JQXLite(this.componentSelector).jqxButton('textPosition', arg)
@@ -162,13 +169,6 @@ export default class JqxButton extends React.Component {
             return JQXLite(this.componentSelector).jqxButton('template');
         }
     };
-    toggled(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxButton('toggled', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxButton('toggled');
-        }
-    };
     width(arg) {
         if (arg !== undefined) {
             JQXLite(this.componentSelector).jqxButton('width', arg)
@@ -183,9 +183,6 @@ export default class JqxButton extends React.Component {
             return JQXLite(this.componentSelector).jqxButton('value');
         }
     };
-    check() {
-        JQXLite(this.componentSelector).jqxButton('check');  
-    };
     destroy() {
         JQXLite(this.componentSelector).jqxButton('destroy');  
     };
@@ -194,12 +191,6 @@ export default class JqxButton extends React.Component {
     };
     performRender() {
         JQXLite(this.componentSelector).jqxButton('render');
-    };
-    toggle() {
-        JQXLite(this.componentSelector).jqxButton('toggle');  
-    };
-    unCheck() {
-        JQXLite(this.componentSelector).jqxButton('unCheck');  
     };
     val(value) {
         if (value !== undefined) {
@@ -215,4 +206,3 @@ export default class JqxButton extends React.Component {
         )
     };
 };
-

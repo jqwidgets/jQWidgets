@@ -48,9 +48,6 @@ export interface IDockingCookieOptions {
     domain?: string;
     expires?: number;
 }
-export interface IDockingWindowsMode {
-    windowID?: 'default' | 'docked' | 'floating';
-}
 interface IDockingOptions {
     cookies?: boolean;
     cookieOptions?: IDockingCookieOptions;

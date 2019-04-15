@@ -1,10 +1,3 @@
-/*
-jQWidgets v7.1.0 (2019-Feb)
-Copyright (c) 2011-2019 jQWidgets.
-License: https://jqwidgets.com/license/
-*/
-/* eslint-disable */
-
 import '../jqwidgets/styles/jqx.base.css';
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
@@ -34,26 +27,26 @@ export default class JqxChart extends React.Component {
         this.createComponent(options);
     };
     manageAttributes() {
-        const properties = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','categoryAxis','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
+        const properties = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','categoryAxis','seriesGroups'];
         let options = {};
         for(let item in this.props) {
-            if(item === 'settings') {
-                for(let itemTwo in this.props[item]) {
-                    options[itemTwo] = this.props[item][itemTwo];
-                }
-            } else {
-                if(properties.indexOf(item) !== -1) {
-                      options[item] = this.props[item];
-                }
-            }
-        }
-        return options;
-    };
+    	    if(item === 'settings') {
+      	      for(let itemTwo in this.props[item]) {
+        	        options[itemTwo] = this.props[item][itemTwo];
+  			  }
+  		  } else {
+  			  if(properties.indexOf(item) !== -1) {
+      		        options[item] = this.props[item];
+  			  }
+  		  }
+  	  }
+  	  return options;
+	};
     createComponent(options) {
         if(!this.style) {
-            for (let style in this.props.style) {
-                JQXLite(this.componentSelector).css(style, this.props.style[style]);
-            }
+    	    for (let style in this.props.style) {
+      	      JQXLite(this.componentSelector).css(style, this.props.style[style]);
+    	    }
         }
         if(this.props.className !== undefined) {
             const classes = this.props.className.split(' ');
@@ -62,7 +55,7 @@ export default class JqxChart extends React.Component {
             }
         }
         if(!this.template) {
-            JQXLite(this.componentSelector).html(this.props.template);
+    	    JQXLite(this.componentSelector).html(this.props.template);
         }
         JQXLite(this.componentSelector).jqxChart(options);
     };
@@ -153,13 +146,6 @@ export default class JqxChart extends React.Component {
             JQXLite(this.componentSelector).jqxChart('legendLayout', arg)
         } else {
             return JQXLite(this.componentSelector).jqxChart('legendLayout');
-        }
-    };
-    categoryAxis(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxChart('categoryAxis', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxChart('categoryAxis');
         }
     };
     padding(arg) {
@@ -323,6 +309,13 @@ export default class JqxChart extends React.Component {
             return JQXLite(this.componentSelector).jqxChart('valueAxis');
         }
     };
+    categoryAxis(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxChart('categoryAxis', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxChart('categoryAxis');
+        }
+    };
     seriesGroups(arg) {
         if (arg !== undefined) {
             JQXLite(this.componentSelector).jqxChart('seriesGroups', arg)
@@ -402,4 +395,3 @@ export default class JqxChart extends React.Component {
         )
     };
 };
-

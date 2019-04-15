@@ -1,10 +1,3 @@
-/*
-jQWidgets v7.1.0 (2019-Feb)
-Copyright (c) 2011-2019 jQWidgets.
-License: https://jqwidgets.com/license/
-*/
-/* eslint-disable */
-
 import '../jqwidgets/styles/jqx.base.css';
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxdata.js';
@@ -29,26 +22,26 @@ export default class JqxRangeSelector extends React.Component {
         this.createComponent(options);
     };
     manageAttributes() {
-        const properties = ['disabled','showGroupLabels','labelsOnTicks','markersFormatFunction','height','labelsFormat','labelsFormatFunction','labelPrecision','moveOnClick','markerRenderer','markerPrecision','majorLabelRenderer','markersFormat','majorTicksInterval','minorTicksInterval','max','min','padding','range','resizable','rtl','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
+        const properties = ['disabled','groupLabelsFormatFunction','height','labelsFormat','labelsFormatFunction','labelsOnTicks','markersFormat','markersFormatFunction','majorTicksInterval','minorTicksInterval','max','min','moveOnClick','padding','range','resizable','rtl','showGroupLabels','showMinorTicks','snapToTicks','showMajorLabels','showMarkers','theme','width'];
         let options = {};
         for(let item in this.props) {
-            if(item === 'settings') {
-                for(let itemTwo in this.props[item]) {
-                    options[itemTwo] = this.props[item][itemTwo];
-                }
-            } else {
-                if(properties.indexOf(item) !== -1) {
-                      options[item] = this.props[item];
-                }
-            }
-        }
-        return options;
-    };
+    	    if(item === 'settings') {
+      	      for(let itemTwo in this.props[item]) {
+        	        options[itemTwo] = this.props[item][itemTwo];
+  			  }
+  		  } else {
+  			  if(properties.indexOf(item) !== -1) {
+      		        options[item] = this.props[item];
+  			  }
+  		  }
+  	  }
+  	  return options;
+	};
     createComponent(options) {
         if(!this.style) {
-            for (let style in this.props.style) {
-                JQXLite(this.componentSelector).css(style, this.props.style[style]);
-            }
+    	    for (let style in this.props.style) {
+      	      JQXLite(this.componentSelector).css(style, this.props.style[style]);
+    	    }
         }
         if(this.props.className !== undefined) {
             const classes = this.props.className.split(' ');
@@ -57,7 +50,7 @@ export default class JqxRangeSelector extends React.Component {
             }
         }
         if(!this.template) {
-            JQXLite(this.componentSelector).html(this.props.template);
+    	    JQXLite(this.componentSelector).html(this.props.template);
         }
         JQXLite(this.componentSelector).jqxRangeSelector(options);
     };
@@ -87,25 +80,11 @@ export default class JqxRangeSelector extends React.Component {
             return JQXLite(this.componentSelector).jqxRangeSelector('disabled');
         }
     };
-    showGroupLabels(arg) {
+    groupLabelsFormatFunction(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxRangeSelector('showGroupLabels', arg)
+            JQXLite(this.componentSelector).jqxRangeSelector('groupLabelsFormatFunction', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxRangeSelector('showGroupLabels');
-        }
-    };
-    labelsOnTicks(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxRangeSelector('labelsOnTicks', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxRangeSelector('labelsOnTicks');
-        }
-    };
-    markersFormatFunction(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxRangeSelector('markersFormatFunction', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxRangeSelector('markersFormatFunction');
+            return JQXLite(this.componentSelector).jqxRangeSelector('groupLabelsFormatFunction');
         }
     };
     height(arg) {
@@ -129,39 +108,11 @@ export default class JqxRangeSelector extends React.Component {
             return JQXLite(this.componentSelector).jqxRangeSelector('labelsFormatFunction');
         }
     };
-    labelPrecision(arg) {
+    labelsOnTicks(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxRangeSelector('labelPrecision', arg)
+            JQXLite(this.componentSelector).jqxRangeSelector('labelsOnTicks', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxRangeSelector('labelPrecision');
-        }
-    };
-    moveOnClick(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxRangeSelector('moveOnClick', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxRangeSelector('moveOnClick');
-        }
-    };
-    markerRenderer(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxRangeSelector('markerRenderer', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxRangeSelector('markerRenderer');
-        }
-    };
-    markerPrecision(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxRangeSelector('markerPrecision', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxRangeSelector('markerPrecision');
-        }
-    };
-    majorLabelRenderer(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxRangeSelector('majorLabelRenderer', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxRangeSelector('majorLabelRenderer');
+            return JQXLite(this.componentSelector).jqxRangeSelector('labelsOnTicks');
         }
     };
     markersFormat(arg) {
@@ -169,6 +120,13 @@ export default class JqxRangeSelector extends React.Component {
             JQXLite(this.componentSelector).jqxRangeSelector('markersFormat', arg)
         } else {
             return JQXLite(this.componentSelector).jqxRangeSelector('markersFormat');
+        }
+    };
+    markersFormatFunction(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxRangeSelector('markersFormatFunction', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxRangeSelector('markersFormatFunction');
         }
     };
     majorTicksInterval(arg) {
@@ -199,6 +157,13 @@ export default class JqxRangeSelector extends React.Component {
             return JQXLite(this.componentSelector).jqxRangeSelector('min');
         }
     };
+    moveOnClick(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxRangeSelector('moveOnClick', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxRangeSelector('moveOnClick');
+        }
+    };
     padding(arg) {
         if (arg !== undefined) {
             JQXLite(this.componentSelector).jqxRangeSelector('padding', arg)
@@ -225,6 +190,13 @@ export default class JqxRangeSelector extends React.Component {
             JQXLite(this.componentSelector).jqxRangeSelector('rtl', arg)
         } else {
             return JQXLite(this.componentSelector).jqxRangeSelector('rtl');
+        }
+    };
+    showGroupLabels(arg) {
+        if (arg !== undefined) {
+            JQXLite(this.componentSelector).jqxRangeSelector('showGroupLabels', arg)
+        } else {
+            return JQXLite(this.componentSelector).jqxRangeSelector('showGroupLabels');
         }
     };
     showMinorTicks(arg) {
@@ -290,4 +262,3 @@ export default class JqxRangeSelector extends React.Component {
         )
     };
 };
-

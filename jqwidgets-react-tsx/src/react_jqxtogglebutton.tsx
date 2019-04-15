@@ -91,8 +91,12 @@ class JqxToggleButton extends React.PureComponent<IToggleButtonProps, IState> {
         this._jqx(this._componentSelector).jqxToggleButton('unCheck' );
     };
 
-    public val(value?: string): string {
-        return this._jqx(this._componentSelector).jqxToggleButton('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxToggleButton('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxToggleButton('val');
+        }
     };
 
     private _manageProps(): IToggleButtonProps {
@@ -102,7 +106,7 @@ class JqxToggleButton extends React.PureComponent<IToggleButtonProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

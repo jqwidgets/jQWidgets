@@ -1,0 +1,32 @@
+.jqx-chart-axis-text,
+.jqx-chart-label-text,
+.jqx-chart-tooltip-text,
+.jqx-chart-legend-text {
+    fill: #fafafa;
+    color: #fafafa;
+    font-size: 12px;
+    font-family: Verdana;
+}
+
+.jqx-chart-axis-description {
+    fill: #fafafa;
+    color: #fafafa;
+    font-size: 12px;
+    font-family: Verdana;
+}
+
+.jqx-chart-title-text {
+    fill: #fafafa;
+    color: #fafafa;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Verdana;
+}
+
+.jqx-chart-title-description {
+    fill: #fafafa;
+    color: #fafafa;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: Verdana;
+}

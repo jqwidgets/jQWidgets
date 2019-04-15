@@ -17,7 +17,7 @@ declare class JqxRadioButton extends React.PureComponent<IRadioButtonProps, ISta
     focus(): void;
     renderWidget(): void;
     uncheck(): void;
-    val(value?: boolean): boolean;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

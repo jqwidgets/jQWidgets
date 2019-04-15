@@ -15,7 +15,7 @@ declare class JqxNumberInput extends React.PureComponent<INumberInputProps, ISta
     focus(): void;
     getDecimal(): number;
     setDecimal(index: number | string): void;
-    val(value?: number | string): number;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

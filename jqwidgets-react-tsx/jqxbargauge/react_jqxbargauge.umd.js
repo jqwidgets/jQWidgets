@@ -90,7 +90,12 @@ require('../../jqwidgets/jqxbargauge');
             this._jqx(this._componentSelector).jqxBarGauge('render');
         };
         JqxBarGauge.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxBarGauge('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxBarGauge('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxBarGauge('val');
+            }
         };
         JqxBarGauge.prototype._manageProps = function () {
             var widgetProps = ['animationDuration', 'backgroundColor', 'barSpacing', 'baseValue', 'colorScheme', 'customColorScheme', 'disabled', 'endAngle', 'formatFunction', 'height', 'labels', 'max', 'min', 'relativeInnerRadius', 'rendered', 'startAngle', 'title', 'tooltip', 'useGradient', 'values', 'width'];

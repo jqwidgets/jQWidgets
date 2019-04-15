@@ -13,7 +13,7 @@ declare class JqxMaskedInput extends React.PureComponent<IMaskedInputProps, ISta
     clear(): void;
     destroy(): void;
     focus(): void;
-    val(value?: number | string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

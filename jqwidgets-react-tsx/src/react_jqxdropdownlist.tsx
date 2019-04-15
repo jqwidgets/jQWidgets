@@ -223,8 +223,12 @@ class JqxDropDownList extends React.PureComponent<IDropDownListProps, IState> {
         this._jqx(this._componentSelector).jqxDropDownList('uncheckAll' );
     };
 
-    public val(value?: string): string {
-        return this._jqx(this._componentSelector).jqxDropDownList('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxDropDownList('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxDropDownList('val');
+        }
     };
 
     private _manageProps(): IDropDownListProps {
@@ -234,7 +238,7 @@ class JqxDropDownList extends React.PureComponent<IDropDownListProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

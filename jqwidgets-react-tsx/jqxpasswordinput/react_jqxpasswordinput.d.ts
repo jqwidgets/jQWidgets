@@ -12,7 +12,7 @@ declare class JqxPasswordInput extends React.PureComponent<IPasswordInputProps, 
     getOptions(option: string): any;
     renderWidget(): void;
     refresh(): void;
-    val(value?: string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

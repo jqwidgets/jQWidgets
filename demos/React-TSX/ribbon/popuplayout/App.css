@@ -1,0 +1,23 @@
+html, body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+table {
+    margin-left: 5px;
+    border-collapse: separate;
+    border-spacing: 0px 3px;
+    vertical-align: middle;
+}
+
+hr {
+    width: 75%;
+    float: left;
+}

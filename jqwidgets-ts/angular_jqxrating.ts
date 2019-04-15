@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -175,7 +175,7 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxRatingComponent properties
-   count(arg?: number) : any {
+   count(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxRating('count', arg);
       } else {
@@ -183,7 +183,7 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRating('disabled', arg);
       } else {
@@ -191,7 +191,7 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxRating('height', arg);
       } else {
@@ -199,7 +199,7 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   itemHeight(arg?: number) : any {
+   itemHeight(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxRating('itemHeight', arg);
       } else {
@@ -207,7 +207,7 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   itemWidth(arg?: number) : any {
+   itemWidth(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxRating('itemWidth', arg);
       } else {
@@ -215,7 +215,7 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   precision(arg?: number) : any {
+   precision(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxRating('precision', arg);
       } else {
@@ -223,7 +223,7 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   singleVote(arg?: boolean) : any {
+   singleVote(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRating('singleVote', arg);
       } else {
@@ -231,7 +231,7 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   value(arg?: number) : any {
+   value(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxRating('value', arg);
       } else {
@@ -239,7 +239,7 @@ export class jqxRatingComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxRating('width', arg);
       } else {

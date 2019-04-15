@@ -51,7 +51,7 @@ declare class JqxListBox extends React.PureComponent<IListBoxProps, IState> {
     uncheckIndex(index: number | string): void;
     uncheckItem(item: any): void;
     uncheckAll(): void;
-    val(value?: number | string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

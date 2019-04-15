@@ -14,7 +14,7 @@ declare class JqxRating extends React.PureComponent<IRatingProps, IState> {
     enable(): void;
     getValue(): number;
     setValue(value: number): void;
-    val(value?: number): number;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -44,7 +44,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
    @Input('query') attrQuery: string;
    @Input('renderer') attrRenderer: (itemValue?: string, inputValue?: string) => string;
    @Input('rtl') attrRtl: boolean;
-   @Input('searchMode') attrSearchMode: any;
+   @Input('searchMode') attrSearchMode: string;
    @Input('source') attrSource: any;
    @Input('theme') attrTheme: string;
    @Input('valueMember') attrValueMember: string;
@@ -208,7 +208,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxInputComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxInput('disabled', arg);
       } else {
@@ -216,7 +216,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownWidth(arg?: number | string) : any {
+   dropDownWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxInput('dropDownWidth', arg);
       } else {
@@ -224,7 +224,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   displayMember(arg?: string) : any {
+   displayMember(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxInput('displayMember', arg);
       } else {
@@ -232,7 +232,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxInput('height', arg);
       } else {
@@ -240,7 +240,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   items(arg?: number) : any {
+   items(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxInput('items', arg);
       } else {
@@ -248,7 +248,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   minLength(arg?: number) : any {
+   minLength(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxInput('minLength', arg);
       } else {
@@ -256,7 +256,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   maxLength(arg?: number) : any {
+   maxLength(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxInput('maxLength', arg);
       } else {
@@ -264,7 +264,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   opened(arg?: boolean) : any {
+   opened(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxInput('opened', arg);
       } else {
@@ -272,7 +272,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   placeHolder(arg?: string) : any {
+   placeHolder(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxInput('placeHolder', arg);
       } else {
@@ -280,7 +280,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   popupZIndex(arg?: number) : any {
+   popupZIndex(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxInput('popupZIndex', arg);
       } else {
@@ -288,7 +288,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   query(arg?: string) : any {
+   query(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxInput('query', arg);
       } else {
@@ -296,7 +296,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   renderer(arg?: (itemValue?: string, inputValue?: string) => string) : any {
+   renderer(arg?: (itemValue?: string, inputValue?: string) => string): (itemValue?: string, inputValue?: string) => string {
       if (arg !== undefined) {
           this.host.jqxInput('renderer', arg);
       } else {
@@ -304,7 +304,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxInput('rtl', arg);
       } else {
@@ -312,7 +312,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   searchMode(arg?: string) : any {
+   searchMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxInput('searchMode', arg);
       } else {
@@ -320,7 +320,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   source(arg?: any) : any {
+   source(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxInput('source', arg);
       } else {
@@ -328,7 +328,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxInput('theme', arg);
       } else {
@@ -336,7 +336,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   valueMember(arg?: string) : any {
+   valueMember(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxInput('valueMember', arg);
       } else {
@@ -344,7 +344,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxInput('width', arg);
       } else {
@@ -352,7 +352,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   value(arg?: number | string) : any {
+   value(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxInput('value', arg);
       } else {

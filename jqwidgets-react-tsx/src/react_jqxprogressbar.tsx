@@ -75,8 +75,12 @@ class JqxProgressBar extends React.PureComponent<IProgressBarProps, IState> {
         this._jqx(this._componentSelector).jqxProgressBar('destroy' );
     };
 
-    public val(value?: number | string): number {
-        return this._jqx(this._componentSelector).jqxProgressBar('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxProgressBar('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxProgressBar('val');
+        }
     };
 
     private _manageProps(): IProgressBarProps {
@@ -86,7 +90,7 @@ class JqxProgressBar extends React.PureComponent<IProgressBarProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

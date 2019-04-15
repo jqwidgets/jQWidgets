@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,7 +24,7 @@ export class jqxKnobComponent implements OnChanges
    @Input('allowValueChangeOnClick') attrAllowValueChangeOnClick: boolean;
    @Input('allowValueChangeOnDrag') attrAllowValueChangeOnDrag: boolean;
    @Input('allowValueChangeOnMouseWheel') attrAllowValueChangeOnMouseWheel: boolean;
-   @Input('changing') attrChanging: (oldValue: string | number, newValue: string | number) => boolean;
+   @Input('changing') attrChanging: (oldValue: jqwidgets.KnobChanging['oldValue'] | jqwidgets.KnobChanging['oldValue'][], newValue: jqwidgets.KnobChanging['newValue'] | jqwidgets.KnobChanging['newValue'][]) => boolean;
    @Input('dragEndAngle') attrDragEndAngle: number;
    @Input('dragStartAngle') attrDragStartAngle: number;
    @Input('disabled') attrDisabled: boolean;
@@ -35,9 +35,9 @@ export class jqxKnobComponent implements OnChanges
    @Input('min') attrMin: number;
    @Input('max') attrMax: number;
    @Input('progressBar') attrProgressBar: jqwidgets.KnobProgressBar;
-   @Input('pointer') attrPointer: jqwidgets.KnobPointer;
-   @Input('pointerGrabAction') attrPointerGrabAction: any;
-   @Input('rotation') attrRotation: any;
+   @Input('pointer') attrPointer: jqwidgets.KnobPointer | jqwidgets.KnobPointer[];
+   @Input('pointerGrabAction') attrPointerGrabAction: string;
+   @Input('rotation') attrRotation: string;
    @Input('startAngle') attrStartAngle: number;
    @Input('spinner') attrSpinner: jqwidgets.KnobSpinner;
    @Input('styles') attrStyles: jqwidgets.KnobStyle;
@@ -168,7 +168,7 @@ export class jqxKnobComponent implements OnChanges
    }
 
    // jqxKnobComponent properties
-   allowValueChangeOnClick(arg?: boolean) : any {
+   allowValueChangeOnClick(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxKnob('allowValueChangeOnClick', arg);
       } else {
@@ -176,7 +176,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   allowValueChangeOnDrag(arg?: boolean) : any {
+   allowValueChangeOnDrag(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxKnob('allowValueChangeOnDrag', arg);
       } else {
@@ -184,7 +184,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   allowValueChangeOnMouseWheel(arg?: boolean) : any {
+   allowValueChangeOnMouseWheel(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxKnob('allowValueChangeOnMouseWheel', arg);
       } else {
@@ -192,7 +192,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   changing(arg?: (oldValue: string | number, newValue: string | number) => boolean) : any {
+   changing(arg?: (oldValue: jqwidgets.KnobChanging['oldValue'] | jqwidgets.KnobChanging['oldValue'][], newValue: jqwidgets.KnobChanging['newValue'] | jqwidgets.KnobChanging['newValue'][]) => boolean): (oldValue: jqwidgets.KnobChanging['oldValue'] | jqwidgets.KnobChanging['oldValue'][], newValue: jqwidgets.KnobChanging['newValue'] | jqwidgets.KnobChanging['newValue'][]) => boolean {
       if (arg !== undefined) {
           this.host.jqxKnob('changing', arg);
       } else {
@@ -200,7 +200,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   dragEndAngle(arg?: number) : any {
+   dragEndAngle(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxKnob('dragEndAngle', arg);
       } else {
@@ -208,7 +208,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   dragStartAngle(arg?: number) : any {
+   dragStartAngle(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxKnob('dragStartAngle', arg);
       } else {
@@ -216,7 +216,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxKnob('disabled', arg);
       } else {
@@ -224,7 +224,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   dial(arg?: jqwidgets.KnobDial) : any {
+   dial(arg?: jqwidgets.KnobDial): jqwidgets.KnobDial {
       if (arg !== undefined) {
           this.host.jqxKnob('dial', arg);
       } else {
@@ -232,7 +232,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   endAngle(arg?: number) : any {
+   endAngle(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxKnob('endAngle', arg);
       } else {
@@ -240,7 +240,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxKnob('height', arg);
       } else {
@@ -248,7 +248,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   labels(arg?: jqwidgets.KnobLabels) : any {
+   labels(arg?: jqwidgets.KnobLabels): jqwidgets.KnobLabels {
       if (arg !== undefined) {
           this.host.jqxKnob('labels', arg);
       } else {
@@ -256,7 +256,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   marks(arg?: jqwidgets.KnobMarks) : any {
+   marks(arg?: jqwidgets.KnobMarks): jqwidgets.KnobMarks {
       if (arg !== undefined) {
           this.host.jqxKnob('marks', arg);
       } else {
@@ -264,7 +264,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   min(arg?: number) : any {
+   min(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxKnob('min', arg);
       } else {
@@ -272,7 +272,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   max(arg?: number) : any {
+   max(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxKnob('max', arg);
       } else {
@@ -280,7 +280,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   progressBar(arg?: jqwidgets.KnobProgressBar) : any {
+   progressBar(arg?: jqwidgets.KnobProgressBar): jqwidgets.KnobProgressBar {
       if (arg !== undefined) {
           this.host.jqxKnob('progressBar', arg);
       } else {
@@ -288,7 +288,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   pointer(arg?: jqwidgets.KnobPointer) : any {
+   pointer(arg?: jqwidgets.KnobPointer | jqwidgets.KnobPointer[]): jqwidgets.KnobPointer | jqwidgets.KnobPointer[] {
       if (arg !== undefined) {
           this.host.jqxKnob('pointer', arg);
       } else {
@@ -296,7 +296,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   pointerGrabAction(arg?: string) : any {
+   pointerGrabAction(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxKnob('pointerGrabAction', arg);
       } else {
@@ -304,7 +304,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   rotation(arg?: string) : any {
+   rotation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxKnob('rotation', arg);
       } else {
@@ -312,7 +312,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   startAngle(arg?: number) : any {
+   startAngle(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxKnob('startAngle', arg);
       } else {
@@ -320,7 +320,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   spinner(arg?: jqwidgets.KnobSpinner) : any {
+   spinner(arg?: jqwidgets.KnobSpinner): jqwidgets.KnobSpinner {
       if (arg !== undefined) {
           this.host.jqxKnob('spinner', arg);
       } else {
@@ -328,7 +328,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   styles(arg?: jqwidgets.KnobStyle) : any {
+   styles(arg?: jqwidgets.KnobStyle): jqwidgets.KnobStyle {
       if (arg !== undefined) {
           this.host.jqxKnob('styles', arg);
       } else {
@@ -336,7 +336,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   step(arg?: number | string) : any {
+   step(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxKnob('step', arg);
       } else {
@@ -344,7 +344,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   snapToStep(arg?: boolean) : any {
+   snapToStep(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxKnob('snapToStep', arg);
       } else {
@@ -352,7 +352,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   value(arg?: any) : any {
+   value(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxKnob('value', arg);
       } else {
@@ -360,7 +360,7 @@ export class jqxKnobComponent implements OnChanges
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxKnob('width', arg);
       } else {

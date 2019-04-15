@@ -119,8 +119,12 @@ class JqxDateTimeInput extends React.PureComponent<IDateTimeInputProps, IState> 
         this._jqx(this._componentSelector).jqxDateTimeInput('setDate' , date);
     };
 
-    public val(value?: any, value2?: any): any {
-        return this._jqx(this._componentSelector).jqxDateTimeInput('val' , value, value2);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxDateTimeInput('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxDateTimeInput('val');
+        }
     };
 
     private _manageProps(): IDateTimeInputProps {
@@ -130,7 +134,7 @@ class JqxDateTimeInput extends React.PureComponent<IDateTimeInputProps, IState> 
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 
@@ -173,7 +177,7 @@ interface IDateTimeInputOptions {
     enableBrowserBoundsDetection?: boolean;
     enableAbsoluteSelection?: boolean;
     firstDayOfWeek?: number;
-    formatString?: 'd' | 'f' | 'F' | 'n' | 'c' | 'p' | 'd' | 'dd' | 'ddd' | 'dddd' | 'D' | 'h' | 'hh' | 'H' | 'HH' | 'm' | 'mm' | 'M' | 'MM' | 'MMM' | 'MMMM' | 's' | 'ss' | 't' | 'tt' | 'y' | 'yy' | 'yyy' | 'yyyy' | 'dddd-MMMM-yyyy';
+    formatString?: string;
     height?: string | number;
     min?: Date;
     max?: Date;
@@ -191,7 +195,7 @@ interface IDateTimeInputOptions {
     template?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
     textAlign?: 'left' | 'right' | 'center';
     todayString?: string;
-    value?: Date;
+    value?: Date | null;
     width?: string | number;
 }
 

@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -33,7 +33,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
 {
    @Input('checked') attrChecked: boolean;
    @Input('disabled') attrDisabled: boolean;
-   @Input('orientation') attrOrientation: any;
+   @Input('orientation') attrOrientation: string;
    @Input('onLabel') attrOnLabel: string;
    @Input('offLabel') attrOffLabel: string;
    @Input('thumbSize') attrThumbSize: string;
@@ -175,7 +175,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxSwitchButtonComponent properties
-   checked(arg?: boolean) : any {
+   checked(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('checked', arg);
       } else {
@@ -183,7 +183,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('disabled', arg);
       } else {
@@ -191,7 +191,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('height', arg);
       } else {
@@ -199,7 +199,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   orientation(arg?: string) : any {
+   orientation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('orientation', arg);
       } else {
@@ -207,7 +207,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   onLabel(arg?: string) : any {
+   onLabel(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('onLabel', arg);
       } else {
@@ -215,7 +215,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   offLabel(arg?: string) : any {
+   offLabel(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('offLabel', arg);
       } else {
@@ -223,7 +223,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   thumbSize(arg?: string) : any {
+   thumbSize(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('thumbSize', arg);
       } else {
@@ -231,7 +231,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('rtl', arg);
       } else {
@@ -239,7 +239,7 @@ export class jqxSwitchButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxSwitchButton('width', arg);
       } else {

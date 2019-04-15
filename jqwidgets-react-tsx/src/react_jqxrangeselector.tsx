@@ -94,7 +94,7 @@ class JqxRangeSelector extends React.PureComponent<IRangeSelectorProps, IState> 
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 
@@ -124,10 +124,10 @@ interface IState {
 }
 
 export interface IRangeSelectorRange {
-    from?: number | string;
-    to?: number | string;
-    min?: number | string;
-    max?: number | string;
+    from?: number | string | Date;
+    to?: number | string | Date;
+    min?: number | string | object;
+    max?: number | string | object;
 }
 
 export interface IRangeSelectorGetRange {
@@ -136,11 +136,11 @@ export interface IRangeSelectorGetRange {
 }
 
 export interface IRangeSelectorLabelsFormatFunction {
-    value?: string;
+    value?: number | string;
 }
 
 export interface IRangeSelectorMarkersFormatFunction {
-    value?: string;
+    value?: number | string;
     position?: string;
 }
 
@@ -153,10 +153,10 @@ interface IRangeSelectorOptions {
     disabled?: boolean;
     groupLabelsFormatFunction?: (value: IRangeSelectorGroupLabelsFormatFunction['value'], date: IRangeSelectorGroupLabelsFormatFunction['date']) => string;
     height?: string | number;
-    labelsFormat?: 'd' | 'f' | 'n' | 'c' | 'p' | 'dd' | 'ddd' | 'dddd' | 'h' | 'hh' | 'H' | 'HH' | 'm' | 'mm' | 'M' | 'MM' | 'MMM' | 'MMMM' | 's' | 'ss' | 't' | 'tt' | 'y' | 'yy' | 'yyy' | 'yyyy';
+    labelsFormat?: string;
     labelsFormatFunction?: (value: IRangeSelectorLabelsFormatFunction['value']) => string;
     labelsOnTicks?: boolean;
-    markersFormat?: 'd' | 'f' | 'n' | 'c' | 'p' | 'dd' | 'ddd' | 'dddd' | 'h' | 'hh' | 'H' | 'HH' | 'm' | 'mm' | 'M' | 'MM' | 'MMM' | 'MMMM' | 's' | 'ss' | 't' | 'tt' | 'y' | 'yy' | 'yyy' | 'yyyy';
+    markersFormat?: string;
     markersFormatFunction?: (value: IRangeSelectorMarkersFormatFunction['value'], position: IRangeSelectorMarkersFormatFunction['position']) => string;
     majorTicksInterval?: any;
     minorTicksInterval?: any;

@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,7 +24,7 @@ declare let JQXLite: any;
 export class jqxLayoutComponent implements OnChanges
 {
    @Input('contextMenu') attrContextMenu: boolean;
-   @Input('layout') attrLayout: Array<jqwidgets.LayoutLayout>;
+   @Input('layout') attrLayout: Array<jqwidgets.Layout>;
    @Input('minGroupHeight') attrMinGroupHeight: number | string;
    @Input('minGroupWidth') attrMinGroupWidth: number | string;
    @Input('resizable') attrResizable: boolean;
@@ -150,7 +150,7 @@ export class jqxLayoutComponent implements OnChanges
    }
 
    // jqxLayoutComponent properties
-   contextMenu(arg?: boolean) : any {
+   contextMenu(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxLayout('contextMenu', arg);
       } else {
@@ -158,7 +158,7 @@ export class jqxLayoutComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxLayout('height', arg);
       } else {
@@ -166,7 +166,7 @@ export class jqxLayoutComponent implements OnChanges
       }
    }
 
-   layout(arg?: Array<jqwidgets.LayoutLayout>) : any {
+   layout(arg?: Array<jqwidgets.Layout>): Array<jqwidgets.Layout> {
       if (arg !== undefined) {
           this.host.jqxLayout('layout', arg);
       } else {
@@ -174,7 +174,7 @@ export class jqxLayoutComponent implements OnChanges
       }
    }
 
-   minGroupHeight(arg?: number | string) : any {
+   minGroupHeight(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxLayout('minGroupHeight', arg);
       } else {
@@ -182,7 +182,7 @@ export class jqxLayoutComponent implements OnChanges
       }
    }
 
-   minGroupWidth(arg?: number | string) : any {
+   minGroupWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxLayout('minGroupWidth', arg);
       } else {
@@ -190,7 +190,7 @@ export class jqxLayoutComponent implements OnChanges
       }
    }
 
-   resizable(arg?: boolean) : any {
+   resizable(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxLayout('resizable', arg);
       } else {
@@ -198,7 +198,7 @@ export class jqxLayoutComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxLayout('rtl', arg);
       } else {
@@ -206,7 +206,7 @@ export class jqxLayoutComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxLayout('theme', arg);
       } else {
@@ -214,7 +214,7 @@ export class jqxLayoutComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxLayout('width', arg);
       } else {

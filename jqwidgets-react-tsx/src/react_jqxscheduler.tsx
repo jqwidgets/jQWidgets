@@ -107,7 +107,7 @@ class JqxScheduler extends React.PureComponent<ISchedulerProps, IState> {
         this._jqx(this._componentSelector).jqxScheduler('ensureAppointmentVisible' , id);
     };
 
-    public ensureVisible(item: any, resourceId: string): void {
+    public ensureVisible(item: any, resourceId?: string): void {
         this._jqx(this._componentSelector).jqxScheduler('ensureVisible' , item, resourceId);
     };
 
@@ -186,7 +186,7 @@ class JqxScheduler extends React.PureComponent<ISchedulerProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 
@@ -216,21 +216,21 @@ interface IState {
 }
 
 export interface ISchedulerAppointmentDataFields {
-    allDay?: boolean;
+    allDay?: boolean | string;
     background?: string;
     borderColor?: string;
     color?: string;
     description?: string;
-    draggable?: boolean;
+    draggable?: boolean | string;
     from?: string;
-    hidden?: boolean;
+    hidden?: boolean | string;
     id?: number | string;
     location?: string;
-    recurrencePattern?: ISchedulerRecurrencePattern;
+    recurrencePattern?: ISchedulerRecurrencePattern | string;
     recurrenceException?: string;
-    resizable?: boolean;
+    resizable?: boolean | string;
     resourceId?: number | string;
-    readOnly?: boolean;
+    readOnly?: boolean | string;
     subject?: string;
     style?: string;
     status?: string;
@@ -305,7 +305,7 @@ export interface ISchedulerEditDialogKeyDown {
 export interface ISchedulerExportSettings {
     serverURL?: string;
     characterSet?: string;
-    fileName?: string;
+    fileName?: string | null;
     dateTimeFormatString?: string;
     resourcesInMultipleICSFiles?: boolean;
 }
@@ -319,7 +319,7 @@ export interface ISchedulerResources {
     colorScheme?: string;
     orientation?: 'none' | 'horizontal' | 'vertical';
     dataField?: string;
-    resourceColumnWidth?: number;
+    resourceColumnWidth?: number | string;
     resourceRowHeight?: number;
 }
 
@@ -389,7 +389,7 @@ interface ISchedulerOptions {
     toolBarRangeFormatAbbr?: string;
     toolbarHeight?: number;
     views?: any[];
-    view?: 'dayView' | 'weekView' | 'monthView' | 'timelineDayView' | 'timelineWeekView' | 'timelineMonthView';
+    view?: 'dayView' | 'weekView' | 'monthView' | 'timelineDayView' | 'timelineWeekView' | 'timelineMonthView' | 'agendaView';
     width?: number | string;
 }
 

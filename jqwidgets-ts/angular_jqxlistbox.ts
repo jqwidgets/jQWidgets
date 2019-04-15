@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -41,9 +41,9 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    @Input('checkboxes') attrCheckboxes: boolean;
    @Input('disabled') attrDisabled: boolean;
    @Input('displayMember') attrDisplayMember: number | string;
-   @Input('dropAction') attrDropAction: any;
-   @Input('dragStart') attrDragStart: (item:any) => boolean;
-   @Input('dragEnd') attrDragEnd: (dragItem: any, dropItem: any) => boolean;
+   @Input('dropAction') attrDropAction: string;
+   @Input('dragStart') attrDragStart: (item:jqwidgets.ListBoxDragStart['item']) => boolean;
+   @Input('dragEnd') attrDragEnd: (dragItem: jqwidgets.ListBoxDragEnd['dragItem'], dropItem: jqwidgets.ListBoxDragEnd['dropItem']) => boolean;
    @Input('enableHover') attrEnableHover: boolean;
    @Input('enableSelection') attrEnableSelection: boolean;
    @Input('equalItemsWidth') attrEqualItemsWidth: boolean;
@@ -57,14 +57,14 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    @Input('incrementalSearchDelay') attrIncrementalSearchDelay: number | string;
    @Input('multiple') attrMultiple: boolean;
    @Input('multipleextended') attrMultipleextended: boolean;
-   @Input('renderer') attrRenderer: (index: number, label: string | number, value: string | number) => string;
+   @Input('renderer') attrRenderer: (index: jqwidgets.ListBoxRenderer['index'], label: jqwidgets.ListBoxRenderer['label'], value: jqwidgets.ListBoxRenderer['value']) => string;
    @Input('rendered') attrRendered: () => any;
    @Input('rtl') attrRtl: boolean;
    @Input('selectedIndex') attrSelectedIndex: number | string;
    @Input('selectedIndexes') attrSelectedIndexes: any;
    @Input('source') attrSource: Array<any>;
    @Input('scrollBarSize') attrScrollBarSize: number;
-   @Input('searchMode') attrSearchMode: any;
+   @Input('searchMode') attrSearchMode: string;
    @Input('theme') attrTheme: string;
    @Input('valueMember') attrValueMember: number | string;
    @Input('width') attrWidth: string | number;
@@ -234,7 +234,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }
 
    // jqxListBoxComponent properties
-   autoHeight(arg?: boolean) : any {
+   autoHeight(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -247,7 +247,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   allowDrag(arg?: boolean) : any {
+   allowDrag(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -260,7 +260,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   allowDrop(arg?: boolean) : any {
+   allowDrop(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -273,7 +273,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   checkboxes(arg?: boolean) : any {
+   checkboxes(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -286,7 +286,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -299,7 +299,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   displayMember(arg?: number | string) : any {
+   displayMember(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -312,7 +312,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   dropAction(arg?: string) : any {
+   dropAction(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -325,7 +325,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   dragStart(arg?: (item:any) => boolean) : any {
+   dragStart(arg?: (item:jqwidgets.ListBoxDragStart['item']) => boolean): (item:jqwidgets.ListBoxDragStart['item']) => boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -338,7 +338,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   dragEnd(arg?: (dragItem: any, dropItem: any) => boolean) : any {
+   dragEnd(arg?: (dragItem: jqwidgets.ListBoxDragEnd['dragItem'], dropItem: jqwidgets.ListBoxDragEnd['dropItem']) => boolean): (dragItem: jqwidgets.ListBoxDragEnd['dragItem'], dropItem: jqwidgets.ListBoxDragEnd['dropItem']) => boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -351,7 +351,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   enableHover(arg?: boolean) : any {
+   enableHover(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -364,7 +364,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   enableSelection(arg?: boolean) : any {
+   enableSelection(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -377,7 +377,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   equalItemsWidth(arg?: boolean) : any {
+   equalItemsWidth(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -390,7 +390,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   filterable(arg?: boolean) : any {
+   filterable(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -403,7 +403,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   filterHeight(arg?: number) : any {
+   filterHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -416,7 +416,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   filterDelay(arg?: number | string) : any {
+   filterDelay(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -429,7 +429,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   filterPlaceHolder(arg?: number | string) : any {
+   filterPlaceHolder(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -442,7 +442,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -455,7 +455,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   hasThreeStates(arg?: boolean) : any {
+   hasThreeStates(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -468,7 +468,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   itemHeight(arg?: number) : any {
+   itemHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -481,7 +481,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   incrementalSearch(arg?: boolean) : any {
+   incrementalSearch(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -494,7 +494,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   incrementalSearchDelay(arg?: number | string) : any {
+   incrementalSearchDelay(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -507,7 +507,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   multiple(arg?: boolean) : any {
+   multiple(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -520,7 +520,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   multipleextended(arg?: boolean) : any {
+   multipleextended(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -533,7 +533,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   renderer(arg?: (index: number, label: string | number, value: string | number) => string) : any {
+   renderer(arg?: (index: jqwidgets.ListBoxRenderer['index'], label: jqwidgets.ListBoxRenderer['label'], value: jqwidgets.ListBoxRenderer['value']) => string): (index: jqwidgets.ListBoxRenderer['index'], label: jqwidgets.ListBoxRenderer['label'], value: jqwidgets.ListBoxRenderer['value']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -546,7 +546,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   rendered(arg?: () => any) : any {
+   rendered(arg?: () => any): () => any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -559,7 +559,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -572,7 +572,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   selectedIndex(arg?: number | string) : any {
+   selectedIndex(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -585,7 +585,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   selectedIndexes(arg?: any) : any {
+   selectedIndexes(arg?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -598,7 +598,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   source(arg?: Array<any>) : any {
+   source(arg?: Array<any>): Array<any> {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -611,7 +611,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   scrollBarSize(arg?: number) : any {
+   scrollBarSize(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -624,7 +624,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   searchMode(arg?: string) : any {
+   searchMode(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -637,7 +637,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -650,7 +650,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   valueMember(arg?: number | string) : any {
+   valueMember(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -663,7 +663,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

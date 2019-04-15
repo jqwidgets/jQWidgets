@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -142,7 +142,7 @@ export class jqxDockPanelComponent implements OnChanges
    }
 
    // jqxDockPanelComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDockPanel('disabled', arg);
       } else {
@@ -150,7 +150,7 @@ export class jqxDockPanelComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxDockPanel('height', arg);
       } else {
@@ -158,7 +158,7 @@ export class jqxDockPanelComponent implements OnChanges
       }
    }
 
-   lastchildfill(arg?: boolean) : any {
+   lastchildfill(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDockPanel('lastchildfill', arg);
       } else {
@@ -166,7 +166,7 @@ export class jqxDockPanelComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxDockPanel('width', arg);
       } else {

@@ -13,7 +13,7 @@ declare class JqxButton extends React.PureComponent<IButtonProps, IState> {
     destroy(): void;
     focus(): void;
     renderWidget(): void;
-    val(value?: string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }
@@ -32,6 +32,8 @@ interface IButtonOptions {
     imgPosition?: 'left' | 'center' | 'right' | 'top' | 'bottom' | 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
     roundedCorners?: 'top' | 'bottom' | 'all' | 'left' | 'right' | 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
     rtl?: boolean;
+    enableDefault?: boolean;
+    cursor?: boolean;
     textPosition?: 'left' | 'center' | 'right' | 'top' | 'bottom' | 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
     textImageRelation?: 'imageBeforeText' | 'imageAboveText' | 'textAboveImage' | 'textBeforeImage' | 'overlay';
     theme?: string;

@@ -12,7 +12,7 @@ declare class JqxProgressBar extends React.PureComponent<IProgressBarProps, ISta
     getOptions(option: string): any;
     actualValue(value: number | string): void;
     destroy(): void;
-    val(value?: number | string): number;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

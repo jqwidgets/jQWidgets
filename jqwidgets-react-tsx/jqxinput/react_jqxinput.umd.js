@@ -93,7 +93,12 @@ require('../../jqwidgets/jqxinput');
             this._jqx(this._componentSelector).jqxInput('selectAll');
         };
         JqxInput.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxInput('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxInput('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxInput('val');
+            }
         };
         JqxInput.prototype._manageProps = function () {
             var widgetProps = ['disabled', 'dropDownWidth', 'displayMember', 'height', 'items', 'minLength', 'maxLength', 'opened', 'placeHolder', 'popupZIndex', 'query', 'renderer', 'rtl', 'searchMode', 'source', 'theme', 'valueMember', 'width', 'value'];

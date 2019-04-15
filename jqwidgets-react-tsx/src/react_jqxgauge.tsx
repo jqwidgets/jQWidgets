@@ -75,8 +75,12 @@ class JqxGauge extends React.PureComponent<IGaugeProps, IState> {
         this._jqx(this._componentSelector).jqxGauge('enable' );
     };
 
-    public val(value?: number): number {
-        return this._jqx(this._componentSelector).jqxGauge('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxGauge('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxGauge('val');
+        }
     };
 
     private _manageProps(): IGaugeProps {
@@ -86,7 +90,7 @@ class JqxGauge extends React.PureComponent<IGaugeProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

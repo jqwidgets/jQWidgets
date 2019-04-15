@@ -113,7 +113,12 @@ require('../../jqwidgets/jqxform');
             this._jqx(this._componentSelector).jqxForm('showComponent', name);
         };
         JqxForm.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxForm('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxForm('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxForm('val');
+            }
         };
         JqxForm.prototype.submit = function (action, target, method) {
             this._jqx(this._componentSelector).jqxForm('submit', action, target, method);

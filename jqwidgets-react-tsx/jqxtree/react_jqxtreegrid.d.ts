@@ -10,7 +10,7 @@ declare class JqxTreeGrid extends React.PureComponent<ITreeGridProps, IState> {
     render(): React.ReactNode;
     setOptions(options: ITreeGridProps): void;
     getOptions(option: string): any;
-    addRow(rowKey: number | string, rowData: any, rowPosition: string, parent?: string): void;
+    addRow(rowKey: number | string | null, rowData: any, rowPosition: string, parent?: string): void;
     addFilter(dataField: string, filerGroup: any): void;
     applyFilters(): void;
     beginUpdate(): void;

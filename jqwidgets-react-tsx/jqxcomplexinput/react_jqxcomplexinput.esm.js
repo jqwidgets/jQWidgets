@@ -100,7 +100,12 @@ var JqxComplexInput = /** @class */ (function (_super) {
         this._jqx(this._componentSelector).jqxComplexInput('refresh');
     };
     JqxComplexInput.prototype.val = function (value) {
-        return this._jqx(this._componentSelector).jqxComplexInput('val', value);
+        if (value) {
+            this._jqx(this._componentSelector).jqxComplexInput('val', value);
+        }
+        else {
+            return this._jqx(this._componentSelector).jqxComplexInput('val');
+        }
     };
     JqxComplexInput.prototype._manageProps = function () {
         var widgetProps = ['decimalNotation', 'disabled', 'height', 'placeHolder', 'roundedCorners', 'rtl', 'spinButtons', 'spinButtonsStep', 'template', 'theme', 'value', 'width'];

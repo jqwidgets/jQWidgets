@@ -91,7 +91,12 @@ var JqxRating = /** @class */ (function (_super) {
         this._jqx(this._componentSelector).jqxRating('setValue', value);
     };
     JqxRating.prototype.val = function (value) {
-        return this._jqx(this._componentSelector).jqxRating('val', value);
+        if (value) {
+            this._jqx(this._componentSelector).jqxRating('val', value);
+        }
+        else {
+            return this._jqx(this._componentSelector).jqxRating('val');
+        }
     };
     JqxRating.prototype._manageProps = function () {
         var widgetProps = ['count', 'disabled', 'height', 'itemHeight', 'itemWidth', 'precision', 'singleVote', 'value', 'width'];

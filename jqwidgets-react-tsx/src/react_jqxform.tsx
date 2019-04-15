@@ -88,7 +88,11 @@ class JqxForm extends React.PureComponent<IFormProps, IState> {
     };
 
     public val(value?: any): any {
-        return this._jqx(this._componentSelector).jqxForm('val' , value);
+        if (value) {
+            this._jqx(this._componentSelector).jqxForm('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxForm('val');
+        }
     };
 
     public submit(action?: string, target?: string, method?: string): void {
@@ -106,7 +110,7 @@ class JqxForm extends React.PureComponent<IFormProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 
@@ -143,6 +147,8 @@ export interface IFormPadding {
 }
 
 export interface IFormTemplateItem {
+    name?: string;
+    text?: string;
     type?: string;
     bind?: string;
     submit?: boolean;

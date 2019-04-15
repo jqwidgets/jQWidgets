@@ -34,6 +34,8 @@ export interface IFormPadding {
     bottom?: number | string;
 }
 export interface IFormTemplateItem {
+    name?: string;
+    text?: string;
     type?: string;
     bind?: string;
     submit?: boolean;

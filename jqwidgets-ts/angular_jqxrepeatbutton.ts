@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -25,13 +25,13 @@ export class jqxRepeatButtonComponent implements OnChanges
    @Input('imgSrc') attrImgSrc: string;
    @Input('imgWidth') attrImgWidth: number | string;
    @Input('imgHeight') attrImgHeight: number | string;
-   @Input('imgPosition') attrImgPosition: any;
-   @Input('roundedCorners') attrRoundedCorners: any;
+   @Input('imgPosition') attrImgPosition: string;
+   @Input('roundedCorners') attrRoundedCorners: string;
    @Input('rtl') attrRtl: boolean;
-   @Input('textPosition') attrTextPosition: any;
-   @Input('textImageRelation') attrTextImageRelation: any;
+   @Input('textPosition') attrTextPosition: string;
+   @Input('textImageRelation') attrTextImageRelation: string;
    @Input('theme') attrTheme: string;
-   @Input('template') attrTemplate: any;
+   @Input('template') attrTemplate: string;
    @Input('toggled') attrToggled: boolean;
    @Input('value') attrValue: string;
    @Input('width') attrWidth: string | number;
@@ -154,7 +154,7 @@ export class jqxRepeatButtonComponent implements OnChanges
    }
 
    // jqxRepeatButtonComponent properties
-   delay(arg?: number) : any {
+   delay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('delay', arg);
       } else {
@@ -162,7 +162,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('disabled', arg);
       } else {
@@ -170,7 +170,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('height', arg);
       } else {
@@ -178,7 +178,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   imgSrc(arg?: string) : any {
+   imgSrc(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('imgSrc', arg);
       } else {
@@ -186,7 +186,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   imgWidth(arg?: number | string) : any {
+   imgWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('imgWidth', arg);
       } else {
@@ -194,7 +194,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   imgHeight(arg?: number | string) : any {
+   imgHeight(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('imgHeight', arg);
       } else {
@@ -202,7 +202,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   imgPosition(arg?: string) : any {
+   imgPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('imgPosition', arg);
       } else {
@@ -210,7 +210,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   roundedCorners(arg?: string) : any {
+   roundedCorners(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('roundedCorners', arg);
       } else {
@@ -218,7 +218,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('rtl', arg);
       } else {
@@ -226,7 +226,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   textPosition(arg?: string) : any {
+   textPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('textPosition', arg);
       } else {
@@ -234,7 +234,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   textImageRelation(arg?: string) : any {
+   textImageRelation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('textImageRelation', arg);
       } else {
@@ -242,7 +242,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('theme', arg);
       } else {
@@ -250,7 +250,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('template', arg);
       } else {
@@ -258,7 +258,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   toggled(arg?: boolean) : any {
+   toggled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('toggled', arg);
       } else {
@@ -266,7 +266,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('width', arg);
       } else {
@@ -274,7 +274,7 @@ export class jqxRepeatButtonComponent implements OnChanges
       }
    }
 
-   value(arg?: string) : any {
+   value(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRepeatButton('value', arg);
       } else {

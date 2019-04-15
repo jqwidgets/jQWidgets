@@ -11,7 +11,7 @@ declare class JqxKnob extends React.PureComponent<IKnobProps, IState> {
     setOptions(options: IKnobProps): void;
     getOptions(option: string): any;
     destroy(): void;
-    val(value?: number | string): number;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }
@@ -38,7 +38,7 @@ export interface IKnobMarks {
     offset?: string;
     rotate?: boolean;
     size?: number | string;
-    type?: 'circle' | 'line';
+    type?: string;
     thickness?: number;
     visible?: boolean;
 }
@@ -87,7 +87,7 @@ interface IKnobOptions {
     allowValueChangeOnClick?: boolean;
     allowValueChangeOnDrag?: boolean;
     allowValueChangeOnMouseWheel?: boolean;
-    changing?: (oldValue: IKnobChanging['oldValue'], newValue: IKnobChanging['newValue']) => boolean;
+    changing?: (oldValue: IKnobChanging['oldValue'] | IKnobChanging['oldValue'][], newValue: IKnobChanging['newValue'] | IKnobChanging['newValue'][]) => boolean;
     dragEndAngle?: number;
     dragStartAngle?: number;
     disabled?: boolean;
@@ -99,7 +99,7 @@ interface IKnobOptions {
     min?: number;
     max?: number;
     progressBar?: IKnobProgressBar;
-    pointer?: IKnobPointer;
+    pointer?: IKnobPointer | IKnobPointer[];
     pointerGrabAction?: 'normal' | 'progressBar' | 'pointer';
     rotation?: 'clockwise' | 'counterclockwise';
     startAngle?: number;

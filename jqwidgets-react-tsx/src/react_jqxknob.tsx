@@ -71,8 +71,12 @@ class JqxKnob extends React.PureComponent<IKnobProps, IState> {
         this._jqx(this._componentSelector).jqxKnob('destroy' );
     };
 
-    public val(value?: number | string): number {
-        return this._jqx(this._componentSelector).jqxKnob('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxKnob('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxKnob('val');
+        }
     };
 
     private _manageProps(): IKnobProps {
@@ -82,7 +86,11 @@ class JqxKnob extends React.PureComponent<IKnobProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                if (prop === 'styles') {
+                    options['style'] = this.props['styles'];
+                } else {
+                    options[prop] = this.props[prop];
+                }
             }
         }
 
@@ -130,7 +138,7 @@ export interface IKnobMarks {
     offset?: string;
     rotate?: boolean;
     size?: number | string;
-    type?: 'circle' | 'line';
+    type?: string;
     thickness?: number;
     visible?: boolean;
 }
@@ -186,7 +194,7 @@ interface IKnobOptions {
     allowValueChangeOnClick?: boolean;
     allowValueChangeOnDrag?: boolean;
     allowValueChangeOnMouseWheel?: boolean;
-    changing?: (oldValue: IKnobChanging['oldValue'], newValue: IKnobChanging['newValue']) => boolean;
+    changing?: (oldValue: IKnobChanging['oldValue'] | IKnobChanging['oldValue'][], newValue: IKnobChanging['newValue'] | IKnobChanging['newValue'][]) => boolean;
     dragEndAngle?: number;
     dragStartAngle?: number;
     disabled?: boolean;
@@ -198,7 +206,7 @@ interface IKnobOptions {
     min?: number;
     max?: number;
     progressBar?: IKnobProgressBar;
-    pointer?: IKnobPointer;
+    pointer?: IKnobPointer | IKnobPointer[];
     pointerGrabAction?: 'normal' | 'progressBar' | 'pointer';
     rotation?: 'clockwise' | 'counterclockwise';
     startAngle?: number;

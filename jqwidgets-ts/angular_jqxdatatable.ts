@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -47,24 +47,24 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    @Input('enableBrowserSelection') attrEnableBrowserSelection: boolean;
    @Input('filterable') attrFilterable: boolean;
    @Input('filterHeight') attrFilterHeight: number;
-   @Input('filterMode') attrFilterMode: any;
+   @Input('filterMode') attrFilterMode: string;
    @Input('groups') attrGroups: Array<any>;
-   @Input('groupsRenderer') attrGroupsRenderer: (value:any, rowData?:any, level?:number) => string;
-   @Input('initRowDetails') attrInitRowDetails: (id:number, row?:any, element?:any, rowInfo?:any) => void;
+   @Input('groupsRenderer') attrGroupsRenderer: (value?:jqwidgets.DataTableGroupsRenderer['value'], rowData?:jqwidgets.DataTableGroupsRenderer['rowdata'], level?:jqwidgets.DataTableGroupsRenderer['level']) => string;
+   @Input('initRowDetails') attrInitRowDetails: (id?:jqwidgets.DataTableInitRowDetails['id'], row?:jqwidgets.DataTableInitRowDetails['row'], element?:jqwidgets.DataTableInitRowDetails['element'], rowInfo?:jqwidgets.DataTableInitRowDetails['rowinfo']) => void;
    @Input('incrementalSearch') attrIncrementalSearch: boolean;
    @Input('localization') attrLocalization: any;
    @Input('pagerHeight') attrPagerHeight: number;
    @Input('pageSize') attrPageSize: number;
    @Input('pageSizeOptions') attrPageSizeOptions: Array<string | number>;
    @Input('pageable') attrPageable: boolean;
-   @Input('pagerPosition') attrPagerPosition: any;
-   @Input('pagerMode') attrPagerMode: any;
+   @Input('pagerPosition') attrPagerPosition: string;
+   @Input('pagerMode') attrPagerMode: string;
    @Input('pagerButtonsCount') attrPagerButtonsCount: number;
    @Input('pagerRenderer') attrPagerRenderer: () => any;
    @Input('ready') attrReady: () => void;
    @Input('rowDetails') attrRowDetails: boolean;
-   @Input('renderToolbar') attrRenderToolbar: (toolbar:any) => void;
-   @Input('renderStatusBar') attrRenderStatusBar: (statusbar:any) => void;
+   @Input('renderToolbar') attrRenderToolbar: (toolbar?:jqwidgets.DataTableRenderToolbar['toolbar']) => void;
+   @Input('renderStatusBar') attrRenderStatusBar: (statusbar?:jqwidgets.DataTableRenderStatusBar['statusbar']) => void;
    @Input('rendering') attrRendering: () => void;
    @Input('rendered') attrRendered: () => void;
    @Input('rtl') attrRtl: boolean;
@@ -75,7 +75,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    @Input('showStatusbar') attrShowStatusbar: boolean;
    @Input('statusBarHeight') attrStatusBarHeight: number;
    @Input('scrollBarSize') attrScrollBarSize: number | string;
-   @Input('selectionMode') attrSelectionMode: any;
+   @Input('selectionMode') attrSelectionMode: string;
    @Input('serverProcessing') attrServerProcessing: boolean;
    @Input('showHeader') attrShowHeader: boolean;
    @Input('theme') attrTheme: string;
@@ -244,7 +244,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    }
 
    // jqxDataTableComponent properties
-   altRows(arg?: boolean) : any {
+   altRows(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -257,7 +257,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   autoRowHeight(arg?: boolean) : any {
+   autoRowHeight(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -270,7 +270,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   aggregatesHeight(arg?: number) : any {
+   aggregatesHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -283,7 +283,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   autoShowLoadElement(arg?: boolean) : any {
+   autoShowLoadElement(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -296,7 +296,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   columnsHeight(arg?: number) : any {
+   columnsHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -309,7 +309,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   columns(arg?: Array<jqwidgets.DataTableColumns>) : any {
+   columns(arg?: Array<jqwidgets.DataTableColumns>): Array<jqwidgets.DataTableColumns> {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -322,7 +322,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   columnGroups(arg?: Array<jqwidgets.DataTableColumnGroups>) : any {
+   columnGroups(arg?: Array<jqwidgets.DataTableColumnGroups>): Array<jqwidgets.DataTableColumnGroups> {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -335,7 +335,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   columnsResize(arg?: boolean) : any {
+   columnsResize(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -348,7 +348,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   columnsReorder(arg?: boolean) : any {
+   columnsReorder(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -361,7 +361,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -374,7 +374,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   editable(arg?: boolean) : any {
+   editable(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -387,7 +387,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   editSettings(arg?: jqwidgets.DataTableEditSettings) : any {
+   editSettings(arg?: jqwidgets.DataTableEditSettings): jqwidgets.DataTableEditSettings {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -400,7 +400,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   exportSettings(arg?: jqwidgets.DataTableExportSettings) : any {
+   exportSettings(arg?: jqwidgets.DataTableExportSettings): jqwidgets.DataTableExportSettings {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -413,7 +413,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   enableHover(arg?: boolean) : any {
+   enableHover(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -426,7 +426,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   enableBrowserSelection(arg?: boolean) : any {
+   enableBrowserSelection(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -439,7 +439,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   filterable(arg?: boolean) : any {
+   filterable(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -452,7 +452,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   filterHeight(arg?: number) : any {
+   filterHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -465,7 +465,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   filterMode(arg?: string) : any {
+   filterMode(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -478,7 +478,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   groups(arg?: Array<any>) : any {
+   groups(arg?: Array<any>): Array<any> {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -491,7 +491,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   groupsRenderer(arg?: (value:any, rowData?:any, level?:number) => string) : any {
+   groupsRenderer(arg?: (value?:jqwidgets.DataTableGroupsRenderer['value'], rowData?:jqwidgets.DataTableGroupsRenderer['rowdata'], level?:jqwidgets.DataTableGroupsRenderer['level']) => string): (value?:jqwidgets.DataTableGroupsRenderer['value'], rowData?:jqwidgets.DataTableGroupsRenderer['rowdata'], level?:jqwidgets.DataTableGroupsRenderer['level']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -504,7 +504,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -517,7 +517,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   initRowDetails(arg?: (id:number, row?:any, element?:any, rowInfo?:any) => void) : any {
+   initRowDetails(arg?: (id?:jqwidgets.DataTableInitRowDetails['id'], row?:jqwidgets.DataTableInitRowDetails['row'], element?:jqwidgets.DataTableInitRowDetails['element'], rowInfo?:jqwidgets.DataTableInitRowDetails['rowinfo']) => void): (id?:jqwidgets.DataTableInitRowDetails['id'], row?:jqwidgets.DataTableInitRowDetails['row'], element?:jqwidgets.DataTableInitRowDetails['element'], rowInfo?:jqwidgets.DataTableInitRowDetails['rowinfo']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -530,7 +530,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   incrementalSearch(arg?: boolean) : any {
+   incrementalSearch(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -543,7 +543,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   localization(arg?: any) : any {
+   localization(arg?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -556,7 +556,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   pagerHeight(arg?: number) : any {
+   pagerHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -569,7 +569,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   pageSize(arg?: number) : any {
+   pageSize(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -582,7 +582,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   pageSizeOptions(arg?: Array<string | number>) : any {
+   pageSizeOptions(arg?: Array<string | number>): Array<string | number> {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -595,7 +595,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   pageable(arg?: boolean) : any {
+   pageable(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -608,7 +608,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   pagerPosition(arg?: string) : any {
+   pagerPosition(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -621,7 +621,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   pagerMode(arg?: string) : any {
+   pagerMode(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -634,7 +634,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   pagerButtonsCount(arg?: number) : any {
+   pagerButtonsCount(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -647,7 +647,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   pagerRenderer(arg?: () => any) : any {
+   pagerRenderer(arg?: () => any): () => any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -660,7 +660,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   ready(arg?: () => void) : any {
+   ready(arg?: () => void): () => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -673,7 +673,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   rowDetails(arg?: boolean) : any {
+   rowDetails(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -686,7 +686,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   renderToolbar(arg?: (toolbar:any) => void) : any {
+   renderToolbar(arg?: (toolbar?:jqwidgets.DataTableRenderToolbar['toolbar']) => void): (toolbar?:jqwidgets.DataTableRenderToolbar['toolbar']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -699,7 +699,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   renderStatusBar(arg?: (statusbar:any) => void) : any {
+   renderStatusBar(arg?: (statusbar?:jqwidgets.DataTableRenderStatusBar['statusbar']) => void): (statusbar?:jqwidgets.DataTableRenderStatusBar['statusbar']) => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -712,7 +712,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   rendering(arg?: () => void) : any {
+   rendering(arg?: () => void): () => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -725,7 +725,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   rendered(arg?: () => void) : any {
+   rendered(arg?: () => void): () => void {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -738,7 +738,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -751,7 +751,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   source(arg?: any) : any {
+   source(arg?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -764,7 +764,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   sortable(arg?: boolean) : any {
+   sortable(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -777,7 +777,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   showAggregates(arg?: boolean) : any {
+   showAggregates(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -790,7 +790,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   showToolbar(arg?: boolean) : any {
+   showToolbar(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -803,7 +803,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   showStatusbar(arg?: boolean) : any {
+   showStatusbar(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -816,7 +816,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   statusBarHeight(arg?: number) : any {
+   statusBarHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -829,7 +829,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   scrollBarSize(arg?: number | string) : any {
+   scrollBarSize(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -842,7 +842,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   selectionMode(arg?: string) : any {
+   selectionMode(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -855,7 +855,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   serverProcessing(arg?: boolean) : any {
+   serverProcessing(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -868,7 +868,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   showHeader(arg?: boolean) : any {
+   showHeader(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -881,7 +881,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -894,7 +894,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   toolbarHeight(arg?: number) : any {
+   toolbarHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -907,7 +907,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

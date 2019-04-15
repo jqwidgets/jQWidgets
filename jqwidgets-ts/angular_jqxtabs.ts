@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -21,7 +21,7 @@ declare let JQXLite: any;
 
 export class jqxTabsComponent implements OnChanges
 {
-   @Input('animationType') attrAnimationType: any;
+   @Input('animationType') attrAnimationType: string;
    @Input('autoHeight') attrAutoHeight: boolean;
    @Input('closeButtonSize') attrCloseButtonSize: number;
    @Input('collapsible') attrCollapsible: boolean;
@@ -34,17 +34,17 @@ export class jqxTabsComponent implements OnChanges
    @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
    @Input('next') attrNext: any;
    @Input('previous') attrPrevious: any;
-   @Input('position') attrPosition: any;
+   @Input('position') attrPosition: string;
    @Input('reorder') attrReorder: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('scrollAnimationDuration') attrScrollAnimationDuration: number;
    @Input('selectedItem') attrSelectedItem: number;
    @Input('selectionTracker') attrSelectionTracker: boolean;
    @Input('scrollable') attrScrollable: boolean;
-   @Input('scrollPosition') attrScrollPosition: any;
+   @Input('scrollPosition') attrScrollPosition: string;
    @Input('scrollStep') attrScrollStep: number;
    @Input('showCloseButtons') attrShowCloseButtons: boolean;
-   @Input('toggleMode') attrToggleMode: any;
+   @Input('toggleMode') attrToggleMode: string;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -166,7 +166,7 @@ export class jqxTabsComponent implements OnChanges
    }
 
    // jqxTabsComponent properties
-   animationType(arg?: string) : any {
+   animationType(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTabs('animationType', arg);
       } else {
@@ -174,7 +174,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   autoHeight(arg?: boolean) : any {
+   autoHeight(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('autoHeight', arg);
       } else {
@@ -182,7 +182,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   closeButtonSize(arg?: number) : any {
+   closeButtonSize(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTabs('closeButtonSize', arg);
       } else {
@@ -190,7 +190,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   collapsible(arg?: boolean) : any {
+   collapsible(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('collapsible', arg);
       } else {
@@ -198,7 +198,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   contentTransitionDuration(arg?: number) : any {
+   contentTransitionDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTabs('contentTransitionDuration', arg);
       } else {
@@ -206,7 +206,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('disabled', arg);
       } else {
@@ -214,7 +214,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   enabledHover(arg?: boolean) : any {
+   enabledHover(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('enabledHover', arg);
       } else {
@@ -222,7 +222,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   enableScrollAnimation(arg?: boolean) : any {
+   enableScrollAnimation(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('enableScrollAnimation', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   enableDropAnimation(arg?: boolean) : any {
+   enableDropAnimation(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('enableDropAnimation', arg);
       } else {
@@ -238,7 +238,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxTabs('height', arg);
       } else {
@@ -246,7 +246,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   initTabContent(arg?: (tab?: number) => void) : any {
+   initTabContent(arg?: (tab?: number) => void): (tab?: number) => void {
       if (arg !== undefined) {
           this.host.jqxTabs('initTabContent', arg);
       } else {
@@ -254,7 +254,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   keyboardNavigation(arg?: boolean) : any {
+   keyboardNavigation(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('keyboardNavigation', arg);
       } else {
@@ -262,7 +262,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   next(arg?: any) : any {
+   next(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxTabs('next', arg);
       } else {
@@ -270,7 +270,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   previous(arg?: any) : any {
+   previous(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxTabs('previous', arg);
       } else {
@@ -278,7 +278,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   position(arg?: string) : any {
+   position(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTabs('position', arg);
       } else {
@@ -286,7 +286,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   reorder(arg?: boolean) : any {
+   reorder(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('reorder', arg);
       } else {
@@ -294,7 +294,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('rtl', arg);
       } else {
@@ -302,7 +302,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   scrollAnimationDuration(arg?: number) : any {
+   scrollAnimationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTabs('scrollAnimationDuration', arg);
       } else {
@@ -310,7 +310,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   selectedItem(arg?: number) : any {
+   selectedItem(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTabs('selectedItem', arg);
       } else {
@@ -318,7 +318,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   selectionTracker(arg?: boolean) : any {
+   selectionTracker(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('selectionTracker', arg);
       } else {
@@ -326,7 +326,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   scrollable(arg?: boolean) : any {
+   scrollable(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('scrollable', arg);
       } else {
@@ -334,7 +334,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   scrollPosition(arg?: string) : any {
+   scrollPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTabs('scrollPosition', arg);
       } else {
@@ -342,7 +342,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   scrollStep(arg?: number) : any {
+   scrollStep(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTabs('scrollStep', arg);
       } else {
@@ -350,7 +350,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   showCloseButtons(arg?: boolean) : any {
+   showCloseButtons(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTabs('showCloseButtons', arg);
       } else {
@@ -358,7 +358,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   toggleMode(arg?: string) : any {
+   toggleMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTabs('toggleMode', arg);
       } else {
@@ -366,7 +366,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTabs('theme', arg);
       } else {
@@ -374,7 +374,7 @@ export class jqxTabsComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxTabs('width', arg);
       } else {

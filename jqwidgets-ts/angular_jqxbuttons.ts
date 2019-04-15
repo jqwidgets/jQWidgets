@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,20 +24,22 @@ export class jqxButtonComponent implements OnChanges
    @Input('imgSrc') attrImgSrc: string;
    @Input('imgWidth') attrImgWidth: number | string;
    @Input('imgHeight') attrImgHeight: number | string;
-   @Input('imgPosition') attrImgPosition: any;
-   @Input('roundedCorners') attrRoundedCorners: any;
+   @Input('imgPosition') attrImgPosition: string;
+   @Input('roundedCorners') attrRoundedCorners: string;
    @Input('rtl') attrRtl: boolean;
-   @Input('textPosition') attrTextPosition: any;
-   @Input('textImageRelation') attrTextImageRelation: any;
+   @Input('enableDefault') attrEnableDefault: boolean;
+   @Input('cursor') attrCursor: boolean;
+   @Input('textPosition') attrTextPosition: string;
+   @Input('textImageRelation') attrTextImageRelation: string;
    @Input('theme') attrTheme: string;
-   @Input('template') attrTemplate: any;
+   @Input('template') attrTemplate: string;
    @Input('value') attrValue: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','width','value'];
+   properties: string[] = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','enableDefault','cursor','textPosition','textImageRelation','theme','template','width','value'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxButton;
@@ -153,7 +155,7 @@ export class jqxButtonComponent implements OnChanges
    }
 
    // jqxButtonComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxButton('disabled', arg);
       } else {
@@ -161,7 +163,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxButton('height', arg);
       } else {
@@ -169,7 +171,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   imgSrc(arg?: string) : any {
+   imgSrc(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButton('imgSrc', arg);
       } else {
@@ -177,7 +179,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   imgWidth(arg?: number | string) : any {
+   imgWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxButton('imgWidth', arg);
       } else {
@@ -185,7 +187,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   imgHeight(arg?: number | string) : any {
+   imgHeight(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxButton('imgHeight', arg);
       } else {
@@ -193,7 +195,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   imgPosition(arg?: string) : any {
+   imgPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButton('imgPosition', arg);
       } else {
@@ -201,7 +203,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   roundedCorners(arg?: string) : any {
+   roundedCorners(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButton('roundedCorners', arg);
       } else {
@@ -209,7 +211,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxButton('rtl', arg);
       } else {
@@ -217,7 +219,23 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   textPosition(arg?: string) : any {
+   enableDefault(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxButton('enableDefault', arg);
+      } else {
+          return this.host.jqxButton('enableDefault');
+      }
+   }
+
+   cursor(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxButton('cursor', arg);
+      } else {
+          return this.host.jqxButton('cursor');
+      }
+   }
+
+   textPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButton('textPosition', arg);
       } else {
@@ -225,7 +243,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   textImageRelation(arg?: string) : any {
+   textImageRelation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButton('textImageRelation', arg);
       } else {
@@ -233,7 +251,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButton('theme', arg);
       } else {
@@ -241,7 +259,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButton('template', arg);
       } else {
@@ -249,7 +267,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxButton('width', arg);
       } else {
@@ -257,7 +275,7 @@ export class jqxButtonComponent implements OnChanges
       }
    }
 
-   value(arg?: string) : any {
+   value(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButton('value', arg);
       } else {

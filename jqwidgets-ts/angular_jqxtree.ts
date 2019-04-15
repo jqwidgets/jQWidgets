@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -31,8 +31,8 @@ export class jqxTreeComponent implements OnChanges
    @Input('allowDrag') attrAllowDrag: boolean;
    @Input('allowDrop') attrAllowDrop: boolean;
    @Input('checkboxes') attrCheckboxes: boolean;
-   @Input('dragStart') attrDragStart: (item: any) => boolean;
-   @Input('dragEnd') attrDragEnd: (dragItem?: any, dropItem?: any, args?: any, dropPosition?: any, tree?: any) => boolean;
+   @Input('dragStart') attrDragStart: (item: jqwidgets.TreeDragStart['item']) => boolean;
+   @Input('dragEnd') attrDragEnd: (dragItem?: jqwidgets.TreeDragEnd['dragItem'], dropItem?: jqwidgets.TreeDragEnd['dropItem'], args?: jqwidgets.TreeDragEnd['args'], dropPosition?: jqwidgets.TreeDragEnd['dropPosition'], tree?: jqwidgets.TreeDragEnd['tree']) => boolean;
    @Input('disabled') attrDisabled: boolean;
    @Input('easing') attrEasing: string;
    @Input('enableHover') attrEnableHover: boolean;
@@ -42,7 +42,7 @@ export class jqxTreeComponent implements OnChanges
    @Input('rtl') attrRtl: boolean;
    @Input('source') attrSource: any;
    @Input('toggleIndicatorSize') attrToggleIndicatorSize: number;
-   @Input('toggleMode') attrToggleMode: any;
+   @Input('toggleMode') attrToggleMode: string;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -164,7 +164,7 @@ export class jqxTreeComponent implements OnChanges
    }
 
    // jqxTreeComponent properties
-   animationShowDuration(arg?: number) : any {
+   animationShowDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTree('animationShowDuration', arg);
       } else {
@@ -172,7 +172,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   animationHideDuration(arg?: number) : any {
+   animationHideDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTree('animationHideDuration', arg);
       } else {
@@ -180,7 +180,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   allowDrag(arg?: boolean) : any {
+   allowDrag(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTree('allowDrag', arg);
       } else {
@@ -188,7 +188,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   allowDrop(arg?: boolean) : any {
+   allowDrop(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTree('allowDrop', arg);
       } else {
@@ -196,7 +196,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   checkboxes(arg?: boolean) : any {
+   checkboxes(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTree('checkboxes', arg);
       } else {
@@ -204,7 +204,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   dragStart(arg?: (item: any) => boolean) : any {
+   dragStart(arg?: (item: jqwidgets.TreeDragStart['item']) => boolean): (item: jqwidgets.TreeDragStart['item']) => boolean {
       if (arg !== undefined) {
           this.host.jqxTree('dragStart', arg);
       } else {
@@ -212,7 +212,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   dragEnd(arg?: (dragItem?: any, dropItem?: any, args?: any, dropPosition?: any, tree?: any) => boolean) : any {
+   dragEnd(arg?: (dragItem?: jqwidgets.TreeDragEnd['dragItem'], dropItem?: jqwidgets.TreeDragEnd['dropItem'], args?: jqwidgets.TreeDragEnd['args'], dropPosition?: jqwidgets.TreeDragEnd['dropPosition'], tree?: jqwidgets.TreeDragEnd['tree']) => boolean): (dragItem?: jqwidgets.TreeDragEnd['dragItem'], dropItem?: jqwidgets.TreeDragEnd['dropItem'], args?: jqwidgets.TreeDragEnd['args'], dropPosition?: jqwidgets.TreeDragEnd['dropPosition'], tree?: jqwidgets.TreeDragEnd['tree']) => boolean {
       if (arg !== undefined) {
           this.host.jqxTree('dragEnd', arg);
       } else {
@@ -220,7 +220,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTree('disabled', arg);
       } else {
@@ -228,7 +228,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   easing(arg?: string) : any {
+   easing(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTree('easing', arg);
       } else {
@@ -236,7 +236,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   enableHover(arg?: boolean) : any {
+   enableHover(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTree('enableHover', arg);
       } else {
@@ -244,7 +244,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxTree('height', arg);
       } else {
@@ -252,7 +252,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   hasThreeStates(arg?: boolean) : any {
+   hasThreeStates(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTree('hasThreeStates', arg);
       } else {
@@ -260,7 +260,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   incrementalSearch(arg?: boolean) : any {
+   incrementalSearch(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTree('incrementalSearch', arg);
       } else {
@@ -268,7 +268,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   keyboardNavigation(arg?: boolean) : any {
+   keyboardNavigation(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTree('keyboardNavigation', arg);
       } else {
@@ -276,7 +276,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTree('rtl', arg);
       } else {
@@ -284,7 +284,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   source(arg?: any) : any {
+   source(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxTree('source', arg);
       } else {
@@ -292,7 +292,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   toggleIndicatorSize(arg?: number) : any {
+   toggleIndicatorSize(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTree('toggleIndicatorSize', arg);
       } else {
@@ -300,7 +300,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   toggleMode(arg?: string) : any {
+   toggleMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTree('toggleMode', arg);
       } else {
@@ -308,7 +308,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTree('theme', arg);
       } else {
@@ -316,7 +316,7 @@ export class jqxTreeComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxTree('width', arg);
       } else {
@@ -334,7 +334,7 @@ export class jqxTreeComponent implements OnChanges
       this.host.jqxTree('addAfter', item, id);
    }
 
-   addTo(item: any, id: string): void {
+   addTo(item: any, id: string | null): void {
       this.host.jqxTree('addTo', item, id);
    }
 

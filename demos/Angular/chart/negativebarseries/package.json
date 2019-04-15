@@ -6,7 +6,7 @@
     "rxjs": "6.1.0",
     "moment": "2.22.2",
     "core-js": "2.5.5",
-    "zone.js": "0.8.26",
+    "zone.js": "0.8.29",
     "@types/node": "6.0.117",
     "@angular/core": "6.0.0",
     "@angular/http": "5.2.11",
@@ -16,7 +16,7 @@
     "@angular/router": "6.0.0",
     "@angular/compiler": "6.0.0",
     "@types/jasminewd2": "2.0.3",
-    "jqwidgets-scripts": "6.0.6",
+    "jqwidgets-scripts": "7.1.0",
     "@angular/animations": "5.2.11",
     "@angular/platform-browser": "6.0.0",
     "@angular/platform-browser-dynamic": "6.0.0"

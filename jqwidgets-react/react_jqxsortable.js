@@ -1,10 +1,3 @@
-/*
-jQWidgets v7.1.0 (2019-Feb)
-Copyright (c) 2011-2019 jQWidgets.
-License: https://jqwidgets.com/license/
-*/
-/* eslint-disable */
-
 import '../jqwidgets/styles/jqx.base.css';
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
@@ -28,26 +21,26 @@ export default class JqxSortable extends React.Component {
         this.createComponent(options);
     };
     manageAttributes() {
-        const properties = ['appendTo','axis','cancelProperty','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','tolerance','zIndex'];
+        const properties = ['appendTo','axis','cancel','connectWith','containment','cursor','cursorAt','delay','disabled','distance','dropOnEmpty','forceHelperSize','forcePlaceholderSize','grid','handle','helper','items','opacity','placeholderShow','revert','scroll','scrollSensitivity','scrollSpeed','tolerance','zIndex'];
         let options = {};
         for(let item in this.props) {
-            if(item === 'settings') {
-                for(let itemTwo in this.props[item]) {
-                    options[itemTwo] = this.props[item][itemTwo];
-                }
-            } else {
-                if(properties.indexOf(item) !== -1) {
-                      options[item] = this.props[item];
-                }
-            }
-        }
-        return options;
-    };
+    	    if(item === 'settings') {
+      	      for(let itemTwo in this.props[item]) {
+        	        options[itemTwo] = this.props[item][itemTwo];
+  			  }
+  		  } else {
+  			  if(properties.indexOf(item) !== -1) {
+      		        options[item] = this.props[item];
+  			  }
+  		  }
+  	  }
+  	  return options;
+	};
     createComponent(options) {
         if(!this.style) {
-            for (let style in this.props.style) {
-                JQXLite(this.componentSelector).css(style, this.props.style[style]);
-            }
+    	    for (let style in this.props.style) {
+      	      JQXLite(this.componentSelector).css(style, this.props.style[style]);
+    	    }
         }
         if(this.props.className !== undefined) {
             const classes = this.props.className.split(' ');
@@ -56,7 +49,7 @@ export default class JqxSortable extends React.Component {
             }
         }
         if(!this.template) {
-            JQXLite(this.componentSelector).html(this.props.template);
+    	    JQXLite(this.componentSelector).html(this.props.template);
         }
         JQXLite(this.componentSelector).jqxSortable(options);
     };
@@ -93,11 +86,11 @@ export default class JqxSortable extends React.Component {
             return JQXLite(this.componentSelector).jqxSortable('axis');
         }
     };
-    cancelProperty(arg) {
+    cancel(arg) {
         if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxSortable('cancelProperty', arg)
+            JQXLite(this.componentSelector).jqxSortable('cancel', arg)
         } else {
-            return JQXLite(this.componentSelector).jqxSortable('cancelProperty');
+            return JQXLite(this.componentSelector).jqxSortable('cancel');
         }
     };
     connectWith(arg) {
@@ -272,8 +265,8 @@ export default class JqxSortable extends React.Component {
     refreshPositions() {
         JQXLite(this.componentSelector).jqxSortable('refreshPositions');  
     };
-    serialize() {
-        JQXLite(this.componentSelector).jqxSortable('serialize');  
+    serialize(object) {
+        return JQXLite(this.componentSelector).jqxSortable('serialize', object);  
     };
     toArray() {
         return JQXLite(this.componentSelector).jqxSortable('toArray');  
@@ -284,4 +277,3 @@ export default class JqxSortable extends React.Component {
         )
     };
 };
-

@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -22,12 +22,12 @@ declare let JQXLite: any;
 
 export class jqxTagCloudComponent implements OnChanges
 {
-   @Input('alterTextCase') attrAlterTextCase: any;
+   @Input('alterTextCase') attrAlterTextCase: string;
    @Input('disabled') attrDisabled: boolean;
    @Input('displayLimit') attrDisplayLimit: number;
    @Input('displayMember') attrDisplayMember: string;
    @Input('displayValue') attrDisplayValue: boolean;
-   @Input('fontSizeUnit') attrFontSizeUnit: any;
+   @Input('fontSizeUnit') attrFontSizeUnit: string;
    @Input('maxColor') attrMaxColor: string;
    @Input('maxFontSize') attrMaxFontSize: number;
    @Input('maxValueToDisplay') attrMaxValueToDisplay: number;
@@ -35,10 +35,10 @@ export class jqxTagCloudComponent implements OnChanges
    @Input('minFontSize') attrMinFontSize: number;
    @Input('minValueToDisplay') attrMinValueToDisplay: number;
    @Input('rtl') attrRtl: boolean;
-   @Input('sortBy') attrSortBy: any;
-   @Input('sortOrder') attrSortOrder: any;
+   @Input('sortBy') attrSortBy: string;
+   @Input('sortOrder') attrSortOrder: string;
    @Input('source') attrSource: jqwidgets.TagCloudSource;
-   @Input('tagRenderer') attrTagRenderer: (itemData: any, minValue: number, valueRange: number) => any;
+   @Input('tagRenderer') attrTagRenderer: (itemData: jqwidgets.TagCloudTagRenderer['itemData'], minValue: jqwidgets.TagCloudTagRenderer['minValue'], valueRange: jqwidgets.TagCloudTagRenderer['valueRange']) => any;
    @Input('takeTopWeightedItems') attrTakeTopWeightedItems: boolean;
    @Input('textColor') attrTextColor: string;
    @Input('urlBase') attrUrlBase: string;
@@ -164,7 +164,7 @@ export class jqxTagCloudComponent implements OnChanges
    }
 
    // jqxTagCloudComponent properties
-   alterTextCase(arg?: string) : any {
+   alterTextCase(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('alterTextCase', arg);
       } else {
@@ -172,7 +172,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTagCloud('disabled', arg);
       } else {
@@ -180,7 +180,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   displayLimit(arg?: number) : any {
+   displayLimit(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTagCloud('displayLimit', arg);
       } else {
@@ -188,7 +188,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   displayMember(arg?: string) : any {
+   displayMember(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('displayMember', arg);
       } else {
@@ -196,7 +196,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   displayValue(arg?: boolean) : any {
+   displayValue(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTagCloud('displayValue', arg);
       } else {
@@ -204,7 +204,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   fontSizeUnit(arg?: string) : any {
+   fontSizeUnit(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('fontSizeUnit', arg);
       } else {
@@ -212,7 +212,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('height', arg);
       } else {
@@ -220,7 +220,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   maxColor(arg?: string) : any {
+   maxColor(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('maxColor', arg);
       } else {
@@ -228,7 +228,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   maxFontSize(arg?: number) : any {
+   maxFontSize(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTagCloud('maxFontSize', arg);
       } else {
@@ -236,7 +236,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   maxValueToDisplay(arg?: number) : any {
+   maxValueToDisplay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTagCloud('maxValueToDisplay', arg);
       } else {
@@ -244,7 +244,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   minColor(arg?: string) : any {
+   minColor(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('minColor', arg);
       } else {
@@ -252,7 +252,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   minFontSize(arg?: number) : any {
+   minFontSize(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTagCloud('minFontSize', arg);
       } else {
@@ -260,7 +260,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   minValueToDisplay(arg?: number) : any {
+   minValueToDisplay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTagCloud('minValueToDisplay', arg);
       } else {
@@ -268,7 +268,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTagCloud('rtl', arg);
       } else {
@@ -276,7 +276,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   sortBy(arg?: string) : any {
+   sortBy(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('sortBy', arg);
       } else {
@@ -284,7 +284,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   sortOrder(arg?: string) : any {
+   sortOrder(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('sortOrder', arg);
       } else {
@@ -292,7 +292,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   source(arg?: jqwidgets.TagCloudSource) : any {
+   source(arg?: jqwidgets.TagCloudSource): jqwidgets.TagCloudSource {
       if (arg !== undefined) {
           this.host.jqxTagCloud('source', arg);
       } else {
@@ -300,7 +300,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   tagRenderer(arg?: (itemData: any, minValue: number, valueRange: number) => any) : any {
+   tagRenderer(arg?: (itemData: jqwidgets.TagCloudTagRenderer['itemData'], minValue: jqwidgets.TagCloudTagRenderer['minValue'], valueRange: jqwidgets.TagCloudTagRenderer['valueRange']) => any): (itemData: jqwidgets.TagCloudTagRenderer['itemData'], minValue: jqwidgets.TagCloudTagRenderer['minValue'], valueRange: jqwidgets.TagCloudTagRenderer['valueRange']) => any {
       if (arg !== undefined) {
           this.host.jqxTagCloud('tagRenderer', arg);
       } else {
@@ -308,7 +308,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   takeTopWeightedItems(arg?: boolean) : any {
+   takeTopWeightedItems(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTagCloud('takeTopWeightedItems', arg);
       } else {
@@ -316,7 +316,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   textColor(arg?: string) : any {
+   textColor(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('textColor', arg);
       } else {
@@ -324,7 +324,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   urlBase(arg?: string) : any {
+   urlBase(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('urlBase', arg);
       } else {
@@ -332,7 +332,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   urlMember(arg?: string) : any {
+   urlMember(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('urlMember', arg);
       } else {
@@ -340,7 +340,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   valueMember(arg?: string) : any {
+   valueMember(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTagCloud('valueMember', arg);
       } else {
@@ -348,7 +348,7 @@ export class jqxTagCloudComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxTagCloud('width', arg);
       } else {

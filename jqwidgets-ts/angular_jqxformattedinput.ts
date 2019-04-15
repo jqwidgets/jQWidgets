@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -32,7 +32,7 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class jqxFormattedInputComponent implements ControlValueAccessor, OnChanges 
 {
    @Input('disabled') attrDisabled: boolean;
-   @Input('decimalNotation') attrDecimalNotation: any;
+   @Input('decimalNotation') attrDecimalNotation: string;
    @Input('dropDown') attrDropDown: boolean;
    @Input('dropDownWidth') attrDropDownWidth: number | string;
    @Input('min') attrMin: number | string;
@@ -44,7 +44,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
    @Input('radix') attrRadix: number | string;
    @Input('spinButtons') attrSpinButtons: boolean;
    @Input('spinButtonsStep') attrSpinButtonsStep: number;
-   @Input('template') attrTemplate: any;
+   @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
    @Input('upperCase') attrUpperCase: boolean;
    @Input('value') attrValue: number | string;
@@ -216,7 +216,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
    }
 
    // jqxFormattedInputComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('disabled', arg);
       } else {
@@ -224,7 +224,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   decimalNotation(arg?: string) : any {
+   decimalNotation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('decimalNotation', arg);
       } else {
@@ -232,7 +232,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   dropDown(arg?: boolean) : any {
+   dropDown(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('dropDown', arg);
       } else {
@@ -240,7 +240,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   dropDownWidth(arg?: number | string) : any {
+   dropDownWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('dropDownWidth', arg);
       } else {
@@ -248,7 +248,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('height', arg);
       } else {
@@ -256,7 +256,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   min(arg?: number | string) : any {
+   min(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('min', arg);
       } else {
@@ -264,7 +264,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   max(arg?: number | string) : any {
+   max(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('max', arg);
       } else {
@@ -272,7 +272,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   placeHolder(arg?: string) : any {
+   placeHolder(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('placeHolder', arg);
       } else {
@@ -280,7 +280,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   popupZIndex(arg?: number) : any {
+   popupZIndex(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('popupZIndex', arg);
       } else {
@@ -288,7 +288,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   roundedCorners(arg?: boolean) : any {
+   roundedCorners(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('roundedCorners', arg);
       } else {
@@ -296,7 +296,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('rtl', arg);
       } else {
@@ -304,7 +304,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   radix(arg?: number | string) : any {
+   radix(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('radix', arg);
       } else {
@@ -312,7 +312,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   spinButtons(arg?: boolean) : any {
+   spinButtons(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('spinButtons', arg);
       } else {
@@ -320,7 +320,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   spinButtonsStep(arg?: number) : any {
+   spinButtonsStep(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('spinButtonsStep', arg);
       } else {
@@ -328,7 +328,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('template', arg);
       } else {
@@ -336,7 +336,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('theme', arg);
       } else {
@@ -344,7 +344,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   upperCase(arg?: boolean) : any {
+   upperCase(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('upperCase', arg);
       } else {
@@ -352,7 +352,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   value(arg?: undefined) : any {
+   value(arg?: undefined): undefined {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('value', arg);
       } else {
@@ -360,7 +360,7 @@ export class jqxFormattedInputComponent implements ControlValueAccessor, OnChang
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxFormattedInput('width', arg);
       } else {

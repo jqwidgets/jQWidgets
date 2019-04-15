@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -153,7 +153,7 @@ export class jqxDockingLayoutComponent implements OnChanges
    }
 
    // jqxDockingLayoutComponent properties
-   contextMenu(arg?: boolean) : any {
+   contextMenu(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('contextMenu', arg);
       } else {
@@ -161,7 +161,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('height', arg);
       } else {
@@ -169,7 +169,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   layout(arg?: Array<jqwidgets.DockingLayoutLayout>) : any {
+   layout(arg?: Array<jqwidgets.DockingLayoutLayout>): Array<jqwidgets.DockingLayoutLayout> {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('layout', arg);
       } else {
@@ -177,7 +177,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   minGroupHeight(arg?: number | string) : any {
+   minGroupHeight(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('minGroupHeight', arg);
       } else {
@@ -185,7 +185,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   minGroupWidth(arg?: number | string) : any {
+   minGroupWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('minGroupWidth', arg);
       } else {
@@ -193,7 +193,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   resizable(arg?: boolean) : any {
+   resizable(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('resizable', arg);
       } else {
@@ -201,7 +201,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('rtl', arg);
       } else {
@@ -209,7 +209,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('theme', arg);
       } else {
@@ -217,7 +217,7 @@ export class jqxDockingLayoutComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxDockingLayout('width', arg);
       } else {

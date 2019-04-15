@@ -1,0 +1,10 @@
+.bookContainer {
+    width: 500px;
+}
+
+.book {
+    width: 105px;
+    height: 215px;
+    float: left;
+    margin-left: 5px;
+}

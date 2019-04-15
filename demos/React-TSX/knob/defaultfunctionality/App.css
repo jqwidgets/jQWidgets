@@ -1,0 +1,17 @@
+.jqx-knob-label {
+    font-size: 20px;
+}
+
+.jqx-input {
+    left: 170px;
+    top: -100px;
+    position: relative;
+    background: transparent;
+    border: none;
+}
+
+.jqx-input .jqx-input-content {
+    background: transparent;
+    font-size: 20px;
+    color: grey;
+}

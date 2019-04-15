@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,10 +23,10 @@ export class jqxLoaderComponent implements OnChanges
    @Input('autoOpen') attrAutoOpen: boolean;
    @Input('html') attrHtml: string;
    @Input('isModal') attrIsModal: boolean;
-   @Input('imagePosition') attrImagePosition: any;
+   @Input('imagePosition') attrImagePosition: string;
    @Input('rtl') attrRtl: boolean;
    @Input('text') attrText: number | string;
-   @Input('textPosition') attrTextPosition: any;
+   @Input('textPosition') attrTextPosition: string;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -148,7 +148,7 @@ export class jqxLoaderComponent implements OnChanges
    }
 
    // jqxLoaderComponent properties
-   autoOpen(arg?: boolean) : any {
+   autoOpen(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxLoader('autoOpen', arg);
       } else {
@@ -156,7 +156,7 @@ export class jqxLoaderComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxLoader('height', arg);
       } else {
@@ -164,7 +164,7 @@ export class jqxLoaderComponent implements OnChanges
       }
    }
 
-   html(arg?: string) : any {
+   html(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxLoader('html', arg);
       } else {
@@ -172,7 +172,7 @@ export class jqxLoaderComponent implements OnChanges
       }
    }
 
-   isModal(arg?: boolean) : any {
+   isModal(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxLoader('isModal', arg);
       } else {
@@ -180,7 +180,7 @@ export class jqxLoaderComponent implements OnChanges
       }
    }
 
-   imagePosition(arg?: string) : any {
+   imagePosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxLoader('imagePosition', arg);
       } else {
@@ -188,7 +188,7 @@ export class jqxLoaderComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxLoader('rtl', arg);
       } else {
@@ -196,7 +196,7 @@ export class jqxLoaderComponent implements OnChanges
       }
    }
 
-   text(arg?: number | string) : any {
+   text(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxLoader('text', arg);
       } else {
@@ -204,7 +204,7 @@ export class jqxLoaderComponent implements OnChanges
       }
    }
 
-   textPosition(arg?: string) : any {
+   textPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxLoader('textPosition', arg);
       } else {
@@ -212,7 +212,7 @@ export class jqxLoaderComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxLoader('theme', arg);
       } else {
@@ -220,7 +220,7 @@ export class jqxLoaderComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxLoader('width', arg);
       } else {

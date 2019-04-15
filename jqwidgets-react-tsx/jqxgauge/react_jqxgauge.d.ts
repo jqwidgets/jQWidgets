@@ -12,7 +12,7 @@ declare class JqxGauge extends React.PureComponent<IGaugeProps, IState> {
     getOptions(option: string): any;
     disable(): void;
     enable(): void;
-    val(value?: number): number;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

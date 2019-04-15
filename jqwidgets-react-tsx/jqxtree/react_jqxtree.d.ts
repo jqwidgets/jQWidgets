@@ -41,7 +41,7 @@ declare class JqxTree extends React.PureComponent<ITreeProps, IState> {
     uncheckAll(): void;
     uncheckItem(item: any): void;
     updateItem(item: any, newItem: any): void;
-    val(value?: string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -21,20 +21,20 @@ declare let JQXLite: any;
 
 export class jqxDropDownButtonComponent implements OnChanges
 {
-   @Input('animationType') attrAnimationType: any;
+   @Input('animationType') attrAnimationType: string;
    @Input('arrowSize') attrArrowSize: number;
    @Input('autoOpen') attrAutoOpen: boolean;
    @Input('closeDelay') attrCloseDelay: number;
    @Input('disabled') attrDisabled: boolean;
-   @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: any;
-   @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: any;
+   @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: string;
+   @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: string;
    @Input('dropDownWidth') attrDropDownWidth: number | string;
    @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
    @Input('initContent') attrInitContent: () => void;
    @Input('openDelay') attrOpenDelay: number;
    @Input('popupZIndex') attrPopupZIndex: number;
    @Input('rtl') attrRtl: boolean;
-   @Input('template') attrTemplate: any;
+   @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -156,7 +156,7 @@ export class jqxDropDownButtonComponent implements OnChanges
    }
 
    // jqxDropDownButtonComponent properties
-   animationType(arg?: string) : any {
+   animationType(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('animationType', arg);
       } else {
@@ -164,7 +164,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   arrowSize(arg?: number) : any {
+   arrowSize(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('arrowSize', arg);
       } else {
@@ -172,7 +172,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   autoOpen(arg?: boolean) : any {
+   autoOpen(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('autoOpen', arg);
       } else {
@@ -180,7 +180,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   closeDelay(arg?: number) : any {
+   closeDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('closeDelay', arg);
       } else {
@@ -188,7 +188,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('disabled', arg);
       } else {
@@ -196,7 +196,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   dropDownHorizontalAlignment(arg?: string) : any {
+   dropDownHorizontalAlignment(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('dropDownHorizontalAlignment', arg);
       } else {
@@ -204,7 +204,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   dropDownVerticalAlignment(arg?: string) : any {
+   dropDownVerticalAlignment(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('dropDownVerticalAlignment', arg);
       } else {
@@ -212,7 +212,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   dropDownWidth(arg?: number | string) : any {
+   dropDownWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('dropDownWidth', arg);
       } else {
@@ -220,7 +220,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   enableBrowserBoundsDetection(arg?: boolean) : any {
+   enableBrowserBoundsDetection(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('enableBrowserBoundsDetection', arg);
       } else {
@@ -228,7 +228,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('height', arg);
       } else {
@@ -236,7 +236,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   initContent(arg?: () => void) : any {
+   initContent(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('initContent', arg);
       } else {
@@ -244,7 +244,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   openDelay(arg?: number) : any {
+   openDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('openDelay', arg);
       } else {
@@ -252,7 +252,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   popupZIndex(arg?: number) : any {
+   popupZIndex(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('popupZIndex', arg);
       } else {
@@ -260,7 +260,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('rtl', arg);
       } else {
@@ -268,7 +268,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('template', arg);
       } else {
@@ -276,7 +276,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('theme', arg);
       } else {
@@ -284,7 +284,7 @@ export class jqxDropDownButtonComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxDropDownButton('width', arg);
       } else {

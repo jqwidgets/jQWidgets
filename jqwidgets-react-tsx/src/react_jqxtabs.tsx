@@ -171,8 +171,12 @@ class JqxTabs extends React.PureComponent<ITabsProps, IState> {
         this._jqx(this._componentSelector).jqxTabs('showAllCloseButtons' );
     };
 
-    public val(value?: string): string {
-        return this._jqx(this._componentSelector).jqxTabs('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxTabs('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxTabs('val');
+        }
     };
 
     private _manageProps(): ITabsProps {
@@ -182,7 +186,7 @@ class JqxTabs extends React.PureComponent<ITabsProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

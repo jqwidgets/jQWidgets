@@ -1,0 +1,9 @@
+.jqx-treemap-legend {
+    width: 350px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.jqx-treemap-label + div {
+    width: 100%;
+    height: 100%;
+}

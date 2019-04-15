@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -49,7 +49,7 @@ License: https://jqwidgets.com/license/
             filterMode: String,
             height: [Number, String],
             hierarchicalCheckboxes: Boolean,
-            icons: [Boolean, Function],
+            icons: [Function, Boolean],
             incrementalSearch: Boolean,
             localization: Object,
             pagerHeight: Number,

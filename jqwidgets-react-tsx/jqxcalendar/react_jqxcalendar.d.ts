@@ -27,7 +27,7 @@ declare class JqxCalendar extends React.PureComponent<ICalendarProps, IState> {
     setDate(date: any): void;
     setRange(date: any, date2: any): void;
     today(): void;
-    val(value?: Date | string, value2?: Date | string): Date | string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

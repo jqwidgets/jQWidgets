@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,7 +24,7 @@ declare let JQXLite: any;
 export class jqxColorPickerComponent implements OnChanges
 {
    @Input('color') attrColor: string;
-   @Input('colorMode') attrColorMode: any;
+   @Input('colorMode') attrColorMode: string;
    @Input('disabled') attrDisabled: boolean;
    @Input('showTransparent') attrShowTransparent: boolean;
    @Input('width') attrWidth: string | number;
@@ -147,7 +147,7 @@ export class jqxColorPickerComponent implements OnChanges
    }
 
    // jqxColorPickerComponent properties
-   color(arg?: string) : any {
+   color(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxColorPicker('color', arg);
       } else {
@@ -155,7 +155,7 @@ export class jqxColorPickerComponent implements OnChanges
       }
    }
 
-   colorMode(arg?: string) : any {
+   colorMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxColorPicker('colorMode', arg);
       } else {
@@ -163,7 +163,7 @@ export class jqxColorPickerComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxColorPicker('disabled', arg);
       } else {
@@ -171,7 +171,7 @@ export class jqxColorPickerComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxColorPicker('height', arg);
       } else {
@@ -179,7 +179,7 @@ export class jqxColorPickerComponent implements OnChanges
       }
    }
 
-   showTransparent(arg?: boolean) : any {
+   showTransparent(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxColorPicker('showTransparent', arg);
       } else {
@@ -187,7 +187,7 @@ export class jqxColorPickerComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxColorPicker('width', arg);
       } else {

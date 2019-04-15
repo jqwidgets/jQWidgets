@@ -108,7 +108,12 @@ require('../../jqwidgets/jqxslider');
             this._jqx(this._componentSelector).jqxSlider('setValue', index);
         };
         JqxSlider.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxSlider('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxSlider('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxSlider('val');
+            }
         };
         JqxSlider.prototype._manageProps = function () {
             var widgetProps = ['buttonsPosition', 'disabled', 'height', 'layout', 'mode', 'minorTicksFrequency', 'minorTickSize', 'max', 'min', 'orientation', 'rangeSlider', 'rtl', 'step', 'showTicks', 'showMinorTicks', 'showTickLabels', 'showButtons', 'showRange', 'template', 'theme', 'ticksPosition', 'ticksFrequency', 'tickSize', 'tickLabelFormatFunction', 'tooltip', 'tooltipHideDelay', 'tooltipPosition', 'tooltipFormatFunction', 'value', 'values', 'width'];

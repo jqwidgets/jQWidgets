@@ -204,7 +204,12 @@ require('../../jqwidgets/jqxdropdownlist');
             this._jqx(this._componentSelector).jqxDropDownList('uncheckAll');
         };
         JqxDropDownList.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxDropDownList('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxDropDownList('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxDropDownList('val');
+            }
         };
         JqxDropDownList.prototype._manageProps = function () {
             var widgetProps = ['autoOpen', 'autoDropDownHeight', 'animationType', 'checkboxes', 'closeDelay', 'disabled', 'displayMember', 'dropDownHorizontalAlignment', 'dropDownVerticalAlignment', 'dropDownHeight', 'dropDownWidth', 'enableSelection', 'enableBrowserBoundsDetection', 'enableHover', 'filterable', 'filterHeight', 'filterDelay', 'filterPlaceHolder', 'height', 'incrementalSearch', 'incrementalSearchDelay', 'itemHeight', 'openDelay', 'placeHolder', 'popupZIndex', 'rtl', 'renderer', 'selectionRenderer', 'searchMode', 'source', 'selectedIndex', 'theme', 'template', 'valueMember', 'width'];

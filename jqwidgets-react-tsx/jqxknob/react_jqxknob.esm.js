@@ -83,14 +83,24 @@ var JqxKnob = /** @class */ (function (_super) {
         this._jqx(this._componentSelector).jqxKnob('destroy');
     };
     JqxKnob.prototype.val = function (value) {
-        return this._jqx(this._componentSelector).jqxKnob('val', value);
+        if (value) {
+            this._jqx(this._componentSelector).jqxKnob('val', value);
+        }
+        else {
+            return this._jqx(this._componentSelector).jqxKnob('val');
+        }
     };
     JqxKnob.prototype._manageProps = function () {
         var widgetProps = ['allowValueChangeOnClick', 'allowValueChangeOnDrag', 'allowValueChangeOnMouseWheel', 'changing', 'dragEndAngle', 'dragStartAngle', 'disabled', 'dial', 'endAngle', 'height', 'labels', 'marks', 'min', 'max', 'progressBar', 'pointer', 'pointerGrabAction', 'rotation', 'startAngle', 'spinner', 'styles', 'step', 'snapToStep', 'value', 'width'];
         var options = {};
         for (var prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                options[prop] = this.props[prop];
+                if (prop === 'styles') {
+                    options['style'] = this.props['styles'];
+                }
+                else {
+                    options[prop] = this.props[prop];
+                }
             }
         }
         return options;

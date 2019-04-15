@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,9 +23,9 @@ export class jqxButtonGroupComponent implements OnChanges
 {
    @Input('disabled') attrDisabled: boolean;
    @Input('enableHover') attrEnableHover: boolean;
-   @Input('mode') attrMode: any;
+   @Input('mode') attrMode: string;
    @Input('rtl') attrRtl: boolean;
-   @Input('template') attrTemplate: any;
+   @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -148,7 +148,7 @@ export class jqxButtonGroupComponent implements OnChanges
    }
 
    // jqxButtonGroupComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxButtonGroup('disabled', arg);
       } else {
@@ -156,7 +156,7 @@ export class jqxButtonGroupComponent implements OnChanges
       }
    }
 
-   enableHover(arg?: boolean) : any {
+   enableHover(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxButtonGroup('enableHover', arg);
       } else {
@@ -164,7 +164,7 @@ export class jqxButtonGroupComponent implements OnChanges
       }
    }
 
-   mode(arg?: string) : any {
+   mode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButtonGroup('mode', arg);
       } else {
@@ -172,7 +172,7 @@ export class jqxButtonGroupComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxButtonGroup('rtl', arg);
       } else {
@@ -180,7 +180,7 @@ export class jqxButtonGroupComponent implements OnChanges
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButtonGroup('template', arg);
       } else {
@@ -188,7 +188,7 @@ export class jqxButtonGroupComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxButtonGroup('theme', arg);
       } else {

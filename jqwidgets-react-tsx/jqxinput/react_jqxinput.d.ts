@@ -13,7 +13,7 @@ declare class JqxInput extends React.PureComponent<IInputProps, IState> {
     destroy(): void;
     focus(): void;
     selectAll(): void;
-    val(value?: number | string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

@@ -79,18 +79,22 @@ class JqxButton extends React.PureComponent<IButtonProps, IState> {
         this._jqx(this._componentSelector).jqxButton('render' );
     };
 
-    public val(value?: string): string {
-        return this._jqx(this._componentSelector).jqxButton('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxButton('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxButton('val');
+        }
     };
 
     private _manageProps(): IButtonProps {
-        const widgetProps: string[] = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','width','value'];
+        const widgetProps: string[] = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','enableDefault','cursor','textPosition','textImageRelation','theme','template','width','value'];
 
         const options = {} as IButtonProps;
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 
@@ -128,6 +132,8 @@ interface IButtonOptions {
     imgPosition?: 'left' | 'center' | 'right' | 'top' | 'bottom' | 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
     roundedCorners?: 'top' | 'bottom' | 'all' | 'left' | 'right' | 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
     rtl?: boolean;
+    enableDefault?: boolean;
+    cursor?: boolean;
     textPosition?: 'left' | 'center' | 'right' | 'top' | 'bottom' | 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
     textImageRelation?: 'imageBeforeText' | 'imageAboveText' | 'textAboveImage' | 'textBeforeImage' | 'overlay';
     theme?: string;

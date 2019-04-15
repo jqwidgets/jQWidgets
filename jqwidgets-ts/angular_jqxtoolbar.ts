@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -32,7 +32,7 @@ export class jqxToolBarComponent implements OnChanges
    @Input('minWidth') attrMinWidth: number | string;
    @Input('maxWidth') attrMaxWidth: number | string;
    @Input('rtl') attrRtl: boolean;
-   @Input('tools') attrTools: any;
+   @Input('tools') attrTools: string;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -154,7 +154,7 @@ export class jqxToolBarComponent implements OnChanges
    }
 
    // jqxToolBarComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxToolBar('disabled', arg);
       } else {
@@ -162,7 +162,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxToolBar('height', arg);
       } else {
@@ -170,7 +170,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   initTools(arg?: (type?: string, index?: number, tool?: any, menuToolIninitialization?: boolean) => void) : any {
+   initTools(arg?: (type?: string, index?: number, tool?: any, menuToolIninitialization?: boolean) => void): (type?: string, index?: number, tool?: any, menuToolIninitialization?: boolean) => void {
       if (arg !== undefined) {
           this.host.jqxToolBar('initTools', arg);
       } else {
@@ -178,7 +178,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   minimizeWidth(arg?: number) : any {
+   minimizeWidth(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxToolBar('minimizeWidth', arg);
       } else {
@@ -186,7 +186,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   minWidth(arg?: number | string) : any {
+   minWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxToolBar('minWidth', arg);
       } else {
@@ -194,7 +194,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   maxWidth(arg?: number | string) : any {
+   maxWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxToolBar('maxWidth', arg);
       } else {
@@ -202,7 +202,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxToolBar('rtl', arg);
       } else {
@@ -210,7 +210,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   tools(arg?: string) : any {
+   tools(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxToolBar('tools', arg);
       } else {
@@ -218,7 +218,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxToolBar('theme', arg);
       } else {
@@ -226,7 +226,7 @@ export class jqxToolBarComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxToolBar('width', arg);
       } else {

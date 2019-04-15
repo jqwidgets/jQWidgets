@@ -103,8 +103,12 @@ class JqxCheckBox extends React.PureComponent<ICheckBoxProps, IState> {
         this._jqx(this._componentSelector).jqxCheckBox('uncheck' );
     };
 
-    public val(value?: boolean): boolean {
-        return this._jqx(this._componentSelector).jqxCheckBox('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxCheckBox('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxCheckBox('val');
+        }
     };
 
     private _manageProps(): ICheckBoxProps {
@@ -114,7 +118,7 @@ class JqxCheckBox extends React.PureComponent<ICheckBoxProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

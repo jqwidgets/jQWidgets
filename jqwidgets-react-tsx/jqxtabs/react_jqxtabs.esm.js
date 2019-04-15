@@ -158,7 +158,12 @@ var JqxTabs = /** @class */ (function (_super) {
         this._jqx(this._componentSelector).jqxTabs('showAllCloseButtons');
     };
     JqxTabs.prototype.val = function (value) {
-        return this._jqx(this._componentSelector).jqxTabs('val', value);
+        if (value) {
+            this._jqx(this._componentSelector).jqxTabs('val', value);
+        }
+        else {
+            return this._jqx(this._componentSelector).jqxTabs('val');
+        }
     };
     JqxTabs.prototype._manageProps = function () {
         var widgetProps = ['animationType', 'autoHeight', 'closeButtonSize', 'collapsible', 'contentTransitionDuration', 'disabled', 'enabledHover', 'enableScrollAnimation', 'enableDropAnimation', 'height', 'initTabContent', 'keyboardNavigation', 'next', 'previous', 'position', 'reorder', 'rtl', 'scrollAnimationDuration', 'selectedItem', 'selectionTracker', 'scrollable', 'scrollPosition', 'scrollStep', 'showCloseButtons', 'toggleMode', 'theme', 'width'];

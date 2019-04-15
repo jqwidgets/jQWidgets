@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -146,7 +146,7 @@ export class jqxPivotDesignerComponent implements OnChanges
    }
 
    // jqxPivotDesignerComponent properties
-   type(arg?: string) : any {
+   type(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxPivotDesigner('type', arg);
       } else {
@@ -154,7 +154,7 @@ export class jqxPivotDesignerComponent implements OnChanges
       }
    }
 
-   target(arg?: any) : any {
+   target(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxPivotDesigner('target', arg);
       } else {
@@ -167,9 +167,6 @@ export class jqxPivotDesignerComponent implements OnChanges
    refresh(): void {
       this.host.jqxPivotDesigner('refresh');
    }
-
-
-   // jqxPivotDesignerComponent events
 
 
    __wireEvents__(): void {

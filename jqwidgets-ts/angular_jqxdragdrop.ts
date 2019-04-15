@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,22 +24,22 @@ export class jqxDragDropComponent implements OnChanges
    @Input('disabled') attrDisabled: boolean;
    @Input('distance') attrDistance: number;
    @Input('data') attrData: any;
-   @Input('dropAction') attrDropAction: any;
+   @Input('dropAction') attrDropAction: string;
    @Input('dropTarget') attrDropTarget: any;
    @Input('dragZIndex') attrDragZIndex: number;
-   @Input('feedback') attrFeedback: any;
+   @Input('feedback') attrFeedback: string;
    @Input('initFeedback') attrInitFeedback: (feedback?:any) => void;
    @Input('opacity') attrOpacity: number;
    @Input('onDragEnd') attrOnDragEnd: () => void;
-   @Input('onDrag') attrOnDrag: (data?: any, position?: any) => void;
-   @Input('onDragStart') attrOnDragStart: (position?: any) => void;
-   @Input('onTargetDrop') attrOnTargetDrop: (data?: any) => void;
+   @Input('onDrag') attrOnDrag: (data?: jqwidgets.DragDropOnDrag['data'], position?: jqwidgets.DragDropOnDrag['position']) => void;
+   @Input('onDragStart') attrOnDragStart: (position?: jqwidgets.DragDropOnDragStart['position']) => void;
+   @Input('onTargetDrop') attrOnTargetDrop: (data?: jqwidgets.DragDropOnTargetDrop['data']) => void;
    @Input('onDropTargetEnter') attrOnDropTargetEnter: () => void;
-   @Input('onDropTargetLeave') attrOnDropTargetLeave: (data?: any) => void;
-   @Input('restricter') attrRestricter: any;
+   @Input('onDropTargetLeave') attrOnDropTargetLeave: (data?: jqwidgets.DragDropOnDropTargetLeave['data']) => void;
+   @Input('restricter') attrRestricter: string | object;
    @Input('revert') attrRevert: boolean;
    @Input('revertDuration') attrRevertDuration: number;
-   @Input('tolerance') attrTolerance: any;
+   @Input('tolerance') attrTolerance: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
@@ -160,7 +160,7 @@ export class jqxDragDropComponent implements OnChanges
    }
 
    // jqxDragDropComponent properties
-   appendTo(arg?: string) : any {
+   appendTo(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDragDrop('appendTo', arg);
       } else {
@@ -168,7 +168,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDragDrop('disabled', arg);
       } else {
@@ -176,7 +176,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   distance(arg?: number) : any {
+   distance(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxDragDrop('distance', arg);
       } else {
@@ -184,7 +184,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   data(arg?: any) : any {
+   data(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxDragDrop('data', arg);
       } else {
@@ -192,7 +192,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   dropAction(arg?: string) : any {
+   dropAction(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDragDrop('dropAction', arg);
       } else {
@@ -200,7 +200,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   dropTarget(arg?: any) : any {
+   dropTarget(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxDragDrop('dropTarget', arg);
       } else {
@@ -208,7 +208,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   dragZIndex(arg?: number) : any {
+   dragZIndex(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxDragDrop('dragZIndex', arg);
       } else {
@@ -216,7 +216,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   feedback(arg?: string) : any {
+   feedback(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDragDrop('feedback', arg);
       } else {
@@ -224,7 +224,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   initFeedback(arg?: (feedback?:any) => void) : any {
+   initFeedback(arg?: (feedback?:any) => void): (feedback?:any) => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('initFeedback', arg);
       } else {
@@ -232,7 +232,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   opacity(arg?: number) : any {
+   opacity(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxDragDrop('opacity', arg);
       } else {
@@ -240,7 +240,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   onDragEnd(arg?: () => void) : any {
+   onDragEnd(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('onDragEnd', arg);
       } else {
@@ -248,7 +248,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   onDrag(arg?: (data?: any, position?: any) => void) : any {
+   onDrag(arg?: (data?: jqwidgets.DragDropOnDrag['data'], position?: jqwidgets.DragDropOnDrag['position']) => void): (data?: jqwidgets.DragDropOnDrag['data'], position?: jqwidgets.DragDropOnDrag['position']) => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('onDrag', arg);
       } else {
@@ -256,7 +256,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   onDragStart(arg?: (position?: any) => void) : any {
+   onDragStart(arg?: (position?: jqwidgets.DragDropOnDragStart['position']) => void): (position?: jqwidgets.DragDropOnDragStart['position']) => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('onDragStart', arg);
       } else {
@@ -264,7 +264,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   onTargetDrop(arg?: (data?: any) => void) : any {
+   onTargetDrop(arg?: (data?: jqwidgets.DragDropOnTargetDrop['data']) => void): (data?: jqwidgets.DragDropOnTargetDrop['data']) => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('onTargetDrop', arg);
       } else {
@@ -272,7 +272,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   onDropTargetEnter(arg?: () => void) : any {
+   onDropTargetEnter(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('onDropTargetEnter', arg);
       } else {
@@ -280,7 +280,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   onDropTargetLeave(arg?: (data?: any) => void) : any {
+   onDropTargetLeave(arg?: (data?: jqwidgets.DragDropOnDropTargetLeave['data']) => void): (data?: jqwidgets.DragDropOnDropTargetLeave['data']) => void {
       if (arg !== undefined) {
           this.host.jqxDragDrop('onDropTargetLeave', arg);
       } else {
@@ -288,7 +288,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   restricter(arg?: string) : any {
+   restricter(arg?: string | object): string | object {
       if (arg !== undefined) {
           this.host.jqxDragDrop('restricter', arg);
       } else {
@@ -296,7 +296,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   revert(arg?: boolean) : any {
+   revert(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDragDrop('revert', arg);
       } else {
@@ -304,7 +304,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   revertDuration(arg?: number) : any {
+   revertDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxDragDrop('revertDuration', arg);
       } else {
@@ -312,7 +312,7 @@ export class jqxDragDropComponent implements OnChanges
       }
    }
 
-   tolerance(arg?: string) : any {
+   tolerance(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDragDrop('tolerance', arg);
       } else {

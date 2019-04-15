@@ -16,7 +16,7 @@ declare class JqxToggleButton extends React.PureComponent<IToggleButtonProps, IS
     renderWidget(): void;
     toggle(): void;
     unCheck(): void;
-    val(value?: string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

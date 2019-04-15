@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -21,11 +21,11 @@ declare let JQXLite: any;
 export class jqxValidatorComponent implements OnChanges
 {
    @Input('arrow') attrArrow: boolean;
-   @Input('animation') attrAnimation: any;
+   @Input('animation') attrAnimation: string;
    @Input('animationDuration') attrAnimationDuration: number;
    @Input('closeOnClick') attrCloseOnClick: boolean;
    @Input('focus') attrFocus: boolean;
-   @Input('hintType') attrHintType: any;
+   @Input('hintType') attrHintType: string;
    @Input('onError') attrOnError: () => void;
    @Input('onSuccess') attrOnSuccess: () => void;
    @Input('position') attrPosition: string;
@@ -151,7 +151,7 @@ export class jqxValidatorComponent implements OnChanges
    }
 
    // jqxValidatorComponent properties
-   arrow(arg?: boolean) : any {
+   arrow(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxValidator('arrow', arg);
       } else {
@@ -159,7 +159,7 @@ export class jqxValidatorComponent implements OnChanges
       }
    }
 
-   animation(arg?: string) : any {
+   animation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxValidator('animation', arg);
       } else {
@@ -167,7 +167,7 @@ export class jqxValidatorComponent implements OnChanges
       }
    }
 
-   animationDuration(arg?: number) : any {
+   animationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxValidator('animationDuration', arg);
       } else {
@@ -175,7 +175,7 @@ export class jqxValidatorComponent implements OnChanges
       }
    }
 
-   closeOnClick(arg?: boolean) : any {
+   closeOnClick(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxValidator('closeOnClick', arg);
       } else {
@@ -183,7 +183,7 @@ export class jqxValidatorComponent implements OnChanges
       }
    }
 
-   focus(arg?: boolean) : any {
+   focus(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxValidator('focus', arg);
       } else {
@@ -191,7 +191,7 @@ export class jqxValidatorComponent implements OnChanges
       }
    }
 
-   hintType(arg?: string) : any {
+   hintType(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxValidator('hintType', arg);
       } else {
@@ -199,7 +199,7 @@ export class jqxValidatorComponent implements OnChanges
       }
    }
 
-   onError(arg?: () => void) : any {
+   onError(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxValidator('onError', arg);
       } else {
@@ -207,7 +207,7 @@ export class jqxValidatorComponent implements OnChanges
       }
    }
 
-   onSuccess(arg?: () => void) : any {
+   onSuccess(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxValidator('onSuccess', arg);
       } else {
@@ -215,7 +215,7 @@ export class jqxValidatorComponent implements OnChanges
       }
    }
 
-   position(arg?: string) : any {
+   position(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxValidator('position', arg);
       } else {
@@ -223,7 +223,7 @@ export class jqxValidatorComponent implements OnChanges
       }
    }
 
-   rules(arg?: Array<jqwidgets.ValidatorRule>) : any {
+   rules(arg?: Array<jqwidgets.ValidatorRule>): Array<jqwidgets.ValidatorRule> {
       if (arg !== undefined) {
           this.host.jqxValidator('rules', arg);
       } else {
@@ -231,7 +231,7 @@ export class jqxValidatorComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxValidator('rtl', arg);
       } else {

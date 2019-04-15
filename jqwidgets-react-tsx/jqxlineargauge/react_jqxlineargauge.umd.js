@@ -90,7 +90,12 @@ require('../../jqwidgets/jqxgauge');
             this._jqx(this._componentSelector).jqxLinearGauge('enable');
         };
         JqxLinearGauge.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxLinearGauge('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxLinearGauge('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxLinearGauge('val');
+            }
         };
         JqxLinearGauge.prototype._manageProps = function () {
             var widgetProps = ['animationDuration', 'background', 'colorScheme', 'disabled', 'easing', 'height', 'int64', 'labels', 'min', 'max', 'orientation', 'pointer', 'rangesOffset', 'rangeSize', 'ranges', 'showRanges', 'scaleStyle', 'scaleLength', 'ticksOffset', 'ticksPosition', 'ticksMinor', 'ticksMajor', 'value', 'width'];

@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -37,7 +37,7 @@ export class jqxMenuComponent implements OnChanges
    @Input('easing') attrEasing: string;
    @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
    @Input('minimizeWidth') attrMinimizeWidth: number | string;
-   @Input('mode') attrMode: any;
+   @Input('mode') attrMode: string;
    @Input('popupZIndex') attrPopupZIndex: number | string;
    @Input('rtl') attrRtl: boolean;
    @Input('showTopLevelArrows') attrShowTopLevelArrows: boolean;
@@ -163,7 +163,7 @@ export class jqxMenuComponent implements OnChanges
    }
 
    // jqxMenuComponent properties
-   animationShowDuration(arg?: number) : any {
+   animationShowDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxMenu('animationShowDuration', arg);
       } else {
@@ -171,7 +171,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   animationHideDuration(arg?: number) : any {
+   animationHideDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxMenu('animationHideDuration', arg);
       } else {
@@ -179,7 +179,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   animationHideDelay(arg?: number) : any {
+   animationHideDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxMenu('animationHideDelay', arg);
       } else {
@@ -187,7 +187,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   animationShowDelay(arg?: number) : any {
+   animationShowDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxMenu('animationShowDelay', arg);
       } else {
@@ -195,7 +195,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   autoCloseInterval(arg?: number) : any {
+   autoCloseInterval(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxMenu('autoCloseInterval', arg);
       } else {
@@ -203,7 +203,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   autoSizeMainItems(arg?: boolean) : any {
+   autoSizeMainItems(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMenu('autoSizeMainItems', arg);
       } else {
@@ -211,7 +211,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   autoCloseOnClick(arg?: boolean) : any {
+   autoCloseOnClick(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMenu('autoCloseOnClick', arg);
       } else {
@@ -219,7 +219,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   autoOpenPopup(arg?: boolean) : any {
+   autoOpenPopup(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMenu('autoOpenPopup', arg);
       } else {
@@ -227,7 +227,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   autoOpen(arg?: boolean) : any {
+   autoOpen(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMenu('autoOpen', arg);
       } else {
@@ -235,7 +235,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   autoCloseOnMouseLeave(arg?: boolean) : any {
+   autoCloseOnMouseLeave(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMenu('autoCloseOnMouseLeave', arg);
       } else {
@@ -243,7 +243,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   clickToOpen(arg?: boolean) : any {
+   clickToOpen(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMenu('clickToOpen', arg);
       } else {
@@ -251,7 +251,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMenu('disabled', arg);
       } else {
@@ -259,7 +259,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   enableHover(arg?: boolean) : any {
+   enableHover(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMenu('enableHover', arg);
       } else {
@@ -267,7 +267,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   easing(arg?: string) : any {
+   easing(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxMenu('easing', arg);
       } else {
@@ -275,7 +275,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxMenu('height', arg);
       } else {
@@ -283,7 +283,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   keyboardNavigation(arg?: boolean) : any {
+   keyboardNavigation(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMenu('keyboardNavigation', arg);
       } else {
@@ -291,7 +291,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   minimizeWidth(arg?: number | string) : any {
+   minimizeWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxMenu('minimizeWidth', arg);
       } else {
@@ -299,7 +299,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   mode(arg?: string) : any {
+   mode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxMenu('mode', arg);
       } else {
@@ -307,7 +307,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   popupZIndex(arg?: number | string) : any {
+   popupZIndex(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxMenu('popupZIndex', arg);
       } else {
@@ -315,7 +315,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMenu('rtl', arg);
       } else {
@@ -323,7 +323,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   showTopLevelArrows(arg?: boolean) : any {
+   showTopLevelArrows(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMenu('showTopLevelArrows', arg);
       } else {
@@ -331,7 +331,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   source(arg?: any) : any {
+   source(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxMenu('source', arg);
       } else {
@@ -339,7 +339,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxMenu('theme', arg);
       } else {
@@ -347,7 +347,7 @@ export class jqxMenuComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxMenu('width', arg);
       } else {

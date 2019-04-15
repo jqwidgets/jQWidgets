@@ -79,8 +79,12 @@ class JqxRepeatButton extends React.PureComponent<IRepeatButtonProps, IState> {
         this._jqx(this._componentSelector).jqxRepeatButton('render' );
     };
 
-    public val(value?: string): string {
-        return this._jqx(this._componentSelector).jqxRepeatButton('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxRepeatButton('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxRepeatButton('val');
+        }
     };
 
     private _manageProps(): IRepeatButtonProps {
@@ -90,7 +94,7 @@ class JqxRepeatButton extends React.PureComponent<IRepeatButtonProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

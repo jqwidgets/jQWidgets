@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -34,7 +34,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
    @Input('animationShowDelay') attrAnimationShowDelay: number;
    @Input('animationHideDelay') attrAnimationHideDelay: number;
    @Input('boxSize') attrBoxSize: number | string;
-   @Input('checked') attrChecked: boolean;
+   @Input('checked') attrChecked: boolean | null;
    @Input('disabled') attrDisabled: boolean;
    @Input('enableContainerClick') attrEnableContainerClick: boolean;
    @Input('groupName') attrGroupName: string;
@@ -179,7 +179,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxCheckBoxComponent properties
-   animationShowDelay(arg?: number) : any {
+   animationShowDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxCheckBox('animationShowDelay', arg);
       } else {
@@ -187,7 +187,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   animationHideDelay(arg?: number) : any {
+   animationHideDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxCheckBox('animationHideDelay', arg);
       } else {
@@ -195,7 +195,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   boxSize(arg?: number | string) : any {
+   boxSize(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxCheckBox('boxSize', arg);
       } else {
@@ -203,7 +203,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   checked(arg?: boolean) : any {
+   checked(arg?: boolean | null): boolean | null {
       if (arg !== undefined) {
           this.host.jqxCheckBox('checked', arg);
       } else {
@@ -211,7 +211,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCheckBox('disabled', arg);
       } else {
@@ -219,7 +219,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableContainerClick(arg?: boolean) : any {
+   enableContainerClick(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCheckBox('enableContainerClick', arg);
       } else {
@@ -227,7 +227,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   groupName(arg?: string) : any {
+   groupName(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCheckBox('groupName', arg);
       } else {
@@ -235,7 +235,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxCheckBox('height', arg);
       } else {
@@ -243,7 +243,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   hasThreeStates(arg?: boolean) : any {
+   hasThreeStates(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCheckBox('hasThreeStates', arg);
       } else {
@@ -251,7 +251,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   locked(arg?: boolean) : any {
+   locked(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCheckBox('locked', arg);
       } else {
@@ -259,7 +259,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCheckBox('rtl', arg);
       } else {
@@ -267,7 +267,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCheckBox('theme', arg);
       } else {
@@ -275,7 +275,7 @@ export class jqxCheckBoxComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxCheckBox('width', arg);
       } else {

@@ -1,0 +1,32 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.register-table {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+  .register-table td,
+  .register-table tr {
+    margin: 0px;
+    padding: 2px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    font-family: Verdana;
+    font-size: 12px;
+  }
+
+h3 {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+}
+
+.jqx-treemap-label + div {
+  width: 100%;
+  height: 100%;
+}

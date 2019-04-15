@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -52,7 +52,7 @@ License: https://jqwidgets.com/license/
             template: String,
             textAlign: String,
             todayString: String,
-            value: Date,
+            value: [Date, Null],
             width: [Number, String],
             autoCreate: {
                 default: true,
@@ -91,8 +91,8 @@ License: https://jqwidgets.com/license/
             focus: function() {
                 JQXLite(this.componentSelector).jqxDateTimeInput('focus');  
             },
-            getRange: function(date) {
-                return JQXLite(this.componentSelector).jqxDateTimeInput('getRange', date);  
+            getRange: function() {
+                return JQXLite(this.componentSelector).jqxDateTimeInput('getRange');  
             },
             getText: function() {
                 return JQXLite(this.componentSelector).jqxDateTimeInput('getText');  

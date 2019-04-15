@@ -207,7 +207,12 @@ require('../../jqwidgets/jqxcombobox');
             this._jqx(this._componentSelector).jqxComboBox('uncheckAll');
         };
         JqxComboBox.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxComboBox('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxComboBox('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxComboBox('val');
+            }
         };
         JqxComboBox.prototype._manageProps = function () {
             var widgetProps = ['animationType', 'autoComplete', 'autoOpen', 'autoItemsHeight', 'autoDropDownHeight', 'closeDelay', 'checkboxes', 'disabled', 'displayMember', 'dropDownHorizontalAlignment', 'dropDownVerticalAlignment', 'dropDownHeight', 'dropDownWidth', 'enableHover', 'enableSelection', 'enableBrowserBoundsDetection', 'height', 'itemHeight', 'multiSelect', 'minLength', 'openDelay', 'popupZIndex', 'placeHolder', 'remoteAutoComplete', 'remoteAutoCompleteDelay', 'renderer', 'renderSelectedItem', 'rtl', 'selectedIndex', 'showArrow', 'showCloseButtons', 'searchMode', 'search', 'source', 'scrollBarSize', 'template', 'theme', 'validateSelection', 'valueMember', 'width'];

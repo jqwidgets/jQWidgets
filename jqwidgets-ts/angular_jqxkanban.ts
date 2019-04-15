@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,12 +23,12 @@ declare let JQXLite: any;
 
 export class jqxKanbanComponent implements OnChanges
 {
-   @Input('columnRenderer') attrColumnRenderer: (element?: any, collapsedElement?: any, column?: any) => void;
+   @Input('columnRenderer') attrColumnRenderer: (element?: jqwidgets.KanbanColumnRenderer['element'], collapsedElement?: jqwidgets.KanbanColumnRenderer['collapsedElement'], column?: jqwidgets.KanbanColumnRenderer['column']) => void;
    @Input('columns') attrColumns: Array<jqwidgets.KanbanColumns>;
    @Input('connectWith') attrConnectWith: string;
    @Input('headerHeight') attrHeaderHeight: number | string;
    @Input('headerWidth') attrHeaderWidth: number;
-   @Input('itemRenderer') attrItemRenderer: (element?: Array<any>, item?: any, resource?: any) => void;
+   @Input('itemRenderer') attrItemRenderer: (element?: jqwidgets.KanbanItemRenderer['element'], item?: jqwidgets.KanbanItemRenderer['item'], resource?: jqwidgets.KanbanItemRenderer['resource']) => void;
    @Input('ready') attrReady: () => void;
    @Input('rtl') attrRtl: boolean;
    @Input('source') attrSource: any;
@@ -156,7 +156,7 @@ export class jqxKanbanComponent implements OnChanges
    }
 
    // jqxKanbanComponent properties
-   columnRenderer(arg?: (element?: any, collapsedElement?: any, column?: any) => void) : any {
+   columnRenderer(arg?: (element?: jqwidgets.KanbanColumnRenderer['element'], collapsedElement?: jqwidgets.KanbanColumnRenderer['collapsedElement'], column?: jqwidgets.KanbanColumnRenderer['column']) => void): (element?: jqwidgets.KanbanColumnRenderer['element'], collapsedElement?: jqwidgets.KanbanColumnRenderer['collapsedElement'], column?: jqwidgets.KanbanColumnRenderer['column']) => void {
       if (arg !== undefined) {
           this.host.jqxKanban('columnRenderer', arg);
       } else {
@@ -164,7 +164,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   columns(arg?: Array<jqwidgets.KanbanColumns>) : any {
+   columns(arg?: Array<jqwidgets.KanbanColumns>): Array<jqwidgets.KanbanColumns> {
       if (arg !== undefined) {
           this.host.jqxKanban('columns', arg);
       } else {
@@ -172,7 +172,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   connectWith(arg?: string) : any {
+   connectWith(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxKanban('connectWith', arg);
       } else {
@@ -180,7 +180,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   headerHeight(arg?: number | string) : any {
+   headerHeight(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxKanban('headerHeight', arg);
       } else {
@@ -188,7 +188,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   headerWidth(arg?: number) : any {
+   headerWidth(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxKanban('headerWidth', arg);
       } else {
@@ -196,7 +196,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxKanban('height', arg);
       } else {
@@ -204,7 +204,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   itemRenderer(arg?: (element?: Array<any>, item?: any, resource?: any) => void) : any {
+   itemRenderer(arg?: (element?: jqwidgets.KanbanItemRenderer['element'], item?: jqwidgets.KanbanItemRenderer['item'], resource?: jqwidgets.KanbanItemRenderer['resource']) => void): (element?: jqwidgets.KanbanItemRenderer['element'], item?: jqwidgets.KanbanItemRenderer['item'], resource?: jqwidgets.KanbanItemRenderer['resource']) => void {
       if (arg !== undefined) {
           this.host.jqxKanban('itemRenderer', arg);
       } else {
@@ -212,7 +212,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   ready(arg?: () => void) : any {
+   ready(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxKanban('ready', arg);
       } else {
@@ -220,7 +220,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxKanban('rtl', arg);
       } else {
@@ -228,7 +228,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   source(arg?: any) : any {
+   source(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxKanban('source', arg);
       } else {
@@ -236,7 +236,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   resources(arg?: any) : any {
+   resources(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxKanban('resources', arg);
       } else {
@@ -244,7 +244,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxKanban('template', arg);
       } else {
@@ -252,7 +252,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   templateContent(arg?: any) : any {
+   templateContent(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxKanban('templateContent', arg);
       } else {
@@ -260,7 +260,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxKanban('theme', arg);
       } else {
@@ -268,7 +268,7 @@ export class jqxKanbanComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxKanban('width', arg);
       } else {

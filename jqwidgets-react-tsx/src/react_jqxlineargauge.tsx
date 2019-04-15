@@ -75,8 +75,12 @@ class JqxLinearGauge extends React.PureComponent<ILinearGaugeProps, IState> {
         this._jqx(this._componentSelector).jqxLinearGauge('enable' );
     };
 
-    public val(value?: number | string): number {
-        return this._jqx(this._componentSelector).jqxLinearGauge('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxLinearGauge('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxLinearGauge('val');
+        }
     };
 
     private _manageProps(): ILinearGaugeProps {
@@ -86,7 +90,7 @@ class JqxLinearGauge extends React.PureComponent<ILinearGaugeProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

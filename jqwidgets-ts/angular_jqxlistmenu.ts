@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,13 +24,13 @@ declare let JQXLite: any;
 export class jqxListMenuComponent implements OnChanges
 {
    @Input('alwaysShowNavigationArrows') attrAlwaysShowNavigationArrows: boolean;
-   @Input('animationType') attrAnimationType: any;
+   @Input('animationType') attrAnimationType: string;
    @Input('animationDuration') attrAnimationDuration: number | string;
    @Input('autoSeparators') attrAutoSeparators: boolean;
    @Input('backLabel') attrBackLabel: number | string;
    @Input('disabled') attrDisabled: boolean;
    @Input('enableScrolling') attrEnableScrolling: boolean;
-   @Input('filterCallback') attrFilterCallback: (text:string, seachValue:string | number) => boolean;
+   @Input('filterCallback') attrFilterCallback: (text:jqwidgets.ListMenuFilterCallback['text'], searchValue:jqwidgets.ListMenuFilterCallback['searchValue']) => boolean;
    @Input('headerAnimationDuration') attrHeaderAnimationDuration: number | string;
    @Input('placeHolder') attrPlaceHolder: number | string;
    @Input('readOnly') attrReadOnly: boolean;
@@ -161,7 +161,7 @@ export class jqxListMenuComponent implements OnChanges
    }
 
    // jqxListMenuComponent properties
-   alwaysShowNavigationArrows(arg?: boolean) : any {
+   alwaysShowNavigationArrows(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('alwaysShowNavigationArrows', arg);
       } else {
@@ -169,7 +169,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   animationType(arg?: string) : any {
+   animationType(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxListMenu('animationType', arg);
       } else {
@@ -177,7 +177,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   animationDuration(arg?: number | string) : any {
+   animationDuration(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxListMenu('animationDuration', arg);
       } else {
@@ -185,7 +185,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   autoSeparators(arg?: boolean) : any {
+   autoSeparators(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('autoSeparators', arg);
       } else {
@@ -193,7 +193,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   backLabel(arg?: number | string) : any {
+   backLabel(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxListMenu('backLabel', arg);
       } else {
@@ -201,7 +201,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('disabled', arg);
       } else {
@@ -209,7 +209,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   enableScrolling(arg?: boolean) : any {
+   enableScrolling(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('enableScrolling', arg);
       } else {
@@ -217,7 +217,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   filterCallback(arg?: (text:string, seachValue:string | number) => boolean) : any {
+   filterCallback(arg?: (text:jqwidgets.ListMenuFilterCallback['text'], searchValue:jqwidgets.ListMenuFilterCallback['searchValue']) => boolean): (text:jqwidgets.ListMenuFilterCallback['text'], searchValue:jqwidgets.ListMenuFilterCallback['searchValue']) => boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('filterCallback', arg);
       } else {
@@ -225,7 +225,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxListMenu('height', arg);
       } else {
@@ -233,7 +233,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   headerAnimationDuration(arg?: number | string) : any {
+   headerAnimationDuration(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxListMenu('headerAnimationDuration', arg);
       } else {
@@ -241,7 +241,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   placeHolder(arg?: number | string) : any {
+   placeHolder(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxListMenu('placeHolder', arg);
       } else {
@@ -249,7 +249,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   readOnly(arg?: boolean) : any {
+   readOnly(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('readOnly', arg);
       } else {
@@ -257,7 +257,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('rtl', arg);
       } else {
@@ -265,7 +265,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   roundedCorners(arg?: boolean) : any {
+   roundedCorners(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('roundedCorners', arg);
       } else {
@@ -273,7 +273,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   showNavigationArrows(arg?: boolean) : any {
+   showNavigationArrows(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('showNavigationArrows', arg);
       } else {
@@ -281,7 +281,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   showFilter(arg?: boolean) : any {
+   showFilter(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('showFilter', arg);
       } else {
@@ -289,7 +289,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   showHeader(arg?: boolean) : any {
+   showHeader(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('showHeader', arg);
       } else {
@@ -297,7 +297,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   showBackButton(arg?: boolean) : any {
+   showBackButton(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxListMenu('showBackButton', arg);
       } else {
@@ -305,7 +305,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxListMenu('theme', arg);
       } else {
@@ -313,7 +313,7 @@ export class jqxListMenuComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxListMenu('width', arg);
       } else {

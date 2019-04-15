@@ -121,8 +121,13 @@ var JqxDateTimeInput = /** @class */ (function (_super) {
     JqxDateTimeInput.prototype.setDate = function (date) {
         this._jqx(this._componentSelector).jqxDateTimeInput('setDate', date);
     };
-    JqxDateTimeInput.prototype.val = function (value, value2) {
-        return this._jqx(this._componentSelector).jqxDateTimeInput('val', value, value2);
+    JqxDateTimeInput.prototype.val = function (value) {
+        if (value) {
+            this._jqx(this._componentSelector).jqxDateTimeInput('val', value);
+        }
+        else {
+            return this._jqx(this._componentSelector).jqxDateTimeInput('val');
+        }
     };
     JqxDateTimeInput.prototype._manageProps = function () {
         var widgetProps = ['animationType', 'allowNullDate', 'allowKeyboardDelete', 'clearString', 'culture', 'closeDelay', 'closeCalendarAfterSelection', 'dropDownHorizontalAlignment', 'dropDownVerticalAlignment', 'disabled', 'enableBrowserBoundsDetection', 'enableAbsoluteSelection', 'firstDayOfWeek', 'formatString', 'height', 'min', 'max', 'openDelay', 'placeHolder', 'popupZIndex', 'rtl', 'readonly', 'showFooter', 'selectionMode', 'showWeekNumbers', 'showTimeButton', 'showCalendarButton', 'theme', 'template', 'textAlign', 'todayString', 'value', 'width'];

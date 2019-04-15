@@ -14,7 +14,7 @@ declare class JqxEditor extends React.PureComponent<IEditorProps, IState> {
     focus(): void;
     print(): void;
     setMode(mode: boolean): void;
-    val(value?: string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }
@@ -31,6 +31,7 @@ export interface IEditorLocalization {
     format?: string;
     size?: number | string;
     font?: string;
+    html?: string;
     color?: string;
     background?: string;
     left?: string;
@@ -43,7 +44,6 @@ export interface IEditorLocalization {
     image?: string;
     link?: string;
     clean?: string;
-    html?: string;
 }
 export interface IEditorCreateCommand {
     name?: string;

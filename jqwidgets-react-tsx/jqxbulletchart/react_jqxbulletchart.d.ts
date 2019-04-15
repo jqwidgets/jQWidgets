@@ -13,7 +13,7 @@ declare class JqxBulletChart extends React.PureComponent<IBulletChartProps, ISta
     destroy(): void;
     renderWidget(): void;
     refresh(): void;
-    val(value?: number): number;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

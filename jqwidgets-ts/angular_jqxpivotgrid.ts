@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -39,8 +39,8 @@ export class jqxPivotGridComponent implements OnChanges
    @Input('multipleSelectionEnabled') attrMultipleSelectionEnabled: boolean;
    @Input('treeStyleRows') attrTreeStyleRows: boolean;
    @Input('autoResize') attrAutoResize: boolean;
-   @Input('itemsRenderer') attrItemsRenderer: (pivotItem: any) => string;
-   @Input('cellsRenderer') attrCellsRenderer: (pivotCell: any) => string;
+   @Input('itemsRenderer') attrItemsRenderer: (pivotItem: jqwidgets.PivotGridItemsRenderer['pivotItem']) => string;
+   @Input('cellsRenderer') attrCellsRenderer: (pivotCell: jqwidgets.PivotGridCellsRenderer['pivotCell']) => string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
@@ -166,7 +166,7 @@ export class jqxPivotGridComponent implements OnChanges
    }
 
    // jqxPivotGridComponent properties
-   source(arg?: any) : any {
+   source(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxPivotGrid('source', arg);
       } else {
@@ -174,7 +174,7 @@ export class jqxPivotGridComponent implements OnChanges
       }
    }
 
-   localization(arg?: any) : any {
+   localization(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxPivotGrid('localization', arg);
       } else {
@@ -182,7 +182,7 @@ export class jqxPivotGridComponent implements OnChanges
       }
    }
 
-   scrollBarsEnabled(arg?: boolean) : any {
+   scrollBarsEnabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPivotGrid('scrollBarsEnabled', arg);
       } else {
@@ -190,7 +190,7 @@ export class jqxPivotGridComponent implements OnChanges
       }
    }
 
-   selectionEnabled(arg?: boolean) : any {
+   selectionEnabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPivotGrid('selectionEnabled', arg);
       } else {
@@ -198,7 +198,7 @@ export class jqxPivotGridComponent implements OnChanges
       }
    }
 
-   multipleSelectionEnabled(arg?: boolean) : any {
+   multipleSelectionEnabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPivotGrid('multipleSelectionEnabled', arg);
       } else {
@@ -206,7 +206,7 @@ export class jqxPivotGridComponent implements OnChanges
       }
    }
 
-   treeStyleRows(arg?: boolean) : any {
+   treeStyleRows(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPivotGrid('treeStyleRows', arg);
       } else {
@@ -214,7 +214,7 @@ export class jqxPivotGridComponent implements OnChanges
       }
    }
 
-   autoResize(arg?: boolean) : any {
+   autoResize(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPivotGrid('autoResize', arg);
       } else {
@@ -222,7 +222,7 @@ export class jqxPivotGridComponent implements OnChanges
       }
    }
 
-   itemsRenderer(arg?: (pivotItem: any) => string) : any {
+   itemsRenderer(arg?: (pivotItem: jqwidgets.PivotGridItemsRenderer['pivotItem']) => string): (pivotItem: jqwidgets.PivotGridItemsRenderer['pivotItem']) => string {
       if (arg !== undefined) {
           this.host.jqxPivotGrid('itemsRenderer', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxPivotGridComponent implements OnChanges
       }
    }
 
-   cellsRenderer(arg?: (pivotCell: any) => string) : any {
+   cellsRenderer(arg?: (pivotCell: jqwidgets.PivotGridCellsRenderer['pivotCell']) => string): (pivotCell: jqwidgets.PivotGridCellsRenderer['pivotCell']) => string {
       if (arg !== undefined) {
           this.host.jqxPivotGrid('cellsRenderer', arg);
       } else {

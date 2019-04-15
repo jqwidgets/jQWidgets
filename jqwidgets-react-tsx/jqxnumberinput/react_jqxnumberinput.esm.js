@@ -95,7 +95,12 @@ var JqxNumberInput = /** @class */ (function (_super) {
         this._jqx(this._componentSelector).jqxNumberInput('setDecimal', index);
     };
     JqxNumberInput.prototype.val = function (value) {
-        return this._jqx(this._componentSelector).jqxNumberInput('val', value);
+        if (value) {
+            this._jqx(this._componentSelector).jqxNumberInput('val', value);
+        }
+        else {
+            return this._jqx(this._componentSelector).jqxNumberInput('val');
+        }
     };
     JqxNumberInput.prototype._manageProps = function () {
         var widgetProps = ['allowNull', 'decimal', 'disabled', 'decimalDigits', 'decimalSeparator', 'digits', 'groupSeparator', 'groupSize', 'height', 'inputMode', 'min', 'max', 'negativeSymbol', 'placeHolder', 'promptChar', 'rtl', 'readOnly', 'spinMode', 'spinButtons', 'spinButtonsWidth', 'spinButtonsStep', 'symbol', 'symbolPosition', 'textAlign', 'template', 'theme', 'value', 'width'];

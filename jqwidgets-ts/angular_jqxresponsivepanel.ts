@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -20,10 +20,10 @@ declare let JQXLite: any;
 
 export class jqxResponsivePanelComponent implements OnChanges
 {
-   @Input('animationDirection') attrAnimationDirection: any;
+   @Input('animationDirection') attrAnimationDirection: string;
    @Input('animationHideDelay') attrAnimationHideDelay: number | string;
    @Input('animationShowDelay') attrAnimationShowDelay: number | string;
-   @Input('animationType') attrAnimationType: any;
+   @Input('animationType') attrAnimationType: string;
    @Input('autoClose') attrAutoClose: boolean;
    @Input('collapseBreakpoint') attrCollapseBreakpoint: number;
    @Input('collapseWidth') attrCollapseWidth: number;
@@ -151,7 +151,7 @@ export class jqxResponsivePanelComponent implements OnChanges
    }
 
    // jqxResponsivePanelComponent properties
-   animationDirection(arg?: string) : any {
+   animationDirection(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('animationDirection', arg);
       } else {
@@ -159,7 +159,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   animationHideDelay(arg?: number | string) : any {
+   animationHideDelay(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('animationHideDelay', arg);
       } else {
@@ -167,7 +167,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   animationShowDelay(arg?: number | string) : any {
+   animationShowDelay(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('animationShowDelay', arg);
       } else {
@@ -175,7 +175,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   animationType(arg?: string) : any {
+   animationType(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('animationType', arg);
       } else {
@@ -183,7 +183,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   autoClose(arg?: boolean) : any {
+   autoClose(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('autoClose', arg);
       } else {
@@ -191,7 +191,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   collapseBreakpoint(arg?: number) : any {
+   collapseBreakpoint(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('collapseBreakpoint', arg);
       } else {
@@ -199,7 +199,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   collapseWidth(arg?: number) : any {
+   collapseWidth(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('collapseWidth', arg);
       } else {
@@ -207,7 +207,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('height', arg);
       } else {
@@ -215,7 +215,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   initContent(arg?: () => void) : any {
+   initContent(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('initContent', arg);
       } else {
@@ -223,7 +223,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('theme', arg);
       } else {
@@ -231,7 +231,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   toggleButton(arg?: string | any) : any {
+   toggleButton(arg?: string | any): string | any {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('toggleButton', arg);
       } else {
@@ -239,7 +239,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   toggleButtonSize(arg?: number | string) : any {
+   toggleButtonSize(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('toggleButtonSize', arg);
       } else {
@@ -247,7 +247,7 @@ export class jqxResponsivePanelComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxResponsivePanel('width', arg);
       } else {

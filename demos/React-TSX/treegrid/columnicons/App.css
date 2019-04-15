@@ -1,0 +1,17 @@
+.myTooltip {
+    padding: 10px;
+    font-size: 1.2em;
+    border-style: dashed;
+    border-width: 3px;
+    border-radius: 4px;
+}
+
+.jqx-tree-grid-icon, .jqx-tree-grid-icon-size {
+  width: 40px;
+  height: 40px;
+}
+
+.jqx-tree-grid-title, .jqx-tree-grid-collapse-button, .jqx-tree-grid-expand-button {
+  height: 30px;
+  line-height: 40px;
+}

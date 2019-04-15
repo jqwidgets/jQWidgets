@@ -90,7 +90,12 @@ require('../../jqwidgets/jqxpasswordinput');
             this._jqx(this._componentSelector).jqxPasswordInput('refresh');
         };
         JqxPasswordInput.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxPasswordInput('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxPasswordInput('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxPasswordInput('val');
+            }
         };
         JqxPasswordInput.prototype._manageProps = function () {
             var widgetProps = ['disabled', 'height', 'localization', 'maxLength', 'placeHolder', 'passwordStrength', 'rtl', 'strengthColors', 'showStrength', 'showStrengthPosition', 'strengthTypeRenderer', 'showPasswordIcon', 'theme', 'width'];

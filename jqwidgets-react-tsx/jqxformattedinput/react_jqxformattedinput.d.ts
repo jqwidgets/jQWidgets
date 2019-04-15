@@ -19,7 +19,7 @@ declare class JqxFormattedInput extends React.PureComponent<IFormattedInputProps
     selectAll(): void;
     selectFirst(): void;
     selectLast(): void;
-    val(value?: number | string): any;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

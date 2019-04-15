@@ -81,8 +81,12 @@ class JqxEditor extends React.PureComponent<IEditorProps, IState> {
         this._jqx(this._componentSelector).jqxEditor('setMode' , mode);
     };
 
-    public val(value?: string): string {
-        return this._jqx(this._componentSelector).jqxEditor('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxEditor('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxEditor('val');
+        }
     };
 
     private _manageProps(): IEditorProps {
@@ -92,7 +96,7 @@ class JqxEditor extends React.PureComponent<IEditorProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 
@@ -128,6 +132,7 @@ export interface IEditorLocalization {
     format?: string;
     size?: number | string;
     font?: string;
+    html?: string;
     color?: string;
     background?: string;
     left?: string;
@@ -140,7 +145,6 @@ export interface IEditorLocalization {
     image?: string;
     link?: string;
     clean?: string;
-    html?: string;
 }
 
 export interface IEditorCreateCommand {

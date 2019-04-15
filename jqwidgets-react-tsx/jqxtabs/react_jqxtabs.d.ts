@@ -36,7 +36,7 @@ declare class JqxTabs extends React.PureComponent<ITabsProps, IState> {
     setTitleAt(index: number, htmlElement: string): void;
     showCloseButtonAt(index: number): void;
     showAllCloseButtons(): void;
-    val(value?: string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

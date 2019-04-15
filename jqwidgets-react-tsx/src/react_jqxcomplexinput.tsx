@@ -92,8 +92,12 @@ class JqxComplexInput extends React.PureComponent<IComplexInputProps, IState> {
         this._jqx(this._componentSelector).jqxComplexInput('refresh' );
     };
 
-    public val(value?: any): string {
-        return this._jqx(this._componentSelector).jqxComplexInput('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxComplexInput('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxComplexInput('val');
+        }
     };
 
     private _manageProps(): IComplexInputProps {
@@ -103,7 +107,7 @@ class JqxComplexInput extends React.PureComponent<IComplexInputProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

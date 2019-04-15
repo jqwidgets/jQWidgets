@@ -1,0 +1,16 @@
+.photo {
+  width: 600px;
+  height: 450px;
+  background-color: #000;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#buttons {
+  margin-top: 20px;
+}
+
+#buttons div {
+  float: left;
+  margin-right: 4px;
+}

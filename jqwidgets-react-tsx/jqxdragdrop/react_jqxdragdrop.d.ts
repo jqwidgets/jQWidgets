@@ -49,7 +49,7 @@ interface IDragDropOptions {
     onTargetDrop?: (data?: IDragDropOnTargetDrop['data']) => void;
     onDropTargetEnter?: () => void;
     onDropTargetLeave?: (data?: IDragDropOnDropTargetLeave['data']) => void;
-    restricter?: object | 'body' | 'document' | 'parent';
+    restricter?: string | object;
     revert?: boolean;
     revertDuration?: number;
     tolerance?: 'fit' | 'intersect';

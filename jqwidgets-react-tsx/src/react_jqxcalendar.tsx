@@ -135,8 +135,12 @@ class JqxCalendar extends React.PureComponent<ICalendarProps, IState> {
         this._jqx(this._componentSelector).jqxCalendar('today' );
     };
 
-    public val(value?: Date | string, value2?: Date | string): Date | string {
-        return this._jqx(this._componentSelector).jqxCalendar('val' , value, value2);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxCalendar('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxCalendar('val');
+        }
     };
 
     private _manageProps(): ICalendarProps {
@@ -146,7 +150,7 @@ class JqxCalendar extends React.PureComponent<ICalendarProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

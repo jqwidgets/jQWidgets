@@ -126,9 +126,11 @@ export interface IGridColumn {
     text?: string;
     datafield?: string;
     displayfield?: string;
+    threestatecheckbox?: boolean;
     sortable?: boolean;
     filterable?: boolean;
     filter?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: any) => any;
+    buttonclick?: (row: number) => void;
     hideable?: boolean;
     hidden?: boolean;
     groupable?: boolean;
@@ -136,7 +138,7 @@ export interface IGridColumn {
     exportable?: boolean;
     columngroup?: string;
     enabletooltips?: boolean;
-    columntype?: 'number' | 'checkbox' | 'numberinput' | 'dropdownlist' | 'combobox' | 'datetimeinput' | 'textbox' | 'template' | 'custom';
+    columntype?: 'number' | 'checkbox' | 'button' | 'numberinput' | 'dropdownlist' | 'combobox' | 'datetimeinput' | 'textbox' | 'template' | 'custom';
     renderer?: (defaultText?: string, alignment?: string, height?: number) => string;
     rendered?: (columnHeaderElement?: any) => void;
     cellsrenderer?: (row?: number, columnfield?: string, value?: any, defaulthtml?: string, columnproperties?: any, rowdata?: any) => string;
@@ -144,23 +146,23 @@ export interface IGridColumn {
     validation?: (cell?: any, value?: number) => any;
     createwidget?: (row: any, column: any, value: string, cellElement: any) => void;
     initwidget?: (row: number, column: string, value: string, cellElement: any) => void;
-    createfilterwidget?: (column: any, htmlElement: any, editor: any) => void;
+    createfilterwidget?: (column: any, htmlElement: HTMLElement, editor: any) => void;
     createfilterpanel?: (datafield: string, filterPanel: any) => void;
     initeditor?: (row: number, cellvalue: any, editor: any, celltext: any, pressedChar: string, callback: any) => void;
     createeditor?: (row: number, cellvalue: any, editor: any, celltext: any, cellwidth: any, cellheight: any) => void;
     destroyeditor?: (row: number, callback: any) => void;
     geteditorvalue?: (row: number, cellvalue: any, editor: any) => any;
-    cellbeginedit?: (row: number, datafield: string, columntype: string) => boolean;
+    cellbeginedit?: (row: number, datafield: string, columntype: string, value: any) => boolean;
     cellendedit?: (row: number, datafield: string, columntype: string, oldvalue: any, newvalue: any) => boolean;
-    cellvaluechanging?: (row: number, datafield: string, columntype: string, oldvalue: any, newvalue: any) => string;
-    createeverpresentrowwidget?: (datafield: string, htmlElement: any, popup: any, addRowCallback: any) => any;
-    initeverpresentrowwidget?: (datafield: string, htmlElement: any, popup: any) => void;
-    reseteverpresentrowwidgetvalue?: (htmlElement: any) => void;
-    geteverpresentrowwidgetvalue?: (datafield: string, htmlElement: any) => any;
-    destroyeverpresentrowwidget?: (htmlElement: any) => void;
-    validateeverpresentrowwidgetvalue?: (datafield: string, value: any, rowValues: any) => boolean;
-    cellsformat?: 'n2' | 'f2' | 'c2' | 'f' | 'n' | 'c' | 'p' | 'd' | 'dd' | 'ddd' | 'dddd' | 'h' | 'hh' | 'H' | 'HH' | 'm' | 'mm' | 'M' | 'MM' | 'MMM' | 'MMMM' | 's' | 'ss' | 't' | 'tt' | 'y' | 'yy' | 'yyy' | 'yyyy';
-    cellclassname?: string;
+    cellvaluechanging?: (row: number, datafield: string, columntype: string, oldvalue: any, newvalue: any) => string | void;
+    createeverpresentrowwidget?: (datafield: string, htmlElement: HTMLElement, popup: any, addRowCallback: any) => any;
+    initeverpresentrowwidget?: (datafield: string, htmlElement: HTMLElement, popup: any) => void;
+    reseteverpresentrowwidgetvalue?: (datafield: string, htmlElement: HTMLElement) => void;
+    geteverpresentrowwidgetvalue?: (datafield: string, htmlElement: HTMLElement) => any;
+    destroyeverpresentrowwidget?: (htmlElement: HTMLElement) => void;
+    validateeverpresentrowwidgetvalue?: (datafield: string, value: any, rowValues: any) => boolean | object;
+    cellsformat?: string;
+    cellclassname?: any;
     aggregates?: any;
     align?: 'left' | 'center' | 'right';
     cellsalign?: 'left' | 'center' | 'right';
@@ -175,7 +177,7 @@ export interface IGridColumn {
     nullable?: boolean;
     filteritems?: any;
     filterdelay?: number;
-    filtertype?: 'textbox' | 'input' | 'checkedlist' | 'list' | 'number' | 'checkbox' | 'date' | 'range' | 'custom';
+    filtertype?: 'textbox' | 'input' | 'checkedlist' | 'list' | 'number' | 'bool' | 'date' | 'range' | 'custom';
     filtercondition?: 'EMPTY' | 'NOT_EMPTY' | 'CONTAINS' | 'CONTAINS_CASE_SENSITIVE' | 'DOES_NOT_CONTAIN' | 'DOES_NOT_CONTAIN_CASE_SENSITIVE' | 'STARTS_WITH' | 'STARTS_WITH_CASE_SENSITIVE' | 'ENDS_WITH' | 'ENDS_WITH_CASE_SENSITIVE' | 'EQUAL' | 'EQUAL_CASE_SENSITIVE' | 'NULL' | 'NOT_NULL' | 'EQUAL' | 'NOT_EQUAL' | 'LESS_THAN' | 'LESS_THAN_OR_EQUAL' | 'GREATER_THAN' | 'GREATER_THAN_OR_EQUAL' | 'NULL' | 'NOT_NULL';
 }
 export interface IGridSourceDataFields {
@@ -210,6 +212,8 @@ export interface IGridSource {
     processdata?: (data: any) => void;
     formatdata?: (data: any) => any;
     async?: boolean;
+    totalrecords?: number;
+    unboundmode?: boolean;
 }
 export interface IGridGetColumn {
     datafield?: string;
@@ -223,7 +227,7 @@ export interface IGridGetColumn {
     resizable?: boolean;
     draggable?: boolean;
     classname?: string;
-    cellclassname?: string;
+    cellclassname?: any;
     width?: number | string;
     menu?: boolean;
 }
@@ -272,6 +276,11 @@ export interface IGridLocalizationobject {
     thousandsseparator?: string;
     days?: IGridDateNaming;
     months?: IGridDateNaming;
+    addrowstring?: string;
+    updaterowstring?: string;
+    deleterowstring?: string;
+    resetrowstring?: string;
+    everpresentrowplaceholder?: string;
 }
 export interface IGridScrollPosition {
     top?: number;
@@ -375,7 +384,7 @@ interface IGridOptions {
     clipboard?: boolean;
     closeablegroups?: boolean;
     columnsmenuwidth?: number;
-    columnmenuopening?: (menu?: IGridColumnmenuopening['menu'], datafield?: IGridColumnmenuopening['datafield'], height?: IGridColumnmenuopening['height']) => boolean;
+    columnmenuopening?: (menu?: IGridColumnmenuopening['menu'], datafield?: IGridColumnmenuopening['datafield'], height?: IGridColumnmenuopening['height']) => boolean | void;
     columnmenuclosing?: (menu?: IGridColumnmenuclosing['menu'], datafield?: IGridColumnmenuclosing['datafield'], height?: IGridColumnmenuclosing['height']) => boolean;
     cellhover?: (cellhtmlElement?: IGridCellhover['cellhtmlElement'], x?: IGridCellhover['x'], y?: IGridCellhover['y']) => void;
     enablekeyboarddelete?: boolean;
@@ -461,7 +470,7 @@ interface IGridOptions {
     rowdetails?: boolean;
     rowdetailstemplate?: any;
     ready?: () => void;
-    rendered?: () => void;
+    rendered?: (type: any) => void;
     renderstatusbar?: (statusbar?: IGridRenderstatusbar['statusbar']) => void;
     rendertoolbar?: (toolbar?: IGridRendertoolbar['toolbar']) => void;
     rendergridrows?: (params?: any) => any;

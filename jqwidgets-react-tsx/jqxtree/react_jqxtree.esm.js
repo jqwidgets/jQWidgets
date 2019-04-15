@@ -178,7 +178,12 @@ var JqxTree = /** @class */ (function (_super) {
         this._jqx(this._componentSelector).jqxTree('updateItem', item, newItem);
     };
     JqxTree.prototype.val = function (value) {
-        return this._jqx(this._componentSelector).jqxTree('val', value);
+        if (value) {
+            this._jqx(this._componentSelector).jqxTree('val', value);
+        }
+        else {
+            return this._jqx(this._componentSelector).jqxTree('val');
+        }
     };
     JqxTree.prototype._manageProps = function () {
         var widgetProps = ['animationShowDuration', 'animationHideDuration', 'allowDrag', 'allowDrop', 'checkboxes', 'dragStart', 'dragEnd', 'disabled', 'easing', 'enableHover', 'height', 'hasThreeStates', 'incrementalSearch', 'keyboardNavigation', 'rtl', 'source', 'toggleIndicatorSize', 'toggleMode', 'theme', 'width'];

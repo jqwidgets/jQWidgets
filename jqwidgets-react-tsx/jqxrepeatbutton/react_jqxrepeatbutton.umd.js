@@ -92,7 +92,12 @@ require('../../jqwidgets/jqxbuttons');
             this._jqx(this._componentSelector).jqxRepeatButton('render');
         };
         JqxRepeatButton.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxRepeatButton('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxRepeatButton('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxRepeatButton('val');
+            }
         };
         JqxRepeatButton.prototype._manageProps = function () {
             var widgetProps = ['delay', 'disabled', 'height', 'imgSrc', 'imgWidth', 'imgHeight', 'imgPosition', 'roundedCorners', 'rtl', 'textPosition', 'textImageRelation', 'theme', 'template', 'toggled', 'width', 'value'];

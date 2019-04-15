@@ -210,7 +210,12 @@ require('../../jqwidgets/jqxdragdrop');
             this._jqx(this._componentSelector).jqxListBox('uncheckAll');
         };
         JqxListBox.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxListBox('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxListBox('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxListBox('val');
+            }
         };
         JqxListBox.prototype._manageProps = function () {
             var widgetProps = ['autoHeight', 'allowDrag', 'allowDrop', 'checkboxes', 'disabled', 'displayMember', 'dropAction', 'dragStart', 'dragEnd', 'enableHover', 'enableSelection', 'equalItemsWidth', 'filterable', 'filterHeight', 'filterDelay', 'filterPlaceHolder', 'height', 'hasThreeStates', 'itemHeight', 'incrementalSearch', 'incrementalSearchDelay', 'multiple', 'multipleextended', 'renderer', 'rendered', 'rtl', 'selectedIndex', 'selectedIndexes', 'source', 'scrollBarSize', 'searchMode', 'theme', 'valueMember', 'width'];

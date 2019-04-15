@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,13 +24,13 @@ export class jqxToggleButtonComponent implements OnChanges
    @Input('imgSrc') attrImgSrc: string;
    @Input('imgWidth') attrImgWidth: number | string;
    @Input('imgHeight') attrImgHeight: number | string;
-   @Input('imgPosition') attrImgPosition: any;
-   @Input('roundedCorners') attrRoundedCorners: any;
+   @Input('imgPosition') attrImgPosition: string;
+   @Input('roundedCorners') attrRoundedCorners: string;
    @Input('rtl') attrRtl: boolean;
-   @Input('textPosition') attrTextPosition: any;
-   @Input('textImageRelation') attrTextImageRelation: any;
+   @Input('textPosition') attrTextPosition: string;
+   @Input('textImageRelation') attrTextImageRelation: string;
    @Input('theme') attrTheme: string;
-   @Input('template') attrTemplate: any;
+   @Input('template') attrTemplate: string;
    @Input('toggled') attrToggled: boolean;
    @Input('value') attrValue: string;
    @Input('width') attrWidth: string | number;
@@ -153,7 +153,7 @@ export class jqxToggleButtonComponent implements OnChanges
    }
 
    // jqxToggleButtonComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxToggleButton('disabled', arg);
       } else {
@@ -161,7 +161,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxToggleButton('height', arg);
       } else {
@@ -169,7 +169,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   imgSrc(arg?: string) : any {
+   imgSrc(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxToggleButton('imgSrc', arg);
       } else {
@@ -177,7 +177,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   imgWidth(arg?: number | string) : any {
+   imgWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxToggleButton('imgWidth', arg);
       } else {
@@ -185,7 +185,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   imgHeight(arg?: number | string) : any {
+   imgHeight(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxToggleButton('imgHeight', arg);
       } else {
@@ -193,7 +193,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   imgPosition(arg?: string) : any {
+   imgPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxToggleButton('imgPosition', arg);
       } else {
@@ -201,7 +201,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   roundedCorners(arg?: string) : any {
+   roundedCorners(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxToggleButton('roundedCorners', arg);
       } else {
@@ -209,7 +209,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxToggleButton('rtl', arg);
       } else {
@@ -217,7 +217,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   textPosition(arg?: string) : any {
+   textPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxToggleButton('textPosition', arg);
       } else {
@@ -225,7 +225,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   textImageRelation(arg?: string) : any {
+   textImageRelation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxToggleButton('textImageRelation', arg);
       } else {
@@ -233,7 +233,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxToggleButton('theme', arg);
       } else {
@@ -241,7 +241,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxToggleButton('template', arg);
       } else {
@@ -249,7 +249,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   toggled(arg?: boolean) : any {
+   toggled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxToggleButton('toggled', arg);
       } else {
@@ -257,7 +257,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxToggleButton('width', arg);
       } else {
@@ -265,7 +265,7 @@ export class jqxToggleButtonComponent implements OnChanges
       }
    }
 
-   value(arg?: string) : any {
+   value(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxToggleButton('value', arg);
       } else {

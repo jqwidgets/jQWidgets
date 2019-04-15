@@ -1,0 +1,14 @@
+.buttonIcon
+    {
+        margin: -5px 0 0 -3px;
+        width: 16px;
+        height: 17px;
+    }
+
+[role="button"] {
+    margin-right: 5px;
+}
+
+.jqx-rc-all:last-child {
+    padding-top: 1px;
+}

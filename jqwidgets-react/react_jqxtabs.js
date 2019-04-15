@@ -1,10 +1,3 @@
-/*
-jQWidgets v7.1.0 (2019-Feb)
-Copyright (c) 2011-2019 jQWidgets.
-License: https://jqwidgets.com/license/
-*/
-/* eslint-disable */
-
 import '../jqwidgets/styles/jqx.base.css';
 import '../jqwidgets/jqxcore.js';
 import '../jqwidgets/jqxbuttons.js';
@@ -31,23 +24,23 @@ export default class JqxTabs extends React.Component {
         const properties = ['animationType','autoHeight','closeButtonSize','collapsible','contentTransitionDuration','disabled','enabledHover','enableScrollAnimation','enableDropAnimation','height','initTabContent','keyboardNavigation','next','previous','position','reorder','rtl','scrollAnimationDuration','selectedItem','selectionTracker','scrollable','scrollPosition','scrollStep','showCloseButtons','toggleMode','theme','width'];
         let options = {};
         for(let item in this.props) {
-            if(item === 'settings') {
-                for(let itemTwo in this.props[item]) {
-                    options[itemTwo] = this.props[item][itemTwo];
-                }
-            } else {
-                if(properties.indexOf(item) !== -1) {
-                      options[item] = this.props[item];
-                }
-            }
-        }
-        return options;
-    };
+    	    if(item === 'settings') {
+      	      for(let itemTwo in this.props[item]) {
+        	        options[itemTwo] = this.props[item][itemTwo];
+  			  }
+  		  } else {
+  			  if(properties.indexOf(item) !== -1) {
+      		        options[item] = this.props[item];
+  			  }
+  		  }
+  	  }
+  	  return options;
+	};
     createComponent(options) {
         if(!this.style) {
-            for (let style in this.props.style) {
-                JQXLite(this.componentSelector).css(style, this.props.style[style]);
-            }
+    	    for (let style in this.props.style) {
+      	      JQXLite(this.componentSelector).css(style, this.props.style[style]);
+    	    }
         }
         if(this.props.className !== undefined) {
             const classes = this.props.className.split(' ');
@@ -56,7 +49,7 @@ export default class JqxTabs extends React.Component {
             }
         }
         if(!this.template) {
-            JQXLite(this.componentSelector).html(this.props.template);
+    	    JQXLite(this.componentSelector).html(this.props.template);
         }
         JQXLite(this.componentSelector).jqxTabs(options);
     };
@@ -271,11 +264,11 @@ export default class JqxTabs extends React.Component {
     addAt(index, title, content) {
         JQXLite(this.componentSelector).jqxTabs('addAt', index, title, content);  
     };
-    addFirst(htmlElement) {
-        JQXLite(this.componentSelector).jqxTabs('addFirst', htmlElement);  
+    addFirst(htmlElement1, htmlElement2) {
+        JQXLite(this.componentSelector).jqxTabs('addFirst', htmlElement1, htmlElement2);  
     };
-    addLast(htmlElement1, htmlElemen2t) {
-        JQXLite(this.componentSelector).jqxTabs('addLast', htmlElement1, htmlElemen2t);  
+    addLast(htmlElement1, htmlElement2) {
+        JQXLite(this.componentSelector).jqxTabs('addLast', htmlElement1, htmlElement2);  
     };
     collapse() {
         JQXLite(this.componentSelector).jqxTabs('collapse');  
@@ -360,4 +353,3 @@ export default class JqxTabs extends React.Component {
         )
     };
 };
-

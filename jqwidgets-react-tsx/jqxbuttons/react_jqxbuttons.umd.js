@@ -91,10 +91,15 @@ require('../../jqwidgets/jqxcore');
             this._jqx(this._componentSelector).jqxButton('render');
         };
         JqxButton.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxButton('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxButton('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxButton('val');
+            }
         };
         JqxButton.prototype._manageProps = function () {
-            var widgetProps = ['disabled', 'height', 'imgSrc', 'imgWidth', 'imgHeight', 'imgPosition', 'roundedCorners', 'rtl', 'textPosition', 'textImageRelation', 'theme', 'template', 'width', 'value'];
+            var widgetProps = ['disabled', 'height', 'imgSrc', 'imgWidth', 'imgHeight', 'imgPosition', 'roundedCorners', 'rtl', 'enableDefault', 'cursor', 'textPosition', 'textImageRelation', 'theme', 'template', 'width', 'value'];
             var options = {};
             for (var prop in this.props) {
                 if (widgetProps.indexOf(prop) !== -1) {

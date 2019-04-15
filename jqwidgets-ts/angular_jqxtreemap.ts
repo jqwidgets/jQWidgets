@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -25,13 +25,13 @@ export class jqxTreeMapComponent implements OnChanges
    @Input('baseColor') attrBaseColor: string;
    @Input('colorRanges') attrColorRanges: Array<jqwidgets.TreeMapColorRanges>;
    @Input('colorRange') attrColorRange: number;
-   @Input('colorMode') attrColorMode: any;
+   @Input('colorMode') attrColorMode: string;
    @Input('displayMember') attrDisplayMember: string;
    @Input('hoverEnabled') attrHoverEnabled: boolean;
    @Input('headerHeight') attrHeaderHeight: number;
    @Input('legendLabel') attrLegendLabel: string;
    @Input('legendPosition') attrLegendPosition: jqwidgets.TreeMapLegendPosition;
-   @Input('legendScaleCallback') attrLegendScaleCallback: any;
+   @Input('legendScaleCallback') attrLegendScaleCallback: (v: jqwidgets.TreeMapLegendScaleCallback['v']) => string | number;
    @Input('renderCallbacks') attrRenderCallbacks: any;
    @Input('selectionEnabled') attrSelectionEnabled: boolean;
    @Input('showLegend') attrShowLegend: boolean;
@@ -159,7 +159,7 @@ export class jqxTreeMapComponent implements OnChanges
    }
 
    // jqxTreeMapComponent properties
-   baseColor(arg?: string) : any {
+   baseColor(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTreeMap('baseColor', arg);
       } else {
@@ -167,7 +167,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   colorRanges(arg?: Array<jqwidgets.TreeMapColorRanges>) : any {
+   colorRanges(arg?: Array<jqwidgets.TreeMapColorRanges>): Array<jqwidgets.TreeMapColorRanges> {
       if (arg !== undefined) {
           this.host.jqxTreeMap('colorRanges', arg);
       } else {
@@ -175,7 +175,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   colorRange(arg?: number) : any {
+   colorRange(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTreeMap('colorRange', arg);
       } else {
@@ -183,7 +183,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   colorMode(arg?: string) : any {
+   colorMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTreeMap('colorMode', arg);
       } else {
@@ -191,7 +191,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   displayMember(arg?: string) : any {
+   displayMember(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTreeMap('displayMember', arg);
       } else {
@@ -199,7 +199,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxTreeMap('height', arg);
       } else {
@@ -207,7 +207,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   hoverEnabled(arg?: boolean) : any {
+   hoverEnabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTreeMap('hoverEnabled', arg);
       } else {
@@ -215,7 +215,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   headerHeight(arg?: number) : any {
+   headerHeight(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTreeMap('headerHeight', arg);
       } else {
@@ -223,7 +223,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   legendLabel(arg?: string) : any {
+   legendLabel(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTreeMap('legendLabel', arg);
       } else {
@@ -231,7 +231,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   legendPosition(arg?: jqwidgets.TreeMapLegendPosition) : any {
+   legendPosition(arg?: jqwidgets.TreeMapLegendPosition): jqwidgets.TreeMapLegendPosition {
       if (arg !== undefined) {
           this.host.jqxTreeMap('legendPosition', arg);
       } else {
@@ -239,7 +239,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   legendScaleCallback(arg?: any) : any {
+   legendScaleCallback(arg?: (v: jqwidgets.TreeMapLegendScaleCallback['v']) => string | number): (v: jqwidgets.TreeMapLegendScaleCallback['v']) => string | number {
       if (arg !== undefined) {
           this.host.jqxTreeMap('legendScaleCallback', arg);
       } else {
@@ -247,7 +247,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   renderCallbacks(arg?: any) : any {
+   renderCallbacks(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxTreeMap('renderCallbacks', arg);
       } else {
@@ -255,7 +255,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   selectionEnabled(arg?: boolean) : any {
+   selectionEnabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTreeMap('selectionEnabled', arg);
       } else {
@@ -263,7 +263,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   showLegend(arg?: boolean) : any {
+   showLegend(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTreeMap('showLegend', arg);
       } else {
@@ -271,7 +271,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   source(arg?: any) : any {
+   source(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxTreeMap('source', arg);
       } else {
@@ -279,7 +279,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTreeMap('theme', arg);
       } else {
@@ -287,7 +287,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   valueMember(arg?: string) : any {
+   valueMember(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTreeMap('valueMember', arg);
       } else {
@@ -295,7 +295,7 @@ export class jqxTreeMapComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxTreeMap('width', arg);
       } else {

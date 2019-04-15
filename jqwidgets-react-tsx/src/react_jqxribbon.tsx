@@ -119,8 +119,12 @@ class JqxRibbon extends React.PureComponent<IRibbonProps, IState> {
         this._jqx(this._componentSelector).jqxRibbon('updateAt' , index, item);
     };
 
-    public val(value?: string): string {
-        return this._jqx(this._componentSelector).jqxRibbon('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxRibbon('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxRibbon('val');
+        }
     };
 
     private _manageProps(): IRibbonProps {
@@ -130,7 +134,7 @@ class JqxRibbon extends React.PureComponent<IRibbonProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

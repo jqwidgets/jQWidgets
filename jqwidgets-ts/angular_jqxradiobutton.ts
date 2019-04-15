@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -180,7 +180,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxRadioButtonComponent properties
-   animationShowDelay(arg?: number) : any {
+   animationShowDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxRadioButton('animationShowDelay', arg);
       } else {
@@ -188,7 +188,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   animationHideDelay(arg?: number) : any {
+   animationHideDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxRadioButton('animationHideDelay', arg);
       } else {
@@ -196,7 +196,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   boxSize(arg?: number | string) : any {
+   boxSize(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxRadioButton('boxSize', arg);
       } else {
@@ -204,7 +204,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   checked(arg?: boolean) : any {
+   checked(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRadioButton('checked', arg);
       } else {
@@ -212,7 +212,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRadioButton('disabled', arg);
       } else {
@@ -220,7 +220,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableContainerClick(arg?: boolean) : any {
+   enableContainerClick(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRadioButton('enableContainerClick', arg);
       } else {
@@ -228,7 +228,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   groupName(arg?: string) : any {
+   groupName(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRadioButton('groupName', arg);
       } else {
@@ -236,7 +236,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   hasThreeStates(arg?: boolean) : any {
+   hasThreeStates(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRadioButton('hasThreeStates', arg);
       } else {
@@ -244,7 +244,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxRadioButton('height', arg);
       } else {
@@ -252,7 +252,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRadioButton('rtl', arg);
       } else {
@@ -260,7 +260,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRadioButton('theme', arg);
       } else {
@@ -268,7 +268,7 @@ export class jqxRadioButtonComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxRadioButton('width', arg);
       } else {

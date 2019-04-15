@@ -12,7 +12,7 @@ declare class JqxLinearGauge extends React.PureComponent<ILinearGaugeProps, ISta
     getOptions(option: string): any;
     disable(): void;
     enable(): void;
-    val(value?: number | string): number;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

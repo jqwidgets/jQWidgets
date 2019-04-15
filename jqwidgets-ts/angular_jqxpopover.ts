@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -24,11 +24,11 @@ export class jqxPopoverComponent implements OnChanges
    @Input('animationOpenDelay') attrAnimationOpenDelay: number | string;
    @Input('animationCloseDelay') attrAnimationCloseDelay: number | string;
    @Input('autoClose') attrAutoClose: boolean;
-   @Input('animationType') attrAnimationType: any;
+   @Input('animationType') attrAnimationType: string;
    @Input('initContent') attrInitContent: () => void;
    @Input('isModal') attrIsModal: boolean;
    @Input('offset') attrOffset: any;
-   @Input('position') attrPosition: any;
+   @Input('position') attrPosition: string;
    @Input('rtl') attrRtl: boolean;
    @Input('selector') attrSelector: string;
    @Input('showArrow') attrShowArrow: boolean;
@@ -156,7 +156,7 @@ export class jqxPopoverComponent implements OnChanges
    }
 
    // jqxPopoverComponent properties
-   arrowOffsetValue(arg?: number) : any {
+   arrowOffsetValue(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxPopover('arrowOffsetValue', arg);
       } else {
@@ -164,7 +164,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   animationOpenDelay(arg?: number | string) : any {
+   animationOpenDelay(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxPopover('animationOpenDelay', arg);
       } else {
@@ -172,7 +172,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   animationCloseDelay(arg?: number | string) : any {
+   animationCloseDelay(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxPopover('animationCloseDelay', arg);
       } else {
@@ -180,7 +180,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   autoClose(arg?: boolean) : any {
+   autoClose(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPopover('autoClose', arg);
       } else {
@@ -188,7 +188,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   animationType(arg?: string) : any {
+   animationType(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxPopover('animationType', arg);
       } else {
@@ -196,7 +196,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxPopover('height', arg);
       } else {
@@ -204,7 +204,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   initContent(arg?: () => void) : any {
+   initContent(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxPopover('initContent', arg);
       } else {
@@ -212,7 +212,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   isModal(arg?: boolean) : any {
+   isModal(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPopover('isModal', arg);
       } else {
@@ -220,7 +220,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   offset(arg?: any) : any {
+   offset(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxPopover('offset', arg);
       } else {
@@ -228,7 +228,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   position(arg?: string) : any {
+   position(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxPopover('position', arg);
       } else {
@@ -236,7 +236,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPopover('rtl', arg);
       } else {
@@ -244,7 +244,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   selector(arg?: string) : any {
+   selector(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxPopover('selector', arg);
       } else {
@@ -252,7 +252,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   showArrow(arg?: boolean) : any {
+   showArrow(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPopover('showArrow', arg);
       } else {
@@ -260,7 +260,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   showCloseButton(arg?: boolean) : any {
+   showCloseButton(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxPopover('showCloseButton', arg);
       } else {
@@ -268,7 +268,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxPopover('width', arg);
       } else {
@@ -276,7 +276,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   title(arg?: string | number) : any {
+   title(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxPopover('title', arg);
       } else {
@@ -284,7 +284,7 @@ export class jqxPopoverComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxPopover('theme', arg);
       } else {

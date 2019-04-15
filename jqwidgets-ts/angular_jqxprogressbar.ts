@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,14 +23,14 @@ export class jqxProgressBarComponent implements OnChanges
    @Input('animationDuration') attrAnimationDuration: number;
    @Input('colorRanges') attrColorRanges: Array<jqwidgets.ProgressBarColorRanges>;
    @Input('disabled') attrDisabled: boolean;
-   @Input('layout') attrLayout: any;
+   @Input('layout') attrLayout: string;
    @Input('max') attrMax: string  | number;
    @Input('min') attrMin: number | string;
-   @Input('orientation') attrOrientation: any;
+   @Input('orientation') attrOrientation: string;
    @Input('rtl') attrRtl: boolean;
-   @Input('renderText') attrRenderText: any;
+   @Input('renderText') attrRenderText: (text?: jqwidgets.ProgressBarRenderText['text'], value?: jqwidgets.ProgressBarRenderText['value']) => string;
    @Input('showText') attrShowText: boolean;
-   @Input('template') attrTemplate: any;
+   @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
    @Input('value') attrValue: string | number;
    @Input('width') attrWidth: string | number;
@@ -153,7 +153,7 @@ export class jqxProgressBarComponent implements OnChanges
    }
 
    // jqxProgressBarComponent properties
-   animationDuration(arg?: number) : any {
+   animationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxProgressBar('animationDuration', arg);
       } else {
@@ -161,7 +161,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   colorRanges(arg?: Array<jqwidgets.ProgressBarColorRanges>) : any {
+   colorRanges(arg?: Array<jqwidgets.ProgressBarColorRanges>): Array<jqwidgets.ProgressBarColorRanges> {
       if (arg !== undefined) {
           this.host.jqxProgressBar('colorRanges', arg);
       } else {
@@ -169,7 +169,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxProgressBar('disabled', arg);
       } else {
@@ -177,7 +177,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   height(arg?: string  | number) : any {
+   height(arg?: string  | number): string  | number {
       if (arg !== undefined) {
           this.host.jqxProgressBar('height', arg);
       } else {
@@ -185,7 +185,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   layout(arg?: string) : any {
+   layout(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxProgressBar('layout', arg);
       } else {
@@ -193,7 +193,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   max(arg?: string  | number) : any {
+   max(arg?: string  | number): string  | number {
       if (arg !== undefined) {
           this.host.jqxProgressBar('max', arg);
       } else {
@@ -201,7 +201,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   min(arg?: number | string) : any {
+   min(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxProgressBar('min', arg);
       } else {
@@ -209,7 +209,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   orientation(arg?: string) : any {
+   orientation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxProgressBar('orientation', arg);
       } else {
@@ -217,7 +217,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxProgressBar('rtl', arg);
       } else {
@@ -225,7 +225,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   renderText(arg?: any) : any {
+   renderText(arg?: (text?: jqwidgets.ProgressBarRenderText['text'], value?: jqwidgets.ProgressBarRenderText['value']) => string): (text?: jqwidgets.ProgressBarRenderText['text'], value?: jqwidgets.ProgressBarRenderText['value']) => string {
       if (arg !== undefined) {
           this.host.jqxProgressBar('renderText', arg);
       } else {
@@ -233,7 +233,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   showText(arg?: boolean) : any {
+   showText(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxProgressBar('showText', arg);
       } else {
@@ -241,7 +241,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxProgressBar('template', arg);
       } else {
@@ -249,7 +249,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxProgressBar('theme', arg);
       } else {
@@ -257,7 +257,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   value(arg?: string | number) : any {
+   value(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxProgressBar('value', arg);
       } else {
@@ -265,7 +265,7 @@ export class jqxProgressBarComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxProgressBar('width', arg);
       } else {

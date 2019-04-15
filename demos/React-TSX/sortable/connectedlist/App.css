@@ -1,0 +1,28 @@
+.sortable {
+  margin: 2px;
+  padding: 5px;
+  width: 200px;
+  border: lightblue solid 1px;
+}
+
+.sortable-container {
+  float: left;
+  width: 220px;
+}
+
+.sortable-container span {
+  font-weight: bold;
+}
+
+.sortable div {
+  border-radius: 5px;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.sortable div:hover {
+  border: 1px solid #356AA0;
+}

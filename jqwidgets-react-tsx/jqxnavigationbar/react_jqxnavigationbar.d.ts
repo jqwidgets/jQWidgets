@@ -31,7 +31,7 @@ declare class JqxNavigationBar extends React.PureComponent<INavigationBarProps, 
     setHeaderContentAt(index: number, item: number | string): void;
     showArrowAt(index: number | string): void;
     update(index: number, header: number | string, content: number | string): void;
-    val(value?: number | string): string | number;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

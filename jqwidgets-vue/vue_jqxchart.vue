@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -57,6 +57,7 @@ License: https://jqwidgets.com/license/
             renderEngine: String,
             xAxis: Object,
             valueAxis: Object,
+            categoryAxis: Object,
             seriesGroups: Array,
             autoCreate: {
                 default: true,
@@ -383,6 +384,13 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxChart('valueAxis');
                 }
             },
+            _categoryAxis: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxChart('categoryAxis', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxChart('categoryAxis');
+                }
+            },
             _seriesGroups: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxChart('seriesGroups', arg)
@@ -398,7 +406,7 @@ License: https://jqwidgets.com/license/
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','seriesGroups'];
+                const widgetProps = ['title','description','source','showBorderLine','borderLineColor','borderLineWidth','backgroundColor','backgroundImage','showLegend','legendLayout','padding','titlePadding','colorScheme','greyScale','showToolTips','toolTipShowDelay','toolTipHideDelay','toolTipMoveDuration','drawBefore','draw','rtl','enableCrosshairs','crosshairsColor','crosshairsDashStyle','crosshairsLineWidth','columnSeriesOverlap','enabled','enableAnimations','animationDuration','enableAxisTextAnimation','renderEngine','xAxis','valueAxis','categoryAxis','seriesGroups'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -738,6 +746,16 @@ License: https://jqwidgets.com/license/
                     },
                     set(newValue) {
                         that._valueAxis(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'categoryAxis', {
+                    get() {
+                        return that._categoryAxis();
+                    },
+                    set(newValue) {
+                        that._categoryAxis(newValue);
                     },
                     enumerable: true,
                     configurable: true

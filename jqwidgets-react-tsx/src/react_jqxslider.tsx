@@ -99,8 +99,12 @@ class JqxSlider extends React.PureComponent<ISliderProps, IState> {
         this._jqx(this._componentSelector).jqxSlider('setValue' , index);
     };
 
-    public val(value?: string): string {
-        return this._jqx(this._componentSelector).jqxSlider('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxSlider('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxSlider('val');
+        }
     };
 
     private _manageProps(): ISliderProps {
@@ -110,7 +114,7 @@ class JqxSlider extends React.PureComponent<ISliderProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

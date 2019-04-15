@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -22,18 +22,18 @@ declare let JQXLite: any;
 
 export class jqxRibbonComponent implements OnChanges
 {
-   @Input('animationType') attrAnimationType: any;
+   @Input('animationType') attrAnimationType: string;
    @Input('animationDelay') attrAnimationDelay: number | string;
    @Input('disabled') attrDisabled: boolean;
    @Input('initContent') attrInitContent: (index: any) => void;
-   @Input('mode') attrMode: any;
-   @Input('popupCloseMode') attrPopupCloseMode: any;
-   @Input('position') attrPosition: any;
+   @Input('mode') attrMode: string;
+   @Input('popupCloseMode') attrPopupCloseMode: string;
+   @Input('position') attrPosition: string;
    @Input('reorder') attrReorder: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('selectedIndex') attrSelectedIndex: number;
-   @Input('selectionMode') attrSelectionMode: any;
-   @Input('scrollPosition') attrScrollPosition: any;
+   @Input('selectionMode') attrSelectionMode: string;
+   @Input('scrollPosition') attrScrollPosition: string;
    @Input('scrollStep') attrScrollStep: number;
    @Input('scrollDelay') attrScrollDelay: number;
    @Input('theme') attrTheme: string;
@@ -157,7 +157,7 @@ export class jqxRibbonComponent implements OnChanges
    }
 
    // jqxRibbonComponent properties
-   animationType(arg?: string) : any {
+   animationType(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRibbon('animationType', arg);
       } else {
@@ -165,7 +165,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   animationDelay(arg?: number | string) : any {
+   animationDelay(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxRibbon('animationDelay', arg);
       } else {
@@ -173,7 +173,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRibbon('disabled', arg);
       } else {
@@ -181,7 +181,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxRibbon('height', arg);
       } else {
@@ -189,7 +189,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   initContent(arg?: (index: any) => void) : any {
+   initContent(arg?: (index: any) => void): (index: any) => void {
       if (arg !== undefined) {
           this.host.jqxRibbon('initContent', arg);
       } else {
@@ -197,7 +197,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   mode(arg?: string) : any {
+   mode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRibbon('mode', arg);
       } else {
@@ -205,7 +205,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   popupCloseMode(arg?: string) : any {
+   popupCloseMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRibbon('popupCloseMode', arg);
       } else {
@@ -213,7 +213,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   position(arg?: string) : any {
+   position(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRibbon('position', arg);
       } else {
@@ -221,7 +221,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   reorder(arg?: boolean) : any {
+   reorder(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRibbon('reorder', arg);
       } else {
@@ -229,7 +229,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRibbon('rtl', arg);
       } else {
@@ -237,7 +237,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   selectedIndex(arg?: number) : any {
+   selectedIndex(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxRibbon('selectedIndex', arg);
       } else {
@@ -245,7 +245,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   selectionMode(arg?: string) : any {
+   selectionMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRibbon('selectionMode', arg);
       } else {
@@ -253,7 +253,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   scrollPosition(arg?: string) : any {
+   scrollPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRibbon('scrollPosition', arg);
       } else {
@@ -261,7 +261,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   scrollStep(arg?: number) : any {
+   scrollStep(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxRibbon('scrollStep', arg);
       } else {
@@ -269,7 +269,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   scrollDelay(arg?: number) : any {
+   scrollDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxRibbon('scrollDelay', arg);
       } else {
@@ -277,7 +277,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRibbon('theme', arg);
       } else {
@@ -285,7 +285,7 @@ export class jqxRibbonComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxRibbon('width', arg);
       } else {

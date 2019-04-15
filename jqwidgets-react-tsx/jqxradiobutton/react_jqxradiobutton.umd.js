@@ -104,7 +104,12 @@ require('../../jqwidgets/jqxradiobutton');
             this._jqx(this._componentSelector).jqxRadioButton('uncheck');
         };
         JqxRadioButton.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxRadioButton('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxRadioButton('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxRadioButton('val');
+            }
         };
         JqxRadioButton.prototype._manageProps = function () {
             var widgetProps = ['animationShowDelay', 'animationHideDelay', 'boxSize', 'checked', 'disabled', 'enableContainerClick', 'groupName', 'hasThreeStates', 'height', 'rtl', 'theme', 'width'];

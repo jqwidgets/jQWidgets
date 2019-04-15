@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -39,7 +39,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
    @Input('columnHeaderHeight') attrColumnHeaderHeight: number;
    @Input('clearString') attrClearString: string;
    @Input('culture') attrCulture: string;
-   @Input('dayNameFormat') attrDayNameFormat: any;
+   @Input('dayNameFormat') attrDayNameFormat: string;
    @Input('disabled') attrDisabled: boolean;
    @Input('enableWeekend') attrEnableWeekend: boolean;
    @Input('enableViews') attrEnableViews: boolean;
@@ -62,11 +62,11 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
    @Input('showDayNames') attrShowDayNames: boolean;
    @Input('showOtherMonthDays') attrShowOtherMonthDays: boolean;
    @Input('showFooter') attrShowFooter: boolean;
-   @Input('selectionMode') attrSelectionMode: any;
+   @Input('selectionMode') attrSelectionMode: string;
    @Input('specialDates') attrSpecialDates: Array<any>;
    @Input('theme') attrTheme: string;
    @Input('titleHeight') attrTitleHeight: number;
-   @Input('titleFormat') attrTitleFormat: any;
+   @Input('titleFormat') attrTitleFormat: string;
    @Input('todayString') attrTodayString: string;
    @Input('value') attrValue: Date;
    @Input('width') attrWidth: string | number;
@@ -206,7 +206,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxCalendarComponent properties
-   backText(arg?: string) : any {
+   backText(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCalendar('backText', arg);
       } else {
@@ -214,7 +214,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   columnHeaderHeight(arg?: number) : any {
+   columnHeaderHeight(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxCalendar('columnHeaderHeight', arg);
       } else {
@@ -222,7 +222,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   clearString(arg?: string) : any {
+   clearString(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCalendar('clearString', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   culture(arg?: string) : any {
+   culture(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCalendar('culture', arg);
       } else {
@@ -238,7 +238,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dayNameFormat(arg?: string) : any {
+   dayNameFormat(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCalendar('dayNameFormat', arg);
       } else {
@@ -246,7 +246,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('disabled', arg);
       } else {
@@ -254,7 +254,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableWeekend(arg?: boolean) : any {
+   enableWeekend(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('enableWeekend', arg);
       } else {
@@ -262,7 +262,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableViews(arg?: boolean) : any {
+   enableViews(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('enableViews', arg);
       } else {
@@ -270,7 +270,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableOtherMonthDays(arg?: boolean) : any {
+   enableOtherMonthDays(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('enableOtherMonthDays', arg);
       } else {
@@ -278,7 +278,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableFastNavigation(arg?: boolean) : any {
+   enableFastNavigation(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('enableFastNavigation', arg);
       } else {
@@ -286,7 +286,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableHover(arg?: boolean) : any {
+   enableHover(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('enableHover', arg);
       } else {
@@ -294,7 +294,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableAutoNavigation(arg?: boolean) : any {
+   enableAutoNavigation(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('enableAutoNavigation', arg);
       } else {
@@ -302,7 +302,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableTooltips(arg?: boolean) : any {
+   enableTooltips(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('enableTooltips', arg);
       } else {
@@ -310,7 +310,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   forwardText(arg?: string) : any {
+   forwardText(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCalendar('forwardText', arg);
       } else {
@@ -318,7 +318,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   firstDayOfWeek(arg?: number) : any {
+   firstDayOfWeek(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxCalendar('firstDayOfWeek', arg);
       } else {
@@ -326,7 +326,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxCalendar('height', arg);
       } else {
@@ -334,7 +334,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   min(arg?: any) : any {
+   min(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxCalendar('min', arg);
       } else {
@@ -342,7 +342,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   max(arg?: any) : any {
+   max(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxCalendar('max', arg);
       } else {
@@ -350,7 +350,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   navigationDelay(arg?: number) : any {
+   navigationDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxCalendar('navigationDelay', arg);
       } else {
@@ -358,7 +358,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rowHeaderWidth(arg?: number | string) : any {
+   rowHeaderWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxCalendar('rowHeaderWidth', arg);
       } else {
@@ -366,7 +366,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   readOnly(arg?: boolean) : any {
+   readOnly(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('readOnly', arg);
       } else {
@@ -374,7 +374,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   restrictedDates(arg?: Array<Date>) : any {
+   restrictedDates(arg?: Date): Date {
       if (arg !== undefined) {
           this.host.jqxCalendar('restrictedDates', arg);
       } else {
@@ -382,7 +382,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('rtl', arg);
       } else {
@@ -390,7 +390,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   stepMonths(arg?: number) : any {
+   stepMonths(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxCalendar('stepMonths', arg);
       } else {
@@ -398,7 +398,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   showWeekNumbers(arg?: boolean) : any {
+   showWeekNumbers(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('showWeekNumbers', arg);
       } else {
@@ -406,7 +406,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   showDayNames(arg?: boolean) : any {
+   showDayNames(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('showDayNames', arg);
       } else {
@@ -414,7 +414,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   showOtherMonthDays(arg?: boolean) : any {
+   showOtherMonthDays(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('showOtherMonthDays', arg);
       } else {
@@ -422,7 +422,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   showFooter(arg?: boolean) : any {
+   showFooter(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxCalendar('showFooter', arg);
       } else {
@@ -430,7 +430,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   selectionMode(arg?: string) : any {
+   selectionMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCalendar('selectionMode', arg);
       } else {
@@ -438,7 +438,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   specialDates(arg?: Array<any>) : any {
+   specialDates(arg?: Array<any>): Array<any> {
       if (arg !== undefined) {
           this.host.jqxCalendar('specialDates', arg);
       } else {
@@ -446,7 +446,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCalendar('theme', arg);
       } else {
@@ -454,7 +454,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   titleHeight(arg?: number) : any {
+   titleHeight(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxCalendar('titleHeight', arg);
       } else {
@@ -462,7 +462,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   titleFormat(arg?: string) : any {
+   titleFormat(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCalendar('titleFormat', arg);
       } else {
@@ -470,7 +470,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   todayString(arg?: string) : any {
+   todayString(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxCalendar('todayString', arg);
       } else {
@@ -478,7 +478,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   value(arg?: Date) : any {
+   value(arg?: Date): Date {
       if (arg !== undefined) {
           this.host.jqxCalendar('value', arg);
       } else {
@@ -486,7 +486,7 @@ export class jqxCalendarComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxCalendar('width', arg);
       } else {

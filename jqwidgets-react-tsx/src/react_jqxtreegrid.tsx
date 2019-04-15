@@ -67,7 +67,7 @@ class JqxTreeGrid extends React.PureComponent<ITreeGridProps, IState> {
         return this._jqx(this._componentSelector).jqxTreeGrid(option);
     }
 
-    public addRow(rowKey: number | string, rowData: any, rowPosition: string, parent?: string): void {
+    public addRow(rowKey: number | string | null, rowData: any, rowPosition: string, parent?: string): void {
         this._jqx(this._componentSelector).jqxTreeGrid('addRow' , rowKey, rowData, rowPosition, parent);
     };
 
@@ -278,7 +278,7 @@ class JqxTreeGrid extends React.PureComponent<ITreeGridProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

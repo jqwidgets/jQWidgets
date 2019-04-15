@@ -2,3 +2,7 @@ The jQWidgets framework is available as npm package:
 
 https://www.npmjs.com/package/jqwidgets-scripts
 
+For Angular, you can use the jqwidgets-ts files or
+
+the jqwidgets-ng package: https://www.npmjs.com/package/jqwidgets-ng
+

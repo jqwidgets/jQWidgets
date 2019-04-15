@@ -227,8 +227,12 @@ class JqxComboBox extends React.PureComponent<IComboBoxProps, IState> {
         this._jqx(this._componentSelector).jqxComboBox('uncheckAll' );
     };
 
-    public val(value?: string): string {
-        return this._jqx(this._componentSelector).jqxComboBox('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxComboBox('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxComboBox('val');
+        }
     };
 
     private _manageProps(): IComboBoxProps {
@@ -238,7 +242,7 @@ class JqxComboBox extends React.PureComponent<IComboBoxProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

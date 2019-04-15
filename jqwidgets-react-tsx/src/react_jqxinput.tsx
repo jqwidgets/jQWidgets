@@ -77,8 +77,12 @@ class JqxInput extends React.PureComponent<IInputProps, IState> {
         this._jqx(this._componentSelector).jqxInput('selectAll' );
     };
 
-    public val(value?: number | string): string {
-        return this._jqx(this._componentSelector).jqxInput('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxInput('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxInput('val');
+        }
     };
 
     private _manageProps(): IInputProps {
@@ -88,7 +92,7 @@ class JqxInput extends React.PureComponent<IInputProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

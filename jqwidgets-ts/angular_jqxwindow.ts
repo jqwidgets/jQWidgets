@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -22,13 +22,13 @@ declare let JQXLite: any;
 export class jqxWindowComponent implements OnChanges
 {
    @Input('autoOpen') attrAutoOpen: boolean;
-   @Input('animationType') attrAnimationType: any;
+   @Input('animationType') attrAnimationType: string;
    @Input('collapsed') attrCollapsed: boolean;
    @Input('collapseAnimationDuration') attrCollapseAnimationDuration: number;
    @Input('content') attrContent: string;
    @Input('closeAnimationDuration') attrCloseAnimationDuration: number;
    @Input('closeButtonSize') attrCloseButtonSize: number;
-   @Input('closeButtonAction') attrCloseButtonAction: any;
+   @Input('closeButtonAction') attrCloseButtonAction: string;
    @Input('cancelButton') attrCancelButton: any;
    @Input('dragArea') attrDragArea: jqwidgets.WindowDragArea;
    @Input('draggable') attrDraggable: boolean;
@@ -174,7 +174,7 @@ export class jqxWindowComponent implements OnChanges
    }
 
    // jqxWindowComponent properties
-   autoOpen(arg?: boolean) : any {
+   autoOpen(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxWindow('autoOpen', arg);
       } else {
@@ -182,7 +182,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   animationType(arg?: string) : any {
+   animationType(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxWindow('animationType', arg);
       } else {
@@ -190,7 +190,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   collapsed(arg?: boolean) : any {
+   collapsed(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxWindow('collapsed', arg);
       } else {
@@ -198,7 +198,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   collapseAnimationDuration(arg?: number) : any {
+   collapseAnimationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxWindow('collapseAnimationDuration', arg);
       } else {
@@ -206,7 +206,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   content(arg?: string) : any {
+   content(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxWindow('content', arg);
       } else {
@@ -214,7 +214,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   closeAnimationDuration(arg?: number) : any {
+   closeAnimationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxWindow('closeAnimationDuration', arg);
       } else {
@@ -222,7 +222,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   closeButtonSize(arg?: number) : any {
+   closeButtonSize(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxWindow('closeButtonSize', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   closeButtonAction(arg?: string) : any {
+   closeButtonAction(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxWindow('closeButtonAction', arg);
       } else {
@@ -238,7 +238,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   cancelButton(arg?: any) : any {
+   cancelButton(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxWindow('cancelButton', arg);
       } else {
@@ -246,7 +246,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   dragArea(arg?: jqwidgets.WindowDragArea) : any {
+   dragArea(arg?: jqwidgets.WindowDragArea): jqwidgets.WindowDragArea {
       if (arg !== undefined) {
           this.host.jqxWindow('dragArea', arg);
       } else {
@@ -254,7 +254,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   draggable(arg?: boolean) : any {
+   draggable(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxWindow('draggable', arg);
       } else {
@@ -262,7 +262,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxWindow('disabled', arg);
       } else {
@@ -270,7 +270,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxWindow('height', arg);
       } else {
@@ -278,7 +278,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   initContent(arg?: () => void) : any {
+   initContent(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxWindow('initContent', arg);
       } else {
@@ -286,7 +286,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   isModal(arg?: boolean) : any {
+   isModal(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxWindow('isModal', arg);
       } else {
@@ -294,7 +294,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   keyboardCloseKey(arg?: number | string) : any {
+   keyboardCloseKey(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxWindow('keyboardCloseKey', arg);
       } else {
@@ -302,7 +302,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   keyboardNavigation(arg?: boolean) : any {
+   keyboardNavigation(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxWindow('keyboardNavigation', arg);
       } else {
@@ -310,7 +310,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   minHeight(arg?: string | number) : any {
+   minHeight(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxWindow('minHeight', arg);
       } else {
@@ -318,7 +318,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   maxHeight(arg?: string | number) : any {
+   maxHeight(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxWindow('maxHeight', arg);
       } else {
@@ -326,7 +326,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   minWidth(arg?: number | string) : any {
+   minWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxWindow('minWidth', arg);
       } else {
@@ -334,7 +334,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   maxWidth(arg?: number | string) : any {
+   maxWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxWindow('maxWidth', arg);
       } else {
@@ -342,7 +342,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   modalOpacity(arg?: undefined) : any {
+   modalOpacity(arg?: undefined): undefined {
       if (arg !== undefined) {
           this.host.jqxWindow('modalOpacity', arg);
       } else {
@@ -350,7 +350,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   modalZIndex(arg?: number) : any {
+   modalZIndex(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxWindow('modalZIndex', arg);
       } else {
@@ -358,7 +358,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   modalBackgroundZIndex(arg?: number) : any {
+   modalBackgroundZIndex(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxWindow('modalBackgroundZIndex', arg);
       } else {
@@ -366,7 +366,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   okButton(arg?: any) : any {
+   okButton(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxWindow('okButton', arg);
       } else {
@@ -374,7 +374,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   position(arg?: string | any) : any {
+   position(arg?: string | any): string | any {
       if (arg !== undefined) {
           this.host.jqxWindow('position', arg);
       } else {
@@ -382,7 +382,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxWindow('rtl', arg);
       } else {
@@ -390,7 +390,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   resizable(arg?: boolean) : any {
+   resizable(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxWindow('resizable', arg);
       } else {
@@ -398,7 +398,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   showAnimationDuration(arg?: number) : any {
+   showAnimationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxWindow('showAnimationDuration', arg);
       } else {
@@ -406,7 +406,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   showCloseButton(arg?: boolean) : any {
+   showCloseButton(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxWindow('showCloseButton', arg);
       } else {
@@ -414,7 +414,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   showCollapseButton(arg?: boolean) : any {
+   showCollapseButton(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxWindow('showCollapseButton', arg);
       } else {
@@ -422,7 +422,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxWindow('theme', arg);
       } else {
@@ -430,7 +430,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   title(arg?: string) : any {
+   title(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxWindow('title', arg);
       } else {
@@ -438,7 +438,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxWindow('width', arg);
       } else {
@@ -446,7 +446,7 @@ export class jqxWindowComponent implements OnChanges
       }
    }
 
-   zIndex(arg?: number) : any {
+   zIndex(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxWindow('zIndex', arg);
       } else {

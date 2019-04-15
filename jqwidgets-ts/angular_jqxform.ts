@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -165,7 +165,7 @@ export class jqxFormComponent implements OnChanges
    }
 
    // jqxFormComponent properties
-   padding(arg?: jqwidgets.FormPadding) : any {
+   padding(arg?: jqwidgets.FormPadding): jqwidgets.FormPadding {
       if (arg !== undefined) {
           this.host.jqxForm('padding', arg);
       } else {
@@ -173,7 +173,7 @@ export class jqxFormComponent implements OnChanges
       }
    }
 
-   backgroundColor(arg?: string) : any {
+   backgroundColor(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxForm('backgroundColor', arg);
       } else {
@@ -181,7 +181,7 @@ export class jqxFormComponent implements OnChanges
       }
    }
 
-   borderColor(arg?: string) : any {
+   borderColor(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxForm('borderColor', arg);
       } else {
@@ -189,7 +189,7 @@ export class jqxFormComponent implements OnChanges
       }
    }
 
-   value(arg?: any) : any {
+   value(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxForm('value', arg);
       } else {
@@ -197,7 +197,7 @@ export class jqxFormComponent implements OnChanges
       }
    }
 
-   template(arg?: Array<jqwidgets.FormTemplateItem>) : any {
+   template(arg?: Array<jqwidgets.FormTemplateItem>): Array<jqwidgets.FormTemplateItem> {
       if (arg !== undefined) {
           this.host.jqxForm('template', arg);
       } else {

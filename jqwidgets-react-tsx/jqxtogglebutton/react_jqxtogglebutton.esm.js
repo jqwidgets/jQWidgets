@@ -97,7 +97,12 @@ var JqxToggleButton = /** @class */ (function (_super) {
         this._jqx(this._componentSelector).jqxToggleButton('unCheck');
     };
     JqxToggleButton.prototype.val = function (value) {
-        return this._jqx(this._componentSelector).jqxToggleButton('val', value);
+        if (value) {
+            this._jqx(this._componentSelector).jqxToggleButton('val', value);
+        }
+        else {
+            return this._jqx(this._componentSelector).jqxToggleButton('val');
+        }
     };
     JqxToggleButton.prototype._manageProps = function () {
         var widgetProps = ['disabled', 'height', 'imgSrc', 'imgWidth', 'imgHeight', 'imgPosition', 'roundedCorners', 'rtl', 'textPosition', 'textImageRelation', 'theme', 'template', 'toggled', 'width', 'value'];

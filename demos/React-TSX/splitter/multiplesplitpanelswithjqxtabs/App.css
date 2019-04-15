@@ -1,0 +1,7 @@
+.jqx-hideborder {
+    border: none;
+}
+
+.jqx-hidescrollbars div {
+    overflow: hidden;
+}

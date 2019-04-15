@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -48,7 +48,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
    @Input('roundedCorners') attrRoundedCorners: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('scrollBarSize') attrScrollBarSize: number;
-   @Input('searchMode') attrSearchMode: any;
+   @Input('searchMode') attrSearchMode: string;
    @Input('source') attrSource: any;
    @Input('theme') attrTheme: string;
    @Input('valueMember') attrValueMember: string;
@@ -190,7 +190,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxTextAreaComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTextArea('disabled', arg);
       } else {
@@ -198,7 +198,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   displayMember(arg?: string) : any {
+   displayMember(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTextArea('displayMember', arg);
       } else {
@@ -206,7 +206,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownWidth(arg?: number | string) : any {
+   dropDownWidth(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxTextArea('dropDownWidth', arg);
       } else {
@@ -214,7 +214,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxTextArea('height', arg);
       } else {
@@ -222,7 +222,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   items(arg?: number) : any {
+   items(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTextArea('items', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   maxLength(arg?: number) : any {
+   maxLength(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTextArea('maxLength', arg);
       } else {
@@ -238,7 +238,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   minLength(arg?: number) : any {
+   minLength(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTextArea('minLength', arg);
       } else {
@@ -246,7 +246,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   opened(arg?: boolean) : any {
+   opened(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTextArea('opened', arg);
       } else {
@@ -254,7 +254,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   placeHolder(arg?: string) : any {
+   placeHolder(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTextArea('placeHolder', arg);
       } else {
@@ -262,7 +262,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   popupZIndex(arg?: number) : any {
+   popupZIndex(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTextArea('popupZIndex', arg);
       } else {
@@ -270,7 +270,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   query(arg?: string) : any {
+   query(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTextArea('query', arg);
       } else {
@@ -278,7 +278,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   renderer(arg?: (itemValue: any, inputValue: any) => any) : any {
+   renderer(arg?: (itemValue: any, inputValue: any) => any): (itemValue: any, inputValue: any) => any {
       if (arg !== undefined) {
           this.host.jqxTextArea('renderer', arg);
       } else {
@@ -286,7 +286,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   roundedCorners(arg?: boolean) : any {
+   roundedCorners(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTextArea('roundedCorners', arg);
       } else {
@@ -294,7 +294,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxTextArea('rtl', arg);
       } else {
@@ -302,7 +302,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   scrollBarSize(arg?: number) : any {
+   scrollBarSize(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTextArea('scrollBarSize', arg);
       } else {
@@ -310,7 +310,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   searchMode(arg?: string) : any {
+   searchMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTextArea('searchMode', arg);
       } else {
@@ -318,7 +318,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   source(arg?: any) : any {
+   source(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxTextArea('source', arg);
       } else {
@@ -326,7 +326,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTextArea('theme', arg);
       } else {
@@ -334,7 +334,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   valueMember(arg?: string) : any {
+   valueMember(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxTextArea('valueMember', arg);
       } else {
@@ -342,7 +342,7 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxTextArea('width', arg);
       } else {

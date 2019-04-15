@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -152,7 +152,7 @@ export class jqxScrollBarComponent implements OnChanges
    }
 
    // jqxScrollBarComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScrollBar('disabled', arg);
       } else {
@@ -160,7 +160,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxScrollBar('height', arg);
       } else {
@@ -168,7 +168,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   largestep(arg?: number) : any {
+   largestep(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScrollBar('largestep', arg);
       } else {
@@ -176,7 +176,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   min(arg?: number) : any {
+   min(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScrollBar('min', arg);
       } else {
@@ -184,7 +184,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   max(arg?: number) : any {
+   max(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScrollBar('max', arg);
       } else {
@@ -192,7 +192,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScrollBar('rtl', arg);
       } else {
@@ -200,7 +200,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   step(arg?: number) : any {
+   step(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScrollBar('step', arg);
       } else {
@@ -208,7 +208,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   showButtons(arg?: boolean) : any {
+   showButtons(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScrollBar('showButtons', arg);
       } else {
@@ -216,7 +216,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   thumbMinSize(arg?: number) : any {
+   thumbMinSize(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScrollBar('thumbMinSize', arg);
       } else {
@@ -224,7 +224,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScrollBar('theme', arg);
       } else {
@@ -232,7 +232,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   vertical(arg?: boolean) : any {
+   vertical(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScrollBar('vertical', arg);
       } else {
@@ -240,7 +240,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   value(arg?: number) : any {
+   value(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScrollBar('value', arg);
       } else {
@@ -248,7 +248,7 @@ export class jqxScrollBarComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxScrollBar('width', arg);
       } else {

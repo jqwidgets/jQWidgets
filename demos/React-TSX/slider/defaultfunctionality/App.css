@@ -1,0 +1,15 @@
+.colorBlock
+{
+    border: 1px solid #aaa;
+    width: 200px;
+    height: 200px;
+    float: right;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.colorLabel
+{
+    padding: 6px;           
+}

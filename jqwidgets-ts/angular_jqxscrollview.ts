@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -151,7 +151,7 @@ export class jqxScrollViewComponent implements OnChanges
    }
 
    // jqxScrollViewComponent properties
-   animationDuration(arg?: number) : any {
+   animationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScrollView('animationDuration', arg);
       } else {
@@ -159,7 +159,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   bounceEnabled(arg?: boolean) : any {
+   bounceEnabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScrollView('bounceEnabled', arg);
       } else {
@@ -167,7 +167,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   buttonsOffset(arg?: Array<number>) : any {
+   buttonsOffset(arg?: Array<number>): Array<number> {
       if (arg !== undefined) {
           this.host.jqxScrollView('buttonsOffset', arg);
       } else {
@@ -175,7 +175,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   currentPage(arg?: number) : any {
+   currentPage(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScrollView('currentPage', arg);
       } else {
@@ -183,7 +183,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScrollView('disabled', arg);
       } else {
@@ -191,7 +191,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxScrollView('height', arg);
       } else {
@@ -199,7 +199,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   moveThreshold(arg?: number) : any {
+   moveThreshold(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScrollView('moveThreshold', arg);
       } else {
@@ -207,7 +207,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   showButtons(arg?: boolean) : any {
+   showButtons(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScrollView('showButtons', arg);
       } else {
@@ -215,7 +215,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   slideShow(arg?: boolean) : any {
+   slideShow(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScrollView('slideShow', arg);
       } else {
@@ -223,7 +223,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   slideDuration(arg?: number) : any {
+   slideDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScrollView('slideDuration', arg);
       } else {
@@ -231,7 +231,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScrollView('theme', arg);
       } else {
@@ -239,7 +239,7 @@ export class jqxScrollViewComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxScrollView('width', arg);
       } else {

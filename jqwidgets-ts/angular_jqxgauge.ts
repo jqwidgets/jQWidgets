@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -27,7 +27,7 @@ export class jqxGaugeComponent implements OnChanges
    @Input('cap') attrCap: jqwidgets.GaugeCap;
    @Input('colorScheme') attrColorScheme: string;
    @Input('disabled') attrDisabled: boolean;
-   @Input('easing') attrEasing: any;
+   @Input('easing') attrEasing: string;
    @Input('endAngle') attrEndAngle: number | string;
    @Input('int64') attrInt64: boolean;
    @Input('labels') attrLabels: jqwidgets.GaugeLabels;
@@ -163,7 +163,7 @@ export class jqxGaugeComponent implements OnChanges
    }
 
    // jqxGaugeComponent properties
-   animationDuration(arg?: string | number) : any {
+   animationDuration(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxGauge('animationDuration', arg);
       } else {
@@ -171,7 +171,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   border(arg?: jqwidgets.GaugeBorder) : any {
+   border(arg?: jqwidgets.GaugeBorder): jqwidgets.GaugeBorder {
       if (arg !== undefined) {
           this.host.jqxGauge('border', arg);
       } else {
@@ -179,7 +179,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   caption(arg?: jqwidgets.GaugeCaption) : any {
+   caption(arg?: jqwidgets.GaugeCaption): jqwidgets.GaugeCaption {
       if (arg !== undefined) {
           this.host.jqxGauge('caption', arg);
       } else {
@@ -187,7 +187,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   cap(arg?: jqwidgets.GaugeCap) : any {
+   cap(arg?: jqwidgets.GaugeCap): jqwidgets.GaugeCap {
       if (arg !== undefined) {
           this.host.jqxGauge('cap', arg);
       } else {
@@ -195,7 +195,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   colorScheme(arg?: string) : any {
+   colorScheme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxGauge('colorScheme', arg);
       } else {
@@ -203,7 +203,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxGauge('disabled', arg);
       } else {
@@ -211,7 +211,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   easing(arg?: string) : any {
+   easing(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxGauge('easing', arg);
       } else {
@@ -219,7 +219,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   endAngle(arg?: number | string) : any {
+   endAngle(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxGauge('endAngle', arg);
       } else {
@@ -227,7 +227,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxGauge('height', arg);
       } else {
@@ -235,7 +235,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   int64(arg?: boolean) : any {
+   int64(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxGauge('int64', arg);
       } else {
@@ -243,7 +243,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   labels(arg?: jqwidgets.GaugeLabels) : any {
+   labels(arg?: jqwidgets.GaugeLabels): jqwidgets.GaugeLabels {
       if (arg !== undefined) {
           this.host.jqxGauge('labels', arg);
       } else {
@@ -251,7 +251,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   min(arg?: number) : any {
+   min(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxGauge('min', arg);
       } else {
@@ -259,7 +259,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   max(arg?: number | string) : any {
+   max(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxGauge('max', arg);
       } else {
@@ -267,7 +267,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   pointer(arg?: jqwidgets.GaugePointer) : any {
+   pointer(arg?: jqwidgets.GaugePointer): jqwidgets.GaugePointer {
       if (arg !== undefined) {
           this.host.jqxGauge('pointer', arg);
       } else {
@@ -275,7 +275,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   radius(arg?: number | string) : any {
+   radius(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxGauge('radius', arg);
       } else {
@@ -283,7 +283,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   ranges(arg?: Array<jqwidgets.GaugeRanges>) : any {
+   ranges(arg?: Array<jqwidgets.GaugeRanges>): Array<jqwidgets.GaugeRanges> {
       if (arg !== undefined) {
           this.host.jqxGauge('ranges', arg);
       } else {
@@ -291,7 +291,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   startAngle(arg?: number | string) : any {
+   startAngle(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxGauge('startAngle', arg);
       } else {
@@ -299,7 +299,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   showRanges(arg?: boolean) : any {
+   showRanges(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxGauge('showRanges', arg);
       } else {
@@ -307,7 +307,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   styles(arg?: jqwidgets.GaugeStyle) : any {
+   styles(arg?: jqwidgets.GaugeStyle): jqwidgets.GaugeStyle {
       if (arg !== undefined) {
           this.host.jqxGauge('styles', arg);
       } else {
@@ -315,7 +315,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   ticksMajor(arg?: jqwidgets.GaugeTicks) : any {
+   ticksMajor(arg?: jqwidgets.GaugeTicks): jqwidgets.GaugeTicks {
       if (arg !== undefined) {
           this.host.jqxGauge('ticksMajor', arg);
       } else {
@@ -323,7 +323,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   ticksMinor(arg?: jqwidgets.GaugeTicks) : any {
+   ticksMinor(arg?: jqwidgets.GaugeTicks): jqwidgets.GaugeTicks {
       if (arg !== undefined) {
           this.host.jqxGauge('ticksMinor', arg);
       } else {
@@ -331,7 +331,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   ticksDistance(arg?: string) : any {
+   ticksDistance(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxGauge('ticksDistance', arg);
       } else {
@@ -339,7 +339,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   value(arg?: number) : any {
+   value(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxGauge('value', arg);
       } else {
@@ -347,7 +347,7 @@ export class jqxGaugeComponent implements OnChanges
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxGauge('width', arg);
       } else {

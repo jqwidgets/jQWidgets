@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -41,16 +41,16 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxEditorComponent implements ControlValueAccessor, OnChanges 
 {
-   @Input('createCommand') attrCreateCommand: (name:any) => void;
+   @Input('createCommand') attrCreateCommand: (name:jqwidgets.EditorCreateCommand['name']) => void;
    @Input('disabled') attrDisabled: boolean;
    @Input('editable') attrEditable: boolean;
-   @Input('lineBreak') attrLineBreak: any;
+   @Input('lineBreak') attrLineBreak: string;
    @Input('localization') attrLocalization: jqwidgets.EditorLocalization;
-   @Input('pasteMode') attrPasteMode: any;
+   @Input('pasteMode') attrPasteMode: string;
    @Input('rtl') attrRtl: boolean;
    @Input('stylesheets') attrStylesheets: Array<any>;
    @Input('theme') attrTheme: string;
-   @Input('toolbarPosition') attrToolbarPosition: any;
+   @Input('toolbarPosition') attrToolbarPosition: string;
    @Input('tools') attrTools: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -190,7 +190,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxEditorComponent properties
-   createCommand(arg?: (name:any) => void) : any {
+   createCommand(arg?: (name:jqwidgets.EditorCreateCommand['name']) => void): (name:jqwidgets.EditorCreateCommand['name']) => void {
       if (arg !== undefined) {
           this.host.jqxEditor('createCommand', arg);
       } else {
@@ -198,7 +198,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxEditor('disabled', arg);
       } else {
@@ -206,7 +206,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   editable(arg?: boolean) : any {
+   editable(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxEditor('editable', arg);
       } else {
@@ -214,7 +214,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: string  | number) : any {
+   height(arg?: string  | number): string  | number {
       if (arg !== undefined) {
           this.host.jqxEditor('height', arg);
       } else {
@@ -222,7 +222,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   lineBreak(arg?: string) : any {
+   lineBreak(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxEditor('lineBreak', arg);
       } else {
@@ -230,7 +230,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   localization(arg?: jqwidgets.EditorLocalization) : any {
+   localization(arg?: jqwidgets.EditorLocalization): jqwidgets.EditorLocalization {
       if (arg !== undefined) {
           this.host.jqxEditor('localization', arg);
       } else {
@@ -238,7 +238,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   pasteMode(arg?: string) : any {
+   pasteMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxEditor('pasteMode', arg);
       } else {
@@ -246,7 +246,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxEditor('rtl', arg);
       } else {
@@ -254,7 +254,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   stylesheets(arg?: Array<any>) : any {
+   stylesheets(arg?: Array<any>): Array<any> {
       if (arg !== undefined) {
           this.host.jqxEditor('stylesheets', arg);
       } else {
@@ -262,7 +262,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxEditor('theme', arg);
       } else {
@@ -270,7 +270,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   toolbarPosition(arg?: string) : any {
+   toolbarPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxEditor('toolbarPosition', arg);
       } else {
@@ -278,7 +278,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   tools(arg?: string) : any {
+   tools(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxEditor('tools', arg);
       } else {
@@ -286,7 +286,7 @@ export class jqxEditorComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxEditor('width', arg);
       } else {

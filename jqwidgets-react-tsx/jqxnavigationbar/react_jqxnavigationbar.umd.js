@@ -146,7 +146,12 @@ require('../../jqwidgets/jqxnavigationbar');
             this._jqx(this._componentSelector).jqxNavigationBar('update', index, header, content);
         };
         JqxNavigationBar.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxNavigationBar('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxNavigationBar('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxNavigationBar('val');
+            }
         };
         JqxNavigationBar.prototype._manageProps = function () {
             var widgetProps = ['animationType', 'arrowPosition', 'collapseAnimationDuration', 'disabled', 'expandAnimationDuration', 'expandMode', 'expandedIndexes', 'height', 'initContent', 'rtl', 'showArrow', 'theme', 'toggleMode', 'width'];

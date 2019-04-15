@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -20,18 +20,18 @@ declare let JQXLite: any;
 
 export class jqxExpanderComponent implements OnChanges
 {
-   @Input('animationType') attrAnimationType: any;
-   @Input('arrowPosition') attrArrowPosition: any;
+   @Input('animationType') attrAnimationType: string;
+   @Input('arrowPosition') attrArrowPosition: string;
    @Input('collapseAnimationDuration') attrCollapseAnimationDuration: number;
    @Input('disabled') attrDisabled: boolean;
    @Input('expanded') attrExpanded: boolean;
    @Input('expandAnimationDuration') attrExpandAnimationDuration: number;
-   @Input('headerPosition') attrHeaderPosition: any;
+   @Input('headerPosition') attrHeaderPosition: string;
    @Input('initContent') attrInitContent: () => void;
    @Input('rtl') attrRtl: boolean;
    @Input('showArrow') attrShowArrow: boolean;
    @Input('theme') attrTheme: string;
-   @Input('toggleMode') attrToggleMode: any;
+   @Input('toggleMode') attrToggleMode: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
@@ -152,7 +152,7 @@ export class jqxExpanderComponent implements OnChanges
    }
 
    // jqxExpanderComponent properties
-   animationType(arg?: string) : any {
+   animationType(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxExpander('animationType', arg);
       } else {
@@ -160,7 +160,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   arrowPosition(arg?: string) : any {
+   arrowPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxExpander('arrowPosition', arg);
       } else {
@@ -168,7 +168,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   collapseAnimationDuration(arg?: number) : any {
+   collapseAnimationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxExpander('collapseAnimationDuration', arg);
       } else {
@@ -176,7 +176,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxExpander('disabled', arg);
       } else {
@@ -184,7 +184,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   expanded(arg?: boolean) : any {
+   expanded(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxExpander('expanded', arg);
       } else {
@@ -192,7 +192,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   expandAnimationDuration(arg?: number) : any {
+   expandAnimationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxExpander('expandAnimationDuration', arg);
       } else {
@@ -200,7 +200,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxExpander('height', arg);
       } else {
@@ -208,7 +208,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   headerPosition(arg?: string) : any {
+   headerPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxExpander('headerPosition', arg);
       } else {
@@ -216,7 +216,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   initContent(arg?: () => void) : any {
+   initContent(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxExpander('initContent', arg);
       } else {
@@ -224,7 +224,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxExpander('rtl', arg);
       } else {
@@ -232,7 +232,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   showArrow(arg?: boolean) : any {
+   showArrow(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxExpander('showArrow', arg);
       } else {
@@ -240,7 +240,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxExpander('theme', arg);
       } else {
@@ -248,7 +248,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   toggleMode(arg?: string) : any {
+   toggleMode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxExpander('toggleMode', arg);
       } else {
@@ -256,7 +256,7 @@ export class jqxExpanderComponent implements OnChanges
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxExpander('width', arg);
       } else {

@@ -1,0 +1,22 @@
+[id^="JqxSortable"] {
+    list-style-type: none;
+    margin: 2px;
+    padding: 5px;
+    float: left;
+    width: 312px;
+    border: lightblue solid 2px;
+}
+
+[id^="JqxSortable"] div {
+    margin: 1px;
+    background-color: lightblue;
+    border: DodgerBlue solid 1px;
+    padding: 0;
+    float: left;
+    padding-left: 0;
+    text-align: center;
+    cursor: pointer;
+    font-size: 5.8em;
+    width: 100px;
+    height: 100px;
+}

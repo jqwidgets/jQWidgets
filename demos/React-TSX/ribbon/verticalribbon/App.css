@@ -1,0 +1,63 @@
+html, body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #DC1F26;
+    }
+
+table {
+    border-collapse: separate;
+    border-spacing: 0px 3px;
+    width: 142px;
+}
+
+.promo, .price {
+    height: 25px;
+    background-color: #DC1F26;
+    color: White;
+    text-align: center;
+    font-size: 17px;
+}
+
+.promo {
+    font-weight: bold;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.price {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    border: 1px solid pink;
+    padding: 5px 5px;
+    border-radius: 22px;
+}
+
+.name {
+    height: 35px;
+    text-align: center;
+    font-style: italic;
+}
+
+.image {
+    height: 220px;
+    text-align: center;
+}
+
+.container {
+    width: 140px;
+    float: left;
+    margin-left: 5px;
+}
+
+hr {
+    width: 75%;
+    float: left;
+}

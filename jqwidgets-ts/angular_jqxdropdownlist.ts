@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -37,13 +37,13 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
 {
    @Input('autoOpen') attrAutoOpen: boolean;
    @Input('autoDropDownHeight') attrAutoDropDownHeight: boolean;
-   @Input('animationType') attrAnimationType: any;
+   @Input('animationType') attrAnimationType: string;
    @Input('checkboxes') attrCheckboxes: boolean;
    @Input('closeDelay') attrCloseDelay: number;
    @Input('disabled') attrDisabled: boolean;
    @Input('displayMember') attrDisplayMember: string;
-   @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: any;
-   @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: any;
+   @Input('dropDownHorizontalAlignment') attrDropDownHorizontalAlignment: string;
+   @Input('dropDownVerticalAlignment') attrDropDownVerticalAlignment: string;
    @Input('dropDownHeight') attrDropDownHeight: number | string;
    @Input('dropDownWidth') attrDropDownWidth: number | string;
    @Input('enableSelection') attrEnableSelection: boolean;
@@ -60,9 +60,9 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    @Input('placeHolder') attrPlaceHolder: string;
    @Input('popupZIndex') attrPopupZIndex: number;
    @Input('rtl') attrRtl: boolean;
-   @Input('renderer') attrRenderer: (index: number, label?: string, value?: any) => string;
-   @Input('selectionRenderer') attrSelectionRenderer: (object?: any, index?: number, label?: string) => string;
-   @Input('searchMode') attrSearchMode: any;
+   @Input('renderer') attrRenderer: (index?: jqwidgets.DropDownListRenderer['index'], label?: jqwidgets.DropDownListRenderer['label'], value?: jqwidgets.DropDownListRenderer['value']) => string;
+   @Input('selectionRenderer') attrSelectionRenderer: (element?: jqwidgets.DropDownListSelectionRenderer['element'], index?: jqwidgets.DropDownListSelectionRenderer['index'], label?: jqwidgets.DropDownListSelectionRenderer['label'], value?: jqwidgets.DropDownListSelectionRenderer['value']) => string;
+   @Input('searchMode') attrSearchMode: string;
    @Input('source') attrSource: Array<any>;
    @Input('selectedIndex') attrSelectedIndex: number;
    @Input('theme') attrTheme: string;
@@ -235,7 +235,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxDropDownListComponent properties
-   autoOpen(arg?: boolean) : any {
+   autoOpen(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -248,7 +248,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   autoDropDownHeight(arg?: boolean) : any {
+   autoDropDownHeight(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -261,7 +261,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   animationType(arg?: string) : any {
+   animationType(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -274,7 +274,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   checkboxes(arg?: boolean) : any {
+   checkboxes(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -287,7 +287,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   closeDelay(arg?: number) : any {
+   closeDelay(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -300,7 +300,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -313,7 +313,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   displayMember(arg?: string) : any {
+   displayMember(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -326,7 +326,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownHorizontalAlignment(arg?: string) : any {
+   dropDownHorizontalAlignment(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -339,7 +339,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownVerticalAlignment(arg?: string) : any {
+   dropDownVerticalAlignment(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -352,7 +352,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownHeight(arg?: number | string) : any {
+   dropDownHeight(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -365,7 +365,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   dropDownWidth(arg?: number | string) : any {
+   dropDownWidth(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -378,7 +378,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableSelection(arg?: boolean) : any {
+   enableSelection(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -391,7 +391,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableBrowserBoundsDetection(arg?: boolean) : any {
+   enableBrowserBoundsDetection(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -404,7 +404,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   enableHover(arg?: boolean) : any {
+   enableHover(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -417,7 +417,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   filterable(arg?: boolean) : any {
+   filterable(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -430,7 +430,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   filterHeight(arg?: number) : any {
+   filterHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -443,7 +443,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   filterDelay(arg?: number) : any {
+   filterDelay(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -456,7 +456,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   filterPlaceHolder(arg?: string) : any {
+   filterPlaceHolder(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -469,7 +469,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -482,7 +482,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   incrementalSearch(arg?: boolean) : any {
+   incrementalSearch(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -495,7 +495,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   incrementalSearchDelay(arg?: number) : any {
+   incrementalSearchDelay(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -508,7 +508,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   itemHeight(arg?: number) : any {
+   itemHeight(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -521,7 +521,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   openDelay(arg?: number) : any {
+   openDelay(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -534,7 +534,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   placeHolder(arg?: string) : any {
+   placeHolder(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -547,7 +547,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   popupZIndex(arg?: number) : any {
+   popupZIndex(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -560,7 +560,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -573,7 +573,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   renderer(arg?: (index: number, label?: string, value?: any) => string) : any {
+   renderer(arg?: (index?: jqwidgets.DropDownListRenderer['index'], label?: jqwidgets.DropDownListRenderer['label'], value?: jqwidgets.DropDownListRenderer['value']) => string): (index?: jqwidgets.DropDownListRenderer['index'], label?: jqwidgets.DropDownListRenderer['label'], value?: jqwidgets.DropDownListRenderer['value']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -586,7 +586,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   selectionRenderer(arg?: (object?: any, index?: number, label?: string) => string) : any {
+   selectionRenderer(arg?: (element?: jqwidgets.DropDownListSelectionRenderer['element'], index?: jqwidgets.DropDownListSelectionRenderer['index'], label?: jqwidgets.DropDownListSelectionRenderer['label'], value?: jqwidgets.DropDownListSelectionRenderer['value']) => string): (element?: jqwidgets.DropDownListSelectionRenderer['element'], index?: jqwidgets.DropDownListSelectionRenderer['index'], label?: jqwidgets.DropDownListSelectionRenderer['label'], value?: jqwidgets.DropDownListSelectionRenderer['value']) => string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -599,7 +599,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   searchMode(arg?: string) : any {
+   searchMode(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -612,7 +612,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   source(arg?: Array<any>) : any {
+   source(arg?: Array<any>): Array<any> {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -625,7 +625,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   selectedIndex(arg?: number) : any {
+   selectedIndex(arg?: number): number {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -638,7 +638,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -651,7 +651,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -664,7 +664,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   valueMember(arg?: string) : any {
+   valueMember(arg?: string): string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 
@@ -677,7 +677,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

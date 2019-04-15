@@ -79,8 +79,12 @@ class JqxMaskedInput extends React.PureComponent<IMaskedInputProps, IState> {
         this._jqx(this._componentSelector).jqxMaskedInput('focus' );
     };
 
-    public val(value?: number | string): string {
-        return this._jqx(this._componentSelector).jqxMaskedInput('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxMaskedInput('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxMaskedInput('val');
+        }
     };
 
     private _manageProps(): IMaskedInputProps {
@@ -90,7 +94,7 @@ class JqxMaskedInput extends React.PureComponent<IMaskedInputProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

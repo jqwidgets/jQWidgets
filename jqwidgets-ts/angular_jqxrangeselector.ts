@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,12 +23,12 @@ declare let JQXLite: any;
 export class jqxRangeSelectorComponent implements OnChanges
 {
    @Input('disabled') attrDisabled: boolean;
-   @Input('groupLabelsFormatFunction') attrGroupLabelsFormatFunction: any;
-   @Input('labelsFormat') attrLabelsFormat: any;
-   @Input('labelsFormatFunction') attrLabelsFormatFunction: any;
+   @Input('groupLabelsFormatFunction') attrGroupLabelsFormatFunction: (value: jqwidgets.RangeSelectorGroupLabelsFormatFunction['value'], date: jqwidgets.RangeSelectorGroupLabelsFormatFunction['date']) => string;
+   @Input('labelsFormat') attrLabelsFormat: string;
+   @Input('labelsFormatFunction') attrLabelsFormatFunction: (value: jqwidgets.RangeSelectorLabelsFormatFunction['value']) => string;
    @Input('labelsOnTicks') attrLabelsOnTicks: boolean;
-   @Input('markersFormat') attrMarkersFormat: any;
-   @Input('markersFormatFunction') attrMarkersFormatFunction: any;
+   @Input('markersFormat') attrMarkersFormat: string;
+   @Input('markersFormatFunction') attrMarkersFormatFunction: (value: jqwidgets.RangeSelectorMarkersFormatFunction['value'], position: jqwidgets.RangeSelectorMarkersFormatFunction['position']) => string;
    @Input('majorTicksInterval') attrMajorTicksInterval: any;
    @Input('minorTicksInterval') attrMinorTicksInterval: any;
    @Input('max') attrMax: any;
@@ -164,7 +164,7 @@ export class jqxRangeSelectorComponent implements OnChanges
    }
 
    // jqxRangeSelectorComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('disabled', arg);
       } else {
@@ -172,7 +172,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   groupLabelsFormatFunction(arg?: any) : any {
+   groupLabelsFormatFunction(arg?: (value: jqwidgets.RangeSelectorGroupLabelsFormatFunction['value'], date: jqwidgets.RangeSelectorGroupLabelsFormatFunction['date']) => string): (value: jqwidgets.RangeSelectorGroupLabelsFormatFunction['value'], date: jqwidgets.RangeSelectorGroupLabelsFormatFunction['date']) => string {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('groupLabelsFormatFunction', arg);
       } else {
@@ -180,7 +180,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('height', arg);
       } else {
@@ -188,7 +188,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   labelsFormat(arg?: string) : any {
+   labelsFormat(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('labelsFormat', arg);
       } else {
@@ -196,7 +196,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   labelsFormatFunction(arg?: any) : any {
+   labelsFormatFunction(arg?: (value: jqwidgets.RangeSelectorLabelsFormatFunction['value']) => string): (value: jqwidgets.RangeSelectorLabelsFormatFunction['value']) => string {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('labelsFormatFunction', arg);
       } else {
@@ -204,7 +204,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   labelsOnTicks(arg?: boolean) : any {
+   labelsOnTicks(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('labelsOnTicks', arg);
       } else {
@@ -212,7 +212,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   markersFormat(arg?: string) : any {
+   markersFormat(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('markersFormat', arg);
       } else {
@@ -220,7 +220,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   markersFormatFunction(arg?: any) : any {
+   markersFormatFunction(arg?: (value: jqwidgets.RangeSelectorMarkersFormatFunction['value'], position: jqwidgets.RangeSelectorMarkersFormatFunction['position']) => string): (value: jqwidgets.RangeSelectorMarkersFormatFunction['value'], position: jqwidgets.RangeSelectorMarkersFormatFunction['position']) => string {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('markersFormatFunction', arg);
       } else {
@@ -228,7 +228,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   majorTicksInterval(arg?: any) : any {
+   majorTicksInterval(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('majorTicksInterval', arg);
       } else {
@@ -236,7 +236,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   minorTicksInterval(arg?: any) : any {
+   minorTicksInterval(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('minorTicksInterval', arg);
       } else {
@@ -244,7 +244,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   max(arg?: any) : any {
+   max(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('max', arg);
       } else {
@@ -252,7 +252,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   min(arg?: any) : any {
+   min(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('min', arg);
       } else {
@@ -260,7 +260,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   moveOnClick(arg?: boolean) : any {
+   moveOnClick(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('moveOnClick', arg);
       } else {
@@ -268,7 +268,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   padding(arg?: number | string) : any {
+   padding(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('padding', arg);
       } else {
@@ -276,7 +276,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   range(arg?: jqwidgets.RangeSelectorRange) : any {
+   range(arg?: jqwidgets.RangeSelectorRange): jqwidgets.RangeSelectorRange {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('range', arg);
       } else {
@@ -284,7 +284,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   resizable(arg?: boolean) : any {
+   resizable(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('resizable', arg);
       } else {
@@ -292,7 +292,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('rtl', arg);
       } else {
@@ -300,7 +300,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   showGroupLabels(arg?: boolean) : any {
+   showGroupLabels(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('showGroupLabels', arg);
       } else {
@@ -308,7 +308,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   showMinorTicks(arg?: boolean) : any {
+   showMinorTicks(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('showMinorTicks', arg);
       } else {
@@ -316,7 +316,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   snapToTicks(arg?: boolean) : any {
+   snapToTicks(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('snapToTicks', arg);
       } else {
@@ -324,7 +324,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   showMajorLabels(arg?: boolean) : any {
+   showMajorLabels(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('showMajorLabels', arg);
       } else {
@@ -332,7 +332,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   showMarkers(arg?: boolean) : any {
+   showMarkers(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('showMarkers', arg);
       } else {
@@ -340,7 +340,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('theme', arg);
       } else {
@@ -348,7 +348,7 @@ export class jqxRangeSelectorComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxRangeSelector('width', arg);
       } else {

@@ -174,7 +174,7 @@ class JqxDocking extends React.PureComponent<IDockingProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 
@@ -206,10 +206,6 @@ interface IState {
 export interface IDockingCookieOptions {
     domain?: string;
     expires?: number;
-}
-
-export interface IDockingWindowsMode {
-    windowID?: 'default' | 'docked' | 'floating';
 }
 
 interface IDockingOptions {

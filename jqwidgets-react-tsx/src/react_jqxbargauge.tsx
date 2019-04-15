@@ -75,8 +75,12 @@ class JqxBarGauge extends React.PureComponent<IBarGaugeProps, IState> {
         this._jqx(this._componentSelector).jqxBarGauge('render' );
     };
 
-    public val(value?: number[]): number[] {
-        return this._jqx(this._componentSelector).jqxBarGauge('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxBarGauge('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxBarGauge('val');
+        }
     };
 
     private _manageProps(): IBarGaugeProps {
@@ -86,7 +90,7 @@ class JqxBarGauge extends React.PureComponent<IBarGaugeProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

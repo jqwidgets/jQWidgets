@@ -124,7 +124,12 @@ require('../../jqwidgets/jqxribbon');
             this._jqx(this._componentSelector).jqxRibbon('updateAt', index, item);
         };
         JqxRibbon.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxRibbon('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxRibbon('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxRibbon('val');
+            }
         };
         JqxRibbon.prototype._manageProps = function () {
             var widgetProps = ['animationType', 'animationDelay', 'disabled', 'height', 'initContent', 'mode', 'popupCloseMode', 'position', 'reorder', 'rtl', 'selectedIndex', 'selectionMode', 'scrollPosition', 'scrollStep', 'scrollDelay', 'theme', 'width'];

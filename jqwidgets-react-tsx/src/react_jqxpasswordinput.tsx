@@ -73,8 +73,12 @@ class JqxPasswordInput extends React.PureComponent<IPasswordInputProps, IState> 
         this._jqx(this._componentSelector).jqxPasswordInput('refresh' );
     };
 
-    public val(value?: string): string {
-        return this._jqx(this._componentSelector).jqxPasswordInput('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxPasswordInput('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxPasswordInput('val');
+        }
     };
 
     private _manageProps(): IPasswordInputProps {
@@ -84,7 +88,7 @@ class JqxPasswordInput extends React.PureComponent<IPasswordInputProps, IState> 
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

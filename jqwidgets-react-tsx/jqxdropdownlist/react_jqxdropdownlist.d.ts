@@ -49,7 +49,7 @@ declare class JqxDropDownList extends React.PureComponent<IDropDownListProps, IS
     uncheckIndex(index: number): void;
     uncheckItem(item: any): void;
     uncheckAll(): void;
-    val(value?: string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

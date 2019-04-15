@@ -101,7 +101,12 @@ require('../../jqwidgets/jqxtextarea');
             this._jqx(this._componentSelector).jqxTextArea('selectAll');
         };
         JqxTextArea.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxTextArea('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxTextArea('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxTextArea('val');
+            }
         };
         JqxTextArea.prototype._manageProps = function () {
             var widgetProps = ['disabled', 'displayMember', 'dropDownWidth', 'height', 'items', 'maxLength', 'minLength', 'opened', 'placeHolder', 'popupZIndex', 'query', 'renderer', 'roundedCorners', 'rtl', 'scrollBarSize', 'searchMode', 'source', 'theme', 'valueMember', 'width'];

@@ -92,7 +92,12 @@ require('../../jqwidgets/jqxmaskedinput');
             this._jqx(this._componentSelector).jqxMaskedInput('focus');
         };
         JqxMaskedInput.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxMaskedInput('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxMaskedInput('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxMaskedInput('val');
+            }
         };
         JqxMaskedInput.prototype._manageProps = function () {
             var widgetProps = ['disabled', 'height', 'mask', 'promptChar', 'readOnly', 'rtl', 'theme', 'textAlign', 'value', 'width'];

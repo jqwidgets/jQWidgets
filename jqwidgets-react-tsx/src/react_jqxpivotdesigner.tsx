@@ -78,7 +78,7 @@ class JqxPivotDesigner extends React.PureComponent<IPivotDesignerProps, IState> 
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

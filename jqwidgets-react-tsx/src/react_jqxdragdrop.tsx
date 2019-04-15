@@ -74,7 +74,7 @@ class JqxDragDrop extends React.PureComponent<IDragDropProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 
@@ -137,7 +137,7 @@ interface IDragDropOptions {
     onTargetDrop?: (data?: IDragDropOnTargetDrop['data']) => void;
     onDropTargetEnter?: () => void;
     onDropTargetLeave?: (data?: IDragDropOnDropTargetLeave['data']) => void;
-    restricter?: object | 'body' | 'document' | 'parent';
+    restricter?: string | object;
     revert?: boolean;
     revertDuration?: number;
     tolerance?: 'fit' | 'intersect';

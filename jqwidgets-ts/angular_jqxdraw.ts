@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -20,7 +20,7 @@ declare let JQXLite: any;
 
 export class jqxDrawComponent implements OnChanges
 {
-   @Input('renderEngine') attrRenderEngine: any;
+   @Input('renderEngine') attrRenderEngine: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
@@ -143,7 +143,7 @@ export class jqxDrawComponent implements OnChanges
    }
 
    // jqxDrawComponent properties
-   renderEngine(arg?: string) : any {
+   renderEngine(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDraw('renderEngine', arg);
       } else {

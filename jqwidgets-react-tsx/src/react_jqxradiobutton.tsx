@@ -95,8 +95,12 @@ class JqxRadioButton extends React.PureComponent<IRadioButtonProps, IState> {
         this._jqx(this._componentSelector).jqxRadioButton('uncheck' );
     };
 
-    public val(value?: boolean): boolean {
-        return this._jqx(this._componentSelector).jqxRadioButton('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxRadioButton('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxRadioButton('val');
+        }
     };
 
     private _manageProps(): IRadioButtonProps {
@@ -106,7 +110,7 @@ class JqxRadioButton extends React.PureComponent<IRadioButtonProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

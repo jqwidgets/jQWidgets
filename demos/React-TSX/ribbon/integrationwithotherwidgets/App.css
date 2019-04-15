@@ -1,0 +1,15 @@
+html, body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 15px 5px;
+}
+
+#refreshButton {
+    text-align: -webkit-center;
+} 

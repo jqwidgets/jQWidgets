@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -25,6 +25,8 @@ License: https://jqwidgets.com/license/
             imgPosition: String,
             roundedCorners: String,
             rtl: Boolean,
+            enableDefault: Boolean,
+            cursor: Boolean,
             textPosition: String,
             textImageRelation: String,
             theme: String,
@@ -131,6 +133,20 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxButton('rtl');
                 }
             },
+            _enableDefault: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxButton('enableDefault', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxButton('enableDefault');
+                }
+            },
+            _cursor: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxButton('cursor', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxButton('cursor');
+                }
+            },
             _textPosition: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxButton('textPosition', arg)
@@ -181,7 +197,7 @@ License: https://jqwidgets.com/license/
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','textPosition','textImageRelation','theme','template','width','value'];
+                const widgetProps = ['disabled','height','imgSrc','imgWidth','imgHeight','imgPosition','roundedCorners','rtl','enableDefault','cursor','textPosition','textImageRelation','theme','template','width','value'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -271,6 +287,26 @@ License: https://jqwidgets.com/license/
                     },
                     set(newValue) {
                         that._rtl(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'enableDefault', {
+                    get() {
+                        return that._enableDefault();
+                    },
+                    set(newValue) {
+                        that._enableDefault(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'cursor', {
+                    get() {
+                        return that._cursor();
+                    },
+                    set(newValue) {
+                        that._cursor(newValue);
                     },
                     enumerable: true,
                     configurable: true

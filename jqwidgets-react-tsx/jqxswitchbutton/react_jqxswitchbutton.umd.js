@@ -98,7 +98,12 @@ require('../../jqwidgets/jqxswitchbutton');
             this._jqx(this._componentSelector).jqxSwitchButton('uncheck');
         };
         JqxSwitchButton.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxSwitchButton('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxSwitchButton('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxSwitchButton('val');
+            }
         };
         JqxSwitchButton.prototype._manageProps = function () {
             var widgetProps = ['checked', 'disabled', 'height', 'orientation', 'onLabel', 'offLabel', 'thumbSize', 'rtl', 'width'];

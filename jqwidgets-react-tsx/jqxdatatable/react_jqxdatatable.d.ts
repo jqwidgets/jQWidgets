@@ -10,7 +10,7 @@ declare class JqxDataTable extends React.PureComponent<IDataTableProps, IState> 
     render(): React.ReactNode;
     setOptions(options: IDataTableProps): void;
     getOptions(option: string): any;
-    addRow(rowIndex: number | null, rowData: any, rowPosition: any): void;
+    addRow(rowIndex: number, rowData: any, rowPosition: any): void;
     addFilter(dataField: string, filerGroup: any): void;
     applyFilters(): void;
     beginUpdate(): void;
@@ -80,9 +80,9 @@ export interface IDataTableColumns {
     initEditor?: (row: number, cellValue?: any, editor?: any, cellText?: string, width?: string | number, height?: string | number) => void;
     createEditor?: (row: number, cellValue?: any, editor?: any, cellText?: string, width?: string | number, height?: string | number) => void;
     getEditorValue?: (row: number, cellValue?: any, editor?: any) => void;
-    cellsFormat?: 'd2' | 'n2' | 'f2' | 'f5' | 'c2' | 'f' | 'n' | 'c' | 'p' | 'd' | 'dd' | 'ddd' | 'dddd' | 'D' | 'h' | 'hh' | 'H' | 'HH' | 'm' | 'mm' | 'M' | 'MM' | 'MMM' | 'MMMM' | 's' | 'ss' | 't' | 'tt' | 'y' | 'yy' | 'yyy' | 'yyyy' | 'dd/MM/yyyy' | 'yyyy-MM-dd';
+    cellsFormat?: string;
     aggregates?: any[];
-    aggregatesRenderer?: (aggregates: Array<any>, column: any, element: any) => string[] | string;
+    aggregatesRenderer?: (aggregates?: any, column?: any, element?: any) => string;
     align?: 'left' | 'right' | 'center';
     cellsAlign?: 'left' | 'right' | 'center';
     width?: number | string;
@@ -134,7 +134,7 @@ export interface IDataTableExportSettings {
     serverURL?: any;
     characterSet?: any;
     recordsInView?: boolean;
-    fileName?: string | null;
+    fileName?: string;
 }
 interface IDataTableOptions {
     altRows?: boolean;

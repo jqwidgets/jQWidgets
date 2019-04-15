@@ -90,7 +90,12 @@ var JqxBulletChart = /** @class */ (function (_super) {
         this._jqx(this._componentSelector).jqxBulletChart('refresh');
     };
     JqxBulletChart.prototype.val = function (value) {
-        return this._jqx(this._componentSelector).jqxBulletChart('val', value);
+        if (value) {
+            this._jqx(this._componentSelector).jqxBulletChart('val', value);
+        }
+        else {
+            return this._jqx(this._componentSelector).jqxBulletChart('val');
+        }
     };
     JqxBulletChart.prototype._manageProps = function () {
         var widgetProps = ['animationDuration', 'barSize', 'description', 'disabled', 'height', 'labelsFormat', 'labelsFormatFunction', 'orientation', 'pointer', 'rtl', 'ranges', 'showTooltip', 'target', 'ticks', 'title', 'tooltipFormatFunction', 'width'];

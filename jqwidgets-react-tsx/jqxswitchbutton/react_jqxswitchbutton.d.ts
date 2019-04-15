@@ -15,7 +15,7 @@ declare class JqxSwitchButton extends React.PureComponent<ISwitchButtonProps, IS
     enable(): void;
     toggle(): void;
     uncheck(): void;
-    val(value?: boolean): boolean;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

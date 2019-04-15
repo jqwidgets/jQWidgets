@@ -114,7 +114,12 @@ require('../../jqwidgets/jqxformattedinput');
             this._jqx(this._componentSelector).jqxFormattedInput('selectLast');
         };
         JqxFormattedInput.prototype.val = function (value) {
-            return this._jqx(this._componentSelector).jqxFormattedInput('val', value);
+            if (value) {
+                this._jqx(this._componentSelector).jqxFormattedInput('val', value);
+            }
+            else {
+                return this._jqx(this._componentSelector).jqxFormattedInput('val');
+            }
         };
         JqxFormattedInput.prototype._manageProps = function () {
             var widgetProps = ['disabled', 'decimalNotation', 'dropDown', 'dropDownWidth', 'height', 'min', 'max', 'placeHolder', 'popupZIndex', 'roundedCorners', 'rtl', 'radix', 'spinButtons', 'spinButtonsStep', 'template', 'theme', 'upperCase', 'value', 'width'];

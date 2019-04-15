@@ -16,7 +16,7 @@ declare class JqxComplexInput extends React.PureComponent<IComplexInputProps, IS
     getImaginary(complexnumber?: number): number;
     renderWidget(): void;
     refresh(): void;
-    val(value?: any): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

@@ -102,7 +102,7 @@ class JqxToolBar extends React.PureComponent<IToolBarProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 
@@ -149,7 +149,7 @@ interface IToolBarOptions {
     minWidth?: number | string;
     maxWidth?: number | string;
     rtl?: boolean;
-    tools?: string | 'button' | 'toggleButton' | 'dropdownlist' | 'combobox' | 'input' | 'custom';
+    tools?: string;
     theme?: string;
     width?: string | number;
 }

@@ -87,8 +87,12 @@ class JqxNumberInput extends React.PureComponent<INumberInputProps, IState> {
         this._jqx(this._componentSelector).jqxNumberInput('setDecimal' , index);
     };
 
-    public val(value?: number | string): number {
-        return this._jqx(this._componentSelector).jqxNumberInput('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxNumberInput('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxNumberInput('val');
+        }
     };
 
     private _manageProps(): INumberInputProps {
@@ -98,7 +102,7 @@ class JqxNumberInput extends React.PureComponent<INumberInputProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

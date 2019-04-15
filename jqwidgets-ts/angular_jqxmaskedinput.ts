@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -37,7 +37,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
    @Input('readOnly') attrReadOnly: boolean;
    @Input('rtl') attrRtl: boolean;
    @Input('theme') attrTheme: string;
-   @Input('textAlign') attrTextAlign: any;
+   @Input('textAlign') attrTextAlign: string;
    @Input('value') attrValue: number | string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -176,7 +176,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxMaskedInputComponent properties
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('disabled', arg);
       } else {
@@ -184,7 +184,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('height', arg);
       } else {
@@ -192,7 +192,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   mask(arg?: string) : any {
+   mask(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('mask', arg);
       } else {
@@ -200,7 +200,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   promptChar(arg?: number | string) : any {
+   promptChar(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('promptChar', arg);
       } else {
@@ -208,7 +208,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   readOnly(arg?: boolean) : any {
+   readOnly(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('readOnly', arg);
       } else {
@@ -216,7 +216,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('rtl', arg);
       } else {
@@ -224,7 +224,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('theme', arg);
       } else {
@@ -232,7 +232,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   textAlign(arg?: string) : any {
+   textAlign(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('textAlign', arg);
       } else {
@@ -240,7 +240,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   value(arg?: number | string) : any {
+   value(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('value', arg);
       } else {
@@ -248,7 +248,7 @@ export class jqxMaskedInputComponent implements ControlValueAccessor, OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxMaskedInput('width', arg);
       } else {

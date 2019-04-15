@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -35,10 +35,10 @@ export class jqxNotificationComponent implements OnChanges
    @Input('icon') attrIcon: jqwidgets.NotificationIcon;
    @Input('notificationOffset') attrNotificationOffset: number;
    @Input('opacity') attrOpacity: number;
-   @Input('position') attrPosition: any;
+   @Input('position') attrPosition: string;
    @Input('rtl') attrRtl: boolean;
    @Input('showCloseButton') attrShowCloseButton: boolean;
-   @Input('template') attrTemplate: any;
+   @Input('template') attrTemplate: string;
    @Input('theme') attrTheme: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -160,7 +160,7 @@ export class jqxNotificationComponent implements OnChanges
    }
 
    // jqxNotificationComponent properties
-   appendContainer(arg?: string) : any {
+   appendContainer(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNotification('appendContainer', arg);
       } else {
@@ -168,7 +168,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   autoOpen(arg?: boolean) : any {
+   autoOpen(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNotification('autoOpen', arg);
       } else {
@@ -176,7 +176,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   animationOpenDelay(arg?: number) : any {
+   animationOpenDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxNotification('animationOpenDelay', arg);
       } else {
@@ -184,7 +184,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   animationCloseDelay(arg?: number) : any {
+   animationCloseDelay(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxNotification('animationCloseDelay', arg);
       } else {
@@ -192,7 +192,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   autoClose(arg?: boolean) : any {
+   autoClose(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNotification('autoClose', arg);
       } else {
@@ -200,7 +200,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   autoCloseDelay(arg?: number | string) : any {
+   autoCloseDelay(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNotification('autoCloseDelay', arg);
       } else {
@@ -208,7 +208,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   blink(arg?: boolean) : any {
+   blink(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNotification('blink', arg);
       } else {
@@ -216,7 +216,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   browserBoundsOffset(arg?: number) : any {
+   browserBoundsOffset(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxNotification('browserBoundsOffset', arg);
       } else {
@@ -224,7 +224,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   closeOnClick(arg?: boolean) : any {
+   closeOnClick(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNotification('closeOnClick', arg);
       } else {
@@ -232,7 +232,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNotification('disabled', arg);
       } else {
@@ -240,7 +240,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxNotification('height', arg);
       } else {
@@ -248,7 +248,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   hoverOpacity(arg?: number) : any {
+   hoverOpacity(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxNotification('hoverOpacity', arg);
       } else {
@@ -256,7 +256,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   icon(arg?: jqwidgets.NotificationIcon) : any {
+   icon(arg?: jqwidgets.NotificationIcon): jqwidgets.NotificationIcon {
       if (arg !== undefined) {
           this.host.jqxNotification('icon', arg);
       } else {
@@ -264,7 +264,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   notificationOffset(arg?: number) : any {
+   notificationOffset(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxNotification('notificationOffset', arg);
       } else {
@@ -272,7 +272,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   opacity(arg?: number) : any {
+   opacity(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxNotification('opacity', arg);
       } else {
@@ -280,7 +280,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   position(arg?: string) : any {
+   position(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNotification('position', arg);
       } else {
@@ -288,7 +288,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNotification('rtl', arg);
       } else {
@@ -296,7 +296,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   showCloseButton(arg?: boolean) : any {
+   showCloseButton(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxNotification('showCloseButton', arg);
       } else {
@@ -304,7 +304,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   template(arg?: string) : any {
+   template(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNotification('template', arg);
       } else {
@@ -312,7 +312,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxNotification('theme', arg);
       } else {
@@ -320,7 +320,7 @@ export class jqxNotificationComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxNotification('width', arg);
       } else {

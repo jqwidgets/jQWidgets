@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -26,9 +26,9 @@ export class jqxBulletChartComponent implements OnChanges
    @Input('barSize') attrBarSize: number | string;
    @Input('description') attrDescription: string;
    @Input('disabled') attrDisabled: boolean;
-   @Input('labelsFormat') attrLabelsFormat: any;
-   @Input('labelsFormatFunction') attrLabelsFormatFunction: (value?: number, position?:string ) => any;
-   @Input('orientation') attrOrientation: any;
+   @Input('labelsFormat') attrLabelsFormat: string;
+   @Input('labelsFormatFunction') attrLabelsFormatFunction: (value?: jqwidgets.BulletChartLabelsFormatFunction['value'], position?: jqwidgets.BulletChartLabelsFormatFunction['position']) => any;
+   @Input('orientation') attrOrientation: string;
    @Input('pointer') attrPointer: jqwidgets.BulletChartPointer;
    @Input('rtl') attrRtl: boolean;
    @Input('ranges') attrRanges: Array<jqwidgets.BulletChartRanges>;
@@ -36,7 +36,7 @@ export class jqxBulletChartComponent implements OnChanges
    @Input('target') attrTarget: jqwidgets.BulletChartPointer;
    @Input('ticks') attrTicks: jqwidgets.BulletChartTicks;
    @Input('title') attrTitle: string;
-   @Input('tooltipFormatFunction') attrTooltipFormatFunction: (pointerValue:number , targetValue:number) => string;
+   @Input('tooltipFormatFunction') attrTooltipFormatFunction: (pointerValue?: jqwidgets.BulletChartTooltipFormatFunction['pointerValue'], targetValue?: jqwidgets.BulletChartTooltipFormatFunction['targetValue']) => string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
@@ -157,7 +157,7 @@ export class jqxBulletChartComponent implements OnChanges
    }
 
    // jqxBulletChartComponent properties
-   animationDuration(arg?: number) : any {
+   animationDuration(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxBulletChart('animationDuration', arg);
       } else {
@@ -165,7 +165,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   barSize(arg?: number | string) : any {
+   barSize(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxBulletChart('barSize', arg);
       } else {
@@ -173,7 +173,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   description(arg?: string) : any {
+   description(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxBulletChart('description', arg);
       } else {
@@ -181,7 +181,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxBulletChart('disabled', arg);
       } else {
@@ -189,7 +189,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number) : any {
+   height(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxBulletChart('height', arg);
       } else {
@@ -197,7 +197,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   labelsFormat(arg?: string) : any {
+   labelsFormat(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxBulletChart('labelsFormat', arg);
       } else {
@@ -205,7 +205,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   labelsFormatFunction(arg?: (value?: number, position?:string ) => any) : any {
+   labelsFormatFunction(arg?: (value?: jqwidgets.BulletChartLabelsFormatFunction['value'], position?: jqwidgets.BulletChartLabelsFormatFunction['position']) => any): (value?: jqwidgets.BulletChartLabelsFormatFunction['value'], position?: jqwidgets.BulletChartLabelsFormatFunction['position']) => any {
       if (arg !== undefined) {
           this.host.jqxBulletChart('labelsFormatFunction', arg);
       } else {
@@ -213,7 +213,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   orientation(arg?: string) : any {
+   orientation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxBulletChart('orientation', arg);
       } else {
@@ -221,7 +221,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   pointer(arg?: jqwidgets.BulletChartPointer) : any {
+   pointer(arg?: jqwidgets.BulletChartPointer): jqwidgets.BulletChartPointer {
       if (arg !== undefined) {
           this.host.jqxBulletChart('pointer', arg);
       } else {
@@ -229,7 +229,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxBulletChart('rtl', arg);
       } else {
@@ -237,7 +237,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   ranges(arg?: Array<jqwidgets.BulletChartRanges>) : any {
+   ranges(arg?: Array<jqwidgets.BulletChartRanges>): Array<jqwidgets.BulletChartRanges> {
       if (arg !== undefined) {
           this.host.jqxBulletChart('ranges', arg);
       } else {
@@ -245,7 +245,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   showTooltip(arg?: boolean) : any {
+   showTooltip(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxBulletChart('showTooltip', arg);
       } else {
@@ -253,7 +253,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   target(arg?: jqwidgets.BulletChartPointer) : any {
+   target(arg?: jqwidgets.BulletChartPointer): jqwidgets.BulletChartPointer {
       if (arg !== undefined) {
           this.host.jqxBulletChart('target', arg);
       } else {
@@ -261,7 +261,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   ticks(arg?: jqwidgets.BulletChartTicks) : any {
+   ticks(arg?: jqwidgets.BulletChartTicks): jqwidgets.BulletChartTicks {
       if (arg !== undefined) {
           this.host.jqxBulletChart('ticks', arg);
       } else {
@@ -269,7 +269,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   title(arg?: string) : any {
+   title(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxBulletChart('title', arg);
       } else {
@@ -277,7 +277,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   tooltipFormatFunction(arg?: (pointerValue:number , targetValue:number) => string) : any {
+   tooltipFormatFunction(arg?: (pointerValue?: jqwidgets.BulletChartTooltipFormatFunction['pointerValue'], targetValue?: jqwidgets.BulletChartTooltipFormatFunction['targetValue']) => string): (pointerValue?: jqwidgets.BulletChartTooltipFormatFunction['pointerValue'], targetValue?: jqwidgets.BulletChartTooltipFormatFunction['targetValue']) => string {
       if (arg !== undefined) {
           this.host.jqxBulletChart('tooltipFormatFunction', arg);
       } else {
@@ -285,7 +285,7 @@ export class jqxBulletChartComponent implements OnChanges
       }
    }
 
-   width(arg?: string | number) : any {
+   width(arg?: string | number): string | number {
       if (arg !== undefined) {
           this.host.jqxBulletChart('width', arg);
       } else {

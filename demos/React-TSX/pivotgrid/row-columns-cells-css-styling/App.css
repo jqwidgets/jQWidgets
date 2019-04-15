@@ -1,0 +1,24 @@
+.columnStyle {
+    background-color: rgba(254, 173, 117, 255);
+}
+
+.columnStyleSelected {
+    background-color: rgba(234, 153, 87, 255);
+}
+
+.rowStyle {
+    background-color: rgba(187, 232, 227, 255);
+}
+
+.rowStyleSelected {
+    background-color: rgba(167, 212, 207, 255);
+}
+
+.cellStyle {
+    background-color: rgba(255, 255, 255, 255);
+}
+
+.cellStyleSelected {
+    background-color: rgba(239, 249, 136, 255);
+    color: rebeccapurple;
+}

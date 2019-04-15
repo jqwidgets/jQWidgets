@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -46,10 +46,10 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('appointmentTooltips') attrAppointmentTooltips: boolean;
    @Input('columnsHeight') attrColumnsHeight: number;
    @Input('contextMenu') attrContextMenu: boolean;
-   @Input('contextMenuOpen') attrContextMenuOpen: (menu: any, appointment: any, event: any) => void;
-   @Input('contextMenuClose') attrContextMenuClose: (menu: any, appointment: any, event: any) => void;
-   @Input('contextMenuItemClick') attrContextMenuItemClick: (menu: any, appointment: any, event: any) => boolean;
-   @Input('contextMenuCreate') attrContextMenuCreate: (menu: any, settings: any) => void;
+   @Input('contextMenuOpen') attrContextMenuOpen: (menu: jqwidgets.SchedulerContextMenuOpen['menu'], appointment: jqwidgets.SchedulerContextMenuOpen['appointment'], event: jqwidgets.SchedulerContextMenuOpen['event']) => void;
+   @Input('contextMenuClose') attrContextMenuClose: (menu: jqwidgets.SchedulerContextMenuClose['menu'], appointment: jqwidgets.SchedulerContextMenuClose['appointment'], event: jqwidgets.SchedulerContextMenuClose['event']) => void;
+   @Input('contextMenuItemClick') attrContextMenuItemClick: (menu: jqwidgets.SchedulerContextMenuItemClick['menu'], appointment: jqwidgets.SchedulerContextMenuItemClick['appointment'], event: jqwidgets.SchedulerContextMenuItemClick['event']) => boolean;
+   @Input('contextMenuCreate') attrContextMenuCreate: (menu: jqwidgets.SchedulerContextMenuCreate['menu'], settings: jqwidgets.SchedulerContextMenuCreate['settings']) => void;
    @Input('changedAppointments') attrChangedAppointments: Array<jqwidgets.SchedulerChangedAppointments>;
    @Input('disabled') attrDisabled: boolean;
    @Input('date') attrDate: any;
@@ -58,10 +58,10 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('editDialog') attrEditDialog: boolean;
    @Input('editDialogDateTimeFormatString') attrEditDialogDateTimeFormatString: string;
    @Input('editDialogDateFormatString') attrEditDialogDateFormatString: string;
-   @Input('editDialogOpen') attrEditDialogOpen: (dialog?: any, fields?: any, editAppointment?: any) => void;
-   @Input('editDialogCreate') attrEditDialogCreate: (dialog?: any, fields?: any, editAppointment?: any) => void;
-   @Input('editDialogKeyDown') attrEditDialogKeyDown: (dialog?: any, fields?: any, editAppointment?: any, event?: any) => boolean;
-   @Input('editDialogClose') attrEditDialogClose: (dialog?: any, fields?: any, editAppointment?: any) => void;
+   @Input('editDialogOpen') attrEditDialogOpen: (dialog?: jqwidgets.SchedulerEditDialogOpen['dialog'], fields?: jqwidgets.SchedulerEditDialogOpen['fields'], editAppointment?: jqwidgets.SchedulerEditDialogOpen['editAppointment']) => void;
+   @Input('editDialogCreate') attrEditDialogCreate: (dialog?: jqwidgets.SchedulerEditDialogCreate['dialog'], fields?: jqwidgets.SchedulerEditDialogCreate['fields'], editAppointment?: jqwidgets.SchedulerEditDialogCreate['editAppointment']) => void;
+   @Input('editDialogKeyDown') attrEditDialogKeyDown: (dialog?: jqwidgets.SchedulerEditDialogKeyDown['dialog'], fields?: jqwidgets.SchedulerEditDialogKeyDown['fields'], editAppointment?: jqwidgets.SchedulerEditDialogKeyDown['editAppointment'], event?: jqwidgets.SchedulerEditDialogKeyDown['event']) => boolean;
+   @Input('editDialogClose') attrEditDialogClose: (dialog?: jqwidgets.SchedulerEditDialogClose['dialog'], fields?: jqwidgets.SchedulerEditDialogClose['fields'], editAppointment?: jqwidgets.SchedulerEditDialogClose['editAppointment']) => void;
    @Input('exportSettings') attrExportSettings: jqwidgets.SchedulerExportSettings;
    @Input('legendPosition') attrLegendPosition: string;
    @Input('legendHeight') attrLegendHeight: number;
@@ -69,7 +69,7 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('min') attrMin: any;
    @Input('max') attrMax: any;
    @Input('ready') attrReady: () => void;
-   @Input('renderAppointment') attrRenderAppointment: (data: any) => any;
+   @Input('renderAppointment') attrRenderAppointment: (data: jqwidgets.SchedulerRenderAppointment['data']) => any;
    @Input('rendering') attrRendering: () => void;
    @Input('rendered') attrRendered: () => void;
    @Input('rtl') attrRtl: boolean;
@@ -85,12 +85,12 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('touchAppointmentsMinHeight') attrTouchAppointmentsMinHeight: number;
    @Input('touchScrollBarSize') attrTouchScrollBarSize: number;
    @Input('timeZone') attrTimeZone: string;
-   @Input('touchDayNameFormat') attrTouchDayNameFormat: any;
+   @Input('touchDayNameFormat') attrTouchDayNameFormat: string;
    @Input('toolBarRangeFormat') attrToolBarRangeFormat: string;
    @Input('toolBarRangeFormatAbbr') attrToolBarRangeFormatAbbr: string;
    @Input('toolbarHeight') attrToolbarHeight: number;
    @Input('views') attrViews: Array<any>;
-   @Input('view') attrView: any;
+   @Input('view') attrView: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
@@ -211,7 +211,7 @@ export class jqxSchedulerComponent implements OnChanges
    }
 
    // jqxSchedulerComponent properties
-   appointmentOpacity(arg?: number) : any {
+   appointmentOpacity(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScheduler('appointmentOpacity', arg);
       } else {
@@ -219,7 +219,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   appointmentsMinHeight(arg?: number) : any {
+   appointmentsMinHeight(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScheduler('appointmentsMinHeight', arg);
       } else {
@@ -227,7 +227,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   appointmentDataFields(arg?: jqwidgets.SchedulerAppointmentDataFields) : any {
+   appointmentDataFields(arg?: jqwidgets.SchedulerAppointmentDataFields): jqwidgets.SchedulerAppointmentDataFields {
       if (arg !== undefined) {
           this.host.jqxScheduler('appointmentDataFields', arg);
       } else {
@@ -235,7 +235,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   appointmentTooltips(arg?: boolean) : any {
+   appointmentTooltips(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('appointmentTooltips', arg);
       } else {
@@ -243,7 +243,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   columnsHeight(arg?: number) : any {
+   columnsHeight(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScheduler('columnsHeight', arg);
       } else {
@@ -251,7 +251,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   contextMenu(arg?: boolean) : any {
+   contextMenu(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('contextMenu', arg);
       } else {
@@ -259,7 +259,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   contextMenuOpen(arg?: (menu: any, appointment: any, event: any) => void) : any {
+   contextMenuOpen(arg?: (menu: jqwidgets.SchedulerContextMenuOpen['menu'], appointment: jqwidgets.SchedulerContextMenuOpen['appointment'], event: jqwidgets.SchedulerContextMenuOpen['event']) => void): (menu: jqwidgets.SchedulerContextMenuOpen['menu'], appointment: jqwidgets.SchedulerContextMenuOpen['appointment'], event: jqwidgets.SchedulerContextMenuOpen['event']) => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('contextMenuOpen', arg);
       } else {
@@ -267,7 +267,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   contextMenuClose(arg?: (menu: any, appointment: any, event: any) => void) : any {
+   contextMenuClose(arg?: (menu: jqwidgets.SchedulerContextMenuClose['menu'], appointment: jqwidgets.SchedulerContextMenuClose['appointment'], event: jqwidgets.SchedulerContextMenuClose['event']) => void): (menu: jqwidgets.SchedulerContextMenuClose['menu'], appointment: jqwidgets.SchedulerContextMenuClose['appointment'], event: jqwidgets.SchedulerContextMenuClose['event']) => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('contextMenuClose', arg);
       } else {
@@ -275,7 +275,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   contextMenuItemClick(arg?: (menu: any, appointment: any, event: any) => boolean) : any {
+   contextMenuItemClick(arg?: (menu: jqwidgets.SchedulerContextMenuItemClick['menu'], appointment: jqwidgets.SchedulerContextMenuItemClick['appointment'], event: jqwidgets.SchedulerContextMenuItemClick['event']) => boolean): (menu: jqwidgets.SchedulerContextMenuItemClick['menu'], appointment: jqwidgets.SchedulerContextMenuItemClick['appointment'], event: jqwidgets.SchedulerContextMenuItemClick['event']) => boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('contextMenuItemClick', arg);
       } else {
@@ -283,7 +283,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   contextMenuCreate(arg?: (menu: any, settings: any) => void) : any {
+   contextMenuCreate(arg?: (menu: jqwidgets.SchedulerContextMenuCreate['menu'], settings: jqwidgets.SchedulerContextMenuCreate['settings']) => void): (menu: jqwidgets.SchedulerContextMenuCreate['menu'], settings: jqwidgets.SchedulerContextMenuCreate['settings']) => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('contextMenuCreate', arg);
       } else {
@@ -291,7 +291,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   changedAppointments(arg?: Array<jqwidgets.SchedulerChangedAppointments>) : any {
+   changedAppointments(arg?: Array<jqwidgets.SchedulerChangedAppointments>): Array<jqwidgets.SchedulerChangedAppointments> {
       if (arg !== undefined) {
           this.host.jqxScheduler('changedAppointments', arg);
       } else {
@@ -299,7 +299,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('disabled', arg);
       } else {
@@ -307,7 +307,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   date(arg?: any) : any {
+   date(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxScheduler('date', arg);
       } else {
@@ -315,7 +315,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   dayNameFormat(arg?: string) : any {
+   dayNameFormat(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScheduler('dayNameFormat', arg);
       } else {
@@ -323,7 +323,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   enableHover(arg?: boolean) : any {
+   enableHover(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('enableHover', arg);
       } else {
@@ -331,7 +331,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialog(arg?: boolean) : any {
+   editDialog(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('editDialog', arg);
       } else {
@@ -339,7 +339,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialogDateTimeFormatString(arg?: string) : any {
+   editDialogDateTimeFormatString(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScheduler('editDialogDateTimeFormatString', arg);
       } else {
@@ -347,7 +347,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialogDateFormatString(arg?: string) : any {
+   editDialogDateFormatString(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScheduler('editDialogDateFormatString', arg);
       } else {
@@ -355,7 +355,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialogOpen(arg?: (dialog?: any, fields?: any, editAppointment?: any) => void) : any {
+   editDialogOpen(arg?: (dialog?: jqwidgets.SchedulerEditDialogOpen['dialog'], fields?: jqwidgets.SchedulerEditDialogOpen['fields'], editAppointment?: jqwidgets.SchedulerEditDialogOpen['editAppointment']) => void): (dialog?: jqwidgets.SchedulerEditDialogOpen['dialog'], fields?: jqwidgets.SchedulerEditDialogOpen['fields'], editAppointment?: jqwidgets.SchedulerEditDialogOpen['editAppointment']) => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('editDialogOpen', arg);
       } else {
@@ -363,7 +363,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialogCreate(arg?: (dialog?: any, fields?: any, editAppointment?: any) => void) : any {
+   editDialogCreate(arg?: (dialog?: jqwidgets.SchedulerEditDialogCreate['dialog'], fields?: jqwidgets.SchedulerEditDialogCreate['fields'], editAppointment?: jqwidgets.SchedulerEditDialogCreate['editAppointment']) => void): (dialog?: jqwidgets.SchedulerEditDialogCreate['dialog'], fields?: jqwidgets.SchedulerEditDialogCreate['fields'], editAppointment?: jqwidgets.SchedulerEditDialogCreate['editAppointment']) => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('editDialogCreate', arg);
       } else {
@@ -371,7 +371,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialogKeyDown(arg?: (dialog?: any, fields?: any, editAppointment?: any, event?: any) => boolean) : any {
+   editDialogKeyDown(arg?: (dialog?: jqwidgets.SchedulerEditDialogKeyDown['dialog'], fields?: jqwidgets.SchedulerEditDialogKeyDown['fields'], editAppointment?: jqwidgets.SchedulerEditDialogKeyDown['editAppointment'], event?: jqwidgets.SchedulerEditDialogKeyDown['event']) => boolean): (dialog?: jqwidgets.SchedulerEditDialogKeyDown['dialog'], fields?: jqwidgets.SchedulerEditDialogKeyDown['fields'], editAppointment?: jqwidgets.SchedulerEditDialogKeyDown['editAppointment'], event?: jqwidgets.SchedulerEditDialogKeyDown['event']) => boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('editDialogKeyDown', arg);
       } else {
@@ -379,7 +379,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   editDialogClose(arg?: (dialog?: any, fields?: any, editAppointment?: any) => void) : any {
+   editDialogClose(arg?: (dialog?: jqwidgets.SchedulerEditDialogClose['dialog'], fields?: jqwidgets.SchedulerEditDialogClose['fields'], editAppointment?: jqwidgets.SchedulerEditDialogClose['editAppointment']) => void): (dialog?: jqwidgets.SchedulerEditDialogClose['dialog'], fields?: jqwidgets.SchedulerEditDialogClose['fields'], editAppointment?: jqwidgets.SchedulerEditDialogClose['editAppointment']) => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('editDialogClose', arg);
       } else {
@@ -387,7 +387,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   exportSettings(arg?: jqwidgets.SchedulerExportSettings) : any {
+   exportSettings(arg?: jqwidgets.SchedulerExportSettings): jqwidgets.SchedulerExportSettings {
       if (arg !== undefined) {
           this.host.jqxScheduler('exportSettings', arg);
       } else {
@@ -395,7 +395,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxScheduler('height', arg);
       } else {
@@ -403,7 +403,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   legendPosition(arg?: string) : any {
+   legendPosition(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScheduler('legendPosition', arg);
       } else {
@@ -411,7 +411,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   legendHeight(arg?: number) : any {
+   legendHeight(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScheduler('legendHeight', arg);
       } else {
@@ -419,7 +419,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   localization(arg?: any) : any {
+   localization(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxScheduler('localization', arg);
       } else {
@@ -427,7 +427,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   min(arg?: any) : any {
+   min(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxScheduler('min', arg);
       } else {
@@ -435,7 +435,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   max(arg?: any) : any {
+   max(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxScheduler('max', arg);
       } else {
@@ -443,7 +443,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   ready(arg?: () => void) : any {
+   ready(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('ready', arg);
       } else {
@@ -451,7 +451,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   renderAppointment(arg?: (data: any) => any) : any {
+   renderAppointment(arg?: (data: jqwidgets.SchedulerRenderAppointment['data']) => any): (data: jqwidgets.SchedulerRenderAppointment['data']) => any {
       if (arg !== undefined) {
           this.host.jqxScheduler('renderAppointment', arg);
       } else {
@@ -459,7 +459,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   rendering(arg?: () => void) : any {
+   rendering(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('rendering', arg);
       } else {
@@ -467,7 +467,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   rendered(arg?: () => void) : any {
+   rendered(arg?: () => void): () => void {
       if (arg !== undefined) {
           this.host.jqxScheduler('rendered', arg);
       } else {
@@ -475,7 +475,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('rtl', arg);
       } else {
@@ -483,7 +483,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   resources(arg?: jqwidgets.SchedulerResources) : any {
+   resources(arg?: jqwidgets.SchedulerResources): jqwidgets.SchedulerResources {
       if (arg !== undefined) {
           this.host.jqxScheduler('resources', arg);
       } else {
@@ -491,7 +491,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   rowsHeight(arg?: number) : any {
+   rowsHeight(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScheduler('rowsHeight', arg);
       } else {
@@ -499,7 +499,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   showToolbar(arg?: boolean) : any {
+   showToolbar(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('showToolbar', arg);
       } else {
@@ -507,7 +507,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   showLegend(arg?: boolean) : any {
+   showLegend(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxScheduler('showLegend', arg);
       } else {
@@ -515,7 +515,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   scrollBarSize(arg?: number) : any {
+   scrollBarSize(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScheduler('scrollBarSize', arg);
       } else {
@@ -523,7 +523,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   source(arg?: any) : any {
+   source(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxScheduler('source', arg);
       } else {
@@ -531,7 +531,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   statuses(arg?: jqwidgets.SchedulerStatuses) : any {
+   statuses(arg?: jqwidgets.SchedulerStatuses): jqwidgets.SchedulerStatuses {
       if (arg !== undefined) {
           this.host.jqxScheduler('statuses', arg);
       } else {
@@ -539,7 +539,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   touchRowsHeight(arg?: number) : any {
+   touchRowsHeight(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScheduler('touchRowsHeight', arg);
       } else {
@@ -547,7 +547,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScheduler('theme', arg);
       } else {
@@ -555,7 +555,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   touchAppointmentsMinHeight(arg?: number) : any {
+   touchAppointmentsMinHeight(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScheduler('touchAppointmentsMinHeight', arg);
       } else {
@@ -563,7 +563,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   touchScrollBarSize(arg?: number) : any {
+   touchScrollBarSize(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScheduler('touchScrollBarSize', arg);
       } else {
@@ -571,7 +571,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   timeZone(arg?: string) : any {
+   timeZone(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScheduler('timeZone', arg);
       } else {
@@ -579,7 +579,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   touchDayNameFormat(arg?: string) : any {
+   touchDayNameFormat(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScheduler('touchDayNameFormat', arg);
       } else {
@@ -587,7 +587,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   toolBarRangeFormat(arg?: string) : any {
+   toolBarRangeFormat(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScheduler('toolBarRangeFormat', arg);
       } else {
@@ -595,7 +595,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   toolBarRangeFormatAbbr(arg?: string) : any {
+   toolBarRangeFormatAbbr(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScheduler('toolBarRangeFormatAbbr', arg);
       } else {
@@ -603,7 +603,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   toolbarHeight(arg?: number) : any {
+   toolbarHeight(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxScheduler('toolbarHeight', arg);
       } else {
@@ -611,7 +611,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   views(arg?: Array<any>) : any {
+   views(arg?: Array<any>): Array<any> {
       if (arg !== undefined) {
           this.host.jqxScheduler('views', arg);
       } else {
@@ -619,7 +619,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   view(arg?: string) : any {
+   view(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxScheduler('view', arg);
       } else {
@@ -627,7 +627,7 @@ export class jqxSchedulerComponent implements OnChanges
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxScheduler('width', arg);
       } else {
@@ -677,7 +677,7 @@ export class jqxSchedulerComponent implements OnChanges
       this.host.jqxScheduler('ensureAppointmentVisible', id);
    }
 
-   ensureVisible(item: any, resourceId: string): void {
+   ensureVisible(item: any, resourceId?: string): void {
       this.host.jqxScheduler('ensureVisible', item, resourceId);
    }
 

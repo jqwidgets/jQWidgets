@@ -86,7 +86,12 @@ var JqxGauge = /** @class */ (function (_super) {
         this._jqx(this._componentSelector).jqxGauge('enable');
     };
     JqxGauge.prototype.val = function (value) {
-        return this._jqx(this._componentSelector).jqxGauge('val', value);
+        if (value) {
+            this._jqx(this._componentSelector).jqxGauge('val', value);
+        }
+        else {
+            return this._jqx(this._componentSelector).jqxGauge('val');
+        }
     };
     JqxGauge.prototype._manageProps = function () {
         var widgetProps = ['animationDuration', 'border', 'caption', 'cap', 'colorScheme', 'disabled', 'easing', 'endAngle', 'height', 'int64', 'labels', 'min', 'max', 'pointer', 'radius', 'ranges', 'startAngle', 'showRanges', 'styles', 'ticksMajor', 'ticksMinor', 'ticksDistance', 'value', 'width'];

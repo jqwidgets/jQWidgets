@@ -191,8 +191,12 @@ class JqxTree extends React.PureComponent<ITreeProps, IState> {
         this._jqx(this._componentSelector).jqxTree('updateItem' , item, newItem);
     };
 
-    public val(value?: string): string {
-        return this._jqx(this._componentSelector).jqxTree('val' , value);
+    public val(value?: any): any {
+        if (value) {
+            this._jqx(this._componentSelector).jqxTree('val', value);
+        } else {
+            return this._jqx(this._componentSelector).jqxTree('val');
+        }
     };
 
     private _manageProps(): ITreeProps {
@@ -202,7 +206,7 @@ class JqxTree extends React.PureComponent<ITreeProps, IState> {
 
         for (const prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
-                 options[prop] = this.props[prop];
+                options[prop] = this.props[prop];
             }
         }
 

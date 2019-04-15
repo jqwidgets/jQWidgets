@@ -18,7 +18,7 @@ declare class JqxSlider extends React.PureComponent<ISliderProps, IState> {
     getValue(): number;
     incrementValue(): void;
     setValue(index: number | number[]): void;
-    val(value?: string): string;
+    val(value?: any): any;
     private _manageProps;
     private _wireEvents;
 }

@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.1.0 (2019-Feb)
+jQWidgets v7.2.0 (2019-Apr)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -27,11 +27,11 @@ export class jqxDockingComponent implements OnChanges
    @Input('disabled') attrDisabled: boolean;
    @Input('floatingWindowOpacity') attrFloatingWindowOpacity: number;
    @Input('keyboardNavigation') attrKeyboardNavigation: boolean;
-   @Input('mode') attrMode: any;
-   @Input('orientation') attrOrientation: any;
+   @Input('mode') attrMode: string;
+   @Input('orientation') attrOrientation: string;
    @Input('rtl') attrRtl: boolean;
    @Input('theme') attrTheme: string;
-   @Input('windowsMode') attrWindowsMode: jqwidgets.DockingWindowsMode;
+   @Input('windowsMode') attrWindowsMode: object;
    @Input('windowsOffset') attrWindowsOffset: number;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
@@ -153,7 +153,7 @@ export class jqxDockingComponent implements OnChanges
    }
 
    // jqxDockingComponent properties
-   cookies(arg?: boolean) : any {
+   cookies(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDocking('cookies', arg);
       } else {
@@ -161,7 +161,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   cookieOptions(arg?: jqwidgets.DockingCookieOptions) : any {
+   cookieOptions(arg?: jqwidgets.DockingCookieOptions): jqwidgets.DockingCookieOptions {
       if (arg !== undefined) {
           this.host.jqxDocking('cookieOptions', arg);
       } else {
@@ -169,7 +169,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   disabled(arg?: boolean) : any {
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDocking('disabled', arg);
       } else {
@@ -177,7 +177,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   floatingWindowOpacity(arg?: number) : any {
+   floatingWindowOpacity(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxDocking('floatingWindowOpacity', arg);
       } else {
@@ -185,7 +185,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   height(arg?: number | string) : any {
+   height(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxDocking('height', arg);
       } else {
@@ -193,7 +193,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   keyboardNavigation(arg?: boolean) : any {
+   keyboardNavigation(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDocking('keyboardNavigation', arg);
       } else {
@@ -201,7 +201,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   mode(arg?: string) : any {
+   mode(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDocking('mode', arg);
       } else {
@@ -209,7 +209,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   orientation(arg?: string) : any {
+   orientation(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDocking('orientation', arg);
       } else {
@@ -217,7 +217,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   rtl(arg?: boolean) : any {
+   rtl(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxDocking('rtl', arg);
       } else {
@@ -225,7 +225,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   theme(arg?: string) : any {
+   theme(arg?: string): string {
       if (arg !== undefined) {
           this.host.jqxDocking('theme', arg);
       } else {
@@ -233,7 +233,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   width(arg?: number | string) : any {
+   width(arg?: number | string): number | string {
       if (arg !== undefined) {
           this.host.jqxDocking('width', arg);
       } else {
@@ -241,7 +241,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   windowsMode(arg?: jqwidgets.DockingWindowsMode) : any {
+   windowsMode(arg?: object): object {
       if (arg !== undefined) {
           this.host.jqxDocking('windowsMode', arg);
       } else {
@@ -249,7 +249,7 @@ export class jqxDockingComponent implements OnChanges
       }
    }
 
-   windowsOffset(arg?: number) : any {
+   windowsOffset(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxDocking('windowsOffset', arg);
       } else {
