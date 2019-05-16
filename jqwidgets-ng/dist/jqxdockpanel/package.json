@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxdockpanel.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxdockpanel.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxdockpanel.js",
+  "esm5": "../esm5/jqxdockpanel/jqwidgets-ng-jqxdockpanel.js",
+  "esm2015": "../esm2015/jqxdockpanel/jqwidgets-ng-jqxdockpanel.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxdockpanel.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxdockpanel.js",
+  "typings": "jqwidgets-ng-jqxdockpanel.d.ts",
+  "metadata": "jqwidgets-ng-jqxdockpanel.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxdockpanel"
+}

@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxpasswordinput.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxpasswordinput.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxpasswordinput.js",
+  "esm5": "../esm5/jqxpasswordinput/jqwidgets-ng-jqxpasswordinput.js",
+  "esm2015": "../esm2015/jqxpasswordinput/jqwidgets-ng-jqxpasswordinput.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxpasswordinput.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxpasswordinput.js",
+  "typings": "jqwidgets-ng-jqxpasswordinput.d.ts",
+  "metadata": "jqwidgets-ng-jqxpasswordinput.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxpasswordinput"
+}

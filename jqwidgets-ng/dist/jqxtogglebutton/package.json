@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxtogglebutton.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxtogglebutton.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxtogglebutton.js",
+  "esm5": "../esm5/jqxtogglebutton/jqwidgets-ng-jqxtogglebutton.js",
+  "esm2015": "../esm2015/jqxtogglebutton/jqwidgets-ng-jqxtogglebutton.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxtogglebutton.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxtogglebutton.js",
+  "typings": "jqwidgets-ng-jqxtogglebutton.d.ts",
+  "metadata": "jqwidgets-ng-jqxtogglebutton.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxtogglebutton"
+}

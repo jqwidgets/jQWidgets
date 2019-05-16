@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxrating.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxrating.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxrating.js",
+  "esm5": "../esm5/jqxrating/jqwidgets-ng-jqxrating.js",
+  "esm2015": "../esm2015/jqxrating/jqwidgets-ng-jqxrating.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxrating.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxrating.js",
+  "typings": "jqwidgets-ng-jqxrating.d.ts",
+  "metadata": "jqwidgets-ng-jqxrating.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxrating"
+}

@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxsortable.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxsortable.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxsortable.js",
+  "esm5": "../esm5/jqxsortable/jqwidgets-ng-jqxsortable.js",
+  "esm2015": "../esm2015/jqxsortable/jqwidgets-ng-jqxsortable.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxsortable.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxsortable.js",
+  "typings": "jqwidgets-ng-jqxsortable.d.ts",
+  "metadata": "jqwidgets-ng-jqxsortable.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxsortable"
+}

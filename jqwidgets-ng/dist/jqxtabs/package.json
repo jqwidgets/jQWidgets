@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxtabs.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxtabs.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxtabs.js",
+  "esm5": "../esm5/jqxtabs/jqwidgets-ng-jqxtabs.js",
+  "esm2015": "../esm2015/jqxtabs/jqwidgets-ng-jqxtabs.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxtabs.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxtabs.js",
+  "typings": "jqwidgets-ng-jqxtabs.d.ts",
+  "metadata": "jqwidgets-ng-jqxtabs.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxtabs"
+}

@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.2.0 (2019-Apr)
+jQWidgets v8.0.0 (2019-May)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -162,90 +162,90 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 Object.defineProperty(that, 'checked', {
-                    get() {
+                    get: function() {
                         return that._checked();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._checked(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'disabled', {
-                    get() {
+                    get: function() {
                         return that._disabled();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._disabled(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'height', {
-                    get() {
+                    get: function() {
                         return that._height();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._height(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'orientation', {
-                    get() {
+                    get: function() {
                         return that._orientation();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._orientation(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'onLabel', {
-                    get() {
+                    get: function() {
                         return that._onLabel();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._onLabel(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'offLabel', {
-                    get() {
+                    get: function() {
                         return that._offLabel();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._offLabel(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'thumbSize', {
-                    get() {
+                    get: function() {
                         return that._thumbSize();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._thumbSize(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rtl', {
-                    get() {
+                    get: function() {
                         return that._rtl();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rtl(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'width', {
-                    get() {
+                    get: function() {
                         return that._width();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._width(newValue);
                     },
                     enumerable: true,

@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxslider.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxslider.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxslider.js",
+  "esm5": "../esm5/jqxslider/jqwidgets-ng-jqxslider.js",
+  "esm2015": "../esm2015/jqxslider/jqwidgets-ng-jqxslider.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxslider.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxslider.js",
+  "typings": "jqwidgets-ng-jqxslider.d.ts",
+  "metadata": "jqwidgets-ng-jqxslider.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxslider"
+}

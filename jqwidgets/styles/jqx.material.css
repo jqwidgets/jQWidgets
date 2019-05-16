@@ -1199,6 +1199,10 @@ input[type="password"] {
     letter-spacing: 0.3em;
 }
 
+.jqx-input-widget-material.jqx-rtl > input {
+    direction: rtl
+}
+
 .jqx-input-label-material {
     color: #E0E0E0;
     font-size: 14px;

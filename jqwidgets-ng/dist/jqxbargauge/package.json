@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxbargauge.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxbargauge.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxbargauge.js",
+  "esm5": "../esm5/jqxbargauge/jqwidgets-ng-jqxbargauge.js",
+  "esm2015": "../esm2015/jqxbargauge/jqwidgets-ng-jqxbargauge.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxbargauge.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxbargauge.js",
+  "typings": "jqwidgets-ng-jqxbargauge.d.ts",
+  "metadata": "jqwidgets-ng-jqxbargauge.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxbargauge"
+}

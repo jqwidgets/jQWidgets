@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { jqxNumberInputComponent } from './angular_jqxnumberinput';
+export { jqxNumberInputModule } from './angular_jqxnumberinput.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2pxd2lkZ2V0cy1uZy9qcXhudW1iZXJpbnB1dC8iLCJzb3VyY2VzIjpbInB1YmxpY19hcGkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLHdDQUFjLDBCQUEwQixDQUFDO0FBQ3pDLHFDQUFjLGlDQUFpQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9hbmd1bGFyX2pxeG51bWJlcmlucHV0JztcbmV4cG9ydCAqIGZyb20gJy4vYW5ndWxhcl9qcXhudW1iZXJpbnB1dC5tb2R1bGUnO1xuIl19

@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.2.0 (2019-Apr)
+jQWidgets v8.0.0 (2019-May)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -192,140 +192,140 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 Object.defineProperty(that, 'disabled', {
-                    get() {
+                    get: function() {
                         return that._disabled();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._disabled(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'height', {
-                    get() {
+                    get: function() {
                         return that._height();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._height(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'localization', {
-                    get() {
+                    get: function() {
                         return that._localization();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._localization(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'maxLength', {
-                    get() {
+                    get: function() {
                         return that._maxLength();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._maxLength(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'placeHolder', {
-                    get() {
+                    get: function() {
                         return that._placeHolder();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._placeHolder(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'passwordStrength', {
-                    get() {
+                    get: function() {
                         return that._passwordStrength();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._passwordStrength(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rtl', {
-                    get() {
+                    get: function() {
                         return that._rtl();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rtl(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'strengthColors', {
-                    get() {
+                    get: function() {
                         return that._strengthColors();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._strengthColors(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showStrength', {
-                    get() {
+                    get: function() {
                         return that._showStrength();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showStrength(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showStrengthPosition', {
-                    get() {
+                    get: function() {
                         return that._showStrengthPosition();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showStrengthPosition(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'strengthTypeRenderer', {
-                    get() {
+                    get: function() {
                         return that._strengthTypeRenderer();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._strengthTypeRenderer(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showPasswordIcon', {
-                    get() {
+                    get: function() {
                         return that._showPasswordIcon();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showPasswordIcon(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'theme', {
-                    get() {
+                    get: function() {
                         return that._theme();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'width', {
-                    get() {
+                    get: function() {
                         return that._width();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._width(newValue);
                     },
                     enumerable: true,

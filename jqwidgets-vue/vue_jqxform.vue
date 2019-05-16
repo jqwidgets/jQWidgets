@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.2.0 (2019-Apr)
+jQWidgets v8.0.0 (2019-May)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -151,50 +151,50 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 Object.defineProperty(that, 'padding', {
-                    get() {
+                    get: function() {
                         return that._padding();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._padding(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'backgroundColor', {
-                    get() {
+                    get: function() {
                         return that._backgroundColor();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._backgroundColor(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'borderColor', {
-                    get() {
+                    get: function() {
                         return that._borderColor();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._borderColor(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'value', {
-                    get() {
+                    get: function() {
                         return that._value();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._value(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'template', {
-                    get() {
+                    get: function() {
                         return that._template();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._template(newValue);
                     },
                     enumerable: true,

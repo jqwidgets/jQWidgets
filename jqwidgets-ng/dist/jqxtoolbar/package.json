@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxtoolbar.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxtoolbar.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxtoolbar.js",
+  "esm5": "../esm5/jqxtoolbar/jqwidgets-ng-jqxtoolbar.js",
+  "esm2015": "../esm2015/jqxtoolbar/jqwidgets-ng-jqxtoolbar.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxtoolbar.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxtoolbar.js",
+  "typings": "jqwidgets-ng-jqxtoolbar.d.ts",
+  "metadata": "jqwidgets-ng-jqxtoolbar.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxtoolbar"
+}

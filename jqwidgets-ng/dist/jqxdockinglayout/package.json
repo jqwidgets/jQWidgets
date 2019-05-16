@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxdockinglayout.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxdockinglayout.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxdockinglayout.js",
+  "esm5": "../esm5/jqxdockinglayout/jqwidgets-ng-jqxdockinglayout.js",
+  "esm2015": "../esm2015/jqxdockinglayout/jqwidgets-ng-jqxdockinglayout.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxdockinglayout.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxdockinglayout.js",
+  "typings": "jqwidgets-ng-jqxdockinglayout.d.ts",
+  "metadata": "jqwidgets-ng-jqxdockinglayout.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxdockinglayout"
+}

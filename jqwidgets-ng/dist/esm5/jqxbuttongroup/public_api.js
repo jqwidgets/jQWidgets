@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { jqxButtonGroupComponent } from './angular_jqxbuttongroup';
+export { jqxButtonGroupModule } from './angular_jqxbuttongroup.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2pxd2lkZ2V0cy1uZy9qcXhidXR0b25ncm91cC8iLCJzb3VyY2VzIjpbInB1YmxpY19hcGkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLHdDQUFjLDBCQUEwQixDQUFDO0FBQ3pDLHFDQUFjLGlDQUFpQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9hbmd1bGFyX2pxeGJ1dHRvbmdyb3VwJztcbmV4cG9ydCAqIGZyb20gJy4vYW5ndWxhcl9qcXhidXR0b25ncm91cC5tb2R1bGUnO1xuIl19

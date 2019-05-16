@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.2.0 (2019-Apr)
+jQWidgets v8.0.0 (2019-May)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -1315,1140 +1315,1140 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 Object.defineProperty(that, 'altrows', {
-                    get() {
+                    get: function() {
                         return that._altrows();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._altrows(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'altstart', {
-                    get() {
+                    get: function() {
                         return that._altstart();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._altstart(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'altstep', {
-                    get() {
+                    get: function() {
                         return that._altstep();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._altstep(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'autoshowloadelement', {
-                    get() {
+                    get: function() {
                         return that._autoshowloadelement();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._autoshowloadelement(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'autoshowfiltericon', {
-                    get() {
+                    get: function() {
                         return that._autoshowfiltericon();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._autoshowfiltericon(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'autoshowcolumnsmenubutton', {
-                    get() {
+                    get: function() {
                         return that._autoshowcolumnsmenubutton();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._autoshowcolumnsmenubutton(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showcolumnlines', {
-                    get() {
+                    get: function() {
                         return that._showcolumnlines();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showcolumnlines(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showrowlines', {
-                    get() {
+                    get: function() {
                         return that._showrowlines();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showrowlines(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showcolumnheaderlines', {
-                    get() {
+                    get: function() {
                         return that._showcolumnheaderlines();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showcolumnheaderlines(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'adaptive', {
-                    get() {
+                    get: function() {
                         return that._adaptive();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._adaptive(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'adaptivewidth', {
-                    get() {
+                    get: function() {
                         return that._adaptivewidth();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._adaptivewidth(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'clipboard', {
-                    get() {
+                    get: function() {
                         return that._clipboard();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._clipboard(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'closeablegroups', {
-                    get() {
+                    get: function() {
                         return that._closeablegroups();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._closeablegroups(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'columnsmenuwidth', {
-                    get() {
+                    get: function() {
                         return that._columnsmenuwidth();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._columnsmenuwidth(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'columnmenuopening', {
-                    get() {
+                    get: function() {
                         return that._columnmenuopening();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._columnmenuopening(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'columnmenuclosing', {
-                    get() {
+                    get: function() {
                         return that._columnmenuclosing();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._columnmenuclosing(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'cellhover', {
-                    get() {
+                    get: function() {
                         return that._cellhover();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._cellhover(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'enablekeyboarddelete', {
-                    get() {
+                    get: function() {
                         return that._enablekeyboarddelete();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._enablekeyboarddelete(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'enableellipsis', {
-                    get() {
+                    get: function() {
                         return that._enableellipsis();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._enableellipsis(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'enablemousewheel', {
-                    get() {
+                    get: function() {
                         return that._enablemousewheel();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._enablemousewheel(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'enableanimations', {
-                    get() {
+                    get: function() {
                         return that._enableanimations();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._enableanimations(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'enabletooltips', {
-                    get() {
+                    get: function() {
                         return that._enabletooltips();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._enabletooltips(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'enablehover', {
-                    get() {
+                    get: function() {
                         return that._enablehover();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._enablehover(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'enablebrowserselection', {
-                    get() {
+                    get: function() {
                         return that._enablebrowserselection();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._enablebrowserselection(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'everpresentrowposition', {
-                    get() {
+                    get: function() {
                         return that._everpresentrowposition();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._everpresentrowposition(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'everpresentrowheight', {
-                    get() {
+                    get: function() {
                         return that._everpresentrowheight();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._everpresentrowheight(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'everpresentrowactions', {
-                    get() {
+                    get: function() {
                         return that._everpresentrowactions();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._everpresentrowactions(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'everpresentrowactionsmode', {
-                    get() {
+                    get: function() {
                         return that._everpresentrowactionsmode();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._everpresentrowactionsmode(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'filterrowheight', {
-                    get() {
+                    get: function() {
                         return that._filterrowheight();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._filterrowheight(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'filtermode', {
-                    get() {
+                    get: function() {
                         return that._filtermode();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._filtermode(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'groupsrenderer', {
-                    get() {
+                    get: function() {
                         return that._groupsrenderer();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._groupsrenderer(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'groupcolumnrenderer', {
-                    get() {
+                    get: function() {
                         return that._groupcolumnrenderer();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._groupcolumnrenderer(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'groupsexpandedbydefault', {
-                    get() {
+                    get: function() {
                         return that._groupsexpandedbydefault();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._groupsexpandedbydefault(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'handlekeyboardnavigation', {
-                    get() {
+                    get: function() {
                         return that._handlekeyboardnavigation();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._handlekeyboardnavigation(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'pagerrenderer', {
-                    get() {
+                    get: function() {
                         return that._pagerrenderer();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._pagerrenderer(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rtl', {
-                    get() {
+                    get: function() {
                         return that._rtl();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rtl(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showdefaultloadelement', {
-                    get() {
+                    get: function() {
                         return that._showdefaultloadelement();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showdefaultloadelement(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showfiltercolumnbackground', {
-                    get() {
+                    get: function() {
                         return that._showfiltercolumnbackground();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showfiltercolumnbackground(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showfiltermenuitems', {
-                    get() {
+                    get: function() {
                         return that._showfiltermenuitems();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showfiltermenuitems(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showpinnedcolumnbackground', {
-                    get() {
+                    get: function() {
                         return that._showpinnedcolumnbackground();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showpinnedcolumnbackground(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showsortcolumnbackground', {
-                    get() {
+                    get: function() {
                         return that._showsortcolumnbackground();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showsortcolumnbackground(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showsortmenuitems', {
-                    get() {
+                    get: function() {
                         return that._showsortmenuitems();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showsortmenuitems(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showgroupmenuitems', {
-                    get() {
+                    get: function() {
                         return that._showgroupmenuitems();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showgroupmenuitems(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showrowdetailscolumn', {
-                    get() {
+                    get: function() {
                         return that._showrowdetailscolumn();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showrowdetailscolumn(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showheader', {
-                    get() {
+                    get: function() {
                         return that._showheader();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showheader(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showgroupsheader', {
-                    get() {
+                    get: function() {
                         return that._showgroupsheader();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showgroupsheader(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showaggregates', {
-                    get() {
+                    get: function() {
                         return that._showaggregates();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showaggregates(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showgroupaggregates', {
-                    get() {
+                    get: function() {
                         return that._showgroupaggregates();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showgroupaggregates(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showeverpresentrow', {
-                    get() {
+                    get: function() {
                         return that._showeverpresentrow();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showeverpresentrow(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showfilterrow', {
-                    get() {
+                    get: function() {
                         return that._showfilterrow();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showfilterrow(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showemptyrow', {
-                    get() {
+                    get: function() {
                         return that._showemptyrow();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showemptyrow(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showstatusbar', {
-                    get() {
+                    get: function() {
                         return that._showstatusbar();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showstatusbar(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'statusbarheight', {
-                    get() {
+                    get: function() {
                         return that._statusbarheight();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._statusbarheight(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'showtoolbar', {
-                    get() {
+                    get: function() {
                         return that._showtoolbar();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._showtoolbar(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'selectionmode', {
-                    get() {
+                    get: function() {
                         return that._selectionmode();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._selectionmode(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'updatefilterconditions', {
-                    get() {
+                    get: function() {
                         return that._updatefilterconditions();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._updatefilterconditions(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'updatefilterpanel', {
-                    get() {
+                    get: function() {
                         return that._updatefilterpanel();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._updatefilterpanel(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'theme', {
-                    get() {
+                    get: function() {
                         return that._theme();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'toolbarheight', {
-                    get() {
+                    get: function() {
                         return that._toolbarheight();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._toolbarheight(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'autoheight', {
-                    get() {
+                    get: function() {
                         return that._autoheight();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._autoheight(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'autorowheight', {
-                    get() {
+                    get: function() {
                         return that._autorowheight();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._autorowheight(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'columnsheight', {
-                    get() {
+                    get: function() {
                         return that._columnsheight();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._columnsheight(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'deferreddatafields', {
-                    get() {
+                    get: function() {
                         return that._deferreddatafields();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._deferreddatafields(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'groupsheaderheight', {
-                    get() {
+                    get: function() {
                         return that._groupsheaderheight();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._groupsheaderheight(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'groupindentwidth', {
-                    get() {
+                    get: function() {
                         return that._groupindentwidth();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._groupindentwidth(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'height', {
-                    get() {
+                    get: function() {
                         return that._height();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._height(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'pagerheight', {
-                    get() {
+                    get: function() {
                         return that._pagerheight();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._pagerheight(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rowsheight', {
-                    get() {
+                    get: function() {
                         return that._rowsheight();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rowsheight(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'scrollbarsize', {
-                    get() {
+                    get: function() {
                         return that._scrollbarsize();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._scrollbarsize(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'scrollmode', {
-                    get() {
+                    get: function() {
                         return that._scrollmode();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._scrollmode(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'scrollfeedback', {
-                    get() {
+                    get: function() {
                         return that._scrollfeedback();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._scrollfeedback(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'width', {
-                    get() {
+                    get: function() {
                         return that._width();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._width(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'autosavestate', {
-                    get() {
+                    get: function() {
                         return that._autosavestate();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._autosavestate(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'autoloadstate', {
-                    get() {
+                    get: function() {
                         return that._autoloadstate();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._autoloadstate(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'columns', {
-                    get() {
+                    get: function() {
                         return that._columns();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._columns(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'columngroups', {
-                    get() {
+                    get: function() {
                         return that._columngroups();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._columngroups(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'columnsmenu', {
-                    get() {
+                    get: function() {
                         return that._columnsmenu();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._columnsmenu(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'columnsresize', {
-                    get() {
+                    get: function() {
                         return that._columnsresize();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._columnsresize(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'columnsautoresize', {
-                    get() {
+                    get: function() {
                         return that._columnsautoresize();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._columnsautoresize(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'columnsreorder', {
-                    get() {
+                    get: function() {
                         return that._columnsreorder();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._columnsreorder(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'disabled', {
-                    get() {
+                    get: function() {
                         return that._disabled();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._disabled(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'editable', {
-                    get() {
+                    get: function() {
                         return that._editable();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._editable(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'editmode', {
-                    get() {
+                    get: function() {
                         return that._editmode();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._editmode(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'filter', {
-                    get() {
+                    get: function() {
                         return that._filter();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._filter(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'filterable', {
-                    get() {
+                    get: function() {
                         return that._filterable();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._filterable(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'groupable', {
-                    get() {
+                    get: function() {
                         return that._groupable();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._groupable(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'groups', {
-                    get() {
+                    get: function() {
                         return that._groups();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._groups(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'horizontalscrollbarstep', {
-                    get() {
+                    get: function() {
                         return that._horizontalscrollbarstep();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._horizontalscrollbarstep(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'horizontalscrollbarlargestep', {
-                    get() {
+                    get: function() {
                         return that._horizontalscrollbarlargestep();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._horizontalscrollbarlargestep(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'initrowdetails', {
-                    get() {
+                    get: function() {
                         return that._initrowdetails();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._initrowdetails(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'keyboardnavigation', {
-                    get() {
+                    get: function() {
                         return that._keyboardnavigation();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._keyboardnavigation(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'localization', {
-                    get() {
+                    get: function() {
                         return that._localization();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._localization(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'pagesize', {
-                    get() {
+                    get: function() {
                         return that._pagesize();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._pagesize(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'pagesizeoptions', {
-                    get() {
+                    get: function() {
                         return that._pagesizeoptions();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._pagesizeoptions(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'pagermode', {
-                    get() {
+                    get: function() {
                         return that._pagermode();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._pagermode(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'pagerbuttonscount', {
-                    get() {
+                    get: function() {
                         return that._pagerbuttonscount();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._pagerbuttonscount(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'pageable', {
-                    get() {
+                    get: function() {
                         return that._pageable();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._pageable(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rowdetails', {
-                    get() {
+                    get: function() {
                         return that._rowdetails();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rowdetails(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rowdetailstemplate', {
-                    get() {
+                    get: function() {
                         return that._rowdetailstemplate();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rowdetailstemplate(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'ready', {
-                    get() {
+                    get: function() {
                         return that._ready();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._ready(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rendered', {
-                    get() {
+                    get: function() {
                         return that._rendered();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rendered(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'renderstatusbar', {
-                    get() {
+                    get: function() {
                         return that._renderstatusbar();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._renderstatusbar(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rendertoolbar', {
-                    get() {
+                    get: function() {
                         return that._rendertoolbar();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rendertoolbar(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rendergridrows', {
-                    get() {
+                    get: function() {
                         return that._rendergridrows();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rendergridrows(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'sortable', {
-                    get() {
+                    get: function() {
                         return that._sortable();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._sortable(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'sortmode', {
-                    get() {
+                    get: function() {
                         return that._sortmode();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._sortmode(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'selectedrowindex', {
-                    get() {
+                    get: function() {
                         return that._selectedrowindex();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._selectedrowindex(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'selectedrowindexes', {
-                    get() {
+                    get: function() {
                         return that._selectedrowindexes();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._selectedrowindexes(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'source', {
-                    get() {
+                    get: function() {
                         return that._source();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._source(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'sorttogglestates', {
-                    get() {
+                    get: function() {
                         return that._sorttogglestates();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._sorttogglestates(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'updatedelay', {
-                    get() {
+                    get: function() {
                         return that._updatedelay();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._updatedelay(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'virtualmode', {
-                    get() {
+                    get: function() {
                         return that._virtualmode();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._virtualmode(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'verticalscrollbarstep', {
-                    get() {
+                    get: function() {
                         return that._verticalscrollbarstep();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._verticalscrollbarstep(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'verticalscrollbarlargestep', {
-                    get() {
+                    get: function() {
                         return that._verticalscrollbarlargestep();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._verticalscrollbarlargestep(newValue);
                     },
                     enumerable: true,

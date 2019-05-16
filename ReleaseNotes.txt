@@ -1,4 +1,28 @@
 ﻿*********************************************
+* jQWidgets v8.0.0 Release, May-16-2019                *
+*********************************************
+
+What's New: 
+
+- Material ColorPicker Javascript component.
+
+What's Improved:
+
+- Angular 8 components integration.
+
+What's Fixed:
+
+- Fixed an issue in jqxScheduler regarding the Edit Appointment dialog.
+- Fixed an issue in jqxScheduler regarding the weekly recurring appointments when localization is applied. 
+- Fixed an issue in jqxDateTimeInput Vue component.
+- Fixed an issue in jqxInput regarding the maxlength property with material themes.
+- Fixed an issue in jqxInput regarding its 'close' event.
+- Fixed an issue in jqxNumberInput regarding the Null value support with material themes.
+- Fixed an issue in jqxPasswordInput regarding its placeholder with material themes.
+- Fixed an issue in jqxDateTimeInput Angular component regarding the placeholder property.
+
+
+*********************************************
 * jQWidgets v7.2.0 Release, Apr-15-2019                 *
 *********************************************
 

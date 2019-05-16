@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxpanel.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxpanel.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxpanel.js",
+  "esm5": "../esm5/jqxpanel/jqwidgets-ng-jqxpanel.js",
+  "esm2015": "../esm2015/jqxpanel/jqwidgets-ng-jqxpanel.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxpanel.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxpanel.js",
+  "typings": "jqwidgets-ng-jqxpanel.d.ts",
+  "metadata": "jqwidgets-ng-jqxpanel.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxpanel"
+}

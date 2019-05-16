@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.2.0 (2019-Apr)
+jQWidgets v8.0.0 (2019-May)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -164,90 +164,90 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 Object.defineProperty(that, 'contextMenu', {
-                    get() {
+                    get: function() {
                         return that._contextMenu();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._contextMenu(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'height', {
-                    get() {
+                    get: function() {
                         return that._height();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._height(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'layout', {
-                    get() {
+                    get: function() {
                         return that._layout();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._layout(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'minGroupHeight', {
-                    get() {
+                    get: function() {
                         return that._minGroupHeight();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._minGroupHeight(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'minGroupWidth', {
-                    get() {
+                    get: function() {
                         return that._minGroupWidth();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._minGroupWidth(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'resizable', {
-                    get() {
+                    get: function() {
                         return that._resizable();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._resizable(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rtl', {
-                    get() {
+                    get: function() {
                         return that._rtl();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rtl(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'theme', {
-                    get() {
+                    get: function() {
                         return that._theme();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'width', {
-                    get() {
+                    get: function() {
                         return that._width();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._width(newValue);
                     },
                     enumerable: true,

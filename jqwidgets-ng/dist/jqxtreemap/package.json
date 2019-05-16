@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxtreemap.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxtreemap.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxtreemap.js",
+  "esm5": "../esm5/jqxtreemap/jqwidgets-ng-jqxtreemap.js",
+  "esm2015": "../esm2015/jqxtreemap/jqwidgets-ng-jqxtreemap.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxtreemap.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxtreemap.js",
+  "typings": "jqwidgets-ng-jqxtreemap.d.ts",
+  "metadata": "jqwidgets-ng-jqxtreemap.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxtreemap"
+}

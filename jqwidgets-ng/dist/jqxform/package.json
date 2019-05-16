@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxform.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxform.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxform.js",
+  "esm5": "../esm5/jqxform/jqwidgets-ng-jqxform.js",
+  "esm2015": "../esm2015/jqxform/jqwidgets-ng-jqxform.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxform.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxform.js",
+  "typings": "jqwidgets-ng-jqxform.d.ts",
+  "metadata": "jqwidgets-ng-jqxform.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxform"
+}

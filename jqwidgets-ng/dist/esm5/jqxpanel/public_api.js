@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { jqxPanelComponent } from './angular_jqxpanel';
+export { jqxPanelModule } from './angular_jqxpanel.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2pxd2lkZ2V0cy1uZy9qcXhwYW5lbC8iLCJzb3VyY2VzIjpbInB1YmxpY19hcGkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLGtDQUFjLG9CQUFvQixDQUFDO0FBQ25DLCtCQUFjLDJCQUEyQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9hbmd1bGFyX2pxeHBhbmVsJztcbmV4cG9ydCAqIGZyb20gJy4vYW5ndWxhcl9qcXhwYW5lbC5tb2R1bGUnO1xuIl19

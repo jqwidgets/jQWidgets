@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxdatetimeinput.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxdatetimeinput.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxdatetimeinput.js",
+  "esm5": "../esm5/jqxdatetimeinput/jqwidgets-ng-jqxdatetimeinput.js",
+  "esm2015": "../esm2015/jqxdatetimeinput/jqwidgets-ng-jqxdatetimeinput.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxdatetimeinput.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxdatetimeinput.js",
+  "typings": "jqwidgets-ng-jqxdatetimeinput.d.ts",
+  "metadata": "jqwidgets-ng-jqxdatetimeinput.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxdatetimeinput"
+}

@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxtooltip.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxtooltip.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxtooltip.js",
+  "esm5": "../esm5/jqxtooltip/jqwidgets-ng-jqxtooltip.js",
+  "esm2015": "../esm2015/jqxtooltip/jqwidgets-ng-jqxtooltip.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxtooltip.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxtooltip.js",
+  "typings": "jqwidgets-ng-jqxtooltip.d.ts",
+  "metadata": "jqwidgets-ng-jqxtooltip.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxtooltip"
+}

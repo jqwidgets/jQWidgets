@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { jqxLinkButtonComponent } from './angular_jqxlinkbutton';
+export { jqxLinkButtonModule } from './angular_jqxlinkbutton.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2pxd2lkZ2V0cy1uZy9qcXhsaW5rYnV0dG9uLyIsInNvdXJjZXMiOlsicHVibGljX2FwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsdUNBQWMseUJBQXlCLENBQUM7QUFDeEMsb0NBQWMsZ0NBQWdDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgKiBmcm9tICcuL2FuZ3VsYXJfanF4bGlua2J1dHRvbic7XG5leHBvcnQgKiBmcm9tICcuL2FuZ3VsYXJfanF4bGlua2J1dHRvbi5tb2R1bGUnO1xuIl19

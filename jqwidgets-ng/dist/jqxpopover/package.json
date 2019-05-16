@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxpopover.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxpopover.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxpopover.js",
+  "esm5": "../esm5/jqxpopover/jqwidgets-ng-jqxpopover.js",
+  "esm2015": "../esm2015/jqxpopover/jqwidgets-ng-jqxpopover.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxpopover.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxpopover.js",
+  "typings": "jqwidgets-ng-jqxpopover.d.ts",
+  "metadata": "jqwidgets-ng-jqxpopover.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxpopover"
+}

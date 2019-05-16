@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxlistmenu.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxlistmenu.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxlistmenu.js",
+  "esm5": "../esm5/jqxlistmenu/jqwidgets-ng-jqxlistmenu.js",
+  "esm2015": "../esm2015/jqxlistmenu/jqwidgets-ng-jqxlistmenu.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxlistmenu.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxlistmenu.js",
+  "typings": "jqwidgets-ng-jqxlistmenu.d.ts",
+  "metadata": "jqwidgets-ng-jqxlistmenu.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxlistmenu"
+}

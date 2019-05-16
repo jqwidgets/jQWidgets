@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxexpander.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxexpander.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxexpander.js",
+  "esm5": "../esm5/jqxexpander/jqwidgets-ng-jqxexpander.js",
+  "esm2015": "../esm2015/jqxexpander/jqwidgets-ng-jqxexpander.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxexpander.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxexpander.js",
+  "typings": "jqwidgets-ng-jqxexpander.d.ts",
+  "metadata": "jqwidgets-ng-jqxexpander.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxexpander"
+}

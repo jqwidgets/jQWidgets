@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxdropdownlist.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxdropdownlist.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxdropdownlist.js",
+  "esm5": "../esm5/jqxdropdownlist/jqwidgets-ng-jqxdropdownlist.js",
+  "esm2015": "../esm2015/jqxdropdownlist/jqwidgets-ng-jqxdropdownlist.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxdropdownlist.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxdropdownlist.js",
+  "typings": "jqwidgets-ng-jqxdropdownlist.d.ts",
+  "metadata": "jqwidgets-ng-jqxdropdownlist.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxdropdownlist"
+}

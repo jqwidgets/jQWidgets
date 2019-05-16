@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.2.0 (2019-Apr)
+jQWidgets v8.0.0 (2019-May)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -200,130 +200,130 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 Object.defineProperty(that, 'createCommand', {
-                    get() {
+                    get: function() {
                         return that._createCommand();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._createCommand(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'disabled', {
-                    get() {
+                    get: function() {
                         return that._disabled();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._disabled(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'editable', {
-                    get() {
+                    get: function() {
                         return that._editable();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._editable(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'height', {
-                    get() {
+                    get: function() {
                         return that._height();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._height(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'lineBreak', {
-                    get() {
+                    get: function() {
                         return that._lineBreak();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._lineBreak(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'localization', {
-                    get() {
+                    get: function() {
                         return that._localization();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._localization(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'pasteMode', {
-                    get() {
+                    get: function() {
                         return that._pasteMode();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._pasteMode(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rtl', {
-                    get() {
+                    get: function() {
                         return that._rtl();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rtl(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'stylesheets', {
-                    get() {
+                    get: function() {
                         return that._stylesheets();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._stylesheets(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'theme', {
-                    get() {
+                    get: function() {
                         return that._theme();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'toolbarPosition', {
-                    get() {
+                    get: function() {
                         return that._toolbarPosition();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._toolbarPosition(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'tools', {
-                    get() {
+                    get: function() {
                         return that._tools();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._tools(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'width', {
-                    get() {
+                    get: function() {
                         return that._width();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._width(newValue);
                     },
                     enumerable: true,

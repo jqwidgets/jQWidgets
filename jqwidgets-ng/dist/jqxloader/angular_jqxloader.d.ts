@@ -1,0 +1,43 @@
+/// <reference path="../jqwidgets.d.ts" />
+import { ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+export declare class jqxLoaderComponent implements OnChanges {
+    attrAutoOpen: boolean;
+    attrHtml: string;
+    attrIsModal: boolean;
+    attrImagePosition: string;
+    attrRtl: boolean;
+    attrText: number | string;
+    attrTextPosition: string;
+    attrTheme: string;
+    attrWidth: string | number;
+    attrHeight: string | number;
+    autoCreate: boolean;
+    properties: string[];
+    host: any;
+    elementRef: ElementRef;
+    widgetObject: jqwidgets.jqxLoader;
+    constructor(containerElement: ElementRef);
+    ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): boolean;
+    arraysEqual(attrValue: any, hostValue: any): boolean;
+    manageAttributes(): any;
+    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void;
+    moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void;
+    createComponent(options?: any): void;
+    createWidget(options?: any): void;
+    __updateRect__(): void;
+    setOptions(options: any): void;
+    autoOpen(arg?: boolean): boolean;
+    height(arg?: string | number): string | number;
+    html(arg?: string): string;
+    isModal(arg?: boolean): boolean;
+    imagePosition(arg?: string): string;
+    rtl(arg?: boolean): boolean;
+    text(arg?: number | string): number | string;
+    textPosition(arg?: string): string;
+    theme(arg?: string): string;
+    width(arg?: string | number): string | number;
+    close(): void;
+    open(left?: number | string, top?: number | string): void;
+    __wireEvents__(): void;
+}

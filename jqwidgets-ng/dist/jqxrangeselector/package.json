@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxrangeselector.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxrangeselector.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxrangeselector.js",
+  "esm5": "../esm5/jqxrangeselector/jqwidgets-ng-jqxrangeselector.js",
+  "esm2015": "../esm2015/jqxrangeselector/jqwidgets-ng-jqxrangeselector.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxrangeselector.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxrangeselector.js",
+  "typings": "jqwidgets-ng-jqxrangeselector.d.ts",
+  "metadata": "jqwidgets-ng-jqxrangeselector.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxrangeselector"
+}

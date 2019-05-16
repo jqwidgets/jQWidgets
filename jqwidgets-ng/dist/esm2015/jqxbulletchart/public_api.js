@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { jqxBulletChartComponent } from './angular_jqxbulletchart';
+export { jqxBulletChartModule } from './angular_jqxbulletchart.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2pxd2lkZ2V0cy1uZy9qcXhidWxsZXRjaGFydC8iLCJzb3VyY2VzIjpbInB1YmxpY19hcGkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLHdDQUFjLDBCQUEwQixDQUFDO0FBQ3pDLHFDQUFjLGlDQUFpQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9hbmd1bGFyX2pxeGJ1bGxldGNoYXJ0JztcbmV4cG9ydCAqIGZyb20gJy4vYW5ndWxhcl9qcXhidWxsZXRjaGFydC5tb2R1bGUnO1xuIl19

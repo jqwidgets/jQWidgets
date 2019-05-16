@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxprogressbar.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxprogressbar.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxprogressbar.js",
+  "esm5": "../esm5/jqxprogressbar/jqwidgets-ng-jqxprogressbar.js",
+  "esm2015": "../esm2015/jqxprogressbar/jqwidgets-ng-jqxprogressbar.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxprogressbar.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxprogressbar.js",
+  "typings": "jqwidgets-ng-jqxprogressbar.d.ts",
+  "metadata": "jqwidgets-ng-jqxprogressbar.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxprogressbar"
+}

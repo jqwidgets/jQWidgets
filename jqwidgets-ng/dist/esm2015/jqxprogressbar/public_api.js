@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { jqxProgressBarComponent } from './angular_jqxprogressbar';
+export { jqxProgressBarModule } from './angular_jqxprogressbar.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2pxd2lkZ2V0cy1uZy9qcXhwcm9ncmVzc2Jhci8iLCJzb3VyY2VzIjpbInB1YmxpY19hcGkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLHdDQUFjLDBCQUEwQixDQUFDO0FBQ3pDLHFDQUFjLGlDQUFpQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9hbmd1bGFyX2pxeHByb2dyZXNzYmFyJztcbmV4cG9ydCAqIGZyb20gJy4vYW5ndWxhcl9qcXhwcm9ncmVzc2Jhci5tb2R1bGUnO1xuIl19

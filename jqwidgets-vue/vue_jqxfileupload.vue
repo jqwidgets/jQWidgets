@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.2.0 (2019-Apr)
+jQWidgets v8.0.0 (2019-May)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -213,150 +213,150 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 Object.defineProperty(that, 'autoUpload', {
-                    get() {
+                    get: function() {
                         return that._autoUpload();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._autoUpload(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'accept', {
-                    get() {
+                    get: function() {
                         return that._accept();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._accept(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'browseTemplate', {
-                    get() {
+                    get: function() {
                         return that._browseTemplate();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._browseTemplate(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'cancelTemplate', {
-                    get() {
+                    get: function() {
                         return that._cancelTemplate();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._cancelTemplate(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'disabled', {
-                    get() {
+                    get: function() {
                         return that._disabled();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._disabled(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'fileInputName', {
-                    get() {
+                    get: function() {
                         return that._fileInputName();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._fileInputName(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'height', {
-                    get() {
+                    get: function() {
                         return that._height();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._height(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'localization', {
-                    get() {
+                    get: function() {
                         return that._localization();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._localization(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'multipleFilesUpload', {
-                    get() {
+                    get: function() {
                         return that._multipleFilesUpload();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._multipleFilesUpload(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'renderFiles', {
-                    get() {
+                    get: function() {
                         return that._renderFiles();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._renderFiles(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rtl', {
-                    get() {
+                    get: function() {
                         return that._rtl();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rtl(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'theme', {
-                    get() {
+                    get: function() {
                         return that._theme();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'uploadUrl', {
-                    get() {
+                    get: function() {
                         return that._uploadUrl();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._uploadUrl(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'uploadTemplate', {
-                    get() {
+                    get: function() {
                         return that._uploadTemplate();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._uploadTemplate(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'width', {
-                    get() {
+                    get: function() {
                         return that._width();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._width(newValue);
                     },
                     enumerable: true,

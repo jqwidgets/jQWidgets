@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxtextarea.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxtextarea.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxtextarea.js",
+  "esm5": "../esm5/jqxtextarea/jqwidgets-ng-jqxtextarea.js",
+  "esm2015": "../esm2015/jqxtextarea/jqwidgets-ng-jqxtextarea.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxtextarea.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxtextarea.js",
+  "typings": "jqwidgets-ng-jqxtextarea.d.ts",
+  "metadata": "jqwidgets-ng-jqxtextarea.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxtextarea"
+}

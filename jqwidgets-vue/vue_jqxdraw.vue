@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.2.0 (2019-Apr)
+jQWidgets v8.0.0 (2019-May)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -124,10 +124,10 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 Object.defineProperty(that, 'renderEngine', {
-                    get() {
+                    get: function() {
                         return that._renderEngine();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._renderEngine(newValue);
                     },
                     enumerable: true,

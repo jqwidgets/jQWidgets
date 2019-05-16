@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxchart.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxchart.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxchart.js",
+  "esm5": "../esm5/jqxchart/jqwidgets-ng-jqxchart.js",
+  "esm2015": "../esm2015/jqxchart/jqwidgets-ng-jqxchart.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxchart.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxchart.js",
+  "typings": "jqwidgets-ng-jqxchart.d.ts",
+  "metadata": "jqwidgets-ng-jqxchart.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxchart"
+}

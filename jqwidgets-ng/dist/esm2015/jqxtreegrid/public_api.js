@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { jqxTreeGridComponent } from './angular_jqxtreegrid';
+export { jqxTreeGridModule } from './angular_jqxtreegrid.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2pxd2lkZ2V0cy1uZy9qcXh0cmVlZ3JpZC8iLCJzb3VyY2VzIjpbInB1YmxpY19hcGkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLHFDQUFjLHVCQUF1QixDQUFDO0FBQ3RDLGtDQUFjLDhCQUE4QixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSAnLi9hbmd1bGFyX2pxeHRyZWVncmlkJztcbmV4cG9ydCAqIGZyb20gJy4vYW5ndWxhcl9qcXh0cmVlZ3JpZC5tb2R1bGUnO1xuIl19

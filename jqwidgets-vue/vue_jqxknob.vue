@@ -1,5 +1,5 @@
 /*
-jQWidgets v7.2.0 (2019-Apr)
+jQWidgets v8.0.0 (2019-May)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -279,250 +279,250 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 Object.defineProperty(that, 'allowValueChangeOnClick', {
-                    get() {
+                    get: function() {
                         return that._allowValueChangeOnClick();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._allowValueChangeOnClick(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'allowValueChangeOnDrag', {
-                    get() {
+                    get: function() {
                         return that._allowValueChangeOnDrag();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._allowValueChangeOnDrag(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'allowValueChangeOnMouseWheel', {
-                    get() {
+                    get: function() {
                         return that._allowValueChangeOnMouseWheel();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._allowValueChangeOnMouseWheel(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'changing', {
-                    get() {
+                    get: function() {
                         return that._changing();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._changing(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'dragEndAngle', {
-                    get() {
+                    get: function() {
                         return that._dragEndAngle();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._dragEndAngle(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'dragStartAngle', {
-                    get() {
+                    get: function() {
                         return that._dragStartAngle();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._dragStartAngle(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'disabled', {
-                    get() {
+                    get: function() {
                         return that._disabled();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._disabled(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'dial', {
-                    get() {
+                    get: function() {
                         return that._dial();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._dial(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'endAngle', {
-                    get() {
+                    get: function() {
                         return that._endAngle();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._endAngle(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'height', {
-                    get() {
+                    get: function() {
                         return that._height();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._height(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'labels', {
-                    get() {
+                    get: function() {
                         return that._labels();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._labels(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'marks', {
-                    get() {
+                    get: function() {
                         return that._marks();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._marks(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'min', {
-                    get() {
+                    get: function() {
                         return that._min();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._min(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'max', {
-                    get() {
+                    get: function() {
                         return that._max();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._max(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'progressBar', {
-                    get() {
+                    get: function() {
                         return that._progressBar();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._progressBar(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'pointer', {
-                    get() {
+                    get: function() {
                         return that._pointer();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._pointer(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'pointerGrabAction', {
-                    get() {
+                    get: function() {
                         return that._pointerGrabAction();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._pointerGrabAction(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rotation', {
-                    get() {
+                    get: function() {
                         return that._rotation();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rotation(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'startAngle', {
-                    get() {
+                    get: function() {
                         return that._startAngle();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._startAngle(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'spinner', {
-                    get() {
+                    get: function() {
                         return that._spinner();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._spinner(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'styles', {
-                    get() {
+                    get: function() {
                         return that._styles();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._styles(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'step', {
-                    get() {
+                    get: function() {
                         return that._step();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._step(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'snapToStep', {
-                    get() {
+                    get: function() {
                         return that._snapToStep();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._snapToStep(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'value', {
-                    get() {
+                    get: function() {
                         return that._value();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._value(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'width', {
-                    get() {
+                    get: function() {
                         return that._width();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._width(newValue);
                     },
                     enumerable: true,

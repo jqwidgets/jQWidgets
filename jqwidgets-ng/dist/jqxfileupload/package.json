@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxfileupload.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxfileupload.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxfileupload.js",
+  "esm5": "../esm5/jqxfileupload/jqwidgets-ng-jqxfileupload.js",
+  "esm2015": "../esm2015/jqxfileupload/jqwidgets-ng-jqxfileupload.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxfileupload.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxfileupload.js",
+  "typings": "jqwidgets-ng-jqxfileupload.d.ts",
+  "metadata": "jqwidgets-ng-jqxfileupload.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxfileupload"
+}

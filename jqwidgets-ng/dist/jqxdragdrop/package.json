@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxdragdrop.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxdragdrop.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxdragdrop.js",
+  "esm5": "../esm5/jqxdragdrop/jqwidgets-ng-jqxdragdrop.js",
+  "esm2015": "../esm2015/jqxdragdrop/jqwidgets-ng-jqxdragdrop.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxdragdrop.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxdragdrop.js",
+  "typings": "jqwidgets-ng-jqxdragdrop.d.ts",
+  "metadata": "jqwidgets-ng-jqxdragdrop.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxdragdrop"
+}
