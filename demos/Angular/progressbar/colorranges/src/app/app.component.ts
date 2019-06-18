@@ -8,8 +8,8 @@ import { jqxProgressBarComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myProgressBar') myProgressBar: jqxProgressBarComponent;
-    @ViewChild('myVerticalProgressBar') myVerticalProgressBar: jqxProgressBarComponent;
+    @ViewChild('myProgressBar', {static: false}) myProgressBar: jqxProgressBarComponent;
+    @ViewChild('myVerticalProgressBar', {static: false}) myVerticalProgressBar: jqxProgressBarComponent;
 
     ngAfterViewInit(): void {
         let value = 0;

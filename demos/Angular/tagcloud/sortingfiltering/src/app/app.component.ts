@@ -9,11 +9,11 @@ import { jqxDropDownListComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('tagCloud') tagCloud: jqxTagCloudComponent;
-    @ViewChild('sortByListBox') sortByListBox: jqxDropDownListComponent;
-    @ViewChild('sortDirectionListBox') sortDirectionListBox: jqxDropDownListComponent;
-    @ViewChild('minValueListBox') minValueListBox: jqxDropDownListComponent;
-    @ViewChild('maxTagsListBox') maxTagsListBox: jqxDropDownListComponent;
+    @ViewChild('tagCloud', {static: false}) tagCloud: jqxTagCloudComponent;
+    @ViewChild('sortByListBox', {static: false}) sortByListBox: jqxDropDownListComponent;
+    @ViewChild('sortDirectionListBox', {static: false}) sortDirectionListBox: jqxDropDownListComponent;
+    @ViewChild('minValueListBox', {static: false}) minValueListBox: jqxDropDownListComponent;
+    @ViewChild('maxTagsListBox', {static: false}) maxTagsListBox: jqxDropDownListComponent;
     
     width: number = 200;
     height: number = 25;

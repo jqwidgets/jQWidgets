@@ -8,7 +8,7 @@ import { jqxMenuComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxmenu
 })
 
 export class AppComponent {
-    @ViewChild('menuReference') myMenu: jqxMenuComponent;
+    @ViewChild('menuReference', {static: false}) myMenu: jqxMenuComponent;
 	
 	getWidth() : any {
 		if (document.body.offsetWidth < 600) {

@@ -10,7 +10,7 @@ import { jqxKnobComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxknob
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myKnobOne') myKnobOne: jqxKnobComponent;
+    @ViewChild('myKnobOne', {static: false}) myKnobOne: jqxKnobComponent;
 
     startValue1: number = 60;
     startValue2: number = 60;

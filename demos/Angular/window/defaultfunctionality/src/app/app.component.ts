@@ -8,8 +8,8 @@ import { jqxWindowComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxwi
 })
 
 export class AppComponent {
-    @ViewChild('windowReference') window: jqxWindowComponent;
-    @ViewChild('jqxWidget') jqxWidget: ElementRef;
+    @ViewChild('windowReference', {static: false}) window: jqxWindowComponent;
+    @ViewChild('jqxWidget', {static: false}) jqxWidget: ElementRef;
     
     ngAfterViewInit(): void {
         let offsetLeft = this.jqxWidget.nativeElement.offsetLeft;

@@ -11,7 +11,7 @@ import { jqxDropDownButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angul
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('treeReference') tree: jqxTreeComponent;
+    @ViewChild('treeReference', {static: false}) tree: jqxTreeComponent;
     ngAfterViewInit(): void {
         setTimeout(() => {
             this.tree.selectItem(null);

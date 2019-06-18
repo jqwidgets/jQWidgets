@@ -1,16 +1,11 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxnotification from '../../jqwidgets-scripts/jqwidgets/jqxnotification';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxNotificationComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxNotificationComponent = class jqxNotificationComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['appendContainer', 'autoOpen', 'animationOpenDelay', 'animationCloseDelay', 'autoClose', 'autoCloseDelay', 'blink', 'browserBoundsOffset', 'closeOnClick', 'disabled', 'height', 'hoverOpacity', 'icon', 'notificationOffset', 'opacity', 'position', 'rtl', 'showCloseButton', 'template', 'theme', 'width'];
@@ -20,25 +15,16 @@ class jqxNotificationComponent {
         this.onOpen = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -58,11 +44,6 @@ class jqxNotificationComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -77,14 +58,9 @@ class jqxNotificationComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -92,34 +68,18 @@ class jqxNotificationComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -136,32 +96,17 @@ class jqxNotificationComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxNotification', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxNotification('setOptions', options);
     }
     // jqxNotificationComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     appendContainer(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('appendContainer', arg);
@@ -170,10 +115,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('appendContainer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoOpen(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('autoOpen', arg);
@@ -182,10 +123,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('autoOpen');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationOpenDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('animationOpenDelay', arg);
@@ -194,10 +131,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('animationOpenDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationCloseDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('animationCloseDelay', arg);
@@ -206,10 +139,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('animationCloseDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoClose(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('autoClose', arg);
@@ -218,10 +147,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('autoClose');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoCloseDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('autoCloseDelay', arg);
@@ -230,10 +155,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('autoCloseDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     blink(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('blink', arg);
@@ -242,10 +163,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('blink');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     browserBoundsOffset(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('browserBoundsOffset', arg);
@@ -254,10 +171,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('browserBoundsOffset');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     closeOnClick(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('closeOnClick', arg);
@@ -266,10 +179,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('closeOnClick');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('disabled', arg);
@@ -278,10 +187,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('height', arg);
@@ -290,10 +195,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     hoverOpacity(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('hoverOpacity', arg);
@@ -302,10 +203,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('hoverOpacity');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     icon(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('icon', arg);
@@ -314,10 +211,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('icon');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     notificationOffset(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('notificationOffset', arg);
@@ -326,10 +219,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('notificationOffset');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     opacity(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('opacity', arg);
@@ -338,10 +227,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('opacity');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     position(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('position', arg);
@@ -350,10 +235,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('position');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('rtl', arg);
@@ -362,10 +243,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showCloseButton(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('showCloseButton', arg);
@@ -374,10 +251,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('showCloseButton');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     template(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('template', arg);
@@ -386,10 +259,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('template');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('theme', arg);
@@ -398,10 +267,6 @@ class jqxNotificationComponent {
             return this.host.jqxNotification('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxNotification('width', arg);
@@ -411,125 +276,151 @@ class jqxNotificationComponent {
         }
     }
     // jqxNotificationComponent functions
-    /**
-     * @return {?}
-     */
     closeAll() {
         this.host.jqxNotification('closeAll');
     }
-    /**
-     * @return {?}
-     */
     closeLast() {
         this.host.jqxNotification('closeLast');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxNotification('destroy');
     }
-    /**
-     * @return {?}
-     */
     open() {
         this.host.jqxNotification('open');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxNotification('refresh');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxNotification('render');
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onClose.emit(eventData); }));
-        this.host.on('click', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onClick.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onOpen.emit(eventData); }));
+        this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+        this.host.on('click', (eventData) => { this.onClick.emit(eventData); });
+        this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
     }
-} //jqxNotificationComponent
-jqxNotificationComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxNotification',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxNotificationComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxNotificationComponent.propDecorators = {
-    attrAppendContainer: [{ type: Input, args: ['appendContainer',] }],
-    attrAutoOpen: [{ type: Input, args: ['autoOpen',] }],
-    attrAnimationOpenDelay: [{ type: Input, args: ['animationOpenDelay',] }],
-    attrAnimationCloseDelay: [{ type: Input, args: ['animationCloseDelay',] }],
-    attrAutoClose: [{ type: Input, args: ['autoClose',] }],
-    attrAutoCloseDelay: [{ type: Input, args: ['autoCloseDelay',] }],
-    attrBlink: [{ type: Input, args: ['blink',] }],
-    attrBrowserBoundsOffset: [{ type: Input, args: ['browserBoundsOffset',] }],
-    attrCloseOnClick: [{ type: Input, args: ['closeOnClick',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrHoverOpacity: [{ type: Input, args: ['hoverOpacity',] }],
-    attrIcon: [{ type: Input, args: ['icon',] }],
-    attrNotificationOffset: [{ type: Input, args: ['notificationOffset',] }],
-    attrOpacity: [{ type: Input, args: ['opacity',] }],
-    attrPosition: [{ type: Input, args: ['position',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrShowCloseButton: [{ type: Input, args: ['showCloseButton',] }],
-    attrTemplate: [{ type: Input, args: ['template',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onClose: [{ type: Output }],
-    onClick: [{ type: Output }],
-    onOpen: [{ type: Output }]
+}; //jqxNotificationComponent
+__decorate([
+    Input('appendContainer'),
+    __metadata("design:type", String)
+], jqxNotificationComponent.prototype, "attrAppendContainer", void 0);
+__decorate([
+    Input('autoOpen'),
+    __metadata("design:type", Boolean)
+], jqxNotificationComponent.prototype, "attrAutoOpen", void 0);
+__decorate([
+    Input('animationOpenDelay'),
+    __metadata("design:type", Number)
+], jqxNotificationComponent.prototype, "attrAnimationOpenDelay", void 0);
+__decorate([
+    Input('animationCloseDelay'),
+    __metadata("design:type", Number)
+], jqxNotificationComponent.prototype, "attrAnimationCloseDelay", void 0);
+__decorate([
+    Input('autoClose'),
+    __metadata("design:type", Boolean)
+], jqxNotificationComponent.prototype, "attrAutoClose", void 0);
+__decorate([
+    Input('autoCloseDelay'),
+    __metadata("design:type", Object)
+], jqxNotificationComponent.prototype, "attrAutoCloseDelay", void 0);
+__decorate([
+    Input('blink'),
+    __metadata("design:type", Boolean)
+], jqxNotificationComponent.prototype, "attrBlink", void 0);
+__decorate([
+    Input('browserBoundsOffset'),
+    __metadata("design:type", Number)
+], jqxNotificationComponent.prototype, "attrBrowserBoundsOffset", void 0);
+__decorate([
+    Input('closeOnClick'),
+    __metadata("design:type", Boolean)
+], jqxNotificationComponent.prototype, "attrCloseOnClick", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxNotificationComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('hoverOpacity'),
+    __metadata("design:type", Number)
+], jqxNotificationComponent.prototype, "attrHoverOpacity", void 0);
+__decorate([
+    Input('icon'),
+    __metadata("design:type", Object)
+], jqxNotificationComponent.prototype, "attrIcon", void 0);
+__decorate([
+    Input('notificationOffset'),
+    __metadata("design:type", Number)
+], jqxNotificationComponent.prototype, "attrNotificationOffset", void 0);
+__decorate([
+    Input('opacity'),
+    __metadata("design:type", Number)
+], jqxNotificationComponent.prototype, "attrOpacity", void 0);
+__decorate([
+    Input('position'),
+    __metadata("design:type", String)
+], jqxNotificationComponent.prototype, "attrPosition", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxNotificationComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('showCloseButton'),
+    __metadata("design:type", Boolean)
+], jqxNotificationComponent.prototype, "attrShowCloseButton", void 0);
+__decorate([
+    Input('template'),
+    __metadata("design:type", String)
+], jqxNotificationComponent.prototype, "attrTemplate", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxNotificationComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxNotificationComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxNotificationComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxNotificationComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxNotificationComponent.prototype, "onClose", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxNotificationComponent.prototype, "onClick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxNotificationComponent.prototype, "onOpen", void 0);
+jqxNotificationComponent = __decorate([
+    Component({
+        selector: 'jqxNotification',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxNotificationComponent);
+
+let jqxNotificationModule = class jqxNotificationModule {
 };
+jqxNotificationModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxNotificationComponent],
+        exports: [jqxNotificationComponent]
+    })
+], jqxNotificationModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxNotificationModule {
-}
-jqxNotificationModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxNotificationComponent],
-                exports: [jqxNotificationComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxNotificationComponent, jqxNotificationModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxnotification.js.map

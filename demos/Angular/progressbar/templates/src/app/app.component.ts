@@ -10,11 +10,11 @@ import { jqxProgressBarComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxProgressBar2') jqxProgressBar2: jqxProgressBarComponent;
-    @ViewChild('jqxProgressBar3') jqxProgressBar3: jqxProgressBarComponent;
-    @ViewChild('jqxProgressBar4') jqxProgressBar4: jqxProgressBarComponent;
-    @ViewChild('jqxProgressBar5') jqxProgressBar5: jqxProgressBarComponent;
-    @ViewChild('jqxProgressBar6') jqxProgressBar6: jqxProgressBarComponent;
+    @ViewChild('jqxProgressBar2', {static: false}) jqxProgressBar2: jqxProgressBarComponent;
+    @ViewChild('jqxProgressBar3', {static: false}) jqxProgressBar3: jqxProgressBarComponent;
+    @ViewChild('jqxProgressBar4', {static: false}) jqxProgressBar4: jqxProgressBarComponent;
+    @ViewChild('jqxProgressBar5', {static: false}) jqxProgressBar5: jqxProgressBarComponent;
+    @ViewChild('jqxProgressBar6', {static: false}) jqxProgressBar6: jqxProgressBarComponent;
 
     ngAfterViewInit() {
         let values = {};

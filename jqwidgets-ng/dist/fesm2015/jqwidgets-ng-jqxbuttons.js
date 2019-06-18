@@ -1,15 +1,10 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxButtonComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxButtonComponent = class jqxButtonComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['disabled', 'height', 'imgSrc', 'imgWidth', 'imgHeight', 'imgPosition', 'roundedCorners', 'rtl', 'enableDefault', 'cursor', 'textPosition', 'textImageRelation', 'theme', 'template', 'width', 'value'];
@@ -17,25 +12,16 @@ class jqxButtonComponent {
         this.onClick = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -55,11 +41,6 @@ class jqxButtonComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -74,14 +55,9 @@ class jqxButtonComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -89,34 +65,18 @@ class jqxButtonComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -134,32 +94,17 @@ class jqxButtonComponent {
         this.host = this.widgetObject['host'];
         this.__wireEvents__();
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxButton('setOptions', options);
     }
     // jqxButtonComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('disabled', arg);
@@ -168,10 +113,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('height', arg);
@@ -180,10 +121,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     imgSrc(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('imgSrc', arg);
@@ -192,10 +129,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('imgSrc');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     imgWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('imgWidth', arg);
@@ -204,10 +137,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('imgWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     imgHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('imgHeight', arg);
@@ -216,10 +145,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('imgHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     imgPosition(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('imgPosition', arg);
@@ -228,10 +153,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('imgPosition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     roundedCorners(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('roundedCorners', arg);
@@ -240,10 +161,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('roundedCorners');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('rtl', arg);
@@ -252,10 +169,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableDefault(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('enableDefault', arg);
@@ -264,10 +177,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('enableDefault');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     cursor(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('cursor', arg);
@@ -276,10 +185,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('cursor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     textPosition(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('textPosition', arg);
@@ -288,10 +193,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('textPosition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     textImageRelation(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('textImageRelation', arg);
@@ -300,10 +201,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('textImageRelation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('theme', arg);
@@ -312,10 +209,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     template(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('template', arg);
@@ -324,10 +217,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('template');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('width', arg);
@@ -336,10 +225,6 @@ class jqxButtonComponent {
             return this.host.jqxButton('width');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     value(arg) {
         if (arg !== undefined) {
             this.host.jqxButton('value', arg);
@@ -349,28 +234,15 @@ class jqxButtonComponent {
         }
     }
     // jqxButtonComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxButton('destroy');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxButton('focus');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxButton('render');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxButton('val', value);
@@ -380,72 +252,103 @@ class jqxButtonComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('click', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onClick.emit(eventData); }));
+        this.host.on('click', (eventData) => { this.onClick.emit(eventData); });
     }
-} //jqxButtonComponent
-jqxButtonComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxButton',
-                template: '<button><ng-content></ng-content></button>'
-            }] }
-];
-/** @nocollapse */
-jqxButtonComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxButtonComponent.propDecorators = {
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrImgSrc: [{ type: Input, args: ['imgSrc',] }],
-    attrImgWidth: [{ type: Input, args: ['imgWidth',] }],
-    attrImgHeight: [{ type: Input, args: ['imgHeight',] }],
-    attrImgPosition: [{ type: Input, args: ['imgPosition',] }],
-    attrRoundedCorners: [{ type: Input, args: ['roundedCorners',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrEnableDefault: [{ type: Input, args: ['enableDefault',] }],
-    attrCursor: [{ type: Input, args: ['cursor',] }],
-    attrTextPosition: [{ type: Input, args: ['textPosition',] }],
-    attrTextImageRelation: [{ type: Input, args: ['textImageRelation',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrTemplate: [{ type: Input, args: ['template',] }],
-    attrValue: [{ type: Input, args: ['value',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onClick: [{ type: Output }]
+}; //jqxButtonComponent
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxButtonComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('imgSrc'),
+    __metadata("design:type", String)
+], jqxButtonComponent.prototype, "attrImgSrc", void 0);
+__decorate([
+    Input('imgWidth'),
+    __metadata("design:type", Object)
+], jqxButtonComponent.prototype, "attrImgWidth", void 0);
+__decorate([
+    Input('imgHeight'),
+    __metadata("design:type", Object)
+], jqxButtonComponent.prototype, "attrImgHeight", void 0);
+__decorate([
+    Input('imgPosition'),
+    __metadata("design:type", String)
+], jqxButtonComponent.prototype, "attrImgPosition", void 0);
+__decorate([
+    Input('roundedCorners'),
+    __metadata("design:type", String)
+], jqxButtonComponent.prototype, "attrRoundedCorners", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxButtonComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('enableDefault'),
+    __metadata("design:type", Boolean)
+], jqxButtonComponent.prototype, "attrEnableDefault", void 0);
+__decorate([
+    Input('cursor'),
+    __metadata("design:type", Boolean)
+], jqxButtonComponent.prototype, "attrCursor", void 0);
+__decorate([
+    Input('textPosition'),
+    __metadata("design:type", String)
+], jqxButtonComponent.prototype, "attrTextPosition", void 0);
+__decorate([
+    Input('textImageRelation'),
+    __metadata("design:type", String)
+], jqxButtonComponent.prototype, "attrTextImageRelation", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxButtonComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('template'),
+    __metadata("design:type", String)
+], jqxButtonComponent.prototype, "attrTemplate", void 0);
+__decorate([
+    Input('value'),
+    __metadata("design:type", String)
+], jqxButtonComponent.prototype, "attrValue", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxButtonComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxButtonComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxButtonComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxButtonComponent.prototype, "onClick", void 0);
+jqxButtonComponent = __decorate([
+    Component({
+        selector: 'jqxButton',
+        template: '<button><ng-content></ng-content></button>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxButtonComponent);
+
+let jqxButtonModule = class jqxButtonModule {
 };
+jqxButtonModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxButtonComponent],
+        exports: [jqxButtonComponent]
+    })
+], jqxButtonModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxButtonModule {
-}
-jqxButtonModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxButtonComponent],
-                exports: [jqxButtonComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxButtonComponent, jqxButtonModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxbuttons.js.map

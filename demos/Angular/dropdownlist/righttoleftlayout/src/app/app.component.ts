@@ -8,7 +8,7 @@ import { jqxDropDownListComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myDropDownList') myDropDownList: jqxDropDownListComponent;
+    @ViewChild('myDropDownList', {static: false}) myDropDownList: jqxDropDownListComponent;
 
     ngAfterViewInit(): void {
         let item = this.myDropDownList.getItemByValue('US');

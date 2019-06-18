@@ -9,7 +9,7 @@ import { jqxDockingLayoutComponent } from 'jqwidgets-scripts/jqwidgets-ts/angula
 })
 
 export class AppComponent {
-    @ViewChild('myDockingLayout') myDockingLayout: jqxDockingLayoutComponent;
+    @ViewChild('myDockingLayout', {static: false}) myDockingLayout: jqxDockingLayoutComponent;
 
     ngAfterViewInit(): void {
         this.myDockingLayout.createComponent({ theme: 'material', width: 800, height: 600, layout: this.layout() })

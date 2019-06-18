@@ -8,8 +8,8 @@ import { jqxTreeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtree
 })
 
 export class AppComponent implements AfterViewInit {        
-    @ViewChild('jqxTree') jqxTree: jqxTreeComponent;
-    @ViewChild('ContentPanel') ContentPanel: ElementRef;
+    @ViewChild('jqxTree', {static: false}) jqxTree: jqxTreeComponent;
+    @ViewChild('ContentPanel', {static: false}) ContentPanel: ElementRef;
 	
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

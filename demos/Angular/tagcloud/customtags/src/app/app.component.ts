@@ -8,7 +8,7 @@ import { jqxTagCloudComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('myTagCloud') myTagCloud: jqxTagCloudComponent
+    @ViewChild('myTagCloud', {static: false}) myTagCloud: jqxTagCloudComponent
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 600) {

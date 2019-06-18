@@ -15,16 +15,11 @@ import * as jqxmaskedinput from '../../jqwidgets-scripts/jqwidgets/jqxmaskedinpu
 import * as jqxcalendar from '../../jqwidgets-scripts/jqwidgets/jqxcalendar';
 import * as jqxdatetimeinput from '../../jqwidgets-scripts/jqwidgets/jqxdatetimeinput';
 import * as jqxform from '../../jqwidgets-scripts/jqwidgets/jqxform';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxFormComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxFormComponent = class jqxFormComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['padding', 'backgroundColor', 'borderColor', 'value', 'template'];
@@ -32,32 +27,20 @@ class jqxFormComponent {
         this.onFormDataChange = new EventEmitter();
         this.onButtonClick = new EventEmitter();
         this.elementRef = containerElement;
-        JQXLite(window).resize((/**
-         * @return {?}
-         */
-        () => {
+        JQXLite(window).resize(() => {
             this.__updateRect__();
-        }));
+        });
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -77,11 +60,6 @@ class jqxFormComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -96,14 +74,9 @@ class jqxFormComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -111,34 +84,18 @@ class jqxFormComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -156,33 +113,18 @@ class jqxFormComponent {
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxForm', options);
         this.__updateRect__();
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
         this.refresh();
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxForm('setOptions', options);
     }
     // jqxFormComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     padding(arg) {
         if (arg !== undefined) {
             this.host.jqxForm('padding', arg);
@@ -191,10 +133,6 @@ class jqxFormComponent {
             return this.host.jqxForm('padding');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     backgroundColor(arg) {
         if (arg !== undefined) {
             this.host.jqxForm('backgroundColor', arg);
@@ -203,10 +141,6 @@ class jqxFormComponent {
             return this.host.jqxForm('backgroundColor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     borderColor(arg) {
         if (arg !== undefined) {
             this.host.jqxForm('borderColor', arg);
@@ -215,10 +149,6 @@ class jqxFormComponent {
             return this.host.jqxForm('borderColor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     value(arg) {
         if (arg !== undefined) {
             this.host.jqxForm('value', arg);
@@ -227,10 +157,6 @@ class jqxFormComponent {
             return this.host.jqxForm('value');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     template(arg) {
         if (arg !== undefined) {
             this.host.jqxForm('template', arg);
@@ -240,42 +166,21 @@ class jqxFormComponent {
         }
     }
     // jqxFormComponent functions
-    /**
-     * @return {?}
-     */
     getInstance() {
         return this.host.jqxForm('getInstance');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxForm('refresh');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxForm('destroy');
     }
-    /**
-     * @param {?} name
-     * @return {?}
-     */
     hideComponent(name) {
         this.host.jqxForm('hideComponent', name);
     }
-    /**
-     * @param {?} name
-     * @return {?}
-     */
     showComponent(name) {
         this.host.jqxForm('showComponent', name);
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxForm('val', value);
@@ -285,85 +190,78 @@ class jqxFormComponent {
         }
     }
     ;
-    /**
-     * @param {?=} action
-     * @param {?=} target
-     * @param {?=} method
-     * @return {?}
-     */
     submit(action, target, method) {
         this.host.jqxForm('submit', action, target, method);
     }
-    /**
-     * @param {?=} name
-     * @return {?}
-     */
     getComponentByName(name) {
         return this.host.jqxForm('getComponentByName', name);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('formDataChange', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onFormDataChange.emit(eventData); }));
-        this.host.on('buttonClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onButtonClick.emit(eventData); }));
+        this.host.on('formDataChange', (eventData) => { this.onFormDataChange.emit(eventData); });
+        this.host.on('buttonClick', (eventData) => { this.onButtonClick.emit(eventData); });
     }
-} //jqxFormComponent
-jqxFormComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxForm',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxFormComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxFormComponent.propDecorators = {
-    attrPadding: [{ type: Input, args: ['padding',] }],
-    attrBackgroundColor: [{ type: Input, args: ['backgroundColor',] }],
-    attrBorderColor: [{ type: Input, args: ['borderColor',] }],
-    attrValue: [{ type: Input, args: ['value',] }],
-    attrTemplate: [{ type: Input, args: ['template',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onFormDataChange: [{ type: Output }],
-    onButtonClick: [{ type: Output }]
+}; //jqxFormComponent
+__decorate([
+    Input('padding'),
+    __metadata("design:type", Object)
+], jqxFormComponent.prototype, "attrPadding", void 0);
+__decorate([
+    Input('backgroundColor'),
+    __metadata("design:type", String)
+], jqxFormComponent.prototype, "attrBackgroundColor", void 0);
+__decorate([
+    Input('borderColor'),
+    __metadata("design:type", String)
+], jqxFormComponent.prototype, "attrBorderColor", void 0);
+__decorate([
+    Input('value'),
+    __metadata("design:type", Object)
+], jqxFormComponent.prototype, "attrValue", void 0);
+__decorate([
+    Input('template'),
+    __metadata("design:type", Array)
+], jqxFormComponent.prototype, "attrTemplate", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxFormComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxFormComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxFormComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxFormComponent.prototype, "onFormDataChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxFormComponent.prototype, "onButtonClick", void 0);
+jqxFormComponent = __decorate([
+    Component({
+        selector: 'jqxForm',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxFormComponent);
+
+let jqxFormModule = class jqxFormModule {
 };
+jqxFormModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxFormComponent],
+        exports: [jqxFormComponent]
+    })
+], jqxFormModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxFormModule {
-}
-jqxFormModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxFormComponent],
-                exports: [jqxFormComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxFormComponent, jqxFormModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxform.js.map

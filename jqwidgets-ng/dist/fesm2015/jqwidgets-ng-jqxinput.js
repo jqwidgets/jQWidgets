@@ -1,31 +1,19 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxinput from '../../jqwidgets-scripts/jqwidgets/jqxinput';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { forwardRef, EventEmitter, Input, Output, Component, ChangeDetectionStrategy, ElementRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-const noop = (/**
- * @return {?}
- */
-() => { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+const noop = () => { };
+const ɵ0 = noop;
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    () => jqxInputComponent)),
+    useExisting: forwardRef(() => jqxInputComponent),
     multi: true
 };
-class jqxInputComponent {
-    /**
-     * @param {?} containerElement
-     */
+let jqxInputComponent = class jqxInputComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['disabled', 'dropDownWidth', 'displayMember', 'height', 'items', 'minLength', 'maxLength', 'opened', 'placeHolder', 'popupZIndex', 'query', 'renderer', 'rtl', 'searchMode', 'source', 'theme', 'valueMember', 'width', 'value'];
@@ -39,25 +27,16 @@ class jqxInputComponent {
         this.onSelect = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -77,11 +56,6 @@ class jqxInputComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -96,14 +70,9 @@ class jqxInputComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -111,34 +80,18 @@ class jqxInputComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -155,26 +108,15 @@ class jqxInputComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxInput', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @return {?}
-     */
     get ngValue() {
         if (this.widgetObject) {
-            /** @type {?} */
             const value = this.host.val();
             if (typeof value === 'object')
                 return value.label;
@@ -182,58 +124,30 @@ class jqxInputComponent {
         }
         return '';
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     set ngValue(value) {
         if (this.widgetObject) {
             this.onChangeCallback(value);
         }
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     writeValue(value) {
         if (this.widgetObject && value) {
             if (this.initialLoad) {
-                setTimeout((/**
-                 * @param {?} _
-                 * @return {?}
-                 */
-                _ => this.host.jqxInput('val', value)));
+                setTimeout(_ => this.host.jqxInput('val', value));
                 this.initialLoad = false;
             }
             this.host.jqxInput('val', value);
         }
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnChange(fn) {
         this.onChangeCallback = fn;
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnTouched(fn) {
         this.onTouchedCallback = fn;
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxInput('setOptions', options);
     }
     // jqxInputComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('disabled', arg);
@@ -242,10 +156,6 @@ class jqxInputComponent {
             return this.host.jqxInput('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dropDownWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('dropDownWidth', arg);
@@ -254,10 +164,6 @@ class jqxInputComponent {
             return this.host.jqxInput('dropDownWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     displayMember(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('displayMember', arg);
@@ -266,10 +172,6 @@ class jqxInputComponent {
             return this.host.jqxInput('displayMember');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('height', arg);
@@ -278,10 +180,6 @@ class jqxInputComponent {
             return this.host.jqxInput('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     items(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('items', arg);
@@ -290,10 +188,6 @@ class jqxInputComponent {
             return this.host.jqxInput('items');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minLength(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('minLength', arg);
@@ -302,10 +196,6 @@ class jqxInputComponent {
             return this.host.jqxInput('minLength');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     maxLength(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('maxLength', arg);
@@ -314,10 +204,6 @@ class jqxInputComponent {
             return this.host.jqxInput('maxLength');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     opened(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('opened', arg);
@@ -326,10 +212,6 @@ class jqxInputComponent {
             return this.host.jqxInput('opened');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     placeHolder(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('placeHolder', arg);
@@ -338,10 +220,6 @@ class jqxInputComponent {
             return this.host.jqxInput('placeHolder');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     popupZIndex(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('popupZIndex', arg);
@@ -350,10 +228,6 @@ class jqxInputComponent {
             return this.host.jqxInput('popupZIndex');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     query(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('query', arg);
@@ -362,10 +236,6 @@ class jqxInputComponent {
             return this.host.jqxInput('query');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     renderer(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('renderer', arg);
@@ -374,10 +244,6 @@ class jqxInputComponent {
             return this.host.jqxInput('renderer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('rtl', arg);
@@ -386,10 +252,6 @@ class jqxInputComponent {
             return this.host.jqxInput('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     searchMode(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('searchMode', arg);
@@ -398,10 +260,6 @@ class jqxInputComponent {
             return this.host.jqxInput('searchMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     source(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('source', arg);
@@ -410,10 +268,6 @@ class jqxInputComponent {
             return this.host.jqxInput('source');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('theme', arg);
@@ -422,10 +276,6 @@ class jqxInputComponent {
             return this.host.jqxInput('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     valueMember(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('valueMember', arg);
@@ -434,10 +284,6 @@ class jqxInputComponent {
             return this.host.jqxInput('valueMember');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('width', arg);
@@ -446,10 +292,6 @@ class jqxInputComponent {
             return this.host.jqxInput('width');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     value(arg) {
         if (arg !== undefined) {
             this.host.jqxInput('value', arg);
@@ -459,28 +301,15 @@ class jqxInputComponent {
         }
     }
     // jqxInputComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxInput('destroy');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxInput('focus');
     }
-    /**
-     * @return {?}
-     */
     selectAll() {
         this.host.jqxInput('selectAll');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxInput('val', value);
@@ -490,98 +319,135 @@ class jqxInputComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); }));
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onClose.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onOpen.emit(eventData); }));
-        this.host.on('select', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSelect.emit(eventData); if (eventData.args)
-            this.onChangeCallback(eventData.args.value); }));
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
+        this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+        this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
+        this.host.on('select', (eventData) => { this.onSelect.emit(eventData); if (eventData.args)
+            this.onChangeCallback(eventData.args.value); });
     }
-} //jqxInputComponent
-jqxInputComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxInput',
-                template: '<input type="text" [(ngModel)]="ngValue">',
-                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                changeDetection: ChangeDetectionStrategy.OnPush
-            }] }
-];
-/** @nocollapse */
-jqxInputComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxInputComponent.propDecorators = {
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrDropDownWidth: [{ type: Input, args: ['dropDownWidth',] }],
-    attrDisplayMember: [{ type: Input, args: ['displayMember',] }],
-    attrItems: [{ type: Input, args: ['items',] }],
-    attrMinLength: [{ type: Input, args: ['minLength',] }],
-    attrMaxLength: [{ type: Input, args: ['maxLength',] }],
-    attrOpened: [{ type: Input, args: ['opened',] }],
-    attrPlaceHolder: [{ type: Input, args: ['placeHolder',] }],
-    attrPopupZIndex: [{ type: Input, args: ['popupZIndex',] }],
-    attrQuery: [{ type: Input, args: ['query',] }],
-    attrRenderer: [{ type: Input, args: ['renderer',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrSearchMode: [{ type: Input, args: ['searchMode',] }],
-    attrSource: [{ type: Input, args: ['source',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrValueMember: [{ type: Input, args: ['valueMember',] }],
-    attrValue: [{ type: Input, args: ['value',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChange: [{ type: Output }],
-    onClose: [{ type: Output }],
-    onOpen: [{ type: Output }],
-    onSelect: [{ type: Output }]
+}; //jqxInputComponent
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxInputComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('dropDownWidth'),
+    __metadata("design:type", Object)
+], jqxInputComponent.prototype, "attrDropDownWidth", void 0);
+__decorate([
+    Input('displayMember'),
+    __metadata("design:type", String)
+], jqxInputComponent.prototype, "attrDisplayMember", void 0);
+__decorate([
+    Input('items'),
+    __metadata("design:type", Number)
+], jqxInputComponent.prototype, "attrItems", void 0);
+__decorate([
+    Input('minLength'),
+    __metadata("design:type", Number)
+], jqxInputComponent.prototype, "attrMinLength", void 0);
+__decorate([
+    Input('maxLength'),
+    __metadata("design:type", Number)
+], jqxInputComponent.prototype, "attrMaxLength", void 0);
+__decorate([
+    Input('opened'),
+    __metadata("design:type", Boolean)
+], jqxInputComponent.prototype, "attrOpened", void 0);
+__decorate([
+    Input('placeHolder'),
+    __metadata("design:type", String)
+], jqxInputComponent.prototype, "attrPlaceHolder", void 0);
+__decorate([
+    Input('popupZIndex'),
+    __metadata("design:type", Number)
+], jqxInputComponent.prototype, "attrPopupZIndex", void 0);
+__decorate([
+    Input('query'),
+    __metadata("design:type", String)
+], jqxInputComponent.prototype, "attrQuery", void 0);
+__decorate([
+    Input('renderer'),
+    __metadata("design:type", Function)
+], jqxInputComponent.prototype, "attrRenderer", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxInputComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('searchMode'),
+    __metadata("design:type", String)
+], jqxInputComponent.prototype, "attrSearchMode", void 0);
+__decorate([
+    Input('source'),
+    __metadata("design:type", Object)
+], jqxInputComponent.prototype, "attrSource", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxInputComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('valueMember'),
+    __metadata("design:type", String)
+], jqxInputComponent.prototype, "attrValueMember", void 0);
+__decorate([
+    Input('value'),
+    __metadata("design:type", Object)
+], jqxInputComponent.prototype, "attrValue", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxInputComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxInputComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxInputComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxInputComponent.prototype, "onChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxInputComponent.prototype, "onClose", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxInputComponent.prototype, "onOpen", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxInputComponent.prototype, "onSelect", void 0);
+jqxInputComponent = __decorate([
+    Component({
+        selector: 'jqxInput',
+        template: '<input type="text" [(ngModel)]="ngValue">',
+        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+        changeDetection: ChangeDetectionStrategy.OnPush
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxInputComponent);
+
+let jqxInputModule = class jqxInputModule {
 };
+jqxInputModule = __decorate([
+    NgModule({
+        imports: [
+            FormsModule
+        ],
+        declarations: [jqxInputComponent],
+        exports: [jqxInputComponent]
+    })
+], jqxInputModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxInputModule {
-}
-jqxInputModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    FormsModule
-                ],
-                declarations: [jqxInputComponent],
-                exports: [jqxInputComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxInputComponent, jqxInputModule };
-
+export { jqxInputComponent, jqxInputModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxinput.js.map

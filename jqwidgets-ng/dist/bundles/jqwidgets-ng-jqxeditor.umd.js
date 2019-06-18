@@ -13,8 +13,8 @@ require('../../jqwidgets-scripts/jqwidgets/jqxcolorpicker');
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/forms')) :
     typeof define === 'function' && define.amd ? define('jqwidgets-ng/jqxeditor', ['exports', '@angular/core', '@angular/forms'], factory) :
-    (factory((global['jqwidgets-ng'] = global['jqwidgets-ng'] || {}, global['jqwidgets-ng'].jqxeditor = {}),global.ng.core,global.ng.forms));
-}(this, (function (exports,core,forms) { 'use strict';
+    (global = global || self, factory((global['jqwidgets-ng'] = global['jqwidgets-ng'] || {}, global['jqwidgets-ng'].jqxeditor = {}), global.ng.core, global.ng.forms));
+}(this, function (exports, core, forms) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -30,50 +30,47 @@ require('../../jqwidgets-scripts/jqwidgets/jqxcolorpicker');
     See the Apache Version 2.0 License for specific language governing permissions
     and limitations under the License.
     ***************************************************************************** */
+
+    function __decorate(decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    }
+
+    function __metadata(metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    }
+
     function __read(o, n) {
         var m = typeof Symbol === "function" && o[Symbol.iterator];
-        if (!m)
-            return o;
+        if (!m) return o;
         var i = m.call(o), r, ar = [], e;
         try {
-            while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
-                ar.push(r.value);
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
         }
-        catch (error) {
-            e = { error: error };
-        }
+        catch (error) { e = { error: error }; }
         finally {
             try {
-                if (r && !r.done && (m = i["return"]))
-                    m.call(i);
+                if (r && !r.done && (m = i["return"])) m.call(i);
             }
-            finally {
-                if (e)
-                    throw e.error;
-            }
+            finally { if (e) throw e.error; }
         }
         return ar;
     }
+
     function __spread() {
         for (var ar = [], i = 0; i < arguments.length; i++)
             ar = ar.concat(__read(arguments[i]));
         return ar;
     }
 
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    /** @type {?} */
-    var noop = ( /**
-     * @return {?}
-     */function () { });
-    /** @type {?} */
+    /// <reference path="../../jqwidgets.d.ts" />
+    var noop = function () { };
+    var ɵ0 = noop;
     var CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
         provide: forms.NG_VALUE_ACCESSOR,
-        useExisting: core.forwardRef(( /**
-         * @return {?}
-         */function () { return jqxEditorComponent; })),
+        useExisting: core.forwardRef(function () { return jqxEditorComponent; }),
         multi: true
     };
     var jqxEditorComponent = /** @class */ (function () {
@@ -86,570 +83,331 @@ require('../../jqwidgets-scripts/jqwidgets/jqxcolorpicker');
             this.onChange = new core.EventEmitter();
             this.elementRef = containerElement;
         }
-        /**
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.ngOnInit = /**
-         * @return {?}
-         */
-            function () {
-                if (this.autoCreate) {
-                    this.createComponent();
-                }
-            };
-        /**
-         * @param {?} changes
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.ngOnChanges = /**
-         * @param {?} changes
-         * @return {?}
-         */
-            function (changes) {
-                if (this.host) {
-                    for (var i = 0; i < this.properties.length; i++) {
-                        /** @type {?} */
-                        var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                        /** @type {?} */
-                        var areEqual = false;
-                        if (this[attrName] !== undefined) {
-                            if (typeof this[attrName] === 'object') {
-                                if (this[attrName] instanceof Array) {
-                                    areEqual = this.arraysEqual(this[attrName], this.host.jqxEditor(this.properties[i]));
-                                }
-                                if (areEqual) {
-                                    return false;
-                                }
-                                this.host.jqxEditor(this.properties[i], this[attrName]);
-                                continue;
+        jqxEditorComponent.prototype.ngOnInit = function () {
+            if (this.autoCreate) {
+                this.createComponent();
+            }
+        };
+        jqxEditorComponent.prototype.ngOnChanges = function (changes) {
+            if (this.host) {
+                for (var i = 0; i < this.properties.length; i++) {
+                    var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+                    var areEqual = false;
+                    if (this[attrName] !== undefined) {
+                        if (typeof this[attrName] === 'object') {
+                            if (this[attrName] instanceof Array) {
+                                areEqual = this.arraysEqual(this[attrName], this.host.jqxEditor(this.properties[i]));
                             }
-                            if (this[attrName] !== this.host.jqxEditor(this.properties[i])) {
-                                this.host.jqxEditor(this.properties[i], this[attrName]);
+                            if (areEqual) {
+                                return false;
                             }
+                            this.host.jqxEditor(this.properties[i], this[attrName]);
+                            continue;
+                        }
+                        if (this[attrName] !== this.host.jqxEditor(this.properties[i])) {
+                            this.host.jqxEditor(this.properties[i], this[attrName]);
                         }
                     }
                 }
-            };
-        /**
-         * @param {?} attrValue
-         * @param {?} hostValue
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.arraysEqual = /**
-         * @param {?} attrValue
-         * @param {?} hostValue
-         * @return {?}
-         */
-            function (attrValue, hostValue) {
-                if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+            }
+        };
+        jqxEditorComponent.prototype.arraysEqual = function (attrValue, hostValue) {
+            if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+                return false;
+            }
+            if (attrValue.length != hostValue.length) {
+                return false;
+            }
+            for (var i = 0; i < attrValue.length; i++) {
+                if (attrValue[i] !== hostValue[i]) {
                     return false;
                 }
-                if (attrValue.length != hostValue.length) {
-                    return false;
-                }
-                for (var i = 0; i < attrValue.length; i++) {
-                    if (attrValue[i] !== hostValue[i]) {
-                        return false;
-                    }
-                }
-                return true;
-            };
-        /**
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.manageAttributes = /**
-         * @return {?}
-         */
-            function () {
-                /** @type {?} */
-                var options = {};
-                for (var i = 0; i < this.properties.length; i++) {
-                    /** @type {?} */
-                    var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                    if (this[attrName] !== undefined) {
-                        options[this.properties[i]] = this[attrName];
-                    }
-                }
-                return options;
-            };
-        /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.moveClasses = /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-            function (parentEl, childEl) {
-                var _a;
-                /** @type {?} */
-                var classes = parentEl.classList;
-                if (classes.length > 0) {
-                    (_a = childEl.classList).add.apply(_a, __spread(classes));
-                }
-                parentEl.className = '';
-            };
-        /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.moveStyles = /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-            function (parentEl, childEl) {
-                /** @type {?} */
-                var style = parentEl.style.cssText;
-                childEl.style.cssText = style;
-                parentEl.style.cssText = '';
-            };
-        /**
-         * @param {?=} options
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.createComponent = /**
-         * @param {?=} options
-         * @return {?}
-         */
-            function (options) {
-                if (this.host) {
-                    return;
-                }
-                if (options) {
-                    JQXLite.extend(options, this.manageAttributes());
-                }
-                else {
-                    options = this.manageAttributes();
-                }
-                this.host = JQXLite(this.elementRef.nativeElement.firstChild);
-                this.moveClasses(this.elementRef.nativeElement, this.host[0]);
-                this.moveStyles(this.elementRef.nativeElement, this.host[0]);
-                this.widgetObject = jqwidgets.createInstance(this.host, 'jqxEditor', options);
-                this.host = this.widgetObject['host'];
-                this.__wireEvents__();
-            };
-        /**
-         * @param {?=} options
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.createWidget = /**
-         * @param {?=} options
-         * @return {?}
-         */
-            function (options) {
-                this.createComponent(options);
-            };
-        /**
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.__updateRect__ = /**
-         * @return {?}
-         */
-            function () {
-                if (this.host)
-                    this.host.css({ width: this.attrWidth, height: this.attrHeight });
-            };
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.writeValue = /**
-         * @param {?} value
-         * @return {?}
-         */
-            function (value) {
-                if (this.widgetObject) {
-                    this.onChangeCallback(this.host.val());
-                }
-            };
-        /**
-         * @param {?} fn
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.registerOnChange = /**
-         * @param {?} fn
-         * @return {?}
-         */
-            function (fn) {
-                this.onChangeCallback = fn;
-            };
-        /**
-         * @param {?} fn
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.registerOnTouched = /**
-         * @param {?} fn
-         * @return {?}
-         */
-            function (fn) {
-                this.onTouchedCallback = fn;
-            };
-        /**
-         * @param {?} options
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.setOptions = /**
-         * @param {?} options
-         * @return {?}
-         */
-            function (options) {
-                this.host.jqxEditor('setOptions', options);
-            };
-        // jqxEditorComponent properties
-        // jqxEditorComponent properties
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.createCommand =
-            // jqxEditorComponent properties
-            /**
-             * @param {?=} arg
-             * @return {?}
-             */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('createCommand', arg);
-                }
-                else {
-                    return this.host.jqxEditor('createCommand');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.disabled = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('disabled', arg);
-                }
-                else {
-                    return this.host.jqxEditor('disabled');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.editable = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('editable', arg);
-                }
-                else {
-                    return this.host.jqxEditor('editable');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.height = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('height', arg);
-                }
-                else {
-                    return this.host.jqxEditor('height');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.lineBreak = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('lineBreak', arg);
-                }
-                else {
-                    return this.host.jqxEditor('lineBreak');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.localization = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('localization', arg);
-                }
-                else {
-                    return this.host.jqxEditor('localization');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.pasteMode = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('pasteMode', arg);
-                }
-                else {
-                    return this.host.jqxEditor('pasteMode');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.rtl = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('rtl', arg);
-                }
-                else {
-                    return this.host.jqxEditor('rtl');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.stylesheets = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('stylesheets', arg);
-                }
-                else {
-                    return this.host.jqxEditor('stylesheets');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.theme = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('theme', arg);
-                }
-                else {
-                    return this.host.jqxEditor('theme');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.toolbarPosition = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('toolbarPosition', arg);
-                }
-                else {
-                    return this.host.jqxEditor('toolbarPosition');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.tools = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('tools', arg);
-                }
-                else {
-                    return this.host.jqxEditor('tools');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.width = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxEditor('width', arg);
-                }
-                else {
-                    return this.host.jqxEditor('width');
-                }
-            };
-        // jqxEditorComponent functions
-        // jqxEditorComponent functions
-        /**
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.destroy =
-            // jqxEditorComponent functions
-            /**
-             * @return {?}
-             */
-            function () {
-                this.host.jqxEditor('destroy');
-            };
-        /**
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.focus = /**
-         * @return {?}
-         */
-            function () {
-                this.host.jqxEditor('focus');
-            };
-        /**
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.print = /**
-         * @return {?}
-         */
-            function () {
-                this.host.jqxEditor('print');
-            };
-        /**
-         * @param {?} mode
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.setMode = /**
-         * @param {?} mode
-         * @return {?}
-         */
-            function (mode) {
-                this.host.jqxEditor('setMode', mode);
-            };
-        /**
-         * @param {?=} value
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.val = /**
-         * @param {?=} value
-         * @return {?}
-         */
-            function (value) {
-                if (value !== undefined) {
-                    return this.host.jqxEditor('val', value);
-                }
-                else {
-                    return this.host.jqxEditor('val');
-                }
-            };
-        /**
-         * @return {?}
-         */
-        jqxEditorComponent.prototype.__wireEvents__ = /**
-         * @return {?}
-         */
-            function () {
-                var _this = this;
-                this.host.on('change', ( /**
-                 * @param {?} eventData
-                 * @return {?}
-                 */function (eventData) { _this.onChange.emit(eventData); _this.onChangeCallback(_this.host.val()); }));
-            };
-        jqxEditorComponent.decorators = [
-            { type: core.Component, args: [{
-                        selector: 'jqxEditor',
-                        template: '<div><ng-content></ng-content></div>',
-                        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                        changeDetection: core.ChangeDetectionStrategy.OnPush
-                    }] }
-        ];
-        /** @nocollapse */
-        jqxEditorComponent.ctorParameters = function () {
-            return [
-                { type: core.ElementRef }
-            ];
+            }
+            return true;
         };
-        jqxEditorComponent.propDecorators = {
-            attrCreateCommand: [{ type: core.Input, args: ['createCommand',] }],
-            attrDisabled: [{ type: core.Input, args: ['disabled',] }],
-            attrEditable: [{ type: core.Input, args: ['editable',] }],
-            attrLineBreak: [{ type: core.Input, args: ['lineBreak',] }],
-            attrLocalization: [{ type: core.Input, args: ['localization',] }],
-            attrPasteMode: [{ type: core.Input, args: ['pasteMode',] }],
-            attrRtl: [{ type: core.Input, args: ['rtl',] }],
-            attrStylesheets: [{ type: core.Input, args: ['stylesheets',] }],
-            attrTheme: [{ type: core.Input, args: ['theme',] }],
-            attrToolbarPosition: [{ type: core.Input, args: ['toolbarPosition',] }],
-            attrTools: [{ type: core.Input, args: ['tools',] }],
-            attrWidth: [{ type: core.Input, args: ['width',] }],
-            attrHeight: [{ type: core.Input, args: ['height',] }],
-            autoCreate: [{ type: core.Input, args: ['auto-create',] }],
-            onChange: [{ type: core.Output }]
+        jqxEditorComponent.prototype.manageAttributes = function () {
+            var options = {};
+            for (var i = 0; i < this.properties.length; i++) {
+                var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+                if (this[attrName] !== undefined) {
+                    options[this.properties[i]] = this[attrName];
+                }
+            }
+            return options;
         };
+        jqxEditorComponent.prototype.moveClasses = function (parentEl, childEl) {
+            var _a;
+            var classes = parentEl.classList;
+            if (classes.length > 0) {
+                (_a = childEl.classList).add.apply(_a, __spread(classes));
+            }
+            parentEl.className = '';
+        };
+        jqxEditorComponent.prototype.moveStyles = function (parentEl, childEl) {
+            var style = parentEl.style.cssText;
+            childEl.style.cssText = style;
+            parentEl.style.cssText = '';
+        };
+        jqxEditorComponent.prototype.createComponent = function (options) {
+            if (this.host) {
+                return;
+            }
+            if (options) {
+                JQXLite.extend(options, this.manageAttributes());
+            }
+            else {
+                options = this.manageAttributes();
+            }
+            this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+            this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+            this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+            this.widgetObject = jqwidgets.createInstance(this.host, 'jqxEditor', options);
+            this.host = this.widgetObject['host'];
+            this.__wireEvents__();
+        };
+        jqxEditorComponent.prototype.createWidget = function (options) {
+            this.createComponent(options);
+        };
+        jqxEditorComponent.prototype.__updateRect__ = function () {
+            if (this.host)
+                this.host.css({ width: this.attrWidth, height: this.attrHeight });
+        };
+        jqxEditorComponent.prototype.writeValue = function (value) {
+            if (this.widgetObject) {
+                this.onChangeCallback(this.host.val());
+            }
+        };
+        jqxEditorComponent.prototype.registerOnChange = function (fn) {
+            this.onChangeCallback = fn;
+        };
+        jqxEditorComponent.prototype.registerOnTouched = function (fn) {
+            this.onTouchedCallback = fn;
+        };
+        jqxEditorComponent.prototype.setOptions = function (options) {
+            this.host.jqxEditor('setOptions', options);
+        };
+        // jqxEditorComponent properties
+        jqxEditorComponent.prototype.createCommand = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('createCommand', arg);
+            }
+            else {
+                return this.host.jqxEditor('createCommand');
+            }
+        };
+        jqxEditorComponent.prototype.disabled = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('disabled', arg);
+            }
+            else {
+                return this.host.jqxEditor('disabled');
+            }
+        };
+        jqxEditorComponent.prototype.editable = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('editable', arg);
+            }
+            else {
+                return this.host.jqxEditor('editable');
+            }
+        };
+        jqxEditorComponent.prototype.height = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('height', arg);
+            }
+            else {
+                return this.host.jqxEditor('height');
+            }
+        };
+        jqxEditorComponent.prototype.lineBreak = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('lineBreak', arg);
+            }
+            else {
+                return this.host.jqxEditor('lineBreak');
+            }
+        };
+        jqxEditorComponent.prototype.localization = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('localization', arg);
+            }
+            else {
+                return this.host.jqxEditor('localization');
+            }
+        };
+        jqxEditorComponent.prototype.pasteMode = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('pasteMode', arg);
+            }
+            else {
+                return this.host.jqxEditor('pasteMode');
+            }
+        };
+        jqxEditorComponent.prototype.rtl = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('rtl', arg);
+            }
+            else {
+                return this.host.jqxEditor('rtl');
+            }
+        };
+        jqxEditorComponent.prototype.stylesheets = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('stylesheets', arg);
+            }
+            else {
+                return this.host.jqxEditor('stylesheets');
+            }
+        };
+        jqxEditorComponent.prototype.theme = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('theme', arg);
+            }
+            else {
+                return this.host.jqxEditor('theme');
+            }
+        };
+        jqxEditorComponent.prototype.toolbarPosition = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('toolbarPosition', arg);
+            }
+            else {
+                return this.host.jqxEditor('toolbarPosition');
+            }
+        };
+        jqxEditorComponent.prototype.tools = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('tools', arg);
+            }
+            else {
+                return this.host.jqxEditor('tools');
+            }
+        };
+        jqxEditorComponent.prototype.width = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxEditor('width', arg);
+            }
+            else {
+                return this.host.jqxEditor('width');
+            }
+        };
+        // jqxEditorComponent functions
+        jqxEditorComponent.prototype.destroy = function () {
+            this.host.jqxEditor('destroy');
+        };
+        jqxEditorComponent.prototype.focus = function () {
+            this.host.jqxEditor('focus');
+        };
+        jqxEditorComponent.prototype.print = function () {
+            this.host.jqxEditor('print');
+        };
+        jqxEditorComponent.prototype.setMode = function (mode) {
+            this.host.jqxEditor('setMode', mode);
+        };
+        jqxEditorComponent.prototype.val = function (value) {
+            if (value !== undefined) {
+                return this.host.jqxEditor('val', value);
+            }
+            else {
+                return this.host.jqxEditor('val');
+            }
+        };
+        jqxEditorComponent.prototype.__wireEvents__ = function () {
+            var _this = this;
+            this.host.on('change', function (eventData) { _this.onChange.emit(eventData); _this.onChangeCallback(_this.host.val()); });
+        };
+        __decorate([
+            core.Input('createCommand'),
+            __metadata("design:type", Function)
+        ], jqxEditorComponent.prototype, "attrCreateCommand", void 0);
+        __decorate([
+            core.Input('disabled'),
+            __metadata("design:type", Boolean)
+        ], jqxEditorComponent.prototype, "attrDisabled", void 0);
+        __decorate([
+            core.Input('editable'),
+            __metadata("design:type", Boolean)
+        ], jqxEditorComponent.prototype, "attrEditable", void 0);
+        __decorate([
+            core.Input('lineBreak'),
+            __metadata("design:type", String)
+        ], jqxEditorComponent.prototype, "attrLineBreak", void 0);
+        __decorate([
+            core.Input('localization'),
+            __metadata("design:type", Object)
+        ], jqxEditorComponent.prototype, "attrLocalization", void 0);
+        __decorate([
+            core.Input('pasteMode'),
+            __metadata("design:type", String)
+        ], jqxEditorComponent.prototype, "attrPasteMode", void 0);
+        __decorate([
+            core.Input('rtl'),
+            __metadata("design:type", Boolean)
+        ], jqxEditorComponent.prototype, "attrRtl", void 0);
+        __decorate([
+            core.Input('stylesheets'),
+            __metadata("design:type", Array)
+        ], jqxEditorComponent.prototype, "attrStylesheets", void 0);
+        __decorate([
+            core.Input('theme'),
+            __metadata("design:type", String)
+        ], jqxEditorComponent.prototype, "attrTheme", void 0);
+        __decorate([
+            core.Input('toolbarPosition'),
+            __metadata("design:type", String)
+        ], jqxEditorComponent.prototype, "attrToolbarPosition", void 0);
+        __decorate([
+            core.Input('tools'),
+            __metadata("design:type", String)
+        ], jqxEditorComponent.prototype, "attrTools", void 0);
+        __decorate([
+            core.Input('width'),
+            __metadata("design:type", Object)
+        ], jqxEditorComponent.prototype, "attrWidth", void 0);
+        __decorate([
+            core.Input('height'),
+            __metadata("design:type", Object)
+        ], jqxEditorComponent.prototype, "attrHeight", void 0);
+        __decorate([
+            core.Input('auto-create'),
+            __metadata("design:type", Boolean)
+        ], jqxEditorComponent.prototype, "autoCreate", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", Object)
+        ], jqxEditorComponent.prototype, "onChange", void 0);
+        jqxEditorComponent = __decorate([
+            core.Component({
+                selector: 'jqxEditor',
+                template: '<div><ng-content></ng-content></div>',
+                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+                changeDetection: core.ChangeDetectionStrategy.OnPush
+            }),
+            __metadata("design:paramtypes", [core.ElementRef])
+        ], jqxEditorComponent);
         return jqxEditorComponent;
     }()); //jqxEditorComponent
 
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
     var jqxEditorModule = /** @class */ (function () {
         function jqxEditorModule() {
         }
-        jqxEditorModule.decorators = [
-            { type: core.NgModule, args: [{
-                        imports: [
-                            forms.FormsModule
-                        ],
-                        declarations: [jqxEditorComponent],
-                        exports: [jqxEditorComponent]
-                    },] }
-        ];
+        jqxEditorModule = __decorate([
+            core.NgModule({
+                imports: [
+                    forms.FormsModule
+                ],
+                declarations: [jqxEditorComponent],
+                exports: [jqxEditorComponent]
+            })
+        ], jqxEditorModule);
         return jqxEditorModule;
     }());
 
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
     exports.jqxEditorComponent = jqxEditorComponent;
     exports.jqxEditorModule = jqxEditorModule;
+    exports.ɵ0 = ɵ0;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
-
+}));
 //# sourceMappingURL=jqwidgets-ng-jqxeditor.umd.js.map

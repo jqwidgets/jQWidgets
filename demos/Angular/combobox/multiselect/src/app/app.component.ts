@@ -9,8 +9,8 @@ import { jqxComboBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myComboBox') myComboBox: jqxComboBoxComponent;
-    @ViewChild('log') log: ElementRef;
+    @ViewChild('myComboBox', {static: false}) myComboBox: jqxComboBoxComponent;
+    @ViewChild('log', {static: false}) log: ElementRef;
 
     ngAfterViewInit(): void {
         this.myComboBox.selectItem('United States');

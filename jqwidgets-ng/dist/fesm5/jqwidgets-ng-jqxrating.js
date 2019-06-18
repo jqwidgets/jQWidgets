@@ -1,25 +1,15 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxrating from '../../jqwidgets-scripts/jqwidgets/jqxrating';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { forwardRef, Input, Output, Component, ChangeDetectionStrategy, ElementRef, EventEmitter, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-var noop = (/**
- * @return {?}
- */
-function () { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+var noop = function () { };
+var ɵ0 = noop;
 var CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    function () { return jqxRatingComponent; })),
+    useExisting: forwardRef(function () { return jqxRatingComponent; }),
     multi: true
 };
 var jqxRatingComponent = /** @class */ (function () {
@@ -32,31 +22,15 @@ var jqxRatingComponent = /** @class */ (function () {
         this.onChange = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxRatingComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxRatingComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -76,17 +50,7 @@ var jqxRatingComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxRatingComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -100,17 +64,9 @@ var jqxRatingComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxRatingComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -118,50 +74,20 @@ var jqxRatingComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxRatingComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxRatingComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxRatingComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -177,86 +103,29 @@ var jqxRatingComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxRating', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxRatingComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxRatingComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.writeValue = /**
-     * @param {?} value
-     * @return {?}
-     */
-    function (value) {
+    jqxRatingComponent.prototype.writeValue = function (value) {
         if (this.widgetObject) {
             this.onChangeCallback(this.host.val());
         }
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.registerOnChange = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxRatingComponent.prototype.registerOnChange = function (fn) {
         this.onChangeCallback = fn;
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.registerOnTouched = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxRatingComponent.prototype.registerOnTouched = function (fn) {
         this.onTouchedCallback = fn;
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxRatingComponent.prototype.setOptions = function (options) {
         this.host.jqxRating('setOptions', options);
     };
     // jqxRatingComponent properties
-    // jqxRatingComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.count = 
-    // jqxRatingComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRatingComponent.prototype.count = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRating('count', arg);
         }
@@ -264,15 +133,7 @@ var jqxRatingComponent = /** @class */ (function () {
             return this.host.jqxRating('count');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRatingComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRating('disabled', arg);
         }
@@ -280,15 +141,7 @@ var jqxRatingComponent = /** @class */ (function () {
             return this.host.jqxRating('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRatingComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRating('height', arg);
         }
@@ -296,15 +149,7 @@ var jqxRatingComponent = /** @class */ (function () {
             return this.host.jqxRating('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.itemHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRatingComponent.prototype.itemHeight = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRating('itemHeight', arg);
         }
@@ -312,15 +157,7 @@ var jqxRatingComponent = /** @class */ (function () {
             return this.host.jqxRating('itemHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.itemWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRatingComponent.prototype.itemWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRating('itemWidth', arg);
         }
@@ -328,15 +165,7 @@ var jqxRatingComponent = /** @class */ (function () {
             return this.host.jqxRating('itemWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.precision = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRatingComponent.prototype.precision = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRating('precision', arg);
         }
@@ -344,15 +173,7 @@ var jqxRatingComponent = /** @class */ (function () {
             return this.host.jqxRating('precision');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.singleVote = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRatingComponent.prototype.singleVote = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRating('singleVote', arg);
         }
@@ -360,15 +181,7 @@ var jqxRatingComponent = /** @class */ (function () {
             return this.host.jqxRating('singleVote');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.value = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRatingComponent.prototype.value = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRating('value', arg);
         }
@@ -376,15 +189,7 @@ var jqxRatingComponent = /** @class */ (function () {
             return this.host.jqxRating('value');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRatingComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRating('width', arg);
         }
@@ -393,56 +198,19 @@ var jqxRatingComponent = /** @class */ (function () {
         }
     };
     // jqxRatingComponent functions
-    // jqxRatingComponent functions
-    /**
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.disable = 
-    // jqxRatingComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxRatingComponent.prototype.disable = function () {
         this.host.jqxRating('disable');
     };
-    /**
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.enable = /**
-     * @return {?}
-     */
-    function () {
+    jqxRatingComponent.prototype.enable = function () {
         this.host.jqxRating('enable');
     };
-    /**
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.getValue = /**
-     * @return {?}
-     */
-    function () {
+    jqxRatingComponent.prototype.getValue = function () {
         return this.host.jqxRating('getValue');
     };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.setValue = /**
-     * @param {?} value
-     * @return {?}
-     */
-    function (value) {
+    jqxRatingComponent.prototype.setValue = function (value) {
         this.host.jqxRating('setValue', value);
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxRatingComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxRating('val', value);
         }
@@ -450,77 +218,84 @@ var jqxRatingComponent = /** @class */ (function () {
             return this.host.jqxRating('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxRatingComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxRatingComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChange.emit(eventData); _this.onChangeCallback(_this.host.val()); }));
+        this.host.on('change', function (eventData) { _this.onChange.emit(eventData); _this.onChangeCallback(_this.host.val()); });
     };
-    jqxRatingComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxRating',
-                    template: '<div><ng-content></ng-content></div>',
-                    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                    changeDetection: ChangeDetectionStrategy.OnPush
-                }] }
-    ];
-    /** @nocollapse */
-    jqxRatingComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxRatingComponent.propDecorators = {
-        attrCount: [{ type: Input, args: ['count',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrItemHeight: [{ type: Input, args: ['itemHeight',] }],
-        attrItemWidth: [{ type: Input, args: ['itemWidth',] }],
-        attrPrecision: [{ type: Input, args: ['precision',] }],
-        attrSingleVote: [{ type: Input, args: ['singleVote',] }],
-        attrValue: [{ type: Input, args: ['value',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onChange: [{ type: Output }]
-    };
+    __decorate([
+        Input('count'),
+        __metadata("design:type", Number)
+    ], jqxRatingComponent.prototype, "attrCount", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxRatingComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('itemHeight'),
+        __metadata("design:type", Number)
+    ], jqxRatingComponent.prototype, "attrItemHeight", void 0);
+    __decorate([
+        Input('itemWidth'),
+        __metadata("design:type", Number)
+    ], jqxRatingComponent.prototype, "attrItemWidth", void 0);
+    __decorate([
+        Input('precision'),
+        __metadata("design:type", Number)
+    ], jqxRatingComponent.prototype, "attrPrecision", void 0);
+    __decorate([
+        Input('singleVote'),
+        __metadata("design:type", Boolean)
+    ], jqxRatingComponent.prototype, "attrSingleVote", void 0);
+    __decorate([
+        Input('value'),
+        __metadata("design:type", Number)
+    ], jqxRatingComponent.prototype, "attrValue", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxRatingComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxRatingComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxRatingComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxRatingComponent.prototype, "onChange", void 0);
+    jqxRatingComponent = __decorate([
+        Component({
+            selector: 'jqxRating',
+            template: '<div><ng-content></ng-content></div>',
+            providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+            changeDetection: ChangeDetectionStrategy.OnPush
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxRatingComponent);
     return jqxRatingComponent;
 }()); //jqxRatingComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxRatingModule = /** @class */ (function () {
     function jqxRatingModule() {
     }
-    jqxRatingModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        FormsModule
-                    ],
-                    declarations: [jqxRatingComponent],
-                    exports: [jqxRatingComponent]
-                },] }
-    ];
+    jqxRatingModule = __decorate([
+        NgModule({
+            imports: [
+                FormsModule
+            ],
+            declarations: [jqxRatingComponent],
+            exports: [jqxRatingComponent]
+        })
+    ], jqxRatingModule);
     return jqxRatingModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxRatingComponent, jqxRatingModule };
-
+export { jqxRatingComponent, jqxRatingModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxrating.js.map

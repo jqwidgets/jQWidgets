@@ -3,31 +3,19 @@ import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxscrollbar from '../../jqwidgets-scripts/jqwidgets/jqxscrollbar';
 import * as jqxtextarea from '../../jqwidgets-scripts/jqwidgets/jqxtextarea';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { forwardRef, EventEmitter, Input, Output, Component, ChangeDetectionStrategy, ElementRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-const noop = (/**
- * @return {?}
- */
-() => { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+const noop = () => { };
+const ɵ0 = noop;
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    () => jqxTextAreaComponent)),
+    useExisting: forwardRef(() => jqxTextAreaComponent),
     multi: true
 };
-class jqxTextAreaComponent {
-    /**
-     * @param {?} containerElement
-     */
+let jqxTextAreaComponent = class jqxTextAreaComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['disabled', 'displayMember', 'dropDownWidth', 'height', 'items', 'maxLength', 'minLength', 'opened', 'placeHolder', 'popupZIndex', 'query', 'renderer', 'roundedCorners', 'rtl', 'scrollBarSize', 'searchMode', 'source', 'theme', 'valueMember', 'width'];
@@ -40,25 +28,16 @@ class jqxTextAreaComponent {
         this.onSelect = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -78,11 +57,6 @@ class jqxTextAreaComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -97,14 +71,9 @@ class jqxTextAreaComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -112,34 +81,18 @@ class jqxTextAreaComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -156,56 +109,29 @@ class jqxTextAreaComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTextArea', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     writeValue(value) {
         if (this.widgetObject) {
             if (value !== null && value !== undefined)
                 this.host.jqxTextArea('val', value);
         }
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnChange(fn) {
         this.onChangeCallback = fn;
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnTouched(fn) {
         this.onTouchedCallback = fn;
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxTextArea('setOptions', options);
     }
     // jqxTextAreaComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('disabled', arg);
@@ -214,10 +140,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     displayMember(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('displayMember', arg);
@@ -226,10 +148,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('displayMember');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dropDownWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('dropDownWidth', arg);
@@ -238,10 +156,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('dropDownWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('height', arg);
@@ -250,10 +164,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     items(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('items', arg);
@@ -262,10 +172,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('items');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     maxLength(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('maxLength', arg);
@@ -274,10 +180,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('maxLength');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minLength(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('minLength', arg);
@@ -286,10 +188,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('minLength');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     opened(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('opened', arg);
@@ -298,10 +196,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('opened');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     placeHolder(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('placeHolder', arg);
@@ -310,10 +204,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('placeHolder');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     popupZIndex(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('popupZIndex', arg);
@@ -322,10 +212,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('popupZIndex');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     query(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('query', arg);
@@ -334,10 +220,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('query');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     renderer(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('renderer', arg);
@@ -346,10 +228,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('renderer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     roundedCorners(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('roundedCorners', arg);
@@ -358,10 +236,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('roundedCorners');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('rtl', arg);
@@ -370,10 +244,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scrollBarSize(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('scrollBarSize', arg);
@@ -382,10 +252,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('scrollBarSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     searchMode(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('searchMode', arg);
@@ -394,10 +260,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('searchMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     source(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('source', arg);
@@ -406,10 +268,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('source');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('theme', arg);
@@ -418,10 +276,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     valueMember(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('valueMember', arg);
@@ -430,10 +284,6 @@ class jqxTextAreaComponent {
             return this.host.jqxTextArea('valueMember');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxTextArea('width', arg);
@@ -443,40 +293,21 @@ class jqxTextAreaComponent {
         }
     }
     // jqxTextAreaComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxTextArea('destroy');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxTextArea('focus');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxTextArea('refresh');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxTextArea('render');
     }
-    /**
-     * @return {?}
-     */
     selectAll() {
         this.host.jqxTextArea('selectAll');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxTextArea('val', value);
@@ -486,102 +317,139 @@ class jqxTextAreaComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); }));
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onClose.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onOpen.emit(eventData); }));
-        this.host.on('select', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSelect.emit(eventData); }));
-        this.host.on('keyup', (/**
-         * @return {?}
-         */
-        () => { this.onChangeCallback(this.host.val()); }));
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
+        this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+        this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
+        this.host.on('select', (eventData) => { this.onSelect.emit(eventData); });
+        this.host.on('keyup', () => { this.onChangeCallback(this.host.val()); });
     }
-} //jqxTextAreaComponent
-jqxTextAreaComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxTextArea',
-                template: '<div><ng-content></ng-content></div>',
-                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                changeDetection: ChangeDetectionStrategy.OnPush
-            }] }
-];
-/** @nocollapse */
-jqxTextAreaComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxTextAreaComponent.propDecorators = {
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrDisplayMember: [{ type: Input, args: ['displayMember',] }],
-    attrDropDownWidth: [{ type: Input, args: ['dropDownWidth',] }],
-    attrItems: [{ type: Input, args: ['items',] }],
-    attrMaxLength: [{ type: Input, args: ['maxLength',] }],
-    attrMinLength: [{ type: Input, args: ['minLength',] }],
-    attrOpened: [{ type: Input, args: ['opened',] }],
-    attrPlaceHolder: [{ type: Input, args: ['placeHolder',] }],
-    attrPopupZIndex: [{ type: Input, args: ['popupZIndex',] }],
-    attrQuery: [{ type: Input, args: ['query',] }],
-    attrRenderer: [{ type: Input, args: ['renderer',] }],
-    attrRoundedCorners: [{ type: Input, args: ['roundedCorners',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrScrollBarSize: [{ type: Input, args: ['scrollBarSize',] }],
-    attrSearchMode: [{ type: Input, args: ['searchMode',] }],
-    attrSource: [{ type: Input, args: ['source',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrValueMember: [{ type: Input, args: ['valueMember',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChange: [{ type: Output }],
-    onClose: [{ type: Output }],
-    onOpen: [{ type: Output }],
-    onSelect: [{ type: Output }]
+}; //jqxTextAreaComponent
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxTextAreaComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('displayMember'),
+    __metadata("design:type", String)
+], jqxTextAreaComponent.prototype, "attrDisplayMember", void 0);
+__decorate([
+    Input('dropDownWidth'),
+    __metadata("design:type", Object)
+], jqxTextAreaComponent.prototype, "attrDropDownWidth", void 0);
+__decorate([
+    Input('items'),
+    __metadata("design:type", Number)
+], jqxTextAreaComponent.prototype, "attrItems", void 0);
+__decorate([
+    Input('maxLength'),
+    __metadata("design:type", Number)
+], jqxTextAreaComponent.prototype, "attrMaxLength", void 0);
+__decorate([
+    Input('minLength'),
+    __metadata("design:type", Number)
+], jqxTextAreaComponent.prototype, "attrMinLength", void 0);
+__decorate([
+    Input('opened'),
+    __metadata("design:type", Boolean)
+], jqxTextAreaComponent.prototype, "attrOpened", void 0);
+__decorate([
+    Input('placeHolder'),
+    __metadata("design:type", String)
+], jqxTextAreaComponent.prototype, "attrPlaceHolder", void 0);
+__decorate([
+    Input('popupZIndex'),
+    __metadata("design:type", Number)
+], jqxTextAreaComponent.prototype, "attrPopupZIndex", void 0);
+__decorate([
+    Input('query'),
+    __metadata("design:type", String)
+], jqxTextAreaComponent.prototype, "attrQuery", void 0);
+__decorate([
+    Input('renderer'),
+    __metadata("design:type", Function)
+], jqxTextAreaComponent.prototype, "attrRenderer", void 0);
+__decorate([
+    Input('roundedCorners'),
+    __metadata("design:type", Boolean)
+], jqxTextAreaComponent.prototype, "attrRoundedCorners", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxTextAreaComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('scrollBarSize'),
+    __metadata("design:type", Number)
+], jqxTextAreaComponent.prototype, "attrScrollBarSize", void 0);
+__decorate([
+    Input('searchMode'),
+    __metadata("design:type", String)
+], jqxTextAreaComponent.prototype, "attrSearchMode", void 0);
+__decorate([
+    Input('source'),
+    __metadata("design:type", Object)
+], jqxTextAreaComponent.prototype, "attrSource", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxTextAreaComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('valueMember'),
+    __metadata("design:type", String)
+], jqxTextAreaComponent.prototype, "attrValueMember", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxTextAreaComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxTextAreaComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxTextAreaComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTextAreaComponent.prototype, "onChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTextAreaComponent.prototype, "onClose", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTextAreaComponent.prototype, "onOpen", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTextAreaComponent.prototype, "onSelect", void 0);
+jqxTextAreaComponent = __decorate([
+    Component({
+        selector: 'jqxTextArea',
+        template: '<div><ng-content></ng-content></div>',
+        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+        changeDetection: ChangeDetectionStrategy.OnPush
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxTextAreaComponent);
+
+let jqxTextAreaModule = class jqxTextAreaModule {
 };
+jqxTextAreaModule = __decorate([
+    NgModule({
+        imports: [
+            FormsModule
+        ],
+        declarations: [jqxTextAreaComponent],
+        exports: [jqxTextAreaComponent]
+    })
+], jqxTextAreaModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxTextAreaModule {
-}
-jqxTextAreaModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    FormsModule
-                ],
-                declarations: [jqxTextAreaComponent],
-                exports: [jqxTextAreaComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxTextAreaComponent, jqxTextAreaModule };
-
+export { jqxTextAreaComponent, jqxTextAreaModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxtextarea.js.map

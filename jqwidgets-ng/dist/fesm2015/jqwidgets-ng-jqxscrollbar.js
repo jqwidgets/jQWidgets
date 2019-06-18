@@ -1,16 +1,11 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxscrollbar from '../../jqwidgets-scripts/jqwidgets/jqxscrollbar';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxScrollBarComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxScrollBarComponent = class jqxScrollBarComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['disabled', 'height', 'largestep', 'min', 'max', 'rtl', 'step', 'showButtons', 'thumbMinSize', 'theme', 'vertical', 'value', 'width'];
@@ -18,25 +13,16 @@ class jqxScrollBarComponent {
         this.onValueChanged = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -56,11 +42,6 @@ class jqxScrollBarComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -75,14 +56,9 @@ class jqxScrollBarComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -90,34 +66,18 @@ class jqxScrollBarComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -134,32 +94,17 @@ class jqxScrollBarComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxScrollBar', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxScrollBar('setOptions', options);
     }
     // jqxScrollBarComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('disabled', arg);
@@ -168,10 +113,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('height', arg);
@@ -180,10 +121,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     largestep(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('largestep', arg);
@@ -192,10 +129,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('largestep');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     min(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('min', arg);
@@ -204,10 +137,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('min');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     max(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('max', arg);
@@ -216,10 +145,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('max');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('rtl', arg);
@@ -228,10 +153,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     step(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('step', arg);
@@ -240,10 +161,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('step');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showButtons(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('showButtons', arg);
@@ -252,10 +169,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('showButtons');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     thumbMinSize(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('thumbMinSize', arg);
@@ -264,10 +177,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('thumbMinSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('theme', arg);
@@ -276,10 +185,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     vertical(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('vertical', arg);
@@ -288,10 +193,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('vertical');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     value(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('value', arg);
@@ -300,10 +201,6 @@ class jqxScrollBarComponent {
             return this.host.jqxScrollBar('value');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollBar('width', arg);
@@ -313,88 +210,100 @@ class jqxScrollBarComponent {
         }
     }
     // jqxScrollBarComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxScrollBar('destroy');
     }
-    /**
-     * @return {?}
-     */
     isScrolling() {
         return this.host.jqxScrollBar('isScrolling');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     setPosition(index) {
         this.host.jqxScrollBar('setPosition', index);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('valueChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onValueChanged.emit(eventData); }));
+        this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); });
     }
-} //jqxScrollBarComponent
-jqxScrollBarComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxScrollBar',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxScrollBarComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxScrollBarComponent.propDecorators = {
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrLargestep: [{ type: Input, args: ['largestep',] }],
-    attrMin: [{ type: Input, args: ['min',] }],
-    attrMax: [{ type: Input, args: ['max',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrStep: [{ type: Input, args: ['step',] }],
-    attrShowButtons: [{ type: Input, args: ['showButtons',] }],
-    attrThumbMinSize: [{ type: Input, args: ['thumbMinSize',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrVertical: [{ type: Input, args: ['vertical',] }],
-    attrValue: [{ type: Input, args: ['value',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onValueChanged: [{ type: Output }]
+}; //jqxScrollBarComponent
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxScrollBarComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('largestep'),
+    __metadata("design:type", Number)
+], jqxScrollBarComponent.prototype, "attrLargestep", void 0);
+__decorate([
+    Input('min'),
+    __metadata("design:type", Number)
+], jqxScrollBarComponent.prototype, "attrMin", void 0);
+__decorate([
+    Input('max'),
+    __metadata("design:type", Number)
+], jqxScrollBarComponent.prototype, "attrMax", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxScrollBarComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('step'),
+    __metadata("design:type", Number)
+], jqxScrollBarComponent.prototype, "attrStep", void 0);
+__decorate([
+    Input('showButtons'),
+    __metadata("design:type", Boolean)
+], jqxScrollBarComponent.prototype, "attrShowButtons", void 0);
+__decorate([
+    Input('thumbMinSize'),
+    __metadata("design:type", Number)
+], jqxScrollBarComponent.prototype, "attrThumbMinSize", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxScrollBarComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('vertical'),
+    __metadata("design:type", Boolean)
+], jqxScrollBarComponent.prototype, "attrVertical", void 0);
+__decorate([
+    Input('value'),
+    __metadata("design:type", Number)
+], jqxScrollBarComponent.prototype, "attrValue", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxScrollBarComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxScrollBarComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxScrollBarComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxScrollBarComponent.prototype, "onValueChanged", void 0);
+jqxScrollBarComponent = __decorate([
+    Component({
+        selector: 'jqxScrollBar',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxScrollBarComponent);
+
+let jqxScrollBarModule = class jqxScrollBarModule {
 };
+jqxScrollBarModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxScrollBarComponent],
+        exports: [jqxScrollBarComponent]
+    })
+], jqxScrollBarModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxScrollBarModule {
-}
-jqxScrollBarModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxScrollBarComponent],
-                exports: [jqxScrollBarComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxScrollBarComponent, jqxScrollBarModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxscrollbar.js.map

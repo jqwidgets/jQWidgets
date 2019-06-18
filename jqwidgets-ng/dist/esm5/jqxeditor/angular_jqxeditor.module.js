@@ -10,26 +10,23 @@ import * as jqxeditor from '../../jqwidgets-scripts/jqwidgets/jqxeditor';
 import * as jqxcheckbox from '../../jqwidgets-scripts/jqwidgets/jqxcheckbox';
 import * as jqxtooltip from '../../jqwidgets-scripts/jqwidgets/jqxtooltip';
 import * as jqxcolorpicker from '../../jqwidgets-scripts/jqwidgets/jqxcolorpicker';
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+import * as tslib_1 from "tslib";
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { jqxEditorComponent } from './angular_jqxeditor';
 var jqxEditorModule = /** @class */ (function () {
     function jqxEditorModule() {
     }
-    jqxEditorModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        FormsModule
-                    ],
-                    declarations: [jqxEditorComponent],
-                    exports: [jqxEditorComponent]
-                },] }
-    ];
+    jqxEditorModule = tslib_1.__decorate([
+        NgModule({
+            imports: [
+                FormsModule
+            ],
+            declarations: [jqxEditorComponent],
+            exports: [jqxEditorComponent]
+        })
+    ], jqxEditorModule);
     return jqxEditorModule;
 }());
 export { jqxEditorModule };
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhcl9qcXhlZGl0b3IubW9kdWxlLmpzIiwic291cmNlUm9vdCI6Im5nOi8vanF3aWRnZXRzLW5nL2pxeGVkaXRvci8iLCJzb3VyY2VzIjpbImFuZ3VsYXJfanF4ZWRpdG9yLm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQ0EsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUN6QyxPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFFN0MsT0FBTyxFQUFFLGtCQUFrQixFQUFFLE1BQU0scUJBQXFCLENBQUM7QUFFekQ7SUFBQTtJQU8rQixDQUFDOztnQkFQL0IsUUFBUSxTQUFDO29CQUNSLE9BQU8sRUFBRTt3QkFDUCxXQUFXO3FCQUNaO29CQUNELFlBQVksRUFBRSxDQUFDLGtCQUFrQixDQUFDO29CQUNsQyxPQUFPLEVBQUUsQ0FBQyxrQkFBa0IsQ0FBQztpQkFDOUI7O0lBQzhCLHNCQUFDO0NBQUEsQUFQaEMsSUFPZ0M7U0FBbkIsZUFBZSIsInNvdXJjZXNDb250ZW50IjpbIlxuaW1wb3J0IHsgTmdNb2R1bGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IEZvcm1zTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvZm9ybXMnO1xuXG5pbXBvcnQgeyBqcXhFZGl0b3JDb21wb25lbnQgfSBmcm9tICcuL2FuZ3VsYXJfanF4ZWRpdG9yJztcblxuQE5nTW9kdWxlKHtcbiAgaW1wb3J0czogW1xuICAgIEZvcm1zTW9kdWxlXG4gIF0sXG4gIGRlY2xhcmF0aW9uczogW2pxeEVkaXRvckNvbXBvbmVudF0sXG4gIGV4cG9ydHM6IFtqcXhFZGl0b3JDb21wb25lbnRdXG59KVxuZXhwb3J0IGNsYXNzIGpxeEVkaXRvck1vZHVsZSB7IH1cblxuIl19
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhcl9qcXhlZGl0b3IubW9kdWxlLmpzIiwic291cmNlUm9vdCI6Im5nOi8vanF3aWRnZXRzLW5nL2pxeGVkaXRvci8iLCJzb3VyY2VzIjpbImFuZ3VsYXJfanF4ZWRpdG9yLm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUN6QyxPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFFN0MsT0FBTyxFQUFFLGtCQUFrQixFQUFFLE1BQU0scUJBQXFCLENBQUM7QUFTekQ7SUFBQTtJQUErQixDQUFDO0lBQW5CLGVBQWU7UUFQM0IsUUFBUSxDQUFDO1lBQ1IsT0FBTyxFQUFFO2dCQUNQLFdBQVc7YUFDWjtZQUNELFlBQVksRUFBRSxDQUFDLGtCQUFrQixDQUFDO1lBQ2xDLE9BQU8sRUFBRSxDQUFDLGtCQUFrQixDQUFDO1NBQzlCLENBQUM7T0FDVyxlQUFlLENBQUk7SUFBRCxzQkFBQztDQUFBLEFBQWhDLElBQWdDO1NBQW5CLGVBQWUiLCJzb3VyY2VzQ29udGVudCI6WyJcbmltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBGb3Jtc01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2Zvcm1zJztcblxuaW1wb3J0IHsganF4RWRpdG9yQ29tcG9uZW50IH0gZnJvbSAnLi9hbmd1bGFyX2pxeGVkaXRvcic7XG5cbkBOZ01vZHVsZSh7XG4gIGltcG9ydHM6IFtcbiAgICBGb3Jtc01vZHVsZVxuICBdLFxuICBkZWNsYXJhdGlvbnM6IFtqcXhFZGl0b3JDb21wb25lbnRdLFxuICBleHBvcnRzOiBbanF4RWRpdG9yQ29tcG9uZW50XVxufSlcbmV4cG9ydCBjbGFzcyBqcXhFZGl0b3JNb2R1bGUgeyB9XG5cbiJdfQ==

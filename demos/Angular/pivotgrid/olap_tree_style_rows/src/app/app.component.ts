@@ -8,8 +8,8 @@ import { jqxButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbu
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    @ViewChild('pivotGrid1') pivotGrid1: jqxPivotGridComponent;
-	@ViewChild('btnCheckRowsDisplayStyle') btnCheckRowsDisplayStyle: jqxButtonComponent;	
+    @ViewChild('pivotGrid1', {static: false}) pivotGrid1: jqxPivotGridComponent;
+	@ViewChild('btnCheckRowsDisplayStyle', {static: false}) btnCheckRowsDisplayStyle: jqxButtonComponent;	
 
     constructor()
 	{

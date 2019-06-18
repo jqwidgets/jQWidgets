@@ -11,8 +11,8 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('myCalendar') myCalendar: jqxCalendarComponent;
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
+    @ViewChild('myCalendar', {static: false}) myCalendar: jqxCalendarComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
 
     myCalendarEvent(event: any): void {
         let date = event.args.date;

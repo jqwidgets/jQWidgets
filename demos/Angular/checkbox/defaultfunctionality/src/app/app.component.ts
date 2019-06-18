@@ -6,9 +6,9 @@
 })
 
 export class AppComponent {
-    @ViewChild('span10') span10: ElementRef;
-    @ViewChild('span11') span11: ElementRef;
-    @ViewChild('span12') span12: ElementRef;
+    @ViewChild('span10', {static: false}) span10: ElementRef;
+    @ViewChild('span11', {static: false}) span11: ElementRef;
+    @ViewChild('span12', {static: false}) span12: ElementRef;
 
     checkBox10OnChange(event: any): void {
         let checked = event.args.checked;

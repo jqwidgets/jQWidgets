@@ -10,7 +10,7 @@ import { jqxRibbonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxri
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxRibbon') jqxRibbon: jqxRibbonComponent;
+    @ViewChild('jqxRibbon', {static: false}) jqxRibbon: jqxRibbonComponent;
 
     ngAfterViewInit() {
         this.jqxRibbon.setPopupLayout(0, "near", 130, 205);

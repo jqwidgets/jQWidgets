@@ -12,12 +12,12 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('mySelectRowBtn') mySelectRowBtn: jqxButtonComponent;
-    @ViewChild('myInput1') myInput1: jqxInputComponent;
-    @ViewChild('myInput2') myInput2: jqxInputComponent;
-    @ViewChild('selectedRowIndex') selectedRowIndex: ElementRef;
-    @ViewChild('unselectedRowIndex') unselectedRowIndex: ElementRef;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('mySelectRowBtn', {static: false}) mySelectRowBtn: jqxButtonComponent;
+    @ViewChild('myInput1', {static: false}) myInput1: jqxInputComponent;
+    @ViewChild('myInput2', {static: false}) myInput2: jqxInputComponent;
+    @ViewChild('selectedRowIndex', {static: false}) selectedRowIndex: ElementRef;
+    @ViewChild('unselectedRowIndex', {static: false}) unselectedRowIndex: ElementRef;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

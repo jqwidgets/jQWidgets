@@ -10,8 +10,8 @@ import { jqxRibbonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxri
 })
 
 export class AppComponent implements OnInit {
-    @ViewChild('jqxRibbon') jqxRibbon: jqxRibbonComponent;
-    @ViewChild('content') content: ElementRef;
+    @ViewChild('jqxRibbon', {static: false}) jqxRibbon: jqxRibbonComponent;
+    @ViewChild('content', {static: false}) content: ElementRef;
     
     ngOnInit() {
         this.content.nativeElement.innerHTML = this.generateContent();

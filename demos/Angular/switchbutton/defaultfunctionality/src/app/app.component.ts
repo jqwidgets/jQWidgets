@@ -8,7 +8,7 @@
 })
 
 export class AppComponent {
-    @ViewChild('events') events: ElementRef;
+    @ViewChild('events', {static: false}) events: ElementRef;
 
     onChecked(buttonNumber: number): void {
         this.events.nativeElement.innerHTML = this.label[buttonNumber] + ': Unchecked';

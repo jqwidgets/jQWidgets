@@ -9,8 +9,8 @@ import { jqxMenuComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxmenu
 })
 
 export class AppComponent {
-    @ViewChild('myTreeGrid') myTreeGrid: jqxTreeGridComponent;
-    @ViewChild('myMenu') myMenu: jqxMenuComponent;
+    @ViewChild('myTreeGrid', {static: false}) myTreeGrid: jqxTreeGridComponent;
+    @ViewChild('myMenu', {static: false}) myMenu: jqxMenuComponent;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

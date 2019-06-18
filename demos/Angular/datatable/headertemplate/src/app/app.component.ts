@@ -8,7 +8,7 @@ import { jqxDataTableComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jq
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myDataTable') myDataTable: jqxDataTableComponent;
+    @ViewChild('myDataTable', {static: false}) myDataTable: jqxDataTableComponent;
 
     myCheckBox: jqwidgets.jqxCheckBox;
 

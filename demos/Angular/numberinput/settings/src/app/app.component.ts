@@ -8,7 +8,7 @@ import { jqxNumberInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_
 })
 
 export class AppComponent {
-    @ViewChild('numericInput') numericInput: jqxNumberInputComponent;
+    @ViewChild('numericInput', {static: false}) numericInput: jqxNumberInputComponent;
 
     symboltypes: string[] = ['$', '%', 'None'];
     decimaldigitsNumbers: string[] = ['0', '1', '2', '3', '4'];

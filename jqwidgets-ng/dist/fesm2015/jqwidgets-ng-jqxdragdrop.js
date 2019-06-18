@@ -1,15 +1,10 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdragdrop from '../../jqwidgets-scripts/jqwidgets/jqxdragdrop';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxDragDropComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxDragDropComponent = class jqxDragDropComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['appendTo', 'disabled', 'distance', 'data', 'dropAction', 'dropTarget', 'dragZIndex', 'feedback', 'initFeedback', 'opacity', 'onDragEnd', 'onDrag', 'onDragStart', 'onTargetDrop', 'onDropTargetEnter', 'onDropTargetLeave', 'restricter', 'revert', 'revertDuration', 'tolerance'];
@@ -22,25 +17,16 @@ class jqxDragDropComponent {
         this.ondroptargetleave = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -60,11 +46,6 @@ class jqxDragDropComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -79,14 +60,9 @@ class jqxDragDropComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -94,34 +70,18 @@ class jqxDragDropComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -138,32 +98,17 @@ class jqxDragDropComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDragDrop', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxDragDrop('setOptions', options);
     }
     // jqxDragDropComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     appendTo(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('appendTo', arg);
@@ -172,10 +117,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('appendTo');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('disabled', arg);
@@ -184,10 +125,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     distance(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('distance', arg);
@@ -196,10 +133,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('distance');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     data(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('data', arg);
@@ -208,10 +141,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('data');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dropAction(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('dropAction', arg);
@@ -220,10 +149,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('dropAction');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dropTarget(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('dropTarget', arg);
@@ -232,10 +157,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('dropTarget');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dragZIndex(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('dragZIndex', arg);
@@ -244,10 +165,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('dragZIndex');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     feedback(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('feedback', arg);
@@ -256,10 +173,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('feedback');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     initFeedback(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('initFeedback', arg);
@@ -268,10 +181,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('initFeedback');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     opacity(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('opacity', arg);
@@ -280,10 +189,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('opacity');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     onDragEnd(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('onDragEnd', arg);
@@ -292,10 +197,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('onDragEnd');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     onDrag(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('onDrag', arg);
@@ -304,10 +205,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('onDrag');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     onDragStart(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('onDragStart', arg);
@@ -316,10 +213,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('onDragStart');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     onTargetDrop(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('onTargetDrop', arg);
@@ -328,10 +221,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('onTargetDrop');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     onDropTargetEnter(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('onDropTargetEnter', arg);
@@ -340,10 +229,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('onDropTargetEnter');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     onDropTargetLeave(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('onDropTargetLeave', arg);
@@ -352,10 +237,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('onDropTargetLeave');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     restricter(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('restricter', arg);
@@ -364,10 +245,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('restricter');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     revert(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('revert', arg);
@@ -376,10 +253,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('revert');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     revertDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('revertDuration', arg);
@@ -388,10 +261,6 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('revertDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     tolerance(arg) {
         if (arg !== undefined) {
             this.host.jqxDragDrop('tolerance', arg);
@@ -400,102 +269,147 @@ class jqxDragDropComponent {
             return this.host.jqxDragDrop('tolerance');
         }
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('dragStart', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.ondragstart.emit(eventData); }));
-        this.host.on('dragEnd', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.ondragend.emit(eventData); }));
-        this.host.on('dragging', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.ondragging.emit(eventData); }));
-        this.host.on('dropTargetEnter', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.ondroptargetenter.emit(eventData); }));
-        this.host.on('dropTargetLeave', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.ondroptargetleave.emit(eventData); }));
+        this.host.on('dragStart', (eventData) => { this.ondragstart.emit(eventData); });
+        this.host.on('dragEnd', (eventData) => { this.ondragend.emit(eventData); });
+        this.host.on('dragging', (eventData) => { this.ondragging.emit(eventData); });
+        this.host.on('dropTargetEnter', (eventData) => { this.ondroptargetenter.emit(eventData); });
+        this.host.on('dropTargetLeave', (eventData) => { this.ondroptargetleave.emit(eventData); });
     }
-} //jqxDragDropComponent
-jqxDragDropComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxDragDrop',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxDragDropComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxDragDropComponent.propDecorators = {
-    attrAppendTo: [{ type: Input, args: ['appendTo',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrDistance: [{ type: Input, args: ['distance',] }],
-    attrData: [{ type: Input, args: ['data',] }],
-    attrDropAction: [{ type: Input, args: ['dropAction',] }],
-    attrDropTarget: [{ type: Input, args: ['dropTarget',] }],
-    attrDragZIndex: [{ type: Input, args: ['dragZIndex',] }],
-    attrFeedback: [{ type: Input, args: ['feedback',] }],
-    attrInitFeedback: [{ type: Input, args: ['initFeedback',] }],
-    attrOpacity: [{ type: Input, args: ['opacity',] }],
-    attrOnDragEnd: [{ type: Input, args: ['onDragEnd',] }],
-    attrOnDrag: [{ type: Input, args: ['onDrag',] }],
-    attrOnDragStart: [{ type: Input, args: ['onDragStart',] }],
-    attrOnTargetDrop: [{ type: Input, args: ['onTargetDrop',] }],
-    attrOnDropTargetEnter: [{ type: Input, args: ['onDropTargetEnter',] }],
-    attrOnDropTargetLeave: [{ type: Input, args: ['onDropTargetLeave',] }],
-    attrRestricter: [{ type: Input, args: ['restricter',] }],
-    attrRevert: [{ type: Input, args: ['revert',] }],
-    attrRevertDuration: [{ type: Input, args: ['revertDuration',] }],
-    attrTolerance: [{ type: Input, args: ['tolerance',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    ondragstart: [{ type: Output }],
-    ondragend: [{ type: Output }],
-    ondragging: [{ type: Output }],
-    ondroptargetenter: [{ type: Output }],
-    ondroptargetleave: [{ type: Output }]
+}; //jqxDragDropComponent
+__decorate([
+    Input('appendTo'),
+    __metadata("design:type", String)
+], jqxDragDropComponent.prototype, "attrAppendTo", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxDragDropComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('distance'),
+    __metadata("design:type", Number)
+], jqxDragDropComponent.prototype, "attrDistance", void 0);
+__decorate([
+    Input('data'),
+    __metadata("design:type", Object)
+], jqxDragDropComponent.prototype, "attrData", void 0);
+__decorate([
+    Input('dropAction'),
+    __metadata("design:type", String)
+], jqxDragDropComponent.prototype, "attrDropAction", void 0);
+__decorate([
+    Input('dropTarget'),
+    __metadata("design:type", Object)
+], jqxDragDropComponent.prototype, "attrDropTarget", void 0);
+__decorate([
+    Input('dragZIndex'),
+    __metadata("design:type", Number)
+], jqxDragDropComponent.prototype, "attrDragZIndex", void 0);
+__decorate([
+    Input('feedback'),
+    __metadata("design:type", String)
+], jqxDragDropComponent.prototype, "attrFeedback", void 0);
+__decorate([
+    Input('initFeedback'),
+    __metadata("design:type", Function)
+], jqxDragDropComponent.prototype, "attrInitFeedback", void 0);
+__decorate([
+    Input('opacity'),
+    __metadata("design:type", Number)
+], jqxDragDropComponent.prototype, "attrOpacity", void 0);
+__decorate([
+    Input('onDragEnd'),
+    __metadata("design:type", Function)
+], jqxDragDropComponent.prototype, "attrOnDragEnd", void 0);
+__decorate([
+    Input('onDrag'),
+    __metadata("design:type", Function)
+], jqxDragDropComponent.prototype, "attrOnDrag", void 0);
+__decorate([
+    Input('onDragStart'),
+    __metadata("design:type", Function)
+], jqxDragDropComponent.prototype, "attrOnDragStart", void 0);
+__decorate([
+    Input('onTargetDrop'),
+    __metadata("design:type", Function)
+], jqxDragDropComponent.prototype, "attrOnTargetDrop", void 0);
+__decorate([
+    Input('onDropTargetEnter'),
+    __metadata("design:type", Function)
+], jqxDragDropComponent.prototype, "attrOnDropTargetEnter", void 0);
+__decorate([
+    Input('onDropTargetLeave'),
+    __metadata("design:type", Function)
+], jqxDragDropComponent.prototype, "attrOnDropTargetLeave", void 0);
+__decorate([
+    Input('restricter'),
+    __metadata("design:type", Object)
+], jqxDragDropComponent.prototype, "attrRestricter", void 0);
+__decorate([
+    Input('revert'),
+    __metadata("design:type", Boolean)
+], jqxDragDropComponent.prototype, "attrRevert", void 0);
+__decorate([
+    Input('revertDuration'),
+    __metadata("design:type", Number)
+], jqxDragDropComponent.prototype, "attrRevertDuration", void 0);
+__decorate([
+    Input('tolerance'),
+    __metadata("design:type", String)
+], jqxDragDropComponent.prototype, "attrTolerance", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxDragDropComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxDragDropComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxDragDropComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDragDropComponent.prototype, "ondragstart", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDragDropComponent.prototype, "ondragend", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDragDropComponent.prototype, "ondragging", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDragDropComponent.prototype, "ondroptargetenter", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDragDropComponent.prototype, "ondroptargetleave", void 0);
+jqxDragDropComponent = __decorate([
+    Component({
+        selector: 'jqxDragDrop',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxDragDropComponent);
+
+let jqxDragDropModule = class jqxDragDropModule {
 };
+jqxDragDropModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxDragDropComponent],
+        exports: [jqxDragDropComponent]
+    })
+], jqxDragDropModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxDragDropModule {
-}
-jqxDragDropModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxDragDropComponent],
-                exports: [jqxDragDropComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxDragDropComponent, jqxDragDropModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxdragdrop.js.map

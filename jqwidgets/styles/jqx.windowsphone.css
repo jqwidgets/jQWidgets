@@ -494,3 +494,31 @@ border-color:#008a00; color: #fff; background-color:#008a00;
     color: white !important;
     background: black !important;
 }
+/*applied to the timepicker*/
+.jqx-time-picker .jqx-header .jqx-hour-container-windowsphone:hover {
+	background-color: rgb(0, 138, 0);
+}
+.jqx-time-picker .jqx-header .jqx-minute-container-windowsphone:hover {
+	background-color: rgb(0, 138, 0);
+}
+.jqx-time-picker .jqx-header .jqx-am-container-windowsphone:hover {
+	background-color: rgb(0, 138, 0);
+}
+.jqx-time-picker .jqx-header .jqx-pm-container-windowsphone:hover {
+	background-color: rgb(0, 138, 0);
+}
+.jqx-svg-picker-windowsphone:focus {
+	border: 1px solid rgb(77, 119, 193) !important;
+}
+.jqx-label-windowsphone {
+	fill: rgb(158, 158, 158);
+}
+.jqx-time-picker .jqx-header .jqx-selected-windowsphone:focus {
+    outline: 2px solid rgb(158, 158, 158);
+}
+.jqx-svg-picker-windowsphone:focus {
+	border: 1px solid rgb(73, 68, 55) !important;
+}
+.jqx-main-container-windowsphone {
+	background: none;
+}

@@ -9,9 +9,9 @@ import { jqxWindowComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxwi
 })
 
 export class AppComponent {
-    @ViewChild('customWindow') customWindow: jqxWindowComponent;
-    @ViewChild('searchTextButton') searchTextButton: jqxButtonComponent; 
-    @ViewChild('searchTextInput') searchTextInput: ElementRef;
+    @ViewChild('customWindow', {static: false}) customWindow: jqxWindowComponent;
+    @ViewChild('searchTextButton', {static: false}) searchTextButton: jqxButtonComponent; 
+    @ViewChild('searchTextInput', {static: false}) searchTextInput: ElementRef;
 
     _searchButtonHandle = () => {
         if (this.searchTextInput.nativeElement !== null) {

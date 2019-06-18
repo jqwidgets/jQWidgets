@@ -9,10 +9,10 @@ import { jqxCheckBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('rowLines') rowLines: jqxCheckBoxComponent;
-    @ViewChild('columnLines') columnLines: jqxCheckBoxComponent;
-    @ViewChild('columnHeaderLines') columnHeaderLines: jqxCheckBoxComponent;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('rowLines', {static: false}) rowLines: jqxCheckBoxComponent;
+    @ViewChild('columnLines', {static: false}) columnLines: jqxCheckBoxComponent;
+    @ViewChild('columnHeaderLines', {static: false}) columnHeaderLines: jqxCheckBoxComponent;
 
     data: any[] = this.generateData();
 

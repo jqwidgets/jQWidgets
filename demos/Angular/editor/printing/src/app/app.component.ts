@@ -8,7 +8,7 @@ import { jqxEditorComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxed
 })
 
 export class AppComponent {
-    @ViewChild('myEditor') myEditor: jqxEditorComponent;
+    @ViewChild('myEditor', {static: false}) myEditor: jqxEditorComponent;
 
     tools: string = 'bold italic underline | format font size | left center right | print';
 

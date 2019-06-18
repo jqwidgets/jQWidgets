@@ -12,8 +12,8 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('myComboBox') myComboBox: jqxComboBoxComponent;
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
+    @ViewChild('myComboBox', {static: false}) myComboBox: jqxComboBoxComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
 
     source: any[] = [
         'Affogato',

@@ -4,31 +4,19 @@ import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxtooltip from '../../jqwidgets-scripts/jqwidgets/jqxtooltip';
 import * as jqxdatetimeinput from '../../jqwidgets-scripts/jqwidgets/jqxdatetimeinput';
 import * as jqxcalendar from '../../jqwidgets-scripts/jqwidgets/jqxcalendar';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { forwardRef, EventEmitter, Input, Output, Component, ChangeDetectionStrategy, ElementRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-const noop = (/**
- * @return {?}
- */
-() => { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+const noop = () => { };
+const ɵ0 = noop;
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    () => jqxCalendarComponent)),
+    useExisting: forwardRef(() => jqxCalendarComponent),
     multi: true
 };
-class jqxCalendarComponent {
-    /**
-     * @param {?} containerElement
-     */
+let jqxCalendarComponent = class jqxCalendarComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['backText', 'columnHeaderHeight', 'clearString', 'culture', 'dayNameFormat', 'disabled', 'enableWeekend', 'enableViews', 'enableOtherMonthDays', 'enableFastNavigation', 'enableHover', 'enableAutoNavigation', 'enableTooltips', 'forwardText', 'firstDayOfWeek', 'height', 'min', 'max', 'navigationDelay', 'rowHeaderWidth', 'readOnly', 'restrictedDates', 'rtl', 'stepMonths', 'showWeekNumbers', 'showDayNames', 'showOtherMonthDays', 'showFooter', 'selectionMode', 'specialDates', 'theme', 'titleHeight', 'titleFormat', 'todayString', 'value', 'width'];
@@ -41,25 +29,16 @@ class jqxCalendarComponent {
         this.onViewChange = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -79,11 +58,6 @@ class jqxCalendarComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -98,14 +72,9 @@ class jqxCalendarComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -113,34 +82,18 @@ class jqxCalendarComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -157,55 +110,28 @@ class jqxCalendarComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxCalendar', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     writeValue(value) {
         if (this.widgetObject) {
             this.onChangeCallback(this.host.val());
         }
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnChange(fn) {
         this.onChangeCallback = fn;
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnTouched(fn) {
         this.onTouchedCallback = fn;
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxCalendar('setOptions', options);
     }
     // jqxCalendarComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     backText(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('backText', arg);
@@ -214,10 +140,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('backText');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnHeaderHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('columnHeaderHeight', arg);
@@ -226,10 +148,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('columnHeaderHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     clearString(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('clearString', arg);
@@ -238,10 +156,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('clearString');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     culture(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('culture', arg);
@@ -250,10 +164,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('culture');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dayNameFormat(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('dayNameFormat', arg);
@@ -262,10 +172,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('dayNameFormat');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('disabled', arg);
@@ -274,10 +180,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableWeekend(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('enableWeekend', arg);
@@ -286,10 +188,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('enableWeekend');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableViews(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('enableViews', arg);
@@ -298,10 +196,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('enableViews');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableOtherMonthDays(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('enableOtherMonthDays', arg);
@@ -310,10 +204,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('enableOtherMonthDays');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableFastNavigation(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('enableFastNavigation', arg);
@@ -322,10 +212,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('enableFastNavigation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableHover(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('enableHover', arg);
@@ -334,10 +220,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('enableHover');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableAutoNavigation(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('enableAutoNavigation', arg);
@@ -346,10 +228,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('enableAutoNavigation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableTooltips(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('enableTooltips', arg);
@@ -358,10 +236,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('enableTooltips');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     forwardText(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('forwardText', arg);
@@ -370,10 +244,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('forwardText');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     firstDayOfWeek(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('firstDayOfWeek', arg);
@@ -382,10 +252,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('firstDayOfWeek');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('height', arg);
@@ -394,10 +260,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     min(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('min', arg);
@@ -406,10 +268,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('min');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     max(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('max', arg);
@@ -418,10 +276,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('max');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     navigationDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('navigationDelay', arg);
@@ -430,10 +284,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('navigationDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rowHeaderWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('rowHeaderWidth', arg);
@@ -442,10 +292,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('rowHeaderWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     readOnly(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('readOnly', arg);
@@ -454,10 +300,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('readOnly');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     restrictedDates(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('restrictedDates', arg);
@@ -466,10 +308,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('restrictedDates');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('rtl', arg);
@@ -478,10 +316,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     stepMonths(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('stepMonths', arg);
@@ -490,10 +324,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('stepMonths');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showWeekNumbers(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('showWeekNumbers', arg);
@@ -502,10 +332,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('showWeekNumbers');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showDayNames(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('showDayNames', arg);
@@ -514,10 +340,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('showDayNames');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showOtherMonthDays(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('showOtherMonthDays', arg);
@@ -526,10 +348,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('showOtherMonthDays');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showFooter(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('showFooter', arg);
@@ -538,10 +356,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('showFooter');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     selectionMode(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('selectionMode', arg);
@@ -550,10 +364,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('selectionMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     specialDates(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('specialDates', arg);
@@ -562,10 +372,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('specialDates');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('theme', arg);
@@ -574,10 +380,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     titleHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('titleHeight', arg);
@@ -586,10 +388,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('titleHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     titleFormat(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('titleFormat', arg);
@@ -598,10 +396,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('titleFormat');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     todayString(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('todayString', arg);
@@ -610,10 +404,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('todayString');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     value(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('value', arg);
@@ -622,10 +412,6 @@ class jqxCalendarComponent {
             return this.host.jqxCalendar('value');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxCalendar('width', arg);
@@ -635,123 +421,57 @@ class jqxCalendarComponent {
         }
     }
     // jqxCalendarComponent functions
-    /**
-     * @return {?}
-     */
     clear() {
         this.host.jqxCalendar('clear');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxCalendar('destroy');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxCalendar('focus');
     }
-    /**
-     * @param {?} date
-     * @param {?} specialDateClass
-     * @param {?} text
-     * @return {?}
-     */
     addSpecialDate(date, specialDateClass, text) {
         this.host.jqxCalendar('addSpecialDate', date, specialDateClass, text);
     }
-    /**
-     * @return {?}
-     */
     getMinDate() {
         return this.host.jqxCalendar('getMinDate');
     }
-    /**
-     * @return {?}
-     */
     getMaxDate() {
         return this.host.jqxCalendar('getMaxDate');
     }
-    /**
-     * @return {?}
-     */
     getDate() {
         return this.host.jqxCalendar('getDate');
     }
-    /**
-     * @return {?}
-     */
     getRange() {
         return this.host.jqxCalendar('getRange');
     }
-    /**
-     * @param {?} months
-     * @return {?}
-     */
     navigateForward(months) {
         this.host.jqxCalendar('navigateForward', months);
     }
-    /**
-     * @param {?} months
-     * @return {?}
-     */
     navigateBackward(months) {
         this.host.jqxCalendar('navigateBackward', months);
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxCalendar('render');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxCalendar('refresh');
     }
-    /**
-     * @param {?} date
-     * @return {?}
-     */
     setMinDate(date) {
         this.host.jqxCalendar('setMinDate', date);
     }
-    /**
-     * @param {?} date
-     * @return {?}
-     */
     setMaxDate(date) {
         this.host.jqxCalendar('setMaxDate', date);
     }
-    /**
-     * @param {?} date
-     * @return {?}
-     */
     setDate(date) {
         this.host.jqxCalendar('setDate', date);
     }
-    /**
-     * @param {?} date
-     * @param {?} date2
-     * @return {?}
-     */
     setRange(date, date2) {
         this.host.jqxCalendar('setRange', date, date2);
     }
-    /**
-     * @return {?}
-     */
     today() {
         this.host.jqxCalendar('today');
     }
-    /**
-     * @param {?=} value
-     * @param {?=} value2
-     * @return {?}
-     */
     val(value, value2) {
         if (value !== undefined) {
             return this.host.jqxCalendar('val', value, value2);
@@ -761,114 +481,202 @@ class jqxCalendarComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('backButtonClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onBackButtonClick.emit(eventData); }));
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); }));
-        this.host.on('nextButtonClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onNextButtonClick.emit(eventData); }));
-        this.host.on('viewChange', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onViewChange.emit(eventData); }));
+        this.host.on('backButtonClick', (eventData) => { this.onBackButtonClick.emit(eventData); });
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
+        this.host.on('nextButtonClick', (eventData) => { this.onNextButtonClick.emit(eventData); });
+        this.host.on('viewChange', (eventData) => { this.onViewChange.emit(eventData); });
     }
-} //jqxCalendarComponent
-jqxCalendarComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxCalendar',
-                template: '<div><ng-content></ng-content></div>',
-                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                changeDetection: ChangeDetectionStrategy.OnPush
-            }] }
-];
-/** @nocollapse */
-jqxCalendarComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxCalendarComponent.propDecorators = {
-    attrBackText: [{ type: Input, args: ['backText',] }],
-    attrColumnHeaderHeight: [{ type: Input, args: ['columnHeaderHeight',] }],
-    attrClearString: [{ type: Input, args: ['clearString',] }],
-    attrCulture: [{ type: Input, args: ['culture',] }],
-    attrDayNameFormat: [{ type: Input, args: ['dayNameFormat',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrEnableWeekend: [{ type: Input, args: ['enableWeekend',] }],
-    attrEnableViews: [{ type: Input, args: ['enableViews',] }],
-    attrEnableOtherMonthDays: [{ type: Input, args: ['enableOtherMonthDays',] }],
-    attrEnableFastNavigation: [{ type: Input, args: ['enableFastNavigation',] }],
-    attrEnableHover: [{ type: Input, args: ['enableHover',] }],
-    attrEnableAutoNavigation: [{ type: Input, args: ['enableAutoNavigation',] }],
-    attrEnableTooltips: [{ type: Input, args: ['enableTooltips',] }],
-    attrForwardText: [{ type: Input, args: ['forwardText',] }],
-    attrFirstDayOfWeek: [{ type: Input, args: ['firstDayOfWeek',] }],
-    attrMin: [{ type: Input, args: ['min',] }],
-    attrMax: [{ type: Input, args: ['max',] }],
-    attrNavigationDelay: [{ type: Input, args: ['navigationDelay',] }],
-    attrRowHeaderWidth: [{ type: Input, args: ['rowHeaderWidth',] }],
-    attrReadOnly: [{ type: Input, args: ['readOnly',] }],
-    attrRestrictedDates: [{ type: Input, args: ['restrictedDates',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrStepMonths: [{ type: Input, args: ['stepMonths',] }],
-    attrShowWeekNumbers: [{ type: Input, args: ['showWeekNumbers',] }],
-    attrShowDayNames: [{ type: Input, args: ['showDayNames',] }],
-    attrShowOtherMonthDays: [{ type: Input, args: ['showOtherMonthDays',] }],
-    attrShowFooter: [{ type: Input, args: ['showFooter',] }],
-    attrSelectionMode: [{ type: Input, args: ['selectionMode',] }],
-    attrSpecialDates: [{ type: Input, args: ['specialDates',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrTitleHeight: [{ type: Input, args: ['titleHeight',] }],
-    attrTitleFormat: [{ type: Input, args: ['titleFormat',] }],
-    attrTodayString: [{ type: Input, args: ['todayString',] }],
-    attrValue: [{ type: Input, args: ['value',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onBackButtonClick: [{ type: Output }],
-    onChange: [{ type: Output }],
-    onNextButtonClick: [{ type: Output }],
-    onViewChange: [{ type: Output }]
+}; //jqxCalendarComponent
+__decorate([
+    Input('backText'),
+    __metadata("design:type", String)
+], jqxCalendarComponent.prototype, "attrBackText", void 0);
+__decorate([
+    Input('columnHeaderHeight'),
+    __metadata("design:type", Number)
+], jqxCalendarComponent.prototype, "attrColumnHeaderHeight", void 0);
+__decorate([
+    Input('clearString'),
+    __metadata("design:type", String)
+], jqxCalendarComponent.prototype, "attrClearString", void 0);
+__decorate([
+    Input('culture'),
+    __metadata("design:type", String)
+], jqxCalendarComponent.prototype, "attrCulture", void 0);
+__decorate([
+    Input('dayNameFormat'),
+    __metadata("design:type", String)
+], jqxCalendarComponent.prototype, "attrDayNameFormat", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('enableWeekend'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrEnableWeekend", void 0);
+__decorate([
+    Input('enableViews'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrEnableViews", void 0);
+__decorate([
+    Input('enableOtherMonthDays'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrEnableOtherMonthDays", void 0);
+__decorate([
+    Input('enableFastNavigation'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrEnableFastNavigation", void 0);
+__decorate([
+    Input('enableHover'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrEnableHover", void 0);
+__decorate([
+    Input('enableAutoNavigation'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrEnableAutoNavigation", void 0);
+__decorate([
+    Input('enableTooltips'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrEnableTooltips", void 0);
+__decorate([
+    Input('forwardText'),
+    __metadata("design:type", String)
+], jqxCalendarComponent.prototype, "attrForwardText", void 0);
+__decorate([
+    Input('firstDayOfWeek'),
+    __metadata("design:type", Number)
+], jqxCalendarComponent.prototype, "attrFirstDayOfWeek", void 0);
+__decorate([
+    Input('min'),
+    __metadata("design:type", Object)
+], jqxCalendarComponent.prototype, "attrMin", void 0);
+__decorate([
+    Input('max'),
+    __metadata("design:type", Object)
+], jqxCalendarComponent.prototype, "attrMax", void 0);
+__decorate([
+    Input('navigationDelay'),
+    __metadata("design:type", Number)
+], jqxCalendarComponent.prototype, "attrNavigationDelay", void 0);
+__decorate([
+    Input('rowHeaderWidth'),
+    __metadata("design:type", Object)
+], jqxCalendarComponent.prototype, "attrRowHeaderWidth", void 0);
+__decorate([
+    Input('readOnly'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrReadOnly", void 0);
+__decorate([
+    Input('restrictedDates'),
+    __metadata("design:type", Array)
+], jqxCalendarComponent.prototype, "attrRestrictedDates", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('stepMonths'),
+    __metadata("design:type", Number)
+], jqxCalendarComponent.prototype, "attrStepMonths", void 0);
+__decorate([
+    Input('showWeekNumbers'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrShowWeekNumbers", void 0);
+__decorate([
+    Input('showDayNames'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrShowDayNames", void 0);
+__decorate([
+    Input('showOtherMonthDays'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrShowOtherMonthDays", void 0);
+__decorate([
+    Input('showFooter'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "attrShowFooter", void 0);
+__decorate([
+    Input('selectionMode'),
+    __metadata("design:type", String)
+], jqxCalendarComponent.prototype, "attrSelectionMode", void 0);
+__decorate([
+    Input('specialDates'),
+    __metadata("design:type", Array)
+], jqxCalendarComponent.prototype, "attrSpecialDates", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxCalendarComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('titleHeight'),
+    __metadata("design:type", Number)
+], jqxCalendarComponent.prototype, "attrTitleHeight", void 0);
+__decorate([
+    Input('titleFormat'),
+    __metadata("design:type", String)
+], jqxCalendarComponent.prototype, "attrTitleFormat", void 0);
+__decorate([
+    Input('todayString'),
+    __metadata("design:type", String)
+], jqxCalendarComponent.prototype, "attrTodayString", void 0);
+__decorate([
+    Input('value'),
+    __metadata("design:type", Date)
+], jqxCalendarComponent.prototype, "attrValue", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxCalendarComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxCalendarComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxCalendarComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxCalendarComponent.prototype, "onBackButtonClick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxCalendarComponent.prototype, "onChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxCalendarComponent.prototype, "onNextButtonClick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxCalendarComponent.prototype, "onViewChange", void 0);
+jqxCalendarComponent = __decorate([
+    Component({
+        selector: 'jqxCalendar',
+        template: '<div><ng-content></ng-content></div>',
+        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+        changeDetection: ChangeDetectionStrategy.OnPush
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxCalendarComponent);
+
+let jqxCalendarModule = class jqxCalendarModule {
 };
+jqxCalendarModule = __decorate([
+    NgModule({
+        imports: [
+            FormsModule
+        ],
+        declarations: [jqxCalendarComponent],
+        exports: [jqxCalendarComponent]
+    })
+], jqxCalendarModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxCalendarModule {
-}
-jqxCalendarModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    FormsModule
-                ],
-                declarations: [jqxCalendarComponent],
-                exports: [jqxCalendarComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxCalendarComponent, jqxCalendarModule };
-
+export { jqxCalendarComponent, jqxCalendarModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxcalendar.js.map

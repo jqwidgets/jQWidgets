@@ -14,7 +14,7 @@ import { jqxTooltipComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxt
 })
 
 export class AppComponent {
-    @ViewChild('filmPicture1') myTooltip: jqxTooltipComponent;
+    @ViewChild('filmPicture1', {static: false}) myTooltip: jqxTooltipComponent;
 
     toggle: boolean = false;
 

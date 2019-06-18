@@ -14,14 +14,14 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('myWindow') myWindow: jqxWindowComponent;
-    @ViewChild('firstName') firstName: jqxInputComponent;
-    @ViewChild('lastName') lastName: jqxInputComponent;
-    @ViewChild('product') product: jqxInputComponent;
-    @ViewChild('quantity') quantity: jqxNumberInputComponent;
-    @ViewChild('price') price: jqxNumberInputComponent;
-    @ViewChild('myMenu') myMenu: jqxMenuComponent;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('myWindow', {static: false}) myWindow: jqxWindowComponent;
+    @ViewChild('firstName', {static: false}) firstName: jqxInputComponent;
+    @ViewChild('lastName', {static: false}) lastName: jqxInputComponent;
+    @ViewChild('product', {static: false}) product: jqxInputComponent;
+    @ViewChild('quantity', {static: false}) quantity: jqxNumberInputComponent;
+    @ViewChild('price', {static: false}) price: jqxNumberInputComponent;
+    @ViewChild('myMenu', {static: false}) myMenu: jqxMenuComponent;
 
     ngAfterViewInit(): void {
         document.addEventListener('contextmenu', event => event.preventDefault());

@@ -1,16 +1,11 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxbuttongroup from '../../jqwidgets-scripts/jqwidgets/jqxbuttongroup';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxButtonGroupComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxButtonGroupComponent = class jqxButtonGroupComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['disabled', 'enableHover', 'mode', 'rtl', 'template', 'theme'];
@@ -20,25 +15,16 @@ class jqxButtonGroupComponent {
         this.onUnselected = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -58,11 +44,6 @@ class jqxButtonGroupComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -77,14 +58,9 @@ class jqxButtonGroupComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -92,34 +68,18 @@ class jqxButtonGroupComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -137,32 +97,17 @@ class jqxButtonGroupComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxButtonGroup', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxButtonGroup('setOptions', options);
     }
     // jqxButtonGroupComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxButtonGroup('disabled', arg);
@@ -171,10 +116,6 @@ class jqxButtonGroupComponent {
             return this.host.jqxButtonGroup('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableHover(arg) {
         if (arg !== undefined) {
             this.host.jqxButtonGroup('enableHover', arg);
@@ -183,10 +124,6 @@ class jqxButtonGroupComponent {
             return this.host.jqxButtonGroup('enableHover');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     mode(arg) {
         if (arg !== undefined) {
             this.host.jqxButtonGroup('mode', arg);
@@ -195,10 +132,6 @@ class jqxButtonGroupComponent {
             return this.host.jqxButtonGroup('mode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxButtonGroup('rtl', arg);
@@ -207,10 +140,6 @@ class jqxButtonGroupComponent {
             return this.host.jqxButtonGroup('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     template(arg) {
         if (arg !== undefined) {
             this.host.jqxButtonGroup('template', arg);
@@ -219,10 +148,6 @@ class jqxButtonGroupComponent {
             return this.host.jqxButtonGroup('template');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxButtonGroup('theme', arg);
@@ -232,127 +157,105 @@ class jqxButtonGroupComponent {
         }
     }
     // jqxButtonGroupComponent functions
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     disableAt(index) {
         this.host.jqxButtonGroup('disableAt', index);
     }
-    /**
-     * @return {?}
-     */
     disable() {
         this.host.jqxButtonGroup('disable');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxButtonGroup('destroy');
     }
-    /**
-     * @return {?}
-     */
     enable() {
         this.host.jqxButtonGroup('enable');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     enableAt(index) {
         this.host.jqxButtonGroup('enableAt', index);
     }
-    /**
-     * @return {?}
-     */
     getSelection() {
         return this.host.jqxButtonGroup('getSelection');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxButtonGroup('render');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     setSelection(index) {
         this.host.jqxButtonGroup('setSelection', index);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('buttonclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onButtonclick.emit(eventData); }));
-        this.host.on('selected', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSelected.emit(eventData); }));
-        this.host.on('unselected', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onUnselected.emit(eventData); }));
+        this.host.on('buttonclick', (eventData) => { this.onButtonclick.emit(eventData); });
+        this.host.on('selected', (eventData) => { this.onSelected.emit(eventData); });
+        this.host.on('unselected', (eventData) => { this.onUnselected.emit(eventData); });
     }
-} //jqxButtonGroupComponent
-jqxButtonGroupComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxButtonGroup',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxButtonGroupComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxButtonGroupComponent.propDecorators = {
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrEnableHover: [{ type: Input, args: ['enableHover',] }],
-    attrMode: [{ type: Input, args: ['mode',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrTemplate: [{ type: Input, args: ['template',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onButtonclick: [{ type: Output }],
-    onSelected: [{ type: Output }],
-    onUnselected: [{ type: Output }]
+}; //jqxButtonGroupComponent
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxButtonGroupComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('enableHover'),
+    __metadata("design:type", Boolean)
+], jqxButtonGroupComponent.prototype, "attrEnableHover", void 0);
+__decorate([
+    Input('mode'),
+    __metadata("design:type", String)
+], jqxButtonGroupComponent.prototype, "attrMode", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxButtonGroupComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('template'),
+    __metadata("design:type", String)
+], jqxButtonGroupComponent.prototype, "attrTemplate", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxButtonGroupComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxButtonGroupComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxButtonGroupComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxButtonGroupComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxButtonGroupComponent.prototype, "onButtonclick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxButtonGroupComponent.prototype, "onSelected", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxButtonGroupComponent.prototype, "onUnselected", void 0);
+jqxButtonGroupComponent = __decorate([
+    Component({
+        selector: 'jqxButtonGroup',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxButtonGroupComponent);
+
+let jqxButtonGroupModule = class jqxButtonGroupModule {
 };
+jqxButtonGroupModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxButtonGroupComponent],
+        exports: [jqxButtonGroupComponent]
+    })
+], jqxButtonGroupModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxButtonGroupModule {
-}
-jqxButtonGroupModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxButtonGroupComponent],
-                exports: [jqxButtonGroupComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxButtonGroupComponent, jqxButtonGroupModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxbuttongroup.js.map

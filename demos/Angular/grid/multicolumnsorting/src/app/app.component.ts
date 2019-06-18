@@ -7,7 +7,7 @@ import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid
 })
 
 export class AppComponent {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
 
     data: any[] = this.generateData();
 

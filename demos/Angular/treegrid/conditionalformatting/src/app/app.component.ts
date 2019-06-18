@@ -10,7 +10,7 @@ import { jqxTreeGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('TreeGrid') treeGrid: jqxTreeGridComponent
+    @ViewChild('TreeGrid', {static: false}) treeGrid: jqxTreeGridComponent
     
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

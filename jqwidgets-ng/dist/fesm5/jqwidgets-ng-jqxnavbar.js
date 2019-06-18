@@ -1,12 +1,9 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxnavbar from '../../jqwidgets-scripts/jqwidgets/jqxnavbar';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxNavBarComponent = /** @class */ (function () {
     function jqxNavBarComponent(containerElement) {
         this.autoCreate = true;
@@ -15,31 +12,15 @@ var jqxNavBarComponent = /** @class */ (function () {
         this.onChange = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavBarComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxNavBarComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -59,17 +40,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxNavBarComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -83,17 +54,9 @@ var jqxNavBarComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxNavBarComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -101,50 +64,20 @@ var jqxNavBarComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxNavBarComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxNavBarComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxNavBarComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -160,51 +93,18 @@ var jqxNavBarComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxNavBar', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxNavBarComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavBarComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxNavBarComponent.prototype.setOptions = function (options) {
         this.host.jqxNavBar('setOptions', options);
     };
     // jqxNavBarComponent properties
-    // jqxNavBarComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.columns = 
-    // jqxNavBarComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.columns = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('columns', arg);
         }
@@ -212,15 +112,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('columns');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('disabled', arg);
         }
@@ -228,15 +120,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('height', arg);
         }
@@ -244,15 +128,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.minimized = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.minimized = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('minimized', arg);
         }
@@ -260,15 +136,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('minimized');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.minimizeButtonPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.minimizeButtonPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('minimizeButtonPosition', arg);
         }
@@ -276,15 +144,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('minimizeButtonPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.minimizedHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.minimizedHeight = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('minimizedHeight', arg);
         }
@@ -292,15 +152,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('minimizedHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.minimizedTitle = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.minimizedTitle = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('minimizedTitle', arg);
         }
@@ -308,15 +160,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('minimizedTitle');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.orientation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.orientation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('orientation', arg);
         }
@@ -324,15 +168,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('orientation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.popupAnimationDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.popupAnimationDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('popupAnimationDelay', arg);
         }
@@ -340,15 +176,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('popupAnimationDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('rtl', arg);
         }
@@ -356,15 +184,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.selection = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.selection = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('selection', arg);
         }
@@ -372,15 +192,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('selection');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.selectedItem = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.selectedItem = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('selectedItem', arg);
         }
@@ -388,15 +200,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('selectedItem');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('theme', arg);
         }
@@ -404,15 +208,7 @@ var jqxNavBarComponent = /** @class */ (function () {
             return this.host.jqxNavBar('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavBarComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavBar('width', arg);
         }
@@ -421,128 +217,115 @@ var jqxNavBarComponent = /** @class */ (function () {
         }
     };
     // jqxNavBarComponent functions
-    // jqxNavBarComponent functions
-    /**
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.close = 
-    // jqxNavBarComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxNavBarComponent.prototype.close = function () {
         this.host.jqxNavBar('close');
     };
-    /**
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavBarComponent.prototype.destroy = function () {
         this.host.jqxNavBar('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.getSelectedIndex = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavBarComponent.prototype.getSelectedIndex = function () {
         return this.host.jqxNavBar('getSelectedIndex');
     };
-    /**
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.open = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavBarComponent.prototype.open = function () {
         this.host.jqxNavBar('open');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.selectAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxNavBarComponent.prototype.selectAt = function (index) {
         this.host.jqxNavBar('selectAt', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxNavBarComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavBarComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChange.emit(eventData); }));
+        this.host.on('change', function (eventData) { _this.onChange.emit(eventData); });
     };
-    jqxNavBarComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxNavBar',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxNavBarComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxNavBarComponent.propDecorators = {
-        attrColumns: [{ type: Input, args: ['columns',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrMinimized: [{ type: Input, args: ['minimized',] }],
-        attrMinimizeButtonPosition: [{ type: Input, args: ['minimizeButtonPosition',] }],
-        attrMinimizedHeight: [{ type: Input, args: ['minimizedHeight',] }],
-        attrMinimizedTitle: [{ type: Input, args: ['minimizedTitle',] }],
-        attrOrientation: [{ type: Input, args: ['orientation',] }],
-        attrPopupAnimationDelay: [{ type: Input, args: ['popupAnimationDelay',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrSelection: [{ type: Input, args: ['selection',] }],
-        attrSelectedItem: [{ type: Input, args: ['selectedItem',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onChange: [{ type: Output }]
-    };
+    __decorate([
+        Input('columns'),
+        __metadata("design:type", Array)
+    ], jqxNavBarComponent.prototype, "attrColumns", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxNavBarComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('minimized'),
+        __metadata("design:type", Boolean)
+    ], jqxNavBarComponent.prototype, "attrMinimized", void 0);
+    __decorate([
+        Input('minimizeButtonPosition'),
+        __metadata("design:type", String)
+    ], jqxNavBarComponent.prototype, "attrMinimizeButtonPosition", void 0);
+    __decorate([
+        Input('minimizedHeight'),
+        __metadata("design:type", Object)
+    ], jqxNavBarComponent.prototype, "attrMinimizedHeight", void 0);
+    __decorate([
+        Input('minimizedTitle'),
+        __metadata("design:type", Object)
+    ], jqxNavBarComponent.prototype, "attrMinimizedTitle", void 0);
+    __decorate([
+        Input('orientation'),
+        __metadata("design:type", String)
+    ], jqxNavBarComponent.prototype, "attrOrientation", void 0);
+    __decorate([
+        Input('popupAnimationDelay'),
+        __metadata("design:type", Number)
+    ], jqxNavBarComponent.prototype, "attrPopupAnimationDelay", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxNavBarComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('selection'),
+        __metadata("design:type", Boolean)
+    ], jqxNavBarComponent.prototype, "attrSelection", void 0);
+    __decorate([
+        Input('selectedItem'),
+        __metadata("design:type", Object)
+    ], jqxNavBarComponent.prototype, "attrSelectedItem", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxNavBarComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxNavBarComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxNavBarComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxNavBarComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxNavBarComponent.prototype, "onChange", void 0);
+    jqxNavBarComponent = __decorate([
+        Component({
+            selector: 'jqxNavBar',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxNavBarComponent);
     return jqxNavBarComponent;
 }()); //jqxNavBarComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxNavBarModule = /** @class */ (function () {
     function jqxNavBarModule() {
     }
-    jqxNavBarModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxNavBarComponent],
-                    exports: [jqxNavBarComponent]
-                },] }
-    ];
+    jqxNavBarModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxNavBarComponent],
+            exports: [jqxNavBarComponent]
+        })
+    ], jqxNavBarModule);
     return jqxNavBarModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxNavBarComponent, jqxNavBarModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxnavbar.js.map

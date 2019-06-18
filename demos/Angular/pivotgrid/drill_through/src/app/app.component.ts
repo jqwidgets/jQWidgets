@@ -9,9 +9,9 @@ import { jqxDataTableComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jq
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-   @ViewChild('pivotGrid1') pivotGrid1: jqxPivotGridComponent; 
-   @ViewChild('drillThroughWindow') drillThroughWindow: jqxWindowComponent; 
-   @ViewChild('tableSrcRecords') tableSrcRecords: jqxDataTableComponent; 
+   @ViewChild('pivotGrid1', {static: false}) pivotGrid1: jqxPivotGridComponent; 
+   @ViewChild('drillThroughWindow', {static: false}) drillThroughWindow: jqxWindowComponent; 
+   @ViewChild('tableSrcRecords', {static: false}) tableSrcRecords: jqxDataTableComponent; 
    
    constructor()
    {

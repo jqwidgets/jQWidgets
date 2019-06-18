@@ -8,8 +8,8 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent {
-    @ViewChild('beginEdit') beginEdit: ElementRef;
-    @ViewChild('endEdit') endEdit: ElementRef;
+    @ViewChild('beginEdit', {static: false}) beginEdit: ElementRef;
+    @ViewChild('endEdit', {static: false}) endEdit: ElementRef;
 
     source: any =
     {

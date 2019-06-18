@@ -7,16 +7,11 @@ import * as jqxchartapi from '../../jqwidgets-scripts/jqwidgets/jqxchart.api';
 import * as jqxchartannotations from '../../jqwidgets-scripts/jqwidgets/jqxchart.annotations';
 import * as jqxchartrangeselector from '../../jqwidgets-scripts/jqwidgets/jqxchart.rangeselector';
 import * as jqxchartwaterfall from '../../jqwidgets-scripts/jqwidgets/jqxchart.waterfall';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxChartComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxChartComponent = class jqxChartComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['title', 'description', 'source', 'showBorderLine', 'borderLineColor', 'borderLineWidth', 'backgroundColor', 'backgroundImage', 'showLegend', 'legendLayout', 'padding', 'titlePadding', 'colorScheme', 'greyScale', 'showToolTips', 'toolTipShowDelay', 'toolTipHideDelay', 'toolTipMoveDuration', 'drawBefore', 'draw', 'rtl', 'enableCrosshairs', 'crosshairsColor', 'crosshairsDashStyle', 'crosshairsLineWidth', 'columnSeriesOverlap', 'enabled', 'enableAnimations', 'animationDuration', 'enableAxisTextAnimation', 'renderEngine', 'xAxis', 'valueAxis', 'categoryAxis', 'seriesGroups'];
@@ -28,35 +23,23 @@ class jqxChartComponent {
         this.onRangeSelectionChanging = new EventEmitter();
         this.onRangeSelectionChanged = new EventEmitter();
         this.elementRef = containerElement;
-        JQXLite(window).resize((/**
-         * @return {?}
-         */
-        () => {
+        JQXLite(window).resize(() => {
             this.__updateRect__();
-        }));
+        });
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             if (changes.hasOwnProperty('attrWidth') || changes.hasOwnProperty('attrHeight')) {
                 this.__updateRect__();
             }
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -76,11 +59,6 @@ class jqxChartComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -95,14 +73,9 @@ class jqxChartComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -110,34 +83,18 @@ class jqxChartComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -155,33 +112,18 @@ class jqxChartComponent {
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxChart', options);
         this.__updateRect__();
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
         this.refresh();
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxChart('setOptions', options);
     }
     // jqxChartComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     title(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('title', arg);
@@ -190,10 +132,6 @@ class jqxChartComponent {
             return this.host.jqxChart('title');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     description(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('description', arg);
@@ -202,10 +140,6 @@ class jqxChartComponent {
             return this.host.jqxChart('description');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     source(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('source', arg);
@@ -214,10 +148,6 @@ class jqxChartComponent {
             return this.host.jqxChart('source');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showBorderLine(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('showBorderLine', arg);
@@ -226,10 +156,6 @@ class jqxChartComponent {
             return this.host.jqxChart('showBorderLine');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     borderLineColor(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('borderLineColor', arg);
@@ -238,10 +164,6 @@ class jqxChartComponent {
             return this.host.jqxChart('borderLineColor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     borderLineWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('borderLineWidth', arg);
@@ -250,10 +172,6 @@ class jqxChartComponent {
             return this.host.jqxChart('borderLineWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     backgroundColor(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('backgroundColor', arg);
@@ -262,10 +180,6 @@ class jqxChartComponent {
             return this.host.jqxChart('backgroundColor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     backgroundImage(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('backgroundImage', arg);
@@ -274,10 +188,6 @@ class jqxChartComponent {
             return this.host.jqxChart('backgroundImage');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showLegend(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('showLegend', arg);
@@ -286,10 +196,6 @@ class jqxChartComponent {
             return this.host.jqxChart('showLegend');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     legendLayout(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('legendLayout', arg);
@@ -298,10 +204,6 @@ class jqxChartComponent {
             return this.host.jqxChart('legendLayout');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     padding(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('padding', arg);
@@ -310,10 +212,6 @@ class jqxChartComponent {
             return this.host.jqxChart('padding');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     titlePadding(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('titlePadding', arg);
@@ -322,10 +220,6 @@ class jqxChartComponent {
             return this.host.jqxChart('titlePadding');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     colorScheme(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('colorScheme', arg);
@@ -334,10 +228,6 @@ class jqxChartComponent {
             return this.host.jqxChart('colorScheme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     greyScale(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('greyScale', arg);
@@ -346,10 +236,6 @@ class jqxChartComponent {
             return this.host.jqxChart('greyScale');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showToolTips(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('showToolTips', arg);
@@ -358,10 +244,6 @@ class jqxChartComponent {
             return this.host.jqxChart('showToolTips');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     toolTipShowDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('toolTipShowDelay', arg);
@@ -370,10 +252,6 @@ class jqxChartComponent {
             return this.host.jqxChart('toolTipShowDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     toolTipHideDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('toolTipHideDelay', arg);
@@ -382,10 +260,6 @@ class jqxChartComponent {
             return this.host.jqxChart('toolTipHideDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     toolTipMoveDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('toolTipMoveDuration', arg);
@@ -394,10 +268,6 @@ class jqxChartComponent {
             return this.host.jqxChart('toolTipMoveDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     drawBefore(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('drawBefore', arg);
@@ -406,10 +276,6 @@ class jqxChartComponent {
             return this.host.jqxChart('drawBefore');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     draw(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('draw', arg);
@@ -418,10 +284,6 @@ class jqxChartComponent {
             return this.host.jqxChart('draw');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('rtl', arg);
@@ -430,10 +292,6 @@ class jqxChartComponent {
             return this.host.jqxChart('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableCrosshairs(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('enableCrosshairs', arg);
@@ -442,10 +300,6 @@ class jqxChartComponent {
             return this.host.jqxChart('enableCrosshairs');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     crosshairsColor(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('crosshairsColor', arg);
@@ -454,10 +308,6 @@ class jqxChartComponent {
             return this.host.jqxChart('crosshairsColor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     crosshairsDashStyle(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('crosshairsDashStyle', arg);
@@ -466,10 +316,6 @@ class jqxChartComponent {
             return this.host.jqxChart('crosshairsDashStyle');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     crosshairsLineWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('crosshairsLineWidth', arg);
@@ -478,10 +324,6 @@ class jqxChartComponent {
             return this.host.jqxChart('crosshairsLineWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnSeriesOverlap(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('columnSeriesOverlap', arg);
@@ -490,10 +332,6 @@ class jqxChartComponent {
             return this.host.jqxChart('columnSeriesOverlap');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enabled(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('enabled', arg);
@@ -502,10 +340,6 @@ class jqxChartComponent {
             return this.host.jqxChart('enabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableAnimations(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('enableAnimations', arg);
@@ -514,10 +348,6 @@ class jqxChartComponent {
             return this.host.jqxChart('enableAnimations');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('animationDuration', arg);
@@ -526,10 +356,6 @@ class jqxChartComponent {
             return this.host.jqxChart('animationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableAxisTextAnimation(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('enableAxisTextAnimation', arg);
@@ -538,10 +364,6 @@ class jqxChartComponent {
             return this.host.jqxChart('enableAxisTextAnimation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     renderEngine(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('renderEngine', arg);
@@ -550,10 +372,6 @@ class jqxChartComponent {
             return this.host.jqxChart('renderEngine');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     xAxis(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('xAxis', arg);
@@ -562,10 +380,6 @@ class jqxChartComponent {
             return this.host.jqxChart('xAxis');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     valueAxis(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('valueAxis', arg);
@@ -574,10 +388,6 @@ class jqxChartComponent {
             return this.host.jqxChart('valueAxis');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     categoryAxis(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('categoryAxis', arg);
@@ -586,10 +396,6 @@ class jqxChartComponent {
             return this.host.jqxChart('categoryAxis');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     seriesGroups(arg) {
         if (arg !== undefined) {
             this.host.jqxChart('seriesGroups', arg);
@@ -599,290 +405,278 @@ class jqxChartComponent {
         }
     }
     // jqxChartComponent functions
-    /**
-     * @return {?}
-     */
     getInstance() {
         return this.host.jqxChart('getInstance');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxChart('refresh');
     }
-    /**
-     * @return {?}
-     */
     update() {
         this.host.jqxChart('update');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxChart('destroy');
     }
-    /**
-     * @param {?} schemeName
-     * @param {?} colors
-     * @return {?}
-     */
     addColorScheme(schemeName, colors) {
         this.host.jqxChart('addColorScheme', schemeName, colors);
     }
-    /**
-     * @param {?} schemeName
-     * @return {?}
-     */
     removeColorScheme(schemeName) {
         this.host.jqxChart('removeColorScheme', schemeName);
     }
-    /**
-     * @param {?} groupIndex
-     * @param {?} serieIndex
-     * @return {?}
-     */
     getItemsCount(groupIndex, serieIndex) {
         return this.host.jqxChart('getItemsCount', groupIndex, serieIndex);
     }
-    /**
-     * @param {?} groupIndex
-     * @param {?} serieIndex
-     * @param {?} itemIndex
-     * @return {?}
-     */
     getItemCoord(groupIndex, serieIndex, itemIndex) {
         return this.host.jqxChart('getItemCoord', groupIndex, serieIndex, itemIndex);
     }
-    /**
-     * @param {?} groupIndex
-     * @return {?}
-     */
     getXAxisRect(groupIndex) {
         return this.host.jqxChart('getXAxisRect', groupIndex);
     }
-    /**
-     * @param {?} groupIndex
-     * @return {?}
-     */
     getXAxisLabels(groupIndex) {
         return this.host.jqxChart('getXAxisLabels', groupIndex);
     }
-    /**
-     * @param {?} groupIndex
-     * @return {?}
-     */
     getValueAxisRect(groupIndex) {
         return this.host.jqxChart('getValueAxisRect', groupIndex);
     }
-    /**
-     * @param {?} groupIndex
-     * @return {?}
-     */
     getValueAxisLabels(groupIndex) {
         return this.host.jqxChart('getValueAxisLabels', groupIndex);
     }
-    /**
-     * @param {?} colorScheme
-     * @return {?}
-     */
     getColorScheme(colorScheme) {
         return this.host.jqxChart('getColorScheme', colorScheme);
     }
-    /**
-     * @param {?} groupIndex
-     * @param {?} serieIndex
-     * @param {?} itemIndex
-     * @return {?}
-     */
     hideSerie(groupIndex, serieIndex, itemIndex) {
         this.host.jqxChart('hideSerie', groupIndex, serieIndex, itemIndex);
     }
-    /**
-     * @param {?} groupIndex
-     * @param {?} serieIndex
-     * @param {?} itemIndex
-     * @return {?}
-     */
     showSerie(groupIndex, serieIndex, itemIndex) {
         this.host.jqxChart('showSerie', groupIndex, serieIndex, itemIndex);
     }
-    /**
-     * @param {?} hideDelay
-     * @return {?}
-     */
     hideToolTip(hideDelay) {
         this.host.jqxChart('hideToolTip', hideDelay);
     }
-    /**
-     * @param {?} groupIndex
-     * @param {?} serieIndex
-     * @param {?} itemIndex
-     * @param {?} showDelay
-     * @param {?} hideDelay
-     * @return {?}
-     */
     showToolTip(groupIndex, serieIndex, itemIndex, showDelay, hideDelay) {
         this.host.jqxChart('showToolTip', groupIndex, serieIndex, itemIndex, showDelay, hideDelay);
     }
-    /**
-     * @param {?} fileName
-     * @param {?} exportServerUrl
-     * @return {?}
-     */
     saveAsJPEG(fileName, exportServerUrl) {
         this.host.jqxChart('saveAsJPEG', fileName, exportServerUrl);
     }
-    /**
-     * @param {?} fileName
-     * @param {?} exportServerUrl
-     * @return {?}
-     */
     saveAsPNG(fileName, exportServerUrl) {
         this.host.jqxChart('saveAsPNG', fileName, exportServerUrl);
     }
-    /**
-     * @param {?} fileName
-     * @param {?} exportServerUrl
-     * @return {?}
-     */
     saveAsPDF(fileName, exportServerUrl) {
         this.host.jqxChart('saveAsPDF', fileName, exportServerUrl);
     }
-    /**
-     * @param {?} offset
-     * @param {?} groupIndex
-     * @return {?}
-     */
     getXAxisValue(offset, groupIndex) {
         return this.host.jqxChart('getXAxisValue', offset, groupIndex);
     }
-    /**
-     * @param {?} offset
-     * @param {?} groupIndex
-     * @return {?}
-     */
     getValueAxisValue(offset, groupIndex) {
         return this.host.jqxChart('getValueAxisValue', offset, groupIndex);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('toggle', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onToggle.emit(eventData); }));
-        this.host.on('click', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onClick.emit(eventData); }));
-        this.host.on('refreshBegin', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRefreshBegin.emit(eventData); }));
-        this.host.on('refreshEnd', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRefreshEnd.emit(eventData); }));
-        this.host.on('rangeSelectionChanging', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRangeSelectionChanging.emit(eventData); }));
-        this.host.on('rangeSelectionChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRangeSelectionChanged.emit(eventData); }));
+        this.host.on('toggle', (eventData) => { this.onToggle.emit(eventData); });
+        this.host.on('click', (eventData) => { this.onClick.emit(eventData); });
+        this.host.on('refreshBegin', (eventData) => { this.onRefreshBegin.emit(eventData); });
+        this.host.on('refreshEnd', (eventData) => { this.onRefreshEnd.emit(eventData); });
+        this.host.on('rangeSelectionChanging', (eventData) => { this.onRangeSelectionChanging.emit(eventData); });
+        this.host.on('rangeSelectionChanged', (eventData) => { this.onRangeSelectionChanged.emit(eventData); });
     }
-} //jqxChartComponent
-jqxChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxChart',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxChartComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxChartComponent.propDecorators = {
-    attrTitle: [{ type: Input, args: ['title',] }],
-    attrDescription: [{ type: Input, args: ['description',] }],
-    attrSource: [{ type: Input, args: ['source',] }],
-    attrShowBorderLine: [{ type: Input, args: ['showBorderLine',] }],
-    attrBorderLineColor: [{ type: Input, args: ['borderLineColor',] }],
-    attrBorderLineWidth: [{ type: Input, args: ['borderLineWidth',] }],
-    attrBackgroundColor: [{ type: Input, args: ['backgroundColor',] }],
-    attrBackgroundImage: [{ type: Input, args: ['backgroundImage',] }],
-    attrShowLegend: [{ type: Input, args: ['showLegend',] }],
-    attrLegendLayout: [{ type: Input, args: ['legendLayout',] }],
-    attrPadding: [{ type: Input, args: ['padding',] }],
-    attrTitlePadding: [{ type: Input, args: ['titlePadding',] }],
-    attrColorScheme: [{ type: Input, args: ['colorScheme',] }],
-    attrGreyScale: [{ type: Input, args: ['greyScale',] }],
-    attrShowToolTips: [{ type: Input, args: ['showToolTips',] }],
-    attrToolTipShowDelay: [{ type: Input, args: ['toolTipShowDelay',] }],
-    attrToolTipHideDelay: [{ type: Input, args: ['toolTipHideDelay',] }],
-    attrToolTipMoveDuration: [{ type: Input, args: ['toolTipMoveDuration',] }],
-    attrDrawBefore: [{ type: Input, args: ['drawBefore',] }],
-    attrDraw: [{ type: Input, args: ['draw',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrEnableCrosshairs: [{ type: Input, args: ['enableCrosshairs',] }],
-    attrCrosshairsColor: [{ type: Input, args: ['crosshairsColor',] }],
-    attrCrosshairsDashStyle: [{ type: Input, args: ['crosshairsDashStyle',] }],
-    attrCrosshairsLineWidth: [{ type: Input, args: ['crosshairsLineWidth',] }],
-    attrColumnSeriesOverlap: [{ type: Input, args: ['columnSeriesOverlap',] }],
-    attrEnabled: [{ type: Input, args: ['enabled',] }],
-    attrEnableAnimations: [{ type: Input, args: ['enableAnimations',] }],
-    attrAnimationDuration: [{ type: Input, args: ['animationDuration',] }],
-    attrEnableAxisTextAnimation: [{ type: Input, args: ['enableAxisTextAnimation',] }],
-    attrRenderEngine: [{ type: Input, args: ['renderEngine',] }],
-    attrXAxis: [{ type: Input, args: ['xAxis',] }],
-    attrValueAxis: [{ type: Input, args: ['valueAxis',] }],
-    attrCategoryAxis: [{ type: Input, args: ['categoryAxis',] }],
-    attrSeriesGroups: [{ type: Input, args: ['seriesGroups',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onToggle: [{ type: Output }],
-    onClick: [{ type: Output }],
-    onRefreshBegin: [{ type: Output }],
-    onRefreshEnd: [{ type: Output }],
-    onRangeSelectionChanging: [{ type: Output }],
-    onRangeSelectionChanged: [{ type: Output }]
+}; //jqxChartComponent
+__decorate([
+    Input('title'),
+    __metadata("design:type", String)
+], jqxChartComponent.prototype, "attrTitle", void 0);
+__decorate([
+    Input('description'),
+    __metadata("design:type", String)
+], jqxChartComponent.prototype, "attrDescription", void 0);
+__decorate([
+    Input('source'),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "attrSource", void 0);
+__decorate([
+    Input('showBorderLine'),
+    __metadata("design:type", Boolean)
+], jqxChartComponent.prototype, "attrShowBorderLine", void 0);
+__decorate([
+    Input('borderLineColor'),
+    __metadata("design:type", String)
+], jqxChartComponent.prototype, "attrBorderLineColor", void 0);
+__decorate([
+    Input('borderLineWidth'),
+    __metadata("design:type", Number)
+], jqxChartComponent.prototype, "attrBorderLineWidth", void 0);
+__decorate([
+    Input('backgroundColor'),
+    __metadata("design:type", String)
+], jqxChartComponent.prototype, "attrBackgroundColor", void 0);
+__decorate([
+    Input('backgroundImage'),
+    __metadata("design:type", String)
+], jqxChartComponent.prototype, "attrBackgroundImage", void 0);
+__decorate([
+    Input('showLegend'),
+    __metadata("design:type", Boolean)
+], jqxChartComponent.prototype, "attrShowLegend", void 0);
+__decorate([
+    Input('legendLayout'),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "attrLegendLayout", void 0);
+__decorate([
+    Input('padding'),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "attrPadding", void 0);
+__decorate([
+    Input('titlePadding'),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "attrTitlePadding", void 0);
+__decorate([
+    Input('colorScheme'),
+    __metadata("design:type", String)
+], jqxChartComponent.prototype, "attrColorScheme", void 0);
+__decorate([
+    Input('greyScale'),
+    __metadata("design:type", Boolean)
+], jqxChartComponent.prototype, "attrGreyScale", void 0);
+__decorate([
+    Input('showToolTips'),
+    __metadata("design:type", Boolean)
+], jqxChartComponent.prototype, "attrShowToolTips", void 0);
+__decorate([
+    Input('toolTipShowDelay'),
+    __metadata("design:type", Number)
+], jqxChartComponent.prototype, "attrToolTipShowDelay", void 0);
+__decorate([
+    Input('toolTipHideDelay'),
+    __metadata("design:type", Number)
+], jqxChartComponent.prototype, "attrToolTipHideDelay", void 0);
+__decorate([
+    Input('toolTipMoveDuration'),
+    __metadata("design:type", Number)
+], jqxChartComponent.prototype, "attrToolTipMoveDuration", void 0);
+__decorate([
+    Input('drawBefore'),
+    __metadata("design:type", Function)
+], jqxChartComponent.prototype, "attrDrawBefore", void 0);
+__decorate([
+    Input('draw'),
+    __metadata("design:type", Function)
+], jqxChartComponent.prototype, "attrDraw", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxChartComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('enableCrosshairs'),
+    __metadata("design:type", Boolean)
+], jqxChartComponent.prototype, "attrEnableCrosshairs", void 0);
+__decorate([
+    Input('crosshairsColor'),
+    __metadata("design:type", String)
+], jqxChartComponent.prototype, "attrCrosshairsColor", void 0);
+__decorate([
+    Input('crosshairsDashStyle'),
+    __metadata("design:type", String)
+], jqxChartComponent.prototype, "attrCrosshairsDashStyle", void 0);
+__decorate([
+    Input('crosshairsLineWidth'),
+    __metadata("design:type", Number)
+], jqxChartComponent.prototype, "attrCrosshairsLineWidth", void 0);
+__decorate([
+    Input('columnSeriesOverlap'),
+    __metadata("design:type", Boolean)
+], jqxChartComponent.prototype, "attrColumnSeriesOverlap", void 0);
+__decorate([
+    Input('enabled'),
+    __metadata("design:type", Boolean)
+], jqxChartComponent.prototype, "attrEnabled", void 0);
+__decorate([
+    Input('enableAnimations'),
+    __metadata("design:type", Boolean)
+], jqxChartComponent.prototype, "attrEnableAnimations", void 0);
+__decorate([
+    Input('animationDuration'),
+    __metadata("design:type", Number)
+], jqxChartComponent.prototype, "attrAnimationDuration", void 0);
+__decorate([
+    Input('enableAxisTextAnimation'),
+    __metadata("design:type", Boolean)
+], jqxChartComponent.prototype, "attrEnableAxisTextAnimation", void 0);
+__decorate([
+    Input('renderEngine'),
+    __metadata("design:type", String)
+], jqxChartComponent.prototype, "attrRenderEngine", void 0);
+__decorate([
+    Input('xAxis'),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "attrXAxis", void 0);
+__decorate([
+    Input('valueAxis'),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "attrValueAxis", void 0);
+__decorate([
+    Input('categoryAxis'),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "attrCategoryAxis", void 0);
+__decorate([
+    Input('seriesGroups'),
+    __metadata("design:type", Array)
+], jqxChartComponent.prototype, "attrSeriesGroups", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxChartComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "onToggle", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "onClick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "onRefreshBegin", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "onRefreshEnd", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "onRangeSelectionChanging", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxChartComponent.prototype, "onRangeSelectionChanged", void 0);
+jqxChartComponent = __decorate([
+    Component({
+        selector: 'jqxChart',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxChartComponent);
+
+let jqxChartModule = class jqxChartModule {
 };
+jqxChartModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxChartComponent],
+        exports: [jqxChartComponent]
+    })
+], jqxChartModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxChartModule {
-}
-jqxChartModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxChartComponent],
-                exports: [jqxChartComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxChartComponent, jqxChartModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxchart.js.map

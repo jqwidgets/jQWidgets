@@ -248,3 +248,13 @@
     margin-left: -4px;
     margin-right: 4px;
  }
+/*applied to the timepicker*/
+.jqx-label-ui-darkness {
+	fill: white;
+}
+.jqx-main-container-ui-darkness {
+	background: none;
+}
+.jqx-svg-picker-ui-darkness:focus {
+	border: 1px solid rgb(73, 68, 55) !important;
+}

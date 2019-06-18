@@ -8,7 +8,7 @@ import { jqxNotificationComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('myNotification') myNotification: jqxNotificationComponent;
+    @ViewChild('myNotification', {static: false}) myNotification: jqxNotificationComponent;
 
     source: string[] = ["info", "warning", "success", "error", "mail", "time", "null"]
 

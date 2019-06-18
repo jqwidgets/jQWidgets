@@ -8,12 +8,12 @@ import { jqxDockPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jq
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxDockPanel') DockPanel: jqxDockPanelComponent;
-    @ViewChild('jqxDockPanel2') DockPanel2: jqxDockPanelComponent;
-    @ViewChild('first') firstElement: ElementRef;
-    @ViewChild('second') secondElement: ElementRef;
-    @ViewChild('third') thirdElement: ElementRef;
-    @ViewChild('fourth') fourthElement: ElementRef;
+    @ViewChild('jqxDockPanel', {static: false}) DockPanel: jqxDockPanelComponent;
+    @ViewChild('jqxDockPanel2', {static: false}) DockPanel2: jqxDockPanelComponent;
+    @ViewChild('first', {static: false}) firstElement: ElementRef;
+    @ViewChild('second', {static: false}) secondElement: ElementRef;
+    @ViewChild('third', {static: false}) thirdElement: ElementRef;
+    @ViewChild('fourth', {static: false}) fourthElement: ElementRef;
 
     ngAfterViewInit() {
         this.DockPanel.elementRef.nativeElement.style.color = 'white';

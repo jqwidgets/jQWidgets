@@ -8,7 +8,7 @@ import { jqxSplitterComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('jqxSplitter') mainSplitter: jqxSplitterComponent;
+    @ViewChild('jqxSplitter', {static: false}) mainSplitter: jqxSplitterComponent;
 
     panels: any[] = [{ size: 250 }];
    	getWidth() : any {

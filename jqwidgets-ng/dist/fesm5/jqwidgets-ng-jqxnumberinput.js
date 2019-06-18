@@ -1,26 +1,16 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxnumberinput from '../../jqwidgets-scripts/jqwidgets/jqxnumberinput';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { forwardRef, Input, Output, Component, ChangeDetectionStrategy, ElementRef, EventEmitter, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-var noop = (/**
- * @return {?}
- */
-function () { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+var noop = function () { };
+var ɵ0 = noop;
 var CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    function () { return jqxNumberInputComponent; })),
+    useExisting: forwardRef(function () { return jqxNumberInputComponent; }),
     multi: true
 };
 var jqxNumberInputComponent = /** @class */ (function () {
@@ -35,31 +25,15 @@ var jqxNumberInputComponent = /** @class */ (function () {
         this.onValueChanged = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxNumberInputComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxNumberInputComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -79,17 +53,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxNumberInputComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -103,17 +67,9 @@ var jqxNumberInputComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxNumberInputComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -121,50 +77,20 @@ var jqxNumberInputComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxNumberInputComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxNumberInputComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxNumberInputComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -181,86 +107,29 @@ var jqxNumberInputComponent = /** @class */ (function () {
         this.host = this.widgetObject['host'];
         this.__wireEvents__();
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxNumberInputComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxNumberInputComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.writeValue = /**
-     * @param {?} value
-     * @return {?}
-     */
-    function (value) {
+    jqxNumberInputComponent.prototype.writeValue = function (value) {
         if (this.widgetObject) {
             this.host.jqxNumberInput('val', value);
         }
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.registerOnChange = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxNumberInputComponent.prototype.registerOnChange = function (fn) {
         this.onChangeCallback = fn;
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.registerOnTouched = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxNumberInputComponent.prototype.registerOnTouched = function (fn) {
         this.onTouchedCallback = fn;
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxNumberInputComponent.prototype.setOptions = function (options) {
         this.host.jqxNumberInput('setOptions', options);
     };
     // jqxNumberInputComponent properties
-    // jqxNumberInputComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.allowNull = 
-    // jqxNumberInputComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.allowNull = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('allowNull', arg);
         }
@@ -268,15 +137,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('allowNull');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.decimal = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.decimal = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('decimal', arg);
         }
@@ -284,15 +145,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('decimal');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('disabled', arg);
         }
@@ -300,15 +153,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.decimalDigits = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.decimalDigits = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('decimalDigits', arg);
         }
@@ -316,15 +161,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('decimalDigits');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.decimalSeparator = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.decimalSeparator = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('decimalSeparator', arg);
         }
@@ -332,15 +169,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('decimalSeparator');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.digits = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.digits = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('digits', arg);
         }
@@ -348,15 +177,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('digits');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.groupSeparator = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.groupSeparator = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('groupSeparator', arg);
         }
@@ -364,15 +185,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('groupSeparator');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.groupSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.groupSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('groupSize', arg);
         }
@@ -380,15 +193,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('groupSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('height', arg);
         }
@@ -396,15 +201,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.inputMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.inputMode = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('inputMode', arg);
         }
@@ -412,15 +209,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('inputMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.min = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.min = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('min', arg);
         }
@@ -428,15 +217,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('min');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.max = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.max = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('max', arg);
         }
@@ -444,15 +225,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('max');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.negativeSymbol = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.negativeSymbol = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('negativeSymbol', arg);
         }
@@ -460,15 +233,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('negativeSymbol');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.placeHolder = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.placeHolder = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('placeHolder', arg);
         }
@@ -476,15 +241,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('placeHolder');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.promptChar = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.promptChar = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('promptChar', arg);
         }
@@ -492,15 +249,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('promptChar');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('rtl', arg);
         }
@@ -508,15 +257,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.readOnly = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.readOnly = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('readOnly', arg);
         }
@@ -524,15 +265,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('readOnly');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.spinMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.spinMode = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('spinMode', arg);
         }
@@ -540,15 +273,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('spinMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.spinButtons = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.spinButtons = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('spinButtons', arg);
         }
@@ -556,15 +281,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('spinButtons');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.spinButtonsWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.spinButtonsWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('spinButtonsWidth', arg);
         }
@@ -572,15 +289,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('spinButtonsWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.spinButtonsStep = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.spinButtonsStep = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('spinButtonsStep', arg);
         }
@@ -588,15 +297,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('spinButtonsStep');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.symbol = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.symbol = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('symbol', arg);
         }
@@ -604,15 +305,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('symbol');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.symbolPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.symbolPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('symbolPosition', arg);
         }
@@ -620,15 +313,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('symbolPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.textAlign = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.textAlign = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('textAlign', arg);
         }
@@ -636,15 +321,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('textAlign');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.template = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.template = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('template', arg);
         }
@@ -652,15 +329,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('template');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('theme', arg);
         }
@@ -668,15 +337,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.value = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.value = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('value', arg);
         }
@@ -684,15 +345,7 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('value');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNumberInputComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNumberInput('width', arg);
         }
@@ -701,65 +354,22 @@ var jqxNumberInputComponent = /** @class */ (function () {
         }
     };
     // jqxNumberInputComponent functions
-    // jqxNumberInputComponent functions
-    /**
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.clear = 
-    // jqxNumberInputComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxNumberInputComponent.prototype.clear = function () {
         this.host.jqxNumberInput('clear');
     };
-    /**
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxNumberInputComponent.prototype.destroy = function () {
         this.host.jqxNumberInput('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxNumberInputComponent.prototype.focus = function () {
         this.host.jqxNumberInput('focus');
     };
-    /**
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.getDecimal = /**
-     * @return {?}
-     */
-    function () {
+    jqxNumberInputComponent.prototype.getDecimal = function () {
         return this.host.jqxNumberInput('getDecimal');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.setDecimal = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxNumberInputComponent.prototype.setDecimal = function (index) {
         this.host.jqxNumberInput('setDecimal', index);
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxNumberInputComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxNumberInput('val', value);
         }
@@ -767,111 +377,173 @@ var jqxNumberInputComponent = /** @class */ (function () {
             return this.host.jqxNumberInput('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxNumberInputComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxNumberInputComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChange.emit(eventData); if (eventData.args)
-            _this.onChangeCallback(eventData.args.value); }));
-        this.host.on('textchanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onTextchanged.emit(eventData); if (eventData.args)
-            _this.onChangeCallback(eventData.args.value); }));
-        this.host.on('valueChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onValueChanged.emit(eventData); if (eventData.args)
-            _this.onChangeCallback(eventData.args.value); }));
+        this.host.on('change', function (eventData) { _this.onChange.emit(eventData); if (eventData.args)
+            _this.onChangeCallback(eventData.args.value); });
+        this.host.on('textchanged', function (eventData) { _this.onTextchanged.emit(eventData); if (eventData.args)
+            _this.onChangeCallback(eventData.args.value); });
+        this.host.on('valueChanged', function (eventData) { _this.onValueChanged.emit(eventData); if (eventData.args)
+            _this.onChangeCallback(eventData.args.value); });
     };
-    jqxNumberInputComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxNumberInput',
-                    template: '<input>',
-                    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                    changeDetection: ChangeDetectionStrategy.OnPush
-                }] }
-    ];
-    /** @nocollapse */
-    jqxNumberInputComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxNumberInputComponent.propDecorators = {
-        attrAllowNull: [{ type: Input, args: ['allowNull',] }],
-        attrDecimal: [{ type: Input, args: ['decimal',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrDecimalDigits: [{ type: Input, args: ['decimalDigits',] }],
-        attrDecimalSeparator: [{ type: Input, args: ['decimalSeparator',] }],
-        attrDigits: [{ type: Input, args: ['digits',] }],
-        attrGroupSeparator: [{ type: Input, args: ['groupSeparator',] }],
-        attrGroupSize: [{ type: Input, args: ['groupSize',] }],
-        attrInputMode: [{ type: Input, args: ['inputMode',] }],
-        attrMin: [{ type: Input, args: ['min',] }],
-        attrMax: [{ type: Input, args: ['max',] }],
-        attrNegativeSymbol: [{ type: Input, args: ['negativeSymbol',] }],
-        attrPlaceHolder: [{ type: Input, args: ['placeHolder',] }],
-        attrPromptChar: [{ type: Input, args: ['promptChar',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrReadOnly: [{ type: Input, args: ['readOnly',] }],
-        attrSpinMode: [{ type: Input, args: ['spinMode',] }],
-        attrSpinButtons: [{ type: Input, args: ['spinButtons',] }],
-        attrSpinButtonsWidth: [{ type: Input, args: ['spinButtonsWidth',] }],
-        attrSpinButtonsStep: [{ type: Input, args: ['spinButtonsStep',] }],
-        attrSymbol: [{ type: Input, args: ['symbol',] }],
-        attrSymbolPosition: [{ type: Input, args: ['symbolPosition',] }],
-        attrTextAlign: [{ type: Input, args: ['textAlign',] }],
-        attrTemplate: [{ type: Input, args: ['template',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrValue: [{ type: Input, args: ['value',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onChange: [{ type: Output }],
-        onTextchanged: [{ type: Output }],
-        onValueChanged: [{ type: Output }]
-    };
+    __decorate([
+        Input('allowNull'),
+        __metadata("design:type", Boolean)
+    ], jqxNumberInputComponent.prototype, "attrAllowNull", void 0);
+    __decorate([
+        Input('decimal'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrDecimal", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxNumberInputComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('decimalDigits'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrDecimalDigits", void 0);
+    __decorate([
+        Input('decimalSeparator'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrDecimalSeparator", void 0);
+    __decorate([
+        Input('digits'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrDigits", void 0);
+    __decorate([
+        Input('groupSeparator'),
+        __metadata("design:type", String)
+    ], jqxNumberInputComponent.prototype, "attrGroupSeparator", void 0);
+    __decorate([
+        Input('groupSize'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrGroupSize", void 0);
+    __decorate([
+        Input('inputMode'),
+        __metadata("design:type", String)
+    ], jqxNumberInputComponent.prototype, "attrInputMode", void 0);
+    __decorate([
+        Input('min'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrMin", void 0);
+    __decorate([
+        Input('max'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrMax", void 0);
+    __decorate([
+        Input('negativeSymbol'),
+        __metadata("design:type", String)
+    ], jqxNumberInputComponent.prototype, "attrNegativeSymbol", void 0);
+    __decorate([
+        Input('placeHolder'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrPlaceHolder", void 0);
+    __decorate([
+        Input('promptChar'),
+        __metadata("design:type", String)
+    ], jqxNumberInputComponent.prototype, "attrPromptChar", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxNumberInputComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('readOnly'),
+        __metadata("design:type", Boolean)
+    ], jqxNumberInputComponent.prototype, "attrReadOnly", void 0);
+    __decorate([
+        Input('spinMode'),
+        __metadata("design:type", String)
+    ], jqxNumberInputComponent.prototype, "attrSpinMode", void 0);
+    __decorate([
+        Input('spinButtons'),
+        __metadata("design:type", Boolean)
+    ], jqxNumberInputComponent.prototype, "attrSpinButtons", void 0);
+    __decorate([
+        Input('spinButtonsWidth'),
+        __metadata("design:type", Number)
+    ], jqxNumberInputComponent.prototype, "attrSpinButtonsWidth", void 0);
+    __decorate([
+        Input('spinButtonsStep'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrSpinButtonsStep", void 0);
+    __decorate([
+        Input('symbol'),
+        __metadata("design:type", String)
+    ], jqxNumberInputComponent.prototype, "attrSymbol", void 0);
+    __decorate([
+        Input('symbolPosition'),
+        __metadata("design:type", String)
+    ], jqxNumberInputComponent.prototype, "attrSymbolPosition", void 0);
+    __decorate([
+        Input('textAlign'),
+        __metadata("design:type", String)
+    ], jqxNumberInputComponent.prototype, "attrTextAlign", void 0);
+    __decorate([
+        Input('template'),
+        __metadata("design:type", String)
+    ], jqxNumberInputComponent.prototype, "attrTemplate", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxNumberInputComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('value'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrValue", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxNumberInputComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "onChange", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "onTextchanged", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxNumberInputComponent.prototype, "onValueChanged", void 0);
+    jqxNumberInputComponent = __decorate([
+        Component({
+            selector: 'jqxNumberInput',
+            template: '<input>',
+            providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+            changeDetection: ChangeDetectionStrategy.OnPush
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxNumberInputComponent);
     return jqxNumberInputComponent;
 }()); //jqxNumberInputComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxNumberInputModule = /** @class */ (function () {
     function jqxNumberInputModule() {
     }
-    jqxNumberInputModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        FormsModule
-                    ],
-                    declarations: [jqxNumberInputComponent],
-                    exports: [jqxNumberInputComponent]
-                },] }
-    ];
+    jqxNumberInputModule = __decorate([
+        NgModule({
+            imports: [
+                FormsModule
+            ],
+            declarations: [jqxNumberInputComponent],
+            exports: [jqxNumberInputComponent]
+        })
+    ], jqxNumberInputModule);
     return jqxNumberInputModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxNumberInputComponent, jqxNumberInputModule };
-
+export { jqxNumberInputComponent, jqxNumberInputModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxnumberinput.js.map

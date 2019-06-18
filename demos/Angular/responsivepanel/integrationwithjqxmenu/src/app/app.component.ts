@@ -11,10 +11,10 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('myResponsivePanel') myResponsivePanel: jqxResponsivePanelComponent;
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
-    @ViewChild('container') container: ElementRef;
-    @ViewChild('toggleResponsivePanel') toggleResponsivePanel: ElementRef;
+    @ViewChild('myResponsivePanel', {static: false}) myResponsivePanel: jqxResponsivePanelComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
+    @ViewChild('container', {static: false}) container: ElementRef;
+    @ViewChild('toggleResponsivePanel', {static: false}) toggleResponsivePanel: ElementRef;
 
     flag: boolean = true;
     responsivePanelEventsHandler(event: any): void {

@@ -10,7 +10,7 @@ import { jqxLinearGaugeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_
 })
 
 export class AppComponent {
-    @ViewChild('myLinearGauge') myLinearGauge: jqxLinearGaugeComponent;
+    @ViewChild('myLinearGauge', {static: false}) myLinearGauge: jqxLinearGaugeComponent;
 
     ngAfterViewInit(): void {
         this.myLinearGauge.value(50);

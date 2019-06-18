@@ -9,8 +9,8 @@ import { jqxDropDownListComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('myChart') myChart: jqxChartComponent;
-    @ViewChild('myList') myList: jqxDropDownListComponent;
+    @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
+    @ViewChild('myList', {static: false}) myList: jqxDropDownListComponent;
 
     sampleData: any[] = [
         { Day: 'Monday', Keith: 30, Erica: 15, George: 25, Monica: 20, Maria: 15 },

@@ -6,7 +6,7 @@
 })
 
 export class AppComponent {
-    @ViewChild('log') log: ElementRef;
+    @ViewChild('log', {static: false}) log: ElementRef;
 
     source: any = {
         datatype: 'xml',

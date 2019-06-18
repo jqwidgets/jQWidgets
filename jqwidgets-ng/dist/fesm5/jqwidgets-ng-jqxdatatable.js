@@ -10,13 +10,10 @@ import * as jqxcombobox from '../../jqwidgets-scripts/jqwidgets/jqxcombobox';
 import * as jqxnumberinput from '../../jqwidgets-scripts/jqwidgets/jqxnumberinput';
 import * as jqxdropdownlist from '../../jqwidgets-scripts/jqwidgets/jqxdropdownlist';
 import * as jqxdatatable from '../../jqwidgets-scripts/jqwidgets/jqxdatatable';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxDataTableComponent = /** @class */ (function () {
     function jqxDataTableComponent(containerElement) {
         this.autoCreate = true;
@@ -42,26 +39,11 @@ var jqxDataTableComponent = /** @class */ (function () {
         this.onRowCollapse = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.ngOnInit = function () {
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.ngAfterViewInit = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxDataTableComponent.prototype.ngAfterViewInit = function () {
         var children = JQXLite(this.elementRef.nativeElement.children).find('tr');
-        /** @type {?} */
         var html = '';
-        /** @type {?} */
         var options = {};
         if (children.length > 0) {
             this.container = document.createElement('div');
@@ -69,7 +51,6 @@ var jqxDataTableComponent = /** @class */ (function () {
             this.container.appendChild(this.elementRef.nativeElement.firstChild);
             this.elementRef.nativeElement.innerHTML = html;
             this.content = html;
-            /** @type {?} */
             var result = JQXLite.jqx.parseSourceTag(this.container);
             if (this['attrColumns'] !== undefined) {
                 options['source'] = result.source;
@@ -83,19 +64,11 @@ var jqxDataTableComponent = /** @class */ (function () {
             this.createComponent(options);
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.ngAfterViewChecked = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.ngAfterViewChecked = function () {
         if (this.container) {
             if (this.content !== this.container.innerHTML) {
                 this.content = this.container.innerHTML;
-                /** @type {?} */
                 var result = JQXLite.jqx.parseSourceTag(this.container);
-                /** @type {?} */
                 var columns = this.host.jqxGrid('columns');
                 if (columns.length === 0) {
                     this.host.jqxGrid({ source: result.source, columns: result.columns });
@@ -106,20 +79,10 @@ var jqxDataTableComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxDataTableComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -139,17 +102,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxDataTableComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -163,17 +116,9 @@ var jqxDataTableComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxDataTableComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -181,50 +126,20 @@ var jqxDataTableComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxDataTableComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxDataTableComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDataTableComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -240,51 +155,18 @@ var jqxDataTableComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDataTable', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDataTableComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDataTableComponent.prototype.setOptions = function (options) {
         this.host.jqxDataTable('setOptions', options);
     };
     // jqxDataTableComponent properties
-    // jqxDataTableComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.altRows = 
-    // jqxDataTableComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.altRows = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -295,15 +177,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('altRows');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.autoRowHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.autoRowHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -314,15 +188,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('autoRowHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.aggregatesHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.aggregatesHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -333,15 +199,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('aggregatesHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.autoShowLoadElement = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.autoShowLoadElement = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -352,15 +210,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('autoShowLoadElement');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.columnsHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.columnsHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -371,15 +221,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('columnsHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.columns = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.columns = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -390,15 +232,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('columns');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.columnGroups = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.columnGroups = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -409,15 +243,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('columnGroups');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.columnsResize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.columnsResize = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -428,15 +254,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('columnsResize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.columnsReorder = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.columnsReorder = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -447,15 +265,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('columnsReorder');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.disabled = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -466,15 +276,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.editable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.editable = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -485,15 +287,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('editable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.editSettings = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.editSettings = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -504,15 +298,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('editSettings');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.exportSettings = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.exportSettings = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -523,15 +309,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('exportSettings');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.enableHover = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.enableHover = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -542,15 +320,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('enableHover');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.enableBrowserSelection = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.enableBrowserSelection = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -561,15 +331,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('enableBrowserSelection');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.filterable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.filterable = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -580,15 +342,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('filterable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.filterHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.filterHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -599,15 +353,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('filterHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.filterMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.filterMode = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -618,15 +364,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('filterMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.groups = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.groups = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -637,15 +375,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('groups');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.groupsRenderer = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.groupsRenderer = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -656,15 +386,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('groupsRenderer');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.height = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -675,15 +397,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.initRowDetails = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.initRowDetails = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -694,15 +408,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('initRowDetails');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.incrementalSearch = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.incrementalSearch = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -713,15 +419,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('incrementalSearch');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.localization = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.localization = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -732,15 +430,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('localization');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.pagerHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.pagerHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -751,15 +441,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('pagerHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.pageSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.pageSize = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -770,15 +452,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('pageSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.pageSizeOptions = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.pageSizeOptions = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -789,15 +463,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('pageSizeOptions');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.pageable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.pageable = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -808,15 +474,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('pageable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.pagerPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.pagerPosition = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -827,15 +485,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('pagerPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.pagerMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.pagerMode = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -846,15 +496,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('pagerMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.pagerButtonsCount = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.pagerButtonsCount = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -865,15 +507,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('pagerButtonsCount');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.pagerRenderer = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.pagerRenderer = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -884,15 +518,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('pagerRenderer');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.ready = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.ready = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -903,15 +529,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('ready');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.rowDetails = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.rowDetails = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -922,15 +540,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('rowDetails');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.renderToolbar = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.renderToolbar = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -941,15 +551,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('renderToolbar');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.renderStatusBar = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.renderStatusBar = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -960,15 +562,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('renderStatusBar');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.rendering = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.rendering = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -979,15 +573,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('rendering');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.rendered = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.rendered = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -998,15 +584,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('rendered');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.rtl = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1017,15 +595,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.source = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.source = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1036,15 +606,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('source');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.sortable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.sortable = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1055,15 +617,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('sortable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.showAggregates = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.showAggregates = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1074,15 +628,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('showAggregates');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.showToolbar = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.showToolbar = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1093,15 +639,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('showToolbar');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.showStatusbar = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.showStatusbar = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1112,15 +650,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('showStatusbar');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.statusBarHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.statusBarHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1131,15 +661,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('statusBarHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.scrollBarSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.scrollBarSize = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1150,15 +672,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('scrollBarSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.selectionMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.selectionMode = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1169,15 +683,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('selectionMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.serverProcessing = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.serverProcessing = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1188,15 +694,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('serverProcessing');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.showHeader = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.showHeader = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1207,15 +705,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('showHeader');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.theme = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1226,15 +716,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.toolbarHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.toolbarHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1245,15 +727,7 @@ var jqxDataTableComponent = /** @class */ (function () {
             return this.host.jqxDataTable('toolbarHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDataTableComponent.prototype.width = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1265,831 +739,601 @@ var jqxDataTableComponent = /** @class */ (function () {
         }
     };
     // jqxDataTableComponent functions
-    // jqxDataTableComponent functions
-    /**
-     * @param {?} rowIndex
-     * @param {?} rowData
-     * @param {?} rowPosition
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.addRow = 
-    // jqxDataTableComponent functions
-    /**
-     * @param {?} rowIndex
-     * @param {?} rowData
-     * @param {?} rowPosition
-     * @return {?}
-     */
-    function (rowIndex, rowData, rowPosition) {
+    jqxDataTableComponent.prototype.addRow = function (rowIndex, rowData, rowPosition) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('addRow', rowIndex, rowData, rowPosition);
     };
-    /**
-     * @param {?} dataField
-     * @param {?} filerGroup
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.addFilter = /**
-     * @param {?} dataField
-     * @param {?} filerGroup
-     * @return {?}
-     */
-    function (dataField, filerGroup) {
+    jqxDataTableComponent.prototype.addFilter = function (dataField, filerGroup) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('addFilter', dataField, filerGroup);
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.applyFilters = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.applyFilters = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('applyFilters');
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.beginUpdate = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.beginUpdate = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('beginUpdate');
     };
-    /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.beginRowEdit = /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    function (rowIndex) {
+    jqxDataTableComponent.prototype.beginRowEdit = function (rowIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('beginRowEdit', rowIndex);
     };
-    /**
-     * @param {?} rowIndex
-     * @param {?} dataField
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.beginCellEdit = /**
-     * @param {?} rowIndex
-     * @param {?} dataField
-     * @return {?}
-     */
-    function (rowIndex, dataField) {
+    jqxDataTableComponent.prototype.beginCellEdit = function (rowIndex, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('beginCellEdit', rowIndex, dataField);
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.clearSelection = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.clearSelection = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('clearSelection');
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.clearFilters = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.clearFilters = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('clearFilters');
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.clear = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.clear = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('clear');
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.destroy = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('destroy');
     };
-    /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.deleteRow = /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    function (rowIndex) {
+    jqxDataTableComponent.prototype.deleteRow = function (rowIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('deleteRow', rowIndex);
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.endUpdate = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.endUpdate = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('endUpdate');
     };
-    /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.ensureRowVisible = /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    function (rowIndex) {
+    jqxDataTableComponent.prototype.ensureRowVisible = function (rowIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('ensureRowVisible', rowIndex);
     };
-    /**
-     * @param {?} rowIndex
-     * @param {?} cancelChanges
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.endRowEdit = /**
-     * @param {?} rowIndex
-     * @param {?} cancelChanges
-     * @return {?}
-     */
-    function (rowIndex, cancelChanges) {
+    jqxDataTableComponent.prototype.endRowEdit = function (rowIndex, cancelChanges) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('endRowEdit', rowIndex, cancelChanges);
     };
-    /**
-     * @param {?} rowIndex
-     * @param {?} dataField
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.endCellEdit = /**
-     * @param {?} rowIndex
-     * @param {?} dataField
-     * @return {?}
-     */
-    function (rowIndex, dataField) {
+    jqxDataTableComponent.prototype.endCellEdit = function (rowIndex, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('endCellEdit', rowIndex, dataField);
     };
-    /**
-     * @param {?} exportDataType
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.exportData = /**
-     * @param {?} exportDataType
-     * @return {?}
-     */
-    function (exportDataType) {
+    jqxDataTableComponent.prototype.exportData = function (exportDataType) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxDataTable('exportData', exportDataType);
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.focus = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('focus');
     };
-    /**
-     * @param {?} dataField
-     * @param {?} propertyName
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.getColumnProperty = /**
-     * @param {?} dataField
-     * @param {?} propertyName
-     * @return {?}
-     */
-    function (dataField, propertyName) {
+    jqxDataTableComponent.prototype.getColumnProperty = function (dataField, propertyName) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxDataTable('getColumnProperty', dataField, propertyName);
     };
-    /**
-     * @param {?} pageIndex
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.goToPage = /**
-     * @param {?} pageIndex
-     * @return {?}
-     */
-    function (pageIndex) {
+    jqxDataTableComponent.prototype.goToPage = function (pageIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('goToPage', pageIndex);
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.goToPrevPage = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.goToPrevPage = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('goToPrevPage');
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.goToNextPage = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.goToNextPage = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('goToNextPage');
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.getSelection = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.getSelection = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxDataTable('getSelection');
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.getRows = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.getRows = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxDataTable('getRows');
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.getView = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.getView = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxDataTable('getView');
     };
-    /**
-     * @param {?} rowIndex
-     * @param {?} dataField
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.getCellValue = /**
-     * @param {?} rowIndex
-     * @param {?} dataField
-     * @return {?}
-     */
-    function (rowIndex, dataField) {
+    jqxDataTableComponent.prototype.getCellValue = function (rowIndex, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxDataTable('getCellValue', rowIndex, dataField);
     };
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.hideColumn = /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    function (dataField) {
+    jqxDataTableComponent.prototype.hideColumn = function (dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('hideColumn', dataField);
     };
-    /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.hideDetails = /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    function (rowIndex) {
+    jqxDataTableComponent.prototype.hideDetails = function (rowIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('hideDetails', rowIndex);
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.isBindingCompleted = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.isBindingCompleted = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxDataTable('isBindingCompleted');
     };
-    /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.lockRow = /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    function (rowIndex) {
+    jqxDataTableComponent.prototype.lockRow = function (rowIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('lockRow', rowIndex);
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.refresh = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.render = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('render');
     };
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.removeFilter = /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    function (dataField) {
+    jqxDataTableComponent.prototype.removeFilter = function (dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('removeFilter', dataField);
     };
-    /**
-     * @param {?} top
-     * @param {?} left
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.scrollOffset = /**
-     * @param {?} top
-     * @param {?} left
-     * @return {?}
-     */
-    function (top, left) {
+    jqxDataTableComponent.prototype.scrollOffset = function (top, left) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('scrollOffset', top, left);
     };
-    /**
-     * @param {?} dataField
-     * @param {?} propertyName
-     * @param {?} propertyValue
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.setColumnProperty = /**
-     * @param {?} dataField
-     * @param {?} propertyName
-     * @param {?} propertyValue
-     * @return {?}
-     */
-    function (dataField, propertyName, propertyValue) {
+    jqxDataTableComponent.prototype.setColumnProperty = function (dataField, propertyName, propertyValue) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('setColumnProperty', dataField, propertyName, propertyValue);
     };
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.showColumn = /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    function (dataField) {
+    jqxDataTableComponent.prototype.showColumn = function (dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('showColumn', dataField);
     };
-    /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.selectRow = /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    function (rowIndex) {
+    jqxDataTableComponent.prototype.selectRow = function (rowIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('selectRow', rowIndex);
     };
-    /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.showDetails = /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    function (rowIndex) {
+    jqxDataTableComponent.prototype.showDetails = function (rowIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('showDetails', rowIndex);
     };
-    /**
-     * @param {?} rowIndex
-     * @param {?} dataField
-     * @param {?} value
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.setCellValue = /**
-     * @param {?} rowIndex
-     * @param {?} dataField
-     * @param {?} value
-     * @return {?}
-     */
-    function (rowIndex, dataField, value) {
+    jqxDataTableComponent.prototype.setCellValue = function (rowIndex, dataField, value) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('setCellValue', rowIndex, dataField, value);
     };
-    /**
-     * @param {?} dataField
-     * @param {?} sortOrder
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.sortBy = /**
-     * @param {?} dataField
-     * @param {?} sortOrder
-     * @return {?}
-     */
-    function (dataField, sortOrder) {
+    jqxDataTableComponent.prototype.sortBy = function (dataField, sortOrder) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('sortBy', dataField, sortOrder);
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.updating = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.updating = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxDataTable('updating');
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.updateBoundData = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.updateBoundData = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('updateBoundData');
     };
-    /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.unselectRow = /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    function (rowIndex) {
+    jqxDataTableComponent.prototype.unselectRow = function (rowIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('unselectRow', rowIndex);
     };
-    /**
-     * @param {?} rowIndex
-     * @param {?} rowData
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.updateRow = /**
-     * @param {?} rowIndex
-     * @param {?} rowData
-     * @return {?}
-     */
-    function (rowIndex, rowData) {
+    jqxDataTableComponent.prototype.updateRow = function (rowIndex, rowData) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('updateRow', rowIndex, rowData);
     };
-    /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.unlockRow = /**
-     * @param {?} rowIndex
-     * @return {?}
-     */
-    function (rowIndex) {
+    jqxDataTableComponent.prototype.unlockRow = function (rowIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxDataTable('unlockRow', rowIndex);
     };
-    /**
-     * @return {?}
-     */
-    jqxDataTableComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxDataTableComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('bindingComplete', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onBindingComplete.emit(eventData); }));
-        this.host.on('cellBeginEdit', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCellBeginEdit.emit(eventData); }));
-        this.host.on('cellEndEdit', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCellEndEdit.emit(eventData); }));
-        this.host.on('cellValueChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCellValueChanged.emit(eventData); }));
-        this.host.on('columnResized', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onColumnResized.emit(eventData); }));
-        this.host.on('columnReordered', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onColumnReordered.emit(eventData); }));
-        this.host.on('sort', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onSort.emit(eventData); }));
-        this.host.on('filter', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onFilter.emit(eventData); }));
-        this.host.on('pageChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onPageChanged.emit(eventData); }));
-        this.host.on('pageSizeChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onPageSizeChanged.emit(eventData); }));
-        this.host.on('rowClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowClick.emit(eventData); }));
-        this.host.on('rowDoubleClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowDoubleClick.emit(eventData); }));
-        this.host.on('rowSelect', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowSelect.emit(eventData); }));
-        this.host.on('rowUnselect', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowUnselect.emit(eventData); }));
-        this.host.on('rowBeginEdit', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowBeginEdit.emit(eventData); }));
-        this.host.on('rowEndEdit', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowEndEdit.emit(eventData); }));
-        this.host.on('rowExpand', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowExpand.emit(eventData); }));
-        this.host.on('rowCollapse', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowCollapse.emit(eventData); }));
+        this.host.on('bindingComplete', function (eventData) { _this.onBindingComplete.emit(eventData); });
+        this.host.on('cellBeginEdit', function (eventData) { _this.onCellBeginEdit.emit(eventData); });
+        this.host.on('cellEndEdit', function (eventData) { _this.onCellEndEdit.emit(eventData); });
+        this.host.on('cellValueChanged', function (eventData) { _this.onCellValueChanged.emit(eventData); });
+        this.host.on('columnResized', function (eventData) { _this.onColumnResized.emit(eventData); });
+        this.host.on('columnReordered', function (eventData) { _this.onColumnReordered.emit(eventData); });
+        this.host.on('sort', function (eventData) { _this.onSort.emit(eventData); });
+        this.host.on('filter', function (eventData) { _this.onFilter.emit(eventData); });
+        this.host.on('pageChanged', function (eventData) { _this.onPageChanged.emit(eventData); });
+        this.host.on('pageSizeChanged', function (eventData) { _this.onPageSizeChanged.emit(eventData); });
+        this.host.on('rowClick', function (eventData) { _this.onRowClick.emit(eventData); });
+        this.host.on('rowDoubleClick', function (eventData) { _this.onRowDoubleClick.emit(eventData); });
+        this.host.on('rowSelect', function (eventData) { _this.onRowSelect.emit(eventData); });
+        this.host.on('rowUnselect', function (eventData) { _this.onRowUnselect.emit(eventData); });
+        this.host.on('rowBeginEdit', function (eventData) { _this.onRowBeginEdit.emit(eventData); });
+        this.host.on('rowEndEdit', function (eventData) { _this.onRowEndEdit.emit(eventData); });
+        this.host.on('rowExpand', function (eventData) { _this.onRowExpand.emit(eventData); });
+        this.host.on('rowCollapse', function (eventData) { _this.onRowCollapse.emit(eventData); });
     };
-    jqxDataTableComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxDataTable',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxDataTableComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxDataTableComponent.propDecorators = {
-        attrAltRows: [{ type: Input, args: ['altRows',] }],
-        attrAutoRowHeight: [{ type: Input, args: ['autoRowHeight',] }],
-        attrAggregatesHeight: [{ type: Input, args: ['aggregatesHeight',] }],
-        attrAutoShowLoadElement: [{ type: Input, args: ['autoShowLoadElement',] }],
-        attrColumnsHeight: [{ type: Input, args: ['columnsHeight',] }],
-        attrColumns: [{ type: Input, args: ['columns',] }],
-        attrColumnGroups: [{ type: Input, args: ['columnGroups',] }],
-        attrColumnsResize: [{ type: Input, args: ['columnsResize',] }],
-        attrColumnsReorder: [{ type: Input, args: ['columnsReorder',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrEditable: [{ type: Input, args: ['editable',] }],
-        attrEditSettings: [{ type: Input, args: ['editSettings',] }],
-        attrExportSettings: [{ type: Input, args: ['exportSettings',] }],
-        attrEnableHover: [{ type: Input, args: ['enableHover',] }],
-        attrEnableBrowserSelection: [{ type: Input, args: ['enableBrowserSelection',] }],
-        attrFilterable: [{ type: Input, args: ['filterable',] }],
-        attrFilterHeight: [{ type: Input, args: ['filterHeight',] }],
-        attrFilterMode: [{ type: Input, args: ['filterMode',] }],
-        attrGroups: [{ type: Input, args: ['groups',] }],
-        attrGroupsRenderer: [{ type: Input, args: ['groupsRenderer',] }],
-        attrInitRowDetails: [{ type: Input, args: ['initRowDetails',] }],
-        attrIncrementalSearch: [{ type: Input, args: ['incrementalSearch',] }],
-        attrLocalization: [{ type: Input, args: ['localization',] }],
-        attrPagerHeight: [{ type: Input, args: ['pagerHeight',] }],
-        attrPageSize: [{ type: Input, args: ['pageSize',] }],
-        attrPageSizeOptions: [{ type: Input, args: ['pageSizeOptions',] }],
-        attrPageable: [{ type: Input, args: ['pageable',] }],
-        attrPagerPosition: [{ type: Input, args: ['pagerPosition',] }],
-        attrPagerMode: [{ type: Input, args: ['pagerMode',] }],
-        attrPagerButtonsCount: [{ type: Input, args: ['pagerButtonsCount',] }],
-        attrPagerRenderer: [{ type: Input, args: ['pagerRenderer',] }],
-        attrReady: [{ type: Input, args: ['ready',] }],
-        attrRowDetails: [{ type: Input, args: ['rowDetails',] }],
-        attrRenderToolbar: [{ type: Input, args: ['renderToolbar',] }],
-        attrRenderStatusBar: [{ type: Input, args: ['renderStatusBar',] }],
-        attrRendering: [{ type: Input, args: ['rendering',] }],
-        attrRendered: [{ type: Input, args: ['rendered',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrSource: [{ type: Input, args: ['source',] }],
-        attrSortable: [{ type: Input, args: ['sortable',] }],
-        attrShowAggregates: [{ type: Input, args: ['showAggregates',] }],
-        attrShowToolbar: [{ type: Input, args: ['showToolbar',] }],
-        attrShowStatusbar: [{ type: Input, args: ['showStatusbar',] }],
-        attrStatusBarHeight: [{ type: Input, args: ['statusBarHeight',] }],
-        attrScrollBarSize: [{ type: Input, args: ['scrollBarSize',] }],
-        attrSelectionMode: [{ type: Input, args: ['selectionMode',] }],
-        attrServerProcessing: [{ type: Input, args: ['serverProcessing',] }],
-        attrShowHeader: [{ type: Input, args: ['showHeader',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrToolbarHeight: [{ type: Input, args: ['toolbarHeight',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onBindingComplete: [{ type: Output }],
-        onCellBeginEdit: [{ type: Output }],
-        onCellEndEdit: [{ type: Output }],
-        onCellValueChanged: [{ type: Output }],
-        onColumnResized: [{ type: Output }],
-        onColumnReordered: [{ type: Output }],
-        onSort: [{ type: Output }],
-        onFilter: [{ type: Output }],
-        onPageChanged: [{ type: Output }],
-        onPageSizeChanged: [{ type: Output }],
-        onRowClick: [{ type: Output }],
-        onRowDoubleClick: [{ type: Output }],
-        onRowSelect: [{ type: Output }],
-        onRowUnselect: [{ type: Output }],
-        onRowBeginEdit: [{ type: Output }],
-        onRowEndEdit: [{ type: Output }],
-        onRowExpand: [{ type: Output }],
-        onRowCollapse: [{ type: Output }]
-    };
+    __decorate([
+        Input('altRows'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrAltRows", void 0);
+    __decorate([
+        Input('autoRowHeight'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrAutoRowHeight", void 0);
+    __decorate([
+        Input('aggregatesHeight'),
+        __metadata("design:type", Number)
+    ], jqxDataTableComponent.prototype, "attrAggregatesHeight", void 0);
+    __decorate([
+        Input('autoShowLoadElement'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrAutoShowLoadElement", void 0);
+    __decorate([
+        Input('columnsHeight'),
+        __metadata("design:type", Number)
+    ], jqxDataTableComponent.prototype, "attrColumnsHeight", void 0);
+    __decorate([
+        Input('columns'),
+        __metadata("design:type", Array)
+    ], jqxDataTableComponent.prototype, "attrColumns", void 0);
+    __decorate([
+        Input('columnGroups'),
+        __metadata("design:type", Array)
+    ], jqxDataTableComponent.prototype, "attrColumnGroups", void 0);
+    __decorate([
+        Input('columnsResize'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrColumnsResize", void 0);
+    __decorate([
+        Input('columnsReorder'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrColumnsReorder", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('editable'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrEditable", void 0);
+    __decorate([
+        Input('editSettings'),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "attrEditSettings", void 0);
+    __decorate([
+        Input('exportSettings'),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "attrExportSettings", void 0);
+    __decorate([
+        Input('enableHover'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrEnableHover", void 0);
+    __decorate([
+        Input('enableBrowserSelection'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrEnableBrowserSelection", void 0);
+    __decorate([
+        Input('filterable'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrFilterable", void 0);
+    __decorate([
+        Input('filterHeight'),
+        __metadata("design:type", Number)
+    ], jqxDataTableComponent.prototype, "attrFilterHeight", void 0);
+    __decorate([
+        Input('filterMode'),
+        __metadata("design:type", String)
+    ], jqxDataTableComponent.prototype, "attrFilterMode", void 0);
+    __decorate([
+        Input('groups'),
+        __metadata("design:type", Array)
+    ], jqxDataTableComponent.prototype, "attrGroups", void 0);
+    __decorate([
+        Input('groupsRenderer'),
+        __metadata("design:type", Function)
+    ], jqxDataTableComponent.prototype, "attrGroupsRenderer", void 0);
+    __decorate([
+        Input('initRowDetails'),
+        __metadata("design:type", Function)
+    ], jqxDataTableComponent.prototype, "attrInitRowDetails", void 0);
+    __decorate([
+        Input('incrementalSearch'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrIncrementalSearch", void 0);
+    __decorate([
+        Input('localization'),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "attrLocalization", void 0);
+    __decorate([
+        Input('pagerHeight'),
+        __metadata("design:type", Number)
+    ], jqxDataTableComponent.prototype, "attrPagerHeight", void 0);
+    __decorate([
+        Input('pageSize'),
+        __metadata("design:type", Number)
+    ], jqxDataTableComponent.prototype, "attrPageSize", void 0);
+    __decorate([
+        Input('pageSizeOptions'),
+        __metadata("design:type", Array)
+    ], jqxDataTableComponent.prototype, "attrPageSizeOptions", void 0);
+    __decorate([
+        Input('pageable'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrPageable", void 0);
+    __decorate([
+        Input('pagerPosition'),
+        __metadata("design:type", String)
+    ], jqxDataTableComponent.prototype, "attrPagerPosition", void 0);
+    __decorate([
+        Input('pagerMode'),
+        __metadata("design:type", String)
+    ], jqxDataTableComponent.prototype, "attrPagerMode", void 0);
+    __decorate([
+        Input('pagerButtonsCount'),
+        __metadata("design:type", Number)
+    ], jqxDataTableComponent.prototype, "attrPagerButtonsCount", void 0);
+    __decorate([
+        Input('pagerRenderer'),
+        __metadata("design:type", Function)
+    ], jqxDataTableComponent.prototype, "attrPagerRenderer", void 0);
+    __decorate([
+        Input('ready'),
+        __metadata("design:type", Function)
+    ], jqxDataTableComponent.prototype, "attrReady", void 0);
+    __decorate([
+        Input('rowDetails'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrRowDetails", void 0);
+    __decorate([
+        Input('renderToolbar'),
+        __metadata("design:type", Function)
+    ], jqxDataTableComponent.prototype, "attrRenderToolbar", void 0);
+    __decorate([
+        Input('renderStatusBar'),
+        __metadata("design:type", Function)
+    ], jqxDataTableComponent.prototype, "attrRenderStatusBar", void 0);
+    __decorate([
+        Input('rendering'),
+        __metadata("design:type", Function)
+    ], jqxDataTableComponent.prototype, "attrRendering", void 0);
+    __decorate([
+        Input('rendered'),
+        __metadata("design:type", Function)
+    ], jqxDataTableComponent.prototype, "attrRendered", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('source'),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "attrSource", void 0);
+    __decorate([
+        Input('sortable'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrSortable", void 0);
+    __decorate([
+        Input('showAggregates'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrShowAggregates", void 0);
+    __decorate([
+        Input('showToolbar'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrShowToolbar", void 0);
+    __decorate([
+        Input('showStatusbar'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrShowStatusbar", void 0);
+    __decorate([
+        Input('statusBarHeight'),
+        __metadata("design:type", Number)
+    ], jqxDataTableComponent.prototype, "attrStatusBarHeight", void 0);
+    __decorate([
+        Input('scrollBarSize'),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "attrScrollBarSize", void 0);
+    __decorate([
+        Input('selectionMode'),
+        __metadata("design:type", String)
+    ], jqxDataTableComponent.prototype, "attrSelectionMode", void 0);
+    __decorate([
+        Input('serverProcessing'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrServerProcessing", void 0);
+    __decorate([
+        Input('showHeader'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "attrShowHeader", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxDataTableComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('toolbarHeight'),
+        __metadata("design:type", Number)
+    ], jqxDataTableComponent.prototype, "attrToolbarHeight", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxDataTableComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onBindingComplete", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onCellBeginEdit", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onCellEndEdit", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onCellValueChanged", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onColumnResized", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onColumnReordered", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onSort", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onFilter", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onPageChanged", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onPageSizeChanged", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onRowClick", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onRowDoubleClick", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onRowSelect", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onRowUnselect", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onRowBeginEdit", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onRowEndEdit", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onRowExpand", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDataTableComponent.prototype, "onRowCollapse", void 0);
+    jqxDataTableComponent = __decorate([
+        Component({
+            selector: 'jqxDataTable',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxDataTableComponent);
     return jqxDataTableComponent;
 }()); //jqxDataTableComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxDataTableModule = /** @class */ (function () {
     function jqxDataTableModule() {
     }
-    jqxDataTableModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxDataTableComponent],
-                    exports: [jqxDataTableComponent]
-                },] }
-    ];
+    jqxDataTableModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxDataTableComponent],
+            exports: [jqxDataTableComponent]
+        })
+    ], jqxDataTableModule);
     return jqxDataTableModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxDataTableComponent, jqxDataTableModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxdatatable.js.map

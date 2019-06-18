@@ -9,10 +9,10 @@ import { jqxInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxinp
 })
 
 export class AppComponent {
-    @ViewChild('myTagCloud') myTagCloud: jqxTagCloudComponent;
-    @ViewChild('myInput1') myInput1: jqxInputComponent;
-    @ViewChild('myInput2') myInput2: jqxInputComponent;
-    @ViewChild('myInput3') myInput3: jqxInputComponent;
+    @ViewChild('myTagCloud', {static: false}) myTagCloud: jqxTagCloudComponent;
+    @ViewChild('myInput1', {static: false}) myInput1: jqxInputComponent;
+    @ViewChild('myInput2', {static: false}) myInput2: jqxInputComponent;
+    @ViewChild('myInput3', {static: false}) myInput3: jqxInputComponent;
 
  	getWidth() : any {
 		if (document.body.offsetWidth < 600) {

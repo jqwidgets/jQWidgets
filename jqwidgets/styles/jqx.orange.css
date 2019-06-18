@@ -209,3 +209,35 @@ border-color:#FBB34E; }
     background-repeat: no-repeat;
     background-position: center;
 }
+ /*applied to the timepicker*/
+.jqx-time-picker .jqx-header .jqx-hour-container-orange:focus {
+    outline: 1px solid white !important;
+}
+.jqx-time-picker .jqx-header .jqx-minute-container-orange:focus {
+    outline: 1px solid white !important;
+}
+.jqx-time-picker .jqx-header .jqx-am-container-orange:focus {
+    outline: 1px solid white !important;
+}
+.jqx-time-picker .jqx-header .jqx-pm-container-orange:focus {
+    outline: 1px solid white !important;
+}
+.jqx-svg-picker-orange:focus {
+	border: 1px solid rgb(77, 119, 193) !important;
+}
+.jqx-label-orange {
+	fill: white;
+}
+.jqx-needle-orange {
+	fill: rgb(77, 119, 193);
+}
+.jqx-needle-central-circle-orange:first-of-type {
+	fill: rgb(77, 119, 193);
+	stroke: rgb(77, 119, 193);
+	stroke-width: 1.5;
+}
+.jqx-needle-central-circle-orange {
+	fill: rgb(0, 74, 115);
+	stroke: rgb(77, 119, 193);
+	stroke-width: 1.5;
+}

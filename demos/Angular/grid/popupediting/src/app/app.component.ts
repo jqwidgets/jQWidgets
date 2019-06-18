@@ -13,13 +13,13 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('myWindow') myWindow: jqxWindowComponent;
-    @ViewChild('firstname') firstname: jqxInputComponent;
-    @ViewChild('lastname') lastname: jqxInputComponent;
-    @ViewChild('product') product: jqxInputComponent;
-    @ViewChild('quantity') quantity: jqxNumberInputComponent;
-    @ViewChild('price') price: jqxNumberInputComponent;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('myWindow', {static: false}) myWindow: jqxWindowComponent;
+    @ViewChild('firstname', {static: false}) firstname: jqxInputComponent;
+    @ViewChild('lastname', {static: false}) lastname: jqxInputComponent;
+    @ViewChild('product', {static: false}) product: jqxInputComponent;
+    @ViewChild('quantity', {static: false}) quantity: jqxNumberInputComponent;
+    @ViewChild('price', {static: false}) price: jqxNumberInputComponent;
 
     editrow: number = -1;
     data = generatedata(200, false);

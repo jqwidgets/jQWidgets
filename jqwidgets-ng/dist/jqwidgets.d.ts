@@ -39,7 +39,7 @@ declare module jqwidgets {
         connectorColor?: string;
         connectorWidth?: number;
         font?: BarGaugeLabelsFont;
-        formatFunction?: (value?: number, index?: number) => string;
+        formatFunction?: (value: number, index?: number) => string;
         indent?: number;
         precision?: number;
         visible?: boolean;
@@ -81,7 +81,7 @@ declare module jqwidgets {
     export interface BarGaugeTooltip {
         // BarGaugeTooltip properties
         classname?: string;
-        formatFunction?: (value?: number | string, index?: number, color?: string) => string;
+        formatFunction?: (value: string, index?: number, color?: string) => string;
         visible?: boolean;
         precision?: number;
     }// BarGaugeTooltip
@@ -102,7 +102,7 @@ declare module jqwidgets {
         customColorScheme?: BarGaugeCustomColorScheme;
         disabled?: boolean;
         endAngle?: number;
-        formatFunction?: (value?: number | string, index?: number, color?: string) => string;
+        formatFunction?: (value: number, index?: number, color?: string) => string;
         height?: string | number;
         labels?: BarGaugeLabels;
         max?: number | string;
@@ -4788,6 +4788,99 @@ declare module jqwidgets {
         setTitle(title: string): void;
         setContent(content: string): void;
     }// jqxWindow
+
+    export interface HeatMapXAxis {
+        // HeatMapXAxis properties
+        labels?: [];
+        opposedPosition?: boolean;
+        isInversed?: boolean;
+        minimum?: any;
+        maximum?: any;
+        labelFormat?: string;
+    }// HeatMapXAxis
+
+    export interface HeatMapYAxis {
+        // HeatMapYAxis properties
+        labels?: [];
+        opposedPosition?: boolean;
+        isInversed?: boolean;
+    }// HeatMapYAxis
+
+    export interface HeatMapPaletteSettings {
+        // HeatMapPaletteSettings properties
+        palette?: [];
+        type?: string;
+        emptyPointColor?: string;
+    }// HeatMapPaletteSettings
+
+    export interface HeatMapPalette {
+        // HeatMapPalette properties
+        value: number;
+        color: string;
+        label?: string;
+    }// HeatMapPalette
+
+    export interface HeatMapLegendSettings {
+        // HeatMapLegendSettings properties
+        position?: string;
+    }// HeatMapLegendSettings
+
+    export interface HeatMapTooltipRender {
+        // HeatMapTooltipRender properties
+        xLabel?: any[];
+        yLabel?: any[];
+        value?: string;
+        content?: string;
+        date?: Date;
+    }// HeatMapTooltipRender
+
+    export interface HeatMapOptions {
+        // HeatMapOptions properties
+        xAxis?: HeatMapXAxis;
+        yAxis?: HeatMapYAxis;
+        paletteSettings?: HeatMapPaletteSettings;
+        legendSettings?: HeatMapLegendSettings;
+        source?: any[];
+        title?: string;
+        width?: number | string;
+        tooltipRender?: (xLabel?: HeatMapTooltipRender['xLabel'], yLabel?: HeatMapTooltipRender['yLabel'], value?: HeatMapTooltipRender['value'], date?: HeatMapTooltipRender['date'], content?: HeatMapTooltipRender['content']) => void;
+    }// HeatMapOptions
+
+    export interface jqxHeatMap extends widget, HeatMapOptions {
+
+        // jqxHeatMap functions
+        destroy(): void;
+        setLegendPosition(position: string): void;
+        setOpposedXAxisPosition(opposedPosition: boolean): void;
+        setOpposedYAxisPosition(opposedPosition: boolean): void;
+        reverseXAxisPosition(isInversed: boolean): void;
+        reverseYAxisPosition(isInversed: boolean): void;
+        setPaletteType(type: string): void;
+    }// jqxHeatMap
+
+    export interface TimePickerOptions {
+        // TimePickerOptions properties
+        autoSwitchToMinutes?: boolean;
+        disabled?: boolean;
+        footer?: boolean;
+        footerTemplate?: string;
+        format?: string;
+        minuteInterval?: number;
+        name?: string;
+        readonly?: boolean;
+        selection?: string;
+        theme?: string;
+        unfocusable?: boolean;
+        value?: any;
+        view?: string;
+    }// TimePickerOptions
+
+    export interface jqxTimePicker extends widget, TimePickerOptions {
+
+        // jqxTimePicker functions
+        setHours(hours: number): void;
+        setMinutes(minutes: number): void;
+    }// jqxTimePicker
 
 
 

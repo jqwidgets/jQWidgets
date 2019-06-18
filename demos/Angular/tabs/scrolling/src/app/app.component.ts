@@ -8,7 +8,7 @@ import { jqxTabsComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtabs
 })
 
 export class AppComponent {
-    @ViewChild('jqxTabs') jqxTabs: jqxTabsComponent;
+    @ViewChild('jqxTabs', {static: false}) jqxTabs: jqxTabsComponent;
 
     height: number = 25;
     width: number = 100;

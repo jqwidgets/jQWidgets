@@ -2,40 +2,26 @@ import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxscrollbar from '../../jqwidgets-scripts/jqwidgets/jqxscrollbar';
 import * as jqxpanel from '../../jqwidgets-scripts/jqwidgets/jqxpanel';
-import { Component, Input, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { Input, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxPanelComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxPanelComponent = class jqxPanelComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['autoUpdate', 'disabled', 'height', 'rtl', 'sizeMode', 'scrollBarSize', 'theme', 'width'];
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -55,11 +41,6 @@ class jqxPanelComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -74,14 +55,9 @@ class jqxPanelComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -89,34 +65,18 @@ class jqxPanelComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -133,32 +93,17 @@ class jqxPanelComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxPanel', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxPanel('setOptions', options);
     }
     // jqxPanelComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoUpdate(arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('autoUpdate', arg);
@@ -167,10 +112,6 @@ class jqxPanelComponent {
             return this.host.jqxPanel('autoUpdate');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('disabled', arg);
@@ -179,10 +120,6 @@ class jqxPanelComponent {
             return this.host.jqxPanel('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('height', arg);
@@ -191,10 +128,6 @@ class jqxPanelComponent {
             return this.host.jqxPanel('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('rtl', arg);
@@ -203,10 +136,6 @@ class jqxPanelComponent {
             return this.host.jqxPanel('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     sizeMode(arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('sizeMode', arg);
@@ -215,10 +144,6 @@ class jqxPanelComponent {
             return this.host.jqxPanel('sizeMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scrollBarSize(arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('scrollBarSize', arg);
@@ -227,10 +152,6 @@ class jqxPanelComponent {
             return this.host.jqxPanel('scrollBarSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('theme', arg);
@@ -239,10 +160,6 @@ class jqxPanelComponent {
             return this.host.jqxPanel('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('width', arg);
@@ -252,130 +169,100 @@ class jqxPanelComponent {
         }
     }
     // jqxPanelComponent functions
-    /**
-     * @param {?} HTMLElement
-     * @return {?}
-     */
     append(HTMLElement) {
         this.host.jqxPanel('append', HTMLElement);
     }
-    /**
-     * @return {?}
-     */
     clearcontent() {
         this.host.jqxPanel('clearcontent');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxPanel('destroy');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxPanel('focus');
     }
-    /**
-     * @return {?}
-     */
     getScrollHeight() {
         return this.host.jqxPanel('getScrollHeight');
     }
-    /**
-     * @return {?}
-     */
     getVScrollPosition() {
         return this.host.jqxPanel('getVScrollPosition');
     }
-    /**
-     * @return {?}
-     */
     getScrollWidth() {
         return this.host.jqxPanel('getScrollWidth');
     }
-    /**
-     * @return {?}
-     */
     getHScrollPosition() {
         return this.host.jqxPanel('getHScrollPosition');
     }
-    /**
-     * @param {?} HTMLElement
-     * @return {?}
-     */
     prepend(HTMLElement) {
         this.host.jqxPanel('prepend', HTMLElement);
     }
-    /**
-     * @param {?} HTMLElement
-     * @return {?}
-     */
     remove(HTMLElement) {
         this.host.jqxPanel('remove', HTMLElement);
     }
-    /**
-     * @param {?} left
-     * @param {?} top
-     * @return {?}
-     */
     scrollTo(left, top) {
         this.host.jqxPanel('scrollTo', left, top);
     }
     // jqxPanelComponent events
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
     }
-} //jqxPanelComponent
-jqxPanelComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxPanel',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxPanelComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxPanelComponent.propDecorators = {
-    attrAutoUpdate: [{ type: Input, args: ['autoUpdate',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrSizeMode: [{ type: Input, args: ['sizeMode',] }],
-    attrScrollBarSize: [{ type: Input, args: ['scrollBarSize',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }]
+}; //jqxPanelComponent
+__decorate([
+    Input('autoUpdate'),
+    __metadata("design:type", Boolean)
+], jqxPanelComponent.prototype, "attrAutoUpdate", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxPanelComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxPanelComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('sizeMode'),
+    __metadata("design:type", String)
+], jqxPanelComponent.prototype, "attrSizeMode", void 0);
+__decorate([
+    Input('scrollBarSize'),
+    __metadata("design:type", Object)
+], jqxPanelComponent.prototype, "attrScrollBarSize", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxPanelComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxPanelComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxPanelComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxPanelComponent.prototype, "autoCreate", void 0);
+jqxPanelComponent = __decorate([
+    Component({
+        selector: 'jqxPanel',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxPanelComponent);
+
+let jqxPanelModule = class jqxPanelModule {
 };
+jqxPanelModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxPanelComponent],
+        exports: [jqxPanelComponent]
+    })
+], jqxPanelModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxPanelModule {
-}
-jqxPanelModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxPanelComponent],
-                exports: [jqxPanelComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxPanelComponent, jqxPanelModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxpanel.js.map

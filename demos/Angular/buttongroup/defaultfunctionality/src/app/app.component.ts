@@ -8,8 +8,8 @@ import { jqxButtonGroupComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_
 })
 
 export class AppComponent {
-    @ViewChild('myButtonGroup') myButtonGroup: jqxButtonGroupComponent;
-    @ViewChild('myLog') myLog: ElementRef;
+    @ViewChild('myButtonGroup', {static: false}) myButtonGroup: jqxButtonGroupComponent;
+    @ViewChild('myLog', {static: false}) myLog: ElementRef;
 
     myDefaultModeButtonChecked(): void {
         this.myButtonGroup.mode('default');

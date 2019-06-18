@@ -11,8 +11,8 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('jqxListBox') myListBox: jqxListBoxComponent;
-    @ViewChild('Events') myPanel: jqxPanelComponent;
+    @ViewChild('jqxListBox', {static: false}) myListBox: jqxListBoxComponent;
+    @ViewChild('Events', {static: false}) myPanel: jqxPanelComponent;
 
     source: string[] = [
         "Affogato",

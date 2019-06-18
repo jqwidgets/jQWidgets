@@ -1,5 +1,5 @@
 /*
-jQWidgets v8.0.0 (2019-May)
+jQWidgets v8.1.0 (2019-June)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -29,7 +29,7 @@ export class jqxBarGaugeComponent implements OnChanges
    @Input('customColorScheme') attrCustomColorScheme: jqwidgets.BarGaugeCustomColorScheme;
    @Input('disabled') attrDisabled: boolean;
    @Input('endAngle') attrEndAngle: number;
-   @Input('formatFunction') attrFormatFunction: (value?: number | string, index?: number, color?: string) => string;
+   @Input('formatFunction') attrFormatFunction: (value: number, index?: number, color?: string) => string;
    @Input('labels') attrLabels: jqwidgets.BarGaugeLabels;
    @Input('max') attrMax: number | string;
    @Input('min') attrMin: number;
@@ -230,7 +230,7 @@ export class jqxBarGaugeComponent implements OnChanges
       }
    }
 
-   formatFunction(arg?: (value?: number | string, index?: number, color?: string) => string): (value?: number | string, index?: number, color?: string) => string {
+   formatFunction(arg?: (value: number, index?: number, color?: string) => string): (value: number, index?: number, color?: string) => string {
       if (arg !== undefined) {
           this.host.jqxBarGauge('formatFunction', arg);
       } else {

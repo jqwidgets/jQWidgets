@@ -1,16 +1,11 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxwindow from '../../jqwidgets-scripts/jqwidgets/jqxwindow';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxWindowComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxWindowComponent = class jqxWindowComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['autoOpen', 'animationType', 'collapsed', 'collapseAnimationDuration', 'content', 'closeAnimationDuration', 'closeButtonSize', 'closeButtonAction', 'cancelButton', 'dragArea', 'draggable', 'disabled', 'height', 'initContent', 'isModal', 'keyboardCloseKey', 'keyboardNavigation', 'minHeight', 'maxHeight', 'minWidth', 'maxWidth', 'modalOpacity', 'modalZIndex', 'modalBackgroundZIndex', 'okButton', 'position', 'rtl', 'resizable', 'showAnimationDuration', 'showCloseButton', 'showCollapseButton', 'theme', 'title', 'width', 'zIndex'];
@@ -25,25 +20,16 @@ class jqxWindowComponent {
         this.onResized = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -63,11 +49,6 @@ class jqxWindowComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -82,14 +63,9 @@ class jqxWindowComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -97,34 +73,18 @@ class jqxWindowComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -141,32 +101,17 @@ class jqxWindowComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxWindow', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxWindow('setOptions', options);
     }
     // jqxWindowComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoOpen(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('autoOpen', arg);
@@ -175,10 +120,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('autoOpen');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationType(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('animationType', arg);
@@ -187,10 +128,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('animationType');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     collapsed(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('collapsed', arg);
@@ -199,10 +136,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('collapsed');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     collapseAnimationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('collapseAnimationDuration', arg);
@@ -211,10 +144,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('collapseAnimationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     content(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('content', arg);
@@ -223,10 +152,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('content');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     closeAnimationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('closeAnimationDuration', arg);
@@ -235,10 +160,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('closeAnimationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     closeButtonSize(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('closeButtonSize', arg);
@@ -247,10 +168,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('closeButtonSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     closeButtonAction(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('closeButtonAction', arg);
@@ -259,10 +176,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('closeButtonAction');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     cancelButton(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('cancelButton', arg);
@@ -271,10 +184,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('cancelButton');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dragArea(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('dragArea', arg);
@@ -283,10 +192,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('dragArea');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     draggable(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('draggable', arg);
@@ -295,10 +200,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('draggable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('disabled', arg);
@@ -307,10 +208,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('height', arg);
@@ -319,10 +216,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     initContent(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('initContent', arg);
@@ -331,10 +224,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('initContent');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     isModal(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('isModal', arg);
@@ -343,10 +232,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('isModal');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     keyboardCloseKey(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('keyboardCloseKey', arg);
@@ -355,10 +240,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('keyboardCloseKey');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     keyboardNavigation(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('keyboardNavigation', arg);
@@ -367,10 +248,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('keyboardNavigation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('minHeight', arg);
@@ -379,10 +256,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('minHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     maxHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('maxHeight', arg);
@@ -391,10 +264,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('maxHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('minWidth', arg);
@@ -403,10 +272,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('minWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     maxWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('maxWidth', arg);
@@ -415,10 +280,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('maxWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     modalOpacity(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('modalOpacity', arg);
@@ -427,10 +288,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('modalOpacity');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     modalZIndex(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('modalZIndex', arg);
@@ -439,10 +296,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('modalZIndex');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     modalBackgroundZIndex(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('modalBackgroundZIndex', arg);
@@ -451,10 +304,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('modalBackgroundZIndex');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     okButton(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('okButton', arg);
@@ -463,10 +312,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('okButton');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     position(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('position', arg);
@@ -475,10 +320,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('position');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('rtl', arg);
@@ -487,10 +328,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     resizable(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('resizable', arg);
@@ -499,10 +336,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('resizable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showAnimationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('showAnimationDuration', arg);
@@ -511,10 +344,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('showAnimationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showCloseButton(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('showCloseButton', arg);
@@ -523,10 +352,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('showCloseButton');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showCollapseButton(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('showCollapseButton', arg);
@@ -535,10 +360,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('showCollapseButton');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('theme', arg);
@@ -547,10 +368,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     title(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('title', arg);
@@ -559,10 +376,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('title');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('width', arg);
@@ -571,10 +384,6 @@ class jqxWindowComponent {
             return this.host.jqxWindow('width');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     zIndex(arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('zIndex', arg);
@@ -584,235 +393,262 @@ class jqxWindowComponent {
         }
     }
     // jqxWindowComponent functions
-    /**
-     * @return {?}
-     */
     bringToFront() {
         this.host.jqxWindow('bringToFront');
     }
-    /**
-     * @return {?}
-     */
     close() {
         this.host.jqxWindow('close');
     }
-    /**
-     * @return {?}
-     */
     collapse() {
         this.host.jqxWindow('collapse');
     }
-    /**
-     * @return {?}
-     */
     closeAll() {
         this.host.jqxWindow('closeAll');
     }
-    /**
-     * @return {?}
-     */
     disable() {
         this.host.jqxWindow('disable');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxWindow('destroy');
     }
-    /**
-     * @return {?}
-     */
     enable() {
         this.host.jqxWindow('enable');
     }
-    /**
-     * @return {?}
-     */
     expand() {
         this.host.jqxWindow('expand');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxWindow('focus');
     }
-    /**
-     * @return {?}
-     */
     isOpen() {
         return this.host.jqxWindow('isOpen');
     }
-    /**
-     * @param {?} top
-     * @param {?} left
-     * @return {?}
-     */
     move(top, left) {
         this.host.jqxWindow('move', top, left);
     }
-    /**
-     * @return {?}
-     */
     open() {
         this.host.jqxWindow('open');
     }
-    /**
-     * @return {?}
-     */
     hide() {
         this.host.jqxWindow('hide');
     }
-    /**
-     * @param {?} top
-     * @param {?} left
-     * @return {?}
-     */
     resize(top, left) {
         this.host.jqxWindow('resize', top, left);
     }
-    /**
-     * @param {?} title
-     * @return {?}
-     */
     setTitle(title) {
         this.host.jqxWindow('setTitle', title);
     }
-    /**
-     * @param {?} content
-     * @return {?}
-     */
     setContent(content) {
         this.host.jqxWindow('setContent', content);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onClose.emit(eventData); }));
-        this.host.on('collapse', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCollapse.emit(eventData); }));
-        this.host.on('expand', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onExpand.emit(eventData); }));
-        this.host.on('moving', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onMoving.emit(eventData); }));
-        this.host.on('moved', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onMoved.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onOpen.emit(eventData); }));
-        this.host.on('resizing', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onResizing.emit(eventData); }));
-        this.host.on('resized', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onResized.emit(eventData); }));
+        this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+        this.host.on('collapse', (eventData) => { this.onCollapse.emit(eventData); });
+        this.host.on('expand', (eventData) => { this.onExpand.emit(eventData); });
+        this.host.on('moving', (eventData) => { this.onMoving.emit(eventData); });
+        this.host.on('moved', (eventData) => { this.onMoved.emit(eventData); });
+        this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
+        this.host.on('resizing', (eventData) => { this.onResizing.emit(eventData); });
+        this.host.on('resized', (eventData) => { this.onResized.emit(eventData); });
     }
-} //jqxWindowComponent
-jqxWindowComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxWindow',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxWindowComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxWindowComponent.propDecorators = {
-    attrAutoOpen: [{ type: Input, args: ['autoOpen',] }],
-    attrAnimationType: [{ type: Input, args: ['animationType',] }],
-    attrCollapsed: [{ type: Input, args: ['collapsed',] }],
-    attrCollapseAnimationDuration: [{ type: Input, args: ['collapseAnimationDuration',] }],
-    attrContent: [{ type: Input, args: ['content',] }],
-    attrCloseAnimationDuration: [{ type: Input, args: ['closeAnimationDuration',] }],
-    attrCloseButtonSize: [{ type: Input, args: ['closeButtonSize',] }],
-    attrCloseButtonAction: [{ type: Input, args: ['closeButtonAction',] }],
-    attrCancelButton: [{ type: Input, args: ['cancelButton',] }],
-    attrDragArea: [{ type: Input, args: ['dragArea',] }],
-    attrDraggable: [{ type: Input, args: ['draggable',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrInitContent: [{ type: Input, args: ['initContent',] }],
-    attrIsModal: [{ type: Input, args: ['isModal',] }],
-    attrKeyboardCloseKey: [{ type: Input, args: ['keyboardCloseKey',] }],
-    attrKeyboardNavigation: [{ type: Input, args: ['keyboardNavigation',] }],
-    attrMinHeight: [{ type: Input, args: ['minHeight',] }],
-    attrMaxHeight: [{ type: Input, args: ['maxHeight',] }],
-    attrMinWidth: [{ type: Input, args: ['minWidth',] }],
-    attrMaxWidth: [{ type: Input, args: ['maxWidth',] }],
-    attrModalOpacity: [{ type: Input, args: ['modalOpacity',] }],
-    attrModalZIndex: [{ type: Input, args: ['modalZIndex',] }],
-    attrModalBackgroundZIndex: [{ type: Input, args: ['modalBackgroundZIndex',] }],
-    attrOkButton: [{ type: Input, args: ['okButton',] }],
-    attrPosition: [{ type: Input, args: ['position',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrResizable: [{ type: Input, args: ['resizable',] }],
-    attrShowAnimationDuration: [{ type: Input, args: ['showAnimationDuration',] }],
-    attrShowCloseButton: [{ type: Input, args: ['showCloseButton',] }],
-    attrShowCollapseButton: [{ type: Input, args: ['showCollapseButton',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrTitle: [{ type: Input, args: ['title',] }],
-    attrZIndex: [{ type: Input, args: ['zIndex',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onClose: [{ type: Output }],
-    onCollapse: [{ type: Output }],
-    onExpand: [{ type: Output }],
-    onMoving: [{ type: Output }],
-    onMoved: [{ type: Output }],
-    onOpen: [{ type: Output }],
-    onResizing: [{ type: Output }],
-    onResized: [{ type: Output }]
+}; //jqxWindowComponent
+__decorate([
+    Input('autoOpen'),
+    __metadata("design:type", Boolean)
+], jqxWindowComponent.prototype, "attrAutoOpen", void 0);
+__decorate([
+    Input('animationType'),
+    __metadata("design:type", String)
+], jqxWindowComponent.prototype, "attrAnimationType", void 0);
+__decorate([
+    Input('collapsed'),
+    __metadata("design:type", Boolean)
+], jqxWindowComponent.prototype, "attrCollapsed", void 0);
+__decorate([
+    Input('collapseAnimationDuration'),
+    __metadata("design:type", Number)
+], jqxWindowComponent.prototype, "attrCollapseAnimationDuration", void 0);
+__decorate([
+    Input('content'),
+    __metadata("design:type", String)
+], jqxWindowComponent.prototype, "attrContent", void 0);
+__decorate([
+    Input('closeAnimationDuration'),
+    __metadata("design:type", Number)
+], jqxWindowComponent.prototype, "attrCloseAnimationDuration", void 0);
+__decorate([
+    Input('closeButtonSize'),
+    __metadata("design:type", Number)
+], jqxWindowComponent.prototype, "attrCloseButtonSize", void 0);
+__decorate([
+    Input('closeButtonAction'),
+    __metadata("design:type", String)
+], jqxWindowComponent.prototype, "attrCloseButtonAction", void 0);
+__decorate([
+    Input('cancelButton'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrCancelButton", void 0);
+__decorate([
+    Input('dragArea'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrDragArea", void 0);
+__decorate([
+    Input('draggable'),
+    __metadata("design:type", Boolean)
+], jqxWindowComponent.prototype, "attrDraggable", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxWindowComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('initContent'),
+    __metadata("design:type", Function)
+], jqxWindowComponent.prototype, "attrInitContent", void 0);
+__decorate([
+    Input('isModal'),
+    __metadata("design:type", Boolean)
+], jqxWindowComponent.prototype, "attrIsModal", void 0);
+__decorate([
+    Input('keyboardCloseKey'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrKeyboardCloseKey", void 0);
+__decorate([
+    Input('keyboardNavigation'),
+    __metadata("design:type", Boolean)
+], jqxWindowComponent.prototype, "attrKeyboardNavigation", void 0);
+__decorate([
+    Input('minHeight'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrMinHeight", void 0);
+__decorate([
+    Input('maxHeight'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrMaxHeight", void 0);
+__decorate([
+    Input('minWidth'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrMinWidth", void 0);
+__decorate([
+    Input('maxWidth'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrMaxWidth", void 0);
+__decorate([
+    Input('modalOpacity'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrModalOpacity", void 0);
+__decorate([
+    Input('modalZIndex'),
+    __metadata("design:type", Number)
+], jqxWindowComponent.prototype, "attrModalZIndex", void 0);
+__decorate([
+    Input('modalBackgroundZIndex'),
+    __metadata("design:type", Number)
+], jqxWindowComponent.prototype, "attrModalBackgroundZIndex", void 0);
+__decorate([
+    Input('okButton'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrOkButton", void 0);
+__decorate([
+    Input('position'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrPosition", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxWindowComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('resizable'),
+    __metadata("design:type", Boolean)
+], jqxWindowComponent.prototype, "attrResizable", void 0);
+__decorate([
+    Input('showAnimationDuration'),
+    __metadata("design:type", Number)
+], jqxWindowComponent.prototype, "attrShowAnimationDuration", void 0);
+__decorate([
+    Input('showCloseButton'),
+    __metadata("design:type", Boolean)
+], jqxWindowComponent.prototype, "attrShowCloseButton", void 0);
+__decorate([
+    Input('showCollapseButton'),
+    __metadata("design:type", Boolean)
+], jqxWindowComponent.prototype, "attrShowCollapseButton", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxWindowComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('title'),
+    __metadata("design:type", String)
+], jqxWindowComponent.prototype, "attrTitle", void 0);
+__decorate([
+    Input('zIndex'),
+    __metadata("design:type", Number)
+], jqxWindowComponent.prototype, "attrZIndex", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxWindowComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "onClose", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "onCollapse", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "onExpand", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "onMoving", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "onMoved", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "onOpen", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "onResizing", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxWindowComponent.prototype, "onResized", void 0);
+jqxWindowComponent = __decorate([
+    Component({
+        selector: 'jqxWindow',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxWindowComponent);
+
+let jqxWindowModule = class jqxWindowModule {
 };
+jqxWindowModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxWindowComponent],
+        exports: [jqxWindowComponent]
+    })
+], jqxWindowModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxWindowModule {
-}
-jqxWindowModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxWindowComponent],
-                exports: [jqxWindowComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxWindowComponent, jqxWindowModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxwindow.js.map

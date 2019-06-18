@@ -3,26 +3,23 @@ import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxscrollbar from '../../jqwidgets-scripts/jqwidgets/jqxscrollbar';
 import * as jqxtextarea from '../../jqwidgets-scripts/jqwidgets/jqxtextarea';
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+import * as tslib_1 from "tslib";
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { jqxTextAreaComponent } from './angular_jqxtextarea';
 var jqxTextAreaModule = /** @class */ (function () {
     function jqxTextAreaModule() {
     }
-    jqxTextAreaModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        FormsModule
-                    ],
-                    declarations: [jqxTextAreaComponent],
-                    exports: [jqxTextAreaComponent]
-                },] }
-    ];
+    jqxTextAreaModule = tslib_1.__decorate([
+        NgModule({
+            imports: [
+                FormsModule
+            ],
+            declarations: [jqxTextAreaComponent],
+            exports: [jqxTextAreaComponent]
+        })
+    ], jqxTextAreaModule);
     return jqxTextAreaModule;
 }());
 export { jqxTextAreaModule };
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhcl9qcXh0ZXh0YXJlYS5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9qcXdpZGdldHMtbmcvanF4dGV4dGFyZWEvIiwic291cmNlcyI6WyJhbmd1bGFyX2pxeHRleHRhcmVhLm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQ0EsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUN6QyxPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFFN0MsT0FBTyxFQUFFLG9CQUFvQixFQUFFLE1BQU0sdUJBQXVCLENBQUM7QUFFN0Q7SUFBQTtJQU9pQyxDQUFDOztnQkFQakMsUUFBUSxTQUFDO29CQUNSLE9BQU8sRUFBRTt3QkFDUCxXQUFXO3FCQUNaO29CQUNELFlBQVksRUFBRSxDQUFDLG9CQUFvQixDQUFDO29CQUNwQyxPQUFPLEVBQUUsQ0FBQyxvQkFBb0IsQ0FBQztpQkFDaEM7O0lBQ2dDLHdCQUFDO0NBQUEsQUFQbEMsSUFPa0M7U0FBckIsaUJBQWlCIiwic291cmNlc0NvbnRlbnQiOlsiXG5pbXBvcnQgeyBOZ01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgRm9ybXNNb2R1bGUgfSBmcm9tICdAYW5ndWxhci9mb3Jtcyc7XG5cbmltcG9ydCB7IGpxeFRleHRBcmVhQ29tcG9uZW50IH0gZnJvbSAnLi9hbmd1bGFyX2pxeHRleHRhcmVhJztcblxuQE5nTW9kdWxlKHtcbiAgaW1wb3J0czogW1xuICAgIEZvcm1zTW9kdWxlXG4gIF0sXG4gIGRlY2xhcmF0aW9uczogW2pxeFRleHRBcmVhQ29tcG9uZW50XSxcbiAgZXhwb3J0czogW2pxeFRleHRBcmVhQ29tcG9uZW50XVxufSlcbmV4cG9ydCBjbGFzcyBqcXhUZXh0QXJlYU1vZHVsZSB7IH1cblxuIl19
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhcl9qcXh0ZXh0YXJlYS5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9qcXdpZGdldHMtbmcvanF4dGV4dGFyZWEvIiwic291cmNlcyI6WyJhbmd1bGFyX2pxeHRleHRhcmVhLm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUN6QyxPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFFN0MsT0FBTyxFQUFFLG9CQUFvQixFQUFFLE1BQU0sdUJBQXVCLENBQUM7QUFTN0Q7SUFBQTtJQUFpQyxDQUFDO0lBQXJCLGlCQUFpQjtRQVA3QixRQUFRLENBQUM7WUFDUixPQUFPLEVBQUU7Z0JBQ1AsV0FBVzthQUNaO1lBQ0QsWUFBWSxFQUFFLENBQUMsb0JBQW9CLENBQUM7WUFDcEMsT0FBTyxFQUFFLENBQUMsb0JBQW9CLENBQUM7U0FDaEMsQ0FBQztPQUNXLGlCQUFpQixDQUFJO0lBQUQsd0JBQUM7Q0FBQSxBQUFsQyxJQUFrQztTQUFyQixpQkFBaUIiLCJzb3VyY2VzQ29udGVudCI6WyJcbmltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBGb3Jtc01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2Zvcm1zJztcblxuaW1wb3J0IHsganF4VGV4dEFyZWFDb21wb25lbnQgfSBmcm9tICcuL2FuZ3VsYXJfanF4dGV4dGFyZWEnO1xuXG5ATmdNb2R1bGUoe1xuICBpbXBvcnRzOiBbXG4gICAgRm9ybXNNb2R1bGVcbiAgXSxcbiAgZGVjbGFyYXRpb25zOiBbanF4VGV4dEFyZWFDb21wb25lbnRdLFxuICBleHBvcnRzOiBbanF4VGV4dEFyZWFDb21wb25lbnRdXG59KVxuZXhwb3J0IGNsYXNzIGpxeFRleHRBcmVhTW9kdWxlIHsgfVxuXG4iXX0=

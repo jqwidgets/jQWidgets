@@ -9,7 +9,7 @@ export declare class jqxBarGaugeComponent implements OnChanges {
     attrCustomColorScheme: jqwidgets.BarGaugeCustomColorScheme;
     attrDisabled: boolean;
     attrEndAngle: number;
-    attrFormatFunction: (value?: number | string, index?: number, color?: string) => string;
+    attrFormatFunction: (value: number, index?: number, color?: string) => string;
     attrLabels: jqwidgets.BarGaugeLabels;
     attrMax: number | string;
     attrMin: number;
@@ -46,7 +46,7 @@ export declare class jqxBarGaugeComponent implements OnChanges {
     customColorScheme(arg?: jqwidgets.BarGaugeCustomColorScheme): jqwidgets.BarGaugeCustomColorScheme;
     disabled(arg?: boolean): boolean;
     endAngle(arg?: number): number;
-    formatFunction(arg?: (value?: number | string, index?: number, color?: string) => string): (value?: number | string, index?: number, color?: string) => string;
+    formatFunction(arg?: (value: number, index?: number, color?: string) => string): (value: number, index?: number, color?: string) => string;
     height(arg?: string | number): string | number;
     labels(arg?: jqwidgets.BarGaugeLabels): jqwidgets.BarGaugeLabels;
     max(arg?: number | string): number | string;

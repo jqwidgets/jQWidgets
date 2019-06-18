@@ -10,10 +10,10 @@ import { jqxGridComponent }  from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgri
 })
 
 export class AppComponent {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('groupNum') groupNum: ElementRef;
-    @ViewChild('expandedGroup') expandedGroup: ElementRef;
-    @ViewChild('collapsedGroup') collapsedGroup: ElementRef;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('groupNum', {static: false}) groupNum: ElementRef;
+    @ViewChild('expandedGroup', {static: false}) expandedGroup: ElementRef;
+    @ViewChild('collapsedGroup', {static: false}) collapsedGroup: ElementRef;
 
     source: any =
     {

@@ -1,26 +1,16 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxslider from '../../jqwidgets-scripts/jqwidgets/jqxslider';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { forwardRef, Input, Output, Component, ChangeDetectionStrategy, ElementRef, EventEmitter, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-var noop = (/**
- * @return {?}
- */
-function () { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+var noop = function () { };
+var ɵ0 = noop;
 var CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    function () { return jqxSliderComponent; })),
+    useExisting: forwardRef(function () { return jqxSliderComponent; }),
     multi: true
 };
 var jqxSliderComponent = /** @class */ (function () {
@@ -36,31 +26,15 @@ var jqxSliderComponent = /** @class */ (function () {
         this.onSlideEnd = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxSliderComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxSliderComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -80,17 +54,7 @@ var jqxSliderComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxSliderComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -104,17 +68,9 @@ var jqxSliderComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxSliderComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -122,50 +78,20 @@ var jqxSliderComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxSliderComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxSliderComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSliderComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -181,44 +107,22 @@ var jqxSliderComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxSlider', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSliderComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxSliderComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
     Object.defineProperty(jqxSliderComponent.prototype, "ngValue", {
-        get: /**
-         * @return {?}
-         */
-        function () {
+        get: function () {
             if (this.widgetObject) {
-                /** @type {?} */
                 var value = this.host.val();
                 return value;
             }
             return '';
         },
-        set: /**
-         * @param {?} value
-         * @return {?}
-         */
-        function (value) {
+        set: function (value) {
             if (this.widgetObject) {
                 this.onChangeCallback(value);
             }
@@ -226,65 +130,22 @@ var jqxSliderComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.writeValue = /**
-     * @param {?} value
-     * @return {?}
-     */
-    function (value) {
+    jqxSliderComponent.prototype.writeValue = function (value) {
         if (this.widgetObject) {
             this.onChangeCallback(this.host.val());
         }
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.registerOnChange = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxSliderComponent.prototype.registerOnChange = function (fn) {
         this.onChangeCallback = fn;
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.registerOnTouched = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxSliderComponent.prototype.registerOnTouched = function (fn) {
         this.onTouchedCallback = fn;
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSliderComponent.prototype.setOptions = function (options) {
         this.host.jqxSlider('setOptions', options);
     };
     // jqxSliderComponent properties
-    // jqxSliderComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.buttonsPosition = 
-    // jqxSliderComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.buttonsPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('buttonsPosition', arg);
         }
@@ -292,15 +153,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('buttonsPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('disabled', arg);
         }
@@ -308,15 +161,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('height', arg);
         }
@@ -324,15 +169,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.layout = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.layout = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('layout', arg);
         }
@@ -340,15 +177,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('layout');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.mode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.mode = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('mode', arg);
         }
@@ -356,15 +185,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('mode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.minorTicksFrequency = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.minorTicksFrequency = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('minorTicksFrequency', arg);
         }
@@ -372,15 +193,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('minorTicksFrequency');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.minorTickSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.minorTickSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('minorTickSize', arg);
         }
@@ -388,15 +201,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('minorTickSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.max = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.max = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('max', arg);
         }
@@ -404,15 +209,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('max');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.min = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.min = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('min', arg);
         }
@@ -420,15 +217,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('min');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.orientation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.orientation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('orientation', arg);
         }
@@ -436,15 +225,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('orientation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.rangeSlider = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.rangeSlider = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('rangeSlider', arg);
         }
@@ -452,15 +233,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('rangeSlider');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('rtl', arg);
         }
@@ -468,15 +241,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.step = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.step = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('step', arg);
         }
@@ -484,15 +249,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('step');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.showTicks = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.showTicks = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('showTicks', arg);
         }
@@ -500,15 +257,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('showTicks');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.showMinorTicks = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.showMinorTicks = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('showMinorTicks', arg);
         }
@@ -516,15 +265,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('showMinorTicks');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.showTickLabels = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.showTickLabels = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('showTickLabels', arg);
         }
@@ -532,15 +273,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('showTickLabels');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.showButtons = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.showButtons = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('showButtons', arg);
         }
@@ -548,15 +281,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('showButtons');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.showRange = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.showRange = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('showRange', arg);
         }
@@ -564,15 +289,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('showRange');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.template = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.template = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('template', arg);
         }
@@ -580,15 +297,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('template');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('theme', arg);
         }
@@ -596,15 +305,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.ticksPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.ticksPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('ticksPosition', arg);
         }
@@ -612,15 +313,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('ticksPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.ticksFrequency = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.ticksFrequency = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('ticksFrequency', arg);
         }
@@ -628,15 +321,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('ticksFrequency');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.tickSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.tickSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('tickSize', arg);
         }
@@ -644,15 +329,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('tickSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.tickLabelFormatFunction = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.tickLabelFormatFunction = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('tickLabelFormatFunction', arg);
         }
@@ -660,15 +337,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('tickLabelFormatFunction');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.tooltip = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.tooltip = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('tooltip', arg);
         }
@@ -676,15 +345,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('tooltip');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.tooltipHideDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.tooltipHideDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('tooltipHideDelay', arg);
         }
@@ -692,15 +353,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('tooltipHideDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.tooltipPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.tooltipPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('tooltipPosition', arg);
         }
@@ -708,15 +361,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('tooltipPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.tooltipFormatFunction = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.tooltipFormatFunction = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('tooltipFormatFunction', arg);
         }
@@ -724,15 +369,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('tooltipFormatFunction');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.value = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.value = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('value', arg);
         }
@@ -740,15 +377,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('value');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.values = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.values = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('values', arg);
         }
@@ -756,15 +385,7 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('values');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSliderComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSlider('width', arg);
         }
@@ -773,92 +394,31 @@ var jqxSliderComponent = /** @class */ (function () {
         }
     };
     // jqxSliderComponent functions
-    // jqxSliderComponent functions
-    /**
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.destroy = 
-    // jqxSliderComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxSliderComponent.prototype.destroy = function () {
         this.host.jqxSlider('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.decrementValue = /**
-     * @return {?}
-     */
-    function () {
+    jqxSliderComponent.prototype.decrementValue = function () {
         this.host.jqxSlider('decrementValue');
     };
-    /**
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.disable = /**
-     * @return {?}
-     */
-    function () {
+    jqxSliderComponent.prototype.disable = function () {
         this.host.jqxSlider('disable');
     };
-    /**
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.enable = /**
-     * @return {?}
-     */
-    function () {
+    jqxSliderComponent.prototype.enable = function () {
         this.host.jqxSlider('enable');
     };
-    /**
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxSliderComponent.prototype.focus = function () {
         this.host.jqxSlider('focus');
     };
-    /**
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.getValue = /**
-     * @return {?}
-     */
-    function () {
+    jqxSliderComponent.prototype.getValue = function () {
         return this.host.jqxSlider('getValue');
     };
-    /**
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.incrementValue = /**
-     * @return {?}
-     */
-    function () {
+    jqxSliderComponent.prototype.incrementValue = function () {
         this.host.jqxSlider('incrementValue');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.setValue = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxSliderComponent.prototype.setValue = function (index) {
         this.host.jqxSlider('setValue', index);
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxSliderComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxSlider('val', value);
         }
@@ -866,117 +426,187 @@ var jqxSliderComponent = /** @class */ (function () {
             return this.host.jqxSlider('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxSliderComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxSliderComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChange.emit(eventData); _this.onChangeCallback(_this.host.val()); }));
-        this.host.on('slide', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onSlide.emit(eventData); }));
-        this.host.on('slideStart', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onSlideStart.emit(eventData); }));
-        this.host.on('slideEnd', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onSlideEnd.emit(eventData); }));
+        this.host.on('change', function (eventData) { _this.onChange.emit(eventData); _this.onChangeCallback(_this.host.val()); });
+        this.host.on('slide', function (eventData) { _this.onSlide.emit(eventData); });
+        this.host.on('slideStart', function (eventData) { _this.onSlideStart.emit(eventData); });
+        this.host.on('slideEnd', function (eventData) { _this.onSlideEnd.emit(eventData); });
     };
-    jqxSliderComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxSlider',
-                    template: '<div><ng-content></ng-content></div>',
-                    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                    changeDetection: ChangeDetectionStrategy.OnPush
-                }] }
-    ];
-    /** @nocollapse */
-    jqxSliderComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxSliderComponent.propDecorators = {
-        attrButtonsPosition: [{ type: Input, args: ['buttonsPosition',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrLayout: [{ type: Input, args: ['layout',] }],
-        attrMode: [{ type: Input, args: ['mode',] }],
-        attrMinorTicksFrequency: [{ type: Input, args: ['minorTicksFrequency',] }],
-        attrMinorTickSize: [{ type: Input, args: ['minorTickSize',] }],
-        attrMax: [{ type: Input, args: ['max',] }],
-        attrMin: [{ type: Input, args: ['min',] }],
-        attrOrientation: [{ type: Input, args: ['orientation',] }],
-        attrRangeSlider: [{ type: Input, args: ['rangeSlider',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrStep: [{ type: Input, args: ['step',] }],
-        attrShowTicks: [{ type: Input, args: ['showTicks',] }],
-        attrShowMinorTicks: [{ type: Input, args: ['showMinorTicks',] }],
-        attrShowTickLabels: [{ type: Input, args: ['showTickLabels',] }],
-        attrShowButtons: [{ type: Input, args: ['showButtons',] }],
-        attrShowRange: [{ type: Input, args: ['showRange',] }],
-        attrTemplate: [{ type: Input, args: ['template',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrTicksPosition: [{ type: Input, args: ['ticksPosition',] }],
-        attrTicksFrequency: [{ type: Input, args: ['ticksFrequency',] }],
-        attrTickSize: [{ type: Input, args: ['tickSize',] }],
-        attrTickLabelFormatFunction: [{ type: Input, args: ['tickLabelFormatFunction',] }],
-        attrTooltip: [{ type: Input, args: ['tooltip',] }],
-        attrTooltipHideDelay: [{ type: Input, args: ['tooltipHideDelay',] }],
-        attrTooltipPosition: [{ type: Input, args: ['tooltipPosition',] }],
-        attrTooltipFormatFunction: [{ type: Input, args: ['tooltipFormatFunction',] }],
-        attrValue: [{ type: Input, args: ['value',] }],
-        attrValues: [{ type: Input, args: ['values',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onChange: [{ type: Output }],
-        onSlide: [{ type: Output }],
-        onSlideStart: [{ type: Output }],
-        onSlideEnd: [{ type: Output }]
-    };
+    __decorate([
+        Input('buttonsPosition'),
+        __metadata("design:type", String)
+    ], jqxSliderComponent.prototype, "attrButtonsPosition", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxSliderComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('layout'),
+        __metadata("design:type", String)
+    ], jqxSliderComponent.prototype, "attrLayout", void 0);
+    __decorate([
+        Input('mode'),
+        __metadata("design:type", String)
+    ], jqxSliderComponent.prototype, "attrMode", void 0);
+    __decorate([
+        Input('minorTicksFrequency'),
+        __metadata("design:type", Number)
+    ], jqxSliderComponent.prototype, "attrMinorTicksFrequency", void 0);
+    __decorate([
+        Input('minorTickSize'),
+        __metadata("design:type", Number)
+    ], jqxSliderComponent.prototype, "attrMinorTickSize", void 0);
+    __decorate([
+        Input('max'),
+        __metadata("design:type", Number)
+    ], jqxSliderComponent.prototype, "attrMax", void 0);
+    __decorate([
+        Input('min'),
+        __metadata("design:type", Number)
+    ], jqxSliderComponent.prototype, "attrMin", void 0);
+    __decorate([
+        Input('orientation'),
+        __metadata("design:type", String)
+    ], jqxSliderComponent.prototype, "attrOrientation", void 0);
+    __decorate([
+        Input('rangeSlider'),
+        __metadata("design:type", Boolean)
+    ], jqxSliderComponent.prototype, "attrRangeSlider", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxSliderComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('step'),
+        __metadata("design:type", Number)
+    ], jqxSliderComponent.prototype, "attrStep", void 0);
+    __decorate([
+        Input('showTicks'),
+        __metadata("design:type", Boolean)
+    ], jqxSliderComponent.prototype, "attrShowTicks", void 0);
+    __decorate([
+        Input('showMinorTicks'),
+        __metadata("design:type", Boolean)
+    ], jqxSliderComponent.prototype, "attrShowMinorTicks", void 0);
+    __decorate([
+        Input('showTickLabels'),
+        __metadata("design:type", Boolean)
+    ], jqxSliderComponent.prototype, "attrShowTickLabels", void 0);
+    __decorate([
+        Input('showButtons'),
+        __metadata("design:type", Boolean)
+    ], jqxSliderComponent.prototype, "attrShowButtons", void 0);
+    __decorate([
+        Input('showRange'),
+        __metadata("design:type", Boolean)
+    ], jqxSliderComponent.prototype, "attrShowRange", void 0);
+    __decorate([
+        Input('template'),
+        __metadata("design:type", String)
+    ], jqxSliderComponent.prototype, "attrTemplate", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxSliderComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('ticksPosition'),
+        __metadata("design:type", String)
+    ], jqxSliderComponent.prototype, "attrTicksPosition", void 0);
+    __decorate([
+        Input('ticksFrequency'),
+        __metadata("design:type", Number)
+    ], jqxSliderComponent.prototype, "attrTicksFrequency", void 0);
+    __decorate([
+        Input('tickSize'),
+        __metadata("design:type", Number)
+    ], jqxSliderComponent.prototype, "attrTickSize", void 0);
+    __decorate([
+        Input('tickLabelFormatFunction'),
+        __metadata("design:type", Function)
+    ], jqxSliderComponent.prototype, "attrTickLabelFormatFunction", void 0);
+    __decorate([
+        Input('tooltip'),
+        __metadata("design:type", Boolean)
+    ], jqxSliderComponent.prototype, "attrTooltip", void 0);
+    __decorate([
+        Input('tooltipHideDelay'),
+        __metadata("design:type", Number)
+    ], jqxSliderComponent.prototype, "attrTooltipHideDelay", void 0);
+    __decorate([
+        Input('tooltipPosition'),
+        __metadata("design:type", String)
+    ], jqxSliderComponent.prototype, "attrTooltipPosition", void 0);
+    __decorate([
+        Input('tooltipFormatFunction'),
+        __metadata("design:type", Function)
+    ], jqxSliderComponent.prototype, "attrTooltipFormatFunction", void 0);
+    __decorate([
+        Input('value'),
+        __metadata("design:type", Object)
+    ], jqxSliderComponent.prototype, "attrValue", void 0);
+    __decorate([
+        Input('values'),
+        __metadata("design:type", Array)
+    ], jqxSliderComponent.prototype, "attrValues", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxSliderComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxSliderComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxSliderComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSliderComponent.prototype, "onChange", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSliderComponent.prototype, "onSlide", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSliderComponent.prototype, "onSlideStart", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSliderComponent.prototype, "onSlideEnd", void 0);
+    jqxSliderComponent = __decorate([
+        Component({
+            selector: 'jqxSlider',
+            template: '<div><ng-content></ng-content></div>',
+            providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+            changeDetection: ChangeDetectionStrategy.OnPush
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxSliderComponent);
     return jqxSliderComponent;
 }()); //jqxSliderComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxSliderModule = /** @class */ (function () {
     function jqxSliderModule() {
     }
-    jqxSliderModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        FormsModule
-                    ],
-                    declarations: [jqxSliderComponent],
-                    exports: [jqxSliderComponent]
-                },] }
-    ];
+    jqxSliderModule = __decorate([
+        NgModule({
+            imports: [
+                FormsModule
+            ],
+            declarations: [jqxSliderComponent],
+            exports: [jqxSliderComponent]
+        })
+    ], jqxSliderModule);
     return jqxSliderModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxSliderComponent, jqxSliderModule };
-
+export { jqxSliderComponent, jqxSliderModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxslider.js.map

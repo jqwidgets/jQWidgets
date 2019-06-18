@@ -11,9 +11,9 @@ import { jqxLinearGaugeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myGauge') myGauge: jqxGaugeComponent; 
-    @ViewChild('myLinearGauge') myLinearGauge: jqxLinearGaugeComponent;
-    @ViewChild('gaugeValue') gaugeValue: ElementRef;
+    @ViewChild('myGauge', {static: false}) myGauge: jqxGaugeComponent; 
+    @ViewChild('myLinearGauge', {static: false}) myLinearGauge: jqxLinearGaugeComponent;
+    @ViewChild('gaugeValue', {static: false}) gaugeValue: ElementRef;
 
     ngAfterViewInit(): void {
         this.myGauge.value(140);   

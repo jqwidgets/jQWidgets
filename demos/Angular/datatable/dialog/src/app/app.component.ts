@@ -12,12 +12,12 @@ import { jqxWindowComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxwi
 })
 
 export class AppComponent {
-    @ViewChild('myDataTable') myDataTable: jqxDataTableComponent;
-    @ViewChild('myWindow') myWindow: jqxWindowComponent;
-    @ViewChild('orderID') orderID: jqxInputComponent;
-    @ViewChild('freight') freight: jqxNumberInputComponent;
-    @ViewChild('shipCountry') shipCountry: jqxInputComponent;
-    @ViewChild('shipDate') shipDate: jqxDateTimeInputComponent;
+    @ViewChild('myDataTable', {static: false}) myDataTable: jqxDataTableComponent;
+    @ViewChild('myWindow', {static: false}) myWindow: jqxWindowComponent;
+    @ViewChild('orderID', {static: false}) orderID: jqxInputComponent;
+    @ViewChild('freight', {static: false}) freight: jqxNumberInputComponent;
+    @ViewChild('shipCountry', {static: false}) shipCountry: jqxInputComponent;
+    @ViewChild('shipDate', {static: false}) shipDate: jqxDateTimeInputComponent;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

@@ -1,31 +1,19 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxcomplexinput from '../../jqwidgets-scripts/jqwidgets/jqxcomplexinput';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { forwardRef, EventEmitter, Input, Output, Component, ChangeDetectionStrategy, ElementRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-const noop = (/**
- * @return {?}
- */
-() => { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+const noop = () => { };
+const ɵ0 = noop;
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    () => jqxComplexInputComponent)),
+    useExisting: forwardRef(() => jqxComplexInputComponent),
     multi: true
 };
-class jqxComplexInputComponent {
-    /**
-     * @param {?} containerElement
-     */
+let jqxComplexInputComponent = class jqxComplexInputComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['decimalNotation', 'disabled', 'height', 'placeHolder', 'roundedCorners', 'rtl', 'spinButtons', 'spinButtonsStep', 'template', 'theme', 'value', 'width'];
@@ -35,25 +23,16 @@ class jqxComplexInputComponent {
         this.onChange = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -73,11 +52,6 @@ class jqxComplexInputComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -92,14 +66,9 @@ class jqxComplexInputComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -107,34 +76,18 @@ class jqxComplexInputComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -150,86 +103,46 @@ class jqxComplexInputComponent {
         this.moveStyles(this.elementRef.nativeElement, this.host[0]);
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxComplexInput', options);
-        setTimeout((/**
-         * @param {?} _
-         * @return {?}
-         */
-        _ => {
-            /** @type {?} */
+        setTimeout(_ => {
             let valueWithWS = 'JQXLite{options.value}';
             this.host.jqxComplexInput({ value: valueWithWS });
-        }));
+        });
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @return {?}
-     */
     get ngValue() {
         if (this.widgetObject) {
-            /** @type {?} */
             const value = this.host.val();
             return value;
         }
         return '';
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     set ngValue(value) {
         if (this.widgetObject) {
             this.onChangeCallback(value);
         }
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     writeValue(value) {
         if (this.widgetObject) {
             this.onChangeCallback(this.host.val());
             this.host.jqxComplexInput('val', value);
         }
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnChange(fn) {
         this.onChangeCallback = fn;
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnTouched(fn) {
         this.onTouchedCallback = fn;
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxComplexInput('setOptions', options);
     }
     // jqxComplexInputComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     decimalNotation(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('decimalNotation', arg);
@@ -238,10 +151,6 @@ class jqxComplexInputComponent {
             return this.host.jqxComplexInput('decimalNotation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('disabled', arg);
@@ -250,10 +159,6 @@ class jqxComplexInputComponent {
             return this.host.jqxComplexInput('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('height', arg);
@@ -262,10 +167,6 @@ class jqxComplexInputComponent {
             return this.host.jqxComplexInput('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     placeHolder(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('placeHolder', arg);
@@ -274,10 +175,6 @@ class jqxComplexInputComponent {
             return this.host.jqxComplexInput('placeHolder');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     roundedCorners(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('roundedCorners', arg);
@@ -286,10 +183,6 @@ class jqxComplexInputComponent {
             return this.host.jqxComplexInput('roundedCorners');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('rtl', arg);
@@ -298,10 +191,6 @@ class jqxComplexInputComponent {
             return this.host.jqxComplexInput('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     spinButtons(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('spinButtons', arg);
@@ -310,10 +199,6 @@ class jqxComplexInputComponent {
             return this.host.jqxComplexInput('spinButtons');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     spinButtonsStep(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('spinButtonsStep', arg);
@@ -322,10 +207,6 @@ class jqxComplexInputComponent {
             return this.host.jqxComplexInput('spinButtonsStep');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     template(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('template', arg);
@@ -334,10 +215,6 @@ class jqxComplexInputComponent {
             return this.host.jqxComplexInput('template');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('theme', arg);
@@ -346,10 +223,6 @@ class jqxComplexInputComponent {
             return this.host.jqxComplexInput('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     value(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('value', arg);
@@ -358,10 +231,6 @@ class jqxComplexInputComponent {
             return this.host.jqxComplexInput('value');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxComplexInput('width', arg);
@@ -371,50 +240,24 @@ class jqxComplexInputComponent {
         }
     }
     // jqxComplexInputComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxComplexInput('destroy');
     }
-    /**
-     * @param {?} part
-     * @param {?} decimalNotation
-     * @return {?}
-     */
     getDecimalNotation(part, decimalNotation) {
         return this.host.jqxComplexInput('getDecimalNotation', part, decimalNotation);
     }
-    /**
-     * @param {?=} complexnumber
-     * @return {?}
-     */
     getReal(complexnumber) {
         return this.host.jqxComplexInput('getReal', complexnumber);
     }
-    /**
-     * @param {?=} complexnumber
-     * @return {?}
-     */
     getImaginary(complexnumber) {
         return this.host.jqxComplexInput('getImaginary', complexnumber);
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxComplexInput('render');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxComplexInput('refresh');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxComplexInput('val', value);
@@ -424,73 +267,92 @@ class jqxComplexInputComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); if (eventData.args)
-            this.onChangeCallback(eventData.args.value); }));
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); if (eventData.args)
+            this.onChangeCallback(eventData.args.value); });
     }
-} //jqxComplexInputComponent
-jqxComplexInputComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxComplexInput',
-                template: '<div style="display: inline-flex;"><input [(ngModel)]="ngValue"><div></div></div>',
-                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                changeDetection: ChangeDetectionStrategy.OnPush
-            }] }
-];
-/** @nocollapse */
-jqxComplexInputComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxComplexInputComponent.propDecorators = {
-    attrDecimalNotation: [{ type: Input, args: ['decimalNotation',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrPlaceHolder: [{ type: Input, args: ['placeHolder',] }],
-    attrRoundedCorners: [{ type: Input, args: ['roundedCorners',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrSpinButtons: [{ type: Input, args: ['spinButtons',] }],
-    attrSpinButtonsStep: [{ type: Input, args: ['spinButtonsStep',] }],
-    attrTemplate: [{ type: Input, args: ['template',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrValue: [{ type: Input, args: ['value',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChange: [{ type: Output }]
+}; //jqxComplexInputComponent
+__decorate([
+    Input('decimalNotation'),
+    __metadata("design:type", String)
+], jqxComplexInputComponent.prototype, "attrDecimalNotation", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxComplexInputComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('placeHolder'),
+    __metadata("design:type", String)
+], jqxComplexInputComponent.prototype, "attrPlaceHolder", void 0);
+__decorate([
+    Input('roundedCorners'),
+    __metadata("design:type", Boolean)
+], jqxComplexInputComponent.prototype, "attrRoundedCorners", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxComplexInputComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('spinButtons'),
+    __metadata("design:type", Boolean)
+], jqxComplexInputComponent.prototype, "attrSpinButtons", void 0);
+__decorate([
+    Input('spinButtonsStep'),
+    __metadata("design:type", Number)
+], jqxComplexInputComponent.prototype, "attrSpinButtonsStep", void 0);
+__decorate([
+    Input('template'),
+    __metadata("design:type", String)
+], jqxComplexInputComponent.prototype, "attrTemplate", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxComplexInputComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('value'),
+    __metadata("design:type", String)
+], jqxComplexInputComponent.prototype, "attrValue", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxComplexInputComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxComplexInputComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxComplexInputComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxComplexInputComponent.prototype, "onChange", void 0);
+jqxComplexInputComponent = __decorate([
+    Component({
+        selector: 'jqxComplexInput',
+        template: '<div style="display: inline-flex;"><input [(ngModel)]="ngValue"><div></div></div>',
+        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+        changeDetection: ChangeDetectionStrategy.OnPush
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxComplexInputComponent);
+
+let jqxComplexInputModule = class jqxComplexInputModule {
 };
+jqxComplexInputModule = __decorate([
+    NgModule({
+        imports: [
+            FormsModule
+        ],
+        declarations: [jqxComplexInputComponent],
+        exports: [jqxComplexInputComponent]
+    })
+], jqxComplexInputModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxComplexInputModule {
-}
-jqxComplexInputModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    FormsModule
-                ],
-                declarations: [jqxComplexInputComponent],
-                exports: [jqxComplexInputComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxComplexInputComponent, jqxComplexInputModule };
-
+export { jqxComplexInputComponent, jqxComplexInputModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxcomplexinput.js.map

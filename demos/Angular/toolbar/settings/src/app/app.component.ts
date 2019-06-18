@@ -12,9 +12,9 @@ import { jqxNumberInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_
 })
 
 export class AppComponent  {
-    @ViewChild('myToolBar') myToolBar: jqxToolBarComponent; 
-    @ViewChild('myDropDownList') myDropDownList: jqxDropDownListComponent;
-    @ViewChild('myNumberInput') myNumberInput: jqxNumberInputComponent;
+    @ViewChild('myToolBar', {static: false}) myToolBar: jqxToolBarComponent; 
+    @ViewChild('myDropDownList', {static: false}) myDropDownList: jqxDropDownListComponent;
+    @ViewChild('myNumberInput', {static: false}) myNumberInput: jqxNumberInputComponent;
 
     countries: string[] = ['Argentina', 'Austria', 'Canada', 'China', 'France', 'Germany', 'Japan', 'Mexico', 'Spain', 'Sweden', 'Switzerland', 'UK', 'USA'];
 

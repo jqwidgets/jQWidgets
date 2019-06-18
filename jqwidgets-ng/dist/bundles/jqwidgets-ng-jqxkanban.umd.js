@@ -6,8 +6,8 @@ require('../../jqwidgets-scripts/jqwidgets/jqxkanban');
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
     typeof define === 'function' && define.amd ? define('jqwidgets-ng/jqxkanban', ['exports', '@angular/core'], factory) :
-    (factory((global['jqwidgets-ng'] = global['jqwidgets-ng'] || {}, global['jqwidgets-ng'].jqxkanban = {}),global.ng.core));
-}(this, (function (exports,core) { 'use strict';
+    (global = global || self, factory((global['jqwidgets-ng'] = global['jqwidgets-ng'] || {}, global['jqwidgets-ng'].jqxkanban = {}), global.ng.core));
+}(this, function (exports, core) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -23,40 +23,42 @@ require('../../jqwidgets-scripts/jqwidgets/jqxkanban');
     See the Apache Version 2.0 License for specific language governing permissions
     and limitations under the License.
     ***************************************************************************** */
+
+    function __decorate(decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    }
+
+    function __metadata(metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    }
+
     function __read(o, n) {
         var m = typeof Symbol === "function" && o[Symbol.iterator];
-        if (!m)
-            return o;
+        if (!m) return o;
         var i = m.call(o), r, ar = [], e;
         try {
-            while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
-                ar.push(r.value);
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
         }
-        catch (error) {
-            e = { error: error };
-        }
+        catch (error) { e = { error: error }; }
         finally {
             try {
-                if (r && !r.done && (m = i["return"]))
-                    m.call(i);
+                if (r && !r.done && (m = i["return"])) m.call(i);
             }
-            finally {
-                if (e)
-                    throw e.error;
-            }
+            finally { if (e) throw e.error; }
         }
         return ar;
     }
+
     function __spread() {
         for (var ar = [], i = 0; i < arguments.length; i++)
             ar = ar.concat(__read(arguments[i]));
         return ar;
     }
 
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
+    /// <reference path="../../jqwidgets.d.ts" />
     var jqxKanbanComponent = /** @class */ (function () {
         function jqxKanbanComponent(containerElement) {
             this.autoCreate = true;
@@ -69,605 +71,359 @@ require('../../jqwidgets-scripts/jqwidgets/jqxkanban');
             this.onItemMoved = new core.EventEmitter();
             this.elementRef = containerElement;
         }
-        /**
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.ngOnInit = /**
-         * @return {?}
-         */
-            function () {
-                if (this.autoCreate) {
-                    this.createComponent();
-                }
-            };
-        /**
-         * @param {?} changes
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.ngOnChanges = /**
-         * @param {?} changes
-         * @return {?}
-         */
-            function (changes) {
-                if (this.host) {
-                    for (var i = 0; i < this.properties.length; i++) {
-                        /** @type {?} */
-                        var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                        /** @type {?} */
-                        var areEqual = false;
-                        if (this[attrName] !== undefined) {
-                            if (typeof this[attrName] === 'object') {
-                                if (this[attrName] instanceof Array) {
-                                    areEqual = this.arraysEqual(this[attrName], this.host.jqxKanban(this.properties[i]));
-                                }
-                                if (areEqual) {
-                                    return false;
-                                }
-                                this.host.jqxKanban(this.properties[i], this[attrName]);
-                                continue;
+        jqxKanbanComponent.prototype.ngOnInit = function () {
+            if (this.autoCreate) {
+                this.createComponent();
+            }
+        };
+        jqxKanbanComponent.prototype.ngOnChanges = function (changes) {
+            if (this.host) {
+                for (var i = 0; i < this.properties.length; i++) {
+                    var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+                    var areEqual = false;
+                    if (this[attrName] !== undefined) {
+                        if (typeof this[attrName] === 'object') {
+                            if (this[attrName] instanceof Array) {
+                                areEqual = this.arraysEqual(this[attrName], this.host.jqxKanban(this.properties[i]));
                             }
-                            if (this[attrName] !== this.host.jqxKanban(this.properties[i])) {
-                                this.host.jqxKanban(this.properties[i], this[attrName]);
+                            if (areEqual) {
+                                return false;
                             }
+                            this.host.jqxKanban(this.properties[i], this[attrName]);
+                            continue;
+                        }
+                        if (this[attrName] !== this.host.jqxKanban(this.properties[i])) {
+                            this.host.jqxKanban(this.properties[i], this[attrName]);
                         }
                     }
                 }
-            };
-        /**
-         * @param {?} attrValue
-         * @param {?} hostValue
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.arraysEqual = /**
-         * @param {?} attrValue
-         * @param {?} hostValue
-         * @return {?}
-         */
-            function (attrValue, hostValue) {
-                if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+            }
+        };
+        jqxKanbanComponent.prototype.arraysEqual = function (attrValue, hostValue) {
+            if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+                return false;
+            }
+            if (attrValue.length != hostValue.length) {
+                return false;
+            }
+            for (var i = 0; i < attrValue.length; i++) {
+                if (attrValue[i] !== hostValue[i]) {
                     return false;
                 }
-                if (attrValue.length != hostValue.length) {
-                    return false;
-                }
-                for (var i = 0; i < attrValue.length; i++) {
-                    if (attrValue[i] !== hostValue[i]) {
-                        return false;
-                    }
-                }
-                return true;
-            };
-        /**
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.manageAttributes = /**
-         * @return {?}
-         */
-            function () {
-                /** @type {?} */
-                var options = {};
-                for (var i = 0; i < this.properties.length; i++) {
-                    /** @type {?} */
-                    var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                    if (this[attrName] !== undefined) {
-                        options[this.properties[i]] = this[attrName];
-                    }
-                }
-                return options;
-            };
-        /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.moveClasses = /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-            function (parentEl, childEl) {
-                var _a;
-                /** @type {?} */
-                var classes = parentEl.classList;
-                if (classes.length > 0) {
-                    (_a = childEl.classList).add.apply(_a, __spread(classes));
-                }
-                parentEl.className = '';
-            };
-        /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.moveStyles = /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-            function (parentEl, childEl) {
-                /** @type {?} */
-                var style = parentEl.style.cssText;
-                childEl.style.cssText = style;
-                parentEl.style.cssText = '';
-            };
-        /**
-         * @param {?=} options
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.createComponent = /**
-         * @param {?=} options
-         * @return {?}
-         */
-            function (options) {
-                if (this.host) {
-                    return;
-                }
-                if (options) {
-                    JQXLite.extend(options, this.manageAttributes());
-                }
-                else {
-                    options = this.manageAttributes();
-                }
-                this.host = JQXLite(this.elementRef.nativeElement.firstChild);
-                this.moveClasses(this.elementRef.nativeElement, this.host[0]);
-                this.moveStyles(this.elementRef.nativeElement, this.host[0]);
-                this.__wireEvents__();
-                this.widgetObject = jqwidgets.createInstance(this.host, 'jqxKanban', options);
-            };
-        /**
-         * @param {?=} options
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.createWidget = /**
-         * @param {?=} options
-         * @return {?}
-         */
-            function (options) {
-                this.createComponent(options);
-            };
-        /**
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.__updateRect__ = /**
-         * @return {?}
-         */
-            function () {
-                if (this.host)
-                    this.host.css({ width: this.attrWidth, height: this.attrHeight });
-            };
-        /**
-         * @param {?} options
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.setOptions = /**
-         * @param {?} options
-         * @return {?}
-         */
-            function (options) {
-                this.host.jqxKanban('setOptions', options);
-            };
-        // jqxKanbanComponent properties
-        // jqxKanbanComponent properties
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.columnRenderer =
-            // jqxKanbanComponent properties
-            /**
-             * @param {?=} arg
-             * @return {?}
-             */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('columnRenderer', arg);
-                }
-                else {
-                    return this.host.jqxKanban('columnRenderer');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.columns = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('columns', arg);
-                }
-                else {
-                    return this.host.jqxKanban('columns');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.connectWith = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('connectWith', arg);
-                }
-                else {
-                    return this.host.jqxKanban('connectWith');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.headerHeight = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('headerHeight', arg);
-                }
-                else {
-                    return this.host.jqxKanban('headerHeight');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.headerWidth = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('headerWidth', arg);
-                }
-                else {
-                    return this.host.jqxKanban('headerWidth');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.height = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('height', arg);
-                }
-                else {
-                    return this.host.jqxKanban('height');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.itemRenderer = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('itemRenderer', arg);
-                }
-                else {
-                    return this.host.jqxKanban('itemRenderer');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.ready = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('ready', arg);
-                }
-                else {
-                    return this.host.jqxKanban('ready');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.rtl = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('rtl', arg);
-                }
-                else {
-                    return this.host.jqxKanban('rtl');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.source = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('source', arg);
-                }
-                else {
-                    return this.host.jqxKanban('source');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.resources = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('resources', arg);
-                }
-                else {
-                    return this.host.jqxKanban('resources');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.template = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('template', arg);
-                }
-                else {
-                    return this.host.jqxKanban('template');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.templateContent = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('templateContent', arg);
-                }
-                else {
-                    return this.host.jqxKanban('templateContent');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.theme = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('theme', arg);
-                }
-                else {
-                    return this.host.jqxKanban('theme');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.width = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxKanban('width', arg);
-                }
-                else {
-                    return this.host.jqxKanban('width');
-                }
-            };
-        // jqxKanbanComponent functions
-        // jqxKanbanComponent functions
-        /**
-         * @param {?} newItem
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.addItem =
-            // jqxKanbanComponent functions
-            /**
-             * @param {?} newItem
-             * @return {?}
-             */
-            function (newItem) {
-                this.host.jqxKanban('addItem', newItem);
-            };
-        /**
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.destroy = /**
-         * @return {?}
-         */
-            function () {
-                this.host.jqxKanban('destroy');
-            };
-        /**
-         * @param {?} dataField
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.getColumn = /**
-         * @param {?} dataField
-         * @return {?}
-         */
-            function (dataField) {
-                return this.host.jqxKanban('getColumn', dataField);
-            };
-        /**
-         * @param {?} dataField
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.getColumnItems = /**
-         * @param {?} dataField
-         * @return {?}
-         */
-            function (dataField) {
-                return this.host.jqxKanban('getColumnItems', dataField);
-            };
-        /**
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.getItems = /**
-         * @return {?}
-         */
-            function () {
-                return this.host.jqxKanban('getItems');
-            };
-        /**
-         * @param {?} itemId
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.removeItem = /**
-         * @param {?} itemId
-         * @return {?}
-         */
-            function (itemId) {
-                this.host.jqxKanban('removeItem', itemId);
-            };
-        /**
-         * @param {?} itemId
-         * @param {?} newContent
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.updateItem = /**
-         * @param {?} itemId
-         * @param {?} newContent
-         * @return {?}
-         */
-            function (itemId, newContent) {
-                this.host.jqxKanban('updateItem', itemId, newContent);
-            };
-        /**
-         * @return {?}
-         */
-        jqxKanbanComponent.prototype.__wireEvents__ = /**
-         * @return {?}
-         */
-            function () {
-                var _this = this;
-                this.host.on('columnAttrClicked', ( /**
-                 * @param {?} eventData
-                 * @return {?}
-                 */function (eventData) { _this.onColumnAttrClicked.emit(eventData); }));
-                this.host.on('columnCollapsed', ( /**
-                 * @param {?} eventData
-                 * @return {?}
-                 */function (eventData) { _this.onColumnCollapsed.emit(eventData); }));
-                this.host.on('columnExpanded', ( /**
-                 * @param {?} eventData
-                 * @return {?}
-                 */function (eventData) { _this.onColumnExpanded.emit(eventData); }));
-                this.host.on('itemAttrClicked', ( /**
-                 * @param {?} eventData
-                 * @return {?}
-                 */function (eventData) { _this.onItemAttrClicked.emit(eventData); }));
-                this.host.on('itemMoved', ( /**
-                 * @param {?} eventData
-                 * @return {?}
-                 */function (eventData) { _this.onItemMoved.emit(eventData); }));
-            };
-        jqxKanbanComponent.decorators = [
-            { type: core.Component, args: [{
-                        selector: 'jqxKanban',
-                        template: '<div><ng-content></ng-content></div>'
-                    }] }
-        ];
-        /** @nocollapse */
-        jqxKanbanComponent.ctorParameters = function () {
-            return [
-                { type: core.ElementRef }
-            ];
+            }
+            return true;
         };
-        jqxKanbanComponent.propDecorators = {
-            attrColumnRenderer: [{ type: core.Input, args: ['columnRenderer',] }],
-            attrColumns: [{ type: core.Input, args: ['columns',] }],
-            attrConnectWith: [{ type: core.Input, args: ['connectWith',] }],
-            attrHeaderHeight: [{ type: core.Input, args: ['headerHeight',] }],
-            attrHeaderWidth: [{ type: core.Input, args: ['headerWidth',] }],
-            attrItemRenderer: [{ type: core.Input, args: ['itemRenderer',] }],
-            attrReady: [{ type: core.Input, args: ['ready',] }],
-            attrRtl: [{ type: core.Input, args: ['rtl',] }],
-            attrSource: [{ type: core.Input, args: ['source',] }],
-            attrResources: [{ type: core.Input, args: ['resources',] }],
-            attrTemplate: [{ type: core.Input, args: ['template',] }],
-            attrTemplateContent: [{ type: core.Input, args: ['templateContent',] }],
-            attrTheme: [{ type: core.Input, args: ['theme',] }],
-            attrWidth: [{ type: core.Input, args: ['width',] }],
-            attrHeight: [{ type: core.Input, args: ['height',] }],
-            autoCreate: [{ type: core.Input, args: ['auto-create',] }],
-            onColumnAttrClicked: [{ type: core.Output }],
-            onColumnCollapsed: [{ type: core.Output }],
-            onColumnExpanded: [{ type: core.Output }],
-            onItemAttrClicked: [{ type: core.Output }],
-            onItemMoved: [{ type: core.Output }]
+        jqxKanbanComponent.prototype.manageAttributes = function () {
+            var options = {};
+            for (var i = 0; i < this.properties.length; i++) {
+                var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+                if (this[attrName] !== undefined) {
+                    options[this.properties[i]] = this[attrName];
+                }
+            }
+            return options;
         };
+        jqxKanbanComponent.prototype.moveClasses = function (parentEl, childEl) {
+            var _a;
+            var classes = parentEl.classList;
+            if (classes.length > 0) {
+                (_a = childEl.classList).add.apply(_a, __spread(classes));
+            }
+            parentEl.className = '';
+        };
+        jqxKanbanComponent.prototype.moveStyles = function (parentEl, childEl) {
+            var style = parentEl.style.cssText;
+            childEl.style.cssText = style;
+            parentEl.style.cssText = '';
+        };
+        jqxKanbanComponent.prototype.createComponent = function (options) {
+            if (this.host) {
+                return;
+            }
+            if (options) {
+                JQXLite.extend(options, this.manageAttributes());
+            }
+            else {
+                options = this.manageAttributes();
+            }
+            this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+            this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+            this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+            this.__wireEvents__();
+            this.widgetObject = jqwidgets.createInstance(this.host, 'jqxKanban', options);
+        };
+        jqxKanbanComponent.prototype.createWidget = function (options) {
+            this.createComponent(options);
+        };
+        jqxKanbanComponent.prototype.__updateRect__ = function () {
+            if (this.host)
+                this.host.css({ width: this.attrWidth, height: this.attrHeight });
+        };
+        jqxKanbanComponent.prototype.setOptions = function (options) {
+            this.host.jqxKanban('setOptions', options);
+        };
+        // jqxKanbanComponent properties
+        jqxKanbanComponent.prototype.columnRenderer = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('columnRenderer', arg);
+            }
+            else {
+                return this.host.jqxKanban('columnRenderer');
+            }
+        };
+        jqxKanbanComponent.prototype.columns = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('columns', arg);
+            }
+            else {
+                return this.host.jqxKanban('columns');
+            }
+        };
+        jqxKanbanComponent.prototype.connectWith = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('connectWith', arg);
+            }
+            else {
+                return this.host.jqxKanban('connectWith');
+            }
+        };
+        jqxKanbanComponent.prototype.headerHeight = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('headerHeight', arg);
+            }
+            else {
+                return this.host.jqxKanban('headerHeight');
+            }
+        };
+        jqxKanbanComponent.prototype.headerWidth = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('headerWidth', arg);
+            }
+            else {
+                return this.host.jqxKanban('headerWidth');
+            }
+        };
+        jqxKanbanComponent.prototype.height = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('height', arg);
+            }
+            else {
+                return this.host.jqxKanban('height');
+            }
+        };
+        jqxKanbanComponent.prototype.itemRenderer = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('itemRenderer', arg);
+            }
+            else {
+                return this.host.jqxKanban('itemRenderer');
+            }
+        };
+        jqxKanbanComponent.prototype.ready = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('ready', arg);
+            }
+            else {
+                return this.host.jqxKanban('ready');
+            }
+        };
+        jqxKanbanComponent.prototype.rtl = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('rtl', arg);
+            }
+            else {
+                return this.host.jqxKanban('rtl');
+            }
+        };
+        jqxKanbanComponent.prototype.source = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('source', arg);
+            }
+            else {
+                return this.host.jqxKanban('source');
+            }
+        };
+        jqxKanbanComponent.prototype.resources = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('resources', arg);
+            }
+            else {
+                return this.host.jqxKanban('resources');
+            }
+        };
+        jqxKanbanComponent.prototype.template = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('template', arg);
+            }
+            else {
+                return this.host.jqxKanban('template');
+            }
+        };
+        jqxKanbanComponent.prototype.templateContent = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('templateContent', arg);
+            }
+            else {
+                return this.host.jqxKanban('templateContent');
+            }
+        };
+        jqxKanbanComponent.prototype.theme = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('theme', arg);
+            }
+            else {
+                return this.host.jqxKanban('theme');
+            }
+        };
+        jqxKanbanComponent.prototype.width = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxKanban('width', arg);
+            }
+            else {
+                return this.host.jqxKanban('width');
+            }
+        };
+        // jqxKanbanComponent functions
+        jqxKanbanComponent.prototype.addItem = function (newItem) {
+            this.host.jqxKanban('addItem', newItem);
+        };
+        jqxKanbanComponent.prototype.destroy = function () {
+            this.host.jqxKanban('destroy');
+        };
+        jqxKanbanComponent.prototype.getColumn = function (dataField) {
+            return this.host.jqxKanban('getColumn', dataField);
+        };
+        jqxKanbanComponent.prototype.getColumnItems = function (dataField) {
+            return this.host.jqxKanban('getColumnItems', dataField);
+        };
+        jqxKanbanComponent.prototype.getItems = function () {
+            return this.host.jqxKanban('getItems');
+        };
+        jqxKanbanComponent.prototype.removeItem = function (itemId) {
+            this.host.jqxKanban('removeItem', itemId);
+        };
+        jqxKanbanComponent.prototype.updateItem = function (itemId, newContent) {
+            this.host.jqxKanban('updateItem', itemId, newContent);
+        };
+        jqxKanbanComponent.prototype.__wireEvents__ = function () {
+            var _this = this;
+            this.host.on('columnAttrClicked', function (eventData) { _this.onColumnAttrClicked.emit(eventData); });
+            this.host.on('columnCollapsed', function (eventData) { _this.onColumnCollapsed.emit(eventData); });
+            this.host.on('columnExpanded', function (eventData) { _this.onColumnExpanded.emit(eventData); });
+            this.host.on('itemAttrClicked', function (eventData) { _this.onItemAttrClicked.emit(eventData); });
+            this.host.on('itemMoved', function (eventData) { _this.onItemMoved.emit(eventData); });
+        };
+        __decorate([
+            core.Input('columnRenderer'),
+            __metadata("design:type", Function)
+        ], jqxKanbanComponent.prototype, "attrColumnRenderer", void 0);
+        __decorate([
+            core.Input('columns'),
+            __metadata("design:type", Array)
+        ], jqxKanbanComponent.prototype, "attrColumns", void 0);
+        __decorate([
+            core.Input('connectWith'),
+            __metadata("design:type", String)
+        ], jqxKanbanComponent.prototype, "attrConnectWith", void 0);
+        __decorate([
+            core.Input('headerHeight'),
+            __metadata("design:type", Object)
+        ], jqxKanbanComponent.prototype, "attrHeaderHeight", void 0);
+        __decorate([
+            core.Input('headerWidth'),
+            __metadata("design:type", Number)
+        ], jqxKanbanComponent.prototype, "attrHeaderWidth", void 0);
+        __decorate([
+            core.Input('itemRenderer'),
+            __metadata("design:type", Function)
+        ], jqxKanbanComponent.prototype, "attrItemRenderer", void 0);
+        __decorate([
+            core.Input('ready'),
+            __metadata("design:type", Function)
+        ], jqxKanbanComponent.prototype, "attrReady", void 0);
+        __decorate([
+            core.Input('rtl'),
+            __metadata("design:type", Boolean)
+        ], jqxKanbanComponent.prototype, "attrRtl", void 0);
+        __decorate([
+            core.Input('source'),
+            __metadata("design:type", Object)
+        ], jqxKanbanComponent.prototype, "attrSource", void 0);
+        __decorate([
+            core.Input('resources'),
+            __metadata("design:type", Object)
+        ], jqxKanbanComponent.prototype, "attrResources", void 0);
+        __decorate([
+            core.Input('template'),
+            __metadata("design:type", String)
+        ], jqxKanbanComponent.prototype, "attrTemplate", void 0);
+        __decorate([
+            core.Input('templateContent'),
+            __metadata("design:type", Object)
+        ], jqxKanbanComponent.prototype, "attrTemplateContent", void 0);
+        __decorate([
+            core.Input('theme'),
+            __metadata("design:type", String)
+        ], jqxKanbanComponent.prototype, "attrTheme", void 0);
+        __decorate([
+            core.Input('width'),
+            __metadata("design:type", Object)
+        ], jqxKanbanComponent.prototype, "attrWidth", void 0);
+        __decorate([
+            core.Input('height'),
+            __metadata("design:type", Object)
+        ], jqxKanbanComponent.prototype, "attrHeight", void 0);
+        __decorate([
+            core.Input('auto-create'),
+            __metadata("design:type", Boolean)
+        ], jqxKanbanComponent.prototype, "autoCreate", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", Object)
+        ], jqxKanbanComponent.prototype, "onColumnAttrClicked", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", Object)
+        ], jqxKanbanComponent.prototype, "onColumnCollapsed", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", Object)
+        ], jqxKanbanComponent.prototype, "onColumnExpanded", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", Object)
+        ], jqxKanbanComponent.prototype, "onItemAttrClicked", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", Object)
+        ], jqxKanbanComponent.prototype, "onItemMoved", void 0);
+        jqxKanbanComponent = __decorate([
+            core.Component({
+                selector: 'jqxKanban',
+                template: '<div><ng-content></ng-content></div>'
+            }),
+            __metadata("design:paramtypes", [core.ElementRef])
+        ], jqxKanbanComponent);
         return jqxKanbanComponent;
     }()); //jqxKanbanComponent
 
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
     var jqxKanbanModule = /** @class */ (function () {
         function jqxKanbanModule() {
         }
-        jqxKanbanModule.decorators = [
-            { type: core.NgModule, args: [{
-                        imports: [],
-                        declarations: [jqxKanbanComponent],
-                        exports: [jqxKanbanComponent]
-                    },] }
-        ];
+        jqxKanbanModule = __decorate([
+            core.NgModule({
+                imports: [],
+                declarations: [jqxKanbanComponent],
+                exports: [jqxKanbanComponent]
+            })
+        ], jqxKanbanModule);
         return jqxKanbanModule;
     }());
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
 
     exports.jqxKanbanComponent = jqxKanbanComponent;
     exports.jqxKanbanModule = jqxKanbanModule;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
-
+}));
 //# sourceMappingURL=jqwidgets-ng-jqxkanban.umd.js.map

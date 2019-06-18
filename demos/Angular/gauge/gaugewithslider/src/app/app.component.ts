@@ -9,8 +9,8 @@ import { jqxSliderComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxsl
 })
 
 export class AppComponent {
-    @ViewChild('myGauge') myGauge: jqxGaugeComponent;
-    @ViewChild('mySlider') mySlider: jqxSliderComponent;
+    @ViewChild('myGauge', {static: false}) myGauge: jqxGaugeComponent;
+    @ViewChild('mySlider', {static: false}) mySlider: jqxSliderComponent;
 
     ngAfterViewInit(): void {
         this.myGauge.value(120);

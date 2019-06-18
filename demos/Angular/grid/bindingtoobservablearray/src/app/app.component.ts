@@ -8,7 +8,7 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('log') log: ElementRef;
+    @ViewChild('log', {static: false}) log: ElementRef;
 
     ngAfterViewInit(): void {
         this.updateLog(this.observableArray);

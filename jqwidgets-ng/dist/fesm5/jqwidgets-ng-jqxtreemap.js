@@ -2,13 +2,10 @@ import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxtreemap from '../../jqwidgets-scripts/jqwidgets/jqxtreemap';
 import * as jqxtooltip from '../../jqwidgets-scripts/jqwidgets/jqxtooltip';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxTreeMapComponent = /** @class */ (function () {
     function jqxTreeMapComponent(containerElement) {
         this.autoCreate = true;
@@ -17,31 +14,15 @@ var jqxTreeMapComponent = /** @class */ (function () {
         this.onBindingComplete = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeMapComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxTreeMapComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -61,17 +42,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxTreeMapComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -85,17 +56,9 @@ var jqxTreeMapComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxTreeMapComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -103,50 +66,20 @@ var jqxTreeMapComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxTreeMapComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxTreeMapComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxTreeMapComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -163,51 +96,18 @@ var jqxTreeMapComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTreeMap', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxTreeMapComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeMapComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxTreeMapComponent.prototype.setOptions = function (options) {
         this.host.jqxTreeMap('setOptions', options);
     };
     // jqxTreeMapComponent properties
-    // jqxTreeMapComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.baseColor = 
-    // jqxTreeMapComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.baseColor = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('baseColor', arg);
         }
@@ -215,15 +115,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('baseColor');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.colorRanges = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.colorRanges = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('colorRanges', arg);
         }
@@ -231,15 +123,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('colorRanges');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.colorRange = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.colorRange = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('colorRange', arg);
         }
@@ -247,15 +131,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('colorRange');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.colorMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.colorMode = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('colorMode', arg);
         }
@@ -263,15 +139,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('colorMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.displayMember = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.displayMember = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('displayMember', arg);
         }
@@ -279,15 +147,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('displayMember');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('height', arg);
         }
@@ -295,15 +155,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.hoverEnabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.hoverEnabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('hoverEnabled', arg);
         }
@@ -311,15 +163,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('hoverEnabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.headerHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.headerHeight = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('headerHeight', arg);
         }
@@ -327,15 +171,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('headerHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.legendLabel = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.legendLabel = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('legendLabel', arg);
         }
@@ -343,15 +179,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('legendLabel');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.legendPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.legendPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('legendPosition', arg);
         }
@@ -359,15 +187,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('legendPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.legendScaleCallback = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.legendScaleCallback = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('legendScaleCallback', arg);
         }
@@ -375,15 +195,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('legendScaleCallback');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.renderCallbacks = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.renderCallbacks = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('renderCallbacks', arg);
         }
@@ -391,15 +203,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('renderCallbacks');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.selectionEnabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.selectionEnabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('selectionEnabled', arg);
         }
@@ -407,15 +211,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('selectionEnabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.showLegend = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.showLegend = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('showLegend', arg);
         }
@@ -423,15 +219,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('showLegend');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.source = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.source = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('source', arg);
         }
@@ -439,15 +227,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('source');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('theme', arg);
         }
@@ -455,15 +235,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.valueMember = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.valueMember = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('valueMember', arg);
         }
@@ -471,15 +243,7 @@ var jqxTreeMapComponent = /** @class */ (function () {
             return this.host.jqxTreeMap('valueMember');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeMapComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('width', arg);
         }
@@ -488,103 +252,122 @@ var jqxTreeMapComponent = /** @class */ (function () {
         }
     };
     // jqxTreeMapComponent functions
-    // jqxTreeMapComponent functions
-    /**
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.destroy = 
-    // jqxTreeMapComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeMapComponent.prototype.destroy = function () {
         this.host.jqxTreeMap('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeMapComponent.prototype.render = function () {
         this.host.jqxTreeMap('render');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeMapComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeMapComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('bindingComplete', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onBindingComplete.emit(eventData); }));
+        this.host.on('bindingComplete', function (eventData) { _this.onBindingComplete.emit(eventData); });
     };
-    jqxTreeMapComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxTreeMap',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxTreeMapComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxTreeMapComponent.propDecorators = {
-        attrBaseColor: [{ type: Input, args: ['baseColor',] }],
-        attrColorRanges: [{ type: Input, args: ['colorRanges',] }],
-        attrColorRange: [{ type: Input, args: ['colorRange',] }],
-        attrColorMode: [{ type: Input, args: ['colorMode',] }],
-        attrDisplayMember: [{ type: Input, args: ['displayMember',] }],
-        attrHoverEnabled: [{ type: Input, args: ['hoverEnabled',] }],
-        attrHeaderHeight: [{ type: Input, args: ['headerHeight',] }],
-        attrLegendLabel: [{ type: Input, args: ['legendLabel',] }],
-        attrLegendPosition: [{ type: Input, args: ['legendPosition',] }],
-        attrLegendScaleCallback: [{ type: Input, args: ['legendScaleCallback',] }],
-        attrRenderCallbacks: [{ type: Input, args: ['renderCallbacks',] }],
-        attrSelectionEnabled: [{ type: Input, args: ['selectionEnabled',] }],
-        attrShowLegend: [{ type: Input, args: ['showLegend',] }],
-        attrSource: [{ type: Input, args: ['source',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrValueMember: [{ type: Input, args: ['valueMember',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onBindingComplete: [{ type: Output }]
-    };
+    __decorate([
+        Input('baseColor'),
+        __metadata("design:type", String)
+    ], jqxTreeMapComponent.prototype, "attrBaseColor", void 0);
+    __decorate([
+        Input('colorRanges'),
+        __metadata("design:type", Array)
+    ], jqxTreeMapComponent.prototype, "attrColorRanges", void 0);
+    __decorate([
+        Input('colorRange'),
+        __metadata("design:type", Number)
+    ], jqxTreeMapComponent.prototype, "attrColorRange", void 0);
+    __decorate([
+        Input('colorMode'),
+        __metadata("design:type", String)
+    ], jqxTreeMapComponent.prototype, "attrColorMode", void 0);
+    __decorate([
+        Input('displayMember'),
+        __metadata("design:type", String)
+    ], jqxTreeMapComponent.prototype, "attrDisplayMember", void 0);
+    __decorate([
+        Input('hoverEnabled'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeMapComponent.prototype, "attrHoverEnabled", void 0);
+    __decorate([
+        Input('headerHeight'),
+        __metadata("design:type", Number)
+    ], jqxTreeMapComponent.prototype, "attrHeaderHeight", void 0);
+    __decorate([
+        Input('legendLabel'),
+        __metadata("design:type", String)
+    ], jqxTreeMapComponent.prototype, "attrLegendLabel", void 0);
+    __decorate([
+        Input('legendPosition'),
+        __metadata("design:type", Object)
+    ], jqxTreeMapComponent.prototype, "attrLegendPosition", void 0);
+    __decorate([
+        Input('legendScaleCallback'),
+        __metadata("design:type", Function)
+    ], jqxTreeMapComponent.prototype, "attrLegendScaleCallback", void 0);
+    __decorate([
+        Input('renderCallbacks'),
+        __metadata("design:type", Object)
+    ], jqxTreeMapComponent.prototype, "attrRenderCallbacks", void 0);
+    __decorate([
+        Input('selectionEnabled'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeMapComponent.prototype, "attrSelectionEnabled", void 0);
+    __decorate([
+        Input('showLegend'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeMapComponent.prototype, "attrShowLegend", void 0);
+    __decorate([
+        Input('source'),
+        __metadata("design:type", Object)
+    ], jqxTreeMapComponent.prototype, "attrSource", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxTreeMapComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('valueMember'),
+        __metadata("design:type", String)
+    ], jqxTreeMapComponent.prototype, "attrValueMember", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxTreeMapComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxTreeMapComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeMapComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeMapComponent.prototype, "onBindingComplete", void 0);
+    jqxTreeMapComponent = __decorate([
+        Component({
+            selector: 'jqxTreeMap',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxTreeMapComponent);
     return jqxTreeMapComponent;
 }()); //jqxTreeMapComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxTreeMapModule = /** @class */ (function () {
     function jqxTreeMapModule() {
     }
-    jqxTreeMapModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxTreeMapComponent],
-                    exports: [jqxTreeMapComponent]
-                },] }
-    ];
+    jqxTreeMapModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxTreeMapComponent],
+            exports: [jqxTreeMapComponent]
+        })
+    ], jqxTreeMapModule);
     return jqxTreeMapModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxTreeMapComponent, jqxTreeMapModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxtreemap.js.map

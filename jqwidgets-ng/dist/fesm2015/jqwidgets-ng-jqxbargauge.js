@@ -1,16 +1,11 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdraw from '../../jqwidgets-scripts/jqwidgets/jqxdraw';
 import * as jqxbargauge from '../../jqwidgets-scripts/jqwidgets/jqxbargauge';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxBarGaugeComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxBarGaugeComponent = class jqxBarGaugeComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['animationDuration', 'backgroundColor', 'barSpacing', 'baseValue', 'colorScheme', 'customColorScheme', 'disabled', 'endAngle', 'formatFunction', 'height', 'labels', 'max', 'min', 'relativeInnerRadius', 'rendered', 'startAngle', 'title', 'tooltip', 'useGradient', 'values', 'width'];
@@ -23,25 +18,16 @@ class jqxBarGaugeComponent {
         this.onValueChanged = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -61,11 +47,6 @@ class jqxBarGaugeComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -80,14 +61,9 @@ class jqxBarGaugeComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -95,34 +71,18 @@ class jqxBarGaugeComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -145,32 +105,17 @@ class jqxBarGaugeComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxBarGauge', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxBarGauge('setOptions', options);
     }
     // jqxBarGaugeComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('animationDuration', arg);
@@ -179,10 +124,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('animationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     backgroundColor(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('backgroundColor', arg);
@@ -191,10 +132,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('backgroundColor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     barSpacing(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('barSpacing', arg);
@@ -203,10 +140,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('barSpacing');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     baseValue(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('baseValue', arg);
@@ -215,10 +148,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('baseValue');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     colorScheme(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('colorScheme', arg);
@@ -227,10 +156,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('colorScheme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     customColorScheme(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('customColorScheme', arg);
@@ -239,10 +164,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('customColorScheme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('disabled', arg);
@@ -251,10 +172,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     endAngle(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('endAngle', arg);
@@ -263,10 +180,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('endAngle');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     formatFunction(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('formatFunction', arg);
@@ -275,10 +188,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('formatFunction');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('height', arg);
@@ -287,10 +196,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     labels(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('labels', arg);
@@ -299,10 +204,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('labels');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     max(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('max', arg);
@@ -311,10 +212,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('max');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     min(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('min', arg);
@@ -323,10 +220,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('min');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     relativeInnerRadius(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('relativeInnerRadius', arg);
@@ -335,10 +228,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('relativeInnerRadius');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rendered(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('rendered', arg);
@@ -347,10 +236,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('rendered');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     startAngle(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('startAngle', arg);
@@ -359,10 +244,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('startAngle');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     title(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('title', arg);
@@ -371,10 +252,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('title');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     tooltip(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('tooltip', arg);
@@ -383,10 +260,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('tooltip');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     useGradient(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('useGradient', arg);
@@ -395,10 +268,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('useGradient');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     values(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('values', arg);
@@ -407,10 +276,6 @@ class jqxBarGaugeComponent {
             return this.host.jqxBarGauge('values');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxBarGauge('width', arg);
@@ -420,22 +285,12 @@ class jqxBarGaugeComponent {
         }
     }
     // jqxBarGaugeComponent functions
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxBarGauge('refresh');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxBarGauge('render');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxBarGauge('val', value);
@@ -445,107 +300,148 @@ class jqxBarGaugeComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('drawEnd', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onDrawEnd.emit(eventData); }));
-        this.host.on('drawStart', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onDrawStart.emit(eventData); }));
-        this.host.on('initialized', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onInitialized.emit(eventData); }));
-        this.host.on('tooltipClose', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onTooltipClose.emit(eventData); }));
-        this.host.on('tooltipOpen', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onTooltipOpen.emit(eventData); }));
-        this.host.on('valueChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onValueChanged.emit(eventData); }));
+        this.host.on('drawEnd', (eventData) => { this.onDrawEnd.emit(eventData); });
+        this.host.on('drawStart', (eventData) => { this.onDrawStart.emit(eventData); });
+        this.host.on('initialized', (eventData) => { this.onInitialized.emit(eventData); });
+        this.host.on('tooltipClose', (eventData) => { this.onTooltipClose.emit(eventData); });
+        this.host.on('tooltipOpen', (eventData) => { this.onTooltipOpen.emit(eventData); });
+        this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); });
     }
-} //jqxBarGaugeComponent
-jqxBarGaugeComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxBarGauge',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxBarGaugeComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxBarGaugeComponent.propDecorators = {
-    attrAnimationDuration: [{ type: Input, args: ['animationDuration',] }],
-    attrBackgroundColor: [{ type: Input, args: ['backgroundColor',] }],
-    attrBarSpacing: [{ type: Input, args: ['barSpacing',] }],
-    attrBaseValue: [{ type: Input, args: ['baseValue',] }],
-    attrColorScheme: [{ type: Input, args: ['colorScheme',] }],
-    attrCustomColorScheme: [{ type: Input, args: ['customColorScheme',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrEndAngle: [{ type: Input, args: ['endAngle',] }],
-    attrFormatFunction: [{ type: Input, args: ['formatFunction',] }],
-    attrLabels: [{ type: Input, args: ['labels',] }],
-    attrMax: [{ type: Input, args: ['max',] }],
-    attrMin: [{ type: Input, args: ['min',] }],
-    attrRelativeInnerRadius: [{ type: Input, args: ['relativeInnerRadius',] }],
-    attrRendered: [{ type: Input, args: ['rendered',] }],
-    attrStartAngle: [{ type: Input, args: ['startAngle',] }],
-    attrTitle: [{ type: Input, args: ['title',] }],
-    attrTooltip: [{ type: Input, args: ['tooltip',] }],
-    attrUseGradient: [{ type: Input, args: ['useGradient',] }],
-    attrValues: [{ type: Input, args: ['values',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onDrawEnd: [{ type: Output }],
-    onDrawStart: [{ type: Output }],
-    onInitialized: [{ type: Output }],
-    onTooltipClose: [{ type: Output }],
-    onTooltipOpen: [{ type: Output }],
-    onValueChanged: [{ type: Output }]
+}; //jqxBarGaugeComponent
+__decorate([
+    Input('animationDuration'),
+    __metadata("design:type", Number)
+], jqxBarGaugeComponent.prototype, "attrAnimationDuration", void 0);
+__decorate([
+    Input('backgroundColor'),
+    __metadata("design:type", String)
+], jqxBarGaugeComponent.prototype, "attrBackgroundColor", void 0);
+__decorate([
+    Input('barSpacing'),
+    __metadata("design:type", Number)
+], jqxBarGaugeComponent.prototype, "attrBarSpacing", void 0);
+__decorate([
+    Input('baseValue'),
+    __metadata("design:type", Number)
+], jqxBarGaugeComponent.prototype, "attrBaseValue", void 0);
+__decorate([
+    Input('colorScheme'),
+    __metadata("design:type", String)
+], jqxBarGaugeComponent.prototype, "attrColorScheme", void 0);
+__decorate([
+    Input('customColorScheme'),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "attrCustomColorScheme", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxBarGaugeComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('endAngle'),
+    __metadata("design:type", Number)
+], jqxBarGaugeComponent.prototype, "attrEndAngle", void 0);
+__decorate([
+    Input('formatFunction'),
+    __metadata("design:type", Function)
+], jqxBarGaugeComponent.prototype, "attrFormatFunction", void 0);
+__decorate([
+    Input('labels'),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "attrLabels", void 0);
+__decorate([
+    Input('max'),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "attrMax", void 0);
+__decorate([
+    Input('min'),
+    __metadata("design:type", Number)
+], jqxBarGaugeComponent.prototype, "attrMin", void 0);
+__decorate([
+    Input('relativeInnerRadius'),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "attrRelativeInnerRadius", void 0);
+__decorate([
+    Input('rendered'),
+    __metadata("design:type", Function)
+], jqxBarGaugeComponent.prototype, "attrRendered", void 0);
+__decorate([
+    Input('startAngle'),
+    __metadata("design:type", Number)
+], jqxBarGaugeComponent.prototype, "attrStartAngle", void 0);
+__decorate([
+    Input('title'),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "attrTitle", void 0);
+__decorate([
+    Input('tooltip'),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "attrTooltip", void 0);
+__decorate([
+    Input('useGradient'),
+    __metadata("design:type", Boolean)
+], jqxBarGaugeComponent.prototype, "attrUseGradient", void 0);
+__decorate([
+    Input('values'),
+    __metadata("design:type", Array)
+], jqxBarGaugeComponent.prototype, "attrValues", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxBarGaugeComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "onDrawEnd", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "onDrawStart", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "onInitialized", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "onTooltipClose", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "onTooltipOpen", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxBarGaugeComponent.prototype, "onValueChanged", void 0);
+jqxBarGaugeComponent = __decorate([
+    Component({
+        selector: 'jqxBarGauge',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxBarGaugeComponent);
+
+let jqxBarGaugeModule = class jqxBarGaugeModule {
 };
+jqxBarGaugeModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxBarGaugeComponent],
+        exports: [jqxBarGaugeComponent]
+    })
+], jqxBarGaugeModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxBarGaugeModule {
-}
-jqxBarGaugeModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxBarGaugeComponent],
-                exports: [jqxBarGaugeComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxBarGaugeComponent, jqxBarGaugeModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxbargauge.js.map

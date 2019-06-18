@@ -8,7 +8,7 @@ import { jqxDropDownListComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('myDropDownList') myDropDownList: jqxDropDownListComponent;
+    @ViewChild('myDropDownList', {static: false}) myDropDownList: jqxDropDownListComponent;
 
     flag: boolean = false;
 

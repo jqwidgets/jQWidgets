@@ -1,12 +1,9 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxvalidator from '../../jqwidgets-scripts/jqwidgets/jqxvalidator';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxValidatorComponent = /** @class */ (function () {
     function jqxValidatorComponent(containerElement) {
         this.autoCreate = true;
@@ -16,31 +13,15 @@ var jqxValidatorComponent = /** @class */ (function () {
         this.onValidationSuccess = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxValidatorComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxValidatorComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -60,17 +41,7 @@ var jqxValidatorComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxValidatorComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -84,17 +55,9 @@ var jqxValidatorComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxValidatorComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -102,50 +65,20 @@ var jqxValidatorComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxValidatorComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxValidatorComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxValidatorComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -161,51 +94,18 @@ var jqxValidatorComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxValidator', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxValidatorComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxValidatorComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxValidatorComponent.prototype.setOptions = function (options) {
         this.host.jqxValidator('setOptions', options);
     };
     // jqxValidatorComponent properties
-    // jqxValidatorComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.arrow = 
-    // jqxValidatorComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxValidatorComponent.prototype.arrow = function (arg) {
         if (arg !== undefined) {
             this.host.jqxValidator('arrow', arg);
         }
@@ -213,15 +113,7 @@ var jqxValidatorComponent = /** @class */ (function () {
             return this.host.jqxValidator('arrow');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.animation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxValidatorComponent.prototype.animation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxValidator('animation', arg);
         }
@@ -229,15 +121,7 @@ var jqxValidatorComponent = /** @class */ (function () {
             return this.host.jqxValidator('animation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.animationDuration = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxValidatorComponent.prototype.animationDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxValidator('animationDuration', arg);
         }
@@ -245,15 +129,7 @@ var jqxValidatorComponent = /** @class */ (function () {
             return this.host.jqxValidator('animationDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.closeOnClick = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxValidatorComponent.prototype.closeOnClick = function (arg) {
         if (arg !== undefined) {
             this.host.jqxValidator('closeOnClick', arg);
         }
@@ -261,15 +137,7 @@ var jqxValidatorComponent = /** @class */ (function () {
             return this.host.jqxValidator('closeOnClick');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.focus = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxValidatorComponent.prototype.focus = function (arg) {
         if (arg !== undefined) {
             this.host.jqxValidator('focus', arg);
         }
@@ -277,15 +145,7 @@ var jqxValidatorComponent = /** @class */ (function () {
             return this.host.jqxValidator('focus');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.hintType = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxValidatorComponent.prototype.hintType = function (arg) {
         if (arg !== undefined) {
             this.host.jqxValidator('hintType', arg);
         }
@@ -293,15 +153,7 @@ var jqxValidatorComponent = /** @class */ (function () {
             return this.host.jqxValidator('hintType');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.onError = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxValidatorComponent.prototype.onError = function (arg) {
         if (arg !== undefined) {
             this.host.jqxValidator('onError', arg);
         }
@@ -309,15 +161,7 @@ var jqxValidatorComponent = /** @class */ (function () {
             return this.host.jqxValidator('onError');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.onSuccess = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxValidatorComponent.prototype.onSuccess = function (arg) {
         if (arg !== undefined) {
             this.host.jqxValidator('onSuccess', arg);
         }
@@ -325,15 +169,7 @@ var jqxValidatorComponent = /** @class */ (function () {
             return this.host.jqxValidator('onSuccess');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.position = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxValidatorComponent.prototype.position = function (arg) {
         if (arg !== undefined) {
             this.host.jqxValidator('position', arg);
         }
@@ -341,15 +177,7 @@ var jqxValidatorComponent = /** @class */ (function () {
             return this.host.jqxValidator('position');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.rules = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxValidatorComponent.prototype.rules = function (arg) {
         if (arg !== undefined) {
             this.host.jqxValidator('rules', arg);
         }
@@ -357,15 +185,7 @@ var jqxValidatorComponent = /** @class */ (function () {
             return this.host.jqxValidator('rules');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxValidatorComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxValidator('rtl', arg);
         }
@@ -374,137 +194,116 @@ var jqxValidatorComponent = /** @class */ (function () {
         }
     };
     // jqxValidatorComponent functions
-    // jqxValidatorComponent functions
-    /**
-     * @param {?} id
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.hideHint = 
-    // jqxValidatorComponent functions
-    /**
-     * @param {?} id
-     * @return {?}
-     */
-    function (id) {
+    jqxValidatorComponent.prototype.hideHint = function (id) {
         this.host.jqxValidator('hideHint', id);
     };
-    /**
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.hide = /**
-     * @return {?}
-     */
-    function () {
+    jqxValidatorComponent.prototype.hide = function () {
         this.host.jqxValidator('hide');
     };
-    /**
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.updatePosition = /**
-     * @return {?}
-     */
-    function () {
+    jqxValidatorComponent.prototype.updatePosition = function () {
         this.host.jqxValidator('updatePosition');
     };
-    /**
-     * @param {?=} htmlElement
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.validate = /**
-     * @param {?=} htmlElement
-     * @return {?}
-     */
-    function (htmlElement) {
+    jqxValidatorComponent.prototype.validate = function (htmlElement) {
         this.host.jqxValidator('validate', htmlElement);
     };
-    /**
-     * @param {?} id
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.validateInput = /**
-     * @param {?} id
-     * @return {?}
-     */
-    function (id) {
+    jqxValidatorComponent.prototype.validateInput = function (id) {
         this.host.jqxValidator('validateInput', id);
     };
-    /**
-     * @return {?}
-     */
-    jqxValidatorComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxValidatorComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('validationError', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onValidationError.emit(eventData); }));
-        this.host.on('validationSuccess', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onValidationSuccess.emit(eventData); }));
+        this.host.on('validationError', function (eventData) { _this.onValidationError.emit(eventData); });
+        this.host.on('validationSuccess', function (eventData) { _this.onValidationSuccess.emit(eventData); });
     };
-    jqxValidatorComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxValidator',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxValidatorComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxValidatorComponent.propDecorators = {
-        attrArrow: [{ type: Input, args: ['arrow',] }],
-        attrAnimation: [{ type: Input, args: ['animation',] }],
-        attrAnimationDuration: [{ type: Input, args: ['animationDuration',] }],
-        attrCloseOnClick: [{ type: Input, args: ['closeOnClick',] }],
-        attrFocus: [{ type: Input, args: ['focus',] }],
-        attrHintType: [{ type: Input, args: ['hintType',] }],
-        attrOnError: [{ type: Input, args: ['onError',] }],
-        attrOnSuccess: [{ type: Input, args: ['onSuccess',] }],
-        attrPosition: [{ type: Input, args: ['position',] }],
-        attrRules: [{ type: Input, args: ['rules',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onValidationError: [{ type: Output }],
-        onValidationSuccess: [{ type: Output }]
-    };
+    __decorate([
+        Input('arrow'),
+        __metadata("design:type", Boolean)
+    ], jqxValidatorComponent.prototype, "attrArrow", void 0);
+    __decorate([
+        Input('animation'),
+        __metadata("design:type", String)
+    ], jqxValidatorComponent.prototype, "attrAnimation", void 0);
+    __decorate([
+        Input('animationDuration'),
+        __metadata("design:type", Number)
+    ], jqxValidatorComponent.prototype, "attrAnimationDuration", void 0);
+    __decorate([
+        Input('closeOnClick'),
+        __metadata("design:type", Boolean)
+    ], jqxValidatorComponent.prototype, "attrCloseOnClick", void 0);
+    __decorate([
+        Input('focus'),
+        __metadata("design:type", Boolean)
+    ], jqxValidatorComponent.prototype, "attrFocus", void 0);
+    __decorate([
+        Input('hintType'),
+        __metadata("design:type", String)
+    ], jqxValidatorComponent.prototype, "attrHintType", void 0);
+    __decorate([
+        Input('onError'),
+        __metadata("design:type", Function)
+    ], jqxValidatorComponent.prototype, "attrOnError", void 0);
+    __decorate([
+        Input('onSuccess'),
+        __metadata("design:type", Function)
+    ], jqxValidatorComponent.prototype, "attrOnSuccess", void 0);
+    __decorate([
+        Input('position'),
+        __metadata("design:type", String)
+    ], jqxValidatorComponent.prototype, "attrPosition", void 0);
+    __decorate([
+        Input('rules'),
+        __metadata("design:type", Array)
+    ], jqxValidatorComponent.prototype, "attrRules", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxValidatorComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxValidatorComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxValidatorComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxValidatorComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxValidatorComponent.prototype, "onValidationError", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxValidatorComponent.prototype, "onValidationSuccess", void 0);
+    jqxValidatorComponent = __decorate([
+        Component({
+            selector: 'jqxValidator',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxValidatorComponent);
     return jqxValidatorComponent;
 }()); //jqxValidatorComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxValidatorModule = /** @class */ (function () {
     function jqxValidatorModule() {
     }
-    jqxValidatorModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxValidatorComponent],
-                    exports: [jqxValidatorComponent]
-                },] }
-    ];
+    jqxValidatorModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxValidatorComponent],
+            exports: [jqxValidatorComponent]
+        })
+    ], jqxValidatorModule);
     return jqxValidatorModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxValidatorComponent, jqxValidatorModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxvalidator.js.map

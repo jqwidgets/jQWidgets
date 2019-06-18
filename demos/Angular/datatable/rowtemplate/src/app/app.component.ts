@@ -9,7 +9,7 @@
 })
 
 export class AppComponent {
-    @ViewChild('productNumber') productNumber: ElementRef;
+    @ViewChild('productNumber', {static: false}) productNumber: ElementRef;
 
     itemsInCart: number = 0;
 

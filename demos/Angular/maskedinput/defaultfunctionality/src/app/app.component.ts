@@ -8,12 +8,12 @@ import { jqxMaskedInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_
 })
 
 export class AppComponent {
-    @ViewChild('numericInput') myNumericInput: jqxMaskedInputComponent;
-    @ViewChild('zipCodeInput') myZipCodeInput: jqxMaskedInputComponent;
-    @ViewChild('ssnInput') mySsnInput: jqxMaskedInputComponent;
-    @ViewChild('phoneInput') myPhoneInput: jqxMaskedInputComponent;
-    @ViewChild('regexInput') myRegexInput: jqxMaskedInputComponent;
-    @ViewChild('disabledInput') myDisabledInput: jqxMaskedInputComponent;
+    @ViewChild('numericInput', {static: false}) myNumericInput: jqxMaskedInputComponent;
+    @ViewChild('zipCodeInput', {static: false}) myZipCodeInput: jqxMaskedInputComponent;
+    @ViewChild('ssnInput', {static: false}) mySsnInput: jqxMaskedInputComponent;
+    @ViewChild('phoneInput', {static: false}) myPhoneInput: jqxMaskedInputComponent;
+    @ViewChild('regexInput', {static: false}) myRegexInput: jqxMaskedInputComponent;
+    @ViewChild('disabledInput', {static: false}) myDisabledInput: jqxMaskedInputComponent;
 
     clear(): void {
         this.myNumericInput.clear();

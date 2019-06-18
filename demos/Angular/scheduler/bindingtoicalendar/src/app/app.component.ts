@@ -8,7 +8,7 @@ import { jqxSchedulerComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jq
 })
 
 export class AppComponent {
-    @ViewChild('myScheduler') myScheduler: jqxSchedulerComponent;
+    @ViewChild('myScheduler', {static: false}) myScheduler: jqxSchedulerComponent;
 
     source: any =
     {

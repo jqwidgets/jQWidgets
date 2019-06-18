@@ -10,7 +10,7 @@ import { jqxResponsivePanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angu
 })
 
 export class AppComponent {
-    @ViewChild('myResponsivePanel') myResponsivePanel: jqxResponsivePanelComponent;
+    @ViewChild('myResponsivePanel', {static: false}) myResponsivePanel: jqxResponsivePanelComponent;
 
     responsivePanelOnCollapse(event: any): void {
         if (event.args.element)

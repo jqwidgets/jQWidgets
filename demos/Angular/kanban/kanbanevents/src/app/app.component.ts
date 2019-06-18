@@ -7,7 +7,7 @@
 })
 
 export class AppComponent {
-    @ViewChild('myLog') myLog: ElementRef;
+    @ViewChild('myLog', {static: false}) myLog: ElementRef;
 
     log: any[] = [];
 

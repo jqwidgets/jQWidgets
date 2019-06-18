@@ -8,11 +8,11 @@ import { jqxTreeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtree
 })
 
 export class AppComponent {
-    @ViewChild('treeA') treeA: jqxTreeComponent;
-    @ViewChild('treeB') treeB: jqxTreeComponent;
-    @ViewChild('dragStartLog') dragStartLog: ElementRef;
-    @ViewChild('dragEndLog') dragEndLog: ElementRef;
-    @ViewChild('textarea') textarea: ElementRef;
+    @ViewChild('treeA', {static: false}) treeA: jqxTreeComponent;
+    @ViewChild('treeB', {static: false}) treeB: jqxTreeComponent;
+    @ViewChild('dragStartLog', {static: false}) dragStartLog: ElementRef;
+    @ViewChild('dragEndLog', {static: false}) dragEndLog: ElementRef;
+    @ViewChild('textarea', {static: false}) textarea: ElementRef;
 
     onDragStart = (event) => {
         this.dragStartLog.nativeElement.innerText = 'Drag Start: ' + event.args.label;

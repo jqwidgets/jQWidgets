@@ -8,7 +8,7 @@ import { jqxTabsComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtabs
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxTabs') jqxTabs: jqxTabsComponent;
+    @ViewChild('jqxTabs', {static: false}) jqxTabs: jqxTabsComponent;
 
     ngAfterViewInit() {
         this.jqxTabs.focus();

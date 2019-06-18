@@ -11,8 +11,8 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('myDropDownButton') myDropDownButton: jqxDropDownButtonComponent;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('myDropDownButton', {static: false}) myDropDownButton: jqxDropDownButtonComponent;
 
     source: any =
     {

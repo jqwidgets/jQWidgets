@@ -1,13 +1,10 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxdropdownbutton from '../../jqwidgets-scripts/jqwidgets/jqxdropdownbutton';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxDropDownButtonComponent = /** @class */ (function () {
     function jqxDropDownButtonComponent(containerElement) {
         this.autoCreate = true;
@@ -17,31 +14,15 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
         this.onOpen = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxDropDownButtonComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxDropDownButtonComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -61,17 +42,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxDropDownButtonComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -85,17 +56,9 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxDropDownButtonComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -103,50 +66,20 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxDropDownButtonComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxDropDownButtonComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDropDownButtonComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -162,51 +95,18 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDropDownButton', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDropDownButtonComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxDropDownButtonComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDropDownButtonComponent.prototype.setOptions = function (options) {
         this.host.jqxDropDownButton('setOptions', options);
     };
     // jqxDropDownButtonComponent properties
-    // jqxDropDownButtonComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.animationType = 
-    // jqxDropDownButtonComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.animationType = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('animationType', arg);
         }
@@ -214,15 +114,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('animationType');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.arrowSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.arrowSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('arrowSize', arg);
         }
@@ -230,15 +122,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('arrowSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.autoOpen = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.autoOpen = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('autoOpen', arg);
         }
@@ -246,15 +130,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('autoOpen');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.closeDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.closeDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('closeDelay', arg);
         }
@@ -262,15 +138,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('closeDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('disabled', arg);
         }
@@ -278,15 +146,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.dropDownHorizontalAlignment = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.dropDownHorizontalAlignment = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('dropDownHorizontalAlignment', arg);
         }
@@ -294,15 +154,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('dropDownHorizontalAlignment');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.dropDownVerticalAlignment = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.dropDownVerticalAlignment = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('dropDownVerticalAlignment', arg);
         }
@@ -310,15 +162,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('dropDownVerticalAlignment');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.dropDownWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.dropDownWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('dropDownWidth', arg);
         }
@@ -326,15 +170,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('dropDownWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.enableBrowserBoundsDetection = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.enableBrowserBoundsDetection = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('enableBrowserBoundsDetection', arg);
         }
@@ -342,15 +178,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('enableBrowserBoundsDetection');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('height', arg);
         }
@@ -358,15 +186,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.initContent = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.initContent = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('initContent', arg);
         }
@@ -374,15 +194,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('initContent');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.openDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.openDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('openDelay', arg);
         }
@@ -390,15 +202,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('openDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.popupZIndex = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.popupZIndex = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('popupZIndex', arg);
         }
@@ -406,15 +210,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('popupZIndex');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('rtl', arg);
         }
@@ -422,15 +218,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.template = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.template = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('template', arg);
         }
@@ -438,15 +226,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('template');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('theme', arg);
         }
@@ -454,15 +234,7 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
             return this.host.jqxDropDownButton('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDropDownButtonComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('width', arg);
         }
@@ -471,155 +243,138 @@ var jqxDropDownButtonComponent = /** @class */ (function () {
         }
     };
     // jqxDropDownButtonComponent functions
-    // jqxDropDownButtonComponent functions
-    /**
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.close = 
-    // jqxDropDownButtonComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxDropDownButtonComponent.prototype.close = function () {
         this.host.jqxDropDownButton('close');
     };
-    /**
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxDropDownButtonComponent.prototype.destroy = function () {
         this.host.jqxDropDownButton('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxDropDownButtonComponent.prototype.focus = function () {
         this.host.jqxDropDownButton('focus');
     };
-    /**
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.getContent = /**
-     * @return {?}
-     */
-    function () {
+    jqxDropDownButtonComponent.prototype.getContent = function () {
         return this.host.jqxDropDownButton('getContent');
     };
-    /**
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.isOpened = /**
-     * @return {?}
-     */
-    function () {
+    jqxDropDownButtonComponent.prototype.isOpened = function () {
         return this.host.jqxDropDownButton('isOpened');
     };
-    /**
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.open = /**
-     * @return {?}
-     */
-    function () {
+    jqxDropDownButtonComponent.prototype.open = function () {
         this.host.jqxDropDownButton('open');
     };
-    /**
-     * @param {?} content
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.setContent = /**
-     * @param {?} content
-     * @return {?}
-     */
-    function (content) {
+    jqxDropDownButtonComponent.prototype.setContent = function (content) {
         this.host.jqxDropDownButton('setContent', content);
     };
-    /**
-     * @return {?}
-     */
-    jqxDropDownButtonComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxDropDownButtonComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onClose.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onOpen.emit(eventData); }));
+        this.host.on('close', function (eventData) { _this.onClose.emit(eventData); });
+        this.host.on('open', function (eventData) { _this.onOpen.emit(eventData); });
     };
-    jqxDropDownButtonComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxDropDownButton',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxDropDownButtonComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxDropDownButtonComponent.propDecorators = {
-        attrAnimationType: [{ type: Input, args: ['animationType',] }],
-        attrArrowSize: [{ type: Input, args: ['arrowSize',] }],
-        attrAutoOpen: [{ type: Input, args: ['autoOpen',] }],
-        attrCloseDelay: [{ type: Input, args: ['closeDelay',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrDropDownHorizontalAlignment: [{ type: Input, args: ['dropDownHorizontalAlignment',] }],
-        attrDropDownVerticalAlignment: [{ type: Input, args: ['dropDownVerticalAlignment',] }],
-        attrDropDownWidth: [{ type: Input, args: ['dropDownWidth',] }],
-        attrEnableBrowserBoundsDetection: [{ type: Input, args: ['enableBrowserBoundsDetection',] }],
-        attrInitContent: [{ type: Input, args: ['initContent',] }],
-        attrOpenDelay: [{ type: Input, args: ['openDelay',] }],
-        attrPopupZIndex: [{ type: Input, args: ['popupZIndex',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrTemplate: [{ type: Input, args: ['template',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onClose: [{ type: Output }],
-        onOpen: [{ type: Output }]
-    };
+    __decorate([
+        Input('animationType'),
+        __metadata("design:type", String)
+    ], jqxDropDownButtonComponent.prototype, "attrAnimationType", void 0);
+    __decorate([
+        Input('arrowSize'),
+        __metadata("design:type", Number)
+    ], jqxDropDownButtonComponent.prototype, "attrArrowSize", void 0);
+    __decorate([
+        Input('autoOpen'),
+        __metadata("design:type", Boolean)
+    ], jqxDropDownButtonComponent.prototype, "attrAutoOpen", void 0);
+    __decorate([
+        Input('closeDelay'),
+        __metadata("design:type", Number)
+    ], jqxDropDownButtonComponent.prototype, "attrCloseDelay", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxDropDownButtonComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('dropDownHorizontalAlignment'),
+        __metadata("design:type", String)
+    ], jqxDropDownButtonComponent.prototype, "attrDropDownHorizontalAlignment", void 0);
+    __decorate([
+        Input('dropDownVerticalAlignment'),
+        __metadata("design:type", String)
+    ], jqxDropDownButtonComponent.prototype, "attrDropDownVerticalAlignment", void 0);
+    __decorate([
+        Input('dropDownWidth'),
+        __metadata("design:type", Object)
+    ], jqxDropDownButtonComponent.prototype, "attrDropDownWidth", void 0);
+    __decorate([
+        Input('enableBrowserBoundsDetection'),
+        __metadata("design:type", Boolean)
+    ], jqxDropDownButtonComponent.prototype, "attrEnableBrowserBoundsDetection", void 0);
+    __decorate([
+        Input('initContent'),
+        __metadata("design:type", Function)
+    ], jqxDropDownButtonComponent.prototype, "attrInitContent", void 0);
+    __decorate([
+        Input('openDelay'),
+        __metadata("design:type", Number)
+    ], jqxDropDownButtonComponent.prototype, "attrOpenDelay", void 0);
+    __decorate([
+        Input('popupZIndex'),
+        __metadata("design:type", Number)
+    ], jqxDropDownButtonComponent.prototype, "attrPopupZIndex", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxDropDownButtonComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('template'),
+        __metadata("design:type", String)
+    ], jqxDropDownButtonComponent.prototype, "attrTemplate", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxDropDownButtonComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxDropDownButtonComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxDropDownButtonComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxDropDownButtonComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDropDownButtonComponent.prototype, "onClose", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDropDownButtonComponent.prototype, "onOpen", void 0);
+    jqxDropDownButtonComponent = __decorate([
+        Component({
+            selector: 'jqxDropDownButton',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxDropDownButtonComponent);
     return jqxDropDownButtonComponent;
 }()); //jqxDropDownButtonComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxDropDownButtonModule = /** @class */ (function () {
     function jqxDropDownButtonModule() {
     }
-    jqxDropDownButtonModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxDropDownButtonComponent],
-                    exports: [jqxDropDownButtonComponent]
-                },] }
-    ];
+    jqxDropDownButtonModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxDropDownButtonComponent],
+            exports: [jqxDropDownButtonComponent]
+        })
+    ], jqxDropDownButtonModule);
     return jqxDropDownButtonModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxDropDownButtonComponent, jqxDropDownButtonModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxdropdownbutton.js.map

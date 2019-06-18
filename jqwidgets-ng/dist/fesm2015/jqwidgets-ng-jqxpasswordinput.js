@@ -1,31 +1,19 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxtooltip from '../../jqwidgets-scripts/jqwidgets/jqxtooltip';
 import * as jqxpasswordinput from '../../jqwidgets-scripts/jqwidgets/jqxpasswordinput';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { forwardRef, EventEmitter, Input, Output, Component, ChangeDetectionStrategy, ElementRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-const noop = (/**
- * @return {?}
- */
-() => { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+const noop = () => { };
+const ɵ0 = noop;
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    () => jqxPasswordInputComponent)),
+    useExisting: forwardRef(() => jqxPasswordInputComponent),
     multi: true
 };
-class jqxPasswordInputComponent {
-    /**
-     * @param {?} containerElement
-     */
+let jqxPasswordInputComponent = class jqxPasswordInputComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['disabled', 'height', 'localization', 'maxLength', 'placeHolder', 'passwordStrength', 'rtl', 'strengthColors', 'showStrength', 'showStrengthPosition', 'strengthTypeRenderer', 'showPasswordIcon', 'theme', 'width'];
@@ -35,25 +23,16 @@ class jqxPasswordInputComponent {
         this.onChange = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -73,11 +52,6 @@ class jqxPasswordInputComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -92,14 +66,9 @@ class jqxPasswordInputComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -107,34 +76,18 @@ class jqxPasswordInputComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -151,75 +104,40 @@ class jqxPasswordInputComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxPasswordInput', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @return {?}
-     */
     get ngValue() {
         if (this.widgetObject) {
-            /** @type {?} */
             const value = this.host.val();
             return value;
         }
         return '';
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     set ngValue(value) {
         if (this.widgetObject) {
             this.onChangeCallback(value);
         }
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     writeValue(value) {
         if (this.widgetObject) {
             this.host.jqxPasswordInput('val', value);
         }
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnChange(fn) {
         this.onChangeCallback = fn;
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnTouched(fn) {
         this.onTouchedCallback = fn;
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxPasswordInput('setOptions', options);
     }
     // jqxPasswordInputComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('disabled', arg);
@@ -228,10 +146,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('height', arg);
@@ -240,10 +154,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     localization(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('localization', arg);
@@ -252,10 +162,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('localization');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     maxLength(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('maxLength', arg);
@@ -264,10 +170,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('maxLength');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     placeHolder(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('placeHolder', arg);
@@ -276,10 +178,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('placeHolder');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     passwordStrength(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('passwordStrength', arg);
@@ -288,10 +186,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('passwordStrength');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('rtl', arg);
@@ -300,10 +194,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     strengthColors(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('strengthColors', arg);
@@ -312,10 +202,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('strengthColors');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showStrength(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('showStrength', arg);
@@ -324,10 +210,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('showStrength');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showStrengthPosition(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('showStrengthPosition', arg);
@@ -336,10 +218,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('showStrengthPosition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     strengthTypeRenderer(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('strengthTypeRenderer', arg);
@@ -348,10 +226,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('strengthTypeRenderer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showPasswordIcon(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('showPasswordIcon', arg);
@@ -360,10 +234,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('showPasswordIcon');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('theme', arg);
@@ -372,10 +242,6 @@ class jqxPasswordInputComponent {
             return this.host.jqxPasswordInput('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxPasswordInput('width', arg);
@@ -385,22 +251,12 @@ class jqxPasswordInputComponent {
         }
     }
     // jqxPasswordInputComponent functions
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxPasswordInput('render');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxPasswordInput('refresh');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxPasswordInput('val', value);
@@ -410,74 +266,99 @@ class jqxPasswordInputComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); }));
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
     }
-} //jqxPasswordInputComponent
-jqxPasswordInputComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxPasswordInput',
-                template: '<input type="password" [(ngModel)]="ngValue">',
-                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                changeDetection: ChangeDetectionStrategy.OnPush
-            }] }
-];
-/** @nocollapse */
-jqxPasswordInputComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxPasswordInputComponent.propDecorators = {
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrLocalization: [{ type: Input, args: ['localization',] }],
-    attrMaxLength: [{ type: Input, args: ['maxLength',] }],
-    attrPlaceHolder: [{ type: Input, args: ['placeHolder',] }],
-    attrPasswordStrength: [{ type: Input, args: ['passwordStrength',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrStrengthColors: [{ type: Input, args: ['strengthColors',] }],
-    attrShowStrength: [{ type: Input, args: ['showStrength',] }],
-    attrShowStrengthPosition: [{ type: Input, args: ['showStrengthPosition',] }],
-    attrStrengthTypeRenderer: [{ type: Input, args: ['strengthTypeRenderer',] }],
-    attrShowPasswordIcon: [{ type: Input, args: ['showPasswordIcon',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChange: [{ type: Output }]
+}; //jqxPasswordInputComponent
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxPasswordInputComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('localization'),
+    __metadata("design:type", Object)
+], jqxPasswordInputComponent.prototype, "attrLocalization", void 0);
+__decorate([
+    Input('maxLength'),
+    __metadata("design:type", Object)
+], jqxPasswordInputComponent.prototype, "attrMaxLength", void 0);
+__decorate([
+    Input('placeHolder'),
+    __metadata("design:type", Object)
+], jqxPasswordInputComponent.prototype, "attrPlaceHolder", void 0);
+__decorate([
+    Input('passwordStrength'),
+    __metadata("design:type", Function)
+], jqxPasswordInputComponent.prototype, "attrPasswordStrength", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxPasswordInputComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('strengthColors'),
+    __metadata("design:type", Object)
+], jqxPasswordInputComponent.prototype, "attrStrengthColors", void 0);
+__decorate([
+    Input('showStrength'),
+    __metadata("design:type", Boolean)
+], jqxPasswordInputComponent.prototype, "attrShowStrength", void 0);
+__decorate([
+    Input('showStrengthPosition'),
+    __metadata("design:type", String)
+], jqxPasswordInputComponent.prototype, "attrShowStrengthPosition", void 0);
+__decorate([
+    Input('strengthTypeRenderer'),
+    __metadata("design:type", Function)
+], jqxPasswordInputComponent.prototype, "attrStrengthTypeRenderer", void 0);
+__decorate([
+    Input('showPasswordIcon'),
+    __metadata("design:type", Boolean)
+], jqxPasswordInputComponent.prototype, "attrShowPasswordIcon", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxPasswordInputComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxPasswordInputComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxPasswordInputComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxPasswordInputComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPasswordInputComponent.prototype, "onChange", void 0);
+jqxPasswordInputComponent = __decorate([
+    Component({
+        selector: 'jqxPasswordInput',
+        template: '<input type="password" [(ngModel)]="ngValue">',
+        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+        changeDetection: ChangeDetectionStrategy.OnPush
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxPasswordInputComponent);
+
+let jqxPasswordInputModule = class jqxPasswordInputModule {
 };
+jqxPasswordInputModule = __decorate([
+    NgModule({
+        imports: [
+            FormsModule
+        ],
+        declarations: [jqxPasswordInputComponent],
+        exports: [jqxPasswordInputComponent]
+    })
+], jqxPasswordInputModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxPasswordInputModule {
-}
-jqxPasswordInputModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    FormsModule
-                ],
-                declarations: [jqxPasswordInputComponent],
-                exports: [jqxPasswordInputComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxPasswordInputComponent, jqxPasswordInputModule };
-
+export { jqxPasswordInputComponent, jqxPasswordInputModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxpasswordinput.js.map

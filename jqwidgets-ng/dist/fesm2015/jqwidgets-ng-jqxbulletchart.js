@@ -2,16 +2,11 @@ import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxtooltip from '../../jqwidgets-scripts/jqwidgets/jqxtooltip';
 import * as jqxbulletchart from '../../jqwidgets-scripts/jqwidgets/jqxbulletchart';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxBulletChartComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxBulletChartComponent = class jqxBulletChartComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['animationDuration', 'barSize', 'description', 'disabled', 'height', 'labelsFormat', 'labelsFormatFunction', 'orientation', 'pointer', 'rtl', 'ranges', 'showTooltip', 'target', 'ticks', 'title', 'tooltipFormatFunction', 'width'];
@@ -19,25 +14,16 @@ class jqxBulletChartComponent {
         this.onChange = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -57,11 +43,6 @@ class jqxBulletChartComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -76,14 +57,9 @@ class jqxBulletChartComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -91,34 +67,18 @@ class jqxBulletChartComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -135,32 +95,17 @@ class jqxBulletChartComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxBulletChart', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxBulletChart('setOptions', options);
     }
     // jqxBulletChartComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('animationDuration', arg);
@@ -169,10 +114,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('animationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     barSize(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('barSize', arg);
@@ -181,10 +122,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('barSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     description(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('description', arg);
@@ -193,10 +130,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('description');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('disabled', arg);
@@ -205,10 +138,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('height', arg);
@@ -217,10 +146,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     labelsFormat(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('labelsFormat', arg);
@@ -229,10 +154,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('labelsFormat');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     labelsFormatFunction(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('labelsFormatFunction', arg);
@@ -241,10 +162,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('labelsFormatFunction');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     orientation(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('orientation', arg);
@@ -253,10 +170,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('orientation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pointer(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('pointer', arg);
@@ -265,10 +178,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('pointer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('rtl', arg);
@@ -277,10 +186,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     ranges(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('ranges', arg);
@@ -289,10 +194,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('ranges');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showTooltip(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('showTooltip', arg);
@@ -301,10 +202,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('showTooltip');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     target(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('target', arg);
@@ -313,10 +210,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('target');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     ticks(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('ticks', arg);
@@ -325,10 +218,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('ticks');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     title(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('title', arg);
@@ -337,10 +226,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('title');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     tooltipFormatFunction(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('tooltipFormatFunction', arg);
@@ -349,10 +234,6 @@ class jqxBulletChartComponent {
             return this.host.jqxBulletChart('tooltipFormatFunction');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('width', arg);
@@ -362,28 +243,15 @@ class jqxBulletChartComponent {
         }
     }
     // jqxBulletChartComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxBulletChart('destroy');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxBulletChart('render');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxBulletChart('refresh');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxBulletChart('val', value);
@@ -393,73 +261,107 @@ class jqxBulletChartComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); }));
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
     }
-} //jqxBulletChartComponent
-jqxBulletChartComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxBulletChart',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxBulletChartComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxBulletChartComponent.propDecorators = {
-    attrAnimationDuration: [{ type: Input, args: ['animationDuration',] }],
-    attrBarSize: [{ type: Input, args: ['barSize',] }],
-    attrDescription: [{ type: Input, args: ['description',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrLabelsFormat: [{ type: Input, args: ['labelsFormat',] }],
-    attrLabelsFormatFunction: [{ type: Input, args: ['labelsFormatFunction',] }],
-    attrOrientation: [{ type: Input, args: ['orientation',] }],
-    attrPointer: [{ type: Input, args: ['pointer',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrRanges: [{ type: Input, args: ['ranges',] }],
-    attrShowTooltip: [{ type: Input, args: ['showTooltip',] }],
-    attrTarget: [{ type: Input, args: ['target',] }],
-    attrTicks: [{ type: Input, args: ['ticks',] }],
-    attrTitle: [{ type: Input, args: ['title',] }],
-    attrTooltipFormatFunction: [{ type: Input, args: ['tooltipFormatFunction',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChange: [{ type: Output }]
+}; //jqxBulletChartComponent
+__decorate([
+    Input('animationDuration'),
+    __metadata("design:type", Number)
+], jqxBulletChartComponent.prototype, "attrAnimationDuration", void 0);
+__decorate([
+    Input('barSize'),
+    __metadata("design:type", Object)
+], jqxBulletChartComponent.prototype, "attrBarSize", void 0);
+__decorate([
+    Input('description'),
+    __metadata("design:type", String)
+], jqxBulletChartComponent.prototype, "attrDescription", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxBulletChartComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('labelsFormat'),
+    __metadata("design:type", String)
+], jqxBulletChartComponent.prototype, "attrLabelsFormat", void 0);
+__decorate([
+    Input('labelsFormatFunction'),
+    __metadata("design:type", Function)
+], jqxBulletChartComponent.prototype, "attrLabelsFormatFunction", void 0);
+__decorate([
+    Input('orientation'),
+    __metadata("design:type", String)
+], jqxBulletChartComponent.prototype, "attrOrientation", void 0);
+__decorate([
+    Input('pointer'),
+    __metadata("design:type", Object)
+], jqxBulletChartComponent.prototype, "attrPointer", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxBulletChartComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('ranges'),
+    __metadata("design:type", Array)
+], jqxBulletChartComponent.prototype, "attrRanges", void 0);
+__decorate([
+    Input('showTooltip'),
+    __metadata("design:type", Boolean)
+], jqxBulletChartComponent.prototype, "attrShowTooltip", void 0);
+__decorate([
+    Input('target'),
+    __metadata("design:type", Object)
+], jqxBulletChartComponent.prototype, "attrTarget", void 0);
+__decorate([
+    Input('ticks'),
+    __metadata("design:type", Object)
+], jqxBulletChartComponent.prototype, "attrTicks", void 0);
+__decorate([
+    Input('title'),
+    __metadata("design:type", String)
+], jqxBulletChartComponent.prototype, "attrTitle", void 0);
+__decorate([
+    Input('tooltipFormatFunction'),
+    __metadata("design:type", Function)
+], jqxBulletChartComponent.prototype, "attrTooltipFormatFunction", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxBulletChartComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxBulletChartComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxBulletChartComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxBulletChartComponent.prototype, "onChange", void 0);
+jqxBulletChartComponent = __decorate([
+    Component({
+        selector: 'jqxBulletChart',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxBulletChartComponent);
+
+let jqxBulletChartModule = class jqxBulletChartModule {
 };
+jqxBulletChartModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxBulletChartComponent],
+        exports: [jqxBulletChartComponent]
+    })
+], jqxBulletChartModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxBulletChartModule {
-}
-jqxBulletChartModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxBulletChartComponent],
-                exports: [jqxBulletChartComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxBulletChartComponent, jqxBulletChartModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxbulletchart.js.map

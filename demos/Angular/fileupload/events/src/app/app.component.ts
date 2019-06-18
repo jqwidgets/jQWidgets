@@ -8,7 +8,7 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
 
     onSelect(event: any): void {
         let args = event.args;

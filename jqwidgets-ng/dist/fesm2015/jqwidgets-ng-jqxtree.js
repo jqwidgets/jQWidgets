@@ -6,16 +6,11 @@ import * as jqxpanel from '../../jqwidgets-scripts/jqwidgets/jqxpanel';
 import * as jqxdragdrop from '../../jqwidgets-scripts/jqwidgets/jqxdragdrop';
 import * as jqxtree from '../../jqwidgets-scripts/jqwidgets/jqxtree';
 import * as jqxcheckbox from '../../jqwidgets-scripts/jqwidgets/jqxcheckbox';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxTreeComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxTreeComponent = class jqxTreeComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['animationShowDuration', 'animationHideDuration', 'allowDrag', 'allowDrop', 'checkboxes', 'dragStart', 'dragEnd', 'disabled', 'easing', 'enableHover', 'height', 'hasThreeStates', 'incrementalSearch', 'keyboardNavigation', 'rtl', 'source', 'toggleIndicatorSize', 'toggleMode', 'theme', 'width'];
@@ -31,25 +26,16 @@ class jqxTreeComponent {
         this.onSelect = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -69,11 +55,6 @@ class jqxTreeComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -88,14 +69,9 @@ class jqxTreeComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -103,34 +79,18 @@ class jqxTreeComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -147,32 +107,17 @@ class jqxTreeComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTree', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxTree('setOptions', options);
     }
     // jqxTreeComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationShowDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('animationShowDuration', arg);
@@ -181,10 +126,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('animationShowDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationHideDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('animationHideDuration', arg);
@@ -193,10 +134,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('animationHideDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     allowDrag(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('allowDrag', arg);
@@ -205,10 +142,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('allowDrag');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     allowDrop(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('allowDrop', arg);
@@ -217,10 +150,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('allowDrop');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     checkboxes(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('checkboxes', arg);
@@ -229,10 +158,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('checkboxes');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dragStart(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('dragStart', arg);
@@ -241,10 +166,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('dragStart');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dragEnd(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('dragEnd', arg);
@@ -253,10 +174,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('dragEnd');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('disabled', arg);
@@ -265,10 +182,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     easing(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('easing', arg);
@@ -277,10 +190,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('easing');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableHover(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('enableHover', arg);
@@ -289,10 +198,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('enableHover');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('height', arg);
@@ -301,10 +206,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     hasThreeStates(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('hasThreeStates', arg);
@@ -313,10 +214,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('hasThreeStates');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     incrementalSearch(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('incrementalSearch', arg);
@@ -325,10 +222,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('incrementalSearch');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     keyboardNavigation(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('keyboardNavigation', arg);
@@ -337,10 +230,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('keyboardNavigation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('rtl', arg);
@@ -349,10 +238,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     source(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('source', arg);
@@ -361,10 +246,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('source');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     toggleIndicatorSize(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('toggleIndicatorSize', arg);
@@ -373,10 +254,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('toggleIndicatorSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     toggleMode(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('toggleMode', arg);
@@ -385,10 +262,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('toggleMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('theme', arg);
@@ -397,10 +270,6 @@ class jqxTreeComponent {
             return this.host.jqxTree('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxTree('width', arg);
@@ -410,219 +279,99 @@ class jqxTreeComponent {
         }
     }
     // jqxTreeComponent functions
-    /**
-     * @param {?} item
-     * @param {?} id
-     * @return {?}
-     */
     addBefore(item, id) {
         this.host.jqxTree('addBefore', item, id);
     }
-    /**
-     * @param {?} item
-     * @param {?} id
-     * @return {?}
-     */
     addAfter(item, id) {
         this.host.jqxTree('addAfter', item, id);
     }
-    /**
-     * @param {?} item
-     * @param {?} id
-     * @return {?}
-     */
     addTo(item, id) {
         this.host.jqxTree('addTo', item, id);
     }
-    /**
-     * @return {?}
-     */
     clear() {
         this.host.jqxTree('clear');
     }
-    /**
-     * @return {?}
-     */
     checkAll() {
         this.host.jqxTree('checkAll');
     }
-    /**
-     * @param {?} item
-     * @param {?} checked
-     * @return {?}
-     */
     checkItem(item, checked) {
         this.host.jqxTree('checkItem', item, checked);
     }
-    /**
-     * @return {?}
-     */
     collapseAll() {
         this.host.jqxTree('collapseAll');
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     collapseItem(item) {
         this.host.jqxTree('collapseItem', item);
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxTree('destroy');
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     disableItem(item) {
         this.host.jqxTree('disableItem', item);
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     ensureVisible(item) {
         this.host.jqxTree('ensureVisible', item);
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     enableItem(item) {
         this.host.jqxTree('enableItem', item);
     }
-    /**
-     * @return {?}
-     */
     enableAll() {
         this.host.jqxTree('enableAll');
     }
-    /**
-     * @return {?}
-     */
     expandAll() {
         this.host.jqxTree('expandAll');
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     expandItem(item) {
         this.host.jqxTree('expandItem', item);
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxTree('focus');
     }
-    /**
-     * @return {?}
-     */
     getCheckedItems() {
         return this.host.jqxTree('getCheckedItems');
     }
-    /**
-     * @return {?}
-     */
     getUncheckedItems() {
         return this.host.jqxTree('getUncheckedItems');
     }
-    /**
-     * @return {?}
-     */
     getItems() {
         return this.host.jqxTree('getItems');
     }
-    /**
-     * @param {?} element
-     * @return {?}
-     */
     getItem(element) {
         return this.host.jqxTree('getItem', element);
     }
-    /**
-     * @return {?}
-     */
     getSelectedItem() {
         return this.host.jqxTree('getSelectedItem');
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     getPrevItem(item) {
         return this.host.jqxTree('getPrevItem', item);
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     getNextItem(item) {
         return this.host.jqxTree('getNextItem', item);
     }
-    /**
-     * @param {?} left
-     * @param {?} top
-     * @return {?}
-     */
     hitTest(left, top) {
         return this.host.jqxTree('hitTest', left, top);
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     removeItem(item) {
         this.host.jqxTree('removeItem', item);
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxTree('render');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxTree('refresh');
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     selectItem(item) {
         this.host.jqxTree('selectItem', item);
     }
-    /**
-     * @return {?}
-     */
     uncheckAll() {
         this.host.jqxTree('uncheckAll');
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     uncheckItem(item) {
         this.host.jqxTree('uncheckItem', item);
     }
-    /**
-     * @param {?} item
-     * @param {?} newItem
-     * @return {?}
-     */
     updateItem(item, newItem) {
         this.host.jqxTree('updateItem', item, newItem);
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxTree('val', value);
@@ -632,124 +381,159 @@ class jqxTreeComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('added', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onAdded.emit(eventData); }));
-        this.host.on('checkChange', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCheckChange.emit(eventData); }));
-        this.host.on('collapse', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCollapse.emit(eventData); }));
-        this.host.on('dragStart', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onDragStart.emit(eventData); }));
-        this.host.on('dragEnd', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onDragEnd.emit(eventData); }));
-        this.host.on('expand', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onExpand.emit(eventData); }));
-        this.host.on('itemClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onItemClick.emit(eventData); }));
-        this.host.on('removed', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRemoved.emit(eventData); }));
-        this.host.on('select', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSelect.emit(eventData); }));
+        this.host.on('added', (eventData) => { this.onAdded.emit(eventData); });
+        this.host.on('checkChange', (eventData) => { this.onCheckChange.emit(eventData); });
+        this.host.on('collapse', (eventData) => { this.onCollapse.emit(eventData); });
+        this.host.on('dragStart', (eventData) => { this.onDragStart.emit(eventData); });
+        this.host.on('dragEnd', (eventData) => { this.onDragEnd.emit(eventData); });
+        this.host.on('expand', (eventData) => { this.onExpand.emit(eventData); });
+        this.host.on('itemClick', (eventData) => { this.onItemClick.emit(eventData); });
+        this.host.on('removed', (eventData) => { this.onRemoved.emit(eventData); });
+        this.host.on('select', (eventData) => { this.onSelect.emit(eventData); });
     }
-} //jqxTreeComponent
-jqxTreeComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxTree',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxTreeComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxTreeComponent.propDecorators = {
-    attrAnimationShowDuration: [{ type: Input, args: ['animationShowDuration',] }],
-    attrAnimationHideDuration: [{ type: Input, args: ['animationHideDuration',] }],
-    attrAllowDrag: [{ type: Input, args: ['allowDrag',] }],
-    attrAllowDrop: [{ type: Input, args: ['allowDrop',] }],
-    attrCheckboxes: [{ type: Input, args: ['checkboxes',] }],
-    attrDragStart: [{ type: Input, args: ['dragStart',] }],
-    attrDragEnd: [{ type: Input, args: ['dragEnd',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrEasing: [{ type: Input, args: ['easing',] }],
-    attrEnableHover: [{ type: Input, args: ['enableHover',] }],
-    attrHasThreeStates: [{ type: Input, args: ['hasThreeStates',] }],
-    attrIncrementalSearch: [{ type: Input, args: ['incrementalSearch',] }],
-    attrKeyboardNavigation: [{ type: Input, args: ['keyboardNavigation',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrSource: [{ type: Input, args: ['source',] }],
-    attrToggleIndicatorSize: [{ type: Input, args: ['toggleIndicatorSize',] }],
-    attrToggleMode: [{ type: Input, args: ['toggleMode',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onAdded: [{ type: Output }],
-    onCheckChange: [{ type: Output }],
-    onCollapse: [{ type: Output }],
-    onDragStart: [{ type: Output }],
-    onDragEnd: [{ type: Output }],
-    onExpand: [{ type: Output }],
-    onItemClick: [{ type: Output }],
-    onRemoved: [{ type: Output }],
-    onSelect: [{ type: Output }]
+}; //jqxTreeComponent
+__decorate([
+    Input('animationShowDuration'),
+    __metadata("design:type", Number)
+], jqxTreeComponent.prototype, "attrAnimationShowDuration", void 0);
+__decorate([
+    Input('animationHideDuration'),
+    __metadata("design:type", Number)
+], jqxTreeComponent.prototype, "attrAnimationHideDuration", void 0);
+__decorate([
+    Input('allowDrag'),
+    __metadata("design:type", Boolean)
+], jqxTreeComponent.prototype, "attrAllowDrag", void 0);
+__decorate([
+    Input('allowDrop'),
+    __metadata("design:type", Boolean)
+], jqxTreeComponent.prototype, "attrAllowDrop", void 0);
+__decorate([
+    Input('checkboxes'),
+    __metadata("design:type", Boolean)
+], jqxTreeComponent.prototype, "attrCheckboxes", void 0);
+__decorate([
+    Input('dragStart'),
+    __metadata("design:type", Function)
+], jqxTreeComponent.prototype, "attrDragStart", void 0);
+__decorate([
+    Input('dragEnd'),
+    __metadata("design:type", Function)
+], jqxTreeComponent.prototype, "attrDragEnd", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxTreeComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('easing'),
+    __metadata("design:type", String)
+], jqxTreeComponent.prototype, "attrEasing", void 0);
+__decorate([
+    Input('enableHover'),
+    __metadata("design:type", Boolean)
+], jqxTreeComponent.prototype, "attrEnableHover", void 0);
+__decorate([
+    Input('hasThreeStates'),
+    __metadata("design:type", Boolean)
+], jqxTreeComponent.prototype, "attrHasThreeStates", void 0);
+__decorate([
+    Input('incrementalSearch'),
+    __metadata("design:type", Boolean)
+], jqxTreeComponent.prototype, "attrIncrementalSearch", void 0);
+__decorate([
+    Input('keyboardNavigation'),
+    __metadata("design:type", Boolean)
+], jqxTreeComponent.prototype, "attrKeyboardNavigation", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxTreeComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('source'),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "attrSource", void 0);
+__decorate([
+    Input('toggleIndicatorSize'),
+    __metadata("design:type", Number)
+], jqxTreeComponent.prototype, "attrToggleIndicatorSize", void 0);
+__decorate([
+    Input('toggleMode'),
+    __metadata("design:type", String)
+], jqxTreeComponent.prototype, "attrToggleMode", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxTreeComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxTreeComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "onAdded", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "onCheckChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "onCollapse", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "onDragStart", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "onDragEnd", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "onExpand", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "onItemClick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "onRemoved", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTreeComponent.prototype, "onSelect", void 0);
+jqxTreeComponent = __decorate([
+    Component({
+        selector: 'jqxTree',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxTreeComponent);
+
+let jqxTreeModule = class jqxTreeModule {
 };
+jqxTreeModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxTreeComponent],
+        exports: [jqxTreeComponent]
+    })
+], jqxTreeModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxTreeModule {
-}
-jqxTreeModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxTreeComponent],
-                exports: [jqxTreeComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxTreeComponent, jqxTreeModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxtree.js.map

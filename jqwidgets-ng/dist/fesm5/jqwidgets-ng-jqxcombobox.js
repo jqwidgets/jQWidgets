@@ -4,26 +4,16 @@ import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxscrollbar from '../../jqwidgets-scripts/jqwidgets/jqxscrollbar';
 import * as jqxlistbox from '../../jqwidgets-scripts/jqwidgets/jqxlistbox';
 import * as jqxcombobox from '../../jqwidgets-scripts/jqwidgets/jqxcombobox';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { forwardRef, Input, Output, Component, ChangeDetectionStrategy, ElementRef, EventEmitter, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-var noop = (/**
- * @return {?}
- */
-function () { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+var noop = function () { };
+var ɵ0 = noop;
 var CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    function () { return jqxComboBoxComponent; })),
+    useExisting: forwardRef(function () { return jqxComboBoxComponent; }),
     multi: true
 };
 var jqxComboBoxComponent = /** @class */ (function () {
@@ -42,26 +32,11 @@ var jqxComboBoxComponent = /** @class */ (function () {
         this.onUnselect = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.ngOnInit = function () {
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.ngAfterViewInit = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxComboBoxComponent.prototype.ngAfterViewInit = function () {
         var children = JQXLite(this.elementRef.nativeElement.children).find('li');
-        /** @type {?} */
         var html = '';
-        /** @type {?} */
         var options = {};
         if (children.length > 0) {
             this.container = document.createElement('div');
@@ -69,7 +44,6 @@ var jqxComboBoxComponent = /** @class */ (function () {
             this.container.appendChild(this.elementRef.nativeElement.firstChild);
             this.elementRef.nativeElement.innerHTML = html;
             this.content = html;
-            /** @type {?} */
             var result = JQXLite.jqx.parseSourceTag(this.container);
             options['source'] = result.items;
         }
@@ -77,36 +51,19 @@ var jqxComboBoxComponent = /** @class */ (function () {
             this.createComponent(options);
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.ngAfterViewChecked = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.ngAfterViewChecked = function () {
         if (this.container) {
             if (this.content !== this.container.innerHTML) {
                 this.content = this.container.innerHTML;
-                /** @type {?} */
                 var result = JQXLite.jqx.parseSourceTag(this.container);
                 this.host.jqxComboBox({ source: result.items });
             }
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxComboBoxComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -126,17 +83,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxComboBoxComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -150,17 +97,9 @@ var jqxComboBoxComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxComboBoxComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -168,50 +107,20 @@ var jqxComboBoxComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxComboBoxComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxComboBoxComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxComboBoxComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -227,86 +136,29 @@ var jqxComboBoxComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxComboBox', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxComboBoxComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.writeValue = /**
-     * @param {?} value
-     * @return {?}
-     */
-    function (value) {
+    jqxComboBoxComponent.prototype.writeValue = function (value) {
         if (this.widgetObject) {
             this.onChangeCallback(this.host.val());
         }
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.registerOnChange = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxComboBoxComponent.prototype.registerOnChange = function (fn) {
         this.onChangeCallback = fn;
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.registerOnTouched = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxComboBoxComponent.prototype.registerOnTouched = function (fn) {
         this.onTouchedCallback = fn;
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxComboBoxComponent.prototype.setOptions = function (options) {
         this.host.jqxComboBox('setOptions', options);
     };
     // jqxComboBoxComponent properties
-    // jqxComboBoxComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.animationType = 
-    // jqxComboBoxComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.animationType = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -317,15 +169,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('animationType');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.autoComplete = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.autoComplete = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -336,15 +180,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('autoComplete');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.autoOpen = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.autoOpen = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -355,15 +191,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('autoOpen');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.autoItemsHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.autoItemsHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -374,15 +202,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('autoItemsHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.autoDropDownHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.autoDropDownHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -393,15 +213,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('autoDropDownHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.closeDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.closeDelay = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -412,15 +224,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('closeDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.checkboxes = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.checkboxes = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -431,15 +235,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('checkboxes');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.disabled = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -450,15 +246,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.displayMember = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.displayMember = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -469,15 +257,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('displayMember');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.dropDownHorizontalAlignment = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.dropDownHorizontalAlignment = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -488,15 +268,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('dropDownHorizontalAlignment');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.dropDownVerticalAlignment = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.dropDownVerticalAlignment = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -507,15 +279,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('dropDownVerticalAlignment');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.dropDownHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.dropDownHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -526,15 +290,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('dropDownHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.dropDownWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.dropDownWidth = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -545,15 +301,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('dropDownWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.enableHover = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.enableHover = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -564,15 +312,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('enableHover');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.enableSelection = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.enableSelection = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -583,15 +323,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('enableSelection');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.enableBrowserBoundsDetection = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.enableBrowserBoundsDetection = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -602,15 +334,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('enableBrowserBoundsDetection');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.height = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -621,15 +345,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.itemHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.itemHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -640,15 +356,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('itemHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.multiSelect = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.multiSelect = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -659,15 +367,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('multiSelect');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.minLength = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.minLength = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -678,15 +378,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('minLength');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.openDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.openDelay = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -697,15 +389,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('openDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.popupZIndex = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.popupZIndex = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -716,15 +400,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('popupZIndex');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.placeHolder = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.placeHolder = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -735,15 +411,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('placeHolder');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.remoteAutoComplete = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.remoteAutoComplete = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -754,15 +422,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('remoteAutoComplete');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.remoteAutoCompleteDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.remoteAutoCompleteDelay = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -773,15 +433,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('remoteAutoCompleteDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.renderer = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.renderer = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -792,15 +444,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('renderer');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.renderSelectedItem = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.renderSelectedItem = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -811,15 +455,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('renderSelectedItem');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.rtl = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -830,15 +466,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.selectedIndex = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.selectedIndex = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -849,15 +477,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('selectedIndex');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.showArrow = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.showArrow = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -868,15 +488,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('showArrow');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.showCloseButtons = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.showCloseButtons = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -887,15 +499,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('showCloseButtons');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.searchMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.searchMode = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -906,15 +510,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('searchMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.search = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.search = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -925,15 +521,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('search');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.source = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.source = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -944,15 +532,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('source');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.scrollBarSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.scrollBarSize = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -963,15 +543,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('scrollBarSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.template = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.template = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -982,15 +554,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('template');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.theme = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1001,15 +565,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.validateSelection = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.validateSelection = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1020,15 +576,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('validateSelection');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.valueMember = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.valueMember = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1039,15 +587,7 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('valueMember');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxComboBoxComponent.prototype.width = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1059,552 +599,247 @@ var jqxComboBoxComponent = /** @class */ (function () {
         }
     };
     // jqxComboBoxComponent functions
-    // jqxComboBoxComponent functions
-    /**
-     * @param {?} item
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.addItem = 
-    // jqxComboBoxComponent functions
-    /**
-     * @param {?} item
-     * @return {?}
-     */
-    function (item) {
+    jqxComboBoxComponent.prototype.addItem = function (item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('addItem', item);
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.clearSelection = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.clearSelection = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('clearSelection');
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.clear = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.clear = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('clear');
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.close = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.close = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('close');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.checkIndex = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxComboBoxComponent.prototype.checkIndex = function (index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('checkIndex', index);
     };
-    /**
-     * @param {?} item
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.checkItem = /**
-     * @param {?} item
-     * @return {?}
-     */
-    function (item) {
+    jqxComboBoxComponent.prototype.checkItem = function (item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('checkItem', item);
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.checkAll = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.checkAll = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('checkAll');
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.destroy = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('destroy');
     };
-    /**
-     * @param {?} item
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.disableItem = /**
-     * @param {?} item
-     * @return {?}
-     */
-    function (item) {
+    jqxComboBoxComponent.prototype.disableItem = function (item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('disableItem', item);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.disableAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxComboBoxComponent.prototype.disableAt = function (index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('disableAt', index);
     };
-    /**
-     * @param {?} item
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.enableItem = /**
-     * @param {?} item
-     * @return {?}
-     */
-    function (item) {
+    jqxComboBoxComponent.prototype.enableItem = function (item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('enableItem', item);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.enableAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxComboBoxComponent.prototype.enableAt = function (index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('enableAt', index);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.ensureVisible = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxComboBoxComponent.prototype.ensureVisible = function (index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('ensureVisible', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.focus = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('focus');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.getItem = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxComboBoxComponent.prototype.getItem = function (index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('getItem', index);
     };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.getItemByValue = /**
-     * @param {?} value
-     * @return {?}
-     */
-    function (value) {
+    jqxComboBoxComponent.prototype.getItemByValue = function (value) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('getItemByValue', value);
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.getVisibleItems = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.getVisibleItems = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('getVisibleItems');
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.getItems = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.getItems = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('getItems');
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.getCheckedItems = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.getCheckedItems = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('getCheckedItems');
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.getSelectedItem = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.getSelectedItem = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('getSelectedItem');
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.getSelectedItems = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.getSelectedItems = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('getSelectedItems');
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.getSelectedIndex = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.getSelectedIndex = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('getSelectedIndex');
     };
-    /**
-     * @param {?} item
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.insertAt = /**
-     * @param {?} item
-     * @param {?} index
-     * @return {?}
-     */
-    function (item, index) {
+    jqxComboBoxComponent.prototype.insertAt = function (item, index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('insertAt', item, index);
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.isOpened = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.isOpened = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('isOpened');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.indeterminateIndex = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxComboBoxComponent.prototype.indeterminateIndex = function (index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('indeterminateIndex', index);
     };
-    /**
-     * @param {?} item
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.indeterminateItem = /**
-     * @param {?} item
-     * @return {?}
-     */
-    function (item) {
+    jqxComboBoxComponent.prototype.indeterminateItem = function (item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('indeterminateItem', item);
     };
-    /**
-     * @param {?} selectTagId
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.loadFromSelect = /**
-     * @param {?} selectTagId
-     * @return {?}
-     */
-    function (selectTagId) {
+    jqxComboBoxComponent.prototype.loadFromSelect = function (selectTagId) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('loadFromSelect', selectTagId);
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.open = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.open = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('open');
     };
-    /**
-     * @param {?} item
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.removeItem = /**
-     * @param {?} item
-     * @return {?}
-     */
-    function (item) {
+    jqxComboBoxComponent.prototype.removeItem = function (item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('removeItem', item);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.removeAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxComboBoxComponent.prototype.removeAt = function (index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('removeAt', index);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.selectIndex = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxComboBoxComponent.prototype.selectIndex = function (index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('selectIndex', index);
     };
-    /**
-     * @param {?} item
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.selectItem = /**
-     * @param {?} item
-     * @return {?}
-     */
-    function (item) {
+    jqxComboBoxComponent.prototype.selectItem = function (item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('selectItem', item);
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.searchString = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.searchString = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxComboBox('searchString');
     };
-    /**
-     * @param {?} item
-     * @param {?} itemValue
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.updateItem = /**
-     * @param {?} item
-     * @param {?} itemValue
-     * @return {?}
-     */
-    function (item, itemValue) {
+    jqxComboBoxComponent.prototype.updateItem = function (item, itemValue) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('updateItem', item, itemValue);
     };
-    /**
-     * @param {?} item
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.updateAt = /**
-     * @param {?} item
-     * @param {?} index
-     * @return {?}
-     */
-    function (item, index) {
+    jqxComboBoxComponent.prototype.updateAt = function (item, index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('updateAt', item, index);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.unselectIndex = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxComboBoxComponent.prototype.unselectIndex = function (index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('unselectIndex', index);
     };
-    /**
-     * @param {?} item
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.unselectItem = /**
-     * @param {?} item
-     * @return {?}
-     */
-    function (item) {
+    jqxComboBoxComponent.prototype.unselectItem = function (item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('unselectItem', item);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.uncheckIndex = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxComboBoxComponent.prototype.uncheckIndex = function (index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('uncheckIndex', index);
     };
-    /**
-     * @param {?} item
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.uncheckItem = /**
-     * @param {?} item
-     * @return {?}
-     */
-    function (item) {
+    jqxComboBoxComponent.prototype.uncheckItem = function (item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('uncheckItem', item);
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.uncheckAll = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.uncheckAll = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxComboBox('uncheckAll');
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxComboBoxComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxComboBox('val', value);
         }
@@ -1612,146 +847,240 @@ var jqxComboBoxComponent = /** @class */ (function () {
             return this.host.jqxComboBox('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxComboBoxComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxComboBoxComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('bindingComplete', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onBindingComplete.emit(eventData); }));
-        this.host.on('checkChange', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCheckChange.emit(eventData); }));
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onClose.emit(eventData); }));
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChange.emit(eventData); if (eventData.args)
+        this.host.on('bindingComplete', function (eventData) { _this.onBindingComplete.emit(eventData); });
+        this.host.on('checkChange', function (eventData) { _this.onCheckChange.emit(eventData); });
+        this.host.on('close', function (eventData) { _this.onClose.emit(eventData); });
+        this.host.on('change', function (eventData) { _this.onChange.emit(eventData); if (eventData.args)
             if (eventData.args.item !== null)
-                _this.onChangeCallback(eventData.args.item.value); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onOpen.emit(eventData); }));
-        this.host.on('select', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onSelect.emit(eventData); }));
-        this.host.on('unselect', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onUnselect.emit(eventData); }));
+                _this.onChangeCallback(eventData.args.item.value); });
+        this.host.on('open', function (eventData) { _this.onOpen.emit(eventData); });
+        this.host.on('select', function (eventData) { _this.onSelect.emit(eventData); });
+        this.host.on('unselect', function (eventData) { _this.onUnselect.emit(eventData); });
     };
-    jqxComboBoxComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxComboBox',
-                    template: '<div><ng-content></ng-content></div>',
-                    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                    changeDetection: ChangeDetectionStrategy.OnPush
-                }] }
-    ];
-    /** @nocollapse */
-    jqxComboBoxComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxComboBoxComponent.propDecorators = {
-        attrAnimationType: [{ type: Input, args: ['animationType',] }],
-        attrAutoComplete: [{ type: Input, args: ['autoComplete',] }],
-        attrAutoOpen: [{ type: Input, args: ['autoOpen',] }],
-        attrAutoItemsHeight: [{ type: Input, args: ['autoItemsHeight',] }],
-        attrAutoDropDownHeight: [{ type: Input, args: ['autoDropDownHeight',] }],
-        attrCloseDelay: [{ type: Input, args: ['closeDelay',] }],
-        attrCheckboxes: [{ type: Input, args: ['checkboxes',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrDisplayMember: [{ type: Input, args: ['displayMember',] }],
-        attrDropDownHorizontalAlignment: [{ type: Input, args: ['dropDownHorizontalAlignment',] }],
-        attrDropDownVerticalAlignment: [{ type: Input, args: ['dropDownVerticalAlignment',] }],
-        attrDropDownHeight: [{ type: Input, args: ['dropDownHeight',] }],
-        attrDropDownWidth: [{ type: Input, args: ['dropDownWidth',] }],
-        attrEnableHover: [{ type: Input, args: ['enableHover',] }],
-        attrEnableSelection: [{ type: Input, args: ['enableSelection',] }],
-        attrEnableBrowserBoundsDetection: [{ type: Input, args: ['enableBrowserBoundsDetection',] }],
-        attrItemHeight: [{ type: Input, args: ['itemHeight',] }],
-        attrMultiSelect: [{ type: Input, args: ['multiSelect',] }],
-        attrMinLength: [{ type: Input, args: ['minLength',] }],
-        attrOpenDelay: [{ type: Input, args: ['openDelay',] }],
-        attrPopupZIndex: [{ type: Input, args: ['popupZIndex',] }],
-        attrPlaceHolder: [{ type: Input, args: ['placeHolder',] }],
-        attrRemoteAutoComplete: [{ type: Input, args: ['remoteAutoComplete',] }],
-        attrRemoteAutoCompleteDelay: [{ type: Input, args: ['remoteAutoCompleteDelay',] }],
-        attrRenderer: [{ type: Input, args: ['renderer',] }],
-        attrRenderSelectedItem: [{ type: Input, args: ['renderSelectedItem',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrSelectedIndex: [{ type: Input, args: ['selectedIndex',] }],
-        attrShowArrow: [{ type: Input, args: ['showArrow',] }],
-        attrShowCloseButtons: [{ type: Input, args: ['showCloseButtons',] }],
-        attrSearchMode: [{ type: Input, args: ['searchMode',] }],
-        attrSearch: [{ type: Input, args: ['search',] }],
-        attrSource: [{ type: Input, args: ['source',] }],
-        attrScrollBarSize: [{ type: Input, args: ['scrollBarSize',] }],
-        attrTemplate: [{ type: Input, args: ['template',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrValidateSelection: [{ type: Input, args: ['validateSelection',] }],
-        attrValueMember: [{ type: Input, args: ['valueMember',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onBindingComplete: [{ type: Output }],
-        onCheckChange: [{ type: Output }],
-        onClose: [{ type: Output }],
-        onChange: [{ type: Output }],
-        onOpen: [{ type: Output }],
-        onSelect: [{ type: Output }],
-        onUnselect: [{ type: Output }]
-    };
+    __decorate([
+        Input('animationType'),
+        __metadata("design:type", String)
+    ], jqxComboBoxComponent.prototype, "attrAnimationType", void 0);
+    __decorate([
+        Input('autoComplete'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrAutoComplete", void 0);
+    __decorate([
+        Input('autoOpen'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrAutoOpen", void 0);
+    __decorate([
+        Input('autoItemsHeight'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrAutoItemsHeight", void 0);
+    __decorate([
+        Input('autoDropDownHeight'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrAutoDropDownHeight", void 0);
+    __decorate([
+        Input('closeDelay'),
+        __metadata("design:type", Number)
+    ], jqxComboBoxComponent.prototype, "attrCloseDelay", void 0);
+    __decorate([
+        Input('checkboxes'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrCheckboxes", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('displayMember'),
+        __metadata("design:type", String)
+    ], jqxComboBoxComponent.prototype, "attrDisplayMember", void 0);
+    __decorate([
+        Input('dropDownHorizontalAlignment'),
+        __metadata("design:type", String)
+    ], jqxComboBoxComponent.prototype, "attrDropDownHorizontalAlignment", void 0);
+    __decorate([
+        Input('dropDownVerticalAlignment'),
+        __metadata("design:type", String)
+    ], jqxComboBoxComponent.prototype, "attrDropDownVerticalAlignment", void 0);
+    __decorate([
+        Input('dropDownHeight'),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "attrDropDownHeight", void 0);
+    __decorate([
+        Input('dropDownWidth'),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "attrDropDownWidth", void 0);
+    __decorate([
+        Input('enableHover'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrEnableHover", void 0);
+    __decorate([
+        Input('enableSelection'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrEnableSelection", void 0);
+    __decorate([
+        Input('enableBrowserBoundsDetection'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrEnableBrowserBoundsDetection", void 0);
+    __decorate([
+        Input('itemHeight'),
+        __metadata("design:type", Number)
+    ], jqxComboBoxComponent.prototype, "attrItemHeight", void 0);
+    __decorate([
+        Input('multiSelect'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrMultiSelect", void 0);
+    __decorate([
+        Input('minLength'),
+        __metadata("design:type", Number)
+    ], jqxComboBoxComponent.prototype, "attrMinLength", void 0);
+    __decorate([
+        Input('openDelay'),
+        __metadata("design:type", Number)
+    ], jqxComboBoxComponent.prototype, "attrOpenDelay", void 0);
+    __decorate([
+        Input('popupZIndex'),
+        __metadata("design:type", Number)
+    ], jqxComboBoxComponent.prototype, "attrPopupZIndex", void 0);
+    __decorate([
+        Input('placeHolder'),
+        __metadata("design:type", String)
+    ], jqxComboBoxComponent.prototype, "attrPlaceHolder", void 0);
+    __decorate([
+        Input('remoteAutoComplete'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrRemoteAutoComplete", void 0);
+    __decorate([
+        Input('remoteAutoCompleteDelay'),
+        __metadata("design:type", Number)
+    ], jqxComboBoxComponent.prototype, "attrRemoteAutoCompleteDelay", void 0);
+    __decorate([
+        Input('renderer'),
+        __metadata("design:type", Function)
+    ], jqxComboBoxComponent.prototype, "attrRenderer", void 0);
+    __decorate([
+        Input('renderSelectedItem'),
+        __metadata("design:type", Function)
+    ], jqxComboBoxComponent.prototype, "attrRenderSelectedItem", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('selectedIndex'),
+        __metadata("design:type", Number)
+    ], jqxComboBoxComponent.prototype, "attrSelectedIndex", void 0);
+    __decorate([
+        Input('showArrow'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrShowArrow", void 0);
+    __decorate([
+        Input('showCloseButtons'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "attrShowCloseButtons", void 0);
+    __decorate([
+        Input('searchMode'),
+        __metadata("design:type", String)
+    ], jqxComboBoxComponent.prototype, "attrSearchMode", void 0);
+    __decorate([
+        Input('search'),
+        __metadata("design:type", Function)
+    ], jqxComboBoxComponent.prototype, "attrSearch", void 0);
+    __decorate([
+        Input('source'),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "attrSource", void 0);
+    __decorate([
+        Input('scrollBarSize'),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "attrScrollBarSize", void 0);
+    __decorate([
+        Input('template'),
+        __metadata("design:type", String)
+    ], jqxComboBoxComponent.prototype, "attrTemplate", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxComboBoxComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('validateSelection'),
+        __metadata("design:type", Function)
+    ], jqxComboBoxComponent.prototype, "attrValidateSelection", void 0);
+    __decorate([
+        Input('valueMember'),
+        __metadata("design:type", String)
+    ], jqxComboBoxComponent.prototype, "attrValueMember", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxComboBoxComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "onBindingComplete", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "onCheckChange", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "onClose", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "onChange", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "onOpen", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "onSelect", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxComboBoxComponent.prototype, "onUnselect", void 0);
+    jqxComboBoxComponent = __decorate([
+        Component({
+            selector: 'jqxComboBox',
+            template: '<div><ng-content></ng-content></div>',
+            providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+            changeDetection: ChangeDetectionStrategy.OnPush
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxComboBoxComponent);
     return jqxComboBoxComponent;
 }()); //jqxComboBoxComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxComboBoxModule = /** @class */ (function () {
     function jqxComboBoxModule() {
     }
-    jqxComboBoxModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        FormsModule
-                    ],
-                    declarations: [jqxComboBoxComponent],
-                    exports: [jqxComboBoxComponent]
-                },] }
-    ];
+    jqxComboBoxModule = __decorate([
+        NgModule({
+            imports: [
+                FormsModule
+            ],
+            declarations: [jqxComboBoxComponent],
+            exports: [jqxComboBoxComponent]
+        })
+    ], jqxComboBoxModule);
     return jqxComboBoxModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxComboBoxComponent, jqxComboBoxModule };
-
+export { jqxComboBoxComponent, jqxComboBoxModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxcombobox.js.map

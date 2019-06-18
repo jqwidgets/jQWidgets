@@ -17,14 +17,14 @@ import { jqxToggleButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('ribbonReference') ribbon: jqxRibbonComponent;
-    @ViewChild('fileItemButton') fileItemButton: jqxDropDownButtonComponent;
-    @ViewChild('bucketColor') bucketColorButton: jqxDropDownButtonComponent;
-    @ViewChild('fontColor') fontColorButton: jqxDropDownButtonComponent;
-    @ViewChild('highlightColor') highlightColorButton: jqxDropDownButtonComponent;
-    @ViewChild('pasteButton') pasteButton: jqxButtonComponent;
-    @ViewChild('superscript') superScriptToggleButton: jqxToggleButtonComponent;
-    @ViewChild('subscript') subscriptToggleButton: jqxToggleButtonComponent;
+    @ViewChild('ribbonReference', {static: false}) ribbon: jqxRibbonComponent;
+    @ViewChild('fileItemButton', {static: false}) fileItemButton: jqxDropDownButtonComponent;
+    @ViewChild('bucketColor', {static: false}) bucketColorButton: jqxDropDownButtonComponent;
+    @ViewChild('fontColor', {static: false}) fontColorButton: jqxDropDownButtonComponent;
+    @ViewChild('highlightColor', {static: false}) highlightColorButton: jqxDropDownButtonComponent;
+    @ViewChild('pasteButton', {static: false}) pasteButton: jqxButtonComponent;
+    @ViewChild('superscript', {static: false}) superScriptToggleButton: jqxToggleButtonComponent;
+    @ViewChild('subscript', {static: false}) subscriptToggleButton: jqxToggleButtonComponent;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 800) {

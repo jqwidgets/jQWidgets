@@ -8,7 +8,7 @@ import { jqxTagCloudComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('tagCloud') tagCloud: jqxTagCloudComponent;
+    @ViewChild('tagCloud', {static: false}) tagCloud: jqxTagCloudComponent;
 
     ngAfterViewInit(): void {
         this.tagCloud.hideItem(1);

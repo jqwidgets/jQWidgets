@@ -3,7 +3,7 @@
 import { generatedata } from '../assets/generatedata';
 
    @Component({     selector: 'app-root',     templateUrl: './app.component.html'
- })   export class AppComponent {     @ViewChild('myDataTable') myDataTable: jqxDataTableComponent;     @ViewChild('myInput') myInput: jqxInputComponent;     @ViewChild('selectedRows') selectedRows: ElementRef; 
+ })   export class AppComponent {     @ViewChild('myDataTable', {static: false}) myDataTable: jqxDataTableComponent;     @ViewChild('myInput', {static: false}) myInput: jqxInputComponent;     @ViewChild('selectedRows', {static: false}) selectedRows: ElementRef; 
     source: any =
     {
         localData: generatedata(15, false),

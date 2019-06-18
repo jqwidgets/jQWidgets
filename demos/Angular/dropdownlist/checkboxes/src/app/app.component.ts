@@ -8,9 +8,9 @@ import { jqxDropDownListComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('myDropDownList') myDropDownList: jqxDropDownListComponent;
-    @ViewChild('log') log: ElementRef; 
-    @ViewChild('checkedItemsLog') checkedItemsLog: ElementRef;
+    @ViewChild('myDropDownList', {static: false}) myDropDownList: jqxDropDownListComponent;
+    @ViewChild('log', {static: false}) log: ElementRef; 
+    @ViewChild('checkedItemsLog', {static: false}) checkedItemsLog: ElementRef;
 
     source: any = {
         datatype: 'json',

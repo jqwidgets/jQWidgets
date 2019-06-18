@@ -10,9 +10,9 @@ import { jqxSliderComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxsl
 })
 
 export class AppComponent {
-    @ViewChild('redSlider') redSlider: jqxSliderComponent;
-    @ViewChild('greenSlider') greenSlider: jqxSliderComponent;
-    @ViewChild('blueSlider') blueSlider: jqxSliderComponent;
+    @ViewChild('redSlider', {static: false}) redSlider: jqxSliderComponent;
+    @ViewChild('greenSlider', {static: false}) greenSlider: jqxSliderComponent;
+    @ViewChild('blueSlider', {static: false}) blueSlider: jqxSliderComponent;
 
     ngAfterViewInit(): void {
         this.setColor();

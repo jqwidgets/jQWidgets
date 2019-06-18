@@ -1,43 +1,24 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxloader from '../../jqwidgets-scripts/jqwidgets/jqxloader';
-import { __spread } from 'tslib';
-import { Component, Input, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxLoaderComponent = /** @class */ (function () {
     function jqxLoaderComponent(containerElement) {
         this.autoCreate = true;
         this.properties = ['autoOpen', 'height', 'html', 'isModal', 'imagePosition', 'rtl', 'text', 'textPosition', 'theme', 'width'];
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxLoaderComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxLoaderComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -57,17 +38,7 @@ var jqxLoaderComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxLoaderComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -81,17 +52,9 @@ var jqxLoaderComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxLoaderComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -99,50 +62,20 @@ var jqxLoaderComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxLoaderComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxLoaderComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxLoaderComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -158,51 +91,18 @@ var jqxLoaderComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxLoader', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxLoaderComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxLoaderComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxLoaderComponent.prototype.setOptions = function (options) {
         this.host.jqxLoader('setOptions', options);
     };
     // jqxLoaderComponent properties
-    // jqxLoaderComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.autoOpen = 
-    // jqxLoaderComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLoaderComponent.prototype.autoOpen = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('autoOpen', arg);
         }
@@ -210,15 +110,7 @@ var jqxLoaderComponent = /** @class */ (function () {
             return this.host.jqxLoader('autoOpen');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLoaderComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('height', arg);
         }
@@ -226,15 +118,7 @@ var jqxLoaderComponent = /** @class */ (function () {
             return this.host.jqxLoader('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.html = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLoaderComponent.prototype.html = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('html', arg);
         }
@@ -242,15 +126,7 @@ var jqxLoaderComponent = /** @class */ (function () {
             return this.host.jqxLoader('html');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.isModal = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLoaderComponent.prototype.isModal = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('isModal', arg);
         }
@@ -258,15 +134,7 @@ var jqxLoaderComponent = /** @class */ (function () {
             return this.host.jqxLoader('isModal');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.imagePosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLoaderComponent.prototype.imagePosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('imagePosition', arg);
         }
@@ -274,15 +142,7 @@ var jqxLoaderComponent = /** @class */ (function () {
             return this.host.jqxLoader('imagePosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLoaderComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('rtl', arg);
         }
@@ -290,15 +150,7 @@ var jqxLoaderComponent = /** @class */ (function () {
             return this.host.jqxLoader('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.text = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLoaderComponent.prototype.text = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('text', arg);
         }
@@ -306,15 +158,7 @@ var jqxLoaderComponent = /** @class */ (function () {
             return this.host.jqxLoader('text');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.textPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLoaderComponent.prototype.textPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('textPosition', arg);
         }
@@ -322,15 +166,7 @@ var jqxLoaderComponent = /** @class */ (function () {
             return this.host.jqxLoader('textPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLoaderComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('theme', arg);
         }
@@ -338,15 +174,7 @@ var jqxLoaderComponent = /** @class */ (function () {
             return this.host.jqxLoader('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLoaderComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('width', arg);
         }
@@ -355,92 +183,84 @@ var jqxLoaderComponent = /** @class */ (function () {
         }
     };
     // jqxLoaderComponent functions
-    // jqxLoaderComponent functions
-    /**
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.close = 
-    // jqxLoaderComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxLoaderComponent.prototype.close = function () {
         this.host.jqxLoader('close');
     };
-    /**
-     * @param {?=} left
-     * @param {?=} top
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.open = /**
-     * @param {?=} left
-     * @param {?=} top
-     * @return {?}
-     */
-    function (left, top) {
+    jqxLoaderComponent.prototype.open = function (left, top) {
         this.host.jqxLoader('open', left, top);
     };
-    /**
-     * @return {?}
-     */
-    jqxLoaderComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxLoaderComponent.prototype.__wireEvents__ = function () {
     };
-    jqxLoaderComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxLoader',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxLoaderComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxLoaderComponent.propDecorators = {
-        attrAutoOpen: [{ type: Input, args: ['autoOpen',] }],
-        attrHtml: [{ type: Input, args: ['html',] }],
-        attrIsModal: [{ type: Input, args: ['isModal',] }],
-        attrImagePosition: [{ type: Input, args: ['imagePosition',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrText: [{ type: Input, args: ['text',] }],
-        attrTextPosition: [{ type: Input, args: ['textPosition',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }]
-    };
+    __decorate([
+        Input('autoOpen'),
+        __metadata("design:type", Boolean)
+    ], jqxLoaderComponent.prototype, "attrAutoOpen", void 0);
+    __decorate([
+        Input('html'),
+        __metadata("design:type", String)
+    ], jqxLoaderComponent.prototype, "attrHtml", void 0);
+    __decorate([
+        Input('isModal'),
+        __metadata("design:type", Boolean)
+    ], jqxLoaderComponent.prototype, "attrIsModal", void 0);
+    __decorate([
+        Input('imagePosition'),
+        __metadata("design:type", String)
+    ], jqxLoaderComponent.prototype, "attrImagePosition", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxLoaderComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('text'),
+        __metadata("design:type", Object)
+    ], jqxLoaderComponent.prototype, "attrText", void 0);
+    __decorate([
+        Input('textPosition'),
+        __metadata("design:type", String)
+    ], jqxLoaderComponent.prototype, "attrTextPosition", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxLoaderComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxLoaderComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxLoaderComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxLoaderComponent.prototype, "autoCreate", void 0);
+    jqxLoaderComponent = __decorate([
+        Component({
+            selector: 'jqxLoader',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxLoaderComponent);
     return jqxLoaderComponent;
 }()); //jqxLoaderComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxLoaderModule = /** @class */ (function () {
     function jqxLoaderModule() {
     }
-    jqxLoaderModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxLoaderComponent],
-                    exports: [jqxLoaderComponent]
-                },] }
-    ];
+    jqxLoaderModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxLoaderComponent],
+            exports: [jqxLoaderComponent]
+        })
+    ], jqxLoaderModule);
     return jqxLoaderModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxLoaderComponent, jqxLoaderModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxloader.js.map

@@ -12,12 +12,12 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('myDropDownList') myDropDownList: jqxDropDownListComponent;
-    @ViewChild('myInput1') myInput1: jqxInputComponent;
-    @ViewChild('myInput2') myInput2: jqxInputComponent;
-    @ViewChild('selectedCell') selectedCell: ElementRef;
-    @ViewChild('unselectedCell') unselectedCell: ElementRef;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('myDropDownList', {static: false}) myDropDownList: jqxDropDownListComponent;
+    @ViewChild('myInput1', {static: false}) myInput1: jqxInputComponent;
+    @ViewChild('myInput2', {static: false}) myInput2: jqxInputComponent;
+    @ViewChild('selectedCell', {static: false}) selectedCell: ElementRef;
+    @ViewChild('unselectedCell', {static: false}) unselectedCell: ElementRef;
 
     ngAfterViewInit(): void {
         this.myGrid.selectcell(2, 'lastname');

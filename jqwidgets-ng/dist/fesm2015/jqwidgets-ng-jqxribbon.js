@@ -2,16 +2,11 @@ import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxribbon from '../../jqwidgets-scripts/jqwidgets/jqxribbon';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxRibbonComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxRibbonComponent = class jqxRibbonComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['animationType', 'animationDelay', 'disabled', 'height', 'initContent', 'mode', 'popupCloseMode', 'position', 'reorder', 'rtl', 'selectedIndex', 'selectionMode', 'scrollPosition', 'scrollStep', 'scrollDelay', 'theme', 'width'];
@@ -22,25 +17,16 @@ class jqxRibbonComponent {
         this.onUnselect = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -60,11 +46,6 @@ class jqxRibbonComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -79,14 +60,9 @@ class jqxRibbonComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -94,34 +70,18 @@ class jqxRibbonComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -138,32 +98,17 @@ class jqxRibbonComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxRibbon', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxRibbon('setOptions', options);
     }
     // jqxRibbonComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationType(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('animationType', arg);
@@ -172,10 +117,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('animationType');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('animationDelay', arg);
@@ -184,10 +125,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('animationDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('disabled', arg);
@@ -196,10 +133,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('height', arg);
@@ -208,10 +141,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     initContent(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('initContent', arg);
@@ -220,10 +149,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('initContent');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     mode(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('mode', arg);
@@ -232,10 +157,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('mode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     popupCloseMode(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('popupCloseMode', arg);
@@ -244,10 +165,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('popupCloseMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     position(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('position', arg);
@@ -256,10 +173,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('position');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     reorder(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('reorder', arg);
@@ -268,10 +181,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('reorder');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('rtl', arg);
@@ -280,10 +189,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     selectedIndex(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('selectedIndex', arg);
@@ -292,10 +197,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('selectedIndex');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     selectionMode(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('selectionMode', arg);
@@ -304,10 +205,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('selectionMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scrollPosition(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('scrollPosition', arg);
@@ -316,10 +213,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('scrollPosition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scrollStep(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('scrollStep', arg);
@@ -328,10 +221,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('scrollStep');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scrollDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('scrollDelay', arg);
@@ -340,10 +229,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('scrollDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('theme', arg);
@@ -352,10 +237,6 @@ class jqxRibbonComponent {
             return this.host.jqxRibbon('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxRibbon('width', arg);
@@ -365,102 +246,45 @@ class jqxRibbonComponent {
         }
     }
     // jqxRibbonComponent functions
-    /**
-     * @param {?} index
-     * @param {?} item
-     * @return {?}
-     */
     addAt(index, item) {
         this.host.jqxRibbon('addAt', index, item);
     }
-    /**
-     * @return {?}
-     */
     clearSelection() {
         this.host.jqxRibbon('clearSelection');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     disableAt(index) {
         this.host.jqxRibbon('disableAt', index);
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxRibbon('destroy');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     enableAt(index) {
         this.host.jqxRibbon('enableAt', index);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     hideAt(index) {
         this.host.jqxRibbon('hideAt', index);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     removeAt(index) {
         this.host.jqxRibbon('removeAt', index);
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxRibbon('render');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxRibbon('refresh');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     selectAt(index) {
         this.host.jqxRibbon('selectAt', index);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     showAt(index) {
         this.host.jqxRibbon('showAt', index);
     }
-    /**
-     * @param {?} index
-     * @param {?} layout
-     * @param {?} width
-     * @param {?} height
-     * @return {?}
-     */
     setPopupLayout(index, layout, width, height) {
         this.host.jqxRibbon('setPopupLayout', index, layout, width, height);
     }
-    /**
-     * @param {?} index
-     * @param {?} item
-     * @return {?}
-     */
     updateAt(index, item) {
         this.host.jqxRibbon('updateAt', index, item);
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxRibbon('val', value);
@@ -470,91 +294,122 @@ class jqxRibbonComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); }));
-        this.host.on('reorder', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onReorder.emit(eventData); }));
-        this.host.on('select', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSelect.emit(eventData); }));
-        this.host.on('unselect', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onUnselect.emit(eventData); }));
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
+        this.host.on('reorder', (eventData) => { this.onReorder.emit(eventData); });
+        this.host.on('select', (eventData) => { this.onSelect.emit(eventData); });
+        this.host.on('unselect', (eventData) => { this.onUnselect.emit(eventData); });
     }
-} //jqxRibbonComponent
-jqxRibbonComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxRibbon',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxRibbonComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxRibbonComponent.propDecorators = {
-    attrAnimationType: [{ type: Input, args: ['animationType',] }],
-    attrAnimationDelay: [{ type: Input, args: ['animationDelay',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrInitContent: [{ type: Input, args: ['initContent',] }],
-    attrMode: [{ type: Input, args: ['mode',] }],
-    attrPopupCloseMode: [{ type: Input, args: ['popupCloseMode',] }],
-    attrPosition: [{ type: Input, args: ['position',] }],
-    attrReorder: [{ type: Input, args: ['reorder',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrSelectedIndex: [{ type: Input, args: ['selectedIndex',] }],
-    attrSelectionMode: [{ type: Input, args: ['selectionMode',] }],
-    attrScrollPosition: [{ type: Input, args: ['scrollPosition',] }],
-    attrScrollStep: [{ type: Input, args: ['scrollStep',] }],
-    attrScrollDelay: [{ type: Input, args: ['scrollDelay',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChange: [{ type: Output }],
-    onReorder: [{ type: Output }],
-    onSelect: [{ type: Output }],
-    onUnselect: [{ type: Output }]
+}; //jqxRibbonComponent
+__decorate([
+    Input('animationType'),
+    __metadata("design:type", String)
+], jqxRibbonComponent.prototype, "attrAnimationType", void 0);
+__decorate([
+    Input('animationDelay'),
+    __metadata("design:type", Object)
+], jqxRibbonComponent.prototype, "attrAnimationDelay", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxRibbonComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('initContent'),
+    __metadata("design:type", Function)
+], jqxRibbonComponent.prototype, "attrInitContent", void 0);
+__decorate([
+    Input('mode'),
+    __metadata("design:type", String)
+], jqxRibbonComponent.prototype, "attrMode", void 0);
+__decorate([
+    Input('popupCloseMode'),
+    __metadata("design:type", String)
+], jqxRibbonComponent.prototype, "attrPopupCloseMode", void 0);
+__decorate([
+    Input('position'),
+    __metadata("design:type", String)
+], jqxRibbonComponent.prototype, "attrPosition", void 0);
+__decorate([
+    Input('reorder'),
+    __metadata("design:type", Boolean)
+], jqxRibbonComponent.prototype, "attrReorder", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxRibbonComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('selectedIndex'),
+    __metadata("design:type", Number)
+], jqxRibbonComponent.prototype, "attrSelectedIndex", void 0);
+__decorate([
+    Input('selectionMode'),
+    __metadata("design:type", String)
+], jqxRibbonComponent.prototype, "attrSelectionMode", void 0);
+__decorate([
+    Input('scrollPosition'),
+    __metadata("design:type", String)
+], jqxRibbonComponent.prototype, "attrScrollPosition", void 0);
+__decorate([
+    Input('scrollStep'),
+    __metadata("design:type", Number)
+], jqxRibbonComponent.prototype, "attrScrollStep", void 0);
+__decorate([
+    Input('scrollDelay'),
+    __metadata("design:type", Number)
+], jqxRibbonComponent.prototype, "attrScrollDelay", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxRibbonComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxRibbonComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxRibbonComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxRibbonComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxRibbonComponent.prototype, "onChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxRibbonComponent.prototype, "onReorder", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxRibbonComponent.prototype, "onSelect", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxRibbonComponent.prototype, "onUnselect", void 0);
+jqxRibbonComponent = __decorate([
+    Component({
+        selector: 'jqxRibbon',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxRibbonComponent);
+
+let jqxRibbonModule = class jqxRibbonModule {
 };
+jqxRibbonModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxRibbonComponent],
+        exports: [jqxRibbonComponent]
+    })
+], jqxRibbonModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxRibbonModule {
-}
-jqxRibbonModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxRibbonComponent],
-                exports: [jqxRibbonComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxRibbonComponent, jqxRibbonModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxribbon.js.map

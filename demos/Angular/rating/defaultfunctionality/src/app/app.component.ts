@@ -8,7 +8,7 @@ import { jqxRatingComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxra
 })
 
 export class AppComponent {
-    @ViewChild('rate') rate: ElementRef;
+    @ViewChild('rate', {static: false}) rate: ElementRef;
 
     change(event: any): void {
         let rate = this.rate.nativeElement;

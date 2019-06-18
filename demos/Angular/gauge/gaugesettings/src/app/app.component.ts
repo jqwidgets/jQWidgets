@@ -8,7 +8,7 @@ import { jqxGaugeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgau
 })
 
 export class AppComponent {
-    @ViewChild('myGauge') myGauge: jqxGaugeComponent;
+    @ViewChild('myGauge', {static: false}) myGauge: jqxGaugeComponent;
 
     ngAfterViewInit(): void {
         this.myGauge.value(220);

@@ -8,7 +8,7 @@ import { jqxTabsComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtabs
 })
 
 export class AppComponent {
-    @ViewChild('jqxTabs') jqxTabs: jqxTabsComponent;
+    @ViewChild('jqxTabs', {static: false}) jqxTabs: jqxTabsComponent;
     
     clickAdd(): void {
         this.jqxTabs.addLast('Sample title', 'Sample content');

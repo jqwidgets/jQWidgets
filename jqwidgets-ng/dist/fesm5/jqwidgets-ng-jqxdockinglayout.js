@@ -6,13 +6,10 @@ import * as jqxlayout from '../../jqwidgets-scripts/jqwidgets/jqxlayout';
 import * as jqxmenu from '../../jqwidgets-scripts/jqwidgets/jqxmenu';
 import * as jqxscrollbar from '../../jqwidgets-scripts/jqwidgets/jqxscrollbar';
 import * as jqxdockinglayout from '../../jqwidgets-scripts/jqwidgets/jqxdockinglayout';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxDockingLayoutComponent = /** @class */ (function () {
     function jqxDockingLayoutComponent(containerElement) {
         this.autoCreate = true;
@@ -26,31 +23,15 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
         this.onUnpin = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxDockingLayoutComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxDockingLayoutComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -70,17 +51,7 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxDockingLayoutComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -94,17 +65,9 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxDockingLayoutComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -112,50 +75,20 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxDockingLayoutComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxDockingLayoutComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDockingLayoutComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -171,51 +104,18 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDockingLayout', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDockingLayoutComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxDockingLayoutComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDockingLayoutComponent.prototype.setOptions = function (options) {
         this.host.jqxDockingLayout('setOptions', options);
     };
     // jqxDockingLayoutComponent properties
-    // jqxDockingLayoutComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.contextMenu = 
-    // jqxDockingLayoutComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockingLayoutComponent.prototype.contextMenu = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('contextMenu', arg);
         }
@@ -223,15 +123,7 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
             return this.host.jqxDockingLayout('contextMenu');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockingLayoutComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('height', arg);
         }
@@ -239,15 +131,7 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
             return this.host.jqxDockingLayout('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.layout = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockingLayoutComponent.prototype.layout = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('layout', arg);
         }
@@ -255,15 +139,7 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
             return this.host.jqxDockingLayout('layout');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.minGroupHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockingLayoutComponent.prototype.minGroupHeight = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('minGroupHeight', arg);
         }
@@ -271,15 +147,7 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
             return this.host.jqxDockingLayout('minGroupHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.minGroupWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockingLayoutComponent.prototype.minGroupWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('minGroupWidth', arg);
         }
@@ -287,15 +155,7 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
             return this.host.jqxDockingLayout('minGroupWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.resizable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockingLayoutComponent.prototype.resizable = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('resizable', arg);
         }
@@ -303,15 +163,7 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
             return this.host.jqxDockingLayout('resizable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockingLayoutComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('rtl', arg);
         }
@@ -319,15 +171,7 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
             return this.host.jqxDockingLayout('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockingLayoutComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('theme', arg);
         }
@@ -335,15 +179,7 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
             return this.host.jqxDockingLayout('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockingLayoutComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('width', arg);
         }
@@ -352,176 +188,123 @@ var jqxDockingLayoutComponent = /** @class */ (function () {
         }
     };
     // jqxDockingLayoutComponent functions
-    // jqxDockingLayoutComponent functions
-    /**
-     * @param {?} width
-     * @param {?} height
-     * @param {?} position
-     * @param {?} panelType
-     * @param {?} title
-     * @param {?} content
-     * @param {?} initContent
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.addFloatGroup = 
-    // jqxDockingLayoutComponent functions
-    /**
-     * @param {?} width
-     * @param {?} height
-     * @param {?} position
-     * @param {?} panelType
-     * @param {?} title
-     * @param {?} content
-     * @param {?} initContent
-     * @return {?}
-     */
-    function (width, height, position, panelType, title, content, initContent) {
+    jqxDockingLayoutComponent.prototype.addFloatGroup = function (width, height, position, panelType, title, content, initContent) {
         this.host.jqxDockingLayout('addFloatGroup', width, height, position, panelType, title, content, initContent);
     };
-    /**
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxDockingLayoutComponent.prototype.destroy = function () {
         this.host.jqxDockingLayout('destroy');
     };
-    /**
-     * @param {?} layout
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.loadLayout = /**
-     * @param {?} layout
-     * @return {?}
-     */
-    function (layout) {
+    jqxDockingLayoutComponent.prototype.loadLayout = function (layout) {
         this.host.jqxDockingLayout('loadLayout', layout);
     };
-    /**
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxDockingLayoutComponent.prototype.refresh = function () {
         this.host.jqxDockingLayout('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxDockingLayoutComponent.prototype.render = function () {
         this.host.jqxDockingLayout('render');
     };
-    /**
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.saveLayout = /**
-     * @return {?}
-     */
-    function () {
+    jqxDockingLayoutComponent.prototype.saveLayout = function () {
         return this.host.jqxDockingLayout('saveLayout');
     };
-    /**
-     * @return {?}
-     */
-    jqxDockingLayoutComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxDockingLayoutComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('dock', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onDock.emit(eventData); }));
-        this.host.on('floatGroupClosed', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onFloatGroupClosed.emit(eventData); }));
-        this.host.on('float', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onFloat.emit(eventData); }));
-        this.host.on('pin', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onPin.emit(eventData); }));
-        this.host.on('resize', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onResize.emit(eventData); }));
-        this.host.on('unpin', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onUnpin.emit(eventData); }));
+        this.host.on('dock', function (eventData) { _this.onDock.emit(eventData); });
+        this.host.on('floatGroupClosed', function (eventData) { _this.onFloatGroupClosed.emit(eventData); });
+        this.host.on('float', function (eventData) { _this.onFloat.emit(eventData); });
+        this.host.on('pin', function (eventData) { _this.onPin.emit(eventData); });
+        this.host.on('resize', function (eventData) { _this.onResize.emit(eventData); });
+        this.host.on('unpin', function (eventData) { _this.onUnpin.emit(eventData); });
     };
-    jqxDockingLayoutComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxDockingLayout',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxDockingLayoutComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxDockingLayoutComponent.propDecorators = {
-        attrContextMenu: [{ type: Input, args: ['contextMenu',] }],
-        attrLayout: [{ type: Input, args: ['layout',] }],
-        attrMinGroupHeight: [{ type: Input, args: ['minGroupHeight',] }],
-        attrMinGroupWidth: [{ type: Input, args: ['minGroupWidth',] }],
-        attrResizable: [{ type: Input, args: ['resizable',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onDock: [{ type: Output }],
-        onFloatGroupClosed: [{ type: Output }],
-        onFloat: [{ type: Output }],
-        onPin: [{ type: Output }],
-        onResize: [{ type: Output }],
-        onUnpin: [{ type: Output }]
-    };
+    __decorate([
+        Input('contextMenu'),
+        __metadata("design:type", Boolean)
+    ], jqxDockingLayoutComponent.prototype, "attrContextMenu", void 0);
+    __decorate([
+        Input('layout'),
+        __metadata("design:type", Array)
+    ], jqxDockingLayoutComponent.prototype, "attrLayout", void 0);
+    __decorate([
+        Input('minGroupHeight'),
+        __metadata("design:type", Object)
+    ], jqxDockingLayoutComponent.prototype, "attrMinGroupHeight", void 0);
+    __decorate([
+        Input('minGroupWidth'),
+        __metadata("design:type", Object)
+    ], jqxDockingLayoutComponent.prototype, "attrMinGroupWidth", void 0);
+    __decorate([
+        Input('resizable'),
+        __metadata("design:type", Boolean)
+    ], jqxDockingLayoutComponent.prototype, "attrResizable", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxDockingLayoutComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxDockingLayoutComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxDockingLayoutComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxDockingLayoutComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxDockingLayoutComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDockingLayoutComponent.prototype, "onDock", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDockingLayoutComponent.prototype, "onFloatGroupClosed", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDockingLayoutComponent.prototype, "onFloat", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDockingLayoutComponent.prototype, "onPin", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDockingLayoutComponent.prototype, "onResize", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDockingLayoutComponent.prototype, "onUnpin", void 0);
+    jqxDockingLayoutComponent = __decorate([
+        Component({
+            selector: 'jqxDockingLayout',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxDockingLayoutComponent);
     return jqxDockingLayoutComponent;
 }()); //jqxDockingLayoutComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxDockingLayoutModule = /** @class */ (function () {
     function jqxDockingLayoutModule() {
     }
-    jqxDockingLayoutModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxDockingLayoutComponent],
-                    exports: [jqxDockingLayoutComponent]
-                },] }
-    ];
+    jqxDockingLayoutModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxDockingLayoutComponent],
+            exports: [jqxDockingLayoutComponent]
+        })
+    ], jqxDockingLayoutModule);
     return jqxDockingLayoutModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxDockingLayoutComponent, jqxDockingLayoutModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxdockinglayout.js.map

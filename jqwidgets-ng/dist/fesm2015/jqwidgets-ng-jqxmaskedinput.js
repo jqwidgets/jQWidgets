@@ -1,30 +1,18 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxmaskedinput from '../../jqwidgets-scripts/jqwidgets/jqxmaskedinput';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { forwardRef, EventEmitter, Input, Output, Component, ChangeDetectionStrategy, ElementRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-const noop = (/**
- * @return {?}
- */
-() => { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+const noop = () => { };
+const ɵ0 = noop;
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    () => jqxMaskedInputComponent)),
+    useExisting: forwardRef(() => jqxMaskedInputComponent),
     multi: true
 };
-class jqxMaskedInputComponent {
-    /**
-     * @param {?} containerElement
-     */
+let jqxMaskedInputComponent = class jqxMaskedInputComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['disabled', 'height', 'mask', 'promptChar', 'readOnly', 'rtl', 'theme', 'textAlign', 'value', 'width'];
@@ -35,25 +23,16 @@ class jqxMaskedInputComponent {
         this.onValueChanged = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -73,11 +52,6 @@ class jqxMaskedInputComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -92,14 +66,9 @@ class jqxMaskedInputComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -107,34 +76,18 @@ class jqxMaskedInputComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -151,55 +104,28 @@ class jqxMaskedInputComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxMaskedInput', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     writeValue(value) {
         if (this.widgetObject) {
             this.host.jqxMaskedInput('val', value);
         }
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnChange(fn) {
         this.onChangeCallback = fn;
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnTouched(fn) {
         this.onTouchedCallback = fn;
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxMaskedInput('setOptions', options);
     }
     // jqxMaskedInputComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxMaskedInput('disabled', arg);
@@ -208,10 +134,6 @@ class jqxMaskedInputComponent {
             return this.host.jqxMaskedInput('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxMaskedInput('height', arg);
@@ -220,10 +142,6 @@ class jqxMaskedInputComponent {
             return this.host.jqxMaskedInput('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     mask(arg) {
         if (arg !== undefined) {
             this.host.jqxMaskedInput('mask', arg);
@@ -232,10 +150,6 @@ class jqxMaskedInputComponent {
             return this.host.jqxMaskedInput('mask');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     promptChar(arg) {
         if (arg !== undefined) {
             this.host.jqxMaskedInput('promptChar', arg);
@@ -244,10 +158,6 @@ class jqxMaskedInputComponent {
             return this.host.jqxMaskedInput('promptChar');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     readOnly(arg) {
         if (arg !== undefined) {
             this.host.jqxMaskedInput('readOnly', arg);
@@ -256,10 +166,6 @@ class jqxMaskedInputComponent {
             return this.host.jqxMaskedInput('readOnly');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxMaskedInput('rtl', arg);
@@ -268,10 +174,6 @@ class jqxMaskedInputComponent {
             return this.host.jqxMaskedInput('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxMaskedInput('theme', arg);
@@ -280,10 +182,6 @@ class jqxMaskedInputComponent {
             return this.host.jqxMaskedInput('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     textAlign(arg) {
         if (arg !== undefined) {
             this.host.jqxMaskedInput('textAlign', arg);
@@ -292,10 +190,6 @@ class jqxMaskedInputComponent {
             return this.host.jqxMaskedInput('textAlign');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     value(arg) {
         if (arg !== undefined) {
             this.host.jqxMaskedInput('value', arg);
@@ -304,10 +198,6 @@ class jqxMaskedInputComponent {
             return this.host.jqxMaskedInput('value');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxMaskedInput('width', arg);
@@ -317,28 +207,15 @@ class jqxMaskedInputComponent {
         }
     }
     // jqxMaskedInputComponent functions
-    /**
-     * @return {?}
-     */
     clear() {
         this.host.jqxMaskedInput('clear');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxMaskedInput('destroy');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxMaskedInput('focus');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxMaskedInput('val', value);
@@ -348,76 +225,88 @@ class jqxMaskedInputComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.parent().on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); }));
-        this.host.parent().on('valueChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onValueChanged.emit(eventData); this.onChangeCallback(this.host.val()); }));
+        this.host.parent().on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
+        this.host.parent().on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); this.onChangeCallback(this.host.val()); });
     }
-} //jqxMaskedInputComponent
-jqxMaskedInputComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxMaskedInput',
-                template: '<input>',
-                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                changeDetection: ChangeDetectionStrategy.OnPush
-            }] }
-];
-/** @nocollapse */
-jqxMaskedInputComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxMaskedInputComponent.propDecorators = {
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrMask: [{ type: Input, args: ['mask',] }],
-    attrPromptChar: [{ type: Input, args: ['promptChar',] }],
-    attrReadOnly: [{ type: Input, args: ['readOnly',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrTextAlign: [{ type: Input, args: ['textAlign',] }],
-    attrValue: [{ type: Input, args: ['value',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChange: [{ type: Output }],
-    onValueChanged: [{ type: Output }]
+}; //jqxMaskedInputComponent
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxMaskedInputComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('mask'),
+    __metadata("design:type", String)
+], jqxMaskedInputComponent.prototype, "attrMask", void 0);
+__decorate([
+    Input('promptChar'),
+    __metadata("design:type", Object)
+], jqxMaskedInputComponent.prototype, "attrPromptChar", void 0);
+__decorate([
+    Input('readOnly'),
+    __metadata("design:type", Boolean)
+], jqxMaskedInputComponent.prototype, "attrReadOnly", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxMaskedInputComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxMaskedInputComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('textAlign'),
+    __metadata("design:type", String)
+], jqxMaskedInputComponent.prototype, "attrTextAlign", void 0);
+__decorate([
+    Input('value'),
+    __metadata("design:type", Object)
+], jqxMaskedInputComponent.prototype, "attrValue", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxMaskedInputComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxMaskedInputComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxMaskedInputComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxMaskedInputComponent.prototype, "onChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxMaskedInputComponent.prototype, "onValueChanged", void 0);
+jqxMaskedInputComponent = __decorate([
+    Component({
+        selector: 'jqxMaskedInput',
+        template: '<input>',
+        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+        changeDetection: ChangeDetectionStrategy.OnPush
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxMaskedInputComponent);
+
+let jqxMaskedInputModule = class jqxMaskedInputModule {
 };
+jqxMaskedInputModule = __decorate([
+    NgModule({
+        imports: [
+            FormsModule
+        ],
+        declarations: [jqxMaskedInputComponent],
+        exports: [jqxMaskedInputComponent]
+    })
+], jqxMaskedInputModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxMaskedInputModule {
-}
-jqxMaskedInputModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    FormsModule
-                ],
-                declarations: [jqxMaskedInputComponent],
-                exports: [jqxMaskedInputComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxMaskedInputComponent, jqxMaskedInputModule };
-
+export { jqxMaskedInputComponent, jqxMaskedInputModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxmaskedinput.js.map

@@ -1,16 +1,11 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxfileupload from '../../jqwidgets-scripts/jqwidgets/jqxfileupload';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxFileUploadComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxFileUploadComponent = class jqxFileUploadComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['autoUpload', 'accept', 'browseTemplate', 'cancelTemplate', 'disabled', 'fileInputName', 'height', 'localization', 'multipleFilesUpload', 'renderFiles', 'rtl', 'theme', 'uploadUrl', 'uploadTemplate', 'width'];
@@ -21,25 +16,16 @@ class jqxFileUploadComponent {
         this.onUploadEnd = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -59,11 +45,6 @@ class jqxFileUploadComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -78,14 +59,9 @@ class jqxFileUploadComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -93,34 +69,18 @@ class jqxFileUploadComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -137,32 +97,17 @@ class jqxFileUploadComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxFileUpload', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxFileUpload('setOptions', options);
     }
     // jqxFileUploadComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoUpload(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('autoUpload', arg);
@@ -171,10 +116,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('autoUpload');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     accept(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('accept', arg);
@@ -183,10 +124,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('accept');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     browseTemplate(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('browseTemplate', arg);
@@ -195,10 +132,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('browseTemplate');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     cancelTemplate(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('cancelTemplate', arg);
@@ -207,10 +140,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('cancelTemplate');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('disabled', arg);
@@ -219,10 +148,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     fileInputName(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('fileInputName', arg);
@@ -231,10 +156,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('fileInputName');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('height', arg);
@@ -243,10 +164,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     localization(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('localization', arg);
@@ -255,10 +172,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('localization');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     multipleFilesUpload(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('multipleFilesUpload', arg);
@@ -267,10 +180,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('multipleFilesUpload');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     renderFiles(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('renderFiles', arg);
@@ -279,10 +188,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('renderFiles');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('rtl', arg);
@@ -291,10 +196,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('theme', arg);
@@ -303,10 +204,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     uploadUrl(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('uploadUrl', arg);
@@ -315,10 +212,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('uploadUrl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     uploadTemplate(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('uploadTemplate', arg);
@@ -327,10 +220,6 @@ class jqxFileUploadComponent {
             return this.host.jqxFileUpload('uploadTemplate');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('width', arg);
@@ -340,139 +229,138 @@ class jqxFileUploadComponent {
         }
     }
     // jqxFileUploadComponent functions
-    /**
-     * @return {?}
-     */
     browse() {
         this.host.jqxFileUpload('browse');
     }
-    /**
-     * @param {?} fileIndex
-     * @return {?}
-     */
     cancelFile(fileIndex) {
         this.host.jqxFileUpload('cancelFile', fileIndex);
     }
-    /**
-     * @return {?}
-     */
     cancelAll() {
         this.host.jqxFileUpload('cancelAll');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxFileUpload('destroy');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxFileUpload('render');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxFileUpload('refresh');
     }
-    /**
-     * @param {?} fileIndex
-     * @return {?}
-     */
     uploadFile(fileIndex) {
         this.host.jqxFileUpload('uploadFile', fileIndex);
     }
-    /**
-     * @return {?}
-     */
     uploadAll() {
         this.host.jqxFileUpload('uploadAll');
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('remove', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRemove.emit(eventData); }));
-        this.host.on('select', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSelect.emit(eventData); }));
-        this.host.on('uploadStart', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onUploadStart.emit(eventData); }));
-        this.host.on('uploadEnd', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onUploadEnd.emit(eventData); }));
+        this.host.on('remove', (eventData) => { this.onRemove.emit(eventData); });
+        this.host.on('select', (eventData) => { this.onSelect.emit(eventData); });
+        this.host.on('uploadStart', (eventData) => { this.onUploadStart.emit(eventData); });
+        this.host.on('uploadEnd', (eventData) => { this.onUploadEnd.emit(eventData); });
     }
-} //jqxFileUploadComponent
-jqxFileUploadComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxFileUpload',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxFileUploadComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxFileUploadComponent.propDecorators = {
-    attrAutoUpload: [{ type: Input, args: ['autoUpload',] }],
-    attrAccept: [{ type: Input, args: ['accept',] }],
-    attrBrowseTemplate: [{ type: Input, args: ['browseTemplate',] }],
-    attrCancelTemplate: [{ type: Input, args: ['cancelTemplate',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrFileInputName: [{ type: Input, args: ['fileInputName',] }],
-    attrLocalization: [{ type: Input, args: ['localization',] }],
-    attrMultipleFilesUpload: [{ type: Input, args: ['multipleFilesUpload',] }],
-    attrRenderFiles: [{ type: Input, args: ['renderFiles',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrUploadUrl: [{ type: Input, args: ['uploadUrl',] }],
-    attrUploadTemplate: [{ type: Input, args: ['uploadTemplate',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onRemove: [{ type: Output }],
-    onSelect: [{ type: Output }],
-    onUploadStart: [{ type: Output }],
-    onUploadEnd: [{ type: Output }]
+}; //jqxFileUploadComponent
+__decorate([
+    Input('autoUpload'),
+    __metadata("design:type", Boolean)
+], jqxFileUploadComponent.prototype, "attrAutoUpload", void 0);
+__decorate([
+    Input('accept'),
+    __metadata("design:type", String)
+], jqxFileUploadComponent.prototype, "attrAccept", void 0);
+__decorate([
+    Input('browseTemplate'),
+    __metadata("design:type", String)
+], jqxFileUploadComponent.prototype, "attrBrowseTemplate", void 0);
+__decorate([
+    Input('cancelTemplate'),
+    __metadata("design:type", String)
+], jqxFileUploadComponent.prototype, "attrCancelTemplate", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxFileUploadComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('fileInputName'),
+    __metadata("design:type", String)
+], jqxFileUploadComponent.prototype, "attrFileInputName", void 0);
+__decorate([
+    Input('localization'),
+    __metadata("design:type", Object)
+], jqxFileUploadComponent.prototype, "attrLocalization", void 0);
+__decorate([
+    Input('multipleFilesUpload'),
+    __metadata("design:type", Boolean)
+], jqxFileUploadComponent.prototype, "attrMultipleFilesUpload", void 0);
+__decorate([
+    Input('renderFiles'),
+    __metadata("design:type", Function)
+], jqxFileUploadComponent.prototype, "attrRenderFiles", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxFileUploadComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxFileUploadComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('uploadUrl'),
+    __metadata("design:type", String)
+], jqxFileUploadComponent.prototype, "attrUploadUrl", void 0);
+__decorate([
+    Input('uploadTemplate'),
+    __metadata("design:type", String)
+], jqxFileUploadComponent.prototype, "attrUploadTemplate", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxFileUploadComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxFileUploadComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxFileUploadComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxFileUploadComponent.prototype, "onRemove", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxFileUploadComponent.prototype, "onSelect", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxFileUploadComponent.prototype, "onUploadStart", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxFileUploadComponent.prototype, "onUploadEnd", void 0);
+jqxFileUploadComponent = __decorate([
+    Component({
+        selector: 'jqxFileUpload',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxFileUploadComponent);
+
+let jqxFileUploadModule = class jqxFileUploadModule {
 };
+jqxFileUploadModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxFileUploadComponent],
+        exports: [jqxFileUploadComponent]
+    })
+], jqxFileUploadModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxFileUploadModule {
-}
-jqxFileUploadModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxFileUploadComponent],
-                exports: [jqxFileUploadComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxFileUploadComponent, jqxFileUploadModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxfileupload.js.map

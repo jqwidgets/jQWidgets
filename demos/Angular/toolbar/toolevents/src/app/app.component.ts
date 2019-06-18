@@ -8,8 +8,8 @@ import { jqxToolBarComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxt
 })
 
 export class AppComponent {
-    @ViewChild('myToolbar') myToolBar: jqxToolBarComponent;
-    @ViewChild('shape') shape: ElementRef;
+    @ViewChild('myToolbar', {static: false}) myToolBar: jqxToolBarComponent;
+    @ViewChild('shape', {static: false}) shape: ElementRef;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 700) {

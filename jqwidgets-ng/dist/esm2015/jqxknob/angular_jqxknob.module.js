@@ -1,19 +1,17 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdraw from '../../jqwidgets-scripts/jqwidgets/jqxdraw';
 import * as jqxknob from '../../jqwidgets-scripts/jqwidgets/jqxknob';
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+import * as tslib_1 from "tslib";
 import { NgModule } from '@angular/core';
 import { jqxKnobComponent } from './angular_jqxknob';
-export class jqxKnobModule {
-}
-jqxKnobModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxKnobComponent],
-                exports: [jqxKnobComponent]
-            },] }
-];
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhcl9qcXhrbm9iLm1vZHVsZS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2pxd2lkZ2V0cy1uZy9qcXhrbm9iLyIsInNvdXJjZXMiOlsiYW5ndWxhcl9qcXhrbm9iLm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQ0EsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUV6QyxPQUFPLEVBQUUsZ0JBQWdCLEVBQUUsTUFBTSxtQkFBbUIsQ0FBQztBQVNyRCxNQUFNLE9BQU8sYUFBYTs7O1lBUHpCLFFBQVEsU0FBQztnQkFDUixPQUFPLEVBQUUsRUFFUjtnQkFDRCxZQUFZLEVBQUUsQ0FBQyxnQkFBZ0IsQ0FBQztnQkFDaEMsT0FBTyxFQUFFLENBQUMsZ0JBQWdCLENBQUM7YUFDNUIiLCJzb3VyY2VzQ29udGVudCI6WyJcbmltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5cbmltcG9ydCB7IGpxeEtub2JDb21wb25lbnQgfSBmcm9tICcuL2FuZ3VsYXJfanF4a25vYic7XG5cbkBOZ01vZHVsZSh7XG4gIGltcG9ydHM6IFtcbiAgXG4gIF0sXG4gIGRlY2xhcmF0aW9uczogW2pxeEtub2JDb21wb25lbnRdLFxuICBleHBvcnRzOiBbanF4S25vYkNvbXBvbmVudF1cbn0pXG5leHBvcnQgY2xhc3MganF4S25vYk1vZHVsZSB7IH1cblxuIl19
+let jqxKnobModule = class jqxKnobModule {
+};
+jqxKnobModule = tslib_1.__decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxKnobComponent],
+        exports: [jqxKnobComponent]
+    })
+], jqxKnobModule);
+export { jqxKnobModule };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhcl9qcXhrbm9iLm1vZHVsZS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2pxd2lkZ2V0cy1uZy9qcXhrbm9iLyIsInNvdXJjZXMiOlsiYW5ndWxhcl9qcXhrbm9iLm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUV6QyxPQUFPLEVBQUUsZ0JBQWdCLEVBQUUsTUFBTSxtQkFBbUIsQ0FBQztBQVNyRCxJQUFhLGFBQWEsR0FBMUIsTUFBYSxhQUFhO0NBQUksQ0FBQTtBQUFqQixhQUFhO0lBUHpCLFFBQVEsQ0FBQztRQUNSLE9BQU8sRUFBRSxFQUVSO1FBQ0QsWUFBWSxFQUFFLENBQUMsZ0JBQWdCLENBQUM7UUFDaEMsT0FBTyxFQUFFLENBQUMsZ0JBQWdCLENBQUM7S0FDNUIsQ0FBQztHQUNXLGFBQWEsQ0FBSTtTQUFqQixhQUFhIiwic291cmNlc0NvbnRlbnQiOlsiXG5pbXBvcnQgeyBOZ01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuXG5pbXBvcnQgeyBqcXhLbm9iQ29tcG9uZW50IH0gZnJvbSAnLi9hbmd1bGFyX2pxeGtub2InO1xuXG5ATmdNb2R1bGUoe1xuICBpbXBvcnRzOiBbXG4gIFxuICBdLFxuICBkZWNsYXJhdGlvbnM6IFtqcXhLbm9iQ29tcG9uZW50XSxcbiAgZXhwb3J0czogW2pxeEtub2JDb21wb25lbnRdXG59KVxuZXhwb3J0IGNsYXNzIGpxeEtub2JNb2R1bGUgeyB9XG5cbiJdfQ==

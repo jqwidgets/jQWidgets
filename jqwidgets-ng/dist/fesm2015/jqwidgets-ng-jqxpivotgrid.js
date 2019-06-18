@@ -12,16 +12,11 @@ import * as jqxdropdownlist from '../../jqwidgets-scripts/jqwidgets/jqxdropdownl
 import * as jqxpivot from '../../jqwidgets-scripts/jqwidgets/jqxpivot';
 import * as jqxpivotgrid from '../../jqwidgets-scripts/jqwidgets/jqxpivotgrid';
 import * as jqxpivotdesigner from '../../jqwidgets-scripts/jqwidgets/jqxpivotdesigner';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxPivotGridComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxPivotGridComponent = class jqxPivotGridComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['source', 'localization', 'scrollBarsEnabled', 'selectionEnabled', 'multipleSelectionEnabled', 'treeStyleRows', 'autoResize', 'itemsRenderer', 'cellsRenderer'];
@@ -44,32 +39,20 @@ class jqxPivotGridComponent {
         this.onPivotitemclick = new EventEmitter();
         this.onPivotitemdblclick = new EventEmitter();
         this.elementRef = containerElement;
-        JQXLite(window).resize((/**
-         * @return {?}
-         */
-        () => {
+        JQXLite(window).resize(() => {
             this.__updateRect__();
-        }));
+        });
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -89,11 +72,6 @@ class jqxPivotGridComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -108,14 +86,9 @@ class jqxPivotGridComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -123,34 +96,18 @@ class jqxPivotGridComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -168,33 +125,18 @@ class jqxPivotGridComponent {
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxPivotGrid', options);
         this.__updateRect__();
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
         this.refresh();
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxPivotGrid('setOptions', options);
     }
     // jqxPivotGridComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     source(arg) {
         if (arg !== undefined) {
             this.host.jqxPivotGrid('source', arg);
@@ -203,10 +145,6 @@ class jqxPivotGridComponent {
             return this.host.jqxPivotGrid('source');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     localization(arg) {
         if (arg !== undefined) {
             this.host.jqxPivotGrid('localization', arg);
@@ -215,10 +153,6 @@ class jqxPivotGridComponent {
             return this.host.jqxPivotGrid('localization');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scrollBarsEnabled(arg) {
         if (arg !== undefined) {
             this.host.jqxPivotGrid('scrollBarsEnabled', arg);
@@ -227,10 +161,6 @@ class jqxPivotGridComponent {
             return this.host.jqxPivotGrid('scrollBarsEnabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     selectionEnabled(arg) {
         if (arg !== undefined) {
             this.host.jqxPivotGrid('selectionEnabled', arg);
@@ -239,10 +169,6 @@ class jqxPivotGridComponent {
             return this.host.jqxPivotGrid('selectionEnabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     multipleSelectionEnabled(arg) {
         if (arg !== undefined) {
             this.host.jqxPivotGrid('multipleSelectionEnabled', arg);
@@ -251,10 +177,6 @@ class jqxPivotGridComponent {
             return this.host.jqxPivotGrid('multipleSelectionEnabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     treeStyleRows(arg) {
         if (arg !== undefined) {
             this.host.jqxPivotGrid('treeStyleRows', arg);
@@ -263,10 +185,6 @@ class jqxPivotGridComponent {
             return this.host.jqxPivotGrid('treeStyleRows');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoResize(arg) {
         if (arg !== undefined) {
             this.host.jqxPivotGrid('autoResize', arg);
@@ -275,10 +193,6 @@ class jqxPivotGridComponent {
             return this.host.jqxPivotGrid('autoResize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     itemsRenderer(arg) {
         if (arg !== undefined) {
             this.host.jqxPivotGrid('itemsRenderer', arg);
@@ -287,10 +201,6 @@ class jqxPivotGridComponent {
             return this.host.jqxPivotGrid('itemsRenderer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     cellsRenderer(arg) {
         if (arg !== undefined) {
             this.host.jqxPivotGrid('cellsRenderer', arg);
@@ -300,193 +210,178 @@ class jqxPivotGridComponent {
         }
     }
     // jqxPivotGridComponent functions
-    /**
-     * @return {?}
-     */
     getInstance() {
         return this.host.jqxPivotGrid('getInstance');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxPivotGrid('refresh');
     }
-    /**
-     * @return {?}
-     */
     getPivotRows() {
         return this.host.jqxPivotGrid('getPivotRows');
     }
-    /**
-     * @return {?}
-     */
     getPivotColumns() {
         return this.host.jqxPivotGrid('getPivotColumns');
     }
-    /**
-     * @return {?}
-     */
     getPivotCells() {
         return this.host.jqxPivotGrid('getPivotCells');
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('pivotitemexpanding', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotitemexpanding.emit(eventData); }));
-        this.host.on('pivotitemexpanded', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotitemexpanded.emit(eventData); }));
-        this.host.on('pivotitemcollapsing', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotitemcollapsing.emit(eventData); }));
-        this.host.on('pivotitemcollapsed', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotitemcollapsed.emit(eventData); }));
-        this.host.on('sortchanging', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSortchanging.emit(eventData); }));
-        this.host.on('sortchanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSortchanged.emit(eventData); }));
-        this.host.on('sortremoving', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSortremoving.emit(eventData); }));
-        this.host.on('sortremoved', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSortremoved.emit(eventData); }));
-        this.host.on('pivotitemselectionchanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotitemselectionchanged.emit(eventData); }));
-        this.host.on('pivotcellmousedown', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotcellmousedown.emit(eventData); }));
-        this.host.on('pivotcellmouseup', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotcellmouseup.emit(eventData); }));
-        this.host.on('pivotcellclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotcellclick.emit(eventData); }));
-        this.host.on('pivotcelldblclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotcelldblclick.emit(eventData); }));
-        this.host.on('pivotitemmousedown', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotitemmousedown.emit(eventData); }));
-        this.host.on('pivotitemmouseup', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotitemmouseup.emit(eventData); }));
-        this.host.on('pivotitemclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotitemclick.emit(eventData); }));
-        this.host.on('pivotitemdblclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPivotitemdblclick.emit(eventData); }));
+        this.host.on('pivotitemexpanding', (eventData) => { this.onPivotitemexpanding.emit(eventData); });
+        this.host.on('pivotitemexpanded', (eventData) => { this.onPivotitemexpanded.emit(eventData); });
+        this.host.on('pivotitemcollapsing', (eventData) => { this.onPivotitemcollapsing.emit(eventData); });
+        this.host.on('pivotitemcollapsed', (eventData) => { this.onPivotitemcollapsed.emit(eventData); });
+        this.host.on('sortchanging', (eventData) => { this.onSortchanging.emit(eventData); });
+        this.host.on('sortchanged', (eventData) => { this.onSortchanged.emit(eventData); });
+        this.host.on('sortremoving', (eventData) => { this.onSortremoving.emit(eventData); });
+        this.host.on('sortremoved', (eventData) => { this.onSortremoved.emit(eventData); });
+        this.host.on('pivotitemselectionchanged', (eventData) => { this.onPivotitemselectionchanged.emit(eventData); });
+        this.host.on('pivotcellmousedown', (eventData) => { this.onPivotcellmousedown.emit(eventData); });
+        this.host.on('pivotcellmouseup', (eventData) => { this.onPivotcellmouseup.emit(eventData); });
+        this.host.on('pivotcellclick', (eventData) => { this.onPivotcellclick.emit(eventData); });
+        this.host.on('pivotcelldblclick', (eventData) => { this.onPivotcelldblclick.emit(eventData); });
+        this.host.on('pivotitemmousedown', (eventData) => { this.onPivotitemmousedown.emit(eventData); });
+        this.host.on('pivotitemmouseup', (eventData) => { this.onPivotitemmouseup.emit(eventData); });
+        this.host.on('pivotitemclick', (eventData) => { this.onPivotitemclick.emit(eventData); });
+        this.host.on('pivotitemdblclick', (eventData) => { this.onPivotitemdblclick.emit(eventData); });
     }
-} //jqxPivotGridComponent
-jqxPivotGridComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxPivotGrid',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxPivotGridComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxPivotGridComponent.propDecorators = {
-    attrSource: [{ type: Input, args: ['source',] }],
-    attrLocalization: [{ type: Input, args: ['localization',] }],
-    attrScrollBarsEnabled: [{ type: Input, args: ['scrollBarsEnabled',] }],
-    attrSelectionEnabled: [{ type: Input, args: ['selectionEnabled',] }],
-    attrMultipleSelectionEnabled: [{ type: Input, args: ['multipleSelectionEnabled',] }],
-    attrTreeStyleRows: [{ type: Input, args: ['treeStyleRows',] }],
-    attrAutoResize: [{ type: Input, args: ['autoResize',] }],
-    attrItemsRenderer: [{ type: Input, args: ['itemsRenderer',] }],
-    attrCellsRenderer: [{ type: Input, args: ['cellsRenderer',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onPivotitemexpanding: [{ type: Output }],
-    onPivotitemexpanded: [{ type: Output }],
-    onPivotitemcollapsing: [{ type: Output }],
-    onPivotitemcollapsed: [{ type: Output }],
-    onSortchanging: [{ type: Output }],
-    onSortchanged: [{ type: Output }],
-    onSortremoving: [{ type: Output }],
-    onSortremoved: [{ type: Output }],
-    onPivotitemselectionchanged: [{ type: Output }],
-    onPivotcellmousedown: [{ type: Output }],
-    onPivotcellmouseup: [{ type: Output }],
-    onPivotcellclick: [{ type: Output }],
-    onPivotcelldblclick: [{ type: Output }],
-    onPivotitemmousedown: [{ type: Output }],
-    onPivotitemmouseup: [{ type: Output }],
-    onPivotitemclick: [{ type: Output }],
-    onPivotitemdblclick: [{ type: Output }]
+}; //jqxPivotGridComponent
+__decorate([
+    Input('source'),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "attrSource", void 0);
+__decorate([
+    Input('localization'),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "attrLocalization", void 0);
+__decorate([
+    Input('scrollBarsEnabled'),
+    __metadata("design:type", Boolean)
+], jqxPivotGridComponent.prototype, "attrScrollBarsEnabled", void 0);
+__decorate([
+    Input('selectionEnabled'),
+    __metadata("design:type", Boolean)
+], jqxPivotGridComponent.prototype, "attrSelectionEnabled", void 0);
+__decorate([
+    Input('multipleSelectionEnabled'),
+    __metadata("design:type", Boolean)
+], jqxPivotGridComponent.prototype, "attrMultipleSelectionEnabled", void 0);
+__decorate([
+    Input('treeStyleRows'),
+    __metadata("design:type", Boolean)
+], jqxPivotGridComponent.prototype, "attrTreeStyleRows", void 0);
+__decorate([
+    Input('autoResize'),
+    __metadata("design:type", Boolean)
+], jqxPivotGridComponent.prototype, "attrAutoResize", void 0);
+__decorate([
+    Input('itemsRenderer'),
+    __metadata("design:type", Function)
+], jqxPivotGridComponent.prototype, "attrItemsRenderer", void 0);
+__decorate([
+    Input('cellsRenderer'),
+    __metadata("design:type", Function)
+], jqxPivotGridComponent.prototype, "attrCellsRenderer", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxPivotGridComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotitemexpanding", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotitemexpanded", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotitemcollapsing", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotitemcollapsed", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onSortchanging", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onSortchanged", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onSortremoving", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onSortremoved", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotitemselectionchanged", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotcellmousedown", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotcellmouseup", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotcellclick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotcelldblclick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotitemmousedown", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotitemmouseup", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotitemclick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxPivotGridComponent.prototype, "onPivotitemdblclick", void 0);
+jqxPivotGridComponent = __decorate([
+    Component({
+        selector: 'jqxPivotGrid',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxPivotGridComponent);
+
+let jqxPivotGridModule = class jqxPivotGridModule {
 };
+jqxPivotGridModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxPivotGridComponent],
+        exports: [jqxPivotGridComponent]
+    })
+], jqxPivotGridModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxPivotGridModule {
-}
-jqxPivotGridModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxPivotGridComponent],
-                exports: [jqxPivotGridComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxPivotGridComponent, jqxPivotGridModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxpivotgrid.js.map

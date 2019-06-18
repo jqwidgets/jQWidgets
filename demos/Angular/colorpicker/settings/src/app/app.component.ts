@@ -8,8 +8,8 @@ import { jqxColorPickerComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_
 })
 
 export class AppComponent {
-    @ViewChild('myColorPicker') myColorPicker: jqxColorPickerComponent;
-	@ViewChild('colorLog') colorLog: ElementRef;
+    @ViewChild('myColorPicker', {static: false}) myColorPicker: jqxColorPickerComponent;
+	@ViewChild('colorLog', {static: false}) colorLog: ElementRef;
 
     colorChanged(event: any): void {
         this.colorLog.nativeElement.innerHTML = `<div>Color: #${event.args.color.hex}</div>`;

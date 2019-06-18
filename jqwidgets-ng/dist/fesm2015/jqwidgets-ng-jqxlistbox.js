@@ -4,31 +4,19 @@ import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxscrollbar from '../../jqwidgets-scripts/jqwidgets/jqxscrollbar';
 import * as jqxlistbox from '../../jqwidgets-scripts/jqwidgets/jqxlistbox';
 import * as jqxdragdrop from '../../jqwidgets-scripts/jqwidgets/jqxdragdrop';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { forwardRef, EventEmitter, Input, Output, Component, ChangeDetectionStrategy, ElementRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-const noop = (/**
- * @return {?}
- */
-() => { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+const noop = () => { };
+const ɵ0 = noop;
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    () => jqxListBoxComponent)),
+    useExisting: forwardRef(() => jqxListBoxComponent),
     multi: true
 };
-class jqxListBoxComponent {
-    /**
-     * @param {?} containerElement
-     */
+let jqxListBoxComponent = class jqxListBoxComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['autoHeight', 'allowDrag', 'allowDrop', 'checkboxes', 'disabled', 'displayMember', 'dropAction', 'dragStart', 'dragEnd', 'enableHover', 'enableSelection', 'equalItemsWidth', 'filterable', 'filterHeight', 'filterDelay', 'filterPlaceHolder', 'height', 'hasThreeStates', 'itemHeight', 'incrementalSearch', 'incrementalSearchDelay', 'multiple', 'multipleextended', 'renderer', 'rendered', 'rtl', 'selectedIndex', 'selectedIndexes', 'source', 'scrollBarSize', 'searchMode', 'theme', 'valueMember', 'width'];
@@ -44,21 +32,12 @@ class jqxListBoxComponent {
         this.onUnselect = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
     }
     ;
-    /**
-     * @return {?}
-     */
     ngAfterViewInit() {
-        /** @type {?} */
         let children = JQXLite(this.elementRef.nativeElement.children).find('li');
-        /** @type {?} */
         let html = '';
-        /** @type {?} */
         let options = {};
         if (children.length > 0) {
             this.container = document.createElement('div');
@@ -66,7 +45,6 @@ class jqxListBoxComponent {
             this.container.appendChild(this.elementRef.nativeElement.firstChild);
             this.elementRef.nativeElement.innerHTML = html;
             this.content = html;
-            /** @type {?} */
             let result = JQXLite.jqx.parseSourceTag(this.container);
             options['source'] = result.items;
         }
@@ -75,30 +53,20 @@ class jqxListBoxComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     ngAfterViewChecked() {
         if (this.container) {
             if (this.content !== this.container.innerHTML) {
                 this.content = this.container.innerHTML;
-                /** @type {?} */
                 let result = JQXLite.jqx.parseSourceTag(this.container);
                 this.host.jqxListBox({ source: result.items });
             }
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -118,11 +86,6 @@ class jqxListBoxComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -137,14 +100,9 @@ class jqxListBoxComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -152,34 +110,18 @@ class jqxListBoxComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -196,55 +138,28 @@ class jqxListBoxComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxListBox', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     writeValue(value) {
         if (this.widgetObject) {
             this.onChangeCallback(this.host.val());
         }
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnChange(fn) {
         this.onChangeCallback = fn;
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnTouched(fn) {
         this.onTouchedCallback = fn;
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxListBox('setOptions', options);
     }
     // jqxListBoxComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoHeight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -256,10 +171,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('autoHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     allowDrag(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -271,10 +182,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('allowDrag');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     allowDrop(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -286,10 +193,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('allowDrop');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     checkboxes(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -301,10 +204,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('checkboxes');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -316,10 +215,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     displayMember(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -331,10 +226,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('displayMember');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dropAction(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -346,10 +237,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('dropAction');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dragStart(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -361,10 +248,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('dragStart');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dragEnd(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -376,10 +259,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('dragEnd');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableHover(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -391,10 +270,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('enableHover');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableSelection(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -406,10 +281,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('enableSelection');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     equalItemsWidth(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -421,10 +292,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('equalItemsWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     filterable(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -436,10 +303,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('filterable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     filterHeight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -451,10 +314,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('filterHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     filterDelay(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -466,10 +325,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('filterDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     filterPlaceHolder(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -481,10 +336,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('filterPlaceHolder');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -496,10 +347,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     hasThreeStates(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -511,10 +358,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('hasThreeStates');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     itemHeight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -526,10 +369,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('itemHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     incrementalSearch(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -541,10 +380,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('incrementalSearch');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     incrementalSearchDelay(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -556,10 +391,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('incrementalSearchDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     multiple(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -571,10 +402,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('multiple');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     multipleextended(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -586,10 +413,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('multipleextended');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     renderer(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -601,10 +424,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('renderer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rendered(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -616,10 +435,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('rendered');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -631,10 +446,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     selectedIndex(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -646,10 +457,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('selectedIndex');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     selectedIndexes(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -661,10 +468,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('selectedIndexes');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     source(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -676,10 +479,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('source');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scrollBarSize(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -691,10 +490,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('scrollBarSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     searchMode(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -706,10 +501,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('searchMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -721,10 +512,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     valueMember(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -736,10 +523,6 @@ class jqxListBoxComponent {
             return this.host.jqxListBox('valueMember');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -752,406 +535,252 @@ class jqxListBoxComponent {
         }
     }
     // jqxListBoxComponent functions
-    /**
-     * @param {?} Item
-     * @return {?}
-     */
     addItem(Item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxListBox('addItem', Item);
     }
-    /**
-     * @return {?}
-     */
     beginUpdate() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('beginUpdate');
     }
-    /**
-     * @return {?}
-     */
     clear() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('clear');
     }
-    /**
-     * @return {?}
-     */
     clearSelection() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('clearSelection');
     }
-    /**
-     * @param {?} Index
-     * @return {?}
-     */
     checkIndex(Index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('checkIndex', Index);
     }
-    /**
-     * @param {?} Item
-     * @return {?}
-     */
     checkItem(Item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('checkItem', Item);
     }
-    /**
-     * @return {?}
-     */
     checkAll() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('checkAll');
     }
-    /**
-     * @return {?}
-     */
     clearFilter() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('clearFilter');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('destroy');
     }
-    /**
-     * @param {?} Item
-     * @return {?}
-     */
     disableItem(Item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('disableItem', Item);
     }
-    /**
-     * @param {?} Index
-     * @return {?}
-     */
     disableAt(Index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('disableAt', Index);
     }
-    /**
-     * @param {?} Item
-     * @return {?}
-     */
     enableItem(Item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('enableItem', Item);
     }
-    /**
-     * @param {?} Index
-     * @return {?}
-     */
     enableAt(Index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('enableAt', Index);
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     ensureVisible(item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('ensureVisible', item);
     }
-    /**
-     * @return {?}
-     */
     endUpdate() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('endUpdate');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('focus');
     }
-    /**
-     * @return {?}
-     */
     getItems() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxListBox('getItems');
     }
-    /**
-     * @return {?}
-     */
     getSelectedItems() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxListBox('getSelectedItems');
     }
-    /**
-     * @return {?}
-     */
     getCheckedItems() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxListBox('getCheckedItems');
     }
-    /**
-     * @param {?} Index
-     * @return {?}
-     */
     getItem(Index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxListBox('getItem', Index);
     }
-    /**
-     * @param {?} Item
-     * @return {?}
-     */
     getItemByValue(Item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxListBox('getItemByValue', Item);
     }
-    /**
-     * @return {?}
-     */
     getSelectedItem() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxListBox('getSelectedItem');
     }
-    /**
-     * @return {?}
-     */
     getSelectedIndex() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxListBox('getSelectedIndex');
     }
-    /**
-     * @param {?} Item
-     * @param {?} Index
-     * @return {?}
-     */
     insertAt(Item, Index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('insertAt', Item, Index);
     }
-    /**
-     * @return {?}
-     */
     invalidate() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('invalidate');
     }
-    /**
-     * @param {?} Item
-     * @return {?}
-     */
     indeterminateItem(Item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('indeterminateItem', Item);
     }
-    /**
-     * @param {?} Index
-     * @return {?}
-     */
     indeterminateIndex(Index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('indeterminateIndex', Index);
     }
-    /**
-     * @param {?} selector
-     * @return {?}
-     */
     loadFromSelect(selector) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('loadFromSelect', selector);
     }
-    /**
-     * @param {?} Item
-     * @return {?}
-     */
     removeItem(Item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('removeItem', Item);
     }
-    /**
-     * @param {?} Index
-     * @return {?}
-     */
     removeAt(Index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('removeAt', Index);
     }
-    /**
-     * @return {?}
-     */
     render() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('render');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('refresh');
     }
-    /**
-     * @param {?} Item
-     * @return {?}
-     */
     selectItem(Item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('selectItem', Item);
     }
-    /**
-     * @param {?} Index
-     * @return {?}
-     */
     selectIndex(Index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('selectIndex', Index);
     }
-    /**
-     * @param {?} Item
-     * @param {?} Value
-     * @return {?}
-     */
     updateItem(Item, Value) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('updateItem', Item, Value);
     }
-    /**
-     * @param {?} item
-     * @param {?} index
-     * @return {?}
-     */
     updateAt(item, index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('updateAt', item, index);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     unselectIndex(index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('unselectIndex', index);
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     unselectItem(item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('unselectItem', item);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     uncheckIndex(index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('uncheckIndex', index);
     }
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     uncheckItem(item) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('uncheckItem', item);
     }
-    /**
-     * @return {?}
-     */
     uncheckAll() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxListBox('uncheckAll');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxListBox('val', value);
@@ -1161,131 +790,210 @@ class jqxListBoxComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('bindingComplete', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onBindingComplete.emit(eventData); }));
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); if (eventData.args)
-            this.onChangeCallback(eventData.args.item.value); }));
-        this.host.on('checkChange', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCheckChange.emit(eventData); }));
-        this.host.on('dragStart', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onDragStart.emit(eventData); }));
-        this.host.on('dragEnd', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onDragEnd.emit(eventData); }));
-        this.host.on('select', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSelect.emit(eventData); }));
-        this.host.on('unselect', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onUnselect.emit(eventData); }));
+        this.host.on('bindingComplete', (eventData) => { this.onBindingComplete.emit(eventData); });
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); if (eventData.args)
+            this.onChangeCallback(eventData.args.item.value); });
+        this.host.on('checkChange', (eventData) => { this.onCheckChange.emit(eventData); });
+        this.host.on('dragStart', (eventData) => { this.onDragStart.emit(eventData); });
+        this.host.on('dragEnd', (eventData) => { this.onDragEnd.emit(eventData); });
+        this.host.on('select', (eventData) => { this.onSelect.emit(eventData); });
+        this.host.on('unselect', (eventData) => { this.onUnselect.emit(eventData); });
     }
-} //jqxListBoxComponent
-jqxListBoxComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxListBox',
-                template: '<div><ng-content></ng-content></div>',
-                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                changeDetection: ChangeDetectionStrategy.OnPush
-            }] }
-];
-/** @nocollapse */
-jqxListBoxComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxListBoxComponent.propDecorators = {
-    attrAutoHeight: [{ type: Input, args: ['autoHeight',] }],
-    attrAllowDrag: [{ type: Input, args: ['allowDrag',] }],
-    attrAllowDrop: [{ type: Input, args: ['allowDrop',] }],
-    attrCheckboxes: [{ type: Input, args: ['checkboxes',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrDisplayMember: [{ type: Input, args: ['displayMember',] }],
-    attrDropAction: [{ type: Input, args: ['dropAction',] }],
-    attrDragStart: [{ type: Input, args: ['dragStart',] }],
-    attrDragEnd: [{ type: Input, args: ['dragEnd',] }],
-    attrEnableHover: [{ type: Input, args: ['enableHover',] }],
-    attrEnableSelection: [{ type: Input, args: ['enableSelection',] }],
-    attrEqualItemsWidth: [{ type: Input, args: ['equalItemsWidth',] }],
-    attrFilterable: [{ type: Input, args: ['filterable',] }],
-    attrFilterHeight: [{ type: Input, args: ['filterHeight',] }],
-    attrFilterDelay: [{ type: Input, args: ['filterDelay',] }],
-    attrFilterPlaceHolder: [{ type: Input, args: ['filterPlaceHolder',] }],
-    attrHasThreeStates: [{ type: Input, args: ['hasThreeStates',] }],
-    attrItemHeight: [{ type: Input, args: ['itemHeight',] }],
-    attrIncrementalSearch: [{ type: Input, args: ['incrementalSearch',] }],
-    attrIncrementalSearchDelay: [{ type: Input, args: ['incrementalSearchDelay',] }],
-    attrMultiple: [{ type: Input, args: ['multiple',] }],
-    attrMultipleextended: [{ type: Input, args: ['multipleextended',] }],
-    attrRenderer: [{ type: Input, args: ['renderer',] }],
-    attrRendered: [{ type: Input, args: ['rendered',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrSelectedIndex: [{ type: Input, args: ['selectedIndex',] }],
-    attrSelectedIndexes: [{ type: Input, args: ['selectedIndexes',] }],
-    attrSource: [{ type: Input, args: ['source',] }],
-    attrScrollBarSize: [{ type: Input, args: ['scrollBarSize',] }],
-    attrSearchMode: [{ type: Input, args: ['searchMode',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrValueMember: [{ type: Input, args: ['valueMember',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onBindingComplete: [{ type: Output }],
-    onChange: [{ type: Output }],
-    onCheckChange: [{ type: Output }],
-    onDragStart: [{ type: Output }],
-    onDragEnd: [{ type: Output }],
-    onSelect: [{ type: Output }],
-    onUnselect: [{ type: Output }]
+}; //jqxListBoxComponent
+__decorate([
+    Input('autoHeight'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrAutoHeight", void 0);
+__decorate([
+    Input('allowDrag'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrAllowDrag", void 0);
+__decorate([
+    Input('allowDrop'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrAllowDrop", void 0);
+__decorate([
+    Input('checkboxes'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrCheckboxes", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('displayMember'),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "attrDisplayMember", void 0);
+__decorate([
+    Input('dropAction'),
+    __metadata("design:type", String)
+], jqxListBoxComponent.prototype, "attrDropAction", void 0);
+__decorate([
+    Input('dragStart'),
+    __metadata("design:type", Function)
+], jqxListBoxComponent.prototype, "attrDragStart", void 0);
+__decorate([
+    Input('dragEnd'),
+    __metadata("design:type", Function)
+], jqxListBoxComponent.prototype, "attrDragEnd", void 0);
+__decorate([
+    Input('enableHover'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrEnableHover", void 0);
+__decorate([
+    Input('enableSelection'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrEnableSelection", void 0);
+__decorate([
+    Input('equalItemsWidth'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrEqualItemsWidth", void 0);
+__decorate([
+    Input('filterable'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrFilterable", void 0);
+__decorate([
+    Input('filterHeight'),
+    __metadata("design:type", Number)
+], jqxListBoxComponent.prototype, "attrFilterHeight", void 0);
+__decorate([
+    Input('filterDelay'),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "attrFilterDelay", void 0);
+__decorate([
+    Input('filterPlaceHolder'),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "attrFilterPlaceHolder", void 0);
+__decorate([
+    Input('hasThreeStates'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrHasThreeStates", void 0);
+__decorate([
+    Input('itemHeight'),
+    __metadata("design:type", Number)
+], jqxListBoxComponent.prototype, "attrItemHeight", void 0);
+__decorate([
+    Input('incrementalSearch'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrIncrementalSearch", void 0);
+__decorate([
+    Input('incrementalSearchDelay'),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "attrIncrementalSearchDelay", void 0);
+__decorate([
+    Input('multiple'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrMultiple", void 0);
+__decorate([
+    Input('multipleextended'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrMultipleextended", void 0);
+__decorate([
+    Input('renderer'),
+    __metadata("design:type", Function)
+], jqxListBoxComponent.prototype, "attrRenderer", void 0);
+__decorate([
+    Input('rendered'),
+    __metadata("design:type", Function)
+], jqxListBoxComponent.prototype, "attrRendered", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('selectedIndex'),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "attrSelectedIndex", void 0);
+__decorate([
+    Input('selectedIndexes'),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "attrSelectedIndexes", void 0);
+__decorate([
+    Input('source'),
+    __metadata("design:type", Array)
+], jqxListBoxComponent.prototype, "attrSource", void 0);
+__decorate([
+    Input('scrollBarSize'),
+    __metadata("design:type", Number)
+], jqxListBoxComponent.prototype, "attrScrollBarSize", void 0);
+__decorate([
+    Input('searchMode'),
+    __metadata("design:type", String)
+], jqxListBoxComponent.prototype, "attrSearchMode", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxListBoxComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('valueMember'),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "attrValueMember", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxListBoxComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "onBindingComplete", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "onChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "onCheckChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "onDragStart", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "onDragEnd", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "onSelect", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxListBoxComponent.prototype, "onUnselect", void 0);
+jqxListBoxComponent = __decorate([
+    Component({
+        selector: 'jqxListBox',
+        template: '<div><ng-content></ng-content></div>',
+        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+        changeDetection: ChangeDetectionStrategy.OnPush
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxListBoxComponent);
+
+let jqxListBoxModule = class jqxListBoxModule {
 };
+jqxListBoxModule = __decorate([
+    NgModule({
+        imports: [
+            FormsModule
+        ],
+        declarations: [jqxListBoxComponent],
+        exports: [jqxListBoxComponent]
+    })
+], jqxListBoxModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxListBoxModule {
-}
-jqxListBoxModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    FormsModule
-                ],
-                declarations: [jqxListBoxComponent],
-                exports: [jqxListBoxComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxListBoxComponent, jqxListBoxModule };
-
+export { jqxListBoxComponent, jqxListBoxModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxlistbox.js.map

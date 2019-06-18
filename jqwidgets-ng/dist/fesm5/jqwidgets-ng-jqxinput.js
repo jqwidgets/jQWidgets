@@ -1,26 +1,16 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxinput from '../../jqwidgets-scripts/jqwidgets/jqxinput';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { forwardRef, Input, Output, Component, ChangeDetectionStrategy, ElementRef, EventEmitter, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-var noop = (/**
- * @return {?}
- */
-function () { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+var noop = function () { };
+var ɵ0 = noop;
 var CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    function () { return jqxInputComponent; })),
+    useExisting: forwardRef(function () { return jqxInputComponent; }),
     multi: true
 };
 var jqxInputComponent = /** @class */ (function () {
@@ -37,31 +27,15 @@ var jqxInputComponent = /** @class */ (function () {
         this.onSelect = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxInputComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxInputComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxInputComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxInputComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -81,17 +55,7 @@ var jqxInputComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxInputComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxInputComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -105,17 +69,9 @@ var jqxInputComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxInputComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxInputComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -123,50 +79,20 @@ var jqxInputComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxInputComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxInputComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxInputComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxInputComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxInputComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxInputComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -182,34 +108,16 @@ var jqxInputComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxInput', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxInputComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxInputComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxInputComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxInputComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
     Object.defineProperty(jqxInputComponent.prototype, "ngValue", {
-        get: /**
-         * @return {?}
-         */
-        function () {
+        get: function () {
             if (this.widgetObject) {
-                /** @type {?} */
                 var value = this.host.val();
                 if (typeof value === 'object')
                     return value.label;
@@ -217,11 +125,7 @@ var jqxInputComponent = /** @class */ (function () {
             }
             return '';
         },
-        set: /**
-         * @param {?} value
-         * @return {?}
-         */
-        function (value) {
+        set: function (value) {
             if (this.widgetObject) {
                 this.onChangeCallback(value);
             }
@@ -229,74 +133,27 @@ var jqxInputComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    jqxInputComponent.prototype.writeValue = /**
-     * @param {?} value
-     * @return {?}
-     */
-    function (value) {
+    jqxInputComponent.prototype.writeValue = function (value) {
         var _this = this;
         if (this.widgetObject && value) {
             if (this.initialLoad) {
-                setTimeout((/**
-                 * @param {?} _
-                 * @return {?}
-                 */
-                function (_) { return _this.host.jqxInput('val', value); }));
+                setTimeout(function (_) { return _this.host.jqxInput('val', value); });
                 this.initialLoad = false;
             }
             this.host.jqxInput('val', value);
         }
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxInputComponent.prototype.registerOnChange = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxInputComponent.prototype.registerOnChange = function (fn) {
         this.onChangeCallback = fn;
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxInputComponent.prototype.registerOnTouched = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxInputComponent.prototype.registerOnTouched = function (fn) {
         this.onTouchedCallback = fn;
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxInputComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxInputComponent.prototype.setOptions = function (options) {
         this.host.jqxInput('setOptions', options);
     };
     // jqxInputComponent properties
-    // jqxInputComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.disabled = 
-    // jqxInputComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('disabled', arg);
         }
@@ -304,15 +161,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.dropDownWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.dropDownWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('dropDownWidth', arg);
         }
@@ -320,15 +169,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('dropDownWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.displayMember = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.displayMember = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('displayMember', arg);
         }
@@ -336,15 +177,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('displayMember');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('height', arg);
         }
@@ -352,15 +185,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.items = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.items = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('items', arg);
         }
@@ -368,15 +193,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('items');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.minLength = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.minLength = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('minLength', arg);
         }
@@ -384,15 +201,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('minLength');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.maxLength = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.maxLength = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('maxLength', arg);
         }
@@ -400,15 +209,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('maxLength');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.opened = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.opened = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('opened', arg);
         }
@@ -416,15 +217,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('opened');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.placeHolder = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.placeHolder = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('placeHolder', arg);
         }
@@ -432,15 +225,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('placeHolder');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.popupZIndex = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.popupZIndex = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('popupZIndex', arg);
         }
@@ -448,15 +233,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('popupZIndex');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.query = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.query = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('query', arg);
         }
@@ -464,15 +241,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('query');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.renderer = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.renderer = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('renderer', arg);
         }
@@ -480,15 +249,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('renderer');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('rtl', arg);
         }
@@ -496,15 +257,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.searchMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.searchMode = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('searchMode', arg);
         }
@@ -512,15 +265,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('searchMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.source = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.source = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('source', arg);
         }
@@ -528,15 +273,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('source');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('theme', arg);
         }
@@ -544,15 +281,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.valueMember = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.valueMember = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('valueMember', arg);
         }
@@ -560,15 +289,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('valueMember');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('width', arg);
         }
@@ -576,15 +297,7 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('width');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxInputComponent.prototype.value = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxInputComponent.prototype.value = function (arg) {
         if (arg !== undefined) {
             this.host.jqxInput('value', arg);
         }
@@ -593,45 +306,16 @@ var jqxInputComponent = /** @class */ (function () {
         }
     };
     // jqxInputComponent functions
-    // jqxInputComponent functions
-    /**
-     * @return {?}
-     */
-    jqxInputComponent.prototype.destroy = 
-    // jqxInputComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxInputComponent.prototype.destroy = function () {
         this.host.jqxInput('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxInputComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxInputComponent.prototype.focus = function () {
         this.host.jqxInput('focus');
     };
-    /**
-     * @return {?}
-     */
-    jqxInputComponent.prototype.selectAll = /**
-     * @return {?}
-     */
-    function () {
+    jqxInputComponent.prototype.selectAll = function () {
         this.host.jqxInput('selectAll');
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxInputComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxInputComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxInput('val', value);
         }
@@ -639,106 +323,140 @@ var jqxInputComponent = /** @class */ (function () {
             return this.host.jqxInput('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxInputComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxInputComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChange.emit(eventData); }));
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onClose.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onOpen.emit(eventData); }));
-        this.host.on('select', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onSelect.emit(eventData); if (eventData.args)
-            _this.onChangeCallback(eventData.args.value); }));
+        this.host.on('change', function (eventData) { _this.onChange.emit(eventData); });
+        this.host.on('close', function (eventData) { _this.onClose.emit(eventData); });
+        this.host.on('open', function (eventData) { _this.onOpen.emit(eventData); });
+        this.host.on('select', function (eventData) { _this.onSelect.emit(eventData); if (eventData.args)
+            _this.onChangeCallback(eventData.args.value); });
     };
-    jqxInputComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxInput',
-                    template: '<input type="text" [(ngModel)]="ngValue">',
-                    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                    changeDetection: ChangeDetectionStrategy.OnPush
-                }] }
-    ];
-    /** @nocollapse */
-    jqxInputComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxInputComponent.propDecorators = {
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrDropDownWidth: [{ type: Input, args: ['dropDownWidth',] }],
-        attrDisplayMember: [{ type: Input, args: ['displayMember',] }],
-        attrItems: [{ type: Input, args: ['items',] }],
-        attrMinLength: [{ type: Input, args: ['minLength',] }],
-        attrMaxLength: [{ type: Input, args: ['maxLength',] }],
-        attrOpened: [{ type: Input, args: ['opened',] }],
-        attrPlaceHolder: [{ type: Input, args: ['placeHolder',] }],
-        attrPopupZIndex: [{ type: Input, args: ['popupZIndex',] }],
-        attrQuery: [{ type: Input, args: ['query',] }],
-        attrRenderer: [{ type: Input, args: ['renderer',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrSearchMode: [{ type: Input, args: ['searchMode',] }],
-        attrSource: [{ type: Input, args: ['source',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrValueMember: [{ type: Input, args: ['valueMember',] }],
-        attrValue: [{ type: Input, args: ['value',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onChange: [{ type: Output }],
-        onClose: [{ type: Output }],
-        onOpen: [{ type: Output }],
-        onSelect: [{ type: Output }]
-    };
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxInputComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('dropDownWidth'),
+        __metadata("design:type", Object)
+    ], jqxInputComponent.prototype, "attrDropDownWidth", void 0);
+    __decorate([
+        Input('displayMember'),
+        __metadata("design:type", String)
+    ], jqxInputComponent.prototype, "attrDisplayMember", void 0);
+    __decorate([
+        Input('items'),
+        __metadata("design:type", Number)
+    ], jqxInputComponent.prototype, "attrItems", void 0);
+    __decorate([
+        Input('minLength'),
+        __metadata("design:type", Number)
+    ], jqxInputComponent.prototype, "attrMinLength", void 0);
+    __decorate([
+        Input('maxLength'),
+        __metadata("design:type", Number)
+    ], jqxInputComponent.prototype, "attrMaxLength", void 0);
+    __decorate([
+        Input('opened'),
+        __metadata("design:type", Boolean)
+    ], jqxInputComponent.prototype, "attrOpened", void 0);
+    __decorate([
+        Input('placeHolder'),
+        __metadata("design:type", String)
+    ], jqxInputComponent.prototype, "attrPlaceHolder", void 0);
+    __decorate([
+        Input('popupZIndex'),
+        __metadata("design:type", Number)
+    ], jqxInputComponent.prototype, "attrPopupZIndex", void 0);
+    __decorate([
+        Input('query'),
+        __metadata("design:type", String)
+    ], jqxInputComponent.prototype, "attrQuery", void 0);
+    __decorate([
+        Input('renderer'),
+        __metadata("design:type", Function)
+    ], jqxInputComponent.prototype, "attrRenderer", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxInputComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('searchMode'),
+        __metadata("design:type", String)
+    ], jqxInputComponent.prototype, "attrSearchMode", void 0);
+    __decorate([
+        Input('source'),
+        __metadata("design:type", Object)
+    ], jqxInputComponent.prototype, "attrSource", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxInputComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('valueMember'),
+        __metadata("design:type", String)
+    ], jqxInputComponent.prototype, "attrValueMember", void 0);
+    __decorate([
+        Input('value'),
+        __metadata("design:type", Object)
+    ], jqxInputComponent.prototype, "attrValue", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxInputComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxInputComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxInputComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxInputComponent.prototype, "onChange", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxInputComponent.prototype, "onClose", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxInputComponent.prototype, "onOpen", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxInputComponent.prototype, "onSelect", void 0);
+    jqxInputComponent = __decorate([
+        Component({
+            selector: 'jqxInput',
+            template: '<input type="text" [(ngModel)]="ngValue">',
+            providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+            changeDetection: ChangeDetectionStrategy.OnPush
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxInputComponent);
     return jqxInputComponent;
 }()); //jqxInputComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxInputModule = /** @class */ (function () {
     function jqxInputModule() {
     }
-    jqxInputModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        FormsModule
-                    ],
-                    declarations: [jqxInputComponent],
-                    exports: [jqxInputComponent]
-                },] }
-    ];
+    jqxInputModule = __decorate([
+        NgModule({
+            imports: [
+                FormsModule
+            ],
+            declarations: [jqxInputComponent],
+            exports: [jqxInputComponent]
+        })
+    ], jqxInputModule);
     return jqxInputModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxInputComponent, jqxInputModule };
-
+export { jqxInputComponent, jqxInputModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxinput.js.map

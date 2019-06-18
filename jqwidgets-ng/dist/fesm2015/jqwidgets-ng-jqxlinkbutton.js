@@ -1,39 +1,25 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
-import { Component, Input, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { Input, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxLinkButtonComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxLinkButtonComponent = class jqxLinkButtonComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['disabled', 'height', 'rtl', 'theme', 'width'];
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -53,11 +39,6 @@ class jqxLinkButtonComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -72,14 +53,9 @@ class jqxLinkButtonComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -87,34 +63,18 @@ class jqxLinkButtonComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -131,32 +91,17 @@ class jqxLinkButtonComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxLinkButton', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxLinkButton('setOptions', options);
     }
     // jqxLinkButtonComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxLinkButton('disabled', arg);
@@ -165,10 +110,6 @@ class jqxLinkButtonComponent {
             return this.host.jqxLinkButton('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxLinkButton('height', arg);
@@ -177,10 +118,6 @@ class jqxLinkButtonComponent {
             return this.host.jqxLinkButton('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxLinkButton('rtl', arg);
@@ -189,10 +126,6 @@ class jqxLinkButtonComponent {
             return this.host.jqxLinkButton('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxLinkButton('theme', arg);
@@ -201,10 +134,6 @@ class jqxLinkButtonComponent {
             return this.host.jqxLinkButton('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxLinkButton('width', arg);
@@ -213,55 +142,54 @@ class jqxLinkButtonComponent {
             return this.host.jqxLinkButton('width');
         }
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
     }
-} //jqxLinkButtonComponent
-jqxLinkButtonComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxLinkButton',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxLinkButtonComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxLinkButtonComponent.propDecorators = {
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }]
+}; //jqxLinkButtonComponent
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxLinkButtonComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxLinkButtonComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxLinkButtonComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxLinkButtonComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxLinkButtonComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxLinkButtonComponent.prototype, "autoCreate", void 0);
+jqxLinkButtonComponent = __decorate([
+    Component({
+        selector: 'jqxLinkButton',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxLinkButtonComponent);
+
+let jqxLinkButtonModule = class jqxLinkButtonModule {
 };
+jqxLinkButtonModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxLinkButtonComponent],
+        exports: [jqxLinkButtonComponent]
+    })
+], jqxLinkButtonModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxLinkButtonModule {
-}
-jqxLinkButtonModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxLinkButtonComponent],
-                exports: [jqxLinkButtonComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxLinkButtonComponent, jqxLinkButtonModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxlinkbutton.js.map

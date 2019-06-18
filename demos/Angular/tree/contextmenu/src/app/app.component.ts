@@ -9,8 +9,8 @@ import { jqxMenuComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxmenu
 })
 
 export class AppComponent {
-    @ViewChild('myTree') myTree: jqxTreeComponent;
-    @ViewChild('myMenu') myMenu: jqxMenuComponent;
+    @ViewChild('myTree', {static: false}) myTree: jqxTreeComponent;
+    @ViewChild('myMenu', {static: false}) myMenu: jqxMenuComponent;
 
     myTreeOnInitialized(): void {
         this.myTree.selectItem(document.getElementById('home'));

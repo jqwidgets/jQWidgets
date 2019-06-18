@@ -10,9 +10,9 @@ import { jqxInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxinp
 })
 
 export class AppComponent {
-    @ViewChild('horizontal') myHorizontalProgressBar: jqxProgressBarComponent;
-    @ViewChild('vertical') myVerticalProgressBar: jqxProgressBarComponent;
-    @ViewChild('ValueInput') ValueInputElement: jqxInputComponent;
+    @ViewChild('horizontal', {static: false}) myHorizontalProgressBar: jqxProgressBarComponent;
+    @ViewChild('vertical', {static: false}) myVerticalProgressBar: jqxProgressBarComponent;
+    @ViewChild('ValueInput', {static: false}) ValueInputElement: jqxInputComponent;
 
     valueInput: number;
     isUpdated: boolean = false;

@@ -10,8 +10,8 @@ import { jqxSortableComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements OnInit, AfterViewInit {
-    @ViewChild('mySortable1') mySortable1: jqxSortableComponent;
-    @ViewChild('mySortable2') mySortable2: jqxSortableComponent;
+    @ViewChild('mySortable1', {static: false}) mySortable1: jqxSortableComponent;
+    @ViewChild('mySortable2', {static: false}) mySortable2: jqxSortableComponent;
 
     ngOnInit(): void {     
         const firstNames = ['Nancy', 'Andrew', 'Janet', 'Margaret', 'Steven', 'Michael', 'Robert', 'Laura', 'Anne'];

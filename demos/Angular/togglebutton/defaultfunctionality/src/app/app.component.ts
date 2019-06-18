@@ -8,7 +8,7 @@ import { jqxToggleButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('myToggleButton') myToggleButton: jqxToggleButtonComponent;
+    @ViewChild('myToggleButton', {static: false}) myToggleButton: jqxToggleButtonComponent;
 
     myToggleButtonClick(): void {
         setTimeout(_ => {

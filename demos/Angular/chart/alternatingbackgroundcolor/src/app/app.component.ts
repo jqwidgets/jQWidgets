@@ -8,8 +8,8 @@ import { jqxChartComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxcha
 })
 
 export class AppComponent {
-    @ViewChild('myChart') myChart: jqxChartComponent;
-    @ViewChild('checkboxSwapAxis') checkboxSwapAxis: jqxChartComponent;
+    @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
+    @ViewChild('checkboxSwapAxis', {static: false}) checkboxSwapAxis: jqxChartComponent;
 
     data: any[] = [
         { 'month': 'Jan', 'min': -1.9, 'max': 3.7, 'avg': 0.2 },

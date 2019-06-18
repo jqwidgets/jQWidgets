@@ -25,16 +25,11 @@ import * as jqxgridexport from '../../jqwidgets-scripts/jqwidgets/jqxgrid.export
 import * as jqxgridcolumnsresiz from '../../jqwidgets-scripts/jqwidgets/jqxgrid.columnsresize';
 import * as jqxgridcolumnsreorder from '../../jqwidgets-scripts/jqwidgets/jqxgrid.columnsreorder';
 import * as jqxgridaggregates from '../../jqwidgets-scripts/jqwidgets/jqxgrid.aggregates';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxGridComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxGridComponent = class jqxGridComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['altrows', 'altstart', 'altstep', 'autoshowloadelement', 'autoshowfiltericon', 'autoshowcolumnsmenubutton', 'showcolumnlines', 'showrowlines', 'showcolumnheaderlines', 'adaptive', 'adaptivewidth', 'clipboard', 'closeablegroups', 'columnsmenuwidth', 'columnmenuopening', 'columnmenuclosing', 'cellhover', 'enablekeyboarddelete', 'enableellipsis', 'enablemousewheel', 'enableanimations', 'enabletooltips', 'enablehover', 'enablebrowserselection', 'everpresentrowposition', 'everpresentrowheight', 'everpresentrowactions', 'everpresentrowactionsmode', 'filterrowheight', 'filtermode', 'groupsrenderer', 'groupcolumnrenderer', 'groupsexpandedbydefault', 'handlekeyboardnavigation', 'pagerrenderer', 'rtl', 'showdefaultloadelement', 'showfiltercolumnbackground', 'showfiltermenuitems', 'showpinnedcolumnbackground', 'showsortcolumnbackground', 'showsortmenuitems', 'showgroupmenuitems', 'showrowdetailscolumn', 'showheader', 'showgroupsheader', 'showaggregates', 'showgroupaggregates', 'showeverpresentrow', 'showfilterrow', 'showemptyrow', 'showstatusbar', 'statusbarheight', 'showtoolbar', 'selectionmode', 'updatefilterconditions', 'updatefilterpanel', 'theme', 'toolbarheight', 'autoheight', 'autorowheight', 'columnsheight', 'deferreddatafields', 'groupsheaderheight', 'groupindentwidth', 'height', 'pagerheight', 'rowsheight', 'scrollbarsize', 'scrollmode', 'scrollfeedback', 'width', 'autosavestate', 'autoloadstate', 'columns', 'columngroups', 'columnsmenu', 'columnsresize', 'columnsautoresize', 'columnsreorder', 'disabled', 'editable', 'editmode', 'filter', 'filterable', 'groupable', 'groups', 'horizontalscrollbarstep', 'horizontalscrollbarlargestep', 'initrowdetails', 'keyboardnavigation', 'localization', 'pagesize', 'pagesizeoptions', 'pagermode', 'pagerbuttonscount', 'pageable', 'rowdetails', 'rowdetailstemplate', 'ready', 'rendered', 'renderstatusbar', 'rendertoolbar', 'rendergridrows', 'sortable', 'sortmode', 'selectedrowindex', 'selectedrowindexes', 'source', 'sorttogglestates', 'updatedelay', 'virtualmode', 'verticalscrollbarstep', 'verticalscrollbarlargestep'];
@@ -65,21 +60,12 @@ class jqxGridComponent {
         this.onSort = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
     }
     ;
-    /**
-     * @return {?}
-     */
     ngAfterViewInit() {
-        /** @type {?} */
         let children = JQXLite(this.elementRef.nativeElement.children).find('tr');
-        /** @type {?} */
         let html = '';
-        /** @type {?} */
         let options = {};
         if (children.length > 0) {
             this.container = document.createElement('div');
@@ -87,7 +73,6 @@ class jqxGridComponent {
             this.container.appendChild(this.elementRef.nativeElement.firstChild);
             this.elementRef.nativeElement.innerHTML = html;
             this.content = html;
-            /** @type {?} */
             let result = JQXLite.jqx.parseSourceTag(this.container);
             if (this['attrColumns'] !== undefined) {
                 options['source'] = result.source;
@@ -102,16 +87,11 @@ class jqxGridComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     ngAfterViewChecked() {
         if (this.container) {
             if (this.content !== this.container.innerHTML) {
                 this.content = this.container.innerHTML;
-                /** @type {?} */
                 let result = JQXLite.jqx.parseSourceTag(this.container);
-                /** @type {?} */
                 let columns = this.host.jqxGrid('columns');
                 if (columns.length === 0) {
                     this.host.jqxGrid({ source: result.source, columns: result.columns });
@@ -123,16 +103,10 @@ class jqxGridComponent {
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -152,11 +126,6 @@ class jqxGridComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -171,14 +140,9 @@ class jqxGridComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -186,34 +150,18 @@ class jqxGridComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -230,32 +178,17 @@ class jqxGridComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxGrid', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxGrid('setOptions', options);
     }
     // jqxGridComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     altrows(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -267,10 +200,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('altrows');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     altstart(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -282,10 +211,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('altstart');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     altstep(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -297,10 +222,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('altstep');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoshowloadelement(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -312,10 +233,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('autoshowloadelement');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoshowfiltericon(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -327,10 +244,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('autoshowfiltericon');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoshowcolumnsmenubutton(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -342,10 +255,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('autoshowcolumnsmenubutton');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showcolumnlines(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -357,10 +266,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showcolumnlines');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showrowlines(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -372,10 +277,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showrowlines');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showcolumnheaderlines(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -387,10 +288,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showcolumnheaderlines');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     adaptive(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -402,10 +299,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('adaptive');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     adaptivewidth(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -417,10 +310,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('adaptivewidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     clipboard(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -432,10 +321,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('clipboard');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     closeablegroups(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -447,10 +332,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('closeablegroups');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnsmenuwidth(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -462,10 +343,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('columnsmenuwidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnmenuopening(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -477,10 +354,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('columnmenuopening');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnmenuclosing(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -492,10 +365,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('columnmenuclosing');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     cellhover(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -507,10 +376,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('cellhover');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enablekeyboarddelete(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -522,10 +387,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('enablekeyboarddelete');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableellipsis(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -537,10 +398,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('enableellipsis');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enablemousewheel(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -552,10 +409,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('enablemousewheel');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableanimations(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -567,10 +420,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('enableanimations');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enabletooltips(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -582,10 +431,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('enabletooltips');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enablehover(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -597,10 +442,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('enablehover');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enablebrowserselection(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -612,10 +453,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('enablebrowserselection');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     everpresentrowposition(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -627,10 +464,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('everpresentrowposition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     everpresentrowheight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -642,10 +475,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('everpresentrowheight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     everpresentrowactions(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -657,10 +486,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('everpresentrowactions');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     everpresentrowactionsmode(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -672,10 +497,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('everpresentrowactionsmode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     filterrowheight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -687,10 +508,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('filterrowheight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     filtermode(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -702,10 +519,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('filtermode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     groupsrenderer(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -717,10 +530,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('groupsrenderer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     groupcolumnrenderer(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -732,10 +541,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('groupcolumnrenderer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     groupsexpandedbydefault(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -747,10 +552,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('groupsexpandedbydefault');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     handlekeyboardnavigation(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -762,10 +563,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('handlekeyboardnavigation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pagerrenderer(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -777,10 +574,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('pagerrenderer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -792,10 +585,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showdefaultloadelement(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -807,10 +596,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showdefaultloadelement');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showfiltercolumnbackground(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -822,10 +607,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showfiltercolumnbackground');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showfiltermenuitems(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -837,10 +618,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showfiltermenuitems');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showpinnedcolumnbackground(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -852,10 +629,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showpinnedcolumnbackground');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showsortcolumnbackground(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -867,10 +640,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showsortcolumnbackground');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showsortmenuitems(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -882,10 +651,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showsortmenuitems');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showgroupmenuitems(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -897,10 +662,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showgroupmenuitems');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showrowdetailscolumn(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -912,10 +673,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showrowdetailscolumn');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showheader(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -927,10 +684,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showheader');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showgroupsheader(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -942,10 +695,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showgroupsheader');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showaggregates(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -957,10 +706,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showaggregates');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showgroupaggregates(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -972,10 +717,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showgroupaggregates');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showeverpresentrow(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -987,10 +728,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showeverpresentrow');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showfilterrow(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1002,10 +739,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showfilterrow');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showemptyrow(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1017,10 +750,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showemptyrow');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showstatusbar(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1032,10 +761,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showstatusbar');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     statusbarheight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1047,10 +772,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('statusbarheight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showtoolbar(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1062,10 +783,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('showtoolbar');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     selectionmode(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1077,10 +794,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('selectionmode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     updatefilterconditions(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1092,10 +805,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('updatefilterconditions');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     updatefilterpanel(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1107,10 +816,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('updatefilterpanel');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1122,10 +827,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     toolbarheight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1137,10 +838,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('toolbarheight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoheight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1152,10 +849,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('autoheight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autorowheight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1167,10 +860,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('autorowheight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnsheight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1182,10 +871,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('columnsheight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     deferreddatafields(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1197,10 +882,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('deferreddatafields');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     groupsheaderheight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1212,10 +893,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('groupsheaderheight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     groupindentwidth(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1227,10 +904,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('groupindentwidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1242,10 +915,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pagerheight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1257,10 +926,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('pagerheight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rowsheight(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1272,10 +937,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('rowsheight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scrollbarsize(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1287,10 +948,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('scrollbarsize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scrollmode(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1302,10 +959,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('scrollmode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scrollfeedback(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1317,10 +970,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('scrollfeedback');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1332,10 +981,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('width');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autosavestate(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1347,10 +992,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('autosavestate');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoloadstate(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1362,10 +1003,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('autoloadstate');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columns(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1377,10 +1014,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('columns');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columngroups(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1392,10 +1025,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('columngroups');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnsmenu(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1407,10 +1036,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('columnsmenu');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnsresize(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1422,10 +1047,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('columnsresize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnsautoresize(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1437,10 +1058,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('columnsautoresize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnsreorder(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1452,10 +1069,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('columnsreorder');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1467,10 +1080,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     editable(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1482,10 +1091,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('editable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     editmode(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1497,10 +1102,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('editmode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     filter(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1512,10 +1113,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('filter');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     filterable(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1527,10 +1124,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('filterable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     groupable(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1542,10 +1135,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('groupable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     groups(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1557,10 +1146,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('groups');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     horizontalscrollbarstep(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1572,10 +1157,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('horizontalscrollbarstep');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     horizontalscrollbarlargestep(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1587,10 +1168,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('horizontalscrollbarlargestep');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     initrowdetails(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1602,10 +1179,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('initrowdetails');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     keyboardnavigation(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1617,10 +1190,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('keyboardnavigation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     localization(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1632,10 +1201,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('localization');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pagesize(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1647,10 +1212,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('pagesize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pagesizeoptions(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1662,10 +1223,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('pagesizeoptions');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pagermode(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1677,10 +1234,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('pagermode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pagerbuttonscount(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1692,10 +1245,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('pagerbuttonscount');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pageable(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1707,10 +1256,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('pageable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rowdetails(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1722,10 +1267,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('rowdetails');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rowdetailstemplate(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1737,10 +1278,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('rowdetailstemplate');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     ready(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1752,10 +1289,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('ready');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rendered(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1767,10 +1300,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('rendered');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     renderstatusbar(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1782,10 +1311,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('renderstatusbar');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rendertoolbar(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1797,10 +1322,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('rendertoolbar');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rendergridrows(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1812,10 +1333,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('rendergridrows');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     sortable(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1827,10 +1344,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('sortable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     sortmode(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1842,10 +1355,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('sortmode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     selectedrowindex(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1857,10 +1366,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('selectedrowindex');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     selectedrowindexes(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1872,10 +1377,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('selectedrowindexes');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     source(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1887,10 +1388,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('source');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     sorttogglestates(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1902,10 +1399,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('sorttogglestates');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     updatedelay(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1917,10 +1410,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('updatedelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     virtualmode(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1932,10 +1421,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('virtualmode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     verticalscrollbarstep(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1947,10 +1432,6 @@ class jqxGridComponent {
             return this.host.jqxGrid('verticalscrollbarstep');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     verticalscrollbarlargestep(arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
@@ -1963,1334 +1444,1228 @@ class jqxGridComponent {
         }
     }
     // jqxGridComponent functions
-    /**
-     * @param {?=} type
-     * @return {?}
-     */
     autoresizecolumns(type) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('autoresizecolumns', type);
     }
-    /**
-     * @param {?} dataField
-     * @param {?=} type
-     * @return {?}
-     */
     autoresizecolumn(dataField, type) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('autoresizecolumn', dataField, type);
     }
-    /**
-     * @return {?}
-     */
     beginupdate() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('beginupdate');
     }
-    /**
-     * @return {?}
-     */
     clear() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('clear');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('destroy');
     }
-    /**
-     * @return {?}
-     */
     endupdate() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('endupdate');
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @return {?}
-     */
     ensurerowvisible(rowBoundIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('ensurerowvisible', rowBoundIndex);
     }
-    /**
-     * @return {?}
-     */
     focus() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('focus');
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     getcolumnindex(dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getcolumnindex', dataField);
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     getcolumn(dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getcolumn', dataField);
     }
-    /**
-     * @param {?} dataField
-     * @param {?} propertyName
-     * @return {?}
-     */
     getcolumnproperty(dataField, propertyName) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getcolumnproperty', dataField, propertyName);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @return {?}
-     */
     getrowid(rowBoundIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getrowid', rowBoundIndex);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @return {?}
-     */
     getrowdata(rowBoundIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getrowdata', rowBoundIndex);
     }
-    /**
-     * @param {?} rowID
-     * @return {?}
-     */
     getrowdatabyid(rowID) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getrowdatabyid', rowID);
     }
-    /**
-     * @param {?} rowID
-     * @return {?}
-     */
     getrowboundindexbyid(rowID) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getrowboundindexbyid', rowID);
     }
-    /**
-     * @param {?} rowDisplayIndex
-     * @return {?}
-     */
     getrowboundindex(rowDisplayIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getrowboundindex', rowDisplayIndex);
     }
-    /**
-     * @return {?}
-     */
     getrows() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getrows');
     }
-    /**
-     * @return {?}
-     */
     getboundrows() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getboundrows');
     }
-    /**
-     * @return {?}
-     */
     getdisplayrows() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getdisplayrows');
     }
-    /**
-     * @return {?}
-     */
     getdatainformation() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getdatainformation');
     }
-    /**
-     * @return {?}
-     */
     getsortinformation() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getsortinformation');
     }
-    /**
-     * @return {?}
-     */
     getpaginginformation() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getpaginginformation');
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     hidecolumn(dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('hidecolumn', dataField);
     }
-    /**
-     * @return {?}
-     */
     hideloadelement() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('hideloadelement');
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @return {?}
-     */
     hiderowdetails(rowBoundIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('hiderowdetails', rowBoundIndex);
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     iscolumnvisible(dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('iscolumnvisible', dataField);
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     iscolumnpinned(dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('iscolumnpinned', dataField);
     }
-    /**
-     * @param {?} localizationobject
-     * @return {?}
-     */
     localizestrings(localizationobject) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('localizestrings', localizationobject);
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     pincolumn(dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('pincolumn', dataField);
     }
-    /**
-     * @return {?}
-     */
     refreshdata() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('refreshdata');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('refresh');
     }
-    /**
-     * @return {?}
-     */
     render() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('render');
     }
-    /**
-     * @param {?} top
-     * @param {?} left
-     * @return {?}
-     */
     scrolloffset(top, left) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('scrolloffset', top, left);
     }
-    /**
-     * @return {?}
-     */
     scrollposition() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('scrollposition');
     }
-    /**
-     * @return {?}
-     */
     showloadelement() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('showloadelement');
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @return {?}
-     */
     showrowdetails(rowBoundIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('showrowdetails', rowBoundIndex);
     }
-    /**
-     * @param {?} dataField
-     * @param {?} index
-     * @return {?}
-     */
     setcolumnindex(dataField, index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('setcolumnindex', dataField, index);
     }
-    /**
-     * @param {?} dataField
-     * @param {?} propertyName
-     * @param {?} propertyValue
-     * @return {?}
-     */
     setcolumnproperty(dataField, propertyName, propertyValue) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('setcolumnproperty', dataField, propertyName, propertyValue);
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     showcolumn(dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('showcolumn', dataField);
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     unpincolumn(dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('unpincolumn', dataField);
     }
-    /**
-     * @param {?=} type
-     * @return {?}
-     */
     updatebounddata(type) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('updatebounddata', type);
     }
-    /**
-     * @return {?}
-     */
     updating() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('updating');
     }
-    /**
-     * @return {?}
-     */
     getsortcolumn() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getsortcolumn');
     }
-    /**
-     * @return {?}
-     */
     removesort() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('removesort');
     }
-    /**
-     * @param {?} dataField
-     * @param {?} sortOrder
-     * @return {?}
-     */
     sortby(dataField, sortOrder) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('sortby', dataField, sortOrder);
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     addgroup(dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('addgroup', dataField);
     }
-    /**
-     * @return {?}
-     */
     cleargroups() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('cleargroups');
     }
-    /**
-     * @param {?} group
-     * @return {?}
-     */
     collapsegroup(group) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('collapsegroup', group);
     }
-    /**
-     * @return {?}
-     */
     collapseallgroups() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('collapseallgroups');
     }
-    /**
-     * @return {?}
-     */
     expandallgroups() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('expandallgroups');
     }
-    /**
-     * @param {?} group
-     * @return {?}
-     */
     expandgroup(group) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('expandgroup', group);
     }
-    /**
-     * @return {?}
-     */
     getrootgroupscount() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getrootgroupscount');
     }
-    /**
-     * @param {?} groupIndex
-     * @return {?}
-     */
     getgroup(groupIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getgroup', groupIndex);
     }
-    /**
-     * @param {?} groupIndex
-     * @param {?} dataField
-     * @return {?}
-     */
     insertgroup(groupIndex, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('insertgroup', groupIndex, dataField);
     }
-    /**
-     * @return {?}
-     */
     iscolumngroupable() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('iscolumngroupable');
     }
-    /**
-     * @param {?} groupIndex
-     * @return {?}
-     */
     removegroupat(groupIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('removegroupat', groupIndex);
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     removegroup(dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('removegroup', dataField);
     }
-    /**
-     * @param {?} dataField
-     * @param {?} filterGroup
-     * @param {?=} refreshGrid
-     * @return {?}
-     */
     addfilter(dataField, filterGroup, refreshGrid) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('addfilter', dataField, filterGroup, refreshGrid);
     }
-    /**
-     * @return {?}
-     */
     applyfilters() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('applyfilters');
     }
-    /**
-     * @return {?}
-     */
     clearfilters() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('clearfilters');
     }
-    /**
-     * @return {?}
-     */
     getfilterinformation() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getfilterinformation');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     getcolumnat(index) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getcolumnat', index);
     }
-    /**
-     * @param {?} dataField
-     * @param {?} refreshGrid
-     * @return {?}
-     */
     removefilter(dataField, refreshGrid) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('removefilter', dataField, refreshGrid);
     }
-    /**
-     * @return {?}
-     */
     refreshfilterrow() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('refreshfilterrow');
     }
-    /**
-     * @param {?} pagenumber
-     * @return {?}
-     */
     gotopage(pagenumber) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('gotopage', pagenumber);
     }
-    /**
-     * @return {?}
-     */
     gotoprevpage() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('gotoprevpage');
     }
-    /**
-     * @return {?}
-     */
     gotonextpage() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('gotonextpage');
     }
-    /**
-     * @param {?} rowIds
-     * @param {?} data
-     * @param {?=} rowPosition
-     * @return {?}
-     */
     addrow(rowIds, data, rowPosition) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('addrow', rowIds, data, rowPosition);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @param {?} dataField
-     * @return {?}
-     */
     begincelledit(rowBoundIndex, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('begincelledit', rowBoundIndex, dataField);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @return {?}
-     */
     beginrowedit(rowBoundIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('beginrowedit', rowBoundIndex);
     }
-    /**
-     * @return {?}
-     */
     closemenu() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('closemenu');
     }
-    /**
-     * @param {?} rowIds
-     * @return {?}
-     */
     deleterow(rowIds) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('deleterow', rowIds);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @param {?} dataField
-     * @param {?} confirmChanges
-     * @return {?}
-     */
     endcelledit(rowBoundIndex, dataField, confirmChanges) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('endcelledit', rowBoundIndex, dataField, confirmChanges);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @param {?} confirmChanges
-     * @return {?}
-     */
     endrowedit(rowBoundIndex, confirmChanges) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('endrowedit', rowBoundIndex, confirmChanges);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @param {?} datafield
-     * @return {?}
-     */
     getcell(rowBoundIndex, datafield) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getcell', rowBoundIndex, datafield);
     }
-    /**
-     * @param {?} left
-     * @param {?} top
-     * @return {?}
-     */
     getcellatposition(left, top) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getcellatposition', left, top);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @param {?} dataField
-     * @return {?}
-     */
     getcelltext(rowBoundIndex, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getcelltext', rowBoundIndex, dataField);
     }
-    /**
-     * @param {?} rowID
-     * @param {?} dataField
-     * @return {?}
-     */
     getcelltextbyid(rowID, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getcelltextbyid', rowID, dataField);
     }
-    /**
-     * @param {?} rowID
-     * @param {?} dataField
-     * @return {?}
-     */
     getcellvaluebyid(rowID, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getcellvaluebyid', rowID, dataField);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @param {?} dataField
-     * @return {?}
-     */
     getcellvalue(rowBoundIndex, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getcellvalue', rowBoundIndex, dataField);
     }
-    /**
-     * @return {?}
-     */
     isBindingCompleted() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('isBindingCompleted');
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     openmenu(dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('openmenu', dataField);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @param {?} dataField
-     * @param {?} value
-     * @return {?}
-     */
     setcellvalue(rowBoundIndex, dataField, value) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('setcellvalue', rowBoundIndex, dataField, value);
     }
-    /**
-     * @param {?} rowID
-     * @param {?} dataField
-     * @param {?} value
-     * @return {?}
-     */
     setcellvaluebyid(rowID, dataField, value) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('setcellvaluebyid', rowID, dataField, value);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @param {?} dataField
-     * @param {?} validationMessage
-     * @return {?}
-     */
     showvalidationpopup(rowBoundIndex, dataField, validationMessage) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('showvalidationpopup', rowBoundIndex, dataField, validationMessage);
     }
-    /**
-     * @param {?} rowIds
-     * @param {?} data
-     * @return {?}
-     */
     updaterow(rowIds, data) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('updaterow', rowIds, data);
     }
-    /**
-     * @return {?}
-     */
     clearselection() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('clearselection');
     }
-    /**
-     * @return {?}
-     */
     getselectedrowindex() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getselectedrowindex');
     }
-    /**
-     * @return {?}
-     */
     getselectedrowindexes() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getselectedrowindexes');
     }
-    /**
-     * @return {?}
-     */
     getselectedcell() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getselectedcell');
     }
-    /**
-     * @return {?}
-     */
     getselectedcells() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getselectedcells');
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @param {?} dataField
-     * @return {?}
-     */
     selectcell(rowBoundIndex, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('selectcell', rowBoundIndex, dataField);
     }
-    /**
-     * @return {?}
-     */
     selectallrows() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('selectallrows');
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @return {?}
-     */
     selectrow(rowBoundIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('selectrow', rowBoundIndex);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @return {?}
-     */
     unselectrow(rowBoundIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('unselectrow', rowBoundIndex);
     }
-    /**
-     * @param {?} rowBoundIndex
-     * @param {?} dataField
-     * @return {?}
-     */
     unselectcell(rowBoundIndex, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('unselectcell', rowBoundIndex, dataField);
     }
-    /**
-     * @param {?} dataField
-     * @param {?} aggregates
-     * @return {?}
-     */
     getcolumnaggregateddata(dataField, aggregates) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getcolumnaggregateddata', dataField, aggregates);
     }
-    /**
-     * @return {?}
-     */
     refreshaggregates() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('refreshaggregates');
     }
-    /**
-     * @return {?}
-     */
     renderaggregates() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('renderaggregates');
     }
-    /**
-     * @param {?} dataType
-     * @param {?=} fileName
-     * @param {?=} exportHeader
-     * @param {?=} rows
-     * @param {?=} exportHiddenColumns
-     * @param {?=} serverURL
-     * @param {?=} charSet
-     * @return {?}
-     */
     exportdata(dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('exportdata', dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet);
     }
-    /**
-     * @return {?}
-     */
     getstate() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('getstate');
     }
-    /**
-     * @param {?} stateobject
-     * @return {?}
-     */
     loadstate(stateobject) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxGrid('loadstate', stateobject);
     }
-    /**
-     * @return {?}
-     */
     savestate() {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxGrid('savestate');
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('bindingcomplete', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onBindingcomplete.emit(eventData); }));
-        this.host.on('columnresized', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onColumnresized.emit(eventData); }));
-        this.host.on('columnreordered', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onColumnreordered.emit(eventData); }));
-        this.host.on('columnclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onColumnclick.emit(eventData); }));
-        this.host.on('cellclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCellclick.emit(eventData); }));
-        this.host.on('celldoubleclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCelldoubleclick.emit(eventData); }));
-        this.host.on('cellselect', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCellselect.emit(eventData); }));
-        this.host.on('cellunselect', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCellunselect.emit(eventData); }));
-        this.host.on('cellvaluechanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCellvaluechanged.emit(eventData); }));
-        this.host.on('cellbeginedit', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCellbeginedit.emit(eventData); }));
-        this.host.on('cellendedit', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCellendedit.emit(eventData); }));
-        this.host.on('filter', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onFilter.emit(eventData); }));
-        this.host.on('groupschanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onGroupschanged.emit(eventData); }));
-        this.host.on('groupexpand', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onGroupexpand.emit(eventData); }));
-        this.host.on('groupcollapse', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onGroupcollapse.emit(eventData); }));
-        this.host.on('pagechanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPagechanged.emit(eventData); }));
-        this.host.on('pagesizechanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPagesizechanged.emit(eventData); }));
-        this.host.on('rowclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRowclick.emit(eventData); }));
-        this.host.on('rowdoubleclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRowdoubleclick.emit(eventData); }));
-        this.host.on('rowselect', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRowselect.emit(eventData); }));
-        this.host.on('rowunselect', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRowunselect.emit(eventData); }));
-        this.host.on('rowexpand', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRowexpand.emit(eventData); }));
-        this.host.on('rowcollapse', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onRowcollapse.emit(eventData); }));
-        this.host.on('sort', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onSort.emit(eventData); }));
+        this.host.on('bindingcomplete', (eventData) => { this.onBindingcomplete.emit(eventData); });
+        this.host.on('columnresized', (eventData) => { this.onColumnresized.emit(eventData); });
+        this.host.on('columnreordered', (eventData) => { this.onColumnreordered.emit(eventData); });
+        this.host.on('columnclick', (eventData) => { this.onColumnclick.emit(eventData); });
+        this.host.on('cellclick', (eventData) => { this.onCellclick.emit(eventData); });
+        this.host.on('celldoubleclick', (eventData) => { this.onCelldoubleclick.emit(eventData); });
+        this.host.on('cellselect', (eventData) => { this.onCellselect.emit(eventData); });
+        this.host.on('cellunselect', (eventData) => { this.onCellunselect.emit(eventData); });
+        this.host.on('cellvaluechanged', (eventData) => { this.onCellvaluechanged.emit(eventData); });
+        this.host.on('cellbeginedit', (eventData) => { this.onCellbeginedit.emit(eventData); });
+        this.host.on('cellendedit', (eventData) => { this.onCellendedit.emit(eventData); });
+        this.host.on('filter', (eventData) => { this.onFilter.emit(eventData); });
+        this.host.on('groupschanged', (eventData) => { this.onGroupschanged.emit(eventData); });
+        this.host.on('groupexpand', (eventData) => { this.onGroupexpand.emit(eventData); });
+        this.host.on('groupcollapse', (eventData) => { this.onGroupcollapse.emit(eventData); });
+        this.host.on('pagechanged', (eventData) => { this.onPagechanged.emit(eventData); });
+        this.host.on('pagesizechanged', (eventData) => { this.onPagesizechanged.emit(eventData); });
+        this.host.on('rowclick', (eventData) => { this.onRowclick.emit(eventData); });
+        this.host.on('rowdoubleclick', (eventData) => { this.onRowdoubleclick.emit(eventData); });
+        this.host.on('rowselect', (eventData) => { this.onRowselect.emit(eventData); });
+        this.host.on('rowunselect', (eventData) => { this.onRowunselect.emit(eventData); });
+        this.host.on('rowexpand', (eventData) => { this.onRowexpand.emit(eventData); });
+        this.host.on('rowcollapse', (eventData) => { this.onRowcollapse.emit(eventData); });
+        this.host.on('sort', (eventData) => { this.onSort.emit(eventData); });
     }
-} //jqxGridComponent
-jqxGridComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxGrid',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxGridComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxGridComponent.propDecorators = {
-    attrAltrows: [{ type: Input, args: ['altrows',] }],
-    attrAltstart: [{ type: Input, args: ['altstart',] }],
-    attrAltstep: [{ type: Input, args: ['altstep',] }],
-    attrAutoshowloadelement: [{ type: Input, args: ['autoshowloadelement',] }],
-    attrAutoshowfiltericon: [{ type: Input, args: ['autoshowfiltericon',] }],
-    attrAutoshowcolumnsmenubutton: [{ type: Input, args: ['autoshowcolumnsmenubutton',] }],
-    attrShowcolumnlines: [{ type: Input, args: ['showcolumnlines',] }],
-    attrShowrowlines: [{ type: Input, args: ['showrowlines',] }],
-    attrShowcolumnheaderlines: [{ type: Input, args: ['showcolumnheaderlines',] }],
-    attrAdaptive: [{ type: Input, args: ['adaptive',] }],
-    attrAdaptivewidth: [{ type: Input, args: ['adaptivewidth',] }],
-    attrClipboard: [{ type: Input, args: ['clipboard',] }],
-    attrCloseablegroups: [{ type: Input, args: ['closeablegroups',] }],
-    attrColumnsmenuwidth: [{ type: Input, args: ['columnsmenuwidth',] }],
-    attrColumnmenuopening: [{ type: Input, args: ['columnmenuopening',] }],
-    attrColumnmenuclosing: [{ type: Input, args: ['columnmenuclosing',] }],
-    attrCellhover: [{ type: Input, args: ['cellhover',] }],
-    attrEnablekeyboarddelete: [{ type: Input, args: ['enablekeyboarddelete',] }],
-    attrEnableellipsis: [{ type: Input, args: ['enableellipsis',] }],
-    attrEnablemousewheel: [{ type: Input, args: ['enablemousewheel',] }],
-    attrEnableanimations: [{ type: Input, args: ['enableanimations',] }],
-    attrEnabletooltips: [{ type: Input, args: ['enabletooltips',] }],
-    attrEnablehover: [{ type: Input, args: ['enablehover',] }],
-    attrEnablebrowserselection: [{ type: Input, args: ['enablebrowserselection',] }],
-    attrEverpresentrowposition: [{ type: Input, args: ['everpresentrowposition',] }],
-    attrEverpresentrowheight: [{ type: Input, args: ['everpresentrowheight',] }],
-    attrEverpresentrowactions: [{ type: Input, args: ['everpresentrowactions',] }],
-    attrEverpresentrowactionsmode: [{ type: Input, args: ['everpresentrowactionsmode',] }],
-    attrFilterrowheight: [{ type: Input, args: ['filterrowheight',] }],
-    attrFiltermode: [{ type: Input, args: ['filtermode',] }],
-    attrGroupsrenderer: [{ type: Input, args: ['groupsrenderer',] }],
-    attrGroupcolumnrenderer: [{ type: Input, args: ['groupcolumnrenderer',] }],
-    attrGroupsexpandedbydefault: [{ type: Input, args: ['groupsexpandedbydefault',] }],
-    attrHandlekeyboardnavigation: [{ type: Input, args: ['handlekeyboardnavigation',] }],
-    attrPagerrenderer: [{ type: Input, args: ['pagerrenderer',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrShowdefaultloadelement: [{ type: Input, args: ['showdefaultloadelement',] }],
-    attrShowfiltercolumnbackground: [{ type: Input, args: ['showfiltercolumnbackground',] }],
-    attrShowfiltermenuitems: [{ type: Input, args: ['showfiltermenuitems',] }],
-    attrShowpinnedcolumnbackground: [{ type: Input, args: ['showpinnedcolumnbackground',] }],
-    attrShowsortcolumnbackground: [{ type: Input, args: ['showsortcolumnbackground',] }],
-    attrShowsortmenuitems: [{ type: Input, args: ['showsortmenuitems',] }],
-    attrShowgroupmenuitems: [{ type: Input, args: ['showgroupmenuitems',] }],
-    attrShowrowdetailscolumn: [{ type: Input, args: ['showrowdetailscolumn',] }],
-    attrShowheader: [{ type: Input, args: ['showheader',] }],
-    attrShowgroupsheader: [{ type: Input, args: ['showgroupsheader',] }],
-    attrShowaggregates: [{ type: Input, args: ['showaggregates',] }],
-    attrShowgroupaggregates: [{ type: Input, args: ['showgroupaggregates',] }],
-    attrShoweverpresentrow: [{ type: Input, args: ['showeverpresentrow',] }],
-    attrShowfilterrow: [{ type: Input, args: ['showfilterrow',] }],
-    attrShowemptyrow: [{ type: Input, args: ['showemptyrow',] }],
-    attrShowstatusbar: [{ type: Input, args: ['showstatusbar',] }],
-    attrStatusbarheight: [{ type: Input, args: ['statusbarheight',] }],
-    attrShowtoolbar: [{ type: Input, args: ['showtoolbar',] }],
-    attrSelectionmode: [{ type: Input, args: ['selectionmode',] }],
-    attrUpdatefilterconditions: [{ type: Input, args: ['updatefilterconditions',] }],
-    attrUpdatefilterpanel: [{ type: Input, args: ['updatefilterpanel',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrToolbarheight: [{ type: Input, args: ['toolbarheight',] }],
-    attrAutoheight: [{ type: Input, args: ['autoheight',] }],
-    attrAutorowheight: [{ type: Input, args: ['autorowheight',] }],
-    attrColumnsheight: [{ type: Input, args: ['columnsheight',] }],
-    attrDeferreddatafields: [{ type: Input, args: ['deferreddatafields',] }],
-    attrGroupsheaderheight: [{ type: Input, args: ['groupsheaderheight',] }],
-    attrGroupindentwidth: [{ type: Input, args: ['groupindentwidth',] }],
-    attrPagerheight: [{ type: Input, args: ['pagerheight',] }],
-    attrRowsheight: [{ type: Input, args: ['rowsheight',] }],
-    attrScrollbarsize: [{ type: Input, args: ['scrollbarsize',] }],
-    attrScrollmode: [{ type: Input, args: ['scrollmode',] }],
-    attrScrollfeedback: [{ type: Input, args: ['scrollfeedback',] }],
-    attrAutosavestate: [{ type: Input, args: ['autosavestate',] }],
-    attrAutoloadstate: [{ type: Input, args: ['autoloadstate',] }],
-    attrColumns: [{ type: Input, args: ['columns',] }],
-    attrColumngroups: [{ type: Input, args: ['columngroups',] }],
-    attrColumnsmenu: [{ type: Input, args: ['columnsmenu',] }],
-    attrColumnsresize: [{ type: Input, args: ['columnsresize',] }],
-    attrColumnsautoresize: [{ type: Input, args: ['columnsautoresize',] }],
-    attrColumnsreorder: [{ type: Input, args: ['columnsreorder',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrEditable: [{ type: Input, args: ['editable',] }],
-    attrEditmode: [{ type: Input, args: ['editmode',] }],
-    attrFilter: [{ type: Input, args: ['filter',] }],
-    attrFilterable: [{ type: Input, args: ['filterable',] }],
-    attrGroupable: [{ type: Input, args: ['groupable',] }],
-    attrGroups: [{ type: Input, args: ['groups',] }],
-    attrHorizontalscrollbarstep: [{ type: Input, args: ['horizontalscrollbarstep',] }],
-    attrHorizontalscrollbarlargestep: [{ type: Input, args: ['horizontalscrollbarlargestep',] }],
-    attrInitrowdetails: [{ type: Input, args: ['initrowdetails',] }],
-    attrKeyboardnavigation: [{ type: Input, args: ['keyboardnavigation',] }],
-    attrLocalization: [{ type: Input, args: ['localization',] }],
-    attrPagesize: [{ type: Input, args: ['pagesize',] }],
-    attrPagesizeoptions: [{ type: Input, args: ['pagesizeoptions',] }],
-    attrPagermode: [{ type: Input, args: ['pagermode',] }],
-    attrPagerbuttonscount: [{ type: Input, args: ['pagerbuttonscount',] }],
-    attrPageable: [{ type: Input, args: ['pageable',] }],
-    attrRowdetails: [{ type: Input, args: ['rowdetails',] }],
-    attrRowdetailstemplate: [{ type: Input, args: ['rowdetailstemplate',] }],
-    attrReady: [{ type: Input, args: ['ready',] }],
-    attrRendered: [{ type: Input, args: ['rendered',] }],
-    attrRenderstatusbar: [{ type: Input, args: ['renderstatusbar',] }],
-    attrRendertoolbar: [{ type: Input, args: ['rendertoolbar',] }],
-    attrRendergridrows: [{ type: Input, args: ['rendergridrows',] }],
-    attrSortable: [{ type: Input, args: ['sortable',] }],
-    attrSortmode: [{ type: Input, args: ['sortmode',] }],
-    attrSelectedrowindex: [{ type: Input, args: ['selectedrowindex',] }],
-    attrSelectedrowindexes: [{ type: Input, args: ['selectedrowindexes',] }],
-    attrSource: [{ type: Input, args: ['source',] }],
-    attrSorttogglestates: [{ type: Input, args: ['sorttogglestates',] }],
-    attrUpdatedelay: [{ type: Input, args: ['updatedelay',] }],
-    attrVirtualmode: [{ type: Input, args: ['virtualmode',] }],
-    attrVerticalscrollbarstep: [{ type: Input, args: ['verticalscrollbarstep',] }],
-    attrVerticalscrollbarlargestep: [{ type: Input, args: ['verticalscrollbarlargestep',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onBindingcomplete: [{ type: Output }],
-    onColumnresized: [{ type: Output }],
-    onColumnreordered: [{ type: Output }],
-    onColumnclick: [{ type: Output }],
-    onCellclick: [{ type: Output }],
-    onCelldoubleclick: [{ type: Output }],
-    onCellselect: [{ type: Output }],
-    onCellunselect: [{ type: Output }],
-    onCellvaluechanged: [{ type: Output }],
-    onCellbeginedit: [{ type: Output }],
-    onCellendedit: [{ type: Output }],
-    onFilter: [{ type: Output }],
-    onGroupschanged: [{ type: Output }],
-    onGroupexpand: [{ type: Output }],
-    onGroupcollapse: [{ type: Output }],
-    onPagechanged: [{ type: Output }],
-    onPagesizechanged: [{ type: Output }],
-    onRowclick: [{ type: Output }],
-    onRowdoubleclick: [{ type: Output }],
-    onRowselect: [{ type: Output }],
-    onRowunselect: [{ type: Output }],
-    onRowexpand: [{ type: Output }],
-    onRowcollapse: [{ type: Output }],
-    onSort: [{ type: Output }]
+}; //jqxGridComponent
+__decorate([
+    Input('altrows'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrAltrows", void 0);
+__decorate([
+    Input('altstart'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrAltstart", void 0);
+__decorate([
+    Input('altstep'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrAltstep", void 0);
+__decorate([
+    Input('autoshowloadelement'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrAutoshowloadelement", void 0);
+__decorate([
+    Input('autoshowfiltericon'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrAutoshowfiltericon", void 0);
+__decorate([
+    Input('autoshowcolumnsmenubutton'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrAutoshowcolumnsmenubutton", void 0);
+__decorate([
+    Input('showcolumnlines'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowcolumnlines", void 0);
+__decorate([
+    Input('showrowlines'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowrowlines", void 0);
+__decorate([
+    Input('showcolumnheaderlines'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowcolumnheaderlines", void 0);
+__decorate([
+    Input('adaptive'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrAdaptive", void 0);
+__decorate([
+    Input('adaptivewidth'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrAdaptivewidth", void 0);
+__decorate([
+    Input('clipboard'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrClipboard", void 0);
+__decorate([
+    Input('closeablegroups'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrCloseablegroups", void 0);
+__decorate([
+    Input('columnsmenuwidth'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrColumnsmenuwidth", void 0);
+__decorate([
+    Input('columnmenuopening'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrColumnmenuopening", void 0);
+__decorate([
+    Input('columnmenuclosing'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrColumnmenuclosing", void 0);
+__decorate([
+    Input('cellhover'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrCellhover", void 0);
+__decorate([
+    Input('enablekeyboarddelete'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrEnablekeyboarddelete", void 0);
+__decorate([
+    Input('enableellipsis'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrEnableellipsis", void 0);
+__decorate([
+    Input('enablemousewheel'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrEnablemousewheel", void 0);
+__decorate([
+    Input('enableanimations'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrEnableanimations", void 0);
+__decorate([
+    Input('enabletooltips'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrEnabletooltips", void 0);
+__decorate([
+    Input('enablehover'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrEnablehover", void 0);
+__decorate([
+    Input('enablebrowserselection'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrEnablebrowserselection", void 0);
+__decorate([
+    Input('everpresentrowposition'),
+    __metadata("design:type", String)
+], jqxGridComponent.prototype, "attrEverpresentrowposition", void 0);
+__decorate([
+    Input('everpresentrowheight'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrEverpresentrowheight", void 0);
+__decorate([
+    Input('everpresentrowactions'),
+    __metadata("design:type", String)
+], jqxGridComponent.prototype, "attrEverpresentrowactions", void 0);
+__decorate([
+    Input('everpresentrowactionsmode'),
+    __metadata("design:type", String)
+], jqxGridComponent.prototype, "attrEverpresentrowactionsmode", void 0);
+__decorate([
+    Input('filterrowheight'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrFilterrowheight", void 0);
+__decorate([
+    Input('filtermode'),
+    __metadata("design:type", String)
+], jqxGridComponent.prototype, "attrFiltermode", void 0);
+__decorate([
+    Input('groupsrenderer'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrGroupsrenderer", void 0);
+__decorate([
+    Input('groupcolumnrenderer'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrGroupcolumnrenderer", void 0);
+__decorate([
+    Input('groupsexpandedbydefault'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrGroupsexpandedbydefault", void 0);
+__decorate([
+    Input('handlekeyboardnavigation'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrHandlekeyboardnavigation", void 0);
+__decorate([
+    Input('pagerrenderer'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrPagerrenderer", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('showdefaultloadelement'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowdefaultloadelement", void 0);
+__decorate([
+    Input('showfiltercolumnbackground'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowfiltercolumnbackground", void 0);
+__decorate([
+    Input('showfiltermenuitems'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowfiltermenuitems", void 0);
+__decorate([
+    Input('showpinnedcolumnbackground'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowpinnedcolumnbackground", void 0);
+__decorate([
+    Input('showsortcolumnbackground'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowsortcolumnbackground", void 0);
+__decorate([
+    Input('showsortmenuitems'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowsortmenuitems", void 0);
+__decorate([
+    Input('showgroupmenuitems'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowgroupmenuitems", void 0);
+__decorate([
+    Input('showrowdetailscolumn'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowrowdetailscolumn", void 0);
+__decorate([
+    Input('showheader'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowheader", void 0);
+__decorate([
+    Input('showgroupsheader'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowgroupsheader", void 0);
+__decorate([
+    Input('showaggregates'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowaggregates", void 0);
+__decorate([
+    Input('showgroupaggregates'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowgroupaggregates", void 0);
+__decorate([
+    Input('showeverpresentrow'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShoweverpresentrow", void 0);
+__decorate([
+    Input('showfilterrow'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowfilterrow", void 0);
+__decorate([
+    Input('showemptyrow'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowemptyrow", void 0);
+__decorate([
+    Input('showstatusbar'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowstatusbar", void 0);
+__decorate([
+    Input('statusbarheight'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrStatusbarheight", void 0);
+__decorate([
+    Input('showtoolbar'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrShowtoolbar", void 0);
+__decorate([
+    Input('selectionmode'),
+    __metadata("design:type", String)
+], jqxGridComponent.prototype, "attrSelectionmode", void 0);
+__decorate([
+    Input('updatefilterconditions'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrUpdatefilterconditions", void 0);
+__decorate([
+    Input('updatefilterpanel'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrUpdatefilterpanel", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxGridComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('toolbarheight'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrToolbarheight", void 0);
+__decorate([
+    Input('autoheight'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrAutoheight", void 0);
+__decorate([
+    Input('autorowheight'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrAutorowheight", void 0);
+__decorate([
+    Input('columnsheight'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrColumnsheight", void 0);
+__decorate([
+    Input('deferreddatafields'),
+    __metadata("design:type", Array)
+], jqxGridComponent.prototype, "attrDeferreddatafields", void 0);
+__decorate([
+    Input('groupsheaderheight'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrGroupsheaderheight", void 0);
+__decorate([
+    Input('groupindentwidth'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrGroupindentwidth", void 0);
+__decorate([
+    Input('pagerheight'),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "attrPagerheight", void 0);
+__decorate([
+    Input('rowsheight'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrRowsheight", void 0);
+__decorate([
+    Input('scrollbarsize'),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "attrScrollbarsize", void 0);
+__decorate([
+    Input('scrollmode'),
+    __metadata("design:type", String)
+], jqxGridComponent.prototype, "attrScrollmode", void 0);
+__decorate([
+    Input('scrollfeedback'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrScrollfeedback", void 0);
+__decorate([
+    Input('autosavestate'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrAutosavestate", void 0);
+__decorate([
+    Input('autoloadstate'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrAutoloadstate", void 0);
+__decorate([
+    Input('columns'),
+    __metadata("design:type", Array)
+], jqxGridComponent.prototype, "attrColumns", void 0);
+__decorate([
+    Input('columngroups'),
+    __metadata("design:type", Array)
+], jqxGridComponent.prototype, "attrColumngroups", void 0);
+__decorate([
+    Input('columnsmenu'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrColumnsmenu", void 0);
+__decorate([
+    Input('columnsresize'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrColumnsresize", void 0);
+__decorate([
+    Input('columnsautoresize'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrColumnsautoresize", void 0);
+__decorate([
+    Input('columnsreorder'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrColumnsreorder", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('editable'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrEditable", void 0);
+__decorate([
+    Input('editmode'),
+    __metadata("design:type", String)
+], jqxGridComponent.prototype, "attrEditmode", void 0);
+__decorate([
+    Input('filter'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrFilter", void 0);
+__decorate([
+    Input('filterable'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrFilterable", void 0);
+__decorate([
+    Input('groupable'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrGroupable", void 0);
+__decorate([
+    Input('groups'),
+    __metadata("design:type", Array)
+], jqxGridComponent.prototype, "attrGroups", void 0);
+__decorate([
+    Input('horizontalscrollbarstep'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrHorizontalscrollbarstep", void 0);
+__decorate([
+    Input('horizontalscrollbarlargestep'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrHorizontalscrollbarlargestep", void 0);
+__decorate([
+    Input('initrowdetails'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrInitrowdetails", void 0);
+__decorate([
+    Input('keyboardnavigation'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrKeyboardnavigation", void 0);
+__decorate([
+    Input('localization'),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "attrLocalization", void 0);
+__decorate([
+    Input('pagesize'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrPagesize", void 0);
+__decorate([
+    Input('pagesizeoptions'),
+    __metadata("design:type", Array)
+], jqxGridComponent.prototype, "attrPagesizeoptions", void 0);
+__decorate([
+    Input('pagermode'),
+    __metadata("design:type", String)
+], jqxGridComponent.prototype, "attrPagermode", void 0);
+__decorate([
+    Input('pagerbuttonscount'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrPagerbuttonscount", void 0);
+__decorate([
+    Input('pageable'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrPageable", void 0);
+__decorate([
+    Input('rowdetails'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrRowdetails", void 0);
+__decorate([
+    Input('rowdetailstemplate'),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "attrRowdetailstemplate", void 0);
+__decorate([
+    Input('ready'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrReady", void 0);
+__decorate([
+    Input('rendered'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrRendered", void 0);
+__decorate([
+    Input('renderstatusbar'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrRenderstatusbar", void 0);
+__decorate([
+    Input('rendertoolbar'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrRendertoolbar", void 0);
+__decorate([
+    Input('rendergridrows'),
+    __metadata("design:type", Function)
+], jqxGridComponent.prototype, "attrRendergridrows", void 0);
+__decorate([
+    Input('sortable'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrSortable", void 0);
+__decorate([
+    Input('sortmode'),
+    __metadata("design:type", String)
+], jqxGridComponent.prototype, "attrSortmode", void 0);
+__decorate([
+    Input('selectedrowindex'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrSelectedrowindex", void 0);
+__decorate([
+    Input('selectedrowindexes'),
+    __metadata("design:type", Array)
+], jqxGridComponent.prototype, "attrSelectedrowindexes", void 0);
+__decorate([
+    Input('source'),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "attrSource", void 0);
+__decorate([
+    Input('sorttogglestates'),
+    __metadata("design:type", String)
+], jqxGridComponent.prototype, "attrSorttogglestates", void 0);
+__decorate([
+    Input('updatedelay'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrUpdatedelay", void 0);
+__decorate([
+    Input('virtualmode'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "attrVirtualmode", void 0);
+__decorate([
+    Input('verticalscrollbarstep'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrVerticalscrollbarstep", void 0);
+__decorate([
+    Input('verticalscrollbarlargestep'),
+    __metadata("design:type", Number)
+], jqxGridComponent.prototype, "attrVerticalscrollbarlargestep", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxGridComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onBindingcomplete", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onColumnresized", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onColumnreordered", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onColumnclick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onCellclick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onCelldoubleclick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onCellselect", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onCellunselect", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onCellvaluechanged", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onCellbeginedit", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onCellendedit", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onFilter", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onGroupschanged", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onGroupexpand", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onGroupcollapse", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onPagechanged", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onPagesizechanged", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onRowclick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onRowdoubleclick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onRowselect", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onRowunselect", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onRowexpand", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onRowcollapse", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxGridComponent.prototype, "onSort", void 0);
+jqxGridComponent = __decorate([
+    Component({
+        selector: 'jqxGrid',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxGridComponent);
+
+let jqxGridModule = class jqxGridModule {
 };
+jqxGridModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxGridComponent],
+        exports: [jqxGridComponent]
+    })
+], jqxGridModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxGridModule {
-}
-jqxGridModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxGridComponent],
-                exports: [jqxGridComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxGridComponent, jqxGridModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxgrid.js.map

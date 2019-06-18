@@ -2,13 +2,10 @@ import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxtooltip from '../../jqwidgets-scripts/jqwidgets/jqxtooltip';
 import * as jqxbulletchart from '../../jqwidgets-scripts/jqwidgets/jqxbulletchart';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxBulletChartComponent = /** @class */ (function () {
     function jqxBulletChartComponent(containerElement) {
         this.autoCreate = true;
@@ -17,31 +14,15 @@ var jqxBulletChartComponent = /** @class */ (function () {
         this.onChange = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxBulletChartComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxBulletChartComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -61,17 +42,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxBulletChartComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -85,17 +56,9 @@ var jqxBulletChartComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxBulletChartComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -103,50 +66,20 @@ var jqxBulletChartComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxBulletChartComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxBulletChartComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxBulletChartComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -162,51 +95,18 @@ var jqxBulletChartComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxBulletChart', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxBulletChartComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxBulletChartComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxBulletChartComponent.prototype.setOptions = function (options) {
         this.host.jqxBulletChart('setOptions', options);
     };
     // jqxBulletChartComponent properties
-    // jqxBulletChartComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.animationDuration = 
-    // jqxBulletChartComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.animationDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('animationDuration', arg);
         }
@@ -214,15 +114,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('animationDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.barSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.barSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('barSize', arg);
         }
@@ -230,15 +122,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('barSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.description = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.description = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('description', arg);
         }
@@ -246,15 +130,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('description');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('disabled', arg);
         }
@@ -262,15 +138,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('height', arg);
         }
@@ -278,15 +146,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.labelsFormat = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.labelsFormat = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('labelsFormat', arg);
         }
@@ -294,15 +154,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('labelsFormat');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.labelsFormatFunction = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.labelsFormatFunction = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('labelsFormatFunction', arg);
         }
@@ -310,15 +162,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('labelsFormatFunction');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.orientation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.orientation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('orientation', arg);
         }
@@ -326,15 +170,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('orientation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.pointer = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.pointer = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('pointer', arg);
         }
@@ -342,15 +178,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('pointer');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('rtl', arg);
         }
@@ -358,15 +186,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.ranges = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.ranges = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('ranges', arg);
         }
@@ -374,15 +194,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('ranges');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.showTooltip = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.showTooltip = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('showTooltip', arg);
         }
@@ -390,15 +202,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('showTooltip');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.target = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.target = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('target', arg);
         }
@@ -406,15 +210,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('target');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.ticks = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.ticks = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('ticks', arg);
         }
@@ -422,15 +218,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('ticks');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.title = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.title = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('title', arg);
         }
@@ -438,15 +226,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('title');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.tooltipFormatFunction = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.tooltipFormatFunction = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('tooltipFormatFunction', arg);
         }
@@ -454,15 +234,7 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('tooltipFormatFunction');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxBulletChartComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxBulletChart('width', arg);
         }
@@ -471,45 +243,16 @@ var jqxBulletChartComponent = /** @class */ (function () {
         }
     };
     // jqxBulletChartComponent functions
-    // jqxBulletChartComponent functions
-    /**
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.destroy = 
-    // jqxBulletChartComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxBulletChartComponent.prototype.destroy = function () {
         this.host.jqxBulletChart('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxBulletChartComponent.prototype.render = function () {
         this.host.jqxBulletChart('render');
     };
-    /**
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxBulletChartComponent.prototype.refresh = function () {
         this.host.jqxBulletChart('refresh');
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxBulletChartComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxBulletChart('val', value);
         }
@@ -517,81 +260,112 @@ var jqxBulletChartComponent = /** @class */ (function () {
             return this.host.jqxBulletChart('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxBulletChartComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxBulletChartComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChange.emit(eventData); }));
+        this.host.on('change', function (eventData) { _this.onChange.emit(eventData); });
     };
-    jqxBulletChartComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxBulletChart',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxBulletChartComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxBulletChartComponent.propDecorators = {
-        attrAnimationDuration: [{ type: Input, args: ['animationDuration',] }],
-        attrBarSize: [{ type: Input, args: ['barSize',] }],
-        attrDescription: [{ type: Input, args: ['description',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrLabelsFormat: [{ type: Input, args: ['labelsFormat',] }],
-        attrLabelsFormatFunction: [{ type: Input, args: ['labelsFormatFunction',] }],
-        attrOrientation: [{ type: Input, args: ['orientation',] }],
-        attrPointer: [{ type: Input, args: ['pointer',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrRanges: [{ type: Input, args: ['ranges',] }],
-        attrShowTooltip: [{ type: Input, args: ['showTooltip',] }],
-        attrTarget: [{ type: Input, args: ['target',] }],
-        attrTicks: [{ type: Input, args: ['ticks',] }],
-        attrTitle: [{ type: Input, args: ['title',] }],
-        attrTooltipFormatFunction: [{ type: Input, args: ['tooltipFormatFunction',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onChange: [{ type: Output }]
-    };
+    __decorate([
+        Input('animationDuration'),
+        __metadata("design:type", Number)
+    ], jqxBulletChartComponent.prototype, "attrAnimationDuration", void 0);
+    __decorate([
+        Input('barSize'),
+        __metadata("design:type", Object)
+    ], jqxBulletChartComponent.prototype, "attrBarSize", void 0);
+    __decorate([
+        Input('description'),
+        __metadata("design:type", String)
+    ], jqxBulletChartComponent.prototype, "attrDescription", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxBulletChartComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('labelsFormat'),
+        __metadata("design:type", String)
+    ], jqxBulletChartComponent.prototype, "attrLabelsFormat", void 0);
+    __decorate([
+        Input('labelsFormatFunction'),
+        __metadata("design:type", Function)
+    ], jqxBulletChartComponent.prototype, "attrLabelsFormatFunction", void 0);
+    __decorate([
+        Input('orientation'),
+        __metadata("design:type", String)
+    ], jqxBulletChartComponent.prototype, "attrOrientation", void 0);
+    __decorate([
+        Input('pointer'),
+        __metadata("design:type", Object)
+    ], jqxBulletChartComponent.prototype, "attrPointer", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxBulletChartComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('ranges'),
+        __metadata("design:type", Array)
+    ], jqxBulletChartComponent.prototype, "attrRanges", void 0);
+    __decorate([
+        Input('showTooltip'),
+        __metadata("design:type", Boolean)
+    ], jqxBulletChartComponent.prototype, "attrShowTooltip", void 0);
+    __decorate([
+        Input('target'),
+        __metadata("design:type", Object)
+    ], jqxBulletChartComponent.prototype, "attrTarget", void 0);
+    __decorate([
+        Input('ticks'),
+        __metadata("design:type", Object)
+    ], jqxBulletChartComponent.prototype, "attrTicks", void 0);
+    __decorate([
+        Input('title'),
+        __metadata("design:type", String)
+    ], jqxBulletChartComponent.prototype, "attrTitle", void 0);
+    __decorate([
+        Input('tooltipFormatFunction'),
+        __metadata("design:type", Function)
+    ], jqxBulletChartComponent.prototype, "attrTooltipFormatFunction", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxBulletChartComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxBulletChartComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxBulletChartComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxBulletChartComponent.prototype, "onChange", void 0);
+    jqxBulletChartComponent = __decorate([
+        Component({
+            selector: 'jqxBulletChart',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxBulletChartComponent);
     return jqxBulletChartComponent;
 }()); //jqxBulletChartComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxBulletChartModule = /** @class */ (function () {
     function jqxBulletChartModule() {
     }
-    jqxBulletChartModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxBulletChartComponent],
-                    exports: [jqxBulletChartComponent]
-                },] }
-    ];
+    jqxBulletChartModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxBulletChartComponent],
+            exports: [jqxBulletChartComponent]
+        })
+    ], jqxBulletChartModule);
     return jqxBulletChartModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxBulletChartComponent, jqxBulletChartModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxbulletchart.js.map

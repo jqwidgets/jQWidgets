@@ -8,7 +8,7 @@ import { jqxComboBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('ordersComboBox') ordersComboBox: jqxComboBoxComponent;
+    @ViewChild('ordersComboBox', {static: false}) ordersComboBox: jqxComboBoxComponent;
 
     customersSource: any =
     {

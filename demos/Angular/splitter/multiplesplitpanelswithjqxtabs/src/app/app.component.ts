@@ -8,9 +8,9 @@ import { jqxTabsComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtabs
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('tabs1') tabs1: jqxTabsComponent;
-    @ViewChild('tabs2') tabs2: jqxTabsComponent;
-    @ViewChild('tabs3') tabs3: jqxTabsComponent;
+    @ViewChild('tabs1', {static: false}) tabs1: jqxTabsComponent;
+    @ViewChild('tabs2', {static: false}) tabs2: jqxTabsComponent;
+    @ViewChild('tabs3', {static: false}) tabs3: jqxTabsComponent;
 	
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

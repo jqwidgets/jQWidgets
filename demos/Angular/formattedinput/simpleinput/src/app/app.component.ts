@@ -8,7 +8,7 @@ import { jqxFormattedInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angul
 })
 
 export class AppComponent {
-    @ViewChild('myFormattedInput') myFormattedInput: jqxFormattedInputComponent;
+    @ViewChild('myFormattedInput', {static: false}) myFormattedInput: jqxFormattedInputComponent;
 
     getOctal(): void {
         let octalValue = this.myFormattedInput.val('octal');

@@ -8,7 +8,7 @@ import { jqxTextAreaComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('selectionlog') selectionlog: ElementRef;
+    @ViewChild('selectionlog', {static: false}) selectionlog: ElementRef;
     
     url: string = '../assets/customers.txt';
 

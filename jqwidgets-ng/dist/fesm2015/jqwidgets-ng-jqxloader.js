@@ -1,39 +1,25 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxloader from '../../jqwidgets-scripts/jqwidgets/jqxloader';
-import { Component, Input, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { Input, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxLoaderComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxLoaderComponent = class jqxLoaderComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['autoOpen', 'height', 'html', 'isModal', 'imagePosition', 'rtl', 'text', 'textPosition', 'theme', 'width'];
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -53,11 +39,6 @@ class jqxLoaderComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -72,14 +53,9 @@ class jqxLoaderComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -87,34 +63,18 @@ class jqxLoaderComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -131,32 +91,17 @@ class jqxLoaderComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxLoader', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxLoader('setOptions', options);
     }
     // jqxLoaderComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoOpen(arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('autoOpen', arg);
@@ -165,10 +110,6 @@ class jqxLoaderComponent {
             return this.host.jqxLoader('autoOpen');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('height', arg);
@@ -177,10 +118,6 @@ class jqxLoaderComponent {
             return this.host.jqxLoader('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     html(arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('html', arg);
@@ -189,10 +126,6 @@ class jqxLoaderComponent {
             return this.host.jqxLoader('html');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     isModal(arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('isModal', arg);
@@ -201,10 +134,6 @@ class jqxLoaderComponent {
             return this.host.jqxLoader('isModal');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     imagePosition(arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('imagePosition', arg);
@@ -213,10 +142,6 @@ class jqxLoaderComponent {
             return this.host.jqxLoader('imagePosition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('rtl', arg);
@@ -225,10 +150,6 @@ class jqxLoaderComponent {
             return this.host.jqxLoader('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     text(arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('text', arg);
@@ -237,10 +158,6 @@ class jqxLoaderComponent {
             return this.host.jqxLoader('text');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     textPosition(arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('textPosition', arg);
@@ -249,10 +166,6 @@ class jqxLoaderComponent {
             return this.host.jqxLoader('textPosition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('theme', arg);
@@ -261,10 +174,6 @@ class jqxLoaderComponent {
             return this.host.jqxLoader('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxLoader('width', arg);
@@ -274,74 +183,80 @@ class jqxLoaderComponent {
         }
     }
     // jqxLoaderComponent functions
-    /**
-     * @return {?}
-     */
     close() {
         this.host.jqxLoader('close');
     }
-    /**
-     * @param {?=} left
-     * @param {?=} top
-     * @return {?}
-     */
     open(left, top) {
         this.host.jqxLoader('open', left, top);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
     }
-} //jqxLoaderComponent
-jqxLoaderComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxLoader',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxLoaderComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxLoaderComponent.propDecorators = {
-    attrAutoOpen: [{ type: Input, args: ['autoOpen',] }],
-    attrHtml: [{ type: Input, args: ['html',] }],
-    attrIsModal: [{ type: Input, args: ['isModal',] }],
-    attrImagePosition: [{ type: Input, args: ['imagePosition',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrText: [{ type: Input, args: ['text',] }],
-    attrTextPosition: [{ type: Input, args: ['textPosition',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }]
+}; //jqxLoaderComponent
+__decorate([
+    Input('autoOpen'),
+    __metadata("design:type", Boolean)
+], jqxLoaderComponent.prototype, "attrAutoOpen", void 0);
+__decorate([
+    Input('html'),
+    __metadata("design:type", String)
+], jqxLoaderComponent.prototype, "attrHtml", void 0);
+__decorate([
+    Input('isModal'),
+    __metadata("design:type", Boolean)
+], jqxLoaderComponent.prototype, "attrIsModal", void 0);
+__decorate([
+    Input('imagePosition'),
+    __metadata("design:type", String)
+], jqxLoaderComponent.prototype, "attrImagePosition", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxLoaderComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('text'),
+    __metadata("design:type", Object)
+], jqxLoaderComponent.prototype, "attrText", void 0);
+__decorate([
+    Input('textPosition'),
+    __metadata("design:type", String)
+], jqxLoaderComponent.prototype, "attrTextPosition", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxLoaderComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxLoaderComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxLoaderComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxLoaderComponent.prototype, "autoCreate", void 0);
+jqxLoaderComponent = __decorate([
+    Component({
+        selector: 'jqxLoader',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxLoaderComponent);
+
+let jqxLoaderModule = class jqxLoaderModule {
 };
+jqxLoaderModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxLoaderComponent],
+        exports: [jqxLoaderComponent]
+    })
+], jqxLoaderModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxLoaderModule {
-}
-jqxLoaderModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxLoaderComponent],
-                exports: [jqxLoaderComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxLoaderComponent, jqxLoaderModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxloader.js.map

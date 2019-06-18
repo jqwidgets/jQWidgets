@@ -6,8 +6,8 @@
 })
 
 export class AppComponent {
-    @ViewChild('HorizontalDiv') HorizontalDiv: ElementRef;
-    @ViewChild('VerticalDiv') VerticalDiv: ElementRef;
+    @ViewChild('HorizontalDiv', {static: false}, {static: false}) HorizontalDiv: ElementRef;
+    @ViewChild('VerticalDiv', {static: false}, {static: false}) VerticalDiv: ElementRef;
 
     onValueChangedVertical(event: any): void {
         this.VerticalDiv.nativeElement.innerHTML = 'Vertical (' + parseInt(event.currentValue) + ')';

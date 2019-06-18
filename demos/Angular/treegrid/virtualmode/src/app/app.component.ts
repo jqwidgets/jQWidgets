@@ -8,7 +8,7 @@ import { jqxTreeGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('TreeGrid') treeGrid: jqxTreeGridComponent;
+    @ViewChild('TreeGrid', {static: false}) treeGrid: jqxTreeGridComponent;
 
     generateTasks(rowsCounts?: number): any {
         let rowsCount = !rowsCounts ? 1 + Math.floor(Math.random() * 5) : rowsCounts;

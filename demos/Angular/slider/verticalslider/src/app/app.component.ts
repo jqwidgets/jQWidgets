@@ -10,7 +10,7 @@ import { jqxSliderComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxsl
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxSlider') jqxSlider: jqxSliderComponent;
+    @ViewChild('jqxSlider', {static: false}) jqxSlider: jqxSliderComponent;
 
     ngAfterViewInit() {
         this.carPreview().init();

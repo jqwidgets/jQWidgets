@@ -8,8 +8,8 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxListBox') myListBox: jqxListBoxComponent;
-    @ViewChild('select') select: ElementRef;
+    @ViewChild('jqxListBox', {static: false}) myListBox: jqxListBoxComponent;
+    @ViewChild('select', {static: false}) select: ElementRef;
 
     ngAfterViewInit() {
         this.myListBox.loadFromSelect('select');

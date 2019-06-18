@@ -7124,7 +7124,6 @@ ol li .jqx-listmenu-item-label:before {
     vertical-align: middle;
 }
 
-
 .jqx-pivotgrid-sortasc-icon {
     background-image: url('images/icon-sort-asc.png');
     background-repeat: no-repeat;
@@ -7316,14 +7315,14 @@ jqx-knob {
     padding-left: 100px;
 }
 
-    .jqx-palette > ul,
-    .jqx-shades > ul,
-    .jqx-color-labels > ul {
-        display: flex;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+.jqx-palette > ul,
+.jqx-shades > ul,
+.jqx-color-labels > ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
 .jqx-color-labels > ul {
     flex-direction: column;
@@ -7336,9 +7335,9 @@ jqx-knob {
     cursor: pointer;
 }
 
-    .jqx-color-cell:hover {
-        border-radius: 8px;
-    }
+.jqx-color-cell:hover {
+    border-radius: 8px;
+}
 
 .jqx-shade-cell {
     width: 38px;
@@ -7355,4 +7354,360 @@ jqx-knob {
     height: 40px;
     display: flex;
     align-items: center;
+}
+
+.jqx-heatmap-container-wrapper {
+    display: flex;
+ }
+
+ .jqx-heatmap-container-wrapper canvas {
+    display: block;
+ }
+
+ .jqx-heatmap-title {
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-align: center;
+ }
+
+ .jqx-heatmap-grid {
+    display: flex;
+    cursor: default;
+ }
+
+ .jqx-x-axis-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+ }
+
+ .jqx-y-axis-container {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-grow: 1;
+ }
+
+ .jqx-column {
+    display: flex;
+    flex-direction: column-reverse;
+ }
+
+ .jqx-x-axis {
+    display: flex;
+ }
+
+ .jqx-x-axis-label {
+    padding-top: 10px;
+    font-size: 14px;
+    color: gray;
+    text-align: center;
+ }
+
+ .jqx-x-axis-label.jqx-top {
+    padding: 0 0 10px 0;
+ }
+
+ .jqx-y-axis {
+    display: flex;
+    flex-direction: column-reverse;
+ }
+
+ .jqx-y-axis.jqx-margin-top-auto {
+    margin-top: auto;
+ }
+
+ .jqx-y-axis-label {
+    display: flex;
+    align-items: center;
+    color: gray;
+    padding-right: 10px;
+ }
+
+ .jqx-y-axis-label.jqx-right {
+    padding: 0 0 0 10px;
+ }
+
+ .jqx-heatmap-cell {
+    position: relative;
+    padding: 20px 10px;
+    margin: 1px;
+    text-align: center;
+ }
+
+ .jqx-heatmap-cell.jqx-empty-cell {
+    pointer-events: none;
+ }
+
+ .jqx-heatmap-tooltip {
+    display: inline-block;
+    position: absolute;
+    background: #000;
+    color: #fff;
+    opacity: 0.6;
+    padding: 10px;
+    pointer-events: none;
+    border-radius: 3px;
+    transition: top 0.7s ease, left 0.7s ease;
+    box-shadow: 0px 5px 3px -3px rgba(0, 0, 0, 0.75);
+ }
+
+ .jqx-heatmap-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: calc(50% - 5px);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 5px 0 5px;
+    border-color: #000 transparent transparent transparent;
+ }
+
+ .jqx-legend-vertical {
+    position: relative;
+    margin-left: 10px;
+ }
+
+ .jqx-legend-vertical.jqx-left {
+    margin: 0 10px 0 0;
+ }
+
+ .jqx-legend-vertical.jqx-margin-top-auto {
+    margin-top: auto;
+ }
+
+ .jqx-legend-horizontal {
+    position: relative;
+    margin-left: auto;
+    margin-bottom: 40px;
+ }
+
+ .jqx-legend-horizontal.jqx-bottom {
+    margin-top: 10px;
+    margin-bottom: 30px;
+ }
+
+ .jqx-legend-horizontal.jqx-margin-right-auto {
+    margin-right: auto;
+    margin-left: 0;
+ }
+
+ .jqx-palette-vertical {
+    width: 10px;
+    height: 100%;
+ }
+
+ .jqx-palette-horizontal {
+    width: 100%;
+    height: 10px;
+ }
+
+ .jqx-palette-horizontal.jqx-fixed {
+    display: flex;
+ }
+
+ .jqx-color-container,
+ .jqx-color-container-tick {
+    cursor: pointer;
+ }
+
+ .jqx-opacity-50 {
+    opacity: 0.5;
+ }
+
+ .jqx-selected-color {
+    background: #d3d3d3 !important;
+ }
+
+ .jqx-heatmap-hidden {
+    visibility: hidden;
+ }
+
+ .jqx-tick-vertical {
+    position: absolute;
+    left: 15px;
+ }
+
+ .jqx-tick-vertical::before {
+    content: '';
+    width: 10px;
+    background: #fff;
+    height: 1px;
+    position: absolute;
+    top: 6px;
+    left: -15px;
+ }
+
+ .jqx-tick-vertical.jqx-no-line::before,
+ .jqx-tick-horizontal.jqx-no-line::before {
+    content: none;
+ }
+
+ .jqx-tick-horizontal {
+    position: absolute;
+    top: 20px;
+ }
+
+ .jqx-tick-horizontal::before {
+    content: '';
+    width: 10px;
+    background: #fff;
+    width: 1px;
+    height: 10px;
+    position: absolute;
+    top: -20px;
+    left: 6px;
+ }
+
+ .jqx-arrow-vertical {
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid gray;
+    position: absolute;
+    left: -8px;
+    display: none;
+ }
+
+ .jqx-arrow-horizontal {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid gray;
+    position: absolute;
+    top: 11px;
+    left: -6px;
+    display: none;
+ }
+
+ /*jqxTimePicker Style*/
+.jqx-time-picker {
+    display: block;
+    border: 1px solid #c5c5c5;
+    border-radius: 1px;
+    font-family: Verdana;
+    font-size: 12px;
+    line-height: initial;
+    touch-action: none;
+    min-width: 250px;
+    box-sizing: border-box;
+}
+.jqx-time-picker * {
+    box-sizing: border-box;
+}
+.jqx-time-picker[view="landscape"] {
+    min-width: 400px;
+}
+.jqx-time-picker>.jqx-container {
+    width: 100%;
+    height: 100%;
+}
+.jqx-time-picker[view="landscape"]>.jqx-container, .jqx-time-picker .jqx-header, .jqx-time-picker .jqx-svg-container, .jqx-time-picker .jqx-hour-minute-container {
+    display: flex;
+}
+.jqx-time-picker .jqx-header {
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+}
+.jqx-time-picker[view="landscape"] .jqx-header {
+    flex-direction: column;
+    width: 33%;
+    height: 100%;
+}
+.jqx-time-picker .jqx-main-container {
+    width: 100%;
+    height: 80%;
+    padding: 2%;
+    background-color: var(--jqx-time-picker-background);
+}
+.jqx-time-picker[view="landscape"] .jqx-main-container {
+    width: 67%;
+    height: 100%;
+}
+.jqx-time-picker .jqx-svg-container {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.jqx-time-picker[footer] .jqx-svg-container {
+    height: calc(100% - 30px);
+}
+.jqx-time-picker .jqx-footer {
+    display: none;
+}
+.jqx-time-picker[footer] .jqx-footer {
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+.jqx-time-picker .jqx-hour-minute-container {
+    font-size: 50px;
+}
+.jqx-time-picker .jqx-am-pm-container {
+    margin-left: 10px;
+}
+.jqx-time-picker[view="landscape"] .jqx-am-pm-container {
+    margin-left: 0;
+}
+.jqx-time-picker .jqx-hour-container, .jqx-time-picker .jqx-minute-container, .jqx-time-picker .jqx-am-container, .jqx-time-picker .jqx-pm-container {
+    opacity: 0.5;
+    cursor: pointer;
+}
+.jqx-time-picker[readonly] .jqx-hour-container, .jqx-time-picker[disabled] .jqx-hour-container, .jqx-time-picker[readonly] .jqx-minute-container, .jqx-time-picker[disabled] .jqx-minute-container, .jqx-time-picker[readonly] .jqx-am-container, .jqx-time-picker[disabled] .jqx-am-container, .jqx-time-picker[readonly] .jqx-pm-container, .jqx-time-picker[disabled] .jqx-pm-container {
+    cursor: default;
+}
+.jqx-time-picker .jqx-selected {
+    opacity: 1;
+}
+.jqx-time-picker .jqx-hour-minute-container div:nth-child(2) {
+    opacity: 0.5;
+}
+.jqx-time-picker .jqx-svg-picker {
+    border-radius: 50%;
+    position: relative;
+    box-sizing: content-box;
+}
+.jqx-time-picker .jqx-svg-picker.animate {
+    animation: jqx-time-picker-animation 0.5s linear;
+}
+.jqx-time-picker[disabled] {
+    opacity: 0.55;
+    cursor: default;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+.jqx-time-picker .jqx-label.jqx-selected {
+    fill: white;
+}
+.jqx-time-picker .jqx-header:focus {
+    outline: 1px solid skyblue;
+}
+.jqx-time-picker .jqx-svg-picker:focus {
+    border: 1px solid skyblue;
+    outline: none;
+}
+@keyframes jqx-time-picker-animation {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
 }

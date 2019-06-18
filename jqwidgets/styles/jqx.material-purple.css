@@ -1814,3 +1814,21 @@ input[type="text"].jqx-input-material-purple:-ms-input-placeholder, input[type="
     box-shadow: none !important;
 	color: #333;
 }
+
+/*applied to the timepicker*/
+.jqx-needle-central-circle-material-purple {
+	fill: rgb(98, 0, 238);
+}
+
+.jqx-needle-material-purple {
+	fill: rgb(98, 0, 238);
+}
+
+.jqx-time-picker .jqx-header .jqx-selected-material-purple:focus {
+    outline: 2px solid rgba(98, 0, 238, 0.5);
+	box-shadow: 0px 0px 4px 2px rgba(98, 0, 238, 0.125);
+}
+
+.jqx-svg-picker-material-purple:focus {
+	border: 1px solid rgb(98, 0, 238) !important;
+}

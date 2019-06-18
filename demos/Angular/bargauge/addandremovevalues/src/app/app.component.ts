@@ -9,8 +9,8 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myBarGauge') myBarGauge: jqxBarGaugeComponent;
-    @ViewChild('myListBox') myListBox: jqxListBoxComponent;
+    @ViewChild('myBarGauge', { static: false }) myBarGauge: jqxBarGaugeComponent;
+    @ViewChild('myListBox', { static: false }) myListBox: jqxListBoxComponent;
 
     ngAfterViewInit(): void {
         this.myListBox.checkIndex(2);

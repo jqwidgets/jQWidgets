@@ -8,7 +8,7 @@ import { jqxMenuComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxmenu
 })
 
 export class AppComponent {
-    @ViewChild('jqxMenu') jqxMenu: jqxMenuComponent;
+    @ViewChild('jqxMenu', {static: false}) jqxMenu: jqxMenuComponent;
     
     isRightClick(event: any): boolean {
         let rightclick;

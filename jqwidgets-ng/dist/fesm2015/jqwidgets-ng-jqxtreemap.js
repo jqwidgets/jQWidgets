@@ -2,16 +2,11 @@ import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxtreemap from '../../jqwidgets-scripts/jqwidgets/jqxtreemap';
 import * as jqxtooltip from '../../jqwidgets-scripts/jqwidgets/jqxtooltip';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxTreeMapComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxTreeMapComponent = class jqxTreeMapComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['baseColor', 'colorRanges', 'colorRange', 'colorMode', 'displayMember', 'height', 'hoverEnabled', 'headerHeight', 'legendLabel', 'legendPosition', 'legendScaleCallback', 'renderCallbacks', 'selectionEnabled', 'showLegend', 'source', 'theme', 'valueMember', 'width'];
@@ -19,25 +14,16 @@ class jqxTreeMapComponent {
         this.onBindingComplete = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -57,11 +43,6 @@ class jqxTreeMapComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -76,14 +57,9 @@ class jqxTreeMapComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -91,34 +67,18 @@ class jqxTreeMapComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -136,32 +96,17 @@ class jqxTreeMapComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTreeMap', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxTreeMap('setOptions', options);
     }
     // jqxTreeMapComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     baseColor(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('baseColor', arg);
@@ -170,10 +115,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('baseColor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     colorRanges(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('colorRanges', arg);
@@ -182,10 +123,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('colorRanges');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     colorRange(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('colorRange', arg);
@@ -194,10 +131,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('colorRange');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     colorMode(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('colorMode', arg);
@@ -206,10 +139,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('colorMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     displayMember(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('displayMember', arg);
@@ -218,10 +147,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('displayMember');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('height', arg);
@@ -230,10 +155,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     hoverEnabled(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('hoverEnabled', arg);
@@ -242,10 +163,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('hoverEnabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     headerHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('headerHeight', arg);
@@ -254,10 +171,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('headerHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     legendLabel(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('legendLabel', arg);
@@ -266,10 +179,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('legendLabel');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     legendPosition(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('legendPosition', arg);
@@ -278,10 +187,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('legendPosition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     legendScaleCallback(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('legendScaleCallback', arg);
@@ -290,10 +195,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('legendScaleCallback');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     renderCallbacks(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('renderCallbacks', arg);
@@ -302,10 +203,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('renderCallbacks');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     selectionEnabled(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('selectionEnabled', arg);
@@ -314,10 +211,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('selectionEnabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showLegend(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('showLegend', arg);
@@ -326,10 +219,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('showLegend');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     source(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('source', arg);
@@ -338,10 +227,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('source');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('theme', arg);
@@ -350,10 +235,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     valueMember(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('valueMember', arg);
@@ -362,10 +243,6 @@ class jqxTreeMapComponent {
             return this.host.jqxTreeMap('valueMember');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxTreeMap('width', arg);
@@ -375,86 +252,117 @@ class jqxTreeMapComponent {
         }
     }
     // jqxTreeMapComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxTreeMap('destroy');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxTreeMap('render');
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('bindingComplete', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onBindingComplete.emit(eventData); }));
+        this.host.on('bindingComplete', (eventData) => { this.onBindingComplete.emit(eventData); });
     }
-} //jqxTreeMapComponent
-jqxTreeMapComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxTreeMap',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxTreeMapComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxTreeMapComponent.propDecorators = {
-    attrBaseColor: [{ type: Input, args: ['baseColor',] }],
-    attrColorRanges: [{ type: Input, args: ['colorRanges',] }],
-    attrColorRange: [{ type: Input, args: ['colorRange',] }],
-    attrColorMode: [{ type: Input, args: ['colorMode',] }],
-    attrDisplayMember: [{ type: Input, args: ['displayMember',] }],
-    attrHoverEnabled: [{ type: Input, args: ['hoverEnabled',] }],
-    attrHeaderHeight: [{ type: Input, args: ['headerHeight',] }],
-    attrLegendLabel: [{ type: Input, args: ['legendLabel',] }],
-    attrLegendPosition: [{ type: Input, args: ['legendPosition',] }],
-    attrLegendScaleCallback: [{ type: Input, args: ['legendScaleCallback',] }],
-    attrRenderCallbacks: [{ type: Input, args: ['renderCallbacks',] }],
-    attrSelectionEnabled: [{ type: Input, args: ['selectionEnabled',] }],
-    attrShowLegend: [{ type: Input, args: ['showLegend',] }],
-    attrSource: [{ type: Input, args: ['source',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrValueMember: [{ type: Input, args: ['valueMember',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onBindingComplete: [{ type: Output }]
+}; //jqxTreeMapComponent
+__decorate([
+    Input('baseColor'),
+    __metadata("design:type", String)
+], jqxTreeMapComponent.prototype, "attrBaseColor", void 0);
+__decorate([
+    Input('colorRanges'),
+    __metadata("design:type", Array)
+], jqxTreeMapComponent.prototype, "attrColorRanges", void 0);
+__decorate([
+    Input('colorRange'),
+    __metadata("design:type", Number)
+], jqxTreeMapComponent.prototype, "attrColorRange", void 0);
+__decorate([
+    Input('colorMode'),
+    __metadata("design:type", String)
+], jqxTreeMapComponent.prototype, "attrColorMode", void 0);
+__decorate([
+    Input('displayMember'),
+    __metadata("design:type", String)
+], jqxTreeMapComponent.prototype, "attrDisplayMember", void 0);
+__decorate([
+    Input('hoverEnabled'),
+    __metadata("design:type", Boolean)
+], jqxTreeMapComponent.prototype, "attrHoverEnabled", void 0);
+__decorate([
+    Input('headerHeight'),
+    __metadata("design:type", Number)
+], jqxTreeMapComponent.prototype, "attrHeaderHeight", void 0);
+__decorate([
+    Input('legendLabel'),
+    __metadata("design:type", String)
+], jqxTreeMapComponent.prototype, "attrLegendLabel", void 0);
+__decorate([
+    Input('legendPosition'),
+    __metadata("design:type", Object)
+], jqxTreeMapComponent.prototype, "attrLegendPosition", void 0);
+__decorate([
+    Input('legendScaleCallback'),
+    __metadata("design:type", Function)
+], jqxTreeMapComponent.prototype, "attrLegendScaleCallback", void 0);
+__decorate([
+    Input('renderCallbacks'),
+    __metadata("design:type", Object)
+], jqxTreeMapComponent.prototype, "attrRenderCallbacks", void 0);
+__decorate([
+    Input('selectionEnabled'),
+    __metadata("design:type", Boolean)
+], jqxTreeMapComponent.prototype, "attrSelectionEnabled", void 0);
+__decorate([
+    Input('showLegend'),
+    __metadata("design:type", Boolean)
+], jqxTreeMapComponent.prototype, "attrShowLegend", void 0);
+__decorate([
+    Input('source'),
+    __metadata("design:type", Object)
+], jqxTreeMapComponent.prototype, "attrSource", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxTreeMapComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('valueMember'),
+    __metadata("design:type", String)
+], jqxTreeMapComponent.prototype, "attrValueMember", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxTreeMapComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxTreeMapComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxTreeMapComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTreeMapComponent.prototype, "onBindingComplete", void 0);
+jqxTreeMapComponent = __decorate([
+    Component({
+        selector: 'jqxTreeMap',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxTreeMapComponent);
+
+let jqxTreeMapModule = class jqxTreeMapModule {
 };
+jqxTreeMapModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxTreeMapComponent],
+        exports: [jqxTreeMapComponent]
+    })
+], jqxTreeMapModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxTreeMapModule {
-}
-jqxTreeMapModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxTreeMapComponent],
-                exports: [jqxTreeMapComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxTreeMapComponent, jqxTreeMapModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxtreemap.js.map

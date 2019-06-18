@@ -9,8 +9,8 @@ import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid
 })
 
 export class AppComponent {
-    @ViewChild('myChart') myChart: jqxChartComponent;
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
+    @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
 
     sampleData: any[] = [
         { Day: 'Monday', Keith: 30, Erica: 15, George: 25 },

@@ -9,8 +9,8 @@ import { jqxDropDownListComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('myCalendar') myCalendar: jqxCalendarComponent;
-    @ViewChild('myDropDownList') myDropDownList: jqxDropDownListComponent;
+    @ViewChild('myCalendar', {static: false}) myCalendar: jqxCalendarComponent;
+    @ViewChild('myDropDownList', {static: false}) myDropDownList: jqxDropDownListComponent;
 
     days: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
  

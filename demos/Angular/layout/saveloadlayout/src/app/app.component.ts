@@ -11,8 +11,8 @@ import { jqxButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbu
 })
 
 export class AppComponent {
-    @ViewChild('myLayout') myLayout: jqxLayoutComponent;
-    @ViewChild('myLoadLayoutBtn') myLoadLayoutBtn: jqxButtonComponent;
+    @ViewChild('myLayout', {static: false}) myLayout: jqxLayoutComponent;
+    @ViewChild('myLoadLayoutBtn', {static: false}) myLoadLayoutBtn: jqxButtonComponent;
 
 	
 	getWidth() : any {

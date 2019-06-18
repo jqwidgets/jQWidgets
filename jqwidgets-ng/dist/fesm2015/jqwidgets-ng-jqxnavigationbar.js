@@ -1,15 +1,10 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxnavigationbar from '../../jqwidgets-scripts/jqwidgets/jqxnavigationbar';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxNavigationBarComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxNavigationBarComponent = class jqxNavigationBarComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['animationType', 'arrowPosition', 'collapseAnimationDuration', 'disabled', 'expandAnimationDuration', 'expandMode', 'expandedIndexes', 'height', 'initContent', 'rtl', 'showArrow', 'theme', 'toggleMode', 'width'];
@@ -20,25 +15,16 @@ class jqxNavigationBarComponent {
         this.onExpandedItem = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -58,11 +44,6 @@ class jqxNavigationBarComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -77,14 +58,9 @@ class jqxNavigationBarComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -92,34 +68,18 @@ class jqxNavigationBarComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -136,32 +96,17 @@ class jqxNavigationBarComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxNavigationBar', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxNavigationBar('setOptions', options);
     }
     // jqxNavigationBarComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationType(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('animationType', arg);
@@ -170,10 +115,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('animationType');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     arrowPosition(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('arrowPosition', arg);
@@ -182,10 +123,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('arrowPosition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     collapseAnimationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('collapseAnimationDuration', arg);
@@ -194,10 +131,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('collapseAnimationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('disabled', arg);
@@ -206,10 +139,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     expandAnimationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('expandAnimationDuration', arg);
@@ -218,10 +147,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('expandAnimationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     expandMode(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('expandMode', arg);
@@ -230,10 +155,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('expandMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     expandedIndexes(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('expandedIndexes', arg);
@@ -242,10 +163,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('expandedIndexes');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('height', arg);
@@ -254,10 +171,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     initContent(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('initContent', arg);
@@ -266,10 +179,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('initContent');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('rtl', arg);
@@ -278,10 +187,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showArrow(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('showArrow', arg);
@@ -290,10 +195,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('showArrow');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('theme', arg);
@@ -302,10 +203,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     toggleMode(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('toggleMode', arg);
@@ -314,10 +211,6 @@ class jqxNavigationBarComponent {
             return this.host.jqxNavigationBar('toggleMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('width', arg);
@@ -327,157 +220,69 @@ class jqxNavigationBarComponent {
         }
     }
     // jqxNavigationBarComponent functions
-    /**
-     * @param {?} header
-     * @param {?} content
-     * @return {?}
-     */
     add(header, content) {
         this.host.jqxNavigationBar('add', header, content);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     collapseAt(index) {
         this.host.jqxNavigationBar('collapseAt', index);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     disableAt(index) {
         this.host.jqxNavigationBar('disableAt', index);
     }
-    /**
-     * @return {?}
-     */
     disable() {
         this.host.jqxNavigationBar('disable');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxNavigationBar('destroy');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     expandAt(index) {
         this.host.jqxNavigationBar('expandAt', index);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     enableAt(index) {
         this.host.jqxNavigationBar('enableAt', index);
     }
-    /**
-     * @return {?}
-     */
     enable() {
         this.host.jqxNavigationBar('enable');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxNavigationBar('focus');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     getHeaderContentAt(index) {
         return this.host.jqxNavigationBar('getHeaderContentAt', index);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     getContentAt(index) {
         return this.host.jqxNavigationBar('getContentAt', index);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     hideArrowAt(index) {
         this.host.jqxNavigationBar('hideArrowAt', index);
     }
-    /**
-     * @return {?}
-     */
     invalidate() {
         this.host.jqxNavigationBar('invalidate');
     }
-    /**
-     * @param {?} Index
-     * @param {?} header
-     * @param {?} content
-     * @return {?}
-     */
     insert(Index, header, content) {
         this.host.jqxNavigationBar('insert', Index, header, content);
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxNavigationBar('refresh');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxNavigationBar('render');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     remove(index) {
         this.host.jqxNavigationBar('remove', index);
     }
-    /**
-     * @param {?} index
-     * @param {?} item
-     * @return {?}
-     */
     setContentAt(index, item) {
         this.host.jqxNavigationBar('setContentAt', index, item);
     }
-    /**
-     * @param {?} index
-     * @param {?} item
-     * @return {?}
-     */
     setHeaderContentAt(index, item) {
         this.host.jqxNavigationBar('setHeaderContentAt', index, item);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     showArrowAt(index) {
         this.host.jqxNavigationBar('showArrowAt', index);
     }
-    /**
-     * @param {?} index
-     * @param {?} header
-     * @param {?} content
-     * @return {?}
-     */
     update(index, header, content) {
         this.host.jqxNavigationBar('update', index, header, content);
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxNavigationBar('val', value);
@@ -487,88 +292,110 @@ class jqxNavigationBarComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('collapsingItem', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCollapsingItem.emit(eventData); }));
-        this.host.on('collapsedItem', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCollapsedItem.emit(eventData); }));
-        this.host.on('expandingItem', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onExpandingItem.emit(eventData); }));
-        this.host.on('expandedItem', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onExpandedItem.emit(eventData); }));
+        this.host.on('collapsingItem', (eventData) => { this.onCollapsingItem.emit(eventData); });
+        this.host.on('collapsedItem', (eventData) => { this.onCollapsedItem.emit(eventData); });
+        this.host.on('expandingItem', (eventData) => { this.onExpandingItem.emit(eventData); });
+        this.host.on('expandedItem', (eventData) => { this.onExpandedItem.emit(eventData); });
     }
-} //jqxNavigationBarComponent
-jqxNavigationBarComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxNavigationBar',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxNavigationBarComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxNavigationBarComponent.propDecorators = {
-    attrAnimationType: [{ type: Input, args: ['animationType',] }],
-    attrArrowPosition: [{ type: Input, args: ['arrowPosition',] }],
-    attrCollapseAnimationDuration: [{ type: Input, args: ['collapseAnimationDuration',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrExpandAnimationDuration: [{ type: Input, args: ['expandAnimationDuration',] }],
-    attrExpandMode: [{ type: Input, args: ['expandMode',] }],
-    attrExpandedIndexes: [{ type: Input, args: ['expandedIndexes',] }],
-    attrInitContent: [{ type: Input, args: ['initContent',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrShowArrow: [{ type: Input, args: ['showArrow',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrToggleMode: [{ type: Input, args: ['toggleMode',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onCollapsingItem: [{ type: Output }],
-    onCollapsedItem: [{ type: Output }],
-    onExpandingItem: [{ type: Output }],
-    onExpandedItem: [{ type: Output }]
+}; //jqxNavigationBarComponent
+__decorate([
+    Input('animationType'),
+    __metadata("design:type", String)
+], jqxNavigationBarComponent.prototype, "attrAnimationType", void 0);
+__decorate([
+    Input('arrowPosition'),
+    __metadata("design:type", String)
+], jqxNavigationBarComponent.prototype, "attrArrowPosition", void 0);
+__decorate([
+    Input('collapseAnimationDuration'),
+    __metadata("design:type", Number)
+], jqxNavigationBarComponent.prototype, "attrCollapseAnimationDuration", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxNavigationBarComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('expandAnimationDuration'),
+    __metadata("design:type", Number)
+], jqxNavigationBarComponent.prototype, "attrExpandAnimationDuration", void 0);
+__decorate([
+    Input('expandMode'),
+    __metadata("design:type", String)
+], jqxNavigationBarComponent.prototype, "attrExpandMode", void 0);
+__decorate([
+    Input('expandedIndexes'),
+    __metadata("design:type", Array)
+], jqxNavigationBarComponent.prototype, "attrExpandedIndexes", void 0);
+__decorate([
+    Input('initContent'),
+    __metadata("design:type", Function)
+], jqxNavigationBarComponent.prototype, "attrInitContent", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxNavigationBarComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('showArrow'),
+    __metadata("design:type", Boolean)
+], jqxNavigationBarComponent.prototype, "attrShowArrow", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxNavigationBarComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('toggleMode'),
+    __metadata("design:type", String)
+], jqxNavigationBarComponent.prototype, "attrToggleMode", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxNavigationBarComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxNavigationBarComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxNavigationBarComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxNavigationBarComponent.prototype, "onCollapsingItem", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxNavigationBarComponent.prototype, "onCollapsedItem", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxNavigationBarComponent.prototype, "onExpandingItem", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxNavigationBarComponent.prototype, "onExpandedItem", void 0);
+jqxNavigationBarComponent = __decorate([
+    Component({
+        selector: 'jqxNavigationBar',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxNavigationBarComponent);
+
+let jqxNavigationBarModule = class jqxNavigationBarModule {
 };
+jqxNavigationBarModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxNavigationBarComponent],
+        exports: [jqxNavigationBarComponent]
+    })
+], jqxNavigationBarModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxNavigationBarModule {
-}
-jqxNavigationBarModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxNavigationBarComponent],
-                exports: [jqxNavigationBarComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxNavigationBarComponent, jqxNavigationBarModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxnavigationbar.js.map

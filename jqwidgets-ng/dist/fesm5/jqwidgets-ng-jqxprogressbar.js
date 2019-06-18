@@ -1,12 +1,9 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxprogressbar from '../../jqwidgets-scripts/jqwidgets/jqxprogressbar';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxProgressBarComponent = /** @class */ (function () {
     function jqxProgressBarComponent(containerElement) {
         this.autoCreate = true;
@@ -17,31 +14,15 @@ var jqxProgressBarComponent = /** @class */ (function () {
         this.onValueChanged = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxProgressBarComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxProgressBarComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -61,17 +42,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxProgressBarComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -85,17 +56,9 @@ var jqxProgressBarComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxProgressBarComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -103,50 +66,20 @@ var jqxProgressBarComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxProgressBarComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxProgressBarComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxProgressBarComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -162,51 +95,18 @@ var jqxProgressBarComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxProgressBar', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxProgressBarComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxProgressBarComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxProgressBarComponent.prototype.setOptions = function (options) {
         this.host.jqxProgressBar('setOptions', options);
     };
     // jqxProgressBarComponent properties
-    // jqxProgressBarComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.animationDuration = 
-    // jqxProgressBarComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.animationDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('animationDuration', arg);
         }
@@ -214,15 +114,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('animationDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.colorRanges = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.colorRanges = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('colorRanges', arg);
         }
@@ -230,15 +122,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('colorRanges');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('disabled', arg);
         }
@@ -246,15 +130,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('height', arg);
         }
@@ -262,15 +138,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.layout = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.layout = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('layout', arg);
         }
@@ -278,15 +146,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('layout');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.max = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.max = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('max', arg);
         }
@@ -294,15 +154,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('max');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.min = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.min = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('min', arg);
         }
@@ -310,15 +162,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('min');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.orientation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.orientation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('orientation', arg);
         }
@@ -326,15 +170,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('orientation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('rtl', arg);
         }
@@ -342,15 +178,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.renderText = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.renderText = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('renderText', arg);
         }
@@ -358,15 +186,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('renderText');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.showText = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.showText = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('showText', arg);
         }
@@ -374,15 +194,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('showText');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.template = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.template = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('template', arg);
         }
@@ -390,15 +202,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('template');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('theme', arg);
         }
@@ -406,15 +210,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.value = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.value = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('value', arg);
         }
@@ -422,15 +218,7 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('value');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxProgressBarComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxProgressBar('width', arg);
         }
@@ -439,38 +227,13 @@ var jqxProgressBarComponent = /** @class */ (function () {
         }
     };
     // jqxProgressBarComponent functions
-    // jqxProgressBarComponent functions
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.actualValue = 
-    // jqxProgressBarComponent functions
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    function (value) {
+    jqxProgressBarComponent.prototype.actualValue = function (value) {
         this.host.jqxProgressBar('actualValue', value);
     };
-    /**
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxProgressBarComponent.prototype.destroy = function () {
         this.host.jqxProgressBar('destroy');
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxProgressBarComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxProgressBar('val', value);
         }
@@ -478,91 +241,114 @@ var jqxProgressBarComponent = /** @class */ (function () {
             return this.host.jqxProgressBar('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxProgressBarComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxProgressBarComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('complete', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onComplete.emit(eventData); }));
-        this.host.on('invalidValue', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onInvalidValue.emit(eventData); }));
-        this.host.on('valueChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onValueChanged.emit(eventData); }));
+        this.host.on('complete', function (eventData) { _this.onComplete.emit(eventData); });
+        this.host.on('invalidValue', function (eventData) { _this.onInvalidValue.emit(eventData); });
+        this.host.on('valueChanged', function (eventData) { _this.onValueChanged.emit(eventData); });
     };
-    jqxProgressBarComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxProgressBar',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxProgressBarComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxProgressBarComponent.propDecorators = {
-        attrAnimationDuration: [{ type: Input, args: ['animationDuration',] }],
-        attrColorRanges: [{ type: Input, args: ['colorRanges',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrLayout: [{ type: Input, args: ['layout',] }],
-        attrMax: [{ type: Input, args: ['max',] }],
-        attrMin: [{ type: Input, args: ['min',] }],
-        attrOrientation: [{ type: Input, args: ['orientation',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrRenderText: [{ type: Input, args: ['renderText',] }],
-        attrShowText: [{ type: Input, args: ['showText',] }],
-        attrTemplate: [{ type: Input, args: ['template',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrValue: [{ type: Input, args: ['value',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onComplete: [{ type: Output }],
-        onInvalidValue: [{ type: Output }],
-        onValueChanged: [{ type: Output }]
-    };
+    __decorate([
+        Input('animationDuration'),
+        __metadata("design:type", Number)
+    ], jqxProgressBarComponent.prototype, "attrAnimationDuration", void 0);
+    __decorate([
+        Input('colorRanges'),
+        __metadata("design:type", Array)
+    ], jqxProgressBarComponent.prototype, "attrColorRanges", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxProgressBarComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('layout'),
+        __metadata("design:type", String)
+    ], jqxProgressBarComponent.prototype, "attrLayout", void 0);
+    __decorate([
+        Input('max'),
+        __metadata("design:type", Object)
+    ], jqxProgressBarComponent.prototype, "attrMax", void 0);
+    __decorate([
+        Input('min'),
+        __metadata("design:type", Object)
+    ], jqxProgressBarComponent.prototype, "attrMin", void 0);
+    __decorate([
+        Input('orientation'),
+        __metadata("design:type", String)
+    ], jqxProgressBarComponent.prototype, "attrOrientation", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxProgressBarComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('renderText'),
+        __metadata("design:type", Function)
+    ], jqxProgressBarComponent.prototype, "attrRenderText", void 0);
+    __decorate([
+        Input('showText'),
+        __metadata("design:type", Boolean)
+    ], jqxProgressBarComponent.prototype, "attrShowText", void 0);
+    __decorate([
+        Input('template'),
+        __metadata("design:type", String)
+    ], jqxProgressBarComponent.prototype, "attrTemplate", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxProgressBarComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('value'),
+        __metadata("design:type", Object)
+    ], jqxProgressBarComponent.prototype, "attrValue", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxProgressBarComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxProgressBarComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxProgressBarComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxProgressBarComponent.prototype, "onComplete", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxProgressBarComponent.prototype, "onInvalidValue", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxProgressBarComponent.prototype, "onValueChanged", void 0);
+    jqxProgressBarComponent = __decorate([
+        Component({
+            selector: 'jqxProgressBar',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxProgressBarComponent);
     return jqxProgressBarComponent;
 }()); //jqxProgressBarComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxProgressBarModule = /** @class */ (function () {
     function jqxProgressBarModule() {
     }
-    jqxProgressBarModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxProgressBarComponent],
-                    exports: [jqxProgressBarComponent]
-                },] }
-    ];
+    jqxProgressBarModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxProgressBarComponent],
+            exports: [jqxProgressBarComponent]
+        })
+    ], jqxProgressBarModule);
     return jqxProgressBarModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxProgressBarComponent, jqxProgressBarModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxprogressbar.js.map

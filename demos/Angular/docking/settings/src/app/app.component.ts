@@ -9,9 +9,9 @@ import { jqxCheckBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myDocking') myDocking: jqxDockingComponent;
-    @ViewChild('collapseButtonsCheckbox') collapseButtonsCheckbox: jqxCheckBoxComponent;
-    @ViewChild('closeButtonsCheckbox') closeButtonsCheckbox: jqxCheckBoxComponent;
+    @ViewChild('myDocking', {static: false}) myDocking: jqxDockingComponent;
+    @ViewChild('collapseButtonsCheckbox', {static: false}) collapseButtonsCheckbox: jqxCheckBoxComponent;
+    @ViewChild('closeButtonsCheckbox', {static: false}) closeButtonsCheckbox: jqxCheckBoxComponent;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 800) {

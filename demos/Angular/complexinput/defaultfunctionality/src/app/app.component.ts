@@ -8,7 +8,7 @@ import { jqxComplexInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('myComplexInput') myComplexInput: jqxComplexInputComponent;
+    @ViewChild('myComplexInput', {static: false}) myComplexInput: jqxComplexInputComponent;
 
     getRealPart(): void {
         let realPart = this.myComplexInput.getReal();

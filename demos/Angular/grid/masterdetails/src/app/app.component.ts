@@ -8,8 +8,8 @@ import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid
 })
 
 export class AppComponent {
-    @ViewChild('customersGrid') customersGrid: jqxGridComponent;
-    @ViewChild('ordersGrid') ordersGrid: jqxGridComponent;
+    @ViewChild('customersGrid', {static: false}) customersGrid: jqxGridComponent;
+    @ViewChild('ordersGrid', {static: false}) ordersGrid: jqxGridComponent;
 
     source: any =
     {

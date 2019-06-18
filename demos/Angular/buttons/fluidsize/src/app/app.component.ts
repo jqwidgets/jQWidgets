@@ -8,7 +8,7 @@ import { jqxDropDownButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angul
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myDropDownButton') myDropDownButton: jqxDropDownButtonComponent;
+    @ViewChild('myDropDownButton', {static: false}) myDropDownButton: jqxDropDownButtonComponent;
 
     ngAfterViewInit(): void {
         let dropDownContent = '<div style="position: relative; margin-left: 3px; margin-top: 5px;">DropDownButton</div>';

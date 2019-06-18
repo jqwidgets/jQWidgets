@@ -8,9 +8,9 @@ import { jqxComboBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myComboBox') myComboBox: jqxComboBoxComponent;
-	@ViewChild('selectionlog') selectionlog: ElementRef;
-	@ViewChild('checkedItemsLog') checkedItemsLog: ElementRef;
+    @ViewChild('myComboBox', {static: false}) myComboBox: jqxComboBoxComponent;
+	@ViewChild('selectionlog', {static: false}) selectionlog: ElementRef;
+	@ViewChild('checkedItemsLog', {static: false}) checkedItemsLog: ElementRef;
 
     ngAfterViewInit(): void { 
         this.myComboBox.checkIndex(0)

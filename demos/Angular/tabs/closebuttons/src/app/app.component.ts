@@ -8,8 +8,8 @@ import { jqxTabsComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtabs
 })
 
 export class AppComponent {
-    @ViewChild('jqxTabs') jqxTabs: jqxTabsComponent;
-    @ViewChild('unorderedList') unorderedList: ElementRef;
+    @ViewChild('jqxTabs', {static: false}) jqxTabs: jqxTabsComponent;
+    @ViewChild('unorderedList', {static: false}) unorderedList: ElementRef;
 
     index: number = 0;
 	

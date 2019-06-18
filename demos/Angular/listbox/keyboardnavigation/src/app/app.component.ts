@@ -8,7 +8,7 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('listBox') listBox: jqxListBoxComponent;
+    @ViewChild('listBox', {static: false}) listBox: jqxListBoxComponent;
 
     ngAfterViewInit() {
         this.listBox.focus();

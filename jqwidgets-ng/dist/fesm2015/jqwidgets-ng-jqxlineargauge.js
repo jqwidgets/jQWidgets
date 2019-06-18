@@ -1,16 +1,11 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdraw from '../../jqwidgets-scripts/jqwidgets/jqxdraw';
 import * as jqxgauge from '../../jqwidgets-scripts/jqwidgets/jqxgauge';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxLinearGaugeComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxLinearGaugeComponent = class jqxLinearGaugeComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['animationDuration', 'background', 'colorScheme', 'disabled', 'easing', 'height', 'int64', 'labels', 'min', 'max', 'orientation', 'pointer', 'rangesOffset', 'rangeSize', 'ranges', 'showRanges', 'scaleStyle', 'scaleLength', 'ticksOffset', 'ticksPosition', 'ticksMinor', 'ticksMajor', 'value', 'width'];
@@ -19,25 +14,16 @@ class jqxLinearGaugeComponent {
         this.onValueChanged = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -57,11 +43,6 @@ class jqxLinearGaugeComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -76,14 +57,9 @@ class jqxLinearGaugeComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -91,34 +67,18 @@ class jqxLinearGaugeComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -135,32 +95,17 @@ class jqxLinearGaugeComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxLinearGauge', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxLinearGauge('setOptions', options);
     }
     // jqxLinearGaugeComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('animationDuration', arg);
@@ -169,10 +114,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('animationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     background(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('background', arg);
@@ -181,10 +122,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('background');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     colorScheme(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('colorScheme', arg);
@@ -193,10 +130,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('colorScheme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('disabled', arg);
@@ -205,10 +138,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     easing(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('easing', arg);
@@ -217,10 +146,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('easing');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('height', arg);
@@ -229,10 +154,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     int64(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('int64', arg);
@@ -241,10 +162,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('int64');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     labels(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('labels', arg);
@@ -253,10 +170,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('labels');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     min(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('min', arg);
@@ -265,10 +178,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('min');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     max(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('max', arg);
@@ -277,10 +186,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('max');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     orientation(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('orientation', arg);
@@ -289,10 +194,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('orientation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pointer(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('pointer', arg);
@@ -301,10 +202,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('pointer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rangesOffset(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('rangesOffset', arg);
@@ -313,10 +210,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('rangesOffset');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rangeSize(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('rangeSize', arg);
@@ -325,10 +218,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('rangeSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     ranges(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('ranges', arg);
@@ -337,10 +226,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('ranges');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showRanges(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('showRanges', arg);
@@ -349,10 +234,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('showRanges');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scaleStyle(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('scaleStyle', arg);
@@ -361,10 +242,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('scaleStyle');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scaleLength(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('scaleLength', arg);
@@ -373,10 +250,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('scaleLength');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     ticksOffset(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('ticksOffset', arg);
@@ -385,10 +258,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('ticksOffset');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     ticksPosition(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('ticksPosition', arg);
@@ -397,10 +266,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('ticksPosition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     ticksMinor(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('ticksMinor', arg);
@@ -409,10 +274,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('ticksMinor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     ticksMajor(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('ticksMajor', arg);
@@ -421,10 +282,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('ticksMajor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     value(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('value', arg);
@@ -433,10 +290,6 @@ class jqxLinearGaugeComponent {
             return this.host.jqxLinearGauge('value');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxLinearGauge('width', arg);
@@ -446,22 +299,12 @@ class jqxLinearGaugeComponent {
         }
     }
     // jqxLinearGaugeComponent functions
-    /**
-     * @return {?}
-     */
     disable() {
         this.host.jqxLinearGauge('disable');
     }
-    /**
-     * @return {?}
-     */
     enable() {
         this.host.jqxLinearGauge('enable');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxLinearGauge('val', value);
@@ -471,86 +314,140 @@ class jqxLinearGaugeComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('valueChanging', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onValueChanging.emit(eventData); }));
-        this.host.on('valueChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onValueChanged.emit(eventData); }));
+        this.host.on('valueChanging', (eventData) => { this.onValueChanging.emit(eventData); });
+        this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); });
     }
-} //jqxLinearGaugeComponent
-jqxLinearGaugeComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxLinearGauge',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxLinearGaugeComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxLinearGaugeComponent.propDecorators = {
-    attrAnimationDuration: [{ type: Input, args: ['animationDuration',] }],
-    attrBackground: [{ type: Input, args: ['background',] }],
-    attrColorScheme: [{ type: Input, args: ['colorScheme',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrEasing: [{ type: Input, args: ['easing',] }],
-    attrInt64: [{ type: Input, args: ['int64',] }],
-    attrLabels: [{ type: Input, args: ['labels',] }],
-    attrMin: [{ type: Input, args: ['min',] }],
-    attrMax: [{ type: Input, args: ['max',] }],
-    attrOrientation: [{ type: Input, args: ['orientation',] }],
-    attrPointer: [{ type: Input, args: ['pointer',] }],
-    attrRangesOffset: [{ type: Input, args: ['rangesOffset',] }],
-    attrRangeSize: [{ type: Input, args: ['rangeSize',] }],
-    attrRanges: [{ type: Input, args: ['ranges',] }],
-    attrShowRanges: [{ type: Input, args: ['showRanges',] }],
-    attrScaleStyle: [{ type: Input, args: ['scaleStyle',] }],
-    attrScaleLength: [{ type: Input, args: ['scaleLength',] }],
-    attrTicksOffset: [{ type: Input, args: ['ticksOffset',] }],
-    attrTicksPosition: [{ type: Input, args: ['ticksPosition',] }],
-    attrTicksMinor: [{ type: Input, args: ['ticksMinor',] }],
-    attrTicksMajor: [{ type: Input, args: ['ticksMajor',] }],
-    attrValue: [{ type: Input, args: ['value',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onValueChanging: [{ type: Output }],
-    onValueChanged: [{ type: Output }]
+}; //jqxLinearGaugeComponent
+__decorate([
+    Input('animationDuration'),
+    __metadata("design:type", Number)
+], jqxLinearGaugeComponent.prototype, "attrAnimationDuration", void 0);
+__decorate([
+    Input('background'),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "attrBackground", void 0);
+__decorate([
+    Input('colorScheme'),
+    __metadata("design:type", String)
+], jqxLinearGaugeComponent.prototype, "attrColorScheme", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxLinearGaugeComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('easing'),
+    __metadata("design:type", String)
+], jqxLinearGaugeComponent.prototype, "attrEasing", void 0);
+__decorate([
+    Input('int64'),
+    __metadata("design:type", Boolean)
+], jqxLinearGaugeComponent.prototype, "attrInt64", void 0);
+__decorate([
+    Input('labels'),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "attrLabels", void 0);
+__decorate([
+    Input('min'),
+    __metadata("design:type", Number)
+], jqxLinearGaugeComponent.prototype, "attrMin", void 0);
+__decorate([
+    Input('max'),
+    __metadata("design:type", Number)
+], jqxLinearGaugeComponent.prototype, "attrMax", void 0);
+__decorate([
+    Input('orientation'),
+    __metadata("design:type", String)
+], jqxLinearGaugeComponent.prototype, "attrOrientation", void 0);
+__decorate([
+    Input('pointer'),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "attrPointer", void 0);
+__decorate([
+    Input('rangesOffset'),
+    __metadata("design:type", Number)
+], jqxLinearGaugeComponent.prototype, "attrRangesOffset", void 0);
+__decorate([
+    Input('rangeSize'),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "attrRangeSize", void 0);
+__decorate([
+    Input('ranges'),
+    __metadata("design:type", Array)
+], jqxLinearGaugeComponent.prototype, "attrRanges", void 0);
+__decorate([
+    Input('showRanges'),
+    __metadata("design:type", Boolean)
+], jqxLinearGaugeComponent.prototype, "attrShowRanges", void 0);
+__decorate([
+    Input('scaleStyle'),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "attrScaleStyle", void 0);
+__decorate([
+    Input('scaleLength'),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "attrScaleLength", void 0);
+__decorate([
+    Input('ticksOffset'),
+    __metadata("design:type", Array)
+], jqxLinearGaugeComponent.prototype, "attrTicksOffset", void 0);
+__decorate([
+    Input('ticksPosition'),
+    __metadata("design:type", String)
+], jqxLinearGaugeComponent.prototype, "attrTicksPosition", void 0);
+__decorate([
+    Input('ticksMinor'),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "attrTicksMinor", void 0);
+__decorate([
+    Input('ticksMajor'),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "attrTicksMajor", void 0);
+__decorate([
+    Input('value'),
+    __metadata("design:type", Number)
+], jqxLinearGaugeComponent.prototype, "attrValue", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxLinearGaugeComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "onValueChanging", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxLinearGaugeComponent.prototype, "onValueChanged", void 0);
+jqxLinearGaugeComponent = __decorate([
+    Component({
+        selector: 'jqxLinearGauge',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxLinearGaugeComponent);
+
+let jqxLinearGaugeModule = class jqxLinearGaugeModule {
 };
+jqxLinearGaugeModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxLinearGaugeComponent],
+        exports: [jqxLinearGaugeComponent]
+    })
+], jqxLinearGaugeModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxLinearGaugeModule {
-}
-jqxLinearGaugeModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxLinearGaugeComponent],
-                exports: [jqxLinearGaugeComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxLinearGaugeComponent, jqxLinearGaugeModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxlineargauge.js.map

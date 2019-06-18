@@ -1,13 +1,10 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxmenu from '../../jqwidgets-scripts/jqwidgets/jqxmenu';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxMenuComponent = /** @class */ (function () {
     function jqxMenuComponent(containerElement) {
         this.autoCreate = true;
@@ -18,31 +15,15 @@ var jqxMenuComponent = /** @class */ (function () {
         this.onShown = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxMenuComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxMenuComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -62,17 +43,7 @@ var jqxMenuComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxMenuComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -86,17 +57,9 @@ var jqxMenuComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxMenuComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -104,50 +67,20 @@ var jqxMenuComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxMenuComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxMenuComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxMenuComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -163,51 +96,18 @@ var jqxMenuComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxMenu', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxMenuComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxMenuComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxMenuComponent.prototype.setOptions = function (options) {
         this.host.jqxMenu('setOptions', options);
     };
     // jqxMenuComponent properties
-    // jqxMenuComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.animationShowDuration = 
-    // jqxMenuComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.animationShowDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('animationShowDuration', arg);
         }
@@ -215,15 +115,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('animationShowDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.animationHideDuration = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.animationHideDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('animationHideDuration', arg);
         }
@@ -231,15 +123,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('animationHideDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.animationHideDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.animationHideDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('animationHideDelay', arg);
         }
@@ -247,15 +131,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('animationHideDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.animationShowDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.animationShowDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('animationShowDelay', arg);
         }
@@ -263,15 +139,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('animationShowDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.autoCloseInterval = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.autoCloseInterval = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('autoCloseInterval', arg);
         }
@@ -279,15 +147,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('autoCloseInterval');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.autoSizeMainItems = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.autoSizeMainItems = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('autoSizeMainItems', arg);
         }
@@ -295,15 +155,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('autoSizeMainItems');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.autoCloseOnClick = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.autoCloseOnClick = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('autoCloseOnClick', arg);
         }
@@ -311,15 +163,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('autoCloseOnClick');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.autoOpenPopup = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.autoOpenPopup = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('autoOpenPopup', arg);
         }
@@ -327,15 +171,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('autoOpenPopup');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.autoOpen = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.autoOpen = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('autoOpen', arg);
         }
@@ -343,15 +179,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('autoOpen');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.autoCloseOnMouseLeave = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.autoCloseOnMouseLeave = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('autoCloseOnMouseLeave', arg);
         }
@@ -359,15 +187,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('autoCloseOnMouseLeave');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.clickToOpen = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.clickToOpen = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('clickToOpen', arg);
         }
@@ -375,15 +195,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('clickToOpen');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('disabled', arg);
         }
@@ -391,15 +203,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.enableHover = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.enableHover = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('enableHover', arg);
         }
@@ -407,15 +211,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('enableHover');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.easing = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.easing = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('easing', arg);
         }
@@ -423,15 +219,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('easing');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('height', arg);
         }
@@ -439,15 +227,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.keyboardNavigation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.keyboardNavigation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('keyboardNavigation', arg);
         }
@@ -455,15 +235,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('keyboardNavigation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.minimizeWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.minimizeWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('minimizeWidth', arg);
         }
@@ -471,15 +243,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('minimizeWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.mode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.mode = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('mode', arg);
         }
@@ -487,15 +251,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('mode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.popupZIndex = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.popupZIndex = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('popupZIndex', arg);
         }
@@ -503,15 +259,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('popupZIndex');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('rtl', arg);
         }
@@ -519,15 +267,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.showTopLevelArrows = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.showTopLevelArrows = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('showTopLevelArrows', arg);
         }
@@ -535,15 +275,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('showTopLevelArrows');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.source = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.source = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('source', arg);
         }
@@ -551,15 +283,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('source');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('theme', arg);
         }
@@ -567,15 +291,7 @@ var jqxMenuComponent = /** @class */ (function () {
             return this.host.jqxMenu('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxMenuComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxMenu('width', arg);
         }
@@ -584,211 +300,180 @@ var jqxMenuComponent = /** @class */ (function () {
         }
     };
     // jqxMenuComponent functions
-    // jqxMenuComponent functions
-    /**
-     * @param {?} itemID
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.closeItem = 
-    // jqxMenuComponent functions
-    /**
-     * @param {?} itemID
-     * @return {?}
-     */
-    function (itemID) {
+    jqxMenuComponent.prototype.closeItem = function (itemID) {
         this.host.jqxMenu('closeItem', itemID);
     };
-    /**
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.close = /**
-     * @return {?}
-     */
-    function () {
+    jqxMenuComponent.prototype.close = function () {
         this.host.jqxMenu('close');
     };
-    /**
-     * @param {?} itemID
-     * @param {?} value
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.disable = /**
-     * @param {?} itemID
-     * @param {?} value
-     * @return {?}
-     */
-    function (itemID, value) {
+    jqxMenuComponent.prototype.disable = function (itemID, value) {
         this.host.jqxMenu('disable', itemID, value);
     };
-    /**
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxMenuComponent.prototype.destroy = function () {
         this.host.jqxMenu('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxMenuComponent.prototype.focus = function () {
         this.host.jqxMenu('focus');
     };
-    /**
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.minimize = /**
-     * @return {?}
-     */
-    function () {
+    jqxMenuComponent.prototype.minimize = function () {
         this.host.jqxMenu('minimize');
     };
-    /**
-     * @param {?} left
-     * @param {?} top
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.open = /**
-     * @param {?} left
-     * @param {?} top
-     * @return {?}
-     */
-    function (left, top) {
+    jqxMenuComponent.prototype.open = function (left, top) {
         this.host.jqxMenu('open', left, top);
     };
-    /**
-     * @param {?} itemID
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.openItem = /**
-     * @param {?} itemID
-     * @return {?}
-     */
-    function (itemID) {
+    jqxMenuComponent.prototype.openItem = function (itemID) {
         this.host.jqxMenu('openItem', itemID);
     };
-    /**
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.restore = /**
-     * @return {?}
-     */
-    function () {
+    jqxMenuComponent.prototype.restore = function () {
         this.host.jqxMenu('restore');
     };
-    /**
-     * @param {?} item
-     * @param {?} horizontaldirection
-     * @param {?} verticaldirection
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.setItemOpenDirection = /**
-     * @param {?} item
-     * @param {?} horizontaldirection
-     * @param {?} verticaldirection
-     * @return {?}
-     */
-    function (item, horizontaldirection, verticaldirection) {
+    jqxMenuComponent.prototype.setItemOpenDirection = function (item, horizontaldirection, verticaldirection) {
         this.host.jqxMenu('setItemOpenDirection', item, horizontaldirection, verticaldirection);
     };
-    /**
-     * @return {?}
-     */
-    jqxMenuComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxMenuComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('closed', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onClosed.emit(eventData); }));
-        this.host.on('itemclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onItemclick.emit(eventData); }));
-        this.host.on('shown', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onShown.emit(eventData); }));
+        this.host.on('closed', function (eventData) { _this.onClosed.emit(eventData); });
+        this.host.on('itemclick', function (eventData) { _this.onItemclick.emit(eventData); });
+        this.host.on('shown', function (eventData) { _this.onShown.emit(eventData); });
     };
-    jqxMenuComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxMenu',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxMenuComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxMenuComponent.propDecorators = {
-        attrAnimationShowDuration: [{ type: Input, args: ['animationShowDuration',] }],
-        attrAnimationHideDuration: [{ type: Input, args: ['animationHideDuration',] }],
-        attrAnimationHideDelay: [{ type: Input, args: ['animationHideDelay',] }],
-        attrAnimationShowDelay: [{ type: Input, args: ['animationShowDelay',] }],
-        attrAutoCloseInterval: [{ type: Input, args: ['autoCloseInterval',] }],
-        attrAutoSizeMainItems: [{ type: Input, args: ['autoSizeMainItems',] }],
-        attrAutoCloseOnClick: [{ type: Input, args: ['autoCloseOnClick',] }],
-        attrAutoOpenPopup: [{ type: Input, args: ['autoOpenPopup',] }],
-        attrAutoOpen: [{ type: Input, args: ['autoOpen',] }],
-        attrAutoCloseOnMouseLeave: [{ type: Input, args: ['autoCloseOnMouseLeave',] }],
-        attrClickToOpen: [{ type: Input, args: ['clickToOpen',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrEnableHover: [{ type: Input, args: ['enableHover',] }],
-        attrEasing: [{ type: Input, args: ['easing',] }],
-        attrKeyboardNavigation: [{ type: Input, args: ['keyboardNavigation',] }],
-        attrMinimizeWidth: [{ type: Input, args: ['minimizeWidth',] }],
-        attrMode: [{ type: Input, args: ['mode',] }],
-        attrPopupZIndex: [{ type: Input, args: ['popupZIndex',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrShowTopLevelArrows: [{ type: Input, args: ['showTopLevelArrows',] }],
-        attrSource: [{ type: Input, args: ['source',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onClosed: [{ type: Output }],
-        onItemclick: [{ type: Output }],
-        onShown: [{ type: Output }]
-    };
+    __decorate([
+        Input('animationShowDuration'),
+        __metadata("design:type", Number)
+    ], jqxMenuComponent.prototype, "attrAnimationShowDuration", void 0);
+    __decorate([
+        Input('animationHideDuration'),
+        __metadata("design:type", Number)
+    ], jqxMenuComponent.prototype, "attrAnimationHideDuration", void 0);
+    __decorate([
+        Input('animationHideDelay'),
+        __metadata("design:type", Number)
+    ], jqxMenuComponent.prototype, "attrAnimationHideDelay", void 0);
+    __decorate([
+        Input('animationShowDelay'),
+        __metadata("design:type", Number)
+    ], jqxMenuComponent.prototype, "attrAnimationShowDelay", void 0);
+    __decorate([
+        Input('autoCloseInterval'),
+        __metadata("design:type", Number)
+    ], jqxMenuComponent.prototype, "attrAutoCloseInterval", void 0);
+    __decorate([
+        Input('autoSizeMainItems'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "attrAutoSizeMainItems", void 0);
+    __decorate([
+        Input('autoCloseOnClick'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "attrAutoCloseOnClick", void 0);
+    __decorate([
+        Input('autoOpenPopup'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "attrAutoOpenPopup", void 0);
+    __decorate([
+        Input('autoOpen'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "attrAutoOpen", void 0);
+    __decorate([
+        Input('autoCloseOnMouseLeave'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "attrAutoCloseOnMouseLeave", void 0);
+    __decorate([
+        Input('clickToOpen'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "attrClickToOpen", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('enableHover'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "attrEnableHover", void 0);
+    __decorate([
+        Input('easing'),
+        __metadata("design:type", String)
+    ], jqxMenuComponent.prototype, "attrEasing", void 0);
+    __decorate([
+        Input('keyboardNavigation'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "attrKeyboardNavigation", void 0);
+    __decorate([
+        Input('minimizeWidth'),
+        __metadata("design:type", Object)
+    ], jqxMenuComponent.prototype, "attrMinimizeWidth", void 0);
+    __decorate([
+        Input('mode'),
+        __metadata("design:type", String)
+    ], jqxMenuComponent.prototype, "attrMode", void 0);
+    __decorate([
+        Input('popupZIndex'),
+        __metadata("design:type", Object)
+    ], jqxMenuComponent.prototype, "attrPopupZIndex", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('showTopLevelArrows'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "attrShowTopLevelArrows", void 0);
+    __decorate([
+        Input('source'),
+        __metadata("design:type", Object)
+    ], jqxMenuComponent.prototype, "attrSource", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxMenuComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxMenuComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxMenuComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxMenuComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxMenuComponent.prototype, "onClosed", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxMenuComponent.prototype, "onItemclick", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxMenuComponent.prototype, "onShown", void 0);
+    jqxMenuComponent = __decorate([
+        Component({
+            selector: 'jqxMenu',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxMenuComponent);
     return jqxMenuComponent;
 }()); //jqxMenuComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxMenuModule = /** @class */ (function () {
     function jqxMenuModule() {
     }
-    jqxMenuModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxMenuComponent],
-                    exports: [jqxMenuComponent]
-                },] }
-    ];
+    jqxMenuModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxMenuComponent],
+            exports: [jqxMenuComponent]
+        })
+    ], jqxMenuModule);
     return jqxMenuModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxMenuComponent, jqxMenuModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxmenu.js.map

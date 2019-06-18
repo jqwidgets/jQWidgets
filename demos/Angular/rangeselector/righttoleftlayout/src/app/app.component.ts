@@ -8,7 +8,7 @@ import { jqxRangeSelectorComponent } from 'jqwidgets-scripts/jqwidgets-ts/angula
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('rangeSelector') rangeSelector: jqxRangeSelectorComponent;
+    @ViewChild('rangeSelector', {static: false}) rangeSelector: jqxRangeSelectorComponent;
 	
 	getWidth() : any {
 		if (document.body.offsetWidth < 750) {

@@ -12,9 +12,9 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent {
-    @ViewChild('myDataTable') myDataTable: jqxDataTableComponent;
-    @ViewChild('myInput') myInput: jqxInputComponent;
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
+    @ViewChild('myDataTable', {static: false}) myDataTable: jqxDataTableComponent;
+    @ViewChild('myInput', {static: false}) myInput: jqxInputComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

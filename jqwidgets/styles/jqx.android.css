@@ -521,3 +521,7 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
 .jqx-scheduler-android, .jqx-scheduler-time-column-android, .jqx-scheduler-toolbar-details-android {
     color: white !important;
 }
+
+.jqx-label-android {
+	fill: lightgray;
+}

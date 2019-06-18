@@ -5,7 +5,7 @@
         "@types/node": "12.0.2",
         "@types/react": "16.8.17",
         "@types/react-dom": "16.8.4",
-        "jqwidgets-scripts": "^7.2.0",
+        "jqwidgets-scripts": "^8.0.0",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-scripts": "3.0.1",

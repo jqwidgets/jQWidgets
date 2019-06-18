@@ -129,7 +129,7 @@ export interface IBarGaugeLabels {
     connectorColor?: string;
     connectorWidth?: number;
     font?: IBarGaugeLabelsFont;
-    formatFunction?: (value?: number, index?: number) => string;
+    formatFunction?: (value: number, index?: number) => string;
     indent?: number;
     precision?: number;
     visible?: boolean;
@@ -166,7 +166,7 @@ export interface IBarGaugeTitle {
 
 export interface IBarGaugeTooltip {
     classname?: string;
-    formatFunction?: (value?: number | string, index?: number, color?: string) => string;
+    formatFunction?: (value: string, index?: number, color?: string) => string;
     visible?: boolean;
     precision?: number;
 }
@@ -185,7 +185,7 @@ interface IBarGaugeOptions {
     customColorScheme?: IBarGaugeCustomColorScheme;
     disabled?: boolean;
     endAngle?: number;
-    formatFunction?: (value?: number | string, index?: number, color?: string) => string;
+    formatFunction?: (value: number, index?: number, color?: string) => string;
     height?: string | number;
     labels?: IBarGaugeLabels;
     max?: number | string;

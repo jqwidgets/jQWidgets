@@ -12,9 +12,9 @@ import { generateordersdata } from '../assets/generatedata';
 })
 
 export class AppComponent {
-    @ViewChild('myTreeGrid') myTreeGrid: jqxTreeGridComponent;
-    @ViewChild('myInput') myInput: jqxInputComponent;
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
+    @ViewChild('myTreeGrid', {static: false}) myTreeGrid: jqxTreeGridComponent;
+    @ViewChild('myInput', {static: false}) myInput: jqxInputComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
 
     source: any =
     {

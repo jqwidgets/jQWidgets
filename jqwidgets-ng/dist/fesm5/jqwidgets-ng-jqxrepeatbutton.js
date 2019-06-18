@@ -1,12 +1,9 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxRepeatButtonComponent = /** @class */ (function () {
     function jqxRepeatButtonComponent(containerElement) {
         this.autoCreate = true;
@@ -15,31 +12,15 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
         this.onClick = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxRepeatButtonComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxRepeatButtonComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -59,17 +40,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxRepeatButtonComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -83,17 +54,9 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxRepeatButtonComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -101,50 +64,20 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxRepeatButtonComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxRepeatButtonComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxRepeatButtonComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -160,51 +93,18 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxRepeatButton', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxRepeatButtonComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxRepeatButtonComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxRepeatButtonComponent.prototype.setOptions = function (options) {
         this.host.jqxRepeatButton('setOptions', options);
     };
     // jqxRepeatButtonComponent properties
-    // jqxRepeatButtonComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.delay = 
-    // jqxRepeatButtonComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.delay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('delay', arg);
         }
@@ -212,15 +112,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('delay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('disabled', arg);
         }
@@ -228,15 +120,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('height', arg);
         }
@@ -244,15 +128,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.imgSrc = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.imgSrc = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('imgSrc', arg);
         }
@@ -260,15 +136,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('imgSrc');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.imgWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.imgWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('imgWidth', arg);
         }
@@ -276,15 +144,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('imgWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.imgHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.imgHeight = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('imgHeight', arg);
         }
@@ -292,15 +152,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('imgHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.imgPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.imgPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('imgPosition', arg);
         }
@@ -308,15 +160,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('imgPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.roundedCorners = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.roundedCorners = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('roundedCorners', arg);
         }
@@ -324,15 +168,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('roundedCorners');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('rtl', arg);
         }
@@ -340,15 +176,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.textPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.textPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('textPosition', arg);
         }
@@ -356,15 +184,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('textPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.textImageRelation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.textImageRelation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('textImageRelation', arg);
         }
@@ -372,15 +192,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('textImageRelation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('theme', arg);
         }
@@ -388,15 +200,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.template = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.template = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('template', arg);
         }
@@ -404,15 +208,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('template');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.toggled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.toggled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('toggled', arg);
         }
@@ -420,15 +216,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('toggled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('width', arg);
         }
@@ -436,15 +224,7 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('width');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.value = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxRepeatButtonComponent.prototype.value = function (arg) {
         if (arg !== undefined) {
             this.host.jqxRepeatButton('value', arg);
         }
@@ -453,45 +233,16 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
         }
     };
     // jqxRepeatButtonComponent functions
-    // jqxRepeatButtonComponent functions
-    /**
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.destroy = 
-    // jqxRepeatButtonComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxRepeatButtonComponent.prototype.destroy = function () {
         this.host.jqxRepeatButton('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxRepeatButtonComponent.prototype.focus = function () {
         this.host.jqxRepeatButton('focus');
     };
-    /**
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxRepeatButtonComponent.prototype.render = function () {
         this.host.jqxRepeatButton('render');
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxRepeatButtonComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxRepeatButton('val', value);
         }
@@ -499,80 +250,108 @@ var jqxRepeatButtonComponent = /** @class */ (function () {
             return this.host.jqxRepeatButton('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxRepeatButtonComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxRepeatButtonComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('click', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onClick.emit(eventData); }));
+        this.host.on('click', function (eventData) { _this.onClick.emit(eventData); });
     };
-    jqxRepeatButtonComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxRepeatButton',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxRepeatButtonComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxRepeatButtonComponent.propDecorators = {
-        attrDelay: [{ type: Input, args: ['delay',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrImgSrc: [{ type: Input, args: ['imgSrc',] }],
-        attrImgWidth: [{ type: Input, args: ['imgWidth',] }],
-        attrImgHeight: [{ type: Input, args: ['imgHeight',] }],
-        attrImgPosition: [{ type: Input, args: ['imgPosition',] }],
-        attrRoundedCorners: [{ type: Input, args: ['roundedCorners',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrTextPosition: [{ type: Input, args: ['textPosition',] }],
-        attrTextImageRelation: [{ type: Input, args: ['textImageRelation',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrTemplate: [{ type: Input, args: ['template',] }],
-        attrToggled: [{ type: Input, args: ['toggled',] }],
-        attrValue: [{ type: Input, args: ['value',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onClick: [{ type: Output }]
-    };
+    __decorate([
+        Input('delay'),
+        __metadata("design:type", Number)
+    ], jqxRepeatButtonComponent.prototype, "attrDelay", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxRepeatButtonComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('imgSrc'),
+        __metadata("design:type", String)
+    ], jqxRepeatButtonComponent.prototype, "attrImgSrc", void 0);
+    __decorate([
+        Input('imgWidth'),
+        __metadata("design:type", Object)
+    ], jqxRepeatButtonComponent.prototype, "attrImgWidth", void 0);
+    __decorate([
+        Input('imgHeight'),
+        __metadata("design:type", Object)
+    ], jqxRepeatButtonComponent.prototype, "attrImgHeight", void 0);
+    __decorate([
+        Input('imgPosition'),
+        __metadata("design:type", String)
+    ], jqxRepeatButtonComponent.prototype, "attrImgPosition", void 0);
+    __decorate([
+        Input('roundedCorners'),
+        __metadata("design:type", String)
+    ], jqxRepeatButtonComponent.prototype, "attrRoundedCorners", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxRepeatButtonComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('textPosition'),
+        __metadata("design:type", String)
+    ], jqxRepeatButtonComponent.prototype, "attrTextPosition", void 0);
+    __decorate([
+        Input('textImageRelation'),
+        __metadata("design:type", String)
+    ], jqxRepeatButtonComponent.prototype, "attrTextImageRelation", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxRepeatButtonComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('template'),
+        __metadata("design:type", String)
+    ], jqxRepeatButtonComponent.prototype, "attrTemplate", void 0);
+    __decorate([
+        Input('toggled'),
+        __metadata("design:type", Boolean)
+    ], jqxRepeatButtonComponent.prototype, "attrToggled", void 0);
+    __decorate([
+        Input('value'),
+        __metadata("design:type", String)
+    ], jqxRepeatButtonComponent.prototype, "attrValue", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxRepeatButtonComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxRepeatButtonComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxRepeatButtonComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxRepeatButtonComponent.prototype, "onClick", void 0);
+    jqxRepeatButtonComponent = __decorate([
+        Component({
+            selector: 'jqxRepeatButton',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxRepeatButtonComponent);
     return jqxRepeatButtonComponent;
 }()); //jqxRepeatButtonComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxRepeatButtonModule = /** @class */ (function () {
     function jqxRepeatButtonModule() {
     }
-    jqxRepeatButtonModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxRepeatButtonComponent],
-                    exports: [jqxRepeatButtonComponent]
-                },] }
-    ];
+    jqxRepeatButtonModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxRepeatButtonComponent],
+            exports: [jqxRepeatButtonComponent]
+        })
+    ], jqxRepeatButtonModule);
     return jqxRepeatButtonModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxRepeatButtonComponent, jqxRepeatButtonModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxrepeatbutton.js.map

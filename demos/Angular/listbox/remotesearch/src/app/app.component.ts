@@ -8,7 +8,7 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent {
-    @ViewChild('searchField') searchField: ElementRef;
+    @ViewChild('searchField', {static: false}) searchField: ElementRef;
 
     url: string = "https://secure.geonames.org/searchJSON";
     // prepare the data

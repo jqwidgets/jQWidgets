@@ -8,7 +8,7 @@ import { jqxTreeGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('myLog') myLog: ElementRef;
+    @ViewChild('myLog', {static: false}) myLog: ElementRef;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

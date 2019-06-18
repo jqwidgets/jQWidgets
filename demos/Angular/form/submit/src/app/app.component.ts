@@ -7,7 +7,7 @@ import { jqxFormComponent} from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxform'
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myForm') myForm: jqxFormComponent;
+    @ViewChild('myForm', {static: false}) myForm: jqxFormComponent;
 
     ngAfterViewInit(): void {
       let form = this.myForm;

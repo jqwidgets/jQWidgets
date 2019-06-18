@@ -20,16 +20,11 @@ import * as jqxcalendar from '../../jqwidgets-scripts/jqwidgets/jqxcalendar';
 import * as jqxdatetimeinput from '../../jqwidgets-scripts/jqwidgets/jqxdatetimeinput';
 import * as jqxscheduler from '../../jqwidgets-scripts/jqwidgets/jqxscheduler';
 import * as jqxschedulerapi from '../../jqwidgets-scripts/jqwidgets/jqxscheduler.api';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxSchedulerComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxSchedulerComponent = class jqxSchedulerComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['appointmentOpacity', 'appointmentsMinHeight', 'appointmentDataFields', 'appointmentTooltips', 'columnsHeight', 'contextMenu', 'contextMenuOpen', 'contextMenuClose', 'contextMenuItemClick', 'contextMenuCreate', 'changedAppointments', 'disabled', 'date', 'dayNameFormat', 'enableHover', 'editDialog', 'editDialogDateTimeFormatString', 'editDialogDateFormatString', 'editDialogOpen', 'editDialogCreate', 'editDialogKeyDown', 'editDialogClose', 'exportSettings', 'height', 'legendPosition', 'legendHeight', 'localization', 'min', 'max', 'ready', 'renderAppointment', 'rendering', 'rendered', 'rtl', 'resources', 'rowsHeight', 'showToolbar', 'showLegend', 'scrollBarSize', 'source', 'statuses', 'touchRowsHeight', 'theme', 'touchAppointmentsMinHeight', 'touchScrollBarSize', 'timeZone', 'touchDayNameFormat', 'toolBarRangeFormat', 'toolBarRangeFormatAbbr', 'toolbarHeight', 'views', 'view', 'width'];
@@ -55,25 +50,16 @@ class jqxSchedulerComponent {
         this.onViewChange = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -93,11 +79,6 @@ class jqxSchedulerComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -112,14 +93,9 @@ class jqxSchedulerComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -127,34 +103,18 @@ class jqxSchedulerComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -171,32 +131,17 @@ class jqxSchedulerComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxScheduler', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxScheduler('setOptions', options);
     }
     // jqxSchedulerComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     appointmentOpacity(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('appointmentOpacity', arg);
@@ -205,10 +150,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('appointmentOpacity');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     appointmentsMinHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('appointmentsMinHeight', arg);
@@ -217,10 +158,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('appointmentsMinHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     appointmentDataFields(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('appointmentDataFields', arg);
@@ -229,10 +166,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('appointmentDataFields');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     appointmentTooltips(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('appointmentTooltips', arg);
@@ -241,10 +174,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('appointmentTooltips');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnsHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('columnsHeight', arg);
@@ -253,10 +182,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('columnsHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     contextMenu(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('contextMenu', arg);
@@ -265,10 +190,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('contextMenu');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     contextMenuOpen(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('contextMenuOpen', arg);
@@ -277,10 +198,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('contextMenuOpen');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     contextMenuClose(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('contextMenuClose', arg);
@@ -289,10 +206,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('contextMenuClose');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     contextMenuItemClick(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('contextMenuItemClick', arg);
@@ -301,10 +214,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('contextMenuItemClick');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     contextMenuCreate(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('contextMenuCreate', arg);
@@ -313,10 +222,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('contextMenuCreate');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     changedAppointments(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('changedAppointments', arg);
@@ -325,10 +230,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('changedAppointments');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('disabled', arg);
@@ -337,10 +238,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     date(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('date', arg);
@@ -349,10 +246,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('date');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dayNameFormat(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('dayNameFormat', arg);
@@ -361,10 +254,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('dayNameFormat');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableHover(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('enableHover', arg);
@@ -373,10 +262,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('enableHover');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     editDialog(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('editDialog', arg);
@@ -385,10 +270,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('editDialog');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     editDialogDateTimeFormatString(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('editDialogDateTimeFormatString', arg);
@@ -397,10 +278,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('editDialogDateTimeFormatString');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     editDialogDateFormatString(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('editDialogDateFormatString', arg);
@@ -409,10 +286,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('editDialogDateFormatString');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     editDialogOpen(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('editDialogOpen', arg);
@@ -421,10 +294,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('editDialogOpen');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     editDialogCreate(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('editDialogCreate', arg);
@@ -433,10 +302,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('editDialogCreate');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     editDialogKeyDown(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('editDialogKeyDown', arg);
@@ -445,10 +310,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('editDialogKeyDown');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     editDialogClose(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('editDialogClose', arg);
@@ -457,10 +318,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('editDialogClose');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     exportSettings(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('exportSettings', arg);
@@ -469,10 +326,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('exportSettings');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('height', arg);
@@ -481,10 +334,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     legendPosition(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('legendPosition', arg);
@@ -493,10 +342,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('legendPosition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     legendHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('legendHeight', arg);
@@ -505,10 +350,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('legendHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     localization(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('localization', arg);
@@ -517,10 +358,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('localization');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     min(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('min', arg);
@@ -529,10 +366,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('min');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     max(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('max', arg);
@@ -541,10 +374,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('max');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     ready(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('ready', arg);
@@ -553,10 +382,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('ready');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     renderAppointment(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('renderAppointment', arg);
@@ -565,10 +390,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('renderAppointment');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rendering(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('rendering', arg);
@@ -577,10 +398,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('rendering');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rendered(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('rendered', arg);
@@ -589,10 +406,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('rendered');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('rtl', arg);
@@ -601,10 +414,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     resources(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('resources', arg);
@@ -613,10 +422,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('resources');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rowsHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('rowsHeight', arg);
@@ -625,10 +430,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('rowsHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showToolbar(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('showToolbar', arg);
@@ -637,10 +438,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('showToolbar');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showLegend(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('showLegend', arg);
@@ -649,10 +446,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('showLegend');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     scrollBarSize(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('scrollBarSize', arg);
@@ -661,10 +454,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('scrollBarSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     source(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('source', arg);
@@ -673,10 +462,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('source');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     statuses(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('statuses', arg);
@@ -685,10 +470,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('statuses');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     touchRowsHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('touchRowsHeight', arg);
@@ -697,10 +478,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('touchRowsHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('theme', arg);
@@ -709,10 +486,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     touchAppointmentsMinHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('touchAppointmentsMinHeight', arg);
@@ -721,10 +494,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('touchAppointmentsMinHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     touchScrollBarSize(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('touchScrollBarSize', arg);
@@ -733,10 +502,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('touchScrollBarSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     timeZone(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('timeZone', arg);
@@ -745,10 +510,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('timeZone');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     touchDayNameFormat(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('touchDayNameFormat', arg);
@@ -757,10 +518,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('touchDayNameFormat');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     toolBarRangeFormat(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('toolBarRangeFormat', arg);
@@ -769,10 +526,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('toolBarRangeFormat');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     toolBarRangeFormatAbbr(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('toolBarRangeFormatAbbr', arg);
@@ -781,10 +534,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('toolBarRangeFormatAbbr');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     toolbarHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('toolbarHeight', arg);
@@ -793,10 +542,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('toolbarHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     views(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('views', arg);
@@ -805,10 +550,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('views');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     view(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('view', arg);
@@ -817,10 +558,6 @@ class jqxSchedulerComponent {
             return this.host.jqxScheduler('view');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxScheduler('width', arg);
@@ -830,408 +567,425 @@ class jqxSchedulerComponent {
         }
     }
     // jqxSchedulerComponent functions
-    /**
-     * @param {?} item
-     * @return {?}
-     */
     addAppointment(item) {
         this.host.jqxScheduler('addAppointment', item);
     }
-    /**
-     * @return {?}
-     */
     beginAppointmentsUpdate() {
         this.host.jqxScheduler('beginAppointmentsUpdate');
     }
-    /**
-     * @return {?}
-     */
     clearAppointmentsSelection() {
         this.host.jqxScheduler('clearAppointmentsSelection');
     }
-    /**
-     * @return {?}
-     */
     clearSelection() {
         this.host.jqxScheduler('clearSelection');
     }
-    /**
-     * @return {?}
-     */
     closeMenu() {
         this.host.jqxScheduler('closeMenu');
     }
-    /**
-     * @return {?}
-     */
     closeDialog() {
         this.host.jqxScheduler('closeDialog');
     }
-    /**
-     * @param {?} appointmenId
-     * @return {?}
-     */
     deleteAppointment(appointmenId) {
         this.host.jqxScheduler('deleteAppointment', appointmenId);
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxScheduler('destroy');
     }
-    /**
-     * @return {?}
-     */
     endAppointmentsUpdate() {
         this.host.jqxScheduler('endAppointmentsUpdate');
     }
-    /**
-     * @param {?} id
-     * @return {?}
-     */
     ensureAppointmentVisible(id) {
         this.host.jqxScheduler('ensureAppointmentVisible', id);
     }
-    /**
-     * @param {?} item
-     * @param {?=} resourceId
-     * @return {?}
-     */
     ensureVisible(item, resourceId) {
         this.host.jqxScheduler('ensureVisible', item, resourceId);
     }
-    /**
-     * @param {?} format
-     * @return {?}
-     */
     exportData(format) {
         return this.host.jqxScheduler('exportData', format);
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxScheduler('focus');
     }
-    /**
-     * @param {?} appointmentId
-     * @param {?} name
-     * @return {?}
-     */
     getAppointmentProperty(appointmentId, name) {
         return this.host.jqxScheduler('getAppointmentProperty', appointmentId, name);
     }
-    /**
-     * @return {?}
-     */
     getSelection() {
         return this.host.jqxScheduler('getSelection');
     }
-    /**
-     * @return {?}
-     */
     getAppointments() {
         return this.host.jqxScheduler('getAppointments');
     }
-    /**
-     * @return {?}
-     */
     getDataAppointments() {
         return this.host.jqxScheduler('getDataAppointments');
     }
-    /**
-     * @param {?} resourcesId
-     * @return {?}
-     */
     hideAppointmentsByResource(resourcesId) {
         this.host.jqxScheduler('hideAppointmentsByResource', resourcesId);
     }
-    /**
-     * @param {?} left
-     * @param {?} top
-     * @return {?}
-     */
     openMenu(left, top) {
         this.host.jqxScheduler('openMenu', left, top);
     }
-    /**
-     * @param {?} left
-     * @param {?} top
-     * @return {?}
-     */
     openDialog(left, top) {
         this.host.jqxScheduler('openDialog', left, top);
     }
-    /**
-     * @param {?} appointmentId
-     * @return {?}
-     */
     selectAppointment(appointmentId) {
         this.host.jqxScheduler('selectAppointment', appointmentId);
     }
-    /**
-     * @param {?} appointmentId
-     * @param {?} name
-     * @param {?} value
-     * @return {?}
-     */
     setAppointmentProperty(appointmentId, name, value) {
         this.host.jqxScheduler('setAppointmentProperty', appointmentId, name, value);
     }
-    /**
-     * @param {?} date
-     * @param {?} allday
-     * @param {?} resourceId
-     * @return {?}
-     */
     selectCell(date, allday, resourceId) {
         this.host.jqxScheduler('selectCell', date, allday, resourceId);
     }
-    /**
-     * @param {?} resourceId
-     * @return {?}
-     */
     showAppointmentsByResource(resourceId) {
         this.host.jqxScheduler('showAppointmentsByResource', resourceId);
     }
-    /**
-     * @return {?}
-     */
     scrollWidth() {
         return this.host.jqxScheduler('scrollWidth');
     }
-    /**
-     * @return {?}
-     */
     scrollHeight() {
         return this.host.jqxScheduler('scrollHeight');
     }
-    /**
-     * @param {?} left
-     * @return {?}
-     */
     scrollLeft(left) {
         this.host.jqxScheduler('scrollLeft', left);
     }
-    /**
-     * @param {?} top
-     * @return {?}
-     */
     scrollTop(top) {
         this.host.jqxScheduler('scrollTop', top);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('appointmentChange', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onAppointmentChange.emit(eventData); }));
-        this.host.on('appointmentClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onAppointmentClick.emit(eventData); }));
-        this.host.on('appointmentDoubleClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onAppointmentDoubleClick.emit(eventData); }));
-        this.host.on('appointmentDelete', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onAppointmentDelete.emit(eventData); }));
-        this.host.on('appointmentAdd', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onAppointmentAdd.emit(eventData); }));
-        this.host.on('bindingComplete', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onBindingComplete.emit(eventData); }));
-        this.host.on('cellClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCellClick.emit(eventData); }));
-        this.host.on('cellDoubleClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onCellDoubleClick.emit(eventData); }));
-        this.host.on('contextMenuOpen', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onContextMenuOpen.emit(eventData); }));
-        this.host.on('contextMenuClose', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onContextMenuClose.emit(eventData); }));
-        this.host.on('contextMenuItemClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onContextMenuItemClick.emit(eventData); }));
-        this.host.on('contextMenuCreate', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onContextMenuCreate.emit(eventData); }));
-        this.host.on('dateChange', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onDateChange.emit(eventData); }));
-        this.host.on('editRecurrenceDialogOpen', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onEditRecurrenceDialogOpen.emit(eventData); }));
-        this.host.on('editRecurrenceDialogClose', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onEditRecurrenceDialogClose.emit(eventData); }));
-        this.host.on('editDialogCreate', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onEditDialogCreate.emit(eventData); }));
-        this.host.on('editDialogOpen', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onEditDialogOpen.emit(eventData); }));
-        this.host.on('editDialogClose', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onEditDialogClose.emit(eventData); }));
-        this.host.on('viewChange', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onViewChange.emit(eventData); }));
+        this.host.on('appointmentChange', (eventData) => { this.onAppointmentChange.emit(eventData); });
+        this.host.on('appointmentClick', (eventData) => { this.onAppointmentClick.emit(eventData); });
+        this.host.on('appointmentDoubleClick', (eventData) => { this.onAppointmentDoubleClick.emit(eventData); });
+        this.host.on('appointmentDelete', (eventData) => { this.onAppointmentDelete.emit(eventData); });
+        this.host.on('appointmentAdd', (eventData) => { this.onAppointmentAdd.emit(eventData); });
+        this.host.on('bindingComplete', (eventData) => { this.onBindingComplete.emit(eventData); });
+        this.host.on('cellClick', (eventData) => { this.onCellClick.emit(eventData); });
+        this.host.on('cellDoubleClick', (eventData) => { this.onCellDoubleClick.emit(eventData); });
+        this.host.on('contextMenuOpen', (eventData) => { this.onContextMenuOpen.emit(eventData); });
+        this.host.on('contextMenuClose', (eventData) => { this.onContextMenuClose.emit(eventData); });
+        this.host.on('contextMenuItemClick', (eventData) => { this.onContextMenuItemClick.emit(eventData); });
+        this.host.on('contextMenuCreate', (eventData) => { this.onContextMenuCreate.emit(eventData); });
+        this.host.on('dateChange', (eventData) => { this.onDateChange.emit(eventData); });
+        this.host.on('editRecurrenceDialogOpen', (eventData) => { this.onEditRecurrenceDialogOpen.emit(eventData); });
+        this.host.on('editRecurrenceDialogClose', (eventData) => { this.onEditRecurrenceDialogClose.emit(eventData); });
+        this.host.on('editDialogCreate', (eventData) => { this.onEditDialogCreate.emit(eventData); });
+        this.host.on('editDialogOpen', (eventData) => { this.onEditDialogOpen.emit(eventData); });
+        this.host.on('editDialogClose', (eventData) => { this.onEditDialogClose.emit(eventData); });
+        this.host.on('viewChange', (eventData) => { this.onViewChange.emit(eventData); });
     }
-} //jqxSchedulerComponent
-jqxSchedulerComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxScheduler',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxSchedulerComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxSchedulerComponent.propDecorators = {
-    attrAppointmentOpacity: [{ type: Input, args: ['appointmentOpacity',] }],
-    attrAppointmentsMinHeight: [{ type: Input, args: ['appointmentsMinHeight',] }],
-    attrAppointmentDataFields: [{ type: Input, args: ['appointmentDataFields',] }],
-    attrAppointmentTooltips: [{ type: Input, args: ['appointmentTooltips',] }],
-    attrColumnsHeight: [{ type: Input, args: ['columnsHeight',] }],
-    attrContextMenu: [{ type: Input, args: ['contextMenu',] }],
-    attrContextMenuOpen: [{ type: Input, args: ['contextMenuOpen',] }],
-    attrContextMenuClose: [{ type: Input, args: ['contextMenuClose',] }],
-    attrContextMenuItemClick: [{ type: Input, args: ['contextMenuItemClick',] }],
-    attrContextMenuCreate: [{ type: Input, args: ['contextMenuCreate',] }],
-    attrChangedAppointments: [{ type: Input, args: ['changedAppointments',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrDate: [{ type: Input, args: ['date',] }],
-    attrDayNameFormat: [{ type: Input, args: ['dayNameFormat',] }],
-    attrEnableHover: [{ type: Input, args: ['enableHover',] }],
-    attrEditDialog: [{ type: Input, args: ['editDialog',] }],
-    attrEditDialogDateTimeFormatString: [{ type: Input, args: ['editDialogDateTimeFormatString',] }],
-    attrEditDialogDateFormatString: [{ type: Input, args: ['editDialogDateFormatString',] }],
-    attrEditDialogOpen: [{ type: Input, args: ['editDialogOpen',] }],
-    attrEditDialogCreate: [{ type: Input, args: ['editDialogCreate',] }],
-    attrEditDialogKeyDown: [{ type: Input, args: ['editDialogKeyDown',] }],
-    attrEditDialogClose: [{ type: Input, args: ['editDialogClose',] }],
-    attrExportSettings: [{ type: Input, args: ['exportSettings',] }],
-    attrLegendPosition: [{ type: Input, args: ['legendPosition',] }],
-    attrLegendHeight: [{ type: Input, args: ['legendHeight',] }],
-    attrLocalization: [{ type: Input, args: ['localization',] }],
-    attrMin: [{ type: Input, args: ['min',] }],
-    attrMax: [{ type: Input, args: ['max',] }],
-    attrReady: [{ type: Input, args: ['ready',] }],
-    attrRenderAppointment: [{ type: Input, args: ['renderAppointment',] }],
-    attrRendering: [{ type: Input, args: ['rendering',] }],
-    attrRendered: [{ type: Input, args: ['rendered',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrResources: [{ type: Input, args: ['resources',] }],
-    attrRowsHeight: [{ type: Input, args: ['rowsHeight',] }],
-    attrShowToolbar: [{ type: Input, args: ['showToolbar',] }],
-    attrShowLegend: [{ type: Input, args: ['showLegend',] }],
-    attrScrollBarSize: [{ type: Input, args: ['scrollBarSize',] }],
-    attrSource: [{ type: Input, args: ['source',] }],
-    attrStatuses: [{ type: Input, args: ['statuses',] }],
-    attrTouchRowsHeight: [{ type: Input, args: ['touchRowsHeight',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrTouchAppointmentsMinHeight: [{ type: Input, args: ['touchAppointmentsMinHeight',] }],
-    attrTouchScrollBarSize: [{ type: Input, args: ['touchScrollBarSize',] }],
-    attrTimeZone: [{ type: Input, args: ['timeZone',] }],
-    attrTouchDayNameFormat: [{ type: Input, args: ['touchDayNameFormat',] }],
-    attrToolBarRangeFormat: [{ type: Input, args: ['toolBarRangeFormat',] }],
-    attrToolBarRangeFormatAbbr: [{ type: Input, args: ['toolBarRangeFormatAbbr',] }],
-    attrToolbarHeight: [{ type: Input, args: ['toolbarHeight',] }],
-    attrViews: [{ type: Input, args: ['views',] }],
-    attrView: [{ type: Input, args: ['view',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onAppointmentChange: [{ type: Output }],
-    onAppointmentClick: [{ type: Output }],
-    onAppointmentDoubleClick: [{ type: Output }],
-    onAppointmentDelete: [{ type: Output }],
-    onAppointmentAdd: [{ type: Output }],
-    onBindingComplete: [{ type: Output }],
-    onCellClick: [{ type: Output }],
-    onCellDoubleClick: [{ type: Output }],
-    onContextMenuOpen: [{ type: Output }],
-    onContextMenuClose: [{ type: Output }],
-    onContextMenuItemClick: [{ type: Output }],
-    onContextMenuCreate: [{ type: Output }],
-    onDateChange: [{ type: Output }],
-    onEditRecurrenceDialogOpen: [{ type: Output }],
-    onEditRecurrenceDialogClose: [{ type: Output }],
-    onEditDialogCreate: [{ type: Output }],
-    onEditDialogOpen: [{ type: Output }],
-    onEditDialogClose: [{ type: Output }],
-    onViewChange: [{ type: Output }]
+}; //jqxSchedulerComponent
+__decorate([
+    Input('appointmentOpacity'),
+    __metadata("design:type", Number)
+], jqxSchedulerComponent.prototype, "attrAppointmentOpacity", void 0);
+__decorate([
+    Input('appointmentsMinHeight'),
+    __metadata("design:type", Number)
+], jqxSchedulerComponent.prototype, "attrAppointmentsMinHeight", void 0);
+__decorate([
+    Input('appointmentDataFields'),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "attrAppointmentDataFields", void 0);
+__decorate([
+    Input('appointmentTooltips'),
+    __metadata("design:type", Boolean)
+], jqxSchedulerComponent.prototype, "attrAppointmentTooltips", void 0);
+__decorate([
+    Input('columnsHeight'),
+    __metadata("design:type", Number)
+], jqxSchedulerComponent.prototype, "attrColumnsHeight", void 0);
+__decorate([
+    Input('contextMenu'),
+    __metadata("design:type", Boolean)
+], jqxSchedulerComponent.prototype, "attrContextMenu", void 0);
+__decorate([
+    Input('contextMenuOpen'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrContextMenuOpen", void 0);
+__decorate([
+    Input('contextMenuClose'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrContextMenuClose", void 0);
+__decorate([
+    Input('contextMenuItemClick'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrContextMenuItemClick", void 0);
+__decorate([
+    Input('contextMenuCreate'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrContextMenuCreate", void 0);
+__decorate([
+    Input('changedAppointments'),
+    __metadata("design:type", Array)
+], jqxSchedulerComponent.prototype, "attrChangedAppointments", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxSchedulerComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('date'),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "attrDate", void 0);
+__decorate([
+    Input('dayNameFormat'),
+    __metadata("design:type", String)
+], jqxSchedulerComponent.prototype, "attrDayNameFormat", void 0);
+__decorate([
+    Input('enableHover'),
+    __metadata("design:type", Boolean)
+], jqxSchedulerComponent.prototype, "attrEnableHover", void 0);
+__decorate([
+    Input('editDialog'),
+    __metadata("design:type", Boolean)
+], jqxSchedulerComponent.prototype, "attrEditDialog", void 0);
+__decorate([
+    Input('editDialogDateTimeFormatString'),
+    __metadata("design:type", String)
+], jqxSchedulerComponent.prototype, "attrEditDialogDateTimeFormatString", void 0);
+__decorate([
+    Input('editDialogDateFormatString'),
+    __metadata("design:type", String)
+], jqxSchedulerComponent.prototype, "attrEditDialogDateFormatString", void 0);
+__decorate([
+    Input('editDialogOpen'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrEditDialogOpen", void 0);
+__decorate([
+    Input('editDialogCreate'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrEditDialogCreate", void 0);
+__decorate([
+    Input('editDialogKeyDown'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrEditDialogKeyDown", void 0);
+__decorate([
+    Input('editDialogClose'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrEditDialogClose", void 0);
+__decorate([
+    Input('exportSettings'),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "attrExportSettings", void 0);
+__decorate([
+    Input('legendPosition'),
+    __metadata("design:type", String)
+], jqxSchedulerComponent.prototype, "attrLegendPosition", void 0);
+__decorate([
+    Input('legendHeight'),
+    __metadata("design:type", Number)
+], jqxSchedulerComponent.prototype, "attrLegendHeight", void 0);
+__decorate([
+    Input('localization'),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "attrLocalization", void 0);
+__decorate([
+    Input('min'),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "attrMin", void 0);
+__decorate([
+    Input('max'),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "attrMax", void 0);
+__decorate([
+    Input('ready'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrReady", void 0);
+__decorate([
+    Input('renderAppointment'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrRenderAppointment", void 0);
+__decorate([
+    Input('rendering'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrRendering", void 0);
+__decorate([
+    Input('rendered'),
+    __metadata("design:type", Function)
+], jqxSchedulerComponent.prototype, "attrRendered", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxSchedulerComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('resources'),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "attrResources", void 0);
+__decorate([
+    Input('rowsHeight'),
+    __metadata("design:type", Number)
+], jqxSchedulerComponent.prototype, "attrRowsHeight", void 0);
+__decorate([
+    Input('showToolbar'),
+    __metadata("design:type", Boolean)
+], jqxSchedulerComponent.prototype, "attrShowToolbar", void 0);
+__decorate([
+    Input('showLegend'),
+    __metadata("design:type", Boolean)
+], jqxSchedulerComponent.prototype, "attrShowLegend", void 0);
+__decorate([
+    Input('scrollBarSize'),
+    __metadata("design:type", Number)
+], jqxSchedulerComponent.prototype, "attrScrollBarSize", void 0);
+__decorate([
+    Input('source'),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "attrSource", void 0);
+__decorate([
+    Input('statuses'),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "attrStatuses", void 0);
+__decorate([
+    Input('touchRowsHeight'),
+    __metadata("design:type", Number)
+], jqxSchedulerComponent.prototype, "attrTouchRowsHeight", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxSchedulerComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('touchAppointmentsMinHeight'),
+    __metadata("design:type", Number)
+], jqxSchedulerComponent.prototype, "attrTouchAppointmentsMinHeight", void 0);
+__decorate([
+    Input('touchScrollBarSize'),
+    __metadata("design:type", Number)
+], jqxSchedulerComponent.prototype, "attrTouchScrollBarSize", void 0);
+__decorate([
+    Input('timeZone'),
+    __metadata("design:type", String)
+], jqxSchedulerComponent.prototype, "attrTimeZone", void 0);
+__decorate([
+    Input('touchDayNameFormat'),
+    __metadata("design:type", String)
+], jqxSchedulerComponent.prototype, "attrTouchDayNameFormat", void 0);
+__decorate([
+    Input('toolBarRangeFormat'),
+    __metadata("design:type", String)
+], jqxSchedulerComponent.prototype, "attrToolBarRangeFormat", void 0);
+__decorate([
+    Input('toolBarRangeFormatAbbr'),
+    __metadata("design:type", String)
+], jqxSchedulerComponent.prototype, "attrToolBarRangeFormatAbbr", void 0);
+__decorate([
+    Input('toolbarHeight'),
+    __metadata("design:type", Number)
+], jqxSchedulerComponent.prototype, "attrToolbarHeight", void 0);
+__decorate([
+    Input('views'),
+    __metadata("design:type", Array)
+], jqxSchedulerComponent.prototype, "attrViews", void 0);
+__decorate([
+    Input('view'),
+    __metadata("design:type", String)
+], jqxSchedulerComponent.prototype, "attrView", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxSchedulerComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onAppointmentChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onAppointmentClick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onAppointmentDoubleClick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onAppointmentDelete", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onAppointmentAdd", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onBindingComplete", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onCellClick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onCellDoubleClick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onContextMenuOpen", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onContextMenuClose", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onContextMenuItemClick", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onContextMenuCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onDateChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onEditRecurrenceDialogOpen", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onEditRecurrenceDialogClose", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onEditDialogCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onEditDialogOpen", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onEditDialogClose", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxSchedulerComponent.prototype, "onViewChange", void 0);
+jqxSchedulerComponent = __decorate([
+    Component({
+        selector: 'jqxScheduler',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxSchedulerComponent);
+
+let jqxSchedulerModule = class jqxSchedulerModule {
 };
+jqxSchedulerModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxSchedulerComponent],
+        exports: [jqxSchedulerComponent]
+    })
+], jqxSchedulerModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxSchedulerModule {
-}
-jqxSchedulerModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxSchedulerComponent],
-                exports: [jqxSchedulerComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxSchedulerComponent, jqxSchedulerModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxscheduler.js.map

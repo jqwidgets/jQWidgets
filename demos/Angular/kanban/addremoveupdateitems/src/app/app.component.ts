@@ -9,9 +9,9 @@ import { jqxButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbu
 })
 
 export class AppComponent {
-    @ViewChild('myKanban') myKanban: jqxKanbanComponent;
-    @ViewChild('myRemoveItemBtn') myRemoveItemBtn: jqxButtonComponent;
-    @ViewChild('myUpdateItemBtn') myUpdateItemBtn: jqxButtonComponent;
+    @ViewChild('myKanban', {static: false}) myKanban: jqxKanbanComponent;
+    @ViewChild('myRemoveItemBtn', {static: false}) myRemoveItemBtn: jqxButtonComponent;
+    @ViewChild('myUpdateItemBtn', {static: false}) myUpdateItemBtn: jqxButtonComponent;
 
     newItemsCount: number = 0;
 

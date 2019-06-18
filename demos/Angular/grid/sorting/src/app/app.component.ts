@@ -11,8 +11,8 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

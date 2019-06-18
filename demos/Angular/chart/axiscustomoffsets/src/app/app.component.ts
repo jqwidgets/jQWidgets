@@ -12,7 +12,7 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent {
-    @ViewChild('myChart') myChart: jqxChartComponent;
+    @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
     @ViewChild('dropDownLabelsVisibility_xAxis') dropDownLabelsVisibility_xAxis: jqxDropDownListComponent;
     @ViewChild('dropDownLabelsVisibility_valueAxis') dropDownLabelsVisibility_valueAxis: jqxDropDownListComponent;
     @ViewChild('inputCustomPosition_xAxis') inputCustomPosition_xAxis: jqxInputComponent;

@@ -3,16 +3,11 @@ import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxdropdownbutton from '../../jqwidgets-scripts/jqwidgets/jqxdropdownbutton';
 import * as jqxradiobutton from '../../jqwidgets-scripts/jqwidgets/jqxradiobutton';
 import * as jqxcolorpicker from '../../jqwidgets-scripts/jqwidgets/jqxcolorpicker';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxColorPickerComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxColorPickerComponent = class jqxColorPickerComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['color', 'colorMode', 'disabled', 'height', 'showTransparent', 'width'];
@@ -20,25 +15,16 @@ class jqxColorPickerComponent {
         this.onColorchange = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -58,11 +44,6 @@ class jqxColorPickerComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -77,14 +58,9 @@ class jqxColorPickerComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -92,34 +68,18 @@ class jqxColorPickerComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -136,32 +96,17 @@ class jqxColorPickerComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxColorPicker', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxColorPicker('setOptions', options);
     }
     // jqxColorPickerComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     color(arg) {
         if (arg !== undefined) {
             this.host.jqxColorPicker('color', arg);
@@ -170,10 +115,6 @@ class jqxColorPickerComponent {
             return this.host.jqxColorPicker('color');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     colorMode(arg) {
         if (arg !== undefined) {
             this.host.jqxColorPicker('colorMode', arg);
@@ -182,10 +123,6 @@ class jqxColorPickerComponent {
             return this.host.jqxColorPicker('colorMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxColorPicker('disabled', arg);
@@ -194,10 +131,6 @@ class jqxColorPickerComponent {
             return this.host.jqxColorPicker('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxColorPicker('height', arg);
@@ -206,10 +139,6 @@ class jqxColorPickerComponent {
             return this.host.jqxColorPicker('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showTransparent(arg) {
         if (arg !== undefined) {
             this.host.jqxColorPicker('showTransparent', arg);
@@ -218,10 +147,6 @@ class jqxColorPickerComponent {
             return this.host.jqxColorPicker('showTransparent');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxColorPicker('width', arg);
@@ -231,75 +156,69 @@ class jqxColorPickerComponent {
         }
     }
     // jqxColorPickerComponent functions
-    /**
-     * @return {?}
-     */
     getColor() {
         return this.host.jqxColorPicker('getColor');
     }
-    /**
-     * @param {?} color
-     * @return {?}
-     */
     setColor(color) {
         this.host.jqxColorPicker('setColor', color);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('colorchange', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onColorchange.emit(eventData); }));
+        this.host.on('colorchange', (eventData) => { this.onColorchange.emit(eventData); });
     }
-} //jqxColorPickerComponent
-jqxColorPickerComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxColorPicker',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxColorPickerComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxColorPickerComponent.propDecorators = {
-    attrColor: [{ type: Input, args: ['color',] }],
-    attrColorMode: [{ type: Input, args: ['colorMode',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrShowTransparent: [{ type: Input, args: ['showTransparent',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onColorchange: [{ type: Output }]
+}; //jqxColorPickerComponent
+__decorate([
+    Input('color'),
+    __metadata("design:type", String)
+], jqxColorPickerComponent.prototype, "attrColor", void 0);
+__decorate([
+    Input('colorMode'),
+    __metadata("design:type", String)
+], jqxColorPickerComponent.prototype, "attrColorMode", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxColorPickerComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('showTransparent'),
+    __metadata("design:type", Boolean)
+], jqxColorPickerComponent.prototype, "attrShowTransparent", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxColorPickerComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxColorPickerComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxColorPickerComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxColorPickerComponent.prototype, "onColorchange", void 0);
+jqxColorPickerComponent = __decorate([
+    Component({
+        selector: 'jqxColorPicker',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxColorPickerComponent);
+
+let jqxColorPickerModule = class jqxColorPickerModule {
 };
+jqxColorPickerModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxColorPickerComponent],
+        exports: [jqxColorPickerComponent]
+    })
+], jqxColorPickerModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxColorPickerModule {
-}
-jqxColorPickerModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxColorPickerComponent],
-                exports: [jqxColorPickerComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxColorPickerComponent, jqxColorPickerModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxcolorpicker.js.map

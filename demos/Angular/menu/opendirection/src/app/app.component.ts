@@ -8,7 +8,7 @@ import { jqxMenuComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxmenu
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myMenu') myMenu: jqxMenuComponent
+    @ViewChild('myMenu', {static: false}) myMenu: jqxMenuComponent
 
     ngAfterViewInit(): void {
         this.myMenu.setItemOpenDirection('Services', 'left', 'up');

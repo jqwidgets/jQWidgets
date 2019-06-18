@@ -8,7 +8,7 @@ import { jqxBarGaugeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('myBarGauge') myBarGauge: jqxBarGaugeComponent;
+    @ViewChild('myBarGauge', {static: false}) myBarGauge: jqxBarGaugeComponent;
 
     arrayOfValues: number[] = [20, 0, 0, 0];
 

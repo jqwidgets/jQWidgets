@@ -8,8 +8,8 @@ import { jqxButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbu
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('employees') employees: ElementRef;
-    @ViewChild('buttonReference') myButton: jqxButtonComponent;
+    @ViewChild('employees', {static: false}) employees: ElementRef;
+    @ViewChild('buttonReference', {static: false}) myButton: jqxButtonComponent;
 
     top: number;
     left: number;

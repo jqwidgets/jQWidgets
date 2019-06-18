@@ -10,7 +10,7 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('log') log: jqxPanelComponent;
+    @ViewChild('log', {static: false}) log: jqxPanelComponent;
 
     select(event: any): void {
         let args = event.args;

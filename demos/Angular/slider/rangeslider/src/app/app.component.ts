@@ -11,11 +11,11 @@ import { jqxButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbu
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('priceSlider') priceSlider: jqxSliderComponent;
-    @ViewChild('displaySlider') displaySlider: jqxSliderComponent;
-    @ViewChild('hddSlider') hddSlider: jqxSliderComponent;
-    @ViewChild('ramSlider') ramSlider: jqxSliderComponent;
-    @ViewChild('resetButton') resetButton: jqxButtonComponent;
+    @ViewChild('priceSlider', {static: false}) priceSlider: jqxSliderComponent;
+    @ViewChild('displaySlider', {static: false}) displaySlider: jqxSliderComponent;
+    @ViewChild('hddSlider', {static: false}) hddSlider: jqxSliderComponent;
+    @ViewChild('ramSlider', {static: false}) ramSlider: jqxSliderComponent;
+    @ViewChild('resetButton', {static: false}) resetButton: jqxButtonComponent;
 
     ngAfterViewInit() {
         this.shop().init(this.priceSlider, this.displaySlider, this.ramSlider, this.hddSlider, this.resetButton);

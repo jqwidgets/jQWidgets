@@ -8,7 +8,7 @@ import { jqxKnobComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxknob
 })
 
 export class AppComponent {
-    @ViewChild('myKnob') myKnob: jqxKnobComponent;
+    @ViewChild('myKnob', {static: false}) myKnob: jqxKnobComponent;
 
     style: any =
     {

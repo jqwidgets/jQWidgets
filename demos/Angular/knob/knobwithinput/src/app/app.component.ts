@@ -11,8 +11,8 @@ import { jqxInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxinp
 })
 
 export class AppComponent {
-    @ViewChild('myKnob') myKnob: jqxKnobComponent;
-    @ViewChild('myInput') myInput: jqxInputComponent;
+    @ViewChild('myKnob', {static: false}) myKnob: jqxKnobComponent;
+    @ViewChild('myInput', {static: false}) myInput: jqxInputComponent;
 
     progressBar: any =
     {

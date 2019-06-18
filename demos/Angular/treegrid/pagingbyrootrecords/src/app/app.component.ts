@@ -10,7 +10,7 @@ import { generateordersdata } from '../assets/generatedata';
 })
 
 export class AppComponent {
-    @ViewChild('myTreeGrid') myTreeGrid: jqxTreeGridComponent;
+    @ViewChild('myTreeGrid', {static: false}) myTreeGrid: jqxTreeGridComponent;
 
     source: any =
     {

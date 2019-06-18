@@ -8,7 +8,7 @@ import { jqxWindowComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxwi
 })
 
 export class AppComponent {
-    @ViewChild('myWindow') myWindow: jqxWindowComponent;
+    @ViewChild('myWindow', {static: false}) myWindow: jqxWindowComponent;
 
     btnOnClick(): void {
         this.myWindow.open();

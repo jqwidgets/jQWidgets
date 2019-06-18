@@ -10,8 +10,8 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('listbox') listbox: jqxListBoxComponent;
-    @ViewChild('ContentPanel') ContentPanel: ElementRef;
+    @ViewChild('listbox', {static: false}) listbox: jqxListBoxComponent;
+    @ViewChild('ContentPanel', {static: false}) ContentPanel: ElementRef;
 
     ngAfterViewInit() {
         this.updatePanel(0);

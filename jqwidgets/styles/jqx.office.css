@@ -260,3 +260,52 @@
 {
     background-color: #d4d4d4;
 }
+
+/*applied to the timepicker labels*/
+.jqx-time-picker .jqx-header .jqx-hour-container-office:focus {
+    outline: 1px solid rgb(66, 147, 102) !important;
+}
+.jqx-time-picker .jqx-header .jqx-hour-container-office:hover {
+    outline: 1px solid rgb(66, 147, 102) !important;
+	background-color: rgb(134, 191, 160);
+}
+.jqx-time-picker .jqx-header .jqx-minute-container-office:focus {
+    outline: 1px solid rgb(66, 147, 102) !important;
+}
+.jqx-time-picker .jqx-header .jqx-minute-container-office:hover {
+    outline: 1px solid rgb(66, 147, 102) !important;
+	background-color: rgb(134, 191, 160);
+}
+.jqx-time-picker .jqx-header .jqx-am-container-office:focus {
+    outline: 1px solid rgb(66, 147, 102) !important;
+}
+.jqx-time-picker .jqx-header .jqx-am-container-office:hover {
+    outline: 1px solid rgb(66, 147, 102) !important;
+	background-color: rgb(134, 191, 160);
+}
+.jqx-time-picker .jqx-header .jqx-pm-container-office:focus {
+    outline: 1px solid rgb(66, 147, 102) !important;
+}
+.jqx-time-picker .jqx-header .jqx-pm-container-office:hover {
+    outline: 1px solid rgb(66, 147, 102) !important;
+	background-color: rgb(134, 191, 160);
+}
+.jqx-label-office {
+	fill: darkgray;
+}
+.jqx-header-office {
+	border-bottom: 1px solid rgb(212, 212, 212);
+}
+.jqx-svg-picker-office:focus {
+	border: 1px solid rgb(66, 147, 102) !important;
+}
+.jqx-needle-office {
+	fill: rgb(66, 147, 102);
+}
+.jqx-needle-central-circle-office {
+	fill: rgb(134, 191, 160);
+	stroke: rgb(66, 147, 102);
+}
+.jqx-time-picker .jqx-label.jqx-selected-office {
+	fill: black !important;
+}

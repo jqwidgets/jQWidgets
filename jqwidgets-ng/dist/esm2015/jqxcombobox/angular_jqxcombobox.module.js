@@ -4,22 +4,20 @@ import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxscrollbar from '../../jqwidgets-scripts/jqwidgets/jqxscrollbar';
 import * as jqxlistbox from '../../jqwidgets-scripts/jqwidgets/jqxlistbox';
 import * as jqxcombobox from '../../jqwidgets-scripts/jqwidgets/jqxcombobox';
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+import * as tslib_1 from "tslib";
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { jqxComboBoxComponent } from './angular_jqxcombobox';
-export class jqxComboBoxModule {
-}
-jqxComboBoxModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    FormsModule
-                ],
-                declarations: [jqxComboBoxComponent],
-                exports: [jqxComboBoxComponent]
-            },] }
-];
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhcl9qcXhjb21ib2JveC5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9qcXdpZGdldHMtbmcvanF4Y29tYm9ib3gvIiwic291cmNlcyI6WyJhbmd1bGFyX2pxeGNvbWJvYm94Lm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQ0EsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUN6QyxPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFFN0MsT0FBTyxFQUFFLG9CQUFvQixFQUFFLE1BQU0sdUJBQXVCLENBQUM7QUFTN0QsTUFBTSxPQUFPLGlCQUFpQjs7O1lBUDdCLFFBQVEsU0FBQztnQkFDUixPQUFPLEVBQUU7b0JBQ1AsV0FBVztpQkFDWjtnQkFDRCxZQUFZLEVBQUUsQ0FBQyxvQkFBb0IsQ0FBQztnQkFDcEMsT0FBTyxFQUFFLENBQUMsb0JBQW9CLENBQUM7YUFDaEMiLCJzb3VyY2VzQ29udGVudCI6WyJcbmltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBGb3Jtc01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2Zvcm1zJztcblxuaW1wb3J0IHsganF4Q29tYm9Cb3hDb21wb25lbnQgfSBmcm9tICcuL2FuZ3VsYXJfanF4Y29tYm9ib3gnO1xuXG5ATmdNb2R1bGUoe1xuICBpbXBvcnRzOiBbXG4gICAgRm9ybXNNb2R1bGVcbiAgXSxcbiAgZGVjbGFyYXRpb25zOiBbanF4Q29tYm9Cb3hDb21wb25lbnRdLFxuICBleHBvcnRzOiBbanF4Q29tYm9Cb3hDb21wb25lbnRdXG59KVxuZXhwb3J0IGNsYXNzIGpxeENvbWJvQm94TW9kdWxlIHsgfVxuXG4iXX0=
+let jqxComboBoxModule = class jqxComboBoxModule {
+};
+jqxComboBoxModule = tslib_1.__decorate([
+    NgModule({
+        imports: [
+            FormsModule
+        ],
+        declarations: [jqxComboBoxComponent],
+        exports: [jqxComboBoxComponent]
+    })
+], jqxComboBoxModule);
+export { jqxComboBoxModule };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhcl9qcXhjb21ib2JveC5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9qcXdpZGdldHMtbmcvanF4Y29tYm9ib3gvIiwic291cmNlcyI6WyJhbmd1bGFyX2pxeGNvbWJvYm94Lm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUN6QyxPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sZ0JBQWdCLENBQUM7QUFFN0MsT0FBTyxFQUFFLG9CQUFvQixFQUFFLE1BQU0sdUJBQXVCLENBQUM7QUFTN0QsSUFBYSxpQkFBaUIsR0FBOUIsTUFBYSxpQkFBaUI7Q0FBSSxDQUFBO0FBQXJCLGlCQUFpQjtJQVA3QixRQUFRLENBQUM7UUFDUixPQUFPLEVBQUU7WUFDUCxXQUFXO1NBQ1o7UUFDRCxZQUFZLEVBQUUsQ0FBQyxvQkFBb0IsQ0FBQztRQUNwQyxPQUFPLEVBQUUsQ0FBQyxvQkFBb0IsQ0FBQztLQUNoQyxDQUFDO0dBQ1csaUJBQWlCLENBQUk7U0FBckIsaUJBQWlCIiwic291cmNlc0NvbnRlbnQiOlsiXG5pbXBvcnQgeyBOZ01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgRm9ybXNNb2R1bGUgfSBmcm9tICdAYW5ndWxhci9mb3Jtcyc7XG5cbmltcG9ydCB7IGpxeENvbWJvQm94Q29tcG9uZW50IH0gZnJvbSAnLi9hbmd1bGFyX2pxeGNvbWJvYm94JztcblxuQE5nTW9kdWxlKHtcbiAgaW1wb3J0czogW1xuICAgIEZvcm1zTW9kdWxlXG4gIF0sXG4gIGRlY2xhcmF0aW9uczogW2pxeENvbWJvQm94Q29tcG9uZW50XSxcbiAgZXhwb3J0czogW2pxeENvbWJvQm94Q29tcG9uZW50XVxufSlcbmV4cG9ydCBjbGFzcyBqcXhDb21ib0JveE1vZHVsZSB7IH1cblxuIl19

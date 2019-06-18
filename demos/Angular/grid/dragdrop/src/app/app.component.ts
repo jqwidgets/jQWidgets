@@ -10,8 +10,8 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent {
-    @ViewChild('myGrid1') myGrid1: jqxGridComponent;
-    @ViewChild('myGrid2') myGrid2: jqxGridComponent;
+    @ViewChild('myGrid1', {static: false}) myGrid1: jqxGridComponent;
+    @ViewChild('myGrid2', {static: false}) myGrid2: jqxGridComponent;
 
     source: any =
     {

@@ -10,7 +10,7 @@ import { jqxKanbanComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxka
 })
 
 export class AppComponent {
-    @ViewChild('myKanban') myKanban: jqxKanbanComponent;
+    @ViewChild('myKanban', {static: false}) myKanban: jqxKanbanComponent;
 
     theme: any;
     itemIndex: number = 0;

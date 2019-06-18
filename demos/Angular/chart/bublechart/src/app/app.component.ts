@@ -10,9 +10,9 @@ import { jqxDropDownListComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('myChart') myChart: jqxChartComponent;
-    @ViewChild('dropDownSerie1Symbol') dropDownSerie1Symbol: jqxDropDownListComponent;
-    @ViewChild('dropDownSerie2Symbol') dropDownSerie2Symbol: jqxDropDownListComponent;
+    @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
+    @ViewChild('dropDownSerie1Symbol', {static: false}) dropDownSerie1Symbol: jqxDropDownListComponent;
+    @ViewChild('dropDownSerie2Symbol', {static: false}) dropDownSerie2Symbol: jqxDropDownListComponent;
 
     sampleData: any = [
         { City: 'New York', SalesQ1: 310500, SalesQ2: 210500, YoYGrowthQ1: 1.05, YoYGrowthQ2: 1.25 },

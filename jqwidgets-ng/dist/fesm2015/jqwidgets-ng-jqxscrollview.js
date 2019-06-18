@@ -1,16 +1,11 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxscrollview from '../../jqwidgets-scripts/jqwidgets/jqxscrollview';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxScrollViewComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxScrollViewComponent = class jqxScrollViewComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['animationDuration', 'bounceEnabled', 'buttonsOffset', 'currentPage', 'disabled', 'height', 'moveThreshold', 'showButtons', 'slideShow', 'slideDuration', 'theme', 'width'];
@@ -18,25 +13,16 @@ class jqxScrollViewComponent {
         this.onPageChanged = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -56,11 +42,6 @@ class jqxScrollViewComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -75,14 +56,9 @@ class jqxScrollViewComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -90,34 +66,18 @@ class jqxScrollViewComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -134,32 +94,17 @@ class jqxScrollViewComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxScrollView', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxScrollView('setOptions', options);
     }
     // jqxScrollViewComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('animationDuration', arg);
@@ -168,10 +113,6 @@ class jqxScrollViewComponent {
             return this.host.jqxScrollView('animationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     bounceEnabled(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('bounceEnabled', arg);
@@ -180,10 +121,6 @@ class jqxScrollViewComponent {
             return this.host.jqxScrollView('bounceEnabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     buttonsOffset(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('buttonsOffset', arg);
@@ -192,10 +129,6 @@ class jqxScrollViewComponent {
             return this.host.jqxScrollView('buttonsOffset');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     currentPage(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('currentPage', arg);
@@ -204,10 +137,6 @@ class jqxScrollViewComponent {
             return this.host.jqxScrollView('currentPage');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('disabled', arg);
@@ -216,10 +145,6 @@ class jqxScrollViewComponent {
             return this.host.jqxScrollView('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('height', arg);
@@ -228,10 +153,6 @@ class jqxScrollViewComponent {
             return this.host.jqxScrollView('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     moveThreshold(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('moveThreshold', arg);
@@ -240,10 +161,6 @@ class jqxScrollViewComponent {
             return this.host.jqxScrollView('moveThreshold');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showButtons(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('showButtons', arg);
@@ -252,10 +169,6 @@ class jqxScrollViewComponent {
             return this.host.jqxScrollView('showButtons');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     slideShow(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('slideShow', arg);
@@ -264,10 +177,6 @@ class jqxScrollViewComponent {
             return this.host.jqxScrollView('slideShow');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     slideDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('slideDuration', arg);
@@ -276,10 +185,6 @@ class jqxScrollViewComponent {
             return this.host.jqxScrollView('slideDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('theme', arg);
@@ -288,10 +193,6 @@ class jqxScrollViewComponent {
             return this.host.jqxScrollView('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxScrollView('width', arg);
@@ -301,93 +202,99 @@ class jqxScrollViewComponent {
         }
     }
     // jqxScrollViewComponent functions
-    /**
-     * @return {?}
-     */
     back() {
         this.host.jqxScrollView('back');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     changePage(index) {
         this.host.jqxScrollView('changePage', index);
     }
-    /**
-     * @return {?}
-     */
     forward() {
         this.host.jqxScrollView('forward');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxScrollView('refresh');
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('pageChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPageChanged.emit(eventData); }));
+        this.host.on('pageChanged', (eventData) => { this.onPageChanged.emit(eventData); });
     }
-} //jqxScrollViewComponent
-jqxScrollViewComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxScrollView',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxScrollViewComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxScrollViewComponent.propDecorators = {
-    attrAnimationDuration: [{ type: Input, args: ['animationDuration',] }],
-    attrBounceEnabled: [{ type: Input, args: ['bounceEnabled',] }],
-    attrButtonsOffset: [{ type: Input, args: ['buttonsOffset',] }],
-    attrCurrentPage: [{ type: Input, args: ['currentPage',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrMoveThreshold: [{ type: Input, args: ['moveThreshold',] }],
-    attrShowButtons: [{ type: Input, args: ['showButtons',] }],
-    attrSlideShow: [{ type: Input, args: ['slideShow',] }],
-    attrSlideDuration: [{ type: Input, args: ['slideDuration',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onPageChanged: [{ type: Output }]
+}; //jqxScrollViewComponent
+__decorate([
+    Input('animationDuration'),
+    __metadata("design:type", Number)
+], jqxScrollViewComponent.prototype, "attrAnimationDuration", void 0);
+__decorate([
+    Input('bounceEnabled'),
+    __metadata("design:type", Boolean)
+], jqxScrollViewComponent.prototype, "attrBounceEnabled", void 0);
+__decorate([
+    Input('buttonsOffset'),
+    __metadata("design:type", Array)
+], jqxScrollViewComponent.prototype, "attrButtonsOffset", void 0);
+__decorate([
+    Input('currentPage'),
+    __metadata("design:type", Number)
+], jqxScrollViewComponent.prototype, "attrCurrentPage", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxScrollViewComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('moveThreshold'),
+    __metadata("design:type", Number)
+], jqxScrollViewComponent.prototype, "attrMoveThreshold", void 0);
+__decorate([
+    Input('showButtons'),
+    __metadata("design:type", Boolean)
+], jqxScrollViewComponent.prototype, "attrShowButtons", void 0);
+__decorate([
+    Input('slideShow'),
+    __metadata("design:type", Boolean)
+], jqxScrollViewComponent.prototype, "attrSlideShow", void 0);
+__decorate([
+    Input('slideDuration'),
+    __metadata("design:type", Number)
+], jqxScrollViewComponent.prototype, "attrSlideDuration", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxScrollViewComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxScrollViewComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxScrollViewComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxScrollViewComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxScrollViewComponent.prototype, "onPageChanged", void 0);
+jqxScrollViewComponent = __decorate([
+    Component({
+        selector: 'jqxScrollView',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxScrollViewComponent);
+
+let jqxScrollViewModule = class jqxScrollViewModule {
 };
+jqxScrollViewModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxScrollViewComponent],
+        exports: [jqxScrollViewComponent]
+    })
+], jqxScrollViewModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxScrollViewModule {
-}
-jqxScrollViewModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxScrollViewComponent],
-                exports: [jqxScrollViewComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxScrollViewComponent, jqxScrollViewModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxscrollview.js.map

@@ -6,7 +6,7 @@
 })
 
 export class AppComponent {
-    @ViewChild('mainDemoContainer') mainDemoContainer: ElementRef;
+    @ViewChild('mainDemoContainer', {static: false}) mainDemoContainer: ElementRef;
     
     showWindowButtonClick(): void {
         let windows = document.getElementsByClassName('jqx-window'),

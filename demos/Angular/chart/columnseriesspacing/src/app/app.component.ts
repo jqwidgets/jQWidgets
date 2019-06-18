@@ -10,11 +10,11 @@ import { jqxCheckBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myChart') myChart: jqxChartComponent;
-    @ViewChild('btnEnableSeriesGroup1') btnEnableSeriesGroup1: jqxCheckBoxComponent;
-    @ViewChild('btnEnableSeriesGroup2') btnEnableSeriesGroup2: jqxCheckBoxComponent;
-    @ViewChild('btnStackedSeriesGroup1') btnStackedSeriesGroup1: jqxCheckBoxComponent;
-    @ViewChild('btnStackedSeriesGroup2') btnStackedSeriesGroup2: jqxCheckBoxComponent;
+    @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
+    @ViewChild('btnEnableSeriesGroup1', {static: false}) btnEnableSeriesGroup1: jqxCheckBoxComponent;
+    @ViewChild('btnEnableSeriesGroup2', {static: false}) btnEnableSeriesGroup2: jqxCheckBoxComponent;
+    @ViewChild('btnStackedSeriesGroup1', {static: false}) btnStackedSeriesGroup1: jqxCheckBoxComponent;
+    @ViewChild('btnStackedSeriesGroup2', {static: false}) btnStackedSeriesGroup2: jqxCheckBoxComponent;
 
     chartInstance;
 

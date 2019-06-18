@@ -8,8 +8,8 @@ import { jqxChartComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxcha
 })
 
 export class AppComponent {
-    @ViewChild('myChart') myChart: jqxChartComponent;
-	  @ViewChild('eventText') eventText: ElementRef;
+    @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
+	  @ViewChild('eventText', {static: false}) eventText: ElementRef;
 
     sampleData: any[] = [
         { a: 0.1535, b: 0.5 },

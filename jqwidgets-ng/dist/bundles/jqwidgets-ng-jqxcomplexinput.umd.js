@@ -4,8 +4,8 @@ require('../../jqwidgets-scripts/jqwidgets/jqxcomplexinput');
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/forms')) :
     typeof define === 'function' && define.amd ? define('jqwidgets-ng/jqxcomplexinput', ['exports', '@angular/core', '@angular/forms'], factory) :
-    (factory((global['jqwidgets-ng'] = global['jqwidgets-ng'] || {}, global['jqwidgets-ng'].jqxcomplexinput = {}),global.ng.core,global.ng.forms));
-}(this, (function (exports,core,forms) { 'use strict';
+    (global = global || self, factory((global['jqwidgets-ng'] = global['jqwidgets-ng'] || {}, global['jqwidgets-ng'].jqxcomplexinput = {}), global.ng.core, global.ng.forms));
+}(this, function (exports, core, forms) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -21,50 +21,47 @@ require('../../jqwidgets-scripts/jqwidgets/jqxcomplexinput');
     See the Apache Version 2.0 License for specific language governing permissions
     and limitations under the License.
     ***************************************************************************** */
+
+    function __decorate(decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    }
+
+    function __metadata(metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    }
+
     function __read(o, n) {
         var m = typeof Symbol === "function" && o[Symbol.iterator];
-        if (!m)
-            return o;
+        if (!m) return o;
         var i = m.call(o), r, ar = [], e;
         try {
-            while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
-                ar.push(r.value);
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
         }
-        catch (error) {
-            e = { error: error };
-        }
+        catch (error) { e = { error: error }; }
         finally {
             try {
-                if (r && !r.done && (m = i["return"]))
-                    m.call(i);
+                if (r && !r.done && (m = i["return"])) m.call(i);
             }
-            finally {
-                if (e)
-                    throw e.error;
-            }
+            finally { if (e) throw e.error; }
         }
         return ar;
     }
+
     function __spread() {
         for (var ar = [], i = 0; i < arguments.length; i++)
             ar = ar.concat(__read(arguments[i]));
         return ar;
     }
 
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    /** @type {?} */
-    var noop = ( /**
-     * @return {?}
-     */function () { });
-    /** @type {?} */
+    /// <reference path="../../jqwidgets.d.ts" />
+    var noop = function () { };
+    var ɵ0 = noop;
     var CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
         provide: forms.NG_VALUE_ACCESSOR,
-        useExisting: core.forwardRef(( /**
-         * @return {?}
-         */function () { return jqxComplexInputComponent; })),
+        useExisting: core.forwardRef(function () { return jqxComplexInputComponent; }),
         multi: true
     };
     var jqxComplexInputComponent = /** @class */ (function () {
@@ -77,196 +74,108 @@ require('../../jqwidgets-scripts/jqwidgets/jqxcomplexinput');
             this.onChange = new core.EventEmitter();
             this.elementRef = containerElement;
         }
-        /**
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.ngOnInit = /**
-         * @return {?}
-         */
-            function () {
-                if (this.autoCreate) {
-                    this.createComponent();
-                }
-            };
-        /**
-         * @param {?} changes
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.ngOnChanges = /**
-         * @param {?} changes
-         * @return {?}
-         */
-            function (changes) {
-                if (this.host) {
-                    for (var i = 0; i < this.properties.length; i++) {
-                        /** @type {?} */
-                        var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                        /** @type {?} */
-                        var areEqual = false;
-                        if (this[attrName] !== undefined) {
-                            if (typeof this[attrName] === 'object') {
-                                if (this[attrName] instanceof Array) {
-                                    areEqual = this.arraysEqual(this[attrName], this.host.jqxComplexInput(this.properties[i]));
-                                }
-                                if (areEqual) {
-                                    return false;
-                                }
-                                this.host.jqxComplexInput(this.properties[i], this[attrName]);
-                                continue;
+        jqxComplexInputComponent.prototype.ngOnInit = function () {
+            if (this.autoCreate) {
+                this.createComponent();
+            }
+        };
+        jqxComplexInputComponent.prototype.ngOnChanges = function (changes) {
+            if (this.host) {
+                for (var i = 0; i < this.properties.length; i++) {
+                    var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+                    var areEqual = false;
+                    if (this[attrName] !== undefined) {
+                        if (typeof this[attrName] === 'object') {
+                            if (this[attrName] instanceof Array) {
+                                areEqual = this.arraysEqual(this[attrName], this.host.jqxComplexInput(this.properties[i]));
                             }
-                            if (this[attrName] !== this.host.jqxComplexInput(this.properties[i])) {
-                                this.host.jqxComplexInput(this.properties[i], this[attrName]);
+                            if (areEqual) {
+                                return false;
                             }
+                            this.host.jqxComplexInput(this.properties[i], this[attrName]);
+                            continue;
+                        }
+                        if (this[attrName] !== this.host.jqxComplexInput(this.properties[i])) {
+                            this.host.jqxComplexInput(this.properties[i], this[attrName]);
                         }
                     }
                 }
-            };
-        /**
-         * @param {?} attrValue
-         * @param {?} hostValue
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.arraysEqual = /**
-         * @param {?} attrValue
-         * @param {?} hostValue
-         * @return {?}
-         */
-            function (attrValue, hostValue) {
-                if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+            }
+        };
+        jqxComplexInputComponent.prototype.arraysEqual = function (attrValue, hostValue) {
+            if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
+                return false;
+            }
+            if (attrValue.length != hostValue.length) {
+                return false;
+            }
+            for (var i = 0; i < attrValue.length; i++) {
+                if (attrValue[i] !== hostValue[i]) {
                     return false;
                 }
-                if (attrValue.length != hostValue.length) {
-                    return false;
+            }
+            return true;
+        };
+        jqxComplexInputComponent.prototype.manageAttributes = function () {
+            var options = {};
+            for (var i = 0; i < this.properties.length; i++) {
+                var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
+                if (this[attrName] !== undefined) {
+                    options[this.properties[i]] = this[attrName];
                 }
-                for (var i = 0; i < attrValue.length; i++) {
-                    if (attrValue[i] !== hostValue[i]) {
-                        return false;
-                    }
-                }
-                return true;
-            };
-        /**
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.manageAttributes = /**
-         * @return {?}
-         */
-            function () {
-                /** @type {?} */
-                var options = {};
-                for (var i = 0; i < this.properties.length; i++) {
-                    /** @type {?} */
-                    var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                    if (this[attrName] !== undefined) {
-                        options[this.properties[i]] = this[attrName];
-                    }
-                }
-                return options;
-            };
-        /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.moveClasses = /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-            function (parentEl, childEl) {
-                var _a;
-                /** @type {?} */
-                var classes = parentEl.classList;
-                if (classes.length > 0) {
-                    (_a = childEl.classList).add.apply(_a, __spread(classes));
-                }
-                parentEl.className = '';
-            };
-        /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.moveStyles = /**
-         * @param {?} parentEl
-         * @param {?} childEl
-         * @return {?}
-         */
-            function (parentEl, childEl) {
-                /** @type {?} */
-                var style = parentEl.style.cssText;
-                childEl.style.cssText = style;
-                parentEl.style.cssText = '';
-            };
-        /**
-         * @param {?=} options
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.createComponent = /**
-         * @param {?=} options
-         * @return {?}
-         */
-            function (options) {
-                var _this = this;
-                if (this.host) {
-                    return;
-                }
-                if (options) {
-                    JQXLite.extend(options, this.manageAttributes());
-                }
-                else {
-                    options = this.manageAttributes();
-                }
-                this.host = JQXLite(this.elementRef.nativeElement.firstChild);
-                this.moveClasses(this.elementRef.nativeElement, this.host[0]);
-                this.moveStyles(this.elementRef.nativeElement, this.host[0]);
-                this.__wireEvents__();
-                this.widgetObject = jqwidgets.createInstance(this.host, 'jqxComplexInput', options);
-                setTimeout(( /**
-                 * @param {?} _
-                 * @return {?}
-                 */function (_) {
-                    /** @type {?} */
-                    var valueWithWS = 'JQXLite{options.value}';
-                    _this.host.jqxComplexInput({ value: valueWithWS });
-                }));
-            };
-        /**
-         * @param {?=} options
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.createWidget = /**
-         * @param {?=} options
-         * @return {?}
-         */
-            function (options) {
-                this.createComponent(options);
-            };
-        /**
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.__updateRect__ = /**
-         * @return {?}
-         */
-            function () {
-                if (this.host)
-                    this.host.css({ width: this.attrWidth, height: this.attrHeight });
-            };
+            }
+            return options;
+        };
+        jqxComplexInputComponent.prototype.moveClasses = function (parentEl, childEl) {
+            var _a;
+            var classes = parentEl.classList;
+            if (classes.length > 0) {
+                (_a = childEl.classList).add.apply(_a, __spread(classes));
+            }
+            parentEl.className = '';
+        };
+        jqxComplexInputComponent.prototype.moveStyles = function (parentEl, childEl) {
+            var style = parentEl.style.cssText;
+            childEl.style.cssText = style;
+            parentEl.style.cssText = '';
+        };
+        jqxComplexInputComponent.prototype.createComponent = function (options) {
+            var _this = this;
+            if (this.host) {
+                return;
+            }
+            if (options) {
+                JQXLite.extend(options, this.manageAttributes());
+            }
+            else {
+                options = this.manageAttributes();
+            }
+            this.host = JQXLite(this.elementRef.nativeElement.firstChild);
+            this.moveClasses(this.elementRef.nativeElement, this.host[0]);
+            this.moveStyles(this.elementRef.nativeElement, this.host[0]);
+            this.__wireEvents__();
+            this.widgetObject = jqwidgets.createInstance(this.host, 'jqxComplexInput', options);
+            setTimeout(function (_) {
+                var valueWithWS = 'JQXLite{options.value}';
+                _this.host.jqxComplexInput({ value: valueWithWS });
+            });
+        };
+        jqxComplexInputComponent.prototype.createWidget = function (options) {
+            this.createComponent(options);
+        };
+        jqxComplexInputComponent.prototype.__updateRect__ = function () {
+            if (this.host)
+                this.host.css({ width: this.attrWidth, height: this.attrHeight });
+        };
         Object.defineProperty(jqxComplexInputComponent.prototype, "ngValue", {
-            get: /**
-             * @return {?}
-             */ function () {
+            get: function () {
                 if (this.widgetObject) {
-                    /** @type {?} */
                     var value = this.host.val();
                     return value;
                 }
                 return '';
             },
-            set: /**
-             * @param {?} value
-             * @return {?}
-             */ function (value) {
+            set: function (value) {
                 if (this.widgetObject) {
                     this.onChangeCallback(value);
                 }
@@ -274,415 +183,238 @@ require('../../jqwidgets-scripts/jqwidgets/jqxcomplexinput');
             enumerable: true,
             configurable: true
         });
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.writeValue = /**
-         * @param {?} value
-         * @return {?}
-         */
-            function (value) {
-                if (this.widgetObject) {
-                    this.onChangeCallback(this.host.val());
-                    this.host.jqxComplexInput('val', value);
-                }
-            };
-        /**
-         * @param {?} fn
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.registerOnChange = /**
-         * @param {?} fn
-         * @return {?}
-         */
-            function (fn) {
-                this.onChangeCallback = fn;
-            };
-        /**
-         * @param {?} fn
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.registerOnTouched = /**
-         * @param {?} fn
-         * @return {?}
-         */
-            function (fn) {
-                this.onTouchedCallback = fn;
-            };
-        /**
-         * @param {?} options
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.setOptions = /**
-         * @param {?} options
-         * @return {?}
-         */
-            function (options) {
-                this.host.jqxComplexInput('setOptions', options);
-            };
-        // jqxComplexInputComponent properties
-        // jqxComplexInputComponent properties
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.decimalNotation =
-            // jqxComplexInputComponent properties
-            /**
-             * @param {?=} arg
-             * @return {?}
-             */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('decimalNotation', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('decimalNotation');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.disabled = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('disabled', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('disabled');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.height = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('height', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('height');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.placeHolder = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('placeHolder', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('placeHolder');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.roundedCorners = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('roundedCorners', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('roundedCorners');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.rtl = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('rtl', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('rtl');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.spinButtons = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('spinButtons', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('spinButtons');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.spinButtonsStep = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('spinButtonsStep', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('spinButtonsStep');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.template = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('template', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('template');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.theme = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('theme', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('theme');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.value = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('value', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('value');
-                }
-            };
-        /**
-         * @param {?=} arg
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.width = /**
-         * @param {?=} arg
-         * @return {?}
-         */
-            function (arg) {
-                if (arg !== undefined) {
-                    this.host.jqxComplexInput('width', arg);
-                }
-                else {
-                    return this.host.jqxComplexInput('width');
-                }
-            };
-        // jqxComplexInputComponent functions
-        // jqxComplexInputComponent functions
-        /**
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.destroy =
-            // jqxComplexInputComponent functions
-            /**
-             * @return {?}
-             */
-            function () {
-                this.host.jqxComplexInput('destroy');
-            };
-        /**
-         * @param {?} part
-         * @param {?} decimalNotation
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.getDecimalNotation = /**
-         * @param {?} part
-         * @param {?} decimalNotation
-         * @return {?}
-         */
-            function (part, decimalNotation) {
-                return this.host.jqxComplexInput('getDecimalNotation', part, decimalNotation);
-            };
-        /**
-         * @param {?=} complexnumber
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.getReal = /**
-         * @param {?=} complexnumber
-         * @return {?}
-         */
-            function (complexnumber) {
-                return this.host.jqxComplexInput('getReal', complexnumber);
-            };
-        /**
-         * @param {?=} complexnumber
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.getImaginary = /**
-         * @param {?=} complexnumber
-         * @return {?}
-         */
-            function (complexnumber) {
-                return this.host.jqxComplexInput('getImaginary', complexnumber);
-            };
-        /**
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.render = /**
-         * @return {?}
-         */
-            function () {
-                this.host.jqxComplexInput('render');
-            };
-        /**
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.refresh = /**
-         * @return {?}
-         */
-            function () {
-                this.host.jqxComplexInput('refresh');
-            };
-        /**
-         * @param {?=} value
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.val = /**
-         * @param {?=} value
-         * @return {?}
-         */
-            function (value) {
-                if (value !== undefined) {
-                    return this.host.jqxComplexInput('val', value);
-                }
-                else {
-                    return this.host.jqxComplexInput('val');
-                }
-            };
-        /**
-         * @return {?}
-         */
-        jqxComplexInputComponent.prototype.__wireEvents__ = /**
-         * @return {?}
-         */
-            function () {
-                var _this = this;
-                this.host.on('change', ( /**
-                 * @param {?} eventData
-                 * @return {?}
-                 */function (eventData) {
-                    _this.onChange.emit(eventData);
-                    if (eventData.args)
-                        _this.onChangeCallback(eventData.args.value);
-                }));
-            };
-        jqxComplexInputComponent.decorators = [
-            { type: core.Component, args: [{
-                        selector: 'jqxComplexInput',
-                        template: '<div style="display: inline-flex;"><input [(ngModel)]="ngValue"><div></div></div>',
-                        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                        changeDetection: core.ChangeDetectionStrategy.OnPush
-                    }] }
-        ];
-        /** @nocollapse */
-        jqxComplexInputComponent.ctorParameters = function () {
-            return [
-                { type: core.ElementRef }
-            ];
+        jqxComplexInputComponent.prototype.writeValue = function (value) {
+            if (this.widgetObject) {
+                this.onChangeCallback(this.host.val());
+                this.host.jqxComplexInput('val', value);
+            }
         };
-        jqxComplexInputComponent.propDecorators = {
-            attrDecimalNotation: [{ type: core.Input, args: ['decimalNotation',] }],
-            attrDisabled: [{ type: core.Input, args: ['disabled',] }],
-            attrPlaceHolder: [{ type: core.Input, args: ['placeHolder',] }],
-            attrRoundedCorners: [{ type: core.Input, args: ['roundedCorners',] }],
-            attrRtl: [{ type: core.Input, args: ['rtl',] }],
-            attrSpinButtons: [{ type: core.Input, args: ['spinButtons',] }],
-            attrSpinButtonsStep: [{ type: core.Input, args: ['spinButtonsStep',] }],
-            attrTemplate: [{ type: core.Input, args: ['template',] }],
-            attrTheme: [{ type: core.Input, args: ['theme',] }],
-            attrValue: [{ type: core.Input, args: ['value',] }],
-            attrWidth: [{ type: core.Input, args: ['width',] }],
-            attrHeight: [{ type: core.Input, args: ['height',] }],
-            autoCreate: [{ type: core.Input, args: ['auto-create',] }],
-            onChange: [{ type: core.Output }]
+        jqxComplexInputComponent.prototype.registerOnChange = function (fn) {
+            this.onChangeCallback = fn;
         };
+        jqxComplexInputComponent.prototype.registerOnTouched = function (fn) {
+            this.onTouchedCallback = fn;
+        };
+        jqxComplexInputComponent.prototype.setOptions = function (options) {
+            this.host.jqxComplexInput('setOptions', options);
+        };
+        // jqxComplexInputComponent properties
+        jqxComplexInputComponent.prototype.decimalNotation = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('decimalNotation', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('decimalNotation');
+            }
+        };
+        jqxComplexInputComponent.prototype.disabled = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('disabled', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('disabled');
+            }
+        };
+        jqxComplexInputComponent.prototype.height = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('height', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('height');
+            }
+        };
+        jqxComplexInputComponent.prototype.placeHolder = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('placeHolder', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('placeHolder');
+            }
+        };
+        jqxComplexInputComponent.prototype.roundedCorners = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('roundedCorners', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('roundedCorners');
+            }
+        };
+        jqxComplexInputComponent.prototype.rtl = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('rtl', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('rtl');
+            }
+        };
+        jqxComplexInputComponent.prototype.spinButtons = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('spinButtons', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('spinButtons');
+            }
+        };
+        jqxComplexInputComponent.prototype.spinButtonsStep = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('spinButtonsStep', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('spinButtonsStep');
+            }
+        };
+        jqxComplexInputComponent.prototype.template = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('template', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('template');
+            }
+        };
+        jqxComplexInputComponent.prototype.theme = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('theme', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('theme');
+            }
+        };
+        jqxComplexInputComponent.prototype.value = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('value', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('value');
+            }
+        };
+        jqxComplexInputComponent.prototype.width = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxComplexInput('width', arg);
+            }
+            else {
+                return this.host.jqxComplexInput('width');
+            }
+        };
+        // jqxComplexInputComponent functions
+        jqxComplexInputComponent.prototype.destroy = function () {
+            this.host.jqxComplexInput('destroy');
+        };
+        jqxComplexInputComponent.prototype.getDecimalNotation = function (part, decimalNotation) {
+            return this.host.jqxComplexInput('getDecimalNotation', part, decimalNotation);
+        };
+        jqxComplexInputComponent.prototype.getReal = function (complexnumber) {
+            return this.host.jqxComplexInput('getReal', complexnumber);
+        };
+        jqxComplexInputComponent.prototype.getImaginary = function (complexnumber) {
+            return this.host.jqxComplexInput('getImaginary', complexnumber);
+        };
+        jqxComplexInputComponent.prototype.render = function () {
+            this.host.jqxComplexInput('render');
+        };
+        jqxComplexInputComponent.prototype.refresh = function () {
+            this.host.jqxComplexInput('refresh');
+        };
+        jqxComplexInputComponent.prototype.val = function (value) {
+            if (value !== undefined) {
+                return this.host.jqxComplexInput('val', value);
+            }
+            else {
+                return this.host.jqxComplexInput('val');
+            }
+        };
+        jqxComplexInputComponent.prototype.__wireEvents__ = function () {
+            var _this = this;
+            this.host.on('change', function (eventData) { _this.onChange.emit(eventData); if (eventData.args)
+                _this.onChangeCallback(eventData.args.value); });
+        };
+        __decorate([
+            core.Input('decimalNotation'),
+            __metadata("design:type", String)
+        ], jqxComplexInputComponent.prototype, "attrDecimalNotation", void 0);
+        __decorate([
+            core.Input('disabled'),
+            __metadata("design:type", Boolean)
+        ], jqxComplexInputComponent.prototype, "attrDisabled", void 0);
+        __decorate([
+            core.Input('placeHolder'),
+            __metadata("design:type", String)
+        ], jqxComplexInputComponent.prototype, "attrPlaceHolder", void 0);
+        __decorate([
+            core.Input('roundedCorners'),
+            __metadata("design:type", Boolean)
+        ], jqxComplexInputComponent.prototype, "attrRoundedCorners", void 0);
+        __decorate([
+            core.Input('rtl'),
+            __metadata("design:type", Boolean)
+        ], jqxComplexInputComponent.prototype, "attrRtl", void 0);
+        __decorate([
+            core.Input('spinButtons'),
+            __metadata("design:type", Boolean)
+        ], jqxComplexInputComponent.prototype, "attrSpinButtons", void 0);
+        __decorate([
+            core.Input('spinButtonsStep'),
+            __metadata("design:type", Number)
+        ], jqxComplexInputComponent.prototype, "attrSpinButtonsStep", void 0);
+        __decorate([
+            core.Input('template'),
+            __metadata("design:type", String)
+        ], jqxComplexInputComponent.prototype, "attrTemplate", void 0);
+        __decorate([
+            core.Input('theme'),
+            __metadata("design:type", String)
+        ], jqxComplexInputComponent.prototype, "attrTheme", void 0);
+        __decorate([
+            core.Input('value'),
+            __metadata("design:type", String)
+        ], jqxComplexInputComponent.prototype, "attrValue", void 0);
+        __decorate([
+            core.Input('width'),
+            __metadata("design:type", Object)
+        ], jqxComplexInputComponent.prototype, "attrWidth", void 0);
+        __decorate([
+            core.Input('height'),
+            __metadata("design:type", Object)
+        ], jqxComplexInputComponent.prototype, "attrHeight", void 0);
+        __decorate([
+            core.Input('auto-create'),
+            __metadata("design:type", Boolean)
+        ], jqxComplexInputComponent.prototype, "autoCreate", void 0);
+        __decorate([
+            core.Output(),
+            __metadata("design:type", Object)
+        ], jqxComplexInputComponent.prototype, "onChange", void 0);
+        jqxComplexInputComponent = __decorate([
+            core.Component({
+                selector: 'jqxComplexInput',
+                template: '<div style="display: inline-flex;"><input [(ngModel)]="ngValue"><div></div></div>',
+                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+                changeDetection: core.ChangeDetectionStrategy.OnPush
+            }),
+            __metadata("design:paramtypes", [core.ElementRef])
+        ], jqxComplexInputComponent);
         return jqxComplexInputComponent;
     }()); //jqxComplexInputComponent
 
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
     var jqxComplexInputModule = /** @class */ (function () {
         function jqxComplexInputModule() {
         }
-        jqxComplexInputModule.decorators = [
-            { type: core.NgModule, args: [{
-                        imports: [
-                            forms.FormsModule
-                        ],
-                        declarations: [jqxComplexInputComponent],
-                        exports: [jqxComplexInputComponent]
-                    },] }
-        ];
+        jqxComplexInputModule = __decorate([
+            core.NgModule({
+                imports: [
+                    forms.FormsModule
+                ],
+                declarations: [jqxComplexInputComponent],
+                exports: [jqxComplexInputComponent]
+            })
+        ], jqxComplexInputModule);
         return jqxComplexInputModule;
     }());
 
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-
     exports.jqxComplexInputComponent = jqxComplexInputComponent;
     exports.jqxComplexInputModule = jqxComplexInputModule;
+    exports.ɵ0 = ɵ0;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
-
+}));
 //# sourceMappingURL=jqwidgets-ng-jqxcomplexinput.umd.js.map

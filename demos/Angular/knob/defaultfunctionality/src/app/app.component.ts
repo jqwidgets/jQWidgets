@@ -11,8 +11,8 @@ import { jqxNumberInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_
 })
 
 export class AppComponent {
-    @ViewChild('myKnob') myKnob: jqxKnobComponent;
-    @ViewChild('myNumberInput') myNumberInput: jqxNumberInputComponent;
+    @ViewChild('myKnob', {static: false}) myKnob: jqxKnobComponent;
+    @ViewChild('myNumberInput', {static: false}) myNumberInput: jqxNumberInputComponent;
 
     style: any =
     {

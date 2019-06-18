@@ -8,7 +8,7 @@ import { jqxLoaderComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxlo
 })
 
 export class AppComponent {
-    @ViewChild('jqxLoader') jqxLoader: jqxLoaderComponent;
+    @ViewChild('jqxLoader', {static: false}) jqxLoader: jqxLoaderComponent;
 
     source =
     {

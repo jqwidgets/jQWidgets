@@ -9,9 +9,9 @@ import { jqxDropDownButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angul
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myTagCloud') myTagCloud: jqxTagCloudComponent;
-    @ViewChild('myDropDownButton1') myDropDownButton1: jqxDropDownButtonComponent;
-    @ViewChild('myDropDownButton2') myDropDownButton2: jqxDropDownButtonComponent;
+    @ViewChild('myTagCloud', {static: false}) myTagCloud: jqxTagCloudComponent;
+    @ViewChild('myDropDownButton1', {static: false}) myDropDownButton1: jqxDropDownButtonComponent;
+    @ViewChild('myDropDownButton2', {static: false}) myDropDownButton2: jqxDropDownButtonComponent;
 
  	getWidth() : any {
 		if (document.body.offsetWidth < 600) {

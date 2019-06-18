@@ -12,12 +12,12 @@ import { jqxCheckBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxTabs') jqxTabs: jqxTabsComponent;
-    @ViewChild('acceptCheckBox') acceptCheckBox: jqxCheckBoxComponent;
-    @ViewChild('products') products: jqxListBoxComponent;
-    @ViewChild('usernameInput') usernameInput: ElementRef;
-    @ViewChild('passwordInput') passwordInput: ElementRef;
-    @ViewChild('orderContainer') orderContainer: ElementRef;
+    @ViewChild('jqxTabs', {static: false}) jqxTabs: jqxTabsComponent;
+    @ViewChild('acceptCheckBox', {static: false}) acceptCheckBox: jqxCheckBoxComponent;
+    @ViewChild('products', {static: false}) products: jqxListBoxComponent;
+    @ViewChild('usernameInput', {static: false}) usernameInput: ElementRef;
+    @ViewChild('passwordInput', {static: false}) passwordInput: ElementRef;
+    @ViewChild('orderContainer', {static: false}) orderContainer: ElementRef;
    
     getWidth() : any {
 		if (document.body.offsetWidth < 500) {

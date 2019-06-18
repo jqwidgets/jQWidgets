@@ -6,7 +6,7 @@ import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('formEvents') formEvents: ElementRef;
+    @ViewChild('formEvents', {static: false}) formEvents: ElementRef;
 
     ngAfterViewInit(): void {
     }

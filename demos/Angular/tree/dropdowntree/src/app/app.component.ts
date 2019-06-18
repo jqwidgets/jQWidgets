@@ -9,8 +9,8 @@ import { jqxDropDownButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angul
 })
 
 export class AppComponent {
-    @ViewChild('myTree') myTree: jqxTreeComponent;
-    @ViewChild('myDropDownButton') myDropDownButton: jqxDropDownButtonComponent;
+    @ViewChild('myTree', {static: false}) myTree: jqxTreeComponent;
+    @ViewChild('myDropDownButton', {static: false}) myDropDownButton: jqxDropDownButtonComponent;
 
     myTreeOnInitialized(): void {
         this.myDropDownButton.setContent('<div style="position: relative; margin-left: 3px; margin-top: 4px;">Home</div>');

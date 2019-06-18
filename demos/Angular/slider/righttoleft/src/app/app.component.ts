@@ -10,7 +10,7 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('events') events: jqxPanelComponent;
+    @ViewChild('events', {static: false}) events: jqxPanelComponent;
 
     displayEvent = (event) => {
         let eventData = event.type;

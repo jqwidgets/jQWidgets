@@ -12,9 +12,9 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myDataTable') myDataTable: jqxDataTableComponent;
-    @ViewChild('myDropDownList') myDropDownList: jqxDropDownListComponent;
-    @ViewChild('myListBox') myListBox: jqxListBoxComponent;
+    @ViewChild('myDataTable', {static: false}) myDataTable: jqxDataTableComponent;
+    @ViewChild('myDropDownList', {static: false}) myDropDownList: jqxDropDownListComponent;
+    @ViewChild('myListBox', {static: false}) myListBox: jqxListBoxComponent;
 
     ngAfterViewInit(): void {
         this.updateMyListBox('firstname');

@@ -8,7 +8,7 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
 
     ngAfterViewInit(): void {
         this.myPanel.elementRef.nativeElement.firstChild.style.border = 'none';

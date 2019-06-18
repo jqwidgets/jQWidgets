@@ -9,12 +9,12 @@ import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid
 })
 
 export class AppComponent {
-    @ViewChild('jqxgrid') jqxgrid: jqxGridComponent;
-    @ViewChild('CompanyName') CompanyName: jqxInputComponent;
-    @ViewChild('ContactName') ContactName: jqxInputComponent;
-    @ViewChild('ContactTitle') ContactTitle: jqxInputComponent;
-    @ViewChild('City') City: jqxInputComponent;
-    @ViewChild('Country') Country: jqxInputComponent;
+    @ViewChild('jqxgrid', {static: false}) jqxgrid: jqxGridComponent;
+    @ViewChild('CompanyName', {static: false}) CompanyName: jqxInputComponent;
+    @ViewChild('ContactName', {static: false}) ContactName: jqxInputComponent;
+    @ViewChild('ContactTitle', {static: false}) ContactTitle: jqxInputComponent;
+    @ViewChild('City', {static: false}) City: jqxInputComponent;
+    @ViewChild('Country', {static: false}) Country: jqxInputComponent;
  	
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

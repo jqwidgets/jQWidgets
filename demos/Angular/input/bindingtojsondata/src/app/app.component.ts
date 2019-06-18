@@ -8,8 +8,8 @@ import { jqxInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxinp
 })
 
 export class AppComponent {
-    @ViewChild('myInput') myInput: jqxInputComponent;
-    @ViewChild('selectionLog') selectionLog: ElementRef;
+    @ViewChild('myInput', {static: false}) myInput: jqxInputComponent;
+    @ViewChild('selectionLog', {static: false}) selectionLog: ElementRef;
 
     source: any =
     {

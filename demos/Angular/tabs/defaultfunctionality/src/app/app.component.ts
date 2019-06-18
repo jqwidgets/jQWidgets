@@ -10,7 +10,7 @@ import { jqxTabsComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtabs
 })
 
 export class AppComponent {
-    @ViewChild('tabsReference') myTabs: jqxTabsComponent;
+    @ViewChild('tabsReference', {static: false}) myTabs: jqxTabsComponent;
 
     onChangeAnimation(event: any): void {
         let checked = event.args.checked;

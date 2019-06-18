@@ -422,3 +422,20 @@
 .jqx-input-metrodark {
     color: #fff;
 }
+
+/*applied to the timepicker labels*/
+.jqx-label-metrodark {
+	fill: darkgray;
+}
+
+.jqx-needle-metrodark {
+	fill: lightgray;
+}
+
+.jqx-needle-central-circle-metrodark {
+	fill: lightgray;
+}
+
+.jqx-time-picker .jqx-label.jqx-selected-metrodark {
+	fill: black !important;
+}

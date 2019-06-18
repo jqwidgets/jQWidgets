@@ -1,13 +1,10 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxsplitter from '../../jqwidgets-scripts/jqwidgets/jqxsplitter';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxSplitterComponent = /** @class */ (function () {
     function jqxSplitterComponent(containerElement) {
         this.autoCreate = true;
@@ -19,31 +16,15 @@ var jqxSplitterComponent = /** @class */ (function () {
         this.onResizeStart = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxSplitterComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxSplitterComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -63,17 +44,7 @@ var jqxSplitterComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxSplitterComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -87,17 +58,9 @@ var jqxSplitterComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxSplitterComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -105,50 +68,20 @@ var jqxSplitterComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxSplitterComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxSplitterComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSplitterComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -164,51 +97,18 @@ var jqxSplitterComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxSplitter', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSplitterComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxSplitterComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSplitterComponent.prototype.setOptions = function (options) {
         this.host.jqxSplitter('setOptions', options);
     };
     // jqxSplitterComponent properties
-    // jqxSplitterComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.disabled = 
-    // jqxSplitterComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSplitterComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSplitter('disabled', arg);
         }
@@ -216,15 +116,7 @@ var jqxSplitterComponent = /** @class */ (function () {
             return this.host.jqxSplitter('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSplitterComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSplitter('height', arg);
         }
@@ -232,15 +124,7 @@ var jqxSplitterComponent = /** @class */ (function () {
             return this.host.jqxSplitter('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.orientation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSplitterComponent.prototype.orientation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSplitter('orientation', arg);
         }
@@ -248,15 +132,7 @@ var jqxSplitterComponent = /** @class */ (function () {
             return this.host.jqxSplitter('orientation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.panels = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSplitterComponent.prototype.panels = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSplitter('panels', arg);
         }
@@ -264,15 +140,7 @@ var jqxSplitterComponent = /** @class */ (function () {
             return this.host.jqxSplitter('panels');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.resizable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSplitterComponent.prototype.resizable = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSplitter('resizable', arg);
         }
@@ -280,15 +148,7 @@ var jqxSplitterComponent = /** @class */ (function () {
             return this.host.jqxSplitter('resizable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.splitBarSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSplitterComponent.prototype.splitBarSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSplitter('splitBarSize', arg);
         }
@@ -296,15 +156,7 @@ var jqxSplitterComponent = /** @class */ (function () {
             return this.host.jqxSplitter('splitBarSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.showSplitBar = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSplitterComponent.prototype.showSplitBar = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSplitter('showSplitBar', arg);
         }
@@ -312,15 +164,7 @@ var jqxSplitterComponent = /** @class */ (function () {
             return this.host.jqxSplitter('showSplitBar');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSplitterComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSplitter('theme', arg);
         }
@@ -328,15 +172,7 @@ var jqxSplitterComponent = /** @class */ (function () {
             return this.host.jqxSplitter('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSplitterComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSplitter('width', arg);
         }
@@ -345,157 +181,116 @@ var jqxSplitterComponent = /** @class */ (function () {
         }
     };
     // jqxSplitterComponent functions
-    // jqxSplitterComponent functions
-    /**
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.collapse = 
-    // jqxSplitterComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxSplitterComponent.prototype.collapse = function () {
         this.host.jqxSplitter('collapse');
     };
-    /**
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxSplitterComponent.prototype.destroy = function () {
         this.host.jqxSplitter('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.disable = /**
-     * @return {?}
-     */
-    function () {
+    jqxSplitterComponent.prototype.disable = function () {
         this.host.jqxSplitter('disable');
     };
-    /**
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.enable = /**
-     * @return {?}
-     */
-    function () {
+    jqxSplitterComponent.prototype.enable = function () {
         this.host.jqxSplitter('enable');
     };
-    /**
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.expand = /**
-     * @return {?}
-     */
-    function () {
+    jqxSplitterComponent.prototype.expand = function () {
         this.host.jqxSplitter('expand');
     };
-    /**
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxSplitterComponent.prototype.render = function () {
         this.host.jqxSplitter('render');
     };
-    /**
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxSplitterComponent.prototype.refresh = function () {
         this.host.jqxSplitter('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxSplitterComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxSplitterComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('collapsed', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCollapsed.emit(eventData); }));
-        this.host.on('expanded', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onExpanded.emit(eventData); }));
-        this.host.on('resize', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onResize.emit(eventData); }));
-        this.host.on('resizeStart', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onResizeStart.emit(eventData); }));
+        this.host.on('collapsed', function (eventData) { _this.onCollapsed.emit(eventData); });
+        this.host.on('expanded', function (eventData) { _this.onExpanded.emit(eventData); });
+        this.host.on('resize', function (eventData) { _this.onResize.emit(eventData); });
+        this.host.on('resizeStart', function (eventData) { _this.onResizeStart.emit(eventData); });
     };
-    jqxSplitterComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxSplitter',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxSplitterComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxSplitterComponent.propDecorators = {
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrOrientation: [{ type: Input, args: ['orientation',] }],
-        attrPanels: [{ type: Input, args: ['panels',] }],
-        attrResizable: [{ type: Input, args: ['resizable',] }],
-        attrSplitBarSize: [{ type: Input, args: ['splitBarSize',] }],
-        attrShowSplitBar: [{ type: Input, args: ['showSplitBar',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onCollapsed: [{ type: Output }],
-        onExpanded: [{ type: Output }],
-        onResize: [{ type: Output }],
-        onResizeStart: [{ type: Output }]
-    };
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxSplitterComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('orientation'),
+        __metadata("design:type", String)
+    ], jqxSplitterComponent.prototype, "attrOrientation", void 0);
+    __decorate([
+        Input('panels'),
+        __metadata("design:type", Array)
+    ], jqxSplitterComponent.prototype, "attrPanels", void 0);
+    __decorate([
+        Input('resizable'),
+        __metadata("design:type", Boolean)
+    ], jqxSplitterComponent.prototype, "attrResizable", void 0);
+    __decorate([
+        Input('splitBarSize'),
+        __metadata("design:type", Number)
+    ], jqxSplitterComponent.prototype, "attrSplitBarSize", void 0);
+    __decorate([
+        Input('showSplitBar'),
+        __metadata("design:type", Boolean)
+    ], jqxSplitterComponent.prototype, "attrShowSplitBar", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxSplitterComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxSplitterComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxSplitterComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxSplitterComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSplitterComponent.prototype, "onCollapsed", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSplitterComponent.prototype, "onExpanded", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSplitterComponent.prototype, "onResize", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSplitterComponent.prototype, "onResizeStart", void 0);
+    jqxSplitterComponent = __decorate([
+        Component({
+            selector: 'jqxSplitter',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxSplitterComponent);
     return jqxSplitterComponent;
 }()); //jqxSplitterComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxSplitterModule = /** @class */ (function () {
     function jqxSplitterModule() {
     }
-    jqxSplitterModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxSplitterComponent],
-                    exports: [jqxSplitterComponent]
-                },] }
-    ];
+    jqxSplitterModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxSplitterComponent],
+            exports: [jqxSplitterComponent]
+        })
+    ], jqxSplitterModule);
     return jqxSplitterModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxSplitterComponent, jqxSplitterModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxsplitter.js.map

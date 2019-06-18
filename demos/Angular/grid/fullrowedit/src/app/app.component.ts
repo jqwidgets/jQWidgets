@@ -8,8 +8,8 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent {
-    @ViewChild('cellBeginEditLog') cellBeginEditLog: ElementRef;
-    @ViewChild('cellEndEditLog') cellEndEditLog: ElementRef;
+    @ViewChild('cellBeginEditLog', {static: false}) cellBeginEditLog: ElementRef;
+    @ViewChild('cellEndEditLog', {static: false}) cellEndEditLog: ElementRef;
 
     source: any =
     {

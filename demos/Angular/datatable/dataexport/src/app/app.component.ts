@@ -10,7 +10,7 @@ import { jqxDataTableComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jq
 })
 
 export class AppComponent {
-    @ViewChild('myDataTable') myDataTable: jqxDataTableComponent;
+    @ViewChild('myDataTable', {static: false}) myDataTable: jqxDataTableComponent;
 
     source: any =
     {

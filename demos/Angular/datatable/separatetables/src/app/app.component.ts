@@ -1,6 +1,6 @@
 ﻿import { Component, ViewChild } from '@angular/core';  import { jqxDataTableComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxdatatable';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent { 
-    @ViewChild('masterDataTable') masterDataTable: jqxDataTableComponent;
-    @ViewChild('detailsDataTable') detailsDataTable: jqxDataTableComponent;
+    @ViewChild('masterDataTable', {static: false}) masterDataTable: jqxDataTableComponent;
+    @ViewChild('detailsDataTable', {static: false}) detailsDataTable: jqxDataTableComponent;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

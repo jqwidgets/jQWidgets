@@ -8,8 +8,8 @@ import { jqxMenuComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxmenu
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxMenu') jqxMenu: jqxMenuComponent;
-    @ViewChild('log') log: ElementRef;
+    @ViewChild('jqxMenu', {static: false}) jqxMenu: jqxMenuComponent;
+    @ViewChild('log', {static: false}) log: ElementRef;
 
     ngAfterViewInit() {
         this.jqxMenu.focus();

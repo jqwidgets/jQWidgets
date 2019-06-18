@@ -8,7 +8,7 @@ import { jqxNavigationBarComponent } from 'jqwidgets-scripts/jqwidgets-ts/angula
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxNavigationBar') jqxNavigationBar: jqxNavigationBarComponent;
+    @ViewChild('jqxNavigationBar', {static: false}) jqxNavigationBar: jqxNavigationBarComponent;
 
     ngAfterViewInit() {
         this.jqxNavigationBar.focus();

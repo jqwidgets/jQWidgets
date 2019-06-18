@@ -8,7 +8,7 @@ import { jqxSchedulerComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jq
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('scheduler') myScheduler: jqxSchedulerComponent;
+    @ViewChild('scheduler', {static: false}, {static: false}) myScheduler: jqxSchedulerComponent;
 
     ngAfterViewInit() {
         this.myScheduler.focus();

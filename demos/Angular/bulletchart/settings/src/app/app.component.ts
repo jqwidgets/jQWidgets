@@ -14,20 +14,20 @@ import { jqxSliderComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxsl
 })
 
 export class AppComponent {
-    @ViewChild('myBulletChart') myBulletChart: jqxBulletChartComponent;
-    @ViewChild('showLabelsCheckbox') showLabelsCheckbox: jqxCheckBoxComponent;
-    @ViewChild('disabledCheckbox') disabledCheckbox: jqxCheckBoxComponent;
-    @ViewChild('rtlCheckbox') rtlCheckbox: jqxCheckBoxComponent;
-    @ViewChild('enableAnimationCheckbox') enableAnimationCheckbox: jqxCheckBoxComponent;
-    @ViewChild('nearRadio') nearRadio: jqxRadioButtonComponent;
-    @ViewChild('farRadio') farRadio: jqxRadioButtonComponent;
-    @ViewChild('bothRadio') bothRadio: jqxRadioButtonComponent;
-    @ViewChild('currencyRadio') currencyRadio: jqxRadioButtonComponent;
-    @ViewChild('percentRadio') percentRadio: jqxRadioButtonComponent;
-    @ViewChild('noneRadio') noneRadio: jqxRadioButtonComponent;
-    @ViewChild('valueSlider') valueSlider: jqxSliderComponent;
-    @ViewChild('pointerDropDownList') pointerDropDownList: jqxDropDownListComponent;
-    @ViewChild('targetDropDownList') targetDropDownList: jqxDropDownListComponent;
+    @ViewChild('myBulletChart', {static: false}) myBulletChart: jqxBulletChartComponent;
+    @ViewChild('showLabelsCheckbox', {static: false}) showLabelsCheckbox: jqxCheckBoxComponent;
+    @ViewChild('disabledCheckbox', {static: false}) disabledCheckbox: jqxCheckBoxComponent;
+    @ViewChild('rtlCheckbox', {static: false}) rtlCheckbox: jqxCheckBoxComponent;
+    @ViewChild('enableAnimationCheckbox', {static: false}) enableAnimationCheckbox: jqxCheckBoxComponent;
+    @ViewChild('nearRadio', {static: false}) nearRadio: jqxRadioButtonComponent;
+    @ViewChild('farRadio', {static: false}) farRadio: jqxRadioButtonComponent;
+    @ViewChild('bothRadio', {static: false}) bothRadio: jqxRadioButtonComponent;
+    @ViewChild('currencyRadio', {static: false}) currencyRadio: jqxRadioButtonComponent;
+    @ViewChild('percentRadio', {static: false}) percentRadio: jqxRadioButtonComponent;
+    @ViewChild('noneRadio', {static: false}) noneRadio: jqxRadioButtonComponent;
+    @ViewChild('valueSlider', {static: false}) valueSlider: jqxSliderComponent;
+    @ViewChild('pointerDropDownList', {static: false}) pointerDropDownList: jqxDropDownListComponent;
+    @ViewChild('targetDropDownList', {static: false}) targetDropDownList: jqxDropDownListComponent;
 
     ranges: any[] =
     [

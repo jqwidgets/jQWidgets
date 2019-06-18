@@ -8,7 +8,7 @@ import { jqxDateTimeInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angula
 })
 
 export class AppComponent {
-    @ViewChild('myDateTimeInput') myDateTimeInput: jqxDateTimeInputComponent;
+    @ViewChild('myDateTimeInput', {static: false}) myDateTimeInput: jqxDateTimeInputComponent;
 
     count: number = 0;
 

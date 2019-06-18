@@ -13,10 +13,10 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('myDropDownList') myDropDownList: jqxDropDownListComponent;
-    @ViewChild('myInput') myInput: jqxInputComponent;
-    @ViewChild('myWindow') myWindow: jqxWindowComponent;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('myDropDownList', {static: false}) myDropDownList: jqxDropDownListComponent;
+    @ViewChild('myInput', {static: false}) myInput: jqxInputComponent;
+    @ViewChild('myWindow', {static: false}) myWindow: jqxWindowComponent;
 
     ngAfterViewInit(): void {
         this.createButtons();

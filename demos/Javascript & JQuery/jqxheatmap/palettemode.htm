@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id='Description'>This demo illustrates palette modes.</title>
+    <meta name="keywords" content="jQuery Heatmap, Heatmap, Palette Mode" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxheatmap.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxradiobutton.js"></script>
+
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #heatmap {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        #palette-mode {
+            display: flex;
+            align-items: center;
+            margin: 50px 100px;
+        }
+
+        .radio-buttons {
+            margin-left: 50px;
+        }
+
+        .radio-buttons div:first-child {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var xAxis = {
+                labels: ['John', 'Marry', 'Alba', 'Steven', 'Josh', 'Alica', 'Robert', 'Kim', 'Ann', 'Paul', 'Regina', 'Dorothy'],
+                opposedPosition: true
+            };
+            var yAxis = {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                opposedPosition: true
+            };
+
+            var data = [
+                [49, 39, 44, 55, 60],
+                [53, 38, 26, 48, 33],
+                [22, 17, 36, 10, 18],
+                [17, 60, 60, 23, 19],
+                [47, 47, 38, 60, 10],
+                [13, 23, 30, 60, 10],
+                [21, 26, 13, 33, 14],
+                [53, 21, 45, 29, 60],
+                [34, 60, 58, 51, 43],
+                [10, 12, 58, 14, 21],
+                [55, 58, 12, 22, 49],
+                [18, 23, 56, 59, 53],
+            ];
+
+            $("#heatmap").jqxHeatMap({
+                xAxis: xAxis,
+                yAxis: yAxis,
+                source: data,
+                title: 'Car sales revenue per employee(in 1000 &euro;)',
+                legendSettings: {
+                    position: 'Bottom'
+                },
+                paletteSettings: {
+                    palette: [
+                        { value: 10, color: '#6bbd49' },
+                        { value: 30, color: '#22aaaa' },
+                        { value: 60, color: '#53b9e6' },
+                    ]
+                }
+            });
+
+            $(".jqxradiobutton").jqxRadioButton({ width: 90, height: 25 });
+            $("#gradient").jqxRadioButton({ checked: true });
+
+            $('#gradient').on('checked', function (event) {
+                $("#heatmap").jqxHeatMap('setPaletteType', 'Gradient');
+            });
+            $('#fixed').on('checked', function (event) {
+                $("#heatmap").jqxHeatMap('setPaletteType', 'Fixed');
+            });
+        });
+    </script>
+</head>
+
+<body class='default'>
+    <div id="heatmap"></div>
+
+    <div id="palette-mode">
+        <label for="jqxdropdownlist">Palette Type:</label>
+
+        <div class="radio-buttons">
+            <div id="gradient" class='jqxradiobutton'>Gradient</div>
+            <div id="fixed" class='jqxradiobutton'>Fixed</div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,13 +1,10 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxtabs from '../../jqwidgets-scripts/jqwidgets/jqxtabs';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxTabsComponent = /** @class */ (function () {
     function jqxTabsComponent(containerElement) {
         this.autoCreate = true;
@@ -26,31 +23,15 @@ var jqxTabsComponent = /** @class */ (function () {
         this.onUnselected = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxTabsComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -70,17 +51,7 @@ var jqxTabsComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxTabsComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -94,17 +65,9 @@ var jqxTabsComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxTabsComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -112,50 +75,20 @@ var jqxTabsComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxTabsComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxTabsComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxTabsComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -171,51 +104,18 @@ var jqxTabsComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTabs', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxTabsComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxTabsComponent.prototype.setOptions = function (options) {
         this.host.jqxTabs('setOptions', options);
     };
     // jqxTabsComponent properties
-    // jqxTabsComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.animationType = 
-    // jqxTabsComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.animationType = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('animationType', arg);
         }
@@ -223,15 +123,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('animationType');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.autoHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.autoHeight = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('autoHeight', arg);
         }
@@ -239,15 +131,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('autoHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.closeButtonSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.closeButtonSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('closeButtonSize', arg);
         }
@@ -255,15 +139,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('closeButtonSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.collapsible = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.collapsible = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('collapsible', arg);
         }
@@ -271,15 +147,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('collapsible');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.contentTransitionDuration = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.contentTransitionDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('contentTransitionDuration', arg);
         }
@@ -287,15 +155,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('contentTransitionDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('disabled', arg);
         }
@@ -303,15 +163,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.enabledHover = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.enabledHover = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('enabledHover', arg);
         }
@@ -319,15 +171,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('enabledHover');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.enableScrollAnimation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.enableScrollAnimation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('enableScrollAnimation', arg);
         }
@@ -335,15 +179,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('enableScrollAnimation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.enableDropAnimation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.enableDropAnimation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('enableDropAnimation', arg);
         }
@@ -351,15 +187,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('enableDropAnimation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('height', arg);
         }
@@ -367,15 +195,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.initTabContent = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.initTabContent = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('initTabContent', arg);
         }
@@ -383,15 +203,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('initTabContent');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.keyboardNavigation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.keyboardNavigation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('keyboardNavigation', arg);
         }
@@ -399,15 +211,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('keyboardNavigation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.next = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.next = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('next', arg);
         }
@@ -415,15 +219,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('next');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.previous = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.previous = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('previous', arg);
         }
@@ -431,15 +227,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('previous');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.position = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.position = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('position', arg);
         }
@@ -447,15 +235,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('position');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.reorder = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.reorder = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('reorder', arg);
         }
@@ -463,15 +243,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('reorder');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('rtl', arg);
         }
@@ -479,15 +251,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.scrollAnimationDuration = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.scrollAnimationDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('scrollAnimationDuration', arg);
         }
@@ -495,15 +259,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('scrollAnimationDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.selectedItem = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.selectedItem = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('selectedItem', arg);
         }
@@ -511,15 +267,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('selectedItem');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.selectionTracker = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.selectionTracker = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('selectionTracker', arg);
         }
@@ -527,15 +275,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('selectionTracker');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.scrollable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.scrollable = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('scrollable', arg);
         }
@@ -543,15 +283,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('scrollable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.scrollPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.scrollPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('scrollPosition', arg);
         }
@@ -559,15 +291,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('scrollPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.scrollStep = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.scrollStep = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('scrollStep', arg);
         }
@@ -575,15 +299,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('scrollStep');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.showCloseButtons = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.showCloseButtons = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('showCloseButtons', arg);
         }
@@ -591,15 +307,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('showCloseButtons');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.toggleMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.toggleMode = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('toggleMode', arg);
         }
@@ -607,15 +315,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('toggleMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('theme', arg);
         }
@@ -623,15 +323,7 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTabsComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxTabs('width', arg);
         }
@@ -640,292 +332,85 @@ var jqxTabsComponent = /** @class */ (function () {
         }
     };
     // jqxTabsComponent functions
-    // jqxTabsComponent functions
-    /**
-     * @param {?} index
-     * @param {?} title
-     * @param {?} content
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.addAt = 
-    // jqxTabsComponent functions
-    /**
-     * @param {?} index
-     * @param {?} title
-     * @param {?} content
-     * @return {?}
-     */
-    function (index, title, content) {
+    jqxTabsComponent.prototype.addAt = function (index, title, content) {
         this.host.jqxTabs('addAt', index, title, content);
     };
-    /**
-     * @param {?} htmlElement1
-     * @param {?} htmlElement2
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.addFirst = /**
-     * @param {?} htmlElement1
-     * @param {?} htmlElement2
-     * @return {?}
-     */
-    function (htmlElement1, htmlElement2) {
+    jqxTabsComponent.prototype.addFirst = function (htmlElement1, htmlElement2) {
         this.host.jqxTabs('addFirst', htmlElement1, htmlElement2);
     };
-    /**
-     * @param {?} htmlElement1
-     * @param {?=} htmlElement2
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.addLast = /**
-     * @param {?} htmlElement1
-     * @param {?=} htmlElement2
-     * @return {?}
-     */
-    function (htmlElement1, htmlElement2) {
+    jqxTabsComponent.prototype.addLast = function (htmlElement1, htmlElement2) {
         this.host.jqxTabs('addLast', htmlElement1, htmlElement2);
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.collapse = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.collapse = function () {
         this.host.jqxTabs('collapse');
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.disable = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.disable = function () {
         this.host.jqxTabs('disable');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.disableAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxTabsComponent.prototype.disableAt = function (index) {
         this.host.jqxTabs('disableAt', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.destroy = function () {
         this.host.jqxTabs('destroy');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.ensureVisible = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxTabsComponent.prototype.ensureVisible = function (index) {
         this.host.jqxTabs('ensureVisible', index);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.enableAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxTabsComponent.prototype.enableAt = function (index) {
         this.host.jqxTabs('enableAt', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.expand = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.expand = function () {
         this.host.jqxTabs('expand');
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.enable = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.enable = function () {
         this.host.jqxTabs('enable');
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.focus = function () {
         this.host.jqxTabs('focus');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.getTitleAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxTabsComponent.prototype.getTitleAt = function (index) {
         return this.host.jqxTabs('getTitleAt', index);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.getContentAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxTabsComponent.prototype.getContentAt = function (index) {
         return this.host.jqxTabs('getContentAt', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.getDisabledTabsCount = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.getDisabledTabsCount = function () {
         return this.host.jqxTabs('getDisabledTabsCount');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.hideCloseButtonAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxTabsComponent.prototype.hideCloseButtonAt = function (index) {
         this.host.jqxTabs('hideCloseButtonAt', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.hideAllCloseButtons = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.hideAllCloseButtons = function () {
         this.host.jqxTabs('hideAllCloseButtons');
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.length = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.length = function () {
         return this.host.jqxTabs('length');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.removeAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxTabsComponent.prototype.removeAt = function (index) {
         this.host.jqxTabs('removeAt', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.removeFirst = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.removeFirst = function () {
         this.host.jqxTabs('removeFirst');
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.removeLast = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.removeLast = function () {
         this.host.jqxTabs('removeLast');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.select = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxTabsComponent.prototype.select = function (index) {
         this.host.jqxTabs('select', index);
     };
-    /**
-     * @param {?} index
-     * @param {?} htmlElement
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.setContentAt = /**
-     * @param {?} index
-     * @param {?} htmlElement
-     * @return {?}
-     */
-    function (index, htmlElement) {
+    jqxTabsComponent.prototype.setContentAt = function (index, htmlElement) {
         this.host.jqxTabs('setContentAt', index, htmlElement);
     };
-    /**
-     * @param {?} index
-     * @param {?} htmlElement
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.setTitleAt = /**
-     * @param {?} index
-     * @param {?} htmlElement
-     * @return {?}
-     */
-    function (index, htmlElement) {
+    jqxTabsComponent.prototype.setTitleAt = function (index, htmlElement) {
         this.host.jqxTabs('setTitleAt', index, htmlElement);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.showCloseButtonAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxTabsComponent.prototype.showCloseButtonAt = function (index) {
         this.host.jqxTabs('showCloseButtonAt', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.showAllCloseButtons = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.showAllCloseButtons = function () {
         this.host.jqxTabs('showAllCloseButtons');
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxTabsComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxTabs('val', value);
         }
@@ -933,151 +418,202 @@ var jqxTabsComponent = /** @class */ (function () {
             return this.host.jqxTabs('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxTabsComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxTabsComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('add', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onAdd.emit(eventData); }));
-        this.host.on('collapsed', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCollapsed.emit(eventData); }));
-        this.host.on('dragStart', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onDragStart.emit(eventData); }));
-        this.host.on('dragEnd', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onDragEnd.emit(eventData); }));
-        this.host.on('expanded', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onExpanded.emit(eventData); }));
-        this.host.on('removed', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRemoved.emit(eventData); }));
-        this.host.on('selecting', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onSelecting.emit(eventData); }));
-        this.host.on('selected', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onSelected.emit(eventData); }));
-        this.host.on('tabclick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onTabclick.emit(eventData); }));
-        this.host.on('unselecting', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onUnselecting.emit(eventData); }));
-        this.host.on('unselected', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onUnselected.emit(eventData); }));
+        this.host.on('add', function (eventData) { _this.onAdd.emit(eventData); });
+        this.host.on('collapsed', function (eventData) { _this.onCollapsed.emit(eventData); });
+        this.host.on('dragStart', function (eventData) { _this.onDragStart.emit(eventData); });
+        this.host.on('dragEnd', function (eventData) { _this.onDragEnd.emit(eventData); });
+        this.host.on('expanded', function (eventData) { _this.onExpanded.emit(eventData); });
+        this.host.on('removed', function (eventData) { _this.onRemoved.emit(eventData); });
+        this.host.on('selecting', function (eventData) { _this.onSelecting.emit(eventData); });
+        this.host.on('selected', function (eventData) { _this.onSelected.emit(eventData); });
+        this.host.on('tabclick', function (eventData) { _this.onTabclick.emit(eventData); });
+        this.host.on('unselecting', function (eventData) { _this.onUnselecting.emit(eventData); });
+        this.host.on('unselected', function (eventData) { _this.onUnselected.emit(eventData); });
     };
-    jqxTabsComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxTabs',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxTabsComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxTabsComponent.propDecorators = {
-        attrAnimationType: [{ type: Input, args: ['animationType',] }],
-        attrAutoHeight: [{ type: Input, args: ['autoHeight',] }],
-        attrCloseButtonSize: [{ type: Input, args: ['closeButtonSize',] }],
-        attrCollapsible: [{ type: Input, args: ['collapsible',] }],
-        attrContentTransitionDuration: [{ type: Input, args: ['contentTransitionDuration',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrEnabledHover: [{ type: Input, args: ['enabledHover',] }],
-        attrEnableScrollAnimation: [{ type: Input, args: ['enableScrollAnimation',] }],
-        attrEnableDropAnimation: [{ type: Input, args: ['enableDropAnimation',] }],
-        attrInitTabContent: [{ type: Input, args: ['initTabContent',] }],
-        attrKeyboardNavigation: [{ type: Input, args: ['keyboardNavigation',] }],
-        attrNext: [{ type: Input, args: ['next',] }],
-        attrPrevious: [{ type: Input, args: ['previous',] }],
-        attrPosition: [{ type: Input, args: ['position',] }],
-        attrReorder: [{ type: Input, args: ['reorder',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrScrollAnimationDuration: [{ type: Input, args: ['scrollAnimationDuration',] }],
-        attrSelectedItem: [{ type: Input, args: ['selectedItem',] }],
-        attrSelectionTracker: [{ type: Input, args: ['selectionTracker',] }],
-        attrScrollable: [{ type: Input, args: ['scrollable',] }],
-        attrScrollPosition: [{ type: Input, args: ['scrollPosition',] }],
-        attrScrollStep: [{ type: Input, args: ['scrollStep',] }],
-        attrShowCloseButtons: [{ type: Input, args: ['showCloseButtons',] }],
-        attrToggleMode: [{ type: Input, args: ['toggleMode',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onAdd: [{ type: Output }],
-        onCollapsed: [{ type: Output }],
-        onDragStart: [{ type: Output }],
-        onDragEnd: [{ type: Output }],
-        onExpanded: [{ type: Output }],
-        onRemoved: [{ type: Output }],
-        onSelecting: [{ type: Output }],
-        onSelected: [{ type: Output }],
-        onTabclick: [{ type: Output }],
-        onUnselecting: [{ type: Output }],
-        onUnselected: [{ type: Output }]
-    };
+    __decorate([
+        Input('animationType'),
+        __metadata("design:type", String)
+    ], jqxTabsComponent.prototype, "attrAnimationType", void 0);
+    __decorate([
+        Input('autoHeight'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrAutoHeight", void 0);
+    __decorate([
+        Input('closeButtonSize'),
+        __metadata("design:type", Number)
+    ], jqxTabsComponent.prototype, "attrCloseButtonSize", void 0);
+    __decorate([
+        Input('collapsible'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrCollapsible", void 0);
+    __decorate([
+        Input('contentTransitionDuration'),
+        __metadata("design:type", Number)
+    ], jqxTabsComponent.prototype, "attrContentTransitionDuration", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('enabledHover'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrEnabledHover", void 0);
+    __decorate([
+        Input('enableScrollAnimation'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrEnableScrollAnimation", void 0);
+    __decorate([
+        Input('enableDropAnimation'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrEnableDropAnimation", void 0);
+    __decorate([
+        Input('initTabContent'),
+        __metadata("design:type", Function)
+    ], jqxTabsComponent.prototype, "attrInitTabContent", void 0);
+    __decorate([
+        Input('keyboardNavigation'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrKeyboardNavigation", void 0);
+    __decorate([
+        Input('next'),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "attrNext", void 0);
+    __decorate([
+        Input('previous'),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "attrPrevious", void 0);
+    __decorate([
+        Input('position'),
+        __metadata("design:type", String)
+    ], jqxTabsComponent.prototype, "attrPosition", void 0);
+    __decorate([
+        Input('reorder'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrReorder", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('scrollAnimationDuration'),
+        __metadata("design:type", Number)
+    ], jqxTabsComponent.prototype, "attrScrollAnimationDuration", void 0);
+    __decorate([
+        Input('selectedItem'),
+        __metadata("design:type", Number)
+    ], jqxTabsComponent.prototype, "attrSelectedItem", void 0);
+    __decorate([
+        Input('selectionTracker'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrSelectionTracker", void 0);
+    __decorate([
+        Input('scrollable'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrScrollable", void 0);
+    __decorate([
+        Input('scrollPosition'),
+        __metadata("design:type", String)
+    ], jqxTabsComponent.prototype, "attrScrollPosition", void 0);
+    __decorate([
+        Input('scrollStep'),
+        __metadata("design:type", Number)
+    ], jqxTabsComponent.prototype, "attrScrollStep", void 0);
+    __decorate([
+        Input('showCloseButtons'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "attrShowCloseButtons", void 0);
+    __decorate([
+        Input('toggleMode'),
+        __metadata("design:type", String)
+    ], jqxTabsComponent.prototype, "attrToggleMode", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxTabsComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxTabsComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "onAdd", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "onCollapsed", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "onDragStart", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "onDragEnd", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "onExpanded", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "onRemoved", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "onSelecting", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "onSelected", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "onTabclick", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "onUnselecting", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTabsComponent.prototype, "onUnselected", void 0);
+    jqxTabsComponent = __decorate([
+        Component({
+            selector: 'jqxTabs',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxTabsComponent);
     return jqxTabsComponent;
 }()); //jqxTabsComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxTabsModule = /** @class */ (function () {
     function jqxTabsModule() {
     }
-    jqxTabsModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxTabsComponent],
-                    exports: [jqxTabsComponent]
-                },] }
-    ];
+    jqxTabsModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxTabsComponent],
+            exports: [jqxTabsComponent]
+        })
+    ], jqxTabsModule);
     return jqxTabsModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxTabsComponent, jqxTabsModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxtabs.js.map

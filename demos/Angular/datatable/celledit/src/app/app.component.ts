@@ -6,7 +6,7 @@
 })
 
 export class AppComponent {
-    @ViewChild('log') myLog: ElementRef;
+    @ViewChild('log', {static: false}) myLog: ElementRef;
 
     source: any =
     {

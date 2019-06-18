@@ -3,40 +3,26 @@ import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxscrollbar from '../../jqwidgets-scripts/jqwidgets/jqxscrollbar';
 import * as jqxlistmenu from '../../jqwidgets-scripts/jqwidgets/jqxlistmenu';
-import { Component, Input, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { Input, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxListMenuComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxListMenuComponent = class jqxListMenuComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['alwaysShowNavigationArrows', 'animationType', 'animationDuration', 'autoSeparators', 'backLabel', 'disabled', 'enableScrolling', 'filterCallback', 'height', 'headerAnimationDuration', 'placeHolder', 'readOnly', 'rtl', 'roundedCorners', 'showNavigationArrows', 'showFilter', 'showHeader', 'showBackButton', 'theme', 'width'];
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -56,11 +42,6 @@ class jqxListMenuComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -75,14 +56,9 @@ class jqxListMenuComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -90,34 +66,18 @@ class jqxListMenuComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -134,32 +94,17 @@ class jqxListMenuComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxListMenu', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxListMenu('setOptions', options);
     }
     // jqxListMenuComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     alwaysShowNavigationArrows(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('alwaysShowNavigationArrows', arg);
@@ -168,10 +113,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('alwaysShowNavigationArrows');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationType(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('animationType', arg);
@@ -180,10 +121,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('animationType');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('animationDuration', arg);
@@ -192,10 +129,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('animationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoSeparators(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('autoSeparators', arg);
@@ -204,10 +137,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('autoSeparators');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     backLabel(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('backLabel', arg);
@@ -216,10 +145,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('backLabel');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('disabled', arg);
@@ -228,10 +153,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableScrolling(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('enableScrolling', arg);
@@ -240,10 +161,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('enableScrolling');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     filterCallback(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('filterCallback', arg);
@@ -252,10 +169,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('filterCallback');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('height', arg);
@@ -264,10 +177,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     headerAnimationDuration(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('headerAnimationDuration', arg);
@@ -276,10 +185,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('headerAnimationDuration');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     placeHolder(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('placeHolder', arg);
@@ -288,10 +193,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('placeHolder');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     readOnly(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('readOnly', arg);
@@ -300,10 +201,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('readOnly');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('rtl', arg);
@@ -312,10 +209,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     roundedCorners(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('roundedCorners', arg);
@@ -324,10 +217,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('roundedCorners');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showNavigationArrows(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('showNavigationArrows', arg);
@@ -336,10 +225,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('showNavigationArrows');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showFilter(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('showFilter', arg);
@@ -348,10 +233,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('showFilter');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showHeader(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('showHeader', arg);
@@ -360,10 +241,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('showHeader');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showBackButton(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('showBackButton', arg);
@@ -372,10 +249,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('showBackButton');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('theme', arg);
@@ -384,10 +257,6 @@ class jqxListMenuComponent {
             return this.host.jqxListMenu('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxListMenu('width', arg);
@@ -397,89 +266,123 @@ class jqxListMenuComponent {
         }
     }
     // jqxListMenuComponent functions
-    /**
-     * @return {?}
-     */
     back() {
         this.host.jqxListMenu('back');
     }
-    /**
-     * @param {?} Item
-     * @return {?}
-     */
     changePage(Item) {
         this.host.jqxListMenu('changePage', Item);
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxListMenu('destroy');
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
     }
-} //jqxListMenuComponent
-jqxListMenuComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxListMenu',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxListMenuComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxListMenuComponent.propDecorators = {
-    attrAlwaysShowNavigationArrows: [{ type: Input, args: ['alwaysShowNavigationArrows',] }],
-    attrAnimationType: [{ type: Input, args: ['animationType',] }],
-    attrAnimationDuration: [{ type: Input, args: ['animationDuration',] }],
-    attrAutoSeparators: [{ type: Input, args: ['autoSeparators',] }],
-    attrBackLabel: [{ type: Input, args: ['backLabel',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrEnableScrolling: [{ type: Input, args: ['enableScrolling',] }],
-    attrFilterCallback: [{ type: Input, args: ['filterCallback',] }],
-    attrHeaderAnimationDuration: [{ type: Input, args: ['headerAnimationDuration',] }],
-    attrPlaceHolder: [{ type: Input, args: ['placeHolder',] }],
-    attrReadOnly: [{ type: Input, args: ['readOnly',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrRoundedCorners: [{ type: Input, args: ['roundedCorners',] }],
-    attrShowNavigationArrows: [{ type: Input, args: ['showNavigationArrows',] }],
-    attrShowFilter: [{ type: Input, args: ['showFilter',] }],
-    attrShowHeader: [{ type: Input, args: ['showHeader',] }],
-    attrShowBackButton: [{ type: Input, args: ['showBackButton',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }]
+}; //jqxListMenuComponent
+__decorate([
+    Input('alwaysShowNavigationArrows'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "attrAlwaysShowNavigationArrows", void 0);
+__decorate([
+    Input('animationType'),
+    __metadata("design:type", String)
+], jqxListMenuComponent.prototype, "attrAnimationType", void 0);
+__decorate([
+    Input('animationDuration'),
+    __metadata("design:type", Object)
+], jqxListMenuComponent.prototype, "attrAnimationDuration", void 0);
+__decorate([
+    Input('autoSeparators'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "attrAutoSeparators", void 0);
+__decorate([
+    Input('backLabel'),
+    __metadata("design:type", Object)
+], jqxListMenuComponent.prototype, "attrBackLabel", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('enableScrolling'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "attrEnableScrolling", void 0);
+__decorate([
+    Input('filterCallback'),
+    __metadata("design:type", Function)
+], jqxListMenuComponent.prototype, "attrFilterCallback", void 0);
+__decorate([
+    Input('headerAnimationDuration'),
+    __metadata("design:type", Object)
+], jqxListMenuComponent.prototype, "attrHeaderAnimationDuration", void 0);
+__decorate([
+    Input('placeHolder'),
+    __metadata("design:type", Object)
+], jqxListMenuComponent.prototype, "attrPlaceHolder", void 0);
+__decorate([
+    Input('readOnly'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "attrReadOnly", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('roundedCorners'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "attrRoundedCorners", void 0);
+__decorate([
+    Input('showNavigationArrows'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "attrShowNavigationArrows", void 0);
+__decorate([
+    Input('showFilter'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "attrShowFilter", void 0);
+__decorate([
+    Input('showHeader'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "attrShowHeader", void 0);
+__decorate([
+    Input('showBackButton'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "attrShowBackButton", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxListMenuComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxListMenuComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxListMenuComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxListMenuComponent.prototype, "autoCreate", void 0);
+jqxListMenuComponent = __decorate([
+    Component({
+        selector: 'jqxListMenu',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxListMenuComponent);
+
+let jqxListMenuModule = class jqxListMenuModule {
 };
+jqxListMenuModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxListMenuComponent],
+        exports: [jqxListMenuComponent]
+    })
+], jqxListMenuModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxListMenuModule {
-}
-jqxListMenuModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxListMenuComponent],
-                exports: [jqxListMenuComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxListMenuComponent, jqxListMenuModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxlistmenu.js.map

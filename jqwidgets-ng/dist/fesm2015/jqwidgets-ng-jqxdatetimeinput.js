@@ -4,31 +4,19 @@ import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxtooltip from '../../jqwidgets-scripts/jqwidgets/jqxtooltip';
 import * as jqxdatetimeinput from '../../jqwidgets-scripts/jqwidgets/jqxdatetimeinput';
 import * as jqxcalendar from '../../jqwidgets-scripts/jqwidgets/jqxcalendar';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { forwardRef, EventEmitter, Input, Output, Component, ChangeDetectionStrategy, ElementRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-const noop = (/**
- * @return {?}
- */
-() => { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+const noop = () => { };
+const ɵ0 = noop;
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    () => jqxDateTimeInputComponent)),
+    useExisting: forwardRef(() => jqxDateTimeInputComponent),
     multi: true
 };
-class jqxDateTimeInputComponent {
-    /**
-     * @param {?} containerElement
-     */
+let jqxDateTimeInputComponent = class jqxDateTimeInputComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['animationType', 'allowNullDate', 'allowKeyboardDelete', 'clearString', 'culture', 'closeDelay', 'closeCalendarAfterSelection', 'dropDownHorizontalAlignment', 'dropDownVerticalAlignment', 'disabled', 'enableBrowserBoundsDetection', 'enableAbsoluteSelection', 'firstDayOfWeek', 'formatString', 'height', 'min', 'max', 'openDelay', 'placeHolder', 'popupZIndex', 'rtl', 'readonly', 'showFooter', 'selectionMode', 'showWeekNumbers', 'showTimeButton', 'showCalendarButton', 'theme', 'template', 'textAlign', 'todayString', 'value', 'width'];
@@ -42,25 +30,16 @@ class jqxDateTimeInputComponent {
         this.onValueChanged = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -80,11 +59,6 @@ class jqxDateTimeInputComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -99,14 +73,9 @@ class jqxDateTimeInputComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -114,34 +83,18 @@ class jqxDateTimeInputComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -159,75 +112,40 @@ class jqxDateTimeInputComponent {
         this.host = this.widgetObject['host'];
         this.__wireEvents__();
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @return {?}
-     */
     get ngValue() {
         if (this.widgetObject) {
-            /** @type {?} */
             const value = this.host.val();
             return value;
         }
         return '';
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     set ngValue(value) {
         if (this.widgetObject) {
             this.onChangeCallback(value);
         }
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     writeValue(value) {
         if (this.widgetObject) {
             this.host.jqxDateTimeInput('val', value);
         }
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnChange(fn) {
         this.onChangeCallback = fn;
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnTouched(fn) {
         this.onTouchedCallback = fn;
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxDateTimeInput('setOptions', options);
     }
     // jqxDateTimeInputComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationType(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('animationType', arg);
@@ -236,10 +154,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('animationType');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     allowNullDate(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('allowNullDate', arg);
@@ -248,10 +162,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('allowNullDate');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     allowKeyboardDelete(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('allowKeyboardDelete', arg);
@@ -260,10 +170,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('allowKeyboardDelete');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     clearString(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('clearString', arg);
@@ -272,10 +178,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('clearString');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     culture(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('culture', arg);
@@ -284,10 +186,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('culture');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     closeDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('closeDelay', arg);
@@ -296,10 +194,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('closeDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     closeCalendarAfterSelection(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('closeCalendarAfterSelection', arg);
@@ -308,10 +202,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('closeCalendarAfterSelection');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dropDownHorizontalAlignment(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('dropDownHorizontalAlignment', arg);
@@ -320,10 +210,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('dropDownHorizontalAlignment');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dropDownVerticalAlignment(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('dropDownVerticalAlignment', arg);
@@ -332,10 +218,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('dropDownVerticalAlignment');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('disabled', arg);
@@ -344,10 +226,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableBrowserBoundsDetection(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('enableBrowserBoundsDetection', arg);
@@ -356,10 +234,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('enableBrowserBoundsDetection');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableAbsoluteSelection(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('enableAbsoluteSelection', arg);
@@ -368,10 +242,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('enableAbsoluteSelection');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     firstDayOfWeek(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('firstDayOfWeek', arg);
@@ -380,10 +250,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('firstDayOfWeek');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     formatString(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('formatString', arg);
@@ -392,10 +258,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('formatString');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('height', arg);
@@ -404,10 +266,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     min(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('min', arg);
@@ -416,10 +274,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('min');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     max(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('max', arg);
@@ -428,10 +282,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('max');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     openDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('openDelay', arg);
@@ -440,10 +290,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('openDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     placeHolder(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('placeHolder', arg);
@@ -452,10 +298,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('placeHolder');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     popupZIndex(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('popupZIndex', arg);
@@ -464,10 +306,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('popupZIndex');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('rtl', arg);
@@ -476,10 +314,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     readonly(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('readonly', arg);
@@ -488,10 +322,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('readonly');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showFooter(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('showFooter', arg);
@@ -500,10 +330,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('showFooter');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     selectionMode(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('selectionMode', arg);
@@ -512,10 +338,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('selectionMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showWeekNumbers(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('showWeekNumbers', arg);
@@ -524,10 +346,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('showWeekNumbers');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showTimeButton(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('showTimeButton', arg);
@@ -536,10 +354,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('showTimeButton');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showCalendarButton(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('showCalendarButton', arg);
@@ -548,10 +362,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('showCalendarButton');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('theme', arg);
@@ -560,10 +370,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     template(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('template', arg);
@@ -572,10 +378,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('template');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     textAlign(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('textAlign', arg);
@@ -584,10 +386,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('textAlign');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     todayString(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('todayString', arg);
@@ -596,10 +394,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('todayString');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     value(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('value', arg);
@@ -608,10 +402,6 @@ class jqxDateTimeInputComponent {
             return this.host.jqxDateTimeInput('value');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxDateTimeInput('width', arg);
@@ -621,94 +411,45 @@ class jqxDateTimeInputComponent {
         }
     }
     // jqxDateTimeInputComponent functions
-    /**
-     * @return {?}
-     */
     close() {
         this.host.jqxDateTimeInput('close');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxDateTimeInput('destroy');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxDateTimeInput('focus');
     }
-    /**
-     * @return {?}
-     */
     getRange() {
         return this.host.jqxDateTimeInput('getRange');
     }
-    /**
-     * @return {?}
-     */
     getText() {
         return this.host.jqxDateTimeInput('getText');
     }
-    /**
-     * @return {?}
-     */
     getDate() {
         return this.host.jqxDateTimeInput('getDate');
     }
-    /**
-     * @return {?}
-     */
     getMaxDate() {
         return this.host.jqxDateTimeInput('getMaxDate');
     }
-    /**
-     * @return {?}
-     */
     getMinDate() {
         return this.host.jqxDateTimeInput('getMinDate');
     }
-    /**
-     * @return {?}
-     */
     open() {
         this.host.jqxDateTimeInput('open');
     }
-    /**
-     * @param {?} date
-     * @param {?} date2
-     * @return {?}
-     */
     setRange(date, date2) {
         this.host.jqxDateTimeInput('setRange', date, date2);
     }
-    /**
-     * @param {?} date
-     * @return {?}
-     */
     setMinDate(date) {
         this.host.jqxDateTimeInput('setMinDate', date);
     }
-    /**
-     * @param {?} date
-     * @return {?}
-     */
     setMaxDate(date) {
         this.host.jqxDateTimeInput('setMaxDate', date);
     }
-    /**
-     * @param {?} date
-     * @return {?}
-     */
     setDate(date) {
         this.host.jqxDateTimeInput('setDate', date);
     }
-    /**
-     * @param {?=} value
-     * @param {?=} value2
-     * @return {?}
-     */
     val(value, value2) {
         if (value !== undefined) {
             return this.host.jqxDateTimeInput('val', value, value2);
@@ -718,121 +459,196 @@ class jqxDateTimeInputComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); }));
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onClose.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onOpen.emit(eventData); }));
-        this.host.on('textchanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onTextchanged.emit(eventData); }));
-        this.host.on('valueChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onValueChanged.emit(eventData); this.onChangeCallback(this.host.val()); }));
-        this.host.on('keyup', (/**
-         * @return {?}
-         */
-        () => { this.onChangeCallback(this.host.val()); }));
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
+        this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+        this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
+        this.host.on('textchanged', (eventData) => { this.onTextchanged.emit(eventData); });
+        this.host.on('valueChanged', (eventData) => { this.onValueChanged.emit(eventData); this.onChangeCallback(this.host.val()); });
+        this.host.on('keyup', () => { this.onChangeCallback(this.host.val()); });
     }
-} //jqxDateTimeInputComponent
-jqxDateTimeInputComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxDateTimeInput',
-                template: '<input [(ngModel)]="ngValue">',
-                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                changeDetection: ChangeDetectionStrategy.OnPush
-            }] }
-];
-/** @nocollapse */
-jqxDateTimeInputComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxDateTimeInputComponent.propDecorators = {
-    attrAnimationType: [{ type: Input, args: ['animationType',] }],
-    attrAllowNullDate: [{ type: Input, args: ['allowNullDate',] }],
-    attrAllowKeyboardDelete: [{ type: Input, args: ['allowKeyboardDelete',] }],
-    attrClearString: [{ type: Input, args: ['clearString',] }],
-    attrCulture: [{ type: Input, args: ['culture',] }],
-    attrCloseDelay: [{ type: Input, args: ['closeDelay',] }],
-    attrCloseCalendarAfterSelection: [{ type: Input, args: ['closeCalendarAfterSelection',] }],
-    attrDropDownHorizontalAlignment: [{ type: Input, args: ['dropDownHorizontalAlignment',] }],
-    attrDropDownVerticalAlignment: [{ type: Input, args: ['dropDownVerticalAlignment',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrEnableBrowserBoundsDetection: [{ type: Input, args: ['enableBrowserBoundsDetection',] }],
-    attrEnableAbsoluteSelection: [{ type: Input, args: ['enableAbsoluteSelection',] }],
-    attrFirstDayOfWeek: [{ type: Input, args: ['firstDayOfWeek',] }],
-    attrFormatString: [{ type: Input, args: ['formatString',] }],
-    attrMin: [{ type: Input, args: ['min',] }],
-    attrMax: [{ type: Input, args: ['max',] }],
-    attrOpenDelay: [{ type: Input, args: ['openDelay',] }],
-    attrPlaceHolder: [{ type: Input, args: ['placeHolder',] }],
-    attrPopupZIndex: [{ type: Input, args: ['popupZIndex',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrReadonly: [{ type: Input, args: ['readonly',] }],
-    attrShowFooter: [{ type: Input, args: ['showFooter',] }],
-    attrSelectionMode: [{ type: Input, args: ['selectionMode',] }],
-    attrShowWeekNumbers: [{ type: Input, args: ['showWeekNumbers',] }],
-    attrShowTimeButton: [{ type: Input, args: ['showTimeButton',] }],
-    attrShowCalendarButton: [{ type: Input, args: ['showCalendarButton',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrTemplate: [{ type: Input, args: ['template',] }],
-    attrTextAlign: [{ type: Input, args: ['textAlign',] }],
-    attrTodayString: [{ type: Input, args: ['todayString',] }],
-    attrValue: [{ type: Input, args: ['value',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChange: [{ type: Output }],
-    onClose: [{ type: Output }],
-    onOpen: [{ type: Output }],
-    onTextchanged: [{ type: Output }],
-    onValueChanged: [{ type: Output }]
+}; //jqxDateTimeInputComponent
+__decorate([
+    Input('animationType'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrAnimationType", void 0);
+__decorate([
+    Input('allowNullDate'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrAllowNullDate", void 0);
+__decorate([
+    Input('allowKeyboardDelete'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrAllowKeyboardDelete", void 0);
+__decorate([
+    Input('clearString'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrClearString", void 0);
+__decorate([
+    Input('culture'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrCulture", void 0);
+__decorate([
+    Input('closeDelay'),
+    __metadata("design:type", Number)
+], jqxDateTimeInputComponent.prototype, "attrCloseDelay", void 0);
+__decorate([
+    Input('closeCalendarAfterSelection'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrCloseCalendarAfterSelection", void 0);
+__decorate([
+    Input('dropDownHorizontalAlignment'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrDropDownHorizontalAlignment", void 0);
+__decorate([
+    Input('dropDownVerticalAlignment'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrDropDownVerticalAlignment", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('enableBrowserBoundsDetection'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrEnableBrowserBoundsDetection", void 0);
+__decorate([
+    Input('enableAbsoluteSelection'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrEnableAbsoluteSelection", void 0);
+__decorate([
+    Input('firstDayOfWeek'),
+    __metadata("design:type", Number)
+], jqxDateTimeInputComponent.prototype, "attrFirstDayOfWeek", void 0);
+__decorate([
+    Input('formatString'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrFormatString", void 0);
+__decorate([
+    Input('min'),
+    __metadata("design:type", Date)
+], jqxDateTimeInputComponent.prototype, "attrMin", void 0);
+__decorate([
+    Input('max'),
+    __metadata("design:type", Date)
+], jqxDateTimeInputComponent.prototype, "attrMax", void 0);
+__decorate([
+    Input('openDelay'),
+    __metadata("design:type", Number)
+], jqxDateTimeInputComponent.prototype, "attrOpenDelay", void 0);
+__decorate([
+    Input('placeHolder'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrPlaceHolder", void 0);
+__decorate([
+    Input('popupZIndex'),
+    __metadata("design:type", Number)
+], jqxDateTimeInputComponent.prototype, "attrPopupZIndex", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('readonly'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrReadonly", void 0);
+__decorate([
+    Input('showFooter'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrShowFooter", void 0);
+__decorate([
+    Input('selectionMode'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrSelectionMode", void 0);
+__decorate([
+    Input('showWeekNumbers'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrShowWeekNumbers", void 0);
+__decorate([
+    Input('showTimeButton'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrShowTimeButton", void 0);
+__decorate([
+    Input('showCalendarButton'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "attrShowCalendarButton", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('template'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrTemplate", void 0);
+__decorate([
+    Input('textAlign'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrTextAlign", void 0);
+__decorate([
+    Input('todayString'),
+    __metadata("design:type", String)
+], jqxDateTimeInputComponent.prototype, "attrTodayString", void 0);
+__decorate([
+    Input('value'),
+    __metadata("design:type", Date)
+], jqxDateTimeInputComponent.prototype, "attrValue", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxDateTimeInputComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxDateTimeInputComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxDateTimeInputComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDateTimeInputComponent.prototype, "onChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDateTimeInputComponent.prototype, "onClose", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDateTimeInputComponent.prototype, "onOpen", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDateTimeInputComponent.prototype, "onTextchanged", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDateTimeInputComponent.prototype, "onValueChanged", void 0);
+jqxDateTimeInputComponent = __decorate([
+    Component({
+        selector: 'jqxDateTimeInput',
+        template: '<input [(ngModel)]="ngValue">',
+        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+        changeDetection: ChangeDetectionStrategy.OnPush
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxDateTimeInputComponent);
+
+let jqxDateTimeInputModule = class jqxDateTimeInputModule {
 };
+jqxDateTimeInputModule = __decorate([
+    NgModule({
+        imports: [
+            FormsModule
+        ],
+        declarations: [jqxDateTimeInputComponent],
+        exports: [jqxDateTimeInputComponent]
+    })
+], jqxDateTimeInputModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxDateTimeInputModule {
-}
-jqxDateTimeInputModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    FormsModule
-                ],
-                declarations: [jqxDateTimeInputComponent],
-                exports: [jqxDateTimeInputComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxDateTimeInputComponent, jqxDateTimeInputModule };
-
+export { jqxDateTimeInputComponent, jqxDateTimeInputModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxdatetimeinput.js.map

@@ -6,7 +6,7 @@
 })
 
 export class AppComponent {
-    @ViewChild('events') eventsLog: ElementRef;
+    @ViewChild('events', {static: false}) eventsLog: ElementRef;
 
     count = 0;
     clearLog(): void {

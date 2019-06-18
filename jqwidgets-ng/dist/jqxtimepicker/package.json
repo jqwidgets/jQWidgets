@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxtimepicker.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxtimepicker.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxtimepicker.js",
+  "esm5": "../esm5/jqxtimepicker/jqwidgets-ng-jqxtimepicker.js",
+  "esm2015": "../esm2015/jqxtimepicker/jqwidgets-ng-jqxtimepicker.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxtimepicker.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxtimepicker.js",
+  "typings": "jqwidgets-ng-jqxtimepicker.d.ts",
+  "metadata": "jqwidgets-ng-jqxtimepicker.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxtimepicker"
+}

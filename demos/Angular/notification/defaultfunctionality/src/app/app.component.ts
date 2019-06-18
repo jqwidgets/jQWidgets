@@ -8,8 +8,8 @@ import { jqxNotificationComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('msgNotification') msgNotification: jqxNotificationComponent;
-    @ViewChild('timeNotification') timeNotification: jqxNotificationComponent;
+    @ViewChild('msgNotification', {static: false}) msgNotification: jqxNotificationComponent;
+    @ViewChild('timeNotification', {static: false}) timeNotification: jqxNotificationComponent;
     
     onClickOpenMessageNotification(): void {
         this.msgNotification.open();

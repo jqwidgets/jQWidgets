@@ -3,16 +3,11 @@ import * as jqxsortable from '../../jqwidgets-scripts/jqwidgets/jqxsortable';
 import * as jqxsplitter from '../../jqwidgets-scripts/jqwidgets/jqxsplitter';
 import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxkanban from '../../jqwidgets-scripts/jqwidgets/jqxkanban';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxKanbanComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxKanbanComponent = class jqxKanbanComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['columnRenderer', 'columns', 'connectWith', 'headerHeight', 'headerWidth', 'height', 'itemRenderer', 'ready', 'rtl', 'source', 'resources', 'template', 'templateContent', 'theme', 'width'];
@@ -24,25 +19,16 @@ class jqxKanbanComponent {
         this.onItemMoved = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -62,11 +48,6 @@ class jqxKanbanComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -81,14 +62,9 @@ class jqxKanbanComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -96,34 +72,18 @@ class jqxKanbanComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -140,32 +100,17 @@ class jqxKanbanComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxKanban', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxKanban('setOptions', options);
     }
     // jqxKanbanComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columnRenderer(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('columnRenderer', arg);
@@ -174,10 +119,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('columnRenderer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     columns(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('columns', arg);
@@ -186,10 +127,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('columns');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     connectWith(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('connectWith', arg);
@@ -198,10 +135,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('connectWith');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     headerHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('headerHeight', arg);
@@ -210,10 +143,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('headerHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     headerWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('headerWidth', arg);
@@ -222,10 +151,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('headerWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('height', arg);
@@ -234,10 +159,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     itemRenderer(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('itemRenderer', arg);
@@ -246,10 +167,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('itemRenderer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     ready(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('ready', arg);
@@ -258,10 +175,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('ready');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('rtl', arg);
@@ -270,10 +183,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     source(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('source', arg);
@@ -282,10 +191,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('source');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     resources(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('resources', arg);
@@ -294,10 +199,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('resources');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     template(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('template', arg);
@@ -306,10 +207,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('template');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     templateContent(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('templateContent', arg);
@@ -318,10 +215,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('templateContent');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('theme', arg);
@@ -330,10 +223,6 @@ class jqxKanbanComponent {
             return this.host.jqxKanban('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxKanban('width', arg);
@@ -343,143 +232,140 @@ class jqxKanbanComponent {
         }
     }
     // jqxKanbanComponent functions
-    /**
-     * @param {?} newItem
-     * @return {?}
-     */
     addItem(newItem) {
         this.host.jqxKanban('addItem', newItem);
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxKanban('destroy');
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     getColumn(dataField) {
         return this.host.jqxKanban('getColumn', dataField);
     }
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
     getColumnItems(dataField) {
         return this.host.jqxKanban('getColumnItems', dataField);
     }
-    /**
-     * @return {?}
-     */
     getItems() {
         return this.host.jqxKanban('getItems');
     }
-    /**
-     * @param {?} itemId
-     * @return {?}
-     */
     removeItem(itemId) {
         this.host.jqxKanban('removeItem', itemId);
     }
-    /**
-     * @param {?} itemId
-     * @param {?} newContent
-     * @return {?}
-     */
     updateItem(itemId, newContent) {
         this.host.jqxKanban('updateItem', itemId, newContent);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('columnAttrClicked', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onColumnAttrClicked.emit(eventData); }));
-        this.host.on('columnCollapsed', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onColumnCollapsed.emit(eventData); }));
-        this.host.on('columnExpanded', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onColumnExpanded.emit(eventData); }));
-        this.host.on('itemAttrClicked', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onItemAttrClicked.emit(eventData); }));
-        this.host.on('itemMoved', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onItemMoved.emit(eventData); }));
+        this.host.on('columnAttrClicked', (eventData) => { this.onColumnAttrClicked.emit(eventData); });
+        this.host.on('columnCollapsed', (eventData) => { this.onColumnCollapsed.emit(eventData); });
+        this.host.on('columnExpanded', (eventData) => { this.onColumnExpanded.emit(eventData); });
+        this.host.on('itemAttrClicked', (eventData) => { this.onItemAttrClicked.emit(eventData); });
+        this.host.on('itemMoved', (eventData) => { this.onItemMoved.emit(eventData); });
     }
-} //jqxKanbanComponent
-jqxKanbanComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxKanban',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxKanbanComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxKanbanComponent.propDecorators = {
-    attrColumnRenderer: [{ type: Input, args: ['columnRenderer',] }],
-    attrColumns: [{ type: Input, args: ['columns',] }],
-    attrConnectWith: [{ type: Input, args: ['connectWith',] }],
-    attrHeaderHeight: [{ type: Input, args: ['headerHeight',] }],
-    attrHeaderWidth: [{ type: Input, args: ['headerWidth',] }],
-    attrItemRenderer: [{ type: Input, args: ['itemRenderer',] }],
-    attrReady: [{ type: Input, args: ['ready',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrSource: [{ type: Input, args: ['source',] }],
-    attrResources: [{ type: Input, args: ['resources',] }],
-    attrTemplate: [{ type: Input, args: ['template',] }],
-    attrTemplateContent: [{ type: Input, args: ['templateContent',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onColumnAttrClicked: [{ type: Output }],
-    onColumnCollapsed: [{ type: Output }],
-    onColumnExpanded: [{ type: Output }],
-    onItemAttrClicked: [{ type: Output }],
-    onItemMoved: [{ type: Output }]
+}; //jqxKanbanComponent
+__decorate([
+    Input('columnRenderer'),
+    __metadata("design:type", Function)
+], jqxKanbanComponent.prototype, "attrColumnRenderer", void 0);
+__decorate([
+    Input('columns'),
+    __metadata("design:type", Array)
+], jqxKanbanComponent.prototype, "attrColumns", void 0);
+__decorate([
+    Input('connectWith'),
+    __metadata("design:type", String)
+], jqxKanbanComponent.prototype, "attrConnectWith", void 0);
+__decorate([
+    Input('headerHeight'),
+    __metadata("design:type", Object)
+], jqxKanbanComponent.prototype, "attrHeaderHeight", void 0);
+__decorate([
+    Input('headerWidth'),
+    __metadata("design:type", Number)
+], jqxKanbanComponent.prototype, "attrHeaderWidth", void 0);
+__decorate([
+    Input('itemRenderer'),
+    __metadata("design:type", Function)
+], jqxKanbanComponent.prototype, "attrItemRenderer", void 0);
+__decorate([
+    Input('ready'),
+    __metadata("design:type", Function)
+], jqxKanbanComponent.prototype, "attrReady", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxKanbanComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('source'),
+    __metadata("design:type", Object)
+], jqxKanbanComponent.prototype, "attrSource", void 0);
+__decorate([
+    Input('resources'),
+    __metadata("design:type", Object)
+], jqxKanbanComponent.prototype, "attrResources", void 0);
+__decorate([
+    Input('template'),
+    __metadata("design:type", String)
+], jqxKanbanComponent.prototype, "attrTemplate", void 0);
+__decorate([
+    Input('templateContent'),
+    __metadata("design:type", Object)
+], jqxKanbanComponent.prototype, "attrTemplateContent", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxKanbanComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxKanbanComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxKanbanComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxKanbanComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxKanbanComponent.prototype, "onColumnAttrClicked", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxKanbanComponent.prototype, "onColumnCollapsed", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxKanbanComponent.prototype, "onColumnExpanded", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxKanbanComponent.prototype, "onItemAttrClicked", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxKanbanComponent.prototype, "onItemMoved", void 0);
+jqxKanbanComponent = __decorate([
+    Component({
+        selector: 'jqxKanban',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxKanbanComponent);
+
+let jqxKanbanModule = class jqxKanbanModule {
 };
+jqxKanbanModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxKanbanComponent],
+        exports: [jqxKanbanComponent]
+    })
+], jqxKanbanModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxKanbanModule {
-}
-jqxKanbanModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxKanbanComponent],
-                exports: [jqxKanbanComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxKanbanComponent, jqxKanbanModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxkanban.js.map

@@ -11,13 +11,10 @@ import * as jqxnumberinput from '../../jqwidgets-scripts/jqwidgets/jqxnumberinpu
 import * as jqxdropdownlist from '../../jqwidgets-scripts/jqwidgets/jqxdropdownlist';
 import * as jqxdatatable from '../../jqwidgets-scripts/jqwidgets/jqxdatatable';
 import * as jqxtreegrid from '../../jqwidgets-scripts/jqwidgets/jqxtreegrid';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxTreeGridComponent = /** @class */ (function () {
     function jqxTreeGridComponent(containerElement) {
         this.autoCreate = true;
@@ -45,26 +42,11 @@ var jqxTreeGridComponent = /** @class */ (function () {
         this.onSort = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.ngOnInit = function () {
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.ngAfterViewInit = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxTreeGridComponent.prototype.ngAfterViewInit = function () {
         var children = JQXLite(this.elementRef.nativeElement.children).find('tr');
-        /** @type {?} */
         var html = '';
-        /** @type {?} */
         var options = {};
         if (children.length > 0) {
             this.container = document.createElement('div');
@@ -72,7 +54,6 @@ var jqxTreeGridComponent = /** @class */ (function () {
             this.container.appendChild(this.elementRef.nativeElement.firstChild);
             this.elementRef.nativeElement.innerHTML = html;
             this.content = html;
-            /** @type {?} */
             var result = JQXLite.jqx.parseSourceTag(this.container);
             if (this['attrColumns'] !== undefined) {
                 options['source'] = result.source;
@@ -86,19 +67,11 @@ var jqxTreeGridComponent = /** @class */ (function () {
             this.createComponent(options);
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.ngAfterViewChecked = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.ngAfterViewChecked = function () {
         if (this.container) {
             if (this.content !== this.container.innerHTML) {
                 this.content = this.container.innerHTML;
-                /** @type {?} */
                 var result = JQXLite.jqx.parseSourceTag(this.container);
-                /** @type {?} */
                 var columns = this.host.jqxGrid('columns');
                 if (columns.length === 0) {
                     this.host.jqxGrid({ source: result.source, columns: result.columns });
@@ -109,20 +82,10 @@ var jqxTreeGridComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxTreeGridComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -142,17 +105,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxTreeGridComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -166,17 +119,9 @@ var jqxTreeGridComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxTreeGridComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -184,50 +129,20 @@ var jqxTreeGridComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxTreeGridComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxTreeGridComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxTreeGridComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -243,51 +158,18 @@ var jqxTreeGridComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTreeGrid', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxTreeGridComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxTreeGridComponent.prototype.setOptions = function (options) {
         this.host.jqxTreeGrid('setOptions', options);
     };
     // jqxTreeGridComponent properties
-    // jqxTreeGridComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.altRows = 
-    // jqxTreeGridComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.altRows = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -298,15 +180,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('altRows');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.autoRowHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.autoRowHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -317,15 +191,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('autoRowHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.aggregatesHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.aggregatesHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -336,15 +202,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('aggregatesHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.autoShowLoadElement = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.autoShowLoadElement = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -355,15 +213,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('autoShowLoadElement');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.checkboxes = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.checkboxes = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -374,15 +224,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('checkboxes');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.columnsHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.columnsHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -393,15 +235,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('columnsHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.columns = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.columns = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -412,15 +246,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('columns');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.columnGroups = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.columnGroups = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -431,15 +257,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('columnGroups');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.columnsResize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.columnsResize = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -450,15 +268,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('columnsResize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.columnsReorder = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.columnsReorder = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -469,15 +279,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('columnsReorder');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.disabled = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -488,15 +290,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.editable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.editable = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -507,15 +301,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('editable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.editSettings = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.editSettings = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -526,15 +312,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('editSettings');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.exportSettings = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.exportSettings = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -545,15 +323,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('exportSettings');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.enableHover = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.enableHover = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -564,15 +334,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('enableHover');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.enableBrowserSelection = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.enableBrowserSelection = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -583,15 +345,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('enableBrowserSelection');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.filterable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.filterable = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -602,15 +356,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('filterable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.filterHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.filterHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -621,15 +367,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('filterHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.filterMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.filterMode = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -640,15 +378,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('filterMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.height = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -659,15 +389,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.hierarchicalCheckboxes = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.hierarchicalCheckboxes = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -678,15 +400,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('hierarchicalCheckboxes');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.icons = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.icons = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -697,15 +411,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('icons');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.incrementalSearch = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.incrementalSearch = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -716,15 +422,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('incrementalSearch');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.localization = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.localization = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -735,15 +433,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('localization');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.pagerHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.pagerHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -754,15 +444,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('pagerHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.pageSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.pageSize = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -773,15 +455,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('pageSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.pageSizeOptions = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.pageSizeOptions = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -792,15 +466,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('pageSizeOptions');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.pageable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.pageable = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -811,15 +477,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('pageable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.pagerPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.pagerPosition = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -830,15 +488,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('pagerPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.pagerMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.pagerMode = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -849,15 +499,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('pagerMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.pageSizeMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.pageSizeMode = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -868,15 +510,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('pageSizeMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.pagerButtonsCount = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.pagerButtonsCount = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -887,15 +521,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('pagerButtonsCount');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.pagerRenderer = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.pagerRenderer = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -906,15 +532,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('pagerRenderer');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.ready = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.ready = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -925,15 +543,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('ready');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.rowDetails = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.rowDetails = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -944,15 +554,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('rowDetails');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.rowDetailsRenderer = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.rowDetailsRenderer = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -963,15 +565,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('rowDetailsRenderer');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.renderToolbar = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.renderToolbar = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -982,15 +576,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('renderToolbar');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.renderStatusBar = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.renderStatusBar = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1001,15 +587,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('renderStatusBar');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.rendering = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.rendering = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1020,15 +598,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('rendering');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.rendered = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.rendered = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1039,15 +609,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('rendered');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.rtl = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1058,15 +620,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.source = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.source = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1077,15 +631,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('source');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.sortable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.sortable = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1096,15 +642,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('sortable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.showAggregates = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.showAggregates = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1115,15 +653,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('showAggregates');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.showSubAggregates = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.showSubAggregates = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1134,15 +664,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('showSubAggregates');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.showToolbar = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.showToolbar = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1153,15 +675,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('showToolbar');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.showStatusbar = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.showStatusbar = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1172,15 +686,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('showStatusbar');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.statusBarHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.statusBarHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1191,15 +697,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('statusBarHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.scrollBarSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.scrollBarSize = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1210,15 +708,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('scrollBarSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.selectionMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.selectionMode = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1229,15 +719,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('selectionMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.showHeader = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.showHeader = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1248,15 +730,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('showHeader');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.theme = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1267,15 +741,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.toolbarHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.toolbarHeight = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1286,15 +752,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('toolbarHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.width = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1305,15 +763,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('width');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.virtualModeCreateRecords = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.virtualModeCreateRecords = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1324,15 +774,7 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('virtualModeCreateRecords');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.virtualModeRecordCreating = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxTreeGridComponent.prototype.virtualModeRecordCreating = function (arg) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
@@ -1344,548 +786,241 @@ var jqxTreeGridComponent = /** @class */ (function () {
         }
     };
     // jqxTreeGridComponent functions
-    // jqxTreeGridComponent functions
-    /**
-     * @param {?} rowKey
-     * @param {?} rowData
-     * @param {?} rowPosition
-     * @param {?=} parent
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.addRow = 
-    // jqxTreeGridComponent functions
-    /**
-     * @param {?} rowKey
-     * @param {?} rowData
-     * @param {?} rowPosition
-     * @param {?=} parent
-     * @return {?}
-     */
-    function (rowKey, rowData, rowPosition, parent) {
+    jqxTreeGridComponent.prototype.addRow = function (rowKey, rowData, rowPosition, parent) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('addRow', rowKey, rowData, rowPosition, parent);
     };
-    /**
-     * @param {?} dataField
-     * @param {?} filerGroup
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.addFilter = /**
-     * @param {?} dataField
-     * @param {?} filerGroup
-     * @return {?}
-     */
-    function (dataField, filerGroup) {
+    jqxTreeGridComponent.prototype.addFilter = function (dataField, filerGroup) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('addFilter', dataField, filerGroup);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.applyFilters = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.applyFilters = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('applyFilters');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.beginUpdate = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.beginUpdate = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('beginUpdate');
     };
-    /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.beginRowEdit = /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    function (rowKey) {
+    jqxTreeGridComponent.prototype.beginRowEdit = function (rowKey) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('beginRowEdit', rowKey);
     };
-    /**
-     * @param {?} rowKey
-     * @param {?} dataField
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.beginCellEdit = /**
-     * @param {?} rowKey
-     * @param {?} dataField
-     * @return {?}
-     */
-    function (rowKey, dataField) {
+    jqxTreeGridComponent.prototype.beginCellEdit = function (rowKey, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('beginCellEdit', rowKey, dataField);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.clearSelection = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.clearSelection = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('clearSelection');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.clearFilters = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.clearFilters = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('clearFilters');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.clear = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.clear = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('clear');
     };
-    /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.checkRow = /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    function (rowKey) {
+    jqxTreeGridComponent.prototype.checkRow = function (rowKey) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('checkRow', rowKey);
     };
-    /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.collapseRow = /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    function (rowKey) {
+    jqxTreeGridComponent.prototype.collapseRow = function (rowKey) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('collapseRow', rowKey);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.collapseAll = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.collapseAll = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('collapseAll');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.destroy = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('destroy');
     };
-    /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.deleteRow = /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    function (rowKey) {
+    jqxTreeGridComponent.prototype.deleteRow = function (rowKey) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('deleteRow', rowKey);
     };
-    /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.expandRow = /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    function (rowKey) {
+    jqxTreeGridComponent.prototype.expandRow = function (rowKey) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('expandRow', rowKey);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.expandAll = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.expandAll = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('expandAll');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.endUpdate = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.endUpdate = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('endUpdate');
     };
-    /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.ensureRowVisible = /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    function (rowKey) {
+    jqxTreeGridComponent.prototype.ensureRowVisible = function (rowKey) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('ensureRowVisible', rowKey);
     };
-    /**
-     * @param {?} rowKey
-     * @param {?=} cancelChanges
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.endRowEdit = /**
-     * @param {?} rowKey
-     * @param {?=} cancelChanges
-     * @return {?}
-     */
-    function (rowKey, cancelChanges) {
+    jqxTreeGridComponent.prototype.endRowEdit = function (rowKey, cancelChanges) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('endRowEdit', rowKey, cancelChanges);
     };
-    /**
-     * @param {?} rowKey
-     * @param {?} dataField
-     * @param {?=} cancelChanges
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.endCellEdit = /**
-     * @param {?} rowKey
-     * @param {?} dataField
-     * @param {?=} cancelChanges
-     * @return {?}
-     */
-    function (rowKey, dataField, cancelChanges) {
+    jqxTreeGridComponent.prototype.endCellEdit = function (rowKey, dataField, cancelChanges) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('endCellEdit', rowKey, dataField, cancelChanges);
     };
-    /**
-     * @param {?} exportDataType
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.exportData = /**
-     * @param {?} exportDataType
-     * @return {?}
-     */
-    function (exportDataType) {
+    jqxTreeGridComponent.prototype.exportData = function (exportDataType) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxTreeGrid('exportData', exportDataType);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.focus = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('focus');
     };
-    /**
-     * @param {?} dataField
-     * @param {?} propertyName
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.getColumnProperty = /**
-     * @param {?} dataField
-     * @param {?} propertyName
-     * @return {?}
-     */
-    function (dataField, propertyName) {
+    jqxTreeGridComponent.prototype.getColumnProperty = function (dataField, propertyName) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxTreeGrid('getColumnProperty', dataField, propertyName);
     };
-    /**
-     * @param {?} pageIndex
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.goToPage = /**
-     * @param {?} pageIndex
-     * @return {?}
-     */
-    function (pageIndex) {
+    jqxTreeGridComponent.prototype.goToPage = function (pageIndex) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('goToPage', pageIndex);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.goToPrevPage = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.goToPrevPage = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('goToPrevPage');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.goToNextPage = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.goToNextPage = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('goToNextPage');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.getSelection = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.getSelection = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxTreeGrid('getSelection');
     };
-    /**
-     * @param {?} row
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.getKey = /**
-     * @param {?} row
-     * @return {?}
-     */
-    function (row) {
+    jqxTreeGridComponent.prototype.getKey = function (row) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxTreeGrid('getKey', row);
     };
-    /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.getRow = /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    function (rowKey) {
+    jqxTreeGridComponent.prototype.getRow = function (rowKey) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxTreeGrid('getRow', rowKey);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.getRows = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.getRows = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxTreeGrid('getRows');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.getCheckedRows = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.getCheckedRows = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxTreeGrid('getCheckedRows');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.getView = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.getView = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxTreeGrid('getView');
     };
-    /**
-     * @param {?} rowKey
-     * @param {?} dataField
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.getCellValue = /**
-     * @param {?} rowKey
-     * @param {?} dataField
-     * @return {?}
-     */
-    function (rowKey, dataField) {
+    jqxTreeGridComponent.prototype.getCellValue = function (rowKey, dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxTreeGrid('getCellValue', rowKey, dataField);
     };
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.hideColumn = /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    function (dataField) {
+    jqxTreeGridComponent.prototype.hideColumn = function (dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('hideColumn', dataField);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.isBindingCompleted = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.isBindingCompleted = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxTreeGrid('isBindingCompleted');
     };
-    /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.lockRow = /**
-     * @param {?} rowKey
-     * @return {?}
-     */
-    function (rowKey) {
+    jqxTreeGridComponent.prototype.lockRow = function (rowKey) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('lockRow', rowKey);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.refresh = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.render = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('render');
     };
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.removeFilter = /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    function (dataField) {
+    jqxTreeGridComponent.prototype.removeFilter = function (dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('removeFilter', dataField);
     };
-    /**
-     * @param {?=} top
-     * @param {?=} left
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.scrollOffset = /**
-     * @param {?=} top
-     * @param {?=} left
-     * @return {?}
-     */
-    function (top, left) {
+    jqxTreeGridComponent.prototype.scrollOffset = function (top, left) {
         if (top !== undefined || left !== undefined) {
             this.host.jqxTreeGrid('scrollOffset', top, left);
         }
@@ -1893,396 +1028,429 @@ var jqxTreeGridComponent = /** @class */ (function () {
             return this.host.jqxTreeGrid('scrollOffset');
         }
     };
-    /**
-     * @param {?} dataField
-     * @param {?} propertyName
-     * @param {?} propertyValue
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.setColumnProperty = /**
-     * @param {?} dataField
-     * @param {?} propertyName
-     * @param {?} propertyValue
-     * @return {?}
-     */
-    function (dataField, propertyName, propertyValue) {
+    jqxTreeGridComponent.prototype.setColumnProperty = function (dataField, propertyName, propertyValue) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('setColumnProperty', dataField, propertyName, propertyValue);
     };
-    /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.showColumn = /**
-     * @param {?} dataField
-     * @return {?}
-     */
-    function (dataField) {
+    jqxTreeGridComponent.prototype.showColumn = function (dataField) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('showColumn', dataField);
     };
-    /**
-     * @param {?} rowId
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.selectRow = /**
-     * @param {?} rowId
-     * @return {?}
-     */
-    function (rowId) {
+    jqxTreeGridComponent.prototype.selectRow = function (rowId) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('selectRow', rowId);
     };
-    /**
-     * @param {?} rowId
-     * @param {?} dataField
-     * @param {?} cellValue
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.setCellValue = /**
-     * @param {?} rowId
-     * @param {?} dataField
-     * @param {?} cellValue
-     * @return {?}
-     */
-    function (rowId, dataField, cellValue) {
+    jqxTreeGridComponent.prototype.setCellValue = function (rowId, dataField, cellValue) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('setCellValue', rowId, dataField, cellValue);
     };
-    /**
-     * @param {?} dataField
-     * @param {?=} sortOrder
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.sortBy = /**
-     * @param {?} dataField
-     * @param {?=} sortOrder
-     * @return {?}
-     */
-    function (dataField, sortOrder) {
+    jqxTreeGridComponent.prototype.sortBy = function (dataField, sortOrder) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('sortBy', dataField, sortOrder);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.updating = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.updating = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         return this.host.jqxTreeGrid('updating');
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.updateBoundData = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.updateBoundData = function () {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('updateBoundData');
     };
-    /**
-     * @param {?} rowId
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.unselectRow = /**
-     * @param {?} rowId
-     * @return {?}
-     */
-    function (rowId) {
+    jqxTreeGridComponent.prototype.unselectRow = function (rowId) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('unselectRow', rowId);
     };
-    /**
-     * @param {?} rowId
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.uncheckRow = /**
-     * @param {?} rowId
-     * @return {?}
-     */
-    function (rowId) {
+    jqxTreeGridComponent.prototype.uncheckRow = function (rowId) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('uncheckRow', rowId);
     };
-    /**
-     * @param {?} rowId
-     * @param {?} data
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.updateRow = /**
-     * @param {?} rowId
-     * @param {?} data
-     * @return {?}
-     */
-    function (rowId, data) {
+    jqxTreeGridComponent.prototype.updateRow = function (rowId, data) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('updateRow', rowId, data);
     };
-    /**
-     * @param {?} rowId
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.unlockRow = /**
-     * @param {?} rowId
-     * @return {?}
-     */
-    function (rowId) {
+    jqxTreeGridComponent.prototype.unlockRow = function (rowId) {
         if (this.autoCreate && !this.host) {
             this.createComponent();
         }
         this.host.jqxTreeGrid('unlockRow', rowId);
     };
-    /**
-     * @return {?}
-     */
-    jqxTreeGridComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxTreeGridComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('bindingComplete', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onBindingComplete.emit(eventData); }));
-        this.host.on('cellBeginEdit', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCellBeginEdit.emit(eventData); }));
-        this.host.on('cellEndEdit', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCellEndEdit.emit(eventData); }));
-        this.host.on('cellValueChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCellValueChanged.emit(eventData); }));
-        this.host.on('columnResized', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onColumnResized.emit(eventData); }));
-        this.host.on('columnReordered', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onColumnReordered.emit(eventData); }));
-        this.host.on('filter', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onFilter.emit(eventData); }));
-        this.host.on('pageChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onPageChanged.emit(eventData); }));
-        this.host.on('pageSizeChanged', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onPageSizeChanged.emit(eventData); }));
-        this.host.on('rowClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowClick.emit(eventData); }));
-        this.host.on('rowDoubleClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowDoubleClick.emit(eventData); }));
-        this.host.on('rowSelect', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowSelect.emit(eventData); }));
-        this.host.on('rowUnselect', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowUnselect.emit(eventData); }));
-        this.host.on('rowBeginEdit', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowBeginEdit.emit(eventData); }));
-        this.host.on('rowEndEdit', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowEndEdit.emit(eventData); }));
-        this.host.on('rowExpand', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowExpand.emit(eventData); }));
-        this.host.on('rowCollapse', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowCollapse.emit(eventData); }));
-        this.host.on('rowCheck', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowCheck.emit(eventData); }));
-        this.host.on('rowUncheck', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRowUncheck.emit(eventData); }));
-        this.host.on('sort', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onSort.emit(eventData); }));
+        this.host.on('bindingComplete', function (eventData) { _this.onBindingComplete.emit(eventData); });
+        this.host.on('cellBeginEdit', function (eventData) { _this.onCellBeginEdit.emit(eventData); });
+        this.host.on('cellEndEdit', function (eventData) { _this.onCellEndEdit.emit(eventData); });
+        this.host.on('cellValueChanged', function (eventData) { _this.onCellValueChanged.emit(eventData); });
+        this.host.on('columnResized', function (eventData) { _this.onColumnResized.emit(eventData); });
+        this.host.on('columnReordered', function (eventData) { _this.onColumnReordered.emit(eventData); });
+        this.host.on('filter', function (eventData) { _this.onFilter.emit(eventData); });
+        this.host.on('pageChanged', function (eventData) { _this.onPageChanged.emit(eventData); });
+        this.host.on('pageSizeChanged', function (eventData) { _this.onPageSizeChanged.emit(eventData); });
+        this.host.on('rowClick', function (eventData) { _this.onRowClick.emit(eventData); });
+        this.host.on('rowDoubleClick', function (eventData) { _this.onRowDoubleClick.emit(eventData); });
+        this.host.on('rowSelect', function (eventData) { _this.onRowSelect.emit(eventData); });
+        this.host.on('rowUnselect', function (eventData) { _this.onRowUnselect.emit(eventData); });
+        this.host.on('rowBeginEdit', function (eventData) { _this.onRowBeginEdit.emit(eventData); });
+        this.host.on('rowEndEdit', function (eventData) { _this.onRowEndEdit.emit(eventData); });
+        this.host.on('rowExpand', function (eventData) { _this.onRowExpand.emit(eventData); });
+        this.host.on('rowCollapse', function (eventData) { _this.onRowCollapse.emit(eventData); });
+        this.host.on('rowCheck', function (eventData) { _this.onRowCheck.emit(eventData); });
+        this.host.on('rowUncheck', function (eventData) { _this.onRowUncheck.emit(eventData); });
+        this.host.on('sort', function (eventData) { _this.onSort.emit(eventData); });
     };
-    jqxTreeGridComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxTreeGrid',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxTreeGridComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxTreeGridComponent.propDecorators = {
-        attrAltRows: [{ type: Input, args: ['altRows',] }],
-        attrAutoRowHeight: [{ type: Input, args: ['autoRowHeight',] }],
-        attrAggregatesHeight: [{ type: Input, args: ['aggregatesHeight',] }],
-        attrAutoShowLoadElement: [{ type: Input, args: ['autoShowLoadElement',] }],
-        attrCheckboxes: [{ type: Input, args: ['checkboxes',] }],
-        attrColumnsHeight: [{ type: Input, args: ['columnsHeight',] }],
-        attrColumns: [{ type: Input, args: ['columns',] }],
-        attrColumnGroups: [{ type: Input, args: ['columnGroups',] }],
-        attrColumnsResize: [{ type: Input, args: ['columnsResize',] }],
-        attrColumnsReorder: [{ type: Input, args: ['columnsReorder',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrEditable: [{ type: Input, args: ['editable',] }],
-        attrEditSettings: [{ type: Input, args: ['editSettings',] }],
-        attrExportSettings: [{ type: Input, args: ['exportSettings',] }],
-        attrEnableHover: [{ type: Input, args: ['enableHover',] }],
-        attrEnableBrowserSelection: [{ type: Input, args: ['enableBrowserSelection',] }],
-        attrFilterable: [{ type: Input, args: ['filterable',] }],
-        attrFilterHeight: [{ type: Input, args: ['filterHeight',] }],
-        attrFilterMode: [{ type: Input, args: ['filterMode',] }],
-        attrHierarchicalCheckboxes: [{ type: Input, args: ['hierarchicalCheckboxes',] }],
-        attrIcons: [{ type: Input, args: ['icons',] }],
-        attrIncrementalSearch: [{ type: Input, args: ['incrementalSearch',] }],
-        attrLocalization: [{ type: Input, args: ['localization',] }],
-        attrPagerHeight: [{ type: Input, args: ['pagerHeight',] }],
-        attrPageSize: [{ type: Input, args: ['pageSize',] }],
-        attrPageSizeOptions: [{ type: Input, args: ['pageSizeOptions',] }],
-        attrPageable: [{ type: Input, args: ['pageable',] }],
-        attrPagerPosition: [{ type: Input, args: ['pagerPosition',] }],
-        attrPagerMode: [{ type: Input, args: ['pagerMode',] }],
-        attrPageSizeMode: [{ type: Input, args: ['pageSizeMode',] }],
-        attrPagerButtonsCount: [{ type: Input, args: ['pagerButtonsCount',] }],
-        attrPagerRenderer: [{ type: Input, args: ['pagerRenderer',] }],
-        attrReady: [{ type: Input, args: ['ready',] }],
-        attrRowDetails: [{ type: Input, args: ['rowDetails',] }],
-        attrRowDetailsRenderer: [{ type: Input, args: ['rowDetailsRenderer',] }],
-        attrRenderToolbar: [{ type: Input, args: ['renderToolbar',] }],
-        attrRenderStatusBar: [{ type: Input, args: ['renderStatusBar',] }],
-        attrRendering: [{ type: Input, args: ['rendering',] }],
-        attrRendered: [{ type: Input, args: ['rendered',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrSource: [{ type: Input, args: ['source',] }],
-        attrSortable: [{ type: Input, args: ['sortable',] }],
-        attrShowAggregates: [{ type: Input, args: ['showAggregates',] }],
-        attrShowSubAggregates: [{ type: Input, args: ['showSubAggregates',] }],
-        attrShowToolbar: [{ type: Input, args: ['showToolbar',] }],
-        attrShowStatusbar: [{ type: Input, args: ['showStatusbar',] }],
-        attrStatusBarHeight: [{ type: Input, args: ['statusBarHeight',] }],
-        attrScrollBarSize: [{ type: Input, args: ['scrollBarSize',] }],
-        attrSelectionMode: [{ type: Input, args: ['selectionMode',] }],
-        attrShowHeader: [{ type: Input, args: ['showHeader',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrToolbarHeight: [{ type: Input, args: ['toolbarHeight',] }],
-        attrVirtualModeCreateRecords: [{ type: Input, args: ['virtualModeCreateRecords',] }],
-        attrVirtualModeRecordCreating: [{ type: Input, args: ['virtualModeRecordCreating',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onBindingComplete: [{ type: Output }],
-        onCellBeginEdit: [{ type: Output }],
-        onCellEndEdit: [{ type: Output }],
-        onCellValueChanged: [{ type: Output }],
-        onColumnResized: [{ type: Output }],
-        onColumnReordered: [{ type: Output }],
-        onFilter: [{ type: Output }],
-        onPageChanged: [{ type: Output }],
-        onPageSizeChanged: [{ type: Output }],
-        onRowClick: [{ type: Output }],
-        onRowDoubleClick: [{ type: Output }],
-        onRowSelect: [{ type: Output }],
-        onRowUnselect: [{ type: Output }],
-        onRowBeginEdit: [{ type: Output }],
-        onRowEndEdit: [{ type: Output }],
-        onRowExpand: [{ type: Output }],
-        onRowCollapse: [{ type: Output }],
-        onRowCheck: [{ type: Output }],
-        onRowUncheck: [{ type: Output }],
-        onSort: [{ type: Output }]
-    };
+    __decorate([
+        Input('altRows'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrAltRows", void 0);
+    __decorate([
+        Input('autoRowHeight'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrAutoRowHeight", void 0);
+    __decorate([
+        Input('aggregatesHeight'),
+        __metadata("design:type", Number)
+    ], jqxTreeGridComponent.prototype, "attrAggregatesHeight", void 0);
+    __decorate([
+        Input('autoShowLoadElement'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrAutoShowLoadElement", void 0);
+    __decorate([
+        Input('checkboxes'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrCheckboxes", void 0);
+    __decorate([
+        Input('columnsHeight'),
+        __metadata("design:type", Number)
+    ], jqxTreeGridComponent.prototype, "attrColumnsHeight", void 0);
+    __decorate([
+        Input('columns'),
+        __metadata("design:type", Array)
+    ], jqxTreeGridComponent.prototype, "attrColumns", void 0);
+    __decorate([
+        Input('columnGroups'),
+        __metadata("design:type", Array)
+    ], jqxTreeGridComponent.prototype, "attrColumnGroups", void 0);
+    __decorate([
+        Input('columnsResize'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrColumnsResize", void 0);
+    __decorate([
+        Input('columnsReorder'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrColumnsReorder", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('editable'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrEditable", void 0);
+    __decorate([
+        Input('editSettings'),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "attrEditSettings", void 0);
+    __decorate([
+        Input('exportSettings'),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "attrExportSettings", void 0);
+    __decorate([
+        Input('enableHover'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrEnableHover", void 0);
+    __decorate([
+        Input('enableBrowserSelection'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrEnableBrowserSelection", void 0);
+    __decorate([
+        Input('filterable'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrFilterable", void 0);
+    __decorate([
+        Input('filterHeight'),
+        __metadata("design:type", Number)
+    ], jqxTreeGridComponent.prototype, "attrFilterHeight", void 0);
+    __decorate([
+        Input('filterMode'),
+        __metadata("design:type", String)
+    ], jqxTreeGridComponent.prototype, "attrFilterMode", void 0);
+    __decorate([
+        Input('hierarchicalCheckboxes'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrHierarchicalCheckboxes", void 0);
+    __decorate([
+        Input('icons'),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "attrIcons", void 0);
+    __decorate([
+        Input('incrementalSearch'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrIncrementalSearch", void 0);
+    __decorate([
+        Input('localization'),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "attrLocalization", void 0);
+    __decorate([
+        Input('pagerHeight'),
+        __metadata("design:type", Number)
+    ], jqxTreeGridComponent.prototype, "attrPagerHeight", void 0);
+    __decorate([
+        Input('pageSize'),
+        __metadata("design:type", Number)
+    ], jqxTreeGridComponent.prototype, "attrPageSize", void 0);
+    __decorate([
+        Input('pageSizeOptions'),
+        __metadata("design:type", Array)
+    ], jqxTreeGridComponent.prototype, "attrPageSizeOptions", void 0);
+    __decorate([
+        Input('pageable'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrPageable", void 0);
+    __decorate([
+        Input('pagerPosition'),
+        __metadata("design:type", String)
+    ], jqxTreeGridComponent.prototype, "attrPagerPosition", void 0);
+    __decorate([
+        Input('pagerMode'),
+        __metadata("design:type", String)
+    ], jqxTreeGridComponent.prototype, "attrPagerMode", void 0);
+    __decorate([
+        Input('pageSizeMode'),
+        __metadata("design:type", String)
+    ], jqxTreeGridComponent.prototype, "attrPageSizeMode", void 0);
+    __decorate([
+        Input('pagerButtonsCount'),
+        __metadata("design:type", Number)
+    ], jqxTreeGridComponent.prototype, "attrPagerButtonsCount", void 0);
+    __decorate([
+        Input('pagerRenderer'),
+        __metadata("design:type", Function)
+    ], jqxTreeGridComponent.prototype, "attrPagerRenderer", void 0);
+    __decorate([
+        Input('ready'),
+        __metadata("design:type", Function)
+    ], jqxTreeGridComponent.prototype, "attrReady", void 0);
+    __decorate([
+        Input('rowDetails'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrRowDetails", void 0);
+    __decorate([
+        Input('rowDetailsRenderer'),
+        __metadata("design:type", Function)
+    ], jqxTreeGridComponent.prototype, "attrRowDetailsRenderer", void 0);
+    __decorate([
+        Input('renderToolbar'),
+        __metadata("design:type", Function)
+    ], jqxTreeGridComponent.prototype, "attrRenderToolbar", void 0);
+    __decorate([
+        Input('renderStatusBar'),
+        __metadata("design:type", Function)
+    ], jqxTreeGridComponent.prototype, "attrRenderStatusBar", void 0);
+    __decorate([
+        Input('rendering'),
+        __metadata("design:type", Function)
+    ], jqxTreeGridComponent.prototype, "attrRendering", void 0);
+    __decorate([
+        Input('rendered'),
+        __metadata("design:type", Function)
+    ], jqxTreeGridComponent.prototype, "attrRendered", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('source'),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "attrSource", void 0);
+    __decorate([
+        Input('sortable'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrSortable", void 0);
+    __decorate([
+        Input('showAggregates'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrShowAggregates", void 0);
+    __decorate([
+        Input('showSubAggregates'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrShowSubAggregates", void 0);
+    __decorate([
+        Input('showToolbar'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrShowToolbar", void 0);
+    __decorate([
+        Input('showStatusbar'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrShowStatusbar", void 0);
+    __decorate([
+        Input('statusBarHeight'),
+        __metadata("design:type", Number)
+    ], jqxTreeGridComponent.prototype, "attrStatusBarHeight", void 0);
+    __decorate([
+        Input('scrollBarSize'),
+        __metadata("design:type", Number)
+    ], jqxTreeGridComponent.prototype, "attrScrollBarSize", void 0);
+    __decorate([
+        Input('selectionMode'),
+        __metadata("design:type", String)
+    ], jqxTreeGridComponent.prototype, "attrSelectionMode", void 0);
+    __decorate([
+        Input('showHeader'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "attrShowHeader", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxTreeGridComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('toolbarHeight'),
+        __metadata("design:type", Number)
+    ], jqxTreeGridComponent.prototype, "attrToolbarHeight", void 0);
+    __decorate([
+        Input('virtualModeCreateRecords'),
+        __metadata("design:type", Function)
+    ], jqxTreeGridComponent.prototype, "attrVirtualModeCreateRecords", void 0);
+    __decorate([
+        Input('virtualModeRecordCreating'),
+        __metadata("design:type", Function)
+    ], jqxTreeGridComponent.prototype, "attrVirtualModeRecordCreating", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxTreeGridComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onBindingComplete", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onCellBeginEdit", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onCellEndEdit", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onCellValueChanged", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onColumnResized", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onColumnReordered", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onFilter", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onPageChanged", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onPageSizeChanged", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onRowClick", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onRowDoubleClick", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onRowSelect", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onRowUnselect", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onRowBeginEdit", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onRowEndEdit", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onRowExpand", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onRowCollapse", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onRowCheck", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onRowUncheck", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxTreeGridComponent.prototype, "onSort", void 0);
+    jqxTreeGridComponent = __decorate([
+        Component({
+            selector: 'jqxTreeGrid',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxTreeGridComponent);
     return jqxTreeGridComponent;
 }()); //jqxTreeGridComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxTreeGridModule = /** @class */ (function () {
     function jqxTreeGridModule() {
     }
-    jqxTreeGridModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxTreeGridComponent],
-                    exports: [jqxTreeGridComponent]
-                },] }
-    ];
+    jqxTreeGridModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxTreeGridComponent],
+            exports: [jqxTreeGridComponent]
+        })
+    ], jqxTreeGridModule);
     return jqxTreeGridModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxTreeGridComponent, jqxTreeGridModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxtreegrid.js.map

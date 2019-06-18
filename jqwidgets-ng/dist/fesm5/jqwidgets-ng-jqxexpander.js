@@ -1,12 +1,9 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxexpander from '../../jqwidgets-scripts/jqwidgets/jqxexpander';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxExpanderComponent = /** @class */ (function () {
     function jqxExpanderComponent(containerElement) {
         this.autoCreate = true;
@@ -18,31 +15,15 @@ var jqxExpanderComponent = /** @class */ (function () {
         this.onExpanded = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxExpanderComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -62,17 +43,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxExpanderComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -86,17 +57,9 @@ var jqxExpanderComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxExpanderComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -104,50 +67,20 @@ var jqxExpanderComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxExpanderComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxExpanderComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxExpanderComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -163,51 +96,18 @@ var jqxExpanderComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxExpander', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxExpanderComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxExpanderComponent.prototype.setOptions = function (options) {
         this.host.jqxExpander('setOptions', options);
     };
     // jqxExpanderComponent properties
-    // jqxExpanderComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.animationType = 
-    // jqxExpanderComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.animationType = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('animationType', arg);
         }
@@ -215,15 +115,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('animationType');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.arrowPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.arrowPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('arrowPosition', arg);
         }
@@ -231,15 +123,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('arrowPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.collapseAnimationDuration = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.collapseAnimationDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('collapseAnimationDuration', arg);
         }
@@ -247,15 +131,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('collapseAnimationDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('disabled', arg);
         }
@@ -263,15 +139,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.expanded = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.expanded = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('expanded', arg);
         }
@@ -279,15 +147,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('expanded');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.expandAnimationDuration = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.expandAnimationDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('expandAnimationDuration', arg);
         }
@@ -295,15 +155,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('expandAnimationDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('height', arg);
         }
@@ -311,15 +163,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.headerPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.headerPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('headerPosition', arg);
         }
@@ -327,15 +171,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('headerPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.initContent = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.initContent = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('initContent', arg);
         }
@@ -343,15 +179,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('initContent');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('rtl', arg);
         }
@@ -359,15 +187,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.showArrow = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.showArrow = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('showArrow', arg);
         }
@@ -375,15 +195,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('showArrow');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('theme', arg);
         }
@@ -391,15 +203,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.toggleMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.toggleMode = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('toggleMode', arg);
         }
@@ -407,15 +211,7 @@ var jqxExpanderComponent = /** @class */ (function () {
             return this.host.jqxExpander('toggleMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxExpanderComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxExpander('width', arg);
         }
@@ -424,220 +220,154 @@ var jqxExpanderComponent = /** @class */ (function () {
         }
     };
     // jqxExpanderComponent functions
-    // jqxExpanderComponent functions
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.collapse = 
-    // jqxExpanderComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.collapse = function () {
         this.host.jqxExpander('collapse');
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.disable = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.disable = function () {
         this.host.jqxExpander('disable');
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.destroy = function () {
         this.host.jqxExpander('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.enable = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.enable = function () {
         this.host.jqxExpander('enable');
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.expand = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.expand = function () {
         this.host.jqxExpander('expand');
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.focus = function () {
         this.host.jqxExpander('focus');
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.getContent = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.getContent = function () {
         return this.host.jqxExpander('getContent');
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.getHeaderContent = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.getHeaderContent = function () {
         return this.host.jqxExpander('getHeaderContent');
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.invalidate = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.invalidate = function () {
         this.host.jqxExpander('invalidate');
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.refresh = function () {
         this.host.jqxExpander('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.render = function () {
         this.host.jqxExpander('render');
     };
-    /**
-     * @param {?} headerContent
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.setHeaderContent = /**
-     * @param {?} headerContent
-     * @return {?}
-     */
-    function (headerContent) {
+    jqxExpanderComponent.prototype.setHeaderContent = function (headerContent) {
         this.host.jqxExpander('setHeaderContent', headerContent);
     };
-    /**
-     * @param {?} content
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.setContent = /**
-     * @param {?} content
-     * @return {?}
-     */
-    function (content) {
+    jqxExpanderComponent.prototype.setContent = function (content) {
         this.host.jqxExpander('setContent', content);
     };
-    /**
-     * @return {?}
-     */
-    jqxExpanderComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxExpanderComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('collapsing', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCollapsing.emit(eventData); }));
-        this.host.on('collapsed', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCollapsed.emit(eventData); }));
-        this.host.on('expanding', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onExpanding.emit(eventData); }));
-        this.host.on('expanded', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onExpanded.emit(eventData); }));
+        this.host.on('collapsing', function (eventData) { _this.onCollapsing.emit(eventData); });
+        this.host.on('collapsed', function (eventData) { _this.onCollapsed.emit(eventData); });
+        this.host.on('expanding', function (eventData) { _this.onExpanding.emit(eventData); });
+        this.host.on('expanded', function (eventData) { _this.onExpanded.emit(eventData); });
     };
-    jqxExpanderComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxExpander',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxExpanderComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxExpanderComponent.propDecorators = {
-        attrAnimationType: [{ type: Input, args: ['animationType',] }],
-        attrArrowPosition: [{ type: Input, args: ['arrowPosition',] }],
-        attrCollapseAnimationDuration: [{ type: Input, args: ['collapseAnimationDuration',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrExpanded: [{ type: Input, args: ['expanded',] }],
-        attrExpandAnimationDuration: [{ type: Input, args: ['expandAnimationDuration',] }],
-        attrHeaderPosition: [{ type: Input, args: ['headerPosition',] }],
-        attrInitContent: [{ type: Input, args: ['initContent',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrShowArrow: [{ type: Input, args: ['showArrow',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrToggleMode: [{ type: Input, args: ['toggleMode',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onCollapsing: [{ type: Output }],
-        onCollapsed: [{ type: Output }],
-        onExpanding: [{ type: Output }],
-        onExpanded: [{ type: Output }]
-    };
+    __decorate([
+        Input('animationType'),
+        __metadata("design:type", String)
+    ], jqxExpanderComponent.prototype, "attrAnimationType", void 0);
+    __decorate([
+        Input('arrowPosition'),
+        __metadata("design:type", String)
+    ], jqxExpanderComponent.prototype, "attrArrowPosition", void 0);
+    __decorate([
+        Input('collapseAnimationDuration'),
+        __metadata("design:type", Number)
+    ], jqxExpanderComponent.prototype, "attrCollapseAnimationDuration", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxExpanderComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('expanded'),
+        __metadata("design:type", Boolean)
+    ], jqxExpanderComponent.prototype, "attrExpanded", void 0);
+    __decorate([
+        Input('expandAnimationDuration'),
+        __metadata("design:type", Number)
+    ], jqxExpanderComponent.prototype, "attrExpandAnimationDuration", void 0);
+    __decorate([
+        Input('headerPosition'),
+        __metadata("design:type", String)
+    ], jqxExpanderComponent.prototype, "attrHeaderPosition", void 0);
+    __decorate([
+        Input('initContent'),
+        __metadata("design:type", Function)
+    ], jqxExpanderComponent.prototype, "attrInitContent", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxExpanderComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('showArrow'),
+        __metadata("design:type", Boolean)
+    ], jqxExpanderComponent.prototype, "attrShowArrow", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxExpanderComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('toggleMode'),
+        __metadata("design:type", String)
+    ], jqxExpanderComponent.prototype, "attrToggleMode", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxExpanderComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxExpanderComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxExpanderComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxExpanderComponent.prototype, "onCollapsing", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxExpanderComponent.prototype, "onCollapsed", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxExpanderComponent.prototype, "onExpanding", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxExpanderComponent.prototype, "onExpanded", void 0);
+    jqxExpanderComponent = __decorate([
+        Component({
+            selector: 'jqxExpander',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxExpanderComponent);
     return jqxExpanderComponent;
 }()); //jqxExpanderComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxExpanderModule = /** @class */ (function () {
     function jqxExpanderModule() {
     }
-    jqxExpanderModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxExpanderComponent],
-                    exports: [jqxExpanderComponent]
-                },] }
-    ];
+    jqxExpanderModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxExpanderComponent],
+            exports: [jqxExpanderComponent]
+        })
+    ], jqxExpanderModule);
     return jqxExpanderModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxExpanderComponent, jqxExpanderModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxexpander.js.map

@@ -9,9 +9,9 @@ import { jqxButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbu
 
 export class AppComponent
 { 
-    @ViewChild('textImageButton') myTextImageButton: jqxButtonComponent;
-    @ViewChild('htmlButton') myHTMLButton: jqxButtonComponent;
-	  @ViewChild('events') events: ElementRef;
+    @ViewChild('textImageButton', {static: false}) myTextImageButton: jqxButtonComponent;
+    @ViewChild('htmlButton', {static: false}) myHTMLButton: jqxButtonComponent;
+	  @ViewChild('events', {static: false}) events: ElementRef;
      
     buttonClicked(): void
     {

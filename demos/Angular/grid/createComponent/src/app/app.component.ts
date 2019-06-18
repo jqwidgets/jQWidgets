@@ -8,7 +8,7 @@ import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
 
     ngAfterViewInit(): void {
         this.myGrid.createComponent(this.settings);

@@ -8,7 +8,7 @@ import { jqxDockingComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxd
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myDocking') myDocking; jqxDockingComponent;
+    @ViewChild('myDocking', {static: false}) myDocking; jqxDockingComponent;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 650) {

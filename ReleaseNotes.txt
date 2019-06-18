@@ -1,4 +1,25 @@
 ﻿*********************************************
+* jQWidgets v8.1.0 Release, June-17-2019                *
+*********************************************
+
+What's New: 
+
+- Javascript Time Picker component.
+- Javascript Heatmap component.
+
+What's Fixed: 
+
+- Fixed an issue in several components about Angular 8 production build error.
+- Fixed an issue in jqxPivotGrid's setCellValue method behavior.
+- Fixed an issue in jqxGrid. When scrolling to the last right column and using the "showvalidationpopup" method for the second column.
+- Fixed an issue in jqxGrid. Selection rendering was incorrect after deleting a row.
+- Fixed an issue in jqxGrid regarding the Data Export to Excel of Date Columns exported as Strings. Now, the data is correctly exported.
+- Fixed an issue in jqxGrid when grouping aggregates are dynamically turned on/off.
+- Fixed an issue in jqxNumberInput. When the initial state of the input is empty and the value is null, the editing was not working correctly.
+- Fixed an issue in jqxNumberInput. Initial value is negative and rendering in "advanced" mode is wrong.
+- Fixed an issue in jqxScheduler regarding the localization rendering when showWeekends is false.
+
+*********************************************
 * jQWidgets v8.0.0 Release, May-16-2019                *
 *********************************************
 

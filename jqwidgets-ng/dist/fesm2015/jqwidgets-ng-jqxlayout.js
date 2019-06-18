@@ -3,16 +3,11 @@ import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxribbon from '../../jqwidgets-scripts/jqwidgets/jqxribbon';
 import * as jqxmenu from '../../jqwidgets-scripts/jqwidgets/jqxmenu';
 import * as jqxlayout from '../../jqwidgets-scripts/jqwidgets/jqxlayout';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxLayoutComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxLayoutComponent = class jqxLayoutComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['contextMenu', 'height', 'layout', 'minGroupHeight', 'minGroupWidth', 'resizable', 'rtl', 'theme', 'width'];
@@ -22,25 +17,16 @@ class jqxLayoutComponent {
         this.onUnpin = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -60,11 +46,6 @@ class jqxLayoutComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -79,14 +60,9 @@ class jqxLayoutComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -94,34 +70,18 @@ class jqxLayoutComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -138,32 +98,17 @@ class jqxLayoutComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxLayout', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxLayout('setOptions', options);
     }
     // jqxLayoutComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     contextMenu(arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('contextMenu', arg);
@@ -172,10 +117,6 @@ class jqxLayoutComponent {
             return this.host.jqxLayout('contextMenu');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('height', arg);
@@ -184,10 +125,6 @@ class jqxLayoutComponent {
             return this.host.jqxLayout('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     layout(arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('layout', arg);
@@ -196,10 +133,6 @@ class jqxLayoutComponent {
             return this.host.jqxLayout('layout');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minGroupHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('minGroupHeight', arg);
@@ -208,10 +141,6 @@ class jqxLayoutComponent {
             return this.host.jqxLayout('minGroupHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minGroupWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('minGroupWidth', arg);
@@ -220,10 +149,6 @@ class jqxLayoutComponent {
             return this.host.jqxLayout('minGroupWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     resizable(arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('resizable', arg);
@@ -232,10 +157,6 @@ class jqxLayoutComponent {
             return this.host.jqxLayout('resizable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('rtl', arg);
@@ -244,10 +165,6 @@ class jqxLayoutComponent {
             return this.host.jqxLayout('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('theme', arg);
@@ -256,10 +173,6 @@ class jqxLayoutComponent {
             return this.host.jqxLayout('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('width', arg);
@@ -269,108 +182,100 @@ class jqxLayoutComponent {
         }
     }
     // jqxLayoutComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxLayout('destroy');
     }
-    /**
-     * @param {?} Layout
-     * @return {?}
-     */
     loadLayout(Layout) {
         this.host.jqxLayout('loadLayout', Layout);
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxLayout('refresh');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxLayout('render');
     }
-    /**
-     * @return {?}
-     */
     saveLayout() {
         return this.host.jqxLayout('saveLayout');
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('pin', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPin.emit(eventData); }));
-        this.host.on('resize', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onResize.emit(eventData); }));
-        this.host.on('unpin', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onUnpin.emit(eventData); }));
+        this.host.on('pin', (eventData) => { this.onPin.emit(eventData); });
+        this.host.on('resize', (eventData) => { this.onResize.emit(eventData); });
+        this.host.on('unpin', (eventData) => { this.onUnpin.emit(eventData); });
     }
-} //jqxLayoutComponent
-jqxLayoutComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxLayout',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxLayoutComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxLayoutComponent.propDecorators = {
-    attrContextMenu: [{ type: Input, args: ['contextMenu',] }],
-    attrLayout: [{ type: Input, args: ['layout',] }],
-    attrMinGroupHeight: [{ type: Input, args: ['minGroupHeight',] }],
-    attrMinGroupWidth: [{ type: Input, args: ['minGroupWidth',] }],
-    attrResizable: [{ type: Input, args: ['resizable',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onPin: [{ type: Output }],
-    onResize: [{ type: Output }],
-    onUnpin: [{ type: Output }]
+}; //jqxLayoutComponent
+__decorate([
+    Input('contextMenu'),
+    __metadata("design:type", Boolean)
+], jqxLayoutComponent.prototype, "attrContextMenu", void 0);
+__decorate([
+    Input('layout'),
+    __metadata("design:type", Array)
+], jqxLayoutComponent.prototype, "attrLayout", void 0);
+__decorate([
+    Input('minGroupHeight'),
+    __metadata("design:type", Object)
+], jqxLayoutComponent.prototype, "attrMinGroupHeight", void 0);
+__decorate([
+    Input('minGroupWidth'),
+    __metadata("design:type", Object)
+], jqxLayoutComponent.prototype, "attrMinGroupWidth", void 0);
+__decorate([
+    Input('resizable'),
+    __metadata("design:type", Boolean)
+], jqxLayoutComponent.prototype, "attrResizable", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxLayoutComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxLayoutComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxLayoutComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxLayoutComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxLayoutComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxLayoutComponent.prototype, "onPin", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxLayoutComponent.prototype, "onResize", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxLayoutComponent.prototype, "onUnpin", void 0);
+jqxLayoutComponent = __decorate([
+    Component({
+        selector: 'jqxLayout',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxLayoutComponent);
+
+let jqxLayoutModule = class jqxLayoutModule {
 };
+jqxLayoutModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxLayoutComponent],
+        exports: [jqxLayoutComponent]
+    })
+], jqxLayoutModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxLayoutModule {
-}
-jqxLayoutModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxLayoutComponent],
-                exports: [jqxLayoutComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxLayoutComponent, jqxLayoutModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxlayout.js.map

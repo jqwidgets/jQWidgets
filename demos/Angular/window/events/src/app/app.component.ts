@@ -9,8 +9,8 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('eventWindow') eventWindow: jqxWindowComponent;
-    @ViewChild('events') events: jqxPanelComponent;
+    @ViewChild('eventWindow', {static: false}) eventWindow: jqxWindowComponent;
+    @ViewChild('events', {static: false}) events: jqxPanelComponent;
 
     ngAfterViewInit(): void {
         // Clear border of the jqxPanel

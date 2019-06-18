@@ -1,15 +1,10 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxtooltip from '../../jqwidgets-scripts/jqwidgets/jqxtooltip';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxTooltipComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxTooltipComponent = class jqxTooltipComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['absolutePositionX', 'absolutePositionY', 'autoHide', 'autoHideDelay', 'animationShowDelay', 'animationHideDelay', 'content', 'closeOnClick', 'disabled', 'enableBrowserBoundsDetection', 'height', 'left', 'name', 'opacity', 'position', 'rtl', 'showDelay', 'showArrow', 'top', 'trigger', 'theme', 'width'];
@@ -20,25 +15,16 @@ class jqxTooltipComponent {
         this.onOpening = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -58,11 +44,6 @@ class jqxTooltipComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -77,14 +58,9 @@ class jqxTooltipComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -92,34 +68,18 @@ class jqxTooltipComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -136,32 +96,17 @@ class jqxTooltipComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTooltip', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxTooltip('setOptions', options);
     }
     // jqxTooltipComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     absolutePositionX(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('absolutePositionX', arg);
@@ -170,10 +115,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('absolutePositionX');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     absolutePositionY(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('absolutePositionY', arg);
@@ -182,10 +123,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('absolutePositionY');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoHide(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('autoHide', arg);
@@ -194,10 +131,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('autoHide');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoHideDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('autoHideDelay', arg);
@@ -206,10 +139,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('autoHideDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationShowDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('animationShowDelay', arg);
@@ -218,10 +147,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('animationShowDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationHideDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('animationHideDelay', arg);
@@ -230,10 +155,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('animationHideDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     content(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('content', arg);
@@ -242,10 +163,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('content');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     closeOnClick(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('closeOnClick', arg);
@@ -254,10 +171,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('closeOnClick');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('disabled', arg);
@@ -266,10 +179,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableBrowserBoundsDetection(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('enableBrowserBoundsDetection', arg);
@@ -278,10 +187,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('enableBrowserBoundsDetection');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('height', arg);
@@ -290,10 +195,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     left(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('left', arg);
@@ -302,10 +203,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('left');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     name(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('name', arg);
@@ -314,10 +211,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('name');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     opacity(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('opacity', arg);
@@ -326,10 +219,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('opacity');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     position(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('position', arg);
@@ -338,10 +227,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('position');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('rtl', arg);
@@ -350,10 +235,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('showDelay', arg);
@@ -362,10 +243,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('showDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showArrow(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('showArrow', arg);
@@ -374,10 +251,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('showArrow');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     top(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('top', arg);
@@ -386,10 +259,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('top');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     trigger(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('trigger', arg);
@@ -398,10 +267,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('trigger');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('theme', arg);
@@ -410,10 +275,6 @@ class jqxTooltipComponent {
             return this.host.jqxTooltip('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxTooltip('width', arg);
@@ -423,123 +284,154 @@ class jqxTooltipComponent {
         }
     }
     // jqxTooltipComponent functions
-    /**
-     * @param {?=} index
-     * @return {?}
-     */
     close(index) {
         this.host.jqxTooltip('close', index);
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxTooltip('destroy');
     }
-    /**
-     * @param {?=} left
-     * @param {?=} top
-     * @return {?}
-     */
     open(left, top) {
         this.host.jqxTooltip('open', left, top);
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxTooltip('refresh');
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onClose.emit(eventData); }));
-        this.host.on('closing', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onClosing.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onOpen.emit(eventData); }));
-        this.host.on('opening', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onOpening.emit(eventData); }));
+        this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+        this.host.on('closing', (eventData) => { this.onClosing.emit(eventData); });
+        this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
+        this.host.on('opening', (eventData) => { this.onOpening.emit(eventData); });
     }
-} //jqxTooltipComponent
-jqxTooltipComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxTooltip',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxTooltipComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxTooltipComponent.propDecorators = {
-    attrAbsolutePositionX: [{ type: Input, args: ['absolutePositionX',] }],
-    attrAbsolutePositionY: [{ type: Input, args: ['absolutePositionY',] }],
-    attrAutoHide: [{ type: Input, args: ['autoHide',] }],
-    attrAutoHideDelay: [{ type: Input, args: ['autoHideDelay',] }],
-    attrAnimationShowDelay: [{ type: Input, args: ['animationShowDelay',] }],
-    attrAnimationHideDelay: [{ type: Input, args: ['animationHideDelay',] }],
-    attrContent: [{ type: Input, args: ['content',] }],
-    attrCloseOnClick: [{ type: Input, args: ['closeOnClick',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrEnableBrowserBoundsDetection: [{ type: Input, args: ['enableBrowserBoundsDetection',] }],
-    attrLeft: [{ type: Input, args: ['left',] }],
-    attrName: [{ type: Input, args: ['name',] }],
-    attrOpacity: [{ type: Input, args: ['opacity',] }],
-    attrPosition: [{ type: Input, args: ['position',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrShowDelay: [{ type: Input, args: ['showDelay',] }],
-    attrShowArrow: [{ type: Input, args: ['showArrow',] }],
-    attrTop: [{ type: Input, args: ['top',] }],
-    attrTrigger: [{ type: Input, args: ['trigger',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onClose: [{ type: Output }],
-    onClosing: [{ type: Output }],
-    onOpen: [{ type: Output }],
-    onOpening: [{ type: Output }]
+}; //jqxTooltipComponent
+__decorate([
+    Input('absolutePositionX'),
+    __metadata("design:type", Number)
+], jqxTooltipComponent.prototype, "attrAbsolutePositionX", void 0);
+__decorate([
+    Input('absolutePositionY'),
+    __metadata("design:type", Number)
+], jqxTooltipComponent.prototype, "attrAbsolutePositionY", void 0);
+__decorate([
+    Input('autoHide'),
+    __metadata("design:type", Boolean)
+], jqxTooltipComponent.prototype, "attrAutoHide", void 0);
+__decorate([
+    Input('autoHideDelay'),
+    __metadata("design:type", Number)
+], jqxTooltipComponent.prototype, "attrAutoHideDelay", void 0);
+__decorate([
+    Input('animationShowDelay'),
+    __metadata("design:type", Object)
+], jqxTooltipComponent.prototype, "attrAnimationShowDelay", void 0);
+__decorate([
+    Input('animationHideDelay'),
+    __metadata("design:type", Object)
+], jqxTooltipComponent.prototype, "attrAnimationHideDelay", void 0);
+__decorate([
+    Input('content'),
+    __metadata("design:type", String)
+], jqxTooltipComponent.prototype, "attrContent", void 0);
+__decorate([
+    Input('closeOnClick'),
+    __metadata("design:type", Boolean)
+], jqxTooltipComponent.prototype, "attrCloseOnClick", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxTooltipComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('enableBrowserBoundsDetection'),
+    __metadata("design:type", Boolean)
+], jqxTooltipComponent.prototype, "attrEnableBrowserBoundsDetection", void 0);
+__decorate([
+    Input('left'),
+    __metadata("design:type", Number)
+], jqxTooltipComponent.prototype, "attrLeft", void 0);
+__decorate([
+    Input('name'),
+    __metadata("design:type", String)
+], jqxTooltipComponent.prototype, "attrName", void 0);
+__decorate([
+    Input('opacity'),
+    __metadata("design:type", Number)
+], jqxTooltipComponent.prototype, "attrOpacity", void 0);
+__decorate([
+    Input('position'),
+    __metadata("design:type", String)
+], jqxTooltipComponent.prototype, "attrPosition", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxTooltipComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('showDelay'),
+    __metadata("design:type", Number)
+], jqxTooltipComponent.prototype, "attrShowDelay", void 0);
+__decorate([
+    Input('showArrow'),
+    __metadata("design:type", Boolean)
+], jqxTooltipComponent.prototype, "attrShowArrow", void 0);
+__decorate([
+    Input('top'),
+    __metadata("design:type", Object)
+], jqxTooltipComponent.prototype, "attrTop", void 0);
+__decorate([
+    Input('trigger'),
+    __metadata("design:type", String)
+], jqxTooltipComponent.prototype, "attrTrigger", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxTooltipComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxTooltipComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxTooltipComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxTooltipComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTooltipComponent.prototype, "onClose", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTooltipComponent.prototype, "onClosing", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTooltipComponent.prototype, "onOpen", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTooltipComponent.prototype, "onOpening", void 0);
+jqxTooltipComponent = __decorate([
+    Component({
+        selector: 'jqxTooltip',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxTooltipComponent);
+
+let jqxTooltipModule = class jqxTooltipModule {
 };
+jqxTooltipModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxTooltipComponent],
+        exports: [jqxTooltipComponent]
+    })
+], jqxTooltipModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxTooltipModule {
-}
-jqxTooltipModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxTooltipComponent],
-                exports: [jqxTooltipComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxTooltipComponent, jqxTooltipModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxtooltip.js.map

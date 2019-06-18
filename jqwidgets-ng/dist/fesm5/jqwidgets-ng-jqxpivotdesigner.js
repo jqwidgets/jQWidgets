@@ -1,49 +1,27 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
-import { __spread } from 'tslib';
-import { Component, Input, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxPivotDesignerComponent = /** @class */ (function () {
     function jqxPivotDesignerComponent(containerElement) {
         var _this = this;
         this.autoCreate = true;
         this.properties = ['type', 'target'];
         this.elementRef = containerElement;
-        JQXLite(window).resize((/**
-         * @return {?}
-         */
-        function () {
+        JQXLite(window).resize(function () {
             _this.__updateRect__();
-        }));
+        });
     }
-    /**
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxPivotDesignerComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxPivotDesignerComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -63,17 +41,7 @@ var jqxPivotDesignerComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxPivotDesignerComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -87,17 +55,9 @@ var jqxPivotDesignerComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxPivotDesignerComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -105,50 +65,20 @@ var jqxPivotDesignerComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxPivotDesignerComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxPivotDesignerComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxPivotDesignerComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -165,52 +95,19 @@ var jqxPivotDesignerComponent = /** @class */ (function () {
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxPivotDesigner', options);
         this.__updateRect__();
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxPivotDesignerComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxPivotDesignerComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
         this.refresh();
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxPivotDesignerComponent.prototype.setOptions = function (options) {
         this.host.jqxPivotDesigner('setOptions', options);
     };
     // jqxPivotDesignerComponent properties
-    // jqxPivotDesignerComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.type = 
-    // jqxPivotDesignerComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPivotDesignerComponent.prototype.type = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPivotDesigner('type', arg);
         }
@@ -218,15 +115,7 @@ var jqxPivotDesignerComponent = /** @class */ (function () {
             return this.host.jqxPivotDesigner('type');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.target = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPivotDesignerComponent.prototype.target = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPivotDesigner('target', arg);
         }
@@ -235,73 +124,57 @@ var jqxPivotDesignerComponent = /** @class */ (function () {
         }
     };
     // jqxPivotDesignerComponent functions
-    // jqxPivotDesignerComponent functions
-    /**
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.refresh = 
-    // jqxPivotDesignerComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxPivotDesignerComponent.prototype.refresh = function () {
         this.host.jqxPivotDesigner('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxPivotDesignerComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxPivotDesignerComponent.prototype.__wireEvents__ = function () {
     };
-    jqxPivotDesignerComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxPivotDesigner',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxPivotDesignerComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxPivotDesignerComponent.propDecorators = {
-        attrType: [{ type: Input, args: ['type',] }],
-        attrTarget: [{ type: Input, args: ['target',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }]
-    };
+    __decorate([
+        Input('type'),
+        __metadata("design:type", String)
+    ], jqxPivotDesignerComponent.prototype, "attrType", void 0);
+    __decorate([
+        Input('target'),
+        __metadata("design:type", Object)
+    ], jqxPivotDesignerComponent.prototype, "attrTarget", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxPivotDesignerComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxPivotDesignerComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxPivotDesignerComponent.prototype, "autoCreate", void 0);
+    jqxPivotDesignerComponent = __decorate([
+        Component({
+            selector: 'jqxPivotDesigner',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxPivotDesignerComponent);
     return jqxPivotDesignerComponent;
 }()); //jqxPivotDesignerComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxPivotDesignerModule = /** @class */ (function () {
     function jqxPivotDesignerModule() {
     }
-    jqxPivotDesignerModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxPivotDesignerComponent],
-                    exports: [jqxPivotDesignerComponent]
-                },] }
-    ];
+    jqxPivotDesignerModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxPivotDesignerComponent],
+            exports: [jqxPivotDesignerComponent]
+        })
+    ], jqxPivotDesignerModule);
     return jqxPivotDesignerModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxPivotDesignerComponent, jqxPivotDesignerModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxpivotdesigner.js.map

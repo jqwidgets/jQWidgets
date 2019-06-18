@@ -8,9 +8,9 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxListBox') myListBox: jqxListBoxComponent;
-    @ViewChild('Events') Events: ElementRef;
-    @ViewChild('CheckedItems') CheckedItems: ElementRef;
+    @ViewChild('jqxListBox', {static: false}) myListBox: jqxListBoxComponent;
+    @ViewChild('Events', {static: false}) Events: ElementRef;
+    @ViewChild('CheckedItems', {static: false}) CheckedItems: ElementRef;
 
     ngAfterViewInit(): void {
         this.myListBox.checkIndex(0);

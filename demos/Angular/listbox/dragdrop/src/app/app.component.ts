@@ -8,9 +8,9 @@ import { jqxTextAreaComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('myTextArea') myTextArea: jqxTextAreaComponent;
-    @ViewChild('dragStartLog') dragStartLog: ElementRef;
-    @ViewChild('dragEndLog') dragEndLog: ElementRef;
+    @ViewChild('myTextArea', {static: false}) myTextArea: jqxTextAreaComponent;
+    @ViewChild('dragStartLog', {static: false}) dragStartLog: ElementRef;
+    @ViewChild('dragEndLog', {static: false}) dragEndLog: ElementRef;
 
     onDragStart(event: any): void {
         this.dragStartLog.nativeElement.innerHTML = 'Drag Start: ' + event.args.label;

@@ -8,8 +8,8 @@ import { jqxCalendarComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myCalendar') myCalendar: jqxCalendarComponent;
-	@ViewChild('log') log: ElementRef;
+    @ViewChild('myCalendar', {static: false}) myCalendar: jqxCalendarComponent;
+	@ViewChild('log', {static: false}) log: ElementRef;
 
     value: Date = new Date(2016, 7, 7);
 

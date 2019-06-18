@@ -9,8 +9,8 @@ import { jqxButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbu
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-   @ViewChild('pivotGrid1') pivotGrid1: jqxPivotGridComponent; 
-   @ViewChild('eventsLog') eventsLog: jqxTextAreaComponent; 
+   @ViewChild('pivotGrid1', {static: false}) pivotGrid1: jqxPivotGridComponent; 
+   @ViewChild('eventsLog', {static: false}) eventsLog: jqxTextAreaComponent; 
    
    constructor()
    {

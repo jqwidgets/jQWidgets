@@ -1,30 +1,18 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxradiobutton from '../../jqwidgets-scripts/jqwidgets/jqxradiobutton';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { forwardRef, EventEmitter, Input, Output, Component, ChangeDetectionStrategy, ElementRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-const noop = (/**
- * @return {?}
- */
-() => { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+const noop = () => { };
+const ɵ0 = noop;
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    () => jqxRadioButtonComponent)),
+    useExisting: forwardRef(() => jqxRadioButtonComponent),
     multi: true
 };
-class jqxRadioButtonComponent {
-    /**
-     * @param {?} containerElement
-     */
+let jqxRadioButtonComponent = class jqxRadioButtonComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['animationShowDelay', 'animationHideDelay', 'boxSize', 'checked', 'disabled', 'enableContainerClick', 'groupName', 'hasThreeStates', 'height', 'rtl', 'theme', 'width'];
@@ -36,25 +24,16 @@ class jqxRadioButtonComponent {
         this.onUnchecked = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -74,11 +53,6 @@ class jqxRadioButtonComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -93,14 +67,9 @@ class jqxRadioButtonComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -108,34 +77,18 @@ class jqxRadioButtonComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -155,53 +108,26 @@ class jqxRadioButtonComponent {
         if (options.checked === true)
             this.onChangeCallback(this.valueAttr);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     writeValue(value) {
         if (this.widgetObject) ;
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnChange(fn) {
         this.onChangeCallback = fn;
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnTouched(fn) {
         this.onTouchedCallback = fn;
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxRadioButton('setOptions', options);
     }
     // jqxRadioButtonComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationShowDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('animationShowDelay', arg);
@@ -210,10 +136,6 @@ class jqxRadioButtonComponent {
             return this.host.jqxRadioButton('animationShowDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationHideDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('animationHideDelay', arg);
@@ -222,10 +144,6 @@ class jqxRadioButtonComponent {
             return this.host.jqxRadioButton('animationHideDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     boxSize(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('boxSize', arg);
@@ -234,10 +152,6 @@ class jqxRadioButtonComponent {
             return this.host.jqxRadioButton('boxSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     checked(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('checked', arg);
@@ -246,10 +160,6 @@ class jqxRadioButtonComponent {
             return this.host.jqxRadioButton('checked');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('disabled', arg);
@@ -258,10 +168,6 @@ class jqxRadioButtonComponent {
             return this.host.jqxRadioButton('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableContainerClick(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('enableContainerClick', arg);
@@ -270,10 +176,6 @@ class jqxRadioButtonComponent {
             return this.host.jqxRadioButton('enableContainerClick');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     groupName(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('groupName', arg);
@@ -282,10 +184,6 @@ class jqxRadioButtonComponent {
             return this.host.jqxRadioButton('groupName');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     hasThreeStates(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('hasThreeStates', arg);
@@ -294,10 +192,6 @@ class jqxRadioButtonComponent {
             return this.host.jqxRadioButton('hasThreeStates');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('height', arg);
@@ -306,10 +200,6 @@ class jqxRadioButtonComponent {
             return this.host.jqxRadioButton('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('rtl', arg);
@@ -318,10 +208,6 @@ class jqxRadioButtonComponent {
             return this.host.jqxRadioButton('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('theme', arg);
@@ -330,10 +216,6 @@ class jqxRadioButtonComponent {
             return this.host.jqxRadioButton('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxRadioButton('width', arg);
@@ -343,52 +225,27 @@ class jqxRadioButtonComponent {
         }
     }
     // jqxRadioButtonComponent functions
-    /**
-     * @return {?}
-     */
     check() {
         this.host.jqxRadioButton('check');
     }
-    /**
-     * @return {?}
-     */
     disable() {
         this.host.jqxRadioButton('disable');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxRadioButton('destroy');
     }
-    /**
-     * @return {?}
-     */
     enable() {
         this.host.jqxRadioButton('enable');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxRadioButton('focus');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxRadioButton('render');
     }
-    /**
-     * @return {?}
-     */
     uncheck() {
         this.host.jqxRadioButton('uncheck');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxRadioButton('val', value);
@@ -398,84 +255,101 @@ class jqxRadioButtonComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('checked', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChecked.emit(eventData); this.onChangeCallback(this.valueAttr); }));
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); }));
-        this.host.on('unchecked', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onUnchecked.emit(eventData); }));
+        this.host.on('checked', (eventData) => { this.onChecked.emit(eventData); this.onChangeCallback(this.valueAttr); });
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
+        this.host.on('unchecked', (eventData) => { this.onUnchecked.emit(eventData); });
     }
-} //jqxRadioButtonComponent
-jqxRadioButtonComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxRadioButton',
-                template: '<div><ng-content></ng-content></div>',
-                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                changeDetection: ChangeDetectionStrategy.OnPush
-            }] }
-];
-/** @nocollapse */
-jqxRadioButtonComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxRadioButtonComponent.propDecorators = {
-    attrAnimationShowDelay: [{ type: Input, args: ['animationShowDelay',] }],
-    attrAnimationHideDelay: [{ type: Input, args: ['animationHideDelay',] }],
-    attrBoxSize: [{ type: Input, args: ['boxSize',] }],
-    attrChecked: [{ type: Input, args: ['checked',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrEnableContainerClick: [{ type: Input, args: ['enableContainerClick',] }],
-    attrGroupName: [{ type: Input, args: ['groupName',] }],
-    attrHasThreeStates: [{ type: Input, args: ['hasThreeStates',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChecked: [{ type: Output }],
-    onChange: [{ type: Output }],
-    onUnchecked: [{ type: Output }]
+}; //jqxRadioButtonComponent
+__decorate([
+    Input('animationShowDelay'),
+    __metadata("design:type", Number)
+], jqxRadioButtonComponent.prototype, "attrAnimationShowDelay", void 0);
+__decorate([
+    Input('animationHideDelay'),
+    __metadata("design:type", Number)
+], jqxRadioButtonComponent.prototype, "attrAnimationHideDelay", void 0);
+__decorate([
+    Input('boxSize'),
+    __metadata("design:type", Object)
+], jqxRadioButtonComponent.prototype, "attrBoxSize", void 0);
+__decorate([
+    Input('checked'),
+    __metadata("design:type", Boolean)
+], jqxRadioButtonComponent.prototype, "attrChecked", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxRadioButtonComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('enableContainerClick'),
+    __metadata("design:type", Boolean)
+], jqxRadioButtonComponent.prototype, "attrEnableContainerClick", void 0);
+__decorate([
+    Input('groupName'),
+    __metadata("design:type", String)
+], jqxRadioButtonComponent.prototype, "attrGroupName", void 0);
+__decorate([
+    Input('hasThreeStates'),
+    __metadata("design:type", Boolean)
+], jqxRadioButtonComponent.prototype, "attrHasThreeStates", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxRadioButtonComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxRadioButtonComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxRadioButtonComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxRadioButtonComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxRadioButtonComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxRadioButtonComponent.prototype, "onChecked", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxRadioButtonComponent.prototype, "onChange", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxRadioButtonComponent.prototype, "onUnchecked", void 0);
+jqxRadioButtonComponent = __decorate([
+    Component({
+        selector: 'jqxRadioButton',
+        template: '<div><ng-content></ng-content></div>',
+        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+        changeDetection: ChangeDetectionStrategy.OnPush
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxRadioButtonComponent);
+
+let jqxRadioButtonModule = class jqxRadioButtonModule {
 };
+jqxRadioButtonModule = __decorate([
+    NgModule({
+        imports: [
+            FormsModule
+        ],
+        declarations: [jqxRadioButtonComponent],
+        exports: [jqxRadioButtonComponent]
+    })
+], jqxRadioButtonModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxRadioButtonModule {
-}
-jqxRadioButtonModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    FormsModule
-                ],
-                declarations: [jqxRadioButtonComponent],
-                exports: [jqxRadioButtonComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxRadioButtonComponent, jqxRadioButtonModule };
-
+export { jqxRadioButtonComponent, jqxRadioButtonModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxradiobutton.js.map

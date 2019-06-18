@@ -1,12 +1,9 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdockpanel from '../../jqwidgets-scripts/jqwidgets/jqxdockpanel';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxDockPanelComponent = /** @class */ (function () {
     function jqxDockPanelComponent(containerElement) {
         this.autoCreate = true;
@@ -15,31 +12,15 @@ var jqxDockPanelComponent = /** @class */ (function () {
         this.onLayout = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxDockPanelComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxDockPanelComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -59,17 +40,7 @@ var jqxDockPanelComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxDockPanelComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -83,17 +54,9 @@ var jqxDockPanelComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxDockPanelComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -101,50 +64,20 @@ var jqxDockPanelComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxDockPanelComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxDockPanelComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDockPanelComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -160,51 +93,18 @@ var jqxDockPanelComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDockPanel', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDockPanelComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxDockPanelComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxDockPanelComponent.prototype.setOptions = function (options) {
         this.host.jqxDockPanel('setOptions', options);
     };
     // jqxDockPanelComponent properties
-    // jqxDockPanelComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.disabled = 
-    // jqxDockPanelComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockPanelComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockPanel('disabled', arg);
         }
@@ -212,15 +112,7 @@ var jqxDockPanelComponent = /** @class */ (function () {
             return this.host.jqxDockPanel('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockPanelComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockPanel('height', arg);
         }
@@ -228,15 +120,7 @@ var jqxDockPanelComponent = /** @class */ (function () {
             return this.host.jqxDockPanel('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.lastchildfill = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockPanelComponent.prototype.lastchildfill = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockPanel('lastchildfill', arg);
         }
@@ -244,15 +128,7 @@ var jqxDockPanelComponent = /** @class */ (function () {
             return this.host.jqxDockPanel('lastchildfill');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxDockPanelComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxDockPanel('width', arg);
         }
@@ -261,80 +137,63 @@ var jqxDockPanelComponent = /** @class */ (function () {
         }
     };
     // jqxDockPanelComponent functions
-    // jqxDockPanelComponent functions
-    /**
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.refresh = 
-    // jqxDockPanelComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxDockPanelComponent.prototype.refresh = function () {
         this.host.jqxDockPanel('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxDockPanelComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxDockPanelComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('layout', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onLayout.emit(eventData); }));
+        this.host.on('layout', function (eventData) { _this.onLayout.emit(eventData); });
     };
-    jqxDockPanelComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxDockPanel',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxDockPanelComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxDockPanelComponent.propDecorators = {
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrLastchildfill: [{ type: Input, args: ['lastchildfill',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onLayout: [{ type: Output }]
-    };
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxDockPanelComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('lastchildfill'),
+        __metadata("design:type", Boolean)
+    ], jqxDockPanelComponent.prototype, "attrLastchildfill", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxDockPanelComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxDockPanelComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxDockPanelComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxDockPanelComponent.prototype, "onLayout", void 0);
+    jqxDockPanelComponent = __decorate([
+        Component({
+            selector: 'jqxDockPanel',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxDockPanelComponent);
     return jqxDockPanelComponent;
 }()); //jqxDockPanelComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxDockPanelModule = /** @class */ (function () {
     function jqxDockPanelModule() {
     }
-    jqxDockPanelModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxDockPanelComponent],
-                    exports: [jqxDockPanelComponent]
-                },] }
-    ];
+    jqxDockPanelModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxDockPanelComponent],
+            exports: [jqxDockPanelComponent]
+        })
+    ], jqxDockPanelModule);
     return jqxDockPanelModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxDockPanelComponent, jqxDockPanelModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxdockpanel.js.map

@@ -8,7 +8,7 @@ import { jqxNotificationComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('jqxNotification') jqxNotification: jqxNotificationComponent;
+    @ViewChild('jqxNotification', {static: false}) jqxNotification: jqxNotificationComponent;
 
     quotes: string[] =
     [

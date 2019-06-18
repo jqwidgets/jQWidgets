@@ -9,7 +9,7 @@ import { jqxBarGaugeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myBarGauge') myBarGauge: jqxBarGaugeComponent;
+    @ViewChild('myBarGauge', {static: false}) myBarGauge: jqxBarGaugeComponent;
 
     ngAfterViewInit(): void {
         this.myBarGauge.createComponent(this.settings);

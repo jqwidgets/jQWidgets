@@ -8,7 +8,7 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent {
-    @ViewChild('selectionlog') selectionlog: ElementRef;
+    @ViewChild('selectionlog', {static: false}) selectionlog: ElementRef;
 
     source: any[] = [{
         label: "Peppermint Hot Chocolate",

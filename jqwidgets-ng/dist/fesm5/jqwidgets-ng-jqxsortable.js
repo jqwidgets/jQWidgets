@@ -1,13 +1,10 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxsortable from '../../jqwidgets-scripts/jqwidgets/jqxsortable';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxSortableComponent = /** @class */ (function () {
     function jqxSortableComponent(containerElement) {
         this.autoCreate = true;
@@ -27,31 +24,15 @@ var jqxSortableComponent = /** @class */ (function () {
         this.onUpdate = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxSortableComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxSortableComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -71,17 +52,7 @@ var jqxSortableComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxSortableComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -95,17 +66,9 @@ var jqxSortableComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxSortableComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -113,50 +76,20 @@ var jqxSortableComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxSortableComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxSortableComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSortableComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -172,51 +105,18 @@ var jqxSortableComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxSortable', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSortableComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxSortableComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSortableComponent.prototype.setOptions = function (options) {
         this.host.jqxSortable('setOptions', options);
     };
     // jqxSortableComponent properties
-    // jqxSortableComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.appendTo = 
-    // jqxSortableComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.appendTo = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('appendTo', arg);
         }
@@ -224,15 +124,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('appendTo');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.axis = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.axis = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('axis', arg);
         }
@@ -240,15 +132,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('axis');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.cancel = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.cancel = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('cancel', arg);
         }
@@ -256,15 +140,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('cancel');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.connectWith = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.connectWith = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('connectWith', arg);
         }
@@ -272,15 +148,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('connectWith');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.containment = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.containment = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('containment', arg);
         }
@@ -288,15 +156,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('containment');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.cursor = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.cursor = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('cursor', arg);
         }
@@ -304,15 +164,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('cursor');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.cursorAt = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.cursorAt = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('cursorAt', arg);
         }
@@ -320,15 +172,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('cursorAt');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.delay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.delay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('delay', arg);
         }
@@ -336,15 +180,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('delay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('disabled', arg);
         }
@@ -352,15 +188,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.distance = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.distance = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('distance', arg);
         }
@@ -368,15 +196,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('distance');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.dropOnEmpty = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.dropOnEmpty = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('dropOnEmpty', arg);
         }
@@ -384,15 +204,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('dropOnEmpty');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.forceHelperSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.forceHelperSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('forceHelperSize', arg);
         }
@@ -400,15 +212,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('forceHelperSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.forcePlaceholderSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.forcePlaceholderSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('forcePlaceholderSize', arg);
         }
@@ -416,15 +220,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('forcePlaceholderSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.grid = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.grid = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('grid', arg);
         }
@@ -432,15 +228,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('grid');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.handle = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.handle = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('handle', arg);
         }
@@ -448,15 +236,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('handle');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.helper = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.helper = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('helper', arg);
         }
@@ -464,15 +244,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('helper');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.items = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.items = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('items', arg);
         }
@@ -480,15 +252,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('items');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.opacity = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.opacity = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('opacity', arg);
         }
@@ -496,15 +260,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('opacity');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.placeholderShow = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.placeholderShow = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('placeholderShow', arg);
         }
@@ -512,15 +268,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('placeholderShow');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.revert = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.revert = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('revert', arg);
         }
@@ -528,15 +276,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('revert');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.scroll = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.scroll = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('scroll', arg);
         }
@@ -544,15 +284,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('scroll');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.scrollSensitivity = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.scrollSensitivity = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('scrollSensitivity', arg);
         }
@@ -560,15 +292,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('scrollSensitivity');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.scrollSpeed = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.scrollSpeed = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('scrollSpeed', arg);
         }
@@ -576,15 +300,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('scrollSpeed');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.tolerance = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.tolerance = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('tolerance', arg);
         }
@@ -592,15 +308,7 @@ var jqxSortableComponent = /** @class */ (function () {
             return this.host.jqxSortable('tolerance');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.zIndex = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSortableComponent.prototype.zIndex = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSortable('zIndex', arg);
         }
@@ -609,234 +317,231 @@ var jqxSortableComponent = /** @class */ (function () {
         }
     };
     // jqxSortableComponent functions
-    // jqxSortableComponent functions
-    /**
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.cancelMethod = 
-    // jqxSortableComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxSortableComponent.prototype.cancelMethod = function () {
         this.host.jqxSortable('cancelMethod');
     };
-    /**
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxSortableComponent.prototype.destroy = function () {
         this.host.jqxSortable('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.disable = /**
-     * @return {?}
-     */
-    function () {
+    jqxSortableComponent.prototype.disable = function () {
         this.host.jqxSortable('disable');
     };
-    /**
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.enable = /**
-     * @return {?}
-     */
-    function () {
+    jqxSortableComponent.prototype.enable = function () {
         this.host.jqxSortable('enable');
     };
-    /**
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxSortableComponent.prototype.refresh = function () {
         this.host.jqxSortable('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.refreshPositions = /**
-     * @return {?}
-     */
-    function () {
+    jqxSortableComponent.prototype.refreshPositions = function () {
         this.host.jqxSortable('refreshPositions');
     };
-    /**
-     * @param {?} object
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.serialize = /**
-     * @param {?} object
-     * @return {?}
-     */
-    function (object) {
+    jqxSortableComponent.prototype.serialize = function (object) {
         return this.host.jqxSortable('serialize', object);
     };
-    /**
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.toArray = /**
-     * @return {?}
-     */
-    function () {
+    jqxSortableComponent.prototype.toArray = function () {
         return this.host.jqxSortable('toArray');
     };
-    /**
-     * @return {?}
-     */
-    jqxSortableComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxSortableComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('activate', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onActivate.emit(eventData); }));
-        this.host.on('beforeStop', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onBeforeStop.emit(eventData); }));
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChange.emit(eventData); }));
-        this.host.on('deactivate', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onDeactivate.emit(eventData); }));
-        this.host.on('out', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onOut.emit(eventData); }));
-        this.host.on('over', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onOver.emit(eventData); }));
-        this.host.on('receive', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onReceive.emit(eventData); }));
-        this.host.on('remove', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRemove.emit(eventData); }));
-        this.host.on('sort', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onSort.emit(eventData); }));
-        this.host.on('start', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onStart.emit(eventData); }));
-        this.host.on('stop', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onStop.emit(eventData); }));
-        this.host.on('update', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onUpdate.emit(eventData); }));
+        this.host.on('activate', function (eventData) { _this.onActivate.emit(eventData); });
+        this.host.on('beforeStop', function (eventData) { _this.onBeforeStop.emit(eventData); });
+        this.host.on('change', function (eventData) { _this.onChange.emit(eventData); });
+        this.host.on('deactivate', function (eventData) { _this.onDeactivate.emit(eventData); });
+        this.host.on('out', function (eventData) { _this.onOut.emit(eventData); });
+        this.host.on('over', function (eventData) { _this.onOver.emit(eventData); });
+        this.host.on('receive', function (eventData) { _this.onReceive.emit(eventData); });
+        this.host.on('remove', function (eventData) { _this.onRemove.emit(eventData); });
+        this.host.on('sort', function (eventData) { _this.onSort.emit(eventData); });
+        this.host.on('start', function (eventData) { _this.onStart.emit(eventData); });
+        this.host.on('stop', function (eventData) { _this.onStop.emit(eventData); });
+        this.host.on('update', function (eventData) { _this.onUpdate.emit(eventData); });
     };
-    jqxSortableComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxSortable',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxSortableComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxSortableComponent.propDecorators = {
-        attrAppendTo: [{ type: Input, args: ['appendTo',] }],
-        attrAxis: [{ type: Input, args: ['axis',] }],
-        attrCancel: [{ type: Input, args: ['cancel',] }],
-        attrConnectWith: [{ type: Input, args: ['connectWith',] }],
-        attrContainment: [{ type: Input, args: ['containment',] }],
-        attrCursor: [{ type: Input, args: ['cursor',] }],
-        attrCursorAt: [{ type: Input, args: ['cursorAt',] }],
-        attrDelay: [{ type: Input, args: ['delay',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrDistance: [{ type: Input, args: ['distance',] }],
-        attrDropOnEmpty: [{ type: Input, args: ['dropOnEmpty',] }],
-        attrForceHelperSize: [{ type: Input, args: ['forceHelperSize',] }],
-        attrForcePlaceholderSize: [{ type: Input, args: ['forcePlaceholderSize',] }],
-        attrGrid: [{ type: Input, args: ['grid',] }],
-        attrHandle: [{ type: Input, args: ['handle',] }],
-        attrHelper: [{ type: Input, args: ['helper',] }],
-        attrItems: [{ type: Input, args: ['items',] }],
-        attrOpacity: [{ type: Input, args: ['opacity',] }],
-        attrPlaceholderShow: [{ type: Input, args: ['placeholderShow',] }],
-        attrRevert: [{ type: Input, args: ['revert',] }],
-        attrScroll: [{ type: Input, args: ['scroll',] }],
-        attrScrollSensitivity: [{ type: Input, args: ['scrollSensitivity',] }],
-        attrScrollSpeed: [{ type: Input, args: ['scrollSpeed',] }],
-        attrTolerance: [{ type: Input, args: ['tolerance',] }],
-        attrZIndex: [{ type: Input, args: ['zIndex',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onActivate: [{ type: Output }],
-        onBeforeStop: [{ type: Output }],
-        onChange: [{ type: Output }],
-        onDeactivate: [{ type: Output }],
-        onOut: [{ type: Output }],
-        onOver: [{ type: Output }],
-        onReceive: [{ type: Output }],
-        onRemove: [{ type: Output }],
-        onSort: [{ type: Output }],
-        onStart: [{ type: Output }],
-        onStop: [{ type: Output }],
-        onUpdate: [{ type: Output }]
-    };
+    __decorate([
+        Input('appendTo'),
+        __metadata("design:type", String)
+    ], jqxSortableComponent.prototype, "attrAppendTo", void 0);
+    __decorate([
+        Input('axis'),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "attrAxis", void 0);
+    __decorate([
+        Input('cancel'),
+        __metadata("design:type", String)
+    ], jqxSortableComponent.prototype, "attrCancel", void 0);
+    __decorate([
+        Input('connectWith'),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "attrConnectWith", void 0);
+    __decorate([
+        Input('containment'),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "attrContainment", void 0);
+    __decorate([
+        Input('cursor'),
+        __metadata("design:type", String)
+    ], jqxSortableComponent.prototype, "attrCursor", void 0);
+    __decorate([
+        Input('cursorAt'),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "attrCursorAt", void 0);
+    __decorate([
+        Input('delay'),
+        __metadata("design:type", Number)
+    ], jqxSortableComponent.prototype, "attrDelay", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxSortableComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('distance'),
+        __metadata("design:type", Number)
+    ], jqxSortableComponent.prototype, "attrDistance", void 0);
+    __decorate([
+        Input('dropOnEmpty'),
+        __metadata("design:type", Boolean)
+    ], jqxSortableComponent.prototype, "attrDropOnEmpty", void 0);
+    __decorate([
+        Input('forceHelperSize'),
+        __metadata("design:type", Boolean)
+    ], jqxSortableComponent.prototype, "attrForceHelperSize", void 0);
+    __decorate([
+        Input('forcePlaceholderSize'),
+        __metadata("design:type", Boolean)
+    ], jqxSortableComponent.prototype, "attrForcePlaceholderSize", void 0);
+    __decorate([
+        Input('grid'),
+        __metadata("design:type", Array)
+    ], jqxSortableComponent.prototype, "attrGrid", void 0);
+    __decorate([
+        Input('handle'),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "attrHandle", void 0);
+    __decorate([
+        Input('helper'),
+        __metadata("design:type", Function)
+    ], jqxSortableComponent.prototype, "attrHelper", void 0);
+    __decorate([
+        Input('items'),
+        __metadata("design:type", String)
+    ], jqxSortableComponent.prototype, "attrItems", void 0);
+    __decorate([
+        Input('opacity'),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "attrOpacity", void 0);
+    __decorate([
+        Input('placeholderShow'),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "attrPlaceholderShow", void 0);
+    __decorate([
+        Input('revert'),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "attrRevert", void 0);
+    __decorate([
+        Input('scroll'),
+        __metadata("design:type", Boolean)
+    ], jqxSortableComponent.prototype, "attrScroll", void 0);
+    __decorate([
+        Input('scrollSensitivity'),
+        __metadata("design:type", Number)
+    ], jqxSortableComponent.prototype, "attrScrollSensitivity", void 0);
+    __decorate([
+        Input('scrollSpeed'),
+        __metadata("design:type", Number)
+    ], jqxSortableComponent.prototype, "attrScrollSpeed", void 0);
+    __decorate([
+        Input('tolerance'),
+        __metadata("design:type", String)
+    ], jqxSortableComponent.prototype, "attrTolerance", void 0);
+    __decorate([
+        Input('zIndex'),
+        __metadata("design:type", Number)
+    ], jqxSortableComponent.prototype, "attrZIndex", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxSortableComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onActivate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onBeforeStop", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onChange", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onDeactivate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onOut", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onOver", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onReceive", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onRemove", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onSort", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onStart", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onStop", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSortableComponent.prototype, "onUpdate", void 0);
+    jqxSortableComponent = __decorate([
+        Component({
+            selector: 'jqxSortable',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxSortableComponent);
     return jqxSortableComponent;
 }()); //jqxSortableComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxSortableModule = /** @class */ (function () {
     function jqxSortableModule() {
     }
-    jqxSortableModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxSortableComponent],
-                    exports: [jqxSortableComponent]
-                },] }
-    ];
+    jqxSortableModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxSortableComponent],
+            exports: [jqxSortableComponent]
+        })
+    ], jqxSortableModule);
     return jqxSortableModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxSortableComponent, jqxSortableModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxsortable.js.map

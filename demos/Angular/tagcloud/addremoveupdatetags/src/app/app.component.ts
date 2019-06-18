@@ -10,7 +10,7 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent  {
-    @ViewChild('tagCloud') tagCloud: jqxTagCloudComponent;
+    @ViewChild('tagCloud', {static: false}) tagCloud: jqxTagCloudComponent;
    
     getWidth() : any {
 		if (document.body.offsetWidth < 600) {

@@ -12,10 +12,10 @@ import { jqxDateTimeInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angula
 })
 
 export class AppComponent {
-    @ViewChild('myValidator') myValidator: jqxValidatorComponent;
-    @ViewChild('dateTimeInput') dateTimeInput: jqxDateTimeInputComponent;
-    @ViewChild('passwordInput') passwordInput: jqxPasswordInputComponent;
-    @ViewChild('confirmPasswordInput') confirmPasswordInput: jqxPasswordInputComponent;
+    @ViewChild('myValidator', {static: false}) myValidator: jqxValidatorComponent;
+    @ViewChild('dateTimeInput', {static: false}) dateTimeInput: jqxDateTimeInputComponent;
+    @ViewChild('passwordInput', {static: false}) passwordInput: jqxPasswordInputComponent;
+    @ViewChild('confirmPasswordInput', {static: false}) confirmPasswordInput: jqxPasswordInputComponent;
 
     initialDate: Date = new Date(2017, 8, 1);
 

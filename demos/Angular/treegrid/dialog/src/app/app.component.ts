@@ -12,12 +12,12 @@ import { jqxDateTimeInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angula
 })
 
 export class AppComponent {
-    @ViewChild('TreeGrid') treeGrid: jqxTreeGridComponent;
-    @ViewChild('jqxWindow') jqxWindow: jqxWindowComponent;
-    @ViewChild('EmployeeID') EmployeeID: jqxInputComponent;
-    @ViewChild('Title') Title: jqxInputComponent;
-    @ViewChild('Country') Country: jqxInputComponent;
-    @ViewChild('BirthDate') BirthDate: jqxDateTimeInputComponent;
+    @ViewChild('TreeGrid', {static: false}) treeGrid: jqxTreeGridComponent;
+    @ViewChild('jqxWindow', {static: false}) jqxWindow: jqxWindowComponent;
+    @ViewChild('EmployeeID', {static: false}) EmployeeID: jqxInputComponent;
+    @ViewChild('Title', {static: false}) Title: jqxInputComponent;
+    @ViewChild('Country', {static: false}) Country: jqxInputComponent;
+    @ViewChild('BirthDate', {static: false}) BirthDate: jqxDateTimeInputComponent;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

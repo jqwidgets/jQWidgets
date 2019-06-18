@@ -8,7 +8,7 @@ import { jqxRepeatButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent {
-    @ViewChild('myProgressBar') myProgressBar: jqxRepeatButtonComponent
+    @ViewChild('myProgressBar', {static: false}) myProgressBar: jqxRepeatButtonComponent
   
     repeatOnClick(): void {
         let currentValue = this.myProgressBar.value();

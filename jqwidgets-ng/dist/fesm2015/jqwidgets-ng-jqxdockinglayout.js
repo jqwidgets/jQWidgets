@@ -6,16 +6,11 @@ import * as jqxlayout from '../../jqwidgets-scripts/jqwidgets/jqxlayout';
 import * as jqxmenu from '../../jqwidgets-scripts/jqwidgets/jqxmenu';
 import * as jqxscrollbar from '../../jqwidgets-scripts/jqwidgets/jqxscrollbar';
 import * as jqxdockinglayout from '../../jqwidgets-scripts/jqwidgets/jqxdockinglayout';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxDockingLayoutComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxDockingLayoutComponent = class jqxDockingLayoutComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['contextMenu', 'height', 'layout', 'minGroupHeight', 'minGroupWidth', 'resizable', 'rtl', 'theme', 'width'];
@@ -28,25 +23,16 @@ class jqxDockingLayoutComponent {
         this.onUnpin = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -66,11 +52,6 @@ class jqxDockingLayoutComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -85,14 +66,9 @@ class jqxDockingLayoutComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -100,34 +76,18 @@ class jqxDockingLayoutComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -144,32 +104,17 @@ class jqxDockingLayoutComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDockingLayout', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxDockingLayout('setOptions', options);
     }
     // jqxDockingLayoutComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     contextMenu(arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('contextMenu', arg);
@@ -178,10 +123,6 @@ class jqxDockingLayoutComponent {
             return this.host.jqxDockingLayout('contextMenu');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('height', arg);
@@ -190,10 +131,6 @@ class jqxDockingLayoutComponent {
             return this.host.jqxDockingLayout('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     layout(arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('layout', arg);
@@ -202,10 +139,6 @@ class jqxDockingLayoutComponent {
             return this.host.jqxDockingLayout('layout');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minGroupHeight(arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('minGroupHeight', arg);
@@ -214,10 +147,6 @@ class jqxDockingLayoutComponent {
             return this.host.jqxDockingLayout('minGroupHeight');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minGroupWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('minGroupWidth', arg);
@@ -226,10 +155,6 @@ class jqxDockingLayoutComponent {
             return this.host.jqxDockingLayout('minGroupWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     resizable(arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('resizable', arg);
@@ -238,10 +163,6 @@ class jqxDockingLayoutComponent {
             return this.host.jqxDockingLayout('resizable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('rtl', arg);
@@ -250,10 +171,6 @@ class jqxDockingLayoutComponent {
             return this.host.jqxDockingLayout('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('theme', arg);
@@ -262,10 +179,6 @@ class jqxDockingLayoutComponent {
             return this.host.jqxDockingLayout('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxDockingLayout('width', arg);
@@ -275,139 +188,118 @@ class jqxDockingLayoutComponent {
         }
     }
     // jqxDockingLayoutComponent functions
-    /**
-     * @param {?} width
-     * @param {?} height
-     * @param {?} position
-     * @param {?} panelType
-     * @param {?} title
-     * @param {?} content
-     * @param {?} initContent
-     * @return {?}
-     */
     addFloatGroup(width, height, position, panelType, title, content, initContent) {
         this.host.jqxDockingLayout('addFloatGroup', width, height, position, panelType, title, content, initContent);
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxDockingLayout('destroy');
     }
-    /**
-     * @param {?} layout
-     * @return {?}
-     */
     loadLayout(layout) {
         this.host.jqxDockingLayout('loadLayout', layout);
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxDockingLayout('refresh');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxDockingLayout('render');
     }
-    /**
-     * @return {?}
-     */
     saveLayout() {
         return this.host.jqxDockingLayout('saveLayout');
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('dock', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onDock.emit(eventData); }));
-        this.host.on('floatGroupClosed', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onFloatGroupClosed.emit(eventData); }));
-        this.host.on('float', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onFloat.emit(eventData); }));
-        this.host.on('pin', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onPin.emit(eventData); }));
-        this.host.on('resize', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onResize.emit(eventData); }));
-        this.host.on('unpin', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onUnpin.emit(eventData); }));
+        this.host.on('dock', (eventData) => { this.onDock.emit(eventData); });
+        this.host.on('floatGroupClosed', (eventData) => { this.onFloatGroupClosed.emit(eventData); });
+        this.host.on('float', (eventData) => { this.onFloat.emit(eventData); });
+        this.host.on('pin', (eventData) => { this.onPin.emit(eventData); });
+        this.host.on('resize', (eventData) => { this.onResize.emit(eventData); });
+        this.host.on('unpin', (eventData) => { this.onUnpin.emit(eventData); });
     }
-} //jqxDockingLayoutComponent
-jqxDockingLayoutComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxDockingLayout',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxDockingLayoutComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxDockingLayoutComponent.propDecorators = {
-    attrContextMenu: [{ type: Input, args: ['contextMenu',] }],
-    attrLayout: [{ type: Input, args: ['layout',] }],
-    attrMinGroupHeight: [{ type: Input, args: ['minGroupHeight',] }],
-    attrMinGroupWidth: [{ type: Input, args: ['minGroupWidth',] }],
-    attrResizable: [{ type: Input, args: ['resizable',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onDock: [{ type: Output }],
-    onFloatGroupClosed: [{ type: Output }],
-    onFloat: [{ type: Output }],
-    onPin: [{ type: Output }],
-    onResize: [{ type: Output }],
-    onUnpin: [{ type: Output }]
+}; //jqxDockingLayoutComponent
+__decorate([
+    Input('contextMenu'),
+    __metadata("design:type", Boolean)
+], jqxDockingLayoutComponent.prototype, "attrContextMenu", void 0);
+__decorate([
+    Input('layout'),
+    __metadata("design:type", Array)
+], jqxDockingLayoutComponent.prototype, "attrLayout", void 0);
+__decorate([
+    Input('minGroupHeight'),
+    __metadata("design:type", Object)
+], jqxDockingLayoutComponent.prototype, "attrMinGroupHeight", void 0);
+__decorate([
+    Input('minGroupWidth'),
+    __metadata("design:type", Object)
+], jqxDockingLayoutComponent.prototype, "attrMinGroupWidth", void 0);
+__decorate([
+    Input('resizable'),
+    __metadata("design:type", Boolean)
+], jqxDockingLayoutComponent.prototype, "attrResizable", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxDockingLayoutComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxDockingLayoutComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxDockingLayoutComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxDockingLayoutComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxDockingLayoutComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDockingLayoutComponent.prototype, "onDock", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDockingLayoutComponent.prototype, "onFloatGroupClosed", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDockingLayoutComponent.prototype, "onFloat", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDockingLayoutComponent.prototype, "onPin", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDockingLayoutComponent.prototype, "onResize", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDockingLayoutComponent.prototype, "onUnpin", void 0);
+jqxDockingLayoutComponent = __decorate([
+    Component({
+        selector: 'jqxDockingLayout',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxDockingLayoutComponent);
+
+let jqxDockingLayoutModule = class jqxDockingLayoutModule {
 };
+jqxDockingLayoutModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxDockingLayoutComponent],
+        exports: [jqxDockingLayoutComponent]
+    })
+], jqxDockingLayoutModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxDockingLayoutModule {
-}
-jqxDockingLayoutModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxDockingLayoutComponent],
-                exports: [jqxDockingLayoutComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxDockingLayoutComponent, jqxDockingLayoutModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxdockinglayout.js.map

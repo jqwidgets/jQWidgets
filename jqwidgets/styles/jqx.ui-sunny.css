@@ -164,3 +164,13 @@
 {
     background-image: none;
 }
+/*applied to the timepicker*/
+.jqx-time-picker .jqx-header .jqx-selected-ui-sunny:focus {
+    outline: 1px solid rgb(254, 238, 189);
+}
+.jqx-svg-picker-ui-sunny:focus {
+	border: 1px solid rgb(73, 68, 55) !important;
+}
+.jqx-main-container-ui-sunny {
+	background: none;
+}

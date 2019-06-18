@@ -11,8 +11,8 @@ import { jqxButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbu
 })
 
 export class AppComponent {
-    @ViewChild('myDockingLayout') myDockingLayout: jqxDockingLayoutComponent;
-    @ViewChild('loadLayoutButton') loadLayoutButton: jqxButtonComponent;
+    @ViewChild('myDockingLayout', {static: false}) myDockingLayout: jqxDockingLayoutComponent;
+    @ViewChild('loadLayoutButton', {static: false}) loadLayoutButton: jqxButtonComponent;
 
     savedLayout: any;
 

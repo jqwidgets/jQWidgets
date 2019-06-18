@@ -246,3 +246,16 @@
     margin-left: -4px;
     margin-right: 4px;
  }
+ /*applied to the timepicker*/
+.jqx-label-darkblue {
+	fill: lightblue;
+}
+.jqx-needle-darkblue {
+	fill: rgb(0, 74, 115);
+}
+.jqx-needle-central-circle-darkblue {
+	fill: rgb(0, 74, 115);
+}
+.jqx-time-picker .jqx-header .jqx-selected-darkblue:focus {
+    outline: 1px solid rgba(255, 255, 255, 0.5);
+}

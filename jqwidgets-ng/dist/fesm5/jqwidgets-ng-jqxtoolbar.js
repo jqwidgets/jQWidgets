@@ -6,13 +6,10 @@ import * as jqxdropdownlist from '../../jqwidgets-scripts/jqwidgets/jqxdropdownl
 import * as jqxcombobox from '../../jqwidgets-scripts/jqwidgets/jqxcombobox';
 import * as jqxinput from '../../jqwidgets-scripts/jqwidgets/jqxinput';
 import * as jqxtoolbar from '../../jqwidgets-scripts/jqwidgets/jqxtoolbar';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxToolBarComponent = /** @class */ (function () {
     function jqxToolBarComponent(containerElement) {
         this.autoCreate = true;
@@ -22,31 +19,15 @@ var jqxToolBarComponent = /** @class */ (function () {
         this.onOpen = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxToolBarComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxToolBarComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -66,17 +47,7 @@ var jqxToolBarComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxToolBarComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -90,17 +61,9 @@ var jqxToolBarComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxToolBarComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -108,50 +71,20 @@ var jqxToolBarComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxToolBarComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxToolBarComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxToolBarComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -167,51 +100,18 @@ var jqxToolBarComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxToolBar', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxToolBarComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxToolBarComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxToolBarComponent.prototype.setOptions = function (options) {
         this.host.jqxToolBar('setOptions', options);
     };
     // jqxToolBarComponent properties
-    // jqxToolBarComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.disabled = 
-    // jqxToolBarComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxToolBarComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxToolBar('disabled', arg);
         }
@@ -219,15 +119,7 @@ var jqxToolBarComponent = /** @class */ (function () {
             return this.host.jqxToolBar('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxToolBarComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxToolBar('height', arg);
         }
@@ -235,15 +127,7 @@ var jqxToolBarComponent = /** @class */ (function () {
             return this.host.jqxToolBar('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.initTools = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxToolBarComponent.prototype.initTools = function (arg) {
         if (arg !== undefined) {
             this.host.jqxToolBar('initTools', arg);
         }
@@ -251,15 +135,7 @@ var jqxToolBarComponent = /** @class */ (function () {
             return this.host.jqxToolBar('initTools');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.minimizeWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxToolBarComponent.prototype.minimizeWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxToolBar('minimizeWidth', arg);
         }
@@ -267,15 +143,7 @@ var jqxToolBarComponent = /** @class */ (function () {
             return this.host.jqxToolBar('minimizeWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.minWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxToolBarComponent.prototype.minWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxToolBar('minWidth', arg);
         }
@@ -283,15 +151,7 @@ var jqxToolBarComponent = /** @class */ (function () {
             return this.host.jqxToolBar('minWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.maxWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxToolBarComponent.prototype.maxWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxToolBar('maxWidth', arg);
         }
@@ -299,15 +159,7 @@ var jqxToolBarComponent = /** @class */ (function () {
             return this.host.jqxToolBar('maxWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxToolBarComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxToolBar('rtl', arg);
         }
@@ -315,15 +167,7 @@ var jqxToolBarComponent = /** @class */ (function () {
             return this.host.jqxToolBar('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.tools = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxToolBarComponent.prototype.tools = function (arg) {
         if (arg !== undefined) {
             this.host.jqxToolBar('tools', arg);
         }
@@ -331,15 +175,7 @@ var jqxToolBarComponent = /** @class */ (function () {
             return this.host.jqxToolBar('tools');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxToolBarComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxToolBar('theme', arg);
         }
@@ -347,15 +183,7 @@ var jqxToolBarComponent = /** @class */ (function () {
             return this.host.jqxToolBar('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxToolBarComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxToolBar('width', arg);
         }
@@ -364,160 +192,110 @@ var jqxToolBarComponent = /** @class */ (function () {
         }
     };
     // jqxToolBarComponent functions
-    // jqxToolBarComponent functions
-    /**
-     * @param {?} type
-     * @param {?} position
-     * @param {?} separator
-     * @param {?} menuToolIninitialization
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.addTool = 
-    // jqxToolBarComponent functions
-    /**
-     * @param {?} type
-     * @param {?} position
-     * @param {?} separator
-     * @param {?} menuToolIninitialization
-     * @return {?}
-     */
-    function (type, position, separator, menuToolIninitialization) {
+    jqxToolBarComponent.prototype.addTool = function (type, position, separator, menuToolIninitialization) {
         this.host.jqxToolBar('addTool', type, position, separator, menuToolIninitialization);
     };
-    /**
-     * @param {?} index
-     * @param {?} disable
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.disableTool = /**
-     * @param {?} index
-     * @param {?} disable
-     * @return {?}
-     */
-    function (index, disable) {
+    jqxToolBarComponent.prototype.disableTool = function (index, disable) {
         this.host.jqxToolBar('disableTool', index, disable);
     };
-    /**
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxToolBarComponent.prototype.destroy = function () {
         this.host.jqxToolBar('destroy');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.destroyTool = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxToolBarComponent.prototype.destroyTool = function (index) {
         this.host.jqxToolBar('destroyTool', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.getTools = /**
-     * @return {?}
-     */
-    function () {
+    jqxToolBarComponent.prototype.getTools = function () {
         return this.host.jqxToolBar('getTools');
     };
-    /**
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxToolBarComponent.prototype.render = function () {
         this.host.jqxToolBar('render');
     };
-    /**
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxToolBarComponent.prototype.refresh = function () {
         this.host.jqxToolBar('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxToolBarComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxToolBarComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onClose.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onOpen.emit(eventData); }));
+        this.host.on('close', function (eventData) { _this.onClose.emit(eventData); });
+        this.host.on('open', function (eventData) { _this.onOpen.emit(eventData); });
     };
-    jqxToolBarComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxToolbar',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxToolBarComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxToolBarComponent.propDecorators = {
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrInitTools: [{ type: Input, args: ['initTools',] }],
-        attrMinimizeWidth: [{ type: Input, args: ['minimizeWidth',] }],
-        attrMinWidth: [{ type: Input, args: ['minWidth',] }],
-        attrMaxWidth: [{ type: Input, args: ['maxWidth',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrTools: [{ type: Input, args: ['tools',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onClose: [{ type: Output }],
-        onOpen: [{ type: Output }]
-    };
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxToolBarComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('initTools'),
+        __metadata("design:type", Function)
+    ], jqxToolBarComponent.prototype, "attrInitTools", void 0);
+    __decorate([
+        Input('minimizeWidth'),
+        __metadata("design:type", Number)
+    ], jqxToolBarComponent.prototype, "attrMinimizeWidth", void 0);
+    __decorate([
+        Input('minWidth'),
+        __metadata("design:type", Object)
+    ], jqxToolBarComponent.prototype, "attrMinWidth", void 0);
+    __decorate([
+        Input('maxWidth'),
+        __metadata("design:type", Object)
+    ], jqxToolBarComponent.prototype, "attrMaxWidth", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxToolBarComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('tools'),
+        __metadata("design:type", String)
+    ], jqxToolBarComponent.prototype, "attrTools", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxToolBarComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxToolBarComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxToolBarComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxToolBarComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxToolBarComponent.prototype, "onClose", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxToolBarComponent.prototype, "onOpen", void 0);
+    jqxToolBarComponent = __decorate([
+        Component({
+            selector: 'jqxToolbar',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxToolBarComponent);
     return jqxToolBarComponent;
 }()); //jqxToolBarComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxToolBarModule = /** @class */ (function () {
     function jqxToolBarModule() {
     }
-    jqxToolBarModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxToolBarComponent],
-                    exports: [jqxToolBarComponent]
-                },] }
-    ];
+    jqxToolBarModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxToolBarComponent],
+            exports: [jqxToolBarComponent]
+        })
+    ], jqxToolBarModule);
     return jqxToolBarModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxToolBarComponent, jqxToolBarModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxtoolbar.js.map

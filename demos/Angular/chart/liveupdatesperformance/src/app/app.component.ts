@@ -9,8 +9,8 @@ import { jqxButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbu
 })
 
 export class AppComponent implements OnInit {
-    @ViewChild('myChart') myChart: jqxChartComponent;
-    @ViewChild('myBtn') myBtn: jqxButtonComponent;
+    @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
+    @ViewChild('myBtn', {static: false}) myBtn: jqxButtonComponent;
 
     ngOnInit() {
         this.generateChartData();

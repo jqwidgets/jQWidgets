@@ -11,8 +11,8 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('sortable') sortable: jqxSortableComponent;
-    @ViewChild('eventsContainer') eventsContainer: jqxPanelComponent;
+    @ViewChild('sortable', {static: false}) sortable: jqxSortableComponent;
+    @ViewChild('eventsContainer', {static: false}) eventsContainer: jqxPanelComponent;
 
     ngAfterViewInit() {
         this.loadInfo();

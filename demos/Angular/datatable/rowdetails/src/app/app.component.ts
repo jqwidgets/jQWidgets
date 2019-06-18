@@ -1,5 +1,5 @@
 ﻿import { Component, ViewChild, AfterViewInit } from '@angular/core';  import { jqxDataTableComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxdatatable';  @Component({     selector: 'app-root',     templateUrl: './app.component.html'
- })  export class AppComponent implements AfterViewInit {     @ViewChild('myDataTable') myDataTable: jqxDataTableComponent;      ngAfterViewInit(): void {         this.myDataTable.showDetails(0);
+ })  export class AppComponent implements AfterViewInit {     @ViewChild('myDataTable', {static: false}) myDataTable: jqxDataTableComponent;      ngAfterViewInit(): void {         this.myDataTable.showDetails(0);
     }      source: any =     {   
 		localData: this.generateData(),
         dataType: 'array'     };      dataAdapter: any = new jqx.dataAdapter(this.source);      columns: any[] =     [         { text: 'First Name', dataField: 'firstname', width: 200 },

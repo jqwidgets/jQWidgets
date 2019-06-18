@@ -8,7 +8,7 @@ import { jqxTextAreaComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxTextArea') myTextArea: jqxTextAreaComponent;
+    @ViewChild('jqxTextArea', {static: false}) myTextArea: jqxTextAreaComponent;
 
     ngAfterViewInit(): void {
         this.myTextArea.val(this.text);

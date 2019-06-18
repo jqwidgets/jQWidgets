@@ -1,12 +1,9 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxpopover from '../../jqwidgets-scripts/jqwidgets/jqxpopover';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxPopoverComponent = /** @class */ (function () {
     function jqxPopoverComponent(containerElement) {
         this.autoCreate = true;
@@ -16,31 +13,15 @@ var jqxPopoverComponent = /** @class */ (function () {
         this.onOpen = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxPopoverComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxPopoverComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -60,17 +41,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxPopoverComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -84,17 +55,9 @@ var jqxPopoverComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxPopoverComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -102,50 +65,20 @@ var jqxPopoverComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxPopoverComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxPopoverComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxPopoverComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -162,51 +95,18 @@ var jqxPopoverComponent = /** @class */ (function () {
         this.host = this.widgetObject['host'];
         this.__wireEvents__();
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxPopoverComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxPopoverComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxPopoverComponent.prototype.setOptions = function (options) {
         this.host.jqxPopover('setOptions', options);
     };
     // jqxPopoverComponent properties
-    // jqxPopoverComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.arrowOffsetValue = 
-    // jqxPopoverComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.arrowOffsetValue = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('arrowOffsetValue', arg);
         }
@@ -214,15 +114,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('arrowOffsetValue');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.animationOpenDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.animationOpenDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('animationOpenDelay', arg);
         }
@@ -230,15 +122,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('animationOpenDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.animationCloseDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.animationCloseDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('animationCloseDelay', arg);
         }
@@ -246,15 +130,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('animationCloseDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.autoClose = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.autoClose = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('autoClose', arg);
         }
@@ -262,15 +138,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('autoClose');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.animationType = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.animationType = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('animationType', arg);
         }
@@ -278,15 +146,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('animationType');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('height', arg);
         }
@@ -294,15 +154,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.initContent = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.initContent = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('initContent', arg);
         }
@@ -310,15 +162,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('initContent');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.isModal = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.isModal = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('isModal', arg);
         }
@@ -326,15 +170,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('isModal');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.offset = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.offset = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('offset', arg);
         }
@@ -342,15 +178,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('offset');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.position = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.position = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('position', arg);
         }
@@ -358,15 +186,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('position');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('rtl', arg);
         }
@@ -374,15 +194,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.selector = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.selector = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('selector', arg);
         }
@@ -390,15 +202,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('selector');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.showArrow = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.showArrow = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('showArrow', arg);
         }
@@ -406,15 +210,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('showArrow');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.showCloseButton = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.showCloseButton = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('showCloseButton', arg);
         }
@@ -422,15 +218,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('showCloseButton');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('width', arg);
         }
@@ -438,15 +226,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('width');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.title = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.title = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('title', arg);
         }
@@ -454,15 +234,7 @@ var jqxPopoverComponent = /** @class */ (function () {
             return this.host.jqxPopover('title');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPopoverComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPopover('theme', arg);
         }
@@ -471,122 +243,128 @@ var jqxPopoverComponent = /** @class */ (function () {
         }
     };
     // jqxPopoverComponent functions
-    // jqxPopoverComponent functions
-    /**
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.close = 
-    // jqxPopoverComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxPopoverComponent.prototype.close = function () {
         this.host.jqxPopover('close');
     };
-    /**
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxPopoverComponent.prototype.destroy = function () {
         this.host.jqxPopover('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.open = /**
-     * @return {?}
-     */
-    function () {
+    jqxPopoverComponent.prototype.open = function () {
         this.host.jqxPopover('open');
     };
-    /**
-     * @return {?}
-     */
-    jqxPopoverComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxPopoverComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        setTimeout((/**
-         * @return {?}
-         */
-        function () {
-            _this.host.on('close', (/**
-             * @param {?} eventData
-             * @return {?}
-             */
-            function (eventData) { _this.onClose.emit(eventData); }));
-            _this.host.on('open', (/**
-             * @param {?} eventData
-             * @return {?}
-             */
-            function (eventData) { _this.onOpen.emit(eventData); }));
-        }));
+        setTimeout(function () {
+            _this.host.on('close', function (eventData) { _this.onClose.emit(eventData); });
+            _this.host.on('open', function (eventData) { _this.onOpen.emit(eventData); });
+        });
     };
-    jqxPopoverComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxPopover',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxPopoverComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxPopoverComponent.propDecorators = {
-        attrArrowOffsetValue: [{ type: Input, args: ['arrowOffsetValue',] }],
-        attrAnimationOpenDelay: [{ type: Input, args: ['animationOpenDelay',] }],
-        attrAnimationCloseDelay: [{ type: Input, args: ['animationCloseDelay',] }],
-        attrAutoClose: [{ type: Input, args: ['autoClose',] }],
-        attrAnimationType: [{ type: Input, args: ['animationType',] }],
-        attrInitContent: [{ type: Input, args: ['initContent',] }],
-        attrIsModal: [{ type: Input, args: ['isModal',] }],
-        attrOffset: [{ type: Input, args: ['offset',] }],
-        attrPosition: [{ type: Input, args: ['position',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrSelector: [{ type: Input, args: ['selector',] }],
-        attrShowArrow: [{ type: Input, args: ['showArrow',] }],
-        attrShowCloseButton: [{ type: Input, args: ['showCloseButton',] }],
-        attrTitle: [{ type: Input, args: ['title',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onClose: [{ type: Output }],
-        onOpen: [{ type: Output }]
-    };
+    __decorate([
+        Input('arrowOffsetValue'),
+        __metadata("design:type", Number)
+    ], jqxPopoverComponent.prototype, "attrArrowOffsetValue", void 0);
+    __decorate([
+        Input('animationOpenDelay'),
+        __metadata("design:type", Object)
+    ], jqxPopoverComponent.prototype, "attrAnimationOpenDelay", void 0);
+    __decorate([
+        Input('animationCloseDelay'),
+        __metadata("design:type", Object)
+    ], jqxPopoverComponent.prototype, "attrAnimationCloseDelay", void 0);
+    __decorate([
+        Input('autoClose'),
+        __metadata("design:type", Boolean)
+    ], jqxPopoverComponent.prototype, "attrAutoClose", void 0);
+    __decorate([
+        Input('animationType'),
+        __metadata("design:type", String)
+    ], jqxPopoverComponent.prototype, "attrAnimationType", void 0);
+    __decorate([
+        Input('initContent'),
+        __metadata("design:type", Function)
+    ], jqxPopoverComponent.prototype, "attrInitContent", void 0);
+    __decorate([
+        Input('isModal'),
+        __metadata("design:type", Boolean)
+    ], jqxPopoverComponent.prototype, "attrIsModal", void 0);
+    __decorate([
+        Input('offset'),
+        __metadata("design:type", Object)
+    ], jqxPopoverComponent.prototype, "attrOffset", void 0);
+    __decorate([
+        Input('position'),
+        __metadata("design:type", String)
+    ], jqxPopoverComponent.prototype, "attrPosition", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxPopoverComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('selector'),
+        __metadata("design:type", String)
+    ], jqxPopoverComponent.prototype, "attrSelector", void 0);
+    __decorate([
+        Input('showArrow'),
+        __metadata("design:type", Boolean)
+    ], jqxPopoverComponent.prototype, "attrShowArrow", void 0);
+    __decorate([
+        Input('showCloseButton'),
+        __metadata("design:type", Boolean)
+    ], jqxPopoverComponent.prototype, "attrShowCloseButton", void 0);
+    __decorate([
+        Input('title'),
+        __metadata("design:type", Object)
+    ], jqxPopoverComponent.prototype, "attrTitle", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxPopoverComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxPopoverComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxPopoverComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxPopoverComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxPopoverComponent.prototype, "onClose", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxPopoverComponent.prototype, "onOpen", void 0);
+    jqxPopoverComponent = __decorate([
+        Component({
+            selector: 'jqxPopover',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxPopoverComponent);
     return jqxPopoverComponent;
 }()); //jqxPopoverComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxPopoverModule = /** @class */ (function () {
     function jqxPopoverModule() {
     }
-    jqxPopoverModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxPopoverComponent],
-                    exports: [jqxPopoverComponent]
-                },] }
-    ];
+    jqxPopoverModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxPopoverComponent],
+            exports: [jqxPopoverComponent]
+        })
+    ], jqxPopoverModule);
     return jqxPopoverModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxPopoverComponent, jqxPopoverModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxpopover.js.map

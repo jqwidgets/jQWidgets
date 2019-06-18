@@ -8,7 +8,7 @@ import { jqxCalendarComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('myCalendar') myCalendar: jqxCalendarComponent;
+    @ViewChild('myCalendar', {static: false}) myCalendar: jqxCalendarComponent;
 
     availableCultures: string[] =
     [   

@@ -6,7 +6,7 @@
 })
 
 export class AppComponent {
-	  @ViewChild('eventText') eventText: ElementRef;
+	  @ViewChild('eventText', {static: false}) eventText: ElementRef;
 
     sampleData: any[] = [
         { Day: 'Monday', Keith: 30, Erica: 15, George: 25 },

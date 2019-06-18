@@ -3,13 +3,10 @@ import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxribbon from '../../jqwidgets-scripts/jqwidgets/jqxribbon';
 import * as jqxmenu from '../../jqwidgets-scripts/jqwidgets/jqxmenu';
 import * as jqxlayout from '../../jqwidgets-scripts/jqwidgets/jqxlayout';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxLayoutComponent = /** @class */ (function () {
     function jqxLayoutComponent(containerElement) {
         this.autoCreate = true;
@@ -20,31 +17,15 @@ var jqxLayoutComponent = /** @class */ (function () {
         this.onUnpin = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxLayoutComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxLayoutComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -64,17 +45,7 @@ var jqxLayoutComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxLayoutComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -88,17 +59,9 @@ var jqxLayoutComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxLayoutComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -106,50 +69,20 @@ var jqxLayoutComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxLayoutComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxLayoutComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxLayoutComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -165,51 +98,18 @@ var jqxLayoutComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxLayout', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxLayoutComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxLayoutComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxLayoutComponent.prototype.setOptions = function (options) {
         this.host.jqxLayout('setOptions', options);
     };
     // jqxLayoutComponent properties
-    // jqxLayoutComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.contextMenu = 
-    // jqxLayoutComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLayoutComponent.prototype.contextMenu = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('contextMenu', arg);
         }
@@ -217,15 +117,7 @@ var jqxLayoutComponent = /** @class */ (function () {
             return this.host.jqxLayout('contextMenu');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLayoutComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('height', arg);
         }
@@ -233,15 +125,7 @@ var jqxLayoutComponent = /** @class */ (function () {
             return this.host.jqxLayout('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.layout = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLayoutComponent.prototype.layout = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('layout', arg);
         }
@@ -249,15 +133,7 @@ var jqxLayoutComponent = /** @class */ (function () {
             return this.host.jqxLayout('layout');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.minGroupHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLayoutComponent.prototype.minGroupHeight = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('minGroupHeight', arg);
         }
@@ -265,15 +141,7 @@ var jqxLayoutComponent = /** @class */ (function () {
             return this.host.jqxLayout('minGroupHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.minGroupWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLayoutComponent.prototype.minGroupWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('minGroupWidth', arg);
         }
@@ -281,15 +149,7 @@ var jqxLayoutComponent = /** @class */ (function () {
             return this.host.jqxLayout('minGroupWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.resizable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLayoutComponent.prototype.resizable = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('resizable', arg);
         }
@@ -297,15 +157,7 @@ var jqxLayoutComponent = /** @class */ (function () {
             return this.host.jqxLayout('resizable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLayoutComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('rtl', arg);
         }
@@ -313,15 +165,7 @@ var jqxLayoutComponent = /** @class */ (function () {
             return this.host.jqxLayout('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLayoutComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('theme', arg);
         }
@@ -329,15 +173,7 @@ var jqxLayoutComponent = /** @class */ (function () {
             return this.host.jqxLayout('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxLayoutComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxLayout('width', arg);
         }
@@ -346,135 +182,105 @@ var jqxLayoutComponent = /** @class */ (function () {
         }
     };
     // jqxLayoutComponent functions
-    // jqxLayoutComponent functions
-    /**
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.destroy = 
-    // jqxLayoutComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxLayoutComponent.prototype.destroy = function () {
         this.host.jqxLayout('destroy');
     };
-    /**
-     * @param {?} Layout
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.loadLayout = /**
-     * @param {?} Layout
-     * @return {?}
-     */
-    function (Layout) {
+    jqxLayoutComponent.prototype.loadLayout = function (Layout) {
         this.host.jqxLayout('loadLayout', Layout);
     };
-    /**
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxLayoutComponent.prototype.refresh = function () {
         this.host.jqxLayout('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxLayoutComponent.prototype.render = function () {
         this.host.jqxLayout('render');
     };
-    /**
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.saveLayout = /**
-     * @return {?}
-     */
-    function () {
+    jqxLayoutComponent.prototype.saveLayout = function () {
         return this.host.jqxLayout('saveLayout');
     };
-    /**
-     * @return {?}
-     */
-    jqxLayoutComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxLayoutComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('pin', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onPin.emit(eventData); }));
-        this.host.on('resize', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onResize.emit(eventData); }));
-        this.host.on('unpin', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onUnpin.emit(eventData); }));
+        this.host.on('pin', function (eventData) { _this.onPin.emit(eventData); });
+        this.host.on('resize', function (eventData) { _this.onResize.emit(eventData); });
+        this.host.on('unpin', function (eventData) { _this.onUnpin.emit(eventData); });
     };
-    jqxLayoutComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxLayout',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxLayoutComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxLayoutComponent.propDecorators = {
-        attrContextMenu: [{ type: Input, args: ['contextMenu',] }],
-        attrLayout: [{ type: Input, args: ['layout',] }],
-        attrMinGroupHeight: [{ type: Input, args: ['minGroupHeight',] }],
-        attrMinGroupWidth: [{ type: Input, args: ['minGroupWidth',] }],
-        attrResizable: [{ type: Input, args: ['resizable',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onPin: [{ type: Output }],
-        onResize: [{ type: Output }],
-        onUnpin: [{ type: Output }]
-    };
+    __decorate([
+        Input('contextMenu'),
+        __metadata("design:type", Boolean)
+    ], jqxLayoutComponent.prototype, "attrContextMenu", void 0);
+    __decorate([
+        Input('layout'),
+        __metadata("design:type", Array)
+    ], jqxLayoutComponent.prototype, "attrLayout", void 0);
+    __decorate([
+        Input('minGroupHeight'),
+        __metadata("design:type", Object)
+    ], jqxLayoutComponent.prototype, "attrMinGroupHeight", void 0);
+    __decorate([
+        Input('minGroupWidth'),
+        __metadata("design:type", Object)
+    ], jqxLayoutComponent.prototype, "attrMinGroupWidth", void 0);
+    __decorate([
+        Input('resizable'),
+        __metadata("design:type", Boolean)
+    ], jqxLayoutComponent.prototype, "attrResizable", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxLayoutComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxLayoutComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxLayoutComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxLayoutComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxLayoutComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxLayoutComponent.prototype, "onPin", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxLayoutComponent.prototype, "onResize", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxLayoutComponent.prototype, "onUnpin", void 0);
+    jqxLayoutComponent = __decorate([
+        Component({
+            selector: 'jqxLayout',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxLayoutComponent);
     return jqxLayoutComponent;
 }()); //jqxLayoutComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxLayoutModule = /** @class */ (function () {
     function jqxLayoutModule() {
     }
-    jqxLayoutModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxLayoutComponent],
-                    exports: [jqxLayoutComponent]
-                },] }
-    ];
+    jqxLayoutModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxLayoutComponent],
+            exports: [jqxLayoutComponent]
+        })
+    ], jqxLayoutModule);
     return jqxLayoutModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxLayoutComponent, jqxLayoutModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxlayout.js.map

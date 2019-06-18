@@ -8,7 +8,7 @@ import { jqxTreeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtree
 })
 
 export class AppComponent  {
-    @ViewChild('myTree') myTree: jqxTreeComponent;
+    @ViewChild('myTree', {static: false}) myTree: jqxTreeComponent;
     
     // Create jqxTree
     source: any[] = [

@@ -8,8 +8,8 @@ import { jqxDropDownListComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myDropDownList') myDropDownList: jqxDropDownListComponent;
-    @ViewChild('select') select: ElementRef;
+    @ViewChild('myDropDownList', {static: false}) myDropDownList: jqxDropDownListComponent;
+    @ViewChild('select', {static: false}) select: ElementRef;
 
     updating: boolean = false;
     selectElement: HTMLSelectElement;

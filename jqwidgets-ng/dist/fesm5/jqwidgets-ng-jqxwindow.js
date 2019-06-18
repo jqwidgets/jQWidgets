@@ -1,13 +1,10 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxwindow from '../../jqwidgets-scripts/jqwidgets/jqxwindow';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxWindowComponent = /** @class */ (function () {
     function jqxWindowComponent(containerElement) {
         this.autoCreate = true;
@@ -23,31 +20,15 @@ var jqxWindowComponent = /** @class */ (function () {
         this.onResized = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxWindowComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -67,17 +48,7 @@ var jqxWindowComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxWindowComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -91,17 +62,9 @@ var jqxWindowComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxWindowComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -109,50 +72,20 @@ var jqxWindowComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxWindowComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxWindowComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxWindowComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -168,51 +101,18 @@ var jqxWindowComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxWindow', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxWindowComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxWindowComponent.prototype.setOptions = function (options) {
         this.host.jqxWindow('setOptions', options);
     };
     // jqxWindowComponent properties
-    // jqxWindowComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.autoOpen = 
-    // jqxWindowComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.autoOpen = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('autoOpen', arg);
         }
@@ -220,15 +120,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('autoOpen');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.animationType = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.animationType = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('animationType', arg);
         }
@@ -236,15 +128,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('animationType');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.collapsed = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.collapsed = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('collapsed', arg);
         }
@@ -252,15 +136,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('collapsed');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.collapseAnimationDuration = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.collapseAnimationDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('collapseAnimationDuration', arg);
         }
@@ -268,15 +144,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('collapseAnimationDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.content = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.content = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('content', arg);
         }
@@ -284,15 +152,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('content');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.closeAnimationDuration = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.closeAnimationDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('closeAnimationDuration', arg);
         }
@@ -300,15 +160,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('closeAnimationDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.closeButtonSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.closeButtonSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('closeButtonSize', arg);
         }
@@ -316,15 +168,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('closeButtonSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.closeButtonAction = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.closeButtonAction = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('closeButtonAction', arg);
         }
@@ -332,15 +176,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('closeButtonAction');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.cancelButton = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.cancelButton = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('cancelButton', arg);
         }
@@ -348,15 +184,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('cancelButton');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.dragArea = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.dragArea = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('dragArea', arg);
         }
@@ -364,15 +192,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('dragArea');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.draggable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.draggable = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('draggable', arg);
         }
@@ -380,15 +200,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('draggable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('disabled', arg);
         }
@@ -396,15 +208,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('height', arg);
         }
@@ -412,15 +216,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.initContent = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.initContent = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('initContent', arg);
         }
@@ -428,15 +224,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('initContent');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.isModal = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.isModal = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('isModal', arg);
         }
@@ -444,15 +232,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('isModal');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.keyboardCloseKey = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.keyboardCloseKey = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('keyboardCloseKey', arg);
         }
@@ -460,15 +240,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('keyboardCloseKey');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.keyboardNavigation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.keyboardNavigation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('keyboardNavigation', arg);
         }
@@ -476,15 +248,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('keyboardNavigation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.minHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.minHeight = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('minHeight', arg);
         }
@@ -492,15 +256,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('minHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.maxHeight = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.maxHeight = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('maxHeight', arg);
         }
@@ -508,15 +264,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('maxHeight');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.minWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.minWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('minWidth', arg);
         }
@@ -524,15 +272,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('minWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.maxWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.maxWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('maxWidth', arg);
         }
@@ -540,15 +280,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('maxWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.modalOpacity = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.modalOpacity = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('modalOpacity', arg);
         }
@@ -556,15 +288,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('modalOpacity');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.modalZIndex = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.modalZIndex = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('modalZIndex', arg);
         }
@@ -572,15 +296,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('modalZIndex');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.modalBackgroundZIndex = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.modalBackgroundZIndex = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('modalBackgroundZIndex', arg);
         }
@@ -588,15 +304,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('modalBackgroundZIndex');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.okButton = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.okButton = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('okButton', arg);
         }
@@ -604,15 +312,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('okButton');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.position = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.position = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('position', arg);
         }
@@ -620,15 +320,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('position');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('rtl', arg);
         }
@@ -636,15 +328,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.resizable = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.resizable = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('resizable', arg);
         }
@@ -652,15 +336,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('resizable');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.showAnimationDuration = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.showAnimationDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('showAnimationDuration', arg);
         }
@@ -668,15 +344,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('showAnimationDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.showCloseButton = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.showCloseButton = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('showCloseButton', arg);
         }
@@ -684,15 +352,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('showCloseButton');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.showCollapseButton = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.showCollapseButton = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('showCollapseButton', arg);
         }
@@ -700,15 +360,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('showCollapseButton');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('theme', arg);
         }
@@ -716,15 +368,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.title = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.title = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('title', arg);
         }
@@ -732,15 +376,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('title');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('width', arg);
         }
@@ -748,15 +384,7 @@ var jqxWindowComponent = /** @class */ (function () {
             return this.host.jqxWindow('width');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.zIndex = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxWindowComponent.prototype.zIndex = function (arg) {
         if (arg !== undefined) {
             this.host.jqxWindow('zIndex', arg);
         }
@@ -765,300 +393,267 @@ var jqxWindowComponent = /** @class */ (function () {
         }
     };
     // jqxWindowComponent functions
-    // jqxWindowComponent functions
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.bringToFront = 
-    // jqxWindowComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.bringToFront = function () {
         this.host.jqxWindow('bringToFront');
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.close = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.close = function () {
         this.host.jqxWindow('close');
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.collapse = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.collapse = function () {
         this.host.jqxWindow('collapse');
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.closeAll = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.closeAll = function () {
         this.host.jqxWindow('closeAll');
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.disable = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.disable = function () {
         this.host.jqxWindow('disable');
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.destroy = function () {
         this.host.jqxWindow('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.enable = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.enable = function () {
         this.host.jqxWindow('enable');
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.expand = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.expand = function () {
         this.host.jqxWindow('expand');
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.focus = function () {
         this.host.jqxWindow('focus');
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.isOpen = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.isOpen = function () {
         return this.host.jqxWindow('isOpen');
     };
-    /**
-     * @param {?} top
-     * @param {?} left
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.move = /**
-     * @param {?} top
-     * @param {?} left
-     * @return {?}
-     */
-    function (top, left) {
+    jqxWindowComponent.prototype.move = function (top, left) {
         this.host.jqxWindow('move', top, left);
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.open = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.open = function () {
         this.host.jqxWindow('open');
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.hide = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.hide = function () {
         this.host.jqxWindow('hide');
     };
-    /**
-     * @param {?} top
-     * @param {?} left
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.resize = /**
-     * @param {?} top
-     * @param {?} left
-     * @return {?}
-     */
-    function (top, left) {
+    jqxWindowComponent.prototype.resize = function (top, left) {
         this.host.jqxWindow('resize', top, left);
     };
-    /**
-     * @param {?} title
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.setTitle = /**
-     * @param {?} title
-     * @return {?}
-     */
-    function (title) {
+    jqxWindowComponent.prototype.setTitle = function (title) {
         this.host.jqxWindow('setTitle', title);
     };
-    /**
-     * @param {?} content
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.setContent = /**
-     * @param {?} content
-     * @return {?}
-     */
-    function (content) {
+    jqxWindowComponent.prototype.setContent = function (content) {
         this.host.jqxWindow('setContent', content);
     };
-    /**
-     * @return {?}
-     */
-    jqxWindowComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxWindowComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onClose.emit(eventData); }));
-        this.host.on('collapse', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCollapse.emit(eventData); }));
-        this.host.on('expand', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onExpand.emit(eventData); }));
-        this.host.on('moving', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onMoving.emit(eventData); }));
-        this.host.on('moved', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onMoved.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onOpen.emit(eventData); }));
-        this.host.on('resizing', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onResizing.emit(eventData); }));
-        this.host.on('resized', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onResized.emit(eventData); }));
+        this.host.on('close', function (eventData) { _this.onClose.emit(eventData); });
+        this.host.on('collapse', function (eventData) { _this.onCollapse.emit(eventData); });
+        this.host.on('expand', function (eventData) { _this.onExpand.emit(eventData); });
+        this.host.on('moving', function (eventData) { _this.onMoving.emit(eventData); });
+        this.host.on('moved', function (eventData) { _this.onMoved.emit(eventData); });
+        this.host.on('open', function (eventData) { _this.onOpen.emit(eventData); });
+        this.host.on('resizing', function (eventData) { _this.onResizing.emit(eventData); });
+        this.host.on('resized', function (eventData) { _this.onResized.emit(eventData); });
     };
-    jqxWindowComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxWindow',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxWindowComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxWindowComponent.propDecorators = {
-        attrAutoOpen: [{ type: Input, args: ['autoOpen',] }],
-        attrAnimationType: [{ type: Input, args: ['animationType',] }],
-        attrCollapsed: [{ type: Input, args: ['collapsed',] }],
-        attrCollapseAnimationDuration: [{ type: Input, args: ['collapseAnimationDuration',] }],
-        attrContent: [{ type: Input, args: ['content',] }],
-        attrCloseAnimationDuration: [{ type: Input, args: ['closeAnimationDuration',] }],
-        attrCloseButtonSize: [{ type: Input, args: ['closeButtonSize',] }],
-        attrCloseButtonAction: [{ type: Input, args: ['closeButtonAction',] }],
-        attrCancelButton: [{ type: Input, args: ['cancelButton',] }],
-        attrDragArea: [{ type: Input, args: ['dragArea',] }],
-        attrDraggable: [{ type: Input, args: ['draggable',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrInitContent: [{ type: Input, args: ['initContent',] }],
-        attrIsModal: [{ type: Input, args: ['isModal',] }],
-        attrKeyboardCloseKey: [{ type: Input, args: ['keyboardCloseKey',] }],
-        attrKeyboardNavigation: [{ type: Input, args: ['keyboardNavigation',] }],
-        attrMinHeight: [{ type: Input, args: ['minHeight',] }],
-        attrMaxHeight: [{ type: Input, args: ['maxHeight',] }],
-        attrMinWidth: [{ type: Input, args: ['minWidth',] }],
-        attrMaxWidth: [{ type: Input, args: ['maxWidth',] }],
-        attrModalOpacity: [{ type: Input, args: ['modalOpacity',] }],
-        attrModalZIndex: [{ type: Input, args: ['modalZIndex',] }],
-        attrModalBackgroundZIndex: [{ type: Input, args: ['modalBackgroundZIndex',] }],
-        attrOkButton: [{ type: Input, args: ['okButton',] }],
-        attrPosition: [{ type: Input, args: ['position',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrResizable: [{ type: Input, args: ['resizable',] }],
-        attrShowAnimationDuration: [{ type: Input, args: ['showAnimationDuration',] }],
-        attrShowCloseButton: [{ type: Input, args: ['showCloseButton',] }],
-        attrShowCollapseButton: [{ type: Input, args: ['showCollapseButton',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrTitle: [{ type: Input, args: ['title',] }],
-        attrZIndex: [{ type: Input, args: ['zIndex',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onClose: [{ type: Output }],
-        onCollapse: [{ type: Output }],
-        onExpand: [{ type: Output }],
-        onMoving: [{ type: Output }],
-        onMoved: [{ type: Output }],
-        onOpen: [{ type: Output }],
-        onResizing: [{ type: Output }],
-        onResized: [{ type: Output }]
-    };
+    __decorate([
+        Input('autoOpen'),
+        __metadata("design:type", Boolean)
+    ], jqxWindowComponent.prototype, "attrAutoOpen", void 0);
+    __decorate([
+        Input('animationType'),
+        __metadata("design:type", String)
+    ], jqxWindowComponent.prototype, "attrAnimationType", void 0);
+    __decorate([
+        Input('collapsed'),
+        __metadata("design:type", Boolean)
+    ], jqxWindowComponent.prototype, "attrCollapsed", void 0);
+    __decorate([
+        Input('collapseAnimationDuration'),
+        __metadata("design:type", Number)
+    ], jqxWindowComponent.prototype, "attrCollapseAnimationDuration", void 0);
+    __decorate([
+        Input('content'),
+        __metadata("design:type", String)
+    ], jqxWindowComponent.prototype, "attrContent", void 0);
+    __decorate([
+        Input('closeAnimationDuration'),
+        __metadata("design:type", Number)
+    ], jqxWindowComponent.prototype, "attrCloseAnimationDuration", void 0);
+    __decorate([
+        Input('closeButtonSize'),
+        __metadata("design:type", Number)
+    ], jqxWindowComponent.prototype, "attrCloseButtonSize", void 0);
+    __decorate([
+        Input('closeButtonAction'),
+        __metadata("design:type", String)
+    ], jqxWindowComponent.prototype, "attrCloseButtonAction", void 0);
+    __decorate([
+        Input('cancelButton'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrCancelButton", void 0);
+    __decorate([
+        Input('dragArea'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrDragArea", void 0);
+    __decorate([
+        Input('draggable'),
+        __metadata("design:type", Boolean)
+    ], jqxWindowComponent.prototype, "attrDraggable", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxWindowComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('initContent'),
+        __metadata("design:type", Function)
+    ], jqxWindowComponent.prototype, "attrInitContent", void 0);
+    __decorate([
+        Input('isModal'),
+        __metadata("design:type", Boolean)
+    ], jqxWindowComponent.prototype, "attrIsModal", void 0);
+    __decorate([
+        Input('keyboardCloseKey'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrKeyboardCloseKey", void 0);
+    __decorate([
+        Input('keyboardNavigation'),
+        __metadata("design:type", Boolean)
+    ], jqxWindowComponent.prototype, "attrKeyboardNavigation", void 0);
+    __decorate([
+        Input('minHeight'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrMinHeight", void 0);
+    __decorate([
+        Input('maxHeight'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrMaxHeight", void 0);
+    __decorate([
+        Input('minWidth'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrMinWidth", void 0);
+    __decorate([
+        Input('maxWidth'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrMaxWidth", void 0);
+    __decorate([
+        Input('modalOpacity'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrModalOpacity", void 0);
+    __decorate([
+        Input('modalZIndex'),
+        __metadata("design:type", Number)
+    ], jqxWindowComponent.prototype, "attrModalZIndex", void 0);
+    __decorate([
+        Input('modalBackgroundZIndex'),
+        __metadata("design:type", Number)
+    ], jqxWindowComponent.prototype, "attrModalBackgroundZIndex", void 0);
+    __decorate([
+        Input('okButton'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrOkButton", void 0);
+    __decorate([
+        Input('position'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrPosition", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxWindowComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('resizable'),
+        __metadata("design:type", Boolean)
+    ], jqxWindowComponent.prototype, "attrResizable", void 0);
+    __decorate([
+        Input('showAnimationDuration'),
+        __metadata("design:type", Number)
+    ], jqxWindowComponent.prototype, "attrShowAnimationDuration", void 0);
+    __decorate([
+        Input('showCloseButton'),
+        __metadata("design:type", Boolean)
+    ], jqxWindowComponent.prototype, "attrShowCloseButton", void 0);
+    __decorate([
+        Input('showCollapseButton'),
+        __metadata("design:type", Boolean)
+    ], jqxWindowComponent.prototype, "attrShowCollapseButton", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxWindowComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('title'),
+        __metadata("design:type", String)
+    ], jqxWindowComponent.prototype, "attrTitle", void 0);
+    __decorate([
+        Input('zIndex'),
+        __metadata("design:type", Number)
+    ], jqxWindowComponent.prototype, "attrZIndex", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxWindowComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "onClose", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "onCollapse", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "onExpand", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "onMoving", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "onMoved", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "onOpen", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "onResizing", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxWindowComponent.prototype, "onResized", void 0);
+    jqxWindowComponent = __decorate([
+        Component({
+            selector: 'jqxWindow',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxWindowComponent);
     return jqxWindowComponent;
 }()); //jqxWindowComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxWindowModule = /** @class */ (function () {
     function jqxWindowModule() {
     }
-    jqxWindowModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxWindowComponent],
-                    exports: [jqxWindowComponent]
-                },] }
-    ];
+    jqxWindowModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxWindowComponent],
+            exports: [jqxWindowComponent]
+        })
+    ], jqxWindowModule);
     return jqxWindowModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxWindowComponent, jqxWindowModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxwindow.js.map

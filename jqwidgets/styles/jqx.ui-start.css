@@ -211,7 +211,7 @@
 .jqx-scheduler-month-cell-ui-start, .jqx-scheduler-time-column-ui-start, .jqx-scheduler-toolbar-ui-start
 {
     background: #4297d7 !important;
-    color: #fff  !important;
+    color: #fff !important;
 }
 .jqx-widget-ui-start .jqx-scheduler-middle-cell-ui-start, .jqx-scheduler-middle-cell-ui-start {
     border-bottom-color: #4297d7 !important;
@@ -219,4 +219,44 @@
 .jqx-docking-layout-group-floating-ui-start .jqx-window-header-ui-start
 {
     background-image: none;
+}
+/*applied to the timepicker*/
+.jqx-time-picker .jqx-header .jqx-hour-container-ui-start:focus {
+    outline: 1px solid white !important;
+}
+.jqx-time-picker .jqx-header .jqx-minute-container-ui-start:focus {
+    outline: 1px solid white !important;
+}
+.jqx-time-picker .jqx-header .jqx-am-container-ui-start:focus {
+    outline: 1px solid white !important;
+}
+.jqx-time-picker .jqx-header .jqx-pm-container-ui-start:focus {
+    outline: 1px solid white !important;
+}
+.jqx-label-ui-start {
+	fill: white;
+}
+.jqx-label-ui-start.jqx-selected {
+	fill: black !important;
+}
+.jqx-needle-ui-start {
+	fill: rgb(0, 120, 174);
+}
+.jqx-needle-central-circle-ui-start:first-of-type {
+	fill: rgb(0, 120, 174);
+	stroke: rgb(0, 120, 174);
+}
+.jqx-needle-central-circle-ui-start {
+	fill: white;
+	stroke: rgb(33, 145, 192);
+}
+.jqx-container-ui-start {
+	border-radius: inherit;
+}
+.jqx-header-ui-start {
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+.jqx-svg-picker-ui-start {
+	background-image: linear-gradient(rgb(0, 120, 174) 5%, rgb(119, 213, 247) 25%, rgb(186, 233, 255), rgb(119, 213, 247) 45%, rgb(0, 120, 174) 95%);
 }

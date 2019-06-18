@@ -9,9 +9,9 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('jqxNotification') jqxNotification: jqxNotificationComponent;
-    @ViewChild('eventsPanel') eventsPanel: jqxPanelComponent;
-    @ViewChild('messagePanel') messagePanel: ElementRef;
+    @ViewChild('jqxNotification', {static: false}) jqxNotification: jqxNotificationComponent;
+    @ViewChild('eventsPanel', {static: false}) eventsPanel: jqxPanelComponent;
+    @ViewChild('messagePanel', {static: false}) messagePanel: ElementRef;
 
     writeEventType(event: any): void {
         this.eventsPanel.append(event.type + "<br />");

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id='Description'>This demo illustrates the basic functionality of the Heatmap chart.</title>
+    <meta name="keywords" content="jQuery Heatmap, Heatmap, Basic Functionality" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxheatmap.js"></script>
+
+    <style>
+        #heatmap {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var xAxis = {
+                labels: ['2015', '2016', '2017', '2018']
+            };
+            var yAxis = {
+                labels: ['May', 'June', 'July', 'August']
+            };
+
+            var data = [
+                [10, 17, 19, 28],
+                [13, 16, 20, 27],
+                [6, 18, 22, 22],
+                [1, 21, 14, 30]
+            ];
+
+            $("#heatmap").jqxHeatMap({
+                xAxis: xAxis,
+                yAxis: yAxis,
+                source: data,
+                title: 'Number of sunny days during summer months',
+                paletteSettings: {
+                    palette: [
+                        { value: 0, color: '#FCF4A3' },
+                        { value: 31, color: '#F9A602' },
+                    ],
+                },
+            });
+        });
+    </script>
+
+</head>
+
+<body class='default'>
+    <div id="heatmap"></div>
+</body>
+
+</html>

@@ -8,7 +8,7 @@ import { jqxPopoverComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxp
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('employees') employees: ElementRef;
+    @ViewChild('employees', {static: false}) employees: ElementRef;
     
     ngAfterViewInit() {
         let data = new Array();

@@ -1,0 +1,14 @@
+import * as tslib_1 from "tslib";
+import { NgModule } from '@angular/core';
+import { jqxTimePickerComponent } from './angular_jqxtimepicker';
+let jqxTimePickerModule = class jqxTimePickerModule {
+};
+jqxTimePickerModule = tslib_1.__decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxTimePickerComponent],
+        exports: [jqxTimePickerComponent]
+    })
+], jqxTimePickerModule);
+export { jqxTimePickerModule };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhcl9qcXh0aW1lcGlja2VyLm1vZHVsZS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2pxd2lkZ2V0cy1uZy9qcXh0aW1lcGlja2VyLyIsInNvdXJjZXMiOlsiYW5ndWxhcl9qcXh0aW1lcGlja2VyLm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUV6QyxPQUFPLEVBQUUsc0JBQXNCLEVBQUUsTUFBTSx5QkFBeUIsQ0FBQztBQVNqRSxJQUFhLG1CQUFtQixHQUFoQyxNQUFhLG1CQUFtQjtDQUFJLENBQUE7QUFBdkIsbUJBQW1CO0lBUC9CLFFBQVEsQ0FBQztRQUNSLE9BQU8sRUFBRSxFQUVSO1FBQ0QsWUFBWSxFQUFFLENBQUMsc0JBQXNCLENBQUM7UUFDdEMsT0FBTyxFQUFFLENBQUMsc0JBQXNCLENBQUM7S0FDbEMsQ0FBQztHQUNXLG1CQUFtQixDQUFJO1NBQXZCLG1CQUFtQiIsInNvdXJjZXNDb250ZW50IjpbIlxuaW1wb3J0IHsgTmdNb2R1bGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcblxuaW1wb3J0IHsganF4VGltZVBpY2tlckNvbXBvbmVudCB9IGZyb20gJy4vYW5ndWxhcl9qcXh0aW1lcGlja2VyJztcblxuQE5nTW9kdWxlKHtcbiAgaW1wb3J0czogW1xuICBcbiAgXSxcbiAgZGVjbGFyYXRpb25zOiBbanF4VGltZVBpY2tlckNvbXBvbmVudF0sXG4gIGV4cG9ydHM6IFtqcXhUaW1lUGlja2VyQ29tcG9uZW50XVxufSlcbmV4cG9ydCBjbGFzcyBqcXhUaW1lUGlja2VyTW9kdWxlIHsgfVxuXG4iXX0=

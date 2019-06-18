@@ -10,31 +10,19 @@ import * as jqxeditor from '../../jqwidgets-scripts/jqwidgets/jqxeditor';
 import * as jqxcheckbox from '../../jqwidgets-scripts/jqwidgets/jqxcheckbox';
 import * as jqxtooltip from '../../jqwidgets-scripts/jqwidgets/jqxtooltip';
 import * as jqxcolorpicker from '../../jqwidgets-scripts/jqwidgets/jqxcolorpicker';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { forwardRef, EventEmitter, Input, Output, Component, ChangeDetectionStrategy, ElementRef, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-const noop = (/**
- * @return {?}
- */
-() => { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+const noop = () => { };
+const ɵ0 = noop;
 const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    () => jqxEditorComponent)),
+    useExisting: forwardRef(() => jqxEditorComponent),
     multi: true
 };
-class jqxEditorComponent {
-    /**
-     * @param {?} containerElement
-     */
+let jqxEditorComponent = class jqxEditorComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['createCommand', 'disabled', 'editable', 'height', 'lineBreak', 'localization', 'pasteMode', 'rtl', 'stylesheets', 'theme', 'toolbarPosition', 'tools', 'width'];
@@ -44,25 +32,16 @@ class jqxEditorComponent {
         this.onChange = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -82,11 +61,6 @@ class jqxEditorComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -101,14 +75,9 @@ class jqxEditorComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -116,34 +85,18 @@ class jqxEditorComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -161,55 +114,28 @@ class jqxEditorComponent {
         this.host = this.widgetObject['host'];
         this.__wireEvents__();
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
     writeValue(value) {
         if (this.widgetObject) {
             this.onChangeCallback(this.host.val());
         }
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnChange(fn) {
         this.onChangeCallback = fn;
     }
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
     registerOnTouched(fn) {
         this.onTouchedCallback = fn;
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxEditor('setOptions', options);
     }
     // jqxEditorComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     createCommand(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('createCommand', arg);
@@ -218,10 +144,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('createCommand');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('disabled', arg);
@@ -230,10 +152,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     editable(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('editable', arg);
@@ -242,10 +160,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('editable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('height', arg);
@@ -254,10 +168,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     lineBreak(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('lineBreak', arg);
@@ -266,10 +176,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('lineBreak');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     localization(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('localization', arg);
@@ -278,10 +184,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('localization');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pasteMode(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('pasteMode', arg);
@@ -290,10 +192,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('pasteMode');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('rtl', arg);
@@ -302,10 +200,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     stylesheets(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('stylesheets', arg);
@@ -314,10 +208,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('stylesheets');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('theme', arg);
@@ -326,10 +216,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     toolbarPosition(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('toolbarPosition', arg);
@@ -338,10 +224,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('toolbarPosition');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     tools(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('tools', arg);
@@ -350,10 +232,6 @@ class jqxEditorComponent {
             return this.host.jqxEditor('tools');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxEditor('width', arg);
@@ -363,35 +241,18 @@ class jqxEditorComponent {
         }
     }
     // jqxEditorComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxEditor('destroy');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxEditor('focus');
     }
-    /**
-     * @return {?}
-     */
     print() {
         this.host.jqxEditor('print');
     }
-    /**
-     * @param {?} mode
-     * @return {?}
-     */
     setMode(mode) {
         this.host.jqxEditor('setMode', mode);
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxEditor('val', value);
@@ -401,73 +262,95 @@ class jqxEditorComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); }));
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); this.onChangeCallback(this.host.val()); });
     }
-} //jqxEditorComponent
-jqxEditorComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxEditor',
-                template: '<div><ng-content></ng-content></div>',
-                providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                changeDetection: ChangeDetectionStrategy.OnPush
-            }] }
-];
-/** @nocollapse */
-jqxEditorComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxEditorComponent.propDecorators = {
-    attrCreateCommand: [{ type: Input, args: ['createCommand',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrEditable: [{ type: Input, args: ['editable',] }],
-    attrLineBreak: [{ type: Input, args: ['lineBreak',] }],
-    attrLocalization: [{ type: Input, args: ['localization',] }],
-    attrPasteMode: [{ type: Input, args: ['pasteMode',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrStylesheets: [{ type: Input, args: ['stylesheets',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrToolbarPosition: [{ type: Input, args: ['toolbarPosition',] }],
-    attrTools: [{ type: Input, args: ['tools',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChange: [{ type: Output }]
+}; //jqxEditorComponent
+__decorate([
+    Input('createCommand'),
+    __metadata("design:type", Function)
+], jqxEditorComponent.prototype, "attrCreateCommand", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxEditorComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('editable'),
+    __metadata("design:type", Boolean)
+], jqxEditorComponent.prototype, "attrEditable", void 0);
+__decorate([
+    Input('lineBreak'),
+    __metadata("design:type", String)
+], jqxEditorComponent.prototype, "attrLineBreak", void 0);
+__decorate([
+    Input('localization'),
+    __metadata("design:type", Object)
+], jqxEditorComponent.prototype, "attrLocalization", void 0);
+__decorate([
+    Input('pasteMode'),
+    __metadata("design:type", String)
+], jqxEditorComponent.prototype, "attrPasteMode", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxEditorComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('stylesheets'),
+    __metadata("design:type", Array)
+], jqxEditorComponent.prototype, "attrStylesheets", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxEditorComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('toolbarPosition'),
+    __metadata("design:type", String)
+], jqxEditorComponent.prototype, "attrToolbarPosition", void 0);
+__decorate([
+    Input('tools'),
+    __metadata("design:type", String)
+], jqxEditorComponent.prototype, "attrTools", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxEditorComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxEditorComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxEditorComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxEditorComponent.prototype, "onChange", void 0);
+jqxEditorComponent = __decorate([
+    Component({
+        selector: 'jqxEditor',
+        template: '<div><ng-content></ng-content></div>',
+        providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+        changeDetection: ChangeDetectionStrategy.OnPush
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxEditorComponent);
+
+let jqxEditorModule = class jqxEditorModule {
 };
+jqxEditorModule = __decorate([
+    NgModule({
+        imports: [
+            FormsModule
+        ],
+        declarations: [jqxEditorComponent],
+        exports: [jqxEditorComponent]
+    })
+], jqxEditorModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxEditorModule {
-}
-jqxEditorModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    FormsModule
-                ],
-                declarations: [jqxEditorComponent],
-                exports: [jqxEditorComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxEditorComponent, jqxEditorModule };
-
+export { jqxEditorComponent, jqxEditorModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxeditor.js.map

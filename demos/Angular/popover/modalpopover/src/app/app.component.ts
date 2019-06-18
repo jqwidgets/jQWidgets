@@ -6,7 +6,7 @@
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('employees') employees: ElementRef;
+    @ViewChild('employees', {static: false}) employees: ElementRef;
     
     ngAfterViewInit() {
         let data = new Array();

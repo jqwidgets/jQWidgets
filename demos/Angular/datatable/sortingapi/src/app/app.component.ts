@@ -4,9 +4,9 @@ import { jqxDropDownListComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular
 import { generatedata } from '../assets/generatedata';
 
   @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent { 
-    @ViewChild('myDataTable') myDataTable: jqxDataTableComponent;   
-    @ViewChild('columnName') columnName: jqxDropDownListComponent;    
-    @ViewChild('sortOrder') sortOrder: jqxDropDownListComponent;    
+    @ViewChild('myDataTable', {static: false}) myDataTable: jqxDataTableComponent;   
+    @ViewChild('columnName', {static: false}) columnName: jqxDropDownListComponent;    
+    @ViewChild('sortOrder', {static: false}) sortOrder: jqxDropDownListComponent;    
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

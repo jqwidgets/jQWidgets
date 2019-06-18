@@ -8,7 +8,7 @@ import { jqxMenuComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxmenu
 })
 
 export class AppComponent {
-    @ViewChild('eventLog') eventLog: ElementRef;
+    @ViewChild('eventLog', {static: false}) eventLog: ElementRef;
     
     data = [
         {

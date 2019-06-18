@@ -8,7 +8,7 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxListBox') myListBox: jqxListBoxComponent;
+    @ViewChild('jqxListBox', {static: false}) myListBox: jqxListBoxComponent;
 
     ngAfterViewInit() {
         let item = this.myListBox.getItemByValue('US');

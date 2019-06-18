@@ -1,25 +1,15 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxswitchbutton from '../../jqwidgets-scripts/jqwidgets/jqxswitchbutton';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { forwardRef, Input, Output, Component, ChangeDetectionStrategy, ElementRef, EventEmitter, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-var noop = (/**
- * @return {?}
- */
-function () { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+var noop = function () { };
+var ɵ0 = noop;
 var CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    function () { return jqxSwitchButtonComponent; })),
+    useExisting: forwardRef(function () { return jqxSwitchButtonComponent; }),
     multi: true
 };
 var jqxSwitchButtonComponent = /** @class */ (function () {
@@ -34,31 +24,15 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
         this.onUnchecked = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxSwitchButtonComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxSwitchButtonComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -78,17 +52,7 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxSwitchButtonComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -102,17 +66,9 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxSwitchButtonComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -120,50 +76,20 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxSwitchButtonComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxSwitchButtonComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSwitchButtonComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -179,86 +105,29 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxSwitchButton', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSwitchButtonComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxSwitchButtonComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.writeValue = /**
-     * @param {?} value
-     * @return {?}
-     */
-    function (value) {
+    jqxSwitchButtonComponent.prototype.writeValue = function (value) {
         if (this.widgetObject) {
             this.onChangeCallback(this.host.val());
         }
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.registerOnChange = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxSwitchButtonComponent.prototype.registerOnChange = function (fn) {
         this.onChangeCallback = fn;
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.registerOnTouched = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxSwitchButtonComponent.prototype.registerOnTouched = function (fn) {
         this.onTouchedCallback = fn;
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxSwitchButtonComponent.prototype.setOptions = function (options) {
         this.host.jqxSwitchButton('setOptions', options);
     };
     // jqxSwitchButtonComponent properties
-    // jqxSwitchButtonComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.checked = 
-    // jqxSwitchButtonComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSwitchButtonComponent.prototype.checked = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSwitchButton('checked', arg);
         }
@@ -266,15 +135,7 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
             return this.host.jqxSwitchButton('checked');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSwitchButtonComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSwitchButton('disabled', arg);
         }
@@ -282,15 +143,7 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
             return this.host.jqxSwitchButton('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSwitchButtonComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSwitchButton('height', arg);
         }
@@ -298,15 +151,7 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
             return this.host.jqxSwitchButton('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.orientation = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSwitchButtonComponent.prototype.orientation = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSwitchButton('orientation', arg);
         }
@@ -314,15 +159,7 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
             return this.host.jqxSwitchButton('orientation');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.onLabel = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSwitchButtonComponent.prototype.onLabel = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSwitchButton('onLabel', arg);
         }
@@ -330,15 +167,7 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
             return this.host.jqxSwitchButton('onLabel');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.offLabel = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSwitchButtonComponent.prototype.offLabel = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSwitchButton('offLabel', arg);
         }
@@ -346,15 +175,7 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
             return this.host.jqxSwitchButton('offLabel');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.thumbSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSwitchButtonComponent.prototype.thumbSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSwitchButton('thumbSize', arg);
         }
@@ -362,15 +183,7 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
             return this.host.jqxSwitchButton('thumbSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSwitchButtonComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSwitchButton('rtl', arg);
         }
@@ -378,15 +191,7 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
             return this.host.jqxSwitchButton('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxSwitchButtonComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxSwitchButton('width', arg);
         }
@@ -395,63 +200,22 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
         }
     };
     // jqxSwitchButtonComponent functions
-    // jqxSwitchButtonComponent functions
-    /**
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.check = 
-    // jqxSwitchButtonComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxSwitchButtonComponent.prototype.check = function () {
         this.host.jqxSwitchButton('check');
     };
-    /**
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.disable = /**
-     * @return {?}
-     */
-    function () {
+    jqxSwitchButtonComponent.prototype.disable = function () {
         this.host.jqxSwitchButton('disable');
     };
-    /**
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.enable = /**
-     * @return {?}
-     */
-    function () {
+    jqxSwitchButtonComponent.prototype.enable = function () {
         this.host.jqxSwitchButton('enable');
     };
-    /**
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.toggle = /**
-     * @return {?}
-     */
-    function () {
+    jqxSwitchButtonComponent.prototype.toggle = function () {
         this.host.jqxSwitchButton('toggle');
     };
-    /**
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.uncheck = /**
-     * @return {?}
-     */
-    function () {
+    jqxSwitchButtonComponent.prototype.uncheck = function () {
         this.host.jqxSwitchButton('uncheck');
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxSwitchButtonComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxSwitchButton('val', value);
         }
@@ -459,89 +223,94 @@ var jqxSwitchButtonComponent = /** @class */ (function () {
             return this.host.jqxSwitchButton('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxSwitchButtonComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxSwitchButtonComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('checked', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChecked.emit(eventData); }));
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChange.emit(eventData); _this.onChangeCallback(_this.host.val()); }));
-        this.host.on('unchecked', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onUnchecked.emit(eventData); }));
+        this.host.on('checked', function (eventData) { _this.onChecked.emit(eventData); });
+        this.host.on('change', function (eventData) { _this.onChange.emit(eventData); _this.onChangeCallback(_this.host.val()); });
+        this.host.on('unchecked', function (eventData) { _this.onUnchecked.emit(eventData); });
     };
-    jqxSwitchButtonComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxSwitchButton',
-                    template: '<div><ng-content></ng-content></div>',
-                    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                    changeDetection: ChangeDetectionStrategy.OnPush
-                }] }
-    ];
-    /** @nocollapse */
-    jqxSwitchButtonComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxSwitchButtonComponent.propDecorators = {
-        attrChecked: [{ type: Input, args: ['checked',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrOrientation: [{ type: Input, args: ['orientation',] }],
-        attrOnLabel: [{ type: Input, args: ['onLabel',] }],
-        attrOffLabel: [{ type: Input, args: ['offLabel',] }],
-        attrThumbSize: [{ type: Input, args: ['thumbSize',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onChecked: [{ type: Output }],
-        onChange: [{ type: Output }],
-        onUnchecked: [{ type: Output }]
-    };
+    __decorate([
+        Input('checked'),
+        __metadata("design:type", Boolean)
+    ], jqxSwitchButtonComponent.prototype, "attrChecked", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxSwitchButtonComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('orientation'),
+        __metadata("design:type", String)
+    ], jqxSwitchButtonComponent.prototype, "attrOrientation", void 0);
+    __decorate([
+        Input('onLabel'),
+        __metadata("design:type", String)
+    ], jqxSwitchButtonComponent.prototype, "attrOnLabel", void 0);
+    __decorate([
+        Input('offLabel'),
+        __metadata("design:type", String)
+    ], jqxSwitchButtonComponent.prototype, "attrOffLabel", void 0);
+    __decorate([
+        Input('thumbSize'),
+        __metadata("design:type", String)
+    ], jqxSwitchButtonComponent.prototype, "attrThumbSize", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxSwitchButtonComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxSwitchButtonComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxSwitchButtonComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxSwitchButtonComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSwitchButtonComponent.prototype, "onChecked", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSwitchButtonComponent.prototype, "onChange", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxSwitchButtonComponent.prototype, "onUnchecked", void 0);
+    jqxSwitchButtonComponent = __decorate([
+        Component({
+            selector: 'jqxSwitchButton',
+            template: '<div><ng-content></ng-content></div>',
+            providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+            changeDetection: ChangeDetectionStrategy.OnPush
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxSwitchButtonComponent);
     return jqxSwitchButtonComponent;
 }()); //jqxSwitchButtonComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxSwitchButtonModule = /** @class */ (function () {
     function jqxSwitchButtonModule() {
     }
-    jqxSwitchButtonModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        FormsModule
-                    ],
-                    declarations: [jqxSwitchButtonComponent],
-                    exports: [jqxSwitchButtonComponent]
-                },] }
-    ];
+    jqxSwitchButtonModule = __decorate([
+        NgModule({
+            imports: [
+                FormsModule
+            ],
+            declarations: [jqxSwitchButtonComponent],
+            exports: [jqxSwitchButtonComponent]
+        })
+    ], jqxSwitchButtonModule);
     return jqxSwitchButtonModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxSwitchButtonComponent, jqxSwitchButtonModule };
-
+export { jqxSwitchButtonComponent, jqxSwitchButtonModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxswitchbutton.js.map

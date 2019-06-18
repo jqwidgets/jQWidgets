@@ -8,8 +8,8 @@ import { jqxChartComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxcha
 })
 
 export class AppComponent {
-    @ViewChild('myChart') myChart: jqxChartComponent;
-	  @ViewChild('eventsText') eventsText: ElementRef;
+    @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
+	  @ViewChild('eventsText', {static: false}) eventsText: ElementRef;
 
     months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 

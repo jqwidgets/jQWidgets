@@ -6,7 +6,7 @@
 })
 
 export class AppComponent {
-    @ViewChild('HorizontalDiv') HorizontalDiv: ElementRef;
+    @ViewChild('HorizontalDiv', {static: false}, {static: false}) HorizontalDiv: ElementRef;
 
     valueChanged(event: any): void {
         this.HorizontalDiv.nativeElement.innerText = 'Horizontal (' + parseInt(event.currentValue) + ')';

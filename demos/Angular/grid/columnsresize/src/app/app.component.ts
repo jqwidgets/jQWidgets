@@ -8,7 +8,7 @@ import { generatedata } from '../assets/generatedata';
 })
 
 export class AppComponent {
-    @ViewChild('eventLog') eventLog: ElementRef;
+    @ViewChild('eventLog', {static: false}) eventLog: ElementRef;
 
     source: any =
     {

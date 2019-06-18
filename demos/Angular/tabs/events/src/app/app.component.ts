@@ -11,8 +11,8 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('myTabs') myTabs: jqxTabsComponent;
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
+    @ViewChild('myTabs', {static: false}) myTabs: jqxTabsComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
 
  	getWidth() : any {
 		if (document.body.offsetWidth < 600) {

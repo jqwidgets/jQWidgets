@@ -10,7 +10,7 @@ import { jqxWindowComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxwi
 })
 
 export class AppComponent {
-    @ViewChild('window') window: jqxWindowComponent;
+    @ViewChild('window', {static: false}) window: jqxWindowComponent;
 
     ngAfterViewInit(): void {
         this.window.focus();

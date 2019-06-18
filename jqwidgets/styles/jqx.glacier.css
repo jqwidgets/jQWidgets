@@ -255,3 +255,22 @@
 .jqx-icon-time-pressed-glacier {
     background-image: url('images/icon-time-white.png');
 }
+ /*applied to the timepicker*/
+.jqx-svg-picker-glacier {
+	border: 1px solid #4db8ff;
+}
+.jqx-svg-picker-glacier:hover {
+	border: 1px solid #006bb3;
+}
+.jqx-svg-picker-glacier:focus {
+	border: 1px solid #006aae !important;
+}
+.jqx-label-glacier {
+	fill: #006aae;
+}
+.jqx-needle-glacier {
+	fill: #004a73;
+}
+.jqx-needle-central-circle-glacier {
+	fill: #004a73;
+}

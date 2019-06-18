@@ -11,8 +11,8 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('myTree') myTree: jqxTreeComponent;
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
+    @ViewChild('myTree', {static: false}) myTree: jqxTreeComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
 
     source: any[] =
     [

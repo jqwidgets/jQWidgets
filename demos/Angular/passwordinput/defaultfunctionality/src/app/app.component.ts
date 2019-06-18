@@ -14,14 +14,14 @@ import { jqxDateTimeInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angula
 })
 
 export class AppComponent {
-    @ViewChild('createAccount') createAccount: jqxExpanderComponent;
-    @ViewChild('firstName') firstName: jqxInputComponent;
-    @ViewChild('lastName') lastName: jqxInputComponent;
-    @ViewChild('userName') userName: jqxInputComponent;
-    @ViewChild('password') password: jqxPasswordInputComponent;
-    @ViewChild('passwordConfirm') passwordConfirm: jqxPasswordInputComponent;
-    @ViewChild('validatorReference') myValidator: jqxValidatorComponent;
-    @ViewChild('gender') gender: jqxDropDownListComponent;
+    @ViewChild('createAccount', {static: false}) createAccount: jqxExpanderComponent;
+    @ViewChild('firstName', {static: false}) firstName: jqxInputComponent;
+    @ViewChild('lastName', {static: false}) lastName: jqxInputComponent;
+    @ViewChild('userName', {static: false}) userName: jqxInputComponent;
+    @ViewChild('password', {static: false}) password: jqxPasswordInputComponent;
+    @ViewChild('passwordConfirm', {static: false}) passwordConfirm: jqxPasswordInputComponent;
+    @ViewChild('validatorReference', {static: false}) myValidator: jqxValidatorComponent;
+    @ViewChild('gender', {static: false}) gender: jqxDropDownListComponent;
 
     genders: string[] = ["male", "female"];
 

@@ -8,9 +8,9 @@ import { jqxDateTimeInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angula
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('dateInput') myDateInput: jqxDateTimeInputComponent;
-    @ViewChild('timeInput') myTimeInput: jqxDateTimeInputComponent;
-    @ViewChild('dateTimeInput') myDateTimeInput: jqxDateTimeInputComponent;
+    @ViewChild('dateInput', {static: false}) myDateInput: jqxDateTimeInputComponent;
+    @ViewChild('timeInput', {static: false}) myTimeInput: jqxDateTimeInputComponent;
+    @ViewChild('dateTimeInput', {static: false}) myDateTimeInput: jqxDateTimeInputComponent;
 
     ngAfterViewInit(): void {
         this.myDateInput.createComponent(this.dateInputSettings);

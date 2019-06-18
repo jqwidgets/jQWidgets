@@ -10,9 +10,9 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent {
-    @ViewChild('myTreeGrid') myTreeGrid: jqxTreeGridComponent;
-    @ViewChild('myDropDownList') myDropDownList: jqxDropDownListComponent;
-    @ViewChild('myListBox') myListBox: jqxListBoxComponent;
+    @ViewChild('myTreeGrid', {static: false}) myTreeGrid: jqxTreeGridComponent;
+    @ViewChild('myDropDownList', {static: false}) myDropDownList: jqxDropDownListComponent;
+    @ViewChild('myListBox', {static: false}) myListBox: jqxListBoxComponent;
 
     handleCheckChange: boolean = true;
 	

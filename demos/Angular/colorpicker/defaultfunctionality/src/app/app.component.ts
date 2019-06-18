@@ -10,7 +10,7 @@ import { jqxDropDownButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angul
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('dropDownButton') myDropDown: jqxDropDownButtonComponent;
+    @ViewChild('dropDownButton', {static: false}) myDropDown: jqxDropDownButtonComponent;
 
     ngAfterViewInit(): void {
         this.myDropDown.setContent(this.getTextElementByColor({ hex: "FFAABB" }));

@@ -123,3 +123,13 @@
 {
     background-color: #000;
 }
+ /*applied to the timepicker*/
+.jqx-time-picker .jqx-header .jqx-selected-highcontrast:focus {
+    outline: 1px solid white;
+}
+.jqx-svg-picker-highcontrast {
+	border: 1px solid black;
+}
+.jqx-svg-picker-highcontrast:focus {
+	border: 1px solid rgb(55, 0, 110) !important;
+}

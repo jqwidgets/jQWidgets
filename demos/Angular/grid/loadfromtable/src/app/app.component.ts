@@ -8,8 +8,8 @@ import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid
 })
 
 export class AppComponent {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('myTable') myTable: ElementRef;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('myTable', {static: false}) myTable: ElementRef;
 
     generateData(): any[] {
         let table = this.myTable.nativeElement;

@@ -1,12 +1,9 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxnavigationbar from '../../jqwidgets-scripts/jqwidgets/jqxnavigationbar';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxNavigationBarComponent = /** @class */ (function () {
     function jqxNavigationBarComponent(containerElement) {
         this.autoCreate = true;
@@ -18,31 +15,15 @@ var jqxNavigationBarComponent = /** @class */ (function () {
         this.onExpandedItem = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavigationBarComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxNavigationBarComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -62,17 +43,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxNavigationBarComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -86,17 +57,9 @@ var jqxNavigationBarComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxNavigationBarComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -104,50 +67,20 @@ var jqxNavigationBarComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxNavigationBarComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxNavigationBarComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxNavigationBarComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -163,51 +96,18 @@ var jqxNavigationBarComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxNavigationBar', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxNavigationBarComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavigationBarComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxNavigationBarComponent.prototype.setOptions = function (options) {
         this.host.jqxNavigationBar('setOptions', options);
     };
     // jqxNavigationBarComponent properties
-    // jqxNavigationBarComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.animationType = 
-    // jqxNavigationBarComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.animationType = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('animationType', arg);
         }
@@ -215,15 +115,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('animationType');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.arrowPosition = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.arrowPosition = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('arrowPosition', arg);
         }
@@ -231,15 +123,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('arrowPosition');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.collapseAnimationDuration = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.collapseAnimationDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('collapseAnimationDuration', arg);
         }
@@ -247,15 +131,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('collapseAnimationDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('disabled', arg);
         }
@@ -263,15 +139,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.expandAnimationDuration = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.expandAnimationDuration = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('expandAnimationDuration', arg);
         }
@@ -279,15 +147,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('expandAnimationDuration');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.expandMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.expandMode = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('expandMode', arg);
         }
@@ -295,15 +155,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('expandMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.expandedIndexes = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.expandedIndexes = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('expandedIndexes', arg);
         }
@@ -311,15 +163,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('expandedIndexes');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('height', arg);
         }
@@ -327,15 +171,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.initContent = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.initContent = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('initContent', arg);
         }
@@ -343,15 +179,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('initContent');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('rtl', arg);
         }
@@ -359,15 +187,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.showArrow = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.showArrow = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('showArrow', arg);
         }
@@ -375,15 +195,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('showArrow');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('theme', arg);
         }
@@ -391,15 +203,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.toggleMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.toggleMode = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('toggleMode', arg);
         }
@@ -407,15 +211,7 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('toggleMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxNavigationBarComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxNavigationBar('width', arg);
         }
@@ -424,249 +220,70 @@ var jqxNavigationBarComponent = /** @class */ (function () {
         }
     };
     // jqxNavigationBarComponent functions
-    // jqxNavigationBarComponent functions
-    /**
-     * @param {?} header
-     * @param {?} content
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.add = 
-    // jqxNavigationBarComponent functions
-    /**
-     * @param {?} header
-     * @param {?} content
-     * @return {?}
-     */
-    function (header, content) {
+    jqxNavigationBarComponent.prototype.add = function (header, content) {
         this.host.jqxNavigationBar('add', header, content);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.collapseAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxNavigationBarComponent.prototype.collapseAt = function (index) {
         this.host.jqxNavigationBar('collapseAt', index);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.disableAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxNavigationBarComponent.prototype.disableAt = function (index) {
         this.host.jqxNavigationBar('disableAt', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.disable = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavigationBarComponent.prototype.disable = function () {
         this.host.jqxNavigationBar('disable');
     };
-    /**
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavigationBarComponent.prototype.destroy = function () {
         this.host.jqxNavigationBar('destroy');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.expandAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxNavigationBarComponent.prototype.expandAt = function (index) {
         this.host.jqxNavigationBar('expandAt', index);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.enableAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxNavigationBarComponent.prototype.enableAt = function (index) {
         this.host.jqxNavigationBar('enableAt', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.enable = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavigationBarComponent.prototype.enable = function () {
         this.host.jqxNavigationBar('enable');
     };
-    /**
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavigationBarComponent.prototype.focus = function () {
         this.host.jqxNavigationBar('focus');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.getHeaderContentAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxNavigationBarComponent.prototype.getHeaderContentAt = function (index) {
         return this.host.jqxNavigationBar('getHeaderContentAt', index);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.getContentAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxNavigationBarComponent.prototype.getContentAt = function (index) {
         return this.host.jqxNavigationBar('getContentAt', index);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.hideArrowAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxNavigationBarComponent.prototype.hideArrowAt = function (index) {
         this.host.jqxNavigationBar('hideArrowAt', index);
     };
-    /**
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.invalidate = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavigationBarComponent.prototype.invalidate = function () {
         this.host.jqxNavigationBar('invalidate');
     };
-    /**
-     * @param {?} Index
-     * @param {?} header
-     * @param {?} content
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.insert = /**
-     * @param {?} Index
-     * @param {?} header
-     * @param {?} content
-     * @return {?}
-     */
-    function (Index, header, content) {
+    jqxNavigationBarComponent.prototype.insert = function (Index, header, content) {
         this.host.jqxNavigationBar('insert', Index, header, content);
     };
-    /**
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavigationBarComponent.prototype.refresh = function () {
         this.host.jqxNavigationBar('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavigationBarComponent.prototype.render = function () {
         this.host.jqxNavigationBar('render');
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.remove = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxNavigationBarComponent.prototype.remove = function (index) {
         this.host.jqxNavigationBar('remove', index);
     };
-    /**
-     * @param {?} index
-     * @param {?} item
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.setContentAt = /**
-     * @param {?} index
-     * @param {?} item
-     * @return {?}
-     */
-    function (index, item) {
+    jqxNavigationBarComponent.prototype.setContentAt = function (index, item) {
         this.host.jqxNavigationBar('setContentAt', index, item);
     };
-    /**
-     * @param {?} index
-     * @param {?} item
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.setHeaderContentAt = /**
-     * @param {?} index
-     * @param {?} item
-     * @return {?}
-     */
-    function (index, item) {
+    jqxNavigationBarComponent.prototype.setHeaderContentAt = function (index, item) {
         this.host.jqxNavigationBar('setHeaderContentAt', index, item);
     };
-    /**
-     * @param {?} index
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.showArrowAt = /**
-     * @param {?} index
-     * @return {?}
-     */
-    function (index) {
+    jqxNavigationBarComponent.prototype.showArrowAt = function (index) {
         this.host.jqxNavigationBar('showArrowAt', index);
     };
-    /**
-     * @param {?} index
-     * @param {?} header
-     * @param {?} content
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.update = /**
-     * @param {?} index
-     * @param {?} header
-     * @param {?} content
-     * @return {?}
-     */
-    function (index, header, content) {
+    jqxNavigationBarComponent.prototype.update = function (index, header, content) {
         this.host.jqxNavigationBar('update', index, header, content);
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxNavigationBarComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxNavigationBar('val', value);
         }
@@ -674,96 +291,115 @@ var jqxNavigationBarComponent = /** @class */ (function () {
             return this.host.jqxNavigationBar('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxNavigationBarComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxNavigationBarComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('collapsingItem', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCollapsingItem.emit(eventData); }));
-        this.host.on('collapsedItem', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCollapsedItem.emit(eventData); }));
-        this.host.on('expandingItem', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onExpandingItem.emit(eventData); }));
-        this.host.on('expandedItem', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onExpandedItem.emit(eventData); }));
+        this.host.on('collapsingItem', function (eventData) { _this.onCollapsingItem.emit(eventData); });
+        this.host.on('collapsedItem', function (eventData) { _this.onCollapsedItem.emit(eventData); });
+        this.host.on('expandingItem', function (eventData) { _this.onExpandingItem.emit(eventData); });
+        this.host.on('expandedItem', function (eventData) { _this.onExpandedItem.emit(eventData); });
     };
-    jqxNavigationBarComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxNavigationBar',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxNavigationBarComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxNavigationBarComponent.propDecorators = {
-        attrAnimationType: [{ type: Input, args: ['animationType',] }],
-        attrArrowPosition: [{ type: Input, args: ['arrowPosition',] }],
-        attrCollapseAnimationDuration: [{ type: Input, args: ['collapseAnimationDuration',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrExpandAnimationDuration: [{ type: Input, args: ['expandAnimationDuration',] }],
-        attrExpandMode: [{ type: Input, args: ['expandMode',] }],
-        attrExpandedIndexes: [{ type: Input, args: ['expandedIndexes',] }],
-        attrInitContent: [{ type: Input, args: ['initContent',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrShowArrow: [{ type: Input, args: ['showArrow',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrToggleMode: [{ type: Input, args: ['toggleMode',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onCollapsingItem: [{ type: Output }],
-        onCollapsedItem: [{ type: Output }],
-        onExpandingItem: [{ type: Output }],
-        onExpandedItem: [{ type: Output }]
-    };
+    __decorate([
+        Input('animationType'),
+        __metadata("design:type", String)
+    ], jqxNavigationBarComponent.prototype, "attrAnimationType", void 0);
+    __decorate([
+        Input('arrowPosition'),
+        __metadata("design:type", String)
+    ], jqxNavigationBarComponent.prototype, "attrArrowPosition", void 0);
+    __decorate([
+        Input('collapseAnimationDuration'),
+        __metadata("design:type", Number)
+    ], jqxNavigationBarComponent.prototype, "attrCollapseAnimationDuration", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxNavigationBarComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('expandAnimationDuration'),
+        __metadata("design:type", Number)
+    ], jqxNavigationBarComponent.prototype, "attrExpandAnimationDuration", void 0);
+    __decorate([
+        Input('expandMode'),
+        __metadata("design:type", String)
+    ], jqxNavigationBarComponent.prototype, "attrExpandMode", void 0);
+    __decorate([
+        Input('expandedIndexes'),
+        __metadata("design:type", Array)
+    ], jqxNavigationBarComponent.prototype, "attrExpandedIndexes", void 0);
+    __decorate([
+        Input('initContent'),
+        __metadata("design:type", Function)
+    ], jqxNavigationBarComponent.prototype, "attrInitContent", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxNavigationBarComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('showArrow'),
+        __metadata("design:type", Boolean)
+    ], jqxNavigationBarComponent.prototype, "attrShowArrow", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxNavigationBarComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('toggleMode'),
+        __metadata("design:type", String)
+    ], jqxNavigationBarComponent.prototype, "attrToggleMode", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxNavigationBarComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxNavigationBarComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxNavigationBarComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxNavigationBarComponent.prototype, "onCollapsingItem", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxNavigationBarComponent.prototype, "onCollapsedItem", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxNavigationBarComponent.prototype, "onExpandingItem", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxNavigationBarComponent.prototype, "onExpandedItem", void 0);
+    jqxNavigationBarComponent = __decorate([
+        Component({
+            selector: 'jqxNavigationBar',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxNavigationBarComponent);
     return jqxNavigationBarComponent;
 }()); //jqxNavigationBarComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxNavigationBarModule = /** @class */ (function () {
     function jqxNavigationBarModule() {
     }
-    jqxNavigationBarModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxNavigationBarComponent],
-                    exports: [jqxNavigationBarComponent]
-                },] }
-    ];
+    jqxNavigationBarModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxNavigationBarComponent],
+            exports: [jqxNavigationBarComponent]
+        })
+    ], jqxNavigationBarModule);
     return jqxNavigationBarModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxNavigationBarComponent, jqxNavigationBarModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxnavigationbar.js.map

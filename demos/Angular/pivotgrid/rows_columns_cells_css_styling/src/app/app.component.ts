@@ -6,7 +6,7 @@ import { jqxPivotGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jq
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    @ViewChild('pivotGrid1') pivotGrid1: jqxPivotGridComponent;
+    @ViewChild('pivotGrid1', {static: false}) pivotGrid1: jqxPivotGridComponent;
 
     constructor()
 	{

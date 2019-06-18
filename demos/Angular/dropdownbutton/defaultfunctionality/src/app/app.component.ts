@@ -11,8 +11,8 @@ import { jqxTreeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxtree
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myDropDownButton') myDropDownButton: jqxDropDownButtonComponent;
-    @ViewChild('myTree') myTree: jqxTreeComponent;
+    @ViewChild('myDropDownButton', {static: false}) myDropDownButton: jqxDropDownButtonComponent;
+    @ViewChild('myTree', {static: false}) myTree: jqxTreeComponent;
 
     ngAfterViewInit(): void {
         this.myDropDownButton.setContent('<div style="position: relative; margin-left: 3px; margin-top: 4px;">Home</div>');

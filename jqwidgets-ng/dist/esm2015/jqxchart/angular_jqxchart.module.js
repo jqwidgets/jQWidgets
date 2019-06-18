@@ -7,19 +7,17 @@ import * as jqxchartapi from '../../jqwidgets-scripts/jqwidgets/jqxchart.api';
 import * as jqxchartannotations from '../../jqwidgets-scripts/jqwidgets/jqxchart.annotations';
 import * as jqxchartrangeselector from '../../jqwidgets-scripts/jqwidgets/jqxchart.rangeselector';
 import * as jqxchartwaterfall from '../../jqwidgets-scripts/jqwidgets/jqxchart.waterfall';
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+import * as tslib_1 from "tslib";
 import { NgModule } from '@angular/core';
 import { jqxChartComponent } from './angular_jqxchart';
-export class jqxChartModule {
-}
-jqxChartModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxChartComponent],
-                exports: [jqxChartComponent]
-            },] }
-];
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhcl9qcXhjaGFydC5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9qcXdpZGdldHMtbmcvanF4Y2hhcnQvIiwic291cmNlcyI6WyJhbmd1bGFyX2pxeGNoYXJ0Lm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQ0EsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUV6QyxPQUFPLEVBQUUsaUJBQWlCLEVBQUUsTUFBTSxvQkFBb0IsQ0FBQztBQVN2RCxNQUFNLE9BQU8sY0FBYzs7O1lBUDFCLFFBQVEsU0FBQztnQkFDUixPQUFPLEVBQUUsRUFFUjtnQkFDRCxZQUFZLEVBQUUsQ0FBQyxpQkFBaUIsQ0FBQztnQkFDakMsT0FBTyxFQUFFLENBQUMsaUJBQWlCLENBQUM7YUFDN0IiLCJzb3VyY2VzQ29udGVudCI6WyJcbmltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5cbmltcG9ydCB7IGpxeENoYXJ0Q29tcG9uZW50IH0gZnJvbSAnLi9hbmd1bGFyX2pxeGNoYXJ0JztcblxuQE5nTW9kdWxlKHtcbiAgaW1wb3J0czogW1xuICBcbiAgXSxcbiAgZGVjbGFyYXRpb25zOiBbanF4Q2hhcnRDb21wb25lbnRdLFxuICBleHBvcnRzOiBbanF4Q2hhcnRDb21wb25lbnRdXG59KVxuZXhwb3J0IGNsYXNzIGpxeENoYXJ0TW9kdWxlIHsgfVxuXG4iXX0=
+let jqxChartModule = class jqxChartModule {
+};
+jqxChartModule = tslib_1.__decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxChartComponent],
+        exports: [jqxChartComponent]
+    })
+], jqxChartModule);
+export { jqxChartModule };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhcl9qcXhjaGFydC5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9qcXdpZGdldHMtbmcvanF4Y2hhcnQvIiwic291cmNlcyI6WyJhbmd1bGFyX2pxeGNoYXJ0Lm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUV6QyxPQUFPLEVBQUUsaUJBQWlCLEVBQUUsTUFBTSxvQkFBb0IsQ0FBQztBQVN2RCxJQUFhLGNBQWMsR0FBM0IsTUFBYSxjQUFjO0NBQUksQ0FBQTtBQUFsQixjQUFjO0lBUDFCLFFBQVEsQ0FBQztRQUNSLE9BQU8sRUFBRSxFQUVSO1FBQ0QsWUFBWSxFQUFFLENBQUMsaUJBQWlCLENBQUM7UUFDakMsT0FBTyxFQUFFLENBQUMsaUJBQWlCLENBQUM7S0FDN0IsQ0FBQztHQUNXLGNBQWMsQ0FBSTtTQUFsQixjQUFjIiwic291cmNlc0NvbnRlbnQiOlsiXG5pbXBvcnQgeyBOZ01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuXG5pbXBvcnQgeyBqcXhDaGFydENvbXBvbmVudCB9IGZyb20gJy4vYW5ndWxhcl9qcXhjaGFydCc7XG5cbkBOZ01vZHVsZSh7XG4gIGltcG9ydHM6IFtcbiAgXG4gIF0sXG4gIGRlY2xhcmF0aW9uczogW2pxeENoYXJ0Q29tcG9uZW50XSxcbiAgZXhwb3J0czogW2pxeENoYXJ0Q29tcG9uZW50XVxufSlcbmV4cG9ydCBjbGFzcyBqcXhDaGFydE1vZHVsZSB7IH1cblxuIl19

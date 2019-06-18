@@ -2,16 +2,11 @@ import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxtagcloud from '../../jqwidgets-scripts/jqwidgets/jqxtagcloud';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxTagCloudComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxTagCloudComponent = class jqxTagCloudComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['alterTextCase', 'disabled', 'displayLimit', 'displayMember', 'displayValue', 'fontSizeUnit', 'height', 'maxColor', 'maxFontSize', 'maxValueToDisplay', 'minColor', 'minFontSize', 'minValueToDisplay', 'rtl', 'sortBy', 'sortOrder', 'source', 'tagRenderer', 'takeTopWeightedItems', 'textColor', 'urlBase', 'urlMember', 'valueMember', 'width'];
@@ -20,25 +15,16 @@ class jqxTagCloudComponent {
         this.onItemClick = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -58,11 +44,6 @@ class jqxTagCloudComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -77,14 +58,9 @@ class jqxTagCloudComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -92,34 +68,18 @@ class jqxTagCloudComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -136,32 +96,17 @@ class jqxTagCloudComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxTagCloud', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxTagCloud('setOptions', options);
     }
     // jqxTagCloudComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     alterTextCase(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('alterTextCase', arg);
@@ -170,10 +115,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('alterTextCase');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('disabled', arg);
@@ -182,10 +123,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     displayLimit(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('displayLimit', arg);
@@ -194,10 +131,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('displayLimit');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     displayMember(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('displayMember', arg);
@@ -206,10 +139,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('displayMember');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     displayValue(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('displayValue', arg);
@@ -218,10 +147,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('displayValue');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     fontSizeUnit(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('fontSizeUnit', arg);
@@ -230,10 +155,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('fontSizeUnit');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('height', arg);
@@ -242,10 +163,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     maxColor(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('maxColor', arg);
@@ -254,10 +171,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('maxColor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     maxFontSize(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('maxFontSize', arg);
@@ -266,10 +179,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('maxFontSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     maxValueToDisplay(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('maxValueToDisplay', arg);
@@ -278,10 +187,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('maxValueToDisplay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minColor(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('minColor', arg);
@@ -290,10 +195,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('minColor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minFontSize(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('minFontSize', arg);
@@ -302,10 +203,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('minFontSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minValueToDisplay(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('minValueToDisplay', arg);
@@ -314,10 +211,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('minValueToDisplay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('rtl', arg);
@@ -326,10 +219,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     sortBy(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('sortBy', arg);
@@ -338,10 +227,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('sortBy');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     sortOrder(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('sortOrder', arg);
@@ -350,10 +235,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('sortOrder');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     source(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('source', arg);
@@ -362,10 +243,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('source');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     tagRenderer(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('tagRenderer', arg);
@@ -374,10 +251,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('tagRenderer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     takeTopWeightedItems(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('takeTopWeightedItems', arg);
@@ -386,10 +259,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('takeTopWeightedItems');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     textColor(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('textColor', arg);
@@ -398,10 +267,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('textColor');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     urlBase(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('urlBase', arg);
@@ -410,10 +275,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('urlBase');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     urlMember(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('urlMember', arg);
@@ -422,10 +283,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('urlMember');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     valueMember(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('valueMember', arg);
@@ -434,10 +291,6 @@ class jqxTagCloudComponent {
             return this.host.jqxTagCloud('valueMember');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxTagCloud('width', arg);
@@ -447,154 +300,170 @@ class jqxTagCloudComponent {
         }
     }
     // jqxTagCloudComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxTagCloud('destroy');
     }
-    /**
-     * @param {?} tag
-     * @return {?}
-     */
     findTagIndex(tag) {
         return this.host.jqxTagCloud('findTagIndex', tag);
     }
-    /**
-     * @return {?}
-     */
     getHiddenTagsList() {
         return this.host.jqxTagCloud('getHiddenTagsList');
     }
-    /**
-     * @return {?}
-     */
     getRenderedTags() {
         return this.host.jqxTagCloud('getRenderedTags');
     }
-    /**
-     * @return {?}
-     */
     getTagsList() {
         return this.host.jqxTagCloud('getTagsList');
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     hideItem(index) {
         this.host.jqxTagCloud('hideItem', index);
     }
-    /**
-     * @param {?} index
-     * @param {?} item
-     * @return {?}
-     */
     insertAt(index, item) {
         this.host.jqxTagCloud('insertAt', index, item);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     removeAt(index) {
         this.host.jqxTagCloud('removeAt', index);
     }
-    /**
-     * @param {?} index
-     * @param {?} item
-     * @return {?}
-     */
     updateAt(index, item) {
         this.host.jqxTagCloud('updateAt', index, item);
     }
-    /**
-     * @param {?} index
-     * @return {?}
-     */
     showItem(index) {
         this.host.jqxTagCloud('showItem', index);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('bindingComplete', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onBindingComplete.emit(eventData); }));
-        this.host.on('itemClick', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onItemClick.emit(eventData); }));
+        this.host.on('bindingComplete', (eventData) => { this.onBindingComplete.emit(eventData); });
+        this.host.on('itemClick', (eventData) => { this.onItemClick.emit(eventData); });
     }
-} //jqxTagCloudComponent
-jqxTagCloudComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxTagCloud',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxTagCloudComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxTagCloudComponent.propDecorators = {
-    attrAlterTextCase: [{ type: Input, args: ['alterTextCase',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrDisplayLimit: [{ type: Input, args: ['displayLimit',] }],
-    attrDisplayMember: [{ type: Input, args: ['displayMember',] }],
-    attrDisplayValue: [{ type: Input, args: ['displayValue',] }],
-    attrFontSizeUnit: [{ type: Input, args: ['fontSizeUnit',] }],
-    attrMaxColor: [{ type: Input, args: ['maxColor',] }],
-    attrMaxFontSize: [{ type: Input, args: ['maxFontSize',] }],
-    attrMaxValueToDisplay: [{ type: Input, args: ['maxValueToDisplay',] }],
-    attrMinColor: [{ type: Input, args: ['minColor',] }],
-    attrMinFontSize: [{ type: Input, args: ['minFontSize',] }],
-    attrMinValueToDisplay: [{ type: Input, args: ['minValueToDisplay',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrSortBy: [{ type: Input, args: ['sortBy',] }],
-    attrSortOrder: [{ type: Input, args: ['sortOrder',] }],
-    attrSource: [{ type: Input, args: ['source',] }],
-    attrTagRenderer: [{ type: Input, args: ['tagRenderer',] }],
-    attrTakeTopWeightedItems: [{ type: Input, args: ['takeTopWeightedItems',] }],
-    attrTextColor: [{ type: Input, args: ['textColor',] }],
-    attrUrlBase: [{ type: Input, args: ['urlBase',] }],
-    attrUrlMember: [{ type: Input, args: ['urlMember',] }],
-    attrValueMember: [{ type: Input, args: ['valueMember',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onBindingComplete: [{ type: Output }],
-    onItemClick: [{ type: Output }]
+}; //jqxTagCloudComponent
+__decorate([
+    Input('alterTextCase'),
+    __metadata("design:type", String)
+], jqxTagCloudComponent.prototype, "attrAlterTextCase", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxTagCloudComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('displayLimit'),
+    __metadata("design:type", Number)
+], jqxTagCloudComponent.prototype, "attrDisplayLimit", void 0);
+__decorate([
+    Input('displayMember'),
+    __metadata("design:type", String)
+], jqxTagCloudComponent.prototype, "attrDisplayMember", void 0);
+__decorate([
+    Input('displayValue'),
+    __metadata("design:type", Boolean)
+], jqxTagCloudComponent.prototype, "attrDisplayValue", void 0);
+__decorate([
+    Input('fontSizeUnit'),
+    __metadata("design:type", String)
+], jqxTagCloudComponent.prototype, "attrFontSizeUnit", void 0);
+__decorate([
+    Input('maxColor'),
+    __metadata("design:type", String)
+], jqxTagCloudComponent.prototype, "attrMaxColor", void 0);
+__decorate([
+    Input('maxFontSize'),
+    __metadata("design:type", Number)
+], jqxTagCloudComponent.prototype, "attrMaxFontSize", void 0);
+__decorate([
+    Input('maxValueToDisplay'),
+    __metadata("design:type", Number)
+], jqxTagCloudComponent.prototype, "attrMaxValueToDisplay", void 0);
+__decorate([
+    Input('minColor'),
+    __metadata("design:type", String)
+], jqxTagCloudComponent.prototype, "attrMinColor", void 0);
+__decorate([
+    Input('minFontSize'),
+    __metadata("design:type", Number)
+], jqxTagCloudComponent.prototype, "attrMinFontSize", void 0);
+__decorate([
+    Input('minValueToDisplay'),
+    __metadata("design:type", Number)
+], jqxTagCloudComponent.prototype, "attrMinValueToDisplay", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxTagCloudComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('sortBy'),
+    __metadata("design:type", String)
+], jqxTagCloudComponent.prototype, "attrSortBy", void 0);
+__decorate([
+    Input('sortOrder'),
+    __metadata("design:type", String)
+], jqxTagCloudComponent.prototype, "attrSortOrder", void 0);
+__decorate([
+    Input('source'),
+    __metadata("design:type", Object)
+], jqxTagCloudComponent.prototype, "attrSource", void 0);
+__decorate([
+    Input('tagRenderer'),
+    __metadata("design:type", Function)
+], jqxTagCloudComponent.prototype, "attrTagRenderer", void 0);
+__decorate([
+    Input('takeTopWeightedItems'),
+    __metadata("design:type", Boolean)
+], jqxTagCloudComponent.prototype, "attrTakeTopWeightedItems", void 0);
+__decorate([
+    Input('textColor'),
+    __metadata("design:type", String)
+], jqxTagCloudComponent.prototype, "attrTextColor", void 0);
+__decorate([
+    Input('urlBase'),
+    __metadata("design:type", String)
+], jqxTagCloudComponent.prototype, "attrUrlBase", void 0);
+__decorate([
+    Input('urlMember'),
+    __metadata("design:type", String)
+], jqxTagCloudComponent.prototype, "attrUrlMember", void 0);
+__decorate([
+    Input('valueMember'),
+    __metadata("design:type", String)
+], jqxTagCloudComponent.prototype, "attrValueMember", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxTagCloudComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxTagCloudComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxTagCloudComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTagCloudComponent.prototype, "onBindingComplete", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxTagCloudComponent.prototype, "onItemClick", void 0);
+jqxTagCloudComponent = __decorate([
+    Component({
+        selector: 'jqxTagCloud',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxTagCloudComponent);
+
+let jqxTagCloudModule = class jqxTagCloudModule {
 };
+jqxTagCloudModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxTagCloudComponent],
+        exports: [jqxTagCloudComponent]
+    })
+], jqxTagCloudModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxTagCloudModule {
-}
-jqxTagCloudModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxTagCloudComponent],
-                exports: [jqxTagCloudComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxTagCloudComponent, jqxTagCloudModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxtagcloud.js.map

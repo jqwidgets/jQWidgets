@@ -321,3 +321,29 @@
 {
     background-color: #e5e5e5;
 }
+
+/*applied to the timepicker*/
+.jqx-time-picker .jqx-header .jqx-hour-container-metro:focus {
+    outline: 1px solid rgb(31, 174, 255) !important;
+}
+.jqx-time-picker .jqx-header .jqx-minute-container-metro:focus {
+    outline: 1px solid rgb(31, 174, 255) !important;
+}
+.jqx-time-picker .jqx-header .jqx-am-container-metro:focus {
+    outline: 1px solid rgb(31, 174, 255) !important;
+}
+.jqx-time-picker .jqx-header .jqx-pm-container-metro:focus {
+    outline: 1px solid rgb(31, 174, 255) !important;
+}
+.jqx-svg-picker-metro {
+	border: 1px solid rgb(31, 174, 255);
+}
+.jqx-svg-picker-metro:focus {
+	border: 1px solid rgb(31, 174, 255) !important;
+}
+.jqx-needle-central-circle-metro {
+	fill: rgb(31, 174, 255);
+}
+.jqx-needle-metro {
+	fill: rgb(31, 174, 255);
+}

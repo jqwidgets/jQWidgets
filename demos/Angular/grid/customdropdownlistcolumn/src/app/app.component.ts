@@ -8,8 +8,8 @@ import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid
 })
 
 export class AppComponent {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('eventLog') eventLog: ElementRef;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('eventLog', {static: false}) eventLog: ElementRef;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

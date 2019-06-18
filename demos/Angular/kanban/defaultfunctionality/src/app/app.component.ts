@@ -8,9 +8,9 @@ import { jqxKanbanComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxka
 })
 
 export class AppComponent {
-    @ViewChild('myKanbanOne') myKanbanOne: jqxKanbanComponent;
-    @ViewChild('myKanbanTwo') myKanbanTwo: jqxKanbanComponent;
-    @ViewChild('myKanbanThree') myKanbanThree: jqxKanbanComponent;
+    @ViewChild('myKanbanOne', {static: false}) myKanbanOne: jqxKanbanComponent;
+    @ViewChild('myKanbanTwo', {static: false}) myKanbanTwo: jqxKanbanComponent;
+    @ViewChild('myKanbanThree', {static: false}) myKanbanThree: jqxKanbanComponent;
 
     fields: any =
     [

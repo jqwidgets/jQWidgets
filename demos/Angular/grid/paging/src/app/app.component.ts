@@ -11,10 +11,10 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
-    @ViewChild('eventsLog') eventsLog: ElementRef;
-    @ViewChild('pagingInfo') pagingInfo: ElementRef;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
+    @ViewChild('eventsLog', {static: false}) eventsLog: ElementRef;
+    @ViewChild('pagingInfo', {static: false}) pagingInfo: ElementRef;
 
     source: any =
     {

@@ -8,7 +8,7 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent {
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
 
     onOpen(event: any): void {
         this.myPanel.append('<strong>' + event.type + '</strong><br />');

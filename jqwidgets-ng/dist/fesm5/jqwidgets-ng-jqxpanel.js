@@ -2,44 +2,25 @@ import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxscrollbar from '../../jqwidgets-scripts/jqwidgets/jqxscrollbar';
 import * as jqxpanel from '../../jqwidgets-scripts/jqwidgets/jqxpanel';
-import { __spread } from 'tslib';
-import { Component, Input, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxPanelComponent = /** @class */ (function () {
     function jqxPanelComponent(containerElement) {
         this.autoCreate = true;
         this.properties = ['autoUpdate', 'disabled', 'height', 'rtl', 'sizeMode', 'scrollBarSize', 'theme', 'width'];
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxPanelComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxPanelComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -59,17 +40,7 @@ var jqxPanelComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxPanelComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -83,17 +54,9 @@ var jqxPanelComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxPanelComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -101,50 +64,20 @@ var jqxPanelComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxPanelComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxPanelComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxPanelComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -160,51 +93,18 @@ var jqxPanelComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxPanel', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxPanelComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxPanelComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxPanelComponent.prototype.setOptions = function (options) {
         this.host.jqxPanel('setOptions', options);
     };
     // jqxPanelComponent properties
-    // jqxPanelComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.autoUpdate = 
-    // jqxPanelComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPanelComponent.prototype.autoUpdate = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('autoUpdate', arg);
         }
@@ -212,15 +112,7 @@ var jqxPanelComponent = /** @class */ (function () {
             return this.host.jqxPanel('autoUpdate');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPanelComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('disabled', arg);
         }
@@ -228,15 +120,7 @@ var jqxPanelComponent = /** @class */ (function () {
             return this.host.jqxPanel('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPanelComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('height', arg);
         }
@@ -244,15 +128,7 @@ var jqxPanelComponent = /** @class */ (function () {
             return this.host.jqxPanel('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPanelComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('rtl', arg);
         }
@@ -260,15 +136,7 @@ var jqxPanelComponent = /** @class */ (function () {
             return this.host.jqxPanel('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.sizeMode = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPanelComponent.prototype.sizeMode = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('sizeMode', arg);
         }
@@ -276,15 +144,7 @@ var jqxPanelComponent = /** @class */ (function () {
             return this.host.jqxPanel('sizeMode');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.scrollBarSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPanelComponent.prototype.scrollBarSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('scrollBarSize', arg);
         }
@@ -292,15 +152,7 @@ var jqxPanelComponent = /** @class */ (function () {
             return this.host.jqxPanel('scrollBarSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPanelComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('theme', arg);
         }
@@ -308,15 +160,7 @@ var jqxPanelComponent = /** @class */ (function () {
             return this.host.jqxPanel('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxPanelComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxPanel('width', arg);
         }
@@ -325,181 +169,104 @@ var jqxPanelComponent = /** @class */ (function () {
         }
     };
     // jqxPanelComponent functions
-    // jqxPanelComponent functions
-    /**
-     * @param {?} HTMLElement
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.append = 
-    // jqxPanelComponent functions
-    /**
-     * @param {?} HTMLElement
-     * @return {?}
-     */
-    function (HTMLElement) {
+    jqxPanelComponent.prototype.append = function (HTMLElement) {
         this.host.jqxPanel('append', HTMLElement);
     };
-    /**
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.clearcontent = /**
-     * @return {?}
-     */
-    function () {
+    jqxPanelComponent.prototype.clearcontent = function () {
         this.host.jqxPanel('clearcontent');
     };
-    /**
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxPanelComponent.prototype.destroy = function () {
         this.host.jqxPanel('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxPanelComponent.prototype.focus = function () {
         this.host.jqxPanel('focus');
     };
-    /**
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.getScrollHeight = /**
-     * @return {?}
-     */
-    function () {
+    jqxPanelComponent.prototype.getScrollHeight = function () {
         return this.host.jqxPanel('getScrollHeight');
     };
-    /**
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.getVScrollPosition = /**
-     * @return {?}
-     */
-    function () {
+    jqxPanelComponent.prototype.getVScrollPosition = function () {
         return this.host.jqxPanel('getVScrollPosition');
     };
-    /**
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.getScrollWidth = /**
-     * @return {?}
-     */
-    function () {
+    jqxPanelComponent.prototype.getScrollWidth = function () {
         return this.host.jqxPanel('getScrollWidth');
     };
-    /**
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.getHScrollPosition = /**
-     * @return {?}
-     */
-    function () {
+    jqxPanelComponent.prototype.getHScrollPosition = function () {
         return this.host.jqxPanel('getHScrollPosition');
     };
-    /**
-     * @param {?} HTMLElement
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.prepend = /**
-     * @param {?} HTMLElement
-     * @return {?}
-     */
-    function (HTMLElement) {
+    jqxPanelComponent.prototype.prepend = function (HTMLElement) {
         this.host.jqxPanel('prepend', HTMLElement);
     };
-    /**
-     * @param {?} HTMLElement
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.remove = /**
-     * @param {?} HTMLElement
-     * @return {?}
-     */
-    function (HTMLElement) {
+    jqxPanelComponent.prototype.remove = function (HTMLElement) {
         this.host.jqxPanel('remove', HTMLElement);
     };
-    /**
-     * @param {?} left
-     * @param {?} top
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.scrollTo = /**
-     * @param {?} left
-     * @param {?} top
-     * @return {?}
-     */
-    function (left, top) {
+    jqxPanelComponent.prototype.scrollTo = function (left, top) {
         this.host.jqxPanel('scrollTo', left, top);
     };
     // jqxPanelComponent events
-    // jqxPanelComponent events
-    /**
-     * @return {?}
-     */
-    jqxPanelComponent.prototype.__wireEvents__ = 
-    // jqxPanelComponent events
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxPanelComponent.prototype.__wireEvents__ = function () {
     };
-    jqxPanelComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxPanel',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxPanelComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxPanelComponent.propDecorators = {
-        attrAutoUpdate: [{ type: Input, args: ['autoUpdate',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrSizeMode: [{ type: Input, args: ['sizeMode',] }],
-        attrScrollBarSize: [{ type: Input, args: ['scrollBarSize',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }]
-    };
+    __decorate([
+        Input('autoUpdate'),
+        __metadata("design:type", Boolean)
+    ], jqxPanelComponent.prototype, "attrAutoUpdate", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxPanelComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxPanelComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('sizeMode'),
+        __metadata("design:type", String)
+    ], jqxPanelComponent.prototype, "attrSizeMode", void 0);
+    __decorate([
+        Input('scrollBarSize'),
+        __metadata("design:type", Object)
+    ], jqxPanelComponent.prototype, "attrScrollBarSize", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxPanelComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxPanelComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxPanelComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxPanelComponent.prototype, "autoCreate", void 0);
+    jqxPanelComponent = __decorate([
+        Component({
+            selector: 'jqxPanel',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxPanelComponent);
     return jqxPanelComponent;
 }()); //jqxPanelComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxPanelModule = /** @class */ (function () {
     function jqxPanelModule() {
     }
-    jqxPanelModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxPanelComponent],
-                    exports: [jqxPanelComponent]
-                },] }
-    ];
+    jqxPanelModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxPanelComponent],
+            exports: [jqxPanelComponent]
+        })
+    ], jqxPanelModule);
     return jqxPanelModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxPanelComponent, jqxPanelModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxpanel.js.map

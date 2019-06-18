@@ -2,16 +2,11 @@ import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdata from '../../jqwidgets-scripts/jqwidgets/jqxdata';
 import * as jqxtooltip from '../../jqwidgets-scripts/jqwidgets/jqxtooltip';
 import * as jqxrangeselector from '../../jqwidgets-scripts/jqwidgets/jqxrangeselector';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxRangeSelectorComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxRangeSelectorComponent = class jqxRangeSelectorComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['disabled', 'groupLabelsFormatFunction', 'height', 'labelsFormat', 'labelsFormatFunction', 'labelsOnTicks', 'markersFormat', 'markersFormatFunction', 'majorTicksInterval', 'minorTicksInterval', 'max', 'min', 'moveOnClick', 'padding', 'range', 'resizable', 'rtl', 'showGroupLabels', 'showMinorTicks', 'snapToTicks', 'showMajorLabels', 'showMarkers', 'theme', 'width'];
@@ -19,25 +14,16 @@ class jqxRangeSelectorComponent {
         this.onChange = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -57,11 +43,6 @@ class jqxRangeSelectorComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -76,14 +57,9 @@ class jqxRangeSelectorComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -91,34 +67,18 @@ class jqxRangeSelectorComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -135,32 +95,17 @@ class jqxRangeSelectorComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxRangeSelector', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxRangeSelector('setOptions', options);
     }
     // jqxRangeSelectorComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('disabled', arg);
@@ -169,10 +114,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     groupLabelsFormatFunction(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('groupLabelsFormatFunction', arg);
@@ -181,10 +122,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('groupLabelsFormatFunction');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('height', arg);
@@ -193,10 +130,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     labelsFormat(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('labelsFormat', arg);
@@ -205,10 +138,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('labelsFormat');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     labelsFormatFunction(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('labelsFormatFunction', arg);
@@ -217,10 +146,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('labelsFormatFunction');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     labelsOnTicks(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('labelsOnTicks', arg);
@@ -229,10 +154,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('labelsOnTicks');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     markersFormat(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('markersFormat', arg);
@@ -241,10 +162,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('markersFormat');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     markersFormatFunction(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('markersFormatFunction', arg);
@@ -253,10 +170,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('markersFormatFunction');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     majorTicksInterval(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('majorTicksInterval', arg);
@@ -265,10 +178,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('majorTicksInterval');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     minorTicksInterval(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('minorTicksInterval', arg);
@@ -277,10 +186,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('minorTicksInterval');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     max(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('max', arg);
@@ -289,10 +194,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('max');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     min(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('min', arg);
@@ -301,10 +202,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('min');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     moveOnClick(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('moveOnClick', arg);
@@ -313,10 +210,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('moveOnClick');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     padding(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('padding', arg);
@@ -325,10 +218,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('padding');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     range(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('range', arg);
@@ -337,10 +226,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('range');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     resizable(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('resizable', arg);
@@ -349,10 +234,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('resizable');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('rtl', arg);
@@ -361,10 +242,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showGroupLabels(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('showGroupLabels', arg);
@@ -373,10 +250,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('showGroupLabels');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showMinorTicks(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('showMinorTicks', arg);
@@ -385,10 +258,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('showMinorTicks');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     snapToTicks(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('snapToTicks', arg);
@@ -397,10 +266,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('snapToTicks');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showMajorLabels(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('showMajorLabels', arg);
@@ -409,10 +274,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('showMajorLabels');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     showMarkers(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('showMarkers', arg);
@@ -421,10 +282,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('showMarkers');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('theme', arg);
@@ -433,10 +290,6 @@ class jqxRangeSelectorComponent {
             return this.host.jqxRangeSelector('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxRangeSelector('width', arg);
@@ -446,112 +299,150 @@ class jqxRangeSelectorComponent {
         }
     }
     // jqxRangeSelectorComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxRangeSelector('destroy');
     }
-    /**
-     * @return {?}
-     */
     getRange() {
         return this.host.jqxRangeSelector('getRange');
     }
-    /**
-     * @return {?}
-     */
     render() {
         this.host.jqxRangeSelector('render');
     }
-    /**
-     * @return {?}
-     */
     refresh() {
         this.host.jqxRangeSelector('refresh');
     }
-    /**
-     * @param {?} from
-     * @param {?} to
-     * @return {?}
-     */
     setRange(from, to) {
         this.host.jqxRangeSelector('setRange', from, to);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); }));
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
     }
-} //jqxRangeSelectorComponent
-jqxRangeSelectorComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxRangeSelector',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxRangeSelectorComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxRangeSelectorComponent.propDecorators = {
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrGroupLabelsFormatFunction: [{ type: Input, args: ['groupLabelsFormatFunction',] }],
-    attrLabelsFormat: [{ type: Input, args: ['labelsFormat',] }],
-    attrLabelsFormatFunction: [{ type: Input, args: ['labelsFormatFunction',] }],
-    attrLabelsOnTicks: [{ type: Input, args: ['labelsOnTicks',] }],
-    attrMarkersFormat: [{ type: Input, args: ['markersFormat',] }],
-    attrMarkersFormatFunction: [{ type: Input, args: ['markersFormatFunction',] }],
-    attrMajorTicksInterval: [{ type: Input, args: ['majorTicksInterval',] }],
-    attrMinorTicksInterval: [{ type: Input, args: ['minorTicksInterval',] }],
-    attrMax: [{ type: Input, args: ['max',] }],
-    attrMin: [{ type: Input, args: ['min',] }],
-    attrMoveOnClick: [{ type: Input, args: ['moveOnClick',] }],
-    attrPadding: [{ type: Input, args: ['padding',] }],
-    attrRange: [{ type: Input, args: ['range',] }],
-    attrResizable: [{ type: Input, args: ['resizable',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrShowGroupLabels: [{ type: Input, args: ['showGroupLabels',] }],
-    attrShowMinorTicks: [{ type: Input, args: ['showMinorTicks',] }],
-    attrSnapToTicks: [{ type: Input, args: ['snapToTicks',] }],
-    attrShowMajorLabels: [{ type: Input, args: ['showMajorLabels',] }],
-    attrShowMarkers: [{ type: Input, args: ['showMarkers',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChange: [{ type: Output }]
+}; //jqxRangeSelectorComponent
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxRangeSelectorComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('groupLabelsFormatFunction'),
+    __metadata("design:type", Function)
+], jqxRangeSelectorComponent.prototype, "attrGroupLabelsFormatFunction", void 0);
+__decorate([
+    Input('labelsFormat'),
+    __metadata("design:type", String)
+], jqxRangeSelectorComponent.prototype, "attrLabelsFormat", void 0);
+__decorate([
+    Input('labelsFormatFunction'),
+    __metadata("design:type", Function)
+], jqxRangeSelectorComponent.prototype, "attrLabelsFormatFunction", void 0);
+__decorate([
+    Input('labelsOnTicks'),
+    __metadata("design:type", Boolean)
+], jqxRangeSelectorComponent.prototype, "attrLabelsOnTicks", void 0);
+__decorate([
+    Input('markersFormat'),
+    __metadata("design:type", String)
+], jqxRangeSelectorComponent.prototype, "attrMarkersFormat", void 0);
+__decorate([
+    Input('markersFormatFunction'),
+    __metadata("design:type", Function)
+], jqxRangeSelectorComponent.prototype, "attrMarkersFormatFunction", void 0);
+__decorate([
+    Input('majorTicksInterval'),
+    __metadata("design:type", Object)
+], jqxRangeSelectorComponent.prototype, "attrMajorTicksInterval", void 0);
+__decorate([
+    Input('minorTicksInterval'),
+    __metadata("design:type", Object)
+], jqxRangeSelectorComponent.prototype, "attrMinorTicksInterval", void 0);
+__decorate([
+    Input('max'),
+    __metadata("design:type", Object)
+], jqxRangeSelectorComponent.prototype, "attrMax", void 0);
+__decorate([
+    Input('min'),
+    __metadata("design:type", Object)
+], jqxRangeSelectorComponent.prototype, "attrMin", void 0);
+__decorate([
+    Input('moveOnClick'),
+    __metadata("design:type", Boolean)
+], jqxRangeSelectorComponent.prototype, "attrMoveOnClick", void 0);
+__decorate([
+    Input('padding'),
+    __metadata("design:type", Object)
+], jqxRangeSelectorComponent.prototype, "attrPadding", void 0);
+__decorate([
+    Input('range'),
+    __metadata("design:type", Object)
+], jqxRangeSelectorComponent.prototype, "attrRange", void 0);
+__decorate([
+    Input('resizable'),
+    __metadata("design:type", Boolean)
+], jqxRangeSelectorComponent.prototype, "attrResizable", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxRangeSelectorComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('showGroupLabels'),
+    __metadata("design:type", Boolean)
+], jqxRangeSelectorComponent.prototype, "attrShowGroupLabels", void 0);
+__decorate([
+    Input('showMinorTicks'),
+    __metadata("design:type", Boolean)
+], jqxRangeSelectorComponent.prototype, "attrShowMinorTicks", void 0);
+__decorate([
+    Input('snapToTicks'),
+    __metadata("design:type", Boolean)
+], jqxRangeSelectorComponent.prototype, "attrSnapToTicks", void 0);
+__decorate([
+    Input('showMajorLabels'),
+    __metadata("design:type", Boolean)
+], jqxRangeSelectorComponent.prototype, "attrShowMajorLabels", void 0);
+__decorate([
+    Input('showMarkers'),
+    __metadata("design:type", Boolean)
+], jqxRangeSelectorComponent.prototype, "attrShowMarkers", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxRangeSelectorComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxRangeSelectorComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxRangeSelectorComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxRangeSelectorComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxRangeSelectorComponent.prototype, "onChange", void 0);
+jqxRangeSelectorComponent = __decorate([
+    Component({
+        selector: 'jqxRangeSelector',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxRangeSelectorComponent);
+
+let jqxRangeSelectorModule = class jqxRangeSelectorModule {
 };
+jqxRangeSelectorModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxRangeSelectorComponent],
+        exports: [jqxRangeSelectorComponent]
+    })
+], jqxRangeSelectorModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxRangeSelectorModule {
-}
-jqxRangeSelectorModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxRangeSelectorComponent],
-                exports: [jqxRangeSelectorComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxRangeSelectorComponent, jqxRangeSelectorModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxrangeselector.js.map

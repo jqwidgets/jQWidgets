@@ -9,8 +9,8 @@ import { jqxCheckBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('jqxMenu') jqxMenu: jqxMenuComponent;
-    @ViewChild('minimizeCheckbox') myCheckBox: jqxCheckBoxComponent;
+    @ViewChild('jqxMenu', {static: false}) jqxMenu: jqxMenuComponent;
+    @ViewChild('minimizeCheckbox', {static: false}) myCheckBox: jqxCheckBoxComponent;
 
     ngAfterViewInit() {
         this.jqxMenu.minimize();

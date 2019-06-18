@@ -9,7 +9,7 @@ declare const google: any;
 })
 
 export class AppComponent {
-    @ViewChild('map') map: ElementRef;
+    @ViewChild('map', {static: false}) map: ElementRef;
 
     ngAfterViewInit(): void {
         const directionsService = new google.maps.DirectionsService;

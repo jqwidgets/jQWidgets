@@ -8,7 +8,7 @@ import { jqxRangeSelectorComponent } from 'jqwidgets-scripts/jqwidgets-ts/angula
 })
 
 export class AppComponent {
-    @ViewChild('rangeSelectorReference') myRangeSelector: jqxRangeSelectorComponent;
+    @ViewChild('rangeSelectorReference', {static: false}) myRangeSelector: jqxRangeSelectorComponent;
 
     onClickGet(): void {
         let range = this.myRangeSelector.getRange();

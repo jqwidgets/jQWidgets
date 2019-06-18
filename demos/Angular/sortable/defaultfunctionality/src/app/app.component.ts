@@ -10,7 +10,7 @@ import { jqxSortableComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('mySortable') mySortable: jqxSortableComponent;
+    @ViewChild('mySortable', {static: false}) mySortable: jqxSortableComponent;
 
     ngAfterViewInit(): void {
         this.loadInfo();

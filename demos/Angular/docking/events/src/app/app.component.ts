@@ -9,8 +9,8 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myDocking') myDocking; jqxDockingComponent;
-    @ViewChild('myPanel') myPanel; jqxPanelComponent;
+    @ViewChild('myDocking', {static: false}) myDocking; jqxDockingComponent;
+    @ViewChild('myPanel', {static: false}) myPanel; jqxPanelComponent;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 550) {

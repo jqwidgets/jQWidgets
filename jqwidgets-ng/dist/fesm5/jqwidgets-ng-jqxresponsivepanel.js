@@ -1,12 +1,9 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxresponsivepanel from '../../jqwidgets-scripts/jqwidgets/jqxresponsivepanel';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxResponsivePanelComponent = /** @class */ (function () {
     function jqxResponsivePanelComponent(containerElement) {
         this.autoCreate = true;
@@ -18,31 +15,15 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
         this.onOpen = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxResponsivePanelComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxResponsivePanelComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -62,17 +43,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxResponsivePanelComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -86,17 +57,9 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxResponsivePanelComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -104,50 +67,20 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxResponsivePanelComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxResponsivePanelComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxResponsivePanelComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -163,51 +96,18 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxResponsivePanel', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxResponsivePanelComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxResponsivePanelComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxResponsivePanelComponent.prototype.setOptions = function (options) {
         this.host.jqxResponsivePanel('setOptions', options);
     };
     // jqxResponsivePanelComponent properties
-    // jqxResponsivePanelComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.animationDirection = 
-    // jqxResponsivePanelComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.animationDirection = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('animationDirection', arg);
         }
@@ -215,15 +115,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('animationDirection');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.animationHideDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.animationHideDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('animationHideDelay', arg);
         }
@@ -231,15 +123,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('animationHideDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.animationShowDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.animationShowDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('animationShowDelay', arg);
         }
@@ -247,15 +131,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('animationShowDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.animationType = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.animationType = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('animationType', arg);
         }
@@ -263,15 +139,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('animationType');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.autoClose = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.autoClose = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('autoClose', arg);
         }
@@ -279,15 +147,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('autoClose');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.collapseBreakpoint = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.collapseBreakpoint = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('collapseBreakpoint', arg);
         }
@@ -295,15 +155,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('collapseBreakpoint');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.collapseWidth = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.collapseWidth = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('collapseWidth', arg);
         }
@@ -311,15 +163,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('collapseWidth');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('height', arg);
         }
@@ -327,15 +171,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.initContent = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.initContent = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('initContent', arg);
         }
@@ -343,15 +179,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('initContent');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('theme', arg);
         }
@@ -359,15 +187,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.toggleButton = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.toggleButton = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('toggleButton', arg);
         }
@@ -375,15 +195,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('toggleButton');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.toggleButtonSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.toggleButtonSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('toggleButtonSize', arg);
         }
@@ -391,15 +203,7 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
             return this.host.jqxResponsivePanel('toggleButtonSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxResponsivePanelComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxResponsivePanel('width', arg);
         }
@@ -408,161 +212,132 @@ var jqxResponsivePanelComponent = /** @class */ (function () {
         }
     };
     // jqxResponsivePanelComponent functions
-    // jqxResponsivePanelComponent functions
-    /**
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.close = 
-    // jqxResponsivePanelComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxResponsivePanelComponent.prototype.close = function () {
         this.host.jqxResponsivePanel('close');
     };
-    /**
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxResponsivePanelComponent.prototype.destroy = function () {
         this.host.jqxResponsivePanel('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.isCollapsed = /**
-     * @return {?}
-     */
-    function () {
+    jqxResponsivePanelComponent.prototype.isCollapsed = function () {
         return this.host.jqxResponsivePanel('isCollapsed');
     };
-    /**
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.isOpened = /**
-     * @return {?}
-     */
-    function () {
+    jqxResponsivePanelComponent.prototype.isOpened = function () {
         return this.host.jqxResponsivePanel('isOpened');
     };
-    /**
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.open = /**
-     * @return {?}
-     */
-    function () {
+    jqxResponsivePanelComponent.prototype.open = function () {
         this.host.jqxResponsivePanel('open');
     };
-    /**
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxResponsivePanelComponent.prototype.refresh = function () {
         this.host.jqxResponsivePanel('refresh');
     };
-    /**
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxResponsivePanelComponent.prototype.render = function () {
         this.host.jqxResponsivePanel('render');
     };
-    /**
-     * @return {?}
-     */
-    jqxResponsivePanelComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxResponsivePanelComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onClose.emit(eventData); }));
-        this.host.on('collapse', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onCollapse.emit(eventData); }));
-        this.host.on('expand', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onExpand.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onOpen.emit(eventData); }));
+        this.host.on('close', function (eventData) { _this.onClose.emit(eventData); });
+        this.host.on('collapse', function (eventData) { _this.onCollapse.emit(eventData); });
+        this.host.on('expand', function (eventData) { _this.onExpand.emit(eventData); });
+        this.host.on('open', function (eventData) { _this.onOpen.emit(eventData); });
     };
-    jqxResponsivePanelComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxResponsivePanel',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxResponsivePanelComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxResponsivePanelComponent.propDecorators = {
-        attrAnimationDirection: [{ type: Input, args: ['animationDirection',] }],
-        attrAnimationHideDelay: [{ type: Input, args: ['animationHideDelay',] }],
-        attrAnimationShowDelay: [{ type: Input, args: ['animationShowDelay',] }],
-        attrAnimationType: [{ type: Input, args: ['animationType',] }],
-        attrAutoClose: [{ type: Input, args: ['autoClose',] }],
-        attrCollapseBreakpoint: [{ type: Input, args: ['collapseBreakpoint',] }],
-        attrCollapseWidth: [{ type: Input, args: ['collapseWidth',] }],
-        attrInitContent: [{ type: Input, args: ['initContent',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrToggleButton: [{ type: Input, args: ['toggleButton',] }],
-        attrToggleButtonSize: [{ type: Input, args: ['toggleButtonSize',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onClose: [{ type: Output }],
-        onCollapse: [{ type: Output }],
-        onExpand: [{ type: Output }],
-        onOpen: [{ type: Output }]
-    };
+    __decorate([
+        Input('animationDirection'),
+        __metadata("design:type", String)
+    ], jqxResponsivePanelComponent.prototype, "attrAnimationDirection", void 0);
+    __decorate([
+        Input('animationHideDelay'),
+        __metadata("design:type", Object)
+    ], jqxResponsivePanelComponent.prototype, "attrAnimationHideDelay", void 0);
+    __decorate([
+        Input('animationShowDelay'),
+        __metadata("design:type", Object)
+    ], jqxResponsivePanelComponent.prototype, "attrAnimationShowDelay", void 0);
+    __decorate([
+        Input('animationType'),
+        __metadata("design:type", String)
+    ], jqxResponsivePanelComponent.prototype, "attrAnimationType", void 0);
+    __decorate([
+        Input('autoClose'),
+        __metadata("design:type", Boolean)
+    ], jqxResponsivePanelComponent.prototype, "attrAutoClose", void 0);
+    __decorate([
+        Input('collapseBreakpoint'),
+        __metadata("design:type", Number)
+    ], jqxResponsivePanelComponent.prototype, "attrCollapseBreakpoint", void 0);
+    __decorate([
+        Input('collapseWidth'),
+        __metadata("design:type", Number)
+    ], jqxResponsivePanelComponent.prototype, "attrCollapseWidth", void 0);
+    __decorate([
+        Input('initContent'),
+        __metadata("design:type", Function)
+    ], jqxResponsivePanelComponent.prototype, "attrInitContent", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxResponsivePanelComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('toggleButton'),
+        __metadata("design:type", Object)
+    ], jqxResponsivePanelComponent.prototype, "attrToggleButton", void 0);
+    __decorate([
+        Input('toggleButtonSize'),
+        __metadata("design:type", Object)
+    ], jqxResponsivePanelComponent.prototype, "attrToggleButtonSize", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxResponsivePanelComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxResponsivePanelComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxResponsivePanelComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxResponsivePanelComponent.prototype, "onClose", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxResponsivePanelComponent.prototype, "onCollapse", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxResponsivePanelComponent.prototype, "onExpand", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxResponsivePanelComponent.prototype, "onOpen", void 0);
+    jqxResponsivePanelComponent = __decorate([
+        Component({
+            selector: 'jqxResponsivePanel',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxResponsivePanelComponent);
     return jqxResponsivePanelComponent;
 }()); //jqxResponsivePanelComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxResponsivePanelModule = /** @class */ (function () {
     function jqxResponsivePanelModule() {
     }
-    jqxResponsivePanelModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxResponsivePanelComponent],
-                    exports: [jqxResponsivePanelComponent]
-                },] }
-    ];
+    jqxResponsivePanelModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxResponsivePanelComponent],
+            exports: [jqxResponsivePanelComponent]
+        })
+    ], jqxResponsivePanelModule);
     return jqxResponsivePanelModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxResponsivePanelComponent, jqxResponsivePanelModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxresponsivepanel.js.map

@@ -8,7 +8,7 @@ import { jqxChartComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxcha
 })
 
 export class AppComponent {
-    @ViewChild('myChart') myChart: jqxChartComponent;
+    @ViewChild('myChart', {static: false}) myChart: jqxChartComponent;
 
     source: any =
     {

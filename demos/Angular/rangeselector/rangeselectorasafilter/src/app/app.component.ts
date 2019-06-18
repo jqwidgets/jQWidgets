@@ -9,8 +9,8 @@ import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid
 })
 
 export class AppComponent {
-    @ViewChild('rangeSelector') myRangeSelector: jqxRangeSelectorComponent;
-    @ViewChild('jqxGrid') myGrid: jqxGridComponent;
+    @ViewChild('rangeSelector', {static: false}) myRangeSelector: jqxRangeSelectorComponent;
+    @ViewChild('jqxGrid', {static: false}) myGrid: jqxGridComponent;
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {
 			return '90%';

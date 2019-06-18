@@ -10,7 +10,7 @@ import { jqxPanelComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxpan
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myPanel') myPanel: jqxPanelComponent;
+    @ViewChild('myPanel', {static: false}) myPanel: jqxPanelComponent;
 
     restricter = { left: 8, top: 8, width: 247, height: 247 }
 

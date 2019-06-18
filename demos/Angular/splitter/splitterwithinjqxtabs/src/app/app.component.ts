@@ -6,8 +6,8 @@
 })
 
 export class AppComponent {
-    @ViewChild('splitter1') splitter1: ElementRef;
-    @ViewChild('splitter2') splitter2: ElementRef;
+    @ViewChild('splitter1', {static: false}) splitter1: ElementRef;
+    @ViewChild('splitter2', {static: false}) splitter2: ElementRef;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 850) {

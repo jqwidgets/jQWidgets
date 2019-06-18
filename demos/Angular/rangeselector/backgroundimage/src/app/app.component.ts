@@ -10,8 +10,8 @@ import { jqxRangeSelectorComponent } from 'jqwidgets-scripts/jqwidgets-ts/angula
 })
 
 export class AppComponent {        
-    @ViewChild('rangeSelector') rangeSelector: jqxRangeSelectorComponent;
-    @ViewChild('result') result: ElementRef;
+    @ViewChild('rangeSelector', {static: false}) rangeSelector: jqxRangeSelectorComponent;
+    @ViewChild('result', {static: false}) result: ElementRef;
 
     min: Date = new Date(2014, 5, 1);
     max: Date = new Date(2014, 9, 1);

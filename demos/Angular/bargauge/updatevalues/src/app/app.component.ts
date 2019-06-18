@@ -9,10 +9,10 @@ import { jqxSliderComponent }   from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('myBarGauge')  myBarGauge: jqxBarGaugeComponent;
-    @ViewChild('redSlider')   redSlider: jqxSliderComponent;
-    @ViewChild('greenSlider') greenSlider: jqxSliderComponent;
-    @ViewChild('blueSlider')  blueSlider: jqxSliderComponent;
+    @ViewChild('myBarGauge', {static: false})  myBarGauge: jqxBarGaugeComponent;
+    @ViewChild('redSlider', {static: false})   redSlider: jqxSliderComponent;
+    @ViewChild('greenSlider', {static: false}) greenSlider: jqxSliderComponent;
+    @ViewChild('blueSlider', {static: false})  blueSlider: jqxSliderComponent;
 
     customColorScheme: any = {
         name: 'rgb',

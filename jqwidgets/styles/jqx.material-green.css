@@ -1811,8 +1811,26 @@ input[type="text"].jqx-input-material-green:-ms-input-placeholder, input[type="t
 {
         background: url('images/html_editor.png') no-repeat;
 }
-.jqx-editor-toolbar-button-material-green{
+.jqx-editor-toolbar-button-material-green {
     border-color: #ddd;
     box-shadow: none !important;
 	color: #333;
+}
+
+/*applied to the timepicker*/
+.jqx-needle-central-circle-material-green {
+	fill: rgb(85, 139, 47);
+}
+
+.jqx-needle-material-green {
+	fill: rgb(85, 139, 47);
+}
+
+.jqx-time-picker .jqx-header .jqx-selected-material-green:focus {
+    outline: 2px solid rgba(85, 139, 47, 0.5);
+	box-shadow: 0px 0px 4px 2px rgba(85, 139, 47, 0.125);
+}
+
+.jqx-svg-picker-material-green:focus {
+	border: 1px solid rgb(85, 139, 47) !important;
 }

@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/jqwidgets-ng-jqxheatmap.umd.js",
+  "module": "../fesm5/jqwidgets-ng-jqxheatmap.js",
+  "es2015": "../fesm2015/jqwidgets-ng-jqxheatmap.js",
+  "esm5": "../esm5/jqxheatmap/jqwidgets-ng-jqxheatmap.js",
+  "esm2015": "../esm2015/jqxheatmap/jqwidgets-ng-jqxheatmap.js",
+  "fesm5": "../fesm5/jqwidgets-ng-jqxheatmap.js",
+  "fesm2015": "../fesm2015/jqwidgets-ng-jqxheatmap.js",
+  "typings": "jqwidgets-ng-jqxheatmap.d.ts",
+  "metadata": "jqwidgets-ng-jqxheatmap.metadata.json",
+  "sideEffects": false,
+  "name": "jqwidgets-ng/jqxheatmap"
+}

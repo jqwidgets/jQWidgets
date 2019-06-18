@@ -1,25 +1,15 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxcheckbox from '../../jqwidgets-scripts/jqwidgets/jqxcheckbox';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { forwardRef, Input, Output, Component, ChangeDetectionStrategy, ElementRef, EventEmitter, NgModule } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/** @type {?} */
-var noop = (/**
- * @return {?}
- */
-function () { });
-/** @type {?} */
+/// <reference path="../../jqwidgets.d.ts" />
+var noop = function () { };
+var ɵ0 = noop;
 var CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef((/**
-     * @return {?}
-     */
-    function () { return jqxCheckBoxComponent; })),
+    useExisting: forwardRef(function () { return jqxCheckBoxComponent; }),
     multi: true
 };
 var jqxCheckBoxComponent = /** @class */ (function () {
@@ -35,31 +25,15 @@ var jqxCheckBoxComponent = /** @class */ (function () {
         this.onUnchecked = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxCheckBoxComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -79,17 +53,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxCheckBoxComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -103,17 +67,9 @@ var jqxCheckBoxComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxCheckBoxComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -121,50 +77,20 @@ var jqxCheckBoxComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxCheckBoxComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxCheckBoxComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxCheckBoxComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -181,84 +107,27 @@ var jqxCheckBoxComponent = /** @class */ (function () {
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxCheckBox', options);
         options.checked !== undefined ? this.onChangeCallback(options.checked) : this.onChangeCallback(false);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxCheckBoxComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.writeValue = /**
-     * @param {?} value
-     * @return {?}
-     */
-    function (value) {
+    jqxCheckBoxComponent.prototype.writeValue = function (value) {
         if (this.widgetObject) ;
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.registerOnChange = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxCheckBoxComponent.prototype.registerOnChange = function (fn) {
         this.onChangeCallback = fn;
     };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.registerOnTouched = /**
-     * @param {?} fn
-     * @return {?}
-     */
-    function (fn) {
+    jqxCheckBoxComponent.prototype.registerOnTouched = function (fn) {
         this.onTouchedCallback = fn;
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxCheckBoxComponent.prototype.setOptions = function (options) {
         this.host.jqxCheckBox('setOptions', options);
     };
     // jqxCheckBoxComponent properties
-    // jqxCheckBoxComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.animationShowDelay = 
-    // jqxCheckBoxComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.animationShowDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('animationShowDelay', arg);
         }
@@ -266,15 +135,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('animationShowDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.animationHideDelay = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.animationHideDelay = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('animationHideDelay', arg);
         }
@@ -282,15 +143,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('animationHideDelay');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.boxSize = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.boxSize = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('boxSize', arg);
         }
@@ -298,15 +151,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('boxSize');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.checked = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.checked = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('checked', arg);
         }
@@ -314,15 +159,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('checked');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('disabled', arg);
         }
@@ -330,15 +167,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.enableContainerClick = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.enableContainerClick = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('enableContainerClick', arg);
         }
@@ -346,15 +175,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('enableContainerClick');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.groupName = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.groupName = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('groupName', arg);
         }
@@ -362,15 +183,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('groupName');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('height', arg);
         }
@@ -378,15 +191,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.hasThreeStates = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.hasThreeStates = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('hasThreeStates', arg);
         }
@@ -394,15 +199,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('hasThreeStates');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.locked = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.locked = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('locked', arg);
         }
@@ -410,15 +207,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('locked');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('rtl', arg);
         }
@@ -426,15 +215,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('theme', arg);
         }
@@ -442,15 +223,7 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxCheckBoxComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxCheckBox('width', arg);
         }
@@ -459,99 +232,34 @@ var jqxCheckBoxComponent = /** @class */ (function () {
         }
     };
     // jqxCheckBoxComponent functions
-    // jqxCheckBoxComponent functions
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.check = 
-    // jqxCheckBoxComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.check = function () {
         this.host.jqxCheckBox('check');
     };
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.disable = /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.disable = function () {
         this.host.jqxCheckBox('disable');
     };
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.destroy = function () {
         this.host.jqxCheckBox('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.enable = /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.enable = function () {
         this.host.jqxCheckBox('enable');
     };
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.focus = /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.focus = function () {
         this.host.jqxCheckBox('focus');
     };
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.indeterminate = /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.indeterminate = function () {
         this.host.jqxCheckBox('indeterminate');
     };
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.render = function () {
         this.host.jqxCheckBox('render');
     };
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.toggle = /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.toggle = function () {
         this.host.jqxCheckBox('toggle');
     };
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.uncheck = /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.uncheck = function () {
         this.host.jqxCheckBox('uncheck');
     };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.val = /**
-     * @param {?=} value
-     * @return {?}
-     */
-    function (value) {
+    jqxCheckBoxComponent.prototype.val = function (value) {
         if (value !== undefined) {
             return this.host.jqxCheckBox('val', value);
         }
@@ -559,100 +267,116 @@ var jqxCheckBoxComponent = /** @class */ (function () {
             return this.host.jqxCheckBox('val');
         }
     };
-    /**
-     * @return {?}
-     */
-    jqxCheckBoxComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxCheckBoxComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('checked', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChecked.emit(eventData); }));
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onChange.emit(eventData); if (eventData.args)
-            _this.onChangeCallback(eventData.args.checked); }));
-        this.host.on('indeterminate', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onIndeterminate.emit(eventData); }));
-        this.host.on('unchecked', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onUnchecked.emit(eventData); }));
+        this.host.on('checked', function (eventData) { _this.onChecked.emit(eventData); });
+        this.host.on('change', function (eventData) { _this.onChange.emit(eventData); if (eventData.args)
+            _this.onChangeCallback(eventData.args.checked); });
+        this.host.on('indeterminate', function (eventData) { _this.onIndeterminate.emit(eventData); });
+        this.host.on('unchecked', function (eventData) { _this.onUnchecked.emit(eventData); });
     };
-    jqxCheckBoxComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxCheckBox',
-                    template: '<div><ng-content></ng-content></div>',
-                    providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
-                    changeDetection: ChangeDetectionStrategy.OnPush
-                }] }
-    ];
-    /** @nocollapse */
-    jqxCheckBoxComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxCheckBoxComponent.propDecorators = {
-        attrAnimationShowDelay: [{ type: Input, args: ['animationShowDelay',] }],
-        attrAnimationHideDelay: [{ type: Input, args: ['animationHideDelay',] }],
-        attrBoxSize: [{ type: Input, args: ['boxSize',] }],
-        attrChecked: [{ type: Input, args: ['checked',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrEnableContainerClick: [{ type: Input, args: ['enableContainerClick',] }],
-        attrGroupName: [{ type: Input, args: ['groupName',] }],
-        attrHasThreeStates: [{ type: Input, args: ['hasThreeStates',] }],
-        attrLocked: [{ type: Input, args: ['locked',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onChecked: [{ type: Output }],
-        onChange: [{ type: Output }],
-        onIndeterminate: [{ type: Output }],
-        onUnchecked: [{ type: Output }]
-    };
+    __decorate([
+        Input('animationShowDelay'),
+        __metadata("design:type", Number)
+    ], jqxCheckBoxComponent.prototype, "attrAnimationShowDelay", void 0);
+    __decorate([
+        Input('animationHideDelay'),
+        __metadata("design:type", Number)
+    ], jqxCheckBoxComponent.prototype, "attrAnimationHideDelay", void 0);
+    __decorate([
+        Input('boxSize'),
+        __metadata("design:type", Object)
+    ], jqxCheckBoxComponent.prototype, "attrBoxSize", void 0);
+    __decorate([
+        Input('checked'),
+        __metadata("design:type", Boolean)
+    ], jqxCheckBoxComponent.prototype, "attrChecked", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxCheckBoxComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('enableContainerClick'),
+        __metadata("design:type", Boolean)
+    ], jqxCheckBoxComponent.prototype, "attrEnableContainerClick", void 0);
+    __decorate([
+        Input('groupName'),
+        __metadata("design:type", String)
+    ], jqxCheckBoxComponent.prototype, "attrGroupName", void 0);
+    __decorate([
+        Input('hasThreeStates'),
+        __metadata("design:type", Boolean)
+    ], jqxCheckBoxComponent.prototype, "attrHasThreeStates", void 0);
+    __decorate([
+        Input('locked'),
+        __metadata("design:type", Boolean)
+    ], jqxCheckBoxComponent.prototype, "attrLocked", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxCheckBoxComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxCheckBoxComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxCheckBoxComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxCheckBoxComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxCheckBoxComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxCheckBoxComponent.prototype, "onChecked", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxCheckBoxComponent.prototype, "onChange", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxCheckBoxComponent.prototype, "onIndeterminate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxCheckBoxComponent.prototype, "onUnchecked", void 0);
+    jqxCheckBoxComponent = __decorate([
+        Component({
+            selector: 'jqxCheckBox',
+            template: '<div><ng-content></ng-content></div>',
+            providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR],
+            changeDetection: ChangeDetectionStrategy.OnPush
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxCheckBoxComponent);
     return jqxCheckBoxComponent;
 }()); //jqxCheckBoxComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxCheckBoxModule = /** @class */ (function () {
     function jqxCheckBoxModule() {
     }
-    jqxCheckBoxModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [
-                        FormsModule
-                    ],
-                    declarations: [jqxCheckBoxComponent],
-                    exports: [jqxCheckBoxComponent]
-                },] }
-    ];
+    jqxCheckBoxModule = __decorate([
+        NgModule({
+            imports: [
+                FormsModule
+            ],
+            declarations: [jqxCheckBoxComponent],
+            exports: [jqxCheckBoxComponent]
+        })
+    ], jqxCheckBoxModule);
     return jqxCheckBoxModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { jqxCheckBoxComponent, jqxCheckBoxModule };
-
+export { jqxCheckBoxComponent, jqxCheckBoxModule, ɵ0 };
 //# sourceMappingURL=jqwidgets-ng-jqxcheckbox.js.map

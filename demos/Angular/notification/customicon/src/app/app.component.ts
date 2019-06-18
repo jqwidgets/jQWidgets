@@ -12,10 +12,10 @@ import { jqxTextAreaComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('jqxNotification') jqxNotification: jqxNotificationComponent;
-    @ViewChild('name') name: jqxInputComponent;
-    @ViewChild('email') email: jqxInputComponent;
-    @ViewChild('comment') comment: jqxTextAreaComponent;
+    @ViewChild('jqxNotification', {static: false}) jqxNotification: jqxNotificationComponent;
+    @ViewChild('name', {static: false}) name: jqxInputComponent;
+    @ViewChild('email', {static: false}) email: jqxInputComponent;
+    @ViewChild('comment', {static: false}) comment: jqxTextAreaComponent;
 
     click(): void {
         this.name.val('');

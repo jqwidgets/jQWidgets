@@ -10,7 +10,7 @@ import { jqxRibbonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxri
 })
 
 export class AppComponent {
-    @ViewChild('jqxRibbon') jqxRibbon: jqxRibbonComponent;
+    @ViewChild('jqxRibbon', {static: false}) jqxRibbon: jqxRibbonComponent;
     
     change(event: any): void {
         let checked = event.args.checked;

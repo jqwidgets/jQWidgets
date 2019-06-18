@@ -295,3 +295,38 @@
     margin-left: -4px;
     margin-right: 4px;
  }
+/*applied to the timepicker*/
+.jqx-label-ui-le-frog {
+	fill: white;
+	opacity: 0.5;
+}
+.jqx-needle-ui-le-frog {
+	fill: rgb(40, 92, 0);
+}
+.jqx-needle-central-circle-ui-le-frog {
+	fill: rgb(83, 163, 21);
+	stroke: rgb(40, 92, 0);
+	stroke-width: 1.5;
+}
+.jqx-needle-central-circle-ui-le-frog:first-of-type {
+	fill: rgb(40, 92, 0);
+}
+.jqx-container-ui-le-frog {
+	border-radius: inherit;
+}
+.jqx-header-ui-le-frog {
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+.jqx-time-picker .jqx-header .jqx-selected-ui-le-frog:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+}
+.jqx-svg-picker-ui-le-frog {
+	background-image: linear-gradient(rgb(63, 117, 6) 5%, rgb(83, 155, 27) 35%, rgb(58, 129, 4), rgb(40, 92, 0) 97%);
+}
+.jqx-widget-content-ui-le-frog {
+	background: none;
+}
+.jqx-svg-picker-ui-le-frog:focus {
+	border: 2px solid rgb(51, 94, 5) !important;
+}

@@ -1,16 +1,11 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxdropdownbutton from '../../jqwidgets-scripts/jqwidgets/jqxdropdownbutton';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxDropDownButtonComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxDropDownButtonComponent = class jqxDropDownButtonComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['animationType', 'arrowSize', 'autoOpen', 'closeDelay', 'disabled', 'dropDownHorizontalAlignment', 'dropDownVerticalAlignment', 'dropDownWidth', 'enableBrowserBoundsDetection', 'height', 'initContent', 'openDelay', 'popupZIndex', 'rtl', 'template', 'theme', 'width'];
@@ -19,25 +14,16 @@ class jqxDropDownButtonComponent {
         this.onOpen = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -57,11 +43,6 @@ class jqxDropDownButtonComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -76,14 +57,9 @@ class jqxDropDownButtonComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -91,34 +67,18 @@ class jqxDropDownButtonComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -135,32 +95,17 @@ class jqxDropDownButtonComponent {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxDropDownButton', options);
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxDropDownButton('setOptions', options);
     }
     // jqxDropDownButtonComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     animationType(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('animationType', arg);
@@ -169,10 +114,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('animationType');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     arrowSize(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('arrowSize', arg);
@@ -181,10 +122,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('arrowSize');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     autoOpen(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('autoOpen', arg);
@@ -193,10 +130,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('autoOpen');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     closeDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('closeDelay', arg);
@@ -205,10 +138,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('closeDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('disabled', arg);
@@ -217,10 +146,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dropDownHorizontalAlignment(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('dropDownHorizontalAlignment', arg);
@@ -229,10 +154,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('dropDownHorizontalAlignment');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dropDownVerticalAlignment(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('dropDownVerticalAlignment', arg);
@@ -241,10 +162,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('dropDownVerticalAlignment');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dropDownWidth(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('dropDownWidth', arg);
@@ -253,10 +170,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('dropDownWidth');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     enableBrowserBoundsDetection(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('enableBrowserBoundsDetection', arg);
@@ -265,10 +178,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('enableBrowserBoundsDetection');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('height', arg);
@@ -277,10 +186,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     initContent(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('initContent', arg);
@@ -289,10 +194,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('initContent');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     openDelay(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('openDelay', arg);
@@ -301,10 +202,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('openDelay');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     popupZIndex(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('popupZIndex', arg);
@@ -313,10 +210,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('popupZIndex');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rtl(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('rtl', arg);
@@ -325,10 +218,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('rtl');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     template(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('template', arg);
@@ -337,10 +226,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('template');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     theme(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('theme', arg);
@@ -349,10 +234,6 @@ class jqxDropDownButtonComponent {
             return this.host.jqxDropDownButton('theme');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxDropDownButton('width', arg);
@@ -362,122 +243,133 @@ class jqxDropDownButtonComponent {
         }
     }
     // jqxDropDownButtonComponent functions
-    /**
-     * @return {?}
-     */
     close() {
         this.host.jqxDropDownButton('close');
     }
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxDropDownButton('destroy');
     }
-    /**
-     * @return {?}
-     */
     focus() {
         this.host.jqxDropDownButton('focus');
     }
-    /**
-     * @return {?}
-     */
     getContent() {
         return this.host.jqxDropDownButton('getContent');
     }
-    /**
-     * @return {?}
-     */
     isOpened() {
         return this.host.jqxDropDownButton('isOpened');
     }
-    /**
-     * @return {?}
-     */
     open() {
         this.host.jqxDropDownButton('open');
     }
-    /**
-     * @param {?} content
-     * @return {?}
-     */
     setContent(content) {
         this.host.jqxDropDownButton('setContent', content);
     }
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('close', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onClose.emit(eventData); }));
-        this.host.on('open', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onOpen.emit(eventData); }));
+        this.host.on('close', (eventData) => { this.onClose.emit(eventData); });
+        this.host.on('open', (eventData) => { this.onOpen.emit(eventData); });
     }
-} //jqxDropDownButtonComponent
-jqxDropDownButtonComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxDropDownButton',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxDropDownButtonComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxDropDownButtonComponent.propDecorators = {
-    attrAnimationType: [{ type: Input, args: ['animationType',] }],
-    attrArrowSize: [{ type: Input, args: ['arrowSize',] }],
-    attrAutoOpen: [{ type: Input, args: ['autoOpen',] }],
-    attrCloseDelay: [{ type: Input, args: ['closeDelay',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrDropDownHorizontalAlignment: [{ type: Input, args: ['dropDownHorizontalAlignment',] }],
-    attrDropDownVerticalAlignment: [{ type: Input, args: ['dropDownVerticalAlignment',] }],
-    attrDropDownWidth: [{ type: Input, args: ['dropDownWidth',] }],
-    attrEnableBrowserBoundsDetection: [{ type: Input, args: ['enableBrowserBoundsDetection',] }],
-    attrInitContent: [{ type: Input, args: ['initContent',] }],
-    attrOpenDelay: [{ type: Input, args: ['openDelay',] }],
-    attrPopupZIndex: [{ type: Input, args: ['popupZIndex',] }],
-    attrRtl: [{ type: Input, args: ['rtl',] }],
-    attrTemplate: [{ type: Input, args: ['template',] }],
-    attrTheme: [{ type: Input, args: ['theme',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onClose: [{ type: Output }],
-    onOpen: [{ type: Output }]
+}; //jqxDropDownButtonComponent
+__decorate([
+    Input('animationType'),
+    __metadata("design:type", String)
+], jqxDropDownButtonComponent.prototype, "attrAnimationType", void 0);
+__decorate([
+    Input('arrowSize'),
+    __metadata("design:type", Number)
+], jqxDropDownButtonComponent.prototype, "attrArrowSize", void 0);
+__decorate([
+    Input('autoOpen'),
+    __metadata("design:type", Boolean)
+], jqxDropDownButtonComponent.prototype, "attrAutoOpen", void 0);
+__decorate([
+    Input('closeDelay'),
+    __metadata("design:type", Number)
+], jqxDropDownButtonComponent.prototype, "attrCloseDelay", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxDropDownButtonComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('dropDownHorizontalAlignment'),
+    __metadata("design:type", String)
+], jqxDropDownButtonComponent.prototype, "attrDropDownHorizontalAlignment", void 0);
+__decorate([
+    Input('dropDownVerticalAlignment'),
+    __metadata("design:type", String)
+], jqxDropDownButtonComponent.prototype, "attrDropDownVerticalAlignment", void 0);
+__decorate([
+    Input('dropDownWidth'),
+    __metadata("design:type", Object)
+], jqxDropDownButtonComponent.prototype, "attrDropDownWidth", void 0);
+__decorate([
+    Input('enableBrowserBoundsDetection'),
+    __metadata("design:type", Boolean)
+], jqxDropDownButtonComponent.prototype, "attrEnableBrowserBoundsDetection", void 0);
+__decorate([
+    Input('initContent'),
+    __metadata("design:type", Function)
+], jqxDropDownButtonComponent.prototype, "attrInitContent", void 0);
+__decorate([
+    Input('openDelay'),
+    __metadata("design:type", Number)
+], jqxDropDownButtonComponent.prototype, "attrOpenDelay", void 0);
+__decorate([
+    Input('popupZIndex'),
+    __metadata("design:type", Number)
+], jqxDropDownButtonComponent.prototype, "attrPopupZIndex", void 0);
+__decorate([
+    Input('rtl'),
+    __metadata("design:type", Boolean)
+], jqxDropDownButtonComponent.prototype, "attrRtl", void 0);
+__decorate([
+    Input('template'),
+    __metadata("design:type", String)
+], jqxDropDownButtonComponent.prototype, "attrTemplate", void 0);
+__decorate([
+    Input('theme'),
+    __metadata("design:type", String)
+], jqxDropDownButtonComponent.prototype, "attrTheme", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxDropDownButtonComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxDropDownButtonComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxDropDownButtonComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDropDownButtonComponent.prototype, "onClose", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxDropDownButtonComponent.prototype, "onOpen", void 0);
+jqxDropDownButtonComponent = __decorate([
+    Component({
+        selector: 'jqxDropDownButton',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxDropDownButtonComponent);
+
+let jqxDropDownButtonModule = class jqxDropDownButtonModule {
 };
+jqxDropDownButtonModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxDropDownButtonComponent],
+        exports: [jqxDropDownButtonComponent]
+    })
+], jqxDropDownButtonModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxDropDownButtonModule {
-}
-jqxDropDownButtonModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxDropDownButtonComponent],
-                exports: [jqxDropDownButtonComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxDropDownButtonComponent, jqxDropDownButtonModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxdropdownbutton.js.map

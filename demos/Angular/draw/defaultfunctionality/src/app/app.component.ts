@@ -10,7 +10,7 @@ import { jqxDrawComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxdraw
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myDraw') myDraw: jqxDrawComponent;
+    @ViewChild('myDraw', {static: false}) myDraw: jqxDrawComponent;
 
 	getWidth() : any {
 		if (document.body.offsetWidth < 800) {

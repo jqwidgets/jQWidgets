@@ -6,7 +6,7 @@
 })
 
 export class AppComponent {
-	@ViewChild('selectionlog') selectionlog: ElementRef;
+	@ViewChild('selectionlog', {static: false}) selectionlog: ElementRef;
 	
     source: any =
     {

@@ -12,11 +12,11 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('feedContentExpander') feedContentExpander: jqxExpanderComponent;
-    @ViewChild('feedListExpander') feedListExpander: jqxExpanderComponent;
-    @ViewChild('listBoxReference') myListBox: jqxListBoxComponent;
-    @ViewChild('panelReference') myPanel: jqxPanelComponent;
-    @ViewChild('treeReference') myTree: jqxTreeComponent;
+    @ViewChild('feedContentExpander', {static: false}) feedContentExpander: jqxExpanderComponent;
+    @ViewChild('feedListExpander', {static: false}) feedListExpander: jqxExpanderComponent;
+    @ViewChild('listBoxReference', {static: false}) myListBox: jqxListBoxComponent;
+    @ViewChild('panelReference', {static: false}) myPanel: jqxPanelComponent;
+    @ViewChild('treeReference', {static: false}) myTree: jqxTreeComponent;
    	getWidth() : any {
 		if (document.body.offsetWidth < 850) {
 			return '90%';

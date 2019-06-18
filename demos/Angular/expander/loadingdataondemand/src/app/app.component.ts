@@ -9,7 +9,7 @@ import { jqxExpanderComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('myExpander') myExpander; jqxExpanderComponent;
+    @ViewChild('myExpander', {static: false}) myExpander; jqxExpanderComponent;
 
     constructor(private http: Http) { }
 

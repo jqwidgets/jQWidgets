@@ -8,7 +8,7 @@ import { jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxl
 })
 
 export class AppComponent {
-    @ViewChild('listbox') myListBox: jqxListBoxComponent;
+    @ViewChild('listbox', {static: false}) myListBox: jqxListBoxComponent;
 
     shirtFileNames: string[] =
     [

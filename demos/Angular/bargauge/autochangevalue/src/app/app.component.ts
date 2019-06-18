@@ -8,7 +8,7 @@ import { jqxBarGaugeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 })
 
 export class AppComponent {
-    @ViewChild('myBarGauge') myBarGauge: jqxBarGaugeComponent;
+    @ViewChild('myBarGauge', {static: false}) myBarGauge: jqxBarGaugeComponent;
 
     formatFunction(value: number, index: number, color: string): string {
         let barGaugePalette = ['#307DD7', '#AA4643', '#89A54E', '#71588F', '#4198AF'];

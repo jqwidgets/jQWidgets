@@ -1,13 +1,10 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets-scripts/jqwidgets/jqxbuttons';
 import * as jqxfileupload from '../../jqwidgets-scripts/jqwidgets/jqxfileupload';
-import { __spread } from 'tslib';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __spread, __decorate, __metadata } from 'tslib';
+import { Input, Output, Component, ElementRef, EventEmitter, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/// <reference path="../../jqwidgets.d.ts" />
 var jqxFileUploadComponent = /** @class */ (function () {
     function jqxFileUploadComponent(containerElement) {
         this.autoCreate = true;
@@ -19,31 +16,15 @@ var jqxFileUploadComponent = /** @class */ (function () {
         this.onUploadEnd = new EventEmitter();
         this.elementRef = containerElement;
     }
-    /**
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.ngOnInit = /**
-     * @return {?}
-     */
-    function () {
+    jqxFileUploadComponent.prototype.ngOnInit = function () {
         if (this.autoCreate) {
             this.createComponent();
         }
     };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.ngOnChanges = /**
-     * @param {?} changes
-     * @return {?}
-     */
-    function (changes) {
+    jqxFileUploadComponent.prototype.ngOnChanges = function (changes) {
         if (this.host) {
             for (var i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 var areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -63,17 +44,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             }
         }
     };
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.arraysEqual = /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
-    function (attrValue, hostValue) {
+    jqxFileUploadComponent.prototype.arraysEqual = function (attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
         }
@@ -87,17 +58,9 @@ var jqxFileUploadComponent = /** @class */ (function () {
         }
         return true;
     };
-    /**
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.manageAttributes = /**
-     * @return {?}
-     */
-    function () {
-        /** @type {?} */
+    jqxFileUploadComponent.prototype.manageAttributes = function () {
         var options = {};
         for (var i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             var attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -105,50 +68,20 @@ var jqxFileUploadComponent = /** @class */ (function () {
         }
         return options;
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.moveClasses = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
+    jqxFileUploadComponent.prototype.moveClasses = function (parentEl, childEl) {
         var _a;
-        /** @type {?} */
         var classes = parentEl.classList;
         if (classes.length > 0) {
             (_a = childEl.classList).add.apply(_a, __spread(classes));
         }
         parentEl.className = '';
     };
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.moveStyles = /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
-    function (parentEl, childEl) {
-        /** @type {?} */
+    jqxFileUploadComponent.prototype.moveStyles = function (parentEl, childEl) {
         var style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.createComponent = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxFileUploadComponent.prototype.createComponent = function (options) {
         if (this.host) {
             return;
         }
@@ -164,51 +97,18 @@ var jqxFileUploadComponent = /** @class */ (function () {
         this.__wireEvents__();
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxFileUpload', options);
     };
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.createWidget = /**
-     * @param {?=} options
-     * @return {?}
-     */
-    function (options) {
+    jqxFileUploadComponent.prototype.createWidget = function (options) {
         this.createComponent(options);
     };
-    /**
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.__updateRect__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxFileUploadComponent.prototype.__updateRect__ = function () {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     };
-    /**
-     * @param {?} options
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.setOptions = /**
-     * @param {?} options
-     * @return {?}
-     */
-    function (options) {
+    jqxFileUploadComponent.prototype.setOptions = function (options) {
         this.host.jqxFileUpload('setOptions', options);
     };
     // jqxFileUploadComponent properties
-    // jqxFileUploadComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.autoUpload = 
-    // jqxFileUploadComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.autoUpload = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('autoUpload', arg);
         }
@@ -216,15 +116,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('autoUpload');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.accept = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.accept = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('accept', arg);
         }
@@ -232,15 +124,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('accept');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.browseTemplate = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.browseTemplate = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('browseTemplate', arg);
         }
@@ -248,15 +132,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('browseTemplate');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.cancelTemplate = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.cancelTemplate = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('cancelTemplate', arg);
         }
@@ -264,15 +140,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('cancelTemplate');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.disabled = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.disabled = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('disabled', arg);
         }
@@ -280,15 +148,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('disabled');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.fileInputName = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.fileInputName = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('fileInputName', arg);
         }
@@ -296,15 +156,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('fileInputName');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.height = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.height = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('height', arg);
         }
@@ -312,15 +164,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('height');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.localization = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.localization = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('localization', arg);
         }
@@ -328,15 +172,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('localization');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.multipleFilesUpload = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.multipleFilesUpload = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('multipleFilesUpload', arg);
         }
@@ -344,15 +180,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('multipleFilesUpload');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.renderFiles = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.renderFiles = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('renderFiles', arg);
         }
@@ -360,15 +188,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('renderFiles');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.rtl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.rtl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('rtl', arg);
         }
@@ -376,15 +196,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('rtl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.theme = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.theme = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('theme', arg);
         }
@@ -392,15 +204,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('theme');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.uploadUrl = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.uploadUrl = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('uploadUrl', arg);
         }
@@ -408,15 +212,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('uploadUrl');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.uploadTemplate = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.uploadTemplate = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('uploadTemplate', arg);
         }
@@ -424,15 +220,7 @@ var jqxFileUploadComponent = /** @class */ (function () {
             return this.host.jqxFileUpload('uploadTemplate');
         }
     };
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.width = /**
-     * @param {?=} arg
-     * @return {?}
-     */
-    function (arg) {
+    jqxFileUploadComponent.prototype.width = function (arg) {
         if (arg !== undefined) {
             this.host.jqxFileUpload('width', arg);
         }
@@ -441,176 +229,143 @@ var jqxFileUploadComponent = /** @class */ (function () {
         }
     };
     // jqxFileUploadComponent functions
-    // jqxFileUploadComponent functions
-    /**
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.browse = 
-    // jqxFileUploadComponent functions
-    /**
-     * @return {?}
-     */
-    function () {
+    jqxFileUploadComponent.prototype.browse = function () {
         this.host.jqxFileUpload('browse');
     };
-    /**
-     * @param {?} fileIndex
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.cancelFile = /**
-     * @param {?} fileIndex
-     * @return {?}
-     */
-    function (fileIndex) {
+    jqxFileUploadComponent.prototype.cancelFile = function (fileIndex) {
         this.host.jqxFileUpload('cancelFile', fileIndex);
     };
-    /**
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.cancelAll = /**
-     * @return {?}
-     */
-    function () {
+    jqxFileUploadComponent.prototype.cancelAll = function () {
         this.host.jqxFileUpload('cancelAll');
     };
-    /**
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.destroy = /**
-     * @return {?}
-     */
-    function () {
+    jqxFileUploadComponent.prototype.destroy = function () {
         this.host.jqxFileUpload('destroy');
     };
-    /**
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.render = /**
-     * @return {?}
-     */
-    function () {
+    jqxFileUploadComponent.prototype.render = function () {
         this.host.jqxFileUpload('render');
     };
-    /**
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.refresh = /**
-     * @return {?}
-     */
-    function () {
+    jqxFileUploadComponent.prototype.refresh = function () {
         this.host.jqxFileUpload('refresh');
     };
-    /**
-     * @param {?} fileIndex
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.uploadFile = /**
-     * @param {?} fileIndex
-     * @return {?}
-     */
-    function (fileIndex) {
+    jqxFileUploadComponent.prototype.uploadFile = function (fileIndex) {
         this.host.jqxFileUpload('uploadFile', fileIndex);
     };
-    /**
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.uploadAll = /**
-     * @return {?}
-     */
-    function () {
+    jqxFileUploadComponent.prototype.uploadAll = function () {
         this.host.jqxFileUpload('uploadAll');
     };
-    /**
-     * @return {?}
-     */
-    jqxFileUploadComponent.prototype.__wireEvents__ = /**
-     * @return {?}
-     */
-    function () {
+    jqxFileUploadComponent.prototype.__wireEvents__ = function () {
         var _this = this;
-        this.host.on('remove', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onRemove.emit(eventData); }));
-        this.host.on('select', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onSelect.emit(eventData); }));
-        this.host.on('uploadStart', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onUploadStart.emit(eventData); }));
-        this.host.on('uploadEnd', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        function (eventData) { _this.onUploadEnd.emit(eventData); }));
+        this.host.on('remove', function (eventData) { _this.onRemove.emit(eventData); });
+        this.host.on('select', function (eventData) { _this.onSelect.emit(eventData); });
+        this.host.on('uploadStart', function (eventData) { _this.onUploadStart.emit(eventData); });
+        this.host.on('uploadEnd', function (eventData) { _this.onUploadEnd.emit(eventData); });
     };
-    jqxFileUploadComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'jqxFileUpload',
-                    template: '<div><ng-content></ng-content></div>'
-                }] }
-    ];
-    /** @nocollapse */
-    jqxFileUploadComponent.ctorParameters = function () { return [
-        { type: ElementRef }
-    ]; };
-    jqxFileUploadComponent.propDecorators = {
-        attrAutoUpload: [{ type: Input, args: ['autoUpload',] }],
-        attrAccept: [{ type: Input, args: ['accept',] }],
-        attrBrowseTemplate: [{ type: Input, args: ['browseTemplate',] }],
-        attrCancelTemplate: [{ type: Input, args: ['cancelTemplate',] }],
-        attrDisabled: [{ type: Input, args: ['disabled',] }],
-        attrFileInputName: [{ type: Input, args: ['fileInputName',] }],
-        attrLocalization: [{ type: Input, args: ['localization',] }],
-        attrMultipleFilesUpload: [{ type: Input, args: ['multipleFilesUpload',] }],
-        attrRenderFiles: [{ type: Input, args: ['renderFiles',] }],
-        attrRtl: [{ type: Input, args: ['rtl',] }],
-        attrTheme: [{ type: Input, args: ['theme',] }],
-        attrUploadUrl: [{ type: Input, args: ['uploadUrl',] }],
-        attrUploadTemplate: [{ type: Input, args: ['uploadTemplate',] }],
-        attrWidth: [{ type: Input, args: ['width',] }],
-        attrHeight: [{ type: Input, args: ['height',] }],
-        autoCreate: [{ type: Input, args: ['auto-create',] }],
-        onRemove: [{ type: Output }],
-        onSelect: [{ type: Output }],
-        onUploadStart: [{ type: Output }],
-        onUploadEnd: [{ type: Output }]
-    };
+    __decorate([
+        Input('autoUpload'),
+        __metadata("design:type", Boolean)
+    ], jqxFileUploadComponent.prototype, "attrAutoUpload", void 0);
+    __decorate([
+        Input('accept'),
+        __metadata("design:type", String)
+    ], jqxFileUploadComponent.prototype, "attrAccept", void 0);
+    __decorate([
+        Input('browseTemplate'),
+        __metadata("design:type", String)
+    ], jqxFileUploadComponent.prototype, "attrBrowseTemplate", void 0);
+    __decorate([
+        Input('cancelTemplate'),
+        __metadata("design:type", String)
+    ], jqxFileUploadComponent.prototype, "attrCancelTemplate", void 0);
+    __decorate([
+        Input('disabled'),
+        __metadata("design:type", Boolean)
+    ], jqxFileUploadComponent.prototype, "attrDisabled", void 0);
+    __decorate([
+        Input('fileInputName'),
+        __metadata("design:type", String)
+    ], jqxFileUploadComponent.prototype, "attrFileInputName", void 0);
+    __decorate([
+        Input('localization'),
+        __metadata("design:type", Object)
+    ], jqxFileUploadComponent.prototype, "attrLocalization", void 0);
+    __decorate([
+        Input('multipleFilesUpload'),
+        __metadata("design:type", Boolean)
+    ], jqxFileUploadComponent.prototype, "attrMultipleFilesUpload", void 0);
+    __decorate([
+        Input('renderFiles'),
+        __metadata("design:type", Function)
+    ], jqxFileUploadComponent.prototype, "attrRenderFiles", void 0);
+    __decorate([
+        Input('rtl'),
+        __metadata("design:type", Boolean)
+    ], jqxFileUploadComponent.prototype, "attrRtl", void 0);
+    __decorate([
+        Input('theme'),
+        __metadata("design:type", String)
+    ], jqxFileUploadComponent.prototype, "attrTheme", void 0);
+    __decorate([
+        Input('uploadUrl'),
+        __metadata("design:type", String)
+    ], jqxFileUploadComponent.prototype, "attrUploadUrl", void 0);
+    __decorate([
+        Input('uploadTemplate'),
+        __metadata("design:type", String)
+    ], jqxFileUploadComponent.prototype, "attrUploadTemplate", void 0);
+    __decorate([
+        Input('width'),
+        __metadata("design:type", Object)
+    ], jqxFileUploadComponent.prototype, "attrWidth", void 0);
+    __decorate([
+        Input('height'),
+        __metadata("design:type", Object)
+    ], jqxFileUploadComponent.prototype, "attrHeight", void 0);
+    __decorate([
+        Input('auto-create'),
+        __metadata("design:type", Boolean)
+    ], jqxFileUploadComponent.prototype, "autoCreate", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxFileUploadComponent.prototype, "onRemove", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxFileUploadComponent.prototype, "onSelect", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxFileUploadComponent.prototype, "onUploadStart", void 0);
+    __decorate([
+        Output(),
+        __metadata("design:type", Object)
+    ], jqxFileUploadComponent.prototype, "onUploadEnd", void 0);
+    jqxFileUploadComponent = __decorate([
+        Component({
+            selector: 'jqxFileUpload',
+            template: '<div><ng-content></ng-content></div>'
+        }),
+        __metadata("design:paramtypes", [ElementRef])
+    ], jqxFileUploadComponent);
     return jqxFileUploadComponent;
 }()); //jqxFileUploadComponent
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 var jqxFileUploadModule = /** @class */ (function () {
     function jqxFileUploadModule() {
     }
-    jqxFileUploadModule.decorators = [
-        { type: NgModule, args: [{
-                    imports: [],
-                    declarations: [jqxFileUploadComponent],
-                    exports: [jqxFileUploadComponent]
-                },] }
-    ];
+    jqxFileUploadModule = __decorate([
+        NgModule({
+            imports: [],
+            declarations: [jqxFileUploadComponent],
+            exports: [jqxFileUploadComponent]
+        })
+    ], jqxFileUploadModule);
     return jqxFileUploadModule;
 }());
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxFileUploadComponent, jqxFileUploadModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxfileupload.js.map

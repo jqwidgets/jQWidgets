@@ -9,10 +9,10 @@ import { jqxInputComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxinp
 })
 
 export class AppComponent {
-    @ViewChild('myGrid') myGrid: jqxGridComponent;
-    @ViewChild('myInput') myInput: jqxInputComponent;
-    @ViewChild('expandedGroupLog') expandedGroupLog: ElementRef;
-    @ViewChild('collapsedGroupLog') collapsedGroupLog: ElementRef;
+    @ViewChild('myGrid', {static: false}) myGrid: jqxGridComponent;
+    @ViewChild('myInput', {static: false}) myInput: jqxInputComponent;
+    @ViewChild('expandedGroupLog', {static: false}) expandedGroupLog: ElementRef;
+    @ViewChild('collapsedGroupLog', {static: false}) collapsedGroupLog: ElementRef;
 
     source: any =
     {

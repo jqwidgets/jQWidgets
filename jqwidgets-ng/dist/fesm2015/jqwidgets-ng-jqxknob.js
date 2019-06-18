@@ -1,48 +1,31 @@
 import * as jqxcore from '../../jqwidgets-scripts/jqwidgets/jqxcore';
 import * as jqxdraw from '../../jqwidgets-scripts/jqwidgets/jqxdraw';
 import * as jqxknob from '../../jqwidgets-scripts/jqwidgets/jqxknob';
-import { Component, Input, Output, EventEmitter, ElementRef, NgModule } from '@angular/core';
+import { __decorate, __metadata } from 'tslib';
+import { EventEmitter, Input, Output, Component, ElementRef, NgModule } from '@angular/core';
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxKnobComponent {
-    /**
-     * @param {?} containerElement
-     */
+/// <reference path="../../jqwidgets.d.ts" />
+let jqxKnobComponent = class jqxKnobComponent {
     constructor(containerElement) {
         this.autoCreate = true;
         this.properties = ['allowValueChangeOnClick', 'allowValueChangeOnDrag', 'allowValueChangeOnMouseWheel', 'changing', 'dragEndAngle', 'dragStartAngle', 'disabled', 'dial', 'endAngle', 'height', 'labels', 'marks', 'min', 'max', 'progressBar', 'pointer', 'pointerGrabAction', 'rotation', 'startAngle', 'spinner', 'styles', 'step', 'snapToStep', 'value', 'width'];
         // jqxKnobComponent events
         this.onChange = new EventEmitter();
         this.elementRef = containerElement;
-        JQXLite(window).resize((/**
-         * @return {?}
-         */
-        () => {
+        JQXLite(window).resize(() => {
             this.__updateRect__();
-        }));
+        });
     }
-    /**
-     * @return {?}
-     */
     ngOnInit() {
         if (this.autoCreate) {
             this.createComponent();
         }
     }
     ;
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
     ngOnChanges(changes) {
         if (this.host) {
             for (let i = 0; i < this.properties.length; i++) {
-                /** @type {?} */
                 let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
-                /** @type {?} */
                 let areEqual = false;
                 if (this[attrName] !== undefined) {
                     if (typeof this[attrName] === 'object') {
@@ -62,11 +45,6 @@ class jqxKnobComponent {
             }
         }
     }
-    /**
-     * @param {?} attrValue
-     * @param {?} hostValue
-     * @return {?}
-     */
     arraysEqual(attrValue, hostValue) {
         if ((attrValue && !hostValue) || (!attrValue && hostValue)) {
             return false;
@@ -81,14 +59,9 @@ class jqxKnobComponent {
         }
         return true;
     }
-    /**
-     * @return {?}
-     */
     manageAttributes() {
-        /** @type {?} */
         let options = {};
         for (let i = 0; i < this.properties.length; i++) {
-            /** @type {?} */
             let attrName = 'attr' + this.properties[i].substring(0, 1).toUpperCase() + this.properties[i].substring(1);
             if (this[attrName] !== undefined) {
                 options[this.properties[i]] = this[attrName];
@@ -96,34 +69,18 @@ class jqxKnobComponent {
         }
         return options;
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveClasses(parentEl, childEl) {
-        /** @type {?} */
         let classes = parentEl.classList;
         if (classes.length > 0) {
             childEl.classList.add(...classes);
         }
         parentEl.className = '';
     }
-    /**
-     * @param {?} parentEl
-     * @param {?} childEl
-     * @return {?}
-     */
     moveStyles(parentEl, childEl) {
-        /** @type {?} */
         let style = parentEl.style.cssText;
         childEl.style.cssText = style;
         parentEl.style.cssText = '';
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createComponent(options) {
         if (this.host) {
             return;
@@ -141,32 +98,17 @@ class jqxKnobComponent {
         this.widgetObject = jqwidgets.createInstance(this.host, 'jqxKnob', options);
         this.__updateRect__();
     }
-    /**
-     * @param {?=} options
-     * @return {?}
-     */
     createWidget(options) {
         this.createComponent(options);
     }
-    /**
-     * @return {?}
-     */
     __updateRect__() {
         if (this.host)
             this.host.css({ width: this.attrWidth, height: this.attrHeight });
     }
-    /**
-     * @param {?} options
-     * @return {?}
-     */
     setOptions(options) {
         this.host.jqxKnob('setOptions', options);
     }
     // jqxKnobComponent properties
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     allowValueChangeOnClick(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('allowValueChangeOnClick', arg);
@@ -175,10 +117,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('allowValueChangeOnClick');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     allowValueChangeOnDrag(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('allowValueChangeOnDrag', arg);
@@ -187,10 +125,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('allowValueChangeOnDrag');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     allowValueChangeOnMouseWheel(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('allowValueChangeOnMouseWheel', arg);
@@ -199,10 +133,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('allowValueChangeOnMouseWheel');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     changing(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('changing', arg);
@@ -211,10 +141,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('changing');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dragEndAngle(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('dragEndAngle', arg);
@@ -223,10 +149,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('dragEndAngle');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dragStartAngle(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('dragStartAngle', arg);
@@ -235,10 +157,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('dragStartAngle');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     disabled(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('disabled', arg);
@@ -247,10 +165,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('disabled');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     dial(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('dial', arg);
@@ -259,10 +173,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('dial');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     endAngle(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('endAngle', arg);
@@ -271,10 +181,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('endAngle');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     height(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('height', arg);
@@ -283,10 +189,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('height');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     labels(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('labels', arg);
@@ -295,10 +197,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('labels');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     marks(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('marks', arg);
@@ -307,10 +205,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('marks');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     min(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('min', arg);
@@ -319,10 +213,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('min');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     max(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('max', arg);
@@ -331,10 +221,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('max');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     progressBar(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('progressBar', arg);
@@ -343,10 +229,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('progressBar');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pointer(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('pointer', arg);
@@ -355,10 +237,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('pointer');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     pointerGrabAction(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('pointerGrabAction', arg);
@@ -367,10 +245,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('pointerGrabAction');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     rotation(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('rotation', arg);
@@ -379,10 +253,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('rotation');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     startAngle(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('startAngle', arg);
@@ -391,10 +261,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('startAngle');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     spinner(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('spinner', arg);
@@ -403,10 +269,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('spinner');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     styles(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('styles', arg);
@@ -415,10 +277,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('styles');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     step(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('step', arg);
@@ -427,10 +285,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('step');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     snapToStep(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('snapToStep', arg);
@@ -439,10 +293,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('snapToStep');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     value(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('value', arg);
@@ -451,10 +301,6 @@ class jqxKnobComponent {
             return this.host.jqxKnob('value');
         }
     }
-    /**
-     * @param {?=} arg
-     * @return {?}
-     */
     width(arg) {
         if (arg !== undefined) {
             this.host.jqxKnob('width', arg);
@@ -464,16 +310,9 @@ class jqxKnobComponent {
         }
     }
     // jqxKnobComponent functions
-    /**
-     * @return {?}
-     */
     destroy() {
         this.host.jqxKnob('destroy');
     }
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
     val(value) {
         if (value !== undefined) {
             return this.host.jqxKnob('val', value);
@@ -483,81 +322,139 @@ class jqxKnobComponent {
         }
     }
     ;
-    /**
-     * @return {?}
-     */
     __wireEvents__() {
-        this.host.on('change', (/**
-         * @param {?} eventData
-         * @return {?}
-         */
-        (eventData) => { this.onChange.emit(eventData); }));
+        this.host.on('change', (eventData) => { this.onChange.emit(eventData); });
     }
-} //jqxKnobComponent
-jqxKnobComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'jqxKnob',
-                template: '<div><ng-content></ng-content></div>'
-            }] }
-];
-/** @nocollapse */
-jqxKnobComponent.ctorParameters = () => [
-    { type: ElementRef }
-];
-jqxKnobComponent.propDecorators = {
-    attrAllowValueChangeOnClick: [{ type: Input, args: ['allowValueChangeOnClick',] }],
-    attrAllowValueChangeOnDrag: [{ type: Input, args: ['allowValueChangeOnDrag',] }],
-    attrAllowValueChangeOnMouseWheel: [{ type: Input, args: ['allowValueChangeOnMouseWheel',] }],
-    attrChanging: [{ type: Input, args: ['changing',] }],
-    attrDragEndAngle: [{ type: Input, args: ['dragEndAngle',] }],
-    attrDragStartAngle: [{ type: Input, args: ['dragStartAngle',] }],
-    attrDisabled: [{ type: Input, args: ['disabled',] }],
-    attrDial: [{ type: Input, args: ['dial',] }],
-    attrEndAngle: [{ type: Input, args: ['endAngle',] }],
-    attrLabels: [{ type: Input, args: ['labels',] }],
-    attrMarks: [{ type: Input, args: ['marks',] }],
-    attrMin: [{ type: Input, args: ['min',] }],
-    attrMax: [{ type: Input, args: ['max',] }],
-    attrProgressBar: [{ type: Input, args: ['progressBar',] }],
-    attrPointer: [{ type: Input, args: ['pointer',] }],
-    attrPointerGrabAction: [{ type: Input, args: ['pointerGrabAction',] }],
-    attrRotation: [{ type: Input, args: ['rotation',] }],
-    attrStartAngle: [{ type: Input, args: ['startAngle',] }],
-    attrSpinner: [{ type: Input, args: ['spinner',] }],
-    attrStyles: [{ type: Input, args: ['styles',] }],
-    attrStep: [{ type: Input, args: ['step',] }],
-    attrSnapToStep: [{ type: Input, args: ['snapToStep',] }],
-    attrValue: [{ type: Input, args: ['value',] }],
-    attrWidth: [{ type: Input, args: ['width',] }],
-    attrHeight: [{ type: Input, args: ['height',] }],
-    autoCreate: [{ type: Input, args: ['auto-create',] }],
-    onChange: [{ type: Output }]
+}; //jqxKnobComponent
+__decorate([
+    Input('allowValueChangeOnClick'),
+    __metadata("design:type", Boolean)
+], jqxKnobComponent.prototype, "attrAllowValueChangeOnClick", void 0);
+__decorate([
+    Input('allowValueChangeOnDrag'),
+    __metadata("design:type", Boolean)
+], jqxKnobComponent.prototype, "attrAllowValueChangeOnDrag", void 0);
+__decorate([
+    Input('allowValueChangeOnMouseWheel'),
+    __metadata("design:type", Boolean)
+], jqxKnobComponent.prototype, "attrAllowValueChangeOnMouseWheel", void 0);
+__decorate([
+    Input('changing'),
+    __metadata("design:type", Function)
+], jqxKnobComponent.prototype, "attrChanging", void 0);
+__decorate([
+    Input('dragEndAngle'),
+    __metadata("design:type", Number)
+], jqxKnobComponent.prototype, "attrDragEndAngle", void 0);
+__decorate([
+    Input('dragStartAngle'),
+    __metadata("design:type", Number)
+], jqxKnobComponent.prototype, "attrDragStartAngle", void 0);
+__decorate([
+    Input('disabled'),
+    __metadata("design:type", Boolean)
+], jqxKnobComponent.prototype, "attrDisabled", void 0);
+__decorate([
+    Input('dial'),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "attrDial", void 0);
+__decorate([
+    Input('endAngle'),
+    __metadata("design:type", Number)
+], jqxKnobComponent.prototype, "attrEndAngle", void 0);
+__decorate([
+    Input('labels'),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "attrLabels", void 0);
+__decorate([
+    Input('marks'),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "attrMarks", void 0);
+__decorate([
+    Input('min'),
+    __metadata("design:type", Number)
+], jqxKnobComponent.prototype, "attrMin", void 0);
+__decorate([
+    Input('max'),
+    __metadata("design:type", Number)
+], jqxKnobComponent.prototype, "attrMax", void 0);
+__decorate([
+    Input('progressBar'),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "attrProgressBar", void 0);
+__decorate([
+    Input('pointer'),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "attrPointer", void 0);
+__decorate([
+    Input('pointerGrabAction'),
+    __metadata("design:type", String)
+], jqxKnobComponent.prototype, "attrPointerGrabAction", void 0);
+__decorate([
+    Input('rotation'),
+    __metadata("design:type", String)
+], jqxKnobComponent.prototype, "attrRotation", void 0);
+__decorate([
+    Input('startAngle'),
+    __metadata("design:type", Number)
+], jqxKnobComponent.prototype, "attrStartAngle", void 0);
+__decorate([
+    Input('spinner'),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "attrSpinner", void 0);
+__decorate([
+    Input('styles'),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "attrStyles", void 0);
+__decorate([
+    Input('step'),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "attrStep", void 0);
+__decorate([
+    Input('snapToStep'),
+    __metadata("design:type", Boolean)
+], jqxKnobComponent.prototype, "attrSnapToStep", void 0);
+__decorate([
+    Input('value'),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "attrValue", void 0);
+__decorate([
+    Input('width'),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "attrWidth", void 0);
+__decorate([
+    Input('height'),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "attrHeight", void 0);
+__decorate([
+    Input('auto-create'),
+    __metadata("design:type", Boolean)
+], jqxKnobComponent.prototype, "autoCreate", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], jqxKnobComponent.prototype, "onChange", void 0);
+jqxKnobComponent = __decorate([
+    Component({
+        selector: 'jqxKnob',
+        template: '<div><ng-content></ng-content></div>'
+    }),
+    __metadata("design:paramtypes", [ElementRef])
+], jqxKnobComponent);
+
+let jqxKnobModule = class jqxKnobModule {
 };
+jqxKnobModule = __decorate([
+    NgModule({
+        imports: [],
+        declarations: [jqxKnobComponent],
+        exports: [jqxKnobComponent]
+    })
+], jqxKnobModule);
 
 /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class jqxKnobModule {
-}
-jqxKnobModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [],
-                declarations: [jqxKnobComponent],
-                exports: [jqxKnobComponent]
-            },] }
-];
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */
 
 export { jqxKnobComponent, jqxKnobModule };
-
 //# sourceMappingURL=jqwidgets-ng-jqxknob.js.map

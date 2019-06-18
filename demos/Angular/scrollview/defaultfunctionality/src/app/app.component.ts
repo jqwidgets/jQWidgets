@@ -10,7 +10,7 @@ import { jqxScrollViewComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_j
 })
 
 export class AppComponent {
-    @ViewChild('myScrollView') myScrollView: jqxScrollViewComponent;
+    @ViewChild('myScrollView', {static: false}) myScrollView: jqxScrollViewComponent;
 
     onStartClicked(): void {
         this.myScrollView.slideShow(true);
