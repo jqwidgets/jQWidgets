@@ -1,5 +1,13 @@
 ﻿*********************************************
-* jQWidgets v8.1.0 Release, June-17-2019                *
+* jQWidgets v8.1.2 Release, June-19-2019                *
+*********************************************
+
+What's Fixed:
+
+- Fixed issues related to ESLint and Angular 8 production builds.
+
+*********************************************
+* jQWidgets v8.1.1 Release, June-17-2019                *
 *********************************************
 
 What's New: 

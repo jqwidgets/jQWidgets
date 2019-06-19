@@ -16,7 +16,7 @@
     "@angular/router": "8.0.1",
     "@angular/compiler": "8.0.1",
     "@types/jasminewd2": "2.0.3",
-    "jqwidgets-scripts": "8.0.0",
+    "jqwidgets-scripts": "8.1.2",
     "@angular/animations": "8.0.1",
     "@angular/platform-browser": "8.0.1",
     "@angular/platform-browser-dynamic": "8.0.1"
