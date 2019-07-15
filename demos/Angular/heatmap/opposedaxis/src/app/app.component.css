@@ -1,0 +1,22 @@
+﻿.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#heatmap {
+  width: 100%;
+  max-width: 1000px;
+}
+
+#options {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#options > :first-child {
+    margin-bottom: 20px;
+}

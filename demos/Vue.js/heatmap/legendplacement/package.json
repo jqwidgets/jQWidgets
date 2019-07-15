@@ -1,0 +1,33 @@
+{
+    "name": "jQWidgets_Vue_Demo",
+    "version": "1.0.0",
+    "description": "Vue.js Demos Build Project",
+    "author": "www.jqwidgets.com <sales@jqwidgets.com>",
+    "private": true,
+    "scripts": {
+        "build": "webpack --config webpack.config.js",
+        "start": "npm run build"
+    },
+    "devDependencies": {
+        "autoprefixer": "^7.1.2",
+        "css-loader": "^0.28.11",
+        "extract-text-webpack-plugin": "^3.0.0",
+        "file-loader": "^1.1.4",
+        "jqwidgets-scripts": "~8.1.2",
+        "portfinder": "^1.0.13",
+        "postcss-import": "^11.0.0",
+        "postcss-loader": "^2.0.8",
+        "postcss-url": "^7.2.1",
+        "style-loader": "^0.23.0",
+        "uglifyjs-webpack-plugin": "^1.1.1",
+        "url-loader": "^0.5.8",
+        "vue": "^2.5.2",
+        "vue-loader": "^13.3.0",
+        "vue-style-loader": "^3.0.1",
+        "vue-template-compiler": "^2.5.2",
+        "webpack": "^3.6.0",
+        "webpack-bundle-analyzer": "^2.9.0",
+        "webpack-dev-server": "^2.9.1",
+        "webpack-merge": "^4.1.0"
+    }
+}

@@ -1,5 +1,5 @@
 /*
-jQWidgets v8.1.2 (2019-June)
+jQWidgets v8.1.3 (2019-July)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -23,6 +23,7 @@ License: https://jqwidgets.com/license/
             footer: Boolean,
             footerTemplate: String,
             format: String,
+            height: [Number, String],
             minuteInterval: Number,
             name: String,
             readonly: Boolean,
@@ -31,6 +32,7 @@ License: https://jqwidgets.com/license/
             unfocusable: Boolean,
             value: Date,
             view: String,
+            width: [Number, String],
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -100,6 +102,13 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxTimePicker('format');
                 }
             },
+            _height: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxTimePicker('height', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxTimePicker('height');
+                }
+            },
             _minuteInterval: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxTimePicker('minuteInterval', arg)
@@ -156,6 +165,13 @@ License: https://jqwidgets.com/license/
                     return JQXLite(this.componentSelector).jqxTimePicker('view');
                 }
             },
+            _width: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxTimePicker('width', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxTimePicker('width');
+                }
+            },
             __createComponent__: function (options) {
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = this.__manageProps__();
@@ -164,7 +180,7 @@ License: https://jqwidgets.com/license/
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['autoSwitchToMinutes','disabled','footer','footerTemplate','format','minuteInterval','name','readonly','selection','theme','unfocusable','value','view'];
+                const widgetProps = ['autoSwitchToMinutes','disabled','footer','footerTemplate','format','height','minuteInterval','name','readonly','selection','theme','unfocusable','value','view','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -224,6 +240,16 @@ License: https://jqwidgets.com/license/
                     },
                     set: function(newValue) {
                         that._format(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'height', {
+                    get: function() {
+                        return that._height();
+                    },
+                    set: function(newValue) {
+                        that._height(newValue);
                     },
                     enumerable: true,
                     configurable: true
@@ -304,6 +330,16 @@ License: https://jqwidgets.com/license/
                     },
                     set: function(newValue) {
                         that._view(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'width', {
+                    get: function() {
+                        return that._width();
+                    },
+                    set: function(newValue) {
+                        that._width(newValue);
                     },
                     enumerable: true,
                     configurable: true

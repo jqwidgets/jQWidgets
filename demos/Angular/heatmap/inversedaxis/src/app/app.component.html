@@ -1,0 +1,16 @@
+﻿<div class="container">
+  <div id="heatmap">
+    <jqxHeatMap #myHeatMap [xAxis]="xAxis" [yAxis]="yAxis" [source]="data"
+      [title]="'Car sales revenue per employee(in 1000 &euro;)'">
+    </jqxHeatMap>
+  </div>
+
+  <div id="options">
+    <jqxCheckBox #myCheckBoxXAxis (onChange)="changeXAxisOrigin($event)" [checked]="true">
+      Reverse X-Axis Origin
+    </jqxCheckBox>
+    <jqxCheckBox #myCheckBoxYAxis (onChange)="changeYAxisOrigin($event)" [checked]="true">
+      Reverse Y-Axis Origin
+    </jqxCheckBox>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+﻿.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#heatmap {
+  width: 100%;
+  max-width: 1000px;
+}
+
+#legend-position {
+  display: flex;
+  margin: 50px 100px;
+  align-items: center;
+}
+
+#legend-position > :last-child {
+    margin-left: 20px;
+}

@@ -1,0 +1,13 @@
+#timpicker {
+    float: left;
+}
+
+#settingsForm {
+    float: left;
+    margin-left: 80px;
+}
+
+.settings {
+    font-weight: bold;
+    font-size: 1.2em;
+}

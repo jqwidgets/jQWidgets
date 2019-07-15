@@ -1,0 +1,27 @@
+﻿.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#heatmap {
+  width: 100%;
+  max-width: 1000px;
+}
+
+#palette-mode {
+  display: flex;
+  margin: 50px 100px;
+  align-items: center;
+}
+
+#radio-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+#radio-buttons > :first-child {
+    margin-bottom: 20px;
+}

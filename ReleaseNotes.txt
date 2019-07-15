@@ -1,4 +1,24 @@
 ﻿*********************************************
+* jQWidgets v8.1.3 Release, July-15 2019	               *
+*********************************************
+
+What's Improved:
+
+- jqxGrid row details can have variable dynamic height. 
+
+What's Fixed: 
+
+- Fixed an issue in jqxGrid about row details visibility in Firefox when the Grid has many columns.
+- Fixed an issue in jqxGrid about incorrect filtering through checkedlist filter, when there is "null" value in the Grid's data.
+- Fixed an issue in jqxGrid about scrolling right, then the exported data (xls) shows as a blank column.
+- Fixed an issue in jqxScheduler about incorrectly rendered timeline appointment, when the appointment is longer than month, exact-time rendering is enabled and the view is timeline month view.
+- Fixed an issue in jqxKanban about the columns rendering, expand and collapse, when trying to add dynamically new columns.
+- Fixed an issue in jqxKanban addItem method. The kanban-item-id was incorrectly set.
+- Fixed an issue in jqxKanban regarding dynamically setting the source. That may result to duplicated items in some cases.
+- Fixed an issue in jqxDropDownList regarding the label rendering when the width is in percentages.
+- Fixed an issue regarding Angular 8 production build, Globalize.js and jqxCalendar, jqxDateTimeInput and jqxScheduler.
+
+*********************************************
 * jQWidgets v8.1.2 Release, June-19-2019                *
 *********************************************
 
