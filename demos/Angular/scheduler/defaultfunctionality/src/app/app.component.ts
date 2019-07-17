@@ -8,7 +8,7 @@ import { jqxSchedulerComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jq
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('schedulerReference', {static: false}, {static: true}) scheduler: jqxSchedulerComponent;
+    @ViewChild('schedulerReference', {static: false}) scheduler: jqxSchedulerComponent;
 
     ngAfterViewInit(): void {
         this.scheduler.ensureAppointmentVisible('id1');

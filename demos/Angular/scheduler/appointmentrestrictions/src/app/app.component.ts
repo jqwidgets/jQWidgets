@@ -8,7 +8,7 @@ import { jqxSchedulerComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jq
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('scheduler', {static: false}, {static: false}) myScheduler: jqxSchedulerComponent;
+    @ViewChild('scheduler', {static: false}) myScheduler: jqxSchedulerComponent;
     
 	getWidth() : any {
 		if (document.body.offsetWidth < 800) {

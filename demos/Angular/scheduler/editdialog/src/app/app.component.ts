@@ -10,7 +10,7 @@ import { jqxButtonComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbu
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('scheduler', {static: false}, {static: false}) myScheduler: jqxSchedulerComponent;
+    @ViewChild('scheduler', {static: false}) myScheduler: jqxSchedulerComponent;
 
     ngAfterViewInit() {
         this.myScheduler.ensureAppointmentVisible('id1');
