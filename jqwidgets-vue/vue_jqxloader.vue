@@ -1,10 +1,3 @@
-/*
-jQWidgets v8.1.2 (2019-Jun)
-Copyright (c) 2011-2019 jQWidgets.
-License: https://jqwidgets.com/license/
-*/
-/* eslint-disable */
-
 <template>
     <div v-bind:id="id">
         <slot></slot>
@@ -154,100 +147,100 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 Object.defineProperty(that, 'autoOpen', {
-                    get() {
+                    get: function() {
                         return that._autoOpen();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._autoOpen(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'height', {
-                    get() {
+                    get: function() {
                         return that._height();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._height(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'html', {
-                    get() {
+                    get: function() {
                         return that._html();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._html(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'isModal', {
-                    get() {
+                    get: function() {
                         return that._isModal();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._isModal(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'imagePosition', {
-                    get() {
+                    get: function() {
                         return that._imagePosition();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._imagePosition(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'rtl', {
-                    get() {
+                    get: function() {
                         return that._rtl();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._rtl(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'text', {
-                    get() {
+                    get: function() {
                         return that._text();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._text(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'textPosition', {
-                    get() {
+                    get: function() {
                         return that._textPosition();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._textPosition(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'theme', {
-                    get() {
+                    get: function() {
                         return that._theme();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._theme(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'width', {
-                    get() {
+                    get: function() {
                         return that._width();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._width(newValue);
                     },
                     enumerable: true,
@@ -257,7 +250,6 @@ License: https://jqwidgets.com/license/
             __wireEvents__: function () {
                 const that = this;
 
-                JQXLite(this.componentSelector).on('create', function (event) { that.$emit('create', event); });
             }
         }
     }

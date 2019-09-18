@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Input Group with Custom Elements</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.element.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.input.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.scrollbar.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.button.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+    <h3>With smart-input</h3>
+
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <smart-input class="form-control" placeholder="Username"></smart-input>
+    </div>
+
+    <div class="input-group">
+        <smart-input class="form-control" data-source="['oliver', 'george', 'harry', 'jack', 'jacob', 'noah', 'charlie']" placeholder="Recipient's username"></smart-input>
+        <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">@example.com</span>
+        </div>
+    </div>
+
+    <label for="basic-url">Your vanity URL</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+        </div>
+        <smart-input class="form-control" data-source="['oliver', 'george', 'harry', 'jack', 'jacob', 'noah', 'charlie']" placeholder="Recipient's username"></smart-input>
+    </div>
+
+    <h3>With smart-button</h3>
+
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <smart-button type="button">Button</smart-button>
+        </div>
+        <smart-input class="form-control"></smart-input>
+    </div>
+
+    <div class="input-group">
+        <smart-input class="form-control" placeholder="Recipient's username"></smart-input>
+        <div class="input-group-append">
+            <smart-button type="button">Button</smart-button>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <smart-button type="button">Button</smart-button>
+            <smart-button type="button">Button</smart-button>
+        </div>
+        <smart-input class="form-control"></smart-input>
+    </div>
+
+    <div class="input-group">
+        <smart-input class="form-control" placeholder="Recipient's username"></smart-input>
+        <div class="input-group-append">
+            <smart-button type="button">Button</smart-button>
+            <smart-button type="button">Button</smart-button>
+        </div>
+    </div>
+</body>
+</html>

@@ -97,6 +97,7 @@ require('../../jqwidgets/jqxgrid.aggregates');
         JqxGrid.prototype.componentDidUpdate = function () {
             var widgetOptions = this._manageProps();
             this.setOptions(widgetOptions);
+            this._wireEvents();
         };
         JqxGrid.prototype.render = function () {
             return (React.createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
@@ -431,6 +432,7 @@ require('../../jqwidgets/jqxgrid.aggregates');
                 if (prop.indexOf('on') === 0) {
                     var originalEventName = prop.slice(2);
                     originalEventName = originalEventName.charAt(0).toLowerCase() + originalEventName.slice(1);
+                    this._jqx(this._componentSelector).off(originalEventName);
                     this._jqx(this._componentSelector).on(originalEventName, this.props[prop]);
                 }
             }

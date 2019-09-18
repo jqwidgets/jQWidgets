@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Tabs Label Settings</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <smart-tabs id="tabs" class="demoTabs" selected-index="3" tab-position="left" selectionMode="click" tab-text-orientation="vertical">
+        <smart-tab-item label="New York"><div id="map-canvas-0"></div></smart-tab-item>
+        <smart-tab-item label="Hong Kong"><div id="map-canvas-1"></div></smart-tab-item>
+        <smart-tab-item label="Troyan"><div id="map-canvas-2"></div></smart-tab-item>
+        <smart-tab-item label="Bali"><div id="map-canvas-3"></div></smart-tab-item>
+    </smart-tabs>
+<div class="options">
+		<div class="caption">Settings</div>
+		<div class="option">
+			<p>Tab position</p>
+			<smart-radio-button id="top" group-name="tabPosition" enable-container-click>top</smart-radio-button><br/>
+			<smart-radio-button id="bottom" group-name="tabPosition" enable-container-click>bottom</smart-radio-button><br/>
+			<smart-radio-button id="left" group-name="tabPosition" enable-container-click checked>left</smart-radio-button><br/>
+			<smart-radio-button id="right" group-name="tabPosition" enable-container-click>right</smart-radio-button>	   
+		</div>
+		<div class="option">
+			<p>Tab text orientation</p>
+			<smart-radio-button id="horizontal" group-name="tabTextOrientation" enable-container-click>horizontal</smart-radio-button>
+			<br/>
+			<smart-radio-button id="vertical" group-name="tabTextOrientation" enable-container-click checked>vertical</smart-radio-button>
+		</div>
+		<div class="option">
+			<p>Selection mode</p>
+			<smart-radio-button id="click" group-name="selectionMode" enable-container-click checked>click</smart-radio-button><br/>
+			<smart-radio-button id="dblclick" group-name="selectionMode" enable-container-click>dblclick</smart-radio-button><br/>
+			<smart-radio-button id="mouseenter" group-name="selectionMode" enable-container-click>mouseenter</smart-radio-button><br/>
+			<smart-radio-button id="none" group-name="selectionMode" enable-container-click>none</smart-radio-button>
+		</div>
+	</div>	
+</body>
+</html>

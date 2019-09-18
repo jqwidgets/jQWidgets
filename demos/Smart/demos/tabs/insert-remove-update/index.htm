@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Tabs Insert, Remove, Update</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <smart-tabs id="tabs" class="demoTabs" selected-index="0">
+        <smart-tab-item label="TAB 1">Content 1</smart-tab-item>
+        <smart-tab-item label="TAB 2">Content 2</smart-tab-item>
+        <smart-tab-item label="TAB 3">Content 3</smart-tab-item>
+        <smart-tab-item label="TAB 4">Content 4</smart-tab-item>
+    </smart-tabs>
+    <div class="options">
+		<div class="caption">Choose tab index</div>
+		<div class="option">
+			<input id="index" type="number" value="0" />
+ 		</div>
+		<div class="option">
+			<smart-button id="insert" class="demoButton">Insert at index</smart-button>
+		</div>
+		<div class="option">
+			<smart-button id="remove" class="demoButton">Remove at index</smart-button>
+		</div>		
+		<div class="option">
+			<smart-button id="update" class="demoButton">Update at index</smart-button>
+		</div>		
+	</div>	
+</body>
+</html>

@@ -7624,6 +7624,10 @@ jqx-knob {
     padding: 2%;
     background-color: var(--jqx-time-picker-background);
 }
+.jqx-time-picker[view="portrait"] .jqx-header.jqx-widget-header.jqx-unselectable {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
 .jqx-time-picker[view="landscape"] .jqx-main-container {
     width: 67%;
     height: 100%;

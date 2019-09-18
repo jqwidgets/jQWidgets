@@ -67,7 +67,7 @@ interface IHeatMapOptions {
     source?: any[];
     title?: string;
     width?: number | string;
-    tooltipRender?: (xLabel?: IHeatMapTooltipRender['xLabel'], yLabel?: IHeatMapTooltipRender['yLabel'], value?: IHeatMapTooltipRender['value'], date?: IHeatMapTooltipRender['date'], content?: IHeatMapTooltipRender['content']) => void;
+    tooltipRender?: (args: IHeatMapTooltipRender) => void;
 }
 export interface IHeatMapProps extends IHeatMapOptions {
     className?: string;

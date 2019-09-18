@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MaskedTextBox Overview Demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+	
+    <script type="text/javascript" src="../../../scripts/common.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body class="viewport">
+    <div class="smart-demo-container">             
+
+        <section>
+            <div>
+                <h2>Masked Text fields use a mask to distinguish between proper and improper user input.</h2>
+                <div class="module">
+                    <p>Masked Text fields typically reside in forms but can appear in other places, like dialog boxes and search.</p>
+                </div>
+                
+            </div>
+        </section>
+       
+	
+        <section id="masked-text-box-layout">
+          
+            <div>
+                <div class="module">
+                    <p></p>
+                </div>
+                <div class="module">
+                    <div class="light-theme">
+                        <smart-masked-text-box  hint="Idle & empty" mask="###-###-##-##"></smart-masked-text-box>
+						<br/><label>Idle & empty</label><br/><br/>
+						<smart-masked-text-box  hint="Press" mask="###-###-##-##" placeholder="Placeholder"></smart-masked-text-box>
+                    	<br/><label>Placeholder</label><br/><br/>
+					    <smart-masked-text-box  hint="Focus" mask="###-###-##-##" auto-show-mask></smart-masked-text-box>
+                       	<br/><label>Auto-show mask</label><br/><br/>
+					    <smart-masked-text-box  hint="Disabled" mask="###-###-##-##" disabled></smart-masked-text-box>
+                    	<br/><label>Disabled</label><br/><br/><br/>
+					</div>
+                </div>
+               
+            </div>
+
+            <div>
+                <div class="module">
+                    <p>
+                        Input text can be grouped in different ways, with special characters added in appropriate places, 
+                        such as hyphens added to a phone number. Once the first special character is reached, 
+                        the cursor automatically jumps to the next group.
+                    </p>
+                </div>
+                <div class="module">
+                    <div class="light-theme">
+                        <smart-masked-text-box hint="" value="6503036565" mask="(###) ### - ####"></smart-masked-text-box>
+                    </div>
+                    <p>
+                        Input text grouped and formatted for a phone number
+                    </p>
+                </div>
+                <div class="module">
+                    <div class="light-theme">
+                        <smart-masked-text-box hint="" value="4147968713856921" mask="#### - #### - #### - ####"></smart-masked-text-box>
+                    </div>
+                    <p>
+                        Input text grouped and formatted for a credit card number
+                    </p>
+                </div>
+            </div>
+        </section>
+	</div>
+</body>
+</html>

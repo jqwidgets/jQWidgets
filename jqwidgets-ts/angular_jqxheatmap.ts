@@ -1,5 +1,5 @@
 /*
-jQWidgets v8.1.4 (2019-July)
+jQWidgets v8.2.0 (2019-Sep)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -26,7 +26,7 @@ export class jqxHeatMapComponent implements OnChanges
    @Input('legendSettings') attrLegendSettings: jqwidgets.HeatMapLegendSettings;
    @Input('source') attrSource: any[];
    @Input('title') attrTitle: string;
-   @Input('tooltipRender') attrTooltipRender: (xLabel?: jqwidgets.HeatMapTooltipRender['xLabel'], yLabel?: jqwidgets.HeatMapTooltipRender['yLabel'], value?: jqwidgets.HeatMapTooltipRender['value'], date?: jqwidgets.HeatMapTooltipRender['date'], content?: jqwidgets.HeatMapTooltipRender['content']) => void;
+   @Input('tooltipRender') attrTooltipRender: (args: jqwidgets.HeatMapTooltipRender) => void;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
@@ -203,7 +203,7 @@ export class jqxHeatMapComponent implements OnChanges
       }
    }
 
-   tooltipRender(arg?: (xLabel?: jqwidgets.HeatMapTooltipRender['xLabel'], yLabel?: jqwidgets.HeatMapTooltipRender['yLabel'], value?: jqwidgets.HeatMapTooltipRender['value'], date?: jqwidgets.HeatMapTooltipRender['date'], content?: jqwidgets.HeatMapTooltipRender['content']) => void): (xLabel?: jqwidgets.HeatMapTooltipRender['xLabel'], yLabel?: jqwidgets.HeatMapTooltipRender['yLabel'], value?: jqwidgets.HeatMapTooltipRender['value'], date?: jqwidgets.HeatMapTooltipRender['date'], content?: jqwidgets.HeatMapTooltipRender['content']) => void {
+   tooltipRender(arg?: (args: jqwidgets.HeatMapTooltipRender) => void): (args: jqwidgets.HeatMapTooltipRender) => void {
       if (arg !== undefined) {
           this.host.jqxHeatMap('tooltipRender', arg);
       } else {

@@ -1244,9 +1244,6 @@ input[type="text"].jqx-input-light:-ms-input-placeholder, input[type="text"].jqx
     background: #5bc0de;
 }
 
-
-
-
 .jqx-fill-state-pressed-light .jqx-icon-delete-light
 {
     background-image: url('images/icon-delete-white.png');
@@ -1281,7 +1278,6 @@ input[type="text"].jqx-input-light:-ms-input-placeholder, input[type="text"].jqx
     border-color: #ddd;
 }
 
-
 /*applied to the timepicker*/
 .jqx-needle-central-circle-light {
 	fill: rgb(0, 119, 190);
@@ -1295,4 +1291,12 @@ input[type="text"].jqx-input-light:-ms-input-placeholder, input[type="text"].jqx
 }
 .jqx-svg-picker-light:focus {
 	border: 1px solid rgb(0, 119, 190) !important;
+}
+.jqx-time-picker[view="portrait"] .jqx-header-light {
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+.jqx-time-picker[view="landscape"] .jqx-header-light {
+	border-top-left-radius: inherit;
+	border-bottom-left-radius: inherit;
 }

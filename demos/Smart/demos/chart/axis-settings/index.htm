@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Axis Settings</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    
+    
+    
+    
+    
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.math.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.tickintervalhandler.js"></script>
+    
+    
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <smart-chart id="chart" animation="none"></smart-chart>
+    <div class="options">
+        <table>
+            <tr>
+                <td><b>Value axis properties:</b></td>
+                <td><b>xAxis properties:</b></td>
+            </tr>
+            <tr>
+                <td>Left padding:<smart-slider id="sliderValueAxisLeftPadding" min="0" max="50" value="0" coerce labels-visibility="none" ticks-visibility="major"></smart-slider></td>
+                <td>Top padding:<smart-slider id="sliderXAxisTopPadding" min="0" max="50" value="0" coerce labels-visibility="none" ticks-visibility="major"></smart-slider></td>
+            </tr>
+            <tr>
+                <td>Right padding:<smart-slider id="sliderValueAxisRightPadding" min="0" max="50" value="0" coerce labels-visibility="none" ticks-visibility="major"></smart-slider></td>
+                <td>Bottom padding:<smart-slider id="sliderXAxisBottomPadding" min="0" max="50" value="0" coerce labels-visibility="none" ticks-visibility="major"></smart-slider></td>
+            </tr>
+            <tr>
+                <td>Labels angle:<smart-slider id="sliderValueAxisAngle" min="0" max="360" value="0" coerce labels-visibility="none" ticks-visibility="major"></smart-slider></td>
+                <td>Labels angle:<smart-slider id="sliderXAxisAngle" min="0" max="360" value="0" coerce labels-visibility="none" ticks-visibility="major"></smart-slider></td>
+            </tr>
+            <tr>
+                <td>
+                    Position:
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <smart-radio-button id="btnLeft">Left</smart-radio-button>
+                                <smart-radio-button id="btnRight" checked>Right</smart-radio-button>
+                            </td>
+                        </tr>
+                    </table>
+                <td>
+                    Position:
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <smart-radio-button id="btnTop">Top</smart-radio-button>
+                                <smart-radio-button id="btnBottom" checked>Bottom</smart-radio-button>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <smart-check-box id="btnValueAxisFlip">Flip valueAxis positions</smart-check-box>
+                </td>
+                <td>
+                    <smart-check-box id="btnXAxisFlip">Flip xAxis positions</smart-check-box>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

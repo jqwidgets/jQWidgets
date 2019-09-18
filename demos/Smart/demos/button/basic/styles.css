@@ -1,0 +1,19 @@
+.demo-horizontal-layout {
+    display:  flex;
+	flex-direction: column;
+}
+label {
+    font-size: 14px;
+    font-family:Roboto,"Helvetica Neue",sans-serif; 
+}
+.demo-buttons-group {
+    margin: 8px;
+}
+.demo-buttons-group smart-button {
+    margin:8px;
+}
+.glyphicon {
+	display: flex;
+	justify-content: center;
+    font-size:30px;
+}

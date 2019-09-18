@@ -1,0 +1,36 @@
+smart-carousel {
+    width: 1000px;
+    height: 500px;
+    border-color: transparent;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    smart-carousel .smart-carousel-item .smart-carousel-item-container {
+        background-position: initial;
+        background-size:100% 90%;
+        background-repeat:no-repeat;
+    }
+
+    smart-carousel:focus,
+    smart-carousel:active {
+        border-color: transparent;
+    }
+
+    smart-carousel .smart-arrow:after {
+        color: white;
+    }
+
+    smart-carousel .smart-indicator {
+        width: 60px;
+        height: 30px;
+    }
+
+
+smart-carousel{
+    --smart-background-color: transparent;
+    --smart-active-background-color: transparent;
+    --smart-hover-background-color: transparent;
+    --smart-focus-background-color: transparent;
+}

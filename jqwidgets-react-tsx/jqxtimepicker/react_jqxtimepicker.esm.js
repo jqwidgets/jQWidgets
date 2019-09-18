@@ -69,6 +69,7 @@ var JqxTimePicker = /** @class */ (function (_super) {
     JqxTimePicker.prototype.componentDidUpdate = function () {
         var widgetOptions = this._manageProps();
         this.setOptions(widgetOptions);
+        this._wireEvents();
     };
     JqxTimePicker.prototype.render = function () {
         return (createElement("div", { id: this._id, className: this.props.className, style: this.props.style }, this.props.children));
@@ -86,7 +87,7 @@ var JqxTimePicker = /** @class */ (function (_super) {
         this._jqx(this._componentSelector).jqxTimePicker('setMinutes', minutes);
     };
     JqxTimePicker.prototype._manageProps = function () {
-        var widgetProps = ['autoSwitchToMinutes', 'disabled', 'footer', 'footerTemplate', 'format', 'minuteInterval', 'name', 'readonly', 'selection', 'theme', 'unfocusable', 'value', 'view'];
+        var widgetProps = ['autoSwitchToMinutes', 'disabled', 'footer', 'footerTemplate', 'format', 'height', 'minuteInterval', 'name', 'readonly', 'selection', 'theme', 'unfocusable', 'value', 'view', 'width'];
         var options = {};
         for (var prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
@@ -100,6 +101,7 @@ var JqxTimePicker = /** @class */ (function (_super) {
             if (prop.indexOf('on') === 0) {
                 var originalEventName = prop.slice(2);
                 originalEventName = originalEventName.charAt(0).toLowerCase() + originalEventName.slice(1);
+                this._jqx(this._componentSelector).off(originalEventName);
                 this._jqx(this._componentSelector).on(originalEventName, this.props[prop]);
             }
         }

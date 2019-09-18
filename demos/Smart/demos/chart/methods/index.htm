@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Chart Methods</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smartchart.api.js"></script>
+    
+    
+    
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.complex.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.math.js"></script>
+    
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <smart-chart id="chart"></smart-chart>
+    <div class="options">
+        <span>Series: </span><smart-numeric-text-box id="seriesNo" min="0" max="2" value="0" spin-buttons></smart-numeric-text-box>
+        <br />
+        <br />
+        <span>Item: </span><smart-numeric-text-box id="itemNo" min="0" max="16" value="0" spin-buttons></smart-numeric-text-box>
+        <br />
+        <br />
+        <smart-button id="getItemsCount">getItemsCount</smart-button>
+        <smart-button id="getItemCoord">getItemCoord</smart-button>
+        <br />
+        <br />
+        <smart-button id="showSerie">showSerie</smart-button>
+        <smart-button id="hideSerie">hideSerie</smart-button>
+        <br />
+        <br />
+        <smart-button id="showToolTip">showToolTip</smart-button>
+        <smart-button id="hideToolTip">hideToolTip</smart-button>
+        <br />
+        <br />
+        <smart-button id="getXAxisRect">getXAxisRect</smart-button>
+        <smart-button id="getXAxisLabels">getXAxisLabels</smart-button>
+        <br />
+        <br />
+        <smart-button id="getValueAxisRect">getValueAxisRect</smart-button>
+        <smart-button id="getValueAxisLabels">getValueAxisLabels</smart-button>
+    </div>
+</body>
+</html>

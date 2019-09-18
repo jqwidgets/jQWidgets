@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Column Series Spacing</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    
+    
+    
+    
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.math.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.tickintervalhandler.js"></script>
+    
+    
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <smart-chart id="chart"></smart-chart>
+    <div class="options">
+        <table>
+            <tr>
+                <td><b>Series group 1:</b></td>
+                <td><b>Series group 2:</b></td>
+            </tr>
+            <tr>
+                <td>
+                    <smart-check-box id="btnStackedSeriesGroup1" checked>Stacked</smart-check-box>
+                </td>
+                <td>
+                    <smart-check-box id="btnStackedSeriesGroup2">Stacked</smart-check-box>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Space between columns / padding:
+                    <smart-slider id="sliderColumnsGapPercentGroup1" min="0" max="99" value="25" coerce interval="1" labels-visibility="none" ticks-visibility="major"></smart-slider>
+                </td>
+                <td>
+                    Space between columns / padding:
+                    <smart-slider id="sliderColumnsGapPercentGroup2" min="0" max="99" value="25" coerce interval="1" labels-visibility="none" ticks-visibility="major"></smart-slider>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Space between series:
+                    <smart-slider id="sliderSeriesGapGroup1" min="0" max="100" value="10" coerce interval="1" labels-visibility="none" ticks-visibility="major"></smart-slider>
+                </td>
+                <td>
+                    Space between series:
+                    <smart-slider id="sliderSeriesGapGroup2" min="0" max="100" value="10" coerce interval="1" labels-visibility="none" ticks-visibility="major"></smart-slider>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Minimum column width:
+                    <smart-slider id="sliderMinWidthGroup1" min="0" max="50" value="0" coerce interval="1" labels-visibility="none" ticks-visibility="major"></smart-slider>
+                </td>
+                <td>
+                    Minimum column width:
+                    <smart-slider id="sliderMinWidthGroup2" min="0" max="50" value="0" coerce interval="1" labels-visibility="none" ticks-visibility="major"></smart-slider>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Maximum column width:
+                    <smart-slider id="sliderMaxWidthGroup1" min="1" max="120" value="40" coerce interval="1" labels-visibility="none" ticks-visibility="major"></smart-slider>
+                </td>
+                <td>
+                    Maximum column width:
+                    <smart-slider id="sliderMaxWidthGroup2" min="1" max="120" value="40" coerce interval="1" labels-visibility="none" ticks-visibility="major"></smart-slider>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

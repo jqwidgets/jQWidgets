@@ -1,4 +1,24 @@
 ﻿*********************************************
+* jQWidgets v8.2.0 Release, Sep-17 2019	               *
+*********************************************
+
+What's New:
+
+- Added Smart Web Components to the package. 
+
+What's Fixed:
+
+- Fixed Angular 8 related issue in jqxGrid grouping.
+- Fixed Angular 8 related issue in jqxGrid filtering.
+- Fixed Angular 8 related issue in jqxGrid, jqxDataTable and jqxTreeGrid about data export.
+- Fixed Angular 8 related issue in jqxListBox about inserting new items.
+- Fixed Angular 8 related issue in jqxCheckBox about the checked event.
+- Fixed Angular 8 related issue in jqxGrid about the virtualization.
+- Fixed Angular 8 related issue in jqxDateTimeInput about the Localization and Formatting.
+- Fixed Angular 8 related issue in jqxCalendar about the Localization and Formatting.
+
+- Fixed an 
+*********************************************
 * jQWidgets v8.1.4 Release, July-17 2019	               *
 *********************************************
 

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Validator</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js"></script>
+
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.element.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.validator.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.date.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.datetimepicker.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.calendar.js"></script>
+
+
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.numerictextbox.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.numeric.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.complex.js"></script>
+
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.scrollbar.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.button.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.tooltip.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.listbox.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.dropdownlist.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.combobox.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.textbox.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.passwordtextbox.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.checkbox.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.timepicker.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.numeric.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.math.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.draw.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.maskedtextbox.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.radiobutton.js"></script>
+
+    <script src="index.js"></script>
+</head>
+<body>
+
+    <div class="demo-container">
+        <form id="testForm" action="./">
+
+            <div class="fieldset">
+                <div class="fieldset-header">
+                    Register
+                </div>
+
+                <div class="field">
+                    <div class="field-label">User name</div>
+                    <div class="field-value">
+                        <smart-text-box select-all-on-focus placeholder="User name" id="userInput"></smart-text-box>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Your password</div>
+                    <div class="field-value">
+                        <smart-password-text-box select-all-on-focus placeholder="Your password" id="passwordInput"></smart-password-text-box>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Confirm password</div>
+                    <div class="field-value">
+                        <smart-password-text-box select-all-on-focus placeholder="Confirm password" id="passwordConfirmInput"></smart-password-text-box>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Real name</div>
+                    <div class="field-value">
+                        <smart-text-box select-all-on-focus placeholder="Real name" id="realNameInput"></smart-text-box>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Date of birth</div>
+                    <div class="field-value">
+
+                        <smart-date-time-picker format-string="dddd, MMM dd, yyyy"
+                                              calendar-button
+                                              enable-mouse-wheel-action
+                                              drop-down-position="bottom"
+                                              id="birthInput"
+                                              spin-buttons
+                                              spin-buttons-position="left">
+                        </smart-date-time-picker>
+
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Email</div>
+                    <div class="field-value">
+                        <smart-text-box select-all-on-focus placeholder="Email" id="emailInput"></smart-text-box>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">SSN</div>
+                    <div class="field-value">
+                        <smart-masked-text-box class="material" hint="" mask="###-##-####" id="ssnInput"></smart-masked-text-box>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Phone number</div>
+                    <div class="field-value">
+                        <smart-masked-text-box class="material" hint="" mask="(###)###-####" id="phoneInput"></smart-masked-text-box>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field-label">Zip code</div>
+                    <div class="field-value">
+                        <smart-masked-text-box class="material" hint="" mask="#####-####" id="zipInput"></smart-masked-text-box>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="fieldset">
+                <div class="field-label">Choose gender</div>
+                <div class="field-value genderRadioHolder">
+                    <smart-radio-button id="maleRadioButton" name="genderRadioGroup" value="male" class="genderRadio">Male</smart-radio-button>
+                    <smart-radio-button id="femaleRadioButton" name="genderRadioGroup" value="female" class="genderRadio">Female</smart-radio-button>
+                    <smart-radio-button id="otherRadioButton" name="genderRadioGroup" value="alien" class="genderRadio">Alien</smart-radio-button>
+                </div>
+            </div>
+
+            <div id="check" class="checkbox-validator">
+                <smart-check-box click-mode="press" id="terms">Accept terms</smart-check-box> <br />
+            </div>
+
+            <div class="fieldset">
+                <div id="registerButton" class="submit-button">
+                    <smart-button id="submitFormButton" type="button" class="success">Send</smart-button>
+                </div>
+            </div>
+
+        </form>
+
+        <div id="validationsummary"></div>
+
+    </div>
+
+</body>
+</html>

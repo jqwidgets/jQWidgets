@@ -1,5 +1,5 @@
 /*
-jQWidgets v8.1.4 (2019-July)
+jQWidgets v8.2.0 (2019-Sep)
 Copyright (c) 2011-2019 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -32,14 +32,14 @@ export class jqxTimePickerComponent implements OnChanges
    @Input('selection') attrSelection: string;
    @Input('theme') attrTheme: string;
    @Input('unfocusable') attrUnfocusable: boolean;
-   @Input('value') attrValue: Date;
+   @Input('value') attrValue: any;
    @Input('view') attrView: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['autoSwitchToMinutes','disabled','footer','footerTemplate','format','minuteInterval','name','readonly','selection','theme','unfocusable','value','view'];
+   properties: string[] = ['autoSwitchToMinutes','disabled','footer','footerTemplate','format','height','minuteInterval','name','readonly','selection','theme','unfocusable','value','view','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxTimePicker;
@@ -194,6 +194,14 @@ export class jqxTimePickerComponent implements OnChanges
       }
    }
 
+   height(arg?: number | string): number | string {
+      if (arg !== undefined) {
+          this.host.jqxTimePicker('height', arg);
+      } else {
+          return this.host.jqxTimePicker('height');
+      }
+   }
+
    minuteInterval(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxTimePicker('minuteInterval', arg);
@@ -242,7 +250,7 @@ export class jqxTimePickerComponent implements OnChanges
       }
    }
 
-   value(arg?: undefined): undefined {
+   value(arg?: any): any {
       if (arg !== undefined) {
           this.host.jqxTimePicker('value', arg);
       } else {
@@ -255,6 +263,14 @@ export class jqxTimePickerComponent implements OnChanges
           this.host.jqxTimePicker('view', arg);
       } else {
           return this.host.jqxTimePicker('view');
+      }
+   }
+
+   width(arg?: number | string): number | string {
+      if (arg !== undefined) {
+          this.host.jqxTimePicker('width', arg);
+      } else {
+          return this.host.jqxTimePicker('width');
       }
    }
 

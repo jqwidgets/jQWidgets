@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Numeric Text Box Scientific Notation</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.math.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.complex.js"></script>
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <smart-numeric-text-box id="floatingPointNumericTextBox"
+                          input-format="floatingPoint"
+                          value="300000000"
+                          scientific-notation
+                          spin-buttons
+                          spin-buttons-position="right"
+                          spin-buttons-step="1"
+                          enable-mouse-wheel-action></smart-numeric-text-box>
+    <br />
+    <smart-numeric-text-box id="complexNumericTextBox"
+                          input-format="complex"
+                          value="300000000 + 5000i"
+                          scientific-notation
+                          spin-buttons
+                          spin-buttons-position="right"
+                          spin-buttons-step="1 + 1i"
+                          enable-mouse-wheel-action></smart-numeric-text-box>
+    <div class="options">
+		<div class="caption">Settings</div>
+		<div class="option">
+			<smart-toggle-button id="toggleScientificNotation" checked>Toggle scientific notation</smart-toggle-button>
+		</div>
+	</div>
+</body>
+</html>

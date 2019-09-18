@@ -1,3 +1,6 @@
+require('../../jqwidgets-scripts/jqwidgets/jqxcore');
+require('../../jqwidgets-scripts/jqwidgets/jqxdraw');
+require('../../jqwidgets-scripts/jqwidgets/jqxtimepicker');
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
     typeof define === 'function' && define.amd ? define('jqwidgets-ng/jqxtimepicker', ['exports', '@angular/core'], factory) :
@@ -57,7 +60,7 @@
     var jqxTimePickerComponent = /** @class */ (function () {
         function jqxTimePickerComponent(containerElement) {
             this.autoCreate = true;
-            this.properties = ['autoSwitchToMinutes', 'disabled', 'footer', 'footerTemplate', 'format', 'minuteInterval', 'name', 'readonly', 'selection', 'theme', 'unfocusable', 'value', 'view'];
+            this.properties = ['autoSwitchToMinutes', 'disabled', 'footer', 'footerTemplate', 'format', 'height', 'minuteInterval', 'name', 'readonly', 'selection', 'theme', 'unfocusable', 'value', 'view', 'width'];
             // jqxTimePickerComponent events
             this.onChange = new core.EventEmitter();
             this.elementRef = containerElement;
@@ -194,6 +197,14 @@
                 return this.host.jqxTimePicker('format');
             }
         };
+        jqxTimePickerComponent.prototype.height = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxTimePicker('height', arg);
+            }
+            else {
+                return this.host.jqxTimePicker('height');
+            }
+        };
         jqxTimePickerComponent.prototype.minuteInterval = function (arg) {
             if (arg !== undefined) {
                 this.host.jqxTimePicker('minuteInterval', arg);
@@ -258,6 +269,14 @@
                 return this.host.jqxTimePicker('view');
             }
         };
+        jqxTimePickerComponent.prototype.width = function (arg) {
+            if (arg !== undefined) {
+                this.host.jqxTimePicker('width', arg);
+            }
+            else {
+                return this.host.jqxTimePicker('width');
+            }
+        };
         // jqxTimePickerComponent functions
         jqxTimePickerComponent.prototype.setHours = function (hours) {
             this.host.jqxTimePicker('setHours', hours);
@@ -315,7 +334,7 @@
         ], jqxTimePickerComponent.prototype, "attrUnfocusable", void 0);
         __decorate([
             core.Input('value'),
-            __metadata("design:type", Date)
+            __metadata("design:type", Object)
         ], jqxTimePickerComponent.prototype, "attrValue", void 0);
         __decorate([
             core.Input('view'),

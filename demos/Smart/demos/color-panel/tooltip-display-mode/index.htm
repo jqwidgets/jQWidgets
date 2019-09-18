@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Color Panel with displayMode:"radial"</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.element.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.button.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.colorpanel.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.radiobutton.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.tooltip.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.draw.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <h1>Tooltip Display Mode</h1>
+    <smart-color-panel id="colorPanel"></smart-color-panel>
+
+    <div id="options">
+        <h3>Tooltip Display Mode</h3>
+        <div class="option">
+            <smart-radio-button group-name="tooltipDisplayMode">none</smart-radio-button>
+        </div>
+        <div class="option">
+            <smart-radio-button group-name="tooltipDisplayMode">rgba</smart-radio-button>
+        </div>
+        <div class="option">
+            <smart-radio-button group-name="tooltipDisplayMode">rgb</smart-radio-button>
+        </div>
+        <div class="option">
+            <smart-radio-button group-name="tooltipDisplayMode" checked>hex</smart-radio-button>
+        </div>
+    </div>
+</body>
+</html>

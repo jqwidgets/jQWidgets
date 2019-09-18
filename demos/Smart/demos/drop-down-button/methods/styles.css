@@ -1,0 +1,12 @@
+#dropDownButtonDemo {
+    float: left;
+}
+
+#methodButtons {
+    float: left;
+    margin-left: 100px;
+}
+
+#methodButtons smart-button {
+    width: 100px;
+}

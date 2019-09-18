@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Data Export with Custom Style | Grid | Web Components</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />	
+    <script type="text/javascript" src="../../../scripts/data.js"></script>	
+    <!-- JSZip -->
+    <script type="text/javascript" src="../../../scripts/jszip.min.js"></script>
+    <!-- pdfmake -->
+    <script type="text/javascript" src="../../../scripts/pdfmake.min.js"></script>
+    <script type="text/javascript" src="../../../scripts/vfs_fonts.js"></script>
+	
+    <script type="module" src="index.js"></script>
+</head>
+<body class="viewport">
+   <smart-grid id="grid"></smart-grid>
+	<div class="options">
+		<div class="caption">
+		</div>
+		<div class="option">
+			<smart-button id="xlsxBtn">Export to Excel</smart-button>
+		</div>
+		<div class="option">
+			<smart-button id="pdfBtn">Export to PDF</smart-button>
+		</div>
+		<div class="option">
+			<smart-button id="htmlBtn">Export to HTML</smart-button>
+		</div>		
+	</div>
+</body>
+</html>

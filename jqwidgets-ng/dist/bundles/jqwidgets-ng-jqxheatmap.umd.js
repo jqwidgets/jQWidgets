@@ -1,3 +1,5 @@
+require('../../jqwidgets-scripts/jqwidgets/jqxcore');
+require('../../jqwidgets-scripts/jqwidgets/jqxheatmap'); 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
     typeof define === 'function' && define.amd ? define('jqwidgets-ng/jqxheatmap', ['exports', '@angular/core'], factory) :

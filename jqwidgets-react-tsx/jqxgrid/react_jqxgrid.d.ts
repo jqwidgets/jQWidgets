@@ -281,6 +281,7 @@ export interface IGridLocalizationobject {
     deleterowstring?: string;
     resetrowstring?: string;
     everpresentrowplaceholder?: string;
+    emptydatastring?: string;
 }
 export interface IGridScrollPosition {
     top?: number;

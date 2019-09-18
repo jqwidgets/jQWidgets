@@ -1,0 +1,5 @@
+smart-color-picker {
+    --smart-color-picker-default-width: auto;
+    --smart-color-picker-palette-size: 200px;
+    display: inline-block;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>App Data Bindings</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/common.css" />	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+  	<script src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+	<script src="index.js"></script>
+</head>
+<body class="viewport">
+	<div class="demo-description">
+	All Custom Elements are two-way data bound to a common Model. The log, below the custom elements logs the changes with declarative data bindings.
+	</div>
+	<div id="form">
+		<smart-text-box id="textBox1"></smart-text-box>
+		<br/>
+		<smart-text-box id="textBox2"></smart-text-box>
+		<br/>
+		<smart-list-box id="listBox"></smart-list-box>
+		<br/>
+		<smart-drop-down-list id="dropDownList"></smart-drop-down-list>
+		<br/>
+		<br/>
+		<smart-button id="button"></smart-button>
+		<br/>
+		<br/>
+		
+		First Name: <span>{{firstName}}</span><br/>
+		Last Name: <span>{{lastName}}</span><br/>
+		Selected Indexes: <span>{{selectedIndexes}}</span><br/>
+		Items: <span>{{items}}</span>
+	</div>
+</body>
+</html>

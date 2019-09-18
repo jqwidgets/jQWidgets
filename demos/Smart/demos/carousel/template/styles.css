@@ -1,0 +1,45 @@
+smart-carousel {
+    width: 1000px;
+    height: 450px;
+    border-color: transparent;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #d3d3d369;
+}
+
+    smart-carousel:focus,
+    smart-carousel:active {
+        border-color: transparent;
+    }
+
+    smart-carousel .smart-carousel-html-content {
+        padding-left: 30px;
+        padding-right: 20px;
+    }
+
+.template-image,
+.template-header,
+.template-content {
+    position: absolute;
+}
+
+.template-image {
+    right: 50px;
+    top: 25px;
+}
+
+.template-header,
+.template-content {
+    left: 55px;
+    color: gray;
+}
+
+.template-header {
+    top: 60px;
+}
+
+.template-content {
+    top: 120px;
+    width: 400px;
+}

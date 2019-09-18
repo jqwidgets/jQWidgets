@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Carousel Navigation</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <smart-carousel id="carousel"></smart-carousel>
+
+    <div id="navigationBox">
+        <smart-check-box id="arrows" enable-container-click checked>Show Arrows</smart-check-box> <br />
+        <smart-check-box id="indicators" enable-container-click checked>Show Indicators</smart-check-box> <br />
+        <smart-check-box id="wheel" enable-container-click>Navigate via Mouse Wheel</smart-check-box> <br />
+        <smart-check-box id="swipe" enable-container-click>Navigate via Swipe Left / Swipe Right</smart-check-box> <br />
+        <smart-check-box id="slideShow" enable-container-click>SlideShow</smart-check-box> <br />
+        <smart-check-box id="loop" enable-container-click>Loop</smart-check-box> <br />
+
+        <hr />
+
+        <smart-button id="playButton">Play</smart-button>
+        <smart-button id="pauseButton">Pause</smart-button><br /><br />
+        <smart-button id="prevButton">Prev</smart-button>
+        <smart-button id="nextButton">Next</smart-button><br /><br />
+        <smart-button id="slideToButton">Slide To</smart-button><br />
+        <smart-text-box id="slideToValue" placeholder="Value"></smart-text-box>
+    </div>
+</body>
+</html>

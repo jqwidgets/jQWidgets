@@ -1,10 +1,3 @@
-/*
-jQWidgets v8.1.4 (2019-July)
-Copyright (c) 2011-2019 jQWidgets.
-License: https://jqwidgets.com/license/
-*/
-/* eslint-disable */
-
 <template>
     <div v-bind:id="id">
         <input type="text" />

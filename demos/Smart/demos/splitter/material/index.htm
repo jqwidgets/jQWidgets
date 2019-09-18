@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Splitter Material</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    
+    
+    
+    
+    
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <template id="discoverTemplate">
+        <div class="content">
+            <smart-button theme="material" class="text"><i class="material-icons">&#xE87D;</i></smart-button>
+            <smart-button theme="material" class="text"><i class="material-icons">&#xE8E6;</i></smart-button>
+            <smart-button theme="material" class="text"><i class="material-icons">&#xE80D;</i></smart-button>
+        </div>
+    </template>
+    <template id="itemTemplate">
+        <div class="templateContainer">
+            <div class="primaryAction"><i class="material-icons"></i>{{label}}</div>
+            <div class="secondaryAction"></div>
+        </div>
+    </template>
+
+    <div id="materialSplitterContainer" class="material">
+        <section>
+            <h1>smartSplitter</h1>
+            <div>
+                <h1>Splitter is a layout control that allows creating dynamic layouts with resizable and collapsible items.</h1>
+                <div class="module">
+                    <p>
+                        A splitter allows the creation of an infinite number of panes each with a different size. The size can be set via CSS selector or the property <b>size</b>.
+                        The element offers two orientation modes:
+                        <ul>
+                            <li>Vertical</li>
+                            <li>Horizontal</li>
+                        </ul>
+                    </p>
+                    <p>
+                        Panes inside the Splitter can be resized in a direction based on the orientation. Several resize modes are available:
+                        <ul>
+                            <li>Adjacent</li>
+                            <li>End</li>
+                            <li>Proportional</li>
+                        </ul>
+                    </p>
+                    <p>An Additional <b>liveResize</b> property is available giving the user the possibility to monitor the resizing process at real time.</p>
+                    <p>The Splitter offers full keyboard support for the dragging and collapsing operations. You can read all about it in the API docs.</p>
+                </div>
+                <div class="module img-holder">
+                    <figure>
+                        <img alt="" src="../../../images/splitter-material.jpg">
+                    </figure>
+                </div>
+                <div class="module">
+                </div>
+                <div class="module preview">
+                </div>
+                <div class="module">
+                </div>
+            </div>
+        </section>
+        <nav>
+            <h1>Contents</h1>
+            <ul>
+                <li><a href="#usage">Usage</a></li>
+                <li><a href="#style">Style</a></li>
+                <li><a href="#splitterOrientation">Orientation</a></li>
+                <li><a href="#splitterResizeModes">Resize Modes</a></li>
+                <li><a href="#splitterDemo">Demo</a></li>
+            </ul>
+        </nav>
+
+        <section id="usage">
+            <h1>Usage</h1>
+            <div class="module">
+                <h2>Generic Splitter</h2>
+                <p>
+                    The generic splitter has a vertical orientation by default. It's content is completely empty until the user creates/appends a Splitter Item.
+                </p>
+                <br />
+                <h2>Automatic Splitter Bars</h2>
+                <p>
+                    The splitter bars between the panes are created/removed automatically when necessary. The user can lock or hide any particular splitter bar by calling the corresponding method and passing in it's index or instance.
+                </p>
+                <br />
+                <h2>Min/Max Limits</h2>
+                <p>
+                    Splitter items can have min and max size limits by setting the corresponding property to the desired item.
+                </p>
+                <br />
+                <h2>Overflowing Content</h2>
+                <p>
+                    By default the content of the splitter should fit it's size. If the user sets incorrect sizes or limits( min, max ) the panes will be validated in order to fill the parent completely. Setting the CSS <b>overflow</b> property to 'auto' or 'scroll' on <b>element initialization</b> will change that behavior. If set the size of the items will no longer be validated and they will be able to overflow the container. The content becomes scrollable.
+                </p>
+            </div>
+            <div class="module demo-splitter">
+                <smart-splitter theme="material" class="animation">
+                    <smart-splitter-item>
+                        <h2>A</h2>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <h2>B</h2>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </smart-splitter-item>
+                </smart-splitter>
+            </div>
+        </section>
+
+        <section id="style">
+            <h1>Style</h1>
+            <div class="module">
+                <h2>Customizable themes</h2>
+                <p>Smart material themes are easily customizable. With a simple CSS variable changes the user is able to modify the colors of the Splitter.</p>
+                <p>By default the element uses Transparent splitter bars while the panes have a white backgorund.</p>
+
+            </div>
+            <div class="module demo-splitter">
+                <smart-splitter theme="material" class="animation">
+                    <smart-splitter-item collapsible collapsed>
+                        <h2>Custom Elements</h2>
+                        <strong>Introduction</strong>
+                        <p>
+                            The browser gives us an excellent tool for structuring web applications. It's called HTML. You may have heard of it! It's declarative, portable, well supported, and easy to work with. Great as HTML may be, its vocabulary and extensibility are limited. The HTML living standard has always lacked a way to automatically associate JS behavior with your markup... until now.
+
+                            Custom elements are the answer to modernizing HTML, filling in the missing pieces, and bundling structure with behavior. If HTML doesn't provide the solution to a problem, we can create a custom element that does. Custom elements teach the browser new tricks while preserving the benefits of HTML.
+                        </p>
+                    </smart-splitter-item>
+
+                    <smart-splitter-item collapsible min="200">
+                        <h2>Smart Elements Framework</h2>
+                        <strong>Outstanding Performance</strong>
+                        <p>Carefully optimized to deliver great performance on a wide range of devices and browsers. Small in size, highly modular and responsive web components.</p>
+
+                        <strong>Optimal User Experience Across Devices & Browsers</strong>
+                        <p>Smart HTML Elements takes the JavaScript and HTML UI development to a professional level. It is platform independent, cross-browser compatible and adjusts for the best user experience across devices.</p>
+
+                        <strong>Web Components Compliant</strong>
+                        <p>Smart HTML Elements is a reliable, feature rich JavaScript framework based on Custom Elements. It increases productivity and minimizes development cost.</p>
+                    </smart-splitter-item>
+                    <smart-splitter-item collapsible min="180">
+                        <h2>Smart Splitter</h2>
+                        <strong>Splitter is a layout control that allows creating dynamic layouts with resizable and collapsible items.</strong>
+                        <p>A splitter allows the creation of an infinite number of panes each with a different size. The size can be set via CSS selector or the property <b>size</b>.</p>
+                        <p>Panes inside the Splitter can be resized or collapsed. Min and Max limits can be applied to each of the panes using the corresponding properties <b>min</b> and <b>max</b>.</p>
+                        <p>Three resize modes available: Adjacent, End and Proportional.</p>
+                        <p>Additionaly the element offers live resize mode that allows to see the resizing operation at real time.</p>
+                        <p>The Splitter offers full keyboard support. You can read all about it in the API docs.</p>
+                    </smart-splitter-item>
+                </smart-splitter>
+                <p>Light theme</p>
+            </div>
+
+            <div class="module">
+                <p>With a simple color change the Splitter quickly changes it's appearance</p>
+            </div>
+            <div class="module demo-splitter dark">
+                <smart-splitter theme="material" class="animation">
+                    <smart-splitter-item collapsible min="200">
+                        <h2>Custom Elements</h2>
+                        <strong>Introduction</strong>
+                        <p>
+                            The browser gives us an excellent tool for structuring web applications. It's called HTML. You may have heard of it! It's declarative, portable, well supported, and easy to work with. Great as HTML may be, its vocabulary and extensibility are limited. The HTML living standard has always lacked a way to automatically associate JS behavior with your markup... until now.
+
+                            Custom elements are the answer to modernizing HTML, filling in the missing pieces, and bundling structure with behavior. If HTML doesn't provide the solution to a problem, we can create a custom element that does. Custom elements teach the browser new tricks while preserving the benefits of HTML.
+                        </p>
+                    </smart-splitter-item>
+
+                    <smart-splitter-item collapsible min="200">
+                        <h2>Smart Elements Framework</h2>
+                        <strong>Outstanding Performance</strong>
+                        <p>Carefully optimized to deliver great performance on a wide range of devices and browsers. Small in size, highly modular and responsive web components.</p>
+
+                        <strong>Optimal User Experience Across Devices & Browsers</strong>
+                        <p>Smart HTML Elements takes the JavaScript and HTML UI development to a professional level. It is platform independent, cross-browser compatible and adjusts for the best user experience across devices.</p>
+
+                        <strong>Web Components Compliant</strong>
+                        <p>Smart HTML Elements is a reliable, feature rich JavaScript framework based on Custom Elements. It increases productivity and minimizes development cost.</p>
+                    </smart-splitter-item>
+                    <smart-splitter-item collapsible collapsed>
+                        <h2>Smart Splitter</h2>
+                        <strong>Splitter is a layout control that allows creating dynamic layouts with resizable and collapsible items.</strong>
+                        <p>A splitter allows the creation of an infinite number of panes each with a different size. The size can be set via CSS selector or the property <b>size</b>.</p>
+                        <p>Panes inside the Splitter can be resized or collapsed. Min and Max limits can be applied to each of the panes using the corresponding properties <b>min</b> and <b>max</b>.</p>
+                        <p>Three resize modes available: Adjacent, End and Proportional.</p>
+                        <p>Additionaly the element offers live resize mode that allows to see the resizing operation at real time.</p>
+                        <p>The Splitter offers full keyboard support. You can read all about it in the API docs.</p>
+                    </smart-splitter-item>
+                </smart-splitter>
+                <p>Dark theme</p>
+            </div>
+        </section>
+
+        <section id="splitterOrientation">
+            <h1>Orientation</h1>
+            <div class="module">
+                <p>smartSplitter has a vertical orientation by default.</p>
+                <p>Splitter items can be resized horizontally in that orientation.</p>
+            </div>
+            <div class="module demo-splitter">
+                <smart-splitter theme="material" class="animation">
+                    <smart-splitter-item>
+                        <div class="header-item"></div>
+                        <smart-card class="feed-reader">
+                            <p>Travel</p>
+                            <h2>New York City</h2>
+                            <p>
+                                Day reappeared. The tempest still ragged with undiminished fury;
+                                but the wind now returned to the south-east. It was a favourable change, and the Tankadere again
+                            </p>
+                            <img src="../../../images/components-mobile-view-4-card-1.png" />
+                            <div>
+                                <smart-button theme="material" class="text">Share</smart-button>
+                                <smart-button theme="material" class="text">Explore</smart-button>
+                            </div>
+                        </smart-card>
+                        <smart-card class="feed-reader">
+                            <p>Travel</p>
+                            <h2>Kangaroo Valley Safari</h2>
+                            <p>
+                                Located two hours south of Sidney in the
+                                Southern Highlands of New South Wales, ...
+                            </p>
+                            <img src="../../../images/card-demo-usage-1.png" />
+                            <div>
+                                <smart-button theme="material" class="text">Share</smart-button>
+                                <smart-button theme="material" class="text">Explore</smart-button>
+                            </div>
+                        </smart-card>
+                        <smart-card class="feed-reader">
+                            <p>Travel</p>
+                            <h2>Niagara Falls</h2>
+                            <p>
+                                Niagara Falls is the collective, name of three big waterfalls on the Niagara River in eastern North America, on the border between the United States and Canada. The three waterfalls are: the Horseshoe Falls, sometimes called the Canadian Falls, the American Falls, and the smaller Bridal Veil Falls. The American Falls and the Horseshoe Falls are separated with Goat Island, and the Bridal Veil Falls separated from the other waterfalls with Luna Island.
+                            </p>
+                            <img src="../../../images/splitter-material-nature.jpg" />
+                            <div>
+                                <smart-button theme="material" class="text">Share</smart-button>
+                                <smart-button theme="material" class="text">Explore</smart-button>
+                            </div>
+                        </smart-card>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <div class="header-item"></div>
+                        <smart-card class="feed-reader">
+                            <h2>Unlimited music now</h2>
+                            <p>
+                                Listen to your favorite artists and albums
+                                whenever and whatever, online and offline.
+                            </p>
+                            <p>
+                                <smart-button theme="material" class="text">Listen now</smart-button>
+                            </p>
+                        </smart-card>
+
+                        <smart-card class="feed-reader">
+                            <h2>Supermodel</h2>
+                            <p>Foster the People</p>
+                            <img src="../../../images/components-mobile-view-2-card-1.png" />
+                        </smart-card>
+
+                        <smart-card class="feed-reader">
+                            <h2>Halcyon Days</h2>
+                            <p>Ellie Goulding</p>
+                            <img src="../../../images/components-mobile-view-2-card-2.png" />
+                        </smart-card>
+
+                        <smart-card class="feed-reader">
+                            <h2>Thunder</h2>
+                            <p>Imagine Dragons</p>
+                            <img src="../../../images/splitter-material-cover.jpeg" />
+                        </smart-card>
+
+                        <smart-card class="feed-reader">
+                            <h2>Anywhere</h2>
+                            <p>Rita Ora</p>
+                            <img src="../../../images/splitter-material-cover2.jpg" />
+                        </smart-card>
+                    </smart-splitter-item>
+                </smart-splitter>
+                <p>Vertical Splitter with two items</p>
+            </div>
+
+            <div class="module">
+                <p>Splitters can also have horizontal orientation.</p>
+                <p>Splitter items can be resized vertically in that orientation.</p>
+            </div>
+            <div class="module demo-splitter">
+                <smart-splitter theme="material" class="animation" orientation="horizontal">
+                    <smart-splitter-item>
+                        <div class="header-item"></div>
+                        <smart-card class="feed-reader">
+                            <p>Travel</p>
+                            <h2>New York City</h2>
+                            <p>
+                                Day reappeared. The tempest still ragged with undiminished fury;
+                                but the wind now returned to the south-east. It was a favourable change, and the Tankadere again
+                            </p>
+                            <img src="../../../images/components-mobile-view-4-card-1.png" />
+                            <div>
+                                <smart-button theme="material" class="text">Share</smart-button>
+                                <smart-button theme="material" class="text">Explore</smart-button>
+                            </div>
+                        </smart-card>
+                        <smart-card class="feed-reader">
+                            <p>Travel</p>
+                            <h2>Kangaroo Valley Safari</h2>
+                            <p>
+                                Located two hours south of Sidney in the
+                                Southern Highlands of New South Wales, ...
+                            </p>
+                            <img src="../../../images/card-demo-usage-1.png" />
+                            <div>
+                                <smart-button theme="material" class="text">Share</smart-button>
+                                <smart-button theme="material" class="text">Explore</smart-button>
+                            </div>
+                        </smart-card>
+                        <smart-card class="feed-reader">
+                            <p>Travel</p>
+                            <h2>Niagara Falls</h2>
+                            <p>
+                                Niagara Falls is the collective, name of three big waterfalls on the Niagara River in eastern North America, on the border between the United States and Canada. The three waterfalls are: the Horseshoe Falls, sometimes called the Canadian Falls, the American Falls, and the smaller Bridal Veil Falls. The American Falls and the Horseshoe Falls are separated with Goat Island, and the Bridal Veil Falls separated from the other waterfalls with Luna Island.
+                            </p>
+                            <img src="../../../images/splitter-material-nature.jpg" />
+                            <div>
+                                <smart-button theme="material" class="text">Share</smart-button>
+                                <smart-button theme="material" class="text">Explore</smart-button>
+                            </div>
+                        </smart-card>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <div class="header-item"></div>
+                        <smart-card class="feed-reader">
+                            <h2>Unlimited music now</h2>
+                            <p>
+                                Listen to your favorite artists and albums
+                                whenever and whatever, online and offline.
+                            </p>
+                            <p>
+                                <smart-button theme="material" class="text">Listen now</smart-button>
+                            </p>
+                        </smart-card>
+
+                        <smart-card class="feed-reader">
+                            <h2>Supermodel</h2>
+                            <p>Foster the People</p>
+                            <img src="../../../images/components-mobile-view-2-card-1.png" />
+                        </smart-card>
+
+                        <smart-card class="feed-reader">
+                            <h2>Halcyon Days</h2>
+                            <p>Ellie Goulding</p>
+                            <img src="../../../images/components-mobile-view-2-card-2.png" />
+                        </smart-card>
+
+                        <smart-card class="feed-reader">
+                            <h2>Thunder</h2>
+                            <p>Imagine Dragons</p>
+                            <img src="../../../images/splitter-material-cover.jpeg" />
+                        </smart-card>
+
+                        <smart-card class="feed-reader">
+                            <h2>Anywhere</h2>
+                            <p>Rita Ora</p>
+                            <img src="../../../images/splitter-material-cover2.jpg" />
+                        </smart-card>
+                    </smart-splitter-item>
+                </smart-splitter>
+                <p>Horizontal Splitter with two items</p>
+            </div>
+        </section>
+
+        <section id="splitterResizeModes">
+            <h1>Resize Modes</h1>
+            <div class="module">
+                <p><b>LiveResize</b> property allows to observe the resize operation at real time.</p>
+                <p>The splitter has three resize modes.</p>
+                <p>
+                    The first one is called <b>adjacent</b>. <br />
+                    It allows the user to resize two adjacent splitter items.
+                </p>
+            </div>
+            <div class="module demo-splitter">
+                <smart-splitter theme="material" class="animation" resize-step="1" live-resize>
+                    <smart-splitter-item>
+                        <smart-card class="notes notes-1">
+                            <h1>
+                                Call <br />
+                                Antonny
+                            </h1>
+                            <p class="separator bottom">
+                                June 20, 2018
+                                <smart-button theme="material" class="floating">
+                                    <i class="material-icons">&#xE0CD;</i>
+                                </smart-button>
+                            </p>
+                        </smart-card>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <smart-card class="notes notes-1">
+                            <h1>
+                                Call <br />
+                                Jenifer
+                            </h1>
+                            <p class="separator bottom">
+                                June 20, 2018
+                                <smart-button theme="material" class="floating">
+                                    <i class="material-icons">&#xE0CD;</i>
+                                </smart-button>
+                            </p>
+                        </smart-card>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <smart-card class="notes notes-1">
+                            <h1>
+                                Call <br />
+                                Alister
+                            </h1>
+                            <p class="separator bottom">
+                                June 20, 2018
+                                <smart-button theme="material" class="floating">
+                                    <i class="material-icons">&#xE0CD;</i>
+                                </smart-button>
+                            </p>
+                        </smart-card>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <smart-card class="notes notes-1">
+                            <h1>
+                                Call <br />
+                                Bill
+                            </h1>
+                            <p class="separator bottom">
+                                June 20, 2018
+                                <smart-button theme="material" class="floating">
+                                    <i class="material-icons">&#xE0CD;</i>
+                                </smart-button>
+                            </p>
+                        </smart-card>
+                    </smart-splitter-item>
+                </smart-splitter>
+                <p>Vertical Splitter with 4 panes and resizeMode set to <b>Adjacent</b></p>
+            </div>
+
+            <div class="module">
+                <p>
+                    The second is called <b>end</b>. <br />
+                    It allows the user to resize the first item on the left of the focused splitter bar and the last.
+                </p>
+            </div>
+            <div class="module demo-splitter">
+                <smart-splitter theme="material" class="animation" resize-mode="end" resize-step="1" live-resize>
+                    <smart-splitter-item>
+                        <smart-card class="notes notes-2">
+                            <h3 class="separator">Ingredients</h3>
+                            <smart-check-box theme="material" class="animation" enable-container-click>Almond milk</smart-check-box> <br />
+                            <smart-check-box theme="material" class="animation" enable-container-click>Coconut water</smart-check-box> <br />
+                            <smart-check-box theme="material" class="animation" enable-container-click>Cucumber</smart-check-box> <br />
+                            <p class="separator bottom">Campbell <i class="material-icons">&#xE0C8;</i></p>
+                        </smart-card>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <smart-card class="notes notes-2">
+                            <h3 class="separator">Ingredients</h3>
+                            <smart-check-box theme="material" class="animation" enable-container-click>Tomato</smart-check-box> <br />
+                            <smart-check-box theme="material" class="animation" enable-container-click>Onion</smart-check-box> <br />
+                            <smart-check-box theme="material" class="animation" enable-container-click>Cucumber</smart-check-box> <br />
+                            <p class="separator bottom">Campbell <i class="material-icons">&#xE0C8;</i></p>
+                        </smart-card>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <smart-card class="notes notes-2">
+                            <h3 class="separator">Ingredients</h3>
+                            <smart-check-box theme="material" class="animation" enable-container-click>Corn</smart-check-box> <br />
+                            <smart-check-box theme="material" class="animation" enable-container-click>Cheese</smart-check-box> <br />
+                            <smart-check-box theme="material" class="animation" enable-container-click>Butter</smart-check-box> <br />
+                            <p class="separator bottom">Campbell <i class="material-icons">&#xE0C8;</i></p>
+                        </smart-card>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <smart-card class="notes notes-2">
+                            <h3 class="separator">Ingredients</h3>
+                            <smart-check-box theme="material" class="animation" enable-container-click>Ketchup</smart-check-box> <br />
+                            <smart-check-box theme="material" class="animation" enable-container-click>Maionese</smart-check-box> <br />
+                            <smart-check-box theme="material" class="animation" enable-container-click>Mustard</smart-check-box> <br />
+                            <p class="separator bottom">Campbell <i class="material-icons">&#xE0C8;</i></p>
+                        </smart-card>
+                    </smart-splitter-item>
+                </smart-splitter>
+                <p>Vertical Splitter with 4 panes and resizeMode set to <b>End</b></p>
+            </div>
+
+            <div class="module">
+                <p>
+                    The third is called <b>proportional</b>. <br />
+                    It allows the user to resize the first item on the left of the focused splitter bar and those that are to the right/bottom by mantaining their proportion.
+                </p>
+            </div>
+            <div class="module demo-splitter">
+                <smart-splitter theme="material" class="animation" resize-mode="proportional" resize-step="1" live-resize>
+                    <smart-splitter-item>
+                        <smart-card item-template="discoverTemplate" class="discover"></smart-card>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <smart-card item-template="discoverTemplate" class="discover2"></smart-card>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <smart-card item-template="discoverTemplate" class="discover3"></smart-card>
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <smart-card item-template="discoverTemplate" class="discover4"></smart-card>
+                    </smart-splitter-item>
+                </smart-splitter>
+                <p>Vertical Splitter with 4 panes and resizeMode set to <b>Proportional</b></p>
+            </div>
+            <div class="module">
+                <p><b>resizeStep</b> property determines the step at which the items resize while dragging a splitter bar. The default step is set to 5pxs.</p>
+            </div>
+        </section>
+
+        <section id="splitterDemo">
+            <h1>Demo</h1>
+            <div class="module">
+                <p>Splitters allow to display two or more views at once.</p>
+            </div>
+            <div class="module battery-usage">
+                <smart-splitter theme="material">
+                    <smart-splitter-item min="150">
+                        <smart-list-box id="batteryUsage" theme="material" item-template="itemTemplate">
+                            <smart-list-item selected>Screen</smart-list-item>
+                            <smart-list-item>Chrome</smart-list-item>
+                            <smart-list-item>Facebook</smart-list-item>
+                            <smart-list-item>Bluetooth</smart-list-item>
+                            <smart-list-item>Google Play Music</smart-list-item>
+                            <smart-list-item>Android OS</smart-list-item>
+                            <smart-list-item>Google Play Store</smart-list-item>
+                            <smart-list-item>YouTube</smart-list-item>
+                            <smart-list-item>Sync</smart-list-item>
+                            <smart-list-item>Mail Services</smart-list-item>
+                            <smart-list-item>Clock</smart-list-item>
+                            <smart-list-item>Android System</smart-list-item>
+                            <smart-list-item>Idle State</smart-list-item>
+                            <smart-list-item>Call Services</smart-list-item>
+                            <smart-list-item>Cloud Services</smart-list-item>
+                            <smart-list-item>Location services</smart-list-item>
+                            <smart-list-item>External Storage</smart-list-item>
+                            <smart-list-item>Security Services</smart-list-item>
+                        </smart-list-box>
+                    </smart-splitter-item>
+                    <smart-splitter-item min="200">
+                        <smart-circular-progress-bar theme="material" show-progress-value value="44"></smart-circular-progress-bar>
+                    </smart-splitter-item>
+                </smart-splitter>
+                <p>Battery usage statistics by apps</p>
+            </div>
+            <div class="module">
+                <p>Displaying multiple content in separate containers at the same time have never been easier.</p>
+            </div>
+            <div class="module news-paper">
+                <smart-splitter theme="material" live-resize class="animation">
+                    <smart-splitter-item collapsible>
+                        <h2>What is Lorem Ipsum?</h2>
+                        <p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </smart-splitter-item>
+                    <smart-splitter-item collapsible>
+                        <h2>Why do we use it?</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed lobortis mi. Sed at urna eget justo tincidunt finibus nec eu nulla. Sed vitae pretium lorem. Sed tristique, risus non pellentesque pellentesque, ligula purus ullamcorper diam, non iaculis enim orci semper nibh. Donec tincidunt ex lacus, sed ornare dui commodo at. Nullam id lectus cursus felis posuere venenatis. Phasellus gravida felis eu vestibulum luctus. Nunc convallis diam sed pretium gravida. Fusce scelerisque leo sem, vitae accumsan arcu tempus ac. Cras commodo augue mauris, eu posuere lectus lobortis auctor. Sed euismod sit amet lectus et bibendum. Aenean congue felis nunc.
+                        </p>
+                        <p>
+                            Vivamus placerat quam vel eros hendrerit, id sagittis eros suscipit. Cras quis dapibus sem. Maecenas faucibus faucibus metus, sit amet viverra augue auctor quis. Quisque sed lectus sed tellus dapibus vulputate. Aenean sem est, aliquam non ornare ut, tristique et leo. Nulla vehicula urna non aliquet rutrum. Nullam imperdiet nibh a aliquam elementum. Nullam vitae mi posuere, sollicitudin magna at, ultricies magna. Aenean egestas, nulla nec faucibus dictum, sapien elit vulputate odio, ut interdum nisi velit at leo. Proin posuere ac neque id volutpat. In varius dignissim posuere.
+                        </p>
+
+                    </smart-splitter-item>
+                    <smart-splitter-item>
+                        <h2>Why do we use it?</h2>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                    </smart-splitter-item>
+                    <smart-splitter-item collapsible>
+                        <h2>Where does it come from?</h2>
+                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p><p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                    </smart-splitter-item>
+                </smart-splitter>
+                <p>Newspaper style splitter</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

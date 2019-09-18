@@ -1,0 +1,11 @@
+.container {
+    width: 320px;
+    height: 100vh;
+    float: left;
+    font-family: Arial;
+    margin-right:10px;
+}
+
+    .container > div {
+        font-size: 16px;
+    }

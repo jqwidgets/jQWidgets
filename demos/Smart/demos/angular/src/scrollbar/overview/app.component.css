@@ -1,0 +1,13 @@
+  .smart-demo-container {
+      margin: 0 !important;
+  }
+
+  smart-scroll-bar {
+      width: 250px;
+      height: 22px;
+  }
+
+  smart-scroll-bar[orientation="vertical"] {
+      width: 22px;
+      height: 250px;
+  }

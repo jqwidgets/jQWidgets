@@ -1,0 +1,33 @@
+smart-carousel {
+    width: 1000px;
+    height: 500px;
+    border-color: transparent;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    smart-carousel:focus,
+    smart-carousel:active {
+        border-color: transparent;
+    }
+
+    smart-carousel .smart-carousel-html-content {
+        padding-left: 35px;
+        padding-right: 20px;
+    }
+
+smart-card {
+    height: 450px;
+}
+
+    smart-card h3,
+    smart-card p,
+    smart-card a {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    smart-card h3 {
+        font-size: 20px;
+    }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Calendar Min Max Date</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    
+    
+    
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.tooltip.js"></script>
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <div class="options" id="controlContainer">
+        <div>Min/Max Set</div>
+        <div class="option">
+            <pre>Min </pre><input class="text-input" value="2018-7-1" placeholder="2019-01-01" id="minInput" />
+        </div>
+        <div class="option">
+            <pre>Max </pre><input class="text-input"  value="2019-7-31" placeholder="2019-01-01" id="maxInput" />
+        </div>
+    </div>
+    <smart-calendar class="calendar-demo" min="2018, 7, 1" max="2019-7-31" selected-dates='["2019-7-2", "2029-7-17"]'></smart-calendar>
+</body>
+</html>

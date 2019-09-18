@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Grid Row Resize Demo</title>
+       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+	 <link rel="stylesheet" type="text/css" href="styles.css" />	
+    <script type="text/javascript" src="../../../scripts/common.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.element.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.scrollbar.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.data.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.button.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.listbox.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.dropdownlist.js"></script>	
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.radiobutton.js"></script>		
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.grid.js"></script>	
+	<script type="text/javascript" src="../../../scripts/data.js"></script>	
+	
+    <script src="index.js"></script>
+</head>
+<body>
+	<div class="demo-description">
+	The Data grid component supports row resizing in two levels - Grid's 'rowResizeMode' property and optionally 'allowResize' Smart.Grid.Row property. To enable row resizing, you need to set the 'rowResizeMode' property to 'split' or 'growAndShrink'.<br/><br/> In the 'split' mode, when you resize a row, the next row's height is also affected and the total height of both rows remains constant.<br/>In the 'growAndShrink' mode, the resized row grows or shrinks.
+	<br/>Each row has 'minHeight' and 'maxHeight' properties which allow you to restrict the resizing of specific rows. You can disable the resize of specific row by setting its 'allowResize' property to false. Resizing requiest a visible Row header which is enabled by setting the 'appearance.showRowNumber' or 'appearance.showRowHeader' properties to 'true'.<br/>To start row's resize, move the mouse cursor over the rows header and at the bottom of a header cell, the cursor is 
+changed to a row resize cursor. Press the mouse button and Drag to resize. When you release the mouse button, the row is resized.
+	</div>
+   <smart-grid id="grid"></smart-grid> 
+
+   <div class="options">
+		<div class="caption">
+			Row Resize Mode
+		</div>
+		<div class="option">
+			<smart-radio-button id="none">None</smart-radio-button><br/><br/>
+			<smart-radio-button id="split">Split</smart-radio-button><br/><br/>
+			<smart-radio-button checked id="currentColumn">Grow and Shrink</smart-radio-button><br/><br/>			
+		</div>
+   </div>
+</body>
+</html>

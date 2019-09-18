@@ -1,0 +1,7 @@
+smart-grid {
+  height: auto;
+  min-height:300px;
+}
+smart-grid .smart-container {
+	min-height: 300px;
+}

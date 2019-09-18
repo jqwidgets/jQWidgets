@@ -171,7 +171,7 @@ require('../../jqwidgets-scripts/jqwidgets/jqxinput');
                 if (this.widgetObject) {
                     var value = this.host.val();
                     if (typeof value === 'object')
-                        return value.label;
+                        return '';
                     return value;
                 }
                 return '';

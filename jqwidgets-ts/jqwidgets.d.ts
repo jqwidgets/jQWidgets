@@ -1982,6 +1982,7 @@ declare module jqwidgets {
         deleterowstring?: string;
         resetrowstring?: string;
         everpresentrowplaceholder?: string;
+        emptydatastring?: string;
     }// GridLocalizationobject
 
     export interface GridScrollPosition {
@@ -4843,7 +4844,7 @@ declare module jqwidgets {
         source?: any[];
         title?: string;
         width?: number | string;
-        tooltipRender?: (xLabel?: HeatMapTooltipRender['xLabel'], yLabel?: HeatMapTooltipRender['yLabel'], value?: HeatMapTooltipRender['value'], date?: HeatMapTooltipRender['date'], content?: HeatMapTooltipRender['content']) => void;
+        tooltipRender?: (args: HeatMapTooltipRender) => void;
     }// HeatMapOptions
 
     export interface jqxHeatMap extends widget, HeatMapOptions {
@@ -4865,6 +4866,7 @@ declare module jqwidgets {
         footer?: boolean;
         footerTemplate?: string;
         format?: string;
+        height?: number | string;
         minuteInterval?: number;
         name?: string;
         readonly?: boolean;
@@ -4873,6 +4875,7 @@ declare module jqwidgets {
         unfocusable?: boolean;
         value?: any;
         view?: string;
+        width?: number | string;
     }// TimePickerOptions
 
     export interface jqxTimePicker extends widget, TimePickerOptions {

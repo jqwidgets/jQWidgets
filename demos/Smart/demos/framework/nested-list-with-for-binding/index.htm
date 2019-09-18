@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Smart-FOR loop for HTML Automation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/common.css" />		
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+  	<script src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+	<script src="index.js"></script>	
+</head>
+<body class="viewport">
+	<div class="demo-description">
+	The List in this examples is automatically rendered by reading the 'items' array. The example also demonstrates Event binding. Clicking a Header is bound to the 'itemClick' event handler.
+	</div>
+	<ul id="list" smart-for="items">
+	
+	    <li>
+			<h2 (click)="itemClick()">{{label}}</h2>
+			<ul>
+				<li><span>First Name: </span><span>{{details.firstName}}</span></li>
+				<li><span>Last Name: </span><span>{{details.lastName}}</span></li>
+				<li><span>Job Position: </span><span>{{details.jobPosition}}</span></li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>

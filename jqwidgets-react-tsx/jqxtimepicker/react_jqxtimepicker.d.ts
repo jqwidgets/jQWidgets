@@ -27,14 +27,16 @@ interface ITimePickerOptions {
     footer?: boolean;
     footerTemplate?: string;
     format?: string;
+    height?: number | string;
     minuteInterval?: number;
     name?: string;
     readonly?: boolean;
     selection?: 'hour' | 'minute';
     theme?: string;
     unfocusable?: boolean;
-    value?: Date;
+    value?: any;
     view?: 'landscape' | 'portrait';
+    width?: number | string;
 }
 export interface ITimePickerProps extends ITimePickerOptions {
     className?: string;

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Grid dashboard page</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Roboto">
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.element.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.button.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.splitter.js"></script>
+    <script type="text/javascript" src="../../../scripts/common.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.scrollbar.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.data.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.listbox.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.dropdownlist.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.grid.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.pager.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.input.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.calendar.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.date.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.tooltip.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.draw.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.math.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.numeric.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.datetimepicker.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.timepicker.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.menu.js"></script>
+    <script type="text/javascript" src="../../../scripts/data.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <smart-splitter id="dashboard" expanded>
+        <smart-splitter-item collapsible id="leftPanel" size="240">
+            <div class="dashboard-header">
+            <div class="company-logo-holder"><img style="height: 34px" src="https://www.htmlelements.com/wp-content/design/assets/images/logo-htmlelements.svg" /></div>
+                <smart-button id="collapseBtn"  class="floating">
+                    <i class="material-icons">chevron_left</i>
+                </smart-button>
+                <smart-button id="expandBtn" class="floating">
+                    <i class="material-icons">menu</i>
+                </smart-button>
+            </div>
+
+            <div class="dashboard-menu-container">
+                <smart-button class="flat menu-btn bold"><i class="material-icons">dashboard</i><span class="menu-title">Software Company</span></smart-button>
+                <smart-button class="flat menu-btn"><i class="material-icons">apps</i><span class="menu-title">Overview</span></smart-button>
+                <smart-button class="flat menu-btn"><i class="material-icons">apps</i><span class="menu-title">Boards</span></smart-button>
+                <smart-button class="flat menu-btn"><i class="material-icons">merge_type</i><span class="menu-title">Repos</span></smart-button>
+                <smart-button class="flat menu-btn"><i class="material-icons">timeline</i><span class="menu-title">Pipelines</span></smart-button>
+                <smart-button class="flat menu-btn"><i class="material-icons rotate90deg">input</i><span class="menu-title">Builds</span></smart-button>
+                <smart-button class="flat menu-btn"><i class="material-icons">publish</i><span class="menu-title">Releases</span></smart-button>
+                <smart-button class="flat menu-btn"><i class="material-icons">library_books</i><span class="menu-title">Library</span></smart-button>
+                <smart-button class="flat menu-btn"><i class="material-icons">group_work</i><span class="menu-title">Deployment groups</span></smart-button>
+                <smart-button class="flat menu-btn"><i class="material-icons">developer_mode</i><span class="menu-title">Test Plans</span></smart-button>
+                <smart-button class="flat menu-btn"><i class="material-icons">filter_none</i><span class="menu-title">Artifacts</span></smart-button>
+            </div>
+        </smart-splitter-item>
+        <smart-splitter-item id="rightPanel">
+            <div class="dashboard-header">
+                <span class="breadcrumb-header">
+                    Project / Software Company / Pipelines / Builds
+                </span>
+                <span class="icon-holder">
+                    <smart-button id="notifficationSearchBtn">
+                        <i class="material-icons">search</i>
+                    </smart-button>
+                    <smart-button id="notifficationSearchBtn">
+                        <i class="material-icons">menu</i>
+                    </smart-button>
+                    <smart-button id="notifficationBtn">
+                        <i class="material-icons">shopping_basket</i>
+                    </smart-button>
+                    <img style="width: 32px; height: 32px;" class="header-logo" src="../../images/phonebook/nancy.png" />
+                </span>
+            </div>
+            <h1 class="main-company-name">Software Company</h1>
+
+            <div class="header-right-buttons">
+                <smart-button>
+                    <i class="material-icons">edit</i> <span class="button-text">Edit</span>
+                </smart-button>
+                <smart-button class="run">
+                    <i class="material-icons">play_arrow</i> <span class="button-text">Run</span>
+                </smart-button>
+                <smart-button class="transparent-bck">
+                    <i class="material-icons vertical-align-middle more-horiz">more_horiz</i>
+                </smart-button>
+            </div>
+
+            <div class="history-holder">
+                <h4 class="subtitles active">
+                    <smart-button>
+                        History
+                    </smart-button>
+                </h4>
+                <h4 class="subtitles">
+                    <smart-button>
+                        Analytics
+                    </smart-button>
+                </h4>
+
+                <div class="filter-right-button">
+                    <smart-button class="transparent-bck">
+                        <i class="material-icons vertical-align-middle filter">filter_list</i>
+                    </smart-button>
+                </div>
+            </div>
+
+            <smart-grid id="grid"></smart-grid>
+        </smart-splitter-item>
+    </smart-splitter>
+</body>
+</html>

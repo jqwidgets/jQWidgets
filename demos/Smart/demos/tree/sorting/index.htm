@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Tree Sorting</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.menu.js"></script>
+    
+    
+    
+    <script src="index.js"></script>
+</head>
+<body class="viewport">  
+        <smart-tree id="tree1" 
+                  filterable
+                  show-lines
+                  show-root-lines
+                  sort-direction="asc"
+                  sorted
+                  toggle-element-position="near">
+            <smart-tree-items-group expanded>
+                Numbers
+                <smart-tree-item>2</smart-tree-item>
+                <smart-tree-item>3</smart-tree-item>
+                <smart-tree-item>1</smart-tree-item>
+                <smart-tree-item>10</smart-tree-item>
+                <smart-tree-item>210</smart-tree-item>
+            </smart-tree-items-group>
+            <smart-tree-items-group expanded>
+                Letters
+                <smart-tree-item value="1000">A</smart-tree-item>
+                <smart-tree-item value="50">C</smart-tree-item>
+                <smart-tree-item value="30000">D</smart-tree-item>
+                <smart-tree-item value="2">B</smart-tree-item>
+            </smart-tree-items-group>
+            <smart-tree-items-group expanded>
+                Greek letters
+                <smart-tree-item>β</smart-tree-item>
+                <smart-tree-item>δ</smart-tree-item>
+                <smart-tree-item>α</smart-tree-item>
+                <smart-tree-item>γ</smart-tree-item>
+            </smart-tree-items-group>
+        </smart-tree>
+	    <p>Sort direction: ascending</p>
+		</br></br>
+        <smart-tree id="tree2" 
+                  filterable
+                  show-lines
+                  show-root-lines
+                  sort-direction="desc"
+                  sorted
+                  toggle-element-position="near">
+            <smart-tree-items-group expanded>
+                Numbers
+                <smart-tree-item>2</smart-tree-item>
+                <smart-tree-item>3</smart-tree-item>
+                <smart-tree-item>1</smart-tree-item>
+                <smart-tree-item>10</smart-tree-item>
+                <smart-tree-item>210</smart-tree-item>
+            </smart-tree-items-group>
+            <smart-tree-items-group expanded>
+                Letters
+                <smart-tree-item value="1000">A</smart-tree-item>
+                <smart-tree-item value="50">C</smart-tree-item>
+                <smart-tree-item value="30000">D</smart-tree-item>
+                <smart-tree-item value="2">B</smart-tree-item>
+            </smart-tree-items-group>
+            <smart-tree-items-group expanded>
+                Greek letters
+                <smart-tree-item>β</smart-tree-item>
+                <smart-tree-item>δ</smart-tree-item>
+                <smart-tree-item>α</smart-tree-item>
+                <smart-tree-item>γ</smart-tree-item>
+            </smart-tree-items-group>
+        </smart-tree>
+		 <p>Sort direction: descending</p>
+       
+		</br></br>
+        <smart-tree id="tree3" 
+                  filterable
+                  show-lines
+                  show-root-lines
+                  sort="customSortingFunction"
+                  sorted
+                  toggle-element-position="near">
+            <smart-tree-items-group expanded>
+                Numbers
+                <smart-tree-item>2</smart-tree-item>
+                <smart-tree-item>3</smart-tree-item>
+                <smart-tree-item>1</smart-tree-item>
+                <smart-tree-item>10</smart-tree-item>
+                <smart-tree-item>210</smart-tree-item>
+            </smart-tree-items-group>
+            <smart-tree-items-group expanded>
+                Letters
+                <smart-tree-item value="1000">A</smart-tree-item>
+                <smart-tree-item value="50">C</smart-tree-item>
+                <smart-tree-item value="30000">D</smart-tree-item>
+                <smart-tree-item value="2">B</smart-tree-item>
+            </smart-tree-items-group>
+            <smart-tree-items-group expanded>
+                Greek letters
+                <smart-tree-item>β</smart-tree-item>
+                <smart-tree-item>δ</smart-tree-item>
+                <smart-tree-item>α</smart-tree-item>
+                <smart-tree-item>γ</smart-tree-item>
+            </smart-tree-items-group>
+        </smart-tree>
+		  <p>Sorting via a custom function</p>
+      
+</body>
+</html>

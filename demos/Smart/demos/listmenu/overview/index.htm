@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ListMenu Overview Demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+	
+    <script type="text/javascript" src="../../../scripts/common.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body class="viewport">
+    <div class="smart-demo-container">             
+  
+
+        <section id="list-menu">
+            <h2>List menu</h2>
+
+        
+		
+            <p>A list menu represents an element which can be used to choose an option from a nested list of items. Navigation through the nested list is done in a single view.</p>
+
+            <div class="module">
+                <div id="listMenu1Container">
+                    <smart-list-menu id="listMenu1" filterable grouped overflow="hidden" filter-mode="contains" enable-mouse-wheel-action>
+                        <smart-menu-items-group>
+                            Janet Leverling
+                            <smart-menu-item label="janetInfo"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            Andrew Fuller
+                            <smart-menu-item label="andrewInfo"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            Robert King
+                            <smart-menu-item label="robertInfo"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            Anne Dodsworth
+                            <smart-menu-item label="anneInfo"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            Margaret Peacock
+                            <smart-menu-item label="margaretInfo"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            Michael Suyama
+                            <smart-menu-item label="michaelInfo"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            Nancy Davolio
+                            <smart-menu-item label="nancyInfo"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            Steven Buchanan
+                            <smart-menu-item label="stevenInfo"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            Laura Callahan
+                            <smart-menu-item label="lauraInfo"></smart-menu-item>
+                        </smart-menu-items-group>
+                    </smart-list-menu>
+                </div>
+            </div>
+            <div class="module">
+                <div id="listMenu3Container">
+                    <smart-list-menu id="listMenu3" overflow="hidden" enable-mouse-wheel-action>
+                        <smart-menu-items-group>
+                            <i class="material-icons">&#xE53F;</i> Attractions
+                            <smart-menu-item>Movies</smart-menu-item>
+                            <smart-menu-item>Circus</smart-menu-item>
+                            <smart-menu-item>Concerts</smart-menu-item>
+                            <smart-menu-item>Monuments</smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            <i class="material-icons">&#xE56C;</i> Dining
+                            <smart-menu-item>Restaurants</smart-menu-item>
+                            <smart-menu-item>Cafés</smart-menu-item>
+                            <smart-menu-item>Bars</smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            <i class="material-icons">&#xE80C;</i> Education
+                            <smart-menu-item>Schools</smart-menu-item>
+                            <smart-menu-item>Colleges</smart-menu-item>
+                            <smart-menu-item>Universities</smart-menu-item>
+                            <smart-menu-item>Educational courses</smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            <i class="material-icons">&#xEB41;</i> Family
+                            <smart-menu-item>Babysitting</smart-menu-item>
+                            <smart-menu-item>Family trips</smart-menu-item>
+                            <smart-menu-item>Theme parks</smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            <i class="material-icons">&#xE87D;</i> Health
+                            <smart-menu-item>Hospitals</smart-menu-item>
+                            <smart-menu-item>Family physicians</smart-menu-item>
+                            <smart-menu-item>Optics</smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            <i class="material-icons">&#xE30A;</i> Office
+                            <smart-menu-item>Offices for rent</smart-menu-item>
+                            <smart-menu-item>Office equipment</smart-menu-item>
+                            <smart-menu-item>Repair works</smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            <i class="material-icons">&#xE25C;</i> Promotions
+                            <smart-menu-item>Sales</smart-menu-item>
+                            <smart-menu-item>Malls</smart-menu-item>
+                            <smart-menu-item>Collective buying</smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            <i class="material-icons">&#xE03E;</i> Radio
+                            <smart-menu-item>Available stations</smart-menu-item>
+                            <smart-menu-item>Search</smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            <i class="material-icons">&#xE7E9;</i> Recipes
+                            <smart-menu-item>With meat</smart-menu-item>
+                            <smart-menu-item>With fish</smart-menu-item>
+                            <smart-menu-item>Vegetarian recipes</smart-menu-item>
+                            <smart-menu-item>Vegan recipes</smart-menu-item>
+                            <smart-menu-item>Desserts</smart-menu-item>
+                            <smart-menu-item>Chef's recommendations</smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            <i class="material-icons">&#xE52F;</i> Sports
+                            <smart-menu-item>Football</smart-menu-item>
+                            <smart-menu-item>Basketball</smart-menu-item>
+                            <smart-menu-item>Tennis</smart-menu-item>
+                            <smart-menu-item>Baseball</smart-menu-item>
+                            <smart-menu-item>Cycling</smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group>
+                            <i class="material-icons">&#xE53D;</i> Travel
+                            <smart-menu-item>Local destinations</smart-menu-item>
+                            <smart-menu-item>Book tickets</smart-menu-item>
+                            <smart-menu-item>Organised travel</smart-menu-item>
+                        </smart-menu-items-group>
+                    </smart-list-menu>
+                </div>
+            </div>
+            <div class="module">
+                <div id="listMenu4Container">
+                    <smart-list-menu id="listMenu4" overflow="hidden" enable-mouse-wheel-action>
+                        <smart-menu-items-group label="mail1Preview" separator>
+                            <smart-menu-item label="mail1"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group label="mail2Preview" separator>
+                            <smart-menu-item label="mail2"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group label="mail3Preview" separator>
+                            <smart-menu-item label="mail3"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group label="mail4Preview" separator>
+                            <smart-menu-item label="mail4"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group label="mail5Preview" separator>
+                            <smart-menu-item label="mail5"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group label="mail6Preview" separator>
+                            <smart-menu-item label="mail6"></smart-menu-item>
+                        </smart-menu-items-group>
+                        <smart-menu-items-group label="mail7Preview" separator>
+                            <smart-menu-item label="mail7"></smart-menu-item>
+                        </smart-menu-items-group>
+                    </smart-list-menu>
+                    <smart-button id="plusButton" class="primary floating">+</smart-button>
+                </div>
+            </div>
+        </section>
+  
+        <template id="andrewInfo">
+            <table>
+                <tr>
+                    <td>
+                        <img style="width: 50px; height: 50px;" src="../../../images/phonebook/andrew.png" alt="" />
+                    </td>
+                    <td>
+                        <b>Andrew Fuller</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        Sales Representative
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Notes
+                    </td>
+                    <td>
+                        Andrew received his BTS commercial in 1974 and a Ph.D. in international marketing
+                        from the University of Dallas in 1981. He is fluent in French and Italian and reads
+                        German. He joined the company as a sales representative, was promoted to sales manager
+                        in January 1992 and to vice president of sales in March 1993. Andrew is a member
+                        of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific
+                        Rim Importers Association.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Birth Date
+                    </td>
+                    <td>
+                        19-Feb-52
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hire Date
+                    </td>
+                    <td>
+                        14-Aug-92
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Home Phone
+                    </td>
+                    <td>
+                        (206) 555-9482
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        908 W. Capital Way.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Postal Code
+                    </td>
+                    <td>
+                        98401
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City
+                    </td>
+                    <td>
+                        Tacoma
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country
+                    </td>
+                    <td>
+                        USA
+                    </td>
+                </tr>
+            </table>
+        </template>
+
+        <template id="anneInfo">
+            <table>
+                <tr>
+                    <td>
+                        <img style="width: 50px; height: 50px;" src="../../../images/phonebook/anne.png" alt="" />
+                    </td>
+                    <td>
+                        <b>Anne Dodsworth</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        Inside Sales Coordinator
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Notes
+                    </td>
+                    <td>
+                        Anne has a BA degree in English from St. Lawrence College. She is fluent in French
+                        and German.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Birth Date
+                    </td>
+                    <td>
+                        27-Jan-66
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hire Date
+                    </td>
+                    <td>
+                        15-Nov-94
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Home Phone
+                    </td>
+                    <td>
+                        (71) 555-5598
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        7 Houndstooth Rd.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Postal Code
+                    </td>
+                    <td>
+                        WG2 7LT
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City
+                    </td>
+                    <td>
+                        London
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country
+                    </td>
+                    <td>
+                        UK
+                    </td>
+                </tr>
+            </table>
+        </template>
+
+        <template id="janetInfo">
+            <table>
+                <tr>
+                    <td>
+                        <img style="width: 50px; height: 50px;" src="../../../images/phonebook/janet.png" alt="" />
+                    </td>
+                    <td>
+                        <b>Janet Leverling</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        Sales Representative
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Notes
+                    </td>
+                    <td>
+                        Janet has a BS degree in chemistry from Boston College (1984). She has also completed
+                        a certificate program in food retailing management. Janet was hired as a sales associate
+                        in 1991 and promoted to sales representative in February 1992.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Birth Date
+                    </td>
+                    <td>
+                        27-Jan-69
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hire Date
+                    </td>
+                    <td>
+                        15-Nov-94
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Home Phone
+                    </td>
+                    <td>
+                        (71) 555-4444
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        Miner Rd.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Postal Code
+                    </td>
+                    <td>
+                        WG2 7LT
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City
+                    </td>
+                    <td>
+                        London
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country
+                    </td>
+                    <td>
+                        UK
+                    </td>
+                </tr>
+            </table>
+        </template>
+
+        <template id="lauraInfo">
+            <table>
+                <tr>
+                    <td>
+                        <img style="width: 50px; height: 50px;" src="../../../images/phonebook/laura.png" alt="" />
+                    </td>
+                    <td>
+                        <b>Laura Callahan</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        Sales Representative
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Notes
+                    </td>
+                    <td>
+                        Laura received a BA in psychology from the University of Washington. She has also
+                        completed a course in business French. She reads and writes French.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Birth Date
+                    </td>
+                    <td>
+                        27-Jan-66
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hire Date
+                    </td>
+                    <td>
+                        15-Nov-94
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Home Phone
+                    </td>
+                    <td>
+                        (71) 555-4444
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        7 Houndstooth Rd.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Postal Code
+                    </td>
+                    <td>
+                        WG2 7LT
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City
+                    </td>
+                    <td>
+                        London
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country
+                    </td>
+                    <td>
+                        UK
+                    </td>
+                </tr>
+            </table>
+        </template>
+
+        <template id="margaretInfo">
+            <table>
+                <tr>
+                    <td>
+                        <img style="width: 50px; height: 50px;" src="../../../images/phonebook/margaret.png" alt="" />
+                    </td>
+                    <td>
+                        <b>Margaret Peacock</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        Vice President, Sales
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Notes
+                    </td>
+                    <td>
+                        Margaret holds a BA in English literature from Concordia College (1958) and an MA
+                        from the American Institute of Culinary Arts (1966). She was assigned to the London
+                        office temporarily from July through November 1992.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Birth Date
+                    </td>
+                    <td>
+                        19-Sep-37
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hire Date
+                    </td>
+                    <td>
+                        17-Oct-93
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Home Phone
+                    </td>
+                    <td>
+                        (206) 555-8122
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        4110 Old Redmond Rd.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Postal Code
+                    </td>
+                    <td>
+                        98052
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City
+                    </td>
+                    <td>
+                        Redmond
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country
+                    </td>
+                    <td>
+                        USA
+                    </td>
+                </tr>
+            </table>
+        </template>
+
+        <template id="michaelInfo">
+            <table>
+                <tr>
+                    <td>
+                        <img style="width: 50px; height: 50px;" src="../../../images/phonebook/michael.png" alt="" />
+                    </td>
+                    <td>
+                        <b>Michael Suyama</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        Sales Representative
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Notes
+                    </td>
+                    <td>
+                        Michael is a graduate of Sussex University (MA, economics, 1983) and the University
+                        of California at Los Angeles (MBA, marketing, 1986). He has also taken the courses
+                        'Multi-Cultural Selling' and 'Time Management for the Sales Professional.' He is
+                        fluent in Japanese and can read and write French, Portuguese, and Spanish.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Birth Date
+                    </td>
+                    <td>
+                        02-Jul-63
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hire Date
+                    </td>
+                    <td>
+                        05-June-96
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Home Phone
+                    </td>
+                    <td>
+                        (71) 555-4848
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        Coventry House
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Postal Code
+                    </td>
+                    <td>
+                        EC2 7JR
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City
+                    </td>
+                    <td>
+                        London
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country
+                    </td>
+                    <td>
+                        UK
+                    </td>
+                </tr>
+            </table>
+        </template>
+
+        <template id="nancyInfo">
+            <table>
+                <tr>
+                    <td>
+                        <img style="width: 50px; height: 50px;" src="../../../images/phonebook/nancy.png" alt="" />
+                    </td>
+                    <td>
+                        <b>Nancy Davolio</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        Sales Representative
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Notes
+                    </td>
+                    <td>
+                        Education includes a BA in psychology from Colorado State University in 1970. She
+                        also completed 'The Art of the Cold Call.' Nancy is a member of Toastmasters International.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Birth Date
+                    </td>
+                    <td>
+                        08-Dec-48
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hire Date
+                    </td>
+                    <td>
+                        01-May-92
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Home Phone
+                    </td>
+                    <td>
+                        (206) 555-9857
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        507 - 20th Ave. E. Apt. 2A
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Postal Code
+                    </td>
+                    <td>
+                        98122
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City
+                    </td>
+                    <td>
+                        Seattle
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country
+                    </td>
+                    <td>
+                        USA
+                    </td>
+                </tr>
+            </table>
+        </template>
+
+        <template id="robertInfo">
+            <table>
+                <tr>
+                    <td>
+                        <img style="width: 50px; height: 50px;" src="../../../images/phonebook/robert.png" alt="" />
+                    </td>
+                    <td>
+                        <b>Robert King</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        Sales Representative
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Notes
+                    </td>
+                    <td>
+                        Robert King served in the Peace Corps and traveled extensively before completing
+                        his degree in English at the University of Michigan in 1992, the year he joined
+                        the company. After completing a course entitled 'Selling in Europe,' he was transferred
+                        to the London office in March 1993.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Birth Date
+                    </td>
+                    <td>
+                        29-May-60
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hire Date
+                    </td>
+                    <td>
+                        02-Jan-94
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Home Phone
+                    </td>
+                    <td>
+                        (71) 555-5598
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        Winchester Way
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Postal Code
+                    </td>
+                    <td>
+                        RG1 9SP
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City
+                    </td>
+                    <td>
+                        London
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country
+                    </td>
+                    <td>
+                        UK
+                    </td>
+                </tr>
+            </table>
+        </template>
+
+        <template id="stevenInfo">
+            <table>
+                <tr>
+                    <td>
+                        <img style="width: 50px; height: 50px;" src="../../../images/phonebook/steven.png" alt="" />
+                    </td>
+                    <td>
+                        <b>Steven Buchanan</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Title
+                    </td>
+                    <td>
+                        Sales Manager
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Notes
+                    </td>
+                    <td>
+                        Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree
+                        in 1976. Upon joining the company as a sales representative in 1992, he spent 6
+                        months in an orientation program at the Seattle office and then returned to his
+                        permanent post in London. He was promoted to sales manager in March 1993. Mr. Buchanan
+                        has completed the courses 'Successful Telemarketing' and 'International Sales Management.'
+                        He is fluent in French.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Birth Date
+                    </td>
+                    <td>
+                        04-Mar-55
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hire Date
+                    </td>
+                    <td>
+                        02-May-94
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Home Phone
+                    </td>
+                    <td>
+                        (71) 555-5598
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        908 W. Capital Way
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Postal Code
+                    </td>
+                    <td>
+                        98052
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City
+                    </td>
+                    <td>
+                        Redmond
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country
+                    </td>
+                    <td>
+                        USA
+                    </td>
+                </tr>
+            </table>
+        </template>
+
+        <template id="mail1Preview">
+            {{title="Ken (ken.cerez@pmail.com)"}}
+            <div>
+                <table>
+                    <tr>
+                        <td class="mail-name">Ken</td>
+                        <td class="mail-time">15 min</td>
+                    </tr>
+                    <tr>
+                        <td class="mail-title">Appointment</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><div class="mail-preview">Hi, I just wanted to remind you dinner is at 8pm tonight at Carl's.</div></td>
+                        <td><i class="material-icons empty">&#xE83A;</i></td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+        <template id="mail1">
+            <h2>Appointment</h2>
+            <p class="mail-time">15 min</p>
+            <p>Hi,</p>
+            <p>I just wanted to remind you dinner is at 8pm tonight at Carl's.</p>
+        </template>
+        <template id="mail2Preview">
+            {{title="Sue (sue78@pmail.com)"}}
+            <div>
+                <table>
+                    <tr>
+                        <td class="mail-name">Sue</td>
+                        <td class="mail-time">2 hr</td>
+                    </tr>
+                    <tr>
+                        <td class="mail-title">Shopping</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><div class="mail-preview">Here's the shopping list for tommorow's party:</div></td>
+                        <td><i class="material-icons">&#xE838;</i></td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+        <template id="mail2">
+            <h2>Shopping</h2>
+            <p class="mail-time">2 hr</p>
+            <p>Here's the shopping list for tommorow's party:</p>
+            <ul>
+                <li>Wine</li>
+                <li>Tomatoes</li>
+                <li>Cheese</li>
+                <li>Popcorn</li>
+            </ul>
+        </template>
+        <template id="mail3Preview">
+            {{title="University of Madrid (info@uni.com)"}}
+            <div>
+                <table>
+                    <tr>
+                        <td class="mail-name">University of Madrid</td>
+                        <td class="mail-time">9/1/17</td>
+                    </tr>
+                    <tr>
+                        <td class="mail-title">Re: Exam</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><div class="mail-preview">Dear student, Attached you can find the result of your exam.</div></td>
+                        <td><i class="material-icons empty">&#xE83A;</i></td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+        <template id="mail3">
+            <h2>Re: Exam</h2>
+            <p class="mail-time">9/1/17</p>
+            <p>Dear student,</p>
+            <p>Attached you can find the result of your exam.</p>
+            <p>
+                University of Madrid
+                <br />
+                Av. Séneca, 2, 28040 Madrid, Spain
+            </p>
+        </template>
+        <template id="mail4Preview">
+            {{title="Meghan (meggie@pmail.com)"}}
+            <div>
+                <table>
+                    <tr>
+                        <td class="mail-name">Meghan</td>
+                        <td class="mail-time"../../../17</td>
+                    </tr>
+                    <tr>
+                        <td class="mail-title">Dinner tonight?</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><div class="mail-preview">Hi, how about a dinner at my parents' tonight?</div></td>
+                        <td><i class="material-icons empty">&#xE83A;</i></td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+        <template id="mail4">
+            <h2>Dinner tonight?</h2>
+            <p class="mail-time"../../../17</p>
+            <p>Hi,</p>
+            <p>how about a dinner at my parents' tonight?</p>
+        </template>
+        <template id="mail5Preview">
+            {{title="Titus LDT (info@titus-ldt.com)"}}
+            <div>
+                <table>
+                    <tr>
+                        <td class="mail-name">Titus LDT</td>
+                        <td class="mail-time"../../../17</td>
+                    </tr>
+                    <tr>
+                        <td class="mail-title">About the interview</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><div class="mail-preview">Hello, We are writing to inform you that your application has been shortlisted and would like to invite you to a second interview in our office.</div></td>
+                        <td><i class="material-icons">&#xE838;</i></td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+        <template id="mail5">
+            <h2>About the interview</h2>
+            <p class="mail-time"../../../17</p>
+            <p>Hello,</p>
+            <p>We are writing to inform you that your application has been shortlisted and would like to invite you to a second interview in our office.</p>
+            <p>
+                Sincerely,
+                <br />
+                The Titus Team
+            </p>
+        </template>
+        <template id="mail6Preview">
+            {{title="QuickShare (info@quickshare.com)"}}
+            <div>
+                <table>
+                    <tr>
+                        <td class="mail-name">QuickShare</td>
+                        <td class="mail-time"../../../17</td>
+                    </tr>
+                    <tr>
+                        <td class="mail-title">Important update</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><div class="mail-preview">Dear user, Our terms of service have changed.</div></td>
+                        <td><i class="material-icons empty">&#xE83A;</i></td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+        <template id="mail6">
+            <h2>Important update</h2>
+            <p class="mail-time"../../../17</p>
+            <p>Dear user,</p>
+            <p>Our terms of service have changed. Please find attached the updated document.</p>
+        </template>
+        <template id="mail7Preview">
+            {{title="QuickShare (info@quickshare.com)"}}
+            <div>
+                <table>
+                    <tr>
+                        <td class="mail-name">QuickShare</td>
+                        <td class="mail-time"../../../17</td>
+                    </tr>
+                    <tr>
+                        <td class="mail-title">Welcome to our forums</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><div class="mail-preview">Dear user, Welcome to the QuickShare forums.</div></td>
+                        <td><i class="material-icons empty">&#xE83A;</i></td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+        <template id="mail7">
+            <h2>Welcome to our forums</h2>
+            <p class="mail-time"../../../17</p>
+            <p>Dear user,</p>
+            <p>Welcome to the QuickShare forums.</p>
+        </template>
+</body>
+</html>

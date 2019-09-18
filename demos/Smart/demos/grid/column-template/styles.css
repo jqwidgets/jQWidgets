@@ -1,0 +1,17 @@
+smart-grid {
+    height: auto;
+}
+.template-button {
+    background: transparent;
+    border: none;
+    color: var(--smart-secondary);
+    outline: none;
+    cursor: pointer;
+    display: flex;
+}
+.template-button:hover {
+    color: var(--smart-success);
+}
+.template-button:active {
+    color: var(--smart-primary);
+}

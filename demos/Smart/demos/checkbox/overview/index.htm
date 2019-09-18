@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Checkbox Overview Demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+	
+    <script type="text/javascript" src="../../../scripts/common.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body class="viewport">
+    <div class="smart-demo-container">             
+	  <section id="check-box">
+            <div class="module">
+                <p>Checkboxes allow the user to select multiple options from a set.</p>
+                <p>If you have multiple options appearing in a list, you can preserve space by using checkboxes instead of on/off switches.</p>
+                <p>If you have a single option, avoid using a checkbox and use an on/off switch instead.</p>
+            </div>
+            <div class="module">
+                <div class="check-box-container-light">
+                    <smart-check-box  enable-container-click group-name="A" checked></smart-check-box>
+                    <smart-check-box  group-name="A"></smart-check-box>
+                </div>
+            </div>
+          
+        </section>
+
+        <section id="check-box-light">
+   
+            <div class="module">
+                <div class="check-box-table-light">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td colspan="1" rowspan="1">
+                                    <p></p>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <p>hover </p>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <p>focused</p>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <p>pressed</p>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <p>disabled</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" rowspan="1">
+                                    <p style="position:relative; top:-5px;">On</p>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <smart-check-box hover checked></smart-check-box>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <smart-check-box focus checked></smart-check-box>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <smart-check-box active checked></smart-check-box>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <smart-check-box checked disabled></smart-check-box>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" rowspan="1">
+                                    <p style="position:relative; top:-5px;">Off</p>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <smart-check-box class="material"></smart-check-box>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <smart-check-box class="material focused"></smart-check-box>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <smart-check-box class="material"></smart-check-box>
+                                </td>
+                                <td colspan="1" rowspan="1">
+                                    <smart-check-box class="material" disabled></smart-check-box>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Light theme for check box in hover, focused, pressed, disabled states.</p>
+            </div>
+        </section>
+   </div>
+</body>
+</html>

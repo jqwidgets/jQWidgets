@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Drop Down Button Open Modes</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.element.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.button.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.scrollbar.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.dropdownbutton.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.tabs.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <div id="description">
+        <h3>Modes Description</h3>
+        <ul>
+            <li>
+                Auto - the dropDownButton is opened/closed when the element is hovered.
+            </li>
+            <li>
+                Default - the dropDownButton is opened/closed when the element is clicked.
+            </li>
+            <li>
+                DropDownButton - the dropDownButton is devided in two components. An Action Button and a dropDown Button. The dropDownButton can be opened/closed when the dropDownButton is clicked.
+            </li>
+            <li>
+                None - the dropDownButton can't be opened/closed.
+            </li>
+        </ul>
+    </div>
+
+    <div id="eventLog">
+        <h4>Event log:</h4>
+        <div id="log">...</div>
+    </div>
+    <br />
+    <div>
+        <h3>Open Mode:</h3>
+        <smart-button disabled>Default</smart-button>
+        <smart-button>Auto</smart-button>
+        <smart-button style="font-size: 10px;">DropDownButton</smart-button>
+        <smart-button>None</smart-button>
+    </div>
+    <div id="container">
+        <smart-drop-down-button placeholder="Select" drop-down-width="auto">
+            <smart-tabs id="tab">
+                <smart-tab-item label="Tab 1">Content of Item 1</smart-tab-item>
+                <smart-tab-item label="Tab 2">Content of Item 2</smart-tab-item>
+                <smart-tab-item label="Tab 3">Content of Item 3</smart-tab-item>
+                <smart-tab-item label="Tab 4">Content of Item 4</smart-tab-item>
+                <smart-tab-item label="Tab 5">Content of Item 5</smart-tab-item>
+                <smart-tab-item label="Tab 6">Content of Item 6</smart-tab-item>
+                <smart-tab-item label="Tab 7">Content of Item 7</smart-tab-item>
+            </smart-tabs>
+        </smart-drop-down-button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+smart-carousel {
+    width: 1000px;
+    height: 450px;
+    border-width: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('../../images/carousel-background-3.jpg');
+}
+
+h2 {
+    text-align: center;
+}

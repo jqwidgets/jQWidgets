@@ -1,10 +1,3 @@
-/*
-jQWidgets v8.1.4 (2019-July)
-Copyright (c) 2011-2019 jQWidgets.
-License: https://jqwidgets.com/license/
-*/
-/* eslint-disable */
-
 <template>
         <textarea v-bind:id="id"></textarea>
 </template>
@@ -180,7 +173,9 @@ License: https://jqwidgets.com/license/
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = this.__manageProps__();
                 JQXLite(this.componentSelector).jqxEditor(widgetOptions);
-                JQXLite(this.componentSelector).jqxEditor('val', this.$slots.default[0].text);
+                if (this.$slots.default) {
+                    JQXLite(this.componentSelector).jqxEditor('val', this.$slots.default[0].text);
+                }
                 this.__extendProps__();
                 this.__wireEvents__();
             },

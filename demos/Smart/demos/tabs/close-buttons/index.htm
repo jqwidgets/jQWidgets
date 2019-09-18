@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Tabs Close Buttons</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <p>closeButtonMode 'default'</p>
+    <smart-tabs id="tabs1" class="demoTabsShort" close-buttons>
+        <smart-tab-item label="TAB 1">Content 1</smart-tab-item>
+        <smart-tab-item label="TAB 2" selected>Content 2</smart-tab-item>
+        <smart-tab-item label="TAB 3" close-button-hidden>Content 3</smart-tab-item>
+    </smart-tabs>
+    <br />
+
+	<p>closeButtonMode 'selected'</p>
+    <smart-tabs id="tabs2" class="demoTabsShort" close-buttons close-button-mode="selected" add-new-tab>
+        <smart-tab-item label="TAB 1">Content 1</smart-tab-item>
+        <smart-tab-item label="TAB 2">Content 2</smart-tab-item>
+        <smart-tab-item label="TAB 3" selected>Content 3</smart-tab-item>
+    </smart-tabs>
+	<div class="options">
+		<div class="caption">Settings</div>
+		<div class="option">
+			<smart-toggle-button id="toggleCloseButtons" class="demoButton" checked>Toggle close buttons</smart-toggle-button>
+			<br/><br/><smart-button id="showCloseButton" class="demoButton">Show third close button</smart-button>
+			<br/><br/><smart-button id="hideCloseButton" class="demoButton" disabled>Hide third close button</smart-button>
+		</div>
+	</div>	
+</body>
+</html>

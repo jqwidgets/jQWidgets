@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Progress Bar Echo Animation</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <svg>
+        <defs>
+            <filter id="mainGlow" x="0" y="0" width="200%" height="200%">
+                <feGaussianBlur class="mainGlowBlur" stdDeviation="14" result="coloredBlur" />
+                <feOffset dx="0" dy="0" result="offsetblur"></feOffset>
+                <feFlood flood-color="#50FFFF" flood-opacity="1"></feFlood>
+                <feComposite in2="offsetblur" operator="atop"></feComposite>
+                <feMerge>
+                    <feMergeNode />
+                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                </feMerge>
+            </filter>
+            <filter id="blueGlow" x="0" y="0" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="5" result="coloredBlur" />
+                <feOffset dx="0" dy="0" result="offsetblur"></feOffset>
+                <feFlood flood-color="#2144FB" flood-opacity="1"></feFlood>
+                <feComposite in2="offsetblur" operator="in"></feComposite>
+                <feMerge>
+                    <feMergeNode />
+                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                </feMerge>
+            </filter>
+            <radialGradient id="outlineGrad" cx="10" cy="10" r="50" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#FFF" />
+                <stop offset="0.3" stop-color="#50FFFF" stop-opacity="1" />
+                <stop offset="1" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="blueGrad" cx="10" cy="10" r="350" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#2144FB" />
+                <stop offset="1" stop-opacity="0" />
+            </radialGradient>
+        </defs>
+    </svg>
+
+    <smart-circular-progress-bar class="echo-animation"></smart-circular-progress-bar>
+</body>
+</html>

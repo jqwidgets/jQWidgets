@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Slider Date Scale</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.math.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.tickintervalhandler.js"></script>
+    
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.date.js"></script>
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <smart-slider id="slider1"
+                interval="5"
+                orientation="vertical"
+                scale-position="near"
+                show-tooltip
+                tooltip-position="far"
+                mode="date"
+                date-label-format-string="d"
+                min="new Date(2000, 0, 1)"
+                max="new Date(2020, 0, 1)"
+                value="new Date(2008, 10, 1)"></smart-slider>
+    <br />
+    <smart-slider id="slider2"
+                label-format-function="slider2LabelFormatFunction"
+                scale-position="near"
+                show-tooltip
+                tooltip-position="far"
+                mode="date"
+                date-label-format-string="MMM d, yyyy"
+                min="new Date(2017, 0, 1)"
+                max="new Date(2019, 0, 1)"
+                value="new Date(2018, 0, 1)"
+                custom-interval
+                custom-ticks='["new Date(2017, 0, 1)", "new Date(2018, 0, 1)", "new Date(2018, 4, 17)", "new Date(2019, 0, 1)"]'></smart-slider>
+    <br />
+    <smart-slider id="slider3"
+                interval="5"
+                inverted
+                orientation="vertical"
+                scale-position="near"
+                show-tooltip
+                show-unit
+                tooltip-position="far"
+                unit="μs"
+                mode="date"
+                date-label-format-string="uu"
+                min="new Smart.Utilities.DateTime(2018, 3, 19, 2, 12, 35, 133, 45)"
+                max="new Smart.Utilities.DateTime(2018, 3, 19, 2, 12, 35, 133, 347)"
+                value="new Smart.Utilities.DateTime(2018, 3, 19, 2, 12, 35, 133, 300)"></smart-slider>
+    <br />
+    <smart-slider id="slider4"
+                range-slider
+                coerce
+                interval="1"
+                scale-position="far"
+                show-tooltip
+                mode="date"
+                date-label-format-string="MMM, yy"
+                min="new Date(2018, 0, 1)"
+                max="new Date(2018, 11, 1)"
+                values='["new Date(2018, 1, 1)", "new Date(2018, 5, 1)"]'></smart-slider>
+</body>
+</html>

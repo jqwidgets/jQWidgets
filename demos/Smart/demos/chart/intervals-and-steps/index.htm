@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Intervals and Steps</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    
+    
+    
+    
+    
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.math.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.complex.js"></script>
+    
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <smart-chart id="chart"></smart-chart>
+    <div class="options">
+        <table>
+            <tr>
+                <td>
+                    <table>
+                        <tr><td colspan="2"><b>xAxis settings:</b></td></tr>
+                        <tr>
+                            <td>Labels step</td>
+                            <td><smart-numeric-text-box id="inputXAxisLabelsStep" min="1" max="10" value="2" spin-buttons></smart-numeric-text-box></td>
+                        </tr>
+                        <tr>
+                            <td>Grid lines step</td>
+                            <td><smart-numeric-text-box id="inputXAxisGridLinesStep" min="1" max="10" value="1" spin-buttons></smart-numeric-text-box></td>
+                        </tr>
+                        <tr>
+                            <td>Tick marks step</td>
+                            <td><smart-numeric-text-box id="inputXAxisTickMarksStep" min="1" max="10" value="1" spin-buttons></smart-numeric-text-box></td>
+                        </tr>
+                        <tr>
+                            <td>Unit interval</td>
+                            <td><smart-numeric-text-box id="inputXAxisUnitInterval" min="1" max="10" value="1" spin-buttons></smart-numeric-text-box></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><smart-check-box id="btnValuesBetweenTicks">Values between ticks</smart-check-box></td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td>
+                    <table>
+                        <tr><td colspan="2"><b>valueAxis settings:</b></td></tr>
+                        <tr>
+                            <td>Labels step</td>
+                            <td><smart-numeric-text-box id="inputValueAxisLabelsStep" min="1" max="10" value="1" spin-buttons></smart-numeric-text-box></td>
+                        </tr>
+                        <tr>
+                            <td>Grid lines step</td>
+                            <td><smart-numeric-text-box id="inputValueAxisGridLinesStep" min="1" max="10" value="1" spin-buttons></smart-numeric-text-box></td>
+                        </tr>
+                        <tr>
+                            <td>Tick marks step</td>
+                            <td><smart-numeric-text-box id="inputValueAxisTickMarksStep" min="1" max="10" value="1" spin-buttons></smart-numeric-text-box></td>
+                        </tr>
+                        <tr>
+                            <td>Unit interval</td>
+                            <td><smart-numeric-text-box id="inputValueAxisUnitInterval" min="1" max="10" value="5" spin-buttons></smart-numeric-text-box></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><smart-check-box id="btnValueAxisValuesBetweenTicks">Values between ticks</smart-check-box></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

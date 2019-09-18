@@ -982,12 +982,20 @@ color: #fff !important;
 .jqx-container-dark {
 	border-radius: inherit;
 }
-.jqx-header-dark {
+.jqx-time-picker[view="portrait"] .jqx-header-dark {
 	border-top-left-radius: inherit;
 	border-top-right-radius: inherit;
 }
-.jqx-main-container-dark {
+.jqx-time-picker[view="portrait"] .jqx-main-container-dark {
 	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+}
+.jqx-time-picker[view="landscape"] .jqx-header-dark {
+	border-top-left-radius: inherit;
+	border-bottom-left-radius: inherit;
+}
+.jqx-time-picker[view="landscape"] .jqx-main-container-dark {
+	border-top-right-radius: inherit;
 	border-bottom-right-radius: inherit;
 }
 .jqx-time-picker .jqx-main-container-dark {

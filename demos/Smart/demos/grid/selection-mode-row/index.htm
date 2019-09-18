@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Rows Selection Demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+	<link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />	
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.element.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.scrollbar.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.data.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.button.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.listbox.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.dropdownlist.js"></script>	
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.grid.js"></script>
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.pager.js"></script>	
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.radiobutton.js"></script>	
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.checkbox.js"></script>	
+	
+	<script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.menu.js"></script>	
+    <script type="text/javascript" src="../../../scripts/data.js"></script>	
+	
+	
+	
+	<link rel="stylesheet" type="text/css" href="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/styles/jqx.base.css" />
+	<script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxgrid.selection.js"></script> 
+    <script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxgrid.sort.js"></script> 
+    <script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxgrid.columnsresize.js"></script> 
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+	<div class="demo-description">
+		<h1>Grid Row Selection</h1>
+		<p>
+		The data grid component supports different configurations for selection. You can choose to select/unselect rows with API only or on single or double click by setting the 'selection.action' property to 'none', 'click' or 'dblclick'.
+		Clicking on a Grid Row or Column header can also be used for selection just like in Microsoft Excel. The 'selection.mode' property determines whether we will have Single or Multi-Row selection. The allowed values for that property are 'one', 'many' and 'extended'.
+		'one' allows only single row selection, while 'many' and 'extended' allow multi-row selection. The difference between 'many' and 'extended' Grid selection modes is that in 'extended', users will have to click 'Ctrl' or 'Shift' keyboard keys to perform multiple selection.
+		</p>
+	</div>
+   <smart-grid style="width:70%;" id="grid"></smart-grid>
+     <div class="options">
+	<div class="caption">
+		Settings
+	</div>
+	<div class="option">
+		<smart-check-box id="dblclickCheckBox">Select on Double Click</smart-check-box>
+	</div>
+	<div class="option">
+		<smart-check-box id="headerSelectionCheckBox">Allow Row Header Selection</smart-check-box>
+	</div>
+	<div class="option">
+		<smart-check-box id="colheaderSelectionCheckBox">Allow Column Header Selection</smart-check-box>
+	</div>
+	<div class="option">
+		 <smart-radio-button id="singleRadioButton">Single Selection</smart-radio-button><br/>
+		 <smart-radio-button id="multipleRadioButton" checked>Multiple Selection</smart-radio-button><br/>
+		 <smart-radio-button id="extendedRadioButton">Extended Selection</smart-radio-button>
+	</div>	
+   </div>
+   <br/><br/>
+   <div id="smartgrid"></div>
+</body>
+</html>

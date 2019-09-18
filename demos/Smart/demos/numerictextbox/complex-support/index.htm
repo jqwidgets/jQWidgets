@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Numeric Text Box Complex Support</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../jqwidgets-smart-wc/styles/smart.default.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/demos.css" />
+    <link rel="stylesheet" type="text/css" href="../../../styles/common.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-lite.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.elements.js"></script>
+    
+    
+    
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.math.js"></script>
+    <script type="text/javascript" src="../../../../../jqwidgets-smart-wc/smart.complex.js"></script>
+    <script src="index.js"></script>
+</head>
+<body class="viewport">
+    <smart-numeric-text-box id="myCustomElement"
+                          input-format="complex"
+                          value="3.14159265359+0.3i"
+                          spin-buttons
+                          spin-buttons-position="left"
+                          spin-buttons-step="1 + 1i"
+                          enable-mouse-wheel-action></smart-numeric-text-box>
+    <br />
+    <button id="setSignificantDigits">significantDigits = 5</button>
+    <button id="setPrecisionDigits">precisionDigits = 5</button>
+    <br />
+    <br />
+    <button id="setValue">set value to "5e12 + 1.6e3i"</button>
+    <button id="setScientificNotationValue">set value to "34E - 12i"</button>
+</body>
+</html>

@@ -1,0 +1,13 @@
+#slider {
+    width: 500px;
+    height: 80px;
+    margin-left: 20px;
+}
+
+#numericTextBox {
+    position: absolute;
+    left: 800px;
+    top: 180px;
+    width: 200px;
+    height: 35px;
+}

@@ -1,10 +1,3 @@
-/*
-jQWidgets v7.2.0 (2019-Apr)
-Copyright (c) 2011-2019 jQWidgets.
-License: https://jqwidgets.com/license/
-*/
-/* eslint-disable */
-
 <template>
     <div v-bind:id="id">
         <slot></slot>
@@ -86,20 +79,20 @@ License: https://jqwidgets.com/license/
                 const that = this;
 
                 Object.defineProperty(that, 'type', {
-                    get() {
+                    get: function() {
                         return that._type();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._type(newValue);
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Object.defineProperty(that, 'target', {
-                    get() {
+                    get: function() {
                         return that._target();
                     },
-                    set(newValue) {
+                    set: function(newValue) {
                         that._target(newValue);
                     },
                     enumerable: true,
