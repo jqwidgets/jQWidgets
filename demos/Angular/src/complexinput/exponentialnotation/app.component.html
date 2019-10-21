@@ -1,0 +1,60 @@
+﻿<jqxComplexInput #myComplexInput style="float: left"
+                 [width]="250" [height]="25" [value]="'330000 - 200i'"
+                 [spinButtons]="true" [decimalNotation]="'exponential'">
+</jqxComplexInput>
+
+<jqxExpander style="float: left; margin-left: 50px"
+             [width]="400" [height]="560" [toggleMode]="'none'" [showArrow]="false">
+    <div>Angular ComplexInput Notation Settings</div>
+    <div style="padding-left: 15px">
+        <h4>Choose notation:</h4>
+        <jqxDropDownList style="margin-top: 20px" (onChange)="notationsListOnChange($event)"
+                         [width]="200" [height]="25" [source]="source"
+                         [autoDropDownHeight]="true" [selectedIndex]="1">
+        </jqxDropDownList>
+        <div style="margin-top: 20px">
+            <h4>Real part</h4>
+            <jqxButton [width]="180"
+                       (onClick)="getRealDecimalOnClick()">
+                Get Decimal Value
+            </jqxButton>
+            <br /><br />
+            <jqxButton [width]="180"
+                       (onClick)="getRealExponentialOnClick()">
+                Get Exponential Notation
+            </jqxButton>
+            <br /><br />
+            <jqxButton [width]="180"
+                       (onClick)="getRealScientificOnClick()">
+                Get Scientific Notation
+            </jqxButton>
+            <br /><br />
+            <jqxButton [width]="180"
+                       (onClick)="getRealEngineeringOnClick()">
+                Get Engineering Notation
+            </jqxButton>
+        </div>
+        <div style="margin-top: 20px">
+            <h4>Imaginary part</h4>
+            <jqxButton [width]="180"
+                       (onClick)="getImaginaryDecimalOnClick()">
+                Get Decimal Value
+            </jqxButton>
+            <br /><br />
+            <jqxButton [width]="180"
+                       (onClick)="getImaginaryExponentialOnClick()">
+                Get Exponential Notation
+            </jqxButton>
+            <br /><br />
+            <jqxButton [width]="180"
+                       (onClick)="getImaginaryScientificOnClick()">
+                Get Scientific Notation
+            </jqxButton>
+            <br /><br />
+            <jqxButton [width]="180"
+                       (onClick)="getImaginaryEngineeringOnClick()">
+                Get Engineering Notation
+            </jqxButton>
+        </div>
+    </div>
+</jqxExpander>

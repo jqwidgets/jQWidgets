@@ -1,0 +1,6 @@
+﻿<jqxGrid #myGrid (onCellselect)="myGridOnCellSelect($event)" (onCellendedit)="myGridOnCellEndEdit($event)"
+    [width]="getWidth()" [source]="dataAdapter" [columns]="columns" 
+    [editable]="true" [autoheight]="true" [selectionmode]="'singlecell'">
+</jqxGrid>
+
+<div #eventLog style="font-size: 13px; margin-top: 20px; font-family: Verdana"></div>

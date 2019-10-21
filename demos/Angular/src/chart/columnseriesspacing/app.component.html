@@ -1,0 +1,112 @@
+﻿<jqxChart #myChart
+          [width]="getWidth()" [height]="500"
+          [title]="'Columns spacing and padding'"
+          [description]="'Example with two series groups and three series in each group'"
+          [showLegend]="true" [enableAnimations]="false" [padding]="padding"
+          [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis"
+          [columnSeriesOverlap]="true" [seriesGroups]="seriesGroups" [colorScheme]="'scheme04'">
+</jqxChart>
+
+<table style="padding-left: 30px; padding-top: 10px">
+  <tr style="height: 50px">
+    <td style="width: 300px">
+      <b>Series group 1:</b>
+    </td>
+    <td>
+      <b>Series group 2:</b>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <jqxCheckBox #btnEnableSeriesGroup1 (onChange)="updateSeriesGroupsVisibility()"
+                   [width]="120" [height]="25" [checked]="true">
+        Visible
+      </jqxCheckBox>
+    </td>
+    <td>
+      <jqxCheckBox #btnEnableSeriesGroup2 (onChange)="updateSeriesGroupsVisibility()"
+                   [width]="120" [height]="25" [checked]="false">
+        Visible
+      </jqxCheckBox>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <jqxCheckBox #btnStackedSeriesGroup1 (onChange)="updateSeriesGroupsStacking()"
+                   [width]="120" [height]="25" [checked]="false">
+        Stacked
+      </jqxCheckBox>
+    </td>
+    <td>
+      <jqxCheckBox #btnStackedSeriesGroup2 (onChange)="updateSeriesGroupsStacking()"
+                   [width]="120" [height]="25" [checked]="false">
+        Stacked
+      </jqxCheckBox>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Space between columns / padding:
+      <jqxSlider (onChange)="sliderColumnsGapPercent($event, 0)"
+                 [width]="250" [min]="0" [max]="99" [value]="25"
+                 [ticksFrequency]="5" [step]="1" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+    <td>
+      Space between columns / padding:
+      <jqxSlider (onChange)="sliderColumnsGapPercent($event, 1)"
+                 [width]="250" [min]="0" [max]="99" [value]="25"
+                 [ticksFrequency]="5" [step]="1" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Space between series:
+      <jqxSlider (onChange)="sliderSeriesGap($event, 0)"
+                 [width]="250" [min]="0" [max]="100" [value]="10"
+                 [ticksFrequency]="5" [step]="1" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+    <td>
+      Space between series:
+      <jqxSlider (onChange)="sliderSeriesGap($event, 1)"
+                 [width]="250" [min]="0" [max]="100" [value]="25"
+                 [ticksFrequency]="5" [step]="1" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Minimum column [width]:
+      <jqxSlider (onChange)="sliderMinWidth($event, 0)"
+                 [width]="250" [min]=" 0" [max]="50" [value]="0"
+                 [ticksFrequency]="5" [step]=" 1" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+    <td>
+      Minimum column [width]:
+      <jqxSlider (onChange)="sliderMinWidth($event ,1)"
+                 [width]="250" [min]=" 0" [max]="50" [value]="0"
+                 [ticksFrequency]="5" [step]=" 1" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Maximum column [width]:
+      <jqxSlider (onChange)="sliderMaxWidth($event, 0)"
+                 [width]="250" [min]=" 1" [max]="120" [value]="40"
+                 [ticksFrequency]="20" [step]=" 1" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+    <td>
+      Maximum column [width]:
+      <jqxSlider (onChange)="sliderMaxWidth($event, 1)"
+                 [width]="250" [min]=" 1" [max]="120" [value]="40"
+                 [ticksFrequency]="20" [step]=" 1" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+  </tr>
+</table>
+

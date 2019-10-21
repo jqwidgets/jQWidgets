@@ -1,0 +1,16 @@
+﻿<jqxDataTable #myDataTable
+  [width]="getWidth()" [source]="dataAdapter" [columns]="columns"
+  [altRows]="true" [pageable]="true" [sortable]="true">
+</jqxDataTable>
+
+<div style="width: 850px; margin-top: 20px; display: flex; align-content: space-around;">
+  <jqxButton (onClick)="excelExport()" [width]="200">Export to Excel</jqxButton>
+  <jqxButton (onClick)="xmlExport()" [width]="200">Export to XML</jqxButton>
+  <jqxButton (onClick)="csvExport()" [width]="200">Export to CSV</jqxButton>
+  <jqxButton (onClick)="tsvExport()" [width]="200">Export to TSV</jqxButton>
+  <jqxButton (onClick)="htmlExport()" [width]="200">Export to HTML</jqxButton>
+  <jqxButton (onClick)="jsonExport()" [width]="200">Export to JSON</jqxButton>
+  <jqxButton (onClick)="pdfExport()" [width]="200">Export to PDF</jqxButton>
+</div>
+
+

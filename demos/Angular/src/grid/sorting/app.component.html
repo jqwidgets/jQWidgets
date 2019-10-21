@@ -1,0 +1,27 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left">
+
+    <jqxGrid #myGrid (onSort)="myGridOnSort($event)"
+        [width]="getWidth()" [height]="450" [source]="dataAdapter" [columns]="columns"
+        [sortable]="true" [altrows]="true" [filterable]="true"
+        [selectionmode]="'multiplecellsadvanced'">
+    </jqxGrid>
+
+    <div style="margin-top: 30px">
+        <div style="float: left; margin-right: 10px">
+
+            <jqxButton (onClick)="removeSortBtnOnClick()" [height]="25">Remove Sort</jqxButton>
+
+            <div style="margin-top: 10px"></div>
+
+            <jqxCheckBox (onChange)="sortBackGroundBtn($event)" [height]="25" [checked]="true">Sort Background</jqxCheckBox>
+
+        </div>
+
+        <div style="margin-left: 100px; float: left">
+            Event Log:
+
+            <jqxPanel #myPanel [width]="300" [height]="80"></jqxPanel>
+
+        </div>
+    </div>
+</div>

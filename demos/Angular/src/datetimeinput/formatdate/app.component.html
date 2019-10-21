@@ -1,0 +1,18 @@
+﻿<jqxDateTimeInput #myDateTimeInput
+    [width]="300" [height]="30" [formatString]="'d'">
+</jqxDateTimeInput>
+
+<br />
+<div>
+    <div style="font-family: Verdana; font-size: 13px">
+        Choose Format:
+    </div>
+    <br />
+
+    <jqxDropDownList (onSelect)="listOnSelect($event)"
+        [width]="230" [height]="30"
+        [source]="availableFormats" [selectedIndex]="0">
+    </jqxDropDownList>
+
+</div>
+

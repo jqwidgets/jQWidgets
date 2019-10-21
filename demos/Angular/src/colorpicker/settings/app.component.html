@@ -1,0 +1,19 @@
+﻿<jqxColorPicker #myColorPicker (onColorchange)="colorChanged($event)"
+    [width]="250" [height]="250">
+</jqxColorPicker>
+
+<div style="font-size: 13px; font-family: Verdana; margin-top: 10px">
+    <div style="margin-bottom: 5px">Color Modes</div>
+
+      <jqxRadioButton 
+         [width]="180" [height]="25" checked="true">
+          Saturation Color Mode
+      </jqxRadioButton>
+
+      <jqxRadioButton (onChange)="hueModeChanged($event)"
+          [width]="180" [height]="25">
+          Hue Color Mode
+      </jqxRadioButton>
+</div>
+
+<div #colorLog style="font-size: 13px; font-family: Verdana"></div>

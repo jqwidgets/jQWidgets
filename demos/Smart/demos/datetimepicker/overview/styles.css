@@ -1,9 +1,0 @@
-body,
-html {
-	min-height: 1500px;
-}
-smart-date-time-picker {
-	position: relative; 
-	left: 0px;
-	width: 270px;
-}

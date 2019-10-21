@@ -1,0 +1,13 @@
+﻿<jqxTreeGrid #myTreeGrid
+    (onContextmenu)="myTreeGridOnContextmenu()" (onRowClick)="myTreeGridOnRowClick($event)"
+    [width]="getWidth()" [source]="dataAdapter" [columns]="columns"
+    [columnsResize]="true" [ready]="ready">
+</jqxTreeGrid>
+
+<jqxMenu #myMenu (onItemclick)="myMenuOnItemClick($event)"
+    [width]="200" [height]="58" [autoOpenPopup]="false" [mode]="'popup'">
+    <ul>
+        <li>Edit Selected Row</li>
+        <li>Delete Selected Row</li>
+    </ul>
+</jqxMenu>

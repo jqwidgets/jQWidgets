@@ -1,0 +1,43 @@
+/// <reference path="../jqwidgets.d.ts" />
+import { EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+export declare class jqxFormComponent implements OnChanges {
+    attrPadding: jqwidgets.FormPadding;
+    attrBackgroundColor: string;
+    attrBorderColor: string;
+    attrValue: any;
+    attrTemplate: Array<jqwidgets.FormTemplateItem>;
+    attrWidth: string | number;
+    attrHeight: string | number;
+    autoCreate: boolean;
+    properties: string[];
+    host: any;
+    elementRef: ElementRef;
+    widgetObject: jqwidgets.jqxForm;
+    constructor(containerElement: ElementRef);
+    ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): boolean;
+    arraysEqual(attrValue: any, hostValue: any): boolean;
+    manageAttributes(): any;
+    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void;
+    moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void;
+    createComponent(options?: any): void;
+    createWidget(options?: any): void;
+    __updateRect__(): void;
+    setOptions(options: any): void;
+    padding(arg?: jqwidgets.FormPadding): jqwidgets.FormPadding;
+    backgroundColor(arg?: string): string;
+    borderColor(arg?: string): string;
+    value(arg?: any): any;
+    template(arg?: Array<jqwidgets.FormTemplateItem>): Array<jqwidgets.FormTemplateItem>;
+    getInstance(): any;
+    refresh(): void;
+    destroy(): void;
+    hideComponent(name: string): void;
+    showComponent(name: string): void;
+    val(value?: any): any;
+    submit(action?: string, target?: string, method?: string): void;
+    getComponentByName(name?: string): any;
+    onFormDataChange: EventEmitter<any>;
+    onButtonClick: EventEmitter<any>;
+    __wireEvents__(): void;
+}

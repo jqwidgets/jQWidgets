@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title id="Description">jQWidgets Angular PivotGrid - pivot cells, rows and columns styling with CSS</title>
+        <base href="./../dist/pivotgrid/rows-columns-cells-css-styling/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Styles -->
+    <link rel="stylesheet" href="/node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <!-- jQWidgets -->
+   <script type="text/javascript" src="./../../../scripts/demos.js"></script>
+     
+     
+     
+     
+    <style>
+        .columnStyle {
+            background-color: rgba(254, 173, 117, 255);
+        }
+
+        .columnStyleSelected {
+            background-color: rgba(234, 153, 87, 255);
+        }
+
+        .rowStyle {
+            background-color: rgba(187, 232, 227, 255);
+        }
+
+        .rowStyleSelected {
+            background-color: rgba(167, 212, 207, 255);
+        }
+
+        .cellStyle {
+            background-color: rgba(255, 255, 255, 255);
+        }
+
+        .cellStyleSelected {
+            background-color: rgba(239, 249, 136, 255);
+            color: rebeccapurple;
+        }
+    </style>
+
+</head>
+<body>
+    <app-root>Loading...</app-root>
+    <div class="example-description">
+        <h2>Description</h2>
+        <div style="width: 800px;">
+            This is an example of the Angular Pivot Grid Component with custom style of the grid cells depending on their
+            selection state. You can override the style of any pivot grid cell, row or column using standard CSS.
+            The custom styles can be applied during the data binding definitions and you can use different
+            styles for different pivot dataFields. The Angular pivot grid also allows you to override the style of
+            individual rows and columns at runtime after the databinding step.
+        </div>
+    </div>
+    <script src="runtime-es2015.js" type="module"></script><script src="polyfills-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule></script><script src="polyfills-es5.js" nomodule></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule></script>
+</body>
+</html>

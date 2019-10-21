@@ -1,0 +1,114 @@
+﻿<jqxChart #myChart
+    [width]="getWidth()" [height]="500"
+    [title]="'Electricity prices in Europe between 2004 and 2019'" [description]="'Source: Eurostat'"
+    [enableAnimations]="true" [showLegend]="true" [padding]="padding" 
+    [titlePadding]="titlePadding" [source]="data" [xAxis]="xAxis"
+    [valueAxis]="valueAxis" [seriesGroups]="seriesGroups" [colorScheme]="'scheme04'">
+</jqxChart>
+
+<table style="padding-left: 30px; padding-top: 10px">
+  <tr style="height: 50px">
+    <td style="width: 300px"><b>[value] axis properties:</b></td>
+    <td><b>xAxis properties:</b></td>
+  </tr>
+  <tr>
+    <td>
+      Left padding:
+      <jqxSlider (onChange)="sliderValueAxisLeftPaddingOnChange($event)"
+          [width]="250" [min]="0" [max]="50" [step]="1"
+          [value]="0" [ticksFrequency]="5" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+    <td>
+      Top padding:
+      <jqxSlider (onChange)="sliderXAxisTopPaddingOnChange($event)"
+          [width]="250" [min]="0" [max]="50" [step]="1"
+          [value]="0" [ticksFrequency]="5" [mode]="'fixed'">
+    </jqxSlider>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Right padding:
+      <jqxSlider (onChange)="sliderValueAxisRightPaddingOnChange($event)"
+          [width]="250" [min]="0" [max]="50" [step]="1"
+          [value]="0" [ticksFrequency]="5" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+    <td>
+      Bottom padding:
+      <jqxSlider (onChange)="sliderXAxisBottomPaddingOnChange($event)"
+          [width]="250" [min]="0" [max]="50" [step]="1"
+          [value]="0" [ticksFrequency]="5" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Labels angle:
+      <jqxSlider (onChange)="sliderValueAxisAngleOnChange($event)"
+          [width]="250" [min]="0" [max]="360" [step]="1"
+          [value]="0" [ticksFrequency]="30" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+    <td>
+      Labels angle:
+      <jqxSlider (onChange)="sliderXAxisAngleOnChange($event)"
+          [width]="250" [min]="0" [max]="360" [step]="1"
+          [value]="0" [ticksFrequency]="30" [mode]="'fixed'">
+      </jqxSlider>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Position:
+      <table>
+        <tr>
+          <td>
+            <jqxRadioButton style="margin-left: 10px" (onChange)="btnLeftOnChange($event)"
+                  [width]="60" [height]="25" [groupName]="'valueAxis'">
+                  Left
+            </jqxRadioButton>
+          </td>
+          <td>
+            <jqxRadioButton style="margin-left: 10px" (onChange)="btnRightOnChange($event)"
+                  [width]="60" [height]="25" [checked]="true" [groupName]="'valueAxis'">
+                  Right
+            </jqxRadioButton>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      Position:
+      <table>
+        <tr>
+          <td>
+            <jqxRadioButton style="margin-left: 10px" (onChange)="btnTopOnChange($event)"
+                  [width]="60" [height]="25" [groupName]="'xAxis'">
+                  Top
+            </jqxRadioButton>
+          </td>
+          <td>
+            <jqxRadioButton style="margin-left: 10px" (onChange)="btnBottomOnChange($event)"
+                  [width]="80" [height]="25" [checked]="true" [groupName]="'xAxis'">
+                  Bottom
+            </jqxRadioButton>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <jqxCheckBox [height]="25" (onChange)="btnValueAxisFlipOnChange($event)">
+          Flip valueAxis Positions
+      </jqxCheckBox>
+    </td>
+    <td>
+      <jqxCheckBox [height]="25" (onChange)="btnXAxisFlipOnChange($event)">
+          Flip xAxis Positions
+      </jqxCheckBox>
+    </td>
+  </tr>
+</table>

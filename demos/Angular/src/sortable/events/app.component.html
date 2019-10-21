@@ -1,0 +1,22 @@
+﻿<jqxSortable #sortable
+             (onActivate)="activate($event)"
+             (onBeforeStop)="beforeStop($event)"
+             (onChange)="change($event)"
+             (onDeactivate)="deactivate($event)"
+             (onOut)="out($event)"
+             (onOver)="over($event)"
+             (onReceive)="receive($event)"
+             (onRemove)="remove($event)"
+             (onStart)="start($event)"
+             (onStop)="stop($event)"
+             (onUpdate)="update($event)"
+             (onCreate)="create($event)"
+             [opacity]="0.5">
+</jqxSortable>
+<div #events class="events">
+  <span>
+    Events:
+  </span>
+  <jqxPanel #eventsContainer [width]="200" [height]="250">
+  </jqxPanel>
+</div>

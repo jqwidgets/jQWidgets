@@ -1,0 +1,17 @@
+﻿<jqxTreeGrid             
+             (onRowSelect)="rowSelect($event)"
+             (onRowUnselect)="rowUnselect($event)"
+             (onRowEndEdit)="rowEndEdit($event)"
+             (onRowBeginEdit)="rowBeginEdit($event)"
+             [width]="getWidth()"
+             [source]="dataAdapter"
+             [pageable]="true"
+             [editable]="true"
+             [showToolbar]="true"
+             [altRows]="true"
+             [pagerButtonsCount]="8"
+             [toolbarHeight]="35"
+             [renderToolbar]="renderToolbar"
+             [columns]="columns"
+             #TreeGrid>
+</jqxTreeGrid>

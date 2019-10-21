@@ -1,0 +1,36 @@
+﻿<div style="float: left;">
+    <div class="cart-top">
+      <p>0 products</p>
+    </div>
+    <div>
+      <div>
+        <div class="tag-title">
+          <h4>Welcome to our online shop!</h4>
+          <span class="tag-title-info"></span>
+        </div>
+      </div>
+    </div>
+    <br /><br /><br />
+
+    <jqxRibbon #jqxRibbon
+        [auto-create]="false"
+        [width]="700"
+        [position]="'top'"
+        [mode]="'popup'"
+        [selectedIndex]="0"
+        [selectionMode]="'click'"
+        [animationType]="'fade'">
+        <ul>
+            <li style="margin-left:20px;">Business</li>
+            <li>Games</li>
+            <li>Internet and Movies</li>
+        </ul>
+        <div #content></div>
+    </jqxRibbon>
+
+  </div>
+  <jqxCheckBox style="float: left; margin-left: 50px;" #megaMenuMode
+               (onChange)="change($event)"
+               [width]="130" [checked]="true">
+    Menu Mode
+  </jqxCheckBox>

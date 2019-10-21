@@ -1,0 +1,27 @@
+﻿<div id='jqxWidget'>
+  <div style='float: left;'>
+    <div style='margin-top: 10px;'>
+      Number
+    </div>
+    <div style='margin-top: 3px;'>
+      <jqxNumberInput #numericInput
+                      (onChange)="change($event)"
+                      [spinButtons]="true"
+                      [inputMode]="'simple'"
+                      [width]="250"
+                      [height]="25">
+      </jqxNumberInput>
+    </div>
+    <div style='margin-left: 0px; margin-top: 20px; float: left;'>
+      <div>
+        <span>
+          Events:
+        </span>
+        <jqxPanel #Events
+                  [width]="300"
+                  [height]="250">
+        </jqxPanel>
+      </div>
+    </div>
+  </div>
+</div>

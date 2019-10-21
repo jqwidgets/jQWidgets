@@ -1,0 +1,37 @@
+<jqxPivotGrid #pivotGrid1
+        [width]="getWidth()" 
+        [height]="400"
+        [source]="pivotDataSource"
+        [treeStyleRows] = "true"
+        [autoResize] = "false"
+        [multipleSelectionEnabled] = "true"
+        (onPivotitemexpanding)="eventHandler1($event)"
+        (onPivotitemcollapsing)="eventHandler1($event)"
+        (onPivotitemexpanded)="eventHandler1($event)"
+        (onPivotitemcollapsed)="eventHandler1($event)"
+        (onPivotitemselectionchanged)="eventHandler1($event)" 
+        (onSortchanging)="eventHandler1($event)" 
+        (onSortchanged)="eventHandler1($event)" 
+        (onSortremoving)="eventHandler1($event)" 
+        (onSortremoved)="eventHandler1($event)"	 
+	 
+        (onPivotitemmouseup)="eventHandler2($event)"	 
+        (onPivotitemmousedown)="eventHandler2($event)"	 
+        (onPivotitemclick)="eventHandler2($event)"	 
+        (onPivotitemdblclick)="eventHandler2($event)"	 
+	 
+        (onPivotcellmouseup)="eventHandler3($event)"	 
+        (onPivotcellmousedown)="eventHandler3($event)"	 
+        (onPivotcellclick)="eventHandler3($event)"	 
+        (onPivotcelldblclick)="eventHandler3($event)"	 
+	 >
+</jqxPivotGrid>
+<br />
+<jqxTextArea #eventsLog
+        [width]="getWidth()" 
+        [height]="100"
+	 >
+</jqxTextArea>
+<br />
+<jqxButton [width]="90" (onClick)="onClearLog()">Clear Log</jqxButton>
+

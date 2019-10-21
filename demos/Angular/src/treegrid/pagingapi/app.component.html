@@ -1,0 +1,40 @@
+﻿<div style="float: left">
+    <jqxTreeGrid #myTreeGrid
+        (onPageChanged)="myTreeGridOnPageChanged($event)"  (onPageSizeChanged)="myTreeGridOnPageSizeChanged($event)"
+        [width]="560" [source]="dataAdapter" [columns]="columns"
+        [sortable]="true" [pageable]="true" [pagerMode]="'advanced'" [ready]="ready"
+        [autoRowHeight]="false" [pagerPosition]="'both'">
+    </jqxTreeGrid>
+</div>
+
+<div style="float: left; font-size: 13px; font-family: Verdana; margin-left: 30px">
+    <div><strong>Settings</strong></div>
+    <div style="margin-top: 10px">
+        <div>Pager Mode:</div>
+
+        <jqxDropDownList style="margin-top: 5px"
+            (onSelect)="pagerModeDropDownListOnSelect($event)"
+            [width]="120" [height]="25" [selectedIndex]="1"
+            [source]="['default','advanced']" [autoDropDownHeight]="true">
+        </jqxDropDownList>
+
+        <div style="margin-top: 10px">Pager Position:</div>
+
+        <jqxDropDownList  style="margin-top: 5px"
+            (onSelect)="pagerPositionDropDownListOnSelect($event)"
+            [width]="120" [height]="25" [selectedIndex]="2" 
+            [source]="['top','bottom','both']" [autoDropDownHeight]="true">
+        </jqxDropDownList>
+
+
+        <div style="margin-top: 10px">Go to Page:</div>
+
+        <jqxInput #myInput style="margin-top: 5px; float: left" [width]="120" [height]="25" [value]="1"></jqxInput>
+        <jqxButton (onClick)="btnOnClick()" style="margin: 7px 0 0 5px; float: left">Apply</jqxButton>
+
+    </div>
+    <div style="margin-top: 10px; display: inline-block">
+        <div>Event Log:</div>
+        <jqxPanel #myPanel style="margin-top: 5px" [width]="150" [height]="150"></jqxPanel>
+    </div>
+</div>

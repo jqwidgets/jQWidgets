@@ -1,0 +1,23 @@
+﻿<div>
+  <jqxRangeSelector #rangeSelector
+                    [width]="getWidth()"                    
+                    [height]="100"
+                    [min]="min"
+                    [max]="max"
+                    [range]="range"
+                    [majorTicksInterval]="'week'"
+                    [minorTicksInterval]="'day'"
+                    [labelsFormat]="'dd'"
+                    [markersFormat]="'d'"
+                    [showGroupLabels]="true">
+    <div id="jqxRangeSelectorContent">
+      <img id="backgroundImage" />
+    </div>
+  </jqxRangeSelector>
+  <br />
+  <jqxButton style="margin-left: 80px;" #submit (onClick)="onClickSubmit()">
+    Submit vacation
+  </jqxButton>
+  <div style="margin-left: 80px; margin-top: 10px;" #result>
+  </div>
+</div>

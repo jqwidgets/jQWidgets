@@ -1,0 +1,304 @@
+﻿<jqxRibbon #ribbonReference
+           [width]="getWidth()" [height]="131" [animationType]="'none'"
+           [selectionMode]="'click'" [position]="'top'" [mode]="'default'"
+           [theme]="'demoTheme'" [selectedIndex]="1">
+  <ul>
+    <li id="fileItem">
+      <jqxDropDownButton id='fileItemButton' #fileItemButton
+                         [width]="50" [height]="26" [arrowSize]="0"
+                         [dropDownWidth]="120" [theme]="'demoTheme'">
+        <div style="height:110px;">
+          <ul style="list-style-type: none; margin:0px; padding: 3px;">
+            <li>
+              <jqxButton class='button' [theme]="'demoTheme'">
+                <div class="icon SaveImage"></div> Save
+              </jqxButton>
+            </li>
+            <li>
+              <jqxButton class='button' [theme]="'demoTheme'">
+                <div class="icon SaveSelectionImage"></div> Save As
+              </jqxButton>
+            </li>
+            <li>
+              <jqxButton class='button' [theme]="'demoTheme'">
+                <div class="icon folder"></div> Open
+              </jqxButton>
+            </li>
+            <li>
+              <jqxButton class='button' [theme]="'demoTheme'">
+                <div class="icon close"></div> Close
+              </jqxButton>
+            </li>
+          </ul>
+        </div>
+      </jqxDropDownButton>
+    </li>
+    <li>Home</li>
+    <li>Help</li>
+  </ul>
+  <div>
+    <div style="overflow: hidden;">
+    </div>
+    <div style="overflow: hidden;">
+      <table class="buttonHolderTable" id="clipBoardTable">
+        <tr>
+          <td rowspan="3" style="text-align: center; height: 70px; font-size: 10px">
+            <div id="paste" style="width: 50px;">
+              <jqxButton #pasteButton (onClick)='onPasteButtonClick($event)' (mousedown)='onMouseDownPasteButton($event)'
+                         [width]="35" [height]="56" [theme]="'demoTheme'">
+                <span class="icon page_paste" style="zoom: 1.5"></span><span class="pasteText">Paste</span>
+              </jqxButton>
+              <jqxDropDownList (onSelect)='onPasteDropDownSelect($event)'
+                               [width]="22" [height]="10" [autoDropDownHeight]="true" [animationType]="'none'"
+                               [theme]="" [selectedIndex]="0" [source]="pasteData" [dropDownWidth]="110"
+                               [renderer]="pasteRenderer" [selectionRenderer]="pasteRelectionRenderer">
+              </jqxDropDownList>
+            </div>
+          </td>
+          <td class="firstrow" rowspan="1">
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Cut (Ctrl + X)'">
+              <jqxButton id='cutButton' #cutButton [theme]="'demoTheme'">
+                <div class="icon cut_red"></div>
+                <span class="cutText">Cut</span>
+              </jqxButton>
+            </jqxTooltip>
+          </td>
+        </tr>
+        <tr>
+          <td class="secondrow">
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Copy (Ctrl + C)'">
+              <jqxButton id='copyButton' #copyButton>
+                <div class="icon page_copy"></div>
+                <span class="copyText">Copy</span>
+              </jqxButton>
+            </jqxTooltip>
+          </td>
+        </tr>
+        <tr>
+          <td class="thirdrow">
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Format Painter'">
+              <jqxButton id='formatPainter' #formatPainter [theme]="'demoTheme'">
+                <div class="icon FormatPainterImage"></div>
+                <span class="formatPainter">Format Painter</span>
+              </jqxButton>
+            </jqxTooltip>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="font-size: 9px; text-align: center; top: -3px; position: relative;">
+            Clipboard
+          </td>
+        </tr>
+      </table>
+      <div class="sectionSeparator">
+      </div>
+      <table class="buttonHolderTable" style="float: left;">
+        <tr>
+          <td colspan="4">
+            <jqxDropDownList [width]="120" [height]="21" [autoDropDownHeight]="true"
+                             [theme]="'demoTheme'" [selectedIndex]="1" [source]="fontListSource">
+            </jqxDropDownList>
+          </td>
+          <td>
+            <jqxDropDownList [width]="70" [height]="21" [autoDropDownHeight]="true" [renderer]="fontSizeListRenderer"
+                             [theme]="'demoTheme'" [selectedIndex]="2" [source]="fontSizeListSource">
+            </jqxDropDownList>
+          </td>
+          <td>
+            <jqxButton [theme]="'demoTheme'"><div class="icon fontsizeincrease16"></div></jqxButton>
+          </td>
+          <td>
+            <jqxButton [theme]="'demoTheme'"><div class="icon fontsizedecrease16"></div></jqxButton>
+          </td>
+          <td>
+            <jqxButton [theme]="'demoTheme'"><div class="icon ClearFormattingImage"></div></jqxButton>
+          </td>
+          <td>
+            <jqxDropDownList [width]="40" [selectionRenderer]="changeCaseListSelectionRenderer" [autoDropDownHeight]="true"
+                             [theme]="'demoTheme'" [selectedIndex]="0" [source]="changeCaseListSource" [dropDownWidth]="150">
+            </jqxDropDownList>
+          </td>
+        </tr>
+        <tr class="secondrow">
+          <td colspan="8">
+            <jqxDropDownButton #fontColor
+                               [width]="130" [height]="21"
+                               [dropDownWidth]="180" [theme]="'demoTheme'">
+              <div style="padding: 3px;">
+                <jqxColorPicker (onColorchange)='onFontColorPicker($event)'
+                                [width]="180" [height]="180"
+                                [color]="'FF0000'" [colorMode]="'hue'">
+                </jqxColorPicker>
+              </div>
+            </jqxDropDownButton>
+            <div class="separator"></div>
+            <jqxDropDownButton #highlightColor
+                               [width]="130" [height]="21"
+                               [dropDownWidth]="180" [theme]="'demoTheme'">
+              <div style="padding: 3px;">
+                <jqxColorPicker (onColorchange)='onHighlightColorPicker($event)'
+                                [width]="180" [height]="180"
+                                [color]="'FF0000'" [colorMode]="'hue'">
+                </jqxColorPicker>
+              </div>
+            </jqxDropDownButton>
+          </td>
+        </tr>
+        <tr class="thirdrow">
+          <td colspan="8" style="padding: 0;">
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Superscript'" [height]="20">
+              <jqxToggleButton #superscript (onClick)='onSuperScriptClick()' [theme]="'demoTheme'">
+                <div class="icon text_superscript"></div>
+              </jqxToggleButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Subscript'" [height]="20">
+              <jqxToggleButton #subscript (onClick)='onSubScriptClick()' [theme]="'demoTheme'">
+                <div class="icon text_subscript"></div>
+              </jqxToggleButton>
+            </jqxTooltip>
+            <div class="separator" style="top: 3px;"></div>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Bold (Ctrl + B)'" [height]="20">
+              <jqxToggleButton [theme]="'demoTheme'">
+                <div class="icon text_bold"></div>
+              </jqxToggleButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Italic (Ctrl + I)'" [height]="20">
+              <jqxToggleButton [theme]="'demoTheme'">
+                <div class="icon text_italic"></div>
+              </jqxToggleButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Underline (Ctrl + U)'" [height]="20">
+              <jqxToggleButton [theme]="'demoTheme'">
+                <div class="icon text_underline"></div>
+              </jqxToggleButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Strikethrough'" [height]="20">
+              <jqxToggleButton [theme]="'demoTheme'">
+                <div class="icon text_strikethrough"></div>
+              </jqxToggleButton>
+            </jqxTooltip>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="9" style="height: 10px; font-size: 9px; text-align: center;">
+            Font
+          </td>
+        </tr>
+      </table>
+      <div class="sectionSeparator">
+      </div>
+      <table class="buttonHolderTable" style="float: left; margin-top: -4px">
+        <tr class="firstrow">
+          <td colspan="8">
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Bulleted List'">
+              <jqxButton [theme]="'demoTheme'">
+                <div class="icon text_list_bullets"></div>
+              </jqxButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Numbered List'">
+              <jqxButton [theme]="'demoTheme'">
+                <div class="icon text_list_numbers"></div>
+              </jqxButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Decrease Indent'">
+              <jqxButton [theme]="'demoTheme'">
+                <div class="icon text_indent"></div>
+              </jqxButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Increase Indent'">
+              <jqxButton [theme]="'demoTheme'">
+                <div class="icon text_indent_remove"></div>
+              </jqxButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Sort Direction'">
+              <jqxButton [theme]="'demoTheme'">
+                <div class="icon SortHS"></div>
+              </jqxButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Fill Style'">
+              <jqxDropDownButton #bucketColor
+                                 [width]="42" [height]="19"
+                                 [dropDownWidth]="180" [theme]="'demoTheme'">
+                <div style="padding: 3px;">
+                  <jqxColorPicker (onColorchange)='onBucketColorPicker($event)'
+                                  [width]="180" [height]="180"
+                                  [color]="'000000'" [colorMode]="'hue'">
+                  </jqxColorPicker>
+                </div>
+              </jqxDropDownButton>
+            </jqxTooltip>
+          </td>
+        </tr>
+        <tr class="secondrow">
+          <td colspan="8">
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Align Text Left (Ctrl + L)'">
+              <jqxButton [theme]="'demoTheme'">
+                <div class="icon text_align_left"></div>
+              </jqxButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Center (Ctrl + E)'">
+              <jqxButton [theme]="'demoTheme'">
+                <div class="icon text_align_center"></div>
+              </jqxButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Align Text Right (Ctrl + R)'">
+              <jqxButton [theme]="'demoTheme'">
+                <div class="icon text_align_right"></div>
+              </jqxButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Justify (Ctrl + J)'">
+              <jqxButton [theme]="'demoTheme'">
+                <div class="icon text_align_justify"></div>
+              </jqxButton>
+            </jqxTooltip>
+            <div class="separator" style="top:5px; height: 15px;"></div>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Line and Paragraph Spacing'">
+              <jqxButton [theme]="'demoTheme'">
+                <div class="icon text_linespacing"></div>
+              </jqxButton>
+            </jqxTooltip>
+            <jqxTooltip [position]="'mouse'" [theme]="'demoTheme'" [content]="'Show/Hide special characters'">
+              <jqxButton [theme]="'demoTheme'">
+                <div class="icon ShowParagraphMarksImage"></div>
+              </jqxButton>
+            </jqxTooltip>
+          </td>
+        </tr>
+        <tr>
+          <td style="height: 35px; text-align: center; vertical-align: bottom; font-size: 9px;">
+            Alignment
+          </td>
+        </tr>
+      </table>
+      <div class="sectionSeparator">
+      </div>
+    </div>
+    <div style="overflow: hidden;">
+      <table class="buttonHolderTable" style="height: 100%;">
+        <tr>
+          <td class="bigTd">
+            <jqxButton class='button left' [theme]="'demoTheme'" [width]="36" [height]="36">
+              <img class="img" src="./../../../images/help-26.png" />
+            </jqxButton>
+            Help
+          </td>
+          <td class="bigTd">
+            <jqxButton class='button left' [theme]="'demoTheme'" [width]="36" [height]="36">
+              <img class="img" src="./../../../images/about-26.png" />
+            </jqxButton>
+            About
+          </td>
+          <td class="bigTd">
+            <jqxButton class="button left" [theme]="'demoTheme'" [width]="36" [height]="36">
+              <img class="img" src="./../../../images/downloading_updates-26.png" />
+            </jqxButton>
+            Update
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</jqxRibbon>
+<jqxGrid [width]="800" [source]="gridData.source" [theme]="'demoTheme'" [editable]="true"
+         [columnsresize]="true" [selectionmode]='"multiplecellsadvanced"' [columns]="gridData.columns">
+</jqxGrid>

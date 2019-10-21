@@ -1,0 +1,40 @@
+﻿<div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+  <div style='margin-top: 10px;'>
+    Number
+  </div>
+  <div style='margin-top: 3px;'>
+    <jqxNumberInput #numericInput
+                    [rtl]="true"
+                    [spinButtons]="true"
+                    [inputMode]="'simple'"
+                    [width]="250"
+                    [height]="25">
+    </jqxNumberInput>
+  </div>
+  <div style='margin-top: 10px;'>
+    Percentage
+  </div>
+  <div style='margin-top: 3px;'>
+    <jqxNumberInput #percentageInput
+                    [rtl]="true"
+                    [spinButtons]="true"
+                    [digits]="3"
+                    [symbolPosition]="'right'"
+                    [symbol]="'%'"
+                    [width]="250"
+                    [height]="25">
+    </jqxNumberInput>
+  </div>
+  <div style='margin-top: 10px;'>
+    Currency
+  </div>
+  <div style='margin-top: 3px;'>
+    <jqxNumberInput #currencyInput
+                    [rtl]="true"
+                    [spinButtons]="true"
+                    [symbol]="'$'"
+                    [width]="250"
+                    [height]="25">
+    </jqxNumberInput>
+  </div>
+</div>

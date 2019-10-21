@@ -1,0 +1,11 @@
+﻿<jqxInput #myInput style="float: left"
+    [width]="250" [height]="23" [source]="countries"
+    [minLength]="1" [placeHolder]="'Enter a Country:'">
+</jqxInput>
+
+<div style="float: left">
+    <jqxButton (onClick)="myBtnOnClick()"
+        [height]="25" [imgSrc]="'./../../../images/search_lg.png'">
+        Search
+    </jqxButton>
+</div>

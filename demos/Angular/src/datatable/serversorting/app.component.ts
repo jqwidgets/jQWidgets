@@ -1,0 +1,59 @@
+﻿import { Component } from '@angular/core';  @Component({     selector: 'app-root',     templateUrl: './app.component.html' })  export class AppComponent { 
+    source: any =
+        {
+            dataType: 'json',
+            dataFields: [
+                { name: 'ShipCountry', type: 'string' },
+                { name: 'ShipCity', type: 'string' },
+                { name: 'ShipAddress', type: 'string' },
+                { name: 'ShipName', type: 'string' },
+                { name: 'Freight', type: 'number' },
+                { name: 'ShippedDate', type: 'date' }
+            ],
+            root: 'value',
+            url: 'http://services.odata.org/V3/Northwind/Northwind.svc/Orders?$format=json&$callback=?'
+        };
+
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
+	
+      dataAdapter: any = new jqx.dataAdapter(this.source,
+          {
+              formatData: (data: any): void => {
+                  if (this.source.totalRecords) {
+                      // update the $skip and $top params of the OData service.
+                      // data.pagenum - page number starting from 0.
+                      // data.pagesize - page size
+                      // data.sortdatafield - the column's datafield value(ShipCountry, ShipCity, etc.).
+                      // data.sortorder - the sort order(asc or desc).
+                      data.$skip = data.pagenum * data.pagesize;
+                      data.$top = data.pagesize;
+                      if (data.sortdatafield && data.sortorder) {
+                          data.$orderby = data.sortdatafield + ' ' + data.sortorder;
+                      }
+                  }
+                  return data;
+              },
+              downloadComplete: (data: any, status: any, xhr: any): void => {
+                  if (!this.source.totalRecords) {
+                      this.source.totalRecords = data.value.length;
+                  }
+              },
+              loadError: (xhr: any, status: any, error: any): void => {
+                  throw new Error('http://services.odata.org: ' + error.toString());
+              }
+          }
+      );
+
+    columns: any[] =
+      [
+          { text: 'Ship Name', dataField: 'ShipName', width: 300 },
+          { text: 'Ship Country', dataField: 'ShipCountry', width: 250 },
+          { text: 'Ship City', dataField: 'ShipCity', width: 150 },
+          { text: 'Ship Address', dataField: 'ShipAddress' }
+      ]; }

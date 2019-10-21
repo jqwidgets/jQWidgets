@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title id="Description">jQWidgets Angular PivotGrid - Custom pivot aggregation functions</title>
+        <base href="./../dist/pivotgrid/custom-pivot-function/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <!-- jQWidgets -->
+   <script src="./../../../scripts/demos.js"></script>
+
+    </head>
+        
+<body>
+    <app-root>Loading...</app-root>
+    <div class="example-description">
+        <h2>Description</h2>
+        <div style="width: 800px;">
+            This is an example of the Angular Pivot Grid with custom a custom data aggregation function. The pivot grid component provides
+            several built-in functions: count, sum, min, max, average, product. In this example, we implement a custom
+            function that calculates the variance of the data points of the respective pivot grid cell. To add or modify existing
+            data aggregations, set the customAggregationFunctions property of the pivot data source. Each pivot
+            aggregation functions must have a unique name, take an array of values as a parameter and return a number.
+            For performance reasons, make sure that the function runs as quickly as possible. The Angular pivot grid will call the function
+            multiple times during the data pivoting operations.
+        </div>
+    </div>
+    <script src="runtime-es2015.js" type="module"></script><script src="polyfills-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule></script><script src="polyfills-es5.js" nomodule></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule></script>
+</body>
+</html>

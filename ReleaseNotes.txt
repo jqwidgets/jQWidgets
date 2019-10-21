@@ -1,4 +1,27 @@
-﻿*********************************************
+﻿
+*********************************************
+* jQWidgets v8.3.2 Release, Oct-17 2019	               *
+*********************************************
+
+What's New:
+
+- Angular Ivy support.
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid Angular Component about Grouping error thrown by setbatchgroupstate function.
+- Fixed an issue in jqxGrid about Filtering Dates, when the date format is custom.
+- Fixed an issue in jqxGrid about Filtering with custom source.filter callback function.
+- Fixed an issue in jqxGrid about autoheight rendering overlap.
+- Fixed an issse in jqxGrid about adding new row. The boundindex of the row was not set so editing it was not possible.
+- Fixed an issue in jqxGrid about an error when using showfilterrow, groupable and autoloadstate.
+- Fixed an issue in jqx.black.css about an outdated CSS syntax.
+- Fixed an issue in jqxScheduler about rendering of appointments in TimelineView.
+- Fixed an issue in jqxDataTable and jqxTreeGrid about dynamically changing the columnGroups.
+- Fixed an issue in jqxTreeGrid about dynamically setting the theme property.
+- Fixed an issue in jqxTabs about the enabled "showCloseButtons" option with "reorder" option.
+
+*********************************************
 * jQWidgets v8.2.0 Release, Sep-17 2019	               *
 *********************************************
 

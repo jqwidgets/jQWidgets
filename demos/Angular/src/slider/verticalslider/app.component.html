@@ -1,0 +1,91 @@
+﻿<div class="jqx-rc-all slider-demo-main">
+  <div id="slider-demo-header" class="jqx-rc-t slider-demo-header">
+    <div class="slider-demo-header-content">
+      Precious Cars
+    </div>
+  </div>
+  <div class="jqx-rc-b slider-demo-content">
+    <div class="jqx-rc-all slider-demo-content-inner">
+      <div class="jqx-rc-all slider-demo-content-container">
+        <div id="navigationContainer" class="slider-demo-content-navigation">
+          <img src="./../../../images/previous.png" class="slider-demo-navigation-item" alt="Previous"
+               title="Previous" id="previousButton" />
+          <img src="./../../../images/play.png" class="slider-demo-navigation-item" alt="Play" title="Play"
+               id="playButton" />
+          <img src="./../../../images/stop.png" class="slider-demo-navigation-item" alt="Stop" title="Stop"
+               id="stopButton" />
+          <img src="./../../../images/next.png" class="slider-demo-navigation-item" alt="Next" title="Next"
+               style="margin-right: 3px" id="nextButton" />
+        </div>
+        <div id="slider-demo-content-0" style="display: block">
+          <div class="slider-demo-content-image-border">
+            <img src="./../../../images/mercedes.jpg" alt="Mercedes" />
+          </div>
+          <div class="slider-demo-content-info">
+            <span class="slider-demo-info-header">Brabus Black Baron</span>
+            <div class="slider-demo-info-content">
+              Brabus will show its Black Baron E V12, based on the 2010 Mercedes-Benz E63 AMG,
+              at the 2009 Frankfurt Motor Show next week. Visually, Brabus’ Black Baron E V12
+              gets a new engine ventilation system, new front quarter panels, an upgraded front
+              bumper, new side skirts, a trunk mounted spoiler, new front quarter panels and awkward
+              looking rear-wheel covers.
+            </div>
+          </div>
+        </div>
+        <div id="slider-demo-content-1" style="display: none">
+          <div class="slider-demo-content-image-border">
+            <img src="./../../../images/jaguar.jpg" alt="Jaguar" />
+          </div>
+          <div class="slider-demo-content-info">
+            <span class="slider-demo-info-header">Jaguar XFR</span>
+            <div class="slider-demo-info-content">
+              The Jaguar XF (type (X250) is a mid-size luxury car / sports saloon produced by
+              British car manufacturer Jaguar. The car, which replaced the Jaguar S-Type, was
+              launched at the 2007 Frankfurt Motor Show following the public showing of the C-XF
+              concept in January 2007 at the North American International Auto Show.
+            </div>
+          </div>
+        </div>
+        <div id="slider-demo-content-2" style="display: none">
+          <div class="slider-demo-content-image-border">
+            <img src="./../../../images/ferrari.jpg" alt="Ferrari" />
+          </div>
+          <div class="slider-demo-content-info">
+            <span class="slider-demo-info-header">Ferrari Enzo</span>
+            <div class="slider-demo-info-content">
+              The Enzo was designed by Japanese Pininfarina head Ken Okuyama was initially introduced
+              at the 2002 Motor Show in Paris and had a limited number of units priced at $ 659,330.
+              Pininfarina wanted a car the will be entirely different from the usual approach
+              used for its predecessors (GTO, F40 and 50).
+            </div>
+          </div>
+        </div>
+        <div id="slider-demo-content-3" style="display: none">
+          <div class="slider-demo-content-image-border">
+            <img src="./../../../images/lamborgini.jpg" alt="Lamborgini" />
+          </div>
+          <div class="slider-demo-content-info">
+            <span class="slider-demo-info-header">Lamborghini Gallardo</span>
+            <div class="slider-demo-info-content">
+              The Lamborghini Gallardo is a sports car built by Lamborghini. The Gallardo is Lamborghini's
+              most-produced model to date, with over 10,000 built in its first seven years of
+              production. The Gallardo offers two choices of transmissions, H-Box and an advanced
+              six-speed electro-hydraulically controlled semi-automatic robotized manual.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-demo-slider-container">
+      <jqxSlider #jqxSlider
+                 (onChange)="change($event)"
+                 [height]="250" [width]="36"                 
+                 [orientation]="'vertical'"
+                 [min]="0" [max]="3"
+                 [ticksFrequency]="1"
+                 [value]="0" [tooltip]="false"
+                 [mode]="'fixed'">
+      </jqxSlider>
+    </div>
+  </div>
+</div>

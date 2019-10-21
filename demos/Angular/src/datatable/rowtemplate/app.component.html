@@ -1,0 +1,20 @@
+﻿<div class="cart-top">
+  <p #productNumber>0 products</p>
+</div>
+<div>
+  <div>
+    <div class="tag-title">
+      <h4>Welcome to our online shop!</h4>
+      <span class="tag-title-info"></span>
+    </div>
+  </div>
+</div>
+<br />
+
+
+<jqxDataTable
+    [width]="getWidth()" [source]="dataAdapter" [columns]="columns" [rendered]="rendered" 
+    [altRows]="true" [pageable]="true" [sortable]="true" [enableHover]="true"  
+    [pagerButtonsCount]="3" [selectionMode]="'none'" [pageSize]="2">
+</jqxDataTable>
+

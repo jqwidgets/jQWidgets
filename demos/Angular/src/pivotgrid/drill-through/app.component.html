@@ -1,0 +1,36 @@
+<jqxPivotGrid #pivotGrid1
+        [width]="getWidth()" 
+        [height]="400"
+        [source]="pivotDataSource"
+        [treeStyleRows] = "true"
+        [autoResize] = "false"
+        [multipleSelectionEnabled] = "true"
+        (onPivotcelldblclick)="onPivotCellDblClick($event)"
+	 >
+</jqxPivotGrid>
+<jqxWindow
+        #drillThroughWindow
+        [autoOpen]="false"
+        [width]="370" 
+        [height]="300"
+        [maxHeight]="400" 
+        [minHeight]="200" 
+        [maxWidth]="700" 
+        [minWidth]="200"
+        [showCollapseButton]="true">
+	<div #windowHeader>
+		Drillthrough records
+	</div>
+	<div style="overflow: hidden;" #windowContent>
+		<jqxDataTable
+            #tableSrcRecords
+            [width]="'100%'"
+            [height]="'100%'"
+            [pageable]="true"
+            [pagerButtonsCount]="10"
+            [columns]="tableSrcRecordsColumns"
+            [columnsResize]="true"			
+		>
+		</jqxDataTable>
+	</div>	
+</jqxWindow>

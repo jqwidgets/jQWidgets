@@ -1,0 +1,38 @@
+﻿.inputField1 {
+  left: 110px;
+  top: -220px;
+  width: 180px;
+  height: 40px;
+  color: black;
+  font-size: 30px;
+  position: relative;
+  background: transparent;
+  text-align: center;
+  border: none;
+}
+
+.inputField2 {
+  left: 60px;
+  top: 60px;
+  width: 180px;
+  height: 80px;
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  background: transparent;
+  text-align: center;
+  border: none;
+}
+
+.inputField3 {
+  left: 60px;
+  top: 190px;
+  width: 180px;
+  height: 40px;
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  background: transparent;
+  text-align: center;
+  border: none;
+}

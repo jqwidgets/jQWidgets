@@ -1,6 +1,16 @@
-Steps to run a demo.
+Step 1:  Run Command Prompt or Terminal
 
-1. Open a demo folder. Example: \bargauge\addandremovevalues in Command prompt
-2. Type "npm install" to install all required node_modules.
-3. Type "npm start" to build the demo.
-4. Run the demo from localhost:4200
+Step 2: Commands & Scripts:
+
+- npm install - installs all npm packages.
+- npm start - builds all demos
+- build-demos.js - the script builds all demos by default. If you want to choose to build a single demo, edit the "demos" array in the file.
+- tsconfig.app.json - tsconfig configuration. Angular Ivy is enabled by default by setting "enableIvy" to true.
+
+Step 3: Run a Demo
+
+- http-server -p 9000.
+- Open your favorite web browser.
+- http://127.0.0.1:9000.
+- Navigate to index.htm for the demos list.
+- Open any demo from the list.

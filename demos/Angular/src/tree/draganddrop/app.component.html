@@ -1,0 +1,61 @@
+﻿<div style='float: left;'>
+  <jqxTree #treeA style='float: left; margin-left: 0px;'
+           (onDragStart)="dragStartTreeA($event)"
+           (onDragEnd)="dragEndTreeA($event)"
+           [width]="220"
+           [height]="330"
+           [allowDrag]="true"
+           [allowDrop]="true"
+           [dragStart]="dragStart">
+    <ul>
+      <li item-selected='true'>Home</li>
+      <li item-expanded='true'>
+        Solutions
+        <ul>
+          <li>Education</li>
+        </ul>
+      </li>
+      <li>Financial services</li>
+      <li>Community</li>
+    </ul>
+  </jqxTree>
+  <jqxTree #treeB style='float: left; margin-left: 20px;'
+           (onDragStart)="dragStartTreeB($event)"
+           (onDragEnd)="dragEndTreeB($event)"
+           [width]="220"
+           [height]="330"
+           [allowDrag]="true"
+           [allowDrop]="true"
+           [dragEnd]="dragEnd">
+    <ul>
+      <li>
+        Products
+      </li>
+      <li item-expanded='true'>
+        Support
+        <ul>
+          <li>Support home</li>
+          <li>Customer Service</li>
+        </ul>
+      </li>
+      <li>Knowledge base</li>
+      <li>Forum</li>
+    </ul>
+  </jqxTree>
+  <div style="width: 200px; height: 200px; float: left; margin-left: 20px;">
+    <textarea rows="5" #textarea></textarea>
+  </div>
+</div>
+<div style="font-size: 13px; font-family: Verdana; padding-top: 20px; clear: both;">
+  <b>Events Log:</b>
+  <div #dragStartLog>
+  </div>
+  <div #dragEndLog>
+  </div>
+  <br />
+  <b>Note:</b>
+  <br />
+  Dragging of "Community" is disabled.
+  <br />
+  Dropping of "Forum" is disabled.
+</div>

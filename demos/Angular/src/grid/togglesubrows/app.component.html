@@ -1,0 +1,48 @@
+﻿<jqxGrid #myGrid
+    (onGroupexpand)="myGridOnGroupExpand($event)" (onGroupcollapse)="myGridOnGroupCollapse($event)"
+    [width]="getWidth()" [source]="dataAdapter" [columns]="columns" 
+    [groupable]="true" [groups]="['Country','City']">
+</jqxGrid>
+
+<div style="margin-top: 30px">
+    <div style="float: left; margin-left: 20px">
+
+        <jqxButton (onClick)="expandBtnOnClick()" [width]="125" [height]="25">Expand Group</jqxButton>
+        <br />
+
+        <div style="margin-top: 10px; margin-bottom: 10px"></div>
+        <jqxButton  (onClick)="collapseBtnOnClick()" [width]="125" [height]="25">Collapse Group</jqxButton>
+        <br />
+
+        <div style="margin-top: 10px;">
+            <span>Group:</span>
+
+            <jqxInput #myInput style="margin-left: 10px; margin-top: 10px" [width]="20" [value]="'0.0'"></jqxInput> 
+    
+        </div>       
+
+    </div>
+    <div style="float: left; margin-left: 20px">
+
+        <jqxButton  (onClick)="expandAllBtnOnClick()" [width]="125" [height]="25">Expand All</jqxButton>
+        <br />
+
+        <div style="margin-top: 10px; margin-bottom: 10px" ></div>
+        <jqxButton  (onClick)="collapseAllBtnOnClick()" [width]="125" [height]="25">Collapse All</jqxButton>
+        <br />
+
+    </div>
+    <div style="float: left; margin-left: 20px">
+        <div style="font-weight: bold">
+            <span>Event Log:</span>
+        </div>
+        <div style="margin-top: 10px">
+            <span>Expanded Group:</span>
+            <span #expandedGroupLog></span>
+        </div>
+        <div style="margin-top: 10px">
+            <span>Collapsed Group:</span>
+            <span  #collapsedGroupLog></span>
+        </div>
+    </div>
+</div>

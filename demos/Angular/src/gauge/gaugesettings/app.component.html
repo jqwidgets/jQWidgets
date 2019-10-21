@@ -1,0 +1,60 @@
+﻿<div style="width: 600px">
+    <div style="float: left">
+        <jqxGauge #myGauge
+            [value]="0" [colorScheme]="'scheme04'" [animationDuration]="1500"
+            [ranges]="ranges" [ticksMinor]="ticksMinor" [ticksMajor]="ticksMajor"
+            [labels]="labels" [style]="style" [caption]="caption" [cap]="'radius: 0.04'">
+        </jqxGauge>
+    </div>
+
+    <jqxExpander style="float: right"
+        [width]="200" [showArrow]="false" [toggleMode]="'none'">
+        <div>Options</div>
+        <div>
+            <ul style="list-style: none; padding: 0px; margin: 10px">
+                <li style="padding: 3px; font-family: Verdana; font-size: 12px">
+
+                    <jqxCheckBox (onChange)="showLabelsCheckboxOnChange($event)"
+                        [width]="150" [checked]="true">
+                        Show Labels
+                    </jqxCheckBox>
+
+                    <ul style="list-style: none; padding: 0; margin-top: 10px; margin-left: 20px; font-family: Verdana; font-size: 12px">
+                        <li>
+
+                          <jqxRadioButton (onChange)="insideRadioOnChange($event)"
+                              [width]="150" [checked]="true">
+                              Inside the Gauge
+                          </jqxRadioButton>
+
+                        </li>
+                        <li>
+
+                            <jqxRadioButton style="margin-top: 5px" (onChange)="outsideRadioOnChange($event)"
+                                [width]="150">
+                                Outside the Gauge
+                            </jqxRadioButton>
+
+                        </li>
+                    </ul>
+                </li>
+                <li style="padding: 3px; font-family: Verdana; font-size: 12px">
+
+                    <jqxCheckBox (onChange)="showRangesCheckboxOnChange($event)"
+                        [width]="150" [checked]="true">
+                        Show Ranges
+                    </jqxCheckBox>
+
+                </li>
+                <li style="padding: 3px; font-family: Verdana; font-size: 12px">
+
+                    <jqxCheckBox (onChange)="showBorderCheckboxOnChange($event)"
+                        [width]="150" [checked]="true">
+                        Show Border
+                    </jqxCheckBox>
+
+                </li>
+            </ul>
+        </div>
+    </jqxExpander>
+</div>

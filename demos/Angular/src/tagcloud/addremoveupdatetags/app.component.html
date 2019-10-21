@@ -1,0 +1,19 @@
+﻿This demo demonstrates how to add a tag in first position or update/remove the tag in first position.
+<jqxTagCloud #tagCloud
+             [width]="getWidth()"
+             [source]="dataAdapter"
+             [fontSizeUnit]="'px'"
+             [minFontSize]="12"
+             [maxFontSize]="20"
+             [displayMember]="'productname'"
+             [valueMember]="'price'"
+             [urlBase]="'http://localhost/'"
+             [minColor]="'#00AA99'"
+             [maxColor]="'#FF0000'">
+</jqxTagCloud>
+<br />
+<br />
+<jqxButton #addItem (onClick)="addItemClick()">Add Item</jqxButton>
+<jqxButton #deleteItem (onClick)="deleteItemClick()">Delete First Item</jqxButton>
+<jqxButton #updateItem (onClick)="updateItemClick()">Update First Item</jqxButton>
+<br />

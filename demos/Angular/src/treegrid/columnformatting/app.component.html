@@ -1,0 +1,21 @@
+﻿<jqxTreeGrid #myTreeGrid
+    [width]="getWidth()" [height]="350" [source]="dataAdapter" [columns]="columns" 
+    [altRows]="true" [columnsResize]="true" [columnGroups]="columnGroups" [ready]="ready">
+</jqxTreeGrid>
+
+<div style="font-size: 13px; font-family: Verdana; width: 600px; margin-top: 10px">
+  <div style="float: left; width: 300px">
+    <h4>Shipped Date</h4>
+    <jqxDropDownList (onChange)="dateListOnChange($event)"
+        [selectedIndex]="0" [autoDropDownHeight]="true"
+        [source]="dateSource" [height]="25">
+    </jqxDropDownList>
+  </div>
+  <div style="float: left; width: 300px">
+    <h4>Price</h4>
+    <jqxDropDownList (onChange)="priceListOnChange($event)"
+        [selectedIndex]="5" [autoDropDownHeight]="true"
+        [source]="priceSource" [height]="25">
+    </jqxDropDownList>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+﻿<div style="float: left; font-size: 13px; font-family: Verdana">
+    <h3>Alignment</h3>
+
+    <jqxRadioButton (onChecked)="leftAlignBtnOnChecked()">
+        Left
+    </jqxRadioButton>
+
+    <jqxRadioButton checked="true" (onChecked)="rightAlignBtnOnChecked()">
+        Right
+    </jqxRadioButton>
+
+</div>
+
+<jqxDropDownList #myDropDownList style="float: left; margin-top: 20px; margin-left: 100px"
+    [width]="150" [height]="30" [source]="dataAdapter" [selectedIndex]="0"
+    [displayMember]="'ContactName'" [valueMember]="'notes'"
+    [dropDownHorizontalAlignment]="'right'" [dropDownWidth]="200">
+</jqxDropDownList>

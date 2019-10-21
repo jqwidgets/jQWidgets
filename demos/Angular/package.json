@@ -1,0 +1,35 @@
+{
+  "name": "demos-angular",
+  "scripts": {
+    "start": "node build-demos.js",
+    "serve": "http-server -p 9000 index.htm"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^8.2.11",
+    "@angular/common": "^8.2.11",
+    "@angular/compiler": "^8.2.11",
+    "@angular/core": "^8.2.11",
+    "@angular/forms": "^8.2.11",
+    "@angular/platform-browser": "^8.2.11",
+    "@angular/platform-browser-dynamic": "^8.2.11",
+    "@angular/router": "^8.2.11",
+    "http-server": "^0.11.1",
+    "jqwidgets-ng": "^8.3.2",
+    "rxjs": "~6.4.0",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.803.6",
+    "@angular/cli": "~8.3.6",
+    "@angular/compiler-cli": "^8.2.11",
+    "@angular/language-service": "^8.2.11",
+    "@types/jquery": "~3.3.31",
+    "@types/node": "~8.9.4",
+    "codelyzer": "^5.0.0",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.15.0",
+    "typescript": "~3.5.3"
+  }
+}

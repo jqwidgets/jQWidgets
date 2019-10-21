@@ -1,0 +1,11 @@
+﻿<jqxListBox #jqxListBox
+            (onSelect)="select($event)"
+            [source]="dataAdapter"
+            [displayMember]="'ContactName'"
+            [valueMember]="'CompanyName'"
+            [height]="200"
+            [width]="250">
+</jqxListBox>
+
+<div style="font-size: 13px; font-family: Verdana;" #selectionlog>
+</div>

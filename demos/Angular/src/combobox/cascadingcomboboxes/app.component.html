@@ -1,0 +1,21 @@
+﻿<span style="margin-top: 6px; font-size: 12px; font-family: verdana; float: left">Customers:</span>
+
+<jqxComboBox #customersComboBox style="margin-left: 5px; float: left"
+    (onSelect)="customersOnSelect($event)"
+    [width]="300" [height]="30" [source]="customersAdapter" [valueMember]="'CustomerID'"
+    [placeHolder]="'Select customer...'" [displayMember]="'CompanyName'">
+</jqxComboBox>
+
+<div style="clear: both"></div>
+<div style="margin-top: 20px"></div>
+
+<span style="margin-top: 6px; font-size: 12px; font-family: verdana; float: left">Orders:</span>
+
+<jqxComboBox #ordersComboBox style="margin-left: 5px; float: left"
+    (onSelect)="ordersOnSelect($event)"
+    [width]="300" [height]="30" [source]="ordersAdapter" [valueMember]="'CustomerID'"
+    [placeHolder]="'Select order...'" [displayMember]="'OrderID'" [disabled]="true">
+</jqxComboBox>
+
+<div style="clear: both"></div>
+<div id="orderInfo" style="margin-top: 25px; font-size: 12px"></div>

@@ -1,0 +1,10 @@
+﻿<jqxComboBox #myComboBox style="float:left"
+    (onCheckChange)="myComboBoxOnCheckChange($event)"
+    [width]="200" [height]="30" [source]="dataAdapter" [checkboxes]="true"
+    [displayMember]="'ContactName'" [valueMember]="'CompanyName'">
+</jqxComboBox>
+
+<div style="float: left; margin-left: 20px; font-size: 13px; font-family: Verdana;">
+  <div #selectionlog></div>
+  <div #checkedItemsLog style='max-width: 300px; margin-top: 20px;'></div>
+</div>

@@ -1,0 +1,31 @@
+﻿<div style="width: 550px">
+  <div style="height: 180px;">
+    <div style="float: left">
+      <span style="font-style: italic;">Red</span>
+      <jqxSlider #redSlider (onChange)='redSliderOnChange()'
+                 [height]='60' [min]='0' [max]='255' [tickLabelFormatFunction]='tickLabelFormatFunction'
+                 [value]='0' [step]='25.5' [mode]='"fixed"' [tooltipFormatFunction]='tooltipFormatFunction'
+                 [showTickLabels]='true' [tooltip]='true' [ticksFrequency]='25.5'>
+      </jqxSlider>
+      <span style="font-style: italic;">Green</span>
+      <jqxSlider #greenSlider (onChange)='greenSliderOnChange()'
+                 [height]='60' [min]='0' [max]='255' [tickLabelFormatFunction]='tickLabelFormatFunction'
+                 [value]='0' [step]='25.5' [mode]='"fixed"' [tooltipFormatFunction]='tooltipFormatFunction'
+                 [showTickLabels]='true' [tooltip]='true' [ticksFrequency]='25.5'>
+      </jqxSlider>
+      <span style="font-style: italic;">Blue</span>
+      <jqxSlider #blueSlider (onChange)='blueSliderOnChange()'
+                 [height]='60' [min]='0' [max]='255' [tickLabelFormatFunction]='tickLabelFormatFunction'
+                 [value]='255' [step]='25.5' [mode]='"fixed"' [tooltipFormatFunction]='tooltipFormatFunction'
+                 [showTickLabels]='true' [tooltip]='true' [ticksFrequency]='25.5'>
+      </jqxSlider>
+    </div>
+    <div class="jqx-rc-all colorBlock" id="colorBlock">
+      <div id="colorLabel"></div>
+    </div>
+  </div>
+  <jqxCheckBox (onChange)='checkBoxOnChange($event)'
+               [width]='200' [checked]='false'>
+    Smooth Thumb Drag
+  </jqxCheckBox>
+</div>

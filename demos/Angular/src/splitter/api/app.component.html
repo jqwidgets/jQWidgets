@@ -1,0 +1,36 @@
+﻿<div id="container" style="width: 850px; float: left;">
+    <jqxButton #orientationButton style='margin-top: 5px;'
+            (onClick)="orientationButtonClick()" 
+            [width]="200">Orientation</jqxButton>
+
+    <jqxButton #expandFirstButton style='margin-top: 5px;'
+            (onClick)="expandFirstButtonClick()"
+            [width]="200">Expand first</jqxButton>
+
+    <jqxButton #expandLastButton style='margin-top: 5px;'
+            (onClick)="expandLastButtonClick()"
+            [width]="200">Expand last</jqxButton>
+
+    <jqxButton #collapseFirstButton style='margin-top: 5px;'
+            (onClick)="collapseFirstButtonClick()"
+            [width]="200">Collapse first</jqxButton>
+
+    <jqxButton #collapseLastButton style='margin-top: 5px;'
+            (onClick)="collapseLastButtonClick()"
+            [width]="200">Collapse last</jqxButton>
+
+    <jqxButton #enableButton style='margin-top: 5px;'
+            (onClick)="enableButtonClick()"
+            [width]="200">Enable</jqxButton>
+
+    <jqxButton #disableButton style='margin-top: 5px;'
+            (onClick)="disableButtonClick()"
+            [width]="200">Disable</jqxButton>
+    <br /><br />
+
+    <jqxSplitter #jqxSplitter [height]="600" [width]="getWidth()" [panels]="panels">
+    <div style="background-color:#F5FFF2;"></div>
+    <div style="background-color:#EBF1FF;"></div>
+    </jqxSplitter>
+</div>
+      

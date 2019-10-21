@@ -1,0 +1,38 @@
+﻿<div id='jqxWidget' style="font-size: 13px; font-family: Verdana; float: left;">
+  <div>The input is restricted from 0 to 1000</div>
+  <div style='margin-top: 10px;'>
+    Number
+  </div>
+  <div style='margin-top: 3px;'>
+    <jqxNumberInput #numericInput
+                    [min]="0"
+                    [max]="1000"
+                    [width]="250"
+                    [height]="25">
+    </jqxNumberInput>
+  </div>
+  <div style='margin-top: 10px;'>
+    Currency
+  </div>
+  <div style='margin-top: 3px;'>
+    <jqxNumberInput #currencyInput
+                    [min]="0"
+                    [max]="1000"
+                    [symbol]="'$'"
+                    [width]="250"
+                    [height]="25">
+    </jqxNumberInput>
+  </div>
+  <div style='margin-top: 10px;'>
+    Custom Validation Message
+  </div>
+  <div style='margin-top: 3px;'>
+    <jqxNumberInput #validation
+                    [min]="0"
+                    [max]="1000"
+                    [value]="0"
+                    [width]="250"
+                    [height]="25">
+    </jqxNumberInput>
+  </div>
+</div>

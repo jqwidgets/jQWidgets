@@ -1,0 +1,13 @@
+﻿<jqxKnob #myKnob style="position: relative" (onChange)="myKnobOnChange($event)"
+    [width]="370" [height]="370"
+    [value]="10" [min]="0" [max]="100" [startAngle]="90"
+    [endAngle]="450" [rotation]="'clockwise'" [snapToStep]="true" 
+    [style]="{ fill: 'transparent' }" [progressBar]="progressBar" 
+    [pointer]="pointer" [pointerGrabAction]="'progressBar'">
+</jqxKnob>
+
+<jqxNumberInput #myNumberInput  (onChange)="myNumberInputOnChange($event)"
+    [width]="150" [height]="75" [decimal]="0" [min]="0" [max]="100"
+    [decimalDigits]="1" [textAlign]="'center'" [symbol]="'%'"
+    [symbolPosition]="'right'" [inputMode]="'simple'">
+</jqxNumberInput>

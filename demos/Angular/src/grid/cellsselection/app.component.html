@@ -1,0 +1,75 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left">
+
+    <jqxGrid #myGrid (onCellselect)="myGridOnCellSelect($event)" (onCellunselect)="myGridOnCellUnselect($event)"
+        [width]="getWidth()" [source]="dataAdapter"
+        [columns]="columns" [selectionmode]="'singlecell'">
+    </jqxGrid>
+
+    <div style="margin-top: 20px">
+        <div style="float: left">
+            <div>
+                <jqxInput #myInput1 style="float: left; margin-right: 5px"
+                          [width]="50" [height]="20" [value]="100">
+                </jqxInput>
+
+                <jqxButton style="float: left" (onClick)="scrollToBtnOnClick()">Scroll to Row</jqxButton>
+            </div>
+            <div style="clear: both"></div>
+            <div style="margin-top: 10px;">
+        </div>
+            <jqxCheckBox [checked]="true" (onChange)="myCheckBoxOnChange($event)">Enable Hover</jqxCheckBox>
+            <div style="margin-top: 10px">
+                <span>Selection Mode</span>
+
+                <jqxDropDownList style="margin-top: 5px" (onSelect)="myDropDownListOnSelect($event)"
+                    [width]="120" [height]="25" [selectedIndex]="1" [dropDownWidth]="200"
+                    [autoDropDownHeight]="true" [source]="dropDownSource1">
+                </jqxDropDownList>
+
+            </div>
+        </div>
+        <div style="float: left; margin-left: 20px">
+            <div>
+                <div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td align='right'>Row</td>
+                                <td>
+                                    <jqxInput #myInput2 style="float: left" [width]="50" [value]="0"></jqxInput>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align='right'>Column:</td>
+                                <td>
+                                    <jqxDropDownList #myDropDownList
+                                        [width]="120" [height]="25" [selectedIndex]="1"
+                                        [autoDropDownHeight]="true" [source]="dropDownSource2">
+                                    </jqxDropDownList>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align='right'>
+                                    <jqxButton style="float: left; margin-right: 5px" (onClick)="clearBtnOnClick()">Clear Selection</jqxButton>
+                                </td>
+                                <td>
+                                    <jqxButton style="float: left" (onClick)="selectBtnOnClick()">Select Cell</jqxButton>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div style="float: left; margin-left: 20px">
+            <span>Selection Log:</span>
+            <div style="margin-top: 10px">
+                <span>Selected Cell:</span>
+                <span #selectedCell></span>
+                <br />
+                <span>Unselected Cell:</span>
+                <span #unselectedCell></span>
+            </div>
+        </div>
+    </div>
+</div>

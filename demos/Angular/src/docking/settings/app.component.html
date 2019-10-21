@@ -1,0 +1,70 @@
+﻿<div style="float: left">
+    <jqxDocking #myDocking
+                [width]="370" [orientation]="'horizontal'" [mode]="'default'"
+                [windowsMode]="{ window0: 'floating' }">
+        <div id='panel0'>
+            <div id='window0' style="height: 70px; width: 220px">
+                <div>AngularDock2</div>
+                <div>You cannot drop this object.</div>
+            </div>
+            <div id='window1' style="height: 70px; width: 100px">
+                <div>AngularDock1</div>
+                <div>You cannot drag this object.</div>
+            </div>
+        </div>
+        <div id='panel1'>
+            <div id='window2' style="height: 70px; width: 100px">
+                <div>AngularDock3</div>
+                <div>You can drag and drop this object.</div>
+            </div>
+            <div id='window3' style="height: 70px; width: 100px">
+                <div>AngularDock4</div>
+                <div>You can drag and drop this object.</div>
+            </div>
+        </div>
+    </jqxDocking>
+</div>
+
+<div style="float: left; margin-top: 30px">
+    <span style="margin-left: 20px; margin-top: 20px; margin-bottom: 30px">Settings</span>
+    <table style="margin-left: 20px; margin-top: 20px; margin-bottom: 30px">
+        <tr>
+            <td>
+                <jqxCheckBox #collapseButtonsCheckbox (onChange)="collapseButtonsCheckboxOnChange()"
+                    [width]="200" [checked]="true">
+                    Collapse Buttons
+                </jqxCheckBox>
+            </td>
+            <td>
+                <jqxButton (onClick)="moveButtonOnClick()">Move AngularDock4 To Left Zone</jqxButton>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <jqxCheckBox #closeButtonsCheckbox (onChange)="closeButtonsCheckboxOnChange()"
+                    [width]="200">
+                    Close Buttons
+                </jqxCheckBox>
+            </td>
+            <td>
+                <jqxButton (onClick)="collapseButtonOnClick()">Collapse AngularDock1</jqxButton>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <jqxCheckBox (onChange)="disabledCheckboxOnChange()" [width]="200">Disabled</jqxCheckBox>
+            </td>
+            <td>
+                <jqxButton (onClick)="expandButtonOnClick()">Expand AngularDock1</jqxButton>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 100px">
+                <span style="font-family: Verdana; font-size: 13px">Windows Margin</span>
+                <jqxSlider (onChange)="mySliderOnChange($event)"
+                    [width]="200" [max]="9" [value]="5" [mode]="'fixed'" [ticksFrequency]="1">
+                </jqxSlider>
+            </td>
+        </tr>
+    </table>
+</div>

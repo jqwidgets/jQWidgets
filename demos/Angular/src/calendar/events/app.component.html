@@ -1,0 +1,11 @@
+﻿<div style="float: left">
+  <jqxCalendar #myCalendar style="margin-top: 3px" (onChange)="myCalendarEvent($event)" (onViewChange)="myCalendarEvent($event)"
+               [width]="220" [height]="220">
+  </jqxCalendar>
+  <div style="margin-left: 0; margin-top: 20px; float: left">
+    <div>
+      <span>Events:</span>
+      <jqxPanel #myPanel [width]="600" [height]="250"></jqxPanel>
+    </div>
+  </div>
+</div>

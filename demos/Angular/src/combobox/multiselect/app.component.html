@@ -1,0 +1,13 @@
+﻿<div style="font-size: 13px; font-family: Verdana; margin-bottom: 5px">Select countries</div>
+
+<jqxComboBox #myComboBox (onChange)="comboBoxOnChange()"
+    [width]="350" [source]="countries" [multiSelect]="true">
+</jqxComboBox>
+
+<div style="margin-top: 20px"></div>
+
+<jqxButton (onClick)="btnOnClick()">
+    Hide DropDown Button
+</jqxButton>
+
+<div #log style="margin-top: 10px; font-size: 13px; font-family: Verdana;"></div>

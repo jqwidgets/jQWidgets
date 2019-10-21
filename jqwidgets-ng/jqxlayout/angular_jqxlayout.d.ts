@@ -1,0 +1,47 @@
+/// <reference path="../jqwidgets.d.ts" />
+import { EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+export declare class jqxLayoutComponent implements OnChanges {
+    attrContextMenu: boolean;
+    attrLayout: Array<jqwidgets.Layout>;
+    attrMinGroupHeight: number | string;
+    attrMinGroupWidth: number | string;
+    attrResizable: boolean;
+    attrRtl: boolean;
+    attrTheme: string;
+    attrWidth: string | number;
+    attrHeight: string | number;
+    autoCreate: boolean;
+    properties: string[];
+    host: any;
+    elementRef: ElementRef;
+    widgetObject: jqwidgets.jqxLayout;
+    constructor(containerElement: ElementRef);
+    ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): boolean;
+    arraysEqual(attrValue: any, hostValue: any): boolean;
+    manageAttributes(): any;
+    moveClasses(parentEl: HTMLElement, childEl: HTMLElement): void;
+    moveStyles(parentEl: HTMLElement, childEl: HTMLElement): void;
+    createComponent(options?: any): void;
+    createWidget(options?: any): void;
+    __updateRect__(): void;
+    setOptions(options: any): void;
+    contextMenu(arg?: boolean): boolean;
+    height(arg?: string | number): string | number;
+    layout(arg?: Array<jqwidgets.Layout>): Array<jqwidgets.Layout>;
+    minGroupHeight(arg?: number | string): number | string;
+    minGroupWidth(arg?: number | string): number | string;
+    resizable(arg?: boolean): boolean;
+    rtl(arg?: boolean): boolean;
+    theme(arg?: string): string;
+    width(arg?: string | number): string | number;
+    destroy(): void;
+    loadLayout(Layout: any): void;
+    refresh(): void;
+    render(): void;
+    saveLayout(): any;
+    onPin: EventEmitter<any>;
+    onResize: EventEmitter<any>;
+    onUnpin: EventEmitter<any>;
+    __wireEvents__(): void;
+}

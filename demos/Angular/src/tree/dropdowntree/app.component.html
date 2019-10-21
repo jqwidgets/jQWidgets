@@ -1,0 +1,36 @@
+﻿<jqxDropDownButton #myDropDownButton [width]="150" [height]="25">
+
+    <jqxTree #myTree (onSelect)="myTreeOnSelect($event)"
+        [width]="200" [height]="220">
+        <ul>
+          <li item-selected='true'>Home</li>
+          <li item-expanded='true'>
+            Solutions
+            <ul>
+              <li>Education</li>
+              <li>Financial services</li>
+              <li>Government</li>
+              <li>Manufacturing</li>
+              <li>
+                Solutions
+                <ul>
+                  <li>eLearning</li>
+                  <li>Mobile</li>
+                  <li>RIA</li>
+                  <li>Training</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Products
+            <ul>
+              <li>PC products</li>
+              <li>Mobile products</li>
+              <li>All products</li>
+            </ul>
+          </li>
+        </ul>
+    </jqxTree>
+
+</jqxDropDownButton>

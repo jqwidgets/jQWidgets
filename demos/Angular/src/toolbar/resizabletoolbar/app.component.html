@@ -1,0 +1,21 @@
+﻿<div style="font-size: small; font-family: Verdana">
+
+    <div>Resize the window to minimize or restore tools.</div>
+
+    <jqxWindow [width]="getWidth()" [height]="250" [minWidth]="250" [position]="{ x: 5, y: 90 }">
+        <div>
+            Resizable jqxToolBar
+        </div>
+
+        <div style="overflow: hidden">
+
+          <jqxToolbar 
+              [width]="'100%'" [height]="35" [minimizeWidth]="200"
+              [initTools]="initTools" [tools]="tools">
+          </jqxToolbar>
+
+        </div>
+
+    </jqxWindow>
+
+</div>       

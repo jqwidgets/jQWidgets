@@ -1,0 +1,32 @@
+﻿<jqxSplitter #splitContainer
+             [panels]="[{ size: '20%' }, { size: '80%' }]"
+             [orientation]="'horizontal'"
+             [height]="850" [width]="getWidth()">
+  <div>
+    Top Panel
+  </div>
+  <div>
+    <jqxSplitter #splitter
+                 [width]="'100%'" [height]="'100%'"
+                 [panels]="[{ size: 200 }, { size: 200}]">
+      <div>
+        Left Panel
+      </div>
+      <div>
+        <jqxTabs class="jqx-hideborder jqx-hidescrollbars" #tabswidget
+                 [width]="'100%'" [height]="'100%'">
+          <ul>
+            <li style="margin-left: 30px;">Tab 1</li>
+            <li>Tab 2</li>
+          </ul>
+          <div>
+            Content 1
+          </div>
+          <div>
+            Content 2
+          </div>
+        </jqxTabs>
+      </div>
+    </jqxSplitter>
+  </div>
+</jqxSplitter>

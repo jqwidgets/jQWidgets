@@ -1,0 +1,70 @@
+﻿<jqxSplitter [width]="getWidth()" [height]="600"
+             [panels]="[{ size: 200, min: 100 }, { min: 200, size: 400 }]">
+    <div>
+        <jqxExpander style="border: none;" #feedExpander
+                     [width]="'100%'" [height]="'100%'"
+                     [toggleMode]="'none'" [showArrow]="false">
+            <div class="jqx-hideborder">
+                Feeds
+            </div>
+            <div class="jqx-hideborder jqx-hidescrollbars">
+                <jqxTree #treeReference (onSelect)="onTreeSelect($event)"
+                         [width]="'100%'" [height]="'100%'">
+                    <ul>
+                        <li item-expanded="true" id="t1">
+                            <img src="./../../../images/contactsIcon.png" /><span item-title="true">News and Blogs</span>
+                            <ul>
+                                <li>
+                                    <img src="./../../../images/favorites.png" /><span item-title="true">Favorites</span>
+                                    <ul>
+                                        <li>
+                                            <img src="./../../../images/folder.png" /><span item-title="true">ScienceDaily</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <img src="./../../../images/folder.png" /><span item-title="true">Geek.com</span>
+                                </li>
+                                <li>
+                                    <img src="./../../../images/folder.png" /><span item-title="true">CNN.com</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </jqxTree>
+            </div>
+        </jqxExpander>
+    </div>
+  <div>
+    <jqxSplitter #horizontalSplitter [width]="'100%'" [height]="'100%'" [orientation]="'horizontal'"
+                 [panels]="[{ size: 400, min: 100, collapsible: false },{ min: 100, collapsible: true }]">
+      <div class="feed-item-list-container" id="feedUpperPanel">
+        <jqxExpander class="jqx-hideborder" #feedListExpander
+                     [width]="'100%'" [height]="'100%'"
+                     [toggleMode]="'none'" [showArrow]="false">
+          <div class="jqx-hideborder" id="feedHeader">
+          </div>
+          <div class="jqx-hideborder jqx-hidescrollbars">
+            <jqxListBox #listBoxReference class="jqx-hideborder" (onSelect)="onListBoxSelect($event)"
+                        [width]="'100%'" [height]="'100%'" [source]="['1']">
+            </jqxListBox>
+          </div>
+        </jqxExpander>
+      </div>
+      <div id="feedContentArea">
+        <jqxExpander class="jqx-hideborder" #feedContentExpander
+                     [width]="'100%'" [height]="'100%'"
+                     [toggleMode]="'none'" [showArrow]="false">
+          <div class="jqx-hideborder" id="feedItemHeader">
+          </div>
+          <div class="jqx-hideborder jqx-hidescrollbars">
+            <jqxPanel #panelReference class="jqx-hideborder"
+                      [width]="'100%'" [height]="'100%'">
+              Select a news item to see it"s content
+            </jqxPanel>
+          </div>
+        </jqxExpander>
+      </div>
+    </jqxSplitter>
+  </div>
+</jqxSplitter>

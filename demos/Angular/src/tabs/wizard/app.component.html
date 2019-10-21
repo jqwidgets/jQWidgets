@@ -1,0 +1,58 @@
+﻿<jqxTabs #jqxTabs
+         [width]="getWidth()" [height]="250" [keyboardNavigation]="false">
+  <ul>
+    <li style="margin-left: 30px;">Personal info</li>
+    <li>Shopping basket</li>
+    <li>Review order</li>
+  </ul>
+  <div class="section">
+    <div id="form">
+      <div class="inputContainer">
+        Username:
+        <input class="formInput" type="text" id="usernameInput" #usernameInput />
+      </div>
+      <div class="inputContainer">
+        Password:
+        <input class="formInput" type="password" id="passwordInput" #passwordInput />
+      </div>
+    </div>
+    <div id="hintWrapper">
+      <div id="hintSection" class="hint">
+      </div>
+    </div>
+    <div id="checkBoxWrapper">
+      <jqxCheckBox #acceptCheckBox [width]="250" (onChange)="acceptCheckBoxChange($event)">
+        I accept the terms and conditions
+      </jqxCheckBox>
+    </div>
+    <div id="sectionButtonsWrapper">
+      <jqxButton [width]="50" #nextButtonInfo class="nextButton">Next</jqxButton>
+    </div>
+  </div>
+  <div class="section">
+    <jqxListBox #products
+                (onChange)="productsChange($event)"
+                (onUnselect)="productsUnselect($event)"
+                [width]="490"
+                [height]="150"
+                [multiple]="true"
+                [source]="source">
+    </jqxListBox>
+    <div class="hint" id="hintBasket">
+    </div>
+    <div id="basketButtonsWrapper">
+      <jqxButton [width]="50" #backButtonBasket class="backButton">Back</jqxButton>
+      <jqxButton [width]="50" #nextButtonBasket class="nextButton">Next</jqxButton>
+    </div>
+  </div>
+  <div class="section">
+    <div id="selectedProductsHeader">
+      <h4>Selected products</h4>
+      <div id="orderContainer" #orderContainer>
+      </div>
+    </div>
+    <div id="selectedProductsButtonsWrapper">
+      <jqxButton [width]="50" #backButtonReview class="backButton">Back</jqxButton>
+    </div>
+  </div>
+</jqxTabs>

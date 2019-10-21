@@ -1,0 +1,20 @@
+﻿<jqxSplitter #splitter
+             [panels]="[{ size: '40%'}]"
+             [height]="600"
+             [width]="getWidth()">
+  <div style="overflow: hidden;">
+    <jqxListBox #listbox
+                (onSelect)="select($event)"
+                [selectedIndex]="0"
+                [source]="dataAdapter"
+                [displayMember]="'firstname'"
+                [valueMember]="'notes'"
+                [renderer]="renderer"
+                [itemHeight]="70"
+                [width]="'100%'"
+                [height]="'100%'">
+    </jqxListBox>
+  </div>
+  <div style="overflow: hidden;" #ContentPanel>
+  </div>
+</jqxSplitter>

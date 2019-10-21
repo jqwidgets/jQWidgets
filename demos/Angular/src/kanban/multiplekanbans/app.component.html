@@ -1,0 +1,23 @@
+﻿<div id='outerBox1'>
+    <h2>Team 1</h2>
+    <div id='kanbanBox1'>
+
+        <jqxKanban
+            [width]="getWidth()" [height]="400" [columns]="kanbanColumns" [resources]="staff"
+            [source]="kanbanSourceConnected1" [connectWith]="'#kanbanBox2'">
+        </jqxKanban>
+
+    </div>
+</div>
+
+<div id='outerBox2'>
+    <h2>Team 2</h2>
+    <div id='kanbanBox2'>
+
+        <jqxKanban
+            [width]="getWidth()" [height]="400" [columns]="kanbanColumns" [resources]="staff"
+            [source]="kanbanSourceConnected2" [connectWith]="'#kanbanBox1'">
+        </jqxKanban>
+
+    </div>
+</div>

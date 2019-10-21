@@ -1,0 +1,39 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left">
+
+    <jqxGrid #myGrid
+        [width]="getWidth()" [source]="dataAdapter" [columns]="columns" 
+        [editable]="true" [editmode]="'click'" [selectionmode]="'singlecell'">
+    </jqxGrid>
+
+
+    <div style="margin-top: 20px">
+        <div style="float: left; margin-top: 10px">
+            <span>Edit Mode:</span>
+
+            <jqxDropDownList #myDropDownList (onSelect)="myDropDownListOnSelect($event)"
+                [width]="150" [height]="25" [selectedIndex]="0"
+                [dropDownWidth]="150" [autoDropDownHeight]="true"
+                [source]="['Click','Double-Click','Selected Cell Click']">
+            </jqxDropDownList>
+
+        </div>
+        <div style="float: left; margin-left: 20px; margin-top: 10px">
+            <span>Editable Columns:</span>
+            <div>
+                <div style="float: left">
+
+                    <jqxCheckBox (onChange)="firstnameOnChange($event)" [checked]="true">First Name</jqxCheckBox>
+                    <jqxCheckBox (onChange)="lastnameOnChange($event)" [checked]="true">Last Name</jqxCheckBox>
+                    <jqxCheckBox (onChange)="quantityOnChange($event)" [checked]="true">Quantity</jqxCheckBox>
+
+                </div>
+                <div style="float: left; margin-left: 20px">
+
+                    <jqxCheckBox (onChange)="productnameOnChange($event)" [checked]="true">Product</jqxCheckBox>
+                    <jqxCheckBox (onChange)="availableOnChange($event)" [checked]="true">Available</jqxCheckBox>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

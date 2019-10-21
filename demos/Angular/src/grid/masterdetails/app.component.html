@@ -1,0 +1,16 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left">
+    <h3>Customers</h3>
+
+    <jqxGrid #customersGrid (onRowselect)="customersGridOnRowSelect($event)"
+        [width]="getWidth()" [height]="250" [source]="dataAdapter"
+        [keyboardnavigation]="false" [columns]="columns">
+    </jqxGrid>
+
+    <h3>Orders by Customer</h3>
+
+    <jqxGrid #ordersGrid
+        [width]="getWidth()" [height]="250"
+        [keyboardnavigation]="false" [columns]="columns2">
+    </jqxGrid>
+
+</div>

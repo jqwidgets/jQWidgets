@@ -1,0 +1,10 @@
+﻿<jqxDataTable (onCellBeginEdit)="onCellBeginEdit($event)" (onCellEndEdit)="onCellEndEdit($event)"
+    [width]="getWidth()" [source]="dataAdapter" [columns]="columns"
+    [altRows]="true" [pageable]="true" [editable]="true" 
+    [pagerButtonsCount]="8" [editSettings]="editSettings">
+</jqxDataTable>
+
+<div style="font-size: 13px; font-family: Verdana; width: 800px; margin-top: 20px">
+  <h4>Event Log</h4>
+  <div #log style="max-height: 300px; overflow: auto"></div>
+</div>

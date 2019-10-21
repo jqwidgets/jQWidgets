@@ -1,0 +1,31 @@
+﻿<jqxBarGauge #myBarGauge style="float: left"
+    [width]='600' [height]='600' [relativeInnerRadius]='0.5' [max]="255"
+    [values]='[187, 255, 170]' [startAngle]="0" [endAngle]="90" 
+    [colorScheme]="'rgb'" [customColorScheme]="customColorScheme" 
+    [title]="title" [labels]="{ precision: 0, indent: 10 }">
+</jqxBarGauge>
+
+<div style="float: left">
+
+  <span style="font-style: italic;">Red</span>
+
+  <jqxSlider #redSlider (onChange)="setColor()"
+    [mode]="'fixed'" [min]="0" [max]="255"
+    [ticksFrequency]="25.5" [value]="170" [step]="25.5">
+  </jqxSlider>
+
+  <span style="font-style: italic;">Green</span>
+
+  <jqxSlider #greenSlider (onChange)="setColor()"
+    [mode]="'fixed'" [min]="0" [max]="255"
+    [ticksFrequency]="25.5" [value]="255" [step]="25.5">
+  </jqxSlider>
+
+  <span style="font-style: italic;">Blue</span>
+
+  <jqxSlider #blueSlider (onChange)="setColor()"
+    [mode]="'fixed'" [min]="0" [max]="255"
+    [ticksFrequency]="25.5" [value]="187" [step]="25.5">
+  </jqxSlider>
+
+</div>

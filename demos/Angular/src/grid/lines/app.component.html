@@ -1,0 +1,10 @@
+﻿<jqxGrid #myGrid [width]="850" [source]="dataAdapter" [columnsresize]="true"
+         [showcolumnlines]="true" [showcolumnheaderlines]="false"
+         [columns]="columns">
+</jqxGrid>
+<br />
+<jqxCheckBox #rowLines (onChange)="refreshAppearance()" [checked]="true">Row Lines</jqxCheckBox>
+<br />
+<jqxCheckBox #columnLines (onChange)="refreshAppearance()" [checked]="false">Column Lines</jqxCheckBox>
+<br />
+<jqxCheckBox #columnHeaderLines (onChange)="refreshAppearance()" [checked]="false">Column Header Lines</jqxCheckBox>

@@ -1,0 +1,26 @@
+﻿<label style="font-size: 13px; font-family: Verdana;">
+  Major scientific discoveries in selected period:
+</label>
+<jqxGrid #jqxGrid style="margin-top: 10px;"
+         [width]="getWidth()" [height]="300"
+         [source]="dataAdapter"
+         [filterable]="true"
+         [columngroups]="columngroups"
+         [columns]="columns">
+</jqxGrid>
+<br />
+<label style="font-size: 13px; margin-top: 10px; font-family: Verdana;">
+  Select period:
+</label>
+<br />
+<jqxRangeSelector #rangeSelector
+                  (onChange)="change($event)"
+                  [width]="750"
+                  [height]="80"
+                  [min]="'January 01, 1800'"
+                  [max]="'January 01, 1900'"
+                  [labelsFormat]="'yyyy'"
+                  [markersFormat]="'yyyy'"
+                  [minorTicksInterval]="'year'"
+                  [majorTicksInterval]="{ years: 10 }">
+</jqxRangeSelector>

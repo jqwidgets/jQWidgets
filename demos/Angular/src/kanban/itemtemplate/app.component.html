@@ -1,0 +1,5 @@
+﻿<jqxKanban #myKanban
+    (onItemAttrClicked)="myKanbanOnItemAttrClicked($event)" (onColumnAttrClicked)="myKanbanonColumnAttrClicked($event)"
+    [height]="600" [template]="template" [source]="dataAdapter" [columns]="columns"  [width]="getWidth()"
+    [resources]="resourcesAdapterFunc()" [itemRenderer]="itemRenderer">
+</jqxKanban>

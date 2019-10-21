@@ -1,0 +1,13 @@
+﻿<div>
+  <h3>U.S. Historical Home Prices (1950-2011)</h3>
+</div>
+<jqxTreeMap 
+            [width]="getWidth()" [height]="500"
+            [displayMember]="'Year'"
+            [valueMember]="'Rate'"
+            [colorMode]="'rangeColors'"
+            [colorRanges]="colorRanges"
+            [renderCallbacks]="renderCallbacks"
+            [legendLabel]="'Interest Rate'"
+            [source]="dataAdapter">
+</jqxTreeMap>

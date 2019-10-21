@@ -1,0 +1,40 @@
+﻿<jqxTabs #jqxTabs
+         [width]="getWidth()" [height]="560" [initTabContent]="initWidgets">
+  <ul>
+    <li style="margin-left: 30px;">
+      <div style="height: 20px; margin-top: 5px;">
+        <div style="float: left;">
+          <img width="16" height="16" src="./../../../images/catalogicon.png" />
+        </div>
+        <div style="margin-left: 4px; vertical-align: middle; text-align: center; float: left;">
+          US Indexes
+        </div>
+      </div>
+    </li>
+    <li>
+      <div style="height: 20px; margin-top: 5px;">
+        <div style="float: left;">
+          <img width="16" height="16" src="./../../../images/pieicon.png" />
+        </div>
+        <div style="margin-left: 4px; vertical-align: middle; text-align: center; float: left;">
+          NASDAQ compared to S&P 500
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div style="overflow: hidden;">
+    <div id="jqxGrid">
+    </div>
+    <div style="margin-top: 10px; height: 15%;">
+      The S&P 500 index finished 2011 less than a point away from where it ended 2010
+      -- 0.04 points down to be exact. That's the smallest annual change in history. At
+      its peak in April, the S&P had climbed more than 8%. But by October, at the lowest
+      levels of the year, it was down more than 12%. The Nasdaq, meanwhile, lost 1.8%
+      for the year.
+    </div>
+  </div>
+  <div style="overflow: hidden;">
+    <div id='jqxChart' style="width: 100%; height: 100%">
+    </div>
+  </div>
+</jqxTabs>

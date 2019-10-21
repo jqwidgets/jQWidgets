@@ -1,0 +1,28 @@
+﻿<h3>
+  House Contract
+</h3>
+
+<jqxRadioButton (onChange)="firstBtnOnChange($event)"
+    [width]="250" [height]="25" [checked]="true">
+    <span>12 Months Contract</span>
+</jqxRadioButton>
+
+<jqxRadioButton (onChange)="secondBtnOnChange($event)"
+    [width]="250" [height]="25">
+    <span>6 Months Contract</span>
+</jqxRadioButton>
+
+<jqxRadioButton (onChange)="thirdBtnOnChange($event)"
+    [width]="250" [height]="25">
+    <span>3 Months Contract</span>
+</jqxRadioButton>
+
+<jqxRadioButton 
+    [width]="250" [height]="25" [disabled]="true">
+    <span>1 Month Contract</span>
+</jqxRadioButton>
+
+<div style="margin-top: 10px">
+    <div>Events:</div>
+    <div #events></div>
+</div>

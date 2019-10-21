@@ -1,0 +1,53 @@
+﻿<jqxChart #myChart
+    [width]="getWidth()" [height]="500"
+    [title]="'U.S. Real Home Price vs Building Cost Indeces (1950-2019)'"
+    [description]="'Source: http://www.econ.yale.edu/~shiller/data.htm'"
+    [showLegend]="true" [enableAnimations]="true" [padding]="padding"
+    [titlePadding]="titlePadding" [source]="dataAdapter" [xAxis]="xAxis"
+    [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
+</jqxChart>
+
+<table style="width: 850px">
+    <tbody>
+        <tr>
+            <td style="padding-left: 50px">
+                <p style="font-family: Verdana; font-size: 12px">Move the slider to rotate:</p>
+
+                <jqxSlider (onChange)="sliderStartAngle($event)"
+                    [width]="240" [min]="0" [max]="360" [step]="1"
+                    [ticksFrequency]="20" [mode]="'fixed'">
+                </jqxSlider>
+
+            </td>
+            <td>
+                <p style="font-family: Verdana; font-size: 12px">Select the series type::</p>
+
+                <jqxDropDownList (onChange)="dropDownListSeries($event)"
+                    [width]="200" [height]="25" [source]="seriesList"
+                    [selectedIndex]="0" [dropDownHeight]="100">
+                </jqxDropDownList>            
+
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-left: 50px">
+                <p style="font-family: Verdana; font-size: 12px">Move the slider to change the radius:</p>
+
+                <jqxSlider (onChange)="sliderRadius($event)"
+                    [width]="240" [min]="80" [max]="140" [step]="1"
+                    [ticksFrequency]="20" [mode]="'fixed'" [value]="120">
+                </jqxSlider>
+
+            </td>
+            <td>
+                <p style="font-family: Verdana; font-size: 12px">Select color scheme:</p>
+
+                <jqxDropDownList (onChange)="dropDownListColor($event)"
+                    [width]="200" [height]="25" [source]="colorsSchemesList"
+                    [selectedIndex]="2" [dropDownHeight]="100">
+                </jqxDropDownList>
+
+            </td>
+        </tr>
+    </tbody>
+</table>

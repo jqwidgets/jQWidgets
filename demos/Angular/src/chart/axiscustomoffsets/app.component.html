@@ -1,0 +1,52 @@
+﻿<jqxChart #myChart 
+    [width]="getWidth()" [height]="500"
+    [title]="'Custom labels, grid lines and tick marks offsets'" [description]="''"
+    [enableAnimations]="false" [padding]="padding"
+    [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis"
+    [valueAxis]="valueAxis" [seriesGroups]="seriesGroups">
+</jqxChart>
+
+<table>
+  <tbody>
+    <tr>
+      <td style="[width]: 300px"><b>xAxis settings</b></td>
+      <td style="[width]: 300px"><b>valueAxis settings</b></td>
+    </tr>
+    <tr>
+      <td>
+        <p>Label, tick marks & grid lines visibility:</p>
+        <jqxDropDownList #dropDownLabelsVisibility_xAxis (onChange)="dropDownLabelsVisibility_xAxisOnChange($event)"
+            [width]="235" [height]="25" [selectedIndex]="0"
+            [dropDownHeight]="80" [source]="visibilityOptions">
+        </jqxDropDownList>
+      </td>
+      <td>
+        <p>Label, tick marks & grid lines visibility:</p>
+        <jqxDropDownList #dropDownLabelsVisibility_valueAxis (onChange)="dropDownLabelsVisibility_valueAxisOnChange($event)"
+            [width]="235" [height]="25" [selectedIndex]="0"
+            [dropDownHeight]="80" [source]="visibilityOptions">
+        </jqxDropDownList>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Custom positions:</p>
+        <jqxInput #inputCustomPosition_xAxis [width]="50" [height]="22"></jqxInput>
+        <jqxButton #btnAddCustomPosition_xAxis (onClick)="btnAddCustomPosition_xAxisOnClick()">Add</jqxButton>
+        <jqxButton #btnRemoveCustomPosition_xAxis (onClick)="btnRemoveCustomPosition_xAxisOnClick()">Remove</jqxButton>
+        <jqxListBox  #listboxCustomPositions_xAxis style="margin-top: 10px"
+            [width]="235" [height]="80" [source]="[10, 20]">
+        </jqxListBox>
+      </td>
+      <td>
+        <p>Custom positions:</p>
+        <jqxInput #inputCustomPosition_valueAxis [width]="50" [height]="22"></jqxInput>
+        <jqxButton #btnAddCustomPosition_valueAxis (onClick)="btnAddCustomPosition_valueAxisOnClick()">Add</jqxButton>
+        <jqxButton #btnRemoveCustomPosition_valueAxis (onClick)="btnRemoveCustomPosition_valueAxisOnClick()">Remove</jqxButton>
+        <jqxListBox #listboxCustomPositions_valueAxis style="margin-top: 10px"
+            [width]="235" [height]="80" [source]="[10, 20]">
+        </jqxListBox>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,66 @@
+﻿<jqxDataTable #myDataTable (onRowDoubleClick)="OnRowDoubleClick($event)"
+    [width]="getWidth()" [source]="dataAdapter" [columns]="columns"
+    [altRows]="true" [sortable]="true" [pageable]="true" 
+    [pagerButtonsCount]="8">
+</jqxDataTable>
+
+<jqxWindow #myWindow (onClose)="myWindowOnClose()"
+    [width]="270" [height]="235" [resizable]="false" [autoOpen]="false" [position]="{ left: 85, top: 43 }">
+    <div>Edit Dialog</div>
+    <div style="overflow: hidden">
+      <table style="table-layout: fixed; border-style: none">
+        <tbody>
+          <tr>
+            <td align='right'>
+              Order ID:
+            </td>
+            <td align='left'>
+              <jqxInput #orderID [width]="150" [height]="30" [disabled]="true"></jqxInput>
+            </td>
+          </tr>
+          <tr>
+            <td align='right'>
+              Freight:
+            </td>
+            <td align='left'>
+              <jqxNumberInput #freight
+                  [width]="156" [height]="30" [spinButtons]="true" [inputMode]="'simple'">
+              </jqxNumberInput>
+            </td>
+          </tr>
+          <tr>
+            <td align='right'>
+              Ship Country:
+            </td>
+            <td align='left'>
+              <jqxInput #shipCountry [width]="150" [height]="30" [source]="countries"></jqxInput>
+            </td>
+          </tr>
+          <tr>
+            <td align='right'>
+              Shipped Date:
+            </td>
+            <td align='left'>
+              <jqxDateTimeInput #shipDate
+                  [width]="156" [height]="30">
+              </jqxDateTimeInput>
+            </td>
+          </tr>
+          <tr>
+            <td colSpan='2' align='right'>
+              <br />
+              <jqxButton (onClick)="cancelBtnOnClick()" style="margin-left: 5px; float: right"
+                  [width]="80" [height]="30">
+                  Cancel
+              </jqxButton>
+              <jqxButton (onClick)="saveBtnOnClick()" style="float: right"
+                  [width]="80" [height]="30">
+                  Save
+              </jqxButton>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</jqxWindow>
+

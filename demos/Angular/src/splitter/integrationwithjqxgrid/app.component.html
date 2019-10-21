@@ -1,0 +1,50 @@
+﻿<jqxSplitter #mainSplitter
+             (onExpanded)="expanded($event)"
+             [panels]="[{ min: 150, size: 330 }, { min: 250 }]"
+             [height]="400" [width]="getWidth()">
+  <div>
+    <jqxGrid #jqxgrid
+             (onRowselect)="rowselect($event)"
+             [height]="'100%'" [width]="'100%'"
+             [source]="dataAdapter"
+             [columnsresize]="true"
+             [columns]="columns">
+    </jqxGrid>
+  </div>
+  <div #ContentPanel>
+    <form #Form>
+      <table style="margin-top: 20px; width: 100%;">
+        <tr>
+          <td style="text-align: right;">Company Name:</td>
+          <td style="text-align: left;">
+            <jqxInput #CompanyName [height]="23"></jqxInput>            
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: right;">Contact Name:</td>
+          <td style="text-align: left;"><jqxInput #ContactName [height]="23"></jqxInput> </td>
+        </tr>
+        <tr>
+          <td style="text-align: right;">Contact Title:</td>
+          <td style="text-align: left;"><jqxInput #ContactTitle [height]="23"></jqxInput></td>
+        </tr>
+        <tr>
+          <td style="text-align: right;">City:</td>
+          <td style="text-align: left;"><jqxInput #City [height]="23"></jqxInput></td>
+        </tr>
+        <tr>
+          <td style="text-align: right;">Country:</td>
+          <td style="text-align: left;"><jqxInput #Country [height]="23"></jqxInput></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="padding-left: 35px; text-align: left;">
+            <jqxButton #Save
+                       (onClick)="saveClick()"
+                       [width]="70" [height]="23">Save</jqxButton>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</jqxSplitter>

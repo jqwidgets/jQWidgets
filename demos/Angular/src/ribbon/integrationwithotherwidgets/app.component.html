@@ -1,0 +1,43 @@
+﻿<div style="box-sizing: border-box; width: 800px; border-top-left-radius: 5px; border-top-right-radius: 5px;
+        padding-left: 10px; background-color: #1C3672; color: White; font-size: large;">
+  <img src="./../../../jqwidgets/styles/images/mail.png" style="margin-right: 10px; display: inline-block;
+            vertical-align: bottom;" /><div style="display: inline-block; font-weight: bold;">
+    Inbox
+  </div>
+</div>
+<jqxRibbon #jqxRibbon
+           [initContent]="initContent"
+           [width]="getWidth()"
+           [position]="'top'"
+           [selectionMode]="'click'"
+           [animationType]="'none'">
+  <ul style="border-top-left-radius: 0; border-top-right-radius: 0;">
+    <li style="margin-left: 30px;">Main</li>
+    <li>Social</li>
+    <li>Promotions</li>
+  </ul>
+  <div>
+    <div>
+      <div id="mainGrid" style="margin-top: 5px; border-bottom: none; border-left: none;
+                    border-right: none;">
+      </div>
+    </div>
+    <div>
+      <div id="socialGrid" style="margin-top: 5px; border-bottom: none; border-left: none;
+                    border-right: none;">
+      </div>
+    </div>
+    <div>
+      <table style="width: 100%;">
+        <tr>
+          <td style="text-align: center;">
+            No new mail under <em>Promotions</em>.<br />
+            <button id="refreshButton" title="Refresh">
+              <img src="./../.././../../../images/refresh.png" />
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</jqxRibbon>

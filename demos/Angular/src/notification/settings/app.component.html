@@ -1,0 +1,83 @@
+﻿<jqxNotification #myNotification
+                 [template]="'info'"
+                 [icon]="{ width: 25, height: 25, url: './../../../images/smiley.png', padding: 5}"
+                 [blink]="false"
+                 [autoOpen]="false"
+                 [autoClose]="true"
+                 [closeOnClick]="true"
+                 [position]="'top-right'"
+                 [opacity]="0.9"
+                 [width]="'auto'">
+    <div><span>
+    Welcome to our website.
+    </span>
+    </div>
+</jqxNotification>
+
+<div style="float: left; margin-left: 25%;">
+    <jqxButton #openNotification (onClick)="openNotificationClick()" [width]="160">Open notification</jqxButton><br />
+    <jqxButton #closeLastNotification (onClick)="closeLastNotificationClick()" [width]="160">Close last notification</jqxButton><br />
+    <jqxButton #closeNotifications (onClick)="closeNotificationsClick()" [width]="160">Close all notifications</jqxButton>
+</div>
+
+<div style="float: left; margin-left: 15px;">
+    <jqxExpander #settingsExpander
+                 [toggleMode]="'none'"
+                 [showArrow]="false"
+                 [height]="385"
+                 [width]="200">
+        <div>
+            jqxNotification settings
+        </div>
+        <div style="padding: 5px;">
+            <div>
+                Position:
+            </div>
+            <ul style="list-style: none; padding: 0px; margin-top: 10px; margin-left: 20px; font-family: Verdana;
+                font-size: 12px;">
+                <li>
+                    <jqxRadioButton #topLeft [checked]="false" [groupName]="'position'" (onChecked)="topLeftChecked()">
+                        Top-Left
+                    </jqxRadioButton>
+                </li>
+                <li>
+                    <jqxRadioButton #topRight [checked]="true" [groupName]="'position'" (onChecked)="topRightChecked()">
+                        Top-Right
+                    </jqxRadioButton>
+                </li>
+                <li>
+                    <jqxRadioButton #bottomLeft [checked]="false" [groupName]="'position'" (onChecked)="bottomLeftChecked()">
+                        Bottom-Left
+                    </jqxRadioButton>
+                </li>
+                <li>
+                    <jqxRadioButton #bottomRight [checked]="false" [groupName]="'position'" (onChecked)="bottomRightChecked()">
+                        Bottom-Right
+                    </jqxRadioButton>
+                </li>
+            </ul>
+            <br />
+            <div>
+                Template:
+            </div>
+            <jqxDropDownList #templateDropDownList
+                             (onChange)="change($event)"
+                             [source]="source"
+                             [width]="'100%'"
+                             [height]="25"
+                             [autoDropDownHeight]="true"
+                             [selectedIndex]="0">
+            </jqxDropDownList>
+            <br />
+            <jqxCheckBox #closeOnClickCheckbox [checked]="true" (onChange)="closeOnClickCheckboxChange($event)">
+                Close on click
+            </jqxCheckBox>
+            <jqxCheckBox #autoCloseCheckBox [checked]="true" (onChange)="autoCloseCheckBoxChange($event)">
+                Auto close
+            </jqxCheckBox>
+            <jqxCheckBox #blinkCheckbox [checked]="false" (onChange)="blinkCheckboxChange($event)">
+                Blink
+            </jqxCheckBox>
+        </div>
+    </jqxExpander>
+</div>

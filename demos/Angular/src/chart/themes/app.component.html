@@ -1,0 +1,17 @@
+﻿<jqxChart #myChart
+    [width]="getWidth()" [height]="500"
+    [title]="'Fitness & exercise weekly scorecard'"
+    [description]="'Time spent in vigorous exercise'"
+    [showLegend]="true" [enableAnimations]="false" [padding]="padding"
+    [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis"
+    [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
+</jqxChart>
+
+<br />
+Themes:
+
+<jqxDropDownList #myList (onChange)="myDropDownListOnChange()"
+    [width]="180" [height]="28" [selectedIndex]="0" [itemHeight]="35" 
+    [selectionRenderer]="selectionTemplate" [renderer]="itemTemplate"
+    [source]="schemes" [displayMember]="'name'">
+</jqxDropDownList>

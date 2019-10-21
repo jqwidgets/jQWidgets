@@ -1,0 +1,12 @@
+﻿<div style="height: 33px; border: 1px solid lightgray; padding: 10px;" class="jqx-widget-header">
+    <div style="float: right">
+        <jqxButton #buttonReference id="button"
+                   [width]="150" [height]="35" [template]="'inverse'">
+            View Employees
+        </jqxButton>
+        <jqxPopover [showCloseButton]="true" [selector]="'#button'" [title]="'Employees'"
+                    [arrowOffsetValue]="50" [offset]="{ left: left, top: top }">
+            <div #employees></div>
+        </jqxPopover>
+    </div>
+</div>

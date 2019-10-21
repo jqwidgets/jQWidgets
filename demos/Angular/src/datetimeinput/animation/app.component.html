@@ -1,0 +1,26 @@
+﻿<div style="float: left">
+  <h3>Animation Type</h3>
+
+  <jqxRadioButton
+      (onChecked)="noneAnimationBtn()" [checked]="false">
+      None
+  </jqxRadioButton>
+
+  <div  style="margin-top: 10px"></div>
+  <jqxRadioButton
+      (onChecked)="slideAnimationBtn()" [checked]="false" >
+      Slide
+  </jqxRadioButton>
+
+  <div style="margin-top: 10px"></div>
+  <jqxRadioButton
+      (onChecked)="fadeAnimationBtn()" [checked]="true" >
+      Fade
+  </jqxRadioButton>
+
+</div>
+
+<jqxDateTimeInput #myDateTimeInput style="float: left; margin-top: 40px; margin-left: 100px"
+    [width]="150" [height]="30" [animationType]="'fade'"
+    [dropDownHorizontalAlignment]="'right'">
+</jqxDateTimeInput>

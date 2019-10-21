@@ -1,0 +1,84 @@
+﻿<div>
+  <jqxButton #showWindowButton
+             style="float: left;"
+             (onClick)="showWindowButtonClick()"
+             [width]="80">
+    Open
+  </jqxButton>
+
+  <jqxButton #hideWindowButton
+             style="float: left; margin-left: 3px;"
+             (onClick)="hideWindowButtonClick()"
+             [width]="80">
+    Close
+  </jqxButton>
+
+  <jqxButton #pinWindowButton
+             style="float: left; margin-left: 3px;"
+             (onClick)="pinWindowButtonClick()"
+             [width]="80">
+    Pin
+  </jqxButton>
+  
+  <jqxButton #unpinWindowButton
+             style="float: left; margin-left: 3px;"
+             (onClick)="unpinWindowButtonClick()"
+             [width]="80">
+    Unpin
+  </jqxButton>
+  
+  <jqxButton #collapseWindowButton
+             style="float: left; margin-left: 3px;"
+             (onClick)="collapseWindowButtonClick()"
+             [width]="80">
+    Collapse
+  </jqxButton>
+
+  <jqxButton #expandWindowButton
+             style="float: left; margin-left: 3px;"
+             (onClick)="expandWindowButtonClick()"
+             [width]="80">
+    Expand
+  </jqxButton>
+</div>
+
+<jqxWindow #customWindow
+           [width]="400"
+           [height]="150"
+           [cancelButton]="'.cancelButton'" [resizable]="false"
+           [position]="{ x: 90, y: 140 }">
+  <div>
+    Find
+  </div>
+  <div>
+
+    <div  id="customWindowContent" style="overflow: hidden;">
+      <div style="margin: 10px;">
+      Fi<u>n</u>d what:
+      <input #searchTextInput 
+             (keyup)="onKey($event)"
+             (keydown)="onKeyUp($event)"
+             (change)="onChange($event)"
+             type='text' style="margin-left: 5px; height: 17px; width: 175px; border: 1px solid #aaa;"/>
+
+      <div style="float: right;">
+          <jqxButton #searchTextButton
+                     style="margin-bottom: 5px;"
+                     [width]="80" [disabled]="true">
+            Find Next
+          </jqxButton>
+          <jqxButton #cancelButton
+                     style="display: block; margin-top: 5px;"
+                     [width]="80">
+            Cancel
+          </jqxButton>
+      </div>
+      <br />
+      <br />
+      <jqxCheckBox #checkBox [width]="150">Match case</jqxCheckBox>
+    </div>
+
+      </div>
+
+  </div>
+</jqxWindow>

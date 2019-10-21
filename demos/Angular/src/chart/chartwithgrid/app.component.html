@@ -1,0 +1,13 @@
+﻿<jqxGrid #myGrid (onFilter)="gridOnFilter()"
+    [width]="getWidth()" [height]="230" [filterable]="true"
+    [source]="dataAdapter" [columns]="columns" [showfilterrow]="true">
+</jqxGrid>
+
+<jqxChart #myChart style="margin-top: 50px"
+    [width]="getWidth()" [height]="500"
+    [title]="'Fitness & exercise weekly scorecard'" 
+    [description]="'Time spent in vigorous exercise'"
+    [showLegend]="true" [enableAnimations]="true" [padding]="padding"
+    [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis"
+    [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
+</jqxChart>

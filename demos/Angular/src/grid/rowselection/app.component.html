@@ -1,0 +1,65 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left">
+
+  <jqxGrid #myGrid (onRowselect)="myGridOnRowSelect($event)" (onRowunselect)="myGridOnRowUnselect($event)"
+        [width]="getWidth()" [height]="350" [source]="dataAdapter" [columns]="columns" >
+  </jqxGrid>
+
+  <div style="margin-top: 20px">
+    <div style="float: left">
+      <div>
+
+        <jqxInput #myInput1 style="float: left; margin-right: 5px"
+            [width]="50" [height]="20" [value]="100">
+        </jqxInput>
+
+        <jqxButton style="float: left" (onClick)="scrollToBtnOnClick()">Scroll to Row</jqxButton>
+
+      </div>
+      <div style="clear: both"></div>
+      <div style="margin-top: 10px;">
+
+        <jqxInput #myInput2 style="float: left" [width]="50" [value]="0"></jqxInput>
+
+        <jqxButton #mySelectRowBtn style="float: left; margin-left: 5px" (onClick)="selectRowBtnOnClick()">Select Row</jqxButton>
+
+        <jqxButton style="float: left; margin-left: 5px" (onClick)="clearSelectionBtnOnClick()">Clear Selection</jqxButton>
+
+      </div>
+      <div style="clear: both"></div>
+
+      <div style="margin-top: 10px;" >
+        <jqxCheckBox [checked]="true" (onChange)="enableHoverOnChange($event)">Enable Hover</jqxCheckBox>
+      </div>
+      
+      <div style="margin-top: 10px">
+        <span>Selection Mode:</span>
+
+        <jqxDropDownList style="margin-top: 5px" (onSelect)="enableSelectionOnSelect($event)"
+            [width]="120" [height]="25" [selectedIndex]="1" [dropDownWidth]="200"
+            [autoDropDownHeight]="true" [source]="dropDownSource">
+        </jqxDropDownList>
+
+        <div style="margin-top: 10px; font-size: 12px; font-family: Verdana">
+          Selection Modes:
+          <ul>
+            <li>'none' - disables the selection. Selection is possible only through the API.</li>
+            <li>'singlerow' - full row selection. Each click changes the selected row.</li>
+            <li>'multiplerows' - each click selects a new row. Click on a selected row unselects it.</li>
+            <li>'multiplerowsextended' - users can select multiple rows with drag and drop or<br /> by clicking on rows while holding Ctrl or Shift.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <div style="clear: both; font-size: 12px; font-family: Verdana;">
+      <span>Selection Log:</span>
+      <div style="margin-top: 10px">
+        <span>Selected Row Index:</span>
+        <span #selectedRowIndex></span>
+        <br />
+        <span>Unselected Row Index:</span>
+        <span #unselectedRowIndex></span>
+      </div>
+    </div>
+  </div>
+</div>

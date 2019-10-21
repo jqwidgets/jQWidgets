@@ -1,0 +1,11 @@
+﻿<jqxInput #myInput (onSelect)="myInputOnSelect($event)"
+    [width]="200" [height]="25" [source]="dataAdapter"
+    [placeHolder]="'Contact Name:'" [valueMember]="'CompanyName'"
+    [displayMember]="'ContactName'">
+</jqxInput>
+
+<br />
+
+<label style="font-family: Verdana; font-size: 10px">ex: Ana</label>
+
+<div #selectionLog style="font-family: Verdana; font-size: 13px"></div>

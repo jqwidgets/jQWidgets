@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title id="Description">jQWidgets Angular PivotGrid - using custom HTML rendering in rows, columns and pivot cells</title>
+        <base href="./../dist/pivotgrid/custom-rendering/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Styles -->
+    <link rel="stylesheet" href="/node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <!-- jQWidgets -->
+   <script src="./../../../scripts/demos.js"></script>
+
+    </head>
+        
+<body>
+    <app-root>Loading...</app-root>
+    <div class="example-description">
+        <h2>Description</h2>
+        <div style="width: 800px;">
+            This is an example of Angular Pivot Grid with custom style of the grid cells depending on their current value. You can change the
+            rendering of any cell, row or column and insert your own HTML content by implementing the itemsRenderer and cellsRenderer functions.
+            In this case, the custom code simply chooses among five predefined colors and sets the backgroundColor property of the
+            cell content. This color customization is applied only to the cells with 'Sum' aggregation function. You can change
+            the code of the itemsRender and cellsRenderer functions and implement your own customization logic using standard HTML and CSS.
+        </div>
+    </div>
+    <script src="runtime-es2015.js" type="module"></script><script src="polyfills-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule></script><script src="polyfills-es5.js" nomodule></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule></script>
+</body>
+</html>

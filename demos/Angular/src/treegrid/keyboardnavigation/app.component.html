@@ -1,0 +1,27 @@
+﻿<jqxTreeGrid
+             [width]="getWidth()"
+             [source]="dataAdapter"
+             [editable]="true"
+             [columns]="columns"
+             [ready]="ready"
+             #TreeGrid>
+</jqxTreeGrid>
+<div style="font-family: Verdana; font-size: 12px; width: 670px;">
+  <ul>
+    <li><b>Left Arrow</b> key - on an expanded record, collapses the record.</li>
+    <li><b>Left Arrow</b> key - on a collapsed or end record moves focus to the record's parent.</li>
+    <li><b>Right Arrow</b> key - on a collapsed record expands the record.</li>
+    <li><b>Right Arrow</b> key - on an expanded record, moves to the first child record, or does nothing on an end record.</li>
+    <li><b>Up Arrow</b> key is pressed - Selects the row above.</li>
+    <li><b>Down Arrow</b> key is pressed - Selects the row below.</li>
+    <li><b>Page Up/Down</b> is pressed - Navigate Up or Down with one page.</li>
+    <li><b>Home/End</b> is pressed - Navigate to the first or last row on the current page.</li>
+    <li><b>Enter</b> key is pressed - Saves the Edited Row.</li>
+    <li><b>Esc</b> key is pressed - Closes all Editors and Cancels the changes.</li>
+    <li><b>F2</b> key is pressed -  Enters edit mode for the currently selected row.</li>
+    <li><b>Shift+Arrow</b> key extends the selection.</li>
+    <li><b>Shift</b> extends the selection when an end user clicks on a row.</li>
+    <li><b>Ctrl</b> key is pressed - extends the selection when an end user clicks on a row. </li>
+    <li><b>Space</b> key is pressed - Checks/Unchecks the selected record(s). </li>
+  </ul>
+</div>
