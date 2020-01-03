@@ -1,8 +1,8 @@
 /*
    jQWidgets TypeScript definitions
 
-   Copyright (c) 2011-2019 jQWidgets.
-   License: http://jqwidgets.com/license/
+   Copyright (c) 2011-2020 jQWidgets.
+   License: https://jqwidgets.com/license/
 */
 
 interface JQueryStatic {
@@ -1806,6 +1806,15 @@ declare module jqwidgets {
         message?: string;
     }// ValidationResult
 
+    export interface GridCharting {
+        // GridCharting properties
+        appendTo?: string;
+        colorScheme?: string;
+        dialog?: (width: number, height: number, header: string, position: any, enabled: boolean) => void;
+        formatSettings?: any;
+        ready?: any;
+    }// GridCharting
+
     export interface GridColumn {
         // GridColumn properties
         text?: string;
@@ -2186,6 +2195,7 @@ declare module jqwidgets {
         columnsresize?: boolean;
         columnsautoresize?: boolean;
         columnsreorder?: boolean;
+        charting?: GridCharting;
         disabled?: boolean;
         editable?: boolean;
         editmode?: string;
@@ -2200,7 +2210,7 @@ declare module jqwidgets {
         localization?: GridLocalizationobject;
         pagesize?: number;
         pagesizeoptions?: Array<number | string>;
-        pagermode?: 'simple' | 'default';
+        pagermode?: 'simple' | 'default' | 'material';
         pagerbuttonscount?: number;
         pageable?: boolean;
         rowdetails?: boolean;
@@ -2229,6 +2239,7 @@ declare module jqwidgets {
         autoresizecolumn(dataField: string, type: string): void;
         beginupdate(): void;
         clear(): void;
+        createChart(type: string, dataSource: any): void;
         destroy(): void;
         endupdate(): void;
         ensurerowvisible(rowBoundIndex: number): void;
@@ -2325,6 +2336,7 @@ declare module jqwidgets {
         refreshaggregates(): void;
         renderaggregates(): void;
         exportdata(dataType: string, fileName: string, exportHeader: boolean, rows: Array<number>, exportHiddenColumns: boolean, serverURL: string, charSet: string): any;
+        exportview(dataType: string, fileName: string): any;
         getstate(): GridGetState;
         loadstate(stateobject: any): void;
         savestate(): GridGetState;
