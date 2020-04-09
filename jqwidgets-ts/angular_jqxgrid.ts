@@ -1,5 +1,5 @@
 /*
-jQWidgets v9.0.0 (2020-Jan)
+jQWidgets v9.1.3 (2020-Apr)
 Copyright (c) 2011-2020 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -35,7 +35,6 @@ import '../jqwidgets/jqxgrid.export.js'
 import '../jqwidgets/jqxgrid.columnsresize.js'
 import '../jqwidgets/jqxgrid.columnsreorder.js'
 import '../jqwidgets/jqxgrid.aggregates.js'
-import '../jqwidgets/jqxgrid.chart.js'
 
 import { Component, Input, Output, AfterViewInit, AfterViewChecked, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
@@ -2737,6 +2736,15 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
 
       return this.host.jqxGrid('exportview', dataType, fileName);
+   }
+
+   openColumnChooser(columns?: undefined, header?: string): void {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      this.host.jqxGrid('openColumnChooser', columns, header);
    }
 
    getstate(): jqwidgets.GridGetState {

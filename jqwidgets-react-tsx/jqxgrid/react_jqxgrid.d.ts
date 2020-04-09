@@ -14,6 +14,7 @@ declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
     autoresizecolumn(dataField: string, type?: string): void;
     beginupdate(): void;
     clear(): void;
+    createChart(type: string, dataSource?: any): void;
     destroy(): void;
     endupdate(): void;
     ensurerowvisible(rowBoundIndex: number): void;
@@ -110,6 +111,8 @@ declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
     refreshaggregates(): void;
     renderaggregates(): void;
     exportdata(dataType: string, fileName?: string, exportHeader?: boolean, rows?: number[], exportHiddenColumns?: boolean, serverURL?: string, charSet?: string): any;
+    exportview(dataType: string, fileName?: string): any;
+    openColumnChooser(columns?: [], header?: string): void;
     getstate(): IGridGetState;
     loadstate(stateobject: any): void;
     savestate(): IGridGetState;
@@ -121,6 +124,13 @@ export declare const jqx: any;
 export declare const JQXLite: any;
 interface IState {
     lastProps: object;
+}
+export interface IGridCharting {
+    appendTo?: string;
+    colorScheme?: string;
+    dialog?: (width: number, height: number, header: string, position: any, enabled: boolean) => void;
+    formatSettings?: any;
+    ready?: any;
 }
 export interface IGridColumn {
     text?: string;
@@ -138,7 +148,7 @@ export interface IGridColumn {
     exportable?: boolean;
     columngroup?: string;
     enabletooltips?: boolean;
-    columntype?: 'number' | 'checkbox' | 'button' | 'numberinput' | 'dropdownlist' | 'combobox' | 'datetimeinput' | 'textbox' | 'template' | 'custom';
+    columntype?: 'number' | 'checkbox' | 'button' | 'numberinput' | 'dropdownlist' | 'combobox' | 'datetimeinput' | 'textbox' | 'rating' | 'progressbar' | 'template' | 'custom';
     renderer?: (defaultText?: string, alignment?: string, height?: number) => string;
     rendered?: (columnHeaderElement?: any) => void;
     cellsrenderer?: (row?: number, columnfield?: string, value?: any, defaulthtml?: string, columnproperties?: any, rowdata?: any) => string;
@@ -451,6 +461,7 @@ interface IGridOptions {
     columnsresize?: boolean;
     columnsautoresize?: boolean;
     columnsreorder?: boolean;
+    charting?: IGridCharting;
     disabled?: boolean;
     editable?: boolean;
     editmode?: 'click' | 'selectedcell' | 'selectedrow' | 'dblclick' | 'programmatic';
@@ -465,7 +476,7 @@ interface IGridOptions {
     localization?: IGridLocalizationobject;
     pagesize?: number;
     pagesizeoptions?: Array<number | string>;
-    pagermode?: 'simple' | 'default';
+    pagermode?: 'simple' | 'default' | 'material';
     pagerbuttonscount?: number;
     pageable?: boolean;
     rowdetails?: boolean;

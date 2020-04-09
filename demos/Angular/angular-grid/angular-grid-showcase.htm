@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <title id='Description'>Angular 9 Grid Showcase</title>
+        <base href="./../dist/grid/showcase/">
+        <meta name="description" content="This is a showcase of the Grid component for angular." />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="/node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css" type="text/css" />
+		<link rel="stylesheet" href="/node_modules/jqwidgets-ng/jqwidgets/styles/jqx.dark.css" type="text/css" />
+		
+
+        <!-- jQWidgets -->   
+
+      <script src="./../../../scripts/demos.js"></script>
+	<style>
+		.jqx-grid-column-header {
+			font-weight: bold;
+		}
+	    .jqx-grid-cell {
+			color: rgb(148, 198, 255);
+			font-size: 12px;
+		}
+		.specialtext {
+			color: orange !important;
+		}
+		.description {
+			color: whitesmoke !important;
+		}
+		.sellformat {
+			color: red !important;
+		}
+		.buyformat {
+			color: greenyellow !important;
+		}
+		.booleanvalue {
+			color: mistyrose !important;
+			background-color: aquamarine;
+			pointer-events: none;
+			visibility: hidden;
+		}
+		.quoteonthewire input {
+			background-color: whitesmoke;
+			color: gray !important;
+		}
+		.quoterequested input {
+			background-color: rgb(231, 86, 60);
+			color: white !important;
+		}
+		.jqx-grid-cell {
+			border-color: black !important;
+			border-right: none;
+			border-bottom-width: 2px;
+		}
+		.jqx-grid-cell .jqx-grid-cell-left-align {
+			margin-top: 10px !important;
+		}
+		.jqx-grid-statusbar {
+			background-color: rgb(22, 22, 22) !important;
+		}
+		.jqx-grid-statusbar span {
+			color: rgb(148, 198, 255);
+			font-size: 12px;
+		}
+	</style>
+    </head>
+        
+
+    <!-- Display the application -->
+    <body>
+
+        <div class="example-description">
+			DataGrid for Angular Showcase demo with Custom Dark Mode
+		</div>
+
+        <app-root>Loading...</app-root>
+
+        <script src="runtime-es2015.js" type="module"></script><script src="polyfills-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule></script><script src="polyfills-es5.js" nomodule></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule></script>
+
+    </body>
+
+</html>

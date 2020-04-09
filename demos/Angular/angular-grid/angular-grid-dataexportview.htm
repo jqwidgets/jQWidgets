@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <title id='Description'>Angular 9 Grid Data Export View</title>
+        <base href="./../dist/grid/dataexportview/">
+        <meta name="description" content="This is an example of Angular 9 Grid's Grouping export feature." />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="/node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css" type="text/css" />
+	
+      <script src="./../../../scripts/demos.js"></script>
+    </head>
+        
+
+    <!-- Display the application -->
+    <body>
+
+        <div class="example-description">
+            This example illustrates how to export the Grid with Grouping to Excel, PDF and HTML.
+        </div>
+
+        <app-root>Loading...</app-root>
+
+        <script src="runtime-es2015.js" type="module"></script><script src="polyfills-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule></script><script src="polyfills-es5.js" nomodule></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule></script>
+		<script>
+		window.onload = function() {
+			const script = document.createElement('script');
+		
+			script.type = "text/javascript";
+			script.src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxexport.js"; 
+		
+			document.body.appendChild(script);
+		}
+		</script>
+		<!-- JSZip -->
+		<script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/scripts/jszip.min.js"></script>
+		<!-- pdfmake -->
+		<script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/scripts/pdfmake.min.js"></script>
+		<script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/scripts/vfs_fonts.js"></script>
+        <!-- jQWidgets -->   
+
+    </body>
+
+</html>

@@ -1,4 +1,86 @@
-﻿
+﻿*********************************************
+* jQWidgets v9.1.3 Release, Apr-09- 2020    *
+*********************************************
+
+What's New:
+
+- Schematics for the Angular CLI - Add and Generation Schematics are added to jqwidgets-ng npm package for easier setup of Angular projects. 
+- jqxGrid Column Chooser. Modal dialog included in the Grid component, which allows you to dynamically show/hide grid columns.
+- jqxScheduler UI Virtualization, which allows you to load thousands of appointments/events in the month and timeline views.
+- jqxDateTimeInput yearCutOff and full edit mode, which allows handling and validation of user input as in a standard input and also validates 2-year digits.
+Example: if yearCutoff is 1926 and 01/01/20 is entered, 20 will be interpreted as 2020. if 01/01/54 is entered, 54 will be interpreted as 1954.
+
+
+What's Improved:
+
+- Angular Docs & Tutorials.
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid charting IE11 support.
+- Fixed an issue in jqxListBox - when using programmatically selection of all item the "getCheckedItems" method does not return all items in the "checkChange" event
+- Fixed an issue in jqxGrid - when having more than 10 columns after the filtering in the next one there has appeared white strip.
+- Fixed an issue in jqxGrid (React) - after filtering it break rendering of columns after 10th
+- Fixed an issue in jqxSwitchButton - checked and unchecked events are swapped
+- Fixed an issue in jqxGrid - when using sorting with option "many" and filtering it throws error
+- Fixed an issue in jqxTree - error message with the newer version of the jQuery (v3.4.1)
+- Fixed an issue in jqxGrid - when select/edit one cell and after that using tabbing it automatically checked the first checkbox
+- Fixed an issue in jqxGrid - when using input inside the "rowdetails" option after tabbing from this input it select first row
+- Fixed an issue in jqxPopover - close buttons closes all popovers on page
+- Fixed an issue in jqxSwitchButton - with some the themes it looks like there is no chosen option
+- Fixed an issue in Disabled button doesn't always block click event
+- Fixed an issue in jqxGrid - keyboard navigation between groups broken when showgroupaggregates == true
+- Fixed an issue in jqxGrid - cannot be grouped after toggling the "filterrow" option
+- Fixed an issue in jqxComboBox - the "multiSelect" property and opening the list will select the first one
+- Fixed an issue in jqxGrid - the "sortMode: 'many'" option only latest sorted column has correct options for its menu
+- Fixed an issue in jqxGrid - not appropriate behavior when it is disabled - possible to change checkboxes
+- Fixed an issue in jqxListBox - cannot be using the dragging feature after adding the new items
+- Fixed an issue in jqxSwitchButton - there is no visual difference between disabled and enabled state
+
+
+*********************************************
+* jQWidgets v9.0.0 Release, Jan-03- 2020    *
+*********************************************
+
+What's New:
+
+- jqxGrid Charting - Data Visualization of Grid data in a Chart.
+- jqxGrid export to .xlsx data format.
+- jqxGrid export with Data Grouping. 
+- jqxGrid Progress and Rating columns.
+- jqxGrid Rating cell editor with jqxRating.
+- jqxGrid Material UI Pager Template.
+
+What's Improved:
+
+- All Angular examples are with Ivy rendering.
+- jqxGrid Data Export performance.
+
+- What's Fixed:
+
+- Fixed various typescript issues related to Angular 9 compatibility.
+- Fixed an issue in jqxGrid regarding the dropdownlist filter component positioning.
+- Fixed an issue in jqxGrid regarding the tabindex of the grid menu, when multiple grids are on the page.
+- Fixed an issue in jqxGrid regarding the row details display in Firefox.
+- Fixed an issue in jqxGrid PDF export when header export is disabled.
+- Fixed an issue in jqxGrid Dropdownlist filter popup position while scrolling.
+- Fixed an issue in jqxGrid regarding the gethroup method results.
+- Fixed an issue in jqxGrid regarding the grouping dragging errors associated with isPassive prop.
+- Fixed an issue in jqxGrid regarding tabbing and editing with enabled RTL mode.
+- Fixed an issue in jqxGrid regarding the multi sorting, when sorting is applied while the Grid data source is empty.
+- Fixed an issue in jqxGrid regarding the editing after addrow method is called, while sorting is applied.
+- Fixed an issue in jqxGrid regarding the addrow method, when the Grid's source is empty.
+- Fixed an issue in jqxGrid regarding the grouping when aggregates and paging are turned on.
+- Fixed an issue in jqxGrid regarding the editing, when the grid is initially empty and an editable row is added by calling addrow.
+- Fixed an issue in jqxWindow regarding the resize method behavior.,
+- Fixed an issue in jqxHeatMap rendering for IE11.
+- Fixed an issue in jqxScheduler regarding the yearly recurrence edit.
+- Fixed an issue in jqxScheduler regarding the work time, when the fromHour is set to 0.
+- Fixed an issue in jqxTabs regarding the tabs rendering with Material themes.
+- Fixed an issue in jqxTabs regarding the tabs close button behavior.
+- Fixed an issue in jqxTreeGrid regarding the expandAll method and the checkboxes appearance after the treegrid is rendered.
+
+
 *********************************************
 * jQWidgets v8.3.2 Release, Oct-17 2019	               *
 *********************************************

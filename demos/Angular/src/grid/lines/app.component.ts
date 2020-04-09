@@ -1,7 +1,8 @@
-﻿import { Component, ViewChild } from '@angular/core';
+﻿import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { jqxGridComponent } from 'jqwidgets-ng/jqxgrid'
-import { jqxCheckBoxComponent } from 'jqwidgets-ng/jqxcheckbox'
+
+import { generatedata } from './../../../sampledata/generatedata';
 
 @Component({
     selector: 'app-root',
@@ -10,85 +11,56 @@ import { jqxCheckBoxComponent } from 'jqwidgets-ng/jqxcheckbox'
 
 export class AppComponent {
     @ViewChild('myGrid', { static: false }) myGrid: jqxGridComponent;
-    @ViewChild('rowLines', { static: false }) rowLines: jqxCheckBoxComponent;
-    @ViewChild('columnLines', { static: false }) columnLines: jqxCheckBoxComponent;
-    @ViewChild('columnHeaderLines', { static: false }) columnHeaderLines: jqxCheckBoxComponent;
-
-    data: any[] = this.generateData();
+   
+	getWidth() : any {
+		if (document.body.offsetWidth < 850) {
+			return '90%';
+		}
+		
+		return 850;
+	}
 
     source: any =
-        {
-            localdata: this.data,
-            datatype: "array",
-            datafields:
-                [
-                    { name: 'firstname', type: 'string' },
-                    { name: 'lastname', type: 'string' },
-                    { name: 'productname', type: 'string' },
-                    { name: 'quantity', type: 'number' },
-                    { name: 'price', type: 'number' },
-                    { name: 'total', type: 'number' }
-                ]
-        };
+    {
+        localdata: generatedata(200, false),
+        datafields:
+        [
+            { name: 'id', type: 'number' },
+            { name: 'firstname', type: 'string' },
+            { name: 'lastname', type: 'string' },
+            { name: 'productname', type: 'string' },
+            { name: 'quantity', type: 'number' },
+            { name: 'price', type: 'number' },
+            { name: 'total', type: 'number' }
+        ],
+        datatype: 'array'
+    }
 
     dataAdapter: any = new jqx.dataAdapter(this.source);
 
     columns: any[] =
-        [
-            { text: 'Name', datafield: 'firstname', width: 120 },
-            { text: 'Last Name', datafield: 'lastname', width: 120 },
-            { text: 'Product', datafield: 'productname', width: 180 },
-            { text: 'Quantity', datafield: 'quantity', width: 80, cellsalign: 'right' },
-            { text: 'Unit Price', datafield: 'price', width: 90, cellsalign: 'right', cellsformat: 'c2' },
-            { text: 'Total', datafield: 'total', cellsalign: 'right', cellsformat: 'c2', resizable: false }
-        ];
+    [
+        { text: 'First Name', datafield: 'firstname', width: 200 },
+        { text: 'Last Name', datafield: 'lastname', width: 200 },
+        { text: 'Product', datafield: 'productname', width: 180 },
+        { text: 'Quantity', datafield: 'quantity', width: 80, cellsalign: 'right' },
+        { text: 'Unit Price', datafield: 'price', cellsalign: 'right', cellsformat: 'c2' }
+    ];
 
-    refreshAppearance(): void {
-        let rowLines = this.rowLines.val();
-        let columnLines = this.columnLines.val();
-        let columnHeaderLines = this.columnHeaderLines.val();
-        this.myGrid.showrowlines(rowLines);
-        this.myGrid.showcolumnlines(columnLines);
-        this.myGrid.showcolumnheaderlines(columnHeaderLines);
+    ready = (): void => {
+        this.myGrid.selectrow(2);
     }
 
-    generateData(): any[] {
-        let data = new Array();
+    rowLinesOnChange(event: any): void {
+        this.myGrid.showrowlines(event.args.checked);
+    };
 
-        let firstNames =
-            [
-                'Andrew', 'Nancy', 'Shelley', 'Regina', 'Yoshi', 'Antoni', 'Mayumi', 'Ian', 'Peter', 'Lars', 'Petra', 'Martin', 'Sven', 'Elio', 'Beate', 'Cheryl', 'Michael', 'Guylene'
-            ];
+    columnLinesOnChange(event: any): void {
+        this.myGrid.showcolumnlines(event.args.checked);
+    };
 
-        let lastNames =
-            [
-                'Fuller', 'Davolio', 'Burke', 'Murphy', 'Nagase', 'Saavedra', 'Ohno', 'Devling', 'Wilson', 'Peterson', 'Winkler', 'Bein', 'Petersen', 'Rossi', 'Vileid', 'Saylor', 'Bjorn', 'Nodier'
-            ];
+	columnHeaderLinesOnChange(event: any): void {
+        this.myGrid.showcolumnheaderlines(event.args.checked);
+    };
 
-        let productNames =
-            [
-                'Black Tea', 'Green Tea', 'Caffe Espresso', 'Doubleshot Espresso', 'Caffe Latte', 'White Chocolate Mocha', 'Cramel Latte', 'Caffe Americano', 'Cappuccino', 'Espresso Truffle', 'Espresso con Panna', 'Peppermint Mocha Twist'
-            ];
-
-        let priceValues =
-            [
-                '2.25', '1.5', '3.0', '3.3', '4.5', '3.6', '3.8', '2.5', '5.0', '1.75', '3.25', '4.0'
-            ];
-
-        for (let i = 0; i < 200; i++) {
-            let row = {};
-            let productindex = Math.floor(Math.random() * productNames.length);
-            let price = parseFloat(priceValues[productindex]);
-            let quantity = 1 + Math.round(Math.random() * 10);
-            row['firstname'] = firstNames[Math.floor(Math.random() * firstNames.length)];
-            row['lastname'] = lastNames[Math.floor(Math.random() * lastNames.length)];
-            row['productname'] = productNames[productindex];
-            row['price'] = price;
-            row['quantity'] = quantity;
-            row['total'] = price * quantity;
-            data[i] = row;
-        }
-
-        return data;
-    }
 }

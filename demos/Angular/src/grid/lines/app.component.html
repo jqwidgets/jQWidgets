@@ -1,10 +1,19 @@
-﻿<jqxGrid #myGrid [width]="850" [source]="dataAdapter" [columnsresize]="true"
-         [showcolumnlines]="true" [showcolumnheaderlines]="false"
-         [columns]="columns">
-</jqxGrid>
-<br />
-<jqxCheckBox #rowLines (onChange)="refreshAppearance()" [checked]="true">Row Lines</jqxCheckBox>
-<br />
-<jqxCheckBox #columnLines (onChange)="refreshAppearance()" [checked]="false">Column Lines</jqxCheckBox>
-<br />
-<jqxCheckBox #columnHeaderLines (onChange)="refreshAppearance()" [checked]="false">Column Header Lines</jqxCheckBox>
+﻿<div style="font-size: 13px; font-family: Verdana; float: left">
+
+  <jqxGrid #myGrid (onRowselect)="myGridOnRowSelect($event)" (onRowunselect)="myGridOnRowUnselect($event)"
+        [width]="getWidth()" [height]="350" [source]="dataAdapter" [columns]="columns" >
+  </jqxGrid>
+
+      <div style="clear: both"></div>
+
+      <div style="margin-top: 10px;" >
+        <jqxCheckBox #rowLines [checked]="true" (onChange)="rowLinesOnChange($event)">Row Lines</jqxCheckBox>
+      </div>
+     <div style="margin-top: 10px;" >
+        <jqxCheckBox #columnLines [checked]="true" (onChange)="columnLinesOnChange($event)">Column Lines</jqxCheckBox>
+      </div>
+     <div style="margin-top: 10px;" >
+        <jqxCheckBox #headerLines [checked]="true" (onChange)="columnHeaderLinesOnChange($event)">Column Header Lines</jqxCheckBox>
+      </div>
+      
+</div>

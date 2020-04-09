@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <title id='Description'>Angular 9 Grid Charting</title>
+        <base href="./../dist/grid/charting/">
+        <meta name="description" content="This is an example of Angular 9 Grid's charting feature." />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="/node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+        <!-- jQWidgets -->   
+
+      <script src="./../../../scripts/demos.js"></script>
+	<style>
+		#toolbar {
+			display: flex;
+			height: 100%;
+			padding: 0 1rem;
+		}
+
+		#toolbar.warning:after {
+			content: 'Selected data cannot be used to create a chart.';
+			position: absolute;
+			top: 50%;
+			right: 10px;
+			transform: translateY(-50%);
+			color: var(--smart-error);
+		}
+
+		#toolbar > div {
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+			margin-right: 15px;
+			width: 35px;
+			height: 30px;
+			height: 100%;
+			font-size: 12px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			user-select: none;
+			cursor: pointer;
+		}
+
+			#toolbar > div:hover {
+				background-color: var(--smart-grid-column-header-background-hover);
+			}
+
+			#toolbar > div:active {
+				background-color: var(--smart-grid-column-header-background-active);
+			}
+
+			#toolbar > div.warning {
+				outline: 2px solid var(--smart-error);
+			}
+
+		#column {
+		background-image: url("create-column.png");
+		}
+
+		#line {
+		background-image: url("create-line.png");
+		}
+
+		#pie {
+		background-image: url("create-pie.png");
+		}
+
+		#bar {
+		background-image: url("create-bar.png");
+		}
+
+		#area {
+		background-image: url("create-area.png");
+		}
+
+		#scatter {
+		background-image: url("create-scatter.png");
+		}
+
+		[theme="dark"] #column {
+		background-image: url("create-column-dark.png");
+		}
+
+		[theme="dark"] #line {
+		background-image: url("create-line-dark.png");
+		}
+
+		[theme="dark"] #pie {
+		background-image: url("create-pie-dark.png");
+		}
+
+		[theme="dark"] #bar {
+		background-image: url("create-bar-dark.png");
+		}
+
+		[theme="dark"] #area {
+		background-image: url("create-area-dark.png");
+		}
+
+		[theme="dark"] #scatter {
+		background-image: url("create-scatter-dark.png");
+		}
+	</style>
+    </head>
+        
+
+    <!-- Display the application -->
+    <body>
+
+        <div class="example-description">
+            This example illustrates the Angular 9 Grid filtering feature. Enter some data into the Filter Row.
+        </div>
+
+        <app-root>Loading...</app-root>
+
+        <script src="runtime-es2015.js" type="module"></script><script src="polyfills-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule></script><script src="polyfills-es5.js" nomodule></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule></script>
+
+    </body>
+
+</html>

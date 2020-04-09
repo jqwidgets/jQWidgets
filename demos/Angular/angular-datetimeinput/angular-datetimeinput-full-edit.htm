@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+
+  <head>
+    <title id='Description'>Angular DataTimeInput Full Edit</title>
+        <base href="./../dist/datetimeinput/fulledit/">
+    <meta name="description" content="This is an example of Angular DataTimeInput's changing full edit mode." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../..//node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+     
+     
+     
+     
+    <script src="./../../../scripts/demos.js"></script>
+
+    </head>
+        
+
+  <!-- Display the application -->
+  <body>
+
+    <div class="example-description">
+       This demo demonstrates editMode: "full". In this mode, when the input is empty (value is null), its value can be freely edited. On blur or when Enter is pressed, the value is validated and if it is valid, editing becomes the same as in editMode: "default". If the value is once again set to null (by pressing Delete, Ctrl + A and Delete, or "Clear"), full edit can again be entered. Full edit also takes into consideration the value of the "yearCutoff" property. This means that if yearCutoff is 1926 and 01/01/20 is entered, 20 will be interpreted as 2020; if 01/01/54 is entered, 54 will be interpreted as 1954.
+    </div>
+
+    <app-root>Loading...</app-root>
+
+    <script src="runtime-es2015.js" type="module"></script><script src="polyfills-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule></script><script src="polyfills-es5.js" nomodule></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule></script>
+
+  </body>
+
+</html>

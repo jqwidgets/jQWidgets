@@ -12,6 +12,26 @@ export class AppComponent implements AfterViewInit {
     @ViewChild('myBarGauge', { static: false }) myBarGauge: jqxBarGaugeComponent;
     @ViewChild('myListBox', { static: false }) myListBox: jqxListBoxComponent;
 
+    public title: jqwidgets.BarGaugeTitle = {
+        text: 'Nutritional Values',
+        font: {
+            size: 40
+        },
+        verticalAlignment: 'top',
+        margin: {
+            bottom: 0,
+            top: 0,
+            left: 0,
+            right: 0
+        },
+        subtitle: {
+            text: '',
+            font: {
+                size: 20
+            }
+        }
+    };
+	
     public source: any = {
       datatype: 'json',
       datafields: [

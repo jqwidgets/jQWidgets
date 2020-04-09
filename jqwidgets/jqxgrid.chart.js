@@ -1,8 +1,97 @@
 ﻿/* tslint:disable */
 /* eslint-disable */
 (function ($) {
-    $.extend($.jqx._jqxGrid.prototype, {
-	   _getChartDataFields: function(data) {
+	if (!Array.prototype.find) {
+	  Object.defineProperty(Array.prototype, 'find', {
+		value: function(predicate) {
+		 // 1. Let O be ? ToObject(this value).
+		  if (this == null) {
+			throw new TypeError('"this" is null or not defined');
+		  }
+
+		  var o = Object(this);
+
+		  // 2. Let len be ? ToLength(? Get(O, "length")).
+		  var len = o.length >>> 0;
+
+		  // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+		  if (typeof predicate !== 'function') {
+			throw new TypeError('predicate must be a function');
+		  }
+
+		  // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+		  var thisArg = arguments[1];
+
+		  // 5. Let k be 0.
+		  var k = 0;
+
+		  // 6. Repeat, while k < len
+		  while (k < len) {
+			// a. Let Pk be ! ToString(k).
+			// b. Let kValue be ? Get(O, Pk).
+			// c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+			// d. If testResult is true, return kValue.
+			var kValue = o[k];
+			if (predicate.call(thisArg, kValue, k, o)) {
+			  return kValue;
+			}
+			// e. Increase k by 1.
+			k++;
+		  }
+
+		  // 7. Return undefined.
+		  return undefined;
+		}
+	  });
+	}
+	if (!Array.prototype.findIndex) {
+	  Object.defineProperty(Array.prototype, 'findIndex', {
+		value: function(predicate) {
+		 // 1. Let O be ? ToObject(this value).
+		  if (this == null) {
+			throw new TypeError('"this" is null or not defined');
+		  }
+
+		  var o = Object(this);
+
+		  // 2. Let len be ? ToLength(? Get(O, "length")).
+		  var len = o.length >>> 0;
+
+		  // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+		  if (typeof predicate !== 'function') {
+			throw new TypeError('predicate must be a function');
+		  }
+
+		  // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+		  var thisArg = arguments[1];
+
+		  // 5. Let k be 0.
+		  var k = 0;
+
+		  // 6. Repeat, while k < len
+		  while (k < len) {
+			// a. Let Pk be ! ToString(k).
+			// b. Let kValue be ? Get(O, Pk).
+			// c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+			// d. If testResult is true, return k.
+			var kValue = o[k];
+			if (predicate.call(thisArg, kValue, k, o)) {
+			  return k;
+			}
+			// e. Increase k by 1.
+			k++;
+		  }
+
+		  // 7. Return -1.
+		  return -1;
+		},
+		configurable: true,
+		writable: true
+	  });
+	}
+	
+	$.extend($.jqx._jqxGrid.prototype, {
+		_getChartDataFields: function (data) {
 			var that = this;
 			var record = data[0];
 			var stringOnly = true,
@@ -14,10 +103,10 @@
 					continue;
 				}
 
-				var dataType = that.source._source.dataFields.find(gridField => gridField.name === dataField).type;
+				var dataType = that.source._source.dataFields.find(function (gridField) { return gridField.name === dataField }).type;
 
 				if (dataType === 'string') {
-					var index = that.columns.records.findIndex(col => col.datafield === dataField);
+					var index = that.columns.records.findIndex(function (col) { return col.datafield === dataField });
 
 					if (index === 0) {
 						xAxisDataField = dataField;
@@ -32,7 +121,7 @@
 			return { xAxisDataField: xAxisDataField, series: series, stringOnly: stringOnly };
 		},
 
-		createChart: function(type, dataSource) {
+		createChart: function (type, dataSource) {
 			var that = this;
 			var gridSelection = that.getselection(),
 				selectedRows = gridSelection.rows,
@@ -45,7 +134,7 @@
 				series;
 
 			if (selectedCells && selectedCells.length > 1) {
-				selectedCells.forEach(cell => {
+				selectedCells.forEach(function (cell) {
 					if (rowsToPlot.indexOf(cell.rowindex) === -1) {
 						rowsToPlot.push(cell.rowindex);
 					}
@@ -59,20 +148,20 @@
 			if (selectedRows.length === 0 && selectedCells.length === 0) {
 				var dataSource = that.source.records;
 			}
-			
+
 			if (dataSource) {
 				chartData = chartData.concat(dataSource);
 			}
 			else {
 				var dataSource = that.source.records;
-				
+
 				for (var i = 0; i < dataSource.length; i++) {
 					var record = {};
 
 					if (selectedRows.length > 0) {
 						if (selectedRows.indexOf(i) === -1) {
 							continue;
-						}	
+						}
 					}
 					else if (selectedCells.length > 0) {
 						if (selectedCells.length > 1) {
@@ -80,7 +169,7 @@
 								continue;
 							}
 
-							columnsToPlot.forEach(dataField => {
+							columnsToPlot.forEach(function (dataField) {
 								record[dataField] = dataSource[i][dataField];
 							});
 							chartData.push(record);
@@ -88,7 +177,7 @@
 						}
 					}
 
-					that.columns.records.forEach(col => record[col.datafield] = dataSource[i][col.datafield]);
+					that.columns.records.forEach(function (col) { record[col.datafield] = dataSource[i][col.datafield] });
 					chartData.push(record);
 				}
 			}
@@ -118,9 +207,9 @@
 			}
 
 			series = chartDataFields.series;
-			
+
 			var chart = {};
-			
+
 			chart.title = '';
 			chart.description = '';
 			chart.showLegend = true;
@@ -128,19 +217,19 @@
 			chart.padding = { left: 5, top: 10, right: 5, bottom: 5 };
 			chart.source = chartData;
 			chart.xAxis =
-				{
-					dataField: chartDataFields.xAxisDataField,
-					gridLines: {
-						visible: true
-					}
-				};
+			{
+				dataField: chartDataFields.xAxisDataField,
+				gridLines: {
+					visible: true
+				}
+			};
 			chart.valueAxis =
-				{
-					displayValueAxis: true,
-					description: that.charting.description,
-					axisSize: 'auto',
-					formatSettings: that.charting.formatSettings
-				};
+			{
+				displayValueAxis: true,
+				description: that.charting.description,
+				axisSize: 'auto',
+				formatSettings: that.charting.formatSettings
+			};
 			chart.colorScheme = that.charting.colorScheme;
 			chart.seriesGroups = [seriesGroup];
 
@@ -203,28 +292,28 @@
 				var container = that.charting.appendTo === 'string' ? document.querySelector(that.charting.appendTo) : that.charting.appendTo;
 
 				if (container) {
-					var chartInstance = new jqxChart(chartElement, chart);	
-					container.appendChild(chartElement);	
+					var chartInstance = new jqxChart(chartElement, chart);
+					container.appendChild(chartElement);
 				}
 			}
-			else {				
+			else {
 				that._openChartDialog(chartElement, type, chart);
 			}
 		},
 
-		_openChartDialog: function(chart, chartType, settings) {
+		_openChartDialog: function (chart, chartType, settings) {
 			var that = this;
 
 			if (!that.charting.dialog.enabled) {
 				return false;
 			}
 
-			var dialogElement =  document.createElement('div');
-			
+			var dialogElement = document.createElement('div');
+
 			dialogElement.innerHTML = '<div>' + that.charting.dialog.header + '</div><div style="overflow:hidden;"></div>';
-			
+
 			var chartLabel = chartType.substring(0, 1).toUpperCase() + chartType.substring(1);
-		
+
 			chart.style.width = '100%';
 			chart.style.height = '100%';
 
@@ -239,13 +328,12 @@
 
 			setTimeout(function () {
 				dialogElement.querySelector('.jqx-widget-content').appendChild(chart);
-				var chartInstance = new jqxChart(chart, settings);	
+				var chartInstance = new jqxChart(chart, settings);
 			}, 100);
-			
-			dialog.on('close', function() {
+
+			dialog.on('close', function () {
 				dialog.destroy();
 			});
-	    },
-	
+		}
 	});
 })(jqxBaseFramework);

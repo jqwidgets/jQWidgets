@@ -2337,6 +2337,7 @@ declare module jqwidgets {
         renderaggregates(): void;
         exportdata(dataType: string, fileName: string, exportHeader: boolean, rows: Array<number>, exportHiddenColumns: boolean, serverURL: string, charSet: string): any;
         exportview(dataType: string, fileName: string): any;
+        openColumnChooser(columns: any, header: string): void;
         getstate(): GridGetState;
         loadstate(stateobject: any): void;
         savestate(): GridGetState;

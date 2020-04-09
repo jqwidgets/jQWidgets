@@ -10,9 +10,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/grid/grouping",
+            "outputPath": "dist/grid/columnchooser",
             "index": "",
-            "main": "src/grid/grouping/main.ts",
+            "main": "src/grid/columnchooser/main.ts",
             "polyfills": "polyfills.ts",
             "tsConfig": "tsconfig.app.json"
           },

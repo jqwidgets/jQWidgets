@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>With jqxGrid, you can export your data to Excel, XML, CSV, TSV, JSON, PDF and HTML.</title>
+	<meta name="description" content="jQuery Grid Data Export to Excel, PDF, XML, CSV, TSV, JSON and HTML" /> 	
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.selection.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.columnsresize.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.export.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.export.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.sort.js"></script> 
+	<script type="text/javascript" src="https://www.jqwidgets.com/public/jqwidgets/jqxexport.js"></script> 
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <!-- JSZip -->
+    <script type="text/javascript" src="../../../scripts/jszip.min.js"></script>
+    <!-- pdfmake -->
+    <script type="text/javascript" src="../../../scripts/pdfmake.min.js"></script>
+    <script type="text/javascript" src="../../../scripts/vfs_fonts.js"></script>
+	
+    <script type="text/javascript" src="generatedata.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare the data
+            var data = generatedata(100);
+            var source =
+            {
+                localdata: data,
+                datatype: "array",
+                datafields:
+                [
+                    { name: 'firstname', type: 'string' },
+                    { name: 'lastname', type: 'string' },
+                    { name: 'productname', type: 'string' },
+                    { name: 'available', type: 'bool' },
+                    { name: 'date', type: 'date' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' }
+                ]                     
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source);
+            // initialize jqxGrid
+            $("#grid").jqxGrid(
+            {
+                width: getWidth('Grid'),
+                source: dataAdapter,                
+                altrows: true,
+                sortable: true,
+                selectionmode: 'multiplecellsextended',
+                columns: [
+                  { text: 'First Name', datafield: 'firstname', width: 130 },
+                  { text: 'Last Name', datafield: 'lastname', width: 130 },
+                  { text: 'Product', datafield: 'productname', width: 200 },
+                  { text: 'Available', datafield: 'available', columntype: 'checkbox', width: 67, cellsalign: 'center', align: 'center' },
+                  { text: 'Ship Date', datafield: 'date', width: 120, align: 'right', cellsalign: 'right', cellsformat: 'd' },
+                  { text: 'Quantity', datafield: 'quantity', width: 70, align: 'right', cellsalign: 'right' },
+                  { text: 'Price', datafield: 'price', cellsalign: 'right', align: 'right', cellsformat: 'c2' }
+                ]
+            });
+            $("#excelExport").jqxButton();
+            $("#xmlExport").jqxButton();
+            $("#csvExport").jqxButton();
+            $("#tsvExport").jqxButton();
+            $("#htmlExport").jqxButton();
+            $("#jsonExport").jqxButton();
+            $("#pdfExport").jqxButton();
+            $("#excelExport").click(function () {
+                $("#grid").jqxGrid('exportview', 'xlsx', 'jqxGrid');           
+            });
+            $("#xmlExport").click(function () {
+                $("#grid").jqxGrid('exportview', 'xml', 'jqxGrid');
+            });
+            $("#csvExport").click(function () {
+                $("#grid").jqxGrid('exportview', 'csv', 'jqxGrid');
+            });
+            $("#tsvExport").click(function () {
+                $("#grid").jqxGrid('exportview', 'tsv', 'jqxGrid');
+            });
+            $("#htmlExport").click(function () {
+                $("#grid").jqxGrid('exportview', 'html', 'jqxGrid');
+            });
+            $("#jsonExport").click(function () {
+                $("#grid").jqxGrid('exportview', 'json', 'jqxGrid');
+            });
+            $("#pdfExport").click(function () {
+                $("#grid").jqxGrid('exportview', 'pdf', 'jqxGrid');
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+        <div id="grid"></div>
+        <div style='margin-top: 20px;'>
+            <div style='float: left;'>
+                <input type="button" value="Export to Excel" id='excelExport' />
+                <br /><br />
+                <input type="button" value="Export to XML" id='xmlExport' />
+            </div>
+            <div style='margin-left: 10px; float: left;'>
+                <input type="button" value="Export to CSV" id='csvExport' />
+                <br /><br />
+                <input type="button" value="Export to TSV" id='tsvExport' />
+            </div>
+            <div style='margin-left: 10px; float: left;'>
+                <input type="button" value="Export to HTML" id='htmlExport' />
+                <br /><br />
+                <input type="button" value="Export to JSON" id='jsonExport' />
+            </div>
+            <div style='margin-left: 10px; float: left;'>
+                <input type="button" value="Export to PDF" id='pdfExport' />
+            </div>
+        </div>
+</body>
+</html>

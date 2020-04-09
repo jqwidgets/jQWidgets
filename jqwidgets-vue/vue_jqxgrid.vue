@@ -33,6 +33,7 @@
     import '../jqwidgets/jqxgrid.columnsresize.js'
     import '../jqwidgets/jqxgrid.columnsreorder.js'
     import '../jqwidgets/jqxgrid.aggregates.js'
+    import '../jqwidgets/jqxgrid.chart.js'
 
     export default {
         props: {
@@ -116,6 +117,7 @@
             columnsresize: Boolean,
             columnsautoresize: Boolean,
             columnsreorder: Boolean,
+            charting: Object,
             disabled: Boolean,
             editable: Boolean,
             editmode: String,
@@ -189,6 +191,9 @@
             },
             clear: function() {
                 JQXLite(this.componentSelector).jqxGrid('clear');  
+            },
+            createChart: function(type, dataSource) {
+                JQXLite(this.componentSelector).jqxGrid('createChart', type, dataSource);  
             },
             destroy: function() {
                 JQXLite(this.componentSelector).jqxGrid('destroy');  
@@ -477,6 +482,12 @@
             },
             exportdata: function(dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet) {
                 return JQXLite(this.componentSelector).jqxGrid('exportdata', dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet);  
+            },
+            exportview: function(dataType, fileName) {
+                return JQXLite(this.componentSelector).jqxGrid('exportview', dataType, fileName);  
+            },
+            openColumnChooser: function(columns, header) {
+                JQXLite(this.componentSelector).jqxGrid('openColumnChooser', columns, header);  
             },
             getstate: function() {
                 return JQXLite(this.componentSelector).jqxGrid('getstate');  
@@ -1047,6 +1058,13 @@
                     return JQXLite(this.componentSelector).jqxGrid('columnsreorder');
                 }
             },
+            _charting: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('charting', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('charting');
+                }
+            },
             _disabled: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxGrid('disabled', arg)
@@ -1293,7 +1311,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','adaptivewidth','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','adaptivewidth','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -2103,6 +2121,16 @@
                     },
                     set: function(newValue) {
                         that._columnsreorder(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'charting', {
+                    get: function() {
+                        return that._charting();
+                    },
+                    set: function(newValue) {
+                        that._charting(newValue);
                     },
                     enumerable: true,
                     configurable: true

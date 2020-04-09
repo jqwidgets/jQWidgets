@@ -159,7 +159,9 @@
     margin: 0 0 0 0;
     cursor: default;
 }
-
+.jqx-button[disabled] {
+    pointer-events:none;
+}
 button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button {
     box-sizing: border-box !important;
     -moz-box-sizing: border-box !important;
@@ -2904,7 +2906,10 @@ of the horizontal scrollbar.*/
     border-radius: 5px;
     border: 1px solid #ccc;
 }
-
+.jqx-switchbutton[aria-disabled="true"] {
+    opacity: 0.5;
+    pointer-events: none;
+}
 .jqx-switchbutton-thumb {
     display: inline-block;
     cursor: pointer;
@@ -3964,7 +3969,9 @@ of the horizontal scrollbar.*/
     opacity: .55;
     filter: Alpha(Opacity=45);
 }
-
+.jqx-grid.jqx-fill-state-disabled {
+    pointer-events: none;
+}
     .jqx-fill-state-normal td, .jqx-fill-state-hover td, .jqx-fill-state-pressed td, .jqx-fill-state-disabled td, .jqx-fill-state-focus td, .jqx-widget td, .jqx-widget-content td, .jqx-widget-header td {
         box-sizing: border-box;
         -moz-box-sizing: border-box;
