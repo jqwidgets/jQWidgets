@@ -26,6 +26,7 @@
             disabled: Boolean,
             enableBrowserBoundsDetection: Boolean,
             enableAbsoluteSelection: Boolean,
+            editMode: String,
             firstDayOfWeek: Number,
             formatString: String,
             height: [Number, String],
@@ -47,6 +48,7 @@
             todayString: String,
             value: [Date, null],
             width: [Number, String],
+            yearCutoff: Number,
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -205,6 +207,13 @@
                     return JQXLite(this.componentSelector).jqxDateTimeInput('enableAbsoluteSelection');
                 }
             },
+            _editMode: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDateTimeInput('editMode', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDateTimeInput('editMode');
+                }
+            },
             _firstDayOfWeek: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxDateTimeInput('firstDayOfWeek', arg)
@@ -352,6 +361,13 @@
                     return JQXLite(this.componentSelector).jqxDateTimeInput('width');
                 }
             },
+            _yearCutoff: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDateTimeInput('yearCutoff', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDateTimeInput('yearCutoff');
+                }
+            },
             __createComponent__: function (options) {
                 let widgetOptions;
                 options ? widgetOptions = options : widgetOptions = this.__manageProps__();
@@ -360,7 +376,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
+                const widgetProps = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','editMode','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width','yearCutoff'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -490,6 +506,16 @@
                     },
                     set: function(newValue) {
                         that._enableAbsoluteSelection(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'editMode', {
+                    get: function() {
+                        return that._editMode();
+                    },
+                    set: function(newValue) {
+                        that._editMode(newValue);
                     },
                     enumerable: true,
                     configurable: true
@@ -700,6 +726,16 @@
                     },
                     set: function(newValue) {
                         that._width(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'yearCutoff', {
+                    get: function() {
+                        return that._yearCutoff();
+                    },
+                    set: function(newValue) {
+                        that._yearCutoff(newValue);
                     },
                     enumerable: true,
                     configurable: true

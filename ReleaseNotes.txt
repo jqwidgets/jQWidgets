@@ -1,4 +1,16 @@
 ﻿*********************************************
+* jQWidgets v9.1.6 Release, May-18- 2020    *
+*********************************************
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid related to IE11 and sorting.
+- Fixed an issue in jqxGrid related to multi-column sorting in Angular.
+- Fixed an issue in jqxComboBox and jqxPanel regarding jQuery 3.5.1.
+- Fixed an issue in jqxForm regarding duplicate ids.
+- Fixed an issue in jqxForm when more than one jqxForm-s on page, dropdown list opens only in last form.
+
+*********************************************
 * jQWidgets v9.1.4 Release, Apr-15- 2020    *
 *********************************************
 

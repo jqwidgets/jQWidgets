@@ -1077,6 +1077,7 @@ declare module jqwidgets {
         disabled?: boolean;
         enableBrowserBoundsDetection?: boolean;
         enableAbsoluteSelection?: boolean;
+        editMode?: string;
         firstDayOfWeek?: number;
         formatString?: string;
         height?: string | number;
@@ -1098,6 +1099,7 @@ declare module jqwidgets {
         todayString?: string;
         value?: Date | null;
         width?: string | number;
+        yearCutoff?: number;
     }// DateTimeInputOptions
 
     export interface jqxDateTimeInput extends widget, DateTimeInputOptions {

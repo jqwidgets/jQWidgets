@@ -1,5 +1,5 @@
 /*
-jQWidgets v9.1.3 (2020-Apr)
+jQWidgets v9.1.6 (2020-May)
 Copyright (c) 2011-2020 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -47,6 +47,7 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    @Input('disabled') attrDisabled: boolean;
    @Input('enableBrowserBoundsDetection') attrEnableBrowserBoundsDetection: boolean;
    @Input('enableAbsoluteSelection') attrEnableAbsoluteSelection: boolean;
+   @Input('editMode') attrEditMode: string;
    @Input('firstDayOfWeek') attrFirstDayOfWeek: number;
    @Input('formatString') attrFormatString: string;
    @Input('min') attrMin: Date;
@@ -66,12 +67,13 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    @Input('textAlign') attrTextAlign: string;
    @Input('todayString') attrTodayString: string;
    @Input('value') attrValue: Date | null;
+   @Input('yearCutoff') attrYearCutoff: number;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width'];
+   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','editMode','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width','yearCutoff'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDateTimeInput;
@@ -314,6 +316,14 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
       }
    }
 
+   editMode(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('editMode', arg);
+      } else {
+          return this.host.jqxDateTimeInput('editMode');
+      }
+   }
+
    firstDayOfWeek(arg?: number): number {
       if (arg !== undefined) {
           this.host.jqxDateTimeInput('firstDayOfWeek', arg);
@@ -479,6 +489,14 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
           this.host.jqxDateTimeInput('width', arg);
       } else {
           return this.host.jqxDateTimeInput('width');
+      }
+   }
+
+   yearCutoff(arg?: number): number {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('yearCutoff', arg);
+      } else {
+          return this.host.jqxDateTimeInput('yearCutoff');
       }
    }
 
