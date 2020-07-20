@@ -1,4 +1,16 @@
 ﻿*********************************************
+* jQWidgets v10.0.0 Release, July-20-2020   *
+*********************************************
+
+What's New:
+
+- Angular 10 support.
+- Modern Light and Dark Themes with CSS variables support. 
+- jqxGrid Filter all functionality.
+- jqxGrid Excel import.
+- New demos.
+
+*********************************************
 * jQWidgets v9.1.6 Release, May-18- 2020    *
 *********************************************
 

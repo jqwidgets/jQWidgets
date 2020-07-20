@@ -46,6 +46,7 @@ interface IDateTimeInputOptions {
     disabled?: boolean;
     enableBrowserBoundsDetection?: boolean;
     enableAbsoluteSelection?: boolean;
+    editMode?: string;
     firstDayOfWeek?: number;
     formatString?: string;
     height?: string | number;
@@ -67,6 +68,7 @@ interface IDateTimeInputOptions {
     todayString?: string;
     value?: Date | null;
     width?: string | number;
+    yearCutoff?: number;
 }
 export interface IDateTimeInputProps extends IDateTimeInputOptions {
     className?: string;

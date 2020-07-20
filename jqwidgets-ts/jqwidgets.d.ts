@@ -1825,6 +1825,7 @@ declare module jqwidgets {
         threestatecheckbox?: boolean;
         sortable?: boolean;
         filterable?: boolean;
+        filterbarmode?: string;
         filter?: (cellValue?: any, rowData?: any, dataField?: string, filterGroup?: any, defaultFilterResult?: any) => any;
         buttonclick?: (row: number) => void;
         hideable?: boolean;
@@ -2171,6 +2172,7 @@ declare module jqwidgets {
         showstatusbar?: boolean;
         statusbarheight?: number;
         showtoolbar?: boolean;
+        showfilterbar?: boolean;
         selectionmode?: string;
         updatefilterconditions?: (type?: string, defaultconditions?: any) => any;
         updatefilterpanel?: (filtertypedropdown1?: any, filtertypedropdown2?: any, filteroperatordropdown?: any, filterinputfield1?: any, filterinputfield2?: any, filterbutton?: any, clearbutton?: any, columnfilter?: any, filtertype?: any, filterconditions?: any) => any;

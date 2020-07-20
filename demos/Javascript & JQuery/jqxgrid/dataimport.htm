@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>Import from Excel with jqxGrid.</title>
+	<meta name="description" content="Javascript Grid Data Import from Excel" /> 	
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.selection.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.columnsresize.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.export.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.export.js"></script> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.sort.js"></script> 
+	<script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqxexport.js"></script> 
+	<script type="text/javascript" src="https://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/jqximport.js"></script> 
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <!-- JSZip -->
+    <script type="text/javascript" src="../../../scripts/jszip.min.js"></script>
+    <!-- pdfmake -->
+    <script type="text/javascript" src="../../../scripts/pdfmake.min.js"></script>
+    <script type="text/javascript" src="../../../scripts/vfs_fonts.js"></script>
+	
+    <script type="text/javascript" src="generatedata.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare the data
+          
+		    var source = new jqx.dataAdapter({
+				datatype: 'xlsx',
+				url: '../../../scripts/data.xlsx',
+				datafields: [
+                    { name: 'id', type: 'number' },
+                    { name: 'firstName', type: 'string' },
+                    { name: 'lastName', type: 'string' },
+                    { name: 'productName', type: 'string' },
+                    { name: 'quantity', type: 'number' },
+                    { name: 'price', type: 'number' },
+					{ name: 'total', type: 'string' }
+                ]
+			});
+			
+			var grid = new jqxGrid("#grid", {
+				source: source,
+				autoheight:true,
+				width: '100%',
+				columns: [
+				{ text: 'id', dataField: 'id'},
+				{ text: 'First Name', dataField: 'firstName'},
+				{ text: 'Last Name', dataField: 'lastName' },
+				{ text: 'Product', dataField: 'productName' },
+				{ text: 'Quantity', dataField: 'quantity', align: 'right', cellsAlign: 'right', },
+				{ text: 'Unit Price', dataField: 'price', align: 'right', cellsAlign: 'right', cellsFormat: 'c2' },
+				{ text: 'Total', dataField: 'total', align: 'right', cellsAlign: 'right', cellsFormat: 'c2' }
+				]
+			});			
+        });
+    </script>
+</head>
+<body class='default'>
+	<div id="grid"></div>
+</body>
+</html>
