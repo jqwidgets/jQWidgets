@@ -1,4 +1,39 @@
-﻿/*Rounded Corners*/
+﻿:root {
+    --jqx-grid-row-height: 36px;
+    --jqx-grid-column-height: 48px;
+    --jqx-grid-show-column-lines: 0;
+    --jqx-list-item-height: -1;
+    --jqx-grid-filter-menu-items-height: 30px;
+    --jqx-dropdown-animation: transform;
+    --jqx-datetimeinput-dropdown-height: 280px;
+    --jqx-datetimeinput-dropdown-width: 280px;
+    --jqx-calendar-header-height: 40px;
+    --jqx-calendar-title-height: 49px;
+    --jqx-icon-calendar: '\e829'; /* Code of calendar icon */
+    --jqx-icon-filter: '\f0b0'; /* Code of filter icon */
+    --jqx-icon-menu: '\f0c9'; /* Code of menu icon */
+    --jqx-icon-check: '\e908'; /* Code of check icon */
+    --jqx-icon-first-page: '\e900'; /* Code of first page icon */
+    --jqx-icon-arrow-down: '\e901'; /* Code of down arrow icon */
+    --jqx-icon-arrow-left: '\e902'; /* Code of left arrow icon */
+    --jqx-icon-arrow-right: '\e903'; /* Code of right arrow icon */
+    --jqx-icon-arrow-up: '\e904'; /* Code of up arrow icon */
+    --jqx-icon-arrow-down-filled: '\e812'; /* Code of filled down arrow icon */
+    --jqx-icon-arrow-left-filled: '\e816'; /* Code of filled left arrow icon */
+    --jqx-icon-arrow-right-filled: '\e81e'; /* Code of filled right arrow icon */
+    --jqx-icon-arrow-up-filled: '\e815'; /* Code of filled up arrow icon */
+    --jqx-icon-visibility: '\e90d'; /* Code of visibility icon */
+    --jqx-icon-visibility-off: '\e90e'; /* Code of visibility off icon */
+    --jqx-icon-last-page: '\e905'; /* Code of last page icon */
+    --jqx-icon-close: '\e80d'; /* Code of close icon */
+    --jqx-icon-search: '\e828'; /* Code of search icon */
+    --jqx-border-radius: 4px;
+    --jqx-font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --jqx-font-size: 14px;
+    --jqx-action-button-size: 25px;
+}
+
+/*Rounded Corners*/
 /*top-left rounded Corners*/
 .jqx-rc-tl {
     -moz-border-radius-topleft: 3px;
@@ -7721,39 +7756,4 @@ jqx-knob {
     100% {
         opacity: 1;
     }
-}
-:root {
-    --jqx-grid-row-height: 36px;
-    --jqx-grid-column-height: 48px;
-    --jqx-grid-show-column-lines: 0;
-    --jqx-list-item-height: -1;
-    --jqx-grid-filter-menu-items-height: 30px;
-    --jqx-dropdown-animation: transform;
-    --jqx-datetimeinput-dropdown-height: 280px;
-    --jqx-datetimeinput-dropdown-width: 280px;
-    --jqx-calendar-header-height: 40px;
-    --jqx-calendar-title-height: 49px;
-    --jqx-icon-calendar: '\e829'; /* Code of calendar icon */
-    --jqx-icon-filter: '\f0b0'; /* Code of filter icon */
-    --jqx-icon-menu: '\f0c9'; /* Code of menu icon */
-    --jqx-icon-check: '\e908'; /* Code of check icon */
-    --jqx-icon-first-page: '\e900'; /* Code of first page icon */
-    --jqx-icon-arrow-down: '\e901'; /* Code of down arrow icon */
-    --jqx-icon-arrow-left: '\e902'; /* Code of left arrow icon */
-    --jqx-icon-arrow-right: '\e903'; /* Code of right arrow icon */
-    --jqx-icon-arrow-up: '\e904'; /* Code of up arrow icon */
-    --jqx-icon-arrow-down-filled: '\e812'; /* Code of filled down arrow icon */
-    --jqx-icon-arrow-left-filled: '\e816'; /* Code of filled left arrow icon */
-    --jqx-icon-arrow-right-filled: '\e81e'; /* Code of filled right arrow icon */
-    --jqx-icon-arrow-up-filled: '\e815'; /* Code of filled up arrow icon */
-    --jqx-icon-visibility: '\e90d'; /* Code of visibility icon */
-    --jqx-icon-visibility-off: '\e90e'; /* Code of visibility off icon */
-    --jqx-icon-last-page: '\e905'; /* Code of last page icon */
-    --jqx-icon-close: '\e80d'; /* Code of close icon */
-    --jqx-icon-search: '\e828'; /* Code of search icon */
-
-    --jqx-border-radius: 4px;
-    --jqx-font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --jqx-font-size: 14px;
-    --jqx-action-button-size: 25px;
 }

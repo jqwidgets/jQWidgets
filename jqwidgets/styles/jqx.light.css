@@ -673,8 +673,12 @@
     background: var(--jqx-surface);
     color: var(--jqx-surface-color);
 }
-.jqx-datatable-light .jqx-grid-column-header-light {
-    border-right: none !important;
+.jqx-datatable-dark .jqx-widget-header-dark .jqx-grid-column-header-dark {
+    border-right-color: var(--jqx-border);
+}
+
+.jqx-datatable-light .jqx-widget-header:not(:hover) .jqx-grid-column-header-light{
+    border-right-color: transparent !important;
 }
 
 .jqx-datatable-light td.jqx-grid-cell-light,
@@ -866,6 +870,10 @@
 
 .jqx-splitter-collapse-button-vertical-light, .jqx-progressbar-value-vertical-light {
     background: var(--jqx-primary);
+}
+
+.jqx-scrollbar-mobile-light .jqx-scrollbar-button-state-normal {
+    display: none !important;
 }
 
 .jqx-scrollbar-button-state-hover-light {
@@ -1458,6 +1466,12 @@
     font-size: 12px;
     color: var(--jqx-surface-color);
     font-weight: 500;
+}
+
+
+.jqx-widget-light .jqx-widget-header-light:hover .jqx-grid-column-header-light {
+    border-right-color: var(--jqx-border) !important;
+    border-bottom-color: var(--jqx-border) !important;
 }
 .jqx-widget-light .jqx-grid-cell-light {
     border-color: var(--jqx-border);
@@ -2261,6 +2275,9 @@ input[type="text"].jqx-input-light:-ms-input-placeholder, input[type="text"].jqx
 .jqx-fill-state-pressed-light .jqx-icon-plus-light
 {
     background-image: url('images/plus_white.png');
+}
+.jqx-menu-minimized-button-light {
+    padding: 0px !important;
 }
 .jqx-fill-state-pressed-light .jqx-menu-minimized-button-light {
    background-image: url('images/icon-menu-minimized-white.png');
