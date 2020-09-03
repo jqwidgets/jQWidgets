@@ -18,6 +18,7 @@ Highlights
 * Web Components built from ground-up.
 * React Javascript Library User Interface Components
 * Angular and AngularJS 1.x Directives for every widget.
+* [Blazor Controls](https://blazor.jqwidgets.com/). 
 * ASP .NET Core UI Components
 * Easy PHP & ASP .NET integration and how-to demos.
 * Typescript Definitions for all widgets.
