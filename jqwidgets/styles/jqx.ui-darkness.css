@@ -64,7 +64,7 @@
 .jqx-grid-cell-ui-darkness, .jqx-grid-group-cell-ui-darkness
 {
    background: #000;
-   color: #fff; 
+   color: #fff;
 }
 .jqx-widget-ui-darkness{ line-height: 17px; font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-style:normal;}
 .jqx-widget-content-ui-darkness{font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif; background: #000000 url(images/darkness/ui-bg_inset-soft_25_000000_1x100.png) 50% bottom repeat-x; border-color:#666666; color:#fff; font-size:12px}
@@ -114,7 +114,7 @@
 }
 .jqx-tabs-selection-tracker-bottom-ui-darkness
 {
-   background-image: #f69727;
+   background: #f69727;
    border-top: 1px solid transparent;
 }
 .jqx-scrollbar-ui-darkness .jqx-icon-arrow-up-ui-darkness{width: 16px; height: 16px; margin-left: auto;}

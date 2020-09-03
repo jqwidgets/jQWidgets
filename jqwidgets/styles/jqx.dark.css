@@ -2024,7 +2024,7 @@ input[type="text"].jqx-input-dark:-ms-input-placeholder, input[type="text"].jqx-
 .jqx-icon-time-dark,
 .jqx-icon-time-hover-dark,
 .jqx-icon-time-pressed-dark {
-    background-image: none;
+    background-image: none !important;
     font-family: 'jqx-icons';
     display: flex;
     font-family: 'jqx-icons';
@@ -2050,7 +2050,7 @@ input[type="text"].jqx-input-dark:-ms-input-placeholder, input[type="text"].jqx-
 .jqx-icon-calendar-dark,
 .jqx-icon-calendar-hover-dark,
 .jqx-icon-calendar-pressed-dark {
-	background-image: none;
+	background-image: none !important;
     font-family: 'jqx-icons';
     left: 0;
     top: 0 !important;

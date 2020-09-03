@@ -1,4 +1,57 @@
 ﻿*********************************************
+* jQWidgets v10.1.0 Release, Sept-04-2020   *
+*********************************************
+
+What's New:
+
+- Blazor UI Components. Demos: https://blazor.jqwidgets.com/. Docs: https://blazor.jqwidgets.com/documentation/.
+- jqxGrid - Excel-like Horizontal and Vertical auto-fill.
+- jqxGrid - Undo and Redo with Ctrl+Z, Ctrl+Y.
+- jqxGrid - Ctrl+D. Pressing Ctrl+D fills the cell beneath with the contents of the selected cell in a column.
+- jqxGrid - Ctrl+Space. Pressing Ctrl+Space selects the column.
+
+What's Improved:
+
+- Angular Reactive Forms support.
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid about the "ensurerowvisible" method. It was not working properly with the "deferred" scrolling mode.
+- Fixed an issue in jqxGrid (Mobile). Fast scrolling throws error in NsBasic app.
+- Fixed an issue in jqxGrid about copy and paste date in the column from date type, it sets current date instead of copied one.
+- Fixed an issue in jqxGrid about using the "ensurecellvisible" method when there are pinned columns.
+- Fixed an issue in jqxGrid about using the "showfilterbar" property with editing.
+- Fixed an issue in jqxGrid about missing "expanded" from "getgroup" method.
+- Fixed an issue in jqxGrid about overlapping labels from sorting and filtering feature.
+- Fixed an issue in jqxGrid about the "autoresizecolumns" method which does not react as it is expected.
+- Fixed an issue in jqxGrid about the localization for the window of the Column Chooser.
+- Fixed an issue in JqxGrid about paste in rowdetails input.
+- Fixed an issue in jqxGrid about using grouping and column chooser. Wrong items were displayed in the column chooser.
+- Fixed an issue in jqxGrid about disabling the exporting feature for just one column it does not have an effect with the "exportview" method.
+- Fixed an issue in jqxGrid about possible security issue reported by Checkmarx utility tool, which scans the code for possible vulnerabilities.
+- Fixed an issue in jqxGrid about changing of themes.
+- Fixed an issue in jqxDataAdapter (FireFox) about formatting of dates appropriately when has comma ("," symbol.
+- Fixed an issue in jqxInput (Angular) about reactive Form with the "reset" method of the forms.
+- Fixed an issue in jqxInput about autocomplete click event, which triggers click on elements behind.
+- Fixed an issue in jqxNumberInput about decimalSeparator and groupSeparator combination.
+- Fixed an issue in jqxNumberInput about using the "decimalSeparator" property with the "," option it set inappropriate value with the "val" method.
+- Fixed an issue in jqxDataTable about the "enableBrowseSelection" property.
+- Fixed an issue in jqxDataTable about possible security issue reported by Checkmarx utility tool, which scans the code for possible vulnerabilities.
+- Fixed an issue in jqxTreeGrid about possible security issue reported by Checkmarx utility tool, which scans the code for possible vulnerabilities.
+- Fixed an issue in jqxKanban about "itemAttrClicked" event not working on mobile devices.
+- Fixed an issue in jqxForm about the "hideComponent" method.
+- Fixed an issue in jqxScheduler about incorrect behavior when trying to click on the current day (today) it does not react from the calendar.
+- Fixed an issue in jqxScheduler about possible security issue reported by Checkmarx utility tool, which scans the code for possible vulnerabilities.
+- Fixed an issue in JqxExpander about the Theme [Frog]. Text appears white on white background.
+- Fixed an issue in jqxComboBox about selection of first item when the ComboBox is in multiple selection mode.
+cannot choose the first item.
+- Fixed an issue in jqxComboBox about incorrect HTML in the ComboBox template.
+- Fixed an issue in jqxComboBox about possible security issue reported by Checkmarx utility tool, which scans the code for possible vulnerabilities.
+- Fixed an issue in jqxDropDownList about the keyboard navigation and incremental search. The numbers from the "Num Lock" keys do not react.
+- Fixed an issue in jqxDropDownList about possible security issue reported by Checkmarx utility tool, which scans the code for possible vulnerabilities.
+- Fixed an issue in jqxListBox about possible security issue reported by Checkmarx utility tool, which scans the code for possible vulnerabilities.
+
+*********************************************
 * jQWidgets v10.0.2 Release, July-22-2020   *
 *********************************************
 
@@ -9,6 +62,11 @@ What's New:
 - jqxGrid Filter all functionality.
 - jqxGrid Excel import.
 - New demos.
+
+What's Fixed:
+
+- Fixed themes related issues. Centering of Icons, foreground and background colors in hover, active and default states.
+
 
 *********************************************
 * jQWidgets v9.1.6 Release, May-18- 2020    *

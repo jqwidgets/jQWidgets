@@ -1,15 +1,28 @@
-The jQWidgets framework is available as NPM package:
+The jQWidgets framework NPM packages:
 
-jQuery, Javascript, Angular, Vue, React, Web Components:
+jQuery, Javascript, Angular, Vue, React:
 
 https://www.npmjs.com/package/jqwidgets-scripts - source files.
 https://www.npmjs.com/package/jqwidgets-framework - source files, demos, docs, images. 
-https://www.npmjs.com/package/smart-webcomponents - web components source files. 
 
 Angular Modules:
 
 https://www.npmjs.com/package/jqwidgets-ng
-https://www.npmjs.com/package/smart-webcomponents-angular
 
+
+
+Smart UI Components
+
+1. Web Components:
+
+https://www.npmjs.com/package/smart-webcomponents 
+
+2. React Components:
+
+https://www.npmjs.com/package/smart-webcomponents-react
+
+3. Angular Components:
+
+https://www.npmjs.com/package/smart-webcomponents-angular
 
 

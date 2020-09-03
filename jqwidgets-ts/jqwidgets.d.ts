@@ -2217,6 +2217,7 @@ declare module jqwidgets {
         pagermode?: 'simple' | 'default' | 'material';
         pagerbuttonscount?: number;
         pageable?: boolean;
+        autofill?: boolean;
         rowdetails?: boolean;
         rowdetailstemplate?: any;
         ready?: () => void;

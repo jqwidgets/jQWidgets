@@ -1,5 +1,5 @@
 /*
-jQWidgets v10.0.2 (2020-22-July)
+jQWidgets v10.1.0 (2020-Sep)
 Copyright (c) 2011-2020 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -174,6 +174,9 @@ export class jqxTextAreaComponent implements ControlValueAccessor, OnChanges
        if(this.widgetObject) {
            if (value !== null && value !== undefined)
                this.host.jqxTextArea('val', value);
+       }
+       if (this.host && (value === null || value === undefined)) {
+               this.host.jqxTextArea('val', '');
        }
    }
 

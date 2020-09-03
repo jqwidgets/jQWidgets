@@ -2025,7 +2025,7 @@ input[type="text"].jqx-input-light:-ms-input-placeholder, input[type="text"].jqx
 .jqx-icon-time-light,
 .jqx-icon-time-hover-light,
 .jqx-icon-time-pressed-light {
-    background-image: none;
+    background-image: none !important;
     font-family: 'jqx-icons';
     display: flex;
     font-family: 'jqx-icons';
@@ -2051,7 +2051,7 @@ input[type="text"].jqx-input-light:-ms-input-placeholder, input[type="text"].jqx
 .jqx-icon-calendar-light,
 .jqx-icon-calendar-hover-light,
 .jqx-icon-calendar-pressed-light {
-	background-image: none;
+	background-image: none !important;
     font-family: 'jqx-icons';
     left: 0;
     top: 0 !important;

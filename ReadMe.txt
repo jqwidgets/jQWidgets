@@ -6,6 +6,9 @@ jQuery, Javascript, Angular, Vue, React, Web Components:
 
 https://www.npmjs.com/package/jqwidgets-scripts - source files.
 https://www.npmjs.com/package/jqwidgets-framework - source files, demos, docs, images. 
+
+Web Components:
+
 https://www.npmjs.com/package/smart-webcomponents - web components source files. 
 
 Angular Modules:
@@ -13,6 +16,13 @@ Angular Modules:
 https://www.npmjs.com/package/jqwidgets-ng
 https://www.npmjs.com/package/smart-webcomponents-angular
 
+React:
+
+https://www.npmjs.com/package/smart-webcomponents-react
+
+Blazor:
+
+dotnet add package jQWidgets.Blazor
 
 1. The SDK files are located in the jqwidgets directory
  

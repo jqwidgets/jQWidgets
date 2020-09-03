@@ -1,5 +1,5 @@
 /*
-jQWidgets v10.0.2 (2020-22-July)
+jQWidgets v10.1.0 (2020-Sep)
 Copyright (c) 2011-2020 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -179,6 +179,9 @@ export class jqxPasswordInputComponent implements ControlValueAccessor, OnChange
    writeValue(value: any): void {
        if(this.widgetObject) {
            this.host.jqxPasswordInput('val', value);
+       }
+       if (this.host && (value === null || value === undefined)) {
+               this.host.jqxPasswordInput('val', '');
        }
    }
 
