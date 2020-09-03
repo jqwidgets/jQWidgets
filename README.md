@@ -67,6 +67,7 @@ More
 -
 * React Demos: https://www.jqwidgets.com/react/
 * Angular Demos: https://www.jqwidgets.com/angular/
+* Blazor Demos: https://blazor.jqwidgets.com/
 * ASP .NET Core Demos: https://www.jqwidgets.com/asp.net-core-mvc-tag-helpers/
 * Showcase Demos: https://www.jqwidgets.com/jquery-widgets-demo/showcasedemos/
 * Javascript/jQuery Demos: https://www.jqwidgets.com/jquery-widgets-demo/
