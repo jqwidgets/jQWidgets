@@ -1,4 +1,12 @@
 ﻿*********************************************
+* jQWidgets v10.1.1 Release, Sept-07-2020   *
+*********************************************
+
+What's Fixed:
+
+- jqxGrid - fixed a rendering issue regarding the 'autofill' behavior, when the parent element of jqxGrid is with margin.
+
+*********************************************
 * jQWidgets v10.1.0 Release, Sept-04-2020   *
 *********************************************
 

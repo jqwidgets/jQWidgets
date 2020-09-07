@@ -1,7 +1,7 @@
 jQWidgets
 =========
 
-jQWidgets is an advanced UI framework for Angular, React, Vue, Web Components, Javascript and ASP .NET.
+jQWidgets is an advanced UI framework for Angular, React, Vue, Blazor, Web Components, Javascript and ASP .NET.
 
 ![Angular Components](https://www.jqwidgets.com/wp-content/images/material-pager.png)
 
