@@ -1272,6 +1272,12 @@
     border: none;
 }
 
+.jqx-datatable-light .jqx-grid-column-sortdescbutton-light,
+.jqx-datatable-light .jqx-grid-column-sortascbutton-light {
+	display: flex;
+	align-items: center;
+}
+
 .jqx-grid-column-sortascbutton-light,
 .jqx-expander-arrow-bottom-light,
 .jqx-window-collapse-button-light,

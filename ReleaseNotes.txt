@@ -1,5 +1,5 @@
 ﻿*********************************************
-* jQWidgets v10.1.3 Release, Sept-16-2020   *
+* jQWidgets v10.1.5 Release, Sept-18-2020   *
 *********************************************
 
 What's Fixed:
@@ -11,6 +11,7 @@ What's Fixed:
 - Fixed an issue in jqxGrid regarding the Ctrl+Shift+Space all rows selection.
 - Fixed an issue in jqxGrid regarding the excel-like cells selection, when the Grid is bound to large data set.
 - Fixed an issue in jqxGrid regarding the selection of all rows API, when the selection mode is set to excel-like cells selection mode.
+- Fixed an issue in jqxGrid regarding the column resizing, when autofill property is set to true.
 
 *********************************************
 * jQWidgets v10.1.2 Release, Sept-07-2020   *

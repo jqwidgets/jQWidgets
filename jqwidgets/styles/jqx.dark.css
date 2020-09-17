@@ -1271,6 +1271,12 @@
     border: none;
 }
 
+.jqx-datatable-dark .jqx-grid-column-sortdescbutton-dark,
+.jqx-datatable-dark .jqx-grid-column-sortascbutton-dark {
+	display: flex;
+	align-items: center;
+}
+
 .jqx-grid-column-sortascbutton-dark,
 .jqx-expander-arrow-bottom-dark,
 .jqx-window-collapse-button-dark,
