@@ -1,4 +1,15 @@
 ﻿*********************************************
+* jQWidgets v10.1.6 Release, Oct-16-2020    *
+*********************************************
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid regarding the scrolling with mouse wheel in Chrome 86.
+- Fixed an issue in jqxGrid data export, when the data has symbols like &, @, etc.
+- Fixed an issue in jqxForm regarding the hideComponent API.
+
+
+*********************************************
 * jQWidgets v10.1.5 Release, Sept-18-2020   *
 *********************************************
 

@@ -1503,6 +1503,12 @@ ${that.getRowStyle()}${that.getColumnStyle()}
                 uniqueCount++;
                 collection.push(currentValue);
 
+                currentValue = currentValue.replace(/&(?!amp;)/g, '&amp;');
+                currentValue = currentValue.replace(/'/g, '&apos;');
+                currentValue = currentValue.replace(/"/g, '&quot;');
+                currentValue = currentValue.replace(/>/g, '&gt;');
+                currentValue = currentValue.replace(/</g, '&lt;');
+
                 xml += `<si><t>${currentValue}</t></si>`;
             }
         }

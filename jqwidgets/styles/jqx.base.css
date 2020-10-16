@@ -1,7 +1,7 @@
 ﻿:root {
     --jqx-grid-row-height: 36px;
     --jqx-grid-column-height: 48px;
-    --jqx-grid-show-column-lines: 0;
+    --jqx-grid-show-column-lines: 1;
     --jqx-list-item-height: -1;
     --jqx-grid-filter-menu-items-height: 30px;
     --jqx-dropdown-animation: transform;
