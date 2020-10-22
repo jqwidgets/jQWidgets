@@ -1,0 +1,35 @@
+<template>
+    <div>
+        <JqxTabs ref="myTabs" 
+	:width="600" :height="200" :position="'top'" 
+	:animationType="'none'" :selectionTracker="false">
+            <ul>
+                <li style="margin-left: 30px">Node.js</li>
+                <li>JavaServer Pages</li>
+            </ul>
+            <div>Node.js</div>
+            <div>JavaServer Pages</div>
+        </JqxTabs>
+    </div>
+</template>
+ 
+<script>
+    import JqxTabs from "jqwidgets-scripts/jqwidgets-vue/vue_jqxtabs.vue";
+    import Component from "./Component.vue";
+    import Vue from "vue";
+ 
+    export default {
+        components: {
+            JqxTabs
+        },
+        mounted: function () {
+            this.$refs.myTabs.addLast("Title", '<div id="newTab"></div>');
+ 
+            const ComponentClass = Vue.extend(Component);
+            const instance = new ComponentClass();
+ 
+            instance.$mount();
+            document.getElementById("newTab").append(instance.$el);
+        }
+    };
+</script>

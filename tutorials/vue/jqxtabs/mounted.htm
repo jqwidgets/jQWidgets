@@ -1,0 +1,9 @@
+mounted: function () {
+    this.$refs.myTabs.addLast("Title", '<div id="newTab"></div>');
+ 
+    const ComponentClass = Vue.extend(Component);
+    const instance = new ComponentClass();
+ 
+    instance.$mount();
+    document.getElementById("newTab").append(instance.$el);
+}

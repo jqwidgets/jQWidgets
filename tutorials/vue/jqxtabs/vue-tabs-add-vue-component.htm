@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Vue Tabs Component Getting Started</title>
+    <meta name="keywords" content="Vue, VueJS, Vue Javascript Library" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+
+
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = "./initial-example.htm";
+            $.get(url,
+                function (data) {
+                    $('#initialexample').html(formatCode(data));
+                }, "text"
+            );
+
+            url = "./vue-component.htm";
+            $.get(url,
+                function (data) {
+                    $('#vuecomponent').html(formatCode(data));
+                }, "text"
+            );
+
+            url = "./imports.htm";
+            $.get(url,
+                function (data) {
+                    $('#imports').html(formatCode(data));
+                }, "text"
+            );
+
+            url = "./mounted.htm";
+            $.get(url,
+                function (data) {
+                    $('#mounted').html(formatCode(data));
+                }, "text"
+            );
+
+            url = "./final.htm";
+            $.get(url,
+                function (data) {
+                    $('#final').html(formatCode(data));
+                }, "text"
+            );
+        });
+    </script>
+</head>
+
+<body>
+    <div id="pageTop" class="top">
+    </div>
+
+    <div id="pageDocumentation">
+        <h2>Add tabs with Vue component</h2>
+        <p>
+            In this tutorial we will show how you can add new tabs with Vue components inside in jqxTabs.
+        </p>
+        <h2>Prerequisites</h2>
+        <p>
+            Refer to <a href="../../index.htm" target="_blank">Vue Getting Started</a> and <a
+                href="./vue-tabs-getting-started.htm" target="_blank">Vue Getting Started with jqxTabs</a> before you
+            start with this
+            help topic.
+        </p>
+        <h2>Adding Vue component</h2>
+        <p>We will start the tutorial with this jqxTabs Vue example:</p>
+        <div id="initialexample" class="code"></div>
+        <br />
+
+        <p>The Vue component that we will add in the jqxTabs will be called <strong>Component.vue</strong> and it will
+            look like this:</p>
+        <div id="vuecomponent" class="code"></div>
+        <br />
+        <p>Now for adding a new tab with the Vue component we will be using the <strong>addLast</strong> method of
+            jqxTabs
+            and will create an instance of the Component class dynamically. Then we will mount it in the newly
+            added tab.</p>
+        <p>For this purpose we need to import <strong>Component.vue</strong> and the <strong>Vue</strong> object:</p>
+        <div id="imports" class="code"></div>
+        <br />
+
+        <p>
+            We will use the <strong>mounted</strong> Vue lifecycle hook for adding the new tab. Here is the code we will
+            be using:
+        </p>
+        <div id="mounted" class="code"></div>
+        <br />
+
+        <p>
+            We are adding a new tab using <strong>addLast</strong> method containing a div with a specific id, in our
+            case "newTab".
+            <br />
+            Then we are passing the imported <strong>Component</strong> object to <strong>Vue.extend</strong> to
+            create a subclass of the Vue constructor.
+            <br />
+            Now we can create an instance out of it with the <strong>new</strong> keyword.
+        </p>
+        <p>
+            Every Vue instance has a method called <strong>$mount</strong> on it which mounts the component instance on
+            the element you pass to it.
+            In our case, we will not pass anything to it.<br />
+            Then we get the <strong>div</strong> element with id "newTab" that we have added to the new tab and append
+            to it the DOM element reference of the Component. It is obtained using the <strong>$el</strong>
+            property of the instance.
+        </p>
+
+        <h2>Result</h2>
+        <p>
+            We have successfully added a new tab containing a Vue component to the jqxTabs.<br />
+            Our final example will look like this:
+        </p>
+        <div id="final" class="code"></div>
+    </div>
+
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+
+</html>
