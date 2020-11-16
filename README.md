@@ -17,7 +17,7 @@ Highlights
 * Rich functionality and great performance.
 * Web Components built from ground-up.
 * React Javascript Library User Interface Components
-* Angular and AngularJS 1.x Directives for every widget.
+* Angular 11 and AngularJS 1.x Directives for every widget.
 * [Blazor Controls](https://blazor.jqwidgets.com/). 
 * ASP .NET Core UI Components
 * Easy PHP & ASP .NET integration and how-to demos.
@@ -65,12 +65,14 @@ For more information, please visit https://www.jqwidgets.com/license/.
 
 More
 -
-* React Demos: https://www.jqwidgets.com/react/
-* Angular Demos: https://www.jqwidgets.com/angular/
-* Blazor Demos: https://blazor.jqwidgets.com/
+* React Demos: https://www.jqwidgets.com/react/ and https://www.htmlelements.com/react/
+* Angular Demos: https://www.jqwidgets.com/angular/ and https://www.htmlelements.com/angular/
+* Blazor Demos: https://blazor.jqwidgets.com/ and https://www.htmlelements.com/blazor/
+* Vue Demos: https://www.jqwidgets.com/vue/ and https://www.htmlelements.com/vue/
 * ASP .NET Core Demos: https://www.jqwidgets.com/asp.net-core-mvc-tag-helpers/
 * Showcase Demos: https://www.jqwidgets.com/jquery-widgets-demo/showcasedemos/
-* Javascript/jQuery Demos: https://www.jqwidgets.com/jquery-widgets-demo/
+* Javascript/jQuery Demos: https://www.jqwidgets.com/jquery-widgets-demo/ 
+* Vanilla Javascript Demos: https://www.htmlelements.com/demos/
 * Web Components Demos: https://www.htmlelements.com/
 * Services: https://www.jqwidgets.com/services/
 * Community Forums: https://www.jqwidgets.com/community/

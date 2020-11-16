@@ -1,4 +1,29 @@
 ﻿*********************************************
+* jQWidgets v11.0.0 Release, Nov-16-2020    *
+*********************************************
+
+What's New:
+
+- Angular 11 support.
+
+What's Fixed:
+
+- Fixed an issue in jqxScheduler regarding the ensureVisible method.
+- Fixed an issue in jqxScheduler regarding the 'appointmentClick' event in agenda view.
+- Fixed an issue in jqxGrid regarding the cell class name styling.
+- Fixed an issue in jqxGrid when the Grid is displayed in a DropDownButton and the animationType is "none".
+- Fixed an issue in jqxInput regarding the HTML sanitization.
+- Fixed an issue in jqxKnob regarding the 'changing' callback.
+- Fixed an issue in jqxInput regarding the "change" event raised multiple times.
+- Fixed an issue in ThemeBuilder when importing a theme.
+- Fixed an issue in ThemeBuilder regarding the DateTimeInput icon.
+- Fixed an issue in jqxToolbar regarding the z-index of its dropdown button.
+- Fixed an issue in jqxNumberInput regarding changed steps when pressing the spin down button.
+- Fixed an issue in jqxTextArea regarding the "select" event.
+- Fixed an issue in jqxKanban regarding the 'itemMoved' event for newly added item.
+- Fixed an issue in jqxPasswordInput regarding its style.
+
+*********************************************
 * jQWidgets v10.1.6 Release, Oct-16-2020    *
 *********************************************
 

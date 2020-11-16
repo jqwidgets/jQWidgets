@@ -5695,7 +5695,7 @@ ol li .jqx-listmenu-item-label:before {
     border-top-width: 0;
     border-style: solid;
     visibility: hidden;
-    z-index: 99999;
+    z-index: 1000;
 }
 
 .jqx-toolbar-tool-minimized {

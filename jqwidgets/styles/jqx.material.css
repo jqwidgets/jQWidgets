@@ -220,7 +220,7 @@
       border-color: transparent;
       box-shadow:none;
   }
-  
+
     .jqx-button-material.jqx-fill-state-focus.outlined,
     .jqx-button-material.jqx-fill-state-focus.flat {
         box-shadow: none;
@@ -567,7 +567,7 @@
     color: rgba(0,0,0,.54) !important;
     background-color: transparent;
     border-color: transparent;
-    box-shadow: none;    
+    box-shadow: none;
 }
 
 .jqx-grid-pager-top-material .jqx-grid-pager-number-material,
@@ -802,13 +802,13 @@
 .jqx-slider-material[discrete] .jqx-slider-slider-material:active
  {
     transform: scaleX(0);
-    
+
 }
 .jqx-slider-slider-horizontal-material {
-    background: #0077BE; 
+    background: #0077BE;
 }
 .jqx-slider-slider-vertical-material {
-    background: #0077BE; 
+    background: #0077BE;
 }
 .jqx-slider-tooltip-material {
     width: 25px;
@@ -825,11 +825,11 @@
 .jqx-slider-tooltip-material.hide {
      transition: transform 0.2s ease;
      transform-origin:50% 100%;
-     transform: scale(0) rotate(45deg); 
+     transform: scale(0) rotate(45deg);
 }
 .jqx-slider-tooltip-material.show {
      transition: transform 0.2s ease;
-     transform: scale(1) rotate(45deg); 
+     transform: scale(1) rotate(45deg);
 }
 
 
@@ -844,18 +844,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #0077BE; 
+    background: #0077BE;
     color: #fff;
     font-size:11px;
 }
 .jqx-slider-tooltip-material.far, .jqx-slider-tooltip-material.far .jqx-fill-state-normal-material {
-   border-radius: 0px 15px 15px 15px; 
+   border-radius: 0px 15px 15px 15px;
 }
 .jqx-slider-tooltip-material.vertical, .jqx-slider-tooltip-material.vertical .jqx-fill-state-normal-material {
-   border-radius: 15px 0px 15px 15px; 
+   border-radius: 15px 0px 15px 15px;
 }
 .jqx-slider-tooltip-material.vertical.far, .jqx-slider-tooltip-material.vertical.far .jqx-fill-state-normal-material {
-   border-radius: 15px 15px 15px 0px; 
+   border-radius: 15px 15px 15px 0px;
 }
 .jqx-slider-tooltip-material {
     background:transparent;
@@ -905,7 +905,7 @@
 }
 .jqx-slider-button-material.jqx-fill-state-normal-material,
 .jqx-slider-button-material.jqx-fill-state-hover-material,
-.jqx-slider-button-material.jqx-fill-state-pressed-material 
+.jqx-slider-button-material.jqx-fill-state-pressed-material
 {
     background: transparent !important;
 }
@@ -1069,7 +1069,7 @@
     border-color: transparent;
 }
 
-.jqx-combobox-content-focus-material, 
+.jqx-combobox-content-focus-material,
 .jqx-combobox-state-focus-material,
 .jqx-numberinput-focus-material {
     outline: none;
@@ -1109,7 +1109,7 @@
 
 .jqx-input-material.jqx-validator-error-element {
     border-color: transparent !important;
-    border-bottom: 1px solid #df2227 !important; 
+    border-bottom: 1px solid #df2227 !important;
 }
 .jqx-input-material input,
 .jqx-dropdownlist-state-normal-material,
@@ -1126,7 +1126,7 @@
     outline: none;
 }
 .jqx-datetimeinput-material .jqx-action-button-material,
-.jqx-datetimeinput-material .jqx-action-button-rtl-material 
+.jqx-datetimeinput-material .jqx-action-button-rtl-material
  {
     background-color: transparent;
     border-color: transparent;
@@ -1195,9 +1195,7 @@ textarea:focus ~ .jqx-input-bar:before,
 .jqx-complex-input-group-material .jqx-fill-state-normal-material {
     border-color: #fafafa;
 }
-input[type="password"] {
-    letter-spacing: 0.3em;
-}
+
 
 .jqx-input-widget-material.jqx-rtl > input {
     direction: rtl
@@ -1359,7 +1357,7 @@ input[type="text"].jqx-input-material:-ms-input-placeholder, input[type="text"].
 .jqx-tabs-title-selected-top-material
  {
     color: #0077BE;
-    font-weight:500;   
+    font-weight:500;
     padding-top:5px;
     padding-bottom:5px;
 }
@@ -1697,13 +1695,13 @@ input[type="text"].jqx-input-material:-ms-input-placeholder, input[type="text"].
     pointer-events: none;
     border-radius: 0%;
     transform: scaleX(0);
-    background: rgba(0,119,190,0.5); 
+    background: rgba(0,119,190,0.5);
     opacity: 0.25;
 }
 
 
 .outlined .ink, .flat .ink {
-    background: rgba(0,119,190,0.5); 
+    background: rgba(0,119,190,0.5);
     overflow:hidden;
 }
 
@@ -1717,9 +1715,9 @@ input[type="text"].jqx-input-material:-ms-input-placeholder, input[type="text"].
     overflow:visible;
 }
 .jqx-checkbox-material .ink,
-.jqx-radiobutton-material .ink 
+.jqx-radiobutton-material .ink
  {
-    transform: scale(0); 
+    transform: scale(0);
     background: #0077BE;
     border-radius: 50%;
 }

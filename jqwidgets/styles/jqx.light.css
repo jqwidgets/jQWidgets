@@ -1705,9 +1705,6 @@ textarea:focus ~ .jqx-input-bar:before,
 .jqx-complex-input-group-light .jqx-fill-state-normal-light {
     border-color: var(--jqx-border);
 }
-input[type="password"] {
-    letter-spacing: 0.3em;
-}
 
 .jqx-input-widget-light.jqx-rtl > input {
     direction: rtl
