@@ -1,4 +1,12 @@
 ﻿*********************************************
+* jQWidgets v11.0.1 Release, Dec-09-2020    *
+*********************************************
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid regarding the Sorting icons rendering in energyblue and darkblue themes.
+
+*********************************************
 * jQWidgets v11.0.0 Release, Nov-16-2020    *
 *********************************************
 
