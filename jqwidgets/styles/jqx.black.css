@@ -161,11 +161,11 @@
 }
 
 .jqx-checkbox-check-checked-black {
-    background: transparent url(images/check_white.png) left top no-repeat;
+    background: transparent url(./images/check_white.png) left top no-repeat;
 }
 
 .jqx-checkbox-check-indeterminate-black {
-    background: transparent url(images/check_indeterminate_white.png) left top no-repeat;
+    background: transparent url(./images/check_indeterminate_white.png) left top no-repeat;
 }
 
 .jqx-grid-black, .jqx-grid-header-black, .jqx-grid-cell-black {
@@ -220,7 +220,7 @@
 }
 
 .jqx-scrollbar-button-state-pressed-black {
-    background: #555 url(images/darkred_gradient.png) left top scroll repeat-x;
+    background: #555 url(./images/darkred_gradient.png) left top scroll repeat-x;
     border: 1px solid #000;
 }
 
@@ -305,13 +305,13 @@
 }
 
 .jqx-window-close-button-black, .jqx-icon-close-black, .jqx-tabs-close-button-black, .jqx-tabs-close-button-hover-black, .jqx-tabs-close-button-selected-black {
-    background-image: url(images/close_white.png);
+    background-image: url(./images/close_white.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-tree-item-arrow-collapse-rtl-black, .jqx-tree-item-arrow-collapse-hover-rtl-black {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 
 .jqx-listitem-state-group-black {
@@ -418,11 +418,11 @@
 }
 
 .jqx-icon-search-black {
-    background-image: url(images/search_white.png);
+    background-image: url(./images/search_white.png);
 }
 
 .jqx-icon-plus-black {
-    background-image: url(images/plus_white.png);
+    background-image: url(./images/plus_white.png);
 }
 
 .jqx-menu-minimized-button-black {

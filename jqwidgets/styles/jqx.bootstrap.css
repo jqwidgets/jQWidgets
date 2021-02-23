@@ -551,7 +551,7 @@
 }
 
 .jqx-tree-item-arrow-collapse-rtl-bootstrap, .jqx-tree-item-arrow-collapse-hover-rtl-bootstrap {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 
 .jqx-menu-item-arrow-left-selected-bootstrap {
@@ -591,13 +591,13 @@
 }
 
 .jqx-primary .jqx-window-close-button-bootstrap, .jqx-primary .jqx-icon-close-bootstrap, .jqx-primary .jqx-tabs-close-button-bootstrap, .jqx-primary .jqx-tabs-close-button-hover-bootstrap, .jqx-primary .jqx-tabs-close-button-selected-bootstrap {
-    background-image: url(images/close_white.png);
+    background-image: url(./images/close_white.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-primary .jqx-tree-item-arrow-collapse-rtl-bootstrap, .jqx-primary .jqx-tree-item-arrow-collapse-hover-rtl-bootstrap {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 
 .jqx-warning .jqx-grid-column-sortascbutton-bootstrap, .jqx-warning .jqx-expander-arrow-bottom-bootstrap, .jqx-warning .jqx-window-collapse-button-bootstrap, .jqx-warning .jqx-menu-item-arrow-up-bootstrap, .jqx-warning .jqx-menu-item-arrow-up-selected-bootstrap, .jqx-warning .jqx-menu-item-arrow-top-up-bootstrap, .jqx-warning .jqx-icon-arrow-up-bootstrap, .jqx-warning .jqx-icon-arrow-up-hover-bootstrap, .jqx-warning .jqx-icon-arrow-up-selected-bootstrap {
@@ -625,13 +625,13 @@
 }
 
 .jqx-warning .jqx-window-close-button-bootstrap, .jqx-warning .jqx-icon-close-bootstrap, .jqx-warning .jqx-tabs-close-button-bootstrap, .jqx-warning .jqx-tabs-close-button-hover-bootstrap, .jqx-warning .jqx-tabs-close-button-selected-bootstrap {
-    background-image: url(images/close_white.png);
+    background-image: url(./images/close_white.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-warning .jqx-tree-item-arrow-collapse-rtl-bootstrap, .jqx-warning .jqx-tree-item-arrow-collapse-hover-rtl-bootstrap {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 
 .jqx-danger .jqx-grid-column-sortascbutton-bootstrap, .jqx-danger .jqx-expander-arrow-bottom-bootstrap, .jqx-danger .jqx-window-collapse-button-bootstrap, .jqx-danger .jqx-menu-item-arrow-up-bootstrap, .jqx-danger .jqx-menu-item-arrow-up-selected-bootstrap, .jqx-danger .jqx-menu-item-arrow-top-up-bootstrap, .jqx-danger .jqx-icon-arrow-up-bootstrap, .jqx-danger .jqx-icon-arrow-up-hover-bootstrap, .jqx-danger .jqx-icon-arrow-up-selected-bootstrap {
@@ -659,13 +659,13 @@
 }
 
 .jqx-danger .jqx-window-close-button-bootstrap, .jqx-danger .jqx-icon-close-bootstrap, .jqx-danger .jqx-tabs-close-button-bootstrap, .jqx-danger .jqx-tabs-close-button-hover-bootstrap, .jqx-danger .jqx-tabs-close-button-selected-bootstrap {
-    background-image: url(images/close_white.png);
+    background-image: url(./images/close_white.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-danger .jqx-tree-item-arrow-collapse-rtl-bootstrap, .jqx-danger .jqx-tree-item-arrow-collapse-hover-rtl-bootstrap {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 
 .jqx-info .jqx-grid-column-sortascbutton-bootstrap, .jqx-info .jqx-expander-arrow-bottom-bootstrap, .jqx-info .jqx-window-collapse-button-bootstrap, .jqx-info .jqx-menu-item-arrow-up-bootstrap, .jqx-info .jqx-menu-item-arrow-up-selected-bootstrap, .jqx-info .jqx-menu-item-arrow-top-up-bootstrap, .jqx-info .jqx-icon-arrow-up-bootstrap, .jqx-info .jqx-icon-arrow-up-hover-bootstrap, .jqx-info .jqx-icon-arrow-up-selected-bootstrap {
@@ -693,13 +693,13 @@
 }
 
 .jqx-info .jqx-window-close-button-bootstrap, .jqx-info .jqx-icon-close-bootstrap, .jqx-info .jqx-tabs-close-button-bootstrap, .jqx-info .jqx-tabs-close-button-hover-bootstrap, .jqx-info .jqx-tabs-close-button-selected-bootstrap {
-    background-image: url(images/close_white.png);
+    background-image: url(./images/close_white.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-info .jqx-tree-item-arrow-collapse-rtl-bootstrap, .jqx-info .jqx-tree-item-arrow-collapse-hover-rtl-bootstrap {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 
 .jqx-success .jqx-grid-column-sortascbutton-bootstrap, .jqx-success .jqx-expander-arrow-bottom-bootstrap, .jqx-success .jqx-window-collapse-button-bootstrap, .jqx-success .jqx-menu-item-arrow-up-bootstrap, .jqx-success .jqx-menu-item-arrow-up-selected-bootstrap, .jqx-success .jqx-menu-item-arrow-top-up-bootstrap, .jqx-success .jqx-icon-arrow-up-bootstrap, .jqx-success .jqx-icon-arrow-up-hover-bootstrap, .jqx-success .jqx-icon-arrow-up-selected-bootstrap {
@@ -727,13 +727,13 @@
 }
 
 .jqx-success .jqx-window-close-button-bootstrap, .jqx-success .jqx-icon-close-bootstrap, .jqx-success .jqx-tabs-close-button-bootstrap, .jqx-success .jqx-tabs-close-button-hover-bootstrap, .jqx-success .jqx-tabs-close-button-selected-bootstrap {
-    background-image: url(images/close_white.png);
+    background-image: url(./images/close_white.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-success .jqx-tree-item-arrow-collapse-rtl-bootstrap, .jqx-success .jqx-tree-item-arrow-collapse-hover-rtl-bootstrap {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 
 .jqx-inverse .jqx-grid-column-sortascbutton-bootstrap, .jqx-inverse .jqx-expander-arrow-bottom-bootstrap, .jqx-inverse .jqx-window-collapse-button-bootstrap, .jqx-inverse .jqx-menu-item-arrow-up-bootstrap, .jqx-inverse .jqx-menu-item-arrow-up-selected-bootstrap, .jqx-inverse .jqx-menu-item-arrow-top-up-bootstrap, .jqx-inverse .jqx-icon-arrow-up-bootstrap, .jqx-inverse .jqx-icon-arrow-up-hover-bootstrap, .jqx-inverse .jqx-icon-arrow-up-selected-bootstrap {
@@ -761,13 +761,13 @@
 }
 
 .jqx-inverse .jqx-window-close-button-bootstrap, .jqx-inverse .jqx-icon-close-bootstrap, .jqx-inverse .jqx-tabs-close-button-bootstrap, .jqx-inverse .jqx-tabs-close-button-hover-bootstrap, .jqx-inverse .jqx-tabs-close-button-selected-bootstrap {
-    background-image: url(images/close_white.png);
+    background-image: url(./images/close_white.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-inverse .jqx-tree-item-arrow-collapse-rtl-bootstrap, .jqx-inverse .jqx-tree-item-arrow-collapse-hover-rtl-bootstrap {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 
 

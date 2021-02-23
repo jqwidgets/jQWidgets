@@ -210,8 +210,8 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
     background: #000;
     border-color: #636466;
 }
-.jqx-checkbox-check-checked-android{position: relative; background:transparent url(images/check_lightblue.png) center center no-repeat}
-.jqx-checkbox-check-indeterminate-android{background:transparent url(images/check_lightblue_indeterminate.png) center center no-repeat}
+.jqx-checkbox-check-checked-android{position: relative; background:transparent url(./images/check_lightblue.png) center center no-repeat}
+.jqx-checkbox-check-indeterminate-android{background:transparent url(./images/check_lightblue_indeterminate.png) center center no-repeat}
 .jqx-checkbox-hover-android, .jqx-radiobutton-hover-android {
 
 }
@@ -253,10 +253,10 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
 /*icons*/
 .jqx-window-collapse-button-android
 {
-    background-image: url(images/metro-icon-up-white.png);
+    background-image: url(./images/metro-icon-up-white.png);
 }
 .jqx-window-collapse-button-collapsed-android {
-  background-image: url(images/metro-icon-down-white.png);
+  background-image: url(./images/metro-icon-down-white.png);
 }
 .jqx-icon-arrow-up-android, .jqx-expander-arrow-bottom-android, .jqx-menu-item-arrow-up-android
 {
@@ -286,7 +286,7 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
 .jqx-menu-item-arrow-down-selected-android, .jqx-icon-arrow-down-selected-android{background-image:url('images/metro-icon-down-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-left-selected-android, .jqx-icon-arrow-left-selected-android{background-image:url('images/metro-icon-left-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-right-selected-android, .jqx-icon-arrow-right-selected-android{background-image:url('images/metro-icon-right-white.png');background-repeat:no-repeat;background-position:center;}
-.jqx-window-close-button-android, .jqx-icon-close-android, .jqx-tabs-close-button-android, .jqx-tabs-close-button-hover-android, .jqx-tabs-close-button-selected-android{background-image:url(images/close_white.png);  background-repeat:no-repeat;  background-position:center}
+.jqx-window-close-button-android, .jqx-icon-close-android, .jqx-tabs-close-button-android, .jqx-tabs-close-button-hover-android, .jqx-tabs-close-button-selected-android{background-image:url(./images/close_white.png);  background-repeat:no-repeat;  background-position:center}
 .jqx-listbox-feedback-android {
     border-top: 1px dashed #fff;
 }
@@ -451,21 +451,21 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
     border-bottom-color: #000 !important;
  }
 .jqx-grid-group-collapse-android {
-    background-image: url(images/metro-icon-right-white.png);
+    background-image: url(./images/metro-icon-right-white.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-collapse-rtl-android
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-left-white.png);
+    background-image: url(./images/metro-icon-left-white.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-expand-android, .jqx-grid-group-expand-rtl-android
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-down-white.png);
+    background-image: url(./images/metro-icon-down-white.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
@@ -480,13 +480,13 @@ input[type=text].jqx-input-android, input[type=password].jqx-input-android, .jqx
 }
 .jqx-icon-search-android
 {
-    background-image: url(images/search_white.png);
+    background-image: url(./images/search_white.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 .jqx-passwordinput-password-icon-android, .jqx-passwordinput-password-icon-rtl-android
 {
-    background-image: url(images/icon-showpassword-white.png) !important;
+    background-image: url(./images/icon-showpassword-white.png) !important;
     background-repeat: no-repeat !important;
 }
 .jqx-icon-calendar-android, .jqx-icon-calendar-hover-android, .jqx-icon-calendar-pressed-android {

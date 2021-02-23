@@ -90,10 +90,10 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-.jqx-menu-item-arrow-right-hover-highcontrast, .jqx-menu-item-arrow-right-selected-highcontrast{background-image:url(images/icon-right-white.png); background-position:100% 50%; background-repeat:no-repeat}
-.jqx-menu-item-arrow-down-hover-highcontrast, .jqx-menu-item-arrow-down-selected-highcontrast{background-image:url(images/icon-down-white.png); background-position:100% 50%; background-repeat:no-repeat}
-.jqx-menu-item-arrow-up-hover-highcontrast, .jqx-menu-item-arrow-up-selected-highcontrast{background-image:url(images/icon-up-white.png);background-position:100% 50%; background-repeat:no-repeat}
-.jqx-menu-item-arrow-left-hover-highcontrast, .jqx-menu-item-arrow-left-selected-highcontrast{background-image:url(images/icon-left-white.png); background-position:0 50%; background-repeat:no-repeat}
+.jqx-menu-item-arrow-right-hover-highcontrast, .jqx-menu-item-arrow-right-selected-highcontrast{background-image:url(./images/icon-right-white.png); background-position:100% 50%; background-repeat:no-repeat}
+.jqx-menu-item-arrow-down-hover-highcontrast, .jqx-menu-item-arrow-down-selected-highcontrast{background-image:url(./images/icon-down-white.png); background-position:100% 50%; background-repeat:no-repeat}
+.jqx-menu-item-arrow-up-hover-highcontrast, .jqx-menu-item-arrow-up-selected-highcontrast{background-image:url(./images/icon-up-white.png);background-position:100% 50%; background-repeat:no-repeat}
+.jqx-menu-item-arrow-left-hover-highcontrast, .jqx-menu-item-arrow-left-selected-highcontrast{background-image:url(./images/icon-left-white.png); background-position:0 50%; background-repeat:no-repeat}
 
 .jqx-icon-delete-highcontrast
 {
@@ -113,11 +113,11 @@
 }
 .jqx-icon-search-highcontrast
 {
-    background-image: url(images/search_white.png);
+    background-image: url(./images/search_white.png);
 }
 .jqx-icon-plus-highcontrast
 {
-    background-image: url(images/plus_white.png);
+    background-image: url(./images/plus_white.png);
 }
 .jqx-layout-highcontrast
 {

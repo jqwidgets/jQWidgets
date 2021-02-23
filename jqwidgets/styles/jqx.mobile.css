@@ -316,11 +316,11 @@ input[type=text].jqx-input-mobile, input[type=password].jqx-input-mobile, .jqx-i
 
 .jqx-checkbox-check-checked-mobile {
     position: relative;
-    background: transparent url(images/check_blue.png) center center no-repeat;
+    background: transparent url(./images/check_blue.png) center center no-repeat;
 }
 
 .jqx-checkbox-check-indeterminate-mobile {
-    background: transparent url(images/check_blue_indeterminate.png) center center no-repeat;
+    background: transparent url(./images/check_blue_indeterminate.png) center center no-repeat;
 }
 
 .jqx-radiobutton-check-checked-mobile {
@@ -363,11 +363,11 @@ input[type=text].jqx-input-mobile, input[type=password].jqx-input-mobile, .jqx-i
 
 /*icons*/
 .jqx-window-collapse-button-mobile {
-    background-image: url(images/icon-up-transparent.png);
+    background-image: url(./images/icon-up-transparent.png);
 }
 
 .jqx-window-collapse-button-collapsed-mobile {
-    background-image: url(images/icon-down-transparent.png);
+    background-image: url(./images/icon-down-transparent.png);
 }
 
 .jqx-icon-arrow-up-mobile, .jqx-expander-arrow-bottom-mobile, .jqx-menu-item-arrow-up-mobile {
@@ -433,7 +433,7 @@ input[type=text].jqx-input-mobile, input[type=password].jqx-input-mobile, .jqx-i
 }
 
 .jqx-window-close-button-mobile, .jqx-icon-close-mobile, .jqx-tabs-close-button-mobile, .jqx-tabs-close-button-hover-mobile, .jqx-tabs-close-button-selected-mobile {
-    background-image: url(images/close_blue.png);
+    background-image: url(./images/close_blue.png);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -729,21 +729,21 @@ input[type=text].jqx-input-mobile, input[type=password].jqx-input-mobile, .jqx-i
     color: #fff;
 }
 .jqx-grid-group-collapse-mobile {
-    background-image: url(images/icon-right-blue.png);
+    background-image: url(./images/icon-right-blue.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-collapse-rtl-mobile
 {
     padding-right: 0px;
-    background-image: url(images/icon-left-blue.png);
+    background-image: url(./images/icon-left-blue.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-expand-mobile, .jqx-grid-group-expand-rtl-mobile
 {
     padding-right: 0px;
-    background-image: url(images/icon-down-blue.png);
+    background-image: url(./images/icon-down-blue.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }

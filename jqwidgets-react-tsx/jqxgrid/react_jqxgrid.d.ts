@@ -112,7 +112,7 @@ declare class JqxGrid extends React.PureComponent<IGridProps, IState> {
     renderaggregates(): void;
     exportdata(dataType: string, fileName?: string, exportHeader?: boolean, rows?: number[], exportHiddenColumns?: boolean, serverURL?: string, charSet?: string): any;
     exportview(dataType: string, fileName?: string): any;
-    openColumnChooser(columns?: [], header?: string): void;
+    openColumnChooser(columns?: any, header?: string): void;
     getstate(): IGridGetState;
     loadstate(stateobject: any): void;
     savestate(): IGridGetState;
@@ -458,6 +458,10 @@ interface IGridOptions {
     autosavestate?: boolean;
     autoloadstate?: boolean;
     columns?: IGridColumn[];
+    cardview?: boolean;
+    cardviewcolumns?: any;
+    cardheight?: number;
+    cardsize?: number;
     columngroups?: any[];
     columnsmenu?: boolean;
     columnsresize?: boolean;

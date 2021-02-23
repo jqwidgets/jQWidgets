@@ -81,10 +81,10 @@
 /*icons*/
 .jqx-window-collapse-button-glacier
 {
-    background-image: url(images/metro-icon-up.png);
+    background-image: url(./images/metro-icon-up.png);
 }
 .jqx-window-collapse-button-collapsed-glacier {
-  background-image: url(images/metro-icon-down.png);
+  background-image: url(./images/metro-icon-down.png);
 }
 .jqx-icon-arrow-up-glacier, .jqx-expander-arrow-bottom-glacier, .jqx-menu-item-arrow-up-glacier
 {
@@ -114,9 +114,9 @@
 .jqx-menu-item-arrow-down-selected-glacier, .jqx-icon-arrow-down-selected-glacier{background-image:url('images/metro-icon-down-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-left-selected-glacier, .jqx-icon-arrow-left-selected-glacier{background-image:url('images/metro-icon-left-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-right-selected-glacier, .jqx-icon-arrow-right-selected-glacier{background-image:url('images/metro-icon-right-white.png');background-repeat:no-repeat;background-position:center;}
-.jqx-tabs-close-button-glacier{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
-.jqx-tabs-close-button-selected-glacier{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
-.jqx-tabs-close-button-hover-glacier{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-glacier{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-selected-glacier{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-hover-glacier{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
 .jqx-scrollbar-glacier .jqx-icon-arrow-up-selected-glacier{background-image:url('images/metro-icon-up-white.png'); background-repeat:no-repeat; background-position:center;}
 .jqx-scrollbar-glacier .jqx-icon-arrow-down-selected-glacier{background-image:url('images/metro-icon-down-white.png'); background-repeat:no-repeat; background-position:center;}
 .jqx-scrollbar-glacier .jqx-icon-arrow-left-selected-glacier{background-image:url('images/metro-icon-left-white.png'); background-repeat:no-repeat; background-position:center;}
@@ -192,21 +192,21 @@
     background-position: center;
 }
 .jqx-grid-group-collapse-glacier {
-    background-image: url(images/metro-icon-right.png);
+    background-image: url(./images/metro-icon-right.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-collapse-rtl-glacier
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-left.png);
+    background-image: url(./images/metro-icon-left.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-expand-glacier, .jqx-grid-group-expand-rtl-glacier
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-down.png);
+    background-image: url(./images/metro-icon-down.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }

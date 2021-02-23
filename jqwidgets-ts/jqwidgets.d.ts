@@ -1,7 +1,7 @@
 /*
    jQWidgets TypeScript definitions
 
-   Copyright (c) 2011-2020 jQWidgets.
+   Copyright (c) 2011-2021 jQWidgets.
    License: https://jqwidgets.com/license/
 */
 
@@ -2194,6 +2194,10 @@ declare module jqwidgets {
         autosavestate?: boolean;
         autoloadstate?: boolean;
         columns?: GridColumn[];
+        cardview?: boolean;
+        cardviewcolumns?: any;
+        cardheight?: number;
+        cardsize?: number;
         columngroups?: Array<any>;
         columnsmenu?: boolean;
         columnsresize?: boolean;

@@ -335,7 +335,7 @@
     background-position: center;
 }
 .jqx-tree-item-arrow-collapse-rtl-blackberry, .jqx-tree-item-arrow-collapse-hover-rtl-blackberry {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 
 .jqx-menu-item-arrow-left-selected-blackberry {
@@ -468,10 +468,10 @@ input[type="text"].jqx-input-blackberry:-ms-input-placeholder, input[type="text"
 .jqx-icon-arrow-right-selected-blackberry{background-image:url('images/icon-right-white.png');background-repeat:no-repeat; background-position:center}
 .jqx-grid-column-sortdescbutton-blackberry, jqx-grid-column-filterbutton-blackberry, .jqx-grid-column-sortascbutton-blackberry{ background-color:transparent;  border-style:solid;  border-width:0px 0px 0px 0px;  border-color:#0076ae}
 
-.jqx-menu-item-arrow-right-selected-blackberry{background-image:url(images/icon-right-white.png); background-position:100% 50%; background-repeat:no-repeat}
-.jqx-menu-item-arrow-down-selected-blackberry{background-image:url(images/icon-down-white.png); background-position:100% 50%; background-repeat:no-repeat}
-.jqx-menu-item-arrow-up-selected-blackberry{background-image:url(images/icon-up-white.png);background-position:100% 50%; background-repeat:no-repeat}
-.jqx-menu-item-arrow-left-selected-blackberry{background-image:url(images/icon-left-white.png); background-position:0 50%; background-repeat:no-repeat}
+.jqx-menu-item-arrow-right-selected-blackberry{background-image:url(./images/icon-right-white.png); background-position:100% 50%; background-repeat:no-repeat}
+.jqx-menu-item-arrow-down-selected-blackberry{background-image:url(./images/icon-down-white.png); background-position:100% 50%; background-repeat:no-repeat}
+.jqx-menu-item-arrow-up-selected-blackberry{background-image:url(./images/icon-up-white.png);background-position:100% 50%; background-repeat:no-repeat}
+.jqx-menu-item-arrow-left-selected-blackberry{background-image:url(./images/icon-left-white.png); background-position:0 50%; background-repeat:no-repeat}
 
 .jqx-button-blackberry .jqx-icon-arrow-left-blackberry {
     background-image:url('images/icon-left.png');
@@ -521,7 +521,7 @@ input[type="text"].jqx-input-blackberry:-ms-input-placeholder, input[type="text"
 .jqx-grid-column-menubutton-blackberry, .jqx-grid-column-sortdescbutton-blackberry, .jqx-window-collapse-button-collapsed-blackberry, .jqx-menu-item-arrow-down-selected-blackberry, .jqx-menu-item-arrow-down-blackberry, .jqx-icon-arrow-down-selected-blackberry{background-image:url('images/icon-down-white.png');background-repeat:no-repeat;background-position:center}
 .jqx-tabs-arrow-left-blackberry, .jqx-menu-item-arrow-left-selected-blackberry, .jqx-icon-arrow-left-blackberry, .jqx-menu-item-arrow-top-left-blackberry{background-image:url('images/icon-left-white.png');background-repeat:no-repeat;background-position:center}
 .jqx-tabs-arrow-right-blackberry, .jqx-menu-item-arrow-right-selected-blackberry, .jqx-menu-item-arrow-top-right-blackberry, .jqx-icon-arrow-right-blackberry, .jqx-icon-arrow-right-hover-blackberry, .jqx-icon-arrow-right-selected-blackberry{background-image:url('images/icon-right-white.png');background-repeat:no-repeat;background-position:center}
-.jqx-window-close-button-blackberry, .jqx-icon-close-blackberry, .jqx-tabs-close-button-blackberry, .jqx-tabs-close-button-hover-blackberry, .jqx-tabs-close-button-selected-blackberry{background-image:url(images/close_white.png);  background-repeat:no-repeat;  background-position:center}
+.jqx-window-close-button-blackberry, .jqx-icon-close-blackberry, .jqx-tabs-close-button-blackberry, .jqx-tabs-close-button-hover-blackberry, .jqx-tabs-close-button-selected-blackberry{background-image:url(./images/close_white.png);  background-repeat:no-repeat;  background-position:center}
 .jqx-button-blackberry {
    padding: 10px 7px;
 }

@@ -146,10 +146,10 @@
 /*icons*/
 .jqx-window-collapse-button-metro
 {
-    background-image: url(images/metro-icon-up.png);
+    background-image: url(./images/metro-icon-up.png);
 }
 .jqx-window-collapse-button-collapsed-metro {
-  background-image: url(images/metro-icon-down.png);
+  background-image: url(./images/metro-icon-down.png);
 }
 .jqx-icon-arrow-up-metro, .jqx-expander-arrow-bottom-metro, .jqx-menu-item-arrow-up-metro
 {
@@ -179,9 +179,9 @@
 .jqx-menu-item-arrow-down-selected-metro, .jqx-icon-arrow-down-selected-metro{background-image:url('images/metro-icon-down-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-left-selected-metro, .jqx-icon-arrow-left-selected-metro{background-image:url('images/metro-icon-left-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-right-selected-metro, .jqx-icon-arrow-right-selected-metro{background-image:url('images/metro-icon-right-white.png');background-repeat:no-repeat;background-position:center;}
-.jqx-tabs-close-button-metro{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
-.jqx-tabs-close-button-selected-metro{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
-.jqx-tabs-close-button-hover-metro{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-metro{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-selected-metro{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-hover-metro{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
 .jqx-scrollbar-metro .jqx-icon-arrow-up-selected-metro{background-image:url('images/metro-icon-up-white.png'); background-repeat:no-repeat; background-position:center;}
 .jqx-scrollbar-metro .jqx-icon-arrow-down-selected-metro{background-image:url('images/metro-icon-down-white.png'); background-repeat:no-repeat; background-position:center;}
 .jqx-scrollbar-metro .jqx-icon-arrow-left-selected-metro{background-image:url('images/metro-icon-left-white.png'); background-repeat:no-repeat; background-position:center;}
@@ -257,21 +257,21 @@
     background-position: center;
 }
 .jqx-grid-group-collapse-metro {
-    background-image: url(images/metro-icon-right.png);
+    background-image: url(./images/metro-icon-right.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-collapse-rtl-metro
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-left.png);
+    background-image: url(./images/metro-icon-left.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-expand-metro, .jqx-grid-group-expand-rtl-metro
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-down.png);
+    background-image: url(./images/metro-icon-down.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }

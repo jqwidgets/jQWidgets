@@ -142,11 +142,11 @@
 /*icons*/
 .jqx-window-collapse-button-office
 {
-    background-image: url(images/office-icon-up.png);
+    background-image: url(./images/office-icon-up.png);
     background-repeat: no-repeat;
 }
 .jqx-window-collapse-button-collapsed-office {
-    background-image: url(images/office-icon-down.png);
+    background-image: url(./images/office-icon-down.png);
     background-repeat: no-repeat;
 }
 .jqx-icon-arrow-up-office, .jqx-expander-arrow-bottom-office, .jqx-menu-item-arrow-up-office
@@ -188,9 +188,9 @@
 .jqx-menu-item-arrow-down-selected-office, .jqx-icon-arrow-down-selected-office{background-image:url('images/office-icon-down.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-left-selected-office, .jqx-icon-arrow-left-selected-office{background-image:url('images/office-icon-left.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-right-selected-office, .jqx-icon-arrow-right-selected-office{background-image:url('images/office-icon-right.png');background-repeat:no-repeat;background-position:center;}
-.jqx-tabs-close-button-office{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
-.jqx-tabs-close-button-selected-office{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
-.jqx-tabs-close-button-hover-office{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-office{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-selected-office{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-hover-office{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
 .jqx-expander-arrow-bottom-office,.jqx-scrollbar-office .jqx-icon-arrow-up-selected-office{background-image:url('images/office-icon-up.png'); background-repeat:no-repeat; background-position:center;}
 .jqx-expander-arrow-top-office, .jqx-scrollbar-office .jqx-icon-arrow-down-selected-office{background-image:url('images/office-icon-down.png'); background-repeat:no-repeat; background-position:center;}
 .jqx-scrollbar-office .jqx-icon-arrow-left-selected-office{background-image:url('images/office-icon-left.png'); background-repeat:no-repeat; background-position:center;}

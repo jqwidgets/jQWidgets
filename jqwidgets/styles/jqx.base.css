@@ -911,7 +911,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to the Grid when its loading the data.*/
 .jqx-grid-load {
     padding-right: 0px;
-    background-image: url(images/loader.gif);
+    background-image: url(./images/loader.gif);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     z-index: 9999;
@@ -920,7 +920,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to a group's collapse button.*/
 .jqx-grid-group-collapse {
     padding-right: 0px;
-    background-image: url(images/icon-right.png);
+    background-image: url(./images/icon-right.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -928,7 +928,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 
 .jqx-grid-group-collapse-rtl {
     padding-right: 0px;
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -936,7 +936,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to a group's expand button.*/
 .jqx-grid-group-expand, .jqx-grid-group-expand-rtl {
     padding-right: 0px;
-    background-image: url(images/icon-down.png);
+    background-image: url(./images/icon-down.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -1136,15 +1136,15 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 }
 /*applied to a sub menu item when it has sub menu items. Displays right arrow icon.*/
 .jqx-menu-item-arrow-right {
-    background-image: url(images/icon-right.png);
+    background-image: url(./images/icon-right.png);
 }
 /*applied to a sub menu item when it has sub menu items. Displays down arrow icon.*/
 .jqx-menu-item-arrow-down {
-    background-image: url(images/icon-down.png);
+    background-image: url(./images/icon-down.png);
 }
 /*applied to a sub menu item when it has sub menu items. Displays up arrow icon.*/
 .jqx-menu-item-arrow-up {
-    background-image: url(images/icon-up.png);
+    background-image: url(./images/icon-up.png);
 }
 
 .jqx-menu-minimized {
@@ -1206,21 +1206,21 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     padding-left: 5px;
     width: 17px;
     height: 15px;
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
     background-position: 0 50%;
     background-repeat: no-repeat;
 }
 /*applied to a sub menu item when it has sub menu items and its sub menu is opened. Displays right arrow icon.*/
 .jqx-menu-item-arrow-right-selected {
-    background-image: url(images/icon-right.png);
+    background-image: url(./images/icon-right.png);
 }
 /*applied to a sub menu item when it has sub menu items and its sub menu is opened. Displays down arrow icon.*/
 .jqx-menu-item-arrow-down-selected {
-    background-image: url(images/icon-down.png);
+    background-image: url(./images/icon-down.png);
 }
 /*applied to a sub menu item when it has sub menu items and its sub menu is opened. Displays up arrow icon.*/
 .jqx-menu-item-arrow-up-selected {
-    background-image: url(images/icon-up.png);
+    background-image: url(./images/icon-up.png);
 }
 
 .jqx-menu-item-arrow-right-selected, .jqx-menu-item-arrow-up-selected, .jqx-menu-item-arrow-down-selected, .jqx-menu-item-arrow-top-right {
@@ -1233,15 +1233,15 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 }
 /*applied to a top-level menu item when it has sub menu items. Displays right arrow icon.*/
 .jqx-menu-item-arrow-top-right {
-    background-image: url(images/icon-right.png);
+    background-image: url(./images/icon-right.png);
 }
 /*applied to a sub menu item when it has sub menu items and its sub menu is opened. Displays left arrow icon.*/
 .jqx-menu-item-arrow-left-selected {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 /*applied to a top-level menu item when it has sub menu items. Displays left arrow icon.*/
 .jqx-menu-item-arrow-top-left {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 
 .jqx-menu-item-arrow-left-selected, .jqx-menu-item-arrow-top-left {
@@ -1442,14 +1442,14 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     padding-right: 0px;
     width: 17px;
     height: 17px;
-    background-image: url(images/icon-right.png);
+    background-image: url(./images/icon-right.png);
     background-position: 100% 50%;
     background-repeat: no-repeat;
     cursor: pointer;
 }
 
 .jqx-tree-item-arrow-collapse-rtl, .jqx-tree-item-arrow-collapse-hover-rtl {
-    background-image: url(images/icon-left.png);
+    background-image: url(./images/icon-left.png);
 }
 
 /*applied to a tree item when it has sub items and is expanded. Displays an arrow icon next to the item.*/
@@ -1457,7 +1457,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     padding-right: 0px;
     width: 17px;
     height: 17px;
-    background-image: url(images/icon-down.png);
+    background-image: url(./images/icon-down.png);
     background-position: 100% 50%;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -1494,7 +1494,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to the tab close button.*/
 .jqx-tabs-close-button {
     outline: none;
-    background-image: url(images/close.png);
+    background-image: url(./images/close.png);
     cursor: pointer;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
@@ -1504,7 +1504,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to the tab close button when the tab is selected.*/
 .jqx-tabs-close-button-selected {
     outline: none;
-    background-image: url(images/close.png);
+    background-image: url(./images/close.png);
     cursor: pointer;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
@@ -1512,7 +1512,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to the tab close button when the mouse is over the tab.*/
 .jqx-tabs-close-button-hover {
     outline: none;
-    background-image: url(images/close.png);
+    background-image: url(./images/close.png);
     cursor: pointer;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
@@ -1771,7 +1771,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to the check box when it is checked. Displays a check icon.*/
 .jqx-checkbox-check-checked {
     float: left;
-    background: transparent url(images/check_black.png) center center no-repeat;
+    background: transparent url(./images/check_black.png) center center no-repeat;
     padding: 0px;
     border: none;
     outline: none;
@@ -1780,7 +1780,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to the check box when the widget is disabled. Displays a disabled check icon.*/
 .jqx-checkbox-check-disabled {
     float: left;
-    background: transparent url(images/check_disabled.png) center center no-repeat;
+    background: transparent url(./images/check_disabled.png) center center no-repeat;
     padding: 0px;
     border: none;
     outline: none;
@@ -1789,7 +1789,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to the check box when its state is indeterminate.*/
 .jqx-checkbox-check-indeterminate {
     float: left;
-    background: transparent url(images/check_indeterminate_black.png) center center no-repeat;
+    background: transparent url(./images/check_indeterminate_black.png) center center no-repeat;
     padding: 0px;
     border: none;
     outline: none;
@@ -1798,7 +1798,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to the check box when its state is indeterminate and it is disabled.*/
 .jqx-checkbox-check-indeterminate-disabled {
     float: left;
-    background: transparent url(images/check_indeterminate_disabled.png) center center no-repeat;
+    background: transparent url(./images/check_indeterminate_disabled.png) center center no-repeat;
     padding: 0px;
     border: none;
     outline: none;
@@ -1821,7 +1821,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 .jqx-radiobutton-default {
     cursor: pointer;
     float: left;
-    background: transparent url(images/roundbg_classic_normal.png) left center scroll repeat-x;
+    background: transparent url(./images/roundbg_classic_normal.png) left center scroll repeat-x;
     padding: 0px;
     border: 1px solid transparent;
     outline: none;
@@ -1853,7 +1853,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to the radio button when it is checked.*/
 .jqx-radiobutton-check-checked {
     float: left;
-    background: transparent url(images/roundbg_check_black.png) left top no-repeat;
+    background: transparent url(./images/roundbg_check_black.png) left top no-repeat;
     padding: 0px;
     border: 1px solid transparent;
     outline: none;
@@ -1872,7 +1872,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 /*applied to the radio button when it is in indeterminate state.*/
 .jqx-radiobutton-check-indeterminate {
     float: left;
-    background: transparent url(images/roundbg_check_indeterminate.png) left top no-repeat;
+    background: transparent url(./images/roundbg_check_indeterminate.png) left top no-repeat;
     padding: 0px;
     border: none;
     outline: none;
@@ -1912,7 +1912,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-color: transparent;
     background-repeat: no-repeat;
     cursor: pointer;
-    background-image: url(images/star.png);
+    background-image: url(./images/star.png);
     overflow: hidden;
 }
 /*applied to the rating when it is hovered.*/
@@ -1921,7 +1921,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     padding: 0px;
     background-repeat: no-repeat;
     cursor: pointer;
-    background-image: url(images/star_hover.png);
+    background-image: url(./images/star_hover.png);
     overflow: hidden;
 }
 /*applied to the rating when it is disabled.*/
@@ -1930,7 +1930,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     padding: 0px;
     background-repeat: no-repeat;
     cursor: pointer;
-    background-image: url(images/star_disabled.png);
+    background-image: url(./images/star_disabled.png);
     overflow: hidden;
 }
 /*jqxCalendar Style*/
@@ -2687,13 +2687,13 @@ of the horizontal scrollbar.*/
 /*applied to the window’s close button*/
 .jqx-window-close-button {
     cursor: pointer;
-    background-image: url(images/close.png);
+    background-image: url(./images/close.png);
     background-repeat: no-repeat;
     margin-top: 2px;
 }
 /*applied to the window's collapse button*/
 .jqx-window-collapse-button {
-    background-image: url(images/icon-up.png);
+    background-image: url(./images/icon-up.png);
     cursor: pointer;
     margin-top: 3px;
 }
@@ -2701,7 +2701,7 @@ of the horizontal scrollbar.*/
 .jqx-window-collapse-button-collapsed {
     margin-top: 3px;
     cursor: pointer;
-    background-image: url(images/icon-down.png);
+    background-image: url(./images/icon-down.png);
 }
 /*setting styles of the modal window’s background*/
 .jqx-window-modal {
@@ -2917,7 +2917,7 @@ of the horizontal scrollbar.*/
     padding: 0px;
     margin: 0px;
     background-color: transparent;
-    background-image: url(images/multi-arrow.gif);
+    background-image: url(./images/multi-arrow.gif);
 }
 
 .jqx-validator-error-label {
@@ -3091,25 +3091,25 @@ of the horizontal scrollbar.*/
 
 .jqx-icon-close {
     cursor: pointer;
-    background-image: url(images/close.png);
+    background-image: url(./images/close.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-icon-close-white {
-    background-image: url(images/close_white.png);
+    background-image: url(./images/close_white.png);
 }
 
 .jqx-icon-close-hover {
     cursor: pointer;
-    background-image: url(images/close.png);
+    background-image: url(./images/close.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-icon-search {
     cursor: pointer;
-    background-image: url(images/search.png);
+    background-image: url(./images/search.png);
     background-repeat: no-repeat;
     background-position: center;
     margin-top: 1px;
@@ -3119,7 +3119,7 @@ of the horizontal scrollbar.*/
 }
 
 .jqx-icon-plus {
-    background-image: url(images/plus.png);
+    background-image: url(./images/plus.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px;
@@ -3128,7 +3128,7 @@ of the horizontal scrollbar.*/
 }
 
 .jqx-icon-plus-alt, .jqx-icon-plus-alt-white {
-    background-image: url(images/icon-plus.png);
+    background-image: url(./images/icon-plus.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px;
@@ -3137,7 +3137,7 @@ of the horizontal scrollbar.*/
 }
 
 .jqx-icon-plus-alt-white {
-    background-image: url(images/icon-plus-white.png);
+    background-image: url(./images/icon-plus-white.png);
 }
 /* jqxScrollView */
 .jqx-scrollview-button {
@@ -4438,7 +4438,7 @@ ol li .jqx-listmenu-item-label:before {
 }
 
 .jqx-passwordinput-password-icon, .jqx-passwordinput-password-icon-rtl {
-    background-image: url(images/icon-showpassword.png) !important;
+    background-image: url(./images/icon-showpassword.png) !important;
     background-repeat: no-repeat !important;
     width: 14px;
     height: 9px;
@@ -7756,4 +7756,62 @@ jqx-knob {
     100% {
         opacity: 1;
     }
+}
+.jqx-grid-card-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100%;
+    overflow: hidden;
+}
+
+.jqx-grid-card-cell {
+    padding: 15px;
+    overflow: auto;
+}
+
+.jqx-grid-card-cell table {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    table-layout: fixed;
+    border: 1px solid #bbb;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 4px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.jqx-grid-card-cell{
+	position: relative;
+}
+
+.jqx-grid-card-cell .jqx-icon-edit {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	position: absolute;
+	right: 25px;
+    top: 25px;
+	background-size: 13px;
+	cursor: pointer;
+}
+
+.jqx-grid-card-cell input{
+    padding: 4px;
+
+}
+
+.jqx-grid-card-cell-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgb(90,90,90);
+}
+.jqx-grid-card-cell td div {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.jqx-card-edit-buttons {
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
 }

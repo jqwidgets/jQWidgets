@@ -531,7 +531,7 @@
 }
 
 .jqx-checkbox-check-checked-light {
-    background: transparent url(images/material_check_black.png) center center no-repeat;
+    background: transparent url(./images/material_check_black.png) center center no-repeat;
 }
 .jqx-checkbox-check-indeterminate-light {
     width:14px !important;
@@ -759,7 +759,7 @@
 }
 
 .jqx-tree-item-arrow-collapse-rtl-light, .jqx-tree-item-arrow-collapse-hover-rtl-light {
-    background-image: url(images/metro-icon-left.png);
+    background-image: url(./images/metro-icon-left.png);
 }
 
 .jqx-menu-item-arrow-left-selected-light {
@@ -1041,9 +1041,9 @@ input[type="text"].jqx-input-light:-ms-input-placeholder, input[type="text"].jqx
 .jqx-menu-item-arrow-down-selected-light, .jqx-icon-arrow-down-selected-light{background-image:url('images/metro-icon-down-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-left-selected-light, .jqx-icon-arrow-left-selected-light{background-image:url('images/metro-icon-left-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-right-selected-light, .jqx-icon-arrow-right-selected-light{background-image:url('images/metro-icon-right-white.png');background-repeat:no-repeat;background-position:center;}
-.jqx-tabs-close-button-light{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
-.jqx-tabs-close-button-selected-light{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
-.jqx-tabs-close-button-hover-light{background-image:url(images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-light{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-selected-light{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
+.jqx-tabs-close-button-hover-light{background-image:url(./images/close.png);  background-repeat:no-repeat;  background-position:center;}
 .jqx-scrollbar-button-state-pressed-light .jqx-icon-arrow-up-selected-light{background-image:url('images/metro-icon-up.png');background-repeat:no-repeat;background-position:center;}
 .jqx-scrollbar-button-state-pressed-light .jqx-icon-arrow-down-selected-light{background-image:url('images/metro-icon-down.png');background-repeat:no-repeat;background-position:center;}
 .jqx-scrollbar-button-state-pressed-light .jqx-icon-arrow-left-selected-light{background-image:url('images/metro-icon-left.png');background-repeat:no-repeat;background-position:center;}
@@ -1070,21 +1070,21 @@ input[type="text"].jqx-input-light:-ms-input-placeholder, input[type="text"].jqx
     background-position: center;
 }
 .jqx-grid-group-collapse-light {
-    background-image: url(images/metro-icon-right.png);
+    background-image: url(./images/metro-icon-right.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-collapse-rtl-light
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-left.png);
+    background-image: url(./images/metro-icon-left.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-expand-light, .jqx-grid-group-expand-rtl-light
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-down.png);
+    background-image: url(./images/metro-icon-down.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
@@ -1262,11 +1262,11 @@ input[type="text"].jqx-input-light:-ms-input-placeholder, input[type="text"].jqx
 }
 .jqx-fill-state-pressed-light .jqx-icon-search-light
 {
-    background-image: url(images/search_white.png);
+    background-image: url(./images/search_white.png);
 }
 .jqx-fill-state-pressed-light .jqx-icon-plus-light
 {
-    background-image: url(images/plus_white.png);
+    background-image: url(./images/plus_white.png);
 }
 .jqx-fill-state-pressed-light .jqx-menu-minimized-button-light {
    background-image: url('images/icon-menu-minimized-white.png');

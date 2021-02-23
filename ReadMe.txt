@@ -22,7 +22,8 @@ https://www.npmjs.com/package/smart-webcomponents-react
 
 Blazor:
 
-dotnet add package jQWidgets.Blazor
+dotnet add package Smart.Blazor
+
 
 1. The SDK files are located in the jqwidgets directory
  

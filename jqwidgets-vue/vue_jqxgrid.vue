@@ -114,6 +114,10 @@
             autosavestate: Boolean,
             autoloadstate: Boolean,
             columns: Array,
+            cardview: Boolean,
+            cardviewcolumns: Any,
+            cardheight: Number,
+            cardsize: Number,
             columngroups: Array,
             columnsmenu: Boolean,
             columnsresize: Boolean,
@@ -1040,6 +1044,34 @@
                     return JQXLite(this.componentSelector).jqxGrid('columns');
                 }
             },
+            _cardview: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('cardview', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('cardview');
+                }
+            },
+            _cardviewcolumns: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('cardviewcolumns', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('cardviewcolumns');
+                }
+            },
+            _cardheight: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('cardheight', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('cardheight');
+                }
+            },
+            _cardsize: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('cardsize', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('cardsize');
+                }
+            },
             _columngroups: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxGrid('columngroups', arg)
@@ -1335,7 +1367,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','adaptivewidth','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','adaptivewidth','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -2115,6 +2147,46 @@
                     },
                     set: function(newValue) {
                         that._columns(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'cardview', {
+                    get: function() {
+                        return that._cardview();
+                    },
+                    set: function(newValue) {
+                        that._cardview(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'cardviewcolumns', {
+                    get: function() {
+                        return that._cardviewcolumns();
+                    },
+                    set: function(newValue) {
+                        that._cardviewcolumns(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'cardheight', {
+                    get: function() {
+                        return that._cardheight();
+                    },
+                    set: function(newValue) {
+                        that._cardheight(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'cardsize', {
+                    get: function() {
+                        return that._cardsize();
+                    },
+                    set: function(newValue) {
+                        that._cardsize(newValue);
                     },
                     enumerable: true,
                     configurable: true

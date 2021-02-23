@@ -1,4 +1,28 @@
-﻿*********************************************
+﻿jQWidgets v12.0.0 Release, Feb-24-2021
+
+What's New:
+
+- jqxGrid Card View mode.
+- Angular v11.2.2 support.
+
+What's Fixed:
+
+- Fixed an issue regarding the jqxNumberInput component. Using the "val" method with the negative value it behaves inappropriately when is with the "simple" input mode
+- Fixed an issue regarding the jqxKnob component usage with IPad when there are multiple knobs on the page. 
+- Fixed an issue regarding the grid filtering, when the grid data source is updated dynamically and a filter is applied.
+- Fixed an issue regarding the filter menu rendering when row details are enabled.
+- Fixed an issue regarding the jqxPivotGrid Drill through functionality and selection events.
+
+jQWidgets v11.1.3 Release, Feb-09-2021
+
+What's Fixed:
+
+- Fixed an issue regarding the Angular CLI ng-add schematics.
+- Fixed an issue regarding the Angular CLI ng-generate schematics.
+- Fixed an issue regarding the default theme in Angular 11.1.4.
+- Fixed an issue regarding the stricter type checking in Angular
+
+*********************************************
 * jQWidgets v11.0.1 Release, Dec-09-2020    *
 *********************************************
 

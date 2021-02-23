@@ -767,7 +767,7 @@
 }
 
 .jqx-checkbox-check-checked-material {
-    background: transparent url(images/material_check_white.png) center center no-repeat;
+    background: transparent url(./images/material_check_white.png) center center no-repeat;
 }
 .jqx-checkbox-check-indeterminate-material {
     width:14px !important;
@@ -1013,7 +1013,7 @@
 }
 
 .jqx-tree-item-arrow-collapse-rtl-material, .jqx-tree-item-arrow-collapse-hover-rtl-material {
-    background-image: url(images/material-icon-left.png);
+    background-image: url(./images/material-icon-left.png);
 }
 
 .jqx-menu-item-arrow-left-selected-material {
@@ -1049,7 +1049,7 @@
 }
 
 .jqx-combobox-material .jqx-icon-close-material {
-    background-image:url(images/close_white.png)
+    background-image:url(./images/close_white.png)
 }
 .jqx-combobox-material, .jqx-input-material {
     border-color: #E0E0E0;
@@ -1488,19 +1488,19 @@ input[type="text"].jqx-input-material:-ms-input-placeholder, input[type="text"].
 }
 
 .jqx-tabs-close-button-material {
-    background-image: url(images/close.png);
+    background-image: url(./images/close.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-tabs-close-button-selected-material {
-    background-image: url(images/close.png);
+    background-image: url(./images/close.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .jqx-tabs-close-button-hover-material {
-    background-image: url(images/close.png);
+    background-image: url(./images/close.png);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -1554,21 +1554,21 @@ input[type="text"].jqx-input-material:-ms-input-placeholder, input[type="text"].
 }
 
 .jqx-grid-group-collapse-material {
-    background-image: url(images/material-icon-right.png);
+    background-image: url(./images/material-icon-right.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 
 .jqx-grid-group-collapse-rtl-material {
     padding-right: 0px;
-    background-image: url(images/material-icon-left.png);
+    background-image: url(./images/material-icon-left.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 
 .jqx-grid-group-expand-material, .jqx-grid-group-expand-rtl-material {
     padding-right: 0px;
-    background-image: url(images/material-icon-down.png);
+    background-image: url(./images/material-icon-down.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
@@ -1793,11 +1793,11 @@ input[type="text"].jqx-input-material:-ms-input-placeholder, input[type="text"].
 }
 .jqx-fill-state-pressed-material .jqx-icon-search-material
 {
-    background-image: url(images/search_white.png);
+    background-image: url(./images/search_white.png);
 }
 .jqx-fill-state-pressed-material .jqx-icon-plus-material
 {
-    background-image: url(images/plus_white.png);
+    background-image: url(./images/plus_white.png);
 }
 .jqx-fill-state-pressed-material .jqx-menu-minimized-button-material {
    background-image: url('images/icon-menu-minimized-white.png');

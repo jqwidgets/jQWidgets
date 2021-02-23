@@ -190,8 +190,8 @@ border-color:#008a00; color: #fff; background-color:#008a00;
     background: black;
     border-color: white;
 }
-.jqx-checkbox-check-checked-windowsphone{background:transparent url(images/wp_check_white.png) center center no-repeat}
-.jqx-checkbox-check-indeterminate-windowsphone{background:transparent url(images/wp_check_indeterminate_white.png) center center no-repeat}
+.jqx-checkbox-check-checked-windowsphone{background:transparent url(./images/wp_check_white.png) center center no-repeat}
+.jqx-checkbox-check-indeterminate-windowsphone{background:transparent url(./images/wp_check_indeterminate_white.png) center center no-repeat}
 .jqx-checkbox-hover-windowsphone, .jqx-radiobutton-hover-windowsphone {
     background-color: #000;
     border-color: #fff;
@@ -247,10 +247,10 @@ border-color:#008a00; color: #fff; background-color:#008a00;
 /*icons*/
 .jqx-window-collapse-button-windowsphone
 {
-    background-image: url(images/metro-icon-up-white.png);
+    background-image: url(./images/metro-icon-up-white.png);
 }
 .jqx-window-collapse-button-collapsed-windowsphone {
-  background-image: url(images/metro-icon-down-white.png);
+  background-image: url(./images/metro-icon-down-white.png);
 }
 .jqx-icon-arrow-up-windowsphone, .jqx-expander-arrow-bottom-windowsphone, .jqx-menu-item-arrow-up-windowsphone
 {
@@ -280,7 +280,7 @@ border-color:#008a00; color: #fff; background-color:#008a00;
 .jqx-menu-item-arrow-down-selected-windowsphone, .jqx-icon-arrow-down-selected-windowsphone{background-image:url('images/metro-icon-down-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-left-selected-windowsphone, .jqx-icon-arrow-left-selected-windowsphone{background-image:url('images/metro-icon-left-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-right-selected-windowsphone, .jqx-icon-arrow-right-selected-windowsphone{background-image:url('images/metro-icon-right-white.png');background-repeat:no-repeat;background-position:center;}
-.jqx-window-close-button-windowsphone, .jqx-icon-close-windowsphone, .jqx-tabs-close-button-windowsphone, .jqx-tabs-close-button-hover-windowsphone, .jqx-tabs-close-button-selected-windowsphone{background-image:url(images/close_white.png);  background-repeat:no-repeat;  background-position:center}
+.jqx-window-close-button-windowsphone, .jqx-icon-close-windowsphone, .jqx-tabs-close-button-windowsphone, .jqx-tabs-close-button-hover-windowsphone, .jqx-tabs-close-button-selected-windowsphone{background-image:url(./images/close_white.png);  background-repeat:no-repeat;  background-position:center}
 .jqx-listbox-feedback-windowsphone {
     border-top: 1px dashed #fff;
 }
@@ -404,21 +404,21 @@ border-color:#008a00; color: #fff; background-color:#008a00;
     font-size: 16px;
 }
 .jqx-grid-group-collapse-windowsphone {
-    background-image: url(images/metro-icon-right-white.png);
+    background-image: url(./images/metro-icon-right-white.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-collapse-rtl-windowsphone
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-left-white.png);
+    background-image: url(./images/metro-icon-left-white.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-expand-windowsphone, .jqx-grid-group-expand-rtl-windowsphone
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-down-white.png);
+    background-image: url(./images/metro-icon-down-white.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
@@ -457,7 +457,7 @@ border-color:#008a00; color: #fff; background-color:#008a00;
 }
 .jqx-icon-search-windowsphone
 {
-    background-image: url(images/search_white.png);
+    background-image: url(./images/search_white.png);
     background-repeat: no-repeat;
     background-position: center;
 }

@@ -42,8 +42,8 @@
   border-color: #325da7;
 }
 /*checkbox images, grid cells*/
-.jqx-checkbox-check-checked-orange{background:transparent url(images/check_white.png) left top no-repeat}
-.jqx-checkbox-check-indeterminate-orange{background:transparent url(images/check_indeterminate_white.png) left top no-repeat}
+.jqx-checkbox-check-checked-orange{background:transparent url(./images/check_white.png) left top no-repeat}
+.jqx-checkbox-check-indeterminate-orange{background:transparent url(./images/check_indeterminate_white.png) left top no-repeat}
 .jqx-grid-orange, .jqx-grid-header-orange, .jqx-grid-cell-orange{border-color:#E48605}
 .jqx-widget-orange .jqx-grid-cell-orange, .jqx-widget-orange .jqx-grid-group-cell-orange{border-color:#FBB34E}
 .jqx-widget-orange .jqx-grid-column-header-orange{border-color:#E48605}
@@ -71,7 +71,7 @@ border-color:#FBB34E; }
 .jqx-grid-column-menubutton-orange, .jqx-grid-column-sortdescbutton-orange, .jqx-expander-arrow-top-orange, .jqx-window-collapse-button-collapsed-orange, .jqx-menu-item-arrow-down-orange, .jqx-menu-item-arrow-down-selected-orange, .jqx-menu-item-arrow-down-orange, .jqx-icon-arrow-down-orange, .jqx-icon-arrow-down-hover-orange, .jqx-icon-arrow-down-selected-orange{background-image:url('images/icon-down-white.png');background-repeat:no-repeat;background-position:center}
 .jqx-tabs-arrow-left-orange, .jqx-menu-item-arrow-left-selected-orange, .jqx-menu-item-arrow-top-left-orange, .jqx-icon-arrow-down-left-orange, .jqx-icon-arrow-left-selected-orange{background-image:url('images/icon-left-white.png');background-repeat:no-repeat;background-position:center}
 .jqx-tabs-arrow-right-orange, .jqx-menu-item-arrow-right-selected-orange, .jqx-menu-item-arrow-top-right-orange, .jqx-icon-arrow-right-hover-orange, .jqx-icon-arrow-right-selected-orange{background-image:url('images/icon-right-white.png');background-repeat:no-repeat;background-position:center}
-.jqx-window-close-button-orange, .jqx-icon-close-orange, .jqx-tabs-close-button-orange, .jqx-tabs-close-button-hover-orange, .jqx-tabs-close-button-selected-orange{background-image:url(images/close_white.png);  background-repeat:no-repeat;  background-position:center}
+.jqx-window-close-button-orange, .jqx-icon-close-orange, .jqx-tabs-close-button-orange, .jqx-tabs-close-button-hover-orange, .jqx-tabs-close-button-selected-orange{background-image:url(./images/close_white.png);  background-repeat:no-repeat;  background-position:center}
 
 .jqx-scrollbar-thumb-state-normal-horizontal-orange{ background:#F9960A; border:1px solid #E48605}
 .jqx-scrollbar-thumb-state-hover-horizontal-orange{ background:#E48605; border:1px solid #E48605}
@@ -139,7 +139,7 @@ border-color:#FBB34E; }
 }
 .jqx-icon-search-orange
 {
-    background-image: url(images/search_white.png);
+    background-image: url(./images/search_white.png);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -167,11 +167,11 @@ border-color:#FBB34E; }
 }
 .jqx-icon-search-orange
 {
-    background-image: url(images/search_white.png);
+    background-image: url(./images/search_white.png);
 }
 .jqx-icon-plus-orange
 {
-    background-image: url(images/plus_white.png);
+    background-image: url(./images/plus_white.png);
 }
 .jqx-menu-minimized-button-orange {
    background-image: url('images/icon-menu-minimized-white.png');

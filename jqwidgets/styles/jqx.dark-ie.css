@@ -167,8 +167,8 @@ color: #fff !important;
 .jqx-grid-column-sortdescbutton-dark {
     background-image: url('images/metro-icon-down-white.png');
 }
-.jqx-checkbox-check-checked-dark{background:transparent url(images/check_white.png) center center no-repeat}
-.jqx-checkbox-check-indeterminate-dark{background:transparent url(images/check_indeterminate_white.png) center center no-repeat}
+.jqx-checkbox-check-checked-dark{background:transparent url(./images/check_white.png) center center no-repeat}
+.jqx-checkbox-check-indeterminate-dark{background:transparent url(./images/check_indeterminate_white.png) center center no-repeat}
 .jqx-checkbox-hover-dark, .jqx-radiobutton-hover-dark {
     background-color: #3E3E42;
     border-color: #3E3E42;
@@ -208,10 +208,10 @@ color: #fff !important;
 /*icons*/
 .jqx-window-collapse-button-dark
 {
-    background-image: url(images/metro-icon-up-white.png);
+    background-image: url(./images/metro-icon-up-white.png);
 }
 .jqx-window-collapse-button-collapsed-dark {
-  background-image: url(images/metro-icon-down-white.png);
+  background-image: url(./images/metro-icon-down-white.png);
 }
 .jqx-icon-arrow-up-dark, .jqx-expander-arrow-bottom-dark, .jqx-menu-item-arrow-up-dark
 {
@@ -241,7 +241,7 @@ color: #fff !important;
 .jqx-menu-item-arrow-down-selected-dark, .jqx-icon-arrow-down-selected-dark{background-image:url('images/metro-icon-down-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-left-selected-dark, .jqx-icon-arrow-left-selected-dark{background-image:url('images/metro-icon-left-white.png');background-repeat:no-repeat;background-position:center;}
 .jqx-menu-item-arrow-right-selected-dark, .jqx-icon-arrow-right-selected-dark{background-image:url('images/metro-icon-right-white.png');background-repeat:no-repeat;background-position:center;}
-.jqx-window-close-button-dark, .jqx-icon-close-dark, .jqx-tabs-close-button-dark, .jqx-tabs-close-button-hover-dark, .jqx-tabs-close-button-selected-dark{background-image:url(images/close_white.png);  background-repeat:no-repeat;  background-position:center}
+.jqx-window-close-button-dark, .jqx-icon-close-dark, .jqx-tabs-close-button-dark, .jqx-tabs-close-button-hover-dark, .jqx-tabs-close-button-selected-dark{background-image:url(./images/close_white.png);  background-repeat:no-repeat;  background-position:center}
 .jqx-listbox-feedback-dark {
     border-top: 1px dashed #fff;
 }
@@ -296,21 +296,21 @@ color: #fff !important;
 .jqx-switchbutton-wrapper-dark {
 }
 .jqx-grid-group-collapse-dark {
-    background-image: url(images/metro-icon-right-white.png);
+    background-image: url(./images/metro-icon-right-white.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-collapse-rtl-dark
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-left-white.png);
+    background-image: url(./images/metro-icon-left-white.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-expand-dark, .jqx-grid-group-expand-rtl-dark
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-down-white.png);
+    background-image: url(./images/metro-icon-down-white.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
@@ -352,13 +352,13 @@ color: #fff !important;
 }
 .jqx-icon-search-dark
 {
-    background-image: url(images/search_white.png);
+    background-image: url(./images/search_white.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 .jqx-passwordinput-password-icon-dark, .jqx-passwordinput-password-icon-rtl-dark
 {
-    background-image: url(images/icon-showpassword-white.png) !important;
+    background-image: url(./images/icon-showpassword-white.png) !important;
     background-repeat: no-repeat !important;
 }
 .jqx-icon-calendar-dark, .jqx-icon-calendar-hover-dark, .jqx-icon-calendar-pressed-dark {
@@ -385,11 +385,11 @@ color: #fff !important;
 }
 .jqx-icon-search-dark
 {
-    background-image: url(images/search_white.png);
+    background-image: url(./images/search_white.png);
 }
 .jqx-icon-plus-dark
 {
-    background-image: url(images/plus_white.png);
+    background-image: url(./images/plus_white.png);
 }
 .jqx-menu-minimized-button-dark {
    background-image: url('images/icon-menu-minimized-white.png');

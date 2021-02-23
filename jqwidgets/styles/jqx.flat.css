@@ -317,10 +317,10 @@
 /*icons*/
 .jqx-window-collapse-button-flat
 {
-    background-image: url(images/metro-icon-up.png);
+    background-image: url(./images/metro-icon-up.png);
 }
 .jqx-window-collapse-button-collapsed-flat {
-  background-image: url(images/metro-icon-down.png);
+  background-image: url(./images/metro-icon-down.png);
 }
 .jqx-icon-arrow-up-flat, .jqx-expander-arrow-bottom-flat, .jqx-menu-item-arrow-up-flat
 {
@@ -417,21 +417,21 @@
     background-position: center;
 }
 .jqx-grid-group-collapse-flat {
-    background-image: url(images/metro-icon-right.png);
+    background-image: url(./images/metro-icon-right.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-collapse-rtl-flat
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-left.png);
+    background-image: url(./images/metro-icon-left.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 .jqx-grid-group-expand-flat, .jqx-grid-group-expand-rtl-flat
 {
     padding-right: 0px;
-    background-image: url(images/metro-icon-down.png);
+    background-image: url(./images/metro-icon-down.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }

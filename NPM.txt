@@ -10,6 +10,9 @@ Angular Modules:
 https://www.npmjs.com/package/jqwidgets-ng
 
 
+Blazor
+
+dotnet add package jQWidgets.Blazor
 
 Smart UI Components
 
@@ -26,3 +29,6 @@ https://www.npmjs.com/package/smart-webcomponents-react
 https://www.npmjs.com/package/smart-webcomponents-angular
 
 
+4. Blazor
+
+dotnet add package Smart.Blazor
