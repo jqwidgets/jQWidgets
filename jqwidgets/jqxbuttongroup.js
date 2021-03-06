@@ -1,5 +1,5 @@
 /*
-jQWidgets v12.0.0 (2021-Feb)
+jQWidgets v12.0.1 (2021-Mar)
 Copyright (c) 2011-2021 jQWidgets.
 License: https://jqwidgets.com/license/
 */

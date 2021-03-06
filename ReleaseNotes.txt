@@ -1,4 +1,20 @@
-﻿jQWidgets v12.0.0 Release, Feb-24-2021
+﻿jQWidgets v12.0.1 Release, Mar-06-2021
+
+What's New:
+
+- jqxGrid Cardview Custom Value Templates
+
+What's Improved:
+
+- jqxGrid Cardview scrolling UX on mobile devices.
+
+What's Fixed:
+
+- Fixed an issue related to popups in jqxGrid Filter Menu.
+- Fixed an issue related to jqxGrid adaptive mode, when the adaptive mode is dynamically switched on/off.
+
+
+jQWidgets v12.0.0 Release, Feb-24-2021
 
 What's New:
 
