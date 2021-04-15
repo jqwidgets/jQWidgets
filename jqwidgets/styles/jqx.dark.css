@@ -1654,10 +1654,10 @@ input[type="textarea"].jqx-widget-content-dark {
 }
 
 
-.jqx-input-label {
+.jqx-input-label-dark {
     visibility:inherit;
 }
-.jqx-input-bar{
+.jqx-input-bar-dark{
     visibility:inherit;
 }
 input:focus ~ .jqx-input-label-dark,
@@ -1710,9 +1710,15 @@ textarea:focus ~ .jqx-input-bar:before,
     pointer-events: none;
     left: 2px;
     top:10px;
-    opacity: 0;
+    opacity: 0.5;
     top: calc(50% - 7px);
     transition: 300ms ease all;
+}
+.jqx-input-group-dark.jqx-fill-state-disabled {
+	pointer-events: none;
+}
+.jqx-fill-state-disabled-dark .jqx-action-button-dark {
+	cursor: initial;
 }
 .jqx-input-label.initial {
     transition: none;

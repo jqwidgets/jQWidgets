@@ -1825,6 +1825,9 @@ jqx-editor-toolbar-icon-fontsize-material,
 jqx-editor-toolbar-icon-fontcolor-material {
 
 }
+.jqx-input-group-material.jqx-fill-state-disabled {
+	pointer-events: none;
+}
 
 /*applied to the timepicker*/
 .jqx-needle-central-circle-material {

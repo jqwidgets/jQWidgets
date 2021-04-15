@@ -115,7 +115,7 @@
             autoloadstate: Boolean,
             columns: Array,
             cardview: Boolean,
-            cardviewcolumns: Any,
+            cardviewcolumns: [],
             cardheight: Number,
             cardsize: Number,
             columngroups: Array,

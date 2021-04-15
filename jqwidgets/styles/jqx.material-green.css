@@ -1816,6 +1816,9 @@ input[type="text"].jqx-input-material-green:-ms-input-placeholder, input[type="t
     box-shadow: none !important;
 	color: #333;
 }
+.jqx-input-group-material-green.jqx-fill-state-disabled {
+	pointer-events: none;
+}
 
 /*applied to the timepicker*/
 .jqx-needle-central-circle-material-green {

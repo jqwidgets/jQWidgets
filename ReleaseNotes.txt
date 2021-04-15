@@ -1,4 +1,19 @@
-﻿jQWidgets v12.0.1 Release, Mar-06-2021
+﻿jQWidgets v12.0.4 Release, Apr-15-2021
+
+What's Improved:
+
+- Extended jqxGrid cells styling options with fontFamily and fontWeight options.
+
+What's Fixed:
+
+- Fixed an issue regarding the val() method for input components using Light, Dark and the Material Themes.
+- Fixed an issue regarding the "disabled" property of jqxInput.
+- Fixed an issue regarding the placeholder visibility of inputs using Light and Dark themes.
+- Fixed an issue regarding the jqxInput popup usage with touchpads.
+- Fixed an issue regarding the jqxGrid resources disposal, when re-rendering the component.
+
+
+jQWidgets v12.0.1 Release, Mar-06-2021
 
 What's New:
 

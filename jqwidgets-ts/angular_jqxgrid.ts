@@ -1,5 +1,5 @@
 /*
-jQWidgets v12.0.0 (2021-Feb)
+jQWidgets v12.0.4 (2021-Apr)
 Copyright (c) 2011-2021 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -1344,7 +1344,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
       }
    }
 
-   cardviewcolumns(arg?: undefined): undefined {
+   cardviewcolumns(arg?: any): any {
 
       if (this.autoCreate && !this.host) {
          this.createComponent(); 

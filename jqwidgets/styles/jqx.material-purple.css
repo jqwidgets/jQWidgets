@@ -1814,6 +1814,9 @@ input[type="text"].jqx-input-material-purple:-ms-input-placeholder, input[type="
     box-shadow: none !important;
 	color: #333;
 }
+.jqx-input-group-material-purple.jqx-fill-state-disabled {
+	pointer-events: none;
+}
 
 /*applied to the timepicker*/
 .jqx-needle-central-circle-material-purple {
