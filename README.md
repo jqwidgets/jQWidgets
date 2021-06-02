@@ -17,8 +17,8 @@ Highlights
 * Rich functionality and great performance.
 * Web Components built from ground-up.
 * React Javascript Library User Interface Components
-* Angular 11 and AngularJS 1.x Directives for every widget.
-* [Blazor Controls](https://blazor.jqwidgets.com/). 
+* Angular 12 and AngularJS 1.x Directives for every widget.
+* [Blazor Controls](https://www.htmlelements.com/blazor/). 
 * ASP .NET Core UI Components
 * Easy PHP & ASP .NET integration and how-to demos.
 * Typescript Definitions for all widgets.
