@@ -458,6 +458,7 @@ interface IGridOptions {
     autosavestate?: boolean;
     autoloadstate?: boolean;
     columns?: IGridColumn[];
+    enableSanitize?: boolean;
     cardview?: boolean;
     cardviewcolumns?: any;
     cardheight?: number;

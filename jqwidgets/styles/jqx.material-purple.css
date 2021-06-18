@@ -1835,3 +1835,19 @@ input[type="text"].jqx-input-material-purple:-ms-input-placeholder, input[type="
 .jqx-svg-picker-material-purple:focus {
 	border: 1px solid rgb(98, 0, 238) !important;
 }
+
+
+.jqx-split-layout-component-material-purple .jqx-split-layout {
+    --jqx-primary-rgb: 98, 0, 238;
+    --jqx-primary: rgb(var(--jqx-primary-rgb));
+    --jqx-primary-color: #fff;
+    --jqx-background: #fff;
+    --jqx-background-color: rgba(0,0,0, .88);
+    --jqx-background-hover-rgb: 225, 225, 225;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: rgba(0,0,0,.54);
+    --jqx-surface-rgb: 255, 255, 255;
+    --jqx-surface: rgb(var(--jqx-surface-rgb));
+    --jqx-surface-color: rgba(0,0,0, .88);
+    --jqx-border: rgba(98, 0, 238, 1);
+}

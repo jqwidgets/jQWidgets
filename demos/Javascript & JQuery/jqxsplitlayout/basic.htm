@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id="Description">In this example is shown how to create a basic Split layout.</title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxsplitlayout.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var layout = new jqxSplitLayout("#layout", {
+                dataSource: [
+                    {
+                        content: "Item 1"
+                    },
+                    {
+                        content: "Item 2"
+                    },
+                    {
+                        orientation: "horizontal",
+                        items: [
+                            {
+                                content: "Item 3"
+                            },
+                            {
+                                content: "Item 4"
+                            }
+                        ]
+                    }
+                ]
+            })
+
+        });
+    </script>
+</head>
+
+<body>
+    <div>This example shows how to create a basic split layout</div><br /><br />
+    <div id="layout"></div>
+</body>
+
+</html>

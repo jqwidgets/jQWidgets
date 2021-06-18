@@ -330,3 +330,13 @@
 .jqx-svg-picker-ui-le-frog:focus {
 	border: 2px solid rgb(51, 94, 5) !important;
 }
+
+.jqx-split-layout-component-ui-le-frog .jqx-split-layout {
+    --jqx-primary-rgb: 63, 117, 6;
+    --jqx-primary: rgb(var(--jqx-primary-rgb));
+    --jqx-primary-color: #fff;
+    --jqx-background: #aaa;
+    --jqx-surface: #aaa;
+    color: #E7E7E7;
+	background: var(--jqx-background);
+}

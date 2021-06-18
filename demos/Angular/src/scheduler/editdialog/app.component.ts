@@ -262,6 +262,7 @@ export class AppComponent implements AfterViewInit {
     * @param {Object} the selected appointment instance or NULL when the dialog is opened from cells selection.
     * @param {jQuery.Event Object} the keyDown event.
     */
-    editDialogKeyDown = (dialog, fields, editAppointment, event) => {
+    editDialogKeyDown = (dialog?, fields?, editAppointment?, event?): boolean => {
+		return true;
     };
 }

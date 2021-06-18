@@ -309,3 +309,26 @@
 .jqx-time-picker .jqx-label.jqx-selected-office {
 	fill: black !important;
 }
+
+.jqx-split-layout-component-office .jqx-split-layout {
+     --jqx-primary-rgb: 134, 191, 160;
+    --jqx-primary: rgb(var(--jqx-primary-rgb));
+    --jqx-background: #fff;
+    --jqx-background-color: #333;
+    --jqx-surface:#252526;
+    --jqx-surface-color: #969690;
+    --jqx-border: #414141;
+    --jqx-background-hover-rgb: 60, 60, 60;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: rgba(255,255,255,.54);
+    --jqx-primary-color: #fff;
+    --jqx-background-hover-rgb: 225, 225, 225;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: rgba(0,0,0,.54);
+    --jqx-surface-rgb: 255, 255, 255;
+    --jqx-surface: rgb(var(--jqx-surface-rgb));
+    --jqx-surface-color: #333;
+    --jqx-border: rgba(98, 0, 238, 1);
+	color: #333;
+	background: var(--jqx-background);
+}

@@ -10,11 +10,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/grid/columnchooser",
+            "outputPath": "dist/splitlayout/tablayout",
             "index": "",
-            "main": "src/grid/columnchooser/main.ts",
+            "main": "src/splitlayout/tablayout/main.ts",
             "polyfills": "polyfills.ts",
-            "tsConfig": "tsconfig.app.json"
+            "tsConfig": "tsconfig.app.json",
+		     "styles": [
+              "node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css"
+            ]
           },
           "configurations": {
             "production": {

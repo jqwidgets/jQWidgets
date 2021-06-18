@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id="Description">In this demo a classic layout with resizable Tabs is created. You can drag a tab panel and move it to another panel.</title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <style>
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        #layout {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+ 
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxsplitlayout.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var layout = new jqxSplitLayout("#layout", {
+                dataSource: [
+                    {
+                        content: `<div id="tree"></div>`,
+                        size: 250
+                    },
+                    {
+                        orientation: "horizontal",
+                        items: [
+                            {
+                                type: "tabs",
+                                modifiers: ["resize"],
+                                items: [
+                                    {
+                                        label: "Paragraph 1",
+                                        content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit, magna ornare congue ultricies, nunc velit placerat orci, vitae finibus ipsum nunc eu felis. Proin sodales est ut turpis egestas, id vestibulum libero accumsan. Nam sed dui purus. Mauris laoreet dignissim arcu, sed finibus ipsum imperdiet nec. Sed varius aliquam condimentum. Duis ex enim, rhoncus eget rutrum a, ultricies vel nisi. Nunc eu quam fringilla, cursus sem eu, posuere nisl. Phasellus vel fringilla leo. Cras at sodales velit. Morbi vitae dignissim velit. Suspendisse risus lorem, lacinia quis pharetra vel, consequat vitae tortor. Nullam et urna tortor. Curabitur sodales velit dui, nec vestibulum augue tempor eu. Aliquam nec nibh eu risus ultrices blandit. Aenean pellentesque rhoncus lorem non vulputate.`
+                                    },
+                                    {
+                                        label: "Paragraph 2",
+                                        content: `Suspendisse euismod odio ac maximus luctus. In non cursus magna, eu dignissim magna. Vestibulum molestie eget tellus quis facilisis. Maecenas ultricies feugiat turpis, non aliquam magna consequat a. Nullam aliquet, augue a tempor aliquam, nulla dui pulvinar lorem, sed vehicula metus magna eu ligula. Duis tempor, dui tempus laoreet tempor, urna massa elementum metus, lobortis hendrerit libero nibh at sem. Nulla viverra enim tortor, id faucibus neque vehicula at. Vivamus non eros vel dui viverra lobortis vitae ut enim. In sit amet tortor nisi. Fusce varius velit eget dictum tempor. Cras dignissim volutpat sollicitudin. Morbi pulvinar dictum quam nec aliquet. Pellentesque sed tellus dui. Proin at lorem nec nisl bibendum scelerisque. Morbi commodo eget est nec imperdiet.`
+                                    }
+                                ]
+                            }, {
+                                content: `<div id="listbox"></div>`,
+                            }
+                        ]
+                    }
+                ],
+                ready: function () {
+                    var source = [
+                        {
+                            icon: "../../../images/mailIcon.png", label: "Mail", expanded: true, items: [
+                                { icon: "../../../images/calendarIcon.png", label: "Calendar" },
+                                { icon: "../../../images/contactsIcon.png", label: "Contacts", selected: true }
+                            ]
+                        },
+                        {
+                            icon: "../../../images/folder.png", label: "Inbox", expanded: true, items: [
+                                { icon: "../../../images/folder.png", label: "Admin" },
+                                { icon: "../../../images/folder.png", label: "Corporate" },
+                                { icon: "../../../images/folder.png", label: "Finance" },
+                                { icon: "../../../images/folder.png", label: "Other" },
+                            ]
+                        },
+                        { icon: "../../../images/recycle.png", label: "Deleted Items" },
+                        { icon: "../../../images/notesIcon.png", label: "Notes" },
+                        { iconsize: 14, icon: "../../../images/settings.png", label: "Settings" },
+                        { icon: "../../../images/favorites.png", label: "Favorites" },
+                    ];
+
+                    // create jqxTree
+                    var tree = new jqxTree("#tree", { source: source, width: '100%', height: '100%' });
+                    var listbox = new jqxListBox("#listbox", { source: source, width: '100%', height: '100%' });
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="layout"></div>
+</body>
+
+</html>

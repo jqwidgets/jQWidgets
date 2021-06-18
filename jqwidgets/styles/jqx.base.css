@@ -9,24 +9,42 @@
     --jqx-datetimeinput-dropdown-width: 280px;
     --jqx-calendar-header-height: 40px;
     --jqx-calendar-title-height: 49px;
-    --jqx-icon-calendar: '\e829'; /* Code of calendar icon */
-    --jqx-icon-filter: '\f0b0'; /* Code of filter icon */
-    --jqx-icon-menu: '\f0c9'; /* Code of menu icon */
-    --jqx-icon-check: '\e908'; /* Code of check icon */
-    --jqx-icon-first-page: '\e900'; /* Code of first page icon */
-    --jqx-icon-arrow-down: '\e901'; /* Code of down arrow icon */
-    --jqx-icon-arrow-left: '\e902'; /* Code of left arrow icon */
-    --jqx-icon-arrow-right: '\e903'; /* Code of right arrow icon */
-    --jqx-icon-arrow-up: '\e904'; /* Code of up arrow icon */
-    --jqx-icon-arrow-down-filled: '\e812'; /* Code of filled down arrow icon */
-    --jqx-icon-arrow-left-filled: '\e816'; /* Code of filled left arrow icon */
-    --jqx-icon-arrow-right-filled: '\e81e'; /* Code of filled right arrow icon */
-    --jqx-icon-arrow-up-filled: '\e815'; /* Code of filled up arrow icon */
-    --jqx-icon-visibility: '\e90d'; /* Code of visibility icon */
-    --jqx-icon-visibility-off: '\e90e'; /* Code of visibility off icon */
-    --jqx-icon-last-page: '\e905'; /* Code of last page icon */
-    --jqx-icon-close: '\e80d'; /* Code of close icon */
-    --jqx-icon-search: '\e828'; /* Code of search icon */
+    --jqx-icon-calendar: '\e829';
+    /* Code of calendar icon */
+    --jqx-icon-filter: '\f0b0';
+    /* Code of filter icon */
+    --jqx-icon-menu: '\f0c9';
+    /* Code of menu icon */
+    --jqx-icon-check: '\e908';
+    /* Code of check icon */
+    --jqx-icon-first-page: '\e900';
+    /* Code of first page icon */
+    --jqx-icon-arrow-down: '\e901';
+    /* Code of down arrow icon */
+    --jqx-icon-arrow-left: '\e902';
+    /* Code of left arrow icon */
+    --jqx-icon-arrow-right: '\e903';
+    /* Code of right arrow icon */
+    --jqx-icon-arrow-up: '\e904';
+    /* Code of up arrow icon */
+    --jqx-icon-arrow-down-filled: '\e812';
+    /* Code of filled down arrow icon */
+    --jqx-icon-arrow-left-filled: '\e816';
+    /* Code of filled left arrow icon */
+    --jqx-icon-arrow-right-filled: '\e81e';
+    /* Code of filled right arrow icon */
+    --jqx-icon-arrow-up-filled: '\e815';
+    /* Code of filled up arrow icon */
+    --jqx-icon-visibility: '\e90d';
+    /* Code of visibility icon */
+    --jqx-icon-visibility-off: '\e90e';
+    /* Code of visibility off icon */
+    --jqx-icon-last-page: '\e905';
+    /* Code of last page icon */
+    --jqx-icon-close: '\e80d';
+    /* Code of close icon */
+    --jqx-icon-search: '\e828';
+    /* Code of search icon */
     --jqx-border-radius: 4px;
     --jqx-font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     --jqx-font-size: 14px;
@@ -40,24 +58,28 @@
     -webkit-border-top-left-radius: 3px;
     border-top-left-radius: 3px;
 }
+
 /*top-right rounded Corners*/
 .jqx-rc-tr {
     -moz-border-radius-topright: 3px;
     -webkit-border-top-right-radius: 3px;
     border-top-right-radius: 3px;
 }
+
 /*bottom-left rounded Corners*/
 .jqx-rc-bl {
     -moz-border-radius-bottomleft: 3px;
     -webkit-border-bottom-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
+
 /*bottom-right rounded Corners*/
 .jqx-rc-br {
     -moz-border-radius-bottomright: 3px;
     -webkit-border-bottom-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
+
 /*top rounded Corners*/
 .jqx-rc-t {
     -moz-border-radius-topleft: 3px;
@@ -67,6 +89,7 @@
     -webkit-border-top-right-radius: 3px;
     border-top-right-radius: 3px;
 }
+
 /*bottom rounded Corners*/
 .jqx-rc-b {
     -moz-border-radius-bottomleft: 3px;
@@ -76,6 +99,7 @@
     -webkit-border-bottom-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
+
 /*right rounded Corners*/
 .jqx-rc-r {
     -moz-border-radius-topright: 3px;
@@ -85,6 +109,7 @@
     -webkit-border-bottom-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
+
 /*left rounded Corners*/
 .jqx-rc-l {
     -moz-border-radius-topleft: 3px;
@@ -94,12 +119,14 @@
     -webkit-border-bottom-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
+
 /*all rounded Corners*/
 .jqx-rc-all {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
 }
+
 /*reset rounded corners*/
 .jqx-rc-reset {
     -moz-border-radius: 0px !important;
@@ -160,6 +187,7 @@
 .jqx-background-reset {
     background: transparent !important;
 }
+
 /*Disable browser selection*/
 .jqx-disableselect {
     -webkit-user-select: none;
@@ -167,7 +195,7 @@
     user-select: none;
     -ms-user-select: none;
     -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .jqx-enableselect {
@@ -184,6 +212,7 @@
 .jqx-hidescrollbars {
     overflow: hidden !important;
 }
+
 /*jqxButton, jqxToggleButton, jqxRepeatButton Style*/
 .jqx-button {
     outline: none;
@@ -194,21 +223,25 @@
     margin: 0 0 0 0;
     cursor: default;
 }
+
 .jqx-button[aria-disabled="true"] {
-    pointer-events:none;
+    pointer-events: none;
 }
-button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button {
+
+button.jqx-button,
+input[type=button].jqx-button,
+input[type=submit].jqx-button {
     box-sizing: border-box !important;
     -moz-box-sizing: border-box !important;
 }
 
-.jqx-buttongroup {
-}
+.jqx-buttongroup {}
 
 .jqx-group-button-normal {
     vertical-align: middle;
     text-align: center;
 }
+
 /*applied to the link button's anchor element.*/
 .jqx-link {
     text-decoration: none;
@@ -219,16 +252,22 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 .jqx-visible {
     display: block;
 }
+
 /*hides elements.*/
 .jqx-hidden {
     display: none;
 }
 
-.jqx-widget, .jqx-widget-content, .jqx-widget-header, .jqx-fill-state-normal {
+.jqx-widget,
+.jqx-widget-content,
+.jqx-widget-header,
+.jqx-fill-state-normal {
     line-height: 1.231;
 }
+
 /*jqxGauge Style*/
-.jqx-gauge-label, .jqx-gauge-caption {
+.jqx-gauge-label,
+.jqx-gauge-caption {
     fill: #333333;
     color: #333333;
     font-size: 11px;
@@ -238,6 +277,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 .jqx-knob {
     text-align: center;
 }
+
 /*jqxChart Style*/
 .jqx-knob-label,
 .jqx-chart-axis-text,
@@ -280,41 +320,43 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     border-width: 1px;
 }
 
-    .jqx-grid .jqx-adaptive-table {
-        border-collapse: collapse;
-        border: none;
-        width: 100%;
-    }
+.jqx-grid .jqx-adaptive-table {
+    border-collapse: collapse;
+    border: none;
+    width: 100%;
+}
 
-        .jqx-grid .jqx-adaptive-table td, .jqx-grid .jqx-adaptive-table th {
-            border-bottom: 1px solid #ddd;
-            padding: 8px;
-            overflow: auto;
-        }
+.jqx-grid .jqx-adaptive-table td,
+.jqx-grid .jqx-adaptive-table th {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    overflow: auto;
+}
 
-        .jqx-grid .jqx-adaptive-table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+.jqx-grid .jqx-adaptive-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-        .jqx-grid .jqx-adaptive-table th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #4CAF50;
-            color: white;
-        }
+.jqx-grid .jqx-adaptive-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
 
-    .jqx-grid .jqx-adaptive-view a {
-        padding: 10px;
-        text-decoration: none;
-        color: orangered;
-    }
+.jqx-grid .jqx-adaptive-view a {
+    padding: 10px;
+    text-decoration: none;
+    color: orangered;
+}
 
 /*applied to the Pager.*/
 .jqx-grid-pager {
     border: none;
     border-top: 1px solid transparent;
 }
+
 /*applied to the Top Pager.*/
 .jqx-grid-pager-top {
     border: none;
@@ -336,9 +378,10 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     padding-top: 6px !important;
     padding-bottom: 6px !important;
 }
+
 /*applied to the Grid's bottom-right area between the horizontal and vertical scrollbars.*/
-.jqx-grid-bottomright {
-}
+.jqx-grid-bottomright {}
+
 /*applied to the Grid's header area.*/
 .jqx-grid-header {
     border-style: solid;
@@ -348,8 +391,10 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0px;
     padding: 0px;
 }
+
 /*applied to the columns.*/
-.jqx-grid-column-header, .jqx-grid-columngroup-header {
+.jqx-grid-column-header,
+.jqx-grid-columngroup-header {
     border-style: solid;
     border-width: 0px 1px 0px 0px;
     border-color: transparent;
@@ -362,7 +407,8 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0px;
 }
 
-.jqx-grid-column-header-rtl, .jqx-grid-columngroup-header-rtl {
+.jqx-grid-column-header-rtl,
+.jqx-grid-columngroup-header-rtl {
     border-width: 0px 0px 0px 1px;
 }
 
@@ -370,6 +416,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     border-bottom-width: 1px;
     border-left-width: 1px;
 }
+
 /*applied to the column's button.*/
 .jqx-grid-column-menubutton {
     border-style: solid;
@@ -384,6 +431,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 .jqx-grid-column-menubutton-rtl {
     border-width: 0px 1px 0px 0px;
 }
+
 /*applied to the column's sort button when the sort order is ascending.*/
 .jqx-grid-column-sortascbutton {
     border: none;
@@ -392,6 +440,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-position: center;
     cursor: pointer;
 }
+
 /*applied to the column's sort button when the sort order is descending.*/
 .jqx-grid-column-sortdescbutton {
     border: none;
@@ -400,6 +449,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-position: center;
     cursor: pointer;
 }
+
 /*applied to the column's filter button.*/
 .jqx-grid-column-filterbutton {
     border: none;
@@ -408,10 +458,12 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-position: center;
     margin-top: 1px;
 }
+
 /*applied to the column's resize line.*/
 .jqx-grid-column-resizeline {
     border-right: 1px dotted #555;
 }
+
 /*applied to the validation popup during cell editing.*/
 .jqx-grid-validation {
     background: #df2227 !important;
@@ -436,10 +488,12 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-repeat: no-repeat;
     background-position: center center;
 }
+
 /*applied to the column's resize start line.*/
 .jqx-grid-column-resizestartline {
     border-right: 1px solid #444;
 }
+
 /*applied to the sort ascending menu item in the Grid's Context Menu*/
 .jqx-grid-sortasc-icon {
     background-image: url('images/icon-sort-asc.png');
@@ -451,6 +505,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin-left: -4px;
     margin-right: 4px;
 }
+
 /*applied to the sort ascending menu item in the Grid's Context Menu*/
 .jqx-grid-sortdesc-icon {
     background-image: url('images/icon-sort-desc.png');
@@ -462,6 +517,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin-left: -4px;
     margin-right: 4px;
 }
+
 /*applied to the grid menu's sort remove item/*/
 .jqx-grid-sortremove-icon {
     background-image: url('images/icon-sort-remove.png');
@@ -473,6 +529,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin-left: -4px;
     margin-right: 4px;
 }
+
 /*applied to the grouping column's drag and drop item when the drop operation is allowed.*/
 .jqx-grid-drag-icon {
     background-image: url('images/drag.png');
@@ -481,6 +538,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     width: 16px;
     height: 16px;
 }
+
 /*applied to the grouping column's drag and drop item when the drop operation is not allowed.*/
 .jqx-grid-dragcancel-icon {
     background-image: url('images/dragcancel.png');
@@ -489,6 +547,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     width: 16px;
     height: 16px;
 }
+
 /*applied to the 'group by' menu item.*/
 .jqx-grid-groupby-icon {
     background-repeat: no-repeat;
@@ -499,8 +558,10 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin-left: -4px;
     margin-right: 4px;
 }
+
 /*applied to the column anchor tags.*/
-.jqx-grid-column-header a:link, .jqx-grid-column-header a:visited {
+.jqx-grid-column-header a:link,
+.jqx-grid-column-header a:visited {
     display: block;
     margin: 4px;
     height: 18px;
@@ -511,7 +572,8 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     cursor: pointer;
 }
 
-.jqx-grid-toolbar a:link, .jqx-grid-toolbar a:visited {
+.jqx-grid-toolbar a:link,
+.jqx-grid-toolbar a:visited {
     margin: 4px;
     height: 18px;
     line-height: 18px !important;
@@ -520,8 +582,11 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     text-decoration: none;
     cursor: pointer;
 }
+
 /*applied to the groups header area.*/
-.jqx-grid-groups-header, .jqx-grid-toolbar, .jqx-scheduler-toolbar {
+.jqx-grid-groups-header,
+.jqx-grid-toolbar,
+.jqx-scheduler-toolbar {
     border-style: solid;
     border-width: 0px 0px 1px 0px;
     border-color: #aaa;
@@ -531,6 +596,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     padding: 0px;
     margin: 0px;
 }
+
 /*applied to a grouping row.*/
 .jqx-grid-groups-row {
     font-weight: bold;
@@ -540,10 +606,12 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     top: 50%;
     margin-top: -8px;
 }
+
 /*applied to the row details.*/
 .jqx-grid-groups-row-details {
     font-weight: normal;
 }
+
 /*applied to a grouping column.*/
 .jqx-grid-group-column {
     border: 1px solid transparent;
@@ -555,14 +623,17 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     padding: 0px;
     margin: 0px;
 }
+
 /*applied to the lines between the group columns.*/
 .jqx-grid-group-column-line {
     background: #aaa;
 }
+
 /*applied to the drop line indicators displayed in the grouping header.*/
 .jqx-grid-group-drag-line {
     background: #80be09;
 }
+
 /*applied to the anchor tags inside a grouping column.*/
 .jqx-grid-group-column a:link {
     display: block;
@@ -585,6 +656,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     text-decoration: none;
     cursor: pointer;
 }
+
 /*applied to a grid cell*/
 .jqx-grid-cell {
     border-style: solid;
@@ -638,6 +710,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     height: 100%;
     background: #fff;
 }
+
 /*applied to the grid cells in the sort column*/
 .jqx-grid-cell-sort {
     background-color: #f0f0f0;
@@ -661,15 +734,18 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     white-space: nowrap;
     overflow: hidden;
 }
+
 /*applied to a grid cell that is part of a rows group.*/
-.jqx-grid-group-cell, .jqx-grid-empty-cell {
+.jqx-grid-group-cell,
+.jqx-grid-empty-cell {
     border-style: solid;
     border-width: 0px 0px 1px 0px;
     white-space: nowrap;
     font-weight: normal;
 }
 
-.jqx-widget .jqx-grid-cleared-cell, .jqx-grid-cleared-cell {
+.jqx-widget .jqx-grid-cleared-cell,
+.jqx-grid-cleared-cell {
     border: transparent !important;
 }
 
@@ -694,7 +770,8 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     text-overflow: ellipsis;
 }
 
-.jqx-tree-grid-collapse-button, .jqx-tree-grid-expand-button {
+.jqx-tree-grid-collapse-button,
+.jqx-tree-grid-expand-button {
     display: inline-block;
     margin-top: 0px;
     margin-right: 0px;
@@ -793,6 +870,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     position: static !important;
     zoom: 1 !important;
 }
+
 /*applied to the Grid's Table element.*/
 .jqx-grid-table {
     font-size: 13px;
@@ -823,42 +901,48 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 }
 
 /*applied to a grid cell that is part of a details row and grouping is enabled.*/
-.jqx-grid-group-details-cell {
-}
+.jqx-grid-group-details-cell {}
+
 /*applied to a grid cell that is part of a details row.*/
 .jqx-grid-details-cell {
     border-width: 0px 1px 0px 0px;
 }
+
 /*applied to a grid cell. Represents the alternating cell background.*/
 .jqx-grid-cell-alt {
     background: #f9f9f9;
 }
+
 /*applied to a sorted and alternating grid cell*/
 .jqx-grid-cell-sort-alt {
     background-color: #e5e5e5;
 }
+
 /*applied to a sorted and alternating grid cell*/
 .jqx-grid-cell-filter-alt {
     background-color: #f0f0f0;
 }
+
 /*applied to a pinned grid cell.*/
 .jqx-grid-cell-pinned {
     background-color: #e5e5e5;
 }
+
 /*applied to a pinned grid cell. Represents the alternating cell background.*/
 .jqx-grid-cell-pinned-alt {
     background-color: #e5e5e5;
 }
+
 /*applied to a selected grid cell.*/
 .jqx-grid-cell-selected {
     border-left: 0px solid transparent;
 }
 
-    .jqx-grid-cell-selected.jqx-grid-cell-edit {
-        border-color: #DDDDDD !important;
-        background-color: #fff !important;
-        color: #333 !important;
-    }
+.jqx-grid-cell-selected.jqx-grid-cell-edit {
+    border-color: #DDDDDD !important;
+    background-color: #fff !important;
+    color: #333 !important;
+}
 
 .jqx-fill-state-focus.jqx-grid-cell-edit,
 .jqx-grid-cell-edit .jqx-fill-state-focus,
@@ -898,10 +982,12 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     opacity: 0.5;
     filter: alpha(opacity=50);
 }
+
 /*applied to a hovered grid cell.*/
 .jqx-grid-cell-hover {
     border-color: transparent;
 }
+
 /*applied to a grid cell when the grid is empty.*/
 .jqx-grid-empty-cell {
     overflow: visible;
@@ -917,6 +1003,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     z-index: 9999;
     display: block;
 }
+
 /*applied to a group's collapse button.*/
 .jqx-grid-group-collapse {
     padding-right: 0px;
@@ -933,14 +1020,17 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-repeat: no-repeat;
     cursor: pointer;
 }
+
 /*applied to a group's expand button.*/
-.jqx-grid-group-expand, .jqx-grid-group-expand-rtl {
+.jqx-grid-group-expand,
+.jqx-grid-group-expand-rtl {
     padding-right: 0px;
     background-image: url(./images/icon-down.png);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     cursor: pointer;
 }
+
 /*jqxProgresBar Style*/
 .jqx-progressbar {
     position: relative;
@@ -949,12 +1039,14 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     border: 1px solid transparent;
     height: 2em;
 }
+
 /*applied to the progressbar's value element*/
 .jqx-progressbar-value {
     outline: none;
     border: 0px solid transparent;
     height: 100%;
 }
+
 /*applied to the progress bar's vertical value element- when the widget's orientation is 'vertical'*/
 .jqx-progressbar-value-vertical {
     outline: none;
@@ -962,11 +1054,13 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     height: 100%;
     background: transparent;
 }
+
 /*applied to the progressbar's text element*/
 .jqx-progressbar-text {
     font-size: 10px;
     border: none;
 }
+
 /*applied to the progress bar when the widget is in disabled state*/
 .jqx-progressbar-disabled {
     outline: none;
@@ -988,6 +1082,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 .jqx-menu-dropdown-column {
     float: left;
 }
+
 /*applied to the menu when it is horizontal. Sets the menu's background*/
 .jqx-menu-horizontal {
     margin: 0px;
@@ -995,10 +1090,12 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     overflow: hidden;
     text-align: center;
 }
+
 /*applied to the menu when it is vertical. Sets the menu's background*/
 .jqx-menu-vertical {
     text-align: left;
 }
+
 /*applied to the sub menu. Sets the sub menu's background*/
 .jqx-menu-dropdown {
     left: 100%;
@@ -1014,15 +1111,17 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     text-align: left;
     padding: 2px;
 }
-    /*applied to the sub menu's ul elements.*/
-    .jqx-menu-dropdown ul {
-        left: 100%;
-        margin: 0px;
-        padding: 0px;
-        right: 0;
-        overflow: hidden;
-        border: none;
-    }
+
+/*applied to the sub menu's ul elements.*/
+.jqx-menu-dropdown ul {
+    left: 100%;
+    margin: 0px;
+    padding: 0px;
+    right: 0;
+    overflow: hidden;
+    border: none;
+}
+
 /*applied to the menu's ul elements.*/
 .jqx-menu ul {
     left: 100%;
@@ -1033,10 +1132,13 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-color: transparent;
     border: none;
 }
+
 /*applied to the menu's li elements.*/
-.jqx-menu li, .jqx-menu-dropdown li {
+.jqx-menu li,
+.jqx-menu-dropdown li {
     line-height: 1.3 !important;
 }
+
 /*applied to the top level menu items.*/
 .jqx-menu-item-top {
     border: 1px solid transparent;
@@ -1050,6 +1152,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0px 3px 0px 3px;
     cursor: pointer;
 }
+
 /*applied to the sub menu items.*/
 .jqx-menu-item {
     border: 1px solid transparent;
@@ -1067,6 +1170,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     text-align: left;
     cursor: pointer;
 }
+
 /*applied to a sub menu item when the mouse is over the item.*/
 .jqx-menu-item-hover {
     color: inherit;
@@ -1080,6 +1184,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     text-align: left;
     cursor: pointer;
 }
+
 /*applied to a top-level menu item when the mouse is over it.*/
 .jqx-menu-item-top-hover {
     color: inherit;
@@ -1091,6 +1196,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     top: 50%;
     cursor: pointer;
 }
+
 /*applied to a sub menu item when its sub menu is opened.*/
 .jqx-menu-item-selected {
     right: 0;
@@ -1103,9 +1209,10 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     text-align: left;
     cursor: pointer;
 }
+
 /*applied to a disabled sub menu item.*/
-.jqx-menu-item-disabled {
-}
+.jqx-menu-item-disabled {}
+
 /*applied to a top-level menu item when its sub menu is opened.*/
 .jqx-menu-item-top-selected {
     right: 0;
@@ -1117,6 +1224,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     padding: 4px 8px 4px 8px;
     cursor: pointer;
 }
+
 /*applied to the menu separator items.*/
 .jqx-menu-item-separator {
     text-indent: 0;
@@ -1134,14 +1242,17 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     right: 0;
     font-size: 1px;
 }
+
 /*applied to a sub menu item when it has sub menu items. Displays right arrow icon.*/
 .jqx-menu-item-arrow-right {
     background-image: url(./images/icon-right.png);
 }
+
 /*applied to a sub menu item when it has sub menu items. Displays down arrow icon.*/
 .jqx-menu-item-arrow-down {
     background-image: url(./images/icon-down.png);
 }
+
 /*applied to a sub menu item when it has sub menu items. Displays up arrow icon.*/
 .jqx-menu-item-arrow-up {
     background-image: url(./images/icon-up.png);
@@ -1176,23 +1287,26 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     width: auto !important;
 }
 
-    .jqx-menu-ul-minimized ul {
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-top: 0px;
-        padding-bottom: 0px;
-        -webkit-box-shadow: none !important;
-        -moz-box-shadow: none !important;
-        -o-box-shadow: none !important;
-        box-shadow: none !important;
-    }
+.jqx-menu-ul-minimized ul {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    box-shadow: none !important;
+}
 
 .jqx-menu-minimized li:last-child {
     padding-bottom: 0px;
     margin: 0px;
 }
 
-.jqx-menu-item-arrow-right, .jqx-menu-item-arrow-down, .jqx-menu-item-arrow-up, .jqx-menu-item-arrow-right {
+.jqx-menu-item-arrow-right,
+.jqx-menu-item-arrow-down,
+.jqx-menu-item-arrow-up,
+.jqx-menu-item-arrow-right {
     background-position: 100% 50%;
     background-repeat: no-repeat;
     padding-right: 0px;
@@ -1200,6 +1314,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     width: 17px;
     height: 15px;
 }
+
 /*applied to a sub menu item when it has sub menu items. Displays left arrow icon.*/
 .jqx-menu-item-arrow-left {
     padding-right: 0px;
@@ -1210,20 +1325,26 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-position: 0 50%;
     background-repeat: no-repeat;
 }
+
 /*applied to a sub menu item when it has sub menu items and its sub menu is opened. Displays right arrow icon.*/
 .jqx-menu-item-arrow-right-selected {
     background-image: url(./images/icon-right.png);
 }
+
 /*applied to a sub menu item when it has sub menu items and its sub menu is opened. Displays down arrow icon.*/
 .jqx-menu-item-arrow-down-selected {
     background-image: url(./images/icon-down.png);
 }
+
 /*applied to a sub menu item when it has sub menu items and its sub menu is opened. Displays up arrow icon.*/
 .jqx-menu-item-arrow-up-selected {
     background-image: url(./images/icon-up.png);
 }
 
-.jqx-menu-item-arrow-right-selected, .jqx-menu-item-arrow-up-selected, .jqx-menu-item-arrow-down-selected, .jqx-menu-item-arrow-top-right {
+.jqx-menu-item-arrow-right-selected,
+.jqx-menu-item-arrow-up-selected,
+.jqx-menu-item-arrow-down-selected,
+.jqx-menu-item-arrow-top-right {
     padding-right: 0px;
     margin-right: -8px;
     width: 17px;
@@ -1231,20 +1352,24 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-position: 100% 50%;
     background-repeat: no-repeat;
 }
+
 /*applied to a top-level menu item when it has sub menu items. Displays right arrow icon.*/
 .jqx-menu-item-arrow-top-right {
     background-image: url(./images/icon-right.png);
 }
+
 /*applied to a sub menu item when it has sub menu items and its sub menu is opened. Displays left arrow icon.*/
 .jqx-menu-item-arrow-left-selected {
     background-image: url(./images/icon-left.png);
 }
+
 /*applied to a top-level menu item when it has sub menu items. Displays left arrow icon.*/
 .jqx-menu-item-arrow-top-left {
     background-image: url(./images/icon-left.png);
 }
 
-.jqx-menu-item-arrow-left-selected, .jqx-menu-item-arrow-top-left {
+.jqx-menu-item-arrow-left-selected,
+.jqx-menu-item-arrow-top-left {
     background-position: 0 50%;
     background-repeat: no-repeat;
     padding-right: 0px;
@@ -1252,8 +1377,14 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     width: 17px;
     height: 15px;
 }
+
 /*applied to the anchor elements*/
-.jqx-menu-item a:link, .jqx-menu-item a:visited, .jqx-menu-item a:hover, .jqx-menu-item-top a:link, .jqx-menu-item-top a:visited, .jqx-menu-item-top a:hover {
+.jqx-menu-item a:link,
+.jqx-menu-item a:visited,
+.jqx-menu-item a:hover,
+.jqx-menu-item-top a:link,
+.jqx-menu-item-top a:visited,
+.jqx-menu-item-top a:hover {
     font: inherit;
     text-decoration: none;
     color: inherit;
@@ -1265,20 +1396,21 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 .jqx-menu-disabled {
     cursor: default;
 }
-    /*applied to the anchor elements of all disabled menu items.*/
-    .jqx-menu-disabled a:link {
-        cursor: default;
-        text-decoration: none;
-    }
 
-    .jqx-menu-disabled a:visited {
-        cursor: default;
-        text-decoration: none;
-    }
+/*applied to the anchor elements of all disabled menu items.*/
+.jqx-menu-disabled a:link {
+    cursor: default;
+    text-decoration: none;
+}
 
-    .jqx-menu-disabled a:hover {
-        cursor: default;
-    }
+.jqx-menu-disabled a:visited {
+    cursor: default;
+    text-decoration: none;
+}
+
+.jqx-menu-disabled a:hover {
+    cursor: default;
+}
 
 .jqx-menu-dropdown {
     right: -1px;
@@ -1299,6 +1431,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     white-space: nowrap;
     line-height: 14px !important;
 }
+
 /*applied to the jqxTree root UL element.*/
 .jqx-tree-dropdown-root {
     left: 100%;
@@ -1359,6 +1492,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     cursor: default;
     text-decoration: none;
 }
+
 /*applied to the jqxTree LI elements.*/
 .jqx-tree-item-li {
     text-indent: 0;
@@ -1373,10 +1507,12 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin-top: 1px;
     padding: 0px;
 }
+
 /*applied to the last LI elements in an UL element.*/
 .jqx-tree-item-u-last {
     margin: 0px 0px 0px 0px;
 }
+
 /*applied to a tree item when the mouse is over the item.*/
 .jqx-tree-item-hover {
     color: inherit;
@@ -1388,6 +1524,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     cursor: pointer;
     text-decoration: none;
 }
+
 /*applied to a tree item when the item is selected.*/
 .jqx-tree-item-selected {
     color: inherit;
@@ -1407,8 +1544,10 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 .jqx-tree-item-li-rtl {
     text-align: right;
 }
+
 /*applied to the anchor element of a tree item.*/
-.jqx-tree-item a:link, .jqx-tree-item a:visited {
+.jqx-tree-item a:link,
+.jqx-tree-item a:visited {
     text-indent: 0;
     background-color: transparent;
     border: 0px solid transparent;
@@ -1426,19 +1565,22 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     outline: none;
 }
 
-.jqx-tree-item-selected, .jqx-tree-item-hover a:hover {
+.jqx-tree-item-selected,
+.jqx-tree-item-hover a:hover {
     color: inherit;
 }
 
-.jqx-tree-item-selected, .jqx-tree-item-hover a:visited {
+.jqx-tree-item-selected,
+.jqx-tree-item-hover a:visited {
     color: inherit;
 }
 
 /*applied to a tree item when the item is disabled.*/
-.jqx-tree-item-disabled {
-}
+.jqx-tree-item-disabled {}
+
 /*applied to a tree item when it has sub items and is collapsed. Displays an arrow icon next to the item.*/
-.jqx-tree-item-arrow-collapse, .jqx-tree-item-arrow-collapse-hover {
+.jqx-tree-item-arrow-collapse,
+.jqx-tree-item-arrow-collapse-hover {
     padding-right: 0px;
     width: 17px;
     height: 17px;
@@ -1448,12 +1590,14 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     cursor: pointer;
 }
 
-.jqx-tree-item-arrow-collapse-rtl, .jqx-tree-item-arrow-collapse-hover-rtl {
+.jqx-tree-item-arrow-collapse-rtl,
+.jqx-tree-item-arrow-collapse-hover-rtl {
     background-image: url(./images/icon-left.png);
 }
 
 /*applied to a tree item when it has sub items and is expanded. Displays an arrow icon next to the item.*/
-.jqx-tree-item-arrow-expand, .jqx-tree-item-arrow-expand-hover {
+.jqx-tree-item-arrow-expand,
+.jqx-tree-item-arrow-expand-hover {
     padding-right: 0px;
     width: 17px;
     height: 17px;
@@ -1462,24 +1606,26 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-repeat: no-repeat;
     cursor: pointer;
 }
+
 /*applied to the tree when it is disabled.*/
 .jqx-tree-disabled {
     cursor: default;
 }
-    /*applied to the anchor elements in a tree when it is disabled.*/
-    .jqx-tree-disabled a:link {
-        cursor: default;
-        text-decoration: none;
-    }
 
-    .jqx-tree-disabled a:visited {
-        cursor: default;
-        text-decoration: none;
-    }
+/*applied to the anchor elements in a tree when it is disabled.*/
+.jqx-tree-disabled a:link {
+    cursor: default;
+    text-decoration: none;
+}
 
-    .jqx-tree-disabled a:hover {
-        cursor: default;
-    }
+.jqx-tree-disabled a:visited {
+    cursor: default;
+    text-decoration: none;
+}
+
+.jqx-tree-disabled a:hover {
+    cursor: default;
+}
 
 
 /*jqxTabs*/
@@ -1491,6 +1637,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background: transparent;
     border: 1px solid transparent;
 }
+
 /*applied to the tab close button.*/
 .jqx-tabs-close-button {
     outline: none;
@@ -1501,6 +1648,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     position: relative;
     left: 5px;
 }
+
 /*applied to the tab close button when the tab is selected.*/
 .jqx-tabs-close-button-selected {
     outline: none;
@@ -1509,6 +1657,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
+
 /*applied to the tab close button when the mouse is over the tab.*/
 .jqx-tabs-close-button-hover {
     outline: none;
@@ -1518,10 +1667,13 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     padding: 0 0 0 0;
 }
 
-.jqx-tabs-close-button, .jqx-tabs-close-button-selected, .jqx-tabs-close-button-hover {
+.jqx-tabs-close-button,
+.jqx-tabs-close-button-selected,
+.jqx-tabs-close-button-hover {
     background-repeat: no-repeat;
     background-position: center;
 }
+
 /*applied to the tab's left scroll arrow.*/
 .jqx-tabs-arrow-left {
     outline: none;
@@ -1535,6 +1687,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-repeat: no-repeat;
     background-position: center;
 }
+
 /*applied to the tab's right scroll arrow.*/
 .jqx-tabs-arrow-right {
     outline: none;
@@ -1552,6 +1705,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 .jqx-tabs-arrow-background {
     background: #eeeeee;
 }
+
 /*applied to the tab's title.*/
 .jqx-tabs-title {
     outline: none;
@@ -1575,8 +1729,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     position: relative;
 }
 
-.jqx-tabs-title-bottom {
-}
+.jqx-tabs-title-bottom {}
 
 .jqx-tabs-title a:link {
     color: inherit;
@@ -1597,6 +1750,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     color: inherit;
     text-decoration: none;
 }
+
 /*applied to the tab's title when the tab is selected and the jqxTab's position property is set to 'top' .*/
 .jqx-tabs-title-selected-top {
     z-index: 99;
@@ -1608,6 +1762,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-color: #fff;
     padding-bottom: 7px;
 }
+
 /*applied to the tab's title when the tab is selected and the jqxTab's position property is set to 'bottom' .*/
 .jqx-tabs-title-selected-bottom {
     outline: none;
@@ -1620,21 +1775,24 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin-top: -2px;
     background-color: #fff;
 }
+
 /*applied to the tab's title when the tab is hovered and the jqxTab's position property is set to 'top' .*/
 .jqx-tabs-title-hover-top {
     outline: none;
     border: 1px solid transparent;
     padding-bottom: 5px;
 }
+
 /*applied to the tab's title when the tab is hovered and the jqxTab's position property is set to 'bottom' .*/
 .jqx-tabs-title-hover-bottom {
     outline: none;
     border: 1px solid transparent;
     padding-top: 5px;
 }
+
 /*applied to the tab's title when the tab is disabled.*/
-.jqx-tabs-title-disable {
-}
+.jqx-tabs-title-disable {}
+
 /*applied to the tab's header.*/
 .jqx-tabs-header {
     padding-left: 0px;
@@ -1648,6 +1806,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     border-bottom: 1px solid #aaa;
     background: #eeeeee;
 }
+
 /*applied to the tab's header when the position is bottom.*/
 .jqx-tabs-header-bottom {
     padding-top: 1px;
@@ -1657,10 +1816,12 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     border-right: 0px solid transparent;
     border-bottom: 1px solid transparent;
 }
+
 /*applied to the tab's header when the tab is collapsed.*/
 .jqx-tabs-header-collapsed {
     border: 1px solid #aaa;
 }
+
 /*applied to the tab's header when the position is bottom and tab is collapsed.*/
 .jqx-tabs-header-collapsed-bottom {
     border: 1px solid #aaa;
@@ -1673,6 +1834,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 .jqx-tabs-collapsed-bottom {
     border: 0px solid transparent;
 }
+
 /*applied to the tab's selection tracker container element.*/
 .jqx-tabs-selection-tracker-container {
     outline: none;
@@ -1684,6 +1846,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background: transparent;
     height: 0px;
 }
+
 /*applied to the tab's selection tracker when the jqxTab's position property is set to 'top'.*/
 .jqx-tabs-selection-tracker-top {
     border-top: 1px solid transparent;
@@ -1695,6 +1858,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     position: absolute;
     z-index: 10;
 }
+
 /*applied to the tab's selection tracker when the jqxTab's position property is set to 'bottom'.*/
 .jqx-tabs-selection-tracker-bottom {
     border-left: 1px solid transparent;
@@ -1707,6 +1871,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin-top: -1px;
     padding-bottom: 2px;
 }
+
 /*applied to the tab's content element which represents a DIV element.*/
 .jqx-tabs-content {
     outline: none;
@@ -1733,6 +1898,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 /*applied to the check box.*/
 .jqx-checkbox-default {
     text-align: left;
@@ -1742,6 +1908,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     outline: none;
     margin: 0px 3px 0px 3px;
 }
+
 /*applied to the check box when the mouse cursor is over it.*/
 .jqx-checkbox-hover {
     cursor: pointer;
@@ -1751,6 +1918,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     outline: none;
     margin: 0px 3px 0px 3px;
 }
+
 /*applied to the widget when it is disabled.*/
 .jqx-checkbox-disabled {
     cursor: default;
@@ -1760,6 +1928,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     outline: none;
     margin: 0px 0px 0px 0px;
 }
+
 /*applied to the check box when the widget is disabled.*/
 .jqx-checkbox-disabled-box {
     float: left;
@@ -1768,6 +1937,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     outline: none;
     margin: 0px 3px 0px 3px;
 }
+
 /*applied to the check box when it is checked. Displays a check icon.*/
 .jqx-checkbox-check-checked {
     float: left;
@@ -1777,6 +1947,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     outline: none;
     margin: 0 0 0 0;
 }
+
 /*applied to the check box when the widget is disabled. Displays a disabled check icon.*/
 .jqx-checkbox-check-disabled {
     float: left;
@@ -1786,6 +1957,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     outline: none;
     margin: 0 0 0 0;
 }
+
 /*applied to the check box when its state is indeterminate.*/
 .jqx-checkbox-check-indeterminate {
     float: left;
@@ -1795,6 +1967,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     outline: none;
     margin: 0 0 0 0;
 }
+
 /*applied to the check box when its state is indeterminate and it is disabled.*/
 .jqx-checkbox-check-indeterminate-disabled {
     float: left;
@@ -1804,10 +1977,12 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     outline: none;
     margin: 0 0 0 0;
 }
+
 /*applied to the check box when its in rtl mode.*/
 .jqx-checkbox-rtl {
     float: right;
 }
+
 /*jqxRadioButton*/
 .jqx-radiobutton {
     overflow: hidden;
@@ -1817,6 +1992,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0 0 0 0;
     white-space: nowrap;
 }
+
 /*applied to the radio button.*/
 .jqx-radiobutton-default {
     cursor: pointer;
@@ -1830,6 +2006,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     -webkit-border-radius: 100%;
     border-radius: 100%;
 }
+
 /*applied to the radio button when the mouse is over it.*/
 .jqx-radiobutton-hover {
     cursor: pointer;
@@ -1843,13 +2020,15 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     -webkit-border-radius: 100%;
     border-radius: 100%;
 }
+
 /*applied to the radio button when it is disabled.*/
 .jqx-radiobutton-disabled {
     cursor: default;
 }
+
 /*applied to the radio button's radio icon when it is disabled.*/
-.jqx-radiobutton-disabled-box {
-}
+.jqx-radiobutton-disabled-box {}
+
 /*applied to the radio button when it is checked.*/
 .jqx-radiobutton-check-checked {
     float: left;
@@ -1866,9 +2045,10 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin-left: 2px;
     margin-top: 2px;
 }
+
 /*applied to the radio button when it is checked and disabled.*/
-.jqx-radiobutton-check-disabled {
-}
+.jqx-radiobutton-check-disabled {}
+
 /*applied to the radio button when it is in indeterminate state.*/
 .jqx-radiobutton-check-indeterminate {
     float: left;
@@ -1885,9 +2065,10 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin-left: 2px;
     margin-top: 2px;
 }
+
 /*applied to the radio button when it is in indeterminate state and disabled.*/
-.jqx-radiobutton-check-indeterminate-disabled {
-}
+.jqx-radiobutton-check-indeterminate-disabled {}
+
 /*applied to the radio button when its in rtl mode.*/
 .jqx-radiobutton-rtl {
     float: right;
@@ -1915,6 +2096,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-image: url(./images/star.png);
     overflow: hidden;
 }
+
 /*applied to the rating when it is hovered.*/
 .jqx-rating-image-hover {
     background-color: transparent;
@@ -1924,6 +2106,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-image: url(./images/star_hover.png);
     overflow: hidden;
 }
+
 /*applied to the rating when it is disabled.*/
 .jqx-rating-image-backward {
     background-color: transparent;
@@ -1933,6 +2116,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-image: url(./images/star_disabled.png);
     overflow: hidden;
 }
+
 /*jqxCalendar Style*/
 .jqx-calendar {
     border: 1px solid transparent;
@@ -1945,15 +2129,14 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     border-collapse: separate;
 }
 
-    .jqx-calendar .jqx-widget-header {
-    }
+.jqx-calendar .jqx-widget-header {}
 
-    .jqx-calendar > div {
-        padding: 0px;
-        box-sizing: border-box;
-    }
+.jqx-calendar>div {
+    padding: 0px;
+    box-sizing: border-box;
+}
 
-.jqx-calendar-light > div {
+.jqx-calendar-light>div {
     padding: 10px;
 }
 
@@ -1975,6 +2158,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     font-size: 13px;
     line-height: 1.231;
 }
+
 /*applied to the calendar's row header. This header displays the week numbers.*/
 .jqx-calendar-row-header {
     outline: none;
@@ -1983,6 +2167,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0 0 0 0;
     cursor: default;
 }
+
 /*applied to the calendar's column. This header displays the day names.*/
 .jqx-calendar-column-header {
     outline: none;
@@ -1995,6 +2180,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0 0 0 0;
     cursor: default;
 }
+
 /*applied to the calendar's top-left header. This header is displayed before the day names and above the week numbers.*/
 .jqx-calendar-top-left-header {
     outline: none;
@@ -2002,6 +2188,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0 0 0 0;
     cursor: default;
 }
+
 /*applied to the calendar's navigation buttons.*/
 .jqx-calendar-title-navigation {
     cursor: pointer;
@@ -2012,6 +2199,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     width: 25px;
     height: 25px;
 }
+
 /*applied to the month table*/
 .jqx-calendar-month {
     margin: 0;
@@ -2019,11 +2207,13 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     border: none;
     width: 100%;
 }
+
 /*applied to the calendar's title content.*/
 .jqx-calendar-title-content {
     cursor: pointer;
     text-align: center;
 }
+
 /*applied to the calendar's navigation title.*/
 .jqx-calendar-title-header {
     border-left: none;
@@ -2034,11 +2224,12 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0 0 0 0;
 }
 
-    .jqx-calendar-title-header td {
-        padding-left: 0px;
-        padding-right: 0px;
-        border: none;
-    }
+.jqx-calendar-title-header td {
+    padding-left: 0px;
+    padding-right: 0px;
+    border: none;
+}
+
 /*applied to the calendar's navigation title when the calendar is disabled.*/
 .jqx-calendar-title-header-disabled {
     border-bottom-width: 1px;
@@ -2048,6 +2239,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     border-right: 0px solid transparent;
     border-top: 0px solid transparent;
 }
+
 /*applied to a calendar cell.*/
 .jqx-calendar-cell {
     border: 1px solid transparent;
@@ -2059,12 +2251,14 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background-color: transparent;
 }
 
-    .jqx-calendar-cell td {
-        padding: 0;
-        margin: 0;
-    }
+.jqx-calendar-cell td {
+    padding: 0;
+    margin: 0;
+}
+
 /*applied to a calendar cell in decade and year views.*/
-.jqx-calendar-cell-decade, .jqx-calendar-cell-year {
+.jqx-calendar-cell-decade,
+.jqx-calendar-cell-year {
     text-align: center;
 }
 
@@ -2079,12 +2273,14 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     visibility: hidden;
     cursor: default;
 }
+
 /*applied to a calendar cell when the cell's date is a weekend date.*/
 .jqx-calendar-cell-weekend {
     color: #898989 !important;
     margin: 0 0 0 0;
     cursor: pointer;
 }
+
 /*applied to a calendar cell when the cell's date is a special date(holiday, vacation, birthay. See the SpecialDates demo).*/
 .jqx-calendar-cell-specialDate {
     color: #FF0000 !important;
@@ -2093,6 +2289,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0 0 0 0;
     cursor: pointer;
 }
+
 /*applied to a calendar cell when the cell's date is a restricted date.*/
 .jqx-calendar-cell-restrictedDate {
     background-color: rgba(251, 132, 153, 1);
@@ -2106,6 +2303,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     background: #FF0000 !important;
     border: 1px solid #FF0000 !important;
 }
+
 /*applied to a calendar cell when the cell's date is the today date.*/
 .jqx-calendar-cell-today {
     color: #898989;
@@ -2114,26 +2312,31 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0 0 0 0;
     cursor: pointer;
 }
+
 /*applied to a calendar cell when the cell is hovered.*/
 .jqx-calendar-cell-hover {
     margin: 0 0 0 0;
     cursor: pointer;
 }
+
 /*applied to a calendar cell when the cell is selected.*/
 .jqx-calendar-cell-selected {
     margin: 0 0 0 0;
     cursor: pointer;
 }
+
 /*applied to a calendar cell when the cell's date represents a date from the previous or next month.*/
 .jqx-calendar-cell-othermonth {
     color: #898989 !important;
     margin: 0 0 0 0;
     cursor: pointer;
 }
+
 /*applied to a calendar cell when the calendar is disabled.*/
 .jqx-calendar-cell-disabled {
     color: #ccc;
 }
+
 /*applied to a calendar cell when the cell is from the row header that displays the week numbers.*/
 .jqx-calendar-row-cell {
     outline: none;
@@ -2142,9 +2345,9 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0 0 0 0;
     cursor: default;
 }
+
 /*applied to a calendar cell when the cell is from the row header that displays the week numbers and the calendar is disabled.*/
-.jqx-calendar-row-cell-disabled {
-}
+.jqx-calendar-row-cell-disabled {}
 
 .jqx-calendar-footer {
     margin: 5px;
@@ -2155,6 +2358,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 .jqx-calendar-title-container {
     overflow: hidden;
 }
+
 /*applied to a calendar cell when the cell is from the column header that displays the day names.*/
 .jqx-calendar-column-cell {
     overflow: hidden;
@@ -2166,9 +2370,10 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     margin: 0 0 0 0;
     cursor: default;
 }
+
 /*applied to a calendar cell when the cell is from the column header that displays the day names and the calendar is disabled.*/
-.jqx-calendar-column-cell-disabled {
-}
+.jqx-calendar-column-cell-disabled {}
+
 /*applied to the calendar's cell area element.*/
 .jqx-calendar-view {
     -webkit-appearance: none;
@@ -2180,10 +2385,11 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
 }
 
 /*jqxExpander and jqxNavigationBar Style*/
-.jqx-expander {
-}
+.jqx-expander {}
+
 /*applied to the Expander's header and content*/
-.jqx-expander-header, .jqx-expander-content {
+.jqx-expander-header,
+.jqx-expander-content {
     border-left-width: 1px;
     border-right-width: 1px;
     border-left-style: solid;
@@ -2194,10 +2400,12 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     padding-right: 5px;
     outline: 0;
 }
+
 /*applid to the content of the expander header.*/
 .jqx-expander-header-content {
     padding-left: 3px;
 }
+
 /*applid to the content of the expander header.*/
 .jqx-expander-header-content-rtl {
     padding-right: 3px;
@@ -2209,31 +2417,39 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     overflow: auto;
     outline: 0;
 }
+
 /*applied to the Expander's header and its content when it is on the top of the header*/
-.jqx-expander-header, .jqx-expander-content-top {
+.jqx-expander-header,
+.jqx-expander-content-top {
     border-top-width: 1px;
     border-top-style: solid;
 }
+
 /*applied to the Expander's header and its content when it is on the bottom of the header*/
-.jqx-expander-header, .jqx-expander-content-bottom {
+.jqx-expander-header,
+.jqx-expander-content-bottom {
     border-bottom-width: 1px;
     border-bottom-style: solid;
 }
+
 /*applied to the Expander's header*/
 .jqx-expander-header {
     cursor: pointer;
     overflow: hidden;
 }
+
 /*applied to the Expander's header when the expander is disabled or the toggleMode is "none"*/
 .jqx-expander-header-disabled {
     cursor: default;
 }
+
 /*applied to the Expander's arrow*/
 .jqx-expander-arrow {
     width: 17px;
     height: 17px;
     position: relative;
 }
+
 /*applied to the Expander's content if it is empty*/
 .jqx-expander-content-empty {
     border-width: 0px;
@@ -2247,6 +2463,7 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     -webkit-appearance: none;
     outline: none;
 }
+
 /*jqxPanel Style*/
 .jqx-panel {
     border: 1px solid transparent;
@@ -2257,10 +2474,11 @@ button.jqx-button, input[type=button].jqx-button, input[type=submit].jqx-button 
     cursor: default;
     overflow: hidden;
 }
+
 /*applied to the Panel's element displayed when the horizontal and vertical scrollbars are visible and the element is positioned below the vertical scrollbar and on the right
 of the horizontal scrollbar.*/
-.jqx-panel-bottomright {
-}
+.jqx-panel-bottomright {}
+
 /*applied to the DropDownButton's Popup.*/
 .jqx-dropdownbutton-popup {
     -webkit-appearance: none;
@@ -2277,10 +2495,11 @@ of the horizontal scrollbar.*/
     cursor: default;
     overflow: hidden;
 }
+
 /*applied to the ListBox's element displayed when the horizontal and vertical scrollbars are visible and the element is positioned below the vertical scrollbar and on the right
 of the horizontal scrollbar.*/
-.jqx-listbox-bottomright {
-}
+.jqx-listbox-bottomright {}
+
 /*applied to the ListBox's groups.*/
 .jqx-listitem-state-group {
     white-space: nowrap;
@@ -2293,6 +2512,7 @@ of the horizontal scrollbar.*/
     vertical-align: middle;
     cursor: default;
 }
+
 /*applied to a list item in default state.*/
 .jqx-listitem-state-normal {
     white-space: nowrap;
@@ -2310,6 +2530,7 @@ of the horizontal scrollbar.*/
     top: 0;
     cursor: default;
 }
+
 /*applied to a list item in hovered state.*/
 .jqx-listitem-state-hover {
     white-space: nowrap;
@@ -2319,6 +2540,7 @@ of the horizontal scrollbar.*/
     padding-bottom: 5px;
     border: 1px solid transparent;
 }
+
 /*applied to a list item when the item is selected.*/
 .jqx-listitem-state-selected {
     white-space: nowrap;
@@ -2342,6 +2564,7 @@ of the horizontal scrollbar.*/
     valign: top;
     position: absolute;
 }
+
 /*jqxComboBox Style*/
 /*applied to the jqxComboBox's content which displays the text.*/
 .jqx-combobox-content {
@@ -2390,6 +2613,7 @@ of the horizontal scrollbar.*/
     background-clip: padding-box;
     -webkit-background-clip: padding-box;
 }
+
 /*applied to the ComboBox's input field.*/
 .jqx-combobox-input {
     -webkit-appearance: none;
@@ -2402,15 +2626,18 @@ of the horizontal scrollbar.*/
     -webkit-background-clip: padding-box;
 }
 
-    .jqx-combobox-input::-ms-clear {
-        display: none;
-    }
+.jqx-combobox-input::-ms-clear {
+    display: none;
+}
+
 /*applied to the ComboBox's content when the widget is disabled.*/
 .jqx-combobox-content-disabled {
     color: #AAA;
 }
+
 /*applied to the ComboBox's arrow button.*/
-.jqx-combobox-arrow-normal, .jqx-action-button {
+.jqx-combobox-arrow-normal,
+.jqx-action-button {
     -webkit-appearance: none;
     outline: none;
     overflow: hidden;
@@ -2418,13 +2645,16 @@ of the horizontal scrollbar.*/
     border: none;
     cursor: pointer;
 }
+
 /*applied to the ComboBox's arrow button*/
-.jqx-combobox-arrow-hover, .jqx-combobox-arrow-selected {
+.jqx-combobox-arrow-hover,
+.jqx-combobox-arrow-selected {
     -webkit-appearance: none;
     outline: none;
     overflow: hidden;
     margin: 0 0 0 0;
 }
+
 /*applied to the ComboBox in normal state.*/
 .jqx-combobox-state-normal {
     -webkit-appearance: none;
@@ -2433,18 +2663,21 @@ of the horizontal scrollbar.*/
     overflow: hidden;
     margin: 0 0 0 0;
 }
+
 /*applied to the ComboBox when the mouse is over the widget.*/
 .jqx-combobox-state-hover {
     overflow: hidden;
     border: 1px solid transparent;
     margin: 0 0 0 0;
 }
+
 /*applied to the ComboBox when the popup ListBox is shown.*/
 .jqx-combobox-state-selected {
     overflow: hidden;
     border: 1px solid transparent;
     margin: 0 0 0 0;
 }
+
 /*applied to the ComboBox when the widget is focused.*/
 .jqx-combobox-state-focus {
     border: 1px solid transparent;
@@ -2460,19 +2693,22 @@ of the horizontal scrollbar.*/
     text-align: left;
 }
 
-    .jqx-combobox-multi-item a:link, .jqx-combobox-multi-item a:visited {
-        color: inherit;
-        display: block;
-        outline: 0 none;
-        text-decoration: none;
-        cursor: pointer;
-    }
+.jqx-combobox-multi-item a:link,
+.jqx-combobox-multi-item a:visited {
+    color: inherit;
+    display: block;
+    outline: 0 none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /*applied to the ComboBox when the widget is disabled.*/
 .jqx-combobox-state-disabled {
     white-space: nowrap;
     margin: 0px;
     color: #AAA;
 }
+
 /*jqxSelect Style*/
 .jqx-select {
     overflow: hidden;
@@ -2499,6 +2735,7 @@ of the horizontal scrollbar.*/
     white-space: normal !important;
     cursor: default;
 }
+
 /*jqxDropDownList Style*/
 /*applied to the dropdownlist's content element which displays the selected item's text or html.*/
 .jqx-dropdownlist-content {
@@ -2536,9 +2773,10 @@ of the horizontal scrollbar.*/
 .jqx-combobox .jqx-icon-arrow-up {
     width: 13px;
 }
+
 /*applied to the dropdownlist's content element which displays the selected item's text or html and the widget is disabled. */
-.jqx-dropdownlist-content-disabled {
-}
+.jqx-dropdownlist-content-disabled {}
+
 /*applied to the dropdownlist in default state.*/
 .jqx-dropdownlist-state-normal {
     -webkit-appearance: none;
@@ -2548,6 +2786,7 @@ of the horizontal scrollbar.*/
     margin: 0 0 0 0;
     cursor: pointer;
 }
+
 /*applied to the dropdownlist in hovered state.*/
 .jqx-dropdownlist-state-hover {
     overflow: hidden;
@@ -2555,6 +2794,7 @@ of the horizontal scrollbar.*/
     margin: 0 0 0 0;
     cursor: pointer;
 }
+
 /*applied to the dropdownlist in selected state.*/
 .jqx-dropdownlist-state-selected {
     overflow: hidden;
@@ -2563,13 +2803,15 @@ of the horizontal scrollbar.*/
     margin: 0 0 0 0;
     cursor: pointer;
 }
+
 /*applied to the dropdownlist in focused state.*/
 .jqx-dropdownlist-state-focus {
     border: 1px solid #909090;
 }
+
 /*applied to the dropdownlist in disabled state.*/
-.jqx-dropdownlist-state-disabled {
-}
+.jqx-dropdownlist-state-disabled {}
+
 /*jqxScrollBar Style*/
 .jqx-scrollbar {
     background: transparent;
@@ -2577,6 +2819,7 @@ of the horizontal scrollbar.*/
     padding: 0;
     border: none;
 }
+
 /*applied to the scrollbar in default state.*/
 .jqx-scrollbar-state-normal {
     background: #efefef;
@@ -2584,24 +2827,28 @@ of the horizontal scrollbar.*/
     padding: 0px;
     border: 1px solid transparent;
 }
+
 /*applied to the scrollbar buttons in default state.*/
 .jqx-scrollbar-button-state-normal {
     margin: 0px;
     padding: 0px;
     border: 1px solid transparent;
 }
+
 /*applied to the scrollbar buttons in hovered state.*/
 .jqx-scrollbar-button-state-hover {
     margin: 0px;
     padding: 0px;
     border: 1px solid transparent;
 }
+
 /*applied to the scrollbar buttons in pressed state.*/
 .jqx-scrollbar-button-state-pressed {
     margin: 0px;
     padding: 0px;
     border: 1px solid transparent;
 }
+
 /*applied to the horizontal scrollbar thumb in default state.*/
 .jqx-scrollbar-thumb-state-normal-horizontal {
     margin: 0px;
@@ -2610,18 +2857,21 @@ of the horizontal scrollbar.*/
     border: 1px solid transparent;
     touch-action: none;
 }
+
 /*applied to the horizontal scrollbar thumb in hovered state.*/
 .jqx-scrollbar-thumb-state-hover-horizontal {
     margin: 0px;
     padding: 0px;
     border: 1px solid transparent;
 }
+
 /*applied to the horizontal scrollbar thumb in default state.*/
 .jqx-scrollbar-thumb-state-pressed-horizontal {
     margin: 0px;
     padding: 0px;
     border: 1px solid transparent;
 }
+
 /*applied to the vertical scrollbar thumb in default state.*/
 .jqx-scrollbar-thumb-state-normal {
     margin: 0px;
@@ -2629,6 +2879,7 @@ of the horizontal scrollbar.*/
     border: 1px solid transparent;
     touch-action: none;
 }
+
 /*applied to the vertical scrollbar thumb in default state.*/
 .jqx-scrollbar-thumb-state-hover {
     margin: 0px;
@@ -2636,6 +2887,7 @@ of the horizontal scrollbar.*/
     background: transparent;
     border: 1px solid transparent;
 }
+
 /*applied to the vertical scrollbar thumb in default state.*/
 .jqx-scrollbar-thumb-state-pressed {
     margin: 0px;
@@ -2650,9 +2902,10 @@ of the horizontal scrollbar.*/
     overflow: hidden;
     border: 1px solid transparent;
 }
+
 /*applied to the jqxWindow when it’s disabled*/
-.jqx-window-disabled {
-}
+.jqx-window-disabled {}
+
 /*applied to the window’s header*/
 .jqx-window-header {
     outline: none;
@@ -2664,9 +2917,10 @@ of the horizontal scrollbar.*/
     white-space: nowrap;
     overflow: hidden;
 }
+
 /*applied to the window’s header when the window is disabled*/
-.jqx-window-header-disabled {
-}
+.jqx-window-header-disabled {}
+
 /*applied to the window’s content*/
 .jqx-window-content {
     outline: none;
@@ -2677,6 +2931,7 @@ of the horizontal scrollbar.*/
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
 }
+
 /*applied to the window’s content when the window is disabled*/
 .jqx-window-content-disabled {
     outline: none;
@@ -2684,6 +2939,7 @@ of the horizontal scrollbar.*/
     text-align: left;
     padding: 5px;
 }
+
 /*applied to the window’s close button*/
 .jqx-window-close-button {
     cursor: pointer;
@@ -2691,25 +2947,27 @@ of the horizontal scrollbar.*/
     background-repeat: no-repeat;
     margin-top: 2px;
 }
+
 /*applied to the window's collapse button*/
 .jqx-window-collapse-button {
     background-image: url(./images/icon-up.png);
     cursor: pointer;
     margin-top: 3px;
 }
+
 /*applied to the window's collapse button when the window is collapsed*/
 .jqx-window-collapse-button-collapsed {
     margin-top: 3px;
     cursor: pointer;
     background-image: url(./images/icon-down.png);
 }
+
 /*setting styles of the modal window’s background*/
 .jqx-window-modal {
     background-color: Black;
 }
 
-.jqx-window-close-button-hover {
-}
+.jqx-window-close-button-hover {}
 
 .jqx-docking {
     overflow: hidden;
@@ -2739,22 +2997,26 @@ of the horizontal scrollbar.*/
     position: relative;
     overflow: hidden;
 }
+
 /*applied to the ticks which can be in the top/bottom/both sides of the jqxSlider*/
 .jqx-slider-tick {
     border-left: 1px solid transparent;
     z-index: 9;
 }
+
 /*applied to the ticks when the slider is in horizontal mode*/
 .jqx-slider-tick-horizontal {
     width: 1px;
     border-left: none;
     margin-top: 1px;
 }
+
 /*applied to the ticks when the slider is in vertical mode*/
 .jqx-slider-tick-vertical {
     height: 1px;
     border-top: none;
 }
+
 /*applied to the ticks container*/
 .jqx-slider-tickscontainer {
     z-index: 10;
@@ -2763,6 +3025,7 @@ of the horizontal scrollbar.*/
     margin-bottom: 0px;
     z-index: 9;
 }
+
 /*applied to the jqxSlider thumb used for changing/indicating current value*/
 .jqx-slider-slider {
     cursor: pointer;
@@ -2785,6 +3048,7 @@ of the horizontal scrollbar.*/
     box-sizing: content-box !important;
     padding: 3px !important;
 }
+
 /*applied to the slider's thumb when the slider is in horizontal mode*/
 .jqx-slider-slider-horizontal {
     margin-top: -9px;
@@ -2793,6 +3057,7 @@ of the horizontal scrollbar.*/
     border-radius: 100%;
     border: 1px solid transparent;
 }
+
 /*applied to the slider's thumb when the slider is in vertical mode*/
 .jqx-slider-slider-vertical {
     margin-left: -9px;
@@ -2801,6 +3066,7 @@ of the horizontal scrollbar.*/
     border-radius: 100%;
     border: 1px solid transparent;
 }
+
 /*applied to the track where is located the thumb*/
 .jqx-slider-track {
     height: 4px;
@@ -2809,18 +3075,20 @@ of the horizontal scrollbar.*/
     z-index: 20;
     cursor: pointer;
 }
+
 /*used in horizontal slider*/
 .jqx-slider-track-horizontal {
     height: 4px;
     margin-top: 2px;
 }
+
 /*used in vertical slider*/
 .jqx-slider-track-vertical {
     width: 4px;
 }
+
 /*applied to the div which is between the thumbs in a range slider or from beginning of the track to the current thumb position in the default slider*/
-.jqx-slider-rangebar {
-}
+.jqx-slider-rangebar {}
 
 /* jqxSplitter */
 .jqx-splitter {
@@ -2828,6 +3096,7 @@ of the horizontal scrollbar.*/
     border: 1px solid transparent;
     position: relative;
 }
+
 /* Split bar's class when the jqxSplitter is with horizontal orientation */
 .jqx-splitter-splitbar-vertical {
     border: 1px solid transparent;
@@ -2837,10 +3106,12 @@ of the horizontal scrollbar.*/
     cursor: col-resize;
     position: absolute;
 }
+
 /* Split bar's mouse over state */
 .jqx-splitter-splitbar-hover {
     background-color: transparent;
 }
+
 /* Split bar's class when the jqxSplitter is with horizontal orientation. */
 .jqx-splitter-splitbar-horizontal {
     position: absolute;
@@ -2850,26 +3121,31 @@ of the horizontal scrollbar.*/
     cursor: n-resize;
     cursor: row-resize;
 }
+
 /* This class is applied to the splitter when it's dragged to it's max left/right boundary */
 .jqx-splitter-splitbar-invalid {
     background: #FF0000 !important;
 }
+
 /* This class is added to split bar's collapse button when the splitter is with vectical orientation. */
 .jqx-splitter-collapse-button-horizontal {
     cursor: pointer;
     width: 45px;
     height: 5px;
 }
+
 /* This class is added to split bar's collapse button when the splitter is with horizontal orientation. */
 .jqx-splitter-collapse-button-vertical {
     cursor: pointer;
     width: 5px;
     height: 45px;
 }
+
 /* This class is added when the user disable the splitter. */
 .jqx-splitter-splitbar-collapsed {
     cursor: default;
 }
+
 /* Applied to the jqxSplitter panels. */
 .jqx-splitter-panel {
     border: none;
@@ -2877,14 +3153,15 @@ of the horizontal scrollbar.*/
     position: absolute;
     overflow: hidden;
 }
+
 /* This class is added to a nested splitter.*/
-.jqx-splitter-nested, .jqx-splitter-panel-nested {
+.jqx-splitter-nested,
+.jqx-splitter-panel-nested {
     border: none;
     overflow: hidden;
 }
 
-.jqx-draggable {
-}
+.jqx-draggable {}
 
 .jqx-draggable-dragging {
     border: 0px solid black;
@@ -2941,10 +3218,12 @@ of the horizontal scrollbar.*/
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+
 .jqx-switchbutton[aria-disabled="true"] {
     opacity: 0.5;
     pointer-events: none;
 }
+
 .jqx-switchbutton-thumb {
     display: inline-block;
     cursor: pointer;
@@ -2959,14 +3238,11 @@ of the horizontal scrollbar.*/
     font-weight: bold;
 }
 
-.jqx-switchbutton-wrapper {
-}
+.jqx-switchbutton-wrapper {}
 
-.jqx-switchbutton-label-on {
-}
+.jqx-switchbutton-label-on {}
 
-.jqx-switchbutton-label-off {
-}
+.jqx-switchbutton-label-off {}
 
 /*left, right, up and down arrow icons.*/
 .jqx-left-arrow {
@@ -3005,37 +3281,49 @@ of the horizontal scrollbar.*/
     background-position: center;
 }
 
-.jqx-icon-arrow-up, .jqx-icon-arrow-up-hover, .jqx-icon-arrow-up-selected {
+.jqx-icon-arrow-up,
+.jqx-icon-arrow-up-hover,
+.jqx-icon-arrow-up-selected {
     background-image: url('images/icon-up.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.jqx-icon-arrow-down, .jqx-icon-arrow-down-hover, .jqx-icon-arrow-down-selected {
+.jqx-icon-arrow-down,
+.jqx-icon-arrow-down-hover,
+.jqx-icon-arrow-down-selected {
     background-image: url('images/icon-down.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.jqx-icon-arrow-left, .jqx-icon-arrow-left-hover, .jqx-icon-arrow-left-selected {
+.jqx-icon-arrow-left,
+.jqx-icon-arrow-left-hover,
+.jqx-icon-arrow-left-selected {
     background-image: url('images/icon-left.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.jqx-icon-arrow-right, .jqx-icon-arrow-right-hover, .jqx-icon-arrow-right-selected {
+.jqx-icon-arrow-right,
+.jqx-icon-arrow-right-hover,
+.jqx-icon-arrow-right-selected {
     background-image: url('images/icon-right.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.jqx-icon-arrow-first, .jqx-icon-arrow-first-hover, .jqx-icon-arrow-first-selected {
+.jqx-icon-arrow-first,
+.jqx-icon-arrow-first-hover,
+.jqx-icon-arrow-first-selected {
     background-image: url('images/icon-first.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.jqx-icon-arrow-last, .jqx-icon-arrow-last-hover, .jqx-icon-arrow-last-selected {
+.jqx-icon-arrow-last,
+.jqx-icon-arrow-last-hover,
+.jqx-icon-arrow-last-selected {
     background-image: url('images/icon-last.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -3127,7 +3415,8 @@ of the horizontal scrollbar.*/
     height: 16px;
 }
 
-.jqx-icon-plus-alt, .jqx-icon-plus-alt-white {
+.jqx-icon-plus-alt,
+.jqx-icon-plus-alt-white {
     background-image: url(./images/icon-plus.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -3139,6 +3428,7 @@ of the horizontal scrollbar.*/
 .jqx-icon-plus-alt-white {
     background-image: url(./images/icon-plus-white.png);
 }
+
 /* jqxScrollView */
 .jqx-scrollview-button {
     width: 10px;
@@ -3157,7 +3447,9 @@ of the horizontal scrollbar.*/
     -ms-touch-action: auto !important;
 }
 
-.jqx-icon-calendar, .jqx-icon-calendar-hover, .jqx-icon-calendar-pressed {
+.jqx-icon-calendar,
+.jqx-icon-calendar-hover,
+.jqx-icon-calendar-pressed {
     background-image: url('images/icon-calendar.png');
     background-repeat: no-repeat;
     background-position: left top;
@@ -3166,6 +3458,7 @@ of the horizontal scrollbar.*/
     height: 15px !important;
     margin-top: -7.5px !important;
 }
+
 /*applied to Inputs*/
 .jqx-input-widget {
     box-sizing: border-box !important;
@@ -3197,25 +3490,25 @@ of the horizontal scrollbar.*/
     vertical-align: middle;
 }
 
-    .jqx-input-group-addon:first-child {
-        border-right-width: 0px;
-        border-bottom-right-radius: 0 !important;
-        border-top-right-radius: 0 !important;
-    }
+.jqx-input-group-addon:first-child {
+    border-right-width: 0px;
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
 
-    .jqx-input-group-addon:last-child {
-        border-left-width: 0px;
-        border-bottom-left-radius: 0 !important;
-        border-top-left-radius: 0 !important;
-    }
+.jqx-input-group-addon:last-child {
+    border-left-width: 0px;
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
 
-    .jqx-input-group-addon:not(:last-child):not(:first-child) {
-        border-bottom-left-radius: 0 !important;
-        border-top-left-radius: 0 !important;
-        border-bottom-right-radius: 0 !important;
-        border-top-right-radius: 0 !important;
-        border-left-width: 0px;
-    }
+.jqx-input-group-addon:not(:last-child):not(:first-child) {
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-left-width: 0px;
+}
 
 .jqx-input-group .jqx-input {
     padding: 2px 1px !important;
@@ -3242,10 +3535,10 @@ of the horizontal scrollbar.*/
     border-color: transparent;
 }
 
-    .jqx-editor-inline p {
-        margin: 0px;
-        padding: 0 .2em;
-    }
+.jqx-editor-inline p {
+    margin: 0px;
+    padding: 0 .2em;
+}
 
 .jqx-editor-inline-focus {
     border-width: 1px;
@@ -3283,9 +3576,9 @@ of the horizontal scrollbar.*/
     position: relative;
 }
 
-    .jqx-editor-color-picker td:hover {
-        border: 1px solid #000;
-    }
+.jqx-editor-color-picker td:hover {
+    border: 1px solid #000;
+}
 
 .jqx-editor-color-picker-selected-cell {
     outline: 1px solid #000;
@@ -3465,13 +3758,14 @@ of the horizontal scrollbar.*/
     margin-left: 0px !important;
 }
 
-    .jqx-editor-toolbar-group .jqx-editor-toolbar-button:hover, .jqx-editor-toolbar-group .jqx-editor-toolbar-button:active {
-        z-index: 55;
-    }
+.jqx-editor-toolbar-group .jqx-editor-toolbar-button:hover,
+.jqx-editor-toolbar-group .jqx-editor-toolbar-button:active {
+    z-index: 55;
+}
 
-    .jqx-editor-toolbar-group .jqx-editor-toolbar-button.jqx-fill-state-normal {
-        background: transparent !important;
-    }
+.jqx-editor-toolbar-group .jqx-editor-toolbar-button.jqx-fill-state-normal {
+    background: transparent !important;
+}
 
 .jqx-date-time-input-popup table td a {
     border: 1px transparent solid;
@@ -3503,19 +3797,20 @@ of the horizontal scrollbar.*/
     border-bottom-width: 0px;
 }
 
-.jqx-scheduler .jqx-grid-column-header, .jqx-scheduler.jqx-widget .jqx-grid-column-header {
+.jqx-scheduler .jqx-grid-column-header,
+.jqx-scheduler.jqx-widget .jqx-grid-column-header {
     border-bottom: 1px solid #c5c5c5;
 }
 
-.jqx-grid-column-header[sort] > div > div {
+.jqx-grid-column-header[sort]>div>div {
     width: calc(100% - 20px);
 }
 
-.jqx-grid-column-header[filter] > div > div {
+.jqx-grid-column-header[filter]>div>div {
     width: calc(100% - 20px);
 }
 
-.jqx-grid-column-header[filter][sort] > div > div {
+.jqx-grid-column-header[filter][sort]>div>div {
     width: calc(100% - 40px);
 }
 
@@ -3523,9 +3818,9 @@ of the horizontal scrollbar.*/
     text-align: left;
 }
 
-    .jqx-scheduler-all-day-cell span {
-        margin-left: 3px;
-    }
+.jqx-scheduler-all-day-cell span {
+    margin-left: 3px;
+}
 
 .jqx-scheduler-month-cell {
     background: #f2f2f2;
@@ -3548,10 +3843,11 @@ of the horizontal scrollbar.*/
 .jqx-scheduler-month-cell-popup {
     border: 1px solid #333;
     background: #f2f2f2;
-    box-shadow: 0 5px 0px rgba(0,0,0,.15) !important;
+    box-shadow: 0 5px 0px rgba(0, 0, 0, .15) !important;
 }
 
-.jqx-widget .jqx-scheduler-middle-cell, .jqx-scheduler-middle-cell {
+.jqx-widget .jqx-scheduler-middle-cell,
+.jqx-scheduler-middle-cell {
     border-bottom-color: #ddd !important;
 }
 
@@ -3583,7 +3879,8 @@ of the horizontal scrollbar.*/
     font-size: 14px;
 }
 
-.jqx-scheduler-time-column, .jqx-scheduler-toolbar {
+.jqx-scheduler-time-column,
+.jqx-scheduler-toolbar {
     background-image: none !important;
     background: #fff !important;
     color: #333 !important;
@@ -3738,7 +4035,11 @@ of the horizontal scrollbar.*/
     background: #aaa !important;
 }
 
-.jqx-icon-recurrence, .jqx-icon-recurrence-exception, .jqx-icon-recurrence-white, .jqx-icon-recurrence-exception-white, .jqx-icon-time {
+.jqx-icon-recurrence,
+.jqx-icon-recurrence-exception,
+.jqx-icon-recurrence-white,
+.jqx-icon-recurrence-exception-white,
+.jqx-icon-time {
     background-image: url('images/icon-recurrence.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -3865,7 +4166,8 @@ of the horizontal scrollbar.*/
     color: #fff;
 }
 
-.jqx-scheduler-cell-selected .jqx-scheduler-agenda-appointment, .jqx-scheduler-cell-selected .jqx-scheduler-agenda-appointment-rtl {
+.jqx-scheduler-cell-selected .jqx-scheduler-agenda-appointment,
+.jqx-scheduler-cell-selected .jqx-scheduler-agenda-appointment-rtl {
     color: #fff;
 }
 
@@ -3878,16 +4180,19 @@ of the horizontal scrollbar.*/
     padding: 5px;
 }
 
-.jqx-scheduler-agenda-appointment, .jqx-scheduler-agenda-appointment-rtl {
+.jqx-scheduler-agenda-appointment,
+.jqx-scheduler-agenda-appointment-rtl {
     cursor: pointer;
 }
 
-.jqx-scheduler-agenda-appointment-resource, .jqx-scheduler-agenda-appointment-resource-rtl {
+.jqx-scheduler-agenda-appointment-resource,
+.jqx-scheduler-agenda-appointment-resource-rtl {
     margin: 5px;
     cursor: pointer;
 }
 
-.jqx-scheduler-agenda-appointment-resource-rtl, .jqx-scheduler-agenda-appointment-rtl {
+.jqx-scheduler-agenda-appointment-resource-rtl,
+.jqx-scheduler-agenda-appointment-rtl {
     float: right;
 }
 
@@ -3911,6 +4216,7 @@ of the horizontal scrollbar.*/
     border-color: #59a0d5 !important;
     background: #59a0d5 !important;
 }
+
 /*applied to all widgets*/
 .jqx-widget {
     -moz-box-sizing: content-box;
@@ -3925,8 +4231,8 @@ of the horizontal scrollbar.*/
     -webkit-appearance: none;
     -webkit-background-clip: padding-box;
     direction: ltr !important;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    font-family: Verdana,Arial,sans-serif;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: Verdana, Arial, sans-serif;
     font-style: normal;
     font-size: 13px;
 }
@@ -3948,13 +4254,14 @@ of the horizontal scrollbar.*/
     -webkit-text-size-adjust: none;
     background-clip: padding-box;
     -webkit-background-clip: padding-box;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    font-family: Verdana,Arial,sans-serif;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: Verdana, Arial, sans-serif;
     font-style: normal;
     font-size: 13px;
     border-color: #c7c7c7;
     background: #fff;
 }
+
 /*applied to header areas. Tabs, Menu, Window, Calendar.*/
 .jqx-widget-header {
     -moz-box-sizing: content-box;
@@ -3964,7 +4271,7 @@ of the horizontal scrollbar.*/
     -webkit-text-size-adjust: none;
     background-clip: padding-box;
     -webkit-background-clip: padding-box;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     border-color: #c5c5c5;
     background: #e8e8e8;
 }
@@ -3973,7 +4280,7 @@ of the horizontal scrollbar.*/
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     -ms-touch-action: none;
-    font-family: Verdana,Arial,sans-serif;
+    font-family: Verdana, Arial, sans-serif;
     font-style: normal;
     font-size: 13px;
     border-color: #aaa;
@@ -4004,27 +4311,43 @@ of the horizontal scrollbar.*/
     opacity: .55;
     filter: Alpha(Opacity=45);
 }
+
 .jqx-grid.jqx-fill-state-disabled {
     pointer-events: none;
 }
-    .jqx-fill-state-normal td, .jqx-fill-state-hover td, .jqx-fill-state-pressed td, .jqx-fill-state-disabled td, .jqx-fill-state-focus td, .jqx-widget td, .jqx-widget-content td, .jqx-widget-header td {
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-    }
 
-.jqx-widget .jqx-grid-cell, .jqx-widget .jqx-grid-column-header, .jqx-widget .jqx-grid-group-cell {
+.jqx-fill-state-normal td,
+.jqx-fill-state-hover td,
+.jqx-fill-state-pressed td,
+.jqx-fill-state-disabled td,
+.jqx-fill-state-focus td,
+.jqx-widget td,
+.jqx-widget-content td,
+.jqx-widget-header td {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.jqx-widget .jqx-grid-cell,
+.jqx-widget .jqx-grid-column-header,
+.jqx-widget .jqx-grid-group-cell {
     border-color: #aaa;
 }
 
-.jqx-widget .jqx-grid-column-menubutton, .jqx-widget .jqx-grid-column-sortascbutton, .jqx-widget .jqx-grid-column-sortdescbutton, .jqx-widget .jqx-grid-column-filterbutton {
+.jqx-widget .jqx-grid-column-menubutton,
+.jqx-widget .jqx-grid-column-sortascbutton,
+.jqx-widget .jqx-grid-column-sortdescbutton,
+.jqx-widget .jqx-grid-column-filterbutton {
     background-color: transparent;
     border-color: #aaa;
 }
 
-.jqx-grid-column-header a:link, .jqx-grid-column-header a:visited {
-}
+.jqx-grid-column-header a:link,
+.jqx-grid-column-header a:visited {}
 
-.jqx-grid-bottomright, .jqx-panel-bottomright, .jqx-listbox-bottomright {
+.jqx-grid-bottomright,
+.jqx-panel-bottomright,
+.jqx-listbox-bottomright {
     background-color: #e5e5e5;
 }
 
@@ -4033,22 +4356,26 @@ of the horizontal scrollbar.*/
     border-bottom: 1px solid #fff;
     background-color: #fff;
 }
+
 /*applied to the tab's title when the tab is selected and the jqxTab's position property is set to 'bottom' .*/
 .jqx-tabs-title-selected-bottom {
     border-color: #aaa;
     border-top: 1px solid #fff;
     background-color: #fff;
 }
+
 /*applied to the tab's selection tracker when the jqxTab's position property is set to 'top'.*/
 .jqx-tabs-selection-tracker-top {
     border-color: #aaa;
     border-bottom: 1px solid #fff;
 }
+
 /*applied to the tab's selection tracker when the jqxTab's position property is set to 'bottom'.*/
 .jqx-tabs-selection-tracker-bottom {
     border-color: #aaa;
     border-top: 1px solid #fff;
 }
+
 /*jqxMaskedInput and jqxNumberInput Styles*/
 .jqx-input {
     -webkit-appearance: none;
@@ -4061,7 +4388,8 @@ of the horizontal scrollbar.*/
     -webkit-background-clip: padding-box;
 }
 
-input[type=text].jqx-input, input[type=password].jqx-input {
+input[type=text].jqx-input,
+input[type=password].jqx-input {
     min-height: 16px;
     min-width: 16px;
     margin: 0px;
@@ -4110,6 +4438,7 @@ input[type=text].jqx-input, input[type=password].jqx-input {
     background-clip: padding-box;
     -webkit-background-clip: padding-box;
 }
+
 /*applied to the input when it is disabled.*/
 .jqx-input-disabled {
     -webkit-appearance: none;
@@ -4117,35 +4446,33 @@ input[type=text].jqx-input, input[type=password].jqx-input {
     outline: none;
     outline-width: 0px;
 }
+
 /*applied to the list menu.*/
 .jqx-listmenu-widget {
     -ms-touch-action: auto;
 }
 
-    .jqx-listmenu-widget .jqx-widget-content {
-        -ms-touch-action: auto;
-    }
-
-    .jqx-listmenu-widget .jqx-widget-header {
-        -ms-touch-action: auto;
-    }
-
-    .jqx-listmenu-widget li {
-        -ms-touch-action: auto;
-    }
-
-.jqx-menu-popup {
+.jqx-listmenu-widget .jqx-widget-content {
+    -ms-touch-action: auto;
 }
+
+.jqx-listmenu-widget .jqx-widget-header {
+    -ms-touch-action: auto;
+}
+
+.jqx-listmenu-widget li {
+    -ms-touch-action: auto;
+}
+
+.jqx-menu-popup {}
 
 .jqx-menu-vertical {
     background-color: #efefef;
 }
 
-.jqx-color-picker {
-}
+.jqx-color-picker {}
 
-.jqx-color-picker-panel {
-}
+.jqx-color-picker-panel {}
 
 .jqx-color-picker-map {
     border: 1px solid #A0A0A0;
@@ -4234,8 +4561,11 @@ input[type=text].jqx-input, input[type=password].jqx-input {
     background: #c3c3c3;
 }
 
-.jqx-touch, .jqx-touch .jqx-fill-state-normal, .jqx-touch .jqx-widget-content, .jqx-touch .jqx-widget-header, .jqx-touch a:link {
-}
+.jqx-touch,
+.jqx-touch .jqx-fill-state-normal,
+.jqx-touch .jqx-widget-content,
+.jqx-touch .jqx-widget-header,
+.jqx-touch a:link {}
 
 .jqx-scrollbar .jqx-icon-arrow-up {
     width: 100%;
@@ -4256,13 +4586,15 @@ input[type=text].jqx-input, input[type=password].jqx-input {
     width: 100%;
     height: 100%;
 }
+
 /*jqx-listmenu*/
 .jqx-listmenu-widget {
     border-width: 1px;
     border-style: solid;
 }
 
-ol.jqx-listmenu, ul.jqx-listmenu {
+ol.jqx-listmenu,
+ul.jqx-listmenu {
     margin: 0;
     padding: 0;
     border: 0;
@@ -4362,8 +4694,7 @@ ol li .jqx-listmenu-item-label:before {
     clear: both;
 }
 
-.jqx-listmenu-auto-separator {
-}
+.jqx-listmenu-auto-separator {}
 
 .jqx-listmenu-item-readonly {
     cursor: default;
@@ -4391,7 +4722,9 @@ ol li .jqx-listmenu-item-label:before {
     filter: inherit;
 }
 
-.jqx-tooltip, .jqx-tooltip-text, .jqx-tooltip-main {
+.jqx-tooltip,
+.jqx-tooltip-text,
+.jqx-tooltip-main {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -4420,15 +4753,16 @@ ol li .jqx-listmenu-item-label:before {
     border-top-color: transparent !important;
     border-bottom-color: transparent !important;
 }
+
 /*Sets the text-alignment to right.*/
 .jqx-rtl {
     text-align: right !important;
 }
 
 .jqx-shadow {
-    -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.15) !important;
-    -moz-box-shadow: 0 2px 3px rgba(0,0,0,.15) !important;
-    box-shadow: 0 2px 3px rgba(0,0,0,.15) !important;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .15) !important;
+    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .15) !important;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .15) !important;
 }
 
 .jqx-noshadow {
@@ -4437,7 +4771,8 @@ ol li .jqx-listmenu-item-label:before {
     box-shadow: none !important;
 }
 
-.jqx-passwordinput-password-icon, .jqx-passwordinput-password-icon-rtl {
+.jqx-passwordinput-password-icon,
+.jqx-passwordinput-password-icon-rtl {
     background-image: url(./images/icon-showpassword.png) !important;
     background-repeat: no-repeat !important;
     width: 14px;
@@ -4457,6 +4792,7 @@ ol li .jqx-listmenu-item-label:before {
     height: 5px;
     margin-top: 5px;
 }
+
 /*top rounded Corners*/
 .jqx-rc-t-expanded {
     -moz-border-radius-topleft: 0px !important;
@@ -4466,6 +4802,7 @@ ol li .jqx-listmenu-item-label:before {
     -webkit-border-top-right-radius: 0px !important;
     border-top-right-radius: 0px !important;
 }
+
 /*bottom rounded Corners*/
 .jqx-rc-b-expanded {
     -moz-border-radius-bottomleft: 0px !important;
@@ -4535,27 +4872,41 @@ ol li .jqx-listmenu-item-label:before {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
     z-index: 40;
 }
+
 /*jqxRangeSelector*/
-.jqx-rangeselector, .jqx-rangeselector-content, .jqx-rangeselector-slider, .jqx-rangeselector-markers,
-.jqx-rangeselector-ticks-container, .jqx-rangeselector-ticks, .jqx-rangeselector-shutter {
+.jqx-rangeselector,
+.jqx-rangeselector-content,
+.jqx-rangeselector-slider,
+.jqx-rangeselector-markers,
+.jqx-rangeselector-ticks-container,
+.jqx-rangeselector-ticks,
+.jqx-rangeselector-shutter {
     box-shadow: none !important;
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-sizing: content-box !important;
 }
 
-.jqx-rangeselector-markers {
-}
+.jqx-rangeselector-markers {}
 
-.jqx-rangeselector-content, .jqx-rangeselector-ticks, .jqx-rangeselector-labels, .jqx-rangeselector-shutter, .jqx-rangeselector-markers, .jqx-rangeselector-marker-arrow {
+.jqx-rangeselector-content,
+.jqx-rangeselector-ticks,
+.jqx-rangeselector-labels,
+.jqx-rangeselector-shutter,
+.jqx-rangeselector-markers,
+.jqx-rangeselector-marker-arrow {
     position: absolute;
 }
 
-.jqx-rangeselector-ticks-container, .jqx-rangeselector-ticks, .jqx-rangeselector-shutter, .jqx-rangeselector-slider {
+.jqx-rangeselector-ticks-container,
+.jqx-rangeselector-ticks,
+.jqx-rangeselector-shutter,
+.jqx-rangeselector-slider {
     height: 100%;
 }
 
-.jqx-rangeselector-ticks-container, .jqx-rangeselector-slider {
+.jqx-rangeselector-ticks-container,
+.jqx-rangeselector-slider {
     width: 100%;
     box-shadow: none !important;
     -webkit-box-shadow: none !important;
@@ -4565,25 +4916,32 @@ ol li .jqx-listmenu-item-label:before {
     border-radius: 0px !important;
 }
 
-.jqx-rangeselector-group-labels-rtl, .jqx-rangeselector-group-labels-ticks, .jqx-rangeselector-slider {
+.jqx-rangeselector-group-labels-rtl,
+.jqx-rangeselector-group-labels-ticks,
+.jqx-rangeselector-slider {
     float: left;
 }
 
-.jqx-rangeselector-slider, .jqx-rangeselector-markers, .jqx-rangeselector-marker-arrow {
+.jqx-rangeselector-slider,
+.jqx-rangeselector-markers,
+.jqx-rangeselector-marker-arrow {
     border-style: solid;
 }
 
-.jqx-rangeselector-ticks, .jqx-rangeselector-group-labels-ticks {
+.jqx-rangeselector-ticks,
+.jqx-rangeselector-group-labels-ticks {
     width: 1px;
     background: #aaa;
 }
 
-.jqx-rangeselector-labels, .jqx-rangeselector-markers {
+.jqx-rangeselector-labels,
+.jqx-rangeselector-markers {
     white-space: nowrap;
     width: auto;
 }
 
-.jqx-rangeselector-slider, .jqx-rangeselector-markers {
+.jqx-rangeselector-slider,
+.jqx-rangeselector-markers {
     border-width: 1px !important;
 }
 
@@ -4621,7 +4979,8 @@ ol li .jqx-listmenu-item-label:before {
     margin-top: 0px;
 }
 
-.jqx-rangeselector-labels, .jqx-rangeselector-group-labels {
+.jqx-rangeselector-labels,
+.jqx-rangeselector-group-labels {
     margin-top: 4px;
 }
 
@@ -4695,28 +5054,42 @@ ol li .jqx-listmenu-item-label:before {
     border-right: 1px solid #c7c7c7;
     cursor: pointer;
 }
-/*jqxBulletChart*/
-.jqx-bulletchart {
-}
 
-.jqx-bulletchart, .jqx-bulletchart-title-container-horizontal, .jqx-bulletchart-title-container-vertical, .jqx-bulletchart-chart-container-horizontal, .jqx-bulletchart-chart-container-vertical {
+/*jqxBulletChart*/
+.jqx-bulletchart {}
+
+.jqx-bulletchart,
+.jqx-bulletchart-title-container-horizontal,
+.jqx-bulletchart-title-container-vertical,
+.jqx-bulletchart-chart-container-horizontal,
+.jqx-bulletchart-chart-container-vertical {
     position: relative;
 }
 
-.jqx-bulletchart-title-inner-container, .jqx-bulletchart-range, .jqx-bulletchart-pointer, .jqx-bulletchart-target, .jqx-bulletchart-ticks, .jqx-bulletchart-labels {
+.jqx-bulletchart-title-inner-container,
+.jqx-bulletchart-range,
+.jqx-bulletchart-pointer,
+.jqx-bulletchart-target,
+.jqx-bulletchart-ticks,
+.jqx-bulletchart-labels {
     position: absolute;
 }
 
-.jqx-bulletchart-title-container-vertical, .jqx-bulletchart-title, .jqx-bulletchart-description, .jqx-bulletchart-range-vertical {
+.jqx-bulletchart-title-container-vertical,
+.jqx-bulletchart-title,
+.jqx-bulletchart-description,
+.jqx-bulletchart-range-vertical {
     width: 100%;
 }
 
-.jqx-bulletchart-title-container-horizontal, .jqx-bulletchart-chart-container-horizontal {
+.jqx-bulletchart-title-container-horizontal,
+.jqx-bulletchart-chart-container-horizontal {
     float: left;
     overflow: hidden;
 }
 
-.jqx-bulletchart-title, .jqx-bulletchart-description {
+.jqx-bulletchart-title,
+.jqx-bulletchart-description {
     text-align: center;
 }
 
@@ -4783,11 +5156,10 @@ ol li .jqx-listmenu-item-label:before {
     height: 1px;
 }
 
-.jqx-bulletchart-zero-tick {
-}
+.jqx-bulletchart-zero-tick {}
 
-.jqx-bulletchart-labels {
-}
+.jqx-bulletchart-labels {}
+
 /*jqxNotification*/
 .jqx-notification {
     padding: 10px;
@@ -4820,77 +5192,109 @@ ol li .jqx-listmenu-item-label:before {
     height: 100%;
 }
 
-#jqxNotificationDefaultContainer-top-right, #jqxNotificationDefaultContainer-bottom-left {
+#jqxNotificationDefaultContainer-top-right,
+#jqxNotificationDefaultContainer-bottom-left {
     direction: rtl;
 }
 
-.jqx-notification-icon, .jqx-notification-content {
+.jqx-notification-icon,
+.jqx-notification-content {
     vertical-align: middle;
 }
 
-.jqx-notification-content {
-}
+.jqx-notification-content {}
 
 .jqx-notification-content-rtl {
     direction: rtl;
 }
 
-.jqx-link, .jqx-inverse, .jqx-primary, .jqx-warning, .jqx-danger, .jqx-success, .jqx-info {
+.jqx-link,
+.jqx-inverse,
+.jqx-primary,
+.jqx-warning,
+.jqx-danger,
+.jqx-success,
+.jqx-info {
     background: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
 }
 
-    .jqx-primary .jqx-icon-calendar, .jqx-primary .jqx-icon-calendar-hover, .jqx-primary .jqx-icon-calendar-pressed {
-        background-image: url('images/icon-calendar-white.png');
-    }
+.jqx-primary .jqx-icon-calendar,
+.jqx-primary .jqx-icon-calendar-hover,
+.jqx-primary .jqx-icon-calendar-pressed {
+    background-image: url('images/icon-calendar-white.png');
+}
 
-    .jqx-primary .jqx-icon-time, .jqx-primary .jqx-icon-time-hover, .jqx-primary .jqx-icon-time-pressed {
-        background-image: url('images/icon-time-white.png');
-    }
+.jqx-primary .jqx-icon-time,
+.jqx-primary .jqx-icon-time-hover,
+.jqx-primary .jqx-icon-time-pressed {
+    background-image: url('images/icon-time-white.png');
+}
 
-    .jqx-success .jqx-icon-calendar, .jqx-success .jqx-icon-calendar-hover, .jqx-success .jqx-icon-calendar-pressed {
-        background-image: url('images/icon-calendar-white.png');
-    }
+.jqx-success .jqx-icon-calendar,
+.jqx-success .jqx-icon-calendar-hover,
+.jqx-success .jqx-icon-calendar-pressed {
+    background-image: url('images/icon-calendar-white.png');
+}
 
-    .jqx-success .jqx-icon-time, .jqx-success .jqx-icon-time-hover, .jqx-success .jqx-icon-time-pressed {
-        background-image: url('images/icon-time-white.png');
-    }
+.jqx-success .jqx-icon-time,
+.jqx-success .jqx-icon-time-hover,
+.jqx-success .jqx-icon-time-pressed {
+    background-image: url('images/icon-time-white.png');
+}
 
-    .jqx-warning .jqx-icon-calendar, .jqx-warning .jqx-icon-calendar-hover, .jqx-warning .jqx-icon-calendar-pressed {
-        background-image: url('images/icon-calendar-white.png');
-    }
+.jqx-warning .jqx-icon-calendar,
+.jqx-warning .jqx-icon-calendar-hover,
+.jqx-warning .jqx-icon-calendar-pressed {
+    background-image: url('images/icon-calendar-white.png');
+}
 
-    .jqx-warning .jqx-icon-time, .jqx-warning .jqx-icon-time-hover, .jqx-warning .jqx-icon-time-pressed {
-        background-image: url('images/icon-time-white.png');
-    }
+.jqx-warning .jqx-icon-time,
+.jqx-warning .jqx-icon-time-hover,
+.jqx-warning .jqx-icon-time-pressed {
+    background-image: url('images/icon-time-white.png');
+}
 
-    .jqx-danger .jqx-icon-calendar, .jqx-danger .jqx-icon-calendar-hover, .jqx-danger .jqx-icon-calendar-pressed {
-        background-image: url('images/icon-calendar-white.png');
-    }
+.jqx-danger .jqx-icon-calendar,
+.jqx-danger .jqx-icon-calendar-hover,
+.jqx-danger .jqx-icon-calendar-pressed {
+    background-image: url('images/icon-calendar-white.png');
+}
 
-    .jqx-danger .jqx-icon-time, .jqx-danger .jqx-icon-time-hover, .jqx-danger .jqx-icon-time-pressed {
-        background-image: url('images/icon-time-white.png');
-    }
+.jqx-danger .jqx-icon-time,
+.jqx-danger .jqx-icon-time-hover,
+.jqx-danger .jqx-icon-time-pressed {
+    background-image: url('images/icon-time-white.png');
+}
 
-    .jqx-info .jqx-icon-calendar, .jqx-info .jqx-icon-calendar-hover, .jqx-info .jqx-icon-calendar-pressed {
-        background-image: url('images/icon-calendar-white.png');
-    }
+.jqx-info .jqx-icon-calendar,
+.jqx-info .jqx-icon-calendar-hover,
+.jqx-info .jqx-icon-calendar-pressed {
+    background-image: url('images/icon-calendar-white.png');
+}
 
-    .jqx-info .jqx-icon-time, .jqx-info .jqx-icon-time-hover, .jqx-info .jqx-icon-time-pressed {
-        background-image: url('images/icon-time-white.png');
-    }
+.jqx-info .jqx-icon-time,
+.jqx-info .jqx-icon-time-hover,
+.jqx-info .jqx-icon-time-pressed {
+    background-image: url('images/icon-time-white.png');
+}
 
-    .jqx-inverse .jqx-icon-calendar, .jqx-inverse .jqx-icon-calendar-hover, .jqx-inverse .jqx-icon-calendar-pressed {
-        background-image: url('images/icon-calendar-white.png');
-    }
+.jqx-inverse .jqx-icon-calendar,
+.jqx-inverse .jqx-icon-calendar-hover,
+.jqx-inverse .jqx-icon-calendar-pressed {
+    background-image: url('images/icon-calendar-white.png');
+}
 
-    .jqx-inverse .jqx-icon-time, .jqx-inverse .jqx-icon-time-hover, .jqx-inverse .jqx-icon-time-pressed {
-        background-image: url('images/icon-time-white.png');
-    }
+.jqx-inverse .jqx-icon-time,
+.jqx-inverse .jqx-icon-time-hover,
+.jqx-inverse .jqx-icon-time-pressed {
+    background-image: url('images/icon-time-white.png');
+}
 
 
-.jqx-notification-info, .jqx-info {
+.jqx-notification-info,
+.jqx-info {
     color: #ffffff !important;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
     background-color: #5bc0de !important;
@@ -4901,25 +5305,26 @@ ol li .jqx-listmenu-item-label:before {
     border-bottom-color: #46b8da !important;
 }
 
-    .jqx-info:hover,
-    .jqx-info:focus,
-    .jqx-info:active,
-    .jqx-info.active,
-    .jqx-info.disabled,
-    .jqx-info[disabled] {
-        color: #ffffff !important;
-        background-color: #31b0d5 !important;
-        *background-color: #31b0d5 !important;
-        border-color: #269abc !important;
-    }
+.jqx-info:hover,
+.jqx-info:focus,
+.jqx-info:active,
+.jqx-info.active,
+.jqx-info.disabled,
+.jqx-info[disabled] {
+    color: #ffffff !important;
+    background-color: #31b0d5 !important;
+    *background-color: #31b0d5 !important;
+    border-color: #269abc !important;
+}
 
-    .jqx-fill-state-pressed.jqx-info,
-    .jqx-info:active,
-    .jqx-info.active {
-        background-color: #269abc \9 !important;
-    }
+.jqx-fill-state-pressed.jqx-info,
+.jqx-info:active,
+.jqx-info.active {
+    background-color: #269abc \9 !important;
+}
 
-.jqx-notification-warning, .jqx-warning {
+.jqx-notification-warning,
+.jqx-warning {
     color: #ffffff !important;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
     background-color: #f0ad4e !important;
@@ -4930,26 +5335,27 @@ ol li .jqx-listmenu-item-label:before {
     border-bottom-color: #eea236 !important;
 }
 
-    .jqx-warning:hover,
-    .jqx-warning:focus,
-    .jqx-warning:active,
-    .jqx-warning.active,
-    .jqx-warning.disabled,
-    .jqx-warning[disabled] {
-        color: #ffffff !important;
-        background-color: #ec971f !important;
-        *background-color: #ec971f !important;
-        border-color: #d58512 !important;
-    }
+.jqx-warning:hover,
+.jqx-warning:focus,
+.jqx-warning:active,
+.jqx-warning.active,
+.jqx-warning.disabled,
+.jqx-warning[disabled] {
+    color: #ffffff !important;
+    background-color: #ec971f !important;
+    *background-color: #ec971f !important;
+    border-color: #d58512 !important;
+}
 
-    .jqx-fill-state-pressed.jqx-warning,
-    .jqx-warning:active,
-    .jqx-warning.active {
-        background-color: #d58512 \9 !important;
-        border-color: #985f0d !important;
-    }
+.jqx-fill-state-pressed.jqx-warning,
+.jqx-warning:active,
+.jqx-warning.active {
+    background-color: #d58512 \9 !important;
+    border-color: #985f0d !important;
+}
 
-.jqx-notification-success, .jqx-success {
+.jqx-notification-success,
+.jqx-success {
     color: #ffffff !important;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
     background-color: #5cb85c !important;
@@ -4960,26 +5366,27 @@ ol li .jqx-listmenu-item-label:before {
     border-bottom-color: #4cae4c !important;
 }
 
-    .jqx-success:hover,
-    .jqx-success:focus,
-    .jqx-success:active,
-    .jqx-success.active,
-    .jqx-success.disabled,
-    .jqx-success[disabled] {
-        color: #ffffff !important;
-        background-color: #449d44 !important;
-        *background-color: #449d44 !important;
-        border-color: #398439 !important;
-    }
+.jqx-success:hover,
+.jqx-success:focus,
+.jqx-success:active,
+.jqx-success.active,
+.jqx-success.disabled,
+.jqx-success[disabled] {
+    color: #ffffff !important;
+    background-color: #449d44 !important;
+    *background-color: #449d44 !important;
+    border-color: #398439 !important;
+}
 
-    .jqx-fill-state-pressed.jqx-success,
-    .jqx-success:active,
-    .jqx-success.active {
-        background-color: #398439 !important;
-        border-color: #255625 !important;
-    }
+.jqx-fill-state-pressed.jqx-success,
+.jqx-success:active,
+.jqx-success.active {
+    background-color: #398439 !important;
+    border-color: #255625 !important;
+}
 
-.jqx-notification-error, .jqx-danger {
+.jqx-notification-error,
+.jqx-danger {
     color: #ffffff !important;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
     background-color: #d9534f !important;
@@ -4990,25 +5397,27 @@ ol li .jqx-listmenu-item-label:before {
     border-bottom-color: #d43f3a !important;
 }
 
-    .jqx-danger:hover,
-    .jqx-danger:focus,
-    .jqx-danger:active,
-    .jqx-danger.active,
-    .jqx-danger.disabled,
-    .jqx-danger[disabled] {
-        color: #ffffff !important;
-        background-color: #c9302c !important;
-        *background-color: #c9302c !important;
-        border-color: #ac2925 !important;
-    }
+.jqx-danger:hover,
+.jqx-danger:focus,
+.jqx-danger:active,
+.jqx-danger.active,
+.jqx-danger.disabled,
+.jqx-danger[disabled] {
+    color: #ffffff !important;
+    background-color: #c9302c !important;
+    *background-color: #c9302c !important;
+    border-color: #ac2925 !important;
+}
 
-    .jqx-fill-state-pressed.jqx-danger, .jqx-danger:active,
-    .jqx-danger.active {
-        background-color: #ac2925 !important;
-        border-color: #761c19 !important;
-    }
+.jqx-fill-state-pressed.jqx-danger,
+.jqx-danger:active,
+.jqx-danger.active {
+    background-color: #ac2925 !important;
+    border-color: #761c19 !important;
+}
 
-.jqx-notification-mail, .jqx-primary {
+.jqx-notification-mail,
+.jqx-primary {
     color: #ffffff !important;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
     background-color: #337ab7 !important;
@@ -5019,24 +5428,25 @@ ol li .jqx-listmenu-item-label:before {
     border-bottom-color: #2e6da4 !important;
 }
 
-    .jqx-primary:hover,
-    .jqx-primary:focus,
-    .jqx-primary:active,
-    .jqx-primary.active,
-    .jqx-primary.disabled,
-    .jqx-primary[disabled] {
-        color: #ffffff !important;
-        background-color: #286090 !important;
-        *background-color: #286090 !important;
-    }
+.jqx-primary:hover,
+.jqx-primary:focus,
+.jqx-primary:active,
+.jqx-primary.active,
+.jqx-primary.disabled,
+.jqx-primary[disabled] {
+    color: #ffffff !important;
+    background-color: #286090 !important;
+    *background-color: #286090 !important;
+}
 
-    .jqx-fill-state-pressed.jqx-primary,
-    .jqx-primary:active,
-    .jqx-primary.active {
-        background-color: #204d74 !important;
-    }
+.jqx-fill-state-pressed.jqx-primary,
+.jqx-primary:active,
+.jqx-primary.active {
+    background-color: #204d74 !important;
+}
 
-.jqx-notification-time, .jqx-inverse {
+.jqx-notification-time,
+.jqx-inverse {
     color: #ffffff !important;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
     background-color: #363636 !important;
@@ -5047,23 +5457,23 @@ ol li .jqx-listmenu-item-label:before {
     border-bottom-color: #000000 !important;
 }
 
-    .jqx-inverse:hover,
-    .jqx-inverse:focus,
-    .jqx-inverse:active,
-    .jqx-inverse.active,
-    .jqx-inverse.disabled,
-    .jqx-inverse[disabled] {
-        color: #ffffff !important;
-        background-color: #222222 !important;
-        *background-color: #151515 !important;
-    }
+.jqx-inverse:hover,
+.jqx-inverse:focus,
+.jqx-inverse:active,
+.jqx-inverse.active,
+.jqx-inverse.disabled,
+.jqx-inverse[disabled] {
+    color: #ffffff !important;
+    background-color: #222222 !important;
+    *background-color: #151515 !important;
+}
 
-    .jqx-fill-state-pressed.jqx-inverse,
-    .jqx-inverse:active,
-    .jqx-inverse.active {
-        background-color: #080808 !important;
-        background-image: linear-gradient(to bottom, #444444, #444444) !important;
-    }
+.jqx-fill-state-pressed.jqx-inverse,
+.jqx-inverse:active,
+.jqx-inverse.active {
+    background-color: #080808 !important;
+    background-image: linear-gradient(to bottom, #444444, #444444) !important;
+}
 
 .jqx-link,
 .jqx-link:active,
@@ -5084,35 +5494,53 @@ ol li .jqx-listmenu-item-label:before {
     border-radius: 0 !important;
 }
 
-    .jqx-link:hover,
-    .jqx-link:focus {
-        color: #005580 !important;
-        text-decoration: underline !important;
-        background-color: transparent !important;
-    }
+.jqx-link:hover,
+.jqx-link:focus {
+    color: #005580 !important;
+    text-decoration: underline !important;
+    background-color: transparent !important;
+}
 
-    .jqx-link[disabled]:hover,
-    .jqx-link[disabled]:focus {
-        color: #333333 !important;
-        text-decoration: none !important;
-    }
+.jqx-link[disabled]:hover,
+.jqx-link[disabled]:focus {
+    color: #333333 !important;
+    text-decoration: none !important;
+}
 
-    .jqx-link:focus, .jqx-inverse:focus, .jqx-primary:focus, .jqx-warning:focus, .jqx-danger:focus, .jqx-success:focus, .jqx-info:focus,
-    .jqx-link:hover, .jqx-inverse:hover, .jqx-primary:hover, .jqx-warning:hover, .jqx-danger:hover, .jqx-success:hover, .jqx-info:hover {
-        background-position: 0 -15px !important;
-        -webkit-transition: background-position 0.1s linear !important;
-        -moz-transition: background-position 0.1s linear !important;
-        -o-transition: background-position 0.1s linear !important;
-        transition: background-position 0.1s linear !important;
-    }
+.jqx-link:focus,
+.jqx-inverse:focus,
+.jqx-primary:focus,
+.jqx-warning:focus,
+.jqx-danger:focus,
+.jqx-success:focus,
+.jqx-info:focus,
+.jqx-link:hover,
+.jqx-inverse:hover,
+.jqx-primary:hover,
+.jqx-warning:hover,
+.jqx-danger:hover,
+.jqx-success:hover,
+.jqx-info:hover {
+    background-position: 0 -15px !important;
+    -webkit-transition: background-position 0.1s linear !important;
+    -moz-transition: background-position 0.1s linear !important;
+    -o-transition: background-position 0.1s linear !important;
+    transition: background-position 0.1s linear !important;
+}
 
-    .jqx-link:active, .jqx-inverse:active, .jqx-primary:active, .jqx-warning:active, .jqx-danger:active, .jqx-success:active, .jqx-info:active {
-        background-image: none !important;
-        outline: 0 !important;
-        -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
-        -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
-    }
+.jqx-link:active,
+.jqx-inverse:active,
+.jqx-primary:active,
+.jqx-warning:active,
+.jqx-danger:active,
+.jqx-success:active,
+.jqx-info:active {
+    background-image: none !important;
+    outline: 0 !important;
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
 
 .jqx-notification-icon {
     background-repeat: no-repeat;
@@ -5126,7 +5554,12 @@ ol li .jqx-listmenu-item-label:before {
     background-position: right center;
 }
 
-.jqx-notification-icon-info, .jqx-notification-icon-warning, .jqx-notification-icon-success, .jqx-notification-icon-error, .jqx-notification-icon-mail, .jqx-notification-icon-time {
+.jqx-notification-icon-info,
+.jqx-notification-icon-warning,
+.jqx-notification-icon-success,
+.jqx-notification-icon-error,
+.jqx-notification-icon-mail,
+.jqx-notification-icon-time {
     width: 30px;
     height: 25px;
 }
@@ -5155,7 +5588,11 @@ ol li .jqx-listmenu-item-label:before {
     background-image: url('images/time.png');
 }
 
-.jqx-notification-close-button-info, .jqx-notification-close-button-success, .jqx-notification-close-button-mail, .jqx-notification-close-button-time, .jqx-notification-close-button-error {
+.jqx-notification-close-button-info,
+.jqx-notification-close-button-success,
+.jqx-notification-close-button-mail,
+.jqx-notification-close-button-time,
+.jqx-notification-close-button-error {
     background-image: url('images/close_white.png');
 }
 
@@ -5163,7 +5600,8 @@ ol li .jqx-listmenu-item-label:before {
     background-image: url('images/close_black.png');
 }
 
-.jqx-notification-close-button-container, .jqx-notification-close-button {
+.jqx-notification-close-button-container,
+.jqx-notification-close-button {
     width: 16px;
     height: 16px;
 }
@@ -5195,26 +5633,26 @@ ol li .jqx-listmenu-item-label:before {
     border-width: 1px;
 }
 
-    .jqx-navbar ul:before,
-    .jqx-navbar ul:after {
-        content: "";
-        display: table;
-    }
+.jqx-navbar ul:before,
+.jqx-navbar ul:after {
+    content: "";
+    display: table;
+}
 
-    .jqx-navbar ul:after {
-        clear: both;
-    }
+.jqx-navbar ul:after {
+    clear: both;
+}
 
-    .jqx-navbar ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        display: block;
-        border: 0;
-        max-width: 100%;
-        overflow: visible;
-    }
+.jqx-navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: block;
+    border: 0;
+    max-width: 100%;
+    overflow: visible;
+}
 
 .jqx-navbar-block {
     margin: 0;
@@ -5285,7 +5723,8 @@ ol li .jqx-listmenu-item-label:before {
     right: 0;
 }
 
-.jqx-ribbon-header-horizontal-popup, .jqx-ribbon-header-vertical-popup {
+.jqx-ribbon-header-horizontal-popup,
+.jqx-ribbon-header-vertical-popup {
     position: relative;
 }
 
@@ -5309,7 +5748,8 @@ ol li .jqx-listmenu-item-label:before {
     vertical-align: top;
 }
 
-.jqx-ribbon-item-top, .jqx-ribbon-item-bottom {
+.jqx-ribbon-item-top,
+.jqx-ribbon-item-bottom {
     height: 100%;
     display: inline-block;
     margin-left: 1px;
@@ -5324,7 +5764,8 @@ ol li .jqx-listmenu-item-label:before {
     margin-top: -1px;
 }
 
-.jqx-ribbon-item-left, .jqx-ribbon-item-right {
+.jqx-ribbon-item-left,
+.jqx-ribbon-item-right {
     width: 100%;
     margin-top: 2px;
 }
@@ -5401,15 +5842,15 @@ ol li .jqx-listmenu-item-label:before {
     border-left: none;
 }
 
-    .jqx-ribbon-content-popup.jqx-ribbon-content-horizontal {
-        width: 100%;
-        height: auto;
-    }
+.jqx-ribbon-content-popup.jqx-ribbon-content-horizontal {
+    width: 100%;
+    height: auto;
+}
 
-    .jqx-ribbon-content-popup.jqx-ribbon-content-vertical {
-        width: auto;
-        height: 100%;
-    }
+.jqx-ribbon-content-popup.jqx-ribbon-content-vertical {
+    width: auto;
+    height: 100%;
+}
 
 .jqx-ribbon-content-popup-top {
     -webkit-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
@@ -5430,8 +5871,8 @@ ol li .jqx-listmenu-item-label:before {
 }
 
 .jqx-ribbon-content-popup-right {
-    -webkit-box-shadow: -6px 6px 15px 0 rgba(0,0,0,0.15);
-    box-shadow: -6px 6px 15px 0 rgba(0,0,0,0.15);
+    -webkit-box-shadow: -6px 6px 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: -6px 6px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 .jqx-ribbon-content-auto-width {
@@ -5500,11 +5941,13 @@ ol li .jqx-listmenu-item-label:before {
     z-index: 0;
 }
 
-.jqx-ribbon-scrollbutton-top, .jqx-ribbon-scrollbutton-bottom {
+.jqx-ribbon-scrollbutton-top,
+.jqx-ribbon-scrollbutton-bottom {
     width: 17px;
 }
 
-.jqx-ribbon-scrollbutton-left, .jqx-ribbon-scrollbutton-right {
+.jqx-ribbon-scrollbutton-left,
+.jqx-ribbon-scrollbutton-right {
     height: 17px;
 }
 
@@ -5532,49 +5975,65 @@ ol li .jqx-listmenu-item-label:before {
     border-left-style: solid;
 }
 
-.jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-both, .jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-near, .jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-both, .jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-near {
+.jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-both,
+.jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-near,
+.jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-both,
+.jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-near {
     left: 1px;
     border-right-width: 1px;
     border-right-style: solid;
 }
 
-.jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-far, .jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-far {
+.jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-far,
+.jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-far {
     right: 18px;
     border-left-width: 1px;
     border-left-style: solid;
 }
 
-.jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-both, .jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-far, .jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-both, .jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-far {
+.jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-both,
+.jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-far,
+.jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-both,
+.jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-far {
     right: 1px;
     border-left-width: 1px;
     border-left-style: solid;
 }
 
-.jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-near, .jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-near {
+.jqx-ribbon-scrollbutton-top.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-near,
+.jqx-ribbon-scrollbutton-bottom.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-near {
     left: 18px;
     border-right-width: 1px;
     border-right-style: solid;
 }
 
-.jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-both, .jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-near, .jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-both, .jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-near {
+.jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-both,
+.jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-near,
+.jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-both,
+.jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-near {
     top: 1px;
     border-bottom-width: 1px;
     border-bottom-style: solid;
 }
 
-.jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-far, .jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-far {
+.jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-far,
+.jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-lt.jqx-ribbon-scrollbutton-far {
     bottom: 18px;
     border-top-width: 1px;
     border-top-style: solid;
 }
 
-.jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-both, .jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-far, .jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-both, .jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-far {
+.jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-both,
+.jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-far,
+.jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-both,
+.jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-far {
     bottom: 1px;
     border-top-width: 1px;
     border-top-style: solid;
 }
 
-.jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-near, .jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-near {
+.jqx-ribbon-scrollbutton-left.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-near,
+.jqx-ribbon-scrollbutton-right.jqx-ribbon-scrollbutton-rb.jqx-ribbon-scrollbutton-near {
     top: 18px;
     border-bottom-width: 1px;
     border-bottom-style: solid;
@@ -5592,15 +6051,20 @@ ol li .jqx-listmenu-item-label:before {
     z-index: 0;
 }
 
-.jqx-ribbon-selection-token-top, .jqx-ribbon-selection-token-bottom {
+.jqx-ribbon-selection-token-top,
+.jqx-ribbon-selection-token-bottom {
     height: 1px;
 }
 
-.jqx-ribbon-selection-token-left, .jqx-ribbon-selection-token-right {
+.jqx-ribbon-selection-token-left,
+.jqx-ribbon-selection-token-right {
     width: 1px;
 }
 
-.jqx-ribbon-auto, .jqx-ribbon-item-top, .jqx-ribbon-item-bottom, .jqx-ribbon-content {
+.jqx-ribbon-auto,
+.jqx-ribbon-item-top,
+.jqx-ribbon-item-bottom,
+.jqx-ribbon-content {
     *display: inline;
 }
 
@@ -5624,11 +6088,13 @@ ol li .jqx-listmenu-item-label:before {
     *position: absolute;
 }
 
-.jqx-toolbar, .jqx-toolbar-minimized-popup-separator {
+.jqx-toolbar,
+.jqx-toolbar-minimized-popup-separator {
     box-sizing: border-box;
 }
 
-.jqx-toolbar, .jqx-toolbar-minimized-popup {
+.jqx-toolbar,
+.jqx-toolbar-minimized-popup {
     padding: 5px;
 }
 
@@ -5671,7 +6137,8 @@ ol li .jqx-listmenu-item-label:before {
     border-radius: 0 !important;
 }
 
-.jqx-toolbar-minimized-button, .jqx-toolbar-minimized-popup {
+.jqx-toolbar-minimized-button,
+.jqx-toolbar-minimized-popup {
     position: absolute;
 }
 
@@ -5721,12 +6188,14 @@ ol li .jqx-listmenu-item-label:before {
     vertical-align: middle;
 }
 
-.jqx-formatted-input, .jqx-complex-input {
+.jqx-formatted-input,
+.jqx-complex-input {
     padding-right: 2px !important;
     text-align: right;
 }
 
-.jqx-formatted-input-lower-case, .jqx-complex-input {
+.jqx-formatted-input-lower-case,
+.jqx-complex-input {
     text-transform: lowercase;
 }
 
@@ -5738,11 +6207,13 @@ ol li .jqx-listmenu-item-label:before {
     word-wrap: break-word;
 }
 
-.jqx-formatted-input-item-rtl, .jqx-complex-input-rtl {
+.jqx-formatted-input-item-rtl,
+.jqx-complex-input-rtl {
     direction: rtl !important;
 }
 
-.jqx-formatted-input-spin-buttons-container, .jqx-formatted-input-addon {
+.jqx-formatted-input-spin-buttons-container,
+.jqx-formatted-input-addon {
     height: 100%;
 }
 
@@ -5810,25 +6281,40 @@ ol li .jqx-listmenu-item-label:before {
     overflow: auto;
 }
 
-.jqx-file-upload, .jqx-file-upload-file-row, .jqx-file-upload-file-name, .jqx-file-upload-file-cancel, .jqx-file-upload-file-upload {
+.jqx-file-upload,
+.jqx-file-upload-file-row,
+.jqx-file-upload-file-name,
+.jqx-file-upload-file-cancel,
+.jqx-file-upload-file-upload {
     border-width: 1px;
     border-style: solid;
     box-sizing: border-box;
 }
 
-.jqx-file-upload-buttons-container, .jqx-file-upload-iframe, .jqx-file-upload-loading-element {
+.jqx-file-upload-buttons-container,
+.jqx-file-upload-iframe,
+.jqx-file-upload-loading-element {
     display: none;
 }
 
-.jqx-file-upload-file-input-ie9, .jqx-file-upload-buttons-container, .jqx-file-upload-file-row, .jqx-file-upload-icon {
+.jqx-file-upload-file-input-ie9,
+.jqx-file-upload-buttons-container,
+.jqx-file-upload-file-row,
+.jqx-file-upload-icon {
     width: 100%;
 }
 
-.jqx-file-upload-file-input-ie9, .jqx-file-upload-file-name, .jqx-file-upload-file-cancel, .jqx-file-upload-file-upload, .jqx-file-upload-icon, .jqx-file-upload-loading-element {
+.jqx-file-upload-file-input-ie9,
+.jqx-file-upload-file-name,
+.jqx-file-upload-file-cancel,
+.jqx-file-upload-file-upload,
+.jqx-file-upload-icon,
+.jqx-file-upload-loading-element {
     height: 100%;
 }
 
-.jqx-file-input-iframe, .jqx-file-upload-form-ie9 {
+.jqx-file-input-iframe,
+.jqx-file-upload-form-ie9 {
     position: absolute;
 }
 
@@ -5838,12 +6324,14 @@ ol li .jqx-listmenu-item-label:before {
     border: none;
 }
 
-.jqx-file-upload-form, .jqx-file-upload-file-input {
+.jqx-file-upload-form,
+.jqx-file-upload-file-input {
     visibility: hidden;
     display: none;
 }
 
-.jqx-file-upload-form-ie9, .jqx-file-upload-file-input-ie9 {
+.jqx-file-upload-form-ie9,
+.jqx-file-upload-file-input-ie9 {
     display: block;
     visibility: visible;
 }
@@ -5863,11 +6351,18 @@ ol li .jqx-listmenu-item-label:before {
     *float: left;
 }
 
-.jqx-file-upload-button-browse-rtl, .jqx-file-upload-button-upload-rtl, .jqx-file-upload-button-cancel-rtl, .jqx-file-upload-file-name-rtl, .jqx-file-upload-file-cancel, .jqx-file-upload-file-upload, .jqx-file-upload-loading-element {
+.jqx-file-upload-button-browse-rtl,
+.jqx-file-upload-button-upload-rtl,
+.jqx-file-upload-button-cancel-rtl,
+.jqx-file-upload-file-name-rtl,
+.jqx-file-upload-file-cancel,
+.jqx-file-upload-file-upload,
+.jqx-file-upload-loading-element {
     float: right;
 }
 
-.jqx-file-upload, .jqx-file-upload-file-row {
+.jqx-file-upload,
+.jqx-file-upload-file-row {
     padding: 5px;
 }
 
@@ -5880,11 +6375,17 @@ ol li .jqx-listmenu-item-label:before {
     margin-top: 10px;
 }
 
-.jqx-file-upload-button-browse-rtl, .jqx-file-upload-button-upload-rtl, .jqx-file-upload-button-cancel-rtl, .jqx-file-upload-file-name-rtl, .jqx-file-upload-file-cancel-rtl, .jqx-file-upload-file-upload-rtl {
+.jqx-file-upload-button-browse-rtl,
+.jqx-file-upload-button-upload-rtl,
+.jqx-file-upload-button-cancel-rtl,
+.jqx-file-upload-file-name-rtl,
+.jqx-file-upload-file-cancel-rtl,
+.jqx-file-upload-file-upload-rtl {
     direction: rtl !important;
 }
 
-.jqx-file-upload-button-cancel, .jqx-file-upload-button-upload-rtl {
+.jqx-file-upload-button-cancel,
+.jqx-file-upload-button-upload-rtl {
     margin-left: 5px;
 }
 
@@ -5892,7 +6393,8 @@ ol li .jqx-listmenu-item-label:before {
     margin-right: 5px;
 }
 
-.jqx-file-upload-button-cancel-rtl, .jqx-file-upload-button-upload-rtl-ie {
+.jqx-file-upload-button-cancel-rtl,
+.jqx-file-upload-button-upload-rtl-ie {
     margin-left: 0;
 }
 
@@ -5902,26 +6404,39 @@ ol li .jqx-listmenu-item-label:before {
     clear: both;
 }
 
-.jqx-file-upload-file-cancel, .jqx-file-upload-file-upload, .jqx-file-upload-loading-element {
+.jqx-file-upload-file-cancel,
+.jqx-file-upload-file-upload,
+.jqx-file-upload-loading-element {
     width: 17px;
     margin: 0 1px 0 1px;
 }
 
-.jqx-file-upload-file-cancel-rtl, .jqx-file-upload-file-upload-rtl, .jqx-file-upload-loading-element-rtl {
+.jqx-file-upload-file-cancel-rtl,
+.jqx-file-upload-file-upload-rtl,
+.jqx-file-upload-loading-element-rtl {
     float: none;
     *float: left;
 }
 
-.jqx-file-upload-button-browse, .jqx-file-upload-button-upload, .jqx-file-upload-button-cancel, .jqx-file-upload-form-ie9, .jqx-file-upload-file-input-ie9, .jqx-file-upload-file-cancel, .jqx-file-upload-file-upload {
+.jqx-file-upload-button-browse,
+.jqx-file-upload-button-upload,
+.jqx-file-upload-button-cancel,
+.jqx-file-upload-form-ie9,
+.jqx-file-upload-file-input-ie9,
+.jqx-file-upload-file-cancel,
+.jqx-file-upload-file-upload {
     cursor: pointer;
     white-space: nowrap;
 }
 
-.jqx-file-upload-file-name, .jqx-file-upload-file-cancel, .jqx-file-upload-file-upload {
+.jqx-file-upload-file-name,
+.jqx-file-upload-file-cancel,
+.jqx-file-upload-file-upload {
     display: inline-block;
 }
 
-.jqx-file-upload-icon-upload, .jqx-file-upload-loading-element {
+.jqx-file-upload-icon-upload,
+.jqx-file-upload-loading-element {
     margin-top: 1px;
 }
 
@@ -5984,7 +6499,7 @@ ol li .jqx-listmenu-item-label:before {
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     z-index: 999;
     border-style: solid;
     border-width: 1px;
@@ -5992,8 +6507,10 @@ ol li .jqx-listmenu-item-label:before {
 
 .jqx-loader-ie-transparency {
     background: transparent;
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fffffff, endColorstr=#7fffffff)"; /*For IE 8*/
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fffffff, endColorstr=#7fffffff); /*For IE 7*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fffffff, endColorstr=#7fffffff)";
+    /*For IE 8*/
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fffffff, endColorstr=#7fffffff);
+    /*For IE 7*/
 }
 
 .jqx-loader-modal {
@@ -6055,12 +6572,24 @@ ol li .jqx-listmenu-item-label:before {
 .jqx-loader-rtl {
     direction: rtl;
 }
+
 /* jqxLayout and jqxDockingLayout */
-.jqx-layout, .jqx-layout-group-root, .jqx-layout-pseudo-window-header, .jqx-docking-layout-overlay-inner-square-content {
+.jqx-layout,
+.jqx-layout-group-root,
+.jqx-layout-pseudo-window-header,
+.jqx-docking-layout-overlay-inner-square-content {
     position: relative;
 }
 
-.jqx-layout-pseudo-window-pin-background, .jqx-layout-pseudo-window-close-background, .jqx-layout-resize-feedback, .jqx-layout-overlay, .jqx-docking-layout-overlay, .jqx-docking-layout-overlay-highlight-right, .jqx-docking-layout-overlay-highlight-bottom, .jqx-docking-layout-overlay-square-edge, .jqx-docking-layout-drop-overlay {
+.jqx-layout-pseudo-window-pin-background,
+.jqx-layout-pseudo-window-close-background,
+.jqx-layout-resize-feedback,
+.jqx-layout-overlay,
+.jqx-docking-layout-overlay,
+.jqx-docking-layout-overlay-highlight-right,
+.jqx-docking-layout-overlay-highlight-bottom,
+.jqx-docking-layout-overlay-square-edge,
+.jqx-docking-layout-drop-overlay {
     position: absolute;
 }
 
@@ -6068,12 +6597,20 @@ ol li .jqx-listmenu-item-label:before {
     background-color: #c5c5c5;
 }
 
-.jqx-layout-group-root, .jqx-layout-pseudo-window-pin-icon, .jqx-layout-pseudo-window-pinned-icon, .jqx-layout-pseudo-window-close-icon, .jqx-layout-overlay {
+.jqx-layout-group-root,
+.jqx-layout-pseudo-window-pin-icon,
+.jqx-layout-pseudo-window-pinned-icon,
+.jqx-layout-pseudo-window-close-icon,
+.jqx-layout-overlay {
     width: 100%;
     height: 100%;
 }
 
-.jqx-layout-group-default-horizontal > div, .jqx-layout-pseudo-window-title-ltr, .jqx-docking-layout-overlay-square, .jqx-docking-layout-overlay-mini-window-edge-horizontal, .jqx-docking-layout-overlay-square-edge-arrow-container-horizontal {
+.jqx-layout-group-default-horizontal>div,
+.jqx-layout-pseudo-window-title-ltr,
+.jqx-docking-layout-overlay-square,
+.jqx-docking-layout-overlay-mini-window-edge-horizontal,
+.jqx-docking-layout-overlay-square-edge-arrow-container-horizontal {
     float: left;
 }
 
@@ -6083,19 +6620,23 @@ ol li .jqx-listmenu-item-label:before {
     min-height: 0 !important;
 }
 
-    .jqx-layout-group-tabbed .jqx-window-content, .jqx-docking-layout-group-floating .jqx-window-content {
-        padding: 0;
-    }
+.jqx-layout-group-tabbed .jqx-window-content,
+.jqx-docking-layout-group-floating .jqx-window-content {
+    padding: 0;
+}
 
-    .jqx-layout-group-tabbed .jqx-ribbon-content-section, .jqx-layout-window, .jqx-docking-layout-group-floating .jqx-ribbon-content-section {
-        border: none;
-    }
+.jqx-layout-group-tabbed .jqx-ribbon-content-section,
+.jqx-layout-window,
+.jqx-docking-layout-group-floating .jqx-ribbon-content-section {
+    border: none;
+}
 
 .jqx-layout-window {
     position: static;
 }
 
-.jqx-layout-group-auto-hide-content-vertical, .jqx-layout-group-auto-hide-content-horizontal {
+.jqx-layout-group-auto-hide-content-vertical,
+.jqx-layout-group-auto-hide-content-horizontal {
     overflow: auto;
 }
 
@@ -6115,7 +6656,8 @@ ol li .jqx-listmenu-item-label:before {
     box-shadow: none !important;
 }
 
-.jqx-layout-pseudo-window-header, .jqx-layout-pseudo-window-content {
+.jqx-layout-pseudo-window-header,
+.jqx-layout-pseudo-window-content {
     width: 100%;
     box-sizing: border-box;
 }
@@ -6124,7 +6666,8 @@ ol li .jqx-listmenu-item-label:before {
     height: 30px;
 }
 
-.jqx-layout-pseudo-window-pin-background, .jqx-layout-pseudo-window-close-background {
+.jqx-layout-pseudo-window-pin-background,
+.jqx-layout-pseudo-window-close-background {
     width: 16px;
     height: 16px;
     top: 5px;
@@ -6146,7 +6689,9 @@ ol li .jqx-listmenu-item-label:before {
     left: 0;
 }
 
-.jqx-layout-pseudo-window-pin-icon, .jqx-layout-pseudo-window-pinned-icon, .jqx-layout-pseudo-window-close-icon {
+.jqx-layout-pseudo-window-pin-icon,
+.jqx-layout-pseudo-window-pinned-icon,
+.jqx-layout-pseudo-window-close-icon {
     cursor: pointer;
 }
 
@@ -6219,16 +6764,17 @@ ol li .jqx-listmenu-item-label:before {
     border-color: #FFD280 !important;
 }
 
-    .jqx-docking-layout-group-floating .jqx-window-header {
-        border-color: #FFD280;
-        background-color: #FFD280 !important;
-        background: -webkit-linear-gradient(#FFE4B5, #FFD280) !important;
-        background: -o-linear-gradient(#FFE4B5, #FFD280) !important;
-        background: -moz-linear-gradient(#FFE4B5, #FFD280) !important;
-        background: linear-gradient(#FFE4B5, #FFD280 ) !important;
-    }
+.jqx-docking-layout-group-floating .jqx-window-header {
+    border-color: #FFD280;
+    background-color: #FFD280 !important;
+    background: -webkit-linear-gradient(#FFE4B5, #FFD280) !important;
+    background: -o-linear-gradient(#FFE4B5, #FFD280) !important;
+    background: -moz-linear-gradient(#FFE4B5, #FFD280) !important;
+    background: linear-gradient(#FFE4B5, #FFD280) !important;
+}
 
-.jqx-docking-layout-overlay, .jqx-docking-layout-overlay-square-edge {
+.jqx-docking-layout-overlay,
+.jqx-docking-layout-overlay-square-edge {
     z-index: 99999;
     opacity: 0.9;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
@@ -6261,22 +6807,37 @@ ol li .jqx-listmenu-item-label:before {
     background-image: none !important;
 }
 
-.jqx-docking-layout-overlay-square-top, .jqx-docking-layout-overlay-square-left, .jqx-docking-layout-overlay-square-center, .jqx-docking-layout-overlay-square-right, .jqx-docking-layout-overlay-highlight-bottom {
+.jqx-docking-layout-overlay-square-top,
+.jqx-docking-layout-overlay-square-left,
+.jqx-docking-layout-overlay-square-center,
+.jqx-docking-layout-overlay-square-right,
+.jqx-docking-layout-overlay-highlight-bottom {
     border-top-width: 1px;
     border-top-style: solid;
 }
 
-.jqx-docking-layout-overlay-square-top, .jqx-docking-layout-overlay-square-left, .jqx-docking-layout-overlay-square-bottom, .jqx-docking-layout-overlay-highlight-right {
+.jqx-docking-layout-overlay-square-top,
+.jqx-docking-layout-overlay-square-left,
+.jqx-docking-layout-overlay-square-bottom,
+.jqx-docking-layout-overlay-highlight-right {
     border-left-width: 1px;
     border-left-style: solid;
 }
 
-.jqx-docking-layout-overlay-square-top, .jqx-docking-layout-overlay-square-right, .jqx-docking-layout-overlay-square-bottom, .jqx-docking-layout-overlay-highlight-left {
+.jqx-docking-layout-overlay-square-top,
+.jqx-docking-layout-overlay-square-right,
+.jqx-docking-layout-overlay-square-bottom,
+.jqx-docking-layout-overlay-highlight-left {
     border-right-width: 1px;
     border-right-style: solid;
 }
 
-.jqx-docking-layout-overlay-square-left, .jqx-docking-layout-overlay-square-center, .jqx-docking-layout-overlay-square-right, .jqx-docking-layout-overlay-square-bottom, .jqx-docking-layout-overlay-inner-square-header, .jqx-docking-layout-overlay-highlight-top {
+.jqx-docking-layout-overlay-square-left,
+.jqx-docking-layout-overlay-square-center,
+.jqx-docking-layout-overlay-square-right,
+.jqx-docking-layout-overlay-square-bottom,
+.jqx-docking-layout-overlay-inner-square-header,
+.jqx-docking-layout-overlay-highlight-top {
     border-bottom-width: 1px;
     border-bottom-style: solid;
 }
@@ -6285,7 +6846,12 @@ ol li .jqx-listmenu-item-label:before {
     border-color: transparent !important;
 }
 
-.jqx-docking-layout-overlay-inner-square, .jqx-docking-layout-overlay-inner-square-header, .jqx-docking-layout-overlay-inner-square-content, .jqx-docking-layout-overlay-highlight-top, .jqx-docking-layout-overlay-highlight-bottom, .jqx-docking-layout-overlay-mini-window-edge-vertical {
+.jqx-docking-layout-overlay-inner-square,
+.jqx-docking-layout-overlay-inner-square-header,
+.jqx-docking-layout-overlay-inner-square-content,
+.jqx-docking-layout-overlay-highlight-top,
+.jqx-docking-layout-overlay-highlight-bottom,
+.jqx-docking-layout-overlay-mini-window-edge-vertical {
     width: 24px;
 }
 
@@ -6303,15 +6869,15 @@ ol li .jqx-listmenu-item-label:before {
     height: 18px;
 }
 
-.jqx-docking-layout-overlay-highlight {
-}
+.jqx-docking-layout-overlay-highlight {}
 
 .jqx-docking-layout-overlay-highlight-top {
     height: 9px;
     border-bottom-style: dashed;
 }
 
-.jqx-docking-layout-overlay-highlight-left, .jqx-docking-layout-overlay-highlight-right {
+.jqx-docking-layout-overlay-highlight-left,
+.jqx-docking-layout-overlay-highlight-right {
     width: 12px;
     height: 18px;
 }
@@ -6345,7 +6911,9 @@ ol li .jqx-listmenu-item-label:before {
     visibility: hidden;
 }
 
-.jqx-docking-layout-overlay-square-edge, .jqx-docking-layout-overlay-mini-window-edge-horizontal, .jqx-docking-layout-overlay-mini-window-edge-vertical {
+.jqx-docking-layout-overlay-square-edge,
+.jqx-docking-layout-overlay-mini-window-edge-horizontal,
+.jqx-docking-layout-overlay-mini-window-edge-vertical {
     border-style: solid;
     border-width: 1px;
 }
@@ -6363,7 +6931,9 @@ ol li .jqx-listmenu-item-label:before {
     height: 13px;
 }
 
-.jqx-docking-layout-overlay-mini-window-edge-horizontal, .jqx-docking-layout-overlay-inner-square-header-horizontal, .jqx-docking-layout-overlay-inner-square-content-horizontal {
+.jqx-docking-layout-overlay-mini-window-edge-horizontal,
+.jqx-docking-layout-overlay-inner-square-header-horizontal,
+.jqx-docking-layout-overlay-inner-square-content-horizontal {
     width: 13px;
 }
 
@@ -6380,27 +6950,37 @@ ol li .jqx-listmenu-item-label:before {
     background: transparent !important;
 }
 
-.jqx-docking-layout-overlay-square-edge-arrow-left, .jqx-docking-layout-overlay-square-edge-arrow-right, .jqx-docking-layout-overlay-square-edge-arrow-top {
+.jqx-docking-layout-overlay-square-edge-arrow-left,
+.jqx-docking-layout-overlay-square-edge-arrow-right,
+.jqx-docking-layout-overlay-square-edge-arrow-top {
     border-top-color: transparent !important;
 }
 
-.jqx-docking-layout-overlay-square-edge-arrow-left, .jqx-docking-layout-overlay-square-edge-arrow-right, .jqx-docking-layout-overlay-square-edge-arrow-bottom {
+.jqx-docking-layout-overlay-square-edge-arrow-left,
+.jqx-docking-layout-overlay-square-edge-arrow-right,
+.jqx-docking-layout-overlay-square-edge-arrow-bottom {
     border-bottom-color: transparent !important;
 }
 
-.jqx-docking-layout-overlay-square-edge-arrow-left, .jqx-docking-layout-overlay-square-edge-arrow-top, .jqx-docking-layout-overlay-square-edge-arrow-bottom {
+.jqx-docking-layout-overlay-square-edge-arrow-left,
+.jqx-docking-layout-overlay-square-edge-arrow-top,
+.jqx-docking-layout-overlay-square-edge-arrow-bottom {
     border-left-color: transparent !important;
 }
 
-.jqx-docking-layout-overlay-square-edge-arrow-right, .jqx-docking-layout-overlay-square-edge-arrow-top, .jqx-docking-layout-overlay-square-edge-arrow-bottom {
+.jqx-docking-layout-overlay-square-edge-arrow-right,
+.jqx-docking-layout-overlay-square-edge-arrow-top,
+.jqx-docking-layout-overlay-square-edge-arrow-bottom {
     border-right-color: transparent !important;
 }
 
-.jqx-docking-layout-overlay-square-edge-arrow-left, .jqx-docking-layout-overlay-square-edge-arrow-right {
+.jqx-docking-layout-overlay-square-edge-arrow-left,
+.jqx-docking-layout-overlay-square-edge-arrow-right {
     margin-top: 8px;
 }
 
-.jqx-docking-layout-overlay-square-edge-arrow-top, .jqx-docking-layout-overlay-square-edge-arrow-bottom {
+.jqx-docking-layout-overlay-square-edge-arrow-top,
+.jqx-docking-layout-overlay-square-edge-arrow-bottom {
     margin-left: 8px;
 }
 
@@ -6413,13 +6993,13 @@ ol li .jqx-listmenu-item-label:before {
     display: inline-block;
 }
 
-    .jqx-tag-cloud-item a {
-        text-decoration: initial;
-    }
+.jqx-tag-cloud-item a {
+    text-decoration: initial;
+}
 
-        .jqx-tag-cloud-item a:hover {
-            text-decoration: underline;
-        }
+.jqx-tag-cloud-item a:hover {
+    text-decoration: underline;
+}
 
 .jqx-popover {
     position: absolute;
@@ -6484,9 +7064,9 @@ ol li .jqx-listmenu-item-label:before {
     border-radius: 3px 3px 0 0;
 }
 
-    .jqx-popover-title:empty {
-        display: none;
-    }
+.jqx-popover-title:empty {
+    display: none;
+}
 
 .jqx-popover-content {
     padding: 9px 14px;
@@ -6506,10 +7086,10 @@ ol li .jqx-listmenu-item-label:before {
     border-width: 11px;
 }
 
-    .jqx-popover .jqx-popover-arrow:after {
-        border-width: 10px;
-        content: "";
-    }
+.jqx-popover .jqx-popover-arrow:after {
+    border-width: 10px;
+    content: "";
+}
 
 .jqx-popover.top .jqx-popover-arrow {
     bottom: -11px;
@@ -6519,12 +7099,12 @@ ol li .jqx-listmenu-item-label:before {
     border-bottom-width: 0;
 }
 
-    .jqx-popover.top .jqx-popover-arrow:after {
-        bottom: 1px;
-        margin-left: -10px;
-        border-top-color: #ffffff;
-        border-bottom-width: 0;
-    }
+.jqx-popover.top .jqx-popover-arrow:after {
+    bottom: 1px;
+    margin-left: -10px;
+    border-top-color: #ffffff;
+    border-bottom-width: 0;
+}
 
 .jqx-popover.right .jqx-popover-arrow {
     top: 50%;
@@ -6534,12 +7114,12 @@ ol li .jqx-listmenu-item-label:before {
     border-left-width: 0;
 }
 
-    .jqx-popover.right .jqx-popover-arrow:after {
-        bottom: -10px;
-        left: 1px;
-        border-right-color: #ffffff;
-        border-left-width: 0;
-    }
+.jqx-popover.right .jqx-popover-arrow:after {
+    bottom: -10px;
+    left: 1px;
+    border-right-color: #ffffff;
+    border-left-width: 0;
+}
 
 .jqx-popover.bottom .jqx-popover-arrow {
     top: -11px;
@@ -6549,12 +7129,12 @@ ol li .jqx-listmenu-item-label:before {
     border-top-width: 0;
 }
 
-    .jqx-popover.bottom .jqx-popover-arrow:after {
-        top: 1px;
-        margin-left: -10px;
-        border-bottom-color: #ffffff;
-        border-top-width: 0;
-    }
+.jqx-popover.bottom .jqx-popover-arrow:after {
+    top: 1px;
+    margin-left: -10px;
+    border-bottom-color: #ffffff;
+    border-top-width: 0;
+}
 
 .jqx-popover.left .jqx-popover-arrow {
     top: 50%;
@@ -6564,12 +7144,12 @@ ol li .jqx-listmenu-item-label:before {
     border-left-color: inherit;
 }
 
-    .jqx-popover.left .jqx-popover-arrow:after {
-        right: 1px;
-        bottom: -10px;
-        border-left-color: #ffffff;
-        border-right-width: 0;
-    }
+.jqx-popover.left .jqx-popover-arrow:after {
+    right: 1px;
+    bottom: -10px;
+    border-left-color: #ffffff;
+    border-right-width: 0;
+}
 
 
 .jqx-kanban-full-frame {
@@ -6611,7 +7191,8 @@ ol li .jqx-listmenu-item-label:before {
     /*  background-color: blue;*/
 }
 
-.jqx-kanban-column-header-collapsed { /*vertical column invisible*/
+.jqx-kanban-column-header-collapsed {
+    /*vertical column invisible*/
     display: none;
     box-sizing: border-box;
     height: 0px;
@@ -6620,7 +7201,8 @@ ol li .jqx-listmenu-item-label:before {
     cursor: pointer;
 }
 
-.jqx-kanban-column-header-collapsed-show { /*vertical column visible*/
+.jqx-kanban-column-header-collapsed-show {
+    /*vertical column visible*/
     display: block !important;
     height: 100%;
     box-sizing: border-box;
@@ -6651,11 +7233,13 @@ ol li .jqx-listmenu-item-label:before {
     white-space: nowrap;
 }
 
-.jqx-kanban-column-vertical-container .jqx-kanban-column-header-title, .jqx-kanban-column-vertical-container .jqx-kanban-column-header-status {
+.jqx-kanban-column-vertical-container .jqx-kanban-column-header-title,
+.jqx-kanban-column-vertical-container .jqx-kanban-column-header-status {
     position: relative;
 }
 
-.jqx-kanban-column-hide { /*colapsed*/
+.jqx-kanban-column-hide {
+    /*colapsed*/
     display: none !important;
 }
 
@@ -6751,8 +7335,7 @@ ol li .jqx-listmenu-item-label:before {
     -ms-touch-action: none;
 }
 
-.jqx-kanban-item-selected {
-}
+.jqx-kanban-item-selected {}
 
 .jqx-kanban-item-color-status {
     background-color: #6bbd49;
@@ -6782,14 +7365,11 @@ ol li .jqx-listmenu-item-label:before {
     padding-left: 23px;
 }
 
-.jqx-kanban-column-header-title {
-}
+.jqx-kanban-column-header-title {}
 
-.jqx-kanban-column-header-status {
-}
+.jqx-kanban-column-header-status {}
 
-.jqx-kanban-item-content {
-}
+.jqx-kanban-item-content {}
 
 .jqx-kanban-item-avatar {
     width: 22px;
@@ -6811,8 +7391,7 @@ ol li .jqx-listmenu-item-label:before {
     height: 20px;
 }
 
-    .jqx-kanban-item-avatar-image:hover {
-    }
+.jqx-kanban-item-avatar-image:hover {}
 
 .jqx-kanban-item-footer {
     border-top: 1px solid transparent;
@@ -6844,8 +7423,7 @@ ol li .jqx-listmenu-item-label:before {
     float: right;
 }
 
-.jqx-kanban-item-keyword:hover {
-}
+.jqx-kanban-item-keyword:hover {}
 
 .jqx-kanban-item-avatar {
     height: 20px;
@@ -6898,78 +7476,132 @@ ol li .jqx-listmenu-item-label:before {
     background: transparent !important;
 }
 
-    .jqx-scrollbar-mobile .jqx-scrollbar-state-normal {
-        background: transparent !important;
-        border-color: transparent !important;
-    }
+.jqx-scrollbar-mobile .jqx-scrollbar-state-normal {
+    background: transparent !important;
+    border-color: transparent !important;
+}
 
-    .jqx-scrollbar-mobile .jqx-scrollbar-thumb-state-normal-horizontal, .jqx-scrollbar-mobile .jqx-scrollbar-thumb-state-normal {
-        background: #808080 !important;
-        border-color: #808080 !important;
-        border-width: 1px;
-        z-index: 99999;
-        border-radius: 0px !important;
-    }
+.jqx-scrollbar-mobile .jqx-scrollbar-thumb-state-normal-horizontal,
+.jqx-scrollbar-mobile .jqx-scrollbar-thumb-state-normal {
+    background: #808080 !important;
+    border-color: #808080 !important;
+    border-width: 1px;
+    z-index: 99999;
+    border-radius: 0px !important;
+}
 
-    .jqx-scrollbar-mobile .jqx-scrollbar-thumb-state-normal {
-        width: 4px !important;
-    }
+.jqx-scrollbar-mobile .jqx-scrollbar-thumb-state-normal {
+    width: 4px !important;
+}
 
-    .jqx-scrollbar-mobile .jqx-scrollbar-thumb-state-normal-horizontal {
-        height: 4px !important;
-    }
+.jqx-scrollbar-mobile .jqx-scrollbar-thumb-state-normal-horizontal {
+    height: 4px !important;
+}
 
 
-.jqx-primary .jqx-icon-arrow-down, .jqx-warning .jqx-icon-arrow-down, .jqx-danger .jqx-icon-arrow-down, .jqx-success .jqx-icon-arrow-down, .jqx-info .jqx-icon-arrow-down {
+.jqx-primary .jqx-icon-arrow-down,
+.jqx-warning .jqx-icon-arrow-down,
+.jqx-danger .jqx-icon-arrow-down,
+.jqx-success .jqx-icon-arrow-down,
+.jqx-info .jqx-icon-arrow-down {
     background-image: url('images/icon-down-white.png');
 }
 
-.jqx-primary .jqx-icon-arrow-down-selected, .jqx-warning .jqx-icon-arrow-down-selected, .jqx-danger .jqx-icon-arrow-down-selected, .jqx-success .jqx-icon-arrow-down-selected, .jqx-info .jqx-icon-arrow-down-selected {
+.jqx-primary .jqx-icon-arrow-down-selected,
+.jqx-warning .jqx-icon-arrow-down-selected,
+.jqx-danger .jqx-icon-arrow-down-selected,
+.jqx-success .jqx-icon-arrow-down-selected,
+.jqx-info .jqx-icon-arrow-down-selected {
     background-image: url('images/icon-down-white.png');
 }
 
-.jqx-primary .jqx-icon-arrow-down-hover, .jqx-warning .jqx-icon-arrow-down-hover, .jqx-danger .jqx-icon-arrow-down-hover, .jqx-success .jqx-icon-arrow-down-hover, .jqx-info .jqx-icon-arrow-down-hover {
+.jqx-primary .jqx-icon-arrow-down-hover,
+.jqx-warning .jqx-icon-arrow-down-hover,
+.jqx-danger .jqx-icon-arrow-down-hover,
+.jqx-success .jqx-icon-arrow-down-hover,
+.jqx-info .jqx-icon-arrow-down-hover {
     background-image: url('images/icon-down-white.png');
 }
 
-.jqx-primary .jqx-icon-arrow-up, .jqx-warning .jqx-icon-arrow-up, .jqx-danger .jqx-icon-arrow-up, .jqx-success .jqx-icon-arrow-up, .jqx-info .jqx-icon-arrow-up {
+.jqx-primary .jqx-icon-arrow-up,
+.jqx-warning .jqx-icon-arrow-up,
+.jqx-danger .jqx-icon-arrow-up,
+.jqx-success .jqx-icon-arrow-up,
+.jqx-info .jqx-icon-arrow-up {
     background-image: url('images/icon-up-white.png');
 }
 
-.jqx-primary .jqx-icon-arrow-up-selected, .jqx-warning .jqx-icon-arrow-up-selected, .jqx-danger .jqx-icon-arrow-up-selected, .jqx-success .jqx-icon-arrow-up-selected, .jqx-info .jqx-icon-arrow-up-selected {
+.jqx-primary .jqx-icon-arrow-up-selected,
+.jqx-warning .jqx-icon-arrow-up-selected,
+.jqx-danger .jqx-icon-arrow-up-selected,
+.jqx-success .jqx-icon-arrow-up-selected,
+.jqx-info .jqx-icon-arrow-up-selected {
     background-image: url('images/icon-up-white.png');
 }
 
-.jqx-primary .jqx-icon-arrow-up-hover, .jqx-warning .jqx-icon-arrow-up-hover, .jqx-danger .jqx-icon-arrow-up-hover, .jqx-success .jqx-icon-arrow-up-hover, .jqx-info .jqx-icon-arrow-up-hover {
+.jqx-primary .jqx-icon-arrow-up-hover,
+.jqx-warning .jqx-icon-arrow-up-hover,
+.jqx-danger .jqx-icon-arrow-up-hover,
+.jqx-success .jqx-icon-arrow-up-hover,
+.jqx-info .jqx-icon-arrow-up-hover {
     background-image: url('images/icon-up-white.png');
 }
 
-.jqx-primary .jqx-icon-arrow-right, .jqx-warning .jqx-icon-arrow-right, .jqx-danger .jqx-icon-arrow-right, .jqx-success .jqx-icon-arrow-right, .jqx-info .jqx-icon-arrow-right {
+.jqx-primary .jqx-icon-arrow-right,
+.jqx-warning .jqx-icon-arrow-right,
+.jqx-danger .jqx-icon-arrow-right,
+.jqx-success .jqx-icon-arrow-right,
+.jqx-info .jqx-icon-arrow-right {
     background-image: url('images/icon-right-white.png');
 }
 
-.jqx-primary .jqx-icon-arrow-right-selected, .jqx-warning .jqx-icon-arrow-right-selected, .jqx-danger .jqx-icon-arrow-right-selected, .jqx-success .jqx-icon-arrow-right-selected, .jqx-info .jqx-icon-arrow-right-selected {
+.jqx-primary .jqx-icon-arrow-right-selected,
+.jqx-warning .jqx-icon-arrow-right-selected,
+.jqx-danger .jqx-icon-arrow-right-selected,
+.jqx-success .jqx-icon-arrow-right-selected,
+.jqx-info .jqx-icon-arrow-right-selected {
     background-image: url('images/icon-right-white.png');
 }
 
-.jqx-primary .jqx-icon-arrow-right-hover, .jqx-warning .jqx-icon-arrow-right-hover, .jqx-danger .jqx-icon-arrow-right-hover, .jqx-success .jqx-icon-arrow-right-hover, .jqx-info .jqx-icon-arrow-right-hover {
+.jqx-primary .jqx-icon-arrow-right-hover,
+.jqx-warning .jqx-icon-arrow-right-hover,
+.jqx-danger .jqx-icon-arrow-right-hover,
+.jqx-success .jqx-icon-arrow-right-hover,
+.jqx-info .jqx-icon-arrow-right-hover {
     background-image: url('images/icon-right-white.png');
 }
 
-.jqx-primary .jqx-icon-arrow-left, .jqx-warning .jqx-icon-arrow-left, .jqx-danger .jqx-icon-arrow-left, .jqx-success .jqx-icon-arrow-left, .jqx-info .jqx-icon-arrow-left {
+.jqx-primary .jqx-icon-arrow-left,
+.jqx-warning .jqx-icon-arrow-left,
+.jqx-danger .jqx-icon-arrow-left,
+.jqx-success .jqx-icon-arrow-left,
+.jqx-info .jqx-icon-arrow-left {
     background-image: url('images/icon-left-white.png');
 }
 
-.jqx-primary .jqx-icon-arrow-left-selected, .jqx-warning .jqx-icon-arrow-left-selected, .jqx-danger .jqx-icon-arrow-left-selected, .jqx-success .jqx-icon-arrow-left-selected, .jqx-info .jqx-icon-arrow-left-selected {
+.jqx-primary .jqx-icon-arrow-left-selected,
+.jqx-warning .jqx-icon-arrow-left-selected,
+.jqx-danger .jqx-icon-arrow-left-selected,
+.jqx-success .jqx-icon-arrow-left-selected,
+.jqx-info .jqx-icon-arrow-left-selected {
     background-image: url('images/icon-left-white.png');
 }
 
-.jqx-primary .jqx-icon-arrow-left-hover, .jqx-warning .jqx-icon-arrow-left-hover, .jqx-danger .jqx-icon-arrow-left-hover, .jqx-success .jqx-icon-arrow-left-hover, .jqx-info .jqx-icon-arrow-left-hover {
+.jqx-primary .jqx-icon-arrow-left-hover,
+.jqx-warning .jqx-icon-arrow-left-hover,
+.jqx-danger .jqx-icon-arrow-left-hover,
+.jqx-success .jqx-icon-arrow-left-hover,
+.jqx-info .jqx-icon-arrow-left-hover {
     background-image: url('images/icon-left-white.png');
 }
 
-.jqx-primary-item .jqx-listitem-state-hover, .jqx-primary-item .jqx-menu-item-hover, .jqx-primary-item .jqx-tree-item-hover, .jqx-primary-item .jqx-calendar-cell-hover, .jqx-primary-item .jqx-grid-cell-hover,
-.jqx-primary-item .jqx-menu-vertical .jqx-menu-item-top-hover, .jqx-primary-item .jqx-input-popup .jqx-fill-state-hover,
+.jqx-primary-item .jqx-listitem-state-hover,
+.jqx-primary-item .jqx-menu-item-hover,
+.jqx-primary-item .jqx-tree-item-hover,
+.jqx-primary-item .jqx-calendar-cell-hover,
+.jqx-primary-item .jqx-grid-cell-hover,
+.jqx-primary-item .jqx-menu-vertical .jqx-menu-item-top-hover,
+.jqx-primary-item .jqx-input-popup .jqx-fill-state-hover,
 .jqx-primary-item .jqx-input-popup .jqx-fill-state-pressed {
     background-color: #f5f5f5 !important;
     color: #333 !important;
@@ -6977,16 +7609,28 @@ ol li .jqx-listmenu-item-label:before {
     border-color: #f5f5f5 !important;
 }
 
-.jqx-primary-item .jqx-listitem-state-selected, .jqx-primary-item .jqx-menu-item-selected, .jqx-primary-item .jqx-tree-item-selected, .jqx-primary-item .jqx-calendar-cell-selected, .jqx-primary-item .jqx-grid-cell-selected,
-.jqx-primary-item .jqx-menu-vertical .jqx-primary-item .jqx-menu-item-top-selected, .jqx-primary-item .jqx-grid-selectionarea, .jqx-primary-item .jqx-input-button-header, .jqx-primary-item .jqx-input-button-innerHeader {
+.jqx-primary-item .jqx-listitem-state-selected,
+.jqx-primary-item .jqx-menu-item-selected,
+.jqx-primary-item .jqx-tree-item-selected,
+.jqx-primary-item .jqx-calendar-cell-selected,
+.jqx-primary-item .jqx-grid-cell-selected,
+.jqx-primary-item .jqx-menu-vertical .jqx-primary-item .jqx-menu-item-top-selected,
+.jqx-primary-item .jqx-grid-selectionarea,
+.jqx-primary-item .jqx-input-button-header,
+.jqx-primary-item .jqx-input-button-innerHeader {
     background-color: #f5f5f5 !important;
     color: #333 !important;
     text-shadow: none !important;
     border-color: #f5f5f5 !important;
 }
 
-.jqx-warning-item .jqx-listitem-state-hover, .jqx-warning-item .jqx-menu-item-hover, .jqx-warning-item .jqx-tree-item-hover, .jqx-warning-item .jqx-calendar-cell-hover, .jqx-warning-item .jqx-grid-cell-hover,
-.jqx-warning-item .jqx-menu-vertical .jqx-menu-item-top-hover, .jqx-warning-item .jqx-input-popup .jqx-fill-state-hover,
+.jqx-warning-item .jqx-listitem-state-hover,
+.jqx-warning-item .jqx-menu-item-hover,
+.jqx-warning-item .jqx-tree-item-hover,
+.jqx-warning-item .jqx-calendar-cell-hover,
+.jqx-warning-item .jqx-grid-cell-hover,
+.jqx-warning-item .jqx-menu-vertical .jqx-menu-item-top-hover,
+.jqx-warning-item .jqx-input-popup .jqx-fill-state-hover,
 .jqx-warning-item .jqx-input-popup .jqx-fill-state-pressed {
     background-color: #f5f5f5 !important;
     color: #333 !important;
@@ -6994,16 +7638,28 @@ ol li .jqx-listmenu-item-label:before {
     border-color: #f5f5f5 !important;
 }
 
-.jqx-warning-item .jqx-listitem-state-selected, .jqx-warning-item .jqx-menu-item-selected, .jqx-warning-item .jqx-tree-item-selected, .jqx-warning-item .jqx-calendar-cell-selected, .jqx-warning-item .jqx-grid-cell-selected,
-.jqx-warning-item .jqx-menu-vertical .jqx-warning-item .jqx-menu-item-top-selected, .jqx-warning-item .jqx-grid-selectionarea, .jqx-warning-item .jqx-input-button-header, .jqx-warning-item .jqx-input-button-innerHeader {
+.jqx-warning-item .jqx-listitem-state-selected,
+.jqx-warning-item .jqx-menu-item-selected,
+.jqx-warning-item .jqx-tree-item-selected,
+.jqx-warning-item .jqx-calendar-cell-selected,
+.jqx-warning-item .jqx-grid-cell-selected,
+.jqx-warning-item .jqx-menu-vertical .jqx-warning-item .jqx-menu-item-top-selected,
+.jqx-warning-item .jqx-grid-selectionarea,
+.jqx-warning-item .jqx-input-button-header,
+.jqx-warning-item .jqx-input-button-innerHeader {
     background-color: #f5f5f5 !important;
     color: #333 !important;
     text-shadow: none !important;
     border-color: #f5f5f5 !important;
 }
 
-.jqx-danger-item .jqx-listitem-state-hover, .jqx-danger-item .jqx-menu-item-hover, .jqx-danger-item .jqx-tree-item-hover, .jqx-danger-item .jqx-calendar-cell-hover, .jqx-danger-item .jqx-grid-cell-hover,
-.jqx-danger-item .jqx-menu-vertical .jqx-menu-item-top-hover, .jqx-danger-item .jqx-input-popup .jqx-fill-state-hover,
+.jqx-danger-item .jqx-listitem-state-hover,
+.jqx-danger-item .jqx-menu-item-hover,
+.jqx-danger-item .jqx-tree-item-hover,
+.jqx-danger-item .jqx-calendar-cell-hover,
+.jqx-danger-item .jqx-grid-cell-hover,
+.jqx-danger-item .jqx-menu-vertical .jqx-menu-item-top-hover,
+.jqx-danger-item .jqx-input-popup .jqx-fill-state-hover,
 .jqx-danger-item .jqx-input-popup .jqx-fill-state-pressed {
     background-color: #f5f5f5 !important;
     color: #333 !important;
@@ -7011,16 +7667,28 @@ ol li .jqx-listmenu-item-label:before {
     border-color: #f5f5f5 !important;
 }
 
-.jqx-danger-item .jqx-listitem-state-selected, .jqx-danger-item .jqx-menu-item-selected, .jqx-danger-item .jqx-tree-item-selected, .jqx-danger-item .jqx-calendar-cell-selected, .jqx-danger-item .jqx-grid-cell-selected,
-.jqx-danger-item .jqx-menu-vertical .jqx-danger-item .jqx-menu-item-top-selected, .jqx-danger-item .jqx-grid-selectionarea, .jqx-danger-item .jqx-input-button-header, .jqx-danger-item .jqx-input-button-innerHeader {
+.jqx-danger-item .jqx-listitem-state-selected,
+.jqx-danger-item .jqx-menu-item-selected,
+.jqx-danger-item .jqx-tree-item-selected,
+.jqx-danger-item .jqx-calendar-cell-selected,
+.jqx-danger-item .jqx-grid-cell-selected,
+.jqx-danger-item .jqx-menu-vertical .jqx-danger-item .jqx-menu-item-top-selected,
+.jqx-danger-item .jqx-grid-selectionarea,
+.jqx-danger-item .jqx-input-button-header,
+.jqx-danger-item .jqx-input-button-innerHeader {
     background-color: #f5f5f5 !important;
     color: #333 !important;
     text-shadow: none !important;
     border-color: #f5f5f5 !important;
 }
 
-.jqx-success-item .jqx-listitem-state-hover, .jqx-success-item .jqx-menu-item-hover, .jqx-success-item .jqx-tree-item-hover, .jqx-success-item .jqx-calendar-cell-hover, .jqx-success-item .jqx-grid-cell-hover,
-.jqx-success-item .jqx-menu-vertical .jqx-menu-item-top-hover, .jqx-success-item .jqx-input-popup .jqx-fill-state-hover,
+.jqx-success-item .jqx-listitem-state-hover,
+.jqx-success-item .jqx-menu-item-hover,
+.jqx-success-item .jqx-tree-item-hover,
+.jqx-success-item .jqx-calendar-cell-hover,
+.jqx-success-item .jqx-grid-cell-hover,
+.jqx-success-item .jqx-menu-vertical .jqx-menu-item-top-hover,
+.jqx-success-item .jqx-input-popup .jqx-fill-state-hover,
 .jqx-success-item .jqx-input-popup .jqx-fill-state-pressed {
     background-color: #f5f5f5 !important;
     color: #333 !important;
@@ -7028,16 +7696,28 @@ ol li .jqx-listmenu-item-label:before {
     border-color: #f5f5f5 !important;
 }
 
-.jqx-success-item .jqx-listitem-state-selected, .jqx-success-item .jqx-menu-item-selected, .jqx-success-item .jqx-tree-item-selected, .jqx-success-item .jqx-calendar-cell-selected, .jqx-success-item .jqx-grid-cell-selected,
-.jqx-success-item .jqx-menu-vertical .jqx-success-item .jqx-menu-item-top-selected, .jqx-success-item .jqx-grid-selectionarea, .jqx-success-item .jqx-input-button-header, .jqx-success-item .jqx-input-button-innerHeader {
+.jqx-success-item .jqx-listitem-state-selected,
+.jqx-success-item .jqx-menu-item-selected,
+.jqx-success-item .jqx-tree-item-selected,
+.jqx-success-item .jqx-calendar-cell-selected,
+.jqx-success-item .jqx-grid-cell-selected,
+.jqx-success-item .jqx-menu-vertical .jqx-success-item .jqx-menu-item-top-selected,
+.jqx-success-item .jqx-grid-selectionarea,
+.jqx-success-item .jqx-input-button-header,
+.jqx-success-item .jqx-input-button-innerHeader {
     background-color: #f5f5f5 !important;
     color: #333 !important;
     text-shadow: none !important;
     border-color: #f5f5f5 !important;
 }
 
-.jqx-info-item .jqx-listitem-state-hover, .jqx-info-item .jqx-menu-item-hover, .jqx-info-item .jqx-tree-item-hover, .jqx-info-item .jqx-calendar-cell-hover, .jqx-info-item .jqx-grid-cell-hover,
-.jqx-info-item .jqx-menu-vertical .jqx-menu-item-top-hover, .jqx-info-item .jqx-input-popup .jqx-fill-state-hover,
+.jqx-info-item .jqx-listitem-state-hover,
+.jqx-info-item .jqx-menu-item-hover,
+.jqx-info-item .jqx-tree-item-hover,
+.jqx-info-item .jqx-calendar-cell-hover,
+.jqx-info-item .jqx-grid-cell-hover,
+.jqx-info-item .jqx-menu-vertical .jqx-menu-item-top-hover,
+.jqx-info-item .jqx-input-popup .jqx-fill-state-hover,
 .jqx-info-item .jqx-input-popup .jqx-fill-state-pressed {
     background-color: #f5f5f5 !important;
     color: #333 !important;
@@ -7045,16 +7725,28 @@ ol li .jqx-listmenu-item-label:before {
     border-color: #f5f5f5 !important;
 }
 
-.jqx-info-item .jqx-listitem-state-selected, .jqx-info-item .jqx-menu-item-selected, .jqx-info-item .jqx-tree-item-selected, .jqx-info-item .jqx-calendar-cell-selected, .jqx-info-item .jqx-grid-cell-selected,
-.jqx-info-item .jqx-menu-vertical .jqx-info-item .jqx-menu-item-top-selected, .jqx-info-item .jqx-grid-selectionarea, .jqx-info-item .jqx-input-button-header, .jqx-info-item .jqx-input-button-innerHeader {
+.jqx-info-item .jqx-listitem-state-selected,
+.jqx-info-item .jqx-menu-item-selected,
+.jqx-info-item .jqx-tree-item-selected,
+.jqx-info-item .jqx-calendar-cell-selected,
+.jqx-info-item .jqx-grid-cell-selected,
+.jqx-info-item .jqx-menu-vertical .jqx-info-item .jqx-menu-item-top-selected,
+.jqx-info-item .jqx-grid-selectionarea,
+.jqx-info-item .jqx-input-button-header,
+.jqx-info-item .jqx-input-button-innerHeader {
     background-color: #f5f5f5 !important;
     color: #333 !important;
     text-shadow: none !important;
     border-color: #f5f5f5 !important;
 }
 
-.jqx-inverse-item .jqx-listitem-state-hover, .jqx-inverse-item .jqx-menu-item-hover, .jqx-inverse-item .jqx-tree-item-hover, .jqx-inverse-item .jqx-calendar-cell-hover, .jqx-inverse-item .jqx-grid-cell-hover,
-.jqx-inverse-item .jqx-menu-vertical .jqx-menu-item-top-hover, .jqx-inverse-item .jqx-input-popup .jqx-fill-state-hover,
+.jqx-inverse-item .jqx-listitem-state-hover,
+.jqx-inverse-item .jqx-menu-item-hover,
+.jqx-inverse-item .jqx-tree-item-hover,
+.jqx-inverse-item .jqx-calendar-cell-hover,
+.jqx-inverse-item .jqx-grid-cell-hover,
+.jqx-inverse-item .jqx-menu-vertical .jqx-menu-item-top-hover,
+.jqx-inverse-item .jqx-input-popup .jqx-fill-state-hover,
 .jqx-inverse-item .jqx-input-popup .jqx-fill-state-pressed {
     background-color: #f5f5f5 !important;
     color: #333 !important;
@@ -7062,8 +7754,15 @@ ol li .jqx-listmenu-item-label:before {
     border-color: #f5f5f5 !important;
 }
 
-.jqx-inverse-item .jqx-listitem-state-selected, .jqx-inverse-item .jqx-menu-item-selected, .jqx-inverse-item .jqx-tree-item-selected, .jqx-inverse-item .jqx-calendar-cell-selected, .jqx-inverse-item .jqx-grid-cell-selected,
-.jqx-inverse-item .jqx-menu-vertical .jqx-inverse-item .jqx-menu-item-top-selected, .jqx-inverse-item .jqx-grid-selectionarea, .jqx-inverse-item .jqx-input-button-header, .jqx-inverse-item .jqx-input-button-innerHeader {
+.jqx-inverse-item .jqx-listitem-state-selected,
+.jqx-inverse-item .jqx-menu-item-selected,
+.jqx-inverse-item .jqx-tree-item-selected,
+.jqx-inverse-item .jqx-calendar-cell-selected,
+.jqx-inverse-item .jqx-grid-cell-selected,
+.jqx-inverse-item .jqx-menu-vertical .jqx-inverse-item .jqx-menu-item-top-selected,
+.jqx-inverse-item .jqx-grid-selectionarea,
+.jqx-inverse-item .jqx-input-button-header,
+.jqx-inverse-item .jqx-input-button-innerHeader {
     background-color: #f5f5f5 !important;
     color: #333 !important;
     text-shadow: none !important;
@@ -7082,10 +7781,10 @@ ol li .jqx-listmenu-item-label:before {
     border-width: 0px;
 }
 
-.jqx-element-container {
-}
+.jqx-element-container {}
 
-.jqx-resize-trigger, .jqx-resize-trigger-shrink {
+.jqx-resize-trigger,
+.jqx-resize-trigger-shrink {
     position: absolute;
     left: 0;
     top: 0;
@@ -7219,7 +7918,8 @@ jqx-scroll-view {
     width: 600px;
 }
 
-jqx-bar-gauge, jqx-draw {
+jqx-bar-gauge,
+jqx-draw {
     width: 850px;
     height: 600px;
 }
@@ -7228,7 +7928,16 @@ jqx-menu {
     width: 600px;
 }
 
-jqx-data-table, jqx-pivotgrid, jqx-grid, jqx-scheduler, jqx-tree-grid, jqx-docking-layout, jqx-layout, jqx-tree-map, jqx-splitter, jqx-kanban {
+jqx-data-table,
+jqx-pivotgrid,
+jqx-grid,
+jqx-scheduler,
+jqx-tree-grid,
+jqx-docking-layout,
+jqx-layout,
+jqx-tree-map,
+jqx-splitter,
+jqx-kanban {
     width: 850px;
 }
 
@@ -7241,12 +7950,14 @@ jqx-chart {
     height: 400px;
 }
 
-jqx-docking-layout, jqx-layout {
+jqx-docking-layout,
+jqx-layout {
     width: 850px;
     height: 600px;
 }
 
-jqx-ribbon, jqx-panel {
+jqx-ribbon,
+jqx-panel {
     width: 450px;
     height: 300px;
 }
@@ -7255,7 +7966,8 @@ jqx-scheduler {
     height: 600px;
 }
 
-jqx-list-box, jqx-text-area {
+jqx-list-box,
+jqx-text-area {
     width: 200px;
     height: 200px;
 }
@@ -7264,8 +7976,17 @@ jqx-file-upload {
     width: 300px;
 }
 
-jqx-complex-input, jqx-formatted-input, jqx-password-input, jqx-input, jqx-number-input, jqx-slider,
-jqx-masked-input, jqx-drop-down-list, jqx-combo-box, jqx-date-time-input, jqx-drop-down-button {
+jqx-complex-input,
+jqx-formatted-input,
+jqx-password-input,
+jqx-input,
+jqx-number-input,
+jqx-slider,
+jqx-masked-input,
+jqx-drop-down-list,
+jqx-combo-box,
+jqx-date-time-input,
+jqx-drop-down-button {
     width: 300px;
     height: 35px;
 }
@@ -7275,7 +7996,8 @@ jqx-loader {
     height: 60px !important;
 }
 
-jqx-expander, jqx-navigation-bar {
+jqx-expander,
+jqx-navigation-bar {
     width: 350px;
 }
 
@@ -7314,7 +8036,8 @@ jqx-linear-gauge {
     width: 100px;
 }
 
-jqx-color-picker, jqx-calendar {
+jqx-color-picker,
+jqx-calendar {
     width: 200px;
     height: 200px;
 }
@@ -7357,16 +8080,16 @@ jqx-knob {
     padding-left: 100px;
 }
 
-.jqx-palette > ul,
-.jqx-shades > ul,
-.jqx-color-labels > ul {
+.jqx-palette>ul,
+.jqx-shades>ul,
+.jqx-color-labels>ul {
     display: flex;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.jqx-color-labels > ul {
+.jqx-color-labels>ul {
     flex-direction: column;
 }
 
@@ -7400,87 +8123,87 @@ jqx-knob {
 
 .jqx-heatmap-container-wrapper {
     display: flex;
- }
+}
 
- .jqx-heatmap-container-wrapper canvas {
+.jqx-heatmap-container-wrapper canvas {
     display: block;
- }
+}
 
- .jqx-heatmap-title {
+.jqx-heatmap-title {
     font-weight: bold;
     margin-bottom: 25px;
     text-align: center;
- }
+}
 
- .jqx-heatmap-grid {
+.jqx-heatmap-grid {
     display: flex;
     cursor: default;
- }
+}
 
- .jqx-x-axis-container {
+.jqx-x-axis-container {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
- }
+}
 
- .jqx-y-axis-container {
+.jqx-y-axis-container {
     display: flex;
     flex-direction: row-reverse;
     flex-grow: 1;
- }
+}
 
- .jqx-column {
+.jqx-column {
     display: flex;
     flex-direction: column-reverse;
- }
+}
 
- .jqx-x-axis {
+.jqx-x-axis {
     display: flex;
- }
+}
 
- .jqx-x-axis-label {
+.jqx-x-axis-label {
     padding-top: 10px;
     font-size: 14px;
     color: gray;
     text-align: center;
- }
+}
 
- .jqx-x-axis-label.jqx-top {
+.jqx-x-axis-label.jqx-top {
     padding: 0 0 10px 0;
- }
+}
 
- .jqx-y-axis {
+.jqx-y-axis {
     display: flex;
     flex-direction: column-reverse;
- }
+}
 
- .jqx-y-axis.jqx-margin-top-auto {
+.jqx-y-axis.jqx-margin-top-auto {
     margin-top: auto;
- }
+}
 
- .jqx-y-axis-label {
+.jqx-y-axis-label {
     display: flex;
     align-items: center;
     color: gray;
     padding-right: 10px;
- }
+}
 
- .jqx-y-axis-label.jqx-right {
+.jqx-y-axis-label.jqx-right {
     padding: 0 0 0 10px;
- }
+}
 
- .jqx-heatmap-cell {
+.jqx-heatmap-cell {
     position: relative;
     padding: 20px 10px;
     margin: 1px;
     text-align: center;
- }
+}
 
- .jqx-heatmap-cell.jqx-empty-cell {
+.jqx-heatmap-cell.jqx-empty-cell {
     pointer-events: none;
- }
+}
 
- .jqx-heatmap-tooltip {
+.jqx-heatmap-tooltip {
     display: inline-block;
     position: absolute;
     background: #000;
@@ -7491,9 +8214,9 @@ jqx-knob {
     border-radius: 3px;
     transition: top 0.7s ease, left 0.7s ease;
     box-shadow: 0px 5px 3px -3px rgba(0, 0, 0, 0.75);
- }
+}
 
- .jqx-heatmap-tooltip::after {
+.jqx-heatmap-tooltip::after {
     content: '';
     position: absolute;
     bottom: -10px;
@@ -7503,74 +8226,74 @@ jqx-knob {
     border-style: solid;
     border-width: 10px 5px 0 5px;
     border-color: #000 transparent transparent transparent;
- }
+}
 
- .jqx-legend-vertical {
+.jqx-legend-vertical {
     position: relative;
     margin-left: 10px;
- }
+}
 
- .jqx-legend-vertical.jqx-left {
+.jqx-legend-vertical.jqx-left {
     margin: 0 10px 0 0;
- }
+}
 
- .jqx-legend-vertical.jqx-margin-top-auto {
+.jqx-legend-vertical.jqx-margin-top-auto {
     margin-top: auto;
- }
+}
 
- .jqx-legend-horizontal {
+.jqx-legend-horizontal {
     position: relative;
     margin-left: auto;
     margin-bottom: 40px;
- }
+}
 
- .jqx-legend-horizontal.jqx-bottom {
+.jqx-legend-horizontal.jqx-bottom {
     margin-top: 10px;
     margin-bottom: 30px;
- }
+}
 
- .jqx-legend-horizontal.jqx-margin-right-auto {
+.jqx-legend-horizontal.jqx-margin-right-auto {
     margin-right: auto;
     margin-left: 0;
- }
+}
 
- .jqx-palette-vertical {
+.jqx-palette-vertical {
     width: 10px;
     height: 100%;
- }
+}
 
- .jqx-palette-horizontal {
+.jqx-palette-horizontal {
     width: 100%;
     height: 10px;
- }
+}
 
- .jqx-palette-horizontal.jqx-fixed {
+.jqx-palette-horizontal.jqx-fixed {
     display: flex;
- }
+}
 
- .jqx-color-container,
- .jqx-color-container-tick {
+.jqx-color-container,
+.jqx-color-container-tick {
     cursor: pointer;
- }
+}
 
- .jqx-opacity-50 {
+.jqx-opacity-50 {
     opacity: 0.5;
- }
+}
 
- .jqx-selected-color {
+.jqx-selected-color {
     background: #d3d3d3 !important;
- }
+}
 
- .jqx-heatmap-hidden {
+.jqx-heatmap-hidden {
     visibility: hidden;
- }
+}
 
- .jqx-tick-vertical {
+.jqx-tick-vertical {
     position: absolute;
     left: 15px;
- }
+}
 
- .jqx-tick-vertical::before {
+.jqx-tick-vertical::before {
     content: '';
     width: 10px;
     background: #fff;
@@ -7578,19 +8301,19 @@ jqx-knob {
     position: absolute;
     top: 6px;
     left: -15px;
- }
+}
 
- .jqx-tick-vertical.jqx-no-line::before,
- .jqx-tick-horizontal.jqx-no-line::before {
+.jqx-tick-vertical.jqx-no-line::before,
+.jqx-tick-horizontal.jqx-no-line::before {
     content: none;
- }
+}
 
- .jqx-tick-horizontal {
+.jqx-tick-horizontal {
     position: absolute;
     top: 20px;
- }
+}
 
- .jqx-tick-horizontal::before {
+.jqx-tick-horizontal::before {
     content: '';
     width: 10px;
     background: #fff;
@@ -7599,9 +8322,9 @@ jqx-knob {
     position: absolute;
     top: -20px;
     left: 6px;
- }
+}
 
- .jqx-arrow-vertical {
+.jqx-arrow-vertical {
     width: 0;
     height: 0;
     border-top: 6px solid transparent;
@@ -7610,9 +8333,9 @@ jqx-knob {
     position: absolute;
     left: -8px;
     display: none;
- }
+}
 
- .jqx-arrow-horizontal {
+.jqx-arrow-horizontal {
     width: 0;
     height: 0;
     border-left: 6px solid transparent;
@@ -7622,9 +8345,9 @@ jqx-knob {
     top: 11px;
     left: -6px;
     display: none;
- }
+}
 
- /*jqxTimePicker Style*/
+/*jqxTimePicker Style*/
 .jqx-time-picker {
     display: block;
     border: 1px solid #c5c5c5;
@@ -7636,91 +8359,127 @@ jqx-knob {
     min-width: 250px;
     box-sizing: border-box;
 }
+
 .jqx-time-picker * {
     box-sizing: border-box;
 }
+
 .jqx-time-picker[view="landscape"] {
     min-width: 400px;
 }
+
 .jqx-time-picker>.jqx-container {
     width: 100%;
     height: 100%;
 }
-.jqx-time-picker[view="landscape"]>.jqx-container, .jqx-time-picker .jqx-header, .jqx-time-picker .jqx-svg-container, .jqx-time-picker .jqx-hour-minute-container {
+
+.jqx-time-picker[view="landscape"]>.jqx-container,
+.jqx-time-picker .jqx-header,
+.jqx-time-picker .jqx-svg-container,
+.jqx-time-picker .jqx-hour-minute-container {
     display: flex;
 }
+
 .jqx-time-picker .jqx-header {
     width: 100%;
     height: 20%;
     justify-content: center;
     align-items: center;
 }
+
 .jqx-time-picker[view="landscape"] .jqx-header {
     flex-direction: column;
     width: 33%;
     height: 100%;
 }
+
 .jqx-time-picker .jqx-main-container {
     width: 100%;
     height: 80%;
     padding: 2%;
     background-color: var(--jqx-time-picker-background);
 }
+
 .jqx-time-picker[view="portrait"] .jqx-header.jqx-widget-header.jqx-unselectable {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
 }
+
 .jqx-time-picker[view="landscape"] .jqx-main-container {
     width: 67%;
     height: 100%;
 }
+
 .jqx-time-picker .jqx-svg-container {
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
 }
+
 .jqx-time-picker[footer] .jqx-svg-container {
     height: calc(100% - 30px);
 }
+
 .jqx-time-picker .jqx-footer {
     display: none;
 }
+
 .jqx-time-picker[footer] .jqx-footer {
     display: block;
     width: 100%;
     height: 30px;
 }
+
 .jqx-time-picker .jqx-hour-minute-container {
     font-size: 50px;
 }
+
 .jqx-time-picker .jqx-am-pm-container {
     margin-left: 10px;
 }
+
 .jqx-time-picker[view="landscape"] .jqx-am-pm-container {
     margin-left: 0;
 }
-.jqx-time-picker .jqx-hour-container, .jqx-time-picker .jqx-minute-container, .jqx-time-picker .jqx-am-container, .jqx-time-picker .jqx-pm-container {
+
+.jqx-time-picker .jqx-hour-container,
+.jqx-time-picker .jqx-minute-container,
+.jqx-time-picker .jqx-am-container,
+.jqx-time-picker .jqx-pm-container {
     opacity: 0.5;
     cursor: pointer;
 }
-.jqx-time-picker[readonly] .jqx-hour-container, .jqx-time-picker[disabled] .jqx-hour-container, .jqx-time-picker[readonly] .jqx-minute-container, .jqx-time-picker[disabled] .jqx-minute-container, .jqx-time-picker[readonly] .jqx-am-container, .jqx-time-picker[disabled] .jqx-am-container, .jqx-time-picker[readonly] .jqx-pm-container, .jqx-time-picker[disabled] .jqx-pm-container {
+
+.jqx-time-picker[readonly] .jqx-hour-container,
+.jqx-time-picker[disabled] .jqx-hour-container,
+.jqx-time-picker[readonly] .jqx-minute-container,
+.jqx-time-picker[disabled] .jqx-minute-container,
+.jqx-time-picker[readonly] .jqx-am-container,
+.jqx-time-picker[disabled] .jqx-am-container,
+.jqx-time-picker[readonly] .jqx-pm-container,
+.jqx-time-picker[disabled] .jqx-pm-container {
     cursor: default;
 }
+
 .jqx-time-picker .jqx-selected {
     opacity: 1;
 }
+
 .jqx-time-picker .jqx-hour-minute-container div:nth-child(2) {
     opacity: 0.5;
 }
+
 .jqx-time-picker .jqx-svg-picker {
     border-radius: 50%;
     position: relative;
     box-sizing: content-box;
 }
+
 .jqx-time-picker .jqx-svg-picker.animate {
     animation: jqx-time-picker-animation 0.5s linear;
 }
+
 .jqx-time-picker[disabled] {
     opacity: 0.55;
     cursor: default;
@@ -7730,33 +8489,42 @@ jqx-knob {
     -moz-user-select: none;
     -ms-user-select: none;
 }
+
 .jqx-time-picker .jqx-label.jqx-selected {
     fill: white;
 }
+
 .jqx-time-picker .jqx-header:focus {
     outline: 1px solid skyblue;
 }
+
 .jqx-time-picker .jqx-svg-picker:focus {
     border: 1px solid skyblue;
     outline: none;
 }
+
 @keyframes jqx-time-picker-animation {
     0% {
         opacity: 1;
     }
+
     25% {
         opacity: 0.5;
     }
+
     50% {
         opacity: 0;
     }
+
     75% {
         opacity: 0.5;
     }
+
     100% {
         opacity: 1;
     }
 }
+
 .jqx-grid-card-row {
     display: grid;
     grid-template-columns: 1fr;
@@ -7778,25 +8546,25 @@ jqx-knob {
     overflow: hidden;
     text-overflow: ellipsis;
     border-radius: 4px;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
 }
 
-.jqx-grid-card-cell{
-	position: relative;
+.jqx-grid-card-cell {
+    position: relative;
 }
 
 .jqx-grid-card-cell .jqx-icon-edit {
-	width: 16px;
-	height: 16px;
-	display: inline-block;
-	position: absolute;
-	right: 25px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: absolute;
+    right: 25px;
     top: 25px;
-	background-size: 13px;
-	cursor: pointer;
+    background-size: 13px;
+    cursor: pointer;
 }
 
-.jqx-grid-card-cell input{
+.jqx-grid-card-cell input {
     padding: 4px;
 
 }
@@ -7804,14 +8572,691 @@ jqx-knob {
 .jqx-grid-card-cell-label {
     font-size: 12px;
     text-transform: uppercase;
-    color: rgb(90,90,90);
+    color: rgb(90, 90, 90);
 }
+
 .jqx-grid-card-cell td div {
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
 .jqx-card-edit-buttons {
     display: flex;
     margin-top: 30px;
     justify-content: center;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Split Layout */
+
+.jqx-split-layout-component {
+    display: block;
+    overflow: initial;
+    width: 600px;
+    height: 600px;
+}
+
+.jqx-split-layout {
+    display: block;
+    overflow: initial;
+    width: 600px;
+    height: 600px;
+    --jqx-primary-rgb: 0, 92, 153;
+    --jqx-primary: rgb(var(--jqx-primary-rgb));
+    --jqx-primary-color: #fff;
+    --jqx-background: #fff;
+    --jqx-background-color: rgba(0,0,0, .88);
+    --jqx-background-hover-rgb: 225, 225, 225;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: rgba(0,0,0,.54);
+    --jqx-surface-rgb: 255, 255, 255;
+    --jqx-surface: rgb(var(--jqx-surface-rgb));
+    --jqx-surface-color: rgba(0,0,0, .88);
+    --jqx-border: #E0E0E0;
+    --jqx-scrollbar-background: #f5f5f5;
+    --jqx-scrollbar-border: #ddd;
+    --jqx-scrollbar-thumb-background: #C1C1C1;
+    --jqx-scrollbar-thumb-border: #b3b3b3;
+    --jqx-scrollbar-thumb-background-hover: #e6e6e6;
+    --jqx-scrollbar-thumb-border-hover: #b3b3b3;
+    --jqx-scrollbar-thumb-background-pressed: #d9d9d9;
+    --jqx-scrollbar-thumb-border-pressed: #b3b3b3;
+    --jqx-scrollbar-button-color-hover: #333;
+    --jqx-scrollbar-button-background-hover: #f5f5f5;
+    --jqx-scrollbar-button-border-hover: #f5f5f5;
+    --jqx-scrollbar-button-color-pressed: #333;
+    --jqx-scrollbar-button-background-pressed: #f5f5f5;
+    --jqx-scrollbar-button-border-pressed: #f5f5f5;	
+    --jqx-split-layout-buttons-border-radius: 50%;
+    --jqx-split-layout-context-menu-default-width: var(--jqx-menu-vertical-default-width);
+    --jqx-split-layout-context-menu-default-height: auto;
+    --jqx-primary-rgb: 0, 92, 153;
+    /* The r, g, and b components of the theme primary color */
+    --jqx-primary: rgb(var(--jqx-primary-rgb));
+    /* The theme primary color */
+    --jqx-primary-color: #ffffff;
+    /* Text color on top of a primary background */
+
+    --jqx-secondary-rgb: 45, 45, 48;
+    /* The r, g, and b components of the theme secondary color */
+    --jqx-secondary: rgb(var(--jqx-secondary-rgb));
+    /* The theme secondary color */
+    --jqx-secondary-color: #ffffff;
+    /* Text color on top of a secondary background */
+
+    --jqx-error-rgb: 176, 0, 32;
+    /* The theme error color */
+    --jqx-error: rgb(var(--jqx-error-rgb));
+    /* The theme error color */
+    --jqx-error-color: #ffffff;
+    /* Text color on top of a error background */
+
+    --jqx-success-rgb: 139, 195, 74;
+    /* The r, g, and b components of the theme success color */
+    --jqx-success: rgb(var(--jqx-success-rgb));
+    /* The theme success color */
+    --jqx-success-color: #ffffff;
+    /* Text color on top of a success background */
+
+    --jqx-info-rgb: 92, 192, 222;
+    /* The r, g, and b components of the theme info color */
+    --jqx-info: rgb(var(--jqx-info-rgb));
+    /* The theme info color */
+    --jqx-info-color: #fff;
+    /* Text color on top of a info background */
+
+    --jqx-warning-rgb: 240, 173, 78;
+    /* The r, g, and b components of the theme warning color */
+    --jqx-warning: rgb(var(--jqx-warning-rgb));
+    /* The theme warning color */
+    --jqx-warning-color: #fff;
+    /* Text color on top of a warning background */
+
+    --jqx-light-rgb: 255, 255, 255;
+    /* The r, g, and b components of the theme light color */
+    --jqx-light: rgb(var(--jqx-light-rgb));
+    /* The theme light color */
+    --jqx-light-color: #222222;
+    /* Text color on top of a light background */
+
+    --jqx-dark-rgb: 34, 34, 34;
+    /* The r, g, and b components of the theme dark color */
+    --jqx-dark: rgb(var(--jqx-dark-rgb));
+    /* The theme dark color */
+    --jqx-dark-color: #ffffff;
+    /* Text color on top of a dark background */
+
+    --jqx-background: #fefefe;
+    /* The theme background color. The background color appears behind scrollable content.*/
+    --jqx-background-color: #5A5A5A;
+    /* Text color on top of a background background */
+
+    --jqx-surface: #F5F5F5;
+    /* The theme surface color. Surface colors affect surfaces of components, such as cards, sheets, and menus. */
+    --jqx-surface-color: #323232;
+    /* Text color on top of a surface surface */
+
+    --jqx-disabled: #CCCCCC;
+    /* The theme primary color in disabled state. */
+    --jqx-disabled-color: #555;
+    /* Text color on top of a theme background in disabled state */
+
+    --jqx-ui-state-hover: #ebebeb;
+    /* Hover state background. */
+    --jqx-ui-state-color-hover: #333;
+    /* Text color, when UI Element's state is 'hover'. */
+    --jqx-ui-state-border-hover: var(--jqx-ui-state-hover);
+    /* Border color, when UI Element's state is 'hover'. */
+    --jqx-ui-state-active: var(--jqx-primary);
+    /* Active state background. */
+    --jqx-ui-state-color-active: var(--jqx-primary-color);
+    /* Text color, when UI Element's state is 'active'. */
+    --jqx-ui-state-border-active: var(--jqx-primary);
+    /* Border color, when UI Element's state is 'active'. */
+    --jqx-ui-state-focus: #e2e0e0;
+    /* Focus state background. */
+    --jqx-ui-state-color-focus: #333;
+    /* Text color, when UI Element's state is 'focus'. */
+    --jqx-ui-state-border-focus: var(--jqx-ui-state-focus);
+    /* Border color, when UI Element's state is 'focus'. */
+    --jqx-ui-state-selected: rgba(var(--jqx-primary-rgb), .1);
+    /* Selected state background. */
+    --jqx-ui-state-color-selected: var(--jqx-primary);
+    /* Text color, when UI Element's state is 'selected'. */
+    --jqx-ui-state-border-selected: rgba(var(--jqx-primary-rgb), .1);
+    /* Border color, when UI Element's state is 'selected'. */
+    --jqx-item-border-width: 1px;
+    /* Theme border-width */
+    --jqx-item-border-radius: var(--jqx-border-radius);
+    /* Border radius of items. */
+    --jqx-item-border-top-left-radius: var(--jqx-border-radius);
+    /* Border top-left radius of items. */
+    --jqx-item-border-top-right-radius: var(--jqx-border-radius);
+    /* Border top-right radius of items. */
+    --jqx-item-border-bottom-left-radius: var(--jqx-border-radius);
+    /* Border bottom-left radius of items. */
+    --jqx-item-border-bottom-right-radius: var(--jqx-border-radius);
+    /* Border bottom-right radius of items. */
+    --jqx-font-size: 14px;
+    /* Theme font-size */
+    --jqx-font-weight: inherit;
+    /* Theme font-weight */
+    --jqx-font-style: inherit;
+    /* Theme font-style */
+    --jqx-font-family: Roboto, "Helvetica Neue", sans-serif;
+    /* Theme font-family */
+    --jqx-editor-addon-width: 27px;
+    /* Default width for spin buttons, dropdown buttons. */
+    border: 1px solid #E0E0E0;
+	border-right: none;
+	border-bottom: none;
+    overflow: initial;
+    box-sizing: border-box;
+}
+
+.jqx-split-layout>.jqx-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.jqx-layout-group,
+.jqx-tab-layout-group {
+	box-sizing: border-box;
+ }
+
+.jqx-tab-layout-group[position="right"] .jqx-layout-tab,
+.jqx-tab-layout-group[position="left"] .jqx-layout-tab {
+    padding: 24px 12px;
+}
+
+.jqx-tab-layout-group[position="right"] .jqx-layout-tab:after,
+.jqx-tab-layout-group[position="left"] .jqx-layout-tab:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    content: "";
+    transition: all .2s ease;
+    transform: perspective(5px) rotateY(2deg);
+    transform-origin: left;
+    left: 0;
+    right: -1px;
+}
+
+.jqx-tab-layout-group[position="right"] .jqx-layout-tab label,
+.jqx-tab-layout-group[position="right"] .jqx-layout-tab.selected .jqx-close-button {
+    margin-right: 5px;
+}
+
+.jqx-tab-layout-group[position="left"] .jqx-layout-tab:after {
+    right: 0px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.jqx-tab-layout-group[position="left"] .jqx-layout-tab label,
+.jqx-tab-layout-group[position="left"] .jqx-layout-tab.selected .jqx-close-button {
+    transform: rotateY(0deg);
+    margin-left: -5px;
+}
+
+.jqx-tab-layout-group[position="top"] .jqx-layout-tab,
+.jqx-tab-layout-group[position="bottom"] .jqx-layout-tab {
+    padding: 12px 24px;
+}
+
+.jqx-tab-layout-group[position="bottom"] .jqx-layout-tab:after {
+    transform-origin: top;
+    transform: perspective(5px) rotateX(-2deg);
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 0px;
+    top: 0;
+}
+
+.jqx-tab-layout-group[position="bottom"] .jqx-layout-tab label,
+.jqx-tab-layout-group[position="bottom"] .jqx-layout-tab.selected .jqx-close-button {
+    margin-top: -5px;
+}
+
+.jqx-split-layout jqx-layout-group {
+    display: grid;
+    overflow: hidden;
+}
+
+.jqx-split-layout jqx-layout-group[data-id="root"] {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    grid-template-columns: 1fr;
+}
+
+.jqx-split-layout jqx-tab-layout-group {
+    display: grid;
+    overflow: hidden;
+    grid-template-rows: 35px 1fr;
+    border-right: 1px solid var(--jqx-border);
+    border-bottom: 1px solid var(--jqx-border);
+}
+
+.jqx-split-layout jqx-tab-layout-group .jqx-layout-tab-strip {
+    background: var(--jqx-surface);
+    display: flex;
+    overflow: hidden;
+    border-bottom: 2px solid var(--jqx-primary);
+}
+
+.jqx-split-layout jqx-tab-layout-group[position="bottom"] {
+    grid-template-rows: 1fr 35px;
+}
+
+.jqx-split-layout jqx-tab-layout-group[position="bottom"]>.jqx-layout-tab-strip {
+    border: none;
+    border-top: 2px solid var(--jqx-primary);
+}
+
+.jqx-split-layout jqx-tab-layout-group[position="left"] .jqx-layout-tab-strip .jqx-layout-tab .jqx-close-button:after,
+.jqx-split-layout jqx-tab-layout-group[position="right"] .jqx-layout-tab-strip .jqx-layout-tab .jqx-close-button:after {
+    margin-left: initial;
+    margin-top: 5px;
+}
+
+.jqx-split-layout jqx-tab-layout-group[position="left"] {
+    grid-template-columns: 35px 1fr;
+    grid-template-rows: initial;
+}
+
+.jqx-split-layout jqx-tab-layout-group[position="left"]>.jqx-layout-tab-strip {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    justify-content: flex-end;
+    align-items: center;
+    border: none;
+    border-left: 2px solid var(--jqx-primary);
+}
+
+.jqx-split-layout jqx-tab-layout-group[position="right"] {
+    grid-template-columns: 1fr 35px;
+    grid-template-rows: initial;
+}
+
+.jqx-split-layout jqx-tab-layout-group[position="right"]>.jqx-layout-tab-strip {
+    writing-mode: vertical-rl;
+    align-items: center;
+    border: none;
+    border-left: 2px solid var(--jqx-primary);
+}
+
+.jqx-split-layout jqx-tab-layout-group[orientation="vertical"] {
+    height: 100%;
+}
+
+.jqx-split-layout jqx-tab-layout-group[orientation="horizontal"] {
+    width: 100%;
+}
+
+.jqx-split-layout jqx-tab-layout-item {
+    overflow: hidden;
+}
+
+.jqx-split-layout jqx-tab-layout-item>jqx-layout-group {
+    width: 100%;
+    height: 100%;
+}
+
+.jqx-split-layout .jqx-split-layout-buttons-container {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    z-index: 9999;
+}
+
+.jqx-split-layout .jqx-layout-buttons-container div {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--jqx-primary-color);
+    background: var(--jqx-primary);
+    font-family: var(--jqx-font-family-icon);
+    font-size: var(--jqx-font-size);
+    padding: 5px;
+    left: calc(50% - var(--jqx-editor-addon-width) / 2);
+    width: var(--jqx-editor-addon-width);
+    height: var(--jqx-editor-addon-width);
+    cursor: pointer;
+    border-top-left-radius: var(--jqx-split-layout-buttons-border-radius);
+    border-top-right-radius: var(--jqx-split-layout-buttons-border-radius);
+    border-bottom-left-radius: var(--jqx-split-layout-buttons-border-radius);
+    border-bottom-right-radius: var(--jqx-split-layout-buttons-border-radius);
+    z-index: 1;
+    touch-action: none;
+}
+
+.jqx-split-layout .jqx-layout-buttons-container div:after {
+    content: var(--jqx-icon-plus);
+}
+
+.jqx-split-layout .jqx-layout-buttons-container div:active {
+    color: var(--jqx-ui-state-color-active);
+    border-color: var(--jqx-ui-state-active);
+    background-color: var(--jqx-ui-state-active);
+    opacity: var(--jqx-button-opacity-active);
+}
+
+.jqx-split-layout .jqx-layout-buttons-container div:hover {
+    color: var(--jqx-ui-state-color-hover);
+    border-color: var(--jqx-ui-state-hover);
+    background-color: var(--jqx-ui-state-hover);
+    opacity: var(--jqx-button-opacity-active);
+}
+
+.jqx-split-layout .jqx-layout-buttons-container div[position="rotate"]:after {
+    content: var(--jqx-icon-reload);
+}
+
+.jqx-split-layout .jqx-layout-buttons-container div[position="center"] {
+    top: calc(50% - var(--jqx-editor-addon-width) / 2);
+}
+
+.jqx-split-layout .jqx-layout-buttons-container div[position="left"] {
+    top: calc(50% - var(--jqx-editor-addon-width) / 2);
+    left: 0;
+}
+
+.jqx-split-layout .jqx-layout-buttons-container div[position="right"] {
+    left: initial;
+    top: calc(50% - var(--jqx-editor-addon-width) / 2);
+    right: 0;
+}
+
+.jqx-split-layout .jqx-layout-buttons-container div[position="top"] {
+    top: 0;
+}
+
+.jqx-split-layout .jqx-layout-buttons-container div[position="bottom"] {
+    bottom: 0;
+}
+
+.jqx-split-layout .jqx-layout-drop-area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    pointer-events: none;
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+    background: rgba(var(--jqx-primary-rgb), 0.2);
+    transition: opacity 0.2s ease-in-out;
+}
+
+.jqx-split-layout .jqx-layout-item {
+    height: auto;
+    overflow: hidden;
+    background: var(--jqx-background);
+    border-right: 1px solid var(--jqx-border);
+    border-bottom: 1px solid var(--jqx-border);
+}
+
+.jqx-split-layout .jqx-layout-item[hover] {
+    overflow: hidden;
+}
+
+.jqx-split-layout [data-id] {
+    position: relative;
+}
+
+
+
+.jqx-split-layout:not([animation='none']) .jqx-layout-buttons-container div:hover,
+.jqx-split-layout:not([animation='none']) .jqx-layout-buttons-container div:active {
+    transition: background-color 100ms linear, box-shadow 280ms ease-in-out;
+}
+
+.jqx-split-layout:not([animation='none']) .jqx-layout-buttons-container div[position="left"] {
+    animation: leftRight 0.2s ease-in;
+}
+
+.jqx-split-layout:not([animation='none']) .jqx-layout-buttons-container div[position="right"] {
+    animation: rightLeft 0.2s ease-in;
+}
+
+.jqx-split-layout:not([animation='none']) .jqx-layout-buttons-container div[position="top"] {
+    animation: topBottom 0.2s ease-in;
+}
+
+.jqx-split-layout *:not([animation="none"]) .jqx-layout-buttons-container div[position="bottom"] {
+    animation: bottomTop 0.2s ease-in;
+}
+
+.jqx-split-layout.outline .jqx-layout-splitter {
+    opacity: 1;
+}
+
+.jqx-split-layout .jqx-layout-splitter {
+    z-index: 999;
+    position: absolute;
+    background: var(--jqx-border);
+    border: 1px solid var(--jqx-border);
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.jqx-split-layout .jqx-layout-splitter:hover {
+    border-color: var(--jqx-primary);
+    border-style: dashed;
+}
+
+.jqx-split-layout .jqx-layout-splitter:not([root-splitter]) {
+    transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
+}
+
+.jqx-split-layout .jqx-layout-splitter.active {
+    background: var(--jqx-primary);
+    border-color: var(--jqx-primary);
+}
+
+.jqx-split-layout .jqx-layout-splitter.error {
+    background: var(--jqx-error);
+    border-color: var(--jqx-error);
+}
+
+.jqx-split-layout .jqx-layout-splitter.horizontal {
+    height: 1px;
+    width: 100%;
+    bottom: 0px;
+    top: initial;
+    cursor: s-resize;
+}
+
+.jqx-split-layout .jqx-layout-splitter.horizontal.last {
+    top: 0px;
+    bottom: initial;
+    display: none;
+}
+
+.jqx-split-layout .jqx-layout-splitter.vertical {
+    width: 1px;
+    height: 100%;
+    right: 0px;
+    left: initial;
+    cursor: e-resize;
+}
+
+.jqx-split-layout .jqx-layout-splitter.vertical.last {
+    left: 0px;
+    right: initial;
+    display: none;
+}
+
+.jqx-split-layout .jqx-layout-splitter[drag].horizontal,
+.jqx-split-layout .jqx-layout-splitter[drag].vertical,
+.jqx-split-layout .jqx-layout-item[hover]>.jqx-layout-splitter.horizontal,
+.jqx-split-layout .jqx-layout-item[hover]>.jqx-layout-splitter.vertical,
+.jqx-split-layout .jqx-layout-group[hover]>.jqx-layout-splitter.horizontal,
+.jqx-split-layout .jqx-layout-group[hover]>.jqx-layout-splitter.vertical {
+    opacity: 1;
+    z-index: 99;
+}
+
+.jqx-layout-tab {
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 12px 24px;
+    font-family: var(--jqx-font-family);
+    box-sizing: border-box;
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+.jqx-layout-tab:hover {
+    color: var(--jqx-primary);
+}
+
+.jqx-layout-tab.selected {
+    color: var(--jqx-primary-color);
+    background: var(--jqx-primary);
+}
+
+.jqx-layout-tab.selected .jqx-close-button {
+    z-index: 10;
+    color: inherit;
+}
+
+.jqx-layout-tab.selected .jqx-close-button:after {
+    content: 'x';
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    font-family: var(--jqx-font-family-icon);
+    margin-left: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.jqx-layout-tab label {
+    cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    z-index: 9;
+    margin-top: 2px;
+    color: inherit;
+}
+
+.jqx-split-layout-feedback {
+    box-shadow: 0 24px 38px 3px rgba(0, 0, 0, .14), 0 9px 46px 8px rgba(0, 0, 0, .12), 0 11px 15px 0 rgba(0, 0, 0, .2);
+    background: var(--jqx-background);
+    position: absolute;
+    width: 300px !important;
+    height: 150px !important;
+    max-height: 150px !important;
+    overflow: hidden;
+    left: 0px;
+    top: 0px;
+    pointer-events: none;
+    transform-origin: top left;
+    transform: scale(1);
+    transition: transform 0.25s ease-in-out;
+}
+
+.jqx-split-layout-feedback.dragging {
+    transform: scale(0.5);
+}
+
+.jqx-split-layout-overlay {
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.01;
+    background: black;
+}
+
+@keyframes topBottom {
+    0% {
+        top: calc(-1 * var(--jqx-editor-addon-width));
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes bottomTop {
+    0% {
+        bottom: calc(-1 * var(--jqx-editor-addon-width));
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+@keyframes leftRight {
+    0% {
+        left: calc(-1 * var(--jqx-editor-addon-width));
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes rightLeft {
+    0% {
+        right: calc(-1 * var(--jqx-editor-addon-width));
+    }
+
+    100% {
+        right: 0;
+    }
+}
+
+
+.jqx-visibility-hidden {
+    visibility: hidden;
+}
+
+.jqx-hidden {
+    display: none;
+}
+
+/* End of Split Layout */

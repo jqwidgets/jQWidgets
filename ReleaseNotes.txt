@@ -1,4 +1,33 @@
-﻿jQWidgets v12.0.4 Release, Apr-15-2021
+﻿jQWidgets v12.1.0 Release, June-18-2021
+
+What's New:
+
+- jqxSplitLayout component for Angular & Javascript
+
+What's Improved:
+
+- jqxGrid HTML Sanitization.
+- jqxDateTimeInput and jqxNumberInput mobile device UX.
+- jqxDateTimeInput delete button element which allows you to quickly clear the date.
+- Angular 12 integration.
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid regarding its focus method behavior.
+- Fixed an issue in jqxGrid List Filter with DropDown which has filterable enabled and source property set to a custom value. The Grid was not applying the correct filter when the DropDown items were filtered, too.
+- Fixed an issue in jqxGrid regarding the XSS attack prevention.
+- Fixed an issue in jqxGrid regarding the keyboard navigation when sorting and grouping are applied.
+- Fixed an issue in jqxNumberInput which allowed entering of letters when used on mobile device.
+- Fixed an issue in jqxNumberInput regarding the percentages and currency editing on mobile device.
+- Fixed an issue in jqxDateTimeInput which allowed entering of letters when used on mobile device.
+- Fixed an issue in jqxSlider regarding the tooltip hide delay property when the thumb is dragged.
+- Fixed an issue in jqxInput regarding the popup closing when Material theme is applied.
+- Fixed an issue in jqxDataTable about the "enableBrowserSelection" property set to the "true" value does not work properly
+- Fixed an issue in jqxMaskedInput when the component is used on Android device the input was incorrect.
+- Fixed an issue in jqxMaskedInput when the component is used on a mobile device, the default keyboard was shown instead of the numeric keyboard.
+
+
+jQWidgets v12.0.4 Release, Apr-15-2021
 
 What's Improved:
 
@@ -11,7 +40,6 @@ What's Fixed:
 - Fixed an issue regarding the placeholder visibility of inputs using Light and Dark themes.
 - Fixed an issue regarding the jqxInput popup usage with touchpads.
 - Fixed an issue regarding the jqxGrid resources disposal, when re-rendering the component.
-
 
 jQWidgets v12.0.1 Release, Mar-06-2021
 

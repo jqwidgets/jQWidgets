@@ -62,6 +62,7 @@ interface IDateTimeInputOptions {
     showWeekNumbers?: boolean;
     showTimeButton?: boolean;
     showCalendarButton?: boolean;
+    showDeleteButton?: boolean;
     theme?: string;
     template?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
     textAlign?: 'left' | 'right' | 'center';

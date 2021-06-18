@@ -6,7 +6,6 @@
     color: #ffffff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     background-color: #faa732;
-    *background-color: #f89406;
     background-image: -moz-linear-gradient(top, #fbb450, #f89406);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
     background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
@@ -19,7 +18,6 @@
     color: #ffffff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     background-color: #E74615;
-    *background-color: #E74615;
     background-image: -moz-linear-gradient(top, #f89406, #E48605);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f89406), to(#E48605));
     background-image: -webkit-linear-gradient(top, #f89406, #E48605);
@@ -240,4 +238,27 @@ border-color:#FBB34E; }
 	fill: rgb(0, 74, 115);
 	stroke: rgb(77, 119, 193);
 	stroke-width: 1.5;
+}
+
+.jqx-split-layout-component-orange .jqx-split-layout {
+     --jqx-primary-rgb: 77, 119, 193;
+    --jqx-primary: #E74615;
+    --jqx-background: #fff;
+    --jqx-background-color: #333;
+    --jqx-surface:#252526;
+    --jqx-surface-color: #969690;
+    --jqx-border: #414141;
+    --jqx-background-hover-rgb: 60, 60, 60;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: rgba(255,255,255,.54);
+    --jqx-primary-color: #fff;
+    --jqx-background-hover-rgb: 225, 225, 225;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: rgba(0,0,0,.54);
+    --jqx-surface-rgb: 255, 255, 255;
+    --jqx-surface: rgb(var(--jqx-surface-rgb));
+    --jqx-surface-color: #333;
+    --jqx-border: rgba(98, 0, 238, 1);
+	color: #333;
+	background: var(--jqx-background);
 }

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id="Description">This demo shows how to create a layout with Tabs which are resizable, draggable and can be removed.</title>
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" /> 
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxsplitlayout.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var layout = new jqxSplitLayout("#layout", {
+                dataSource: [
+                    {
+                        type: "tabs",
+                        label: "Tab 1",
+                        content: "Item 1"
+                    },
+                    {
+                        type: "tabs",
+                        label: "Tab 2",
+                        content: "Item 2"
+                    },
+                    {
+                        orientation: "horizontal",
+                        items: [
+                            {
+                                type: "tabs",
+                                items: [
+                                    {
+                                        label: "Tab 3",
+                                        content: "Item 3"
+                                    }
+                                ]
+                            },
+                            {
+                                type: "tabs",
+                                items: [
+                                    {
+                                        label: "Tab 4",
+                                        content: "Item 4"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            })
+        });
+    </script>
+</head>
+
+<body>
+	<div>This example shows how to create a basic Tabs split layout. You can drag a tab and drop it to a new position. Each Layout Group is resizable.
+	The 'resizing', 'dragging' and 'closing' is configurable with the 'modifiers' property during the initialization.
+	</div><br/><br/>
+   
+    <div id="layout"></div>
+</body>
+
+</html>

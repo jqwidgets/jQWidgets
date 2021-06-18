@@ -42,6 +42,7 @@
             showWeekNumbers: Boolean,
             showTimeButton: Boolean,
             showCalendarButton: Boolean,
+            showDeleteButton: Boolean,
             theme: String,
             template: String,
             textAlign: String,
@@ -319,6 +320,13 @@
                     return JQXLite(this.componentSelector).jqxDateTimeInput('showCalendarButton');
                 }
             },
+            _showDeleteButton: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDateTimeInput('showDeleteButton', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDateTimeInput('showDeleteButton');
+                }
+            },
             _theme: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxDateTimeInput('theme', arg)
@@ -376,7 +384,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','editMode','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width','yearCutoff'];
+                const widgetProps = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','editMode','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','showDeleteButton','theme','template','textAlign','todayString','value','width','yearCutoff'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -666,6 +674,16 @@
                     },
                     set: function(newValue) {
                         that._showCalendarButton(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'showDeleteButton', {
+                    get: function() {
+                        return that._showDeleteButton();
+                    },
+                    set: function(newValue) {
+                        that._showDeleteButton(newValue);
                     },
                     enumerable: true,
                     configurable: true

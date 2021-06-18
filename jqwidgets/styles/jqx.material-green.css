@@ -1837,3 +1837,19 @@ input[type="text"].jqx-input-material-green:-ms-input-placeholder, input[type="t
 .jqx-svg-picker-material-green:focus {
 	border: 1px solid rgb(85, 139, 47) !important;
 }
+
+
+.jqx-split-layout-component-material-green .jqx-split-layout {
+    --jqx-primary-rgb: 85, 139, 47;
+    --jqx-primary: rgb(var(--jqx-primary-rgb));
+    --jqx-primary-color: #fff;
+    --jqx-background: #fff;
+    --jqx-background-color: rgba(0,0,0, .88);
+    --jqx-background-hover-rgb: 225, 225, 225;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: rgba(0,0,0,.54);
+    --jqx-surface-rgb: 255, 255, 255;
+    --jqx-surface: rgb(var(--jqx-surface-rgb));
+    --jqx-surface-color: rgba(0,0,0, .88);
+    --jqx-border: rgba(85, 139, 47, 1);
+}

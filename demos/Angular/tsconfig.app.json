@@ -1,11 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/app",
-    "types": [ "jquery" ]
+    "outDir": "./out-tsc/app"
   },
   "include": [
-    "src/grid/grouping/*.ts",
+    "src/splitlayout/tablayout/*.ts",
     "polyfills.ts"
   ],
   "angularCompilerOptions": {

@@ -439,3 +439,26 @@
 .jqx-time-picker .jqx-label.jqx-selected-metrodark {
 	fill: black !important;
 }
+
+.jqx-split-layout-component-metrodark .jqx-split-layout {
+     --jqx-primary-rgb: 51, 173, 255;
+    --jqx-primary: rgb(var(--jqx-primary-rgb));
+    --jqx-background: #252526;
+    --jqx-background-color: #E7E7E7;
+    --jqx-surface:#252526;
+    --jqx-surface-color: #969690;
+    --jqx-border: #414141;
+    --jqx-background-hover-rgb: 60, 60, 60;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: rgba(255,255,255,.54);
+    --jqx-primary-color: #fff;
+    --jqx-background-hover-rgb: 225, 225, 225;
+    --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
+    --jqx-background-color-hover: rgba(0,0,0,.54);
+    --jqx-surface-rgb: 33, 33, 33;
+    --jqx-surface: rgb(var(--jqx-surface-rgb));
+    --jqx-surface-color: #E7E7E7;
+    --jqx-border: rgba(98, 0, 238, 1);
+	color: #E7E7E7;
+	background: var(--jqx-background);
+}
