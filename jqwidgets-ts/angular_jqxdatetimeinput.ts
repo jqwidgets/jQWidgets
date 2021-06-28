@@ -1,5 +1,5 @@
 /*
-jQWidgets v12.0.4 (2021-Apr)
+jQWidgets v12.1.2 (2021-July)
 Copyright (c) 2011-2021 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -62,6 +62,7 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
    @Input('showWeekNumbers') attrShowWeekNumbers: boolean;
    @Input('showTimeButton') attrShowTimeButton: boolean;
    @Input('showCalendarButton') attrShowCalendarButton: boolean;
+   @Input('showDeleteButton') attrShowDeleteButton: boolean;
    @Input('theme') attrTheme: string;
    @Input('template') attrTemplate: string;
    @Input('textAlign') attrTextAlign: string;
@@ -73,7 +74,7 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','editMode','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','theme','template','textAlign','todayString','value','width','yearCutoff'];
+   properties: string[] = ['animationType','allowNullDate','allowKeyboardDelete','clearString','culture','closeDelay','closeCalendarAfterSelection','dropDownHorizontalAlignment','dropDownVerticalAlignment','disabled','enableBrowserBoundsDetection','enableAbsoluteSelection','editMode','firstDayOfWeek','formatString','height','min','max','openDelay','placeHolder','popupZIndex','rtl','readonly','showFooter','selectionMode','showWeekNumbers','showTimeButton','showCalendarButton','showDeleteButton','theme','template','textAlign','todayString','value','width','yearCutoff'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDateTimeInput;
@@ -444,6 +445,14 @@ export class jqxDateTimeInputComponent implements ControlValueAccessor, OnChange
           this.host.jqxDateTimeInput('showCalendarButton', arg);
       } else {
           return this.host.jqxDateTimeInput('showCalendarButton');
+      }
+   }
+
+   showDeleteButton(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxDateTimeInput('showDeleteButton', arg);
+      } else {
+          return this.host.jqxDateTimeInput('showDeleteButton');
       }
    }
 

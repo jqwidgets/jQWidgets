@@ -1093,6 +1093,7 @@ declare module jqwidgets {
         showWeekNumbers?: boolean;
         showTimeButton?: boolean;
         showCalendarButton?: boolean;
+        showDeleteButton?: boolean;
         theme?: string;
         template?: string;
         textAlign?: string;
@@ -2194,6 +2195,7 @@ declare module jqwidgets {
         autosavestate?: boolean;
         autoloadstate?: boolean;
         columns?: GridColumn[];
+        enableSanitize?: boolean;
         cardview?: boolean;
         cardviewcolumns?: any;
         cardheight?: number;
@@ -4906,6 +4908,21 @@ declare module jqwidgets {
         setHours(hours: number): void;
         setMinutes(minutes: number): void;
     }// jqxTimePicker
+
+    export interface SplitLayoutOptions {
+        // SplitLayoutOptions properties
+        disabled?: boolean;
+        dataSource?: any;
+        ready?: any;
+        height?: string | number;
+        width?: string | number;
+    }// SplitLayoutOptions
+
+    export interface jqxSplitLayout extends widget, SplitLayoutOptions {
+
+        // jqxSplitLayout functions
+        refresh(): void;
+    }// jqxSplitLayout
 
 
 

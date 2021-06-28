@@ -8,34 +8,33 @@ License: https://jqwidgets.com/license/
 /// <reference path="jqwidgets.d.ts" />
 
 import '../jqwidgets/jqxcore.js';
+import '../jqwidgets/jqxsplitlayout.js';
 
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;
 
 @Component({
-    selector: 'jqxPivotDesigner',
+    selector: 'jqxSplitLayout',
     template: '<div><ng-content></ng-content></div>'
 })
 
-export class jqxPivotDesignerComponent implements OnChanges
+export class jqxSplitLayoutComponent implements OnChanges
 {
-   @Input('type') attrType: string;
-   @Input('target') attrTarget: any;
+   @Input('disabled') attrDisabled: boolean;
+   @Input('dataSource') attrDataSource: any;
+   @Input('ready') attrReady: any;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['type','target'];
+   properties: string[] = ['disabled','dataSource','ready','height','width'];
    host: any;
    elementRef: ElementRef;
-   widgetObject:  jqwidgets.jqxPivotDesigner;
+   widgetObject:  jqwidgets.jqxSplitLayout;
 
    constructor(containerElement: ElementRef) {
       this.elementRef = containerElement;
-      JQXLite(window).resize(() => {
-          this.__updateRect__();
-      });
    }
 
    ngOnInit() {
@@ -53,18 +52,18 @@ export class jqxPivotDesignerComponent implements OnChanges
             if (this[attrName] !== undefined) {
                if (typeof this[attrName] === 'object') {
                   if (this[attrName] instanceof Array) {
-                     areEqual = this.arraysEqual(this[attrName], this.host.jqxPivotDesigner(this.properties[i]));
+                     areEqual = this.arraysEqual(this[attrName], this.host.jqxSplitLayout(this.properties[i]));
                   }
                   if (areEqual) {
                      return false;
                   }
 
-                  this.host.jqxPivotDesigner(this.properties[i], this[attrName]);
+                  this.host.jqxSplitLayout(this.properties[i], this[attrName]);
                   continue;
                }
 
-               if (this[attrName] !== this.host.jqxPivotDesigner(this.properties[i])) {
-                  this.host.jqxPivotDesigner(this.properties[i], this[attrName]); 
+               if (this[attrName] !== this.host.jqxSplitLayout(this.properties[i])) {
+                  this.host.jqxSplitLayout(this.properties[i], this[attrName]); 
                }
             }
          }
@@ -127,9 +126,8 @@ export class jqxPivotDesignerComponent implements OnChanges
       this.moveStyles(this.elementRef.nativeElement, this.host[0]);
 
       this.__wireEvents__();
-      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxPivotDesigner', options);
+      this.widgetObject = jqwidgets.createInstance(this.host, 'jqxSplitLayout', options);
 
-      this.__updateRect__();
    }
 
    createWidget(options?: any): void {
@@ -138,41 +136,69 @@ export class jqxPivotDesignerComponent implements OnChanges
 
    __updateRect__() : void {
       if(this.host) this.host.css({ width: this.attrWidth, height: this.attrHeight });
-      this.refresh();
    }
 
    setOptions(options: any) : void {
-      this.host.jqxPivotDesigner('setOptions', options);
+      this.host.jqxSplitLayout('setOptions', options);
    }
 
-   // jqxPivotDesignerComponent properties
-   type(arg?: string): string {
+   // jqxSplitLayoutComponent properties
+   disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
-          this.host.jqxPivotDesigner('type', arg);
+          this.host.jqxSplitLayout('disabled', arg);
       } else {
-          return this.host.jqxPivotDesigner('type');
+          return this.host.jqxSplitLayout('disabled');
       }
    }
 
-   target(arg?: any): any {
+   dataSource(arg?: any): any {
       if (arg !== undefined) {
-          this.host.jqxPivotDesigner('target', arg);
+          this.host.jqxSplitLayout('dataSource', arg);
       } else {
-          return this.host.jqxPivotDesigner('target');
+          return this.host.jqxSplitLayout('dataSource');
+      }
+   }
+
+   ready(arg?: any): any {
+      if (arg !== undefined) {
+          this.host.jqxSplitLayout('ready', arg);
+      } else {
+          return this.host.jqxSplitLayout('ready');
+      }
+   }
+
+   height(arg?: string | number): string | number {
+      if (arg !== undefined) {
+          this.host.jqxSplitLayout('height', arg);
+      } else {
+          return this.host.jqxSplitLayout('height');
+      }
+   }
+
+   width(arg?: string | number): string | number {
+      if (arg !== undefined) {
+          this.host.jqxSplitLayout('width', arg);
+      } else {
+          return this.host.jqxSplitLayout('width');
       }
    }
 
 
-   // jqxPivotDesignerComponent functions
+   // jqxSplitLayoutComponent functions
    refresh(): void {
-      this.host.jqxPivotDesigner('refresh');
+      this.host.jqxSplitLayout('refresh');
    }
 
+
+   // jqxSplitLayoutComponent events
+   @Output() onResize = new EventEmitter();
+   @Output() onStateChange = new EventEmitter();
 
    __wireEvents__(): void {
-
+      this.host.on('resize', (eventData: any) => { this.onResize.emit(eventData); });
+      this.host.on('stateChange', (eventData: any) => { this.onStateChange.emit(eventData); });
    }
 
-} //jqxPivotDesignerComponent
+} //jqxSplitLayoutComponent
 
 

@@ -678,16 +678,12 @@
 .jqx-datatable-dark .jqx-widget-header-dark .jqx-grid-column-header-dark {
     border-right-color: var(--jqx-border);
 }
-.jqx-datatable-dark .jqx-widget-header-dark:not(:hover) .jqx-grid-column-header-dark {
-    border-right-color: transparent !important;
-}
 
 .jqx-datatable-dark td.jqx-grid-cell-dark,
 .jqx-treegrid-dark .jqx-grid-cell-dark{
     padding-top: 10px;
     padding-bottom: 9px;
     font-size: 14px;
-    border-left: none !important;
 }
 
 .jqx-grid-cell-dark {
@@ -1486,7 +1482,6 @@
 
 .jqx-widget-dark.jqx-scheduler-dark .jqx-grid-cell-dark,
 .jqx-widget-dark.jqx-scheduler-dark .jqx-grid-column-header-dark {
-    border-color: transparent;
     border-bottom-color: var(--jqx-border);
 }
 

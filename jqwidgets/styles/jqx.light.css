@@ -680,16 +680,11 @@
     border-right-color: var(--jqx-border);
 }
 
-.jqx-datatable-light .jqx-widget-header:not(:hover) .jqx-grid-column-header-light{
-    border-right-color: transparent !important;
-}
-
 .jqx-datatable-light td.jqx-grid-cell-light,
 .jqx-treegrid-light .jqx-grid-cell-light{
     padding-top: 10px;
     padding-bottom: 9px;
     font-size: 14px;
-    border-left: none !important;
 }
 
 .jqx-grid-cell-light {
@@ -1497,7 +1492,6 @@
 
 .jqx-widget-light.jqx-scheduler-light .jqx-grid-cell-light,
 .jqx-widget-light.jqx-scheduler-light .jqx-grid-column-header-light {
-    border-color: transparent;
     border-bottom-color: var(--jqx-border);
 }
 
