@@ -182,7 +182,6 @@ export interface IGridColumn {
     resizable?: boolean;
     draggable?: boolean;
     editable?: boolean;
-    batcheditable?: boolean;
     classname?: string;
     pinned?: boolean;
     nullable?: boolean;
@@ -472,6 +471,7 @@ interface IGridOptions {
     charting?: IGridCharting;
     disabled?: boolean;
     editable?: boolean;
+    batcheditable?: boolean;
     editmode?: 'click' | 'selectedcell' | 'selectedrow' | 'dblclick' | 'programmatic';
     filter?: (cellValue?: IGridFilter['cellValue'], rowData?: IGridFilter['rowData'], dataField?: IGridFilter['dataField'], filterGroup?: IGridFilter['filterGroup'], defaultFilterResult?: IGridFilter['defaultFilterResult']) => any;
     filterable?: boolean;

@@ -1870,7 +1870,6 @@ declare module jqwidgets {
         resizable?: boolean;
         draggable?: boolean;
         editable?: boolean;
-        batcheditable?: boolean;
         classname?: string;
         pinned?: boolean;
         nullable?: boolean;
@@ -2210,6 +2209,7 @@ declare module jqwidgets {
         charting?: GridCharting;
         disabled?: boolean;
         editable?: boolean;
+        batcheditable?: boolean;
         editmode?: string;
         filter?: (cellValue?: GridFilter['cellValue'], rowData?: GridFilter['rowData'], dataField?: GridFilter['dataField'], filterGroup?: GridFilter['filterGroup'], defaultFilterResult?: GridFilter['defaultFilterResult']) => any;
         filterable?: boolean;
