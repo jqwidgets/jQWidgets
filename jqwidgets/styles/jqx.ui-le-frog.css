@@ -340,3 +340,16 @@
     color: #E7E7E7;
 	background: var(--jqx-background);
 }
+
+
+.jqx-grid-pager-ui-le-frog .jqx-button {
+	overflow: hidden;
+}
+.jqx-grid-pager-ui-le-frog .jqx-icon-arrow-left-ui-le-frog{
+	position: relative;
+    top: 6px;
+}
+.jqx-grid-pager-ui-le-frog .jqx-icon-arrow-right-ui-le-frog{
+	position: relative;
+    top: 6px;
+}

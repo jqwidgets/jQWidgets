@@ -1,5 +1,5 @@
 /*
-jQWidgets v12.1.2 (2021-July)
+jQWidgets v12.2.0 (2021-Sep)
 Copyright (c) 2011-2021 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -73,6 +73,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
    @Input('showAggregates') attrShowAggregates: boolean;
    @Input('showToolbar') attrShowToolbar: boolean;
    @Input('showStatusbar') attrShowStatusbar: boolean;
+   @Input('enableSanitizeAll') attrEnableSanitizeAll: boolean;
    @Input('statusBarHeight') attrStatusBarHeight: number;
    @Input('scrollBarSize') attrScrollBarSize: number | string;
    @Input('selectionMode') attrSelectionMode: string;
@@ -85,7 +86,7 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','groups','groupsRenderer','height','initRowDetails','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showToolbar','showStatusbar','statusBarHeight','scrollBarSize','selectionMode','serverProcessing','showHeader','theme','toolbarHeight','width'];
+   properties: string[] = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','groups','groupsRenderer','height','initRowDetails','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showToolbar','showStatusbar','enableSanitizeAll','statusBarHeight','scrollBarSize','selectionMode','serverProcessing','showHeader','theme','toolbarHeight','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDataTable;
@@ -813,6 +814,19 @@ export class jqxDataTableComponent implements OnChanges, AfterViewInit, AfterVie
           this.host.jqxDataTable('showStatusbar', arg);
       } else {
           return this.host.jqxDataTable('showStatusbar');
+      }
+   }
+
+   enableSanitizeAll(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDataTable('enableSanitizeAll', arg);
+      } else {
+          return this.host.jqxDataTable('enableSanitizeAll');
       }
    }
 

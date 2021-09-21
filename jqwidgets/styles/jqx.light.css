@@ -1694,6 +1694,7 @@ input:focus ~ .jqx-input-bar:before,
 textarea:focus ~ .jqx-input-bar:before,
 .jqx-dropdownlist-state-selected-light .jqx-input-bar:before,
 .jqx-dropdownlist-light .jqx-input-bar.focused:before,
+.jqx-dropdownbutton-light .jqx-input-bar.focused:before,
 .jqx-combobox-light .jqx-input-bar.focused:before,
 .jqx-complex-input-group-light .jqx-input-bar.focused::before,
 .jqx-combobox-state-selected-light .jqx-input-bar:before {

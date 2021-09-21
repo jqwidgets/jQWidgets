@@ -182,6 +182,7 @@ export interface IGridColumn {
     resizable?: boolean;
     draggable?: boolean;
     editable?: boolean;
+    batcheditable?: boolean;
     classname?: string;
     pinned?: boolean;
     nullable?: boolean;

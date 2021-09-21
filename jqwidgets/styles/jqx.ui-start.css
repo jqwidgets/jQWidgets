@@ -43,6 +43,19 @@
 .jqx-icon-arrow-down-selected-ui-start{background-position:-65px -16px; background-image:url(./images/start/ui-icons_fcd113_256x240.png)}
 .jqx-icon-close-ui-start{background-image:url(./images/start/ui-icons_d8e7f3_256x240.png); background-position:-80px -128px; cursor:pointer}
 .jqx-icon-close-hover-ui-start{background-image:url(./images/start/ui-icons_0078ae_256x240.png); background-position:-80px -128px; cursor:pointer}
+
+.jqx-grid-pager-ui-start .jqx-button {
+	overflow: hidden;
+}
+.jqx-grid-pager-ui-start .jqx-icon-arrow-left-ui-start{
+	position: relative;
+    top: 6px;
+}
+.jqx-grid-pager-ui-start .jqx-icon-arrow-right-ui-start{
+	position: relative;
+    top: 6px;
+}
+
 /*Window*/
 .jqx-window-ui-start{padding: 2px;}
 .jqx-window-header-ui-start{border: 1px solid #77d5f7; font-weight: bold; font-size: 11px; moz-border-radius:5px; border-radius:5px; webkit-border-radius:5px}

@@ -181,6 +181,7 @@ interface IDataTableOptions {
     showAggregates?: boolean;
     showToolbar?: boolean;
     showStatusbar?: boolean;
+    enableSanitizeAll?: boolean;
     statusBarHeight?: number;
     scrollBarSize?: number | string;
     selectionMode?: 'multipleRows' | 'singleRow' | 'custom' | 'none';

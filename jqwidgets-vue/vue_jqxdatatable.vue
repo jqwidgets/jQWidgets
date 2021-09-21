@@ -64,6 +64,7 @@
             showAggregates: Boolean,
             showToolbar: Boolean,
             showStatusbar: Boolean,
+            enableSanitizeAll: Boolean,
             statusBarHeight: Number,
             scrollBarSize: Number,
             selectionMode: String,
@@ -540,6 +541,13 @@
                     return JQXLite(this.componentSelector).jqxDataTable('showStatusbar');
                 }
             },
+            _enableSanitizeAll: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDataTable('enableSanitizeAll', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDataTable('enableSanitizeAll');
+                }
+            },
             _statusBarHeight: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxDataTable('statusBarHeight', arg)
@@ -604,7 +612,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','groups','groupsRenderer','height','initRowDetails','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showToolbar','showStatusbar','statusBarHeight','scrollBarSize','selectionMode','serverProcessing','showHeader','theme','toolbarHeight','width'];
+                const widgetProps = ['altRows','autoRowHeight','aggregatesHeight','autoShowLoadElement','columnsHeight','columns','columnGroups','columnsResize','columnsReorder','disabled','editable','editSettings','exportSettings','enableHover','enableBrowserSelection','filterable','filterHeight','filterMode','groups','groupsRenderer','height','initRowDetails','incrementalSearch','localization','pagerHeight','pageSize','pageSizeOptions','pageable','pagerPosition','pagerMode','pagerButtonsCount','pagerRenderer','ready','rowDetails','renderToolbar','renderStatusBar','rendering','rendered','rtl','source','sortable','showAggregates','showToolbar','showStatusbar','enableSanitizeAll','statusBarHeight','scrollBarSize','selectionMode','serverProcessing','showHeader','theme','toolbarHeight','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -1054,6 +1062,16 @@
                     },
                     set: function(newValue) {
                         that._showStatusbar(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'enableSanitizeAll', {
+                    get: function() {
+                        return that._enableSanitizeAll();
+                    },
+                    set: function(newValue) {
+                        that._enableSanitizeAll(newValue);
                     },
                     enumerable: true,
                     configurable: true

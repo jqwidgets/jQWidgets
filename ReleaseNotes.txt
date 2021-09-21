@@ -1,4 +1,43 @@
-﻿jQWidgets v12.1.0 Release, June-18-2021
+﻿jQWidgets v12.2.0 Release, Sep-21-2021
+
+What's New:
+
+- jqxGrid Batch Edit mode
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid Copy paste large numbers in jqxGrid.
+- Fixed an issue in jqxGrid.  The addrow method when using with rowPosition parameter doesn't place the row in the right place.
+- Fixed an issue in JqxGrid Horizontal Scrolling. When some of the columns are pinned and we try to navigate with tab or keyboard.
+- Fixed an issue in jqxInput. Shows native autocomplete popup after entering a value.
+- Fixed an issue in jqxGrid with paging and some of the themes. Arrows for next/previous page are displaced.
+- Fixed an issue in jqxDropDownButton. It is not focusable on Tab key press.
+- Fixed an issue in jqxGrid. Scrolls to top of the grid when deleting row.
+- Fixed an issue in jqxGrid Column Chooser about the events raised when the column choosed is opened or closed.
+- Fixed an issue in jqxSortable about receive event not raised.
+- Fixed an issue in jqxGrid about createeditor callback.
+- Fixed an issue in jqxGrid. When dragging a column header it has to be drag it to the line of the filtering box for the grouping to work and it results in bad UI experience
+- Fixed an issue in DockingLayout regarding saveLayout and loadLayout, when a floating dialog is created.
+
+jQWidgets v12.1.2 Release, June-28-2021
+
+What's Improved:
+
+- Added 'enableSanitizeAll' option to jqxGrid. 
+- Light and Dark Themes for jqxDataTable, jqxTreeGrid and jqxScheduler. 
+
+
+jQWidgets v12.1.1 Release, June-23-2021
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid regarding the 'cellsformat', when enableSanitize is true.
+- Fixed an issue in jqxGrid regarding the 'cellsrenderer' value argument type.
+- Fixed an issue in jqxDataTable regarding the HTML sanitization.
+- Fixed an issue in jqxTree regarding an error thrown in mobile mode.
+- Fixed an issue in jqxPanel regarding the 'focused' property behavior. 
+
+jQWidgets v12.1.0 Release, June-18-2021
 
 What's New:
 

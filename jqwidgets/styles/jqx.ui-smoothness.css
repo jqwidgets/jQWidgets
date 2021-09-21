@@ -162,3 +162,16 @@
 {
     background-image: none;
 }
+
+
+.jqx-grid-pager-ui-smoothness .jqx-button {
+	overflow: hidden;
+}
+.jqx-grid-pager-ui-smoothness .jqx-icon-arrow-left-ui-smoothness{
+	position: relative;
+    top: 6px;
+}
+.jqx-grid-pager-ui-smoothness .jqx-icon-arrow-right-ui-smoothness{
+	position: relative;
+    top: 6px;
+}

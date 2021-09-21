@@ -181,3 +181,15 @@ font-weight: bold;
 {
     background-image: none;
 }
+
+.jqx-grid-pager-ui-redmond .jqx-button {
+	overflow: hidden;
+}
+.jqx-grid-pager-ui-redmond .jqx-icon-arrow-left-ui-redmond{
+	position: relative;
+    top: 6px;
+}
+.jqx-grid-pager-ui-redmond .jqx-icon-arrow-right-ui-redmond{
+	position: relative;
+    top: 6px;
+}

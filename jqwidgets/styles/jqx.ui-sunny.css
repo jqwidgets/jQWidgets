@@ -174,3 +174,15 @@
 .jqx-main-container-ui-sunny {
 	background: none;
 }
+
+.jqx-grid-pager-ui-sunny .jqx-button {
+	overflow: hidden;
+}
+.jqx-grid-pager-ui-sunny .jqx-icon-arrow-left-ui-sunny{
+	position: relative;
+    top: 6px;
+}
+.jqx-grid-pager-ui-sunny .jqx-icon-arrow-right-ui-sunny{
+	position: relative;
+    top: 6px;
+}

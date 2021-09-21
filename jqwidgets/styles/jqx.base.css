@@ -674,6 +674,11 @@ input[type=submit].jqx-button {
     outline: none;
 }
 
+.jqx-grid-cell-batch {
+    background: #46CA78 !important;
+    color: white !important;
+}
+
 .jqx-grid-cell-locked {
     color: #aaa !important;
 }
@@ -8616,13 +8621,13 @@ input[type=number] {
     --jqx-primary: rgb(var(--jqx-primary-rgb));
     --jqx-primary-color: #fff;
     --jqx-background: #fff;
-    --jqx-background-color: rgba(0,0,0, .88);
+    --jqx-background-color: rgba(0, 0, 0, .88);
     --jqx-background-hover-rgb: 225, 225, 225;
     --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
-    --jqx-background-color-hover: rgba(0,0,0,.54);
+    --jqx-background-color-hover: rgba(0, 0, 0, .54);
     --jqx-surface-rgb: 255, 255, 255;
     --jqx-surface: rgb(var(--jqx-surface-rgb));
-    --jqx-surface-color: rgba(0,0,0, .88);
+    --jqx-surface-color: rgba(0, 0, 0, .88);
     --jqx-border: #E0E0E0;
     --jqx-scrollbar-background: #f5f5f5;
     --jqx-scrollbar-border: #ddd;
@@ -8637,7 +8642,7 @@ input[type=number] {
     --jqx-scrollbar-button-border-hover: #f5f5f5;
     --jqx-scrollbar-button-color-pressed: #333;
     --jqx-scrollbar-button-background-pressed: #f5f5f5;
-    --jqx-scrollbar-button-border-pressed: #f5f5f5;	
+    --jqx-scrollbar-button-border-pressed: #f5f5f5;
     --jqx-split-layout-buttons-border-radius: 50%;
     --jqx-split-layout-context-menu-default-width: var(--jqx-menu-vertical-default-width);
     --jqx-split-layout-context-menu-default-height: auto;
@@ -8759,8 +8764,8 @@ input[type=number] {
     --jqx-editor-addon-width: 27px;
     /* Default width for spin buttons, dropdown buttons. */
     border: 1px solid #E0E0E0;
-	border-right: none;
-	border-bottom: none;
+    border-right: none;
+    border-bottom: none;
     overflow: initial;
     box-sizing: border-box;
 }
@@ -8774,8 +8779,8 @@ input[type=number] {
 
 .jqx-layout-group,
 .jqx-tab-layout-group {
-	box-sizing: border-box;
- }
+    box-sizing: border-box;
+}
 
 .jqx-tab-layout-group[position="right"] .jqx-layout-tab,
 .jqx-tab-layout-group[position="left"] .jqx-layout-tab {

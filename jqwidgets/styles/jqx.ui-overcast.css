@@ -175,3 +175,16 @@
 {
     background-image: none;
 }
+
+
+.jqx-grid-pager-ui-overcast .jqx-button {
+	overflow: hidden;
+}
+.jqx-grid-pager-ui-overcast .jqx-icon-arrow-left-ui-overcast{
+	position: relative;
+    top: 6px;
+}
+.jqx-grid-pager-ui-overcast .jqx-icon-arrow-right-ui-overcast{
+	position: relative;
+    top: 6px;
+}

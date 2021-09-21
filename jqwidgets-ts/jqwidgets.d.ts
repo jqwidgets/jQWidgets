@@ -1004,6 +1004,7 @@ declare module jqwidgets {
         showAggregates?: boolean;
         showToolbar?: boolean;
         showStatusbar?: boolean;
+        enableSanitizeAll?: boolean;
         statusBarHeight?: number;
         scrollBarSize?: number | string;
         selectionMode?: string;
@@ -1869,6 +1870,7 @@ declare module jqwidgets {
         resizable?: boolean;
         draggable?: boolean;
         editable?: boolean;
+        batcheditable?: boolean;
         classname?: string;
         pinned?: boolean;
         nullable?: boolean;

@@ -258,3 +258,16 @@
 .jqx-svg-picker-ui-darkness:focus {
 	border: 1px solid rgb(73, 68, 55) !important;
 }
+
+
+.jqx-grid-pager-ui-darkness .jqx-button {
+	overflow: hidden;
+}
+.jqx-grid-pager-ui-darkness .jqx-icon-arrow-left-ui-darkness{
+	position: relative;
+    top: 6px;
+}
+.jqx-grid-pager-ui-darkness .jqx-icon-arrow-right-ui-darkness{
+	position: relative;
+    top: 6px;
+}
