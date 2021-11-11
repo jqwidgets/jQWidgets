@@ -1,4 +1,10 @@
-﻿jQWidgets v12.2.0 Release, Sep-21-2021
+﻿jQWidgets v13.0.0 Release, Nov-11-2021
+
+What's New:
+
+- Angular 13 support.
+
+jQWidgets v12.2.0 Release, Sep-21-2021
 
 What's New:
 
