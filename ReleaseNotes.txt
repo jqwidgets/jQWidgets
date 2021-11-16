@@ -1,8 +1,27 @@
-﻿jQWidgets v13.0.0 Release, Nov-11-2021
+﻿jQWidgets v13.1.0 Release, Nov-16-2021
+
+What's Fixed:
+
+- Fixed an issue in jqxScheduler. jqxScheduler refreshes only to 12:00 AM hour when the source of the scheduler is changed.
+- Fixed an issue in jqxGrid. jqxGrid with filtermode set to excel doesn't work properly on columns with number type column data.
+- Fixed an issue in jqxGrid. jqxGrid - cannot filtering with the "showfilterbar" property when the "editable" property is enabled.
+- Fixed an issue in jqxGrid. jqxGrid - StatusBar Row placed too low.
+- Fixed an issue in jqxInput. jqxInput does not fire 'keyup' event #449.
+- Fixed an issue in jqxNumberInput. jqxNumberInput doesn't remove the minus symbol when value is set from negative to positive.
+- Fixed an issue in jqxDropDownList. jqxDropdownList select event is not firing in Safarai (Ipad & iphone).
+- Fixed an issue in jqxListBox. jqxListbox typing the filter input clears the SelectedItem.
+- Fixed an issue in jqxValidator. jqxValidator doesn't validate jqxDateTimeInput widget.
+- Fixed an issue in jqxGrid. jqxGrid with rating column - tooltip inconsistent behavior.
+- Fixed an issue in jqxNumberInput. jqxNumberInput - in simple inputMode with '-' sign 'Delete' key deletes one char away from cursor.
+- Fixed an issue in jqxGrid. jqxGrid - pressing with the pointer of the mouse on the vertical scrollbar does not stop in its position.
+- Fixed an issue in jqxGrid. jqxGrid rating column addittional properties. Added "ratingmax" property for setting the count of rating items.
+
+
+jQWidgets v13.0.0 Release, Nov-11-2021
 
 What's New:
 
-- Angular 13 support.
+- Angular 13 support
 
 jQWidgets v12.2.0 Release, Sep-21-2021
 
