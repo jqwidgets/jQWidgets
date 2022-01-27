@@ -1184,6 +1184,7 @@ textarea:focus ~ .jqx-input-bar:before,
 .jqx-dropdownlist-material-purple .jqx-input-bar.focused:before,
 .jqx-complex-input-group-material-purple .jqx-input-bar.focused::before,
 .jqx-combobox-material-purple .jqx-input-bar.focused:before,
+.jqx-dropdownbutton-material-purple .jqx-input-bar.focused:before,
 .jqx-combobox-state-selected-material-purple .jqx-input-bar:before {
     width: 100%;
 }

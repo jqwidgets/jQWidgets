@@ -1,6 +1,6 @@
 /*
-jQWidgets v13.1.0 (2021-Nov)
-Copyright (c) 2011-2021 jQWidgets.
+jQWidgets v13.2.0 (2022-Jan)
+Copyright (c) 2011-2022 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */

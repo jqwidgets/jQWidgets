@@ -1,7 +1,7 @@
 /*
    jQWidgets TypeScript definitions
 
-   Copyright (c) 2011-2021 jQWidgets.
+   Copyright (c) 2011-2022 jQWidgets.
    License: https://jqwidgets.com/license/
 */
 

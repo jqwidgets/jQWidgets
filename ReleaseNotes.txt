@@ -1,4 +1,29 @@
-﻿jQWidgets v13.1.0 Release, Nov-16-2021
+﻿jQWidgets v13.2.0 Release, Jan-27-2022
+
+What's New:
+
+- jqxGrid Columns render is enhanced with badges showing the column's sort index.
+
+What's Improved:
+
+- jqxSwitchButton events API. Added changeType argument.
+
+What's Fixed:
+
+- Fixed an issue in jqxKanban. 'itemMoved' event returns 'args.NewColumn' as null
+- Fixed an issue in jqxKanban. When dropping a card from one Kanban to another Kanban element
+- Fixed an issue in jqxNumberInput. When trying to get negative value
+- Fixed an issue in jqxGrid. Filtering clears the bound data when used with filter row and custom list items
+- Fixed an issue in jqxGrid. Aggregates are not updated when the source of the grid is changed
+- Fixed an issue in jqxGrid. ExportView - xlsx does not format dates if there is any null values
+- Fixed an issue in jqxTabs. Adds new div element every time when 'setTitleAt' method is used
+- Fixed an issue in jqxGrid. Filtering issue when the grid is initially loaded( when using show filter row)
+- Fixed an issue in jqxGrid. When having localization set and filtering issue
+
+
+
+
+jQWidgets v13.1.0 Release, Nov-16-2021
 
 What's Fixed:
 
