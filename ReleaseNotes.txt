@@ -1,4 +1,28 @@
-﻿jQWidgets v13.2.0 Release, Jan-27-2022
+﻿jQWidgets v14.0.0 Release, May-01-2022
+
+What's New:
+
+- jqxGrid command column.
+- Barcode component.
+- QRcode component.
+
+What's Improved:
+
+- Light theme is updated with more modern look and feel.
+
+What's Fixed:
+
+- Fixed an issue in jqxDataTable. 2nd level nested table disappears.
+- Fixed an issue in jqxSlider - the "created" event does not fire.
+- Fixed an issue in jqxNumberInput - spin buttons unexpected behavior. When decimalDigits and digits properties are set to 2 and the spin buttons are enabled with spinButtonsStep=0.1, the buttons don't work.
+- Fixed an issue in jqxGrid - card view mode - cards change position during scroll
+- Fixed an issue in jqxGrid - card view mode - cards are not fully displayed but there is no scrollbar
+- Fixed an issue in jqxGrid - rowsheight is not preserved when you switch to cardview mode and then back to grid mode
+- Fixed an issue in jqxGrid issue when used within a jqxSplitter component
+- Fixed an issue in jqxGrid bug when having pinned columns doesn't scroll on the next column on key press
+
+
+jQWidgets v13.2.0 Release, Jan-27-2022
 
 What's New:
 
@@ -21,6 +45,7 @@ What's Fixed:
 - Fixed an issue in jqxGrid. When having localization set and filtering issue
 
 
+What's Fixed:
 
 
 jQWidgets v13.1.0 Release, Nov-16-2021

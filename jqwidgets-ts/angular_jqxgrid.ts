@@ -1,5 +1,5 @@
 /*
-jQWidgets v13.2.0 (2022-Jan)
+jQWidgets v14.0.0 (2022-May)
 Copyright (c) 2011-2022 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -57,6 +57,8 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('showcolumnheaderlines') attrShowcolumnheaderlines: boolean;
    @Input('adaptive') attrAdaptive: boolean;
    @Input('adaptivewidth') attrAdaptivewidth: number;
+   @Input('commandcolumn') attrCommandcolumn: boolean;
+   @Input('commandcolumnrenderer') attrCommandcolumnrenderer: (row?: number, columnfield?: string, active?: any) => string;
    @Input('clipboard') attrClipboard: boolean;
    @Input('closeablegroups') attrCloseablegroups: boolean;
    @Input('columnsmenuwidth') attrColumnsmenuwidth: number;
@@ -173,7 +175,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','adaptivewidth','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGrid;
@@ -472,6 +474,32 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
           this.host.jqxGrid('adaptivewidth', arg);
       } else {
           return this.host.jqxGrid('adaptivewidth');
+      }
+   }
+
+   commandcolumn(arg?: boolean): boolean {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('commandcolumn', arg);
+      } else {
+          return this.host.jqxGrid('commandcolumn');
+      }
+   }
+
+   commandcolumnrenderer(arg?: (row?: number, columnfield?: string, active?: any) => string): (row?: number, columnfield?: string, active?: any) => string {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('commandcolumnrenderer', arg);
+      } else {
+          return this.host.jqxGrid('commandcolumnrenderer');
       }
    }
 

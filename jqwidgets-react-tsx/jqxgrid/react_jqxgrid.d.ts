@@ -392,6 +392,8 @@ interface IGridOptions {
     showcolumnheaderlines?: boolean;
     adaptive?: boolean;
     adaptivewidth?: number;
+    commandcolumn?: boolean;
+    commandcolumnrenderer?: (row?: number, columnfield?: string, active?: any) => string;
     clipboard?: boolean;
     closeablegroups?: boolean;
     columnsmenuwidth?: number;

@@ -7,10 +7,10 @@
     --jqx-background-hover-rgb: 225, 225, 225;
     --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
     --jqx-background-color-hover: rgba(0, 0, 0, .54);
-    --jqx-surface-rgb: 255, 255, 255;
+    --jqx-surface-rgb: 244, 245, 249;
     --jqx-surface: rgb(var(--jqx-surface-rgb));
     --jqx-surface-color: rgba(0, 0, 0, .88);
-    --jqx-border: #E0E0E0;
+    --jqx-border: #E9EAED;
     --jqx-scrollbar-background: #f5f5f5;
     --jqx-scrollbar-border: #ddd;
     --jqx-scrollbar-thumb-background: #C1C1C1;
@@ -783,8 +783,13 @@ jqx-button-light input {
     box-shadow: none;
 }
 
+.jqx-widget-header-light.jqx-grid-cell-light {
+    background: var(--jqx-surface);
+    color: var(--jqx-surface-color);
+}
+
 .jqx-grid-cell-alt-light {
-    background: #fafafa;
+    background: #F4F5F933;
     color: var(--jqx-surface-color);
 }
 
@@ -1667,7 +1672,7 @@ jqx-grid-column-filterbutton-light,
     border-color: var(--jqx-border);
     font-size: 12px;
     color: var(--jqx-surface-color);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 
@@ -2640,3 +2645,18 @@ textarea.jqx-input-light:-ms-input-placeholder {
     align-items: center;
     height: 100%;
 }
+
+
+.jqx-grid-pager-light .jqx-dropdownlist-light  {
+	background: var(--jqx-background);
+	color: var(--jqx-background-color);
+}
+.jqx-grid-pager-input-light {
+ padding-right: 4px !important;
+}
+.jqx-grid-cell-selected-light {
+    background: rgba(var(--jqx-primary-rgb), .85) !important;
+    }
+    .jqx-grid-cell-selected-light span {
+        color: inherit !important;
+    }

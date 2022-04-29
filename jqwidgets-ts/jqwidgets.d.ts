@@ -2130,6 +2130,8 @@ declare module jqwidgets {
         showcolumnheaderlines?: boolean;
         adaptive?: boolean;
         adaptivewidth?: number;
+        commandcolumn?: boolean;
+        commandcolumnrenderer?: (row?: number, columnfield?: string, active?: any) => string;
         clipboard?: boolean;
         closeablegroups?: boolean;
         columnsmenuwidth?: number;
@@ -4925,6 +4927,62 @@ declare module jqwidgets {
         // jqxSplitLayout functions
         refresh(): void;
     }// jqxSplitLayout
+
+    export interface BarcodeOptions {
+        // BarcodeOptions properties
+        backgroundColor?: string;
+        displayLabel?: boolean;
+        labelColor?: string;
+        labelFont?: string;
+        labelFontSize?: number;
+        labelMarginBottom?: number;
+        labelMarginTop?: number;
+        labelPosition?: string;
+        lineColor?: string;
+        lineHeight?: number;
+        lineWidth?: number;
+        renderAs?: string;
+        type?: string;
+        value?: string;
+    }// BarcodeOptions
+
+    export interface jqxBarcode extends widget, BarcodeOptions {
+
+        // jqxBarcode functions
+        export(format: string, fileName: string): any;
+        getDataURL(format: string): string;
+        getDataURLAsync(format: string): any;
+        isValid(): boolean;
+    }// jqxBarcode
+
+    export interface QRcodeOptions {
+        // QRcodeOptions properties
+        backgroundColor?: string;
+        displayLabel?: boolean;
+        embedImage?: string;
+        errorLevel?: string;
+        imageHeight?: number;
+        imageWidth?: number;
+        labelColor?: string;
+        labelFont?: string;
+        labelFontSize?: number;
+        labelMarginBottom?: number;
+        labelMarginTop?: number;
+        labelPosition?: string;
+        lineColor?: string;
+        squareWidth?: number;
+        renderAs?: string;
+        value?: string;
+    }// QRcodeOptions
+
+    export interface jqxQRcode extends widget, QRcodeOptions {
+
+        // jqxQRcode functions
+        export(format: string, fileName: string): any;
+        getDataURL(format: string): string;
+        getDataURLAsync(format: string): any;
+        isValid(): boolean;
+    }// jqxQRcode
 
 
 

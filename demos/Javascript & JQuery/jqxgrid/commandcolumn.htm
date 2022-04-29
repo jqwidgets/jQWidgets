@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id='Description'>jqxGrid Command Column
+    </title>
+    <meta name="description"
+        content="Command Columns Support" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = "../../sampledata/products.xml";
+
+            // prepare the data
+            var source =
+            {
+                datatype: "xml",
+                datafields: [
+                    { name: 'ProductName', type: 'string' },
+                    { name: 'QuantityPerUnit', type: 'int' },
+                    { name: 'UnitPrice', type: 'float' },
+                    { name: 'UnitsInStock', type: 'float' },
+                    { name: 'Discontinued', type: 'bool' }
+                ],
+                root: "Products",
+                record: "Product",
+                id: 'ProductID',
+                url: url
+            };
+
+            var cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties, rowdata) {
+                if (value < 20) {
+                    return '<span style="margin: 4px; margin-top:8px; float: ' + columnproperties.cellsalign + '; color: #ff0000;">' + value + '</span>';
+                }
+                else {
+                    return '<span style="margin: 4px; margin-top:8px; float: ' + columnproperties.cellsalign + '; color: #008000;">' + value + '</span>';
+                }
+            }
+
+            var dataAdapter = new $.jqx.dataAdapter(source, {
+                downloadComplete: function (data, status, xhr) { },
+                loadComplete: function (data) { },
+                loadError: function (xhr, status, error) { }
+            });
+
+            // initialize jqxGrid
+            $("#grid").jqxGrid(
+                {
+                    width: getWidth('Grid'),
+                    source: dataAdapter,
+                    sortable: true,
+                    altrows: true,
+                    enabletooltips: true,
+                    editable: true,
+                    commandcolumn: true,
+                    selectionmode: 'multiplecellsadvanced',
+				    columns: [
+                        { text: 'Product Name', columngroup: 'ProductDetails', datafield: 'ProductName', width: 250 },
+                        { text: 'Quantity per Unit', columngroup: 'ProductDetails', datafield: 'QuantityPerUnit', cellsalign: 'right', align: 'right', width: 150 },
+                        { text: 'Unit Price', columngroup: 'ProductDetails', datafield: 'UnitPrice', align: 'right', cellsalign: 'right', cellsformat: 'c2', width: 100 },
+                        { text: 'Units In Stock', datafield: 'UnitsInStock', cellsalign: 'right', cellsrenderer: cellsrenderer, width: 100 },
+                        { text: 'Discontinued', columntype: 'checkbox', datafield: 'Discontinued' }
+                    ],
+                    columngroups: [
+                        { text: 'Product Details', align: 'center', name: 'ProductDetails' }
+                    ]
+                });
+
+        });
+    </script>
+</head>
+
+<body class='default'>
+    <div id="grid">
+    </div>
+
+
+    <div style="position: absolute; bottom: 5px; right: 5px;">
+        <a href="https://www.jqwidgets.com/" alt="https://www.jqwidgets.com/"><img alt="https://www.jqwidgets.com/"
+                title="https://www.jqwidgets.com/"
+                src="https://www.jqwidgets.com/wp-content/design/i/logo-jqwidgets.png" /></a>
+    </div>
+</body>
+
+</html>
