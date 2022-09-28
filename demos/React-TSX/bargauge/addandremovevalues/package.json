@@ -8,7 +8,7 @@
         "jqwidgets-scripts": "^8.0.0",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
-        "react-scripts": "3.0.1",
+        "react-scripts": "5.0.1",
         "typescript": "3.4.5"
     },
     "scripts": {
