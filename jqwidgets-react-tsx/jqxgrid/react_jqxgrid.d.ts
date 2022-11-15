@@ -499,6 +499,7 @@ interface IGridOptions {
     rendergridrows?: (params?: any) => any;
     sortable?: boolean;
     sortmode?: string;
+    sortmodekey?: string;
     selectedrowindex?: number;
     selectedrowindexes?: number[];
     source?: IGridSource;

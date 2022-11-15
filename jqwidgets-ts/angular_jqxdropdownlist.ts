@@ -1,5 +1,5 @@
 /*
-jQWidgets v14.0.0 (2022-May)
+jQWidgets v15.0.0 (2022-Nov)
 Copyright (c) 2011-2022 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -65,6 +65,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
    @Input('searchMode') attrSearchMode: string;
    @Input('source') attrSource: Array<any>;
    @Input('selectedIndex') attrSelectedIndex: number;
+   @Input('scrollBarSize') attrScrollBarSize: number;
    @Input('theme') attrTheme: string;
    @Input('template') attrTemplate: string;
    @Input('valueMember') attrValueMember: string;
@@ -73,7 +74,7 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','source','selectedIndex','theme','template','valueMember','width'];
+   properties: string[] = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','source','selectedIndex','scrollBarSize','theme','template','valueMember','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxDropDownList;
@@ -641,6 +642,19 @@ export class jqxDropDownListComponent implements ControlValueAccessor, OnChanges
           this.host.jqxDropDownList('selectedIndex', arg);
       } else {
           return this.host.jqxDropDownList('selectedIndex');
+      }
+   }
+
+   scrollBarSize(arg?: number): number {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxDropDownList('scrollBarSize', arg);
+      } else {
+          return this.host.jqxDropDownList('scrollBarSize');
       }
    }
 

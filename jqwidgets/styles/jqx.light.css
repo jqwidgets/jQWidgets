@@ -1,5 +1,5 @@
 ﻿:root {
-    --jqx-primary-rgb: 0, 92, 153;
+    --jqx-primary-rgb: 18, 116, 172;
     --jqx-primary: rgb(var(--jqx-primary-rgb));
     --jqx-primary-color: #fff;
     --jqx-background: #fff;
@@ -7,7 +7,7 @@
     --jqx-background-hover-rgb: 225, 225, 225;
     --jqx-background-hover: rgb(var(--jqx-background-hover-rgb));
     --jqx-background-color-hover: rgba(0, 0, 0, .54);
-    --jqx-surface-rgb: 244, 245, 249;
+    --jqx-surface-rgb: 250, 250, 250;
     --jqx-surface: rgb(var(--jqx-surface-rgb));
     --jqx-surface-color: rgba(0, 0, 0, .88);
     --jqx-border: #E9EAED;
@@ -155,7 +155,6 @@
 .jqx-widget-header-light {
     background-color: var(--jqx-surface);
     border-color: var(--jqx-border);
-    font-weight: 500;
     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     background: var(--jqx-surface);
@@ -163,12 +162,10 @@
 }
 
 .jqx-calendar-title-header-light {
-    text-transform: uppercase;
 }
 
 .jqx-window-header-light {
     padding: 10px;
-    text-transform: uppercase;
     color: var(--jqx-surface-color);
     background: var(--jqx-surface);
 }
@@ -200,7 +197,6 @@ input.jqx-input-widget-light::selection,
     color: var(--jqx-background-color);
     background-color: var(--jqx-background);
     border-color: var(--jqx-border);
-    text-transform: uppercase;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -253,7 +249,6 @@ input.jqx-input-widget-light::selection,
 
 .jqx-scheduler-edit-dialog-field .jqx-button-light {
     padding: 6px 16px;
-    text-transform: uppercase;
 }
 
 .jqx-button-light button,
@@ -789,8 +784,8 @@ jqx-button-light input {
 }
 
 .jqx-grid-cell-alt-light {
-    background: #F4F5F933;
-    color: var(--jqx-surface-color);
+    background: #F4F5F933 !important;
+    color: var(--jqx-surface-color) !important;
 }
 
 .jqx-grid-pager-top-light .jqx-button-light,
@@ -1322,7 +1317,6 @@ jqx-grid-column-filterbutton-light,
 
 .jqx-scheduler-edit-dialog-label-light {
     font-size: 12px;
-    text-transform: uppercase;
     padding-top: 6px;
     padding-bottom: 6px;
 
@@ -1670,9 +1664,8 @@ jqx-grid-column-filterbutton-light,
 
 .jqx-widget-light .jqx-grid-column-header-light {
     border-color: var(--jqx-border);
-    font-size: 12px;
+    font-size: 14px;
     color: var(--jqx-surface-color);
-    font-weight: 600;
 }
 
 
@@ -2655,7 +2648,7 @@ textarea.jqx-input-light:-ms-input-placeholder {
  padding-right: 4px !important;
 }
 .jqx-grid-cell-selected-light {
-    background: rgba(var(--jqx-primary-rgb), .85) !important;
+    background: rgba(var(--jqx-primary-rgb), 0.8) !important;
     }
     .jqx-grid-cell-selected-light span {
         color: inherit !important;

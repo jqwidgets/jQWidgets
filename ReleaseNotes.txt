@@ -1,4 +1,38 @@
-﻿jQWidgets v14.0.0 Release, May-01-2022
+﻿jQWidgets v15.0.0 Release, Nov-14-2022
+
+What's New:
+
+- jqxCheckBoxGroup Component.
+- jqxRadioButtonGroup Component.
+
+What's Improved:
+
+- jqxGrid support for Ctrl+Click when sorting by multiple columns.
+- jqxGrid - cardview mode - add support for cellclassname.
+
+What's Fixed:
+
+- Fixed an issue in jqxChart. saveAsJPEG does not work with annotations.
+- Fixed an issue in jqxPasswordInput (Angular). The change event not triggering properly.
+- Fixed an issue in jqxGrid. The  cellvaluechanged event is beinged trigger when cell's type is date.
+- Fixed an issue in jqxGrid. A Charting error with datafields array results in incorrect rendering.
+- Fixed an issue in jgxGrid. updaterow with array does not update the grid when filter is applied.
+- Fixed an issue in jqxGrid. Export without provided file name does not work.
+- Fixed an issue in jqxGrid. clears state on disabling.
+- Fixed an issue in jqxGrid .filter working incorrectly when using localization with filterchoosestring.
+- Fixed an issue in jqxGrid. export to xlsx not working with some themes.
+- Fixed an issue in jqxScheduler. Month Days > 31 Bug in edit dialog.
+- Fixed an issue in jqxDropDownList. Angular missing scrollBarSize property.
+- Fixed an issue in jqxScheduler. editDialogOpen 'dialog' variable reference.
+- Fixed an issue in jqxScheduler. Recursive appointment does not get added.
+- Fixed an issue in jqxNumberInput. When spinButtonsStep>10 and min<0, the spinButtons stop working.
+- Fixed an issue in jqxNumberInput. Incorrect cursor placement editing negative number.
+- Fixed an issue in jqxListBox. Getting wrong selected item when filter is applied.
+- Fixed an issue in jqxDateTimeInput. Mobile mode with time popup.
+- Fixed an issue in jqxDateTimeInput. Month only input. Padding on buttons not applied initially.
+- Fixed an issue in jqxMaskedInput about not updating value on 'Delete' key press.
+
+jQWidgets v14.0.0 Release, May-01-2022
 
 What's New:
 

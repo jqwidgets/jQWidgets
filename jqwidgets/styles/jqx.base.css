@@ -1982,7 +1982,37 @@ input[type=submit].jqx-button {
     outline: none;
     margin: 0 0 0 0;
 }
+.jqx-checkbox-label,
+.jqx-radiobutton-label {
+    cursor: pointer;
+}
+.jqx-checkbox-group .jqx-checkbox-group-item,
+.jqx-radiobutton-group .jqx-radiobutton-group-item {
+    padding: 4px 0px;
+}
 
+.jqx-checkbox-group .jqx-container[layout="horizontal"],
+.jqx-radiobutton-group .jqx-container[layout="horizontal"] {
+    display: flex;
+}
+
+.jqx-checkbox-group .jqx-container[layout="horizontal"] .jqx-checkbox-group-item,
+.jqx-radiobutton-group .jqx-container[layout="horizontal"] .jqx-radiobutton-group-item{
+    padding: 0px 4px;
+}
+
+.jqx-checkbox-group .jqx-container[label-position="before"] .jqx-checkbox-group-item,
+.jqx-radiobutton-group .jqx-container[label-position="before"] .jqx-radiobutton-group-item{
+    display: flex;
+    flex-direction: row;
+}
+
+.jqx-checkbox-group.jqx-fill-state-disabled label,
+.jqx-radiobutton-group.jqx-fill-state-disabled label,
+.jqx-checkbox-group-item.jqx-fill-state-disabled label,
+.jqx-radiobutton-group-item.jqx-fill-state-disabled label  {
+    cursor:default;
+}
 /*applied to the check box when its in rtl mode.*/
 .jqx-checkbox-rtl {
     float: right;
@@ -6512,10 +6542,6 @@ ol li .jqx-listmenu-item-label:before {
 
 .jqx-loader-ie-transparency {
     background: transparent;
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fffffff, endColorstr=#7fffffff)";
-    /*For IE 8*/
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fffffff, endColorstr=#7fffffff);
-    /*For IE 7*/
 }
 
 .jqx-loader-modal {
@@ -7028,11 +7054,7 @@ ol li .jqx-listmenu-item-label:before {
     background-color: rgb(0, 0, 0);
     /* RGBa with 0.6 opacity */
     background-color: rgba(0, 0, 0, 0.6);
-    /* For IE 5.5 - 7*/
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-    /* For IE 8*/
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-}
+ }
 
 .jqx-popover-close-button {
     width: 16px;
@@ -7316,14 +7338,6 @@ ol li .jqx-listmenu-item-label:before {
     border: gray dotted 1px;
     border-radius: 3px;
     margin: 5px;
-}
-
-.jqx-kanban-column-vertical-container-inverse-ie8-fix {
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
-}
-
-.jqx-kanban-column-vertical-container-ie8-fix {
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
 .jqx-kanban-item {

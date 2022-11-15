@@ -45,6 +45,7 @@
             searchMode: String,
             source: [Array, Object],
             selectedIndex: Number,
+            scrollBarSize: Number,
             theme: String,
             template: String,
             valueMember: String,
@@ -418,6 +419,13 @@
                     return JQXLite(this.componentSelector).jqxDropDownList('selectedIndex');
                 }
             },
+            _scrollBarSize: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxDropDownList('scrollBarSize', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxDropDownList('scrollBarSize');
+                }
+            },
             _theme: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxDropDownList('theme', arg)
@@ -454,7 +462,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','source','selectedIndex','theme','template','valueMember','width'];
+                const widgetProps = ['autoOpen','autoDropDownHeight','animationType','checkboxes','closeDelay','disabled','displayMember','dropDownHorizontalAlignment','dropDownVerticalAlignment','dropDownHeight','dropDownWidth','enableSelection','enableBrowserBoundsDetection','enableHover','filterable','filterHeight','filterDelay','filterPlaceHolder','height','incrementalSearch','incrementalSearchDelay','itemHeight','openDelay','placeHolder','popupZIndex','rtl','renderer','selectionRenderer','searchMode','source','selectedIndex','scrollBarSize','theme','template','valueMember','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -774,6 +782,16 @@
                     },
                     set: function(newValue) {
                         that._selectedIndex(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'scrollBarSize', {
+                    get: function() {
+                        return that._scrollBarSize();
+                    },
+                    set: function(newValue) {
+                        that._scrollBarSize(newValue);
                     },
                     enumerable: true,
                     configurable: true

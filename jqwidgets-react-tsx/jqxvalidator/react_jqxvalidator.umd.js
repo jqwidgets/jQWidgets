@@ -1,5 +1,21 @@
 require('../../jqwidgets/jqxcore');
 require('../../jqwidgets/jqxvalidator');
+require('../../jqwidgets/jqxcore');
+require('../../jqwidgets/jqxvalidator');
+require('../../jqwidgets/jqxcore');
+require('../../jqwidgets/jqxvalidator');
+require('../../jqwidgets/jqxcore');
+require('../../jqwidgets/jqxvalidator');
+require('../../jqwidgets/jqxcore');
+require('../../jqwidgets/jqxvalidator');
+require('../../jqwidgets/jqxcore');
+require('../../jqwidgets/jqxvalidator');
+require('../../jqwidgets/jqxcore');
+require('../../jqwidgets/jqxvalidator');
+require('../../jqwidgets/jqxcore');
+require('../../jqwidgets/jqxvalidator');
+require('../../jqwidgets/jqxcore');
+require('../../jqwidgets/jqxvalidator');
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react')) :
     typeof define === 'function' && define.amd ? define(['exports', 'react'], factory) :

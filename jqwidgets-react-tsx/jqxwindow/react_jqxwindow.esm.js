@@ -1,6 +1,30 @@
 import * as jqxcore from '../../jqwidgets/jqxcore';
 import * as jqxbuttons from '../../jqwidgets/jqxbuttons';
 import * as jqxwindow from '../../jqwidgets/jqxwindow';
+import * as jqxcore from '../../jqwidgets/jqxcore';
+import * as jqxbuttons from '../../jqwidgets/jqxbuttons';
+import * as jqxwindow from '../../jqwidgets/jqxwindow';
+import * as jqxcore from '../../jqwidgets/jqxcore';
+import * as jqxbuttons from '../../jqwidgets/jqxbuttons';
+import * as jqxwindow from '../../jqwidgets/jqxwindow';
+import * as jqxcore from '../../jqwidgets/jqxcore';
+import * as jqxbuttons from '../../jqwidgets/jqxbuttons';
+import * as jqxwindow from '../../jqwidgets/jqxwindow';
+import * as jqxcore from '../../jqwidgets/jqxcore';
+import * as jqxbuttons from '../../jqwidgets/jqxbuttons';
+import * as jqxwindow from '../../jqwidgets/jqxwindow';
+import * as jqxcore from '../../jqwidgets/jqxcore';
+import * as jqxbuttons from '../../jqwidgets/jqxbuttons';
+import * as jqxwindow from '../../jqwidgets/jqxwindow';
+import * as jqxcore from '../../jqwidgets/jqxcore';
+import * as jqxbuttons from '../../jqwidgets/jqxbuttons';
+import * as jqxwindow from '../../jqwidgets/jqxwindow';
+import * as jqxcore from '../../jqwidgets/jqxcore';
+import * as jqxbuttons from '../../jqwidgets/jqxbuttons';
+import * as jqxwindow from '../../jqwidgets/jqxwindow';
+import * as jqxcore from '../../jqwidgets/jqxcore';
+import * as jqxbuttons from '../../jqwidgets/jqxbuttons';
+import * as jqxwindow from '../../jqwidgets/jqxwindow';
 import { createElement, PureComponent } from 'react';
 
 /*! *****************************************************************************

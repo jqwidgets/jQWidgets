@@ -111,6 +111,7 @@ interface IDropDownListOptions {
     searchMode?: 'none' | 'contains' | 'containsignorecase' | 'equals' | 'equalsignorecase' | 'startswithignorecase' | 'startswith' | 'endswithignorecase' | 'endswith';
     source?: any[];
     selectedIndex?: number;
+    scrollBarSize?: number;
     theme?: string;
     template?: string;
     valueMember?: string;

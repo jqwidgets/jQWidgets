@@ -1413,6 +1413,7 @@ declare module jqwidgets {
         searchMode?: string;
         source?: Array<any>;
         selectedIndex?: number;
+        scrollBarSize?: number;
         theme?: string;
         template?: string;
         valueMember?: string;
@@ -2237,6 +2238,7 @@ declare module jqwidgets {
         rendergridrows?: (params?: any) => any;
         sortable?: boolean;
         sortmode?: string;
+        sortmodekey?: string;
         selectedrowindex?: number;
         selectedrowindexes?: Array<number>;
         source?: GridSource;
@@ -4983,6 +4985,69 @@ declare module jqwidgets {
         getDataURLAsync(format: string): any;
         isValid(): boolean;
     }// jqxQRcode
+
+    export interface CheckBoxGroupOptions {
+        // CheckBoxGroupOptions properties
+        change?: (item?: any) => void;
+        disabled?: boolean;
+        items?: any;
+        value?: any;
+        layout?: string;
+        labelPosition?: string;
+        rtl?: boolean;
+        theme?: string;
+    }// CheckBoxGroupOptions
+
+    export interface jqxCheckBoxGroup extends widget, CheckBoxGroupOptions {
+
+        // jqxCheckBoxGroup functions
+        getValue(): any;
+        getValueAt(index: number): string;
+        enableAt(index: number): void;
+        disableAt(index: number): void;
+        checkAt(index: number): void;
+        uncheckAt(index: number): void;
+        uncheckAll(): void;
+        checkAll(): void;
+        checkValue(value: string): void;
+        uncheckValue(value: string): void;
+        disable(): void;
+        destroy(): void;
+        enable(): void;
+        render(): void;
+        val(value: any): any;
+    }// jqxCheckBoxGroup
+
+    export interface RadioButtonGroupOptions {
+        // RadioButtonGroupOptions properties
+        change?: (item?: any) => void;
+        disabled?: boolean;
+        items?: any;
+        value?: any;
+        layout?: string;
+        labelPosition?: string;
+        rtl?: boolean;
+        theme?: string;
+    }// RadioButtonGroupOptions
+
+    export interface jqxRadioButtonGroup extends widget, RadioButtonGroupOptions {
+
+        // jqxRadioButtonGroup functions
+        getValue(): any;
+        getValueAt(index: number): string;
+        enableAt(index: number): void;
+        disableAt(index: number): void;
+        checkAt(index: number): void;
+        uncheckAt(index: number): void;
+        uncheckAll(): void;
+        checkValue(value: string): void;
+        uncheckValue(value: string): void;
+        disable(): void;
+        destroy(): void;
+        enable(): void;
+        render(): void;
+        val(value: any): any;
+    }// jqxRadioButtonGroup
 
 
 
