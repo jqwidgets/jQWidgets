@@ -46,7 +46,7 @@
     "@angular/platform-browser": "^5.1.0",
     "@angular/platform-browser-dynamic": "^5.1.0",
     "@angular/router": "^5.1.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "core-js": "^2.5.3",
     "jquery": "^3.3.1",
     "jqwidgets-framework": "5.5.0",
