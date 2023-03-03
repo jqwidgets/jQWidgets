@@ -1,6 +1,6 @@
 /*
-jQWidgets v15.0.0 (2022-Nov)
-Copyright (c) 2011-2022 jQWidgets.
+jQWidgets v16.0.0 (2023-Mar)
+Copyright (c) 2011-2023 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
@@ -23,12 +23,13 @@ export class jqxSplitLayoutComponent implements OnChanges
    @Input('disabled') attrDisabled: boolean;
    @Input('dataSource') attrDataSource: any;
    @Input('ready') attrReady: any;
+   @Input('orientation') attrOrientation: string;
    @Input('width') attrWidth: string | number;
    @Input('height') attrHeight: string | number;
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','dataSource','ready','height','width'];
+   properties: string[] = ['disabled','dataSource','ready','orientation'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxSplitLayout;
@@ -167,19 +168,11 @@ export class jqxSplitLayoutComponent implements OnChanges
       }
    }
 
-   height(arg?: string | number): string | number {
+   orientation(arg?: string): string {
       if (arg !== undefined) {
-          this.host.jqxSplitLayout('height', arg);
+          this.host.jqxSplitLayout('orientation', arg);
       } else {
-          return this.host.jqxSplitLayout('height');
-      }
-   }
-
-   width(arg?: string | number): string | number {
-      if (arg !== undefined) {
-          this.host.jqxSplitLayout('width', arg);
-      } else {
-          return this.host.jqxSplitLayout('width');
+          return this.host.jqxSplitLayout('orientation');
       }
    }
 

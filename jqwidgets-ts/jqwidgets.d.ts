@@ -1,7 +1,7 @@
 /*
    jQWidgets TypeScript definitions
 
-   Copyright (c) 2011-2022 jQWidgets.
+   Copyright (c) 2011-2023 jQWidgets.
    License: https://jqwidgets.com/license/
 */
 
@@ -4920,8 +4920,7 @@ declare module jqwidgets {
         disabled?: boolean;
         dataSource?: any;
         ready?: any;
-        height?: string | number;
-        width?: string | number;
+        orientation?: string;
     }// SplitLayoutOptions
 
     export interface jqxSplitLayout extends widget, SplitLayoutOptions {

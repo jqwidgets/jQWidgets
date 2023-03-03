@@ -1855,3 +1855,21 @@ input[type="text"].jqx-input-material-green:-ms-input-placeholder, input[type="t
     --jqx-surface-color: rgba(0,0,0, .88);
     --jqx-border: rgba(85, 139, 47, 1);
 }
+.jqx-dropdownbutton-popup,
+.jqx-calendar-material-green.jqx-popup,
+.jqx-listbox-material-green.jqx-popup,
+.jqx-grid-menu.jqx-popup {
+  transition: transform 0.25s ease-in-out, opacity 0.35s ease-in-out;
+  transform: scaleY(0);
+  opacity: 0;
+  transform-origin: top left;
+  display: block !important;
+}
+
+.jqx-dropdownbutton-popup.jqx-popup-show,
+.jqx-calendar-material-green.jqx-popup-show,
+.jqx-listbox-material-green.jqx-popup-show,
+.jqx-grid-menu.jqx-popup-show {
+  transform: scaleY(1);
+  opacity: 1;
+}

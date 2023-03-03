@@ -12,8 +12,7 @@
             disabled: Boolean,
             dataSource: Object,
             ready: Function,
-            height: [Number, String],
-            width: [Number, String],
+            orientation: String,
             autoCreate: {
                 default: true,
                 type: Boolean
@@ -66,18 +65,11 @@
                     return JQXLite(this.componentSelector).jqxSplitLayout('ready');
                 }
             },
-            _height: function(arg) {
+            _orientation: function(arg) {
                 if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxSplitLayout('height', arg)
+                    JQXLite(this.componentSelector).jqxSplitLayout('orientation', arg)
                 } else {
-                    return JQXLite(this.componentSelector).jqxSplitLayout('height');
-                }
-            },
-            _width: function(arg) {
-                if (arg !== undefined) {
-                    JQXLite(this.componentSelector).jqxSplitLayout('width', arg)
-                } else {
-                    return JQXLite(this.componentSelector).jqxSplitLayout('width');
+                    return JQXLite(this.componentSelector).jqxSplitLayout('orientation');
                 }
             },
             __createComponent__: function (options) {
@@ -88,7 +80,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['disabled','dataSource','ready','height','width'];
+                const widgetProps = ['disabled','dataSource','ready','orientation'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -132,22 +124,12 @@
                     enumerable: true,
                     configurable: true
                 });
-                Object.defineProperty(that, 'height', {
+                Object.defineProperty(that, 'orientation', {
                     get: function() {
-                        return that._height();
+                        return that._orientation();
                     },
                     set: function(newValue) {
-                        that._height(newValue);
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Object.defineProperty(that, 'width', {
-                    get: function() {
-                        return that._width();
-                    },
-                    set: function(newValue) {
-                        that._width(newValue);
+                        that._orientation(newValue);
                     },
                     enumerable: true,
                     configurable: true

@@ -1,6 +1,6 @@
 /*
-jQWidgets v15.0.0 (2022-Nov)
-Copyright (c) 2011-2022 jQWidgets.
+jQWidgets v16.0.0 (2023-Mar)
+Copyright (c) 2011-2023 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
@@ -88,7 +88,7 @@ class Barcode {
         return {
             value: {
                 type: 'string',
-                value: '',
+                value: ''
             },
             type: {
                 value: 'codabar',
@@ -108,57 +108,57 @@ class Barcode {
                     'ean8',
                     'code39',
                     'code93',
-                ],
+                ]
             },
             backgroundColor: {
                 value: 'white',
-                type: 'string',
+                type: 'string'
             },
             lineWidth: {
                 value: 4,
-                type: 'number',
+                type: 'number'
             },
             lineHeight: {
                 value: 50,
-                type: 'number',
+                type: 'number'
             },
             lineColor: {
                 value: 'black',
-                type: 'string',
+                type: 'string'
             },
             displayLabel: {
                 value: true,
-                type: 'boolean',
+                type: 'boolean'
             },
             labelPosition: {
                 value: 'bottom',
                 type: 'string',
-                allowedValues: ['top', 'bottom'],
+                allowedValues: ['top', 'bottom']
             },
             labelFontSize: {
                 value: 14,
-                type: 'number',
+                type: 'number'
             },
             labelMarginTop: {
                 value: 5,
-                type: 'number',
+                type: 'number'
             },
             labelMarginBottom: {
                 value: 5,
-                type: 'number',
+                type: 'number'
             },
             labelColor: {
                 value: 'black',
-                type: 'string',
+                type: 'string'
             },
             labelFont: {
                 value: 'monospace',
-                type: 'string',
+                type: 'string'
             },
             renderAs: {
                 value: 'svg',
                 type: 'string',
-                allowedValues: ['svg', 'canvas'],
+                allowedValues: ['svg', 'canvas']
             },
         };
     }

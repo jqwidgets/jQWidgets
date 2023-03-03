@@ -2662,3 +2662,29 @@ textarea.jqx-input-dark:-ms-input-placeholder {
     color: #E7E7E7;
     background: var(--jqx-background);
 }
+.jqx-kanban-column-header-dark {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.jqx-kanban-column-header-button-dark {
+    width: unset;
+    height: unset;
+    position:static;
+    margin-top:unset;
+    top: unset;
+    right: unset; 
+  }
+
+  .jqx-kanban-column-header-button-dark .jqx-window-collapse-button {
+    right: unset;
+  }
+  .jqx-kanban-column-header-collapsed .jqx-kanban-column-header-button-dark  
+    {
+      position: absolute;
+      bottom: 10px;
+      right: 50%;
+      margin-left: -10px;
+    }
+  
+  

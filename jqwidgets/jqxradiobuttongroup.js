@@ -1,6 +1,6 @@
 /*
-jQWidgets v15.0.0 (2022-Nov)
-Copyright (c) 2011-2022 jQWidgets.
+jQWidgets v16.0.0 (2023-Mar)
+Copyright (c) 2011-2023 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
@@ -211,7 +211,7 @@ License: https://jqwidgets.com/license/
                     label = that.escapeHTML(label);
                 }
                 var disabledClass = item.enabled === false ? 'jqx-fill-state-disabled' : '';
-                var htmlItem = '<div value=' + item.value + 'class="jqx-checkbox-group-item ' + cssClass + ' ' + disabledClass + '"><label class="jqx-checkbox-label"> ' + label + '</label><span checkmark class="jqx-checkbox-group-item-check"></span></div>';
+                var htmlItem = '<div value="' + item.value + '" class="jqx-checkbox-group-item ' + cssClass + ' ' + disabledClass + '"><label class="jqx-checkbox-label"> ' + label + '</label><span checkmark class="jqx-checkbox-group-item-check"></span></div>';
                 items += htmlItem;
             }
 

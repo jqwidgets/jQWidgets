@@ -1852,3 +1852,22 @@ input[type="text"].jqx-input-material-purple:-ms-input-placeholder, input[type="
     --jqx-surface-color: rgba(0,0,0, .88);
     --jqx-border: rgba(98, 0, 238, 1);
 }
+
+.jqx-dropdownbutton-popup,
+.jqx-calendar-material-purple.jqx-popup,
+.jqx-listbox-material-purple.jqx-popup,
+.jqx-grid-menu.jqx-popup {
+  transition: transform 0.25s ease-in-out, opacity 0.35s ease-in-out;
+  transform: scaleY(0);
+  opacity: 0;
+  transform-origin: top left;
+  display: block !important;
+}
+
+.jqx-dropdownbutton-popup.jqx-popup-show,
+.jqx-calendar-material-purple.jqx-popup-show,
+.jqx-listbox-material-purple.jqx-popup-show,
+.jqx-grid-menu.jqx-popup-show {
+  transform: scaleY(1);
+  opacity: 1;
+}

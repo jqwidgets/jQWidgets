@@ -39,7 +39,6 @@
 
 .jqx-icon-search-light:after {
     content: var(--jqx-icon-search);
-    color:
 
 }
 
@@ -2653,3 +2652,31 @@ textarea.jqx-input-light:-ms-input-placeholder {
     .jqx-grid-cell-selected-light span {
         color: inherit !important;
     }
+
+
+.jqx-kanban-column-header-light {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.jqx-kanban-column-header-button-light {
+    width: unset;
+    height: unset;
+    position:static;
+    margin-top:unset;
+    top: unset;
+    right: unset; 
+  }
+
+  .jqx-kanban-column-header-button-light .jqx-window-collapse-button {
+    right: unset;
+  }
+  .jqx-kanban-column-header-collapsed .jqx-kanban-column-header-button-light  
+    {
+      position: absolute;
+      bottom: 10px;
+      right: 50%;
+      margin-left: -10px;
+    }
+  
+  

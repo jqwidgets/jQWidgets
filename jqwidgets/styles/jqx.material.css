@@ -1844,3 +1844,23 @@ jqx-editor-toolbar-icon-fontcolor-material {
 .jqx-svg-picker-material:focus {
 	border: 1px solid rgb(0, 119, 190) !important;
 }
+
+
+.jqx-dropdownbutton-popup,
+.jqx-calendar-material.jqx-popup,
+.jqx-listbox-material.jqx-popup,
+.jqx-grid-menu.jqx-popup {
+  transition: transform 0.25s ease-in-out, opacity 0.35s ease-in-out;
+  transform: scaleY(0);
+  opacity: 0;
+  transform-origin: top left;
+  display: block !important;
+}
+
+.jqx-dropdownbutton-popup.jqx-popup-show,
+.jqx-calendar-material.jqx-popup-show,
+.jqx-listbox-material.jqx-popup-show,
+.jqx-grid-menu.jqx-popup-show {
+  transform: scaleY(1);
+  opacity: 1;
+}

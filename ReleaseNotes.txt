@@ -1,4 +1,35 @@
-﻿jQWidgets v15.0.0 Release, Nov-14-2022
+﻿jQWidgets v16.0.0 Release, March-03-2023
+
+What's New:
+
+New Fluent Theme.
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid about the "ensurerowvisible" method. It calculates wrong position when using "autorowheight" and paging.
+- Fixed an issue in jqxGrid about the default selection in the filter dropdown when localization is applied to the Grid.
+- Fixed an issue in jqxGrid about the "filterable" column property. It does not work in filterbarmode: 'simple'.
+- Fixed an issue in jqxGrid about filtering with checkbox selection mode enabled.
+- Fixed an issue in jqxGrid about column resizing. The auto resize columns when you have row details does not work.
+- Fixed an issue in jqxGrid about the Grid selection when a filter is applied from the Column's Menu by pressing the enter key.
+- Fixed an issue in jqxGrid. The page auto-scrolls to top, when column menu is opened for the first time.
+- Fixed an issue in jqxGrid about the adaptive layout. It shows undefined column if selection is 'checkmode'.
+- Fixed an issue in jqxGrid about the column filtertype - "list" and localizing the filterchoosestring. This causes incorrect behavior with the filtering behavior.
+- Fixed an issue in jqxGrid about the filterType:'input'. It throws an error when filterstringcomparisonoperators is localized.
+- Fixed an issue in jqxGrid about the date range filter. The filter is lost after loading a previously saved state with the "loadstate" method.
+- Fixed an issue in jqxGrid about the "getselectedrowindexes" method. It returns empty array, if row is selected with keyboard arrow up/down.
+- Fixed an issue in jqxDropDownList about the Material theme. When checkboxes are enabled, the dropdown does not open after the first click.
+- Fixed an issue in jqxDropDownList, jqxComboBox and jqxDateTimeInput about the dropdown animation in the Material, Light and Dark themes.
+- Fixed an issue in jqxPasswordInput about the "val" method. It does not set correct value when the method is called dynamically.
+- Fixed an issue in jqxKanban about the "itemrenderer" method. The method is not called after dragging an item from one kanban instance to another.
+- Fixed an issue in jqxKanban about the "addItem" method. It does not work correctly when "id" is not included in the new item's data.
+- Fixed an issue in jqxKanban about the "updateItem" method. It adds a duplicate to the items array returned by "getItems" method
+- Fixed an issue in jqxKanban about the add/remove event handlers, when there are multiple kanbans in the page.
+- Fixed an issue in jqxKanban about the rendering of the collapse arrow in the Material, Light and Dark themes.
+- Fixed an issue in jqxSplitter. It throws error when resizing on touch screen.
+
+
+jQWidgets v15.0.0 Release, Nov-14-2022
 
 What's New:
 
