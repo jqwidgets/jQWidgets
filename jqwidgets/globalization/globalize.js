@@ -55,6 +55,7 @@ if ( typeof require !== "undefined" &&
 	module.exports = Globalize;
 } else {
 	// Export as global variable
+	var _global = globalThis || self || window;
 	window.Globalize = Globalize;
 }
 
