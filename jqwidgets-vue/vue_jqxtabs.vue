@@ -12,29 +12,65 @@
     export default {
         props: {
             animationType: String,
-            autoHeight: Boolean,
+            autoHeight: {
+                default: true,
+                type: Boolean
+            }
             closeButtonSize: Number,
-            collapsible: Boolean,
+            collapsible: {
+                default: false,
+                type: Boolean
+            }
             contentTransitionDuration: Number,
-            disabled: Boolean,
-            enabledHover: Boolean,
-            enableScrollAnimation: Boolean,
-            enableDropAnimation: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            enabledHover: {
+                default: true,
+                type: Boolean
+            }
+            enableScrollAnimation: {
+                default: true,
+                type: Boolean
+            }
+            enableDropAnimation: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             initTabContent: Function,
-            keyboardNavigation: Boolean,
+            keyboardNavigation: {
+                default: true,
+                type: Boolean
+            }
             next: Object,
             previous: Object,
             position: String,
-            reorder: Boolean,
-            rtl: Boolean,
+            reorder: {
+                default: false,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             scrollAnimationDuration: Number,
             selectedItem: Number,
-            selectionTracker: Boolean,
-            scrollable: Boolean,
+            selectionTracker: {
+                default: false,
+                type: Boolean
+            }
+            scrollable: {
+                default: true,
+                type: Boolean
+            }
             scrollPosition: String,
             scrollStep: Number,
-            showCloseButtons: Boolean,
+            showCloseButtons: {
+                default: false,
+                type: Boolean
+            }
             toggleMode: String,
             theme: String,
             width: [Number, String],

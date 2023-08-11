@@ -14,32 +14,62 @@
 
     export default {
         props: {
-            autoOpen: Boolean,
-            autoDropDownHeight: Boolean,
+            autoOpen: {
+                default: false,
+                type: Boolean
+            }
+            autoDropDownHeight: {
+                default: false,
+                type: Boolean
+            }
             animationType: String,
-            checkboxes: Boolean,
+            checkboxes: {
+                default: false,
+                type: Boolean
+            }
             closeDelay: Number,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             displayMember: String,
             dropDownHorizontalAlignment: String,
             dropDownVerticalAlignment: String,
             dropDownHeight: Number,
             dropDownWidth: Number,
-            enableSelection: Boolean,
-            enableBrowserBoundsDetection: Boolean,
-            enableHover: Boolean,
-            filterable: Boolean,
+            enableSelection: {
+                default: true,
+                type: Boolean
+            }
+            enableBrowserBoundsDetection: {
+                default: false,
+                type: Boolean
+            }
+            enableHover: {
+                default: true,
+                type: Boolean
+            }
+            filterable: {
+                default: false,
+                type: Boolean
+            }
             filterHeight: Number,
             filterDelay: Number,
             filterPlaceHolder: String,
             height: [Number, String],
-            incrementalSearch: Boolean,
+            incrementalSearch: {
+                default: true,
+                type: Boolean
+            }
             incrementalSearchDelay: Number,
             itemHeight: Number,
             openDelay: Number,
             placeHolder: String,
             popupZIndex: Number,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             renderer: Function,
             selectionRenderer: Function,
             searchMode: String,

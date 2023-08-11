@@ -18,19 +18,46 @@
         props: {
             animationShowDuration: Number,
             animationHideDuration: Number,
-            allowDrag: Boolean,
-            allowDrop: Boolean,
-            checkboxes: Boolean,
+            allowDrag: {
+                default: false,
+                type: Boolean
+            }
+            allowDrop: {
+                default: false,
+                type: Boolean
+            }
+            checkboxes: {
+                default: false,
+                type: Boolean
+            }
             dragStart: Function,
             dragEnd: Function,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             easing: String,
-            enableHover: Boolean,
+            enableHover: {
+                default: true,
+                type: Boolean
+            }
             height: [Number, String],
-            hasThreeStates: Boolean,
-            incrementalSearch: Boolean,
-            keyboardNavigation: Boolean,
-            rtl: Boolean,
+            hasThreeStates: {
+                default: false,
+                type: Boolean
+            }
+            incrementalSearch: {
+                default: true,
+                type: Boolean
+            }
+            keyboardNavigation: {
+                default: true,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             source: [Array, Object],
             toggleIndicatorSize: Number,
             toggleMode: String,

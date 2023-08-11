@@ -20,56 +20,119 @@
 
     export default {
         props: {
-            altRows: Boolean,
-            autoRowHeight: Boolean,
+            altRows: {
+                default: false,
+                type: Boolean
+            }
+            autoRowHeight: {
+                default: true,
+                type: Boolean
+            }
             aggregatesHeight: Number,
-            autoShowLoadElement: Boolean,
+            autoShowLoadElement: {
+                default: true,
+                type: Boolean
+            }
             columnsHeight: Number,
             columns: Array,
             columnGroups: Array,
-            columnsResize: Boolean,
-            columnsReorder: Boolean,
-            disabled: Boolean,
-            editable: Boolean,
+            columnsResize: {
+                default: false,
+                type: Boolean
+            }
+            columnsReorder: {
+                default: false,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            editable: {
+                default: false,
+                type: Boolean
+            }
             editSettings: Object,
             exportSettings: Object,
-            enableHover: Boolean,
-            enableBrowserSelection: Boolean,
-            filterable: Boolean,
+            enableHover: {
+                default: true,
+                type: Boolean
+            }
+            enableBrowserSelection: {
+                default: false,
+                type: Boolean
+            }
+            filterable: {
+                default: false,
+                type: Boolean
+            }
             filterHeight: Number,
             filterMode: String,
             groups: Array,
             groupsRenderer: Function,
             height: [Number, String],
             initRowDetails: Function,
-            incrementalSearch: Boolean,
+            incrementalSearch: {
+                default: true,
+                type: Boolean
+            }
             localization: Object,
             pagerHeight: Number,
             pageSize: Number,
             pageSizeOptions: Array,
-            pageable: Boolean,
+            pageable: {
+                default: false,
+                type: Boolean
+            }
             pagerPosition: String,
             pagerMode: String,
             pagerButtonsCount: Number,
             pagerRenderer: Function,
             ready: Function,
-            rowDetails: Boolean,
+            rowDetails: {
+                default: false,
+                type: Boolean
+            }
             renderToolbar: Function,
             renderStatusBar: Function,
             rendering: Function,
             rendered: Function,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             source: Object,
-            sortable: Boolean,
-            showAggregates: Boolean,
-            showToolbar: Boolean,
-            showStatusbar: Boolean,
-            enableSanitizeAll: Boolean,
+            sortable: {
+                default: false,
+                type: Boolean
+            }
+            showAggregates: {
+                default: false,
+                type: Boolean
+            }
+            showToolbar: {
+                default: false,
+                type: Boolean
+            }
+            showStatusbar: {
+                default: false,
+                type: Boolean
+            }
+            enableSanitizeAll: {
+                default: false,
+                type: Boolean
+            }
             statusBarHeight: Number,
             scrollBarSize: Number,
             selectionMode: String,
-            serverProcessing: Boolean,
-            showHeader: Boolean,
+            serverProcessing: {
+                default: false,
+                type: Boolean
+            }
+            showHeader: {
+                default: true,
+                type: Boolean
+            }
             theme: String,
             toolbarHeight: Number,
             width: [Number, String],

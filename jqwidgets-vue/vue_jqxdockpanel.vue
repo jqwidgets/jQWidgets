@@ -10,9 +10,15 @@
 
     export default {
         props: {
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
-            lastchildfill: Boolean,
+            lastchildfill: {
+                default: true,
+                type: Boolean
+            }
             width: [Number, String],
             autoCreate: {
                 default: true,

@@ -14,10 +14,16 @@
             animationDuration: Number,
             background: Object,
             colorScheme: String,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             easing: String,
             height: [Number, String],
-            int64: Boolean,
+            int64: {
+                default: false,
+                type: Boolean
+            }
             labels: Object,
             min: Number,
             max: Number,
@@ -26,7 +32,10 @@
             rangesOffset: Number,
             rangeSize: String,
             ranges: Array,
-            showRanges: Boolean,
+            showRanges: {
+                default: true,
+                type: Boolean
+            }
             scaleStyle: Object,
             scaleLength: [String, Number],
             ticksOffset: Array,

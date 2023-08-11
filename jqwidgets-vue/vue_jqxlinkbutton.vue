@@ -12,9 +12,15 @@
         props: {
             target: String,
             href: String,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             theme: String,
             width: [Number, String],
             autoCreate: {

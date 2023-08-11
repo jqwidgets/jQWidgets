@@ -21,7 +21,10 @@
             height: [String, Number],
             itemRenderer: Function,
             ready: Function,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             source: [Array, Object],
             resources: [Array, Object],
             template: String,

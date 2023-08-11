@@ -14,32 +14,74 @@
 
     export default {
         props: {
-            autoHeight: Boolean,
-            allowDrag: Boolean,
-            allowDrop: Boolean,
-            checkboxes: Boolean,
-            disabled: Boolean,
+            autoHeight: {
+                default: false,
+                type: Boolean
+            }
+            allowDrag: {
+                default: false,
+                type: Boolean
+            }
+            allowDrop: {
+                default: false,
+                type: Boolean
+            }
+            checkboxes: {
+                default: false,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             displayMember: String,
             dropAction: String,
             dragStart: Function,
             dragEnd: Function,
-            enableHover: Boolean,
-            enableSelection: Boolean,
-            equalItemsWidth: Boolean,
-            filterable: Boolean,
+            enableHover: {
+                default: true,
+                type: Boolean
+            }
+            enableSelection: {
+                default: true,
+                type: Boolean
+            }
+            equalItemsWidth: {
+                default: true,
+                type: Boolean
+            }
+            filterable: {
+                default: false,
+                type: Boolean
+            }
             filterHeight: Number,
             filterDelay: Number,
             filterPlaceHolder: String,
             height: [String, Number],
-            hasThreeStates: Boolean,
+            hasThreeStates: {
+                default: false,
+                type: Boolean
+            }
             itemHeight: Number,
-            incrementalSearch: Boolean,
+            incrementalSearch: {
+                default: true,
+                type: Boolean
+            }
             incrementalSearchDelay: Number,
-            multiple: Boolean,
-            multipleextended: Boolean,
+            multiple: {
+                default: false,
+                type: Boolean
+            }
+            multipleextended: {
+                default: false,
+                type: Boolean
+            }
             renderer: Function,
             rendered: Function,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             selectedIndex: Number,
             selectedIndexes: Object,
             source: [Array, Object],

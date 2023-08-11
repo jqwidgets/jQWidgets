@@ -17,7 +17,10 @@
             baseValue: Number,
             colorScheme: String,
             customColorScheme: [String, Object],
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             endAngle: Number,
             formatFunction: [Object, Function],
             height: [Number, String],
@@ -29,7 +32,10 @@
             startAngle: Number,
             title: [Object, String],
             tooltip: Object,
-            useGradient: Boolean,
+            useGradient: {
+                default: true,
+                type: Boolean
+            }
             values: Array,
             width: [Number, String],
             autoCreate: {

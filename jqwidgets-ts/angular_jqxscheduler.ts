@@ -1,5 +1,5 @@
 /*
-jQWidgets v16.0.0 (2023-Mar)
+jQWidgets v17.0.0 (2023-Aug)
 Copyright (c) 2011-2023 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -77,6 +77,8 @@ export class jqxSchedulerComponent implements OnChanges
    @Input('rowsHeight') attrRowsHeight: number;
    @Input('showToolbar') attrShowToolbar: boolean;
    @Input('showLegend') attrShowLegend: boolean;
+   @Input('showCurrent') attrShowCurrent: boolean;
+   @Input('showCurrentAppointment') attrShowCurrentAppointment: boolean;
    @Input('scrollBarSize') attrScrollBarSize: number;
    @Input('source') attrSource: any;
    @Input('statuses') attrStatuses: jqwidgets.SchedulerStatuses;
@@ -96,7 +98,7 @@ export class jqxSchedulerComponent implements OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
+   properties: string[] = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','showCurrent','showCurrentAppointment','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxScheduler;
@@ -512,6 +514,22 @@ export class jqxSchedulerComponent implements OnChanges
           this.host.jqxScheduler('showLegend', arg);
       } else {
           return this.host.jqxScheduler('showLegend');
+      }
+   }
+
+   showCurrent(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('showCurrent', arg);
+      } else {
+          return this.host.jqxScheduler('showCurrent');
+      }
+   }
+
+   showCurrentAppointment(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxScheduler('showCurrentAppointment', arg);
+      } else {
+          return this.host.jqxScheduler('showCurrentAppointment');
       }
    }
 

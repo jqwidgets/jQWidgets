@@ -11,7 +11,10 @@
     export default {
         props: {
             appendTo: String,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             distance: Number,
             data: Object,
             dropAction: String,
@@ -27,7 +30,10 @@
             onDropTargetEnter: Function,
             onDropTargetLeave: Function,
             restricter: [String, Object],
-            revert: Boolean,
+            revert: {
+                default: false,
+                type: Boolean
+            }
             revertDuration: Number,
             tolerance: String,
             autoCreate: {

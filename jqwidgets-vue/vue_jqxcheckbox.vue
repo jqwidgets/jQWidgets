@@ -11,14 +11,32 @@
             animationShowDelay: Number,
             animationHideDelay: Number,
             boxSize: String,
-            checked: Boolean,
-            disabled: Boolean,
-            enableContainerClick: Boolean,
+            checked: {
+                default: false,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            enableContainerClick: {
+                default: true,
+                type: Boolean
+            }
             groupName: String,
             height: [Number, String],
-            hasThreeStates: Boolean,
-            locked: Boolean,
-            rtl: Boolean,
+            hasThreeStates: {
+                default: false,
+                type: Boolean
+            }
+            locked: {
+                default: false,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             theme: String,
             width: [Number, String],
             autoCreate: {

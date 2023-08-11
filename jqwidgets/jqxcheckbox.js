@@ -1,5 +1,5 @@
 /*
-jQWidgets v16.0.0 (2023-Mar)
+jQWidgets v17.0.0 (2023-Aug)
 Copyright (c) 2011-2023 jQWidgets.
 License: https://jqwidgets.com/license/
 */

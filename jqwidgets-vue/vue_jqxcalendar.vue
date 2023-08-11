@@ -19,14 +19,38 @@
             clearString: String,
             culture: String,
             dayNameFormat: String,
-            disabled: Boolean,
-            enableWeekend: Boolean,
-            enableViews: Boolean,
-            enableOtherMonthDays: Boolean,
-            enableFastNavigation: Boolean,
-            enableHover: Boolean,
-            enableAutoNavigation: Boolean,
-            enableTooltips: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            enableWeekend: {
+                default: false,
+                type: Boolean
+            }
+            enableViews: {
+                default: true,
+                type: Boolean
+            }
+            enableOtherMonthDays: {
+                default: true,
+                type: Boolean
+            }
+            enableFastNavigation: {
+                default: true,
+                type: Boolean
+            }
+            enableHover: {
+                default: true,
+                type: Boolean
+            }
+            enableAutoNavigation: {
+                default: true,
+                type: Boolean
+            }
+            enableTooltips: {
+                default: false,
+                type: Boolean
+            }
             forwardText: String,
             firstDayOfWeek: Number,
             height: [Number, String],
@@ -34,14 +58,32 @@
             max: Date,
             navigationDelay: Number,
             rowHeaderWidth: Number,
-            readOnly: Boolean,
+            readOnly: {
+                default: false,
+                type: Boolean
+            }
             restrictedDates: Array,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             stepMonths: Number,
-            showWeekNumbers: Boolean,
-            showDayNames: Boolean,
-            showOtherMonthDays: Boolean,
-            showFooter: Boolean,
+            showWeekNumbers: {
+                default: true,
+                type: Boolean
+            }
+            showDayNames: {
+                default: true,
+                type: Boolean
+            }
+            showOtherMonthDays: {
+                default: true,
+                type: Boolean
+            }
+            showFooter: {
+                default: false,
+                type: Boolean
+            }
             selectionMode: String,
             specialDates: Array,
             theme: String,

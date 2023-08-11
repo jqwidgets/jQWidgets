@@ -19,13 +19,22 @@
     export default {
         props: {
             createCommand: Function,
-            disabled: Boolean,
-            editable: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            editable: {
+                default: true,
+                type: Boolean
+            }
             height: [String, Number],
             lineBreak: String,
             localization: Object,
             pasteMode: String,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             stylesheets: Array,
             theme: String,
             toolbarPosition: String,

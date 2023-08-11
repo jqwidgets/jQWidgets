@@ -13,24 +13,57 @@
 
     export default {
         props: {
-            alwaysShowNavigationArrows: Boolean,
+            alwaysShowNavigationArrows: {
+                default: false,
+                type: Boolean
+            }
             animationType: String,
             animationDuration: Number,
-            autoSeparators: Boolean,
+            autoSeparators: {
+                default: false,
+                type: Boolean
+            }
             backLabel: String,
-            disabled: Boolean,
-            enableScrolling: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            enableScrolling: {
+                default: true,
+                type: Boolean
+            }
             filterCallback: Function,
             height: [String, Number],
             headerAnimationDuration: Number,
             placeHolder: String,
-            readOnly: Boolean,
-            rtl: Boolean,
-            roundedCorners: Boolean,
-            showNavigationArrows: Boolean,
-            showFilter: Boolean,
-            showHeader: Boolean,
-            showBackButton: Boolean,
+            readOnly: {
+                default: false,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            roundedCorners: {
+                default: true,
+                type: Boolean
+            }
+            showNavigationArrows: {
+                default: true,
+                type: Boolean
+            }
+            showFilter: {
+                default: false,
+                type: Boolean
+            }
+            showHeader: {
+                default: true,
+                type: Boolean
+            }
+            showBackButton: {
+                default: true,
+                type: Boolean
+            }
             theme: String,
             width: [Number, String],
             autoCreate: {

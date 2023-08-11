@@ -14,7 +14,10 @@
             animationHideDelay: [String, Number],
             animationShowDelay: Number,
             animationType: String,
-            autoClose: Boolean,
+            autoClose: {
+                default: true,
+                type: Boolean
+            }
             collapseBreakpoint: Number,
             collapseWidth: Number,
             height: [Number, String],

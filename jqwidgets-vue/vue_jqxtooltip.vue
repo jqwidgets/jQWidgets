@@ -12,22 +12,40 @@
         props: {
             absolutePositionX: Number,
             absolutePositionY: Number,
-            autoHide: Boolean,
+            autoHide: {
+                default: true,
+                type: Boolean
+            }
             autoHideDelay: Number,
             animationShowDelay: Number,
             animationHideDelay: Number,
             content: String,
-            closeOnClick: Boolean,
-            disabled: Boolean,
-            enableBrowserBoundsDetection: Boolean,
+            closeOnClick: {
+                default: true,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            enableBrowserBoundsDetection: {
+                default: true,
+                type: Boolean
+            }
             height: [Number, String],
             left: Number,
             name: String,
             opacity: Number,
             position: String,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             showDelay: Number,
-            showArrow: Boolean,
+            showArrow: {
+                default: true,
+                type: Boolean
+            }
             top: Number,
             trigger: String,
             theme: String,

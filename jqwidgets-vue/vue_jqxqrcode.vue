@@ -10,7 +10,10 @@
     export default {
         props: {
             backgroundColor: String,
-            displayLabel: Boolean,
+            displayLabel: {
+                default: false,
+                type: Boolean
+            }
             embedImage: String,
             errorLevel: String,
             imageHeight: Number,

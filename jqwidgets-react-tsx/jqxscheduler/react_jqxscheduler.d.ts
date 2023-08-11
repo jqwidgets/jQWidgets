@@ -192,6 +192,8 @@ interface ISchedulerOptions {
     rowsHeight?: number;
     showToolbar?: boolean;
     showLegend?: boolean;
+    showCurrent?: boolean;
+    showCurrentAppointment?: boolean;
     scrollBarSize?: number;
     source?: any;
     statuses?: ISchedulerStatuses;

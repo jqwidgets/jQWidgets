@@ -11,18 +11,33 @@
 
     export default {
         props: {
-            autoSwitchToMinutes: Boolean,
-            disabled: Boolean,
-            footer: Boolean,
+            autoSwitchToMinutes: {
+                default: false,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            footer: {
+                default: false,
+                type: Boolean
+            }
             footerTemplate: String,
             format: String,
             height: [Number, String],
             minuteInterval: Number,
             name: String,
-            readonly: Boolean,
+            readonly: {
+                default: false,
+                type: Boolean
+            }
             selection: String,
             theme: String,
-            unfocusable: Boolean,
+            unfocusable: {
+                default: false,
+                type: Boolean
+            }
             value: Date,
             view: String,
             width: [Number, String],

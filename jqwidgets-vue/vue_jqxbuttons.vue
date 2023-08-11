@@ -10,16 +10,28 @@
 
     export default {
         props: {
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [String, Number],
             imgSrc: String,
             imgWidth: Number,
             imgHeight: Number,
             imgPosition: String,
             roundedCorners: String,
-            rtl: Boolean,
-            enableDefault: Boolean,
-            cursor: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            enableDefault: {
+                default: true,
+                type: Boolean
+            }
+            cursor: {
+                default: 'pointer',
+                type: Boolean
+            }
             textPosition: String,
             textImageRelation: String,
             theme: String,

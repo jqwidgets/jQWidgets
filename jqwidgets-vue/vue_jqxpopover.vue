@@ -13,17 +13,32 @@
             arrowOffsetValue: Number,
             animationOpenDelay: [String, Number],
             animationCloseDelay: [String, Number],
-            autoClose: Boolean,
+            autoClose: {
+                default: true,
+                type: Boolean
+            }
             animationType: String,
             height: [Number, String],
             initContent: Function,
-            isModal: Boolean,
+            isModal: {
+                default: false,
+                type: Boolean
+            }
             offset: Object,
             position: String,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             selector: String,
-            showArrow: Boolean,
-            showCloseButton: Boolean,
+            showArrow: {
+                default: true,
+                type: Boolean
+            }
+            showCloseButton: {
+                default: false,
+                type: Boolean
+            }
             width: [Number, String],
             title: String,
             theme: String,

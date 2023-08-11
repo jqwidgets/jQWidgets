@@ -2130,6 +2130,7 @@ declare module jqwidgets {
         showrowlines?: boolean;
         showcolumnheaderlines?: boolean;
         adaptive?: boolean;
+        compact?: boolean;
         adaptivewidth?: number;
         commandcolumn?: boolean;
         commandcolumnrenderer?: (row?: number, columnfield?: string, active?: any) => string;
@@ -3873,6 +3874,8 @@ declare module jqwidgets {
         rowsHeight?: number;
         showToolbar?: boolean;
         showLegend?: boolean;
+        showCurrent?: boolean;
+        showCurrentAppointment?: boolean;
         scrollBarSize?: number;
         source?: any;
         statuses?: SchedulerStatuses;

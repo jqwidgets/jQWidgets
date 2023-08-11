@@ -11,13 +11,25 @@
 
     export default {
         props: {
-            allowValueChangeOnClick: Boolean,
-            allowValueChangeOnDrag: Boolean,
-            allowValueChangeOnMouseWheel: Boolean,
+            allowValueChangeOnClick: {
+                default: true,
+                type: Boolean
+            }
+            allowValueChangeOnDrag: {
+                default: true,
+                type: Boolean
+            }
+            allowValueChangeOnMouseWheel: {
+                default: true,
+                type: Boolean
+            }
             changing: Function,
             dragEndAngle: Number,
             dragStartAngle: Number,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             dial: Object,
             endAngle: Number,
             height: [Number, String],
@@ -33,7 +45,10 @@
             spinner: Object,
             styles: Object,
             step: [Number, String],
-            snapToStep: Boolean,
+            snapToStep: {
+                default: true,
+                type: Boolean
+            }
             value: [Number, Array],
             width: [Number, String],
             autoCreate: {

@@ -9,13 +9,22 @@
 
     export default {
         props: {
-            change: Boolean,
-            disabled: Boolean,
+            change: {
+                default: null,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             items: [],
             value: [],
             layout: String,
             labelPosition: String,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             theme: String,
             autoCreate: {
                 default: true,

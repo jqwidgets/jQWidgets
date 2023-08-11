@@ -9,9 +9,15 @@
 
     export default {
         props: {
-            allowNull: Boolean,
+            allowNull: {
+                default: true,
+                type: Boolean
+            }
             decimal: Number,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             decimalDigits: Number,
             decimalSeparator: String,
             digits: Number,
@@ -24,10 +30,19 @@
             negativeSymbol: String,
             placeHolder: String,
             promptChar: String,
-            rtl: Boolean,
-            readOnly: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            readOnly: {
+                default: false,
+                type: Boolean
+            }
             spinMode: String,
-            spinButtons: Boolean,
+            spinButtons: {
+                default: false,
+                type: Boolean
+            }
             spinButtonsWidth: Number,
             spinButtonsStep: Number,
             symbol: String,

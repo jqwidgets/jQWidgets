@@ -9,19 +9,28 @@
 
     export default {
         props: {
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             dropDownWidth: Number,
             displayMember: String,
             height: [Number, String],
             items: Number,
             minLength: Number,
             maxLength: Number,
-            opened: Boolean,
+            opened: {
+                default: false,
+                type: Boolean
+            }
             placeHolder: String,
             popupZIndex: Number,
             query: String,
             renderer: Function,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             searchMode: String,
             source: [Array, Function, Object],
             theme: String,

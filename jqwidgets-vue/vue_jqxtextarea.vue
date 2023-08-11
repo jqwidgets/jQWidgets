@@ -11,20 +11,32 @@
 
     export default {
         props: {
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             displayMember: String,
             dropDownWidth: Number,
             height: [Number, String],
             items: Number,
             maxLength: Number,
             minLength: Number,
-            opened: Boolean,
+            opened: {
+                default: false,
+                type: Boolean
+            }
             placeHolder: String,
             popupZIndex: Number,
             query: String,
             renderer: Function,
-            roundedCorners: Boolean,
-            rtl: Boolean,
+            roundedCorners: {
+                default: true,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             scrollBarSize: Number,
             searchMode: String,
             source: [Array, Function, Object],

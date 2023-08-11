@@ -21,57 +21,123 @@
 
     export default {
         props: {
-            altRows: Boolean,
-            autoRowHeight: Boolean,
+            altRows: {
+                default: false,
+                type: Boolean
+            }
+            autoRowHeight: {
+                default: true,
+                type: Boolean
+            }
             aggregatesHeight: Number,
-            autoShowLoadElement: Boolean,
-            checkboxes: Boolean,
+            autoShowLoadElement: {
+                default: true,
+                type: Boolean
+            }
+            checkboxes: {
+                default: false,
+                type: Boolean
+            }
             columnsHeight: Number,
             columns: Array,
             columnGroups: Array,
-            columnsResize: Boolean,
-            columnsReorder: Boolean,
-            disabled: Boolean,
-            editable: Boolean,
+            columnsResize: {
+                default: false,
+                type: Boolean
+            }
+            columnsReorder: {
+                default: false,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            editable: {
+                default: false,
+                type: Boolean
+            }
             editSettings: Object,
             exportSettings: Object,
-            enableHover: Boolean,
-            enableBrowserSelection: Boolean,
-            filterable: Boolean,
+            enableHover: {
+                default: true,
+                type: Boolean
+            }
+            enableBrowserSelection: {
+                default: false,
+                type: Boolean
+            }
+            filterable: {
+                default: false,
+                type: Boolean
+            }
             filterHeight: Number,
             filterMode: String,
             height: [Number, String],
-            hierarchicalCheckboxes: Boolean,
+            hierarchicalCheckboxes: {
+                default: false,
+                type: Boolean
+            }
             icons: [Function, Boolean],
-            incrementalSearch: Boolean,
+            incrementalSearch: {
+                default: true,
+                type: Boolean
+            }
             localization: Object,
             pagerHeight: Number,
             pageSize: Number,
             pageSizeOptions: Array,
-            pageable: Boolean,
+            pageable: {
+                default: false,
+                type: Boolean
+            }
             pagerPosition: String,
             pagerMode: String,
             pageSizeMode: String,
             pagerButtonsCount: Number,
             pagerRenderer: Function,
             ready: Function,
-            rowDetails: Boolean,
+            rowDetails: {
+                default: false,
+                type: Boolean
+            }
             rowDetailsRenderer: Function,
             renderToolbar: Function,
             renderStatusBar: Function,
             rendering: Function,
             rendered: Function,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             source: Object,
-            sortable: Boolean,
-            showAggregates: Boolean,
-            showSubAggregates: Boolean,
-            showToolbar: Boolean,
-            showStatusbar: Boolean,
+            sortable: {
+                default: false,
+                type: Boolean
+            }
+            showAggregates: {
+                default: false,
+                type: Boolean
+            }
+            showSubAggregates: {
+                default: false,
+                type: Boolean
+            }
+            showToolbar: {
+                default: false,
+                type: Boolean
+            }
+            showStatusbar: {
+                default: false,
+                type: Boolean
+            }
             statusBarHeight: Number,
             scrollBarSize: Number,
             selectionMode: String,
-            showHeader: Boolean,
+            showHeader: {
+                default: true,
+                type: Boolean
+            }
             theme: String,
             toolbarHeight: Number,
             width: [Number, String],

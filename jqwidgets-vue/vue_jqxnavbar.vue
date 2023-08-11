@@ -11,16 +11,28 @@
     export default {
         props: {
             columns: Array,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
-            minimized: Boolean,
+            minimized: {
+                default: false,
+                type: Boolean
+            }
             minimizeButtonPosition: String,
             minimizedHeight: Number,
             minimizedTitle: String,
             orientation: String,
             popupAnimationDelay: Number,
-            rtl: Boolean,
-            selection: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            selection: {
+                default: true,
+                type: Boolean
+            }
             selectedItem: Number,
             theme: String,
             width: [Number, String],

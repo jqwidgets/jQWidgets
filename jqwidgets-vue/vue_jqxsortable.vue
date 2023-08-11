@@ -19,19 +19,37 @@
             cursor: String,
             cursorAt: Object,
             delay: Number,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             distance: Number,
-            dropOnEmpty: Boolean,
-            forceHelperSize: Boolean,
-            forcePlaceholderSize: Boolean,
+            dropOnEmpty: {
+                default: true,
+                type: Boolean
+            }
+            forceHelperSize: {
+                default: false,
+                type: Boolean
+            }
+            forcePlaceholderSize: {
+                default: false,
+                type: Boolean
+            }
             grid: Array,
             handle: String,
             helper: String,
             items: String,
             opacity: Number,
             placeholderShow: String,
-            revert: Boolean,
-            scroll: Boolean,
+            revert: {
+                default: false,
+                type: Boolean
+            }
+            scroll: {
+                default: true,
+                type: Boolean
+            }
             scrollSensitivity: Number,
             scrollSpeed: Number,
             tolerance: String,

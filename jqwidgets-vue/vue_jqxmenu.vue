@@ -16,22 +16,55 @@
             animationHideDelay: Number,
             animationShowDelay: Number,
             autoCloseInterval: Number,
-            autoSizeMainItems: Boolean,
-            autoCloseOnClick: Boolean,
-            autoOpenPopup: Boolean,
-            autoOpen: Boolean,
-            autoCloseOnMouseLeave: Boolean,
-            clickToOpen: Boolean,
-            disabled: Boolean,
-            enableHover: Boolean,
+            autoSizeMainItems: {
+                default: true,
+                type: Boolean
+            }
+            autoCloseOnClick: {
+                default: true,
+                type: Boolean
+            }
+            autoOpenPopup: {
+                default: true,
+                type: Boolean
+            }
+            autoOpen: {
+                default: true,
+                type: Boolean
+            }
+            autoCloseOnMouseLeave: {
+                default: true,
+                type: Boolean
+            }
+            clickToOpen: {
+                default: false,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            enableHover: {
+                default: true,
+                type: Boolean
+            }
             easing: String,
             height: [Number, String],
-            keyboardNavigation: Boolean,
+            keyboardNavigation: {
+                default: false,
+                type: Boolean
+            }
             minimizeWidth: [String, Number],
             mode: String,
             popupZIndex: Number,
-            rtl: Boolean,
-            showTopLevelArrows: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            showTopLevelArrows: {
+                default: false,
+                type: Boolean
+            }
             source: [Array, Object],
             theme: String,
             width: [Number, String],

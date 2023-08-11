@@ -15,9 +15,15 @@
         props: {
             color: String,
             colorMode: String,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
-            showTransparent: Boolean,
+            showTransparent: {
+                default: false,
+                type: Boolean
+            }
             width: [Number, String],
             autoCreate: {
                 default: true,

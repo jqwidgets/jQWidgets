@@ -15,15 +15,24 @@
             animationDuration: Number,
             barSize: [String, Number],
             description: String,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             labelsFormat: String,
             labelsFormatFunction: Function,
             orientation: String,
             pointer: Object,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             ranges: Array,
-            showTooltip: Boolean,
+            showTooltip: {
+                default: true,
+                type: Boolean
+            }
             target: Object,
             ticks: Object,
             title: String,

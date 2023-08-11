@@ -17,23 +17,41 @@
 
     export default {
         props: {
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             decimalNotation: String,
-            dropDown: Boolean,
+            dropDown: {
+                default: false,
+                type: Boolean
+            }
             dropDownWidth: Number,
             height: [Number, String],
             min: [Number, String],
             max: [Number, String],
             placeHolder: String,
             popupZIndex: Number,
-            roundedCorners: Boolean,
-            rtl: Boolean,
+            roundedCorners: {
+                default: true,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             radix: [Number, String],
-            spinButtons: Boolean,
+            spinButtons: {
+                default: true,
+                type: Boolean
+            }
             spinButtonsStep: Number,
             template: String,
             theme: String,
-            upperCase: Boolean,
+            upperCase: {
+                default: false,
+                type: Boolean
+            }
             value: [Number, String],
             width: [Number, String],
             autoCreate: {

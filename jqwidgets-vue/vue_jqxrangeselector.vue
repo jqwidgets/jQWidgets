@@ -12,28 +12,58 @@
 
     export default {
         props: {
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             groupLabelsFormatFunction: Function,
             height: [Number, String],
             labelsFormat: String,
             labelsFormatFunction: Function,
-            labelsOnTicks: Boolean,
+            labelsOnTicks: {
+                default: true,
+                type: Boolean
+            }
             markersFormat: String,
             markersFormatFunction: Function,
             majorTicksInterval: [Number, String, Object],
             minorTicksInterval: [Number, String, Object],
             max: [Number, String, Date],
             min: [Number, String, Date],
-            moveOnClick: Boolean,
+            moveOnClick: {
+                default: true,
+                type: Boolean
+            }
             padding: [String, Number],
             range: Object,
-            resizable: Boolean,
-            rtl: Boolean,
-            showGroupLabels: Boolean,
-            showMinorTicks: Boolean,
-            snapToTicks: Boolean,
-            showMajorLabels: Boolean,
-            showMarkers: Boolean,
+            resizable: {
+                default: true,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            showGroupLabels: {
+                default: false,
+                type: Boolean
+            }
+            showMinorTicks: {
+                default: false,
+                type: Boolean
+            }
+            snapToTicks: {
+                default: true,
+                type: Boolean
+            }
+            showMajorLabels: {
+                default: false,
+                type: Boolean
+            }
+            showMarkers: {
+                default: true,
+                type: Boolean
+            }
             theme: String,
             width: [Number, String],
             autoCreate: {

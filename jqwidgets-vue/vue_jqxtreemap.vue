@@ -18,14 +18,23 @@
             colorMode: String,
             displayMember: String,
             height: [Number, String],
-            hoverEnabled: Boolean,
+            hoverEnabled: {
+                default: false,
+                type: Boolean
+            }
             headerHeight: Number,
             legendLabel: String,
             legendPosition: Object,
             legendScaleCallback: Function,
             renderCallbacks: Object,
-            selectionEnabled: Boolean,
-            showLegend: Boolean,
+            selectionEnabled: {
+                default: true,
+                type: Boolean
+            }
+            showLegend: {
+                default: true,
+                type: Boolean
+            }
             source: [Object, Array],
             theme: String,
             valueMember: String,

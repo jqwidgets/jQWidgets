@@ -11,9 +11,15 @@
 
     export default {
         props: {
-            autoOpen: Boolean,
+            autoOpen: {
+                default: true,
+                type: Boolean
+            }
             animationType: String,
-            collapsed: Boolean,
+            collapsed: {
+                default: false,
+                type: Boolean
+            }
             collapseAnimationDuration: Number,
             content: String,
             closeAnimationDuration: Number,
@@ -21,13 +27,25 @@
             closeButtonAction: String,
             cancelButton: [Object, String],
             dragArea: Object,
-            draggable: Boolean,
-            disabled: Boolean,
+            draggable: {
+                default: true,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             initContent: Function,
-            isModal: Boolean,
+            isModal: {
+                default: false,
+                type: Boolean
+            }
             keyboardCloseKey: Number,
-            keyboardNavigation: Boolean,
+            keyboardNavigation: {
+                default: true,
+                type: Boolean
+            }
             minHeight: Number,
             maxHeight: Number,
             minWidth: Number,
@@ -37,11 +55,23 @@
             modalBackgroundZIndex: Number,
             okButton: [String, Object],
             position: [String, Object],
-            rtl: Boolean,
-            resizable: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            resizable: {
+                default: true,
+                type: Boolean
+            }
             showAnimationDuration: Number,
-            showCloseButton: Boolean,
-            showCollapseButton: Boolean,
+            showCloseButton: {
+                default: true,
+                type: Boolean
+            }
+            showCollapseButton: {
+                default: false,
+                type: Boolean
+            }
             theme: String,
             title: String,
             width: [Number, String],

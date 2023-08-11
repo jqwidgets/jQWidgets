@@ -37,32 +37,90 @@
 
     export default {
         props: {
-            altrows: Boolean,
+            altrows: {
+                default: false,
+                type: Boolean
+            }
             altstart: Number,
             altstep: Number,
-            autoshowloadelement: Boolean,
-            autoshowfiltericon: Boolean,
-            autoshowcolumnsmenubutton: Boolean,
-            showcolumnlines: Boolean,
-            showrowlines: Boolean,
-            showcolumnheaderlines: Boolean,
-            adaptive: Boolean,
+            autoshowloadelement: {
+                default: true,
+                type: Boolean
+            }
+            autoshowfiltericon: {
+                default: true,
+                type: Boolean
+            }
+            autoshowcolumnsmenubutton: {
+                default: true,
+                type: Boolean
+            }
+            showcolumnlines: {
+                default: true,
+                type: Boolean
+            }
+            showrowlines: {
+                default: true,
+                type: Boolean
+            }
+            showcolumnheaderlines: {
+                default: true,
+                type: Boolean
+            }
+            adaptive: {
+                default: false,
+                type: Boolean
+            }
+            compact: {
+                default: false,
+                type: Boolean
+            }
             adaptivewidth: Number,
-            commandcolumn: Boolean,
+            commandcolumn: {
+                default: false,
+                type: Boolean
+            }
             commandcolumnrenderer: Function,
-            clipboard: Boolean,
-            closeablegroups: Boolean,
+            clipboard: {
+                default: true,
+                type: Boolean
+            }
+            closeablegroups: {
+                default: true,
+                type: Boolean
+            }
             columnsmenuwidth: Number,
             columnmenuopening: Function,
             columnmenuclosing: Function,
             cellhover: Function,
-            enablekeyboarddelete: Boolean,
-            enableellipsis: Boolean,
-            enablemousewheel: Boolean,
-            enableanimations: Boolean,
-            enabletooltips: Boolean,
-            enablehover: Boolean,
-            enablebrowserselection: Boolean,
+            enablekeyboarddelete: {
+                default: true,
+                type: Boolean
+            }
+            enableellipsis: {
+                default: true,
+                type: Boolean
+            }
+            enablemousewheel: {
+                default: true,
+                type: Boolean
+            }
+            enableanimations: {
+                default: true,
+                type: Boolean
+            }
+            enabletooltips: {
+                default: false,
+                type: Boolean
+            }
+            enablehover: {
+                default: true,
+                type: Boolean
+            }
+            enablebrowserselection: {
+                default: false,
+                type: Boolean
+            }
             everpresentrowposition: String,
             everpresentrowheight: Number,
             everpresentrowactions: String,
@@ -71,37 +129,103 @@
             filtermode: String,
             groupsrenderer: Function,
             groupcolumnrenderer: Function,
-            groupsexpandedbydefault: Boolean,
+            groupsexpandedbydefault: {
+                default: false,
+                type: Boolean
+            }
             handlekeyboardnavigation: Function,
             pagerrenderer: Function,
-            rtl: Boolean,
-            showdefaultloadelement: Boolean,
-            showfiltercolumnbackground: Boolean,
-            showfiltermenuitems: Boolean,
-            showpinnedcolumnbackground: Boolean,
-            showsortcolumnbackground: Boolean,
-            showsortmenuitems: Boolean,
-            showgroupmenuitems: Boolean,
-            showrowdetailscolumn: Boolean,
-            showheader: Boolean,
-            showgroupsheader: Boolean,
-            showaggregates: Boolean,
-            showgroupaggregates: Boolean,
-            showeverpresentrow: Boolean,
-            showfilterrow: Boolean,
-            showemptyrow: Boolean,
-            showstatusbar: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            showdefaultloadelement: {
+                default: true,
+                type: Boolean
+            }
+            showfiltercolumnbackground: {
+                default: true,
+                type: Boolean
+            }
+            showfiltermenuitems: {
+                default: true,
+                type: Boolean
+            }
+            showpinnedcolumnbackground: {
+                default: true,
+                type: Boolean
+            }
+            showsortcolumnbackground: {
+                default: true,
+                type: Boolean
+            }
+            showsortmenuitems: {
+                default: true,
+                type: Boolean
+            }
+            showgroupmenuitems: {
+                default: true,
+                type: Boolean
+            }
+            showrowdetailscolumn: {
+                default: true,
+                type: Boolean
+            }
+            showheader: {
+                default: true,
+                type: Boolean
+            }
+            showgroupsheader: {
+                default: true,
+                type: Boolean
+            }
+            showaggregates: {
+                default: false,
+                type: Boolean
+            }
+            showgroupaggregates: {
+                default: false,
+                type: Boolean
+            }
+            showeverpresentrow: {
+                default: false,
+                type: Boolean
+            }
+            showfilterrow: {
+                default: false,
+                type: Boolean
+            }
+            showemptyrow: {
+                default: true,
+                type: Boolean
+            }
+            showstatusbar: {
+                default: false,
+                type: Boolean
+            }
             statusbarheight: Number,
-            showtoolbar: Boolean,
-            showfilterbar: Boolean,
+            showtoolbar: {
+                default: false,
+                type: Boolean
+            }
+            showfilterbar: {
+                default: false,
+                type: Boolean
+            }
             filterbarmode: String,
             selectionmode: String,
             updatefilterconditions: Function,
             updatefilterpanel: Function,
             theme: String,
             toolbarheight: Number,
-            autoheight: Boolean,
-            autorowheight: Boolean,
+            autoheight: {
+                default: false,
+                type: Boolean
+            }
+            autorowheight: {
+                default: false,
+                type: Boolean
+            }
             columnsheight: Number,
             deferreddatafields: Array,
             groupsheaderheight: Number,
@@ -113,47 +237,101 @@
             scrollmode: String,
             scrollfeedback: Function,
             width: [String, Number],
-            autosavestate: Boolean,
-            autoloadstate: Boolean,
+            autosavestate: {
+                default: false,
+                type: Boolean
+            }
+            autoloadstate: {
+                default: false,
+                type: Boolean
+            }
             columns: Array,
-            enableSanitize: Boolean,
-            cardview: Boolean,
+            enableSanitize: {
+                default: false,
+                type: Boolean
+            }
+            cardview: {
+                default: false,
+                type: Boolean
+            }
             cardviewcolumns: [],
             cardheight: Number,
             cardsize: Number,
             columngroups: Array,
-            columnsmenu: Boolean,
-            columnsresize: Boolean,
-            columnsautoresize: Boolean,
-            columnsreorder: Boolean,
+            columnsmenu: {
+                default: true,
+                type: Boolean
+            }
+            columnsresize: {
+                default: false,
+                type: Boolean
+            }
+            columnsautoresize: {
+                default: true,
+                type: Boolean
+            }
+            columnsreorder: {
+                default: false,
+                type: Boolean
+            }
             charting: Object,
-            disabled: Boolean,
-            editable: Boolean,
-            batcheditable: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            editable: {
+                default: false,
+                type: Boolean
+            }
+            batcheditable: {
+                default: false,
+                type: Boolean
+            }
             editmode: String,
             filter: Function,
-            filterable: Boolean,
-            groupable: Boolean,
+            filterable: {
+                default: false,
+                type: Boolean
+            }
+            groupable: {
+                default: false,
+                type: Boolean
+            }
             groups: Array,
             horizontalscrollbarstep: Number,
             horizontalscrollbarlargestep: Number,
             initrowdetails: Function,
-            keyboardnavigation: Boolean,
+            keyboardnavigation: {
+                default: true,
+                type: Boolean
+            }
             localization: Object,
             pagesize: Number,
             pagesizeoptions: Array,
             pagermode: String,
             pagerbuttonscount: Number,
-            pageable: Boolean,
-            autofill: Boolean,
-            rowdetails: Boolean,
+            pageable: {
+                default: false,
+                type: Boolean
+            }
+            autofill: {
+                default: false,
+                type: Boolean
+            }
+            rowdetails: {
+                default: false,
+                type: Boolean
+            }
             rowdetailstemplate: Object,
             ready: Function,
             rendered: Function,
             renderstatusbar: Function,
             rendertoolbar: Function,
             rendergridrows: Function,
-            sortable: Boolean,
+            sortable: {
+                default: false,
+                type: Boolean
+            }
             sortmode: String,
             sortmodekey: String,
             selectedrowindex: Number,
@@ -161,7 +339,10 @@
             source: Object,
             sorttogglestates: Number,
             updatedelay: Number,
-            virtualmode: Boolean,
+            virtualmode: {
+                default: false,
+                type: Boolean
+            }
             verticalscrollbarstep: Number,
             verticalscrollbarlargestep: Number,
             autoCreate: {
@@ -578,6 +759,13 @@
                     JQXLite(this.componentSelector).jqxGrid('adaptive', arg)
                 } else {
                     return JQXLite(this.componentSelector).jqxGrid('adaptive');
+                }
+            },
+            _compact: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxGrid('compact', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxGrid('compact');
                 }
             },
             _adaptivewidth: function(arg) {
@@ -1407,7 +1595,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -1517,6 +1705,16 @@
                     },
                     set: function(newValue) {
                         that._adaptive(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'compact', {
+                    get: function() {
+                        return that._compact();
+                    },
+                    set: function(newValue) {
+                        that._compact(newValue);
                     },
                     enumerable: true,
                     configurable: true

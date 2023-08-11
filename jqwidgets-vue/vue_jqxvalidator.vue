@@ -10,17 +10,29 @@
 
     export default {
         props: {
-            arrow: Boolean,
+            arrow: {
+                default: true,
+                type: Boolean
+            }
             animation: String,
             animationDuration: Number,
-            closeOnClick: Boolean,
-            focus: Boolean,
+            closeOnClick: {
+                default: true,
+                type: Boolean
+            }
+            focus: {
+                default: true,
+                type: Boolean
+            }
             hintType: String,
             onError: Function,
             onSuccess: Function,
             position: String,
             rules: Array,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             autoCreate: {
                 default: true,
                 type: Boolean

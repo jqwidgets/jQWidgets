@@ -3861,6 +3861,21 @@ of the horizontal scrollbar.*/
     border-bottom: 1px solid #c5c5c5;
 }
 
+.jqx-scheduler[show-current] .jqx-grid-column-header.today,
+.jqx-scheduler[show-current].jqx-widget .jqx-grid-column-header.today {
+    border-bottom: 1px solid #0078D4;
+}
+.jqx-scheduler .current-appointment,
+.jqx-scheduler .current-appointment .jqx-scheduler-appointment-content {
+    border: 1px solid #0078D4;
+}
+
+.jqx-scheduler[show-current] .jqx-scheduler-month-day-today-cell .jqx-scheduler-month-cell {
+    background: #0078D4;
+    color: white;
+    border-bottom-color: #0078D4;
+}
+
 .jqx-grid-column-header[sort]>div>div {
     width: calc(100% - 20px);
 }
@@ -8632,7 +8647,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type=number].jqx-input {
     -moz-appearance: textfield;
 }
 

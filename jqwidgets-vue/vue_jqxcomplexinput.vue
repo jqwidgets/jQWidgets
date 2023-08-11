@@ -13,12 +13,24 @@
     export default {
         props: {
             decimalNotation: String,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             placeHolder: String,
-            roundedCorners: Boolean,
-            rtl: Boolean,
-            spinButtons: Boolean,
+            roundedCorners: {
+                default: true,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            spinButtons: {
+                default: false,
+                type: Boolean
+            }
             spinButtonsStep: Number,
             template: String,
             theme: String,

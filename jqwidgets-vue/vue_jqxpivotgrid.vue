@@ -24,11 +24,26 @@
         props: {
             source: Object,
             localization: Object,
-            scrollBarsEnabled: Boolean,
-            selectionEnabled: Boolean,
-            multipleSelectionEnabled: Boolean,
-            treeStyleRows: Boolean,
-            autoResize: Boolean,
+            scrollBarsEnabled: {
+                default: true,
+                type: Boolean
+            }
+            selectionEnabled: {
+                default: true,
+                type: Boolean
+            }
+            multipleSelectionEnabled: {
+                default: true,
+                type: Boolean
+            }
+            treeStyleRows: {
+                default: true,
+                type: Boolean
+            }
+            autoResize: {
+                default: false,
+                type: Boolean
+            }
             itemsRenderer: Function,
             cellsRenderer: Function,
             autoCreate: {

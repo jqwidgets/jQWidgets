@@ -10,12 +10,21 @@
 
     export default {
         props: {
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             mask: String,
             promptChar: String,
-            readOnly: Boolean,
-            rtl: Boolean,
+            readOnly: {
+                default: false,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             theme: String,
             textAlign: String,
             value: [String, Number],

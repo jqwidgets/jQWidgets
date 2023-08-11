@@ -12,7 +12,10 @@
     export default {
         props: {
             buttonsPosition: String,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             layout: String,
             mode: String,
@@ -21,21 +24,45 @@
             max: Number,
             min: Number,
             orientation: String,
-            rangeSlider: Boolean,
-            rtl: Boolean,
+            rangeSlider: {
+                default: false,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             step: Number,
-            showTicks: Boolean,
-            showMinorTicks: Boolean,
-            showTickLabels: Boolean,
-            showButtons: Boolean,
-            showRange: Boolean,
+            showTicks: {
+                default: true,
+                type: Boolean
+            }
+            showMinorTicks: {
+                default: false,
+                type: Boolean
+            }
+            showTickLabels: {
+                default: false,
+                type: Boolean
+            }
+            showButtons: {
+                default: true,
+                type: Boolean
+            }
+            showRange: {
+                default: true,
+                type: Boolean
+            }
             template: String,
             theme: String,
             ticksPosition: String,
             ticksFrequency: Number,
             tickSize: Number,
             tickLabelFormatFunction: Function,
-            tooltip: Boolean,
+            tooltip: {
+                default: false,
+                type: Boolean
+            }
             tooltipHideDelay: Number,
             tooltipPosition: String,
             tooltipFormatFunction: Function,

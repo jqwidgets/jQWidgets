@@ -11,12 +11,18 @@
     export default {
         props: {
             count: Number,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             itemHeight: Number,
             itemWidth: Number,
             precision: Number,
-            singleVote: Boolean,
+            singleVote: {
+                default: false,
+                type: Boolean
+            }
             value: Number,
             width: [Number, String],
             autoCreate: {

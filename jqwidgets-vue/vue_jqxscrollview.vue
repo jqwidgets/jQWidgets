@@ -12,14 +12,26 @@
     export default {
         props: {
             animationDuration: Number,
-            bounceEnabled: Boolean,
+            bounceEnabled: {
+                default: true,
+                type: Boolean
+            }
             buttonsOffset: Array,
             currentPage: Number,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             moveThreshold: Number,
-            showButtons: Boolean,
-            slideShow: Boolean,
+            showButtons: {
+                default: true,
+                type: Boolean
+            }
+            slideShow: {
+                default: false,
+                type: Boolean
+            }
             slideDuration: Number,
             theme: String,
             width: [Number, String],

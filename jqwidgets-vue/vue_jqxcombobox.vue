@@ -15,36 +15,78 @@
     export default {
         props: {
             animationType: String,
-            autoComplete: Boolean,
-            autoOpen: Boolean,
-            autoItemsHeight: Boolean,
-            autoDropDownHeight: Boolean,
+            autoComplete: {
+                default: false,
+                type: Boolean
+            }
+            autoOpen: {
+                default: false,
+                type: Boolean
+            }
+            autoItemsHeight: {
+                default: false,
+                type: Boolean
+            }
+            autoDropDownHeight: {
+                default: false,
+                type: Boolean
+            }
             closeDelay: Number,
-            checkboxes: Boolean,
-            disabled: Boolean,
+            checkboxes: {
+                default: false,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             displayMember: String,
             dropDownHorizontalAlignment: String,
             dropDownVerticalAlignment: String,
             dropDownHeight: Number,
             dropDownWidth: Number,
-            enableHover: Boolean,
-            enableSelection: Boolean,
-            enableBrowserBoundsDetection: Boolean,
+            enableHover: {
+                default: true,
+                type: Boolean
+            }
+            enableSelection: {
+                default: true,
+                type: Boolean
+            }
+            enableBrowserBoundsDetection: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             itemHeight: Number,
-            multiSelect: Boolean,
+            multiSelect: {
+                default: false,
+                type: Boolean
+            }
             minLength: Number,
             openDelay: Number,
             popupZIndex: Number,
             placeHolder: String,
-            remoteAutoComplete: Boolean,
+            remoteAutoComplete: {
+                default: false,
+                type: Boolean
+            }
             remoteAutoCompleteDelay: Number,
             renderer: Function,
             renderSelectedItem: Function,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             selectedIndex: Number,
-            showArrow: Boolean,
-            showCloseButtons: Boolean,
+            showArrow: {
+                default: true,
+                type: Boolean
+            }
+            showCloseButtons: {
+                default: true,
+                type: Boolean
+            }
             searchMode: String,
             search: Function,
             source: [Array, Object],

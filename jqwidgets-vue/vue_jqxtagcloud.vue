@@ -13,10 +13,16 @@
     export default {
         props: {
             alterTextCase: String,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             displayLimit: Number,
             displayMember: String,
-            displayValue: Boolean,
+            displayValue: {
+                default: false,
+                type: Boolean
+            }
             fontSizeUnit: String,
             height: [Number, String],
             maxColor: String,
@@ -25,12 +31,18 @@
             minColor: String,
             minFontSize: Number,
             minValueToDisplay: Number,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             sortBy: String,
             sortOrder: String,
             source: Object,
             tagRenderer: Function,
-            takeTopWeightedItems: Boolean,
+            takeTopWeightedItems: {
+                default: false,
+                type: Boolean
+            }
             textColor: String,
             urlBase: String,
             urlMember: String,

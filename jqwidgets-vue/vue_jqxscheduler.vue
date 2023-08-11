@@ -33,19 +33,34 @@
             appointmentOpacity: Number,
             appointmentsMinHeight: Number,
             appointmentDataFields: Object,
-            appointmentTooltips: Boolean,
+            appointmentTooltips: {
+                default: true,
+                type: Boolean
+            }
             columnsHeight: Number,
-            contextMenu: Boolean,
+            contextMenu: {
+                default: true,
+                type: Boolean
+            }
             contextMenuOpen: Function,
             contextMenuClose: Function,
             contextMenuItemClick: Function,
             contextMenuCreate: Function,
             changedAppointments: Array,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             date: [Object, Date],
             dayNameFormat: String,
-            enableHover: Boolean,
-            editDialog: Boolean,
+            enableHover: {
+                default: true,
+                type: Boolean
+            }
+            editDialog: {
+                default: true,
+                type: Boolean
+            }
             editDialogDateTimeFormatString: String,
             editDialogDateFormatString: String,
             editDialogOpen: Function,
@@ -63,11 +78,28 @@
             renderAppointment: Function,
             rendering: Function,
             rendered: Function,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             resources: Object,
             rowsHeight: Number,
-            showToolbar: Boolean,
-            showLegend: Boolean,
+            showToolbar: {
+                default: true,
+                type: Boolean
+            }
+            showLegend: {
+                default: false,
+                type: Boolean
+            }
+            showCurrent: {
+                default: true,
+                type: Boolean
+            }
+            showCurrentAppointment: {
+                default: true,
+                type: Boolean
+            }
             scrollBarSize: Number,
             source: Object,
             statuses: Object,
@@ -461,6 +493,20 @@
                     return JQXLite(this.componentSelector).jqxScheduler('showLegend');
                 }
             },
+            _showCurrent: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxScheduler('showCurrent', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxScheduler('showCurrent');
+                }
+            },
+            _showCurrentAppointment: function(arg) {
+                if (arg !== undefined) {
+                    JQXLite(this.componentSelector).jqxScheduler('showCurrentAppointment', arg)
+                } else {
+                    return JQXLite(this.componentSelector).jqxScheduler('showCurrentAppointment');
+                }
+            },
             _scrollBarSize: function(arg) {
                 if (arg !== undefined) {
                     JQXLite(this.componentSelector).jqxScheduler('scrollBarSize', arg)
@@ -574,7 +620,7 @@
                 this.__wireEvents__();
             },
             __manageProps__: function () {
-                const widgetProps = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
+                const widgetProps = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatString','editDialogDateFormatString','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','showCurrent','showCurrentAppointment','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
                 const componentProps = this.$options.propsData;
                 let options = {};
 
@@ -964,6 +1010,26 @@
                     },
                     set: function(newValue) {
                         that._showLegend(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'showCurrent', {
+                    get: function() {
+                        return that._showCurrent();
+                    },
+                    set: function(newValue) {
+                        that._showCurrent(newValue);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(that, 'showCurrentAppointment', {
+                    get: function() {
+                        return that._showCurrentAppointment();
+                    },
+                    set: function(newValue) {
+                        that._showCurrentAppointment(newValue);
                     },
                     enumerable: true,
                     configurable: true

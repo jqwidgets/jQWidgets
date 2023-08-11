@@ -16,13 +16,19 @@
 
     export default {
         props: {
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             initTools: Function,
             minimizeWidth: Number,
             minWidth: Number,
             maxWidth: Number,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             tools: String,
             theme: String,
             width: [Number, String],

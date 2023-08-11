@@ -13,14 +13,23 @@
             animationType: String,
             arrowPosition: String,
             collapseAnimationDuration: Number,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             expandAnimationDuration: Number,
             expandMode: String,
             expandedIndexes: Array,
             height: [Number, String],
             initContent: Function,
-            rtl: Boolean,
-            showArrow: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            showArrow: {
+                default: true,
+                type: Boolean
+            }
             theme: String,
             toggleMode: String,
             width: [Number, String],

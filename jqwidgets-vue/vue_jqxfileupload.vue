@@ -11,17 +11,29 @@
 
     export default {
         props: {
-            autoUpload: Boolean,
+            autoUpload: {
+                default: false,
+                type: Boolean
+            }
             accept: String,
             browseTemplate: String,
             cancelTemplate: String,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             fileInputName: String,
             height: [Number, String],
             localization: Object,
-            multipleFilesUpload: Boolean,
+            multipleFilesUpload: {
+                default: true,
+                type: Boolean
+            }
             renderFiles: Function,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             theme: String,
             uploadUrl: String,
             uploadTemplate: String,

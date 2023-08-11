@@ -1,4 +1,29 @@
-﻿jQWidgets v16.0.0 Release, March-03-2023
+﻿jQWidgets v17.0.0 Release, August-11-2023
+
+What's New:
+
+- Vue 3 Components Integration. In the installation package, you can find them in the jqwidgets-vue3 folder.
+- SVG icons set. SVG icons allow us to achieve strict Content Security Policy (CSP) compliance
+- jqxGrid Compact mode. You can enable it by setting the 'compact' property to true.
+- jqxScheduler Current Time and Current Appointment
+
+What's Improved:
+
+- Fluent theme. You can switch to SVG icons usage, If you add the .jqx-icon-type-svg. For example, SVG icons are resolution-independent and display clearly on any device. By using SVG icons, we can reduce the security risk and improve the CSP compliance
+- jqxInput drop-down browser bounds detection.
+
+What's Fixed:
+
+- Fixed an issue in jqxNavBar. When selection is false, items don't have any styling.
+- Fixed an issue in jqxGrid. Pasting a selected row into another will overwrite even columns with editable:false.
+- Fixed an issue in jqx.base.css. CSS rule for input[type="number"] is too general and affects non-jqx elements.
+- Fixed an issue in jqxChart. The valueAxis settings causes bug.
+- Fixed an issue in jqxMaskedInput. By using val method doesn't correctly set the value.
+- Fixed an issue in jqxListBox. The group doesn't dissapear if all items of the group were removed.
+- Fixed an issue in jqxGrid. The filtersearchstring is not localized with localizestring method.
+- Fixed an issue in jqxKanban. removeItem does not work properly.
+
+jQWidgets v16.0.0 Release, March-03-2023
 
 What's New:
 

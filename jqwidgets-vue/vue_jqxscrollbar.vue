@@ -11,17 +11,29 @@
 
     export default {
         props: {
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             largestep: Number,
             min: Number,
             max: Number,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             step: Number,
-            showButtons: Boolean,
+            showButtons: {
+                default: true,
+                type: Boolean
+            }
             thumbMinSize: Number,
             theme: String,
-            vertical: Boolean,
+            vertical: {
+                default: false,
+                type: Boolean
+            }
             value: Number,
             width: [Number, String],
             autoCreate: {

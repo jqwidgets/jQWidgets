@@ -10,14 +10,23 @@
 
     export default {
         props: {
-            checked: Boolean,
-            disabled: Boolean,
+            checked: {
+                default: false,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             orientation: String,
             onLabel: String,
             offLabel: String,
             thumbSize: String,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             width: [Number, String],
             autoCreate: {
                 default: true,

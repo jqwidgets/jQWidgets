@@ -9,18 +9,30 @@
 
     export default {
         props: {
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             localization: Object,
             maxLength: Number,
             placeHolder: String,
             passwordStrength: Function,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             strengthColors: Object,
-            showStrength: Boolean,
+            showStrength: {
+                default: false,
+                type: Boolean
+            }
             showStrengthPosition: String,
             strengthTypeRenderer: Function,
-            showPasswordIcon: Boolean,
+            showPasswordIcon: {
+                default: true,
+                type: Boolean
+            }
             theme: String,
             width: [Number, String],
             autoCreate: {

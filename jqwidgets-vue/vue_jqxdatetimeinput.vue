@@ -15,17 +15,35 @@
     export default {
         props: {
             animationType: String,
-            allowNullDate: Boolean,
-            allowKeyboardDelete: Boolean,
+            allowNullDate: {
+                default: true,
+                type: Boolean
+            }
+            allowKeyboardDelete: {
+                default: true,
+                type: Boolean
+            }
             clearString: String,
             culture: String,
             closeDelay: Number,
-            closeCalendarAfterSelection: Boolean,
+            closeCalendarAfterSelection: {
+                default: true,
+                type: Boolean
+            }
             dropDownHorizontalAlignment: String,
             dropDownVerticalAlignment: String,
-            disabled: Boolean,
-            enableBrowserBoundsDetection: Boolean,
-            enableAbsoluteSelection: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            enableBrowserBoundsDetection: {
+                default: false,
+                type: Boolean
+            }
+            enableAbsoluteSelection: {
+                default: false,
+                type: Boolean
+            }
             editMode: String,
             firstDayOfWeek: Number,
             formatString: String,
@@ -35,14 +53,35 @@
             openDelay: Number,
             placeHolder: String,
             popupZIndex: Number,
-            rtl: Boolean,
-            readonly: Boolean,
-            showFooter: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            readonly: {
+                default: false,
+                type: Boolean
+            }
+            showFooter: {
+                default: false,
+                type: Boolean
+            }
             selectionMode: String,
-            showWeekNumbers: Boolean,
-            showTimeButton: Boolean,
-            showCalendarButton: Boolean,
-            showDeleteButton: Boolean,
+            showWeekNumbers: {
+                default: true,
+                type: Boolean
+            }
+            showTimeButton: {
+                default: false,
+                type: Boolean
+            }
+            showCalendarButton: {
+                default: true,
+                type: Boolean
+            }
+            showDeleteButton: {
+                default: false,
+                type: Boolean
+            }
             theme: String,
             template: String,
             textAlign: String,

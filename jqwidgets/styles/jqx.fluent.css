@@ -150,6 +150,211 @@ body[theme=fluent-dark] {
   --fluent-sortable-border: #3B3A39;
 }
 
+.jqx-icon-type-svg {
+  --jqx-icon-calendar: url(font/svg/calendar.svg);
+  /* Code of calendar icon */
+  --jqx-icon-filter: url(font/svg/filter.svg);
+  /* Code of filter icon */
+  --jqx-icon-menu: url(font/svg/menu.svg);
+  /* Code of menu icon */
+  --jqx-icon-check: url(font/svg/check-alt-2.svg);
+  /* Code of check icon */
+  --jqx-icon-first-page: url(font/svg/first_page.svg);
+  /* Code of first page icon */
+  --jqx-icon-arrow-down: url(font/svg/arrow-down.svg);
+  /* Code of down arrow icon */
+  --jqx-icon-arrow-left: url(font/svg/arrow-left.svg);
+  /* Code of left arrow icon */
+  --jqx-icon-arrow-right: url(font/svg/arrow-right.svg);
+  /* Code of right arrow icon */
+  --jqx-icon-arrow-up: url(font/svg/arrow-up.svg);
+  /* Code of up arrow icon */
+  --jqx-icon-arrow-down-filled: url(font/svg/down-dir.svg);
+  /* Code of filled down arrow icon */
+  --jqx-icon-arrow-left-filled: url(font/svg/left-dir.svg);
+  /* Code of filled left arrow icon */
+  --jqx-icon-arrow-right-filled: url(font/svg/right-dir.svg);
+  /* Code of filled right arrow icon */
+  --jqx-icon-arrow-up-filled: url(font/svg/up-dir.svg);
+  /* Code of filled up arrow icon */
+  --jqx-icon-visibility: url(font/svg/visibility.svg);
+  /* Code of visibility icon */
+  --jqx-icon-visibility-off: url(font/svg/visibility_off.svg);
+  /* Code of visibility off icon */
+  --jqx-icon-last-page: url(font/svg/last_page.svg);
+  /* Code of last page icon */
+  --jqx-icon-close: url(font/svg/close.svg);
+  /* Code of close icon */
+  --jqx-icon-search: url(font/svg/search.svg);
+  /* Code of search icon */
+  --jqx-icon-clock: url(font/svg/clock.svg);
+  --jqx-icon-down: url(font/svg/arrow-down.svg);
+  --jqx-icon-plus: url(font/svg/plus.svg);
+  --jqx-icon-filter-alt: url(font/svg/filter-alt.svg);
+  --jqx-icon-up: url(font/svg/arrow-up.svg);
+  --jqx-icon-left: url(font/svg/left-dir.svg);
+  --jqx-icon-right: url(font/svg/right-dir.svg);
+  --jqx-icon-edit: url(font/svg/edit.svg);
+  --jqx-icon-calendar-alt: url(font/svg/calendar-alt.svg);
+  --jqx-icon-close-alt:url(font/svg/close-alt.svg);
+  --jqx-icon-delete: url(font/svg/delete.svg);
+  --jqx-icon-download: url(font/svg/download-alt.svg);
+  --jqx-icon-check-alt: url(font/svg/check-alt.svg);
+  --jqx-icon-check-small: url(font/svg/check-alt-2.svg);
+  --jqx-icon-info: url(font/svg/info.svg);
+  --jqx-icon-circle: url(font/svg/circle.svg);
+  --jqx-icon-sort-menu-down: url(font/svg/sort-alt-down.svg);
+  --jqx-icon-sort-menu-up:url(font/svg/sort-alt-up.svg);
+  --jqx-icon-sort-up:url(font/svg/up-dir.svg);
+  --jqx-icon-sort-down: url(font/svg/down-dir.svg);
+  --jqx-icon-menu-alt: url(font/svg/hamburger.svg);
+  --jqx-icon-calendar-up: url(font/svg/arrow-up-long.svg);
+  --jqx-icon-calendar-down: url(font/svg/arrow-down-long.svg);
+}
+.jqx-icon-type-svg .jqx-icon-close-fluent:after,
+.jqx-icon-type-svg .jqx-icon-search-fluent:after,
+.jqx-icon-type-svg .jqx-grid-column-filterbutton-fluent:after,
+.jqx-icon-type-svg .jqx-grid-column-menubutton-fluent:after,
+.jqx-icon-type-svg .jqx-checkbox-check-checked-fluent:after,
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-fluent:after,
+.jqx-icon-type-svg .jqx-expander-arrow-bottom-fluent:after,
+.jqx-icon-type-svg .jqx-window-collapse-button-fluent:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-fluent:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-fluent:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-up-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-hover-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-up-selected-fluent:after,
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-fluent:after,
+.jqx-icon-type-svg .jqx-grid-column-sorticon-fluent.jqx-icon-arrow-up-fluent:after,
+.jqx-icon-type-svg .jqx-widget-fluent .jqx-grid-group-expand-fluent:after,
+.jqx-icon-type-svg .jqx-grid-group-expand-fluent:after,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-fluent:after,
+.jqx-icon-type-svg .jqx-expander-arrow-top-fluent:after,
+.jqx-icon-type-svg .jqx-window-collapse-button-collapsed-fluent:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-fluent:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-fluent:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-down-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-hover-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-selected-fluent:after,
+.jqx-icon-type-svg .jqx-grid-column-sortdescbutton-fluent:after,
+.jqx-icon-type-svg .jqx-grid-column-sorticon-fluent.jqx-icon-arrow-down-fluent:after,
+.jqx-icon-type-svg .jqx-tabs-arrow-left-fluent:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-left-selected-fluent:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-left:after,
+.jqx-icon-type-svg .jqx-icon-arrow-left-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-down-left-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-left-selected-fluent:after,
+.jqx-icon-type-svg .jqx-widget-fluent .jqx-grid-group-collapse-fluent,
+.jqx-icon-type-svg .jqx-grid-group-collapse-fluent,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-fluent,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-fluent,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-fluent,
+.jqx-icon-type-svg .jqx-icon-arrow-right-fluent,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-fluent,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-fluent,
+.jqx-icon-type-svg .jqx-widget-fluent .jqx-grid-group-collapse-fluent:after,
+.jqx-icon-type-svg .jqx-grid-group-collapse-fluent:after,
+.jqx-icon-type-svg .jqx-tabs-arrow-right-fluent:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-fluent:after,
+.jqx-icon-type-svg .jqx-menu-item-arrow-top-right-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-hover-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-right-selected-fluent:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-rtl-fluent,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-hover-rtl-fluent,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-rtl-fluent:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-collapse-hover-rtl-fluent:after,
+.jqx-icon-type-svg .jqx-passwordinput-password-icon-fluent:after,
+.jqx-icon-type-svg .jqx-passwordinput-password-icon-rtl-fluent:after,
+.jqx-icon-type-svg .jqx-combobox-fluent .jqx-icon-close-fluent:after,
+.jqx-icon-type-svg .jqx-expander-header-fluent .jqx-icon-arrow-up:after,
+.jqx-icon-type-svg .jqx-tree-item-arrow-expand-fluent:after,
+.jqx-icon-type-svg .jqx-icon-time-fluent:after,
+.jqx-icon-type-svg .jqx-icon-time-hover-fluent:after,
+.jqx-icon-type-svg .jqx-icon-time-pressed-fluent:after,
+.jqx-icon-type-svg .jqx-icon-calendar-fluent:after,
+.jqx-icon-type-svg .jqx-icon-calendar-hover-fluent:after,
+.jqx-icon-type-svg .jqx-icon-calendar-pressed-fluent:after,
+.jqx-icon-type-svg .jqx-tabs-close-button-fluent,
+.jqx-icon-type-svg .jqx-tabs-close-button-selected-fluent,
+.jqx-icon-type-svg .jqx-tabs-close-button-hover-fluent .jqx-tabs-close-button-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-first-fluent:after,
+.jqx-icon-type-svg .jqx-icon-arrow-last-fluent:after {
+  width: 16px;
+}
+.jqx-icon-type-svg .jqx-checkbox-check-checked-fluent:after {
+  content: "";
+  -webkit-mask-image: var(--jqx-icon-check);
+  background-color: var(--jqx-primary-color);
+  -webkit-mask-size: cover;
+}
+.jqx-icon-type-svg .sorticon.ascending .jqx-grid-column-sorticon-fluent::after {
+  margin-left: 3px;
+  margin-top: 3px;
+}
+.jqx-icon-type-svg .jqx-icon-calendar-fluent:after, .jqx-icon-type-svg .jqx-icon-calendar-hover-fluent:after, .jqx-icon-type-svg .jqx-icon-calendar-pressed-fluent:after {
+  margin-top: 5px;
+  width: 18px;
+}
+.jqx-icon-type-svg .jqx-calendar-title-navigation-fluent:hover::after {
+  padding: 1px !important;
+}
+.jqx-icon-type-svg .jqx-widget-fluent .jqx-grid-group-expand-fluent, .jqx-icon-type-svg .jqx-grid-group-expand-fluent, .jqx-icon-type-svg .jqx-grid-column-sortdescbutton-fluent, .jqx-icon-type-svg .jqx-expander-arrow-top-fluent, .jqx-icon-type-svg .jqx-window-collapse-button-collapsed-fluent, .jqx-icon-type-svg .jqx-menu-item-arrow-down-fluent, .jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-fluent, .jqx-icon-type-svg .jqx-menu-item-arrow-down-fluent, .jqx-icon-type-svg .jqx-icon-arrow-down-fluent, .jqx-icon-type-svg .jqx-icon-arrow-down-hover-fluent, .jqx-icon-type-svg .jqx-icon-arrow-down-selected-fluent {
+  font-family: inherit !important;
+  background-size: 12px;
+  background-image: var(--jqx-icon-arrow-down) !important;
+  background-repeat: no-repeat;
+}
+.jqx-icon-type-svg .jqx-widget-fluent .jqx-grid-group-expand-fluent::after, .jqx-icon-type-svg .jqx-grid-group-expand-fluent::after, .jqx-icon-type-svg .jqx-grid-column-sortdescbutton-fluent::after, .jqx-icon-type-svg .jqx-expander-arrow-top-fluent::after, .jqx-icon-type-svg .jqx-window-collapse-button-collapsed-fluent::after, .jqx-icon-type-svg .jqx-menu-item-arrow-down-fluent::after, .jqx-icon-type-svg .jqx-menu-item-arrow-down-selected-fluent::after, .jqx-icon-type-svg .jqx-menu-item-arrow-down-fluent::after, .jqx-icon-type-svg .jqx-icon-arrow-down-fluent::after, .jqx-icon-type-svg .jqx-icon-arrow-down-hover-fluent::after, .jqx-icon-type-svg .jqx-icon-arrow-down-selected-fluent::after {
+  content: "" !important;
+}
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-fluent, .jqx-icon-type-svg .jqx-expander-arrow-bottom-fluent, .jqx-icon-type-svg .jqx-window-collapse-button-fluent, .jqx-icon-type-svg .jqx-menu-item-arrow-up-fluent, .jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-fluent, .jqx-icon-type-svg .jqx-menu-item-arrow-top-up-fluent, .jqx-icon-type-svg .jqx-icon-arrow-up-fluent, .jqx-icon-type-svg .jqx-icon-arrow-up-hover-fluent, .jqx-icon-type-svg .jqx-icon-arrow-up-selected-fluent {
+  font-family: inherit !important;
+  background-size: 12px;
+  background-image: var(--jqx-icon-arrow-up) !important;
+  background-repeat: no-repeat;
+}
+.jqx-icon-type-svg .jqx-grid-column-sortascbutton-fluent::after, .jqx-icon-type-svg .jqx-expander-arrow-bottom-fluent::after, .jqx-icon-type-svg .jqx-window-collapse-button-fluent::after, .jqx-icon-type-svg .jqx-menu-item-arrow-up-fluent::after, .jqx-icon-type-svg .jqx-menu-item-arrow-up-selected-fluent::after, .jqx-icon-type-svg .jqx-menu-item-arrow-top-up-fluent::after, .jqx-icon-type-svg .jqx-icon-arrow-up-fluent::after, .jqx-icon-type-svg .jqx-icon-arrow-up-hover-fluent::after, .jqx-icon-type-svg .jqx-icon-arrow-up-selected-fluent::after {
+  content: "" !important;
+}
+.jqx-icon-type-svg .jqx-widget-fluent .jqx-grid-group-collapse-fluent, .jqx-icon-type-svg .jqx-grid-group-collapse-fluent, .jqx-icon-type-svg .jqx-tabs-arrow-right-fluent, .jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-fluent, .jqx-icon-type-svg .jqx-menu-item-arrow-top-right-fluent, .jqx-icon-type-svg .jqx-icon-arrow-right-fluent, .jqx-icon-type-svg .jqx-icon-arrow-right-hover-fluent, .jqx-icon-type-svg .jqx-icon-arrow-right-selected-fluent {
+  font-family: inherit !important;
+  background-size: 10px;
+  background-image: var(--jqx-icon-arrow-right) !important;
+  background-repeat: no-repeat;
+}
+.jqx-icon-type-svg .jqx-widget-fluent .jqx-grid-group-collapse-fluent::after, .jqx-icon-type-svg .jqx-grid-group-collapse-fluent::after, .jqx-icon-type-svg .jqx-tabs-arrow-right-fluent::after, .jqx-icon-type-svg .jqx-menu-item-arrow-right-selected-fluent::after, .jqx-icon-type-svg .jqx-menu-item-arrow-top-right-fluent::after, .jqx-icon-type-svg .jqx-icon-arrow-right-fluent::after, .jqx-icon-type-svg .jqx-icon-arrow-right-hover-fluent::after, .jqx-icon-type-svg .jqx-icon-arrow-right-selected-fluent::after {
+  content: "" !important;
+}
+.jqx-icon-type-svg .jqx-icon-time-fluent:after,
+.jqx-icon-type-svg .jqx-icon-time-hover-fluent:after,
+.jqx-icon-type-svg .jqx-icon-time-pressed-fluent:after {
+  width: 18px;
+  margin-top: 3px;
+}
+
+.jqx-calendar-title-navigation-fluent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.jqx-calendar-title-navigation-fluent.jqx-icon-arrow-left-fluent:after {
+  content: var(--jqx-icon-calendar-up) !important;
+  font-size: 12px;
+}
+.jqx-calendar-title-navigation-fluent.jqx-icon-arrow-right-fluent:after {
+  content: var(--jqx-icon-calendar-down) !important;
+  font-size: 12px;
+}
+.jqx-calendar-title-navigation-fluent:hover::after {
+  background: var(--jqx-background-hover) !important;
+  color: var(--jqx-background-color-hover) !important;
+  padding: 5px;
+}
+
 .jqx-icon-search-fluent,
 .jqx-icon-close-fluent {
   background-image: none;
@@ -300,11 +505,6 @@ body[theme=fluent-dark] {
 
 .jqx-calendar tr {
   border-bottom-color: var(--jqx-border);
-}
-
-.jqx-widget-fluent input::-moz-selection, input.jqx-input-widget-fluent::-moz-selection, .jqx-widget-content-fluent input::-moz-selection {
-  background: var(--jqx-primary);
-  color: var(--jqx-primary-color);
 }
 
 .jqx-widget-fluent input::selection,
@@ -580,6 +780,10 @@ jqx-button-fluent input {
 .jqx-menu-item-top-selected-fluent,
 .jqx-slider-button-fluent,
 .jqx-slider-slider-fluent {
+  -webkit-transition: background-color 100ms linear;
+  -moz-transition: background-color 100ms linear;
+  -o-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
   transition: background-color 100ms linear;
 }
 
@@ -893,6 +1097,8 @@ jqx-button-fluent input {
 .jqx-grid-cell-fluent {
   background: var(--jqx-background);
   color: var(--jqx-background-color);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -1108,6 +1314,8 @@ jqx-button-fluent input {
 
 .jqx-progressbar-fluent {
   background: var(--jqx-background) !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -2561,6 +2769,8 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   filter: none;
   background: inherit;
   color: inherit;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -2645,6 +2855,8 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   border-top: 1px solid var(--jqx-background);
   filter: none;
   background: var(--jqx-background);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
   box-shadow: none;
 }
 
@@ -2679,6 +2891,8 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
 .jqx-tabs-title-hover-top-fluent,
 .jqx-tabs-title-hover-bottom-fluent,
 .jqx-tabs-header-fluent {
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
   box-shadow: none !important;
   background: var(--jqx-surface);
   color: var(--jqx-surface-color);
@@ -2971,10 +3185,8 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
 }
 
 .ink.animate {
-  -webkit-animation: ripple 0.7s ease;
-          animation: ripple 0.7s ease;
-  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation: ripple 0.7s ease;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .jqx-tree-fluent .jqx-checkbox-fluent {
@@ -3001,10 +3213,8 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
 
 .jqx-checkbox-fluent.effect .ink.animate,
 .jqx-radiobutton-fluent.effect .ink.animate {
-  -webkit-animation: checkRipple 0.3s ease;
-          animation: checkRipple 0.3s ease;
-  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation: checkRipple 0.3s ease;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .jqx-checkbox-fluent.effect .ink.active,
@@ -3019,21 +3229,11 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   transform: scale(2);
 }
 
-@-webkit-keyframes checkRipple {
-  100% {
-    opacity: 0.2;
-    transform: scale(2);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
 @keyframes checkRipple {
   100% {
     opacity: 0.2;
     transform: scale(2);
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 .jqx-fill-state-pressed-fluent .jqx-icon-delete-fluent {
@@ -3156,15 +3356,6 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   color: inherit !important;
 }
 
-@-webkit-keyframes css-spinner {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes css-spinner {
   0% {
     transform: rotate(0deg);
@@ -3186,16 +3377,11 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   border-width: 1.5px;
   border-style: solid;
   border-color: rgb(0, 120, 212) rgb(199, 224, 244) rgb(199, 224, 244);
-  -o-border-image: initial;
-     border-image: initial;
-  -webkit-animation-name: css-spinner;
-          animation-name: css-spinner;
-  -webkit-animation-duration: 1.3s;
-          animation-duration: 1.3s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.53, 0.21, 0.29, 0.67);
-          animation-timing-function: cubic-bezier(0.53, 0.21, 0.29, 0.67);
+  border-image: initial;
+  animation-name: css-spinner;
+  animation-duration: 1.3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.53, 0.21, 0.29, 0.67);
   width: 28px;
   height: 28px;
   position: relative;
@@ -3370,4 +3556,4 @@ textarea.jqx-input-fluent:-ms-input-placeholder {
   background: var(--jqx-background);
   border-color: var(--jqx-background);
   color: var(--jqx-background);
-}/*# sourceMappingURL=jqx.fluent.css.map */
+}

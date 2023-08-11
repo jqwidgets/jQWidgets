@@ -14,14 +14,23 @@
         props: {
             animationType: String,
             animationDelay: Number,
-            disabled: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             initContent: Function,
             mode: String,
             popupCloseMode: String,
             position: String,
-            reorder: Boolean,
-            rtl: Boolean,
+            reorder: {
+                default: false,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             selectedIndex: Number,
             selectionMode: String,
             scrollPosition: String,

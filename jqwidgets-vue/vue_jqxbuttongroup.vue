@@ -11,10 +11,19 @@
 
     export default {
         props: {
-            disabled: Boolean,
-            enableHover: Boolean,
+            disabled: {
+                default: false,
+                type: Boolean
+            }
+            enableHover: {
+                default: false,
+                type: Boolean
+            }
             mode: String,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             template: String,
             theme: String,
             autoCreate: {

@@ -13,13 +13,22 @@
 
     export default {
         props: {
-            contextMenu: Boolean,
+            contextMenu: {
+                default: false,
+                type: Boolean
+            }
             height: [String, Number],
             layout: Array,
             minGroupHeight: Number,
             minGroupWidth: Number,
-            resizable: Boolean,
-            rtl: Boolean,
+            resizable: {
+                default: true,
+                type: Boolean
+            }
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             theme: String,
             width: [String, Number],
             autoCreate: {

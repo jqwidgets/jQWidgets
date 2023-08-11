@@ -12,23 +12,44 @@
     export default {
         props: {
             appendContainer: String,
-            autoOpen: Boolean,
+            autoOpen: {
+                default: false,
+                type: Boolean
+            }
             animationOpenDelay: Number,
             animationCloseDelay: Number,
-            autoClose: Boolean,
+            autoClose: {
+                default: true,
+                type: Boolean
+            }
             autoCloseDelay: Number,
-            blink: Boolean,
+            blink: {
+                default: false,
+                type: Boolean
+            }
             browserBoundsOffset: Number,
-            closeOnClick: Boolean,
-            disabled: Boolean,
+            closeOnClick: {
+                default: true,
+                type: Boolean
+            }
+            disabled: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             hoverOpacity: Number,
             icon: Object,
             notificationOffset: Number,
             opacity: Number,
             position: String,
-            rtl: Boolean,
-            showCloseButton: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            showCloseButton: {
+                default: true,
+                type: Boolean
+            }
             template: String,
             theme: String,
             width: [Number, String],

@@ -10,12 +10,21 @@
 
     export default {
         props: {
-            autoOpen: Boolean,
+            autoOpen: {
+                default: false,
+                type: Boolean
+            }
             height: [Number, String],
             html: String,
-            isModal: Boolean,
+            isModal: {
+                default: false,
+                type: Boolean
+            }
             imagePosition: String,
-            rtl: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
             text: String,
             textPosition: String,
             theme: String,

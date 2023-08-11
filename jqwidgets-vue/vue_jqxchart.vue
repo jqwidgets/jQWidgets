@@ -20,33 +20,63 @@
             title: String,
             description: String,
             source: [Array, Object],
-            showBorderLine: Boolean,
+            showBorderLine: {
+                default: true,
+                type: Boolean
+            }
             borderLineColor: String,
             borderLineWidth: Number,
             backgroundColor: String,
             backgroundImage: String,
-            showLegend: Boolean,
+            showLegend: {
+                default: true,
+                type: Boolean
+            }
             legendLayout: Object,
             padding: Object,
             titlePadding: Object,
             colorScheme: String,
-            greyScale: Boolean,
-            showToolTips: Boolean,
+            greyScale: {
+                default: false,
+                type: Boolean
+            }
+            showToolTips: {
+                default: true,
+                type: Boolean
+            }
             toolTipShowDelay: Number,
             toolTipHideDelay: Number,
             toolTipMoveDuration: Number,
             drawBefore: Function,
             draw: Function,
-            rtl: Boolean,
-            enableCrosshairs: Boolean,
+            rtl: {
+                default: false,
+                type: Boolean
+            }
+            enableCrosshairs: {
+                default: false,
+                type: Boolean
+            }
             crosshairsColor: String,
             crosshairsDashStyle: String,
             crosshairsLineWidth: Number,
-            columnSeriesOverlap: Boolean,
-            enabled: Boolean,
-            enableAnimations: Boolean,
+            columnSeriesOverlap: {
+                default: false,
+                type: Boolean
+            }
+            enabled: {
+                default: true,
+                type: Boolean
+            }
+            enableAnimations: {
+                default: true,
+                type: Boolean
+            }
             animationDuration: Number,
-            enableAxisTextAnimation: Boolean,
+            enableAxisTextAnimation: {
+                default: false,
+                type: Boolean
+            }
             renderEngine: String,
             xAxis: Object,
             valueAxis: Object,
