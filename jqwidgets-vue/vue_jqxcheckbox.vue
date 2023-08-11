@@ -14,29 +14,29 @@
             checked: {
                 default: false,
                 type: Boolean
-            }
+            },
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             enableContainerClick: {
                 default: true,
                 type: Boolean
-            }
+            },
             groupName: String,
             height: [Number, String],
             hasThreeStates: {
                 default: false,
                 type: Boolean
-            }
+            },
             locked: {
                 default: false,
                 type: Boolean
-            }
+            },
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             theme: String,
             width: [Number, String],
             autoCreate: {

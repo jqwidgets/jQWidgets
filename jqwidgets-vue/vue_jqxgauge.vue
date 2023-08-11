@@ -19,14 +19,14 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             easing: String,
             endAngle: Number,
             height: [Number, String],
             int64: {
                 default: false,
                 type: Boolean
-            }
+            },
             labels: Object,
             min: Number,
             max: Number,
@@ -37,7 +37,7 @@
             showRanges: {
                 default: true,
                 type: Boolean
-            }
+            },
             styles: Object,
             ticksMajor: Object,
             ticksMinor: Object,

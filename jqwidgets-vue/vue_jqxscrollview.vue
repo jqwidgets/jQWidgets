@@ -15,23 +15,23 @@
             bounceEnabled: {
                 default: true,
                 type: Boolean
-            }
+            },
             buttonsOffset: Array,
             currentPage: Number,
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             moveThreshold: Number,
             showButtons: {
                 default: true,
                 type: Boolean
-            }
+            },
             slideShow: {
                 default: false,
                 type: Boolean
-            }
+            },
             slideDuration: Number,
             theme: String,
             width: [Number, String],

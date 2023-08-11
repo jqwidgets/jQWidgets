@@ -20,7 +20,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             endAngle: Number,
             formatFunction: [Object, Function],
             height: [Number, String],
@@ -35,7 +35,7 @@
             useGradient: {
                 default: true,
                 type: Boolean
-            }
+            },
             values: Array,
             width: [Number, String],
             autoCreate: {

@@ -17,7 +17,7 @@
             autoClose: {
                 default: true,
                 type: Boolean
-            }
+            },
             collapseBreakpoint: Number,
             collapseWidth: Number,
             height: [Number, String],

@@ -16,7 +16,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             expandAnimationDuration: Number,
             expandMode: String,
             expandedIndexes: Array,
@@ -25,11 +25,11 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             showArrow: {
                 default: true,
                 type: Boolean
-            }
+            },
             theme: String,
             toggleMode: String,
             width: [Number, String],

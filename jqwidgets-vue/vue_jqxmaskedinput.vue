@@ -13,18 +13,18 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             mask: String,
             promptChar: String,
             readOnly: {
                 default: false,
                 type: Boolean
-            }
+            },
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             theme: String,
             textAlign: String,
             value: [String, Number],

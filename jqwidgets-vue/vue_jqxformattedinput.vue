@@ -20,12 +20,12 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             decimalNotation: String,
             dropDown: {
                 default: false,
                 type: Boolean
-            }
+            },
             dropDownWidth: Number,
             height: [Number, String],
             min: [Number, String],
@@ -35,23 +35,23 @@
             roundedCorners: {
                 default: true,
                 type: Boolean
-            }
+            },
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             radix: [Number, String],
             spinButtons: {
                 default: true,
                 type: Boolean
-            }
+            },
             spinButtonsStep: Number,
             template: String,
             theme: String,
             upperCase: {
                 default: false,
                 type: Boolean
-            }
+            },
             value: [Number, String],
             width: [Number, String],
             autoCreate: {

@@ -14,19 +14,19 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             orientation: String,
             panels: Array,
             resizable: {
                 default: true,
                 type: Boolean
-            }
+            },
             splitBarSize: Number,
             showSplitBar: {
                 default: true,
                 type: Boolean
-            }
+            },
             theme: String,
             width: [Number, String],
             autoCreate: {

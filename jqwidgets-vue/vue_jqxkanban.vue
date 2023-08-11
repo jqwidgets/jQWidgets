@@ -24,7 +24,7 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             source: [Array, Object],
             resources: [Array, Object],
             template: String,

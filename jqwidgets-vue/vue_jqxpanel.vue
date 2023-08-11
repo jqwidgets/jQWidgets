@@ -15,16 +15,16 @@
             autoUpdate: {
                 default: false,
                 type: Boolean
-            }
+            },
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             sizeMode: String,
             scrollBarSize: Number,
             theme: String,

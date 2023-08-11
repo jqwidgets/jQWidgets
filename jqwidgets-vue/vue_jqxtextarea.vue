@@ -14,7 +14,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             displayMember: String,
             dropDownWidth: Number,
             height: [Number, String],
@@ -24,7 +24,7 @@
             opened: {
                 default: false,
                 type: Boolean
-            }
+            },
             placeHolder: String,
             popupZIndex: Number,
             query: String,
@@ -32,11 +32,11 @@
             roundedCorners: {
                 default: true,
                 type: Boolean
-            }
+            },
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             scrollBarSize: Number,
             searchMode: String,
             source: [Array, Function, Object],

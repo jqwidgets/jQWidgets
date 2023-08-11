@@ -16,19 +16,19 @@
             autoOpen: {
                 default: false,
                 type: Boolean
-            }
+            },
             closeDelay: Number,
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             dropDownHorizontalAlignment: String,
             dropDownVerticalAlignment: String,
             dropDownWidth: [String, Number],
             enableBrowserBoundsDetection: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             initContent: Function,
             openDelay: Number,
@@ -36,7 +36,7 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             template: String,
             theme: String,
             width: [Number, String],

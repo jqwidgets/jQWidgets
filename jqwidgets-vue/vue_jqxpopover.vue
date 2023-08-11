@@ -16,29 +16,29 @@
             autoClose: {
                 default: true,
                 type: Boolean
-            }
+            },
             animationType: String,
             height: [Number, String],
             initContent: Function,
             isModal: {
                 default: false,
                 type: Boolean
-            }
+            },
             offset: Object,
             position: String,
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             selector: String,
             showArrow: {
                 default: true,
                 type: Boolean
-            }
+            },
             showCloseButton: {
                 default: false,
                 type: Boolean
-            }
+            },
             width: [Number, String],
             title: String,
             theme: String,

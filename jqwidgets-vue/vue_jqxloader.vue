@@ -13,18 +13,18 @@
             autoOpen: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             html: String,
             isModal: {
                 default: false,
                 type: Boolean
-            }
+            },
             imagePosition: String,
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             text: String,
             textPosition: String,
             theme: String,

@@ -13,12 +13,12 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             lastchildfill: {
                 default: true,
                 type: Boolean
-            }
+            },
             width: [Number, String],
             autoCreate: {
                 default: true,

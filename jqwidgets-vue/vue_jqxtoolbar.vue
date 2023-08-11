@@ -19,7 +19,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             initTools: Function,
             minimizeWidth: Number,
@@ -28,7 +28,7 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             tools: String,
             theme: String,
             width: [Number, String],

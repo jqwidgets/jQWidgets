@@ -13,7 +13,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [String, Number],
             imgSrc: String,
             imgWidth: Number,
@@ -23,15 +23,15 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             enableDefault: {
                 default: true,
                 type: Boolean
-            }
+            },
             cursor: {
                 default: 'pointer',
                 type: Boolean
-            }
+            },
             textPosition: String,
             textImageRelation: String,
             theme: String,

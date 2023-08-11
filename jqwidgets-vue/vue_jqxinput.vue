@@ -12,7 +12,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             dropDownWidth: Number,
             displayMember: String,
             height: [Number, String],
@@ -22,7 +22,7 @@
             opened: {
                 default: false,
                 type: Boolean
-            }
+            },
             placeHolder: String,
             popupZIndex: Number,
             query: String,
@@ -30,7 +30,7 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             searchMode: String,
             source: [Array, Function, Object],
             theme: String,

@@ -15,7 +15,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             layout: String,
             max: Number,
@@ -24,12 +24,12 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             renderText: Function,
             showText: {
                 default: false,
                 type: Boolean
-            }
+            },
             template: String,
             theme: String,
             value: Number,

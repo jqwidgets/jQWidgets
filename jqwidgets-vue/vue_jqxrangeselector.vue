@@ -15,7 +15,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             groupLabelsFormatFunction: Function,
             height: [Number, String],
             labelsFormat: String,
@@ -23,7 +23,7 @@
             labelsOnTicks: {
                 default: true,
                 type: Boolean
-            }
+            },
             markersFormat: String,
             markersFormatFunction: Function,
             majorTicksInterval: [Number, String, Object],
@@ -33,37 +33,37 @@
             moveOnClick: {
                 default: true,
                 type: Boolean
-            }
+            },
             padding: [String, Number],
             range: Object,
             resizable: {
                 default: true,
                 type: Boolean
-            }
+            },
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             showGroupLabels: {
                 default: false,
                 type: Boolean
-            }
+            },
             showMinorTicks: {
                 default: false,
                 type: Boolean
-            }
+            },
             snapToTicks: {
                 default: true,
                 type: Boolean
-            }
+            },
             showMajorLabels: {
                 default: false,
                 type: Boolean
-            }
+            },
             showMarkers: {
                 default: true,
                 type: Boolean
-            }
+            },
             theme: String,
             width: [Number, String],
             autoCreate: {

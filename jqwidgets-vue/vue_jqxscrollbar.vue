@@ -14,7 +14,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             largestep: Number,
             min: Number,
@@ -22,18 +22,18 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             step: Number,
             showButtons: {
                 default: true,
                 type: Boolean
-            }
+            },
             thumbMinSize: Number,
             theme: String,
             vertical: {
                 default: false,
                 type: Boolean
-            }
+            },
             value: Number,
             width: [Number, String],
             autoCreate: {

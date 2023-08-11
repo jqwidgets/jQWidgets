@@ -13,7 +13,7 @@
             displayLabel: {
                 default: true,
                 type: Boolean
-            }
+            },
             labelColor: String,
             labelFont: String,
             labelFontSize: Number,

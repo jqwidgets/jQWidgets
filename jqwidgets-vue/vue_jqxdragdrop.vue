@@ -14,7 +14,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             distance: Number,
             data: Object,
             dropAction: String,
@@ -33,7 +33,7 @@
             revert: {
                 default: false,
                 type: Boolean
-            }
+            },
             revertDuration: Number,
             tolerance: String,
             autoCreate: {

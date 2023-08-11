@@ -16,25 +16,25 @@
             checked: {
                 default: false,
                 type: Boolean
-            }
+            },
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             enableContainerClick: {
                 default: true,
                 type: Boolean
-            }
+            },
             groupName: String,
             hasThreeStates: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             theme: String,
             width: [Number, String],
             autoCreate: {

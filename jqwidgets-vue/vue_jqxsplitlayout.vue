@@ -12,7 +12,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             dataSource: Object,
             ready: Function,
             orientation: String,

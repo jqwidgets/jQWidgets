@@ -16,13 +16,13 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             displayLimit: Number,
             displayMember: String,
             displayValue: {
                 default: false,
                 type: Boolean
-            }
+            },
             fontSizeUnit: String,
             height: [Number, String],
             maxColor: String,
@@ -34,7 +34,7 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             sortBy: String,
             sortOrder: String,
             source: Object,
@@ -42,7 +42,7 @@
             takeTopWeightedItems: {
                 default: false,
                 type: Boolean
-            }
+            },
             textColor: String,
             urlBase: String,
             urlMember: String,

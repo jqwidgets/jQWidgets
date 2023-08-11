@@ -14,12 +14,12 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             minimized: {
                 default: false,
                 type: Boolean
-            }
+            },
             minimizeButtonPosition: String,
             minimizedHeight: Number,
             minimizedTitle: String,
@@ -28,11 +28,11 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             selection: {
                 default: true,
                 type: Boolean
-            }
+            },
             selectedItem: Number,
             theme: String,
             width: [Number, String],

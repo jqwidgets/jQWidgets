@@ -16,21 +16,21 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             placeHolder: String,
             roundedCorners: {
                 default: true,
                 type: Boolean
-            }
+            },
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             spinButtons: {
                 default: false,
                 type: Boolean
-            }
+            },
             spinButtonsStep: Number,
             template: String,
             theme: String,

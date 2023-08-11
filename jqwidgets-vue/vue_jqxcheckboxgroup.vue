@@ -12,11 +12,11 @@
             change: {
                 default: null,
                 type: Boolean
-            }
+            },
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             items: [],
             value: [],
             layout: String,
@@ -24,7 +24,7 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             theme: String,
             autoCreate: {
                 default: true,

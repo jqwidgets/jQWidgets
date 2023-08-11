@@ -22,11 +22,11 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             editable: {
                 default: true,
                 type: Boolean
-            }
+            },
             height: [String, Number],
             lineBreak: String,
             localization: Object,
@@ -34,7 +34,7 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             stylesheets: Array,
             theme: String,
             toolbarPosition: String,

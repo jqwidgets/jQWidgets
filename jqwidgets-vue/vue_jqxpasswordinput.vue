@@ -12,7 +12,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             localization: Object,
             maxLength: Number,
@@ -21,18 +21,18 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             strengthColors: Object,
             showStrength: {
                 default: false,
                 type: Boolean
-            }
+            },
             showStrengthPosition: String,
             strengthTypeRenderer: Function,
             showPasswordIcon: {
                 default: true,
                 type: Boolean
-            }
+            },
             theme: String,
             width: [Number, String],
             autoCreate: {

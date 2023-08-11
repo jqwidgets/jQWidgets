@@ -16,11 +16,11 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             expanded: {
                 default: true,
                 type: Boolean
-            }
+            },
             expandAnimationDuration: Number,
             height: [Number, String],
             headerPosition: String,
@@ -28,11 +28,11 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             showArrow: {
                 default: true,
                 type: Boolean
-            }
+            },
             theme: String,
             toggleMode: String,
             width: [Number, String],

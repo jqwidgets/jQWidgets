@@ -17,13 +17,13 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             easing: String,
             height: [Number, String],
             int64: {
                 default: false,
                 type: Boolean
-            }
+            },
             labels: Object,
             min: Number,
             max: Number,
@@ -35,7 +35,7 @@
             showRanges: {
                 default: true,
                 type: Boolean
-            }
+            },
             scaleStyle: Object,
             scaleLength: [String, Number],
             ticksOffset: Array,

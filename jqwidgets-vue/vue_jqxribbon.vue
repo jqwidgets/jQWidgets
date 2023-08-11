@@ -17,7 +17,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             initContent: Function,
             mode: String,
@@ -26,11 +26,11 @@
             reorder: {
                 default: false,
                 type: Boolean
-            }
+            },
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             selectedIndex: Number,
             selectionMode: String,
             scrollPosition: String,

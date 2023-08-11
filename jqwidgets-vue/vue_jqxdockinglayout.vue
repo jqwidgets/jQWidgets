@@ -19,7 +19,7 @@
             contextMenu: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             layout: Array,
             minGroupHeight: Number,
@@ -27,11 +27,11 @@
             resizable: {
                 default: true,
                 type: Boolean
-            }
+            },
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             theme: String,
             width: [Number, String],
             autoCreate: {

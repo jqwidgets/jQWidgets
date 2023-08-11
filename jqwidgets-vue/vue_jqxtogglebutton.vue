@@ -13,7 +13,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             imgSrc: String,
             imgWidth: Number,
@@ -23,7 +23,7 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             textPosition: String,
             textImageRelation: String,
             theme: String,
@@ -31,7 +31,7 @@
             toggled: {
                 default: false,
                 type: Boolean
-            }
+            },
             width: [Number, String],
             value: String,
             autoCreate: {

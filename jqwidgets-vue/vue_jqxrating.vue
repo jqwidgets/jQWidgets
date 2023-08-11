@@ -14,7 +14,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             itemHeight: Number,
             itemWidth: Number,
@@ -22,7 +22,7 @@
             singleVote: {
                 default: false,
                 type: Boolean
-            }
+            },
             value: Number,
             width: [Number, String],
             autoCreate: {

@@ -15,24 +15,24 @@
             cookies: {
                 default: false,
                 type: Boolean
-            }
+            },
             cookieOptions: Object,
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             floatingWindowOpacity: Number,
             height: [Number, String],
             keyboardNavigation: {
                 default: false,
                 type: Boolean
-            }
+            },
             mode: String,
             orientation: String,
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             theme: String,
             width: [Number, String],
             windowsMode: Object,

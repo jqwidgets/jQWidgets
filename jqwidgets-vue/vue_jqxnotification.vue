@@ -15,27 +15,27 @@
             autoOpen: {
                 default: false,
                 type: Boolean
-            }
+            },
             animationOpenDelay: Number,
             animationCloseDelay: Number,
             autoClose: {
                 default: true,
                 type: Boolean
-            }
+            },
             autoCloseDelay: Number,
             blink: {
                 default: false,
                 type: Boolean
-            }
+            },
             browserBoundsOffset: Number,
             closeOnClick: {
                 default: true,
                 type: Boolean
-            }
+            },
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             hoverOpacity: Number,
             icon: Object,
@@ -45,11 +45,11 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             showCloseButton: {
                 default: true,
                 type: Boolean
-            }
+            },
             template: String,
             theme: String,
             width: [Number, String],

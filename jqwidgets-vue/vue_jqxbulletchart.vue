@@ -18,7 +18,7 @@
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             labelsFormat: String,
             labelsFormatFunction: Function,
@@ -27,12 +27,12 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             ranges: Array,
             showTooltip: {
                 default: true,
                 type: Boolean
-            }
+            },
             target: Object,
             ticks: Object,
             title: String,

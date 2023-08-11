@@ -15,7 +15,7 @@
             autoHide: {
                 default: true,
                 type: Boolean
-            }
+            },
             autoHideDelay: Number,
             animationShowDelay: Number,
             animationHideDelay: Number,
@@ -23,15 +23,15 @@
             closeOnClick: {
                 default: true,
                 type: Boolean
-            }
+            },
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             enableBrowserBoundsDetection: {
                 default: true,
                 type: Boolean
-            }
+            },
             height: [Number, String],
             left: Number,
             name: String,
@@ -40,12 +40,12 @@
             rtl: {
                 default: false,
                 type: Boolean
-            }
+            },
             showDelay: Number,
             showArrow: {
                 default: true,
                 type: Boolean
-            }
+            },
             top: Number,
             trigger: String,
             theme: String,

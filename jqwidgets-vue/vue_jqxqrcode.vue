@@ -13,7 +13,7 @@
             displayLabel: {
                 default: false,
                 type: Boolean
-            }
+            },
             embedImage: String,
             errorLevel: String,
             imageHeight: Number,

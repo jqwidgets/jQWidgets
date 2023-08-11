@@ -14,22 +14,22 @@
             allowValueChangeOnClick: {
                 default: true,
                 type: Boolean
-            }
+            },
             allowValueChangeOnDrag: {
                 default: true,
                 type: Boolean
-            }
+            },
             allowValueChangeOnMouseWheel: {
                 default: true,
                 type: Boolean
-            }
+            },
             changing: Function,
             dragEndAngle: Number,
             dragStartAngle: Number,
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             dial: Object,
             endAngle: Number,
             height: [Number, String],
@@ -48,7 +48,7 @@
             snapToStep: {
                 default: true,
                 type: Boolean
-            }
+            },
             value: [Number, Array],
             width: [Number, String],
             autoCreate: {

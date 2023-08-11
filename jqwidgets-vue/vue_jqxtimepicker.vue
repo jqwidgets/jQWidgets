@@ -14,15 +14,15 @@
             autoSwitchToMinutes: {
                 default: false,
                 type: Boolean
-            }
+            },
             disabled: {
                 default: false,
                 type: Boolean
-            }
+            },
             footer: {
                 default: false,
                 type: Boolean
-            }
+            },
             footerTemplate: String,
             format: String,
             height: [Number, String],
@@ -31,13 +31,13 @@
             readonly: {
                 default: false,
                 type: Boolean
-            }
+            },
             selection: String,
             theme: String,
             unfocusable: {
                 default: false,
                 type: Boolean
-            }
+            },
             value: Date,
             view: String,
             width: [Number, String],
