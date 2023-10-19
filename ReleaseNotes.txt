@@ -1,4 +1,11 @@
-﻿jQWidgets v17.0.0 Release, August-11-2023
+﻿jQWidgets v17.0.1 Release, October-19-2023
+
+What's Fixed:
+
+- Fixed an issue in jqxGrid related to the Grid's rendering. Grid cells disappear, when the mouse is moved over the Google Chrome browser's Tabs. When the user moves 
+back the mouse over the Grid, the cells appear again. This issue is related to the Google Chrome's latest version and the web browser's Hardware Acceleration should be turned off.
+
+jQWidgets v17.0.0 Release, August-11-2023
 
 What's New:
 

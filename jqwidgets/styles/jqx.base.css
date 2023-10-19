@@ -9313,3 +9313,9 @@ input[type=number].jqx-input {
 }
 
 /* End of Split Layout */
+
+.jqx-grid .ripple {
+    position: relative;
+    transform: none !important;
+    overflow: hidden;
+}

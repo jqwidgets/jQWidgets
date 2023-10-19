@@ -507,6 +507,11 @@ body[theme=fluent-dark] {
   border-bottom-color: var(--jqx-border);
 }
 
+.jqx-widget-fluent input::-moz-selection, input.jqx-input-widget-fluent::-moz-selection, .jqx-widget-content-fluent input::-moz-selection {
+  background: var(--jqx-primary);
+  color: var(--jqx-primary-color);
+}
+
 .jqx-widget-fluent input::selection,
 input.jqx-input-widget-fluent::selection,
 .jqx-widget-content-fluent input::selection {
