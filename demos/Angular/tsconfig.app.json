@@ -4,7 +4,7 @@
     "outDir": "./out-tsc/app"
   },
   "include": [
-    "src/splitlayout/tablayout/*.ts",
+    "src/buttongroup/defaultfunctionality/*.ts",
     "polyfills.ts"
   ],
   "angularCompilerOptions": {

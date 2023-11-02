@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id='Description'>jqxGantt Task views.</title>
+    <meta name="description" content="JavaScript jqxGantt Task views." />
+
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/gantt/jqx.gantt.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgantt.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgantt.api.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        window.onload = () => {
+
+            const gantt = new jqxGantt('#gantt', {
+                height: 'auto',
+                source: [
+                    {
+                        //Note: dateStart/dateEnd and min/max of syncronized projects are automatically calculated based on the tasks
+                        label: 'Project 1',
+                        dateStart: '2023-05-10',
+                        dateEnd: '2024-06-10',
+                        type: 'project',
+                        expanded: true,
+                        tasks: [
+                            {
+                                label: 'Task 1.1',
+                                dateStart: '2023-02-10',
+                                dateEnd: '2023-04-10',
+                                type: 'task'
+                            },
+                            {
+                                label: 'Task 1.2',
+                                dateStart: '2023-03-27',
+                                dateEnd: '2023-06-10',
+                                type: 'task'
+                            },
+                            {
+                                label: 'Milestone 1',
+                                dateStart: '2023-04-21',
+                                type: 'milestone'
+                            },
+                            {
+                                label: 'Project 2',
+                                dateStart: '2023-06-11',
+                                dateEnd: '2024-12-31T23:59:59',
+                                type: 'project',
+                                expanded: true,
+                                tasks: [
+                                    {
+                                        label: 'Task 2.1',
+                                        dateStart: '2023-06-12',
+                                        dateEnd: '2024-01-1',
+                                        type: 'task'
+                                    },
+                                    {
+                                        label: 'Task 2.2',
+                                        dateStart: '2023-01-02',
+                                        dateEnd: '2024-06-01',
+                                        type: 'task'
+                                    },
+                                    {
+                                        label: 'Milestone 2.1',
+                                        dateStart: '2023-06-30',
+                                        type: 'milestone'
+                                    },
+                                    {
+                                        label: 'Task 2.3',
+                                        dateStart: '2023-12-29T10:25:07',
+                                        dateEnd: '2023-12-31T9:0:0',
+                                        type: 'task'
+                                    }
+                                ]
+                            }
+                        ]
+                    }]
+            });
+
+            const viewSelector = new jqxDropDownList("#viewSelector", {
+                source: [
+                    { label: 'Year', value: 'year' },
+                    { label: 'Month', value: 'month' },
+                    { label: 'Week', value: 'week' },
+                    { label: 'Day', value: 'day' }
+                ],
+                autoDropDownHeight: true
+            });
+
+            viewSelector.val('year');
+            viewSelector.host.on('change', (event) => {
+                gantt.setOptions('view', viewSelector.val());
+            });
+        }
+    </script>
+</head>
+
+<body class='default'>
+    <div id="gantt"></div>
+    <br />
+    <div>Select a view:</div>
+    <div id="viewSelector"></div>
+
+    <div style="position: absolute; bottom: 5px; right: 5px;">
+        <a href="https://www.jqwidgets.com/" alt="https://www.jqwidgets.com/"><img alt="https://www.jqwidgets.com/"
+                title="https://www.jqwidgets.com/"
+                src="https://www.jqwidgets.com/wp-content/design/i/logo-jqwidgets.png" /></a>
+    </div>
+</body>
+
+</html>

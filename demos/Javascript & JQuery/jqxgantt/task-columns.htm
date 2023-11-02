@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id='Description'>jqxGantt Task columns.</title>
+    <meta name="description" content="JavaScript jqxGantt Task columns." />
+
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/gantt/jqx.gantt.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgantt.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgantt.api.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <style>
+        /* fallback */
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/materialicons/v31/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: inherit;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .material-icons {
+            margin-right: 10px;
+        }
+
+        jqx-gantt-chart {
+            height: auto;
+        }
+    </style>
+    <script type="text/javascript">
+       window.onload = () => {
+            const gantt = new jqxGantt('#gantt', {
+
+                columnMinWidth: '30%',
+                treeSize: '25%',
+                view: 'day',
+                width: 700,
+                height: 'auto',
+                taskColumns: [{
+                    label: 'Labels',
+                    value: 'label',
+                    //Column min size
+                    size: 100,
+                    //Column size
+                    minWidth: '30%',
+                    //Custom format function
+                    formatFunction: function (label) {
+                        if (label === 'Learn') {
+                            return ' <i class="material-icons">&#xE80C;</i>' + label;
+                        }
+                        else if (label === 'Work') {
+                            return ' <i class="material-icons">&#xE30A;</i>' + label;
+                        }
+                        else if (label === 'Travel') {
+                            return ' <i class="material-icons">&#xE53D;</i>' + label;
+                        }
+                        else if (label === 'Eat') {
+                            return ' <i class="material-icons">&#xE56C;</i>' + label;
+                        }
+                        else if (label === 'Shop') {
+                            return ' <i class="material-icons">&#xE25C;</i>' + label;
+                        }
+                        else if (label === 'Train') {
+                            return ' <i class="material-icons">&#xE52F;</i>' + label;
+                        }
+                        else {
+                            return label;
+                        }
+                    }
+                },
+                {
+                    label: 'Date Start',
+                    value: 'dateStart',
+                    //Custom format function
+                    formatFunction: (date) => new Date(date).toLocaleDateString('en', { hour: '2-digit', minute: '2-digit' }),
+                    minWidth: 100
+                },
+                {
+                    label: 'Date End',
+                    value: 'dateEnd',
+                    size: '25%',
+                    minWidth: '30%'
+                }
+                ],
+                source: [
+                    {
+                        label: 'Learn',
+                        dateStart: '2023-02-11T7:00:00',
+                        dateEnd: '2023-02-11T12:00:00',
+                        type: 'task',
+                        connections: [
+                            {
+                                target: 1,
+                                type: 1
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Work',
+                        dateStart: '2023-02-11T7:00:00',
+                        dateEnd: '2023-02-11T17:30:00',
+                        type: 'task',
+                        connections: [
+                            {
+                                target: 3,
+                                type: 1
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Eat',
+                        dateStart: '2023-02-11T12:00:00',
+                        dateEnd: '2023-02-11T13:00:00',
+                        type: 'task'
+                    },
+                    {
+                        label: 'Shop',
+                        dateStart: '2023-02-11T18:45:00',
+                        dateEnd: '2023-02-11T19:30:00',
+                        type: 'task',
+                        connections: [
+                            {
+                                target: 5,
+                                type: 1
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Train',
+                        dateStart: '2023-02-11T20:00:00',
+                        dateEnd: '2023-02-11T21:45:00',
+                        progress: 50,
+                        type: 'task'
+                    },
+                    {
+                        label: 'Travel',
+                        dateStart: '2023-02-11T23:00:00',
+                        dateEnd: '2023-02-12T06:00:00',
+                    }
+                ]
+            });
+        };
+    </script>
+</head>
+
+<body class='default'>
+    <p>
+        <b>Description:</b> Custom Task Columns with custom content.
+    </p>
+    <div id="gantt"></div>
+
+    <div style="position: absolute; bottom: 5px; right: 5px;">
+        <a href="https://www.jqwidgets.com/" alt="https://www.jqwidgets.com/"><img alt="https://www.jqwidgets.com/"
+                title="https://www.jqwidgets.com/"
+                src="https://www.jqwidgets.com/wp-content/design/i/logo-jqwidgets.png" /></a>
+    </div>
+</body>
+
+</html>

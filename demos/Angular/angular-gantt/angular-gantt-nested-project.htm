@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title id='Description'>Angular Gantt Nested Project.</title>
+        <base href="./../dist/gantt/nested-project/">
+    <meta name="description" content="This is an example of the default functionalities in Angular Gantt." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./../../../node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="./../../../node_modules/jqwidgets-ng/jqwidgets/styles/gantt/jqx.gantt.css" type="text/css" />
+    <link rel="stylesheet" href="./../../../node_modules/jqwidgets-ng/jqwidgets/styles/jqx.light.css" type="text/css" />
+
+    <!-- jQWidgets -->
+    <script src="./../../../scripts/demos.js"></script>
+	<style>
+	jqx-gantt-chart .product-team {
+		--jqx-gantt-chart-task-color: rgb(94, 99, 181);
+		--jqx-gantt-chart-task-label-color: white;
+		--jqx-gantt-chart-task-label-color-selected: white;
+	}
+
+	jqx-gantt-chart .marketing-team {
+		--jqx-gantt-chart-task-color: rgb(43, 195, 190);
+	}
+
+	jqx-gantt-chart .dev-team {
+		--jqx-gantt-chart-task-color: rgb(242, 115, 112);
+		--jqx-gantt-chart-task-label-color: white;
+		--jqx-gantt-chart-task-label-color-selected: white;
+	}
+
+	jqx-gantt-chart .design-team {
+		--jqx-gantt-chart-task-color: rgb(255, 197, 53);
+	}
+
+	jqx-gantt-chart .qa-team {
+		--jqx-gantt-chart-task-color: rgb(99, 181, 144);
+	}
+
+	jqx-gantt-chart .release-team {
+		--jqx-gantt-chart-task-color: rgb(188, 150, 223);
+		--jqx-gantt-chart-task-label-color: white;
+	}
+	</style>
+    </head>
+        
+
+<!-- Display the application -->
+<body>
+
+    <div class="example-description">
+     <p>
+		<b>Description:</b> Synchronized parent project with nested project that has sub-tasks. Drag/Resize it's
+		sub-tasks to see how the root project is recalculated.
+        </p>
+		<br/><br/>
+    </div>
+
+    <app-root>Loading...</app-root>
+    <script src="runtime.js" type="module"></script><script src="polyfills.js" type="module"></script>
+	<script src="main.js" type="module"></script>
+
+</body>
+
+</html>

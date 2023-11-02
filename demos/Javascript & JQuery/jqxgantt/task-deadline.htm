@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id='Description'>jqxGantt Task deadline.</title>
+    <meta name="description" content="JavaScript jqxGantt Task deadline." />
+
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/gantt/jqx.gantt.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgantt.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgantt.api.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <style>
+        .jqx-gantt {
+            height: auto;
+            --jqx-gantt-chart-project-color: linear-gradient(to right, rgb(0, 0, 70), rgb(28, 181, 224));
+            --jqx-gantt-chart-task-color: linear-gradient(to right, rgb(30, 19, 12), rgb(154, 132, 120));
+            --jqx-gantt-chart-task-label-color: white;
+            --jqx-gantt-chart-project-label-color: white;
+            --jqx-gantt-chart-task-label-color-selected: rgb(192, 248, 87);
+            --jqx-gantt-chart-project-label-color-selected: rgb(192, 248, 87);
+        }
+    </style>
+    <script type="text/javascript">
+       window.onload = () => {
+
+            const gantt = new jqxGantt('#gantt', {
+                view: 'week',
+                treeSize: '25%',
+                durationUnit: 'hour',
+                hideTimelineHeaderDetails: true,
+                timelineHeaderFormatFunction: (date, type, isHeaderDetailsContainer, dateValue) => {
+                    if (!isHeaderDetailsContainer && type === 'day') {
+                        return date.toLocaleDateString(this.locale, { day: 'numeric', month: 'short' });
+                    }
+                    return dateValue;
+                },
+                taskColumns: [
+                    {
+                        label: '',
+                        value: 'overdue'
+                    },
+                    {
+                        label: 'Employee',
+                        value: 'label'
+                    },
+                    {
+                        label: 'From',
+                        value: 'dateStart',
+                        formatFunction: (value, item) => {
+                            return item.dateStart.toLocaleDateString('en', { hour: '2-digit', minute: '2-digit' });
+                        }
+                    },
+                    {
+                        label: 'Deadline',
+                        value: 'deadline',
+                        formatFunction: (value, item) => {
+                            if (!item.deadline) {
+                                return '';
+                            }
+                            return new Date(value).toLocaleDateString('en', { hour: '2-digit', minute: '2-digit' });
+                        }
+                    }
+                ],
+                source: [
+                    {
+                        label: 'Stage 1',
+                        synchronized: true,
+                        deadline: '2023-11-03',
+                        expanded: true,
+                        tasks: [
+                            {
+                                label: 'Repairs',
+                                dateStart: '2023-11-1T02:30:00',
+                                duration: 9.5,
+                                progress: 45,
+                                deadline: '2023-11-1T11:00:00',
+                            },
+                            {
+                                label: 'Rally',
+                                dateStart: '2023-11-1T13:30:00',
+                                duration: 12,
+                                deadline: '2023-11-02T03:00:00'
+                            },
+                            {
+                                label: 'Rankings Update',
+                                dateStart: '2023-11-02T07:30:00',
+                                duration: 8,
+                                deadline: '2023-11-2T17:30:00'
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Stage 2',
+                        synchronized: true,
+                        deadline: '2023-11-04:23:30:00',
+                        expanded: true,
+                        tasks: [
+                            {
+                                label: 'Repairs & Optimizations',
+                                dateStart: '2023-11-03T07:30:00',
+                                duration: 6,
+                                deadline: '2023-11-03T14:00:00'
+                            },
+                            {
+                                label: 'Stastics',
+                                dateStart: '2023-11-04T07:30:00',
+                                duration: 8
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Stage 3',
+                        synchronized: true,
+                        expanded: true,
+                        tasks: [
+                            {
+                                label: 'Preparation',
+                                dateStart: '2023-11-05T06:30:00',
+                                duration: 6,
+                                deadline: '2023-11-05T12:00:00',
+                            },
+                            {
+                                label: 'Rally',
+                                dateStart: '2023-11-05T013:00:00',
+                                duration: 13
+                            },
+                            {
+                                label: 'Final Rankings',
+                                dateStart: '2023-11-06T7:30:00',
+                                duration: 12,
+                                deadline: '2023-11-06T23:30:00'
+                            },
+                            {
+                                label: 'Awards',
+                                dateStart: '2023-11-07T06:00:00',
+                                duration: 12,
+                                deadline: '2023-11-08'
+                            }
+                        ]
+                    }
+                ]
+            })
+        };
+    </script>
+</head>
+
+<body class='default'>
+    <div id="gantt"></div>
+
+
+
+    <div style="position: absolute; bottom: 5px; right: 5px;">
+        <a href="https://www.jqwidgets.com/" alt="https://www.jqwidgets.com/"><img alt="https://www.jqwidgets.com/"
+                title="https://www.jqwidgets.com/"
+                src="https://www.jqwidgets.com/wp-content/design/i/logo-jqwidgets.png" /></a>
+    </div>
+</body>
+
+</html>

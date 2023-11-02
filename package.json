@@ -1,6 +1,6 @@
 {
   "name": "jqwidgets-framework",
-  "version": "15.0.0",
+  "version": "18.0.0",
   "description": "jQWidgets is an advanced Angular, Vue, React, Blazor, Web Components, jquery, ASP .NET MVC, Custom Elements and HTML5 UI framework.",
   "main": "jqwidgets/jqx-all.js",
   "repository": {
@@ -11,6 +11,7 @@
     "JavaScript",
     "jQuery",
     "HTML5",
+	"angular 17",
     "jQWidgets",
     "UI",
     "widget",

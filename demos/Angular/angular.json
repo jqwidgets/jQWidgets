@@ -10,9 +10,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/splitlayout/tablayout",
+            "outputPath": "dist/buttongroup/defaultfunctionality",
             "index": "",
-            "main": "src/splitlayout/tablayout/main.ts",
+            "main": "src/buttongroup/defaultfunctionality/main.ts",
             "polyfills": "polyfills.ts",
             "tsConfig": "tsconfig.app.json",
 		     "styles": [

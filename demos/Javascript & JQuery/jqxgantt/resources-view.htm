@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <title id='Description'>jqxGantt resources view.</title>
+        <meta name="description" content="JavaScript jqxGantt view." />
+
+        <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+        <link rel="stylesheet" href="../../../jqwidgets/styles/gantt/jqx.gantt.css" type="text/css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+        <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxgantt.js"></script>
+        <script type="text/javascript" src="../../../jqwidgets/jqxgantt.api.js"></script>
+        <script type="text/javascript" src="../../../scripts/demos.js"></script>
+        <style>
+            jqx-gantt-chart {
+                width: calc(100% - 300px);
+                --jqx-gantt-chart-task-label-color: white;
+                --jqx-gantt-chart-task-color: #517eb5;
+                --jqx-gantt-chart-project-color: #45af50;
+                --jqx-gantt-chart-project-label-color: var(--jqx-gantt-chart-task-label-color);
+                --jqx-gantt-chart-project-label-color-selected: var(--jqx-gantt-chart-project-label-color);
+                --jqx-gantt-chart-task-label-color-selected: var(--jqx-gantt-chart-task-label-color);
+            }
+
+            @media only screen and (max-width: 600px) {
+                .jqx-gantt-chart {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+            jqx-gantt-chart .jqx-task-item[group]>.jqx-task-label-container,
+            jqx-gantt-chart .jqx-tree-items-group>.jqx-tree-item-label-container {
+                font-weight: bold;
+            }
+
+            jqx-gantt-chart .gantt-chart-task-assignee {
+                border-radius: 50%;
+                color: white;
+                background: linear-gradient(45deg, #13547a, #80d0c7);
+                width: calc(var(--jqx-gantt-chart-task-default-height) - 12px);
+                height: calc(var(--jqx-gantt-chart-task-default-height) - 12px);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 1px 2px 0px grey;
+                margin-right: 5px;
+            }
+
+            jqx-gantt-chart .unassigned {
+                background: red;
+            }
+        </style>
+        <script type="text/javascript">
+            window.onload = () => {
+                const gantt = new jqxGantt("#gantt", {
+                    source: [
+                        {
+                            label: 'Office Configuration',
+                            synchronized: true,
+                            expanded: true,
+                            type: 'task',
+                            disableResources: true,
+                            tasks: [
+                                {
+                                    label: 'Office Setup',
+                                    synchronized: true,
+                                    expanded: true,
+                                    disableResources: true,
+                                    type: 'project',
+                                    tasks: [
+                                        {
+                                            label: 'Office Acquiring',
+                                            dateStart: '2023-01-02',
+                                            dateEnd: '2023-01-05',
+                                            type: 'task',
+                                            connections: [{ target: 3, type: 1 }],
+                                            resources: [{ id: 'taylor', label: 'Taylor' }, { id: 'michael', label: 'Michael' }]
+                                        },
+                                        {
+                                            label: 'Office Interior',
+                                            dateStart: '2023-01-05',
+                                            dateEnd: '2023-01-15',
+                                            type: 'task',
+                                            connections: [{ target: 4, type: 0 }],
+                                            resources: [{ id: 'anna', label: 'Anna' }, { id: 'samantha', label: 'Samantha' }, { id: 'christina', label: 'Christina' }]
+                                        },
+                                        {
+                                            label: 'Office Security',
+                                            dateStart: '2023-01-05',
+                                            dateEnd: '2023-01-10',
+                                            type: 'task',
+                                            connections: [{ target: 5, type: 1 }],
+                                            resources: { id: 'tommy', label: 'Tommy' }
+                                        }
+                                    ]
+                                },
+                                {
+                                    label: 'Employee Positioning',
+                                    dateStart: '2023-01-11',
+                                    dateEnd: '2023-01-15',
+                                    type: 'task',
+                                    resources: { id: 'carol', label: 'Carol' }
+                                },
+                                {
+                                    label: 'Cleaners',
+                                    dateStart: '2023-01-10',
+                                    dateEnd: '2023-01-15',
+                                    type: 'task',
+                                    resources: { id: 'rachel', label: 'Rachel' }
+                                },
+                                {
+                                    label: 'Catering',
+                                    dateStart: '2023-01-11',
+                                    dateEnd: '2023-01-16',
+                                    type: 'task'
+                                },
+                                {
+                                    label: 'Transport',
+                                    dateStart: '2023-01-12',
+                                    dateEnd: '2023-01-17',
+                                    type: 'task'
+                                },
+                                {
+                                    label: 'Human Resources',
+                                    dateStart: '2023-01-10',
+                                    dateEnd: '2023-01-20',
+                                    type: 'task',
+                                    resources: [{ id: 'annabell', label: 'Annabell' }, { id: 'monica', label: 'Monica' }]
+                                }
+                            ]
+                        },
+                        {
+                            label: 'Operations',
+                            synchronized: true,
+                            expanded: true,
+                            disableResources: true,
+                            type: 'project',
+                            tasks: [
+                                {
+                                    label: 'Development',
+                                    dateStart: '2023-01-20',
+                                    dateEnd: '2023-02-01',
+                                    type: 'task',
+                                    resources: [{ id: 'jason', label: 'Jason' }, { id: 'aaron', label: 'Aaron' }]
+                                },
+                                {
+                                    label: 'Marketing',
+                                    dateStart: '2023-01-10',
+                                    dateEnd: '2023-01-31',
+                                    type: 'task',
+                                    resources: { id: 'sonya', label: 'Sonya' }
+                                },
+                                {
+                                    label: 'Quality Assurance',
+                                    dateStart: '2023-02-01',
+                                    dateEnd: '2023-02-05',
+                                    type: 'task',
+                                    resources: { id: 'rick', label: 'Rick' }
+                                },
+                                {
+                                    label: 'Market Researchers',
+                                    dateStart: '2023-01-01',
+                                    dateEnd: '2023-01-05',
+                                    type: 'task',
+                                    resources: ['jason', 'sonya']
+                                },
+                                {
+                                    label: 'Managers',
+                                    dateStart: '2023-01-20',
+                                    dateEnd: '2023-01-31',
+                                    type: 'task',
+                                    resources: { id: 'ryan', label: 'Ryan' }
+                                }
+                            ]
+                        },
+                        {
+                            label: 'Production',
+                            synchronized: true,
+                            expanded: true,
+                            disableResources: true,
+                            type: 'project',
+                            progress: 50,
+                            resources: 4,
+                            tasks: [
+                                {
+                                    label: 'Technology',
+                                    synchronized: true,
+                                    expanded: true,
+                                    disableResources: true,
+                                    type: 'project',
+                                    tasks: [
+                                        {
+                                            label: 'Updates',
+                                            dateStart: '2023-01-16',
+                                            dateEnd: '2023-01-20',
+                                            type: 'task',
+                                            connections: [{ target: 19, type: 0 }],
+                                            resources: { id: 'oliver', label: 'Oliver' }
+                                        },
+                                        {
+                                            label: 'Lifecycle',
+                                            dateStart: '2023-01-16',
+                                            dateEnd: '2023-01-18',
+                                            type: 'task',
+                                            connections: [{ target: 20, type: 1 }],
+                                        },
+                                        {
+                                            label: 'Testing',
+                                            dateStart: '2023-01-20',
+                                            dateEnd: '2023-01-25',
+                                            type: 'task',
+                                            resources: { id: 'jessica', label: 'Jessica' }
+                                        }
+                                    ]
+                                },
+                                {
+                                    label: 'Servers and Backup',
+                                    dateStart: '2023-01-10',
+                                    dateEnd: '2023-01-12',
+                                    type: 'task',
+                                    resources: 'oliver'
+                                },
+                                {
+                                    label: 'Meetings',
+                                    dateStart: '2023-01-12',
+                                    dateEnd: '2023-01-15',
+                                    type: 'task',
+                                    resources: 'ryan'
+                                },
+                                {
+                                    label: 'Feedback and Improvements',
+                                    dateStart: '2023-02-01',
+                                    dateEnd: '2023-02-10',
+                                    type: 'task'
+                                }
+                            ]
+                        }
+                    ],
+                    taskColumns: [
+                        {
+                            label: 'Task Name',
+                            value: 'label',
+                            size: '40%'
+                        },
+                        {
+                            label: 'Start Time',
+                            value: 'dateStart',
+                            size: '25%'
+                        },
+                        {
+                            label: 'Assignee',
+                            value: 'resources',
+                            size: '20%',
+                            formatFunction: function (value, item) {
+                                const gantt = document.querySelector('jqx-gantt-chart'), resources = gantt.resources, tasks = gantt.tasks, getResource = (d) => resources.find((res) => res.id.toString() === d.toString());
+                                if (!item || item.disableResources) {
+                                    return '';
+                                }
+                                const itemResources = item.resources;
+                                if (!itemResources.length) {
+                                    return '<span class="gantt-chart-task-assignee unassigned">?</span>';
+                                }
+                                else if (itemResources.length === 1) {
+                                    return `<span>${getResource(itemResources[0]).label}</span>`;
+                                }
+                                else {
+                                    let result = '';
+                                    for (let i = 0; i < itemResources.length; i++) {
+                                        const resource = getResource(itemResources[i]);
+                                        if (resource) {
+                                            result += `<span class="gantt-chart-task-assignee ${resource.id.toLowerCase()}">${resource.label.charAt(0)}</span>`;
+                                        }
+                                    }
+                                    return result;
+                                }
+                            }
+                        },
+                        {
+                            label: 'Duration',
+                            value: 'duration'
+                        },
+                    ],
+                    treeSize: '30%',
+                    durationUnit: 'day',
+                    hideResourcePanel: true,
+                    groupByResources: true,
+                    view: 'week',
+                    timelineHeaderFormatFunction: function (date, type) {
+                        const gantt = document.querySelector('jqx-gantt-chart'), monthFormat = gantt.monthFormat;
+                        if (type === 'week') {
+                            const startDayOfWeek = new Date(date), endDateOfWeek = new Date(date);
+                            endDateOfWeek.setDate(date.getDate() + 6);
+                            return startDayOfWeek.toLocaleDateString(gantt.locale, { day: 'numeric', month: monthFormat, year: gantt.yearFormat }) + ' - ' +
+                                endDateOfWeek.toLocaleDateString(gantt.locale, { day: 'numeric', month: monthFormat, year: gantt.yearFormat });
+                        }
+                        if (type === 'day') {
+                            return date.toLocaleDateString(gantt.locale, { day: 'numeric', month: monthFormat });
+                        }
+                    }
+                })
+
+            };
+        </script>
+    </head>
+
+<body class='default'>
+    <div>
+        <p>
+            <b>Description</b><br />
+            Multiple tasks with resources assigned to some of them are displayed inside the GanttChart. <br />Those that
+            do not have tasks assigned have a question mark. Projects are not allowed to have resources assigned to
+            them, thanks to the <b>disableResources</b> property.<br />
+            A formatFunction is applied to the "Assignee" column which displays tasks with multiple resources assigned
+            in a different way.
+            <br />The Resource Panel is hidden in order to see only the Tasks.
+        </p>
+    </div>
+    <div id="gantt"></div>
+    <div style="position: absolute; bottom: 5px; right: 5px;">
+        <a href="https://www.jqwidgets.com/" alt="https://www.jqwidgets.com/"><img alt="https://www.jqwidgets.com/"
+                title="https://www.jqwidgets.com/"
+                src="https://www.jqwidgets.com/wp-content/design/i/logo-jqwidgets.png" /></a>
+    </div>
+</body>
+
+</html>

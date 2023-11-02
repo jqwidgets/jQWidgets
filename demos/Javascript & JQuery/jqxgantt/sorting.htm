@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id='Description'>jqxGantt Column sorting.</title>
+    <meta name="description" content="JavaScript jqxGantt with sorting." />
+
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/gantt/jqx.gantt.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgantt.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgantt.api.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+       window.onload = () => {
+            const gantt = new jqxGantt("#gantt", {
+                sortMode: 'one',
+                treeSize: '30%',
+                durationUnit: 'hour',
+                taskColumns: [
+                    {
+                        label: 'Tasks',
+                        value: 'label',
+                        sort: 'asc',
+                        size: '60%'
+                    },
+                    {
+                        label: 'Duration (hours)',
+                        value: 'duration',
+                        formatFunction: (date) => parseInt(date)
+                    }
+                ],
+                resourceColumns: [
+                    {
+                        label: 'Tasks',
+                        value: 'label',
+                        sort: 'asc',
+                        size: '60%'
+                    },
+                    {
+                        label: 'Work Time (hours)',
+                        value: 'workload',
+                        size: '20%'
+                    },
+                    {
+                        label: 'Progress',
+                        value: 'progress'
+                    }
+                ],
+                source: [
+                    {
+                        label: 'Project A',
+                        dateStart: '2023-01-10',
+                        dateEnd: '2023-03-10',
+                        type: 'project',
+                        expanded: true,
+                        synchronized: true,
+                        tasks: [
+                            {
+                                label: 'Task Z',
+                                dateStart: '2023-03-01',
+                                duration: 1500,
+                                progress: 30,
+                                connections: [{ target: 2, type: 1 }],
+                                resources: [{ id: 'resource1', label: 'Resource 1' }, { id: 'resource2', label: 'Resource 2' }]
+                            },
+                            {
+                                label: 'Task Y',
+                                dateStart: '2023-04-11',
+                                duration: 1500
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Task C',
+                        dateStart: '2023-05-17',
+                        duration: 1000,
+                        progress: 45,
+                        connections: [{ target: 4, type: 1 }],
+                        resources: [{ id: 'resource3', label: 'Resource 3' }, { id: 'resource4', label: 'Resource 4' }]
+                    },
+                    {
+                        label: 'Task D',
+                        dateStart: '2023-07-02',
+                        duration: 1000,
+                        progress: 20,
+                        connections: [{ target: 5, type: 1 }]
+                    },
+                    {
+                        label: 'Task E',
+                        dateStart: '2023-08-01',
+                        dateEnd: '2023-09-10',
+                        progress: 50,
+                        resources: [{ id: 'resource5', label: 'Resource 5' }]
+                    },
+                    {
+                        label: 'Project B',
+                        dateStart: '2023-09-11',
+                        dateEnd: '2023-10-10',
+                        type: 'project',
+                        expanded: true,
+                        synchronized: true,
+                        tasks: [
+                            {
+                                label: 'Task A',
+                                dateStart: '2023-10-12',
+                                dateEnd: '2023-11-11',
+                                connections: [{ target: 8, type: 1 }]
+                            },
+                            {
+                                label: 'Task C',
+                                dateStart: '2023-10-17',
+                                dateEnd: '2023-11-31',
+                                connections: [{ target: 9, type: 1 }]
+                            },
+                            {
+                                label: 'Task B',
+                                dateStart: '2023-11-01',
+                                dateEnd: '2023-12-31',
+                                progress: 10,
+                                resources: [{ id: 'resource6', label: 'Resource 6' }]
+                            }
+                        ]
+                    }
+                ]
+            });
+        };
+    </script>
+</head>
+
+<body class='default'>
+    <div>
+        <p>Gantt Chart can be sorted by columns by clicking on the header of the desired column. The first click on
+            the header will sort the Tasks in 'ascending' order. Second click will sort them in 'descending' and the
+            third will remove the sorting.</p>
+    </div>
+    <div id="gantt"></div>
+    <div style="position: absolute; bottom: 5px; right: 5px;">
+        <a href="https://www.jqwidgets.com/" alt="https://www.jqwidgets.com/"><img alt="https://www.jqwidgets.com/"
+                title="https://www.jqwidgets.com/"
+                src="https://www.jqwidgets.com/wp-content/design/i/logo-jqwidgets.png" /></a>
+    </div>
+</body>
+
+</html>

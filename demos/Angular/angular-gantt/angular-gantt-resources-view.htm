@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title id='Description'>Angular Gantt Resources view.</title>
+	<base href="./../dist/gantt/resources-view/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./../../../node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="./../../../node_modules/jqwidgets-ng/jqwidgets/styles/gantt/jqx.gantt.css" type="text/css" />
+    <link rel="stylesheet" href="./../../../node_modules/jqwidgets-ng/jqwidgets/styles/jqx.light.css" type="text/css" />
+
+    <!-- jQWidgets -->
+    <script src="./../../../scripts/demos.js"></script>
+	<style>
+   jqx-gantt-chart {
+            width: calc(100% - 300px);
+            --jqx-gantt-chart-task-label-color: white;
+            --jqx-gantt-chart-task-color: #517eb5;
+            --jqx-gantt-chart-project-color: #45af50;
+            --jqx-gantt-chart-project-label-color: var(--jqx-gantt-chart-task-label-color);
+            --jqx-gantt-chart-project-label-color-selected: var(--jqx-gantt-chart-project-label-color);
+            --jqx-gantt-chart-task-label-color-selected: var(--jqx-gantt-chart-task-label-color);
+        }
+
+        @media only screen and (max-width: 600px) {
+            .jqx-gantt-chart {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        jqx-gantt-chart .jqx-task-item[group]>.jqx-task-label-container,
+        jqx-gantt-chart .jqx-tree-items-group>.jqx-tree-item-label-container {
+            font-weight: bold;
+        }
+
+        jqx-gantt-chart .gantt-chart-task-assignee {
+            border-radius: 50%;
+            color: white;
+            background: linear-gradient(45deg, #13547a, #80d0c7);
+            width: calc(var(--jqx-gantt-chart-task-default-height) - 12px);
+            height: calc(var(--jqx-gantt-chart-task-default-height) - 12px);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 2px 0px grey;
+            margin-right: 5px;
+        }
+
+        jqx-gantt-chart .unassigned {
+            background: red;
+        }
+	</style>
+    </head>
+        
+
+<!-- Display the application -->
+<body>
+
+    <div class="example-description">
+     <p>
+            <b>Description</b><br />
+            Multiple tasks with resources assigned to some of them are displayed inside the GanttChart. <br />Those that
+            do not have tasks assigned have a question mark. Projects are not allowed to have resources assigned to
+            them, thanks to the <b>disableResources</b> property.<br />
+            A formatFunction is applied to the "Assignee" column which displays tasks with multiple resources assigned
+            in a different way.
+            <br />The Resource Panel is hidden in order to see only the Tasks.
+        </p>	<br/><br/>
+    </div>
+
+    <app-root>Loading...</app-root>
+    <script src="runtime.js" type="module"></script><script src="polyfills.js" type="module"></script>
+	<script src="main.js" type="module"></script>
+
+</body>
+
+</html>

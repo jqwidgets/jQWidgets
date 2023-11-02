@@ -1,4 +1,11 @@
-﻿jQWidgets v17.0.1 Release, October-19-2023
+﻿jQWidgets v18.0.0 Release, November-02-2023
+
+What's New:
+
+Gantt Chart Component for Angular & Javascript.
+
+
+jQWidgets v17.0.1 Release, October-19-2023
 
 What's Fixed:
 

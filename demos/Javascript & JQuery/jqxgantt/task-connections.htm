@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>jqxGantt Task connections.</title>
+    <meta name="description" content="JavaScript jqxGantt Task connections." />
+
+    <link rel="stylesheet" href="../../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../../jqwidgets/styles/gantt/jqx.gantt.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    
+    <script type="text/javascript" src="../../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgantt.js"></script>
+    <script type="text/javascript" src="../../../jqwidgets/jqxgantt.api.js"></script>
+    <script type="text/javascript" src="../../../scripts/demos.js"></script>
+    <script type="text/javascript">
+       window.onload = () => {
+            const gantt = new jqxGantt('#gantt', {
+                height: 'auto',
+                source: [
+                    {
+                        //Note: dateStart/dateEnd and min/max of syncronized projects are automatically calculated based on the tasks
+                        label: 'Project 1',
+                        synchronized: true,
+                        expanded: true,
+                        type: 'project',
+                        connections: [
+                            {
+                                target: 1,
+                                type: 0
+                            }
+                        ],
+                        tasks: [
+                            {
+                                label: 'Task 1.1',
+                                dateStart: '2022-05-10',
+                                dateEnd: '2023-04-10',
+                                type: 'task',
+                                connections: [
+                                    {
+                                        target: 2,
+                                        type: 2
+                                    }
+                                ]
+                            },
+                            {
+                                label: 'Task 1.2',
+                                dateStart: '2022-03-27',
+                                dateEnd: '2023-06-10',
+                                type: 'task'
+                            },
+                            {
+                                label: 'Milestone 1',
+                                dateEnd: '2023-03-15',
+                                type: 'milestone',
+                                connections: [
+                                    {
+                                        target: 4,
+                                        type: 1
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Task 2',
+                        dateStart: '2023-06-21',
+                        dateEnd: '2023-12-10',
+                        type: 'task'
+                    }
+                ]
+            });
+        };
+    </script>
+</head>
+
+<body class='default'>
+    <b>Description:</b> Connections can be created/removed using methods as well.
+    <ul>
+        <li>Add Connection - Create's a connection between "Task 1.2" and "Milestone 1" of type Start-to-Start(0).</li>
+        <li>Remove Specific Connection - Removes the selected connection from the Drop Down List.</li>
+        <li>
+            Remove All Connections - Removes all connections between the tasks.
+        </li>
+    </ul>
+    <div id="gantt"></div>
+
+
+
+    <div style="position: absolute; bottom: 5px; right: 5px;">
+        <a href="https://www.jqwidgets.com/" alt="https://www.jqwidgets.com/"><img alt="https://www.jqwidgets.com/"
+                title="https://www.jqwidgets.com/"
+                src="https://www.jqwidgets.com/wp-content/design/i/logo-jqwidgets.png" /></a>
+    </div>
+</body>
+
+</html>
