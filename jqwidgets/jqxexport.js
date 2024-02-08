@@ -264,103 +264,103 @@ ${that.getRowStyle()}${that.getColumnStyle()}
             that.getMergedCellsInfo(mergedMainCells, mergedSecondaryCells);
 
             mainLoop:
-            for (let i = startIndex; i < data.length; i++) {
-                const currentRecord = data[i],
-                    row = i - startIndex;
-                let n = that.getAlternationIndex(row, ' rowN'),
-                    toCollapse = '',
-                    level = '',
-                    groupId = '',
-                    outlineLevel = 0;
+                for (let i = startIndex; i < data.length; i++) {
+                    const currentRecord = data[i],
+                        row = i - startIndex;
+                    let n = that.getAlternationIndex(row, ' rowN'),
+                        toCollapse = '',
+                        level = '',
+                        groupId = '',
+                        outlineLevel = 0;
 
-                if (that.actualHierarchy) {
-                    if (currentRecord._collapsed) {
-                        toCollapse = ' collapsed';
+                    if (that.actualHierarchy) {
+                        if (currentRecord._collapsed) {
+                            toCollapse = ' collapsed';
+                        }
+
+                        level = ` level="${currentRecord._level}"`;
                     }
+                    else if (that.groupBy) {
+                        for (let k = 0; k < that.groupBy.length; k++) {
+                            const datafield = that.groupBy[k],
+                                currentGroup = currentRecord[datafield],
+                                currentGroupLabel = that.groups[datafield][currentGroup];
 
-                    level = ` level="${currentRecord._level}"`;
-                }
-                else if (that.groupBy) {
-                    for (let k = 0; k < that.groupBy.length; k++) {
-                        const datafield = that.groupBy[k],
-                            currentGroup = currentRecord[datafield],
-                            currentGroupLabel = that.groups[datafield][currentGroup];
+                            groupId += currentGroup;
 
-                        groupId += currentGroup;
-
-                        if (groupsHandled.indexOf(groupId) === -1) {
-                            htmlContent += `            <tr class="row">
+                            if (groupsHandled.indexOf(groupId) === -1) {
+                                htmlContent += `            <tr class="row">
                 <td class="column group" style="padding-left: ${outlineLevel * 25}px;" colspan="${that.datafields.length}">${currentGroupLabel}</td>
             </tr>`;
-                            groupsHandled.push(groupId);
-                            i--;
-                            continue mainLoop;
+                                groupsHandled.push(groupId);
+                                i--;
+                                continue mainLoop;
+                            }
+
+                            outlineLevel++;
+                        }
+                    }
+
+                    let currentContent = `            <tr class="row row${row}${n}${toCollapse}"${level}`;
+
+                    if (!fileName) {
+                        currentContent += ' style="page-break-inside: avoid;"'
+                    }
+
+                    currentContent += '>\n';
+
+                    for (let j = 0; j < datafields.length; j++) {
+                        const cellCode = j + ',' + (row);
+                        let colspan = 1, rowspan = 1;
+
+                        if (mergedMainCells[cellCode]) {
+                            colspan = mergedMainCells[cellCode].colspan;
+                            rowspan = mergedMainCells[cellCode].rowspan;
+                        }
+                        else if (mergedSecondaryCells[cellCode]) {
+                            continue;
                         }
 
-                        outlineLevel++;
-                    }
-                }
+                        const datafield = datafields[j];
+                        let value = currentRecord[datafield],
+                            indent = '';
 
-                let currentContent = `            <tr class="row row${row}${n}${toCollapse}"${level}`;
+                        if (that.actualHierarchy && j === 0) {
+                            let sign = '';
 
-                if (!fileName) {
-                    currentContent += ' style="page-break-inside: avoid;"'
-                }
+                            if (currentRecord._expanded) {
+                                sign = that.collapseChar;
+                            }
+                            else if (currentRecord._expanded === false) {
+                                sign = that.expandChar;
+                            }
 
-                currentContent += '>\n';
-
-                for (let j = 0; j < datafields.length; j++) {
-                    const cellCode = j + ',' + (row);
-                    let colspan = 1, rowspan = 1;
-
-                    if (mergedMainCells[cellCode]) {
-                        colspan = mergedMainCells[cellCode].colspan;
-                        rowspan = mergedMainCells[cellCode].rowspan;
-                    }
-                    else if (mergedSecondaryCells[cellCode]) {
-                        continue;
-                    }
-
-                    const datafield = datafields[j];
-                    let value = currentRecord[datafield],
-                        indent = '';
-
-                    if (that.actualHierarchy && j === 0) {
-                        let sign = '';
-
-                        if (currentRecord._expanded) {
-                            sign = that.collapseChar;
-                        }
-                        else if (currentRecord._expanded === false) {
-                            sign = that.expandChar;
+                            indent = `<div class="toggle-element" style="margin-left: ${25 * (currentRecord._level - 1) + 5}px;" expanded>${sign}</div>`;
                         }
 
-                        indent = `<div class="toggle-element" style="margin-left: ${25 * (currentRecord._level - 1) + 5}px;" expanded>${sign}</div>`;
+                        value = that.getFormattedValue(value, datafield);
+
+                        let css = '';
+
+                        if (style && style.columns && style.columns[datafield] && style.columns[datafield][row]) {
+                            const uniqueStyle = style.columns[datafield][row];
+
+                            css += `border-color: ${uniqueStyle.border}; background-color: ${uniqueStyle.background}; color: ${uniqueStyle.color};"`;
+                        }
+
+                        if (j === 0 && outlineLevel > 1) {
+                            css += `padding-left: ${(outlineLevel - 1) * 25}px;"`;
+                        }
+
+                        if (css) {
+                            css = ` style="${css}"`;
+                        }
+
+                        currentContent += `                <td class="column column${datafield}"${css} colspan="${colspan}" rowspan="${rowspan}">${indent + value}</td>\n`;
                     }
 
-                    value = that.getFormattedValue(value, datafield);
-
-                    let css = '';
-
-                    if (style && style.columns && style.columns[datafield] && style.columns[datafield][row]) {
-                        const uniqueStyle = style.columns[datafield][row];
-
-                        css += `border-color: ${uniqueStyle.border}; background-color: ${uniqueStyle.background}; color: ${uniqueStyle.color};"`;
-                    }
-
-                    if (j === 0 && outlineLevel > 1) {
-                        css += `padding-left: ${(outlineLevel - 1) * 25}px;"`;
-                    }
-
-                    if (css) {
-                        css = ` style="${css}"`;
-                    }
-
-                    currentContent += `                <td class="column column${datafield}"${css} colspan="${colspan}" rowspan="${rowspan}">${indent + value}</td>\n`;
+                    htmlContent += currentContent + '            </tr>\n';
                 }
-
-                htmlContent += currentContent + '            </tr>\n';
-            }
 
             htmlContent += `        </tbody>
     </table>
@@ -470,24 +470,24 @@ ${that.getRowStyle()}${that.getColumnStyle()}
                             overal = 0;
 
                         mainLoop:
-                        for (let i = startTable; i <= endTable; i++) {
-                            let start = currentColumn,
-                                span = 0;
+                            for (let i = startTable; i <= endTable; i++) {
+                                let start = currentColumn,
+                                    span = 0;
 
-                            while (mapping[currentColumn] === currentTable) {
-                                currentColumn++;
-                                overal++;
-                                span++;
+                                while (mapping[currentColumn] === currentTable) {
+                                    currentColumn++;
+                                    overal++;
+                                    span++;
 
-                                if (overal === colspan) {
-                                    splitCells.push({ start: start, span: span });
-                                    break mainLoop;
+                                    if (overal === colspan) {
+                                        splitCells.push({ start: start, span: span });
+                                        break mainLoop;
+                                    }
                                 }
-                            }
 
-                            splitCells.push({ start: start, span: span });
-                            currentTable = mapping[currentColumn];
-                        }
+                                splitCells.push({ start: start, span: span });
+                                currentTable = mapping[currentColumn];
+                            }
 
                         colspan = splitCells[0].span;
 
@@ -527,7 +527,7 @@ ${that.getRowStyle()}${that.getColumnStyle()}
 
             if (alternationCount &&
                 (((rowsDefinition.alternationStart === undefined || row >= rowsDefinition.alternationStart) &&
-                    (rowsDefinition.alternationEnd === undefined || row <= rowsDefinition.alternationEnd)) ||
+                        (rowsDefinition.alternationEnd === undefined || row <= rowsDefinition.alternationEnd)) ||
                     rowsDefinition.alternationStart === rowsDefinition.alternationEnd)) {
                 return prefix + (row % rowsDefinition.alternationCount);
             }
@@ -608,76 +608,77 @@ ${that.getRowStyle()}${that.getColumnStyle()}
             that.getMergedCellsInfo(mergedMainCells, mergedSecondaryCells, mapping);
 
             mainLoop:
-            for (let i = startIndex; i < data.length; i++) {
-                const currentRecord = data[i];
-                let groupId = '',
-                    outlineLevel = 0;
+                for (let i = startIndex; i < data.length; i++) {
+                    const currentRecord = data[i];
+                    let groupId = '',
+                        outlineLevel = 0;
 
-                if (that.groupBy) {
-                    for (let k = 0; k < that.groupBy.length; k++) {
-                        const datafield = that.groupBy[k],
-                            currentGroup = currentRecord[datafield],
-                            currentGroupLabel = that.groups[datafield][currentGroup];
+                    if (that.groupBy) {
+                        for (let k = 0; k < that.groupBy.length; k++) {
+                            const datafield = that.groupBy[k],
+                                currentGroup = currentRecord[datafield],
+                                currentGroupLabel = that.groups[datafield][currentGroup];
 
-                        groupId += currentGroup;
+                            groupId += currentGroup;
 
-                        if (groupsHandled.indexOf(groupId) === -1) {
-                            that.createGroupHeaderRow(tables, { text: currentGroupLabel, style: ['row', 'cell', 'group'], marginLeft: outlineLevel * 7.5 });
-                            groupsHandled.push(groupId);
-                            i--;
-                            continue mainLoop;
+                            if (groupsHandled.indexOf(groupId) === -1) {
+                                that.createGroupHeaderRow(tables, { text: currentGroupLabel, style: ['row', 'cell', 'group'], marginLeft: outlineLevel * 7.5 });
+                                groupsHandled.push(groupId);
+                                i--;
+                                continue mainLoop;
+                            }
+
+                            outlineLevel++;
+                        }
+                    }
+
+                    const tableRow = createTableRow(),
+                        row = i - startIndex;
+                    let n = that.getAlternationIndex(row, '');
+
+                    for (let j = 0; j < datafields.length; j++) {
+                        const datafield = datafields[j],
+                            entry = { style: ['row', 'row' + row, 'cell', 'cell' + datafield] },
+                            tableIndex = mapping[j] || 0;
+
+                        if (n !== undefined) {
+                            entry.style.splice(1, 0, 'rowN' + n);
                         }
 
-                        outlineLevel++;
-                    }
-                }
+                        if (that.mergedCellsPDF) {
+                            const cellCode = j + ',' + row,
+                                mergeInfo = mergedMainCells[cellCode];
 
-                const tableRow = createTableRow(),
-                    row = i - startIndex;
-                let n = that.getAlternationIndex(row, '');
+                            if (mergeInfo) {
+                                entry.colSpan = mergeInfo.colspan;
+                                entry.rowSpan = mergeInfo.rowspan;
 
-                for (let j = 0; j < datafields.length; j++) {
-                    const datafield = datafields[j],
-                        entry = { style: ['row', 'row' + row, 'cell', 'cell' + datafield] },
-                        tableIndex = mapping[j] || 0;
-
-                    if (n !== undefined) {
-                        entry.style.splice(1, 0, 'rowN' + n);
-                    }
-
-                    if (that.mergedCellsPDF) {
-                        const cellCode = j + ',' + row,
-                            mergeInfo = mergedMainCells[cellCode];
-
-                        if (mergeInfo) {
-                            entry.colSpan = mergeInfo.colspan;
-                            entry.rowSpan = mergeInfo.rowspan;
-
-                            if (mergeInfo.originalCell !== undefined) {
-                                entry.text = '';
-                                entry.style[entry.style.length - 1] = 'cell' + datafields[mergeInfo.originalCell];
-                                tableRow[tableIndex].push(entry);
+                                if (mergeInfo.originalCell !== undefined) {
+                                    entry.text = '';
+                                    entry.style[entry.style.length - 1] = 'cell' + datafields[mergeInfo.originalCell];
+                                    tableRow[tableIndex].push(entry);
+                                    continue;
+                                }
+                            }
+                            else if (mergedSecondaryCells[cellCode]) {
+                                tableRow[tableIndex].push({});
                                 continue;
                             }
                         }
-                        else if (mergedSecondaryCells[cellCode]) {
-                            tableRow[tableIndex].push({});
-                            continue;
-                        }
+
+                        const value = that.getFormattedValue(currentRecord[datafield], datafield);
+
+                        // calling the .toString() function on a null value will throw an exception so set the text value to an empty string
+                        entry.text = value !== null ? value.toString() : "";
+                        that.getUniqueStylePDF(entry, datafield, row);
+                        that.setIndentation(entry, { j: j, currentRecord: currentRecord, value: value, outlineLevel: outlineLevel });
+                        tableRow[tableIndex].push(entry);
                     }
 
-                    const value = that.getFormattedValue(currentRecord[datafield], datafield);
-
-                    entry.text = value.toString();
-                    that.getUniqueStylePDF(entry, datafield, row);
-                    that.setIndentation(entry, { j: j, currentRecord: currentRecord, value: value, outlineLevel: outlineLevel });
-                    tableRow[tableIndex].push(entry);
+                    for (let k = 0; k < tables.length; k++) {
+                        tables[k].body.push(tableRow[k]);
+                    }
                 }
-
-                for (let k = 0; k < tables.length; k++) {
-                    tables[k].body.push(tableRow[k]);
-                }
-            }
 
             if (styleInfo) {
                 for (let i = 0; i < tables.length; i++) {
@@ -1007,7 +1008,7 @@ ${that.getRowStyle()}${that.getColumnStyle()}
                         }
 
                         const datafield = j === headerRows - 1 || rowspan + j === headerRows ?
-                            table.datafields[k] : null,
+                                table.datafields[k] : null,
                             entry = {
                                 text: currentLabel, colSpan: colspan, rowSpan: rowspan
                             };
@@ -1634,57 +1635,57 @@ ${that.getRowStyle()}${that.getColumnStyle()}
             }
 
             mainLoop:
-            for (let i = 0; i < data.length; i++) {
-                const currentRecord = data[i],
-                    rowNumber = i + 1 + rowNumberCorrection;
-                let outlineLevel = 0,
-                    outlineXML = '';
+                for (let i = 0; i < data.length; i++) {
+                    const currentRecord = data[i],
+                        rowNumber = i + 1 + rowNumberCorrection;
+                    let outlineLevel = 0,
+                        outlineXML = '';
 
-                if (!that.exportHeader ||
-                    (!that.complexHeader && i !== 0) ||
-                    (that.complexHeader && i >= that.complexHeader.length)) {
-                    let groupId = '';
+                    if (!that.exportHeader ||
+                        (!that.complexHeader && i !== 0) ||
+                        (that.complexHeader && i >= that.complexHeader.length)) {
+                        let groupId = '';
 
-                    for (let k = 0; k < that.groupBy.length; k++) {
-                        const datafield = that.groupBy[k],
-                            currentGroup = currentRecord[datafield],
-                            currentGroupLabel = that.groups[datafield][currentGroup];
+                        for (let k = 0; k < that.groupBy.length; k++) {
+                            const datafield = that.groupBy[k],
+                                currentGroup = currentRecord[datafield],
+                                currentGroupLabel = that.groups[datafield][currentGroup];
 
-                        groupId += currentGroup;
+                            groupId += currentGroup;
 
-                        if (groupsHandled.indexOf(groupId) === -1) {
-                            let sharedStringIndex = sharedStrings.indexOf(currentGroupLabel);
+                            if (groupsHandled.indexOf(groupId) === -1) {
+                                let sharedStringIndex = sharedStrings.indexOf(currentGroupLabel);
 
-                            xmlContent += that.generateGroupRow({
-                                rowNumber: rowNumber,
-                                outlineLevel: outlineLevel,
-                                numberOfColumns: numberOfColumns,
-                                sharedStringIndex: sharedStringIndex,
-                                mergedCells: mergedCells
-                            });
-                            groupsHandled.push(groupId);
-                            i--;
-                            rowNumberCorrection++;
-                            continue mainLoop;
+                                xmlContent += that.generateGroupRow({
+                                    rowNumber: rowNumber,
+                                    outlineLevel: outlineLevel,
+                                    numberOfColumns: numberOfColumns,
+                                    sharedStringIndex: sharedStringIndex,
+                                    mergedCells: mergedCells
+                                });
+                                groupsHandled.push(groupId);
+                                i--;
+                                rowNumberCorrection++;
+                                continue mainLoop;
+                            }
+
+                            outlineLevel++;
                         }
 
-                        outlineLevel++;
+                        outlineXML = ` outlineLevel="${outlineLevel}"`;
                     }
 
-                    outlineXML = ` outlineLevel="${outlineLevel}"`;
+                    let recordXML = `        <row r="${rowNumber}"${outlineXML} spans="1:${numberOfColumns}"${that.getCustomRowHeight(rowNumber - 1)} x14ac:dyDescent="0.45">\n`;
+
+                    for (let j = 0; j < datafields.length; j++) {
+                        const s = that.getXLSXCellStyle(r(j, i + 1));
+
+                        recordXML += that.getActualCellData(currentRecord[datafields[j]], { r: r(j, rowNumber), s: s }, sharedStrings);
+                    }
+
+                    recordXML += '        </row>\n';
+                    xmlContent += recordXML;
                 }
-
-                let recordXML = `        <row r="${rowNumber}"${outlineXML} spans="1:${numberOfColumns}"${that.getCustomRowHeight(rowNumber - 1)} x14ac:dyDescent="0.45">\n`;
-
-                for (let j = 0; j < datafields.length; j++) {
-                    const s = that.getXLSXCellStyle(r(j, i + 1));
-
-                    recordXML += that.getActualCellData(currentRecord[datafields[j]], { r: r(j, rowNumber), s: s }, sharedStrings);
-                }
-
-                recordXML += '        </row>\n';
-                xmlContent += recordXML;
-            }
 
             xmlContent += `    </sheetData>${that.getMergedCells(mergedCells)}
     <pageMargins left="0.7" right="0.7" top="0.75" bottom="0.75" header="0.3" footer="0.3" />
@@ -1700,6 +1701,12 @@ ${that.getRowStyle()}${that.getColumnStyle()}
         getActualCellData(currentValue, details, sharedStrings) {
             const r = details.r,
                 s = details.s || ' s="0"';
+
+            // return an empty cell instead of displaying the text "null"
+            // also prevent an error from occurring on date fields when calling the getTime() function on a null value
+            if(currentValue === null) {
+                return  `            <c r="${r}" t="b"${s}><v></v></c>\n`;
+            }
 
             if (typeof currentValue === 'string') {
                 return `            <c r="${r}" t="s"${s}>
@@ -1764,10 +1771,10 @@ ${that.getRowStyle()}${that.getColumnStyle()}
             }
 
             const styles = {
-                header: 'border: 1px solid black; padding: 5px; ',
-                column: 'white-space: nowrap; overflow: hidden; border: 1px solid black; padding: 5px; ',
-                group: 'background-color: #FFFFFF; color: #000000; font-weight: bold; '
-            },
+                    header: 'border: 1px solid black; padding: 5px; ',
+                    column: 'white-space: nowrap; overflow: hidden; border: 1px solid black; padding: 5px; ',
+                    group: 'background-color: #FFFFFF; color: #000000; font-weight: bold; '
+                },
                 sampleRecord = that.data[0];
             let generatedStyle = '';
 
@@ -2341,8 +2348,8 @@ ${attr.formula}        </cfRule>
         }
 
         /**
-            * Returns outlineLevel.
-            */
+         * Returns outlineLevel.
+         */
         getOutlineLevel(record) {
             if (!this.actualHierarchy || record._level === 1) {
                 return '';
@@ -3028,7 +3035,7 @@ ${attr.formula}        </cfRule>
 
                 if (rowsDefinition.alternationCount &&
                     (((rowsDefinition.alternationStart === undefined || row >= rowsDefinition.alternationStart) &&
-                        (rowsDefinition.alternationEnd === undefined || row <= rowsDefinition.alternationEnd)) ||
+                            (rowsDefinition.alternationEnd === undefined || row <= rowsDefinition.alternationEnd)) ||
                         rowsDefinition.alternationStart === rowsDefinition.alternationEnd)) {
                     const start = rowsDefinition.alternationStart || 0,
                         i = (row - start) % rowsDefinition.alternationCount;
@@ -3293,6 +3300,17 @@ ${attr.formula}        </cfRule>
                         continue;
                     }
 
+                    // render the xlsx file column with the correct cell format
+                    let dataValue = null;
+                    // loop through each row for a non-null value for this column
+                    for (let i = 1; i < that.data.length; i++) {
+                        if(that.data[i][datafield] !== null) {
+                            // set the dataValue to send to the getXLSXFormat function to get the correct cell format
+                            dataValue = that.data[i][datafield];
+                            break;
+                        }
+                    }
+
                     if (that.data[that.data.length - 1][datafield]) {
                         const XLSXFormat = that.getXLSXFormat(style.columns[datafield].format, that.data[that.data.length - 1][datafield]);
 
@@ -3328,9 +3346,9 @@ ${attr.formula}        </cfRule>
             }
 
             const fonts = {
-                xml: '<font><sz val="11" /><color theme="1" /><name val="Calibri" /><family val="2" /><charset val="204" /><scheme val="minor" /></font>',
-                collection: ['default']
-            },
+                    xml: '<font><sz val="11" /><color theme="1" /><name val="Calibri" /><family val="2" /><charset val="204" /><scheme val="minor" /></font>',
+                    collection: ['default']
+                },
                 fills = {
                     xml: '<fill><patternFill patternType="none" /></fill><fill><patternFill patternType="gray125" /></fill>',
                     collection: ['default', 'gray125']
