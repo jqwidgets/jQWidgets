@@ -1,6 +1,6 @@
 /*
-jQWidgets v18.0.0 (2023-Nov)
-Copyright (c) 2011-2023 jQWidgets.
+jQWidgets v19.0.0 (2024-Feb)
+Copyright (c) 2011-2024 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
@@ -110,6 +110,7 @@ export class jqxListBoxComponent implements ControlValueAccessor, OnChanges, Aft
    }; 
 
  ngAfterViewChecked() {
+    if (typeof JQXLite === 'undefined') { return; } 
     if (this.container) {
         if (this.content !== this.container.innerHTML) {
             this.content = this.container.innerHTML;

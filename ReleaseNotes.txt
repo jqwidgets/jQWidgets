@@ -1,4 +1,44 @@
-﻿jQWidgets v18.0.0 Release, November-02-2023
+﻿jQWidgets v19.0.0 Release, Feb-20-2024
+
+What's New: 
+
+Sparklines in jqxGrid
+Context Menu in jqxGrid
+
+What's Improved:
+
+Added 'blur' method to jqxNumberInput
+Added 'filterAppointments' method to jqxScheduler.
+
+What's Fixed:
+
+Fixed an issue in jqxPopover. Popover was not closing, if a button is clicked.
+Fixed an issue in jqxCheckboxGroup and jqxRadioButtonGroup. An error occurs when the ‘disabled’ attribute is set to true. Doesn't happen if the "disable" method is used.
+Fixed an issue in jqxCheckboxGroup and jqxRadioButtonGroup. If the ‘change’ attribute is not specified, values cannot be retrieved using the ‘val’ or ‘getValue’ method.
+Fixed an issue in jqxCheckboxGroup and jqxRadioButtonGroup. Setting values in disabled state doesn't trigger the 'change' attribute. This can be verified by clicking "Disable" and "Set Items"
+Fixed an issue in jqxDropDownList. The 'change' event doesn't work when using keyboard to select an item
+Fixed an issue in jqxKanban. 'updateItem' of an item when passing empty tags does not work.
+Fixed an issue in jqxEditor. When the editor is displayed in a window, the color pickers are displayd below the window.
+Fixed an issue in jqxSplitLayout for Angular. The component did not render in Angular 17.
+Fixed an issue in jqxTextArea. The 'theme' property cannot be changed dynamically.
+Fixed an issue in jqxMaskedInput. The 'CapsLock' did not work.
+Fixed an issue in jqxNumberInput. Can't enter decimal point on mobile devices.
+Fixed an issue in jqxRating with the Fluent theme.
+Fixed an issue in jqxGrid. Column reorder duplicates column over another when we drop over a checkbox column.
+Fixed an issue in jqxGrid. When the Grid is localized, the filter row list filter was not working correctly.
+Fixed an issue in jqxGrid. 'getselectedcells' method sometimes returns wrong result.
+Fixed an issue in jqxGrid. Grouping rows appear empty if there is only one visible column.
+Fixed an issue in jqxGrid. jqxGrid sometimes displays unnecessary scrollbar.
+Fixed an issue in jqxGrid. Applying state to a grouped grid sometimes reorders the columns incorrectly.
+Fixed an issue in jqxGrid. Incorrect column calculation when some columns are with 'px' and others are with 'percentage'.
+Fixed an issue in jqxGrid. 'columnresize' property cannot be changed dynamically.
+Fixed an issue in jqxGrid. 'getgroup' does not return the 'expanded' state of the group.
+Fixed an issue in jqxGrid. Group aggregates are not updated after editing a cell.
+Fixed an issue in jqxGrid. When 'sortmode' is 'many', the savestate does not save all sort options.
+Fixed an issue in jqxGrid. 'savestate' always saves column widths in pixels instead of the original value.
+
+
+jQWidgets v18.0.0 Release, November-02-2023
 
 What's New:
 

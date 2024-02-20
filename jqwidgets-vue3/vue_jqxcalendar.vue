@@ -665,6 +665,7 @@
                  },
             }
             function twoWayBinding() {
+				const element = JQXLite(componentSelector).jqxCalendar('element');
                 const value = JQXLite(componentSelector).jqxCalendar('val');
                 context.emit('input', value);
                 context.emit('update:modelValue', element.value);

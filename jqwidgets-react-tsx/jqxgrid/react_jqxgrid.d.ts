@@ -392,6 +392,11 @@ interface IGridOptions {
     showcolumnheaderlines?: boolean;
     adaptive?: boolean;
     compact?: boolean;
+    contextmenuitems?: [];
+    contextmenuenabled?: [];
+    contextmenuwidth?: [];
+    contextmenuheight?: [];
+    contextmenuitemclick?: [];
     adaptivewidth?: number;
     commandcolumn?: boolean;
     commandcolumnrenderer?: (row?: number, columnfield?: string, active?: any) => string;

@@ -76,6 +76,11 @@
                 default: false,
                 type: Boolean
             },
+            contextmenuitems: [],
+            contextmenuenabled: [],
+            contextmenuwidth: [],
+            contextmenuheight: [],
+            contextmenuitemclick: [],
             adaptivewidth: Number,
             commandcolumn: {
                 default: false,
@@ -763,6 +768,41 @@
                     JQXLite(componentSelector).jqxGrid('compact', arg)
                 } else {
                     return JQXLite(componentSelector).jqxGrid('compact');
+                }
+            }
+            function _contextmenuitems (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('contextmenuitems', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('contextmenuitems');
+                }
+            }
+            function _contextmenuenabled (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('contextmenuenabled', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('contextmenuenabled');
+                }
+            }
+            function _contextmenuwidth (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('contextmenuwidth', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('contextmenuwidth');
+                }
+            }
+            function _contextmenuheight (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('contextmenuheight', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('contextmenuheight');
+                }
+            }
+            function _contextmenuitemclick (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxGrid('contextmenuitemclick', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxGrid('contextmenuitemclick');
                 }
             }
             function _adaptivewidth (arg) {
@@ -1591,7 +1631,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+                const widgetProps = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
                 const componentProps = props;
                 let options = {};
 
@@ -1668,6 +1708,36 @@
                  },
                  set compact(newValue) {
                      _compact(newValue);
+                 },
+                 get contextmenuitems() {
+                     return _contextmenuitems();
+                 },
+                 set contextmenuitems(newValue) {
+                     _contextmenuitems(newValue);
+                 },
+                 get contextmenuenabled() {
+                     return _contextmenuenabled();
+                 },
+                 set contextmenuenabled(newValue) {
+                     _contextmenuenabled(newValue);
+                 },
+                 get contextmenuwidth() {
+                     return _contextmenuwidth();
+                 },
+                 set contextmenuwidth(newValue) {
+                     _contextmenuwidth(newValue);
+                 },
+                 get contextmenuheight() {
+                     return _contextmenuheight();
+                 },
+                 set contextmenuheight(newValue) {
+                     _contextmenuheight(newValue);
+                 },
+                 get contextmenuitemclick() {
+                     return _contextmenuitemclick();
+                 },
+                 set contextmenuitemclick(newValue) {
+                     _contextmenuitemclick(newValue);
                  },
                  get adaptivewidth() {
                      return _adaptivewidth();

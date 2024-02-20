@@ -709,6 +709,7 @@
                  },
             }
             function twoWayBinding() {
+				const element = JQXLite(componentSelector).jqxListBox('element');
                 const value = JQXLite(componentSelector).jqxListBox('val');
                 context.emit('input', value);
                 context.emit('update:modelValue', element.value);

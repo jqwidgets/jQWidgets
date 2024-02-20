@@ -289,6 +289,7 @@
                  },
             }
             function twoWayBinding() {
+				const element = JQXLite(componentSelector).jqxCheckBox('element');
                 const value = JQXLite(componentSelector).jqxCheckBox('val');
                 context.emit('input', value);
                 context.emit('update:modelValue', element.value);

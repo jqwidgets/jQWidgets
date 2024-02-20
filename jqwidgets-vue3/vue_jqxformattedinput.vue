@@ -386,6 +386,7 @@
                  },
             }
             function twoWayBinding() {
+				const element = JQXLite(componentSelector).jqxFormattedInput('element');
                 const value = JQXLite(componentSelector).jqxFormattedInput('val');
                 context.emit('input', value);
                 context.emit('update:modelValue', element.value);

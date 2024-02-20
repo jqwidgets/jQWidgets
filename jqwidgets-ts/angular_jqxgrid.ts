@@ -1,6 +1,6 @@
 /*
-jQWidgets v18.0.0 (2023-Nov)
-Copyright (c) 2011-2023 jQWidgets.
+jQWidgets v19.0.0 (2024-Feb)
+Copyright (c) 2011-2024 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
@@ -57,6 +57,11 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    @Input('showcolumnheaderlines') attrShowcolumnheaderlines: boolean;
    @Input('adaptive') attrAdaptive: boolean;
    @Input('compact') attrCompact: boolean;
+   @Input('contextmenuitems') attrContextmenuitems: [];
+   @Input('contextmenuenabled') attrContextmenuenabled: [];
+   @Input('contextmenuwidth') attrContextmenuwidth: [];
+   @Input('contextmenuheight') attrContextmenuheight: [];
+   @Input('contextmenuitemclick') attrContextmenuitemclick: [];
    @Input('adaptivewidth') attrAdaptivewidth: number;
    @Input('commandcolumn') attrCommandcolumn: boolean;
    @Input('commandcolumnrenderer') attrCommandcolumnrenderer: (row?: number, columnfield?: string, active?: any) => string;
@@ -177,7 +182,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
+   properties: string[] = ['altrows','altstart','altstep','autoshowloadelement','autoshowfiltericon','autoshowcolumnsmenubutton','showcolumnlines','showrowlines','showcolumnheaderlines','adaptive','compact','contextmenuitems','contextmenuenabled','contextmenuwidth','contextmenuheight','contextmenuitemclick','adaptivewidth','commandcolumn','commandcolumnrenderer','clipboard','closeablegroups','columnsmenuwidth','columnmenuopening','columnmenuclosing','cellhover','enablekeyboarddelete','enableellipsis','enablemousewheel','enableanimations','enabletooltips','enablehover','enablebrowserselection','everpresentrowposition','everpresentrowheight','everpresentrowactions','everpresentrowactionsmode','filterrowheight','filtermode','groupsrenderer','groupcolumnrenderer','groupsexpandedbydefault','handlekeyboardnavigation','pagerrenderer','rtl','showdefaultloadelement','showfiltercolumnbackground','showfiltermenuitems','showpinnedcolumnbackground','showsortcolumnbackground','showsortmenuitems','showgroupmenuitems','showrowdetailscolumn','showheader','showgroupsheader','showaggregates','showgroupaggregates','showeverpresentrow','showfilterrow','showemptyrow','showstatusbar','statusbarheight','showtoolbar','showfilterbar','filterbarmode','selectionmode','updatefilterconditions','updatefilterpanel','theme','toolbarheight','autoheight','autorowheight','columnsheight','deferreddatafields','groupsheaderheight','groupindentwidth','height','pagerheight','rowsheight','scrollbarsize','scrollmode','scrollfeedback','width','autosavestate','autoloadstate','columns','enableSanitize','cardview','cardviewcolumns','cardheight','cardsize','columngroups','columnsmenu','columnsresize','columnsautoresize','columnsreorder','charting','disabled','editable','batcheditable','editmode','filter','filterable','groupable','groups','horizontalscrollbarstep','horizontalscrollbarlargestep','initrowdetails','keyboardnavigation','localization','pagesize','pagesizeoptions','pagermode','pagerbuttonscount','pageable','autofill','rowdetails','rowdetailstemplate','ready','rendered','renderstatusbar','rendertoolbar','rendergridrows','sortable','sortmode','sortmodekey','selectedrowindex','selectedrowindexes','source','sorttogglestates','updatedelay','virtualmode','verticalscrollbarstep','verticalscrollbarlargestep'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxGrid;
@@ -192,7 +197,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }; 
 
     ngAfterViewInit() {
-       let children = JQXLite(this.elementRef.nativeElement.children).find('tr'); 
+       if (typeof JQXLite === 'undefined') { return; } let children = JQXLite(this.elementRef.nativeElement.children).find('tr'); 
        let html = ''; 
        let options = {}; 
 
@@ -219,6 +224,7 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
    }; 
 
  ngAfterViewChecked() {
+    if (typeof JQXLite === 'undefined') { return; } 
     if (this.container) {
         if (this.content !== this.container.innerHTML) {
             this.content = this.container.innerHTML;
@@ -476,6 +482,71 @@ export class jqxGridComponent implements OnChanges, AfterViewInit, AfterViewChec
           this.host.jqxGrid('compact', arg);
       } else {
           return this.host.jqxGrid('compact');
+      }
+   }
+
+   contextmenuitems(arg?: undefined): undefined {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('contextmenuitems', arg);
+      } else {
+          return this.host.jqxGrid('contextmenuitems');
+      }
+   }
+
+   contextmenuenabled(arg?: undefined): undefined {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('contextmenuenabled', arg);
+      } else {
+          return this.host.jqxGrid('contextmenuenabled');
+      }
+   }
+
+   contextmenuwidth(arg?: undefined): undefined {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('contextmenuwidth', arg);
+      } else {
+          return this.host.jqxGrid('contextmenuwidth');
+      }
+   }
+
+   contextmenuheight(arg?: undefined): undefined {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('contextmenuheight', arg);
+      } else {
+          return this.host.jqxGrid('contextmenuheight');
+      }
+   }
+
+   contextmenuitemclick(arg?: undefined): undefined {
+
+      if (this.autoCreate && !this.host) {
+         this.createComponent(); 
+      }
+
+      if (arg !== undefined) {
+          this.host.jqxGrid('contextmenuitemclick', arg);
+      } else {
+          return this.host.jqxGrid('contextmenuitemclick');
       }
    }
 

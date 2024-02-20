@@ -650,6 +650,7 @@
                  },
             }
             function twoWayBinding() {
+				const element = JQXLite(componentSelector).jqxDateTimeInput('element');
                 const value = JQXLite(componentSelector).jqxDateTimeInput('value');
                 context.emit('input', value);
                 context.emit('update:modelValue', element.value);

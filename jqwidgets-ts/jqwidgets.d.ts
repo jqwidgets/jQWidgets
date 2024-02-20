@@ -1,7 +1,7 @@
 /*
    jQWidgets TypeScript definitions
 
-   Copyright (c) 2011-2023 jQWidgets.
+   Copyright (c) 2011-2024 jQWidgets.
    License: https://jqwidgets.com/license/
 */
 
@@ -2131,6 +2131,11 @@ declare module jqwidgets {
         showcolumnheaderlines?: boolean;
         adaptive?: boolean;
         compact?: boolean;
+        contextmenuitems?: any;
+        contextmenuenabled?: any;
+        contextmenuwidth?: any;
+        contextmenuheight?: any;
+        contextmenuitemclick?: any;
         adaptivewidth?: number;
         commandcolumn?: boolean;
         commandcolumnrenderer?: (row?: number, columnfield?: string, active?: any) => string;

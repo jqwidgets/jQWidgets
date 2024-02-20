@@ -9330,3 +9330,13 @@ input[type=number].jqx-input {
     border-style: solid;
     border-width: 1px;
 }
+
+
+.jqx-grid line[highlight] {
+    stroke: #005A9E;
+}
+
+.jqx-grid path[highlight],
+.jqx-grid rect[highlight] {
+    fill: #005A9E;
+}

@@ -1,6 +1,6 @@
 /*
-jQWidgets v18.0.0 (2023-Nov)
-Copyright (c) 2011-2023 jQWidgets.
+jQWidgets v19.0.0 (2024-Feb)
+Copyright (c) 2011-2024 jQWidgets.
 License: https://jqwidgets.com/license/
 */
 /* eslint-disable */
@@ -117,7 +117,10 @@ License: https://jqwidgets.com/license/
             }
 
             if (that.checkboxes[index]) {
+                var disabled = that.disabled;
+                that.disabled = false;
                 that.checkboxes[index].check();
+                that.disabled = disabled;
             }
         },
 
@@ -182,10 +185,6 @@ License: https://jqwidgets.com/license/
             if (!this.width) this.host.css('overflow-x', 'visible');
             if (!this.height) this.host.css('overflow-y', 'visible');
 
-            if (this.disabled) {
-                this.disable();
-            }
-
             var items = '<div layout="' + that.layout + '" label-position="' + that.labelPosition + '" class="jqx-container">';
             var dataItems = [];
             for (var i = 0; i < that.items.length; i++) {
@@ -237,6 +236,12 @@ License: https://jqwidgets.com/license/
                 $(checkmark).jqxCheckBox({ rtl: that.rtl, disabled: that.dataItems[index].enabled === false, theme: that.theme, checked: that.value.includes(that.dataItems[index].value) });
 
                 $(checkmark).on('change', function () {
+                    if (!that.change) {
+                        that.change = function () {
+
+                        }
+                    }
+
                     if (that.change && that.dataItems[index] && that.dataItems[index].enabled !== false && that.disabled === false) {
                         var itemData = JSON.parse(JSON.stringify(that.dataItems[index]));
                         that.value = [];
@@ -262,6 +267,9 @@ License: https://jqwidgets.com/license/
             that.groupItems = that.element.querySelectorAll('.jqx-checkbox-group-item');
             that.checkboxes = checkboxes;
             that.host.addClass(that.toThemeProperty('jqx-widget jqx-checkbox-group'));
+            if (this.disabled) {
+                this.disable();
+            }
         },
 
         escapeHTML: function (value) {

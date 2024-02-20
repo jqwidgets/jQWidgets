@@ -1438,6 +1438,12 @@ jqx-grid-column-filterbutton-fluent,
   height: 20px;
 }
 
+.jqx-rating-image-default.hidden-item:after,
+.jqx-rating-image-hover.hidden-item:after,
+.jqx-rating-image-backward.hidden-item:after {
+  display: none;
+}
+
 .jqx-rating-image-backward:after {
   background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8281 12.2461L16.25 20L10 15.1953L3.75 20L6.17188 12.2461L0 7.5H7.65625L10 0L12.3438 7.5H20L13.8281 12.2461ZM13.877 16.6016C13.6296 15.7943 13.3822 14.9935 13.1348 14.1992C12.8874 13.3984 12.6335 12.5944 12.373 11.7871C13.0436 11.2858 13.7044 10.7812 14.3555 10.2734C15.0065 9.76562 15.6641 9.25781 16.3281 8.75H11.4258L10 4.18945L8.57422 8.75H3.67188C4.33594 9.25781 4.99349 9.76562 5.64453 10.2734C6.29557 10.7812 6.95638 11.2858 7.62695 11.7871C7.36654 12.5944 7.11263 13.3984 6.86523 14.1992C6.61784 14.9935 6.37044 15.7943 6.12305 16.6016L10 13.6133L13.877 16.6016Z' fill='%23A19F9D'/%3E%3C/svg%3E");
   background-color: #fff;

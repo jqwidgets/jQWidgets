@@ -790,6 +790,7 @@
                  },
             }
             function twoWayBinding() {
+				const element = JQXLite(componentSelector).jqxComboBox('element');
                 const value = JQXLite(componentSelector).jqxComboBox('val');
                 context.emit('input', value);
                 context.emit('update:modelValue', element.value);
