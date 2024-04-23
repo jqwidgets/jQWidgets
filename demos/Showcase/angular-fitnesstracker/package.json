@@ -58,7 +58,7 @@
   },
   "description": "jQWidgets Angular Template Project",
   "devDependencies": {
-    "@angular/cli": "1.2.0",
+    "@angular/cli": "17.3.5",
     "@angular/compiler-cli": "^4.2.6",
     "@angular/language-service": "^4.2.6",
     "@types/jasmine": "~2.5.53",
