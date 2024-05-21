@@ -1,5 +1,5 @@
 /*
-jQWidgets v19.0.0 (2024-Feb)
+jQWidgets v19.2.0 (2024-May)
 Copyright (c) 2011-2024 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -953,60 +953,60 @@ export class jqxGanttComponent implements OnChanges
 
 
    // jqxGanttComponent functions
-   addFilter(columns: undefined, filterGroup: any): undefined {
-      return this.host.jqxGantt('addFilter', columns, filterGroup);
+   addFilter(columns: undefined, filterGroup: any): void {
+      this.host.jqxGantt('addFilter', columns, filterGroup);
    }
 
-   clearFilters(): undefined {
-      return this.host.jqxGantt('clearFilters');
+   clearFilters(): void {
+      this.host.jqxGantt('clearFilters');
    }
 
-   clearSort(): undefined {
-      return this.host.jqxGantt('clearSort');
+   clearSort(): void {
+      this.host.jqxGantt('clearSort');
    }
 
-   clearSelection(): undefined {
-      return this.host.jqxGantt('clearSelection');
+   clearSelection(): void {
+      this.host.jqxGantt('clearSelection');
    }
 
-   clearState(): undefined {
-      return this.host.jqxGantt('clearState');
+   clearState(): void {
+      this.host.jqxGantt('clearState');
    }
 
-   clearTasks(): undefined {
-      return this.host.jqxGantt('clearTasks');
+   clearTasks(): void {
+      this.host.jqxGantt('clearTasks');
    }
 
-   clearResources(): undefined {
-      return this.host.jqxGantt('clearResources');
+   clearResources(): void {
+      this.host.jqxGantt('clearResources');
    }
 
-   createConnection(startTaskIndex: undefined, taskEndIndex?: undefined, connectionType?: number, lag?: number): undefined {
-      return this.host.jqxGantt('createConnection', startTaskIndex, taskEndIndex, connectionType, lag);
+   createConnection(startTaskIndex: undefined, taskEndIndex?: undefined, connectionType?: number, lag?: number): void {
+      this.host.jqxGantt('createConnection', startTaskIndex, taskEndIndex, connectionType, lag);
    }
 
-   collapse(id: undefined): undefined {
-      return this.host.jqxGantt('collapse', id);
+   collapse(id: undefined): void {
+      this.host.jqxGantt('collapse', id);
    }
 
-   beginUpdate(): undefined {
-      return this.host.jqxGantt('beginUpdate');
+   beginUpdate(): void {
+      this.host.jqxGantt('beginUpdate');
    }
 
-   endUpdate(): undefined {
-      return this.host.jqxGantt('endUpdate');
+   endUpdate(): void {
+      this.host.jqxGantt('endUpdate');
    }
 
-   ensureVisible(taskId: undefined): undefined {
-      return this.host.jqxGantt('ensureVisible', taskId);
+   ensureVisible(taskId: undefined): void {
+      this.host.jqxGantt('ensureVisible', taskId);
    }
 
-   expand(id: undefined): undefined {
-      return this.host.jqxGantt('expand', id);
+   expand(id: undefined): void {
+      this.host.jqxGantt('expand', id);
    }
 
-   exportData(dataFormat: string, callback?: undefined): undefined {
-      return this.host.jqxGantt('exportData', dataFormat, callback);
+   exportData(dataFormat: string, callback?: undefined): void {
+      this.host.jqxGantt('exportData', dataFormat, callback);
    }
 
    getConnections(): undefined {
@@ -1081,96 +1081,96 @@ export class jqxGanttComponent implements OnChanges
       return this.host.jqxGantt('hideTooltip');
    }
 
-   isWorkingDay(date: undefined): undefined {
-      return this.host.jqxGantt('isWorkingDay', date);
+   isWorkingDay(date: undefined): void {
+      this.host.jqxGantt('isWorkingDay', date);
    }
 
-   loadState(state?: undefined): undefined {
-      return this.host.jqxGantt('loadState', state);
+   loadState(state?: undefined): void {
+      this.host.jqxGantt('loadState', state);
    }
 
-   removeAllConnections(): undefined {
-      return this.host.jqxGantt('removeAllConnections');
+   removeAllConnections(): void {
+      this.host.jqxGantt('removeAllConnections');
    }
 
    removeConnection(startTaskIndex: undefined, taskEndIndex?: number, connectionType?: number): any {
       return this.host.jqxGantt('removeConnection', startTaskIndex, taskEndIndex, connectionType);
    }
 
-   removeTaskConnection(taskStart: undefined, taskEnd?: undefined): undefined {
-      return this.host.jqxGantt('removeTaskConnection', taskStart, taskEnd);
+   removeTaskConnection(taskStart: undefined, taskEnd?: undefined): void {
+      this.host.jqxGantt('removeTaskConnection', taskStart, taskEnd);
    }
 
-   showTooltip(target: undefined, content?: string): undefined {
-      return this.host.jqxGantt('showTooltip', target, content);
+   showTooltip(target: undefined, content?: string): void {
+      this.host.jqxGantt('showTooltip', target, content);
    }
 
-   saveState(state?: undefined): undefined {
-      return this.host.jqxGantt('saveState', state);
+   saveState(state?: undefined): void {
+      this.host.jqxGantt('saveState', state);
    }
 
    insertTask(taskObject: any, project?: undefined, index?: number): undefined {
       return this.host.jqxGantt('insertTask', taskObject, project, index);
    }
 
-   updateTask(taskId: undefined, taskObject: any): undefined {
-      return this.host.jqxGantt('updateTask', taskId, taskObject);
+   updateTask(taskId: undefined, taskObject: any): void {
+      this.host.jqxGantt('updateTask', taskId, taskObject);
    }
 
-   removeTask(taskId: undefined): undefined {
-      return this.host.jqxGantt('removeTask', taskId);
+   removeTask(taskId: undefined): void {
+      this.host.jqxGantt('removeTask', taskId);
    }
 
-   insertResource(resourceId: undefined, resourceObject?: any): undefined {
-      return this.host.jqxGantt('insertResource', resourceId, resourceObject);
+   insertResource(resourceId: undefined, resourceObject?: any): void {
+      this.host.jqxGantt('insertResource', resourceId, resourceObject);
    }
 
-   updateResource(resourceId: undefined, taskObject: any): undefined {
-      return this.host.jqxGantt('updateResource', resourceId, taskObject);
+   updateResource(resourceId: undefined, taskObject: any): void {
+      this.host.jqxGantt('updateResource', resourceId, taskObject);
    }
 
-   removeResource(resourceId: undefined): undefined {
-      return this.host.jqxGantt('removeResource', resourceId);
+   removeResource(resourceId: undefined): void {
+      this.host.jqxGantt('removeResource', resourceId);
    }
 
-   openWindow(taskId: undefined): undefined {
-      return this.host.jqxGantt('openWindow', taskId);
+   openWindow(taskId: undefined): void {
+      this.host.jqxGantt('openWindow', taskId);
    }
 
-   closeWindow(): undefined {
-      return this.host.jqxGantt('closeWindow');
+   closeWindow(): void {
+      this.host.jqxGantt('closeWindow');
    }
 
-   print(): undefined {
-      return this.host.jqxGantt('print');
+   print(): void {
+      this.host.jqxGantt('print');
    }
 
-   setWorkTime(settings: undefined): undefined {
-      return this.host.jqxGantt('setWorkTime', settings);
+   setWorkTime(settings: undefined): void {
+      this.host.jqxGantt('setWorkTime', settings);
    }
 
-   selectTask(id: undefined): undefined {
-      return this.host.jqxGantt('selectTask', id);
+   selectTask(id: undefined): void {
+      this.host.jqxGantt('selectTask', id);
    }
 
-   selectResource(id: undefined): undefined {
-      return this.host.jqxGantt('selectResource', id);
+   selectResource(id: undefined): void {
+      this.host.jqxGantt('selectResource', id);
    }
 
-   unselectTask(id: undefined): undefined {
-      return this.host.jqxGantt('unselectTask', id);
+   unselectTask(id: undefined): void {
+      this.host.jqxGantt('unselectTask', id);
    }
 
-   unselectResource(id: undefined): undefined {
-      return this.host.jqxGantt('unselectResource', id);
+   unselectResource(id: undefined): void {
+      this.host.jqxGantt('unselectResource', id);
    }
 
-   unsetWorkTime(settings: undefined): undefined {
-      return this.host.jqxGantt('unsetWorkTime', settings);
+   unsetWorkTime(settings: undefined): void {
+      this.host.jqxGantt('unsetWorkTime', settings);
    }
 
-   sort(columns: undefined): undefined {
-      return this.host.jqxGantt('sort', columns);
+   sort(columns: undefined): void {
+      this.host.jqxGantt('sort', columns);
    }
 
 

@@ -1,5 +1,10 @@
 ﻿/* tslint:disable */
 /* eslint-disable */
+(function(){
+	if (typeof document === 'undefined') { 
+		return;
+	}
+
 (function ($) {
     window.jqxToDash = function (value) {
         return value.split(/(?=[A-Z])/).join('-').toLowerCase();
@@ -3502,3 +3507,4 @@ ${attr.formula}        </cfRule>
         $.jqx.dataAdapter.DataExporter = DataExporter;
     }
 })(jqxBaseFramework);
+})();

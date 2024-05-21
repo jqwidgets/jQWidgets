@@ -127,46 +127,46 @@
                 return resultToReturn;
             },
             addFilter: function(columns, filterGroup) {
-                return JQXLite(this.componentSelector).jqxGantt('addFilter', columns, filterGroup);  
+                JQXLite(this.componentSelector).jqxGantt('addFilter', columns, filterGroup);  
             },
             clearFilters: function() {
-                return JQXLite(this.componentSelector).jqxGantt('clearFilters');  
+                JQXLite(this.componentSelector).jqxGantt('clearFilters');  
             },
             clearSort: function() {
-                return JQXLite(this.componentSelector).jqxGantt('clearSort');  
+                JQXLite(this.componentSelector).jqxGantt('clearSort');  
             },
             clearSelection: function() {
-                return JQXLite(this.componentSelector).jqxGantt('clearSelection');  
+                JQXLite(this.componentSelector).jqxGantt('clearSelection');  
             },
             clearState: function() {
-                return JQXLite(this.componentSelector).jqxGantt('clearState');  
+                JQXLite(this.componentSelector).jqxGantt('clearState');  
             },
             clearTasks: function() {
-                return JQXLite(this.componentSelector).jqxGantt('clearTasks');  
+                JQXLite(this.componentSelector).jqxGantt('clearTasks');  
             },
             clearResources: function() {
-                return JQXLite(this.componentSelector).jqxGantt('clearResources');  
+                JQXLite(this.componentSelector).jqxGantt('clearResources');  
             },
             createConnection: function(startTaskIndex, taskEndIndex, connectionType, lag) {
-                return JQXLite(this.componentSelector).jqxGantt('createConnection', startTaskIndex, taskEndIndex, connectionType, lag);  
+                JQXLite(this.componentSelector).jqxGantt('createConnection', startTaskIndex, taskEndIndex, connectionType, lag);  
             },
             collapse: function(id) {
-                return JQXLite(this.componentSelector).jqxGantt('collapse', id);  
+                JQXLite(this.componentSelector).jqxGantt('collapse', id);  
             },
             beginUpdate: function() {
-                return JQXLite(this.componentSelector).jqxGantt('beginUpdate');  
+                JQXLite(this.componentSelector).jqxGantt('beginUpdate');  
             },
             endUpdate: function() {
-                return JQXLite(this.componentSelector).jqxGantt('endUpdate');  
+                JQXLite(this.componentSelector).jqxGantt('endUpdate');  
             },
             ensureVisible: function(taskId) {
-                return JQXLite(this.componentSelector).jqxGantt('ensureVisible', taskId);  
+                JQXLite(this.componentSelector).jqxGantt('ensureVisible', taskId);  
             },
             expand: function(id) {
-                return JQXLite(this.componentSelector).jqxGantt('expand', id);  
+                JQXLite(this.componentSelector).jqxGantt('expand', id);  
             },
             exportData: function(dataFormat, callback) {
-                return JQXLite(this.componentSelector).jqxGantt('exportData', dataFormat, callback);  
+                JQXLite(this.componentSelector).jqxGantt('exportData', dataFormat, callback);  
             },
             getConnections: function() {
                 return JQXLite(this.componentSelector).jqxGantt('getConnections');  
@@ -223,73 +223,73 @@
                 return JQXLite(this.componentSelector).jqxGantt('hideTooltip');  
             },
             isWorkingDay: function(date) {
-                return JQXLite(this.componentSelector).jqxGantt('isWorkingDay', date);  
+                JQXLite(this.componentSelector).jqxGantt('isWorkingDay', date);  
             },
             loadState: function(state) {
-                return JQXLite(this.componentSelector).jqxGantt('loadState', state);  
+                JQXLite(this.componentSelector).jqxGantt('loadState', state);  
             },
             removeAllConnections: function() {
-                return JQXLite(this.componentSelector).jqxGantt('removeAllConnections');  
+                JQXLite(this.componentSelector).jqxGantt('removeAllConnections');  
             },
             removeConnection: function(startTaskIndex, taskEndIndex, connectionType) {
                 return JQXLite(this.componentSelector).jqxGantt('removeConnection', startTaskIndex, taskEndIndex, connectionType);  
             },
             removeTaskConnection: function(taskStart, taskEnd) {
-                return JQXLite(this.componentSelector).jqxGantt('removeTaskConnection', taskStart, taskEnd);  
+                JQXLite(this.componentSelector).jqxGantt('removeTaskConnection', taskStart, taskEnd);  
             },
             showTooltip: function(target, content) {
-                return JQXLite(this.componentSelector).jqxGantt('showTooltip', target, content);  
+                JQXLite(this.componentSelector).jqxGantt('showTooltip', target, content);  
             },
             saveState: function(state) {
-                return JQXLite(this.componentSelector).jqxGantt('saveState', state);  
+                JQXLite(this.componentSelector).jqxGantt('saveState', state);  
             },
             insertTask: function(taskObject, project, index) {
                 return JQXLite(this.componentSelector).jqxGantt('insertTask', taskObject, project, index);  
             },
             updateTask: function(taskId, taskObject) {
-                return JQXLite(this.componentSelector).jqxGantt('updateTask', taskId, taskObject);  
+                JQXLite(this.componentSelector).jqxGantt('updateTask', taskId, taskObject);  
             },
             removeTask: function(taskId) {
-                return JQXLite(this.componentSelector).jqxGantt('removeTask', taskId);  
+                JQXLite(this.componentSelector).jqxGantt('removeTask', taskId);  
             },
             insertResource: function(resourceId, resourceObject) {
-                return JQXLite(this.componentSelector).jqxGantt('insertResource', resourceId, resourceObject);  
+                JQXLite(this.componentSelector).jqxGantt('insertResource', resourceId, resourceObject);  
             },
             updateResource: function(resourceId, taskObject) {
-                return JQXLite(this.componentSelector).jqxGantt('updateResource', resourceId, taskObject);  
+                JQXLite(this.componentSelector).jqxGantt('updateResource', resourceId, taskObject);  
             },
             removeResource: function(resourceId) {
-                return JQXLite(this.componentSelector).jqxGantt('removeResource', resourceId);  
+                JQXLite(this.componentSelector).jqxGantt('removeResource', resourceId);  
             },
             openWindow: function(taskId) {
-                return JQXLite(this.componentSelector).jqxGantt('openWindow', taskId);  
+                JQXLite(this.componentSelector).jqxGantt('openWindow', taskId);  
             },
             closeWindow: function() {
-                return JQXLite(this.componentSelector).jqxGantt('closeWindow');  
+                JQXLite(this.componentSelector).jqxGantt('closeWindow');  
             },
             print: function() {
-                return JQXLite(this.componentSelector).jqxGantt('print');  
+                JQXLite(this.componentSelector).jqxGantt('print');  
             },
             setWorkTime: function(settings) {
-                return JQXLite(this.componentSelector).jqxGantt('setWorkTime', settings);  
+                JQXLite(this.componentSelector).jqxGantt('setWorkTime', settings);  
             },
             selectTask: function(id) {
-                return JQXLite(this.componentSelector).jqxGantt('selectTask', id);  
+                JQXLite(this.componentSelector).jqxGantt('selectTask', id);  
             },
             selectResource: function(id) {
-                return JQXLite(this.componentSelector).jqxGantt('selectResource', id);  
+                JQXLite(this.componentSelector).jqxGantt('selectResource', id);  
             },
             unselectTask: function(id) {
-                return JQXLite(this.componentSelector).jqxGantt('unselectTask', id);  
+                JQXLite(this.componentSelector).jqxGantt('unselectTask', id);  
             },
             unselectResource: function(id) {
-                return JQXLite(this.componentSelector).jqxGantt('unselectResource', id);  
+                JQXLite(this.componentSelector).jqxGantt('unselectResource', id);  
             },
             unsetWorkTime: function(settings) {
-                return JQXLite(this.componentSelector).jqxGantt('unsetWorkTime', settings);  
+                JQXLite(this.componentSelector).jqxGantt('unsetWorkTime', settings);  
             },
             sort: function(columns) {
-                return JQXLite(this.componentSelector).jqxGantt('sort', columns);  
+                JQXLite(this.componentSelector).jqxGantt('sort', columns);  
             },
             _adjustToNonworkingTime: function(arg) {
                 if (arg !== undefined) {

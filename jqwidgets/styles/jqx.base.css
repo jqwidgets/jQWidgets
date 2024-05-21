@@ -71,6 +71,7 @@
 
     --jqx-border-radius: 4px;
     --jqx-font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --jqx-font-family-icon: "jqx-icons";
     --jqx-font-size: 14px;
     --jqx-action-button-size: 25px;
 }
@@ -9340,3 +9341,235 @@ input[type=number].jqx-input {
 .jqx-grid rect[highlight] {
     fill: #005A9E;
 }
+
+@font-face {
+    font-family: jqx-icons;
+    src: local("./font/jqx-icons"), url("./font/jqx-icons.woff2") format("woff2"), url("./font/jqx-icons.woff") format("woff"), url("./font/jqx-icons.ttf") format("truetype"), url("./font/jqx-icons.eot") format("embedded-opentype");
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+}
+
+.jqx-timeline {
+    overflow: hidden;
+    padding: 10px;
+    font-family: var(--jqx-font-family);
+    display: block;
+}
+.jqx-timeline .jqx-container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+.jqx-timeline-near-items {
+    padding-right: 20px;
+    position: relative;
+}
+.jqx-timeline-far-items {
+    padding-left: 20px;
+    position: relative;
+}
+
+.jqx-timeline[horizontal] .jqx-container  {
+    flex-direction: column;
+}
+.jqx-timeline[horizontal] .jqx-timeline-near-items {
+    padding-right: 0px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: flex-end;
+}
+.jqx-timeline[horizontal] .jqx-timeline-far-items {
+    padding-left: 0px;
+    padding-top: 20px;
+    display: flex;
+}
+.jqx-timeline-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-block: 20px;
+    padding-inline: 0;
+    position: relative;
+}
+.jqx-timeline[horizontal] .jqx-timeline-item {
+    display: block;
+    padding-block:0px;
+}
+.jqx-timeline-item[collapsible] {
+    cursor: pointer;
+}
+.jqx-timeline-item-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.jqx-timeline-item-content {
+    background: var(--jqx-background);
+    border: 1px solid var(--jqx-border);
+    padding: 20px;
+    border-radius: var(--jqx-border-radius);
+    position: relative;
+}
+.jqx-timeline-item-pointer {
+    top: 50%;
+    right: 0px;
+    content: '';
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 16px;
+    height: 16px;
+    background: var(--jqx-background);
+    border:1px solid var(--jqx-border);
+    display: block;
+    right: 0px;
+    position: absolute;
+    margin-right: -16px;
+    z-index: 9;
+}
+.jqx-timeline-item-pointer::after {
+    width: 16px;
+    content: '';
+    background: var(--jqx-background);
+    height: 16px;
+    position: absolute;
+    z-index: 9;
+    right: 14px;
+}
+.jqx-timeline-item-pointer::before {
+    content: '';
+    background: var(--jqx-background);
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    z-index: 9;
+    top: 14px;
+    right: inherit;
+}
+
+.jqx-timeline-far-items .jqx-timeline-item-pointer {
+    right: inherit;
+    left: 0px;
+}
+.jqx-timeline-far-items .jqx-timeline-item-pointer::before {
+    right: unset;
+    left: 14px;
+    top: -2px;
+}
+.jqx-timeline-far-items .jqx-timeline-item-pointer::after {
+    top: -16px;
+    right: -2px;
+}
+.jqx-timeline[horizontal] .jqx-timeline-item-pointer {
+    left: 50%;
+    top: 0px;
+}
+.jqx-timeline[horizontal] .jqx-timeline-near-items .jqx-timeline-item-pointer {
+    left: 50%;
+    bottom: -16px;
+    top: unset;
+}
+
+.jqx-timeline-far-items .jqx-timeline-item {
+    justify-content: flex-start;
+}
+.jqx-timeline-far-items .jqx-timeline-item-content {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.jqx-timeline[horizontal] .jqx-timeline-far-items .jqx-timeline-item-pointer::after  {
+    top: unset;
+}
+.jqx-timeline[horizontal] .jqx-timeline-far-items .jqx-timeline-item-pointer::before {
+    top: 0px;
+}
+
+.jqx-timeline[horizontal] .jqx-timeline-near-items .jqx-timeline-item-pointer::before {
+    top: -16px;
+}
+.jqx-timeline[horizontal] .jqx-timeline-near-items .jqx-timeline-item-pointer::after {
+    left: -16px;
+    top: -2px;
+}
+
+.jqx-timeline-item-title {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.jqx-timeline-item .jqx-timeline-item-description {
+    display: none;
+    margin-top: 20px;
+}
+.jqx-timeline-item.expanded .jqx-timeline-item-description  {
+    display: block;
+}   
+.jqx-timeline-item[collapsible].expanded .jqx-timeline-item-title::after {
+    content: var(--jqx-icon-arrow-down);
+}
+
+.jqx-timeline-item[collapsible] .jqx-timeline-item-title::after {
+    content: var(--jqx-icon-arrow-right);
+    display: inline;
+    width: 100%;
+    height: 1px;
+    font-family: var(--jqx-font-family-icon);
+    margin-top: 10px;
+    cursor: pointer;
+}
+.jqx-timeline-item-subtitle {
+    font-size: 12px;
+    font-weight: 400;
+}
+.jqx-timeline-track {
+    border-width: 1px;
+    border-style: solid;
+    width: 6px;
+    border-radius: 6px;
+    background:var(--jqx-surface);
+    border:1px solid var(--jqx-border);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.jqx-timeline[horizontal] .jqx-timeline-track  {
+    width: 100%;
+    height: 6px;
+}
+
+.jqx-timeline-near-items .jqx-timeline-item-date {
+    right: 20px;
+}
+
+.jqx-timeline-far-items .jqx-timeline-item-date {
+    left: 20px;
+}
+.jqx-timeline[horizontal] .jqx-timeline-near-items .jqx-timeline-item-date  {
+    right: unset;
+    bottom: 20px;
+}
+.jqx-timeline[horizontal] .jqx-timeline-far-items .jqx-timeline-item-date  {
+    left: unset;
+    top: 20px;
+}
+.jqx-timeline-item-date {
+    position: absolute;
+    margin-top: 3px;
+}
+
+.jqx-timeline-dot {
+    width: 16px;
+    height: 16px;
+    margin-top:4px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    background: var(--jqx-primary);
+}
+.jqx-timeline[horizontal] .jqx-timeline-dot {
+    margin-top: -6px;
+}   

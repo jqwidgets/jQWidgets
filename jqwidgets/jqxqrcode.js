@@ -1,5 +1,5 @@
 /*
-jQWidgets v19.0.0 (2024-Feb)
+jQWidgets v19.2.0 (2024-May)
 Copyright (c) 2011-2024 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -7,6 +7,11 @@ License: https://jqwidgets.com/license/
 
 /* tslint:disable */
 /* eslint-disable */
+(function(){
+    if (typeof document === 'undefined') { 
+        return;
+    }
+
 (function ($) {
 
     $.jqx.jqxWidget("jqxQRcode", "", {});
@@ -1322,7 +1327,7 @@ class QRcode {
         });
     }
 }
-
+})();
 
 
 

@@ -488,6 +488,7 @@ interface IGridOptions {
     horizontalscrollbarstep?: number;
     horizontalscrollbarlargestep?: number;
     initrowdetails?: (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void;
+    disablerowdetails?: (index?: number) => boolean;
     keyboardnavigation?: boolean;
     localization?: IGridLocalizationobject;
     pagesize?: number;

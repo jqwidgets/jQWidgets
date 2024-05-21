@@ -1,6 +1,11 @@
 ﻿
 /* tslint:disable */
 /* eslint-disable */
+(function(){
+	if (typeof document === 'undefined') { 
+		return;
+	}
+
 (function ($) {
     class DataAdapter {
     constructor ( config ) {
@@ -2944,3 +2949,4 @@ if ($.jqx && $.jqx.dataAdapter) {
     $.jqx.dataAdapter.Importer = DataAdapter;
 }
 })(jqxBaseFramework);
+})();

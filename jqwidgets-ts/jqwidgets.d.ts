@@ -2227,6 +2227,7 @@ declare module jqwidgets {
         horizontalscrollbarstep?: number;
         horizontalscrollbarlargestep?: number;
         initrowdetails?: (index?: number, parentElement?: any, gridElement?: any, datarecord?: any) => void;
+        disablerowdetails?: (index?: number) => boolean;
         keyboardnavigation?: boolean;
         localization?: GridLocalizationobject;
         pagesize?: number;
@@ -5152,20 +5153,20 @@ declare module jqwidgets {
     export interface jqxGantt extends widget, GanttOptions {
 
         // jqxGantt functions
-        addFilter(columns: any, filterGroup: any): any;
-        clearFilters(): any;
-        clearSort(): any;
-        clearSelection(): any;
-        clearState(): any;
-        clearTasks(): any;
-        clearResources(): any;
-        createConnection(startTaskIndex: any, taskEndIndex: any, connectionType: number, lag: number): any;
-        collapse(id: any): any;
-        beginUpdate(): any;
-        endUpdate(): any;
-        ensureVisible(taskId: any): any;
-        expand(id: any): any;
-        exportData(dataFormat: string, callback: any): any;
+        addFilter(columns: any, filterGroup: any): void;
+        clearFilters(): void;
+        clearSort(): void;
+        clearSelection(): void;
+        clearState(): void;
+        clearTasks(): void;
+        clearResources(): void;
+        createConnection(startTaskIndex: any, taskEndIndex: any, connectionType: number, lag: number): void;
+        collapse(id: any): void;
+        beginUpdate(): void;
+        endUpdate(): void;
+        ensureVisible(taskId: any): void;
+        expand(id: any): void;
+        exportData(dataFormat: string, callback: any): void;
         getConnections(): any;
         getConnectionDetails(connectionId: string): any;
         getState(): any;
@@ -5184,30 +5185,47 @@ declare module jqwidgets {
         getSelectedResources(): any;
         getWorkingHours(): any;
         hideTooltip(): any;
-        isWorkingDay(date: any): any;
-        loadState(state: any): any;
-        removeAllConnections(): any;
+        isWorkingDay(date: any): void;
+        loadState(state: any): void;
+        removeAllConnections(): void;
         removeConnection(startTaskIndex: any, taskEndIndex: number, connectionType: number): any;
-        removeTaskConnection(taskStart: any, taskEnd: any): any;
-        showTooltip(target: any, content: string): any;
-        saveState(state: any): any;
+        removeTaskConnection(taskStart: any, taskEnd: any): void;
+        showTooltip(target: any, content: string): void;
+        saveState(state: any): void;
         insertTask(taskObject: any, project: any, index: number): any;
-        updateTask(taskId: any, taskObject: any): any;
-        removeTask(taskId: any): any;
-        insertResource(resourceId: any, resourceObject: any): any;
-        updateResource(resourceId: any, taskObject: any): any;
-        removeResource(resourceId: any): any;
-        openWindow(taskId: any): any;
-        closeWindow(): any;
-        print(): any;
-        setWorkTime(settings: any): any;
-        selectTask(id: any): any;
-        selectResource(id: any): any;
-        unselectTask(id: any): any;
-        unselectResource(id: any): any;
-        unsetWorkTime(settings: any): any;
-        sort(columns: any): any;
+        updateTask(taskId: any, taskObject: any): void;
+        removeTask(taskId: any): void;
+        insertResource(resourceId: any, resourceObject: any): void;
+        updateResource(resourceId: any, taskObject: any): void;
+        removeResource(resourceId: any): void;
+        openWindow(taskId: any): void;
+        closeWindow(): void;
+        print(): void;
+        setWorkTime(settings: any): void;
+        selectTask(id: any): void;
+        selectResource(id: any): void;
+        unselectTask(id: any): void;
+        unselectResource(id: any): void;
+        unsetWorkTime(settings: any): void;
+        sort(columns: any): void;
     }// jqxGantt
+
+    export interface TimelineOptions {
+        // TimelineOptions properties
+        autoWidth?: boolean;
+        collapsible?: boolean;
+        disabled?: boolean;
+        horizontal?: boolean;
+        position?: string;
+        source?: any;
+        theme?: string;
+    }// TimelineOptions
+
+    export interface jqxTimeline extends widget, TimelineOptions {
+
+        // jqxTimeline functions
+        render(): any;
+    }// jqxTimeline
 
 
 

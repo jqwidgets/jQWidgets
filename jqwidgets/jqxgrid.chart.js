@@ -1,5 +1,10 @@
 ﻿/* tslint:disable */
 /* eslint-disable */
+(function(){
+	if (typeof document === 'undefined') { 
+		return;
+	}
+
 (function ($) {
 	if (!Array.prototype.find) {
 		Object.defineProperty(Array.prototype, 'find', {
@@ -342,4 +347,4 @@
 		}
 	});
 })(jqxBaseFramework);
-
+})();

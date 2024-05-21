@@ -1,5 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
+/* tslint:disable */
+/* eslint-disable */
+(function() {
 /*!
  * Globalize
  *
@@ -1605,3 +1608,4 @@ Globalize.culture = function( cultureSelector ) {
 
 document.Globalize = Globalize;
 }(this));
+})();

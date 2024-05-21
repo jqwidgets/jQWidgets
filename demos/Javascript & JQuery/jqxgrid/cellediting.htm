@@ -70,13 +70,13 @@
                   { text: 'Product', columntype: 'dropdownlist', datafield: 'productname', width: 195 },
                   { text: 'Available', datafield: 'available', columntype: 'checkbox', width: 67 },
                   {
-                      text: 'Ship Date', datafield: 'date', columntype: 'datetimeinput', width: 110, align: 'right', cellsalign: 'right', cellsformat: 'd',
+                      text: 'Ship Date', datafield: 'date', columntype: 'datetimeinput', width: 110, align: 'right', cellsalign: 'right', cellsformat: 'yyyy-mm',
                   validation: function (cell, value) {
                           if (value == "")
                              return true;
 
                           var year = value.getFullYear();
-                          if (year >= 2020) {
+                          if (year >= 2024) {
                               return { result: false, message: "Ship Date should be before 1/1/2020" };
                           }
                           return true;

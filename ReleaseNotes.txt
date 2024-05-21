@@ -1,4 +1,31 @@
-﻿jQWidgets v19.0.0 Release, Feb-20-2024
+﻿jQWidgets v19.2.0 Release, May-21-2024
+
+What's New:
+
+The jqxTimeline displays a collection of events and their data in a chronological succession for each year. The Timeline allows you to render its events in a vertical or horizontal list
+and you can easily customize it with CSS.
+
+What's Improved:
+
+Added 'disablerowdetails' for jqxGrid which allows you to disable row details for specific grid rows.
+
+What's Fixed:
+
+Fixed an issue in jqxWindow. The JqxWindow resize() method cannot set the width.
+Fixed an issue in jqxGantt. Gantt - some rules in jqx.gantt.css are too general and affect other widgets.
+Fixed an issue in jqxScheduler. rowsHeight not applying if set during initialization.
+Fixed an issue in jqxScheduler, when the scheduler is in month view and the popup with events is displayed.
+Fixed an issue in jqxGrid. exportview with 'csv' creates unnecessary spaces.
+Fixed an issue in jqxGrid when switching dynamically between single and multiple sort modes.
+Fixed an issue in jqxGrid. The column's validation was not called when deleting the value of a cell.
+Fixed an issue in jqxFileUpload. Multiple upload did not work correctly.
+Fixed an issue in jqxDockingLayout. The issue was in the "IDE-like Layout" demo.
+Fixed an issue in jqxCore. Jqwidgets uses the "unload" event which is deprecated.
+Fixed an issue in jqxDataTable. The column groups initialization did not work correctly with pinned columns.
+Fixed an issue in jqxDateTimeInput. The input of a date did not work correctly in the full edit mode. 
+Fixed an issue in jqxSlider about a function called sizeChanged and is undefined.
+
+jQWidgets v19.0.0 Release, Feb-20-2024
 
 What's New: 
 

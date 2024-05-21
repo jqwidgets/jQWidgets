@@ -1,5 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
+(function(){
+	if (typeof document === 'undefined') { 
+		return;
+	}
+
 (function ($) {
     $.jqx.jqxWidget("jqxRichTextArea", "", {});
     $.extend($.jqx._jqxRichTextArea.prototype, {
@@ -2450,4 +2455,4 @@
     }
 
 })(jqxBaseFramework);
-
+})();
