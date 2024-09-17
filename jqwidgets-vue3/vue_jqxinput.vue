@@ -11,6 +11,7 @@
     export default {
         props: {
             modelValue: String,
+            aiKey: String,
             disabled: {
                 default: false,
                 type: Boolean
@@ -19,6 +20,10 @@
             displayMember: String,
             height: [Number, String],
             items: Number,
+            inlineAutoComplete: {
+                default: "",
+                type: Boolean
+            },
             minLength: Number,
             maxLength: Number,
             opened: {
@@ -79,6 +84,13 @@
                     return JQXLite(componentSelector).jqxInput('val');
                 }
             }
+            function _aiKey (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxInput('aiKey', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxInput('aiKey');
+                }
+            }
             function _disabled (arg) {
                 if (arg !== undefined) {
                     JQXLite(componentSelector).jqxInput('disabled', arg)
@@ -112,6 +124,13 @@
                     JQXLite(componentSelector).jqxInput('items', arg)
                 } else {
                     return JQXLite(componentSelector).jqxInput('items');
+                }
+            }
+            function _inlineAutoComplete (arg) {
+                if (arg !== undefined) {
+                    JQXLite(componentSelector).jqxInput('inlineAutoComplete', arg)
+                } else {
+                    return JQXLite(componentSelector).jqxInput('inlineAutoComplete');
                 }
             }
             function _minLength (arg) {
@@ -219,7 +238,7 @@
                 __wireEvents__();
             }
             function __manageProps__() {
-                const widgetProps = ['disabled','dropDownWidth','displayMember','height','items','minLength','maxLength','opened','placeHolder','popupZIndex','query','renderer','rtl','searchMode','source','theme','valueMember','width','value'];
+                const widgetProps = ['aiKey','disabled','dropDownWidth','displayMember','height','items','inlineAutoComplete','minLength','maxLength','opened','placeHolder','popupZIndex','query','renderer','rtl','searchMode','source','theme','valueMember','width','value'];
                 const componentProps = props;
                 let options = {};
 
@@ -231,6 +250,12 @@
                 return options;
             }
             const options = {
+                 get aiKey() {
+                     return _aiKey();
+                 },
+                 set aiKey(newValue) {
+                     _aiKey(newValue);
+                 },
                  get disabled() {
                      return _disabled();
                  },
@@ -260,6 +285,12 @@
                  },
                  set items(newValue) {
                      _items(newValue);
+                 },
+                 get inlineAutoComplete() {
+                     return _inlineAutoComplete();
+                 },
+                 set inlineAutoComplete(newValue) {
+                     _inlineAutoComplete(newValue);
                  },
                  get minLength() {
                      return _minLength();

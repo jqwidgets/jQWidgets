@@ -1,5 +1,5 @@
 /*
-jQWidgets v19.2.0 (2024-May)
+jQWidgets v20.0.0 (2024-Sep)
 Copyright (c) 2011-2024 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -32,10 +32,12 @@ const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 export class jqxInputComponent implements ControlValueAccessor, OnChanges 
 {
+   @Input('aiKey') attrAiKey: string;
    @Input('disabled') attrDisabled: boolean;
    @Input('dropDownWidth') attrDropDownWidth: number | string;
    @Input('displayMember') attrDisplayMember: string;
    @Input('items') attrItems: number;
+   @Input('inlineAutoComplete') attrInlineAutoComplete: boolean;
    @Input('minLength') attrMinLength: number;
    @Input('maxLength') attrMaxLength: number;
    @Input('opened') attrOpened: boolean;
@@ -54,7 +56,7 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
 
    @Input('auto-create') autoCreate: boolean = true;
 
-   properties: string[] = ['disabled','dropDownWidth','displayMember','height','items','minLength','maxLength','opened','placeHolder','popupZIndex','query','renderer','rtl','searchMode','source','theme','valueMember','width','value'];
+   properties: string[] = ['aiKey','disabled','dropDownWidth','displayMember','height','items','inlineAutoComplete','minLength','maxLength','opened','placeHolder','popupZIndex','query','renderer','rtl','searchMode','source','theme','valueMember','width','value'];
    host: any;
    elementRef: ElementRef;
    widgetObject:  jqwidgets.jqxInput;
@@ -211,6 +213,14 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
    }
 
    // jqxInputComponent properties
+   aiKey(arg?: string): string {
+      if (arg !== undefined) {
+          this.host.jqxInput('aiKey', arg);
+      } else {
+          return this.host.jqxInput('aiKey');
+      }
+   }
+
    disabled(arg?: boolean): boolean {
       if (arg !== undefined) {
           this.host.jqxInput('disabled', arg);
@@ -248,6 +258,14 @@ export class jqxInputComponent implements ControlValueAccessor, OnChanges
           this.host.jqxInput('items', arg);
       } else {
           return this.host.jqxInput('items');
+      }
+   }
+
+   inlineAutoComplete(arg?: boolean): boolean {
+      if (arg !== undefined) {
+          this.host.jqxInput('inlineAutoComplete', arg);
+      } else {
+          return this.host.jqxInput('inlineAutoComplete');
       }
    }
 

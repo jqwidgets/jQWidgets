@@ -24,11 +24,13 @@ interface IState {
     lastProps: object;
 }
 interface IInputOptions {
+    aiKey?: string;
     disabled?: boolean;
     dropDownWidth?: number | string;
     displayMember?: string;
     height?: string | number;
     items?: number;
+    inlineAutoComplete?: boolean;
     minLength?: number;
     maxLength?: number;
     opened?: boolean;

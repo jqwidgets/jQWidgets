@@ -3,6 +3,9 @@
 /* tslint:disable */
 /* eslint-disable */
 (function() {
+	if (typeof document === 'undefined') { 
+		return;
+	}
 /*!
  * Globalize
  *

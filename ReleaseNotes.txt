@@ -1,4 +1,28 @@
-﻿jQWidgets v19.2.0 Release, May-21-2024
+﻿jQWidgets v20.0.0 Release, Sep-17-2024
+
+What's New:
+
+AI Auto-Complete option in jqxInput.
+Inline Auto-Complete in jqxInput.
+Content Security Policy(CSP) discard the usage of the eval() and new Function() calls in components.
+
+What's Fixed:
+
+Fixed an issue in jqxKanban about the "updateItem" method. The method was not working correctly when updating the task's statux.
+Fixed an issue in jqxGrid. When using the 'cellselect' event to select a range of cells by drag-and-drop or with the shift key, the event handler is called as many times as the number of selected cells.
+Fixed an issue in jqxGrid. When using the 'filter row' feature and resizing the browser, some of the filter editors are sized incorrectly.
+Fixed an issue in jqxGrid. When the edit mode is 'programmatic', the editor should not be closed when clicking outside the Grid. It should be closed by calling a method for ending the edit process i.e programmatically.
+Fixed an issue in jqxGrid. When the checkbox selection is enabled and select all is applied, then we filter the Grid and uncheck the checkbox in the header and clear the filter, all records are unselected instead of only the filtered records.
+Fixed an issue in jqxGrid. An issue with row details rendering when nesting is present.
+Fixed an issue in jqxGrid. There is an issue when we filter by all columns. Dates and numbers are not filtered correctly.
+Fixed an issue in jxButton. Buttons text positioning when updated dynamically.
+Fixed an issue in jqxDataTable. DataTable's search string when data is updated dynamically.
+Fixed an issue in jqxDropdownlist. The close behavior when more than one is present on the page
+Fixed an issue in jqxTabs and adding html in the tab item.
+Fixed an issue in RadioButtonGroup css styles. Some of the styles applied to the component are about the CheckboxGroup.
+Fixed an issue in Kanban and updateItem method when status is updated
+Fixed an issue in jqxInput about escaping html tags" 
+jQWidgets v19.2.0 Release, May-21-2024
 
 What's New:
 

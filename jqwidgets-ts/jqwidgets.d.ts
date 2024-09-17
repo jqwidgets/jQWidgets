@@ -2369,11 +2369,13 @@ declare module jqwidgets {
 
     export interface InputOptions {
         // InputOptions properties
+        aiKey?: string;
         disabled?: boolean;
         dropDownWidth?: number | string;
         displayMember?: string;
         height?: string | number;
         items?: number;
+        inlineAutoComplete?: boolean;
         minLength?: number;
         maxLength?: number;
         opened?: boolean;

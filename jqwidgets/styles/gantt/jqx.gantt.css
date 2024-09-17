@@ -289,9 +289,9 @@
     --jqx-button-outlined-border: var(--jqx-border);
     --jqx-button-group-default-width: auto;
     --jqx-button-group-default-height: auto;
-    --jqx-calendar-header-height: calc(0.75 * var(--jqx-bar-height));
-    --jqx-calendar-footer-height: calc(0.75 * var(--jqx-bar-height));
-    --jqx-calendar-title-height: calc(1.25 * var(--jqx-bar-height));
+    --jqx-calendar-header-height: 36px;
+    --jqx-calendar-footer-height: 36px;
+    --jqx-calendar-title-height: 60px;
     --jqx-calendar-cell-size: 30px;
     --jqx-calendar-cell-spacing: 4px;
     --jqx-calendar-default-width: calc(50px + var(--jqx-calendar-cell-spacing) + 7 * (var(--jqx-calendar-cell-spacing) + var(--jqx-calendar-cell-size)));
@@ -4786,18 +4786,18 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     direction: rtl
 }
 
-.jqx-calendar,
-.jqx-calendar[months="1"] {
+.jqx-calendar.jqx-element,
+.jqx-calendar.jqx-element[months="1"] {
     min-width: var(--jqx-calendar-default-width);
     min-height: var(--jqx-calendar-default-height)
 }
 
-.jqx-calendar {
+.jqx-calendar.jqx-element {
     width: var(--jqx-calendar-default-width);
     height: var(--jqx-calendar-default-height)
 }
 
-.jqx-calendar:focus {
+.jqx-calendar.jqx-element:focus {
     border-color: var(--jqx-outline)
 }
 
@@ -4814,39 +4814,39 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     flex-direction: column
 }
 
-.jqx-calendar jqx-drop-down-list {
+.jqx-calendar.jqx-element jqx-drop-down-list {
     --jqx-drop-down-list-default-min-height: initial
 }
 
-.jqx-calendar jqx-tooltip {
+.jqx-calendar.jqx-element jqx-tooltip {
     top: 0
 }
 
-.jqx-calendar jqx-tooltip .jqx-tooltip-content {
+.jqx-calendar.jqx-element jqx-tooltip .jqx-tooltip-content {
     border-top-left-radius: var(--jqx-border-top-left-radius);
     border-top-right-radius: var(--jqx-border-top-right-radius);
     border-bottom-left-radius: var(--jqx-border-bottom-left-radius);
     border-bottom-right-radius: var(--jqx-border-bottom-right-radius)
 }
 
-.jqx-calendar input {
+.jqx-calendar.jqx-element input {
     background: inherit;
     color: inherit
 }
 
-.jqx-calendar button:focus {
+.jqx-calendar.jqx-element button:focus {
     border: 1px solid var(--jqx-outline);
     outline: 0
 }
 
-.jqx-calendar .jqx-calendar-container {
+.jqx-calendar.jqx-element .jqx-calendar-container {
     width: 100%;
     height: 100%;
     border: initial;
     padding: 0
 }
 
-.jqx-calendar .jqx-calendar-container>.jqx-calendar-body {
+.jqx-calendar.jqx-element .jqx-calendar-container>.jqx-calendar-body {
     position: relative;
     width: 96%;
     height: calc(100% - var(--jqx-calendar-header-height));
@@ -4866,33 +4866,33 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     touch-action: none
 }
 
-.jqx-calendar .jqx-calendar-container>.jqx-calendar-body:focus .jqx-calendar-date-view-container .jqx-calendar-cell:focus,
-.jqx-calendar .jqx-calendar-container>.jqx-calendar-body:focus .jqx-calendar-date-view-container .jqx-calendar-cell[focus] {
+.jqx-calendar.jqx-element .jqx-calendar-container>.jqx-calendar-body:focus .jqx-calendar-date-view-container .jqx-calendar-cell:focus,
+.jqx-calendar.jqx-element .jqx-calendar-container>.jqx-calendar-body:focus .jqx-calendar-date-view-container .jqx-calendar-cell[focus] {
     background-color: var(--jqx-background);
     color: var(--jqx-primary);
     border-color: var(--jqx-primary)
 }
 
-.jqx-calendar .jqx-calendar-footer,
-.jqx-calendar .jqx-calendar-header {
+.jqx-calendar.jqx-element .jqx-calendar-footer,
+.jqx-calendar.jqx-element .jqx-calendar-header {
     background: var(--jqx-surface);
     color: var(--jqx-surface-color);
     width: 100%;
     outline: initial
 }
 
-.jqx-calendar .jqx-calendar-container>.jqx-calendar-body>div {
+.jqx-calendar.jqx-element .jqx-calendar-container>.jqx-calendar-body>div {
     display: flex;
     flex-shrink: 0;
     flex-wrap: wrap;
     font-size: inherit
 }
 
-.jqx-calendar .jqx-calendar-container>.jqx-calendar-body .jqx-hidden {
+.jqx-calendar.jqx-element .jqx-calendar-container>.jqx-calendar-body .jqx-hidden {
     display: none
 }
 
-.jqx-calendar .jqx-calendar-header {
+.jqx-calendar.jqx-element .jqx-calendar-header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -4905,11 +4905,11 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     text-transform: var(--jqx-calendar-header-text-transform)
 }
 
-.jqx-calendar .jqx-calendar-header.jqx-hidden {
+.jqx-calendar.jqx-element .jqx-calendar-header.jqx-hidden {
     display: none
 }
 
-.jqx-calendar .jqx-calendar-footer {
+.jqx-calendar.jqx-element .jqx-calendar-footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -4922,11 +4922,11 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     text-transform: var(--jqx-calendar-footer-text-transform)
 }
 
-.jqx-calendar .jqx-calendar-footer.jqx-hidden {
+.jqx-calendar.jqx-element .jqx-calendar-footer.jqx-hidden {
     display: none
 }
 
-.jqx-calendar .jqx-calendar-title {
+.jqx-calendar.jqx-element .jqx-calendar-title {
     width: 100%;
     padding: var(--jqx-calendar-title-padding);
     font-size: inherit;
@@ -4946,19 +4946,19 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     height: calc(var(--jqx-calendar-title-height))
 }
 
-.jqx-calendar .jqx-calendar-title.jqx-hidden {
+.jqx-calendar.jqx-element .jqx-calendar-title.jqx-hidden {
     display: none
 }
 
-.jqx-calendar .jqx-calendar-title div:first-of-type {
+.jqx-calendar.jqx-element .jqx-calendar-title div:first-of-type {
     font-size: 70%
 }
 
-.jqx-calendar .jqx-calendar-title .jqx-calendar-selected {
+.jqx-calendar.jqx-element .jqx-calendar-title .jqx-calendar-selected {
     opacity: 1
 }
 
-.jqx-calendar .jqx-calendar-title div {
+.jqx-calendar.jqx-element .jqx-calendar-title div {
     position: relative;
     opacity: .5;
     font-size: 125%;
@@ -4967,18 +4967,18 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     border: 1px solid transparent
 }
 
-.jqx-calendar .jqx-calendar-cell[other-month] {
+.jqx-calendar.jqx-element .jqx-calendar-cell[other-month] {
     background: var(--jqx-background);
     color: var(--jqx-background-color);
     border-color: var(--jqx-border);
     opacity: .5
 }
 
-.jqx-calendar .jqx-calendar-cell[focus] {
+.jqx-calendar.jqx-element .jqx-calendar-cell[focus] {
     border-color: var(--jqx-outline)
 }
 
-.jqx-calendar .jqx-calendar-date-element {
+.jqx-calendar.jqx-element .jqx-calendar-date-element {
     cursor: default;
     align-items: center;
     border: 1px solid transparent;
@@ -4991,11 +4991,11 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     text-align: center
 }
 
-.jqx-calendar .jqx-calendar-date-element:focus {
+.jqx-calendar.jqx-element .jqx-calendar-date-element:focus {
     border-color: var(--jqx-outline)
 }
 
-.jqx-calendar .jqx-calendar-date-element>div {
+.jqx-calendar.jqx-element .jqx-calendar-date-element>div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -5005,7 +5005,7 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     font-size: inherit
 }
 
-.jqx-calendar .jqx-calendar-date-element>div:first-of-type {
+.jqx-calendar.jqx-element .jqx-calendar-date-element>div:first-of-type {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -5015,16 +5015,16 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     -ms-user-select: none
 }
 
-.jqx-calendar .jqx-calendar-date-element div.jqx-hidden {
+.jqx-calendar.jqx-element .jqx-calendar-date-element div.jqx-hidden {
     display: none
 }
 
-.jqx-calendar .jqx-calendar-date-element .jqx-ripple {
+.jqx-calendar.jqx-element .jqx-calendar-date-element .jqx-ripple {
     background-color: var(--jqx-button-color);
     opacity: .2
 }
 
-.jqx-calendar .jqx-calendar-button .jqx-button {
+.jqx-calendar.jqx-element .jqx-calendar-button .jqx-button {
     font-family: var(--jqx-font-family-icon);
     padding: 0;
     border-radius: 0;
@@ -5033,8 +5033,8 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     min-height: initial
 }
 
-.jqx-calendar .jqx-calendar-button[next-month],
-.jqx-calendar .jqx-calendar-button[prev-month] {
+.jqx-calendar.jqx-element .jqx-calendar-button[next-month],
+.jqx-calendar.jqx-element .jqx-calendar-button[prev-month] {
     width: var(--jqx-calendar-navigation-button-size);
     min-width: var(--jqx-calendar-navigation-button-size);
     height: var(--jqx-calendar-navigation-button-size);
@@ -5049,15 +5049,15 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     color: inherit
 }
 
-.jqx-calendar .jqx-calendar-button[next-month][active] button,
-.jqx-calendar .jqx-calendar-button[prev-month][active] button {
+.jqx-calendar.jqx-element .jqx-calendar-button[next-month][active] button,
+.jqx-calendar.jqx-element .jqx-calendar-button[prev-month][active] button {
     border: 1px solid var(--jqx-ui-state-hover);
     background-color: var(--jqx-ui-state-hover);
     color: var(--jqx-primary)
 }
 
-.jqx-calendar .jqx-calendar-button[next-year],
-.jqx-calendar .jqx-calendar-button[prev-year] {
+.jqx-calendar.jqx-element .jqx-calendar-button[next-year],
+.jqx-calendar.jqx-element .jqx-calendar-button[prev-year] {
     position: relative;
     display: block;
     cursor: default;
@@ -5069,28 +5069,28 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     border-left: none
 }
 
-.jqx-calendar .jqx-calendar-button[next-year] span:after {
+.jqx-calendar.jqx-element .jqx-calendar-button[next-year] span:after {
     content: var(--jqx-icon-arrow-up)
 }
 
-.jqx-calendar .jqx-calendar-button[prev-year] {
+.jqx-calendar.jqx-element .jqx-calendar-button[prev-year] {
     border-top-color: transparent
 }
 
-.jqx-calendar .jqx-calendar-button[prev-year] span:after {
+.jqx-calendar.jqx-element .jqx-calendar-button[prev-year] span:after {
     content: var(--jqx-icon-arrow-down)
 }
 
-.jqx-calendar [next-month][focus] button,
-.jqx-calendar [next-year][focus] button,
-.jqx-calendar [prev-month][focus] button,
-.jqx-calendar [prev-year][focus] button {
+.jqx-calendar.jqx-element [next-month][focus] button,
+.jqx-calendar.jqx-element [next-year][focus] button,
+.jqx-calendar.jqx-element [prev-month][focus] button,
+.jqx-calendar.jqx-element [prev-year][focus] button {
     border: 1px solid var(--jqx-border-focus);
     background-color: var(--jqx-background-focus);
     outline: 0
 }
 
-.jqx-calendar .jqx-calendar-list-view.jqx-scroll-viewer {
+.jqx-calendar.jqx-element .jqx-calendar-list-view.jqx-scroll-viewer {
     --jqx-input-drop-down-menu-height: 100%;
     --jqx-input-drop-down-menu-width: 100%;
     width: 100%;
@@ -5111,8 +5111,8 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     box-shadow: initial
 }
 
-.jqx-calendar .jqx-calendar-week .jqx-calendar-cell,
-.jqx-calendar .jqx-calendar-week .jqx-calendar-week-number {
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-cell,
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-week-number {
     padding: 0;
     text-overflow: ellipsis;
     width: var(--jqx-calendar-cell-size);
@@ -5122,22 +5122,22 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     position: relative
 }
 
-.jqx-calendar .jqx-calendar-list-view.jqx-scroll-viewer>.jqx-container {
+.jqx-calendar.jqx-element .jqx-calendar-list-view.jqx-scroll-viewer>.jqx-container {
     max-height: initial
 }
 
-.jqx-calendar .jqx-calendar-list-view.jqx-scroll-viewer a {
+.jqx-calendar.jqx-element .jqx-calendar-list-view.jqx-scroll-viewer a {
     pointer-events: none
 }
 
-.jqx-calendar .jqx-calendar-week {
+.jqx-calendar.jqx-element .jqx-calendar-week {
     display: flex;
     overflow: hidden;
     text-align: center;
     justify-content: center
 }
 
-.jqx-calendar .jqx-calendar-week .jqx-calendar-cell {
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-cell {
     border: 1px solid transparent;
     border-top-left-radius: var(--jqx-calendar-cell-border-top-left-radius);
     border-top-right-radius: var(--jqx-calendar-cell-border-top-right-radius);
@@ -5147,39 +5147,39 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     margin-bottom: var(--jqx-calendar-cell-spacing)
 }
 
-.jqx-calendar .jqx-calendar-week .jqx-calendar-cell[selected],
-.jqx-calendar .jqx-calendar-week .jqx-calendar-cell[selected][hover] {
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-cell[selected],
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-cell[selected][hover] {
     background-color: var(--jqx-primary);
     color: var(--jqx-primary-color);
     border-color: var(--jqx-primary)
 }
 
-.jqx-calendar .jqx-calendar-week .jqx-calendar-cell[today],
-.jqx-calendar .jqx-calendar-week .jqx-calendar-cell[today][hover] {
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-cell[today],
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-cell[today][hover] {
     background: var(--jqx-secondary);
     color: var(--jqx-secondary-color);
     border-color: var(--jqx-secondary)
 }
 
-.jqx-calendar .jqx-calendar-week .jqx-calendar-cell[selected][today] {
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-cell[selected][today] {
     background-color: var(--jqx-primary);
     color: var(--jqx-primary-color);
     border-color: var(--jqx-primary)
 }
 
-.jqx-calendar .jqx-calendar-week .jqx-calendar-cell:focus:not([selected]),
-.jqx-calendar .jqx-calendar-week .jqx-calendar-cell[focus]:not([selected]) {
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-cell:focus:not([selected]),
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-cell[focus]:not([selected]) {
     background-color: var(--jqx-background);
     color: var(--jqx-primary);
     border-color: var(--jqx-primary)
 }
 
-.jqx-calendar .jqx-calendar-week .jqx-calendar-cell .jqx-ripple {
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-cell .jqx-ripple {
     background-color: var(--jqx-primary-color);
     opacity: .5
 }
 
-.jqx-calendar .jqx-calendar-week .jqx-calendar-week-number {
+.jqx-calendar.jqx-element .jqx-calendar-week .jqx-calendar-week-number {
     border: 1px solid transparent;
     border-top-left-radius: var(--jqx-calendar-cell-border-top-left-radius);
     border-top-right-radius: var(--jqx-calendar-cell-border-top-right-radius);
@@ -5188,52 +5188,52 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     margin: 0
 }
 
-.jqx-calendar .jqx-calendar-week.jqx-hidden {
+.jqx-calendar.jqx-element .jqx-calendar-week.jqx-hidden {
     display: none
 }
 
-.jqx-calendar .jqx-calendar-week div[restricted] {
+.jqx-calendar.jqx-element .jqx-calendar-week div[restricted] {
     cursor: not-allowed;
     opacity: .55;
     text-decoration: line-through
 }
 
-.jqx-calendar .jqx-calendar-week div[hover]:not([restricted]) {
+.jqx-calendar.jqx-element .jqx-calendar-week div[hover]:not([restricted]) {
     background-color: var(--jqx-ui-state-hover);
     color: var(--jqx-ui-state-color-hover);
     border-color: var(--jqx-ui-state-border-hover)
 }
 
-.jqx-calendar .jqx-calendar-week div[important] {
+.jqx-calendar.jqx-element .jqx-calendar-week div[important] {
     background: var(--jqx-calendar-important-date-background);
     color: var(--jqx-calendar-important-date-color);
     border-color: var(--jqx-calendar-important-date-border-color)
 }
 
 @-moz-document url-prefix() {
-    .jqx-calendar .jqx-calendar-week div {
+    .jqx-calendar.jqx-element .jqx-calendar-week div {
         padding: initial
     }
 }
 
-.jqx-calendar .jqx-calendar-week-number {
+.jqx-calendar.jqx-element .jqx-calendar-week-number {
     display: none;
     margin: auto
 }
 
-.jqx-calendar .jqx-calendar-week-titles {
+.jqx-calendar.jqx-element .jqx-calendar-week-titles {
     display: flex;
     overflow: hidden;
     text-align: center;
     justify-content: center
 }
 
-.jqx-calendar .jqx-calendar-week-titles div:first-child {
+.jqx-calendar.jqx-element .jqx-calendar-week-titles div:first-child {
     display: none;
     margin: auto
 }
 
-.jqx-calendar .jqx-calendar-week-titles .jqx-calendar-week-title {
+.jqx-calendar.jqx-element .jqx-calendar-week-titles .jqx-calendar-week-title {
     text-overflow: ellipsis;
     overflow: hidden;
     border: 1px solid transparent;
@@ -5251,14 +5251,14 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     text-transform: var(--jqx-calendar-week-title-text-transform)
 }
 
-.jqx-calendar .jqx-calendar-months-container {
+.jqx-calendar.jqx-element .jqx-calendar-months-container {
     order: 1;
     width: 100%;
     height: 100%;
     align-items: center
 }
 
-.jqx-calendar .jqx-calendar-month {
+.jqx-calendar.jqx-element .jqx-calendar-month {
     display: flex;
     overflow: hidden;
     text-align: center;
@@ -5268,11 +5268,11 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     margin: auto
 }
 
-.jqx-calendar .jqx-calendar-month-name {
+.jqx-calendar.jqx-element .jqx-calendar-month-name {
     display: none
 }
 
-.jqx-calendar .jqx-calendar-month-separator {
+.jqx-calendar.jqx-element .jqx-calendar-month-separator {
     display: flex;
     overflow: hidden;
     text-align: center;
@@ -5281,7 +5281,7 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     order: 2
 }
 
-.jqx-calendar .jqx-calendar-month-element {
+.jqx-calendar.jqx-element .jqx-calendar-month-element {
     position: relative;
     width: 70%;
     height: 80%;
@@ -5290,12 +5290,12 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     font-size: inherit
 }
 
-.jqx-calendar .jqx-calendar-year-container:focus {
+.jqx-calendar.jqx-element .jqx-calendar-year-container:focus {
     border: 1px solid var(--jqx-outline);
     outline: 0
 }
 
-.jqx-calendar .jqx-calendar-year-element {
+.jqx-calendar.jqx-element .jqx-calendar-year-element {
     outline: 0;
     width: 25%;
     height: 80%;
@@ -5313,11 +5313,11 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     background: var(--jqx-background)
 }
 
-.jqx-calendar .jqx-calendar-year-element:focus {
+.jqx-calendar.jqx-element .jqx-calendar-year-element:focus {
     border-color: var(--jqx-outline)
 }
 
-.jqx-calendar .jqx-calendar-year-elements {
+.jqx-calendar.jqx-element .jqx-calendar-year-elements {
     display: flex;
     width: 10%;
     height: 80%;
@@ -5326,16 +5326,16 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     justify-content: space-around
 }
 
-.jqx-calendar .jqx-calendar-year-elements>jqx-repeat-button {
+.jqx-calendar.jqx-element .jqx-calendar-year-elements>jqx-repeat-button {
     height: 50%;
     width: 100%
 }
 
-.jqx-calendar .jqx-calendar-year-selector {
+.jqx-calendar.jqx-element .jqx-calendar-year-selector {
     display: inline-block
 }
 
-.jqx-calendar .jqx-calendar-next-months-container {
+.jqx-calendar.jqx-element .jqx-calendar-next-months-container {
     order: 3;
     width: 100%;
     height: 100%;
@@ -5344,18 +5344,18 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
 
 @-moz-document url-prefix() {
 
-    .jqx-calendar .jqx-calendar-months-container,
-    .jqx-calendar .jqx-calendar-next-months-container {
+    .jqx-calendar.jqx-element .jqx-calendar-months-container,
+    .jqx-calendar.jqx-element .jqx-calendar-next-months-container {
         line-height: initial
     }
 }
 
-.jqx-calendar .jqx-calendar-date-container:focus {
+.jqx-calendar.jqx-element .jqx-calendar-date-container:focus {
     border: 1px solid var(--jqx-outline);
     outline: 0
 }
 
-.jqx-calendar .jqx-calendar-date-view-container {
+.jqx-calendar.jqx-element .jqx-calendar-date-view-container {
     width: 100%;
     height: 100%;
     text-align: center;
@@ -5363,11 +5363,11 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     align-items: center
 }
 
-.jqx-calendar .jqx-calendar-date-view-container.jqx-list-display-mode-view {
+.jqx-calendar.jqx-element .jqx-calendar-date-view-container.jqx-list-display-mode-view {
     flex-direction: column
 }
 
-.jqx-calendar .jqx-calendar-date-view-container .jqx-calendar-cell {
+.jqx-calendar.jqx-element .jqx-calendar-date-view-container .jqx-calendar-cell {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -5382,23 +5382,23 @@ jqx-tooltip[right-to-left] .jqx-tooltip-content {
     border-bottom-right-radius: var(--jqx-calendar-cell-border-bottom-right-radius)
 }
 
-.jqx-calendar .jqx-calendar-date-view-container .jqx-calendar-cell[focus] {
+.jqx-calendar.jqx-element .jqx-calendar-date-view-container .jqx-calendar-cell[focus] {
     border-color: var(--jqx-outline)
 }
 
-.jqx-calendar .jqx-calendar-date-view-container .jqx-calendar-cell[other-month] {
+.jqx-calendar.jqx-element .jqx-calendar-date-view-container .jqx-calendar-cell[other-month] {
     background: var(--jqx-background);
     color: var(--jqx-background-color);
     border-color: var(--jqx-border);
     opacity: .5
 }
 
-.jqx-calendar .jqx-calendar-date-view-container .jqx-visibility-hidden {
+.jqx-calendar.jqx-element .jqx-calendar-date-view-container .jqx-visibility-hidden {
     visibility: visible;
     opacity: .55
 }
 
-.jqx-calendar .jqx-calendar-animation-panel {
+.jqx-calendar.jqx-element .jqx-calendar-animation-panel {
     position: absolute;
     background-color: var(--jqx-background);
     justify-content: center;

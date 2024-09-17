@@ -1,5 +1,5 @@
 /*
-jQWidgets v19.2.0 (2024-May)
+jQWidgets v20.0.0 (2024-Sep)
 Copyright (c) 2011-2024 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -8,27 +8,7 @@ License: https://jqwidgets.com/license/
 /// <reference path="jqwidgets.d.ts" />
 
 import '../jqwidgets/jqxcore.js';
-import '../jqwidgets/jqxdata.js';
-import '../jqwidgets/jqxdata.export.js';
-import '../jqwidgets/jqxdate.js';
-import '../jqwidgets/jqxbuttons.js';
-import '../jqwidgets/jqxmenu.js';
-import '../jqwidgets/jqxtooltip.js';
-import '../jqwidgets/jqxscrollbar.js';
-import '../jqwidgets/jqxradiobutton.js';
-import '../jqwidgets/jqxcheckbox.js';
-import '../jqwidgets/jqxwindow.js';
-import '../jqwidgets/jqxlistbox.js';
-import '../jqwidgets/jqxcolorpicker.js';
-import '../jqwidgets/jqxcombobox.js';
-import '../jqwidgets/jqxdropdownlist.js';
-import '../jqwidgets/jqxnumberinput.js';
-import '../jqwidgets/jqxinput.js';
-import '../jqwidgets/globalization/globalize.js';
-import '../jqwidgets/jqxcalendar.js';
-import '../jqwidgets/jqxdatetimeinput.js';
-import '../jqwidgets/jqxscheduler.js';
-import '../jqwidgets/jqxscheduler.api.js';
+import '../jqwidgets/modules/jqxscheduler.js';
 
 import { Component, Input, Output, EventEmitter, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 declare let JQXLite: any;

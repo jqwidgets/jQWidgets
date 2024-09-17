@@ -1,5 +1,5 @@
 /*
-jQWidgets v19.2.0 (2024-May)
+jQWidgets v20.0.0 (2024-Sep)
 Copyright (c) 2011-2024 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -1328,6 +1328,20 @@ class QRcode {
     }
 }
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

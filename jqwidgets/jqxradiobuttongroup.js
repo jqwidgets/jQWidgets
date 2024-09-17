@@ -1,5 +1,5 @@
 /*
-jQWidgets v19.2.0 (2024-May)
+jQWidgets v20.0.0 (2024-Sep)
 Copyright (c) 2011-2024 jQWidgets.
 License: https://jqwidgets.com/license/
 */
@@ -256,7 +256,7 @@ License: https://jqwidgets.com/license/
                 }
             });
 
-            that.groupItems = that.element.querySelectorAll('.jqx-radiobutton-group-item');
+            that.groupItems = that.element.querySelectorAll('.jqx-checkbox-group-item');
             that.buttons = buttons;
             that.host.addClass(that.toThemeProperty('jqx-widget jqx-radiobutton-group'));
             if (this.disabled) {
@@ -391,6 +391,20 @@ License: https://jqwidgets.com/license/
     });
 })(jqxBaseFramework);
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

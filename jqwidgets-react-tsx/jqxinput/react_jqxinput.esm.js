@@ -98,7 +98,7 @@ var JqxInput = /** @class */ (function (_super) {
         }
     };
     JqxInput.prototype._manageProps = function () {
-        var widgetProps = ['disabled', 'dropDownWidth', 'displayMember', 'height', 'items', 'minLength', 'maxLength', 'opened', 'placeHolder', 'popupZIndex', 'query', 'renderer', 'rtl', 'searchMode', 'source', 'theme', 'valueMember', 'width', 'value'];
+        var widgetProps = ['aiKey', 'disabled', 'dropDownWidth', 'displayMember', 'height', 'items', 'inlineAutoComplete', 'minLength', 'maxLength', 'opened', 'placeHolder', 'popupZIndex', 'query', 'renderer', 'rtl', 'searchMode', 'source', 'theme', 'valueMember', 'width', 'value'];
         var options = {};
         for (var prop in this.props) {
             if (widgetProps.indexOf(prop) !== -1) {
